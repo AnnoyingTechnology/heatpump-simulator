@@ -1,0 +1,17 @@
+{
+  "name": "heatpump-simulator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "check": "tsc --noEmit",
+    "test:engine": "tsc -p tests/engine/tsconfig.json && node --test tests/engine/*.test.mjs",
+    "build": "npm run check && vite build",
+    "preview": "vite preview --host 127.0.0.1"
+  },
+  "devDependencies": {
+    "typescript": "7.0.2",
+    "vite": "8.3.4"
+  }
+}

@@ -1,0 +1,5 @@
+Continue Sonnet 5.5 interface. Scope src/inspector.ts and design/interface-design.md ONLY. Do not run commands or edit physics/runtime/state. Workspace language English, no auto memory, native vector.
+
+Independent science reviewer requests exact per-branch refrigerant inlet and outlet values in the indoor inspector, because the revised generic cooling control permits unequal branch outlet enthalpy/phase before returns mix. Display actual engine.cycle.branchInlets[i] and branchOutlets[i]: T [°C], h [kJ/kg], phase, and mass quality only where qualityMass is non-null. Label these as actual branch refrigerant inlet/outlet, and keep unavailable rows — when currentReadings is unusable. Do not use the common compressor suction state for individual branch outputs. The existing endpoint phase rows may be retained or consolidated to avoid duplicate clutter. This is necessary engineering presentation, not a visual redesign.
+
+Attribution must remain generic control/model, not manufacturer firmware. Report changed files; parent builds and renders.

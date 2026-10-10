@@ -1,0 +1,245 @@
+{
+  "checkedAt": "2026-10-10T10:57:44.731Z",
+  "output": {
+    "provenance": "live-generic-unvalidated",
+    "simulatedSeconds": 303,
+    "state": "fault",
+    "requestedMode": "heating",
+    "effectiveMode": null,
+    "cycle": null,
+    "rooms": [
+      {
+        "id": "attic",
+        "temperatureC": 21.55377757599871,
+        "relativeHumidity": 0.45014037653459926,
+        "humidityRatio": 0.007225051010085273,
+        "fabricTemperatureC": 20.007253482739916,
+        "metalTemperatureC": 40.8328788422253,
+        "setpointC": 23,
+        "active": false,
+        "massFlowKgs": 0,
+        "signedRoomHeatW": 0,
+        "sensibleRoomHeatW": 0,
+        "fanPowerW": 0,
+        "airOutletC": null,
+        "condensateKgs": 0,
+        "drainEnthalpyW": 0
+      },
+      {
+        "id": "first",
+        "temperatureC": 20.261105662880766,
+        "relativeHumidity": 0.4874065609919469,
+        "humidityRatio": 0.007225051010085273,
+        "fabricTemperatureC": 19.994975190697392,
+        "metalTemperatureC": 40.59294290886324,
+        "setpointC": 23,
+        "active": false,
+        "massFlowKgs": 0,
+        "signedRoomHeatW": 0,
+        "sensibleRoomHeatW": 0,
+        "fanPowerW": 0,
+        "airOutletC": null,
+        "condensateKgs": 0,
+        "drainEnthalpyW": 0
+      },
+      {
+        "id": "ground",
+        "temperatureC": 21.067612535987337,
+        "relativeHumidity": 0.46376640033426714,
+        "humidityRatio": 0.007225051010085273,
+        "fabricTemperatureC": 20.00194004505707,
+        "metalTemperatureC": 40.74229461973156,
+        "setpointC": 23,
+        "active": false,
+        "massFlowKgs": 0,
+        "signedRoomHeatW": 0,
+        "sensibleRoomHeatW": 0,
+        "fanPowerW": 0,
+        "airOutletC": null,
+        "condensateKgs": 0,
+        "drainEnthalpyW": 0
+      }
+    ],
+    "outdoor": {
+      "temperatureC": -5.746737332217373,
+      "iceKg": 0.1529310196643457,
+      "liquidKg": 0,
+      "thicknessM": 0.0003823275491608642,
+      "metalTemperatureC": -5.746737332217373,
+      "filmEnthalpyJ": -52848.08929797352,
+      "filmMassKg": 0.1529310196643457,
+      "airOutletC": null,
+      "fanPowerW": 0,
+      "depositionKgs": 0,
+      "drainageKgs": 0,
+      "meltPowerW": 0
+    },
+    "electrical": {
+      "compressorW": 0,
+      "indoorFansW": 0,
+      "outdoorFanW": 0,
+      "controlsW": 15,
+      "totalW": 15,
+      "driveLossW": 0
+    },
+    "signedRoomHeatW": 0,
+    "heatingCOP": null,
+    "coolingCOP": null,
+    "energy": {
+      "electricityJ": 633371.3509544778,
+      "signedRoomHeatJ": 1373232.2171237136,
+      "outdoorExchangeJ": -1188121.5383580506,
+      "drainageJ": 0.0103390354039109,
+      "configurationEnergyJ": 0,
+      "boundaryEnergyJ": 603174.949967059,
+      "storedEnergyChangeJ": 603174.9499668777,
+      "residualJ": -1.812586560845375e-7,
+      "waterResidualKg": -1.27675647831893e-15
+    },
+    "diagnostics": {
+      "warnings": [
+        "Generic component parameters and control assumptions; not manufacturer calibrated.",
+        "Outdoor metal and retained water/ice share one equilibrium temperature.",
+        "Ice sublimation is excluded; retained ice melts or receives deposition.",
+        "Dirt uses clear-passage scaling of air flow/air-side conductance; forced fan power is constant without a measured fan curve.",
+        "Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.",
+        "Reported common condenser outlet is a control target; heating branch outlet states and mixed expansion enthalpy are authoritative with field lines."
+      ],
+      "fault": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 365.6 W at 30.000000,-5.746727; equations 365.631,-0.001); alternate: No feasible shared-pressure operating point (best residual 314.4 W at -28.027977,6.351237; equations 299.169,96.616)",
+      "algebraicResidualW": 0,
+      "speedRps": 0,
+      "filmEnergyRateW": 0,
+      "metalEnergyRateW": 0
+    }
+  },
+  "samples": [
+    {
+      "seconds": 20,
+      "state": "running",
+      "iceKg": 0.0011029028556120252,
+      "waterKg": 0,
+      "energyResidualJ": 6.244226824492216e-8,
+      "waterResidualKg": -4.4967285103836296e-17
+    },
+    {
+      "seconds": 40,
+      "state": "running",
+      "iceKg": 0.008709758710036375,
+      "waterKg": 0,
+      "energyResidualJ": -6.737718649674207e-8,
+      "waterResidualKg": 4.709774237277031e-16
+    },
+    {
+      "seconds": 60,
+      "state": "running",
+      "iceKg": 0.019138132840453456,
+      "waterKg": 0,
+      "energyResidualJ": 2.2177118808031082e-8,
+      "waterResidualKg": -2.8796409701215e-16
+    },
+    {
+      "seconds": 80,
+      "state": "running",
+      "iceKg": 0.030415108680931946,
+      "waterKg": 0,
+      "energyResidualJ": 7.927883416414261e-8,
+      "waterResidualKg": -3.7470027081099033e-16
+    },
+    {
+      "seconds": 100,
+      "state": "running",
+      "iceKg": 0.04191504192387037,
+      "waterKg": 0,
+      "energyResidualJ": 6.656046025454998e-8,
+      "waterResidualKg": 1.3877787807814457e-17
+    },
+    {
+      "seconds": 120,
+      "state": "running",
+      "iceKg": 0.053425552975233784,
+      "waterKg": 0,
+      "energyResidualJ": 1.0072835721075535e-7,
+      "waterResidualKg": 4.85722573273506e-17
+    },
+    {
+      "seconds": 140,
+      "state": "running",
+      "iceKg": 0.06487138004807277,
+      "waterKg": 0,
+      "energyResidualJ": 1.0538497008383274e-7,
+      "waterResidualKg": 8.673617379884035e-16
+    },
+    {
+      "seconds": 160,
+      "state": "running",
+      "iceKg": 0.07622565763611178,
+      "waterKg": 0,
+      "energyResidualJ": -7.211929187178612e-8,
+      "waterResidualKg": 4.163336342344337e-17
+    },
+    {
+      "seconds": 180,
+      "state": "running",
+      "iceKg": 0.08747937233967883,
+      "waterKg": 0,
+      "energyResidualJ": -1.7869751900434494e-8,
+      "waterResidualKg": -1.8041124150158794e-16
+    },
+    {
+      "seconds": 200,
+      "state": "running",
+      "iceKg": 0.09863025161653272,
+      "waterKg": 0,
+      "energyResidualJ": -5.093170329928398e-8,
+      "waterResidualKg": 2.3592239273284576e-16
+    },
+    {
+      "seconds": 220,
+      "state": "running",
+      "iceKg": 0.1096785414275996,
+      "waterKg": 0,
+      "energyResidualJ": -9.761424735188484e-8,
+      "waterResidualKg": 1.5265566588595902e-16
+    },
+    {
+      "seconds": 240,
+      "state": "running",
+      "iceKg": 0.12062535505202342,
+      "waterKg": 0,
+      "energyResidualJ": -1.5133991837501526e-7,
+      "waterResidualKg": -2.220446049250313e-16
+    },
+    {
+      "seconds": 260,
+      "state": "running",
+      "iceKg": 0.13147202297980448,
+      "waterKg": 0,
+      "energyResidualJ": -1.364387571811676e-7,
+      "waterResidualKg": -5.134781488891349e-16
+    },
+    {
+      "seconds": 280,
+      "state": "running",
+      "iceKg": 0.14221746370973481,
+      "waterKg": 0,
+      "energyResidualJ": -1.3120006769895554e-7,
+      "waterResidualKg": -1.3322676295501878e-15
+    },
+    {
+      "seconds": 300,
+      "state": "running",
+      "iceKg": 0.15282138179210536,
+      "waterKg": 0,
+      "energyResidualJ": -2.5460030883550644e-7,
+      "waterResidualKg": -1.5265566588595902e-15
+    },
+    {
+      "seconds": 303,
+      "state": "fault",
+      "iceKg": 0.1529310196643457,
+      "waterKg": 0,
+      "energyResidualJ": -1.812586560845375e-7,
+      "waterResidualKg": -1.27675647831893e-15
+    }
+  ]
+}

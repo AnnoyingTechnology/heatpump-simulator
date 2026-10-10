@@ -1,0 +1,199 @@
+import { DomainError, Properties } from './properties.ts';
+import { transportPipe } from './transport.ts';
+import type { CycleOutput, EngineConfig, Mode, RefrigerantState } from './types.ts';
+
+export interface CycleInput { mode: Mode; indoorMetalC: number[]; outdoorMetalC: number; active: boolean[]; speedRps: number; defrost?: boolean; previous?: { evaporatingC: number; condensingC: number; condenserOutletC?: number; branchMassFlowsKgs?: number[] } }
+const clamp = (x: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, x));
+
+/** Required ref/metal conductance per kg/s, ∫dh/|T_ref(h)−T_metal|.
+ * Pure-fluid latent zone is exact; sensible zones integrate real EOS cp in log(terminal approach).
+ * A nonpositive terminal approach is a physical infeasibility, never an artificial minimum ΔT. */
+export function conductanceIntegral(properties: Properties, pressurePa: number, h1: number, h2: number, metalC: number): number {
+  const sat = properties.saturation(pressurePa), low = Math.min(h1, h2), high = Math.max(h1, h2);
+  const direction = h1 > h2 ? 1 : -1;
+  const endpoint = (h: number) => properties.prop('T', 'P', pressurePa, 'H', h) - 273.15;
+  if (direction * (endpoint(h1) - metalC) <= 0 || direction * (endpoint(h2) - metalC) <= 0) throw new DomainError('Heat-exchanger terminal temperature pinch');
+  const knots = [low, ...[sat.liquidH, sat.vaporH].filter(h => h > low && h < high), high];
+  let integral = 0;
+  for (let i = 1; i < knots.length; i++) {
+    const a = knots[i - 1], b = knots[i];
+    if (a >= sat.liquidH && b <= sat.vaporH) integral += (b - a) / Math.abs(sat.temperatureC - metalC);
+    else {
+      // dh=cp dT; dh/|T−Tm| = cp d(log|T−Tm|). This resolves the logarithmic endpoint singularity.
+      const z1 = Math.log(Math.abs(endpoint(a) - metalC)), z2 = Math.log(Math.abs(endpoint(b) - metalC));
+      const zl = Math.min(z1, z2), zh = Math.max(z1, z2), intervals = Math.max(1, Math.ceil((zh - zl) / .5));
+      for (let part = 0; part < intervals; part++) {
+        const za = zl + (zh - zl) * part / intervals, zb = zl + (zh - zl) * (part + 1) / intervals;
+        const mid = .5 * (za + zb), half = .5 * (zb - za);
+        for (const [node, weight] of [[-Math.sqrt(3 / 5), 5 / 9], [0, 8 / 9], [Math.sqrt(3 / 5), 5 / 9]]) {
+          const temperatureK = metalC + direction * Math.exp(mid + node * half) + 273.15;
+          integral += half * weight * properties.prop('C', 'P', pressurePa, 'T', temperatureK);
+        }
+      }
+    }
+  }
+  if (!(integral > 0 && Number.isFinite(integral))) throw new DomainError('Invalid coil conductance integral'); return integral;
+}
+
+/** Forward condenser closure with a bounded terminal temperature error. When the exponential
+ * approach is below 1e-5 K, the limiting outlet is returned: its heat error is <m cp 1e-5 K.
+ * This is numerical resolution of finite-UA equilibrium, not a minimum artificial driving ΔT. */
+export function coilOutletH(properties: Properties, p: number, inletH: number, flow: number, ua: number, metalC: number, condensing: boolean): number {
+  const sat = properties.saturation(p);
+  if (condensing ? metalC >= sat.temperatureC : metalC <= sat.temperatureC) throw new DomainError('Coil cannot change phase against incompatible metal');
+  let terminal = properties.prop('H', 'P', p, 'T', metalC + 273.15 + (condensing ? 1e-5 : -1e-5)), origin = inletH;
+  const target = ua / flow;
+  if (target >= conductanceIntegral(properties, p, inletH, terminal, metalC)) return terminal;
+  for (let i = 0; i < 35; i++) {
+    const mid = .5 * (terminal + origin), integral = conductanceIntegral(properties, p, inletH, mid, metalC);
+    if (integral > target) terminal = mid; else origin = mid;
+  }
+  return .5 * (terminal + origin);
+}
+export function condenserOutletH(properties: Properties, p: number, inletH: number, flow: number, ua: number, metalC: number): number { return coilOutletH(properties,p,inletH,flow,ua,metalC,true); }
+
+interface Trial { residual: [number, number]; output: Omit<CycleOutput, 'iterations'> }
+/** Two shared saturation-pressure unknowns; branch flows are eliminated using coil UA closures. */
+export function solveCycle(properties: Properties, config: EngineConfig, input: CycleInput): CycleOutput {
+  if (input.mode === 'heating') return solvePressureRegime(properties, config, input, false);
+  // Complementary controller regimes: SC target with >=8 K lift, or minimum lift with floating SC.
+  // The second regime releases subcooling only when the fixed target has no feasible pressure closure.
+  const floatingFirst = !!input.defrost || !!(input.previous && Math.abs(input.previous.condensingC-input.previous.evaporatingC-8)<.001);
+  let first: unknown;
+  try { return solvePressureRegime(properties, config, input, floatingFirst); } catch(error) { first=error; }
+  try { return solvePressureRegime(properties, config, input, !floatingFirst); } catch(error) { throw new DomainError(`Neither SC-target nor minimum-lift controller closes: ${first instanceof Error ? first.message : first}; alternate: ${error instanceof Error ? error.message : error}`); }
+}
+function solvePressureRegime(properties: Properties, config: EngineConfig, input: CycleInput, floatingCondenser: boolean): CycleOutput {
+  const activeIndices = input.active.flatMap((a, i) => a ? [i] : []);
+  if (!activeIndices.length || !(input.speedRps > 0)) throw new DomainError('No active refrigerant circuit');
+  const compressor = config.compressor, heating = input.mode === 'heating';
+  const allocatedCooling = !heating && activeIndices.every(i=>config.rooms[i].pipe.lengthM===0 && config.rooms[i].pipe.elevationM===0);
+  const sourceMetal = heating ? [input.outdoorMetalC] : activeIndices.map(i => input.indoorMetalC[i]);
+  const sinkMetal = heating ? activeIndices.map(i => input.indoorMetalC[i]) : [input.outdoorMetalC];
+  const lowMax = Math.min(45, Math.min(...sourceMetal) - (allocatedCooling ? 0 : compressor.superheatK) - 1e-5);
+  const highMin = floatingCondenser ? input.outdoorMetalC + 1e-5 : Math.max(-5, Math.max(...sinkMetal) + compressor.subcoolK + 1e-5);
+  if (lowMax <= -40 || highMin >= 65) throw new DomainError('Coil temperatures exceed selected subcritical R32 operating envelope');
+  const evaluate = (te: number, second: number): Trial => {
+    // During cold-condenser startup/defrost the generic controller imposes an 8 K saturation lift;
+    // a minimum condenser/metal approach (4 K defrost, 8 K cooling). Subcooling floats from finite UA.
+    const tc = floatingCondenser ? te + 8 : second;
+    const condenserOutletC = floatingCondenser ? second : tc - compressor.subcoolK;
+    if (!(te >= -40 && te <= lowMax && second >= highMin && tc <= 65 && (floatingCondenser || tc - te >= (heating ? 1 : 8)) && condenserOutletC < tc - .001 && (!floatingCondenser || condenserOutletC > input.outdoorMetalC))) throw new DomainError('Pressure-solve point outside coil/domain bounds');
+    const pL = properties.pressureAtSaturationC(te), pH = properties.pressureAtSaturationC(tc);
+    let suction = properties.pt(pL, te + compressor.superheatK);
+    const targetSuctionH = suction.hJkg, allocatedFlow = suction.densityKgm3 * compressor.displacementM3rev * input.speedRps * compressor.volumetricEfficiency;
+    const allocationWeight = activeIndices.reduce((total,i)=>total+config.rooms[i].refrigerantConductanceWK,0);
+    const h2s = properties.prop('H', 'P', pH, 'S', suction.entropyJkgK);
+    let discharge = properties.ph(pH, suction.hJkg + (h2s - suction.hJkg) / compressor.isentropicEfficiency);
+    if (discharge.temperatureC > compressor.maxDischargeC || pH / pL > compressor.maxPressureRatio) throw new DomainError('Generic compressor discharge/pressure-ratio envelope exceeded');
+    const condenserOutlet = properties.pt(pH, condenserOutletC);
+    let expansionOutlet = properties.ph(pL, condenserOutlet.hJkg);
+    const flows = config.rooms.map(() => 0), branchHeat = config.rooms.map(() => 0), pressureDrops = config.rooms.map(() => 0);
+    const inlets: RefrigerantState[] = [], outlets: RefrigerantState[] = [];
+    let lineHeat = 0, mixedReturnH = 0;
+    for (let i = 0; i < config.rooms.length; i++) {
+      const room = config.rooms[i], pipe = room.pipe;
+      let inlet = heating ? discharge : expansionOutlet, outlet = heating ? condenserOutlet : suction;
+      if (input.active[i] && allocatedCooling) {
+        flows[i] = allocatedFlow * room.refrigerantConductanceWK / allocationWeight;
+        inlet = properties.ph(pL, condenserOutlet.hJkg);
+        outlet = properties.ph(pL, coilOutletH(properties, pL, inlet.hJkg, flows[i], room.refrigerantConductanceWK, input.indoorMetalC[i], false));
+        branchHeat[i] = flows[i] * (inlet.hJkg - outlet.hJkg);
+      } else if (input.active[i]) {
+        let flow = input.previous?.branchMassFlowsKgs?.[i] || room.refrigerantConductanceWK / conductanceIntegral(properties, heating ? pH : pL, inlet.hJkg, outlet.hJkg, input.indoorMetalC[i]);
+        let returnH = outlet.hJkg, heat = 0, drop = 0, converged = false;
+        for (let k = 0; k < 16; k++) {
+          if (heating) {
+            const gas = transportPipe(properties, pH, discharge.hJkg, flow, pipe, pipe.gasInsideDiameterM, config.outdoorTemperatureC, pipe.elevationM);
+            inlet = properties.ph(gas.pPa, gas.hJkg);
+            const localSat = properties.saturation(gas.pPa);
+            outlet = properties.pt(gas.pPa, localSat.temperatureC - compressor.subcoolK);
+            const liquid = transportPipe(properties, outlet.pPa, outlet.hJkg, flow, pipe, pipe.liquidInsideDiameterM, config.outdoorTemperatureC, -pipe.elevationM);
+            if (liquid.pPa <= pL) throw new DomainError('Heating liquid line has no expansion-valve pressure authority');
+            returnH = liquid.hJkg; heat = gas.heatToOutdoorW + liquid.heatToOutdoorW; drop = gas.frictionPa + liquid.frictionPa;
+          } else {
+            // Generic EEV target: every returning branch reaches the shared suction superheat.
+            const gas = transportPipe(properties, pL, suction.hJkg, flow, pipe, pipe.gasInsideDiameterM, config.outdoorTemperatureC, -pipe.elevationM, true);
+            outlet = properties.ph(gas.pPa, gas.hJkg);
+            let startP = gas.pPa, small = transportPipe(properties, startP, condenserOutlet.hJkg, flow, pipe, pipe.liquidInsideDiameterM, config.outdoorTemperatureC, pipe.elevationM);
+            for (let j = 0; j < 8 && Math.abs(small.pPa - gas.pPa) > .2; j++) {
+              startP += gas.pPa - small.pPa;
+              if (startP >= pH) throw new DomainError('Cooling small-line pressure loss exhausts expansion-valve authority');
+              small = transportPipe(properties, startP, condenserOutlet.hJkg, flow, pipe, pipe.liquidInsideDiameterM, config.outdoorTemperatureC, pipe.elevationM);
+            }
+            if (Math.abs(small.pPa - gas.pPa) > .2) throw new DomainError('Cooling EEV/field-line pressure closure did not converge');
+            inlet = properties.ph(gas.pPa, small.hJkg); returnH = suction.hJkg;
+            heat = gas.heatToOutdoorW + small.heatToOutdoorW; drop = gas.frictionPa + small.frictionPa;
+          }
+          if (heating ? inlet.hJkg <= outlet.hJkg : outlet.hJkg <= inlet.hJkg) throw new DomainError('Field-line heat/pressure effects reverse the intended indoor coil heat direction');
+          const next = room.refrigerantConductanceWK / conductanceIntegral(properties, inlet.pPa, inlet.hJkg, outlet.hJkg, input.indoorMetalC[i]);
+          if (Math.abs(next - flow) < 1e-8) { converged = true; break; }
+          flow = next;
+        }
+        if (!converged) throw new DomainError('Branch flow/pipe/coil coupled closure did not converge');
+        flows[i] = flow; branchHeat[i] = flow * (inlet.hJkg - outlet.hJkg);
+        pressureDrops[i] = drop; lineHeat += heat; mixedReturnH += flow * returnH;
+      }
+      inlets.push(inlet); outlets.push(outlet);
+    }
+    const totalFlow = flows.reduce((a, b) => a + b, 0);
+    let superheatResidual = 0;
+    if (allocatedCooling) {
+      const mixedH = flows.reduce((total,flow,i)=>total+flow*outlets[i].hJkg,0)/totalFlow;
+      superheatResidual = totalFlow * (mixedH-targetSuctionH);
+      suction = properties.ph(pL,mixedH);
+      const actualIsentropicH = properties.prop('H','P',pH,'S',suction.entropyJkgK);
+      discharge = properties.ph(pH,suction.hJkg+(actualIsentropicH-suction.hJkg)/compressor.isentropicEfficiency);
+      if (discharge.temperatureC>compressor.maxDischargeC) throw new DomainError('Actual mixed-return compressor discharge envelope exceeded');
+    }
+    if (heating) expansionOutlet = properties.ph(pL, mixedReturnH / totalFlow);
+    const compressorFlow = suction.densityKgm3 * compressor.displacementM3rev * input.speedRps * compressor.volumetricEfficiency;
+    const outdoorIn = heating ? expansionOutlet : discharge, outdoorOut = heating ? suction : condenserOutlet;
+    const outdoorHeat = totalFlow * (outdoorIn.hJkg - outdoorOut.hJkg);
+    const compressorWork = totalFlow * (discharge.hJkg - suction.hJkg), electric = compressorWork / compressor.driveEfficiency;
+    const massResidual = totalFlow - compressorFlow;
+    const outdoorResidual = totalFlow * (outdoorOut.hJkg - coilOutletH(properties, heating ? pL : pH, outdoorIn.hJkg, totalFlow, config.outdoor.refrigerantConductanceWK, input.outdoorMetalC, !heating));
+    const residual: [number, number] = [allocatedCooling ? superheatResidual : massResidual * 250000, outdoorResidual];
+    return { residual, output: { mode: input.mode, evaporatingC: te, condensingC: tc, lowPressureBarAbs: pL / 1e5, highPressureBarAbs: pH / 1e5,
+      suction, discharge, condenserOutlet, expansionOutlet, totalMassFlowKgs: totalFlow, branchMassFlowsKgs: flows, branchCoilHeatW: branchHeat,
+      outdoorCoilHeatW: outdoorHeat, branchInlets: inlets, branchOutlets: outlets,
+      condenserHeatW: heating ? branchHeat.reduce((a, b) => a + b, 0) : outdoorHeat,
+      evaporatorHeatW: heating ? -outdoorHeat : -branchHeat.reduce((a, b) => a + b, 0),
+      compressorWorkW: compressorWork, compressorElectricalW: electric, driveLossW: electric - compressorWork,
+      massResidualKgs: massResidual, closureResidualW: Math.max(...residual.map(Math.abs)), lineHeatToOutdoorW: lineHeat,
+      pressureDropsPa: pressureDrops, transportMethod: 'Distributed Darcy/HEOS homogeneous-equilibrium field lines; generic smooth copper, no slip/fittings/oil' } };
+  };
+  const rejections = new Set<string>();
+  let lastRejection = '';
+  let best: { te: number; tc: number; trial: Trial; norm: number } | null = null;
+  const seeds = floatingCondenser ? [input.previous?.condenserOutletC !== undefined ? [input.previous.evaporatingC, input.previous.condenserOutletC] : null, [Math.min(lowMax - 4, input.outdoorMetalC + 5), input.outdoorMetalC + .1], [Math.min(lowMax - 8, input.outdoorMetalC), input.outdoorMetalC + .01], [lowMax - 8, input.outdoorMetalC + 1]].filter((s): s is number[] => !!s) : [input.previous ? [input.previous.evaporatingC, input.previous.condensingC] : null,
+    [lowMax - 5, highMin + 8], [lowMax - 12, highMin + 5], [lowMax - 3, Math.max(highMin + 18, lowMax + 5)], [Math.min(lowMax - 5, highMin - 8), highMin + 6],
+    [Math.min(lowMax - 15, highMin - 12), Math.max(highMin + 3, lowMax - 10)]].filter((s): s is number[] => !!s);
+  let iterations = 0;
+  for (const seed of seeds) {
+    let te = clamp(seed[0], -39.8, lowMax - .01), tc = clamp(seed[1], highMin + 1e-8, 64.8);
+    for (let k = 0; k < 35; k++) {
+      iterations++;
+      let current: Trial; try { current = evaluate(te, tc); } catch(error) { lastRejection = error instanceof Error ? error.message : String(error); rejections.add(lastRejection); break; }
+      const norm = Math.hypot(...current.residual);
+      if (!best || norm < best.norm) best = { te, tc, trial: current, norm };
+      if (Math.max(...current.residual.map(Math.abs)) <= config.numerics.pressureToleranceW && Math.abs(current.output.massResidualKgs)*250000 <= config.numerics.pressureToleranceW && current.output.suction.phase === 'vapor') return { ...current.output, iterations };
+      const dt = Math.min(.025, Math.max(1e-9, .2 * (lowMax - te)));
+      const dc = floatingCondenser ? .025 : -Math.min(.025, Math.max(1e-9, .2 * (tc - highMin)));
+      let tTrial: Trial, cTrial: Trial; try { tTrial = evaluate(te + dt, tc); cTrial = evaluate(te, tc + dc); } catch { break; }
+      const a = (tTrial.residual[0] - current.residual[0]) / dt, b = (cTrial.residual[0] - current.residual[0]) / dc;
+      const c = (tTrial.residual[1] - current.residual[1]) / dt, e = (cTrial.residual[1] - current.residual[1]) / dc;
+      const determinant = a * e - b * c; if (Math.abs(determinant) < 1e-10) break;
+      const stepT = (-e * current.residual[0] + b * current.residual[1]) / determinant;
+      const stepC = (c * current.residual[0] - a * current.residual[1]) / determinant;
+      let accepted = false;
+      for (let scale = 1; scale >= 1 / 128; scale /= 2) {
+        const candidateT = clamp(te + clamp(stepT, -12, 12) * scale, -39.9, lowMax - 1e-9);
+        const candidateC = clamp(tc + clamp(stepC, -12, 12) * scale, highMin + 1e-9, 64.9);
+        try { const candidate = evaluate(candidateT, candidateC); if (Math.hypot(...candidate.residual) < norm) { te = candidateT; tc = candidateC; accepted = true; break; } } catch { /* bounded line-search rejection */ }
+      }
+      if (!accepted) break;
+    }
+  }
+  throw new DomainError(`No feasible shared-pressure operating point (${best ? `best residual ${best.norm.toFixed(1)} W at ${best.te.toFixed(6)},${best.tc.toFixed(6)}; equations ${best.trial.residual.map(x=>x.toFixed(3)).join(",")}` : `all starts rejected: ${[...rejections].join("; ")}`})`);
+}

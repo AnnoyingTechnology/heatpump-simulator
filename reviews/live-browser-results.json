@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-10-10T11:01:47.137Z",
+  "checks": [
+    {
+      "name": "real local property backend runs in the worker and returns live cycle data",
+      "passed": true
+    },
+    {
+      "name": "weather and room controls configure live physics without replacing focused inputs",
+      "passed": true
+    },
+    {
+      "name": "live heating/cooling mode preserves edited weather and uses real automatic reversal",
+      "passed": true
+    },
+    {
+      "name": "five-room live readings use actual branch outputs and complete vector connections",
+      "passed": true
+    },
+    {
+      "name": "failed physics clears pressures, COP and outlets and an input correction recovers",
+      "passed": true
+    },
+    {
+      "name": "examples remain separate and switching does not mislabel fixed readings as live",
+      "passed": true
+    },
+    {
+      "name": "production worker and WASM load beneath a GitHub Pages style subdirectory",
+      "passed": true
+    }
+  ]
+}
