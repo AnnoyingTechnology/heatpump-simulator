@@ -1,0 +1,7 @@
+# Refrigerant flash ordering check
+
+Observed 2026-10-10. `Properties.ph()` now reads temperature, quality, entropy and density from the same reusable PH state before asking for saturation properties. Two-phase classification does not require a separate saturation query. This removes a redundant backend PH update; it changes neither the EOS, input values, domain guards nor exact cache keys.
+
+The four property/storage regression tests passed in an isolated current-source build. They include independent scalar HEOS comparisons at bubble/dew endpoints, two-phase, liquid and hot-vapour states, density/internal-energy storage flashes, and repeated rejected native flashes with successful recovery. The PH test now checks the complete returned temperature, density, entropy, phase and quality across those phases.
+
+A bounded Node timing probe compared the previous committed implementation with the reordered implementation, using the same WASM module and alternating old/new run order. Each run evaluated 4,000 PH states across four phases/conditions, clearing the property cache before every state. Four repetitions took 1,185–1,287 ms before and 950–990 ms after; the median reduction was approximately 20%. All accumulated density/entropy checksums were identical. This is an uncached property-service timing observation, not an end-to-end simulator speed claim. Source builds and benchmark files were isolated in a temporary directory and did not replace the shared engine test build.

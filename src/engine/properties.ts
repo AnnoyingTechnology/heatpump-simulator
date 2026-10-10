@@ -52,11 +52,15 @@ export class Properties {
   ph(p: number, h: number): RefrigerantState {
     if (!(p > 50000 && p < 5e6)) throw new DomainError('R32 pressure outside selected 0.5–50 bar absolute domain');
     const T = this.prop('T', 'P', p, 'H', h); if (!(T > 213.15 && T < 433.15)) throw new DomainError('R32 state outside selected −60…160°C domain');
-    const q = this.prop('Q', 'P', p, 'H', h), sat = this.saturation(p);
+    // Read one PH state completely before a saturation query switches the
+    // reusable backend to PQ. Two-phase classification needs no extra flash.
+    const q = this.prop('Q', 'P', p, 'H', h);
+    const entropy = this.prop('S', 'P', p, 'H', h), density = this.prop('D', 'P', p, 'H', h);
+    const twoPhase = q >= 0 && q <= 1;
+    const quality = twoPhase ? this.prop('Qmass', 'P', p, 'H', h) : null;
     return { pPa: p, pBarAbs: p / 1e5, hJkg: h, temperatureC: T - 273.15,
-      entropyJkgK: this.prop('S', 'P', p, 'H', h), densityKgm3: this.prop('D', 'P', p, 'H', h),
-      qualityMass: q >= 0 && q <= 1 ? this.prop('Qmass', 'P', p, 'H', h) : null,
-      phase: q >= 0 && q <= 1 ? 'two-phase' : h < sat.liquidH ? 'liquid' : 'vapor' };
+      entropyJkgK: entropy, densityKgm3: density, qualityMass: quality,
+      phase: twoPhase ? 'two-phase' : h < this.saturation(p).liquidH ? 'liquid' : 'vapor' };
   }
   pt(p: number, tC: number): RefrigerantState { return this.ph(p, this.prop('H', 'P', p, 'T', tC + 273.15)); }
   /** Conserved rigid-volume storage flash: rho=M/V, u=U/M. Same selected domain as ph(). */
