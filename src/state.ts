@@ -5,6 +5,7 @@ import { fixtureFor } from './fixtures';
 import { defaultLiveParameters, CHARGE_MODEL_AVAILABLE } from './runtime/config';
 import { readingsFor, simulation } from './runtime/view';
 import type { Readings } from './runtime/view';
+import type { RoomOutput } from './engine/types';
 
 /**
  * Owner preset: Daikin 3MXM52N8 + FTXA25 / FTXA35 / FTXA25. Stack order is top → bottom.
@@ -335,8 +336,10 @@ export function liveStatus(cfg: Config): LiveStatus {
 }
 
 export interface Current extends Readings {
-  /** False when live values are withheld; every numeric field is then null and the scene shows no stale flow. */
+  /** False when operating values are withheld; the scene shows no stale flow. */
   usable: boolean;
+  /** Accepted stored room temperatures survive a failed step; no active flux readings are retained. */
+  retainedRooms?: RoomOutput[];
   /** The adapter defaults electrical input to 0 when unavailable; this stays null instead. */
   electricalKw: number | null;
   live: LiveStatus | null;
@@ -360,6 +363,7 @@ export function currentReadings(s: AppState): Current {
   }
   return {
     ...r, engine: null, usable: false, electricalKw: null, live, cycle: null, example: 'idle', mDotKgS: null,
+    retainedRooms: r.engine?.state === 'fault' ? r.engine.rooms : undefined,
     qCondKw: null, qEvapKw: null, pRefKw: null, driveLossKw: null, pElecKw: 0, roomKwTotal: null, cop: null,
     branchKw: null, branchOutC: null, branchFanKw: [], outdoorFanKw: 0, controlsKw: 0, outdoorOutletC: null,
     indoorFansOn: false, outdoorFanOn: false, frostRateKgH: null, meltRateKgH: null, ledger: [],

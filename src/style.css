@@ -157,6 +157,7 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .coil-film .ice-note { position: absolute; z-index: 5; top: 23px; left: 0; width: 320px; padding: 9px 11px; border: 1px solid #b7cbd8; border-radius: 7px; background: var(--panel); box-shadow: 0 6px 16px #20304022; font: 500 12px/1.4 var(--font); color: var(--ink-2); }
 .mismatch { flex: 0 1 auto; min-width: 0; background: rgba(250, 249, 246, 0.92); border: 1px solid var(--line); border-left: 3px solid var(--ok); padding: 3px 9px; border-radius: 6px; font-size: 11px; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mismatch.diff { border-left-color: var(--warn); }
+.mismatch.fault { border-left-color: #a42b1c; color: #a42b1c; white-space: normal; overflow-wrap: anywhere; }
 .chip-ice { flex: 0 1 auto; min-width: 0; background: rgba(250, 249, 246, 0.92); border: 1px solid var(--line); border-radius: 6px; padding: 3px 9px; font-size: 11px; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-variant-numeric: tabular-nums; }
 .ice-head { font-weight: 600; }
 .ov-more { flex: none; font: inherit; font-size: 11px; padding: 2px 9px; border: 1px solid var(--line); border-radius: 5px; background: #fff; color: var(--ink-2); cursor: pointer; pointer-events: auto; }

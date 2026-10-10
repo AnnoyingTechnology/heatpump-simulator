@@ -165,7 +165,7 @@ export function createHeader(): Header {
       opState.dataset.kind = st.kind;
       if (!st.usable) {
         note.dataset.tone = 'bad';
-        setText(note, 'Readings withheld');
+        setText(note, st.kind === 'fault' ? 'Stopped · state retained' : 'Readings withheld');
         status.title = `${st.label}: ${st.detail ?? ''} Readings withheld.`;
       } else if (held) {
         note.dataset.tone = 'info';
@@ -268,11 +268,17 @@ export function createOverlay(): Overlay {
     root, film,
     sync(s: AppState): void {
       unzoom.hidden = s.ui.zoom === 'overview';
-      top.hidden = s.ui.experience === 'live' && unzoom.hidden;
+      const fault = s.ui.experience === 'live' && liveStatus(s.cfg).kind === 'fault';
+      top.hidden = s.ui.experience === 'live' && unzoom.hidden && !fault;
+      mismatch.classList.toggle('fault', fault);
+      mismatch.setAttribute('role', fault ? 'alert' : 'status');
       root.dataset.zoom = s.ui.zoom;
       if (s.ui.experience === 'live') {
         setText(legendNote, 'The tube interior colour is the reported temperature. Thin white marks over it show phase and drift in the flow direction; they never replace the colour. Hatched = fluid flows but no temperature is reported (e.g. mid-coil passes); solid grey = no flow (idle, closed or switched-off branch, or readings withheld). Arrows show flow direction. Pills on the pipes are refrigerant probes (IN/OUT at each coil, D/S at the compressor): exact computed values rounded to 0.1 °C, a dash while no cycle or branch circulates. ΔT is OUT − IN; coil heat is the refrigerant\'s, not the room\'s net kW. Live engine: outdoor air, setpoints, heat-loss coefficients, ηis and generic parameters drive the model; initial room temperature applies on Reset.');
-        mismatch.hidden = true;
+        mismatch.hidden = !fault;
+        if (fault) {
+          setText(mismatchText, `Calculation stopped: ${liveStatus(s.cfg).detail ?? 'Engine fault.'} Accepted time and thermal state are retained; operating readings are unavailable.`);
+        }
         mismatch.classList.remove('diff');
         mismatchDetail.hidden = true;
         return;

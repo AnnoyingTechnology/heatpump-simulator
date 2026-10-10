@@ -1,0 +1,151 @@
+{
+  "checkedAt": "2026-10-10",
+  "scope": "Actual worker fault with owner controls; UI preservation and corrected-input recovery only, before engine correction.",
+  "config": {
+    "fluid": "R32",
+    "mode": "heating",
+    "outdoorTemperatureC": -0.5,
+    "outdoorRelativeHumidity": 0.35,
+    "ambientPressurePa": 101325,
+    "indoorPortCapacity": 3,
+    "rooms": [
+      {
+        "id": "attic",
+        "enabled": false,
+        "volumeM3": 84,
+        "initialTemperatureC": 20,
+        "initialRelativeHumidity": 0.5,
+        "setpointC": 21,
+        "envelopeWK": 60,
+        "fabricCapacityJK": 4000000,
+        "airFabricWK": 250,
+        "ventilationACH": 0.25,
+        "airMassFlowKgs": 0.15,
+        "fanPowerW": 25,
+        "airConductanceWK": 170,
+        "refrigerantConductanceWK": 350,
+        "naturalAirConductanceWK": 15,
+        "metalCapacityJK": 12000,
+        "pipe": {
+          "lengthM": 0,
+          "gasInsideDiameterM": 0.00792,
+          "liquidInsideDiameterM": 0.00475,
+          "elevationM": 0,
+          "insulationConductanceWmK": 0.05
+        },
+        "cleanFraction": 1
+      },
+      {
+        "id": "first",
+        "enabled": true,
+        "volumeM3": 155,
+        "initialTemperatureC": 20,
+        "initialRelativeHumidity": 0.5,
+        "setpointC": 22.5,
+        "envelopeWK": 85,
+        "fabricCapacityJK": 4000000,
+        "airFabricWK": 250,
+        "ventilationACH": 0.25,
+        "airMassFlowKgs": 0.15,
+        "fanPowerW": 25,
+        "airConductanceWK": 170,
+        "refrigerantConductanceWK": 350,
+        "naturalAirConductanceWK": 15,
+        "metalCapacityJK": 12000,
+        "pipe": {
+          "lengthM": 0,
+          "gasInsideDiameterM": 0.00792,
+          "liquidInsideDiameterM": 0.00475,
+          "elevationM": 0,
+          "insulationConductanceWmK": 0.05
+        },
+        "cleanFraction": 1
+      },
+      {
+        "id": "ground",
+        "enabled": true,
+        "volumeM3": 100.00000000000001,
+        "initialTemperatureC": 20,
+        "initialRelativeHumidity": 0.5,
+        "setpointC": 17.5,
+        "envelopeWK": 70,
+        "fabricCapacityJK": 4000000,
+        "airFabricWK": 250,
+        "ventilationACH": 0.25,
+        "airMassFlowKgs": 0.15,
+        "fanPowerW": 25,
+        "airConductanceWK": 170,
+        "refrigerantConductanceWK": 350,
+        "naturalAirConductanceWK": 15,
+        "metalCapacityJK": 12000,
+        "pipe": {
+          "lengthM": 0,
+          "gasInsideDiameterM": 0.00792,
+          "liquidInsideDiameterM": 0.00475,
+          "elevationM": 0,
+          "insulationConductanceWmK": 0.05
+        },
+        "cleanFraction": 1
+      }
+    ],
+    "compressor": {
+      "displacementM3rev": 2.2e-05,
+      "speedMinRps": 18,
+      "speedMaxRps": 75,
+      "isentropicEfficiency": 0.7,
+      "volumetricEfficiency": 0.8,
+      "driveEfficiency": 0.93,
+      "superheatK": 3,
+      "subcoolK": 1,
+      "maxDischargeC": 145,
+      "maxPressureRatio": 8
+    },
+    "outdoor": {
+      "airMassFlowKgs": 0.9,
+      "fanPowerW": 85,
+      "airConductanceWK": 1100,
+      "refrigerantConductanceWK": 1000,
+      "naturalAirConductanceWK": 35,
+      "metalCapacityJK": 28000,
+      "depositionAreaM2": 2,
+      "frostDensityKgm3": 200,
+      "frostConductivityWmK": 0.15,
+      "finGapM": 0.002,
+      "drainageSeconds": 30,
+      "cleanFraction": 1
+    },
+    "control": {
+      "controlsW": 15,
+      "proportionalSpeedRpsK": 20,
+      "thermostatDeadbandK": 0.15,
+      "minOnSeconds": 30,
+      "minOffSeconds": 30,
+      "reversalSeconds": 3,
+      "defrostMinHeatingSeconds": 300,
+      "defrostIceThresholdKg": 0.15,
+      "defrostMaxSeconds": 600,
+      "defrostTerminationMetalC": 5,
+      "drainageDwellSeconds": 10,
+      "defrostSpeedRps": 35
+    },
+    "numerics": {
+      "maxStepSeconds": 0.25,
+      "pressureToleranceW": 0.1
+    }
+  },
+  "faultTime": 61.5,
+  "fault": "Calculation stopped: No feasible shared-pressure operating point (best residual 0.3 W at -8.235679,61.087306; equations -0.001,0.305) Accepted time and thermal state are retained; operating readings are unavailable.",
+  "retainedRoomTemperaturesC": [
+    19.24785813304453,
+    19.90462030288245,
+    19.25209701972608
+  ],
+  "operatingReadingsWithheld": true,
+  "faultReasonVisible": true,
+  "recoverySimulatedSeconds": 62.75,
+  "recoveryRoomTemperaturesC": [
+    19.240196581743305,
+    19.898169835393674,
+    19.244217914672788
+  ]
+}
