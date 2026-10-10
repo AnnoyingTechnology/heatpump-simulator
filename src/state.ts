@@ -332,6 +332,15 @@ export function liveStatus(cfg: Config): LiveStatus {
   if (st.state === 'updating') return { kind: 'updating', label: KIND_LABEL.updating,
     detail: 'Readings from the last calculated step; new inputs appear after the next simulation step. If paused, resume to recalculate.',
     warnings, usable: true, calculationMs: st.calculationMs };
+  if (out.diagnostics.demandSpeedRps > 0 && out.diagnostics.speedRps === 0) {
+    const protection = out.diagnostics.envelopeProtection;
+    const delay = out.diagnostics.restartDelaySeconds;
+    if (protection || delay > 0) return { kind: out.state,
+      label: protection ? 'Protection hold' : 'Restart wait',
+      detail: protection ? `Compressor paused for ${protection}; thermal state continues evolving.`
+        : `Compressor restart dwell: ${Math.ceil(delay)} seconds remaining.`,
+      warnings, usable: true, calculationMs: st.calculationMs };
+  }
   return { kind: out.state, label: KIND_LABEL[out.state], detail: null, warnings, usable: true, calculationMs: st.calculationMs };
 }
 

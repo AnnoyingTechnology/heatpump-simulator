@@ -934,7 +934,9 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       setAttr(p.remove, 'title', n <= 1 ? 'At least one room is required' : `Remove ${r.name} and its refrigerant line set. Its inputs are kept for re-adding.`);
       // Measured air: live engine room temperature, or the configured example input; never the live value in Examples nor the reverse.
       setReading(p.air.v, live ? fmt(eng?.temperatureC, 1) : fmt(r.airC, 1));
-      setText(p.air.n, live ? (eng ? `${Math.round(eng.relativeHumidity * 100)} % RH${rd.retainedRooms ? ' · held' : ''}` : '—') : 'EXAMPLE input');
+      setText(p.air.n, live ? (eng ? `${Math.round(eng.relativeHumidity * 100)} % RH` : '—') : 'EXAMPLE input');
+      toggleClass(p.air.n, 'held', !!rd.retainedRooms);
+      p.air.root.title = rd.retainedRooms ? 'Last accepted room temperature and humidity; calculation stopped.' : 'Room air temperature and humidity';
       // Target, floor area, ceiling height and envelope loss are editable; a focused field is never rewritten.
       for (const f of [p.sp, p.area, p.height, p.loss]) f.refresh();
       const targetLabel = `Requested target temperature for ${r.name} (°C)`;

@@ -174,7 +174,7 @@ export function createHeader(): Header {
       } else {
         note.dataset.tone = 'warn';
         setText(note, '');
-        status.title = `${LIVE_BASIS}\n${fieldLinesNote(s)}`;
+        status.title = `${st.detail ? `${st.detail}\n` : ''}${LIVE_BASIS}\n${fieldLinesNote(s)}`;
       }
     },
     setTime(sec: number): void { setText(time, fmtTime(sec)); },
