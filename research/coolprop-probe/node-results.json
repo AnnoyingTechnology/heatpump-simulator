@@ -1,0 +1,860 @@
+{
+  "capturedAt": "2026-10-10T08:29:55.478Z",
+  "runtime": "Node.js/24",
+  "backendVersion": "8.0.0",
+  "initMs": 46.465182999999996,
+  "scope": "Bounded feasibility probe. Synthetic cycle states, not manufacturer performance or a coupled heat-pump model.",
+  "r32Fixtures": {
+    "heating": {
+      "fluid": "R32",
+      "teC": -5,
+      "tcC": 40,
+      "shK": 5,
+      "scK": 3,
+      "etaIs": 0.7,
+      "states": {
+        "suction": {
+          "pPa": 690576.3566028224,
+          "hJkg": 520100.7453180414,
+          "TK": 273.1500001135795,
+          "sJkgK": 2194.2630888595277,
+          "rhoKgm3": 18.176426457126293,
+          "quality": -1,
+          "qualityBasis": "molar; use massQuality for mass fraction",
+          "massQuality": null
+        },
+        "discharge": {
+          "pPa": 2478313.211938298,
+          "hJkg": 597328.5874364617,
+          "TK": 373.401683985266,
+          "sJkgK": 2257.950425567941,
+          "rhoKgm3": 48.44376758673378,
+          "quality": -1,
+          "qualityBasis": "molar; use massQuality for mass fraction",
+          "massQuality": null
+        },
+        "condenserOutlet": {
+          "pPa": 2478313.211938298,
+          "hJkg": 269229.54394348984,
+          "TK": 310.15000000000003,
+          "sJkgK": 1231.5001947498722,
+          "rhoKgm3": 909.2688737979213,
+          "quality": -1,
+          "qualityBasis": "molar; use massQuality for mass fraction",
+          "massQuality": null
+        },
+        "expansionOutlet": {
+          "pPa": 690576.3566028224,
+          "hJkg": 269229.54394348984,
+          "TK": 268.15000000000003,
+          "sJkgK": 1258.8987851263123,
+          "rhoKgm3": 73.74286390555896,
+          "quality": 0.24123474198925654,
+          "qualityBasis": "molar; use massQuality for mass fraction",
+          "massQuality": 0.24123474198925654
+        }
+      },
+      "specificJkg": {
+        "compressor": 77227.84211842029,
+        "evaporator": 250871.20137455157,
+        "condenser": 328099.04349297186
+      },
+      "pressureRatio": 3.5887605885176184,
+      "condenserClosureJkg": 0,
+      "idealizedHeatingCOP": 4.248455407958551,
+      "idealizedCoolingCOP": 3.2484554079585513,
+      "evaporatorBubbleTK": 268.15000000000003,
+      "evaporatorDewTK": 268.15000000000003,
+      "evaporatorMidQualityTK": 268.15000000000003
+    },
+    "cooling": {
+      "fluid": "R32",
+      "teC": 7,
+      "tcC": 45,
+      "shK": 5,
+      "scK": 3,
+      "etaIs": 0.7,
+      "states": {
+        "suction": {
+          "pPa": 1011503.845252282,
+          "hJkg": 522787.12531630654,
+          "TK": 285.15,
+          "sJkgK": 2151.8645497623907,
+          "rhoKgm3": 26.597885306992207,
+          "quality": -1,
+          "qualityBasis": "molar; use massQuality for mass fraction",
+          "massQuality": null
+        },
+        "discharge": {
+          "pPa": 2794781.0255771917,
+          "hJkg": 582608.3911430234,
+          "TK": 365.2918529095803,
+          "sJkgK": 2201.947299241013,
+          "rhoKgm3": 58.26244755813916,
+          "quality": -1,
+          "qualityBasis": "molar; use massQuality for mass fraction",
+          "massQuality": null
+        },
+        "condenserOutlet": {
+          "pPa": 2794781.0255771917,
+          "hJkg": 279608.18765672995,
+          "TK": 315.1499999999998,
+          "sJkgK": 1263.5669409759769,
+          "rhoKgm3": 885.0966077647398,
+          "quality": -1,
+          "qualityBasis": "molar; use massQuality for mass fraction",
+          "massQuality": null
+        },
+        "expansionOutlet": {
+          "pPa": 1011503.845252282,
+          "hJkg": 279608.18765672995,
+          "TK": 280.1499999999999,
+          "sJkgK": 1284.0335762667964,
+          "rhoKgm3": 113.8602436757243,
+          "quality": 0.22121281816136654,
+          "qualityBasis": "molar; use massQuality for mass fraction",
+          "massQuality": 0.22121281816136656
+        }
+      },
+      "specificJkg": {
+        "compressor": 59821.265826716844,
+        "evaporator": 243178.9376595766,
+        "condenser": 303000.20348629344
+      },
+      "pressureRatio": 2.762995947761462,
+      "condenserClosureJkg": 0,
+      "idealizedHeatingCOP": 5.065091808053486,
+      "idealizedCoolingCOP": 4.065091808053486,
+      "evaporatorBubbleTK": 280.1499999999999,
+      "evaporatorDewTK": 280.1499999999999,
+      "evaporatorMidQualityTK": 280.1499999999999
+    },
+    "defrost": {
+      "fluid": "R32",
+      "teC": 0,
+      "tcC": 15,
+      "shK": 5,
+      "scK": 3,
+      "etaIs": 0.7,
+      "states": {
+        "suction": {
+          "pPa": 813101.2611805398,
+          "hJkg": 521366.5889067959,
+          "TK": 278.1499999999999,
+          "sJkgK": 2176.3215948174375,
+          "rhoKgm3": 21.3667121831692,
+          "quality": -1,
+          "qualityBasis": "molar; use massQuality for mass fraction",
+          "massQuality": null
+        },
+        "discharge": {
+          "pPa": 1280812.8992607018,
+          "hJkg": 547035.1320124965,
+          "TK": 312.0150743969567,
+          "sJkgK": 2201.2661252320217,
+          "rhoKgm3": 30.057623269116323,
+          "quality": -1,
+          "qualityBasis": "molar; use massQuality for mass fraction",
+          "massQuality": null
+        },
+        "condenserOutlet": {
+          "pPa": 1280812.8992607018,
+          "hJkg": 221352.04647840493,
+          "TK": 285.14999999270606,
+          "sJkgK": 1074.870952534202,
+          "rhoKgm3": 1012.7481342121713,
+          "quality": -1,
+          "qualityBasis": "molar; use massQuality for mass fraction",
+          "massQuality": null
+        },
+        "expansionOutlet": {
+          "pPa": 813101.2611805398,
+          "hJkg": 221352.04647840493,
+          "TK": 273.1499999999999,
+          "sJkgK": 1078.1696305816693,
+          "rhoKgm3": 253.23107184333867,
+          "quality": 0.06771987488709395,
+          "qualityBasis": "molar; use massQuality for mass fraction",
+          "massQuality": 0.06771987488709395
+        }
+      },
+      "specificJkg": {
+        "compressor": 25668.543105700577,
+        "evaporator": 300014.54242839094,
+        "condenser": 325683.0855340916
+      },
+      "pressureRatio": 1.5752194227335137,
+      "condenserClosureJkg": 5.820766091346741e-11,
+      "idealizedHeatingCOP": 12.688023788220475,
+      "idealizedCoolingCOP": 11.688023788220471,
+      "evaporatorBubbleTK": 273.1499999999999,
+      "evaporatorDewTK": 273.1499999999999,
+      "evaporatorMidQualityTK": 273.1499999999999
+    }
+  },
+  "fluids": [
+    {
+      "fluid": "R32",
+      "fixture": {
+        "fluid": "R32",
+        "teC": -5,
+        "tcC": 40,
+        "shK": 5,
+        "scK": 3,
+        "etaIs": 0.7,
+        "states": {
+          "suction": {
+            "pPa": 690576.3566028224,
+            "hJkg": 520100.7453180414,
+            "TK": 273.1500001135795,
+            "sJkgK": 2194.2630888595277,
+            "rhoKgm3": 18.176426457126293,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "discharge": {
+            "pPa": 2478313.211938298,
+            "hJkg": 597328.5874364617,
+            "TK": 373.401683985266,
+            "sJkgK": 2257.950425567941,
+            "rhoKgm3": 48.44376758673378,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "condenserOutlet": {
+            "pPa": 2478313.211938298,
+            "hJkg": 269229.54394348984,
+            "TK": 310.15000000000003,
+            "sJkgK": 1231.5001947498722,
+            "rhoKgm3": 909.2688737979213,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "expansionOutlet": {
+            "pPa": 690576.3566028224,
+            "hJkg": 269229.54394348984,
+            "TK": 268.15000000000003,
+            "sJkgK": 1258.8987851263123,
+            "rhoKgm3": 73.74286390555896,
+            "quality": 0.24123474198925654,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": 0.24123474198925654
+          }
+        },
+        "specificJkg": {
+          "compressor": 77227.84211842029,
+          "evaporator": 250871.20137455157,
+          "condenser": 328099.04349297186
+        },
+        "pressureRatio": 3.5887605885176184,
+        "condenserClosureJkg": 0,
+        "idealizedHeatingCOP": 4.248455407958551,
+        "idealizedCoolingCOP": 3.2484554079585513,
+        "evaporatorBubbleTK": 268.15000000000003,
+        "evaporatorDewTK": 268.15000000000003,
+        "evaporatorMidQualityTK": 268.15000000000003
+      },
+      "fourCallBatch": {
+        "samples": 60,
+        "p50Ms": 0.4085780000000341,
+        "p95Ms": 0.7010569999999916,
+        "maxMs": 1.9063500000002023
+      },
+      "maxRoundTripK": 3.4178128771600313e-8
+    },
+    {
+      "fluid": "R22",
+      "fixture": {
+        "fluid": "R22",
+        "teC": -5,
+        "tcC": 40,
+        "shK": 5,
+        "scK": 3,
+        "etaIs": 0.7,
+        "states": {
+          "suction": {
+            "pPa": 421801.7227247867,
+            "hJkg": 406740.75440269226,
+            "TK": 273.1500000003888,
+            "sJkgK": 1771.285206749279,
+            "rhoKgm3": 17.62393035345957,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "discharge": {
+            "pPa": 1533579.7116030182,
+            "hJkg": 454192.70639969944,
+            "TK": 355.6176771740097,
+            "sJkgK": 1812.2868947438214,
+            "rhoKgm3": 51.742431936266,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "condenserOutlet": {
+            "pPa": 1533579.7116030182,
+            "hJkg": 245662.86391675624,
+            "TK": 310.15000000000657,
+            "sJkgK": 1153.6721947809049,
+            "rhoKgm3": 1142.4395817785432,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "expansionOutlet": {
+            "pPa": 421801.7227247867,
+            "hJkg": 245662.86391675624,
+            "TK": 268.1499999999999,
+            "sJkgK": 1170.7072937443195,
+            "rhoKgm3": 70.4055947156394,
+            "quality": 0.2463852630490148,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": 0.24638526304901479
+          }
+        },
+        "specificJkg": {
+          "compressor": 47451.951997007185,
+          "evaporator": 161077.89048593602,
+          "condenser": 208529.8424829432
+        },
+        "pressureRatio": 3.6357834237761852,
+        "condenserClosureJkg": 0,
+        "idealizedHeatingCOP": 4.394547193676991,
+        "idealizedCoolingCOP": 3.3945471936769906,
+        "evaporatorBubbleTK": 268.1499999999999,
+        "evaporatorDewTK": 268.1499999999999,
+        "evaporatorMidQualityTK": 268.1499999999999
+      },
+      "fourCallBatch": {
+        "samples": 60,
+        "p50Ms": 0.44046700000012606,
+        "p95Ms": 0.4782079999999951,
+        "maxMs": 1.1916779999999108
+      },
+      "maxRoundTripK": 1.496118784416467e-10
+    },
+    {
+      "fluid": "R134a",
+      "fixture": {
+        "fluid": "R134a",
+        "teC": -5,
+        "tcC": 40,
+        "shK": 5,
+        "scK": 3,
+        "etaIs": 0.7,
+        "states": {
+          "suction": {
+            "pPa": 243342.36987140006,
+            "hJkg": 400020.52700719563,
+            "TK": 273.1500000003865,
+            "sJkgK": 1746.1483421963312,
+            "rhoKgm3": 11.780219725252604,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "discharge": {
+            "pPa": 1016593.02212064,
+            "hJkg": 443693.6209572056,
+            "TK": 335.48094878580065,
+            "sJkgK": 1785.9387059056598,
+            "rhoKgm3": 43.67574592856398,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "condenserOutlet": {
+            "pPa": 1016593.02212064,
+            "hJkg": 251942.03313043204,
+            "TK": 310.1499999999987,
+            "sJkgK": 1176.1426790443318,
+            "rhoKgm3": 1159.9218123682908,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "expansionOutlet": {
+            "pPa": 243342.36987140006,
+            "hJkg": 251942.03313043204,
+            "TK": 268.15,
+            "sJkgK": 1194.0753798462435,
+            "rhoKgm3": 40.762925555451936,
+            "quality": 0.2897356114908095,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": 0.2897356114908095
+          }
+        },
+        "specificJkg": {
+          "compressor": 43673.09395000996,
+          "evaporator": 148078.4938767636,
+          "condenser": 191751.58782677355
+        },
+        "pressureRatio": 4.1776244007892345,
+        "condenserClosureJkg": 0,
+        "idealizedHeatingCOP": 4.39061148372635,
+        "idealizedCoolingCOP": 3.390611483726351,
+        "evaporatorBubbleTK": 268.15,
+        "evaporatorDewTK": 268.15,
+        "evaporatorMidQualityTK": 268.15
+      },
+      "fourCallBatch": {
+        "samples": 60,
+        "p50Ms": 0.4193080000000009,
+        "p95Ms": 0.5537999999999101,
+        "maxMs": 0.7698559999998906
+      },
+      "maxRoundTripK": 1.3595138170785503e-7
+    },
+    {
+      "fluid": "n-Propane",
+      "fixture": {
+        "fluid": "n-Propane",
+        "teC": -5,
+        "tcC": 40,
+        "shK": 5,
+        "scK": 3,
+        "etaIs": 0.7,
+        "states": {
+          "suction": {
+            "pPa": 406037.0303960548,
+            "hJkg": 577798.7962120082,
+            "TK": 273.15000000003084,
+            "sJkgK": 2409.51903912058,
+            "rhoKgm3": 8.686090667648998,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "discharge": {
+            "pPa": 1369420.3848039038,
+            "hJkg": 661443.6829733318,
+            "TK": 334.71549014537425,
+            "sJkgK": 2485.821244964169,
+            "rhoKgm3": 26.27219124312925,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "condenserOutlet": {
+            "pPa": 1369420.3848039038,
+            "hJkg": 298484.4960993844,
+            "TK": 310.14999994080176,
+            "sJkgK": 1331.555941146238,
+            "rhoKgm3": 473.07096220409505,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "expansionOutlet": {
+            "pPa": 406037.0303960548,
+            "hJkg": 298484.4960993844,
+            "TK": 268.14999999999986,
+            "sJkgK": 1368.1764561640798,
+            "rhoKgm3": 29.471796507411284,
+            "quality": 0.2905243655047077,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": 0.2905243655047077
+          }
+        },
+        "specificJkg": {
+          "compressor": 83644.88676132355,
+          "evaporator": 279314.30011262384,
+          "condenser": 362959.1868739474
+        },
+        "pressureRatio": 3.372649000678953,
+        "condenserClosureJkg": 0,
+        "idealizedHeatingCOP": 4.339287204842934,
+        "idealizedCoolingCOP": 3.339287204842934,
+        "evaporatorBubbleTK": 268.14999999999986,
+        "evaporatorDewTK": 268.14999999999986,
+        "evaporatorMidQualityTK": 268.14999999999986
+      },
+      "fourCallBatch": {
+        "samples": 60,
+        "p50Ms": 0.436860999999908,
+        "p95Ms": 0.8563590000001113,
+        "maxMs": 1.5242929999999433
+      },
+      "maxRoundTripK": 1.000444171950221e-11
+    },
+    {
+      "fluid": "R1234yf",
+      "fixture": {
+        "fluid": "R1234yf",
+        "teC": -5,
+        "tcC": 40,
+        "shK": 5,
+        "scK": 3,
+        "etaIs": 0.7,
+        "states": {
+          "suction": {
+            "pPa": 265663.8808727448,
+            "hJkg": 364711.43436423293,
+            "TK": 273.15000000006773,
+            "sJkgK": 1614.4752333065999,
+            "rhoKgm3": 14.548369053251365,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "discharge": {
+            "pPa": 1018472.8842761746,
+            "hJkg": 399891.5191641163,
+            "TK": 324.1312502487557,
+            "sJkgK": 1647.5177635877892,
+            "rhoKgm3": 53.41793225393889,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "condenserOutlet": {
+            "pPa": 1018472.8842761746,
+            "hJkg": 250654.24449838485,
+            "TK": 310.1499999737102,
+            "sJkgK": 1171.5577282126824,
+            "rhoKgm3": 1046.5580567962124,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "expansionOutlet": {
+            "pPa": 265663.8808727448,
+            "hJkg": 250654.24449838485,
+            "TK": 268.15,
+            "sJkgK": 1189.2820228485684,
+            "rhoKgm3": 42.508561958070366,
+            "quality": 0.34275525525370065,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": 0.3427552552537007
+          }
+        },
+        "specificJkg": {
+          "compressor": 35180.08479988336,
+          "evaporator": 114057.18986584808,
+          "condenser": 149237.27466573144
+        },
+        "pressureRatio": 3.833689701928399,
+        "condenserClosureJkg": 0,
+        "idealizedHeatingCOP": 4.242095364881731,
+        "idealizedCoolingCOP": 3.2420953648817306,
+        "evaporatorBubbleTK": 268.15,
+        "evaporatorDewTK": 268.15,
+        "evaporatorMidQualityTK": 268.15
+      },
+      "fourCallBatch": {
+        "samples": 60,
+        "p50Ms": 0.4908620000001065,
+        "p95Ms": 0.560361999999941,
+        "maxMs": 0.9636699999998655
+      },
+      "maxRoundTripK": 2.3419488570652902e-11
+    },
+    {
+      "fluid": "R410A",
+      "fixture": {
+        "fluid": "R410A",
+        "teC": -5,
+        "tcC": 40,
+        "shK": 5,
+        "scK": 3,
+        "etaIs": 0.7,
+        "states": {
+          "suction": {
+            "pPa": 678310.2520711565,
+            "hJkg": 425100.57198573166,
+            "TK": 273.150000075093,
+            "sJkgK": 1839.9903754406616,
+            "rhoKgm3": 25.11163984499127,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "discharge": {
+            "pPa": 2425641.7955819825,
+            "hJkg": 477125.72917634615,
+            "TK": 350.8974420966723,
+            "sJkgK": 1885.3125810978079,
+            "rhoKgm3": 74.77214714526202,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "condenserOutlet": {
+            "pPa": 2425641.7955819825,
+            "hJkg": 260617.13060818284,
+            "TK": 310.15,
+            "sJkgK": 1202.6085617481644,
+            "rhoKgm3": 996.4582223881174,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "expansionOutlet": {
+            "pPa": 678310.2520711565,
+            "hJkg": 260617.13060818284,
+            "TK": 268.0799785095723,
+            "sJkgK": 1226.7173611718335,
+            "rhoKgm3": 82.28353174990504,
+            "quality": 0.3002548698540741,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": 0.3002548698540741
+          }
+        },
+        "specificJkg": {
+          "compressor": 52025.157190614496,
+          "evaporator": 164483.44137754882,
+          "condenser": 216508.59856816332
+        },
+        "pressureRatio": 3.5760063896653684,
+        "condenserClosureJkg": 0,
+        "idealizedHeatingCOP": 4.161613539674651,
+        "idealizedCoolingCOP": 3.161613539674651,
+        "evaporatorBubbleTK": 268.049932864966,
+        "evaporatorDewTK": 268.15,
+        "evaporatorMidQualityTK": 268.09996643248303
+      },
+      "fourCallBatch": {
+        "samples": 60,
+        "p50Ms": 0.44042799999988347,
+        "p95Ms": 0.4729379999998855,
+        "maxMs": 0.4841790000000401
+      },
+      "maxRoundTripK": 2.0476136342040263e-8
+    },
+    {
+      "fluid": "R407C",
+      "fixture": {
+        "fluid": "R407C",
+        "teC": -5,
+        "tcC": 40,
+        "shK": 5,
+        "scK": 3,
+        "etaIs": 0.7,
+        "states": {
+          "suction": {
+            "pPa": 385337.1421603055,
+            "hJkg": 411516.4737347262,
+            "TK": 273.15000000195676,
+            "sJkgK": 1799.2909218614805,
+            "rhoKgm3": 16.10098940391678,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "discharge": {
+            "pPa": 1748864.3239110548,
+            "hJkg": 465904.5616691436,
+            "TK": 351.74472445259374,
+            "sJkgK": 1846.656787749027,
+            "rhoKgm3": 61.976942084005124,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "condenserOutlet": {
+            "pPa": 1748864.3239110548,
+            "hJkg": 255456.9850705732,
+            "TK": 310.14999999999986,
+            "sJkgK": 1186.6746784013453,
+            "rhoKgm3": 1083.908070258904,
+            "quality": -1,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": null
+          },
+          "expansionOutlet": {
+            "pPa": 385337.1421603055,
+            "hJkg": 255456.9850705732,
+            "TK": 263.81349977248067,
+            "sJkgK": 1210.4859808144658,
+            "rhoKgm3": 50.26139740842721,
+            "quality": 0.32036000297430434,
+            "qualityBasis": "molar; use massQuality for mass fraction",
+            "massQuality": 0.32036000297430434
+          }
+        },
+        "specificJkg": {
+          "compressor": 54388.08793441742,
+          "evaporator": 156059.488664153,
+          "condenser": 210447.57659857042
+        },
+        "pressureRatio": 4.538530373964063,
+        "condenserClosureJkg": 0,
+        "idealizedHeatingCOP": 3.8693689113015632,
+        "idealizedCoolingCOP": 2.8693689113015632,
+        "evaporatorBubbleTK": 261.76941579880946,
+        "evaporatorDewTK": 268.15,
+        "evaporatorMidQualityTK": 264.95970789940475
+      },
+      "fourCallBatch": {
+        "samples": 60,
+        "p50Ms": 0.3582329999999274,
+        "p95Ms": 0.3727000000001226,
+        "maxMs": 0.7587659999999232
+      },
+      "maxRoundTripK": 9.118821253650822e-10
+    }
+  ],
+  "explicitMixtures": [
+    {
+      "fluid": "HEOS::R32[0.697615]&R125[0.302385]",
+      "coverage": {
+        "dewAt273K": {
+          "value": 798053.6584568508
+        },
+        "bubbleAt273K": {
+          "value": 800701.9888710815
+        },
+        "midQualityAt800kPa": {
+          "value": 273.1700612571788
+        },
+        "fullCycle": {
+          "value": {
+            "fluid": "HEOS::R32[0.697615]&R125[0.302385]",
+            "teC": -5,
+            "tcC": 40,
+            "shK": 5,
+            "scK": 3,
+            "etaIs": 0.7,
+            "states": {
+              "suction": {
+                "pPa": 678282.8757365211,
+                "hJkg": 426246.995119307,
+                "TK": 273.1499999999999,
+                "sJkgK": 1910.5672419087916,
+                "rhoKgm3": 25.110603475108796,
+                "quality": -1,
+                "qualityBasis": "molar; use massQuality for mass fraction",
+                "massQuality": null
+              },
+              "discharge": {
+                "pPa": 2425643.693091622,
+                "hJkg": 478284.8031166184,
+                "TK": 350.9507887540158,
+                "sJkgK": 1955.8931191508227,
+                "rhoKgm3": 74.74072061748117,
+                "quality": -1,
+                "qualityBasis": "molar; use massQuality for mass fraction",
+                "massQuality": null
+              },
+              "condenserOutlet": {
+                "pPa": 2425643.693091622,
+                "hJkg": 261849.0155057809,
+                "TK": 310.15,
+                "sJkgK": 1273.4094668232126,
+                "rhoKgm3": 996.0761968992953,
+                "quality": -1,
+                "qualityBasis": "molar; use massQuality for mass fraction",
+                "massQuality": null
+              },
+              "expansionOutlet": {
+                "pPa": 678282.8757365211,
+                "hJkg": 261849.0155057809,
+                "TK": 268.0762089204553,
+                "sJkgK": 1297.5809434514742,
+                "rhoKgm3": 82.26110908820763,
+                "quality": 0.30025090600637927,
+                "qualityBasis": "molar; use massQuality for mass fraction",
+                "massQuality": 0.2955401428311575
+              }
+            },
+            "specificJkg": {
+              "compressor": 52037.80799731141,
+              "evaporator": 164397.9796135261,
+              "condenser": 216435.78761083752
+            },
+            "pressureRatio": 3.5761535192197056,
+            "condenserClosureJkg": 0,
+            "idealizedHeatingCOP": 4.159202624791957,
+            "idealizedCoolingCOP": 3.1592026247919573,
+            "evaporatorBubbleTK": 268.0496161921444,
+            "evaporatorDewTK": 268.14999999999884,
+            "evaporatorMidQualityTK": 268.0954527847212
+          }
+        }
+      }
+    },
+    {
+      "fluid": "HEOS::R32[0.381109]&R125[0.179559]&R134a[0.439332]",
+      "coverage": {
+        "dewAt273K": {
+          "value": 460713.0943653876
+        },
+        "bubbleAt273K": {
+          "value": 567868.8317131794
+        },
+        "midQualityAt800kPa": {
+          "value": 286.9918329392135
+        },
+        "fullCycle": {
+          "value": {
+            "fluid": "HEOS::R32[0.381109]&R125[0.179559]&R134a[0.439332]",
+            "teC": -5,
+            "tcC": 40,
+            "shK": 5,
+            "scK": 3,
+            "etaIs": 0.7,
+            "states": {
+              "suction": {
+                "pPa": 385319.44654977985,
+                "hJkg": 412491.81556822296,
+                "TK": 273.15,
+                "sJkgK": 1900.6636212169303,
+                "rhoKgm3": 16.098597253182906,
+                "quality": -1,
+                "qualityBasis": "molar; use massQuality for mass fraction",
+                "massQuality": null
+              },
+              "discharge": {
+                "pPa": 1749044.5593334476,
+                "hJkg": 466897.50416022347,
+                "TK": 351.81526702081953,
+                "sJkgK": 1948.035368008029,
+                "rhoKgm3": 61.95786828187178,
+                "quality": -1,
+                "qualityBasis": "molar; use massQuality for mass fraction",
+                "massQuality": null
+              },
+              "condenserOutlet": {
+                "pPa": 1749044.5593334476,
+                "hJkg": 256333.50176805936,
+                "TK": 310.15,
+                "sJkgK": 1287.7262384712408,
+                "rhoKgm3": 1083.8325178553591,
+                "quality": -1,
+                "qualityBasis": "molar; use massQuality for mass fraction",
+                "massQuality": null
+              },
+              "expansionOutlet": {
+                "pPa": 385319.44654977985,
+                "hJkg": 256333.50176805936,
+                "TK": 263.6991308013294,
+                "sJkgK": 1313.7742824863708,
+                "rhoKgm3": 50.213483093776446,
+                "quality": 0.3258166694074476,
+                "qualityBasis": "molar; use massQuality for mass fraction",
+                "massQuality": 0.30697284489538684
+              }
+            },
+            "specificJkg": {
+              "compressor": 54405.688592000515,
+              "evaporator": 156158.3138001636,
+              "condenser": 210564.0023921641
+            },
+            "pressureRatio": 4.5392065596343745,
+            "condenserClosureJkg": 0,
+            "idealizedHeatingCOP": 3.8702570970331247,
+            "idealizedCoolingCOP": 2.8702570970331247,
+            "evaporatorBubbleTK": 261.76935694007227,
+            "evaporatorDewTK": 268.1500000000008,
+            "evaporatorMidQualityTK": 264.8439940173419
+          }
+        }
+      }
+    }
+  ],
+  "totalMs": 5924.7253820000005
+}

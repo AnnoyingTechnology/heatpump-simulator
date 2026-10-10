@@ -1,0 +1,98 @@
+{
+  "version": "8.0.0",
+  "initMs": 90.20000004768372,
+  "totalMs": 5398.799999952316,
+  "fluids": [
+    {
+      "fluid": "R32",
+      "fourCallBatch": {
+        "samples": 60,
+        "p50Ms": 0.39999985694885254,
+        "p95Ms": 0.6999998092651367,
+        "maxMs": 1.5
+      },
+      "maxRoundTripK": 3.4178128771600313e-8
+    },
+    {
+      "fluid": "R22",
+      "fourCallBatch": {
+        "samples": 60,
+        "p50Ms": 0.39999985694885254,
+        "p95Ms": 0.5,
+        "maxMs": 0.9000000953674316
+      },
+      "maxRoundTripK": 1.496118784416467e-10
+    },
+    {
+      "fluid": "R134a",
+      "fourCallBatch": {
+        "samples": 60,
+        "p50Ms": 0.39999985694885254,
+        "p95Ms": 0.7000000476837158,
+        "maxMs": 1.1000001430511475
+      },
+      "maxRoundTripK": 1.3595138170785503e-7
+    },
+    {
+      "fluid": "n-Propane",
+      "fourCallBatch": {
+        "samples": 60,
+        "p50Ms": 0.39999985694885254,
+        "p95Ms": 0.5,
+        "maxMs": 1.4000000953674316
+      },
+      "maxRoundTripK": 1.000444171950221e-11
+    },
+    {
+      "fluid": "R1234yf",
+      "fourCallBatch": {
+        "samples": 60,
+        "p50Ms": 0.5,
+        "p95Ms": 0.5,
+        "maxMs": 1
+      },
+      "maxRoundTripK": 2.3419488570652902e-11
+    },
+    {
+      "fluid": "R410A",
+      "fourCallBatch": {
+        "samples": 60,
+        "p50Ms": 0.39999985694885254,
+        "p95Ms": 0.5,
+        "maxMs": 0.5
+      },
+      "maxRoundTripK": 2.0476136342040263e-8
+    },
+    {
+      "fluid": "R407C",
+      "fourCallBatch": {
+        "samples": 60,
+        "p50Ms": 0.2999999523162842,
+        "p95Ms": 0.40000009536743164,
+        "maxMs": 0.40000009536743164
+      },
+      "maxRoundTripK": 9.118821253650822e-10
+    }
+  ],
+  "mixtureCoverage": [
+    {
+      "fluid": "HEOS::R32[0.697615]&R125[0.302385]",
+      "results": {
+        "dewAt273K": "passed",
+        "bubbleAt273K": "passed",
+        "midQualityAt800kPa": "passed",
+        "fullCycle": "passed"
+      }
+    },
+    {
+      "fluid": "HEOS::R32[0.381109]&R125[0.179559]&R134a[0.439332]",
+      "results": {
+        "dewAt273K": "passed",
+        "bubbleAt273K": "passed",
+        "midQualityAt800kPa": "passed",
+        "fullCycle": "passed"
+      }
+    }
+  ],
+  "browserErrors": []
+}
