@@ -12,7 +12,7 @@ const probe=async(id,role,value)=>{
   const p=await page.evaluate(`(()=>{const e=document.querySelector('[data-probe="${id}"]');return {role:e.dataset.role,exact:e.dataset.exact,temp:e.dataset.temp,visible:e.getClientRects().length>0,text:e.querySelector('.s-val').textContent}})()`);
   assert.equal(p.visible,true);assert.equal(p.role,role);
   if(value===null){assert.equal(p.temp,'unknown');assert.equal(p.text,'—')}
-  else{assert.ok(Math.abs(Number(p.exact)-value)<1e-10);assert.ok(Math.abs(Number(p.text)-value)<=.050001)}
+  else{assert.ok(Math.abs(Number(p.exact)-value)<1e-10);assert.ok(Math.abs(Number(p.text.replace('−','-'))-value)<=.050001)}
 };
 try{
   await page.waitFor('!!document.querySelector(".scene")');
@@ -62,6 +62,20 @@ try{
         headerMode:[...document.querySelectorAll('.topbar button')].some(e=>e.textContent==='Heating'),footer:document.querySelectorAll('#app>.drawer').length};
     });assert.equal(r.weatherBorder,'0px');assert.equal(r.roomBorder,'0px');assert.equal(r.weatherInputs,true);assert.equal(r.roomInputs,true);
     assert.ok(r.values.every(x=>parseFloat(x)>=22));assert.equal(r.mode,true);assert.equal(r.headerMode,false);assert.equal(r.footer,0);
+  });
+  await check('live cooling probes reverse coil inlet/outlet roles while compressor suction/discharge stay fixed',async()=>{
+    await run(()=>{
+      qa.store.update(s=>{s.cfg.mode='cooling';s.cfg.outdoorC=35;s.cfg.outdoorRh=50;
+        s.cfg.rooms.forEach(r=>{r.airC=27;r.setpointC=24;r.enabled=true})});qa.store.restartSimulation();
+    });const out=await step(),c=out.cycle;assert.ok(c);
+    await probe('outdoor-coil-gas','IN',c.discharge.temperatureC);
+    await probe('outdoor-coil-liquid','OUT',c.condenserOutlet.temperatureC);
+    await probe('compressor-suction','S',c.suction.temperatureC);
+    await probe('compressor-discharge','D',c.discharge.temperatureC);
+    for(let i=0;i<out.rooms.length;i++){
+      await probe(`indoor-gas-${i}`,'OUT',c.branchOutlets[i].temperatureC);
+      await probe(`indoor-liquid-${i}`,'IN',c.branchInlets[i].temperatureC);
+    }
   });
   assert.equal(page.events.filter(e=>e.method==='Runtime.exceptionThrown').length,0);
   await writeFile('reviews/spatial-sensors-browser-results.json',JSON.stringify({checkedAt:new Date().toISOString(),checks},null,2)+'\n');

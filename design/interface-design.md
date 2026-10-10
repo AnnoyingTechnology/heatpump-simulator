@@ -228,3 +228,37 @@ The outdoor coil inspector (and each live indoor inspector) additionally lists I
 - Net room kW and refrigerant coil heat legitimately differ; the legend and notes say so.
 - `MAX_UNITS` is no longer imported anywhere in the UI; `types.ts` still exports it for root to remove.
 - Generic ≥ 6 ports, the assumed larger casing and the riser nesting are connection and drawing scope, not new Daikin catalogue research.
+
+## Line-length corridor, readable labels and probes (current; written without a build or browser run)
+
+Supersedes the matching numbers above (outdoor casing x, scene width, indoor columns, probe pill size, note anchor). No engine, runtime, state or type change; no charge control or placeholder was added.
+
+### Direct line length (one canonical control per branch)
+- **Where.** In the OUTDOOR connection corridor, right of the last riser and left of the wall (`layout.ctlX`, `LINE_CTL = { w: 160, gap: 12, offset: 10, h: 56 }`): one block per active branch, directly **under that branch's line pair** (top = `liqY + 10`, inside the room row, so it never touches the pair's pipes, the risers, the probes, the casing or a neighbouring row). A 2 px rule on the block's left edge ties it to the pair. Nothing sits on the pipes. Built once per branch index (`createLineLength(i)` in `settings.ts`) and re-attached on rebuild, so a focused number or slider keeps focus; `refresh()` never rewrites a focused input; an index rebound after Remove is blurred like the room panels.
+- **Content.** `<room name> line` (name ellipsizes, title and aria carry it in full), a 17-unit number with `m`, a native range (1–40 m, step 0.5), and a one-line note. Edits set `lengthM` and `lengthSource = 'edited'` (store `update`, same as the former popover field). Owner preset outside the 3–25 m family guidance: the number turns amber (`.warn`) and the tooltip says so.
+- **Honest note.** Live idealized: **transport idealized** (amber; tooltip: the engine receives zero-length lines, so length does not change results). Live physical: **physical transport**. Examples: **Examples: not applied** (stored for Live only). The shared **Field-line model** switch (`Idealized | Physical`, `createLineModelSwitch`) sits once above the first block (y 0–36, same column) and is the only editor of `live.fieldLines`. It is one click; Physical is disabled when `PHYSICAL_FIELD_LINES_AVAILABLE` is false.
+- **Popover.** The Lines popover no longer has a length slider or a model switch (no mirrored controls). It keeps the source chip, liquid and gas OD, the total-length guidance, the model explanation text, **Advanced pipe assumptions** (wall, insulation, bore) and **State now**, each still one click away, and a hint pointing to the corridor.
+- **Views.** Overview, 1/3/5 rooms and 6+ vertical scroll are unchanged in rule. The Rooms preset now starts at `ctlX − 8` so the lengths stay editable there; Outdoor is unchanged (it ends at the casing + 30).
+- **Geometry.** Casing x 100 → **140** (coil pills and REF note need 134 units of margin), indoor corridor 104 → 124 (wider probe pills and notes), environment block 323 → 290, `ZONE_W` 1030 → 1019. Width for n ≤ 5: riser end 523, `ctlX` 535, wall 707–737, **`vbW` = 1756** (was 1570). The scene is therefore about 10 % smaller on screen than before at the same stage width; see the open items.
+
+### Labels (no ellipsis on labels)
+`.rp-k` is sentence case 11 px, weight 650, and wraps instead of clipping; only notes beside a label may clip. Labels: **Supplied AIR**, **Net heating / Net cooling / Signed kW** (defrost; the note says "negative = extracted"), **Target** (the qualifier "Requested target temperature" is in the tooltip and the accessible names), **Measured AIR**, **Temperature**, **Humidity**, **Volume**, **Heat loss**, **Shared coil cleanliness** (the full scope, shared default for every coil with per-coil overrides, stays in the tooltip and the card status). 22-unit values are unchanged. Equipment cards use 7 px side padding to give "Supplied AIR" its width.
+
+### Probes and notes
+- Pill 70×14 → **90×20** (`PILL` in `geometry.ts`, used by `Probe`); value **14.5 units** bold tabular (was 10.4), role tag 8.6, unit 9.4, swatch 2 high. At scale 0.81 (1440 × 900) the value is about 11.7 px, at 0.90 (1600 × 1000) about 13 px.
+- Outdoor coil pills start at scene x = 6 (local −134) with leaders from the pill edge to the same clamps (18,22) and (18,198). The **REF note** is start-anchored at the same x (three lines, first baseline local y 50, 14.5 apart, 11.5-unit text); `geometry.ts` asserts at load that the widest line (110) ends left of the frost flakes (local −17), so no line can leave the scene or touch the casing. Indoor notes (12.5 apart) start 8 units right of the wall, below the gas pipe and above the liquid pipe, ending before the unit casing.
+- Compressor pills moved to fit: discharge pill (82, 111) under the O-pipe and above the discharge pipe; suction pill (120, 171), above the suction pipe, right edge at the accumulator; it overlaps the right 12 units of the compressor drawing, never a pipe or port badge. Indoor pills are at `unitX − 100`, gas above and liquid below the pipes. Clamps, mappings, `data-*` attributes, held/null/source semantics are untouched.
+
+### Phase-mark drift
+`--flow-dur = max(0.65 s, 1.3 s / speed)`: at most twice the 1× drift rate however fast the simulated clock runs (the 50× request no longer produces a 0.026 s flicker). Paused (`.scene.paused`) and reduced motion (no animation) are unchanged. The simulated clock and physics are not affected.
+
+### Selectors
+- Line block of branch *i*: `[data-block="line-length"][data-branch="<i>"]`; number `… input.ln-num` (`type=number`), slider `… input.ln-range` (`type=range`); note `… .ln-note`; `data-source` = `owner-reported | default | edited`; classes `warn` (outside owner guidance) and `ideal` (Live, idealized).
+- Model switch: `[data-block="line-model"]` containing `[role=group][aria-label="Field-line model (all branches)"] button` (`aria-pressed`).
+- Probe pill is `.s-pill` 90×20; value `.s-val`; note lines `.s-note`.
+- Gone from the Lines popover: the "One-way line length" field and the model segmented control (checks that used them must read the corridor).
+
+### Open items for root
+- Scale: confirm the 10 % loss from the wider corridor is acceptable at 1440 × 900 (labels 11 units ≈ 8.9 px there, 22-unit values ≈ 17.8 px). If not, the cheapest recovery is narrowing `LINE_CTL.w` or the environment block, not shrinking text.
+- Check the compressor suction pill against the HP-tap gauge value text (taps on) and the accumulator edge; the discharge pill against the O-pipe at y 106.
+- Check the 8-room scroll: the block height (56) against the 147.6 room row and the 20-unit gas pill against the row top.

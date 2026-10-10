@@ -10,7 +10,8 @@ import { INDOOR_CASE_MM, OUTDOOR_CASE_MM } from './types';
 export const MM_PX = 0.32;
 export const BASE_H = 800;
 
-export const OUT = { x: 100, y: 538, w: Math.round(OUTDOOR_CASE_MM.w * MM_PX) } as const;
+/** x = 140 leaves a 134-unit margin left of the casing for the coil probe pills and the REF note (see PROBE_AT). */
+export const OUT = { x: 140, y: 538, w: Math.round(OUTDOOR_CASE_MM.w * MM_PX) } as const;
 const OUT_BASE_H = Math.round(OUTDOOR_CASE_MM.h * MM_PX);
 export const UNIT = { w: Math.round(INDOOR_CASE_MM.w * MM_PX), h: Math.round(INDOOR_CASE_MM.h * MM_PX), dx: 16, dy: 14 } as const;
 
@@ -18,9 +19,14 @@ export const STACK_TOP = 36;
 const STACK_FIVE = 738;
 const RISER_PITCH = 14;
 /** Indoor zone width, constant for every n; the whole scene widens instead when the riser corridor grows. */
-export const ZONE_W = 1030;
+export const ZONE_W = 1019;
 /** Horizontal budget of one room row, from the wall: pipe corridor with probes, unit, equipment block, environment block. */
-export const ROOM_COLS = { corridor: 104, equip: { dx: 369, w: 322 }, env: { dx: 699, w: 323 } } as const;
+export const ROOM_COLS = { corridor: 124, equip: { dx: 389, w: 322 }, env: { dx: 719, w: 290 } } as const;
+/**
+ * Outdoor connection corridor, right of the risers and left of the wall: one line-length block per branch under its line pair
+ * (`lineCtl`) and, above the first room, the shared field-line model switch (`modelCtl`). Blocks sit clear of the pair's pipes.
+ */
+export const LINE_CTL = { w: 160, gap: 12, offset: 10, h: 56, modelH: STACK_TOP } as const;
 
 /** Local (outdoor casing) → scene coordinates. */
 export const L = (x: number, y: number): Pt => [OUT.x + x, OUT.y + y];
@@ -38,6 +44,8 @@ export interface Layout {
   vbW: number;
   vbH: number;
   wall: { x0: number; x1: number };
+  /** Left edge of the line-length control strip (right of the last riser). */
+  ctlX: number;
   outH: number;
   feeder: number;
   groundY: number;
@@ -50,14 +58,16 @@ export interface Layout {
 export function layoutFor(n: number): Layout {
   const rooms = Math.max(1, n);
   const slots = Math.max(rooms, 5);
-  const x0 = OUT.x + OUT.w + 13 + RISER_PITCH * (slots - 1) + 7 + 27;
+  const riserEnd = OUT.x + OUT.w + 13 + RISER_PITCH * (slots - 1) + 7;
+  const ctlX = riserEnd + LINE_CTL.gap;
+  const x0 = ctlX + LINE_CTL.w + LINE_CTL.gap;
   const x1 = x0 + 30;
   const roomH = rooms <= 5 ? STACK_FIVE / rooms : STACK_FIVE / 5;
   const stackBottom = STACK_TOP + roomH * rooms;
   const outH = outdoorHeight(rooms);
   const groundY = OUT.y + outH + 3;
   const vbH = Math.ceil(Math.max(BASE_H, stackBottom + 26, groundY + 24));
-  return { n: rooms, vbW: x1 + ZONE_W, vbH, wall: { x0, x1 }, outH, feeder: feederY(rooms), groundY, roomH, stackBottom, tall: vbH > BASE_H };
+  return { n: rooms, vbW: x1 + ZONE_W, vbH, wall: { x0, x1 }, ctlX, outH, feeder: feederY(rooms), groundY, roomH, stackBottom, tall: vbH > BASE_H };
 }
 
 export interface RoomBox {
@@ -127,24 +137,39 @@ const INDOOR_V: Pt[] = [[74, 26], [190, 26], [190, 38], [74, 38], [74, 50], [190
  * ice slab and flakes; the compressor pills sit in the free pockets under the fan and right of the compressor). Indoor values are
  * offsets from a room box: gas pill above the gas pipe, liquid pill below the liquid pipe, both just before the unit.
  */
+/** Pill size of every probe (value 14.5 units; the role tag stays smaller). Shared with pipes.ts. */
+export const PILL = { w: 90, h: 20, chip: 26 } as const;
+/** Margin pills of the outdoor coil start 6 units inside the scene edge; the REF note starts at the same x (anchor 'start'). */
+const COIL_MARGIN_X = 6 - OUT.x;
+/** Widest REF note line (11.5-unit text, "releases 12.34 kW" ≈ 102) plus slack; must end left of the frost flakes at local x −17. */
+export const COIL_NOTE_MAX_W = 110;
+if (COIL_MARGIN_X + COIL_NOTE_MAX_W > -20) throw new Error('outdoor coil note overlaps the casing margin');
+
 export const PROBE_AT = {
-  coilGas: { at: [-94, 15] as Pt, lead: [-24, 22] as Pt, clamp: [18, 22] as Pt },
-  coilLiq: { at: [-94, 191] as Pt, lead: [-24, 198] as Pt, clamp: [18, 198] as Pt },
-  coilNote: [-22, 38] as Pt,
-  compD: { at: [102, 111] as Pt, lead: [126, 125] as Pt, clamp: [126, 136] as Pt },
-  compS: { at: [138, 171] as Pt, lead: [176, 185] as Pt, clamp: [176, 198] as Pt },
+  coilGas: { at: [COIL_MARGIN_X, 12] as Pt, lead: [COIL_MARGIN_X + PILL.w, 22] as Pt, clamp: [18, 22] as Pt },
+  coilLiq: { at: [COIL_MARGIN_X, 188] as Pt, lead: [COIL_MARGIN_X + PILL.w, 198] as Pt, clamp: [18, 198] as Pt },
+  /** First baseline of the three REF note lines (14.5 apart, start-anchored): between the gas pill and the first air arrow. */
+  coilNote: [COIL_MARGIN_X, 50] as Pt,
+  compD: { at: [82, 111] as Pt, lead: [126, 131] as Pt, clamp: [126, 136] as Pt },
+  compS: { at: [120, 171] as Pt, lead: [176, 191] as Pt, clamp: [176, 198] as Pt },
 } as const;
 
 export function indoorProbeAt(b: RoomBox): {
   gas: { at: Pt; lead: Pt; clamp: Pt }; liq: { at: Pt; lead: Pt; clamp: Pt }; note: Pt;
 } {
-  const px = b.unitX - 76;
-  const cx = px + 35;
+  const px = b.unitX - 100;
+  const cx = px + 45;
   return {
-    gas: { at: [px, b.gasY - 22], lead: [cx, b.gasY - 8], clamp: [cx, b.gasY] },
+    gas: { at: [px, b.gasY - 30], lead: [cx, b.gasY - 10], clamp: [cx, b.gasY] },
     liq: { at: [px, b.liqY + 8], lead: [cx, b.liqY + 8], clamp: [cx, b.liqY] },
-    note: [px - 8, b.gasY + 14],
+    note: [b.x0 + 8, b.gasY + 17],
   };
+}
+
+/** Line-length block of one branch (scene units): directly under its line pair, in the outdoor connection corridor. */
+export function lineCtlBox(b: RoomBox, ctlX: number): { x: number; y: number; w: number; h: number } {
+  const y = b.liqY + LINE_CTL.offset;
+  return { x: ctlX, y, w: LINE_CTL.w, h: Math.min(LINE_CTL.h, b.bottom - 3 - y) };
 }
 
 export function pipeSpecs(n: number): PipeSpec[] {

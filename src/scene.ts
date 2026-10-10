@@ -4,13 +4,13 @@ import type { CoilProbe } from './circuit';
 import { clamp, fmt, html, setAttr, setText, svg, toggleClass } from './dom';
 import { branchesFor, readingFlowMode, segmentFor, simulation } from './runtime/view';
 import {
-  A, L, OUT, PROBE_AT, ROOM_COLS, UNIT,
-  indoorProbeAt, layoutFor, pipeSpecs, roomBoxes, ygOf, ylOf,
+  A, L, LINE_CTL, OUT, PROBE_AT, ROOM_COLS, UNIT,
+  indoorProbeAt, layoutFor, lineCtlBox, pipeSpecs, roomBoxes, ygOf, ylOf,
 } from './geometry';
 import type { Layout } from './geometry';
 import { CoilNote, Pipe, Probe } from './pipes';
-import { isolate, pairField, weatherScope } from './settings';
-import type { OutdoorUnitCard, PairField } from './settings';
+import { createLineLength, createLineModelSwitch, isolate, pairField, weatherScope } from './settings';
+import type { LineLengthControl, OutdoorUnitCard, PairField } from './settings';
 import type { Clock } from './state';
 import { ICE_FULL_KG, ICE_START_KG, activeRooms, currentReadings, indoorCleanliness, liveStatus, outdoorCleanliness, store } from './state';
 import { fixtureFor } from './fixtures';
@@ -72,7 +72,8 @@ function presetsFor(lay: Layout): Record<ZoomPreset, Box> {
   return {
     overview: [0, 0, lay.vbW, lay.vbH],
     outdoor: [2, OUT.y - 22, OUT.x + OUT.w + 30, lay.outH + 66],
-    rooms: [lay.wall.x1 - 4, 0, lay.vbW - lay.wall.x1 + 4, lay.vbH],
+    // The rooms view keeps the line-length column (left of the wall) so every length stays editable there.
+    rooms: [lay.ctlX - 8, 0, lay.vbW - lay.ctlX + 8, lay.vbH],
   };
 }
 
@@ -281,7 +282,7 @@ function roomPanel(i: number, hooks: SceneHooks): RoomPanel {
   });
   // The card is narrow: the "requested" qualifier lives in the tooltip and the accessible name, not in a clipped note.
   sp.root.title = 'Requested target temperature; compare it with the measured room air';
-  const air = readCard('Measured air', '°C');
+  const air = readCard('Measured AIR', '°C');
   air.root.className = 'env-read';
   const sup = readCard('Supplied AIR', '°C');
   const heat = readCard('Room net kW', 'kW');
@@ -363,6 +364,10 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard): Scene
   const bar = roomsBar();
   const roomPanels: RoomPanel[] = [];
   const panelFor = (i: number): RoomPanel => (roomPanels[i] ??= roomPanel(i, hooks));
+  // Line-length controls (one per branch index) and the single field-line model switch live in the outdoor connection corridor.
+  const lineCtls: LineLengthControl[] = [];
+  const lineCtlFor = (i: number): LineLengthControl => (lineCtls[i] ??= createLineLength(i));
+  const lineModel = createLineModelSwitch();
   let weatherG: G = svg('g');
   let weatherKind = '';
   let gaugeHP: Gauge | null = null;
@@ -423,7 +428,8 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard): Scene
       weatherG, overlayPanel(OP.x, OP.y, OP.w, OP.h, weather.root),
       overlayPanel(UP.x, UP.y, UP.w, UP.h, unitCard.root),
       txt(16, 26, 'OUTDOOR', 'zone-title'), txt(wall.x1 + 14, 26, 'INDOOR', 'zone-title'),
-      overlayPanel(wall.x1 + 118, 6, 760, 26, bar.root));
+      overlayPanel(wall.x1 + 118, 6, 760, 26, bar.root),
+      overlayPanel(lay.ctlX, 0, LINE_CTL.w, LINE_CTL.modelH, lineModel.root));
 
     // ---- rooms ----
     const zoneW = lay.vbW - wall.x1;
@@ -473,12 +479,14 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard): Scene
       root.append(wrapper, svg('g', { class: 'room-panel' },
         overlayPanel(b.x0 + ROOM_COLS.equip.dx, py, ROOM_COLS.equip.w, RP_H, panel.equip),
         overlayPanel(b.x0 + ROOM_COLS.env.dx, py, ROOM_COLS.env.w, RP_H, panel.env)));
+      const lc = lineCtlBox(b, lay.ctlX);
+      root.append(overlayPanel(lc.x, lc.y, lc.w, lc.h, lineCtlFor(i).root));
       const at = indoorProbeAt(b);
       rooms.push({
         g: wrapper, view, unit, panel, unitLabel: label, airWarm: air, plume, fan, wash,
         gasProbe: new Probe({ id: `indoor-gas-${i}`, label: `Indoor ${i + 1} gas-end refrigerant`, ...at.gas }),
         liqProbe: new Probe({ id: `indoor-liquid-${i}`, label: `Indoor ${i + 1} liquid-end refrigerant`, ...at.liq }),
-        note: new CoilNote(`indoor-coil-${i}`, at.note),
+        note: new CoilNote(`indoor-coil-${i}`, at.note, 'start', 12.5),
       });
     }
     if (zoneW > 0) root.append(svg('path', { class: 'room-sep', d: `M${wall.x1} ${lay.stackBottom}H${lay.vbW}` }));
@@ -663,7 +671,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard): Scene
     coilLiqProbe = new Probe({ id: 'outdoor-coil-liquid', label: 'Outdoor coil liquid-end refrigerant', ...P.coilLiq });
     compDProbe = new Probe({ id: 'compressor-discharge', label: 'Compressor discharge D refrigerant', ...P.compD });
     compSProbe = new Probe({ id: 'compressor-suction', label: 'Compressor suction S refrigerant', ...P.compS });
-    coilNote = new CoilNote('outdoor-coil', P.coilNote, 'end');
+    coilNote = new CoilNote('outdoor-coil', P.coilNote, 'start', 14.5);
     root.append(
       svg('g', { class: 'probes outdoor-probes', transform: `translate(${OUT.x} ${OUT.y})` }, coilGasProbe.g, coilLiqProbe.g, compDProbe.g, compSProbe.g, coilNote.g),
       svg('g', { class: 'probes indoor-probes' }, ...rooms.flatMap((r) => [r.gasProbe.g, r.liqProbe.g, r.note.g])));
@@ -702,7 +710,10 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard): Scene
     root.dataset.kind = cfg.outdoorKind;
     root.dataset.held = held ? '1' : '0';
     toggleClass(root, 'paused', s.ui.paused);
-    root.style.setProperty('--flow-dur', `${(1.3 / s.ui.speed).toFixed(3)}s`);
+    // Phase marks are an explanatory pattern, not a measured velocity: their drift keeps a comfortable rate (at most twice the
+    // 1× rate) however fast the simulated clock is requested. Pause and reduced motion are handled in the stylesheet.
+    root.style.setProperty('--flow-dur', `${Math.max(1.3 / 2, 1.3 / s.ui.speed).toFixed(3)}s`);
+    lineModel.refresh();
     root.dataset.fansOn = rd.outdoorFanOn ? '1' : '0';
 
     // pipes
@@ -758,10 +769,12 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard): Scene
       toggleClass(v.unit, 'generic', info.generic);
       const p = v.panel;
       // An index rebound to another room (after a removal) must not keep a stale focused value.
+      const lineCtl = lineCtlFor(i);
       if (p.boundId !== r.id) {
-        if (p.boundId !== '' && (p.equip.contains(document.activeElement) || p.env.contains(document.activeElement))) (document.activeElement as HTMLElement).blur();
+        if (p.boundId !== '' && [p.equip, p.env, lineCtl.root].some((el) => el.contains(document.activeElement))) (document.activeElement as HTMLElement).blur();
         p.boundId = r.id;
       }
+      lineCtl.sync(s, r);
       setText(p.name, r.name);
       toggleClass(p.remove, 'off', n <= 1);
       p.remove.disabled = n <= 1;
@@ -772,7 +785,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard): Scene
       setText(p.air.n, live ? (eng ? `${Math.round(eng.relativeHumidity * 100)} % RH` : '—') : 'EXAMPLE input');
       // Target, volume and heat loss are editable; a focused field is never rewritten.
       for (const f of [p.sp, p.vol, p.loss]) f.refresh();
-      const targetLabel = `Target for ${r.name} (°C)`;
+      const targetLabel = `Requested target temperature for ${r.name} (°C)`;
       setAttr(p.sp.num, 'aria-label', targetLabel);
       setAttr(p.sp.range, 'aria-label', targetLabel);
       setAttr(p.sp.range, 'aria-valuetext', `${fmt(r.setpointC, 1)} °C`);
@@ -806,7 +819,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard): Scene
       }
       // Branch heat: heating output and cooling removal are positive; defrost is signed (negative = extracted).
       const kw = !rd.usable ? null : live ? rd.branchKw?.[i] ?? null : br[i]?.roomKw ?? null;
-      setText(p.heat.k, fm === 'defrost' ? 'Signed net kW' : cfg.mode === 'cooling' ? 'Net cooling' : 'Net heating');
+      setText(p.heat.k, fm === 'defrost' ? 'Signed kW' : cfg.mode === 'cooling' ? 'Net cooling' : 'Net heating');
       if (kw === null) {
         setReading(p.heat.v, '—');
         setText(p.heat.n, rd.usable ? '' : 'unavailable');

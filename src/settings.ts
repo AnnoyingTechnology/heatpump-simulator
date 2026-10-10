@@ -1,6 +1,6 @@
 import type { Field } from './controls';
 import { nextId, segmented, select, setHtml, slider } from './controls';
-import { clamp, fmt, html, setText, toggleClass } from './dom';
+import { clamp, fmt, html, setAttr, setText, toggleClass } from './dom';
 import { defaultEngineConfig } from './engine/defaults';
 import { fixtureFor } from './fixtures';
 import { inspectorHtml } from './inspector';
@@ -244,7 +244,7 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
     title: 'Ratio of ideal isentropic to actual compression work. Motor and drive losses are separate.',
   }));
   const cleanGlobal = reg(pairField({
-    label: 'Cleanliness, shared by all coils', unit: '% clear', min: CLEANLINESS_MIN_PCT, max: CLEANLINESS_MAX_PCT, step: 1, digits: 0, layout: 'line',
+    label: 'Shared coil cleanliness', unit: '% clear', min: CLEANLINESS_MIN_PCT, max: CLEANLINESS_MAX_PCT, step: 1, digits: 0, layout: 'line',
     get: () => cfg().live.cleanlinessPct, set: (v) => store.update((s) => { s.cfg.live.cleanlinessPct = v; }),
     title: 'Shared default for the outdoor coil and every indoor coil: 100 % clean, 10 % = 90 % of the clear air passage obstructed. Each coil can override it.',
   }));
@@ -491,10 +491,7 @@ export function createLinesSettings(): PopContent {
 
   const lead = html('p', { class: 'hint lead' });
   const chip = html('span', { class: 'chip' });
-  const len = reg(slider({
-    label: 'One-way line length', unit: 'm', min: 1, max: 40, step: 0.5, digits: 1, get: () => pipe()?.lengthM ?? 10,
-    set: (v) => edit((p) => { p.lengthM = v; p.lengthSource = 'edited'; }),
-  }));
+  const lengthHint = html('p', { class: 'hint' }, 'One-way length is edited with the number and slider under this branch\'s line pair, between the outdoor unit and the wall.');
   const liq = reg(select<string>({
     label: 'Liquid line OD [mm]', options: LIQUID_OD.map((d) => ({ value: String(d), text: `${d} mm` })),
     get: () => String(pipe()?.liquidOdMm ?? LIQUID_OD[0]), set: (v) => edit((p) => { p.liquidOdMm = Number(v); }),
@@ -506,14 +503,6 @@ export function createLinesSettings(): PopContent {
   const totals = html('div', { class: 'compare' });
   const stateBody = html('div', { class: 'fold-body' });
 
-  const modeSeg = reg(segmented<LiveParameters['fieldLines']>({
-    label: 'Field-line model', compact: true,
-    options: [
-      { value: 'idealized', text: 'Idealized (reference)', title: 'Zero-length lines: no pipe effects; faster default' },
-      { value: 'physical', text: 'Physical (advanced)', title: 'Finite-pipe model: slower, uncalibrated assumptions, some regimes unsupported', disabled: !PHYSICAL_FIELD_LINES_AVAILABLE },
-    ],
-    get: () => cfg().live.fieldLines, set: (v) => store.update((s) => { s.cfg.live.fieldLines = v; }),
-  }));
   const modeNote = html('p', { class: 'hint' });
   const wall = reg(slider({
     label: 'Configured pipe wall thickness', unit: 'mm', min: WALL_MIN_MM, max: WALL_MAX_MM, step: 0.05, digits: 2,
@@ -528,8 +517,8 @@ export function createLinesSettings(): PopContent {
   const wallReadout = html('p', { class: 'status' });
 
   const root = html('div', { class: 'pop-settings' },
-    lead, html('div', { class: 'chips' }, chip), len.root, html('div', { class: 'two' }, liq.root, gas.root), totals,
-    fold('Field-line model (all branches)', false, modeSeg.root, modeNote),
+    lead, html('div', { class: 'chips' }, chip), lengthHint, html('div', { class: 'two' }, liq.root, gas.root), totals,
+    fold('Field-line model (all branches)', false, html('p', { class: 'hint' }, 'Switch it with the Idealized / Physical control above the line-length column.'), modeNote),
     fold('Advanced pipe assumptions (all branches)', false, wall.root, insulation.root, wallReadout,
       html('p', { class: 'hint' }, 'Wall minimums are declared family assumptions from the installation guide, not installed-copper measurements and not verified for this N8 unit. Every line with non-zero heat transfer is modelled in outdoor air by assumption; unknown elevation is treated as level, not as the real geometry. Physical mode only: the model is a bounded homogeneous approximation that omits kinetic energy, slip, fittings, oil return and line charge, and is slower than the reference. In cooling, the controller targets each returning branch at a common suction superheat after line heat; this is separate from the idealized mode\'s conductance-weighted branch allocation and mixed-return control. Some unequal-coil transients and high-loss regimes may be unsupported: the run then fails visibly with conserved inventory rather than being made feasible silently. Results are not an accurate prediction of the installed line losses.')),
     html('details', { class: 'fold' }, html('summary', {}, 'State now'), stateBody));
@@ -579,6 +568,77 @@ export function createLinesSettings(): PopContent {
       setHtml(stateBody, inspectorHtml(`pipe:${i}`, s));
     },
   };
+}
+
+// ---------- permanent line controls (scene, outdoor connection corridor) ----------
+/** One-way physical length bounds (m). The family guidance band applies to the owner preset only. */
+const LENGTH = { min: 1, max: 40, step: 0.5 } as const;
+const GUIDE = { min: 3, max: 25 } as const;
+
+export interface LineLengthControl {
+  root: HTMLElement;
+  /** Rebinds labels and the transport note to the branch's room; never rewrites a focused input. */
+  sync(s: AppState, room: RoomConfig): void;
+}
+
+/**
+ * The canonical editor of one branch's one-way length: number + native slider, built once per branch index. Editing marks the
+ * length `edited`. The note states what the length does in the current model; it never claims an effect idealized lines do not have.
+ */
+export function createLineLength(i: number): LineLengthControl {
+  const pipe = (): PipeConfig | undefined => store.state.cfg.pipes[i];
+  const len = pairField({
+    label: 'Line length', unit: 'm', ...LENGTH, digits: 1, layout: 'line',
+    get: () => pipe()?.lengthM ?? 10,
+    set: (v) => store.update((s) => { const p = s.cfg.pipes[i]; if (p) { p.lengthM = v; p.lengthSource = 'edited'; } }),
+  });
+  len.num.classList.add('ln-num');
+  len.range.classList.add('ln-range');
+  const name = html('span', { class: 'ln-name' });
+  len.root.querySelector('.rp-k')?.replaceChildren(name, html('span', { class: 'ln-tail' }, 'line'));
+  const note = html('span', { class: 'ln-note' });
+  const root = html('div', { class: 'rp ln', 'data-block': 'line-length', 'data-branch': String(i) }, len.root, note);
+  return {
+    root,
+    sync(s, room): void {
+      const c = s.cfg;
+      const live = s.ui.experience === 'live';
+      const p = c.pipes[i];
+      len.refresh();
+      setText(name, room.name);
+      const label = `One-way line length of ${room.name} (m)`;
+      for (const el of [len.num, len.range]) setAttr(el, 'aria-label', label);
+      if (!p) return;
+      setAttr(len.range, 'aria-valuetext', `${fmt(p.lengthM, 1)} m`);
+      const physical = c.live.fieldLines === 'physical';
+      setText(note, !live ? 'Examples: not applied' : physical ? 'physical transport' : 'transport idealized');
+      const source = p.lengthSource === 'owner-reported' ? 'owner-reported, historical' : p.lengthSource === 'edited' ? 'edited by you' : 'default, no source';
+      const outside = c.outdoorKind === 'owner' && (p.lengthM < GUIDE.min || p.lengthM > GUIDE.max);
+      const effect = !live ? 'Examples show fixed readings: length is stored for Live only.'
+        : physical ? 'Physical field lines: this length is passed to the finite-pipe model.'
+          : 'Idealized field lines: the engine receives zero-length lines, so this length does not change results. Choose Physical to apply it.';
+      root.title = `${room.name} one-way length, ${source}. ${effect}${outside ? ` Outside the ${GUIDE.min}–${GUIDE.max} m family guidance (2019, N2 variant).` : ''}`;
+      root.dataset.source = p.lengthSource;
+      toggleClass(root, 'warn', outside);
+      toggleClass(root, 'ideal', live && !physical);
+    },
+  };
+}
+
+/** The one field-line model switch (all branches), shown once above the line-length column. Idealized is the default reference. */
+export function createLineModelSwitch(): Field {
+  const seg = segmented<LiveParameters['fieldLines']>({
+    label: 'Field-line model (all branches)', compact: true,
+    options: [
+      { value: 'idealized', text: 'Idealized', title: 'Zero-length lines: no pipe effects; faster reference default' },
+      { value: 'physical', text: 'Physical', title: 'Finite-pipe model: slower, uncalibrated assumptions, some regimes unsupported', disabled: !PHYSICAL_FIELD_LINES_AVAILABLE },
+    ],
+    get: () => store.state.cfg.live.fieldLines, set: (v) => store.update((s) => { s.cfg.live.fieldLines = v; }),
+  });
+  for (const b of seg.buttons) b.classList.add('rp-ctl');
+  isolate(...seg.buttons);
+  const root = html('div', { class: 'rp ln-model', 'data-block': 'line-model' }, html('span', { class: 'rp-k' }, 'Field-line model'), seg.root);
+  return { root, refresh: seg.refresh };
 }
 
 /** Fixture comparison for the weather card, shared so the wording lives with the other outdoor scope text. */

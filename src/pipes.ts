@@ -1,6 +1,7 @@
 import { clamp, fmt, polyPath, setAttr, setText, svg, toggleClass } from './dom';
 import { phaseLabel, tempColor } from './circuit';
 import type { SegState } from './circuit';
+import { PILL } from './geometry';
 
 export type Pt = readonly [number, number];
 export type PipeClass = 'gas' | 'liq' | 'coil';
@@ -90,8 +91,8 @@ export class Pipe {
   }
 }
 
-/** Pill and chip size of every temperature probe, in scene units. */
-export const PROBE = { w: 70, h: 14, chip: 20 } as const;
+/** Pill and chip size of every temperature probe, in scene units (defined with the anchors in geometry.ts). */
+const PROBE = PILL;
 
 export interface ProbeSpec {
   /** Stable identifier written to `data-probe`, e.g. `indoor-gas-0`. */
@@ -121,11 +122,11 @@ export class Probe {
 
   constructor(readonly spec: ProbeSpec) {
     const [x, y] = spec.at;
-    this.chip = svg('text', { x: PROBE.chip / 2, y: 10.2, class: 's-tag', 'text-anchor': 'middle' });
-    this.val = svg('text', { x: PROBE.w - 15, y: 10.6, class: 's-val', 'text-anchor': 'end' });
-    this.swatch = svg('rect', { class: 's-swatch', x: PROBE.chip, y: PROBE.h - 2.4, width: PROBE.w - PROBE.chip - 1, height: 1.8, rx: 0.9 });
+    this.chip = svg('text', { x: PROBE.chip / 2, y: 13.4, class: 's-tag', 'text-anchor': 'middle' });
+    this.val = svg('text', { x: PROBE.w - 17, y: 14.8, class: 's-val', 'text-anchor': 'end' });
+    this.swatch = svg('rect', { class: 's-swatch', x: PROBE.chip, y: PROBE.h - 3, width: PROBE.w - PROBE.chip - 1, height: 2, rx: 1 });
     this.title = svg('title');
-    const unit = svg('text', { x: PROBE.w - 13, y: 10.2, class: 's-unit' });
+    const unit = svg('text', { x: PROBE.w - 15, y: 14.4, class: 's-unit' });
     unit.textContent = '°C';
     this.g = svg('g', { class: 'probe', 'data-probe': spec.id, 'aria-label': spec.label, role: 'img' },
       this.title,

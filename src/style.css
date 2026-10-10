@@ -312,7 +312,8 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
   font: 500 11px/1.2 var(--font); color: #33414d; font-variant-numeric: tabular-nums; pointer-events: none;
   background: rgba(255, 255, 255, 0.9); border: 1px solid #d6d1c4; border-radius: 10px; }
 .rp-ctl { pointer-events: auto; cursor: pointer; }
-.rp-k { display: block; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #6b695f; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+/* Labels are short sentence-case words that wrap to a second line instead of being cut; notes beside them are the part that may clip. */
+.rp-k { display: block; font-size: 11px; font-weight: 650; letter-spacing: 0.01em; line-height: 1.15; color: #5f5d54; }
 .rp-line { display: flex; align-items: baseline; gap: 3px; white-space: nowrap; }
 .rp-v, .rp-num { font: 700 22px/1.05 var(--font); color: #22303b; font-variant-numeric: tabular-nums; }
 .rp-v.na { color: #9a978d; }
@@ -330,7 +331,8 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .pf { min-width: 0; }
 .pf.block { display: flex; flex-direction: column; gap: 1px; }
 .pf-head { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; min-width: 0; }
-.pf-head .rp-n { min-height: 0; min-width: 0; text-align: right; }
+.pf-head .rp-k { flex: 0 1 auto; }
+.pf-head .rp-n { flex: 1 1 0; min-height: 0; min-width: 0; text-align: right; }
 .pf.line .pf-head { align-items: center; }
 .pf.line .rp-k { text-transform: none; letter-spacing: 0; font-size: 11.5px; font-weight: 650; color: #33414d; }
 .pf.line .rp-num { font-size: 15px; width: 3em; text-align: right; }
@@ -359,7 +361,7 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .eq .rp-btn, .env .rp-btn { padding: 2px 8px; font-size: 10.5px; }
 .rp-remove:disabled { opacity: 0.4; cursor: not-allowed; }
 .rp-btn:disabled { opacity: 0.4; cursor: not-allowed; }
-.eq .rp-k { font-size: 9.5px; letter-spacing: 0.03em; }
+.eq .rp-card { padding: 4px 7px; }
 .env-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
 .env-read { min-width: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; column-gap: 10px; }
 .env-read .rp-k { grid-column: 1 / -1; }
@@ -372,6 +374,23 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .in-count { flex: none; font-variant-numeric: tabular-nums; color: #2b2a26; font-weight: 700; }
 .in-add { flex: none; padding: 3px 12px; font-size: 11.5px; }
 .in-hint { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 500; color: var(--warn); }
+/* Outdoor connection corridor (between the risers and the wall): the permanent one-way length of each branch, under its line pair,
+   and the single field-line model switch above the first one. Unboxed; a thin rule on the left ties each block to its pair. */
+.rp.ln { background: none; border: 0; border-left: 2px solid #9db2c1; border-radius: 0; padding: 1px 0 1px 8px; justify-content: flex-start; gap: 2px; }
+.ln .pf.line { gap: 1px; }
+.ln .pf.line .pf-head { align-items: baseline; gap: 6px; }
+.ln .pf.line .rp-k { display: flex; gap: 4px; min-width: 0; font-size: 12px; color: #33414d; white-space: nowrap; }
+.ln-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; font-weight: 750; color: #22303b; }
+.ln-tail { flex: none; font-weight: 600; color: #6b695f; }
+.ln .pf.line .rp-num { font-size: 17px; width: 2.9em; }
+.ln .pf.line .rp-line small { font-size: 12px; }
+.ln .rp-range { height: 16px; }
+.ln-note { display: block; font-size: 11px; line-height: 1.2; color: #55606a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rp.ln.ideal .ln-note { color: #8a5a1c; font-weight: 650; }
+.rp.ln.warn .ln-num { color: var(--warn); border-bottom-color: var(--warn); }
+.rp.ln-model { background: none; border: 0; border-radius: 0; padding: 0 0 0 10px; justify-content: flex-start; gap: 1px; }
+.ln-model .seg { align-self: flex-start; }
+.ln-model .seg-btn { padding: 2px 8px; font-size: 11.5px; line-height: 1.25; min-width: 0; }
 .room[data-unit="off"] .unit { opacity: 0.55; }
 .room[data-unit="closing"] .unit-shell, .room[data-unit="applying"] .unit-shell, .room[data-unit="requested-off"] .unit-shell { stroke-dasharray: 5 3; }
 
@@ -514,13 +533,13 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .s-chip { fill: #1d4f63; }
 .probe[data-role="D"] .s-chip, .probe[data-role="S"] .s-chip { fill: #46306f; }
 .probe[data-source="example"] .s-chip { fill: #8a5a1c; }
-.s-tag { font: 800 7.4px var(--font); fill: #fff; letter-spacing: 0.04em; }
-.s-val { font: 750 10.4px var(--font); fill: #14202b; font-variant-numeric: tabular-nums; }
-.s-unit { font: 600 7.6px var(--font); fill: #55606a; }
+.s-tag { font: 800 8.6px var(--font); fill: #fff; letter-spacing: 0.03em; }
+.s-val { font: 750 14.5px var(--font); fill: #14202b; font-variant-numeric: tabular-nums; }
+.s-unit { font: 600 9.4px var(--font); fill: #55606a; }
 .probe.na .s-val { fill: #8a8a82; }
 .probe.held .s-pill { stroke-dasharray: 3 2; }
-.s-note { font: 650 8.8px var(--font); fill: #2b3945; font-variant-numeric: tabular-nums; paint-order: stroke; stroke: rgba(246, 248, 249, 0.92); stroke-width: 2.6px; stroke-linejoin: round; }
-.s-ill { font-weight: 800; fill: #8a5a1c; font-size: 8.4px; }
+.s-note { font: 650 11.5px var(--font); fill: #2b3945; font-variant-numeric: tabular-nums; paint-order: stroke; stroke: rgba(246, 248, 249, 0.92); stroke-width: 3px; stroke-linejoin: round; }
+.s-ill { font-weight: 800; fill: #8a5a1c; font-size: 11px; }
 
 /* fans and air */
 /* No part of any fan rotates: the outdoor grille and the indoor outlet slot are static; only air cues move. */
