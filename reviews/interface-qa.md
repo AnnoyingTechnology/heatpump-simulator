@@ -32,7 +32,11 @@ Long worker checks run against an immutable temporary source snapshot with a sep
 
 The actual worker/browser natural-frost check passed without seeded ice or shortened trigger timers. At outdoor 3°C/85% RH and room targets 23°C, it observed defrost at the 305 s sample and resumed heating at 355 s. Room/outdoor corner values matched engine outputs throughout, energy/water residuals remained below 1e−4 J/1e−10 kg, and rejecting then correcting an outdoor input preserved time and visible held ice. See [`live-frost-browser-results.json`](live-frost-browser-results.json) and [`tools/check-live-frost.mjs`](../tools/check-live-frost.mjs).
 
+The earlier failed trajectory is preserved as [`live-frost-browser-historical-failure.json`](live-frost-browser-historical-failure.json), dated 10:57 UTC. It documents the former selected 30°C evaporating-temperature limit (EN-08); it is superseded by the later successful natural trajectory rather than erased.
+
 The two actual advanced-pipe interaction checks passed: selecting finite lines mapped declared lengths/assumed bore into the worker and produced nonzero Darcy friction, editing a length reached the physics, and returning to idealized lines removed that friction without resetting room storage or scenario time. See [`live-pipes-browser-results.json`](live-pipes-browser-results.json). This proves integration for that bounded scenario, not empirical installed-pipe accuracy.
+
+The final safe-backend [`tools/check-live-engine.mjs`](../tools/check-live-engine.mjs) passed **seven integration checks** recorded in [`live-browser-results.json`](live-browser-results.json): real worker/EOS data, weather and room input/focus behavior, mode reversal preserving weather, retained-history five-room addition with actual per-branch refrigerant states, rejection/recovery suppressing stale pressures/COP/outlets, source separation, and production worker/WASM under a GitHub Pages project path. Long QA advances use bounded five-second requests rather than one CPU-heavy sixty-second batch, preserving the same simulated scenario horizon.
 
 ## Rendered evidence
 
