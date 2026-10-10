@@ -2,7 +2,9 @@
 import { writeFile } from 'node:fs/promises';
 
 export async function openPage(url, width = 1600, height = 1000, options = {}) {
-  const response = await fetch(`http://127.0.0.1:9223/json/new?${encodeURIComponent(url)}`, { method: 'PUT' });
+  // Attach observers before navigation. Opening the URL here and navigating
+  // again below cancels the first document on slower hosted connections.
+  const response = await fetch('http://127.0.0.1:9223/json/new?about:blank', { method: 'PUT' });
   if (!response.ok) throw new Error(`Chromium target creation: ${response.status}`);
   const target = await response.json();
   const socket = new WebSocket(target.webSocketDebuggerUrl);

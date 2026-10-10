@@ -28,6 +28,8 @@ Site: https://annoyingtechnology.github.io/heatpump-simulator/
 
 `.github/workflows/pages.yml` installs locked dependencies, checks types, builds and verifies the released Reference model with the guarded property backend, then publishes `dist/`. Pushes to `main` deploy automatically; the workflow also supports manual runs. GitHub Pages uses the GitHub Actions publishing source. The existing relative asset base keeps the worker and self-hosted WASM inside the project URL.
 
+The first deployment passed 35 checks on GitHub and four checks against the hosted site. Its worker advances real physical time; paused weather and individual-unit edits preserve the clock, and the deployed WASM matches the verified artifact. Recheck hosting with `node tools/check-hosted-pages.mjs` using the project's isolated QA Chromium. Deployment and browser evidence are retained in `reviews/github-pages-deployment.json` and `reviews/github-pages-browser-results.json`.
+
 ## Current interface
 
 Sonnet 5.5 authored the desktop workbench through local Claude Code. All application illustrations are native SVG/CSS: simple outdoor/indoor/room zones, equipment, pipes, gauges, frost and meltwater. Outdoor temperature/humidity and room air/volume/heat loss live unboxed in their environment zones. Indoor target, On/Off, supplied-air temperature and net room kW live beside each indoor unit; model, mode, efficiency and cleanliness live beside the outdoor unit. Advanced assumptions open in local popovers. PNG screenshots under `design/` are review evidence and are not shipped in the application.
