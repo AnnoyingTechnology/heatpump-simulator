@@ -111,6 +111,7 @@ function compatibleControlsOnly(previous: EngineConfig | null, next: EngineConfi
   if (!previous) return false;
   const basis = (config: EngineConfig): EngineConfig => ({ ...config,
     outdoorTemperatureC: 0, outdoorRelativeHumidity: 0,
+    inventory: config.inventory ? { ...config.inventory, leak: { ...config.inventory.leak, rateKgs: 0, physicalCellId: '' } } : undefined,
     rooms: config.rooms.map(room => ({ ...room, setpointC: 0, enabled: false })),
   });
   return JSON.stringify(basis(previous)) === JSON.stringify(basis(next));

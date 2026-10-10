@@ -10,7 +10,7 @@ import { activeRooms, currentReadings, indoorCleanliness, outdoorCleanliness, st
 import type { Current, EffectiveCleanliness } from './state';
 import type { RefrigerantState } from './engine/types';
 import type { AppState } from './types';
-import { INDOOR_CLASSES, OWNER_PORTS, outdoorPortCapacity } from './types';
+import { INDOOR_CLASSES, OWNER_PORTS, outdoorPortCapacity, roomVolumeM3 } from './types';
 import { LIVE_BASIS } from './chrome';
 
 type Row = [string, string];
@@ -148,7 +148,7 @@ export function inspectorHtml(id: string | null, s: AppState): string {
           ['Mass flow', num(rd.mDotKgS, 3, 'kg/s')],
           ['Refrigerant work', kw(rd.pRefKw)],
           ['Drive loss', kw(rd.driveLossKw)],
-          ...(live ? [['Speed', num(eng?.diagnostics.speedRps, 1, 'rps')] as Row] : []),
+          ...(live ? [['Controller speed request', num(eng?.diagnostics.speedRps, 1, 'rps')] as Row] : []),
           ['ηis configured', `${cfg.etaIsPct} <i>%</i>${live || cfg.etaIsPct === 70 ? '' : ' <span class="tag warn">fixture uses 70 %</span>'}`],
           ...(live ? [['Displacement / max speed (generic)', `${fmt(cfg.live.compressorDisplacementCm3, 1)} <i>cm³/rev</i> · ${fmt(cfg.live.compressorMaxSpeedRps, 0)} <i>rps</i>`] as Row] : []),
         ]));
@@ -289,7 +289,9 @@ export function inspectorHtml(id: string | null, s: AppState): string {
           ? { flowKgs: cy.branchMassFlowsKgs[i] ?? 0, inletC: inl.temperatureC, outletC: outl.temperatureC, heatW: cy.branchCoilHeatW[i] ?? 0 } : null);
         return block('Refrigerant coil ΔT and heat', rows(coilRefRows(probe, false)) + '<p class="muted">Refrigerant side only (ṁ·Δh); it differs from the room net kW while the building stores heat. ΔT = 0 is valid during evaporation.</p>');
       })() : '') + block('Room inputs (configuration)', rows([
-        [live ? 'Initial air temperature (on Reset)' : 'Air temperature', deg(room.airC)], ['Setpoint', deg(room.setpointC)], ['Volume', `${room.volumeM3} <i>m³</i>`], ['Heat-loss coefficient', `${room.heatLossWPerK} <i>W/K</i>`],
+        [live ? 'Initial air temperature (on Reset)' : 'Air temperature', deg(room.airC)], ['Setpoint', deg(room.setpointC)],
+        ['Floor area', `${fmt(room.surfaceM2,1)} <i>m²</i>`], ['Ceiling height', `${fmt(room.ceilingHeightM,1)} <i>m</i>`],
+        ['Calculated volume', `${fmt(roomVolumeM3(room),1)} <i>m³</i>`], ['Envelope heat-loss coefficient', `${room.heatLossWPerK} <i>W/K</i>`],
       ]));
     }
     case 'pipe': {

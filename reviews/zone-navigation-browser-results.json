@@ -1,0 +1,37 @@
+{
+  "checkedAt": "2026-10-10T17:47:56.941Z",
+  "checks": [
+    {
+      "name": "duplicate Readings popup and footer are removed; unique controls live in outdoor settings",
+      "passed": true
+    },
+    {
+      "name": "click and keyboard zoom do not reset the engine; Escape and Zoom out restore overview",
+      "passed": true
+    },
+    {
+      "name": "floor area and height derive volume without replacing focused controls or zooming",
+      "passed": true
+    },
+    {
+      "name": "loss help remains readable in room zoom and closes locally with Escape",
+      "passed": true
+    },
+    {
+      "name": "materialized outdoor exhaust uses actual fan air; arrows are vector and point left/down",
+      "passed": true
+    },
+    {
+      "name": "indoor coil, inlet/outlet flow readings and header symbols are spatial and match engine values",
+      "passed": true
+    },
+    {
+      "name": "room removal preserves zoom by identity; removing the focused room returns to overview",
+      "passed": true
+    },
+    {
+      "name": "room and equipment controls fit their foreignObjects at two desktop sizes and 1/3/5/8 rooms",
+      "passed": true
+    }
+  ]
+}

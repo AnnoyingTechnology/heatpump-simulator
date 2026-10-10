@@ -12,8 +12,7 @@ export type IndoorClass = 'FTXA25' | 'FTXA35' | 'G25' | 'G35' | 'G50';
 export type PressureConvention = 'abs' | 'gauge';
 export type LengthSource = 'owner-reported' | 'default' | 'edited';
 export type SidebarTab = 'rooms' | 'equipment' | 'pipes' | 'advanced';
-export type DrawerTab = 'diagnostics' | 'fixtures' | 'provenance';
-export type ZoomPreset = 'overview' | 'outdoor' | 'rooms';
+export type ZoomPreset = 'overview' | 'outdoor' | 'rooms' | `room:${string}`;
 
 export const OWNER_PORTS = 3;
 export const DEFAULT_GENERIC_PORT_CAPACITY = 5;
@@ -23,8 +22,9 @@ export interface RoomConfig {
   name: string;
   /** Requested indoor-unit operation. Room/envelope storage remains simulated when off. */
   enabled: boolean;
-  /** Interior volume [m³]. */
-  volumeM3: number;
+  /** Interior floor area [m²] and mean ceiling height [m]. Volume is derived. */
+  surfaceM2: number;
+  ceilingHeightM: number;
   /** Envelope heat-loss coefficient [W/K]; configuration only. */
   heatLossWPerK: number;
   setpointC: number;
@@ -33,6 +33,10 @@ export interface RoomConfig {
   indoorClass: IndoorClass;
   /** Heat-exchanger clear-air-passage override [% clear, 10–100]; null inherits Config.live.cleanlinessPct. */
   cleanlinessOverridePct: number | null;
+}
+
+export function roomVolumeM3(room: Pick<RoomConfig,'surfaceM2'|'ceilingHeightM'>): number {
+  return room.surfaceM2*room.ceilingHeightM;
 }
 
 /** Heat-exchanger cleanliness bounds [% clear air passage]: 100 clean, 10 means 90 % obstructed. */
@@ -71,8 +75,6 @@ export interface UiState {
   paused: boolean;
   selected: string | null;
   tab: SidebarTab;
-  drawerOpen: boolean;
-  drawerTab: DrawerTab;
   pressure: PressureConvention;
   zoom: ZoomPreset;
   showTaps: boolean;

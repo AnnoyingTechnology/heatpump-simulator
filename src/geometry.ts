@@ -3,18 +3,20 @@ import { INDOOR_CASE_MM, OUTDOOR_CASE_MM } from './types';
 
 /**
  * Scene geometry as a function of the active room count n. One physical illustration scale for BOTH casings: 0.32 px per mm.
- * Tube routing is schematic. Up to five rooms the scene is exactly 800 high and the rooms share it; beyond five every room keeps the
- * five-room height and the scene grows (the stage scrolls vertically). The generic outdoor casing grows only below the owner
+ * Tube routing is schematic. Rows keep at least 220 scene units for intake, equipment and outlet readings. Larger layouts grow vertically
+ * and scroll inside the stage. The generic outdoor casing grows only below the owner
  * envelope, to hold more ports: an explicit assumption, not a published dimension.
  */
 export const MM_PX = 0.32;
 export const BASE_H = 800;
 
 /** x = 140 leaves a 134-unit margin left of the casing for the coil probe pills and the REF note (see PROBE_AT). */
-export const OUT = { x: 140, y: 538, w: Math.round(OUTDOOR_CASE_MM.w * MM_PX) } as const;
+export const OUT = { x: 140, y: 606, w: Math.round(OUTDOOR_CASE_MM.w * MM_PX) } as const;
 const OUT_BASE_H = Math.round(OUTDOOR_CASE_MM.h * MM_PX);
-export const UNIT = { w: Math.round(INDOOR_CASE_MM.w * MM_PX), h: Math.round(INDOOR_CASE_MM.h * MM_PX), dx: 16, dy: 14 } as const;
+export const UNIT = { w: Math.round(INDOOR_CASE_MM.w * MM_PX), h: Math.round(INDOOR_CASE_MM.h * MM_PX), dx: 16, dy: 46 } as const;
 
+/** Indoor coil spans the casing, leaving 5% on the right for connections. */
+export const INDOOR_COIL = { x: 10, y: 20, end: Math.round(UNIT.w * .95), h: 50 } as const;
 export const STACK_TOP = 36;
 const STACK_FIVE = 738;
 const RISER_PITCH = 14;
@@ -22,6 +24,8 @@ const RISER_PITCH = 14;
 export const ZONE_W = 1019;
 /** Horizontal budget of one room row, from the wall: pipe corridor with probes, unit, equipment block, environment block. */
 export const ROOM_COLS = { corridor: 124, equip: { dx: 389, w: 322 }, env: { dx: 719, w: 290 } } as const;
+/** Panel heights of one room row: equipment card, and the taller unboxed environment (floor area, ceiling height, volume, air, envelope loss). Both fit the five-room row. */
+export const ROOM_PANEL_H = { equip: 132, env: 144 } as const;
 /**
  * Outdoor connection corridor, right of the risers and left of the wall: one line-length block per branch under its line pair
  * (`lineCtl`) and, above the first room, the shared field-line model switch (`modelCtl`). Blocks sit clear of the pair's pipes.
@@ -62,7 +66,7 @@ export function layoutFor(n: number): Layout {
   const ctlX = riserEnd + LINE_CTL.gap;
   const x0 = ctlX + LINE_CTL.w + LINE_CTL.gap;
   const x1 = x0 + 30;
-  const roomH = rooms <= 5 ? STACK_FIVE / rooms : STACK_FIVE / 5;
+  const roomH = Math.max(STACK_FIVE / rooms, 220);
   const stackBottom = STACK_TOP + roomH * rooms;
   const outH = outdoorHeight(rooms);
   const groundY = OUT.y + outH + 3;
@@ -130,7 +134,8 @@ function outdoorCoilVerts(): Pt[] {
   return v;
 }
 
-const INDOOR_V: Pt[] = [[74, 26], [190, 26], [190, 38], [74, 38], [74, 50], [190, 50], [190, 62], [74, 62]];
+const COIL_LEFT = INDOOR_COIL.x + 8, COIL_RIGHT = INDOOR_COIL.end - 8;
+const INDOOR_V: Pt[] = [[COIL_LEFT, 26], [COIL_RIGHT, 26], [COIL_RIGHT, 38], [COIL_LEFT, 38], [COIL_LEFT, 50], [COIL_RIGHT, 50], [COIL_RIGHT, 62], [COIL_LEFT, 62]];
 
 /**
  * Probe anchors. Outdoor values are local to the casing (the pills of the coil sit in the free margin left of it, clear of the
@@ -150,6 +155,11 @@ export const PROBE_AT = {
   coilLiq: { at: [COIL_MARGIN_X, 188] as Pt, lead: [COIL_MARGIN_X + PILL.w, 198] as Pt, clamp: [18, 198] as Pt },
   /** First baseline of the three REF note lines (14.5 apart, start-anchored): between the gas pill and the first air arrow. */
   coilNote: [COIL_MARGIN_X, 50] as Pt,
+  /**
+   * Exhaust-air probe: a pill in the free margin between the two REF pills, its rod ending in a bulb just left of the coil face, inside
+   * the exhaust. Streams run above (y 86–95) and below (y 150–160) it; the caption sits on the pill's top edge.
+   */
+  airOut: { at: [COIL_MARGIN_X, 116] as Pt, lead: [COIL_MARGIN_X + PILL.w, 138] as Pt, bulb: [-30, 138] as Pt },
   compD: { at: [82, 111] as Pt, lead: [126, 131] as Pt, clamp: [126, 136] as Pt },
   compS: { at: [120, 171] as Pt, lead: [176, 191] as Pt, clamp: [176, 198] as Pt },
 } as const;
@@ -207,11 +217,11 @@ export function pipeSpecs(n: number): PipeSpec[] {
     add({ id: `fieldStub:${i}`, cls: 'liq', title: `Branch ${i + 1} liquid stub (field side of EEV)`, pts: l([[293, yl], [OUT.w, yl]]) });
     add({
       id: `gasField:${i}`, cls: 'gas', insul: true, title: `Branch ${i + 1} gas field line`,
-      pts: [L(OUT.w, yg), [b.gx, OUT.y + yg], [b.gx, b.gasY], [b.unitX + 74, b.gasY]],
+      pts: [L(OUT.w, yg), [b.gx, OUT.y + yg], [b.gx, b.gasY], [b.unitX + COIL_LEFT, b.gasY]],
     });
     add({
       id: `liqField:${i}`, cls: 'liq', insul: true, title: `Branch ${i + 1} liquid field line`,
-      pts: [L(OUT.w, yl), [b.lx, OUT.y + yl], [b.lx, b.liqY], [b.unitX + 74, b.liqY]],
+      pts: [L(OUT.w, yl), [b.lx, OUT.y + yl], [b.lx, b.liqY], [b.unitX + COIL_LEFT, b.liqY]],
     });
     const iv = INDOOR_V.map((p): Pt => [b.unitX + p[0], b.unitY + p[1]]);
     add({ id: `inG:${i}`, cls: 'coil', title: `Indoor ${i + 1} coil · gas end`, pts: iv.slice(0, 2) });

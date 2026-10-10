@@ -1,14 +1,12 @@
 import { AIR_RAMP_MAX, AIR_RAMP_MIN, TEMP_RAMP_MAX, TEMP_RAMP_MIN, TEMP_RAMP_TICKS, airRampCss, flowMode, tempRampCss } from './circuit';
-import { segmented, setHtml } from './controls';
+import { setHtml } from './controls';
 import type { Field } from './controls';
 import { escapeHtml, fmt, html, setText, svg } from './dom';
-import { FIXTURES, PREVIEW_BANNER, fixtureFor } from './fixtures';
-import type { Fixture, FixtureId } from './fixtures';
-import { simulation, branchesFor } from './runtime/view';
-import { ICE_START_KG, activeRooms, currentReadings, liveStatus, store } from './state';
-import type { Current } from './state';
+import { PREVIEW_BANNER, fixtureFor } from './fixtures';
+import { simulation } from './runtime/view';
+import { ICE_START_KG, currentReadings, liveStatus, store } from './state';
 import { INDOOR_CLASSES } from './types';
-import type { AppState, DrawerTab, Experience, ExampleState, SpeedFactor, ZoomPreset } from './types';
+import type { AppState, SpeedFactor } from './types';
 
 export interface Header {
   root: HTMLElement;
@@ -63,34 +61,15 @@ function pick<T extends string | number>(o: {
   };
 }
 
-export function createHeader(readings: Ribbon): Header {
+export function createHeader(): Header {
   const fields: Field[] = [];
-  const experience = pick<Experience>({
-    label: 'Source',
-    options: [
-      { value: 'live', text: 'Live', title: 'Real engine in a worker: generic R32 model, not manufacturer-calibrated' },
-      { value: 'examples', text: 'Examples', title: 'Fixed constructed snapshots, not solver output' },
-    ],
-    get: () => store.state.ui.experience, set: (v) => store.setExperience(v),
-  });
-  const example = pick<ExampleState>({
-    label: 'Example scenario',
-    options: [
-      { value: 'normal', text: 'Normal' },
-      { value: 'frost', text: 'Frosting', title: 'Heating-mode outdoor coil only' },
-      { value: 'defrost', text: 'Defrost', title: 'Reverse-cycle defrost, heating mode only' },
-      { value: 'idle', text: 'Idle' },
-    ],
-    get: () => store.state.cfg.example, set: (e) => store.loadExample(store.state.cfg.mode, e),
-    isDisabled: (v) => store.state.cfg.mode === 'cooling' && (v === 'frost' || v === 'defrost'),
-  });
   const speed = pick<SpeedFactor>({
     label: 'Requested speed',
     options: ([0.5, 1, 2, 5, 10, 50] as SpeedFactor[]).map((v) => ({ value: v, text: `${v}×` })),
     get: () => store.state.ui.speed,
     set: (v) => store.update((s) => { s.ui.speed = Number(v) as SpeedFactor; }),
   });
-  fields.push(experience, example, speed);
+  fields.push(speed);
   const speedHelp = html('span', { class: 'sr-only', id: 'speed-help' }, SPEED_HELP);
   speed.sel.setAttribute('aria-describedby', 'speed-help');
   speed.sel.title = SPEED_HELP;
@@ -104,57 +83,41 @@ export function createHeader(readings: Ribbon): Header {
   reset.addEventListener('click', () => store.restartSimulation());
   const time = html('output', { class: 'time', 'aria-label': 'Simulation time' }, '00:00.0');
 
-  // Headline readings: label above value, fixed-width cells so the header does not reflow as numbers change.
+  // Headline readings: label below value, fixed-width cells so the header does not reflow as numbers change.
   const metric = (unit: string | null): { root: HTMLElement; k: HTMLElement; v: HTMLElement } => {
     const k = html('span', { class: 'k' }, '');
     const v = html('b', { class: 'v' }, '—');
     const root = html('div', { class: 'hm' }, k, html('span', { class: 'vl' }, v, ...(unit ? [html('i', {}, unit)] : [])));
     return { root, k, v };
   };
-  const mCop = metric(null);
+  const mCop = metric('COP');
+  mCop.root.classList.add('hm-cop');
   const mHeat = metric('kW');
   const mElec = metric('kW');
+  const icon = (): SVGSVGElement => svg('svg', { class: 'hm-icon', viewBox: '0 0 24 24', 'aria-hidden': 'true' });
+  const plug = icon();
+  plug.append(svg('path', { d: 'M8 3v5M16 3v5M6 8h12v3a6 6 0 0 1-6 6v4M12 17v-1' }));
+  mElec.root.querySelector('.vl')!.prepend(plug);
+  const sun = icon();
+  sun.append(svg('circle', { cx: 12, cy: 12, r: 4 }), svg('path', { d: 'M12 1v3M12 20v3M1 12h3M20 12h3M4 4l2 2M18 18l2 2M4 20l2-2M18 6l2-2' }));
+  const snow = icon();
+  snow.append(svg('path', { d: 'M12 2v20M3.34 7l17.32 10M3.34 17L20.66 7M9 4l3 3 3-3M9 20l3-3 3 3M4 10l4-1-1-4M20 14l-4 1 1 4M7 19l1-4-4-1M17 5l-1 4 4 1' }));
+  sun.classList.add('hm-sun'); snow.classList.add('hm-snow');
+  mHeat.root.querySelector('.vl')!.prepend(sun, snow);
   mElec.k.textContent = 'Electrical input';
   const metrics = html('div', { class: 'hd-metrics', role: 'group', 'aria-label': 'Headline readings' }, mCop.root, mHeat.root, mElec.root);
 
-  // Status cell: persistent badge plus one ellipsised line; full detail on hover and in Readings.
+  // Status cell: persistent badge plus one ellipsised line; full detail on hover and in outdoor settings.
   const opState = html('output', { class: 'opstate', role: 'status', 'data-kind': 'loading' }, 'Loading');
   const exTag = html('span', { class: 'hd-ex' }, 'Examples · fixed');
   const note = html('span', { class: 'hd-note' }, '');
   const status = html('div', { class: 'hd-status' }, html('div', { class: 'hd-badges' }, opState, exTag), note);
 
-  const rdBtn = html('button', { type: 'button', class: 'btn ghost hd-readings', 'aria-expanded': 'false', 'aria-controls': 'readings-pop' }, 'Readings');
-  readings.root.id = 'readings-pop';
-  // Source and scenario live one click away in the popover, above the readings; built once, native selects.
-  const labelled = (text: string, f: Field & { sel: HTMLSelectElement }): HTMLElement =>
-    html('label', { class: 'rb-pick' }, html('span', {}, text), f.sel);
-  const examplePick = labelled('Example scenario', example);
-  readings.root.prepend(html('div', { class: 'rb-source' }, labelled('Source', experience), examplePick));
-  readings.root.hidden = true;
-  const setPop = (open: boolean): void => {
-    readings.root.hidden = !open;
-    rdBtn.setAttribute('aria-expanded', String(open));
-    // The embedded diagnostics are rendered only while this popover is open; refresh them now.
-    if (open) store.emit();
-  };
-  rdBtn.addEventListener('click', () => setPop(readings.root.hidden === true));
-  document.addEventListener('click', (e) => {
-    if (!readings.root.hidden && !root.contains(e.target as Node)) setPop(false);
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key !== 'Escape' || readings.root.hidden) return;
-    e.stopPropagation();
-    setPop(false);
-    rdBtn.focus();
-  });
-
   const root = html('header', { class: 'topbar' },
     html('div', { class: 'brand' }, html('span', { class: 'mark', 'aria-hidden': 'true' }), html('b', {}, 'Heatpump Simulator 2026')),
-    html('div', { class: 'hd-group' }, pause, speed.root, time, speedHelp),
+    html('div', { class: 'hd-group' }, pause, reset, status, speed.root, time, speedHelp),
     html('div', { class: 'spacer' }),
-    metrics, status,
-    html('div', { class: 'hd-group' }, rdBtn, reset),
-    readings.root);
+    metrics);
 
   return {
     root,
@@ -163,14 +126,16 @@ export function createHeader(readings: Ribbon): Header {
       for (const f of fields) f.refresh();
       setText(pause, s.ui.paused ? 'Resume' : 'Pause');
       pause.setAttribute('aria-pressed', String(s.ui.paused));
-      examplePick.hidden = live;
       opState.hidden = !live;
       exTag.hidden = live;
-      const scenario = example.sel.selectedOptions[0]?.textContent ?? '';
+      const scenario = fixtureFor(s.cfg.mode, s.cfg.example).title;
       setText(exTag, scenario ? `Examples · ${scenario}` : 'Examples');
       time.title = live ? 'Simulation time' : 'Preview time';
       time.setAttribute('aria-label', live ? 'Simulation time' : 'Preview time');
 
+      sun.style.display = s.cfg.mode === 'heating' ? '' : 'none';
+      snow.style.display = s.cfg.mode === 'cooling' ? '' : 'none';
+      note.hidden = live && s.ui.experience === 'live' && currentReadings(s).live?.usable === true && currentReadings(s).live?.kind !== 'updating';
       const rd = currentReadings(s);
       setText(mCop.k, rd.copLabel);
       setText(mHeat.k, rd.roomKwLabel);
@@ -180,10 +145,6 @@ export function createHeader(readings: Ribbon): Header {
       mCop.root.title = rd.copLabel;
       mHeat.root.title = rd.roomKwLabel;
       mElec.root.title = 'Electrical input';
-
-      const warnings = rd.live?.warnings.length ?? 0;
-      setText(rdBtn, warnings ? `Readings ⚠ ${warnings}` : 'Readings');
-      rdBtn.setAttribute('aria-label', warnings ? `Readings, ${warnings} warning${warnings > 1 ? 's' : ''}` : 'Readings');
 
       if (!live) {
         metrics.dataset.held = '0';
@@ -209,7 +170,7 @@ export function createHeader(readings: Ribbon): Header {
         status.title = `${st.detail ?? ''}\n${LIVE_BASIS}`;
       } else {
         note.dataset.tone = 'warn';
-        setText(note, 'Generic R32 · uncalibrated');
+        setText(note, '');
         status.title = `${LIVE_BASIS}\n${fieldLinesNote(s)}`;
       }
     },
@@ -217,99 +178,21 @@ export function createHeader(readings: Ribbon): Header {
   };
 }
 
-// ---------- readings popover (the full ribbon) ----------
-export interface Ribbon { root: HTMLElement; sync(s: AppState): void }
-
-export function createRibbon(): Ribbon {
-  const cells: Record<string, { root: HTMLElement; k: HTMLElement; v: HTMLElement }> = {};
-  const cell = (key: string, label: string): HTMLElement => {
-    const k = html('span', { class: 'k' }, label);
-    const v = html('b', { class: 'v' }, '—');
-    const root = html('div', { class: 'cell' }, k, v);
-    cells[key] = { root, k, v };
-    return root;
-  };
-  const strip = html('div', { class: 'rb-status', role: 'status' });
-  const root = html('div', { class: 'ribbon', role: 'group', 'aria-label': 'Readings' },
-    html('div', { class: 'rb-cells' },
-      cell('outair', 'Outdoor air'), cell('room', 'Room air'),
-      cell('heat', 'Room heat'), cell('elec', 'Electrical input'), cell('cop', 'COP'),
-      cell('plo', 'Low pressure'), cell('phi', 'High pressure'),
-      cell('indoor', 'Indoor supply air'), cell('outdoor', 'Outdoor air outlet')),
-    strip);
-  const put = (key: string, label: string, value: string): void => {
-    const c = cells[key];
-    if (!c) return;
-    setText(c.k, label);
-    if (c.v.innerHTML !== value) c.v.innerHTML = value;
-  };
-  return {
-    root,
-    sync(s: AppState): void {
-      const live = s.ui.experience === 'live';
-      const rd = currentReadings(s);
-      const p = (v: number | null | undefined): string => {
-        if (v === null || v === undefined) return '—';
-        return s.ui.pressure === 'abs' ? `${fmt(v, 2)}<i>bar(a)</i>` : `${fmt(v - 1.01325, 2)}<i>bar(g)</i>`;
-      };
-      // Live: only units whose own fan runs contribute a supply temperature (a closed or switched-off branch blows nothing).
-      const outlets = branchesFor(rd, activeRooms(s.cfg))
-        .filter((b) => !live || b.fanKw > 0).map((b) => b.outletC).filter((x): x is number => x !== null);
-      put('outair', live ? 'Outdoor air · drives model' : 'Outdoor air · configured', `${fmt(s.cfg.outdoorC, 1)}<i>°C</i> · ${Math.round(s.cfg.outdoorRh)}<i>% RH</i>`);
-      cells['room']!.root.hidden = !live;
-      const temps = rd.engine?.rooms.slice(0, s.cfg.unitCount).map((r) => r.temperatureC) ?? [];
-      put('room', 'Room air · actual', temps.length ? `${fmt(Math.min(...temps), 1)}${Math.max(...temps) - Math.min(...temps) >= 0.05 ? `–${fmt(Math.max(...temps), 1)}` : ''}<i>°C</i>` : '—');
-      put('heat', rd.roomKwLabel, rd.roomKwTotal === null ? '—' : `${fmt(rd.roomKwTotal, 2)}<i>kW</i>`);
-      put('elec', 'Electrical input', rd.electricalKw === null ? '—' : `${fmt(rd.electricalKw, 2)}<i>kW</i>`);
-      put('cop', rd.copLabel, rd.cop === null ? '—' : fmt(rd.cop, 2));
-      put('plo', 'Low pressure', p(rd.cycle?.pLowBarA));
-      put('phi', 'High pressure', p(rd.cycle?.pHighBarA));
-      put('indoor', 'Indoor supply air', outlets.length && rd.indoorFansOn ? `${fmt(Math.min(...outlets), 1)}–${fmt(Math.max(...outlets), 1)}<i>°C</i>` : '—');
-      put('outdoor', 'Outdoor air outlet', rd.outdoorOutletC === null ? '—' : `${fmt(rd.outdoorOutletC, 1)}<i>°C</i>`);
-
-      if (!live) {
-        setHtml(strip, `<span class="rb-banner"><span class="dot" aria-hidden="true"></span>${escapeHtml(PREVIEW_BANNER)}</span>`);
-        return;
-      }
-      const st = rd.live!;
-      const parts = [
-        `<span class="pill" data-kind="${st.kind}">${escapeHtml(st.kind === 'updating' ? 'Last calculated step' : st.label)}</span>`,
-        `<span class="rb-t">${escapeHtml(LIVE_BASIS)}</span>`,
-        `<span class="rb-t rb-note">${escapeHtml(fieldLinesNote(s))}</span>`,
-      ];
-      if (st.calculationMs !== null) parts.push(`<span class="rb-t rb-dim">${fmt(st.calculationMs, 1)} ms / step</span>`);
-      if (st.kind === 'fault' || (st.kind === 'loading' && st.detail)) {
-        parts.push(`<span class="rb-fault"><b>${st.kind === 'fault' ? 'Fault' : 'Unavailable'}:</b> ${escapeHtml(st.detail ?? '')} Readings withheld.</span>`);
-      } else if (st.usable && st.detail) {
-        // Soft input edit: previous completed step stays displayed and tagged until the next physical step lands.
-        parts.push(`<span class="rb-upd"><b>Last calculated step:</b> ${escapeHtml(st.detail)}</span>`);
-      }
-      st.warnings.forEach((w) => parts.push(`<span class="rb-warn">⚠ ${escapeHtml(w)}</span>`));
-      setHtml(strip, parts.join(''));
-    },
-  };
-}
-
 // ---------- scene overlay: one slim row (notices left, view presets right), legend below ----------
-export interface Overlay { root: HTMLElement; sync(s: AppState): void; tick(): void }
+export interface Overlay { root: HTMLElement; film: HTMLElement; sync(s: AppState): void; tick(): void }
 
-export function createOverlay(zoomTo: (z: ZoomPreset) => void): Overlay {
-  const zoomSeg = segmented<ZoomPreset>({
-    label: 'View',
-    compact: true,
-    options: [{ value: 'overview', text: 'Overview' }, { value: 'outdoor', text: 'Outdoor' }, { value: 'rooms', text: 'Rooms' }],
-    get: () => store.state.ui.zoom,
-    set: (z) => store.update((s) => { s.ui.zoom = z; }),
-  });
-  void zoomTo;
+export function createOverlay(): Overlay {
+  const unzoom = html('button', { type: 'button', class: 'zoom-out', 'aria-label': 'Zoom out to all zones (Escape)' }, '↙ Zoom out');
+  unzoom.addEventListener('click', () => store.update(s => { s.ui.zoom = 'overview'; }));
   const iceHead = html('span', { class: 'ice-head' });
-  const ice = html('div', { class: 'chip-ice', role: 'status' }, iceHead);
+  const ice = html('summary', { class: 'chip-ice', 'aria-label': 'Outdoor coil ice and liquid film; show details' }, iceHead);
   const iceNote = html('p', { class: 'ice-note' });
+  const film = html('details', { class: 'coil-film rp-ctl' }, ice, iceNote);
   const mismatchText = html('span', { class: 'mm-text' });
   const mismatch = html('div', { class: 'mismatch', role: 'status' }, mismatchText);
   const mismatchDetail = html('p', { class: 'mm-detail' });
   const moreBtn = html('button', { type: 'button', class: 'ov-more', 'aria-expanded': 'false', 'aria-controls': 'ov-detail' }, 'Details') as HTMLButtonElement;
-  const detail = html('div', { class: 'ov-detail', id: 'ov-detail' }, mismatchDetail, iceNote);
+  const detail = html('div', { class: 'ov-detail', id: 'ov-detail' }, mismatchDetail);
   detail.hidden = true;
   moreBtn.addEventListener('click', () => {
     detail.hidden = !detail.hidden;
@@ -368,13 +251,14 @@ export function createOverlay(zoomTo: (z: ZoomPreset) => void): Overlay {
       detailsBtn),
     html('p', { class: 'lg-sentence' }, `Pipe colour and probe swatches use this fixed scale and saturate beyond ${String(TEMP_RAMP_MIN).replace('-', '−')} / ${TEMP_RAMP_MAX} °C; probe numbers stay exact. 105 °C and above is hot discharge vapour, not a liquid temperature. Heat can be absorbed at constant temperature during evaporation (ΔT = 0 is valid).`),
     legendNote);
-  const root = html('div', { class: 'overlay' },
-    html('div', { class: 'ov-top' }, mismatch, ice, moreBtn, html('span', { class: 'spacer' }), zoomSeg.root, detail),
+  const top = html('div', { class: 'ov-top' }, mismatch, moreBtn, html('span', { class: 'spacer' }), unzoom, detail);
+  const root = html('div', { class: 'overlay' }, top,
     legend);
   return {
-    root,
+    root, film,
     sync(s: AppState): void {
-      zoomSeg.refresh();
+      unzoom.hidden = s.ui.zoom === 'overview';
+      top.hidden = s.ui.experience === 'live' && unzoom.hidden;
       root.dataset.zoom = s.ui.zoom;
       if (s.ui.experience === 'live') {
         setText(legendNote, 'The tube interior colour is the reported temperature. Thin white marks over it show phase and drift in the flow direction; they never replace the colour. Hatched = fluid flows but no temperature is reported (e.g. mid-coil passes); solid grey = no flow (idle, closed or switched-off branch, or readings withheld). Arrows show flow direction. Pills on the pipes are refrigerant probes (IN/OUT at each coil, D/S at the compressor): exact computed values rounded to 0.1 °C, a dash while no cycle or branch circulates. ΔT is OUT − IN; coil heat is the refrigerant\'s, not the room\'s net kW. Live engine: outdoor air, setpoints, heat-loss coefficients, ηis and generic parameters drive the model; initial room temperature applies on Reset.');
@@ -409,20 +293,19 @@ export function createOverlay(zoomTo: (z: ZoomPreset) => void): Overlay {
     },
     tick(): void {
       const { cfg, ui } = store.state;
-      let hasNote: boolean;
       if (ui.experience === 'live') {
         const st = liveStatus(cfg);
         const out = st.usable ? simulation.status.output : null;
         const held = out ? null : simulation.inventory;
+        const lastStep = !!held || st.kind === 'updating';
         // Mass values come from the engine's own film state; the preview ledger is not involved.
         // A held inventory is the last accepted film state, not a reading of the current input.
         const film = out?.outdoor ?? held?.outdoor ?? null;
         setText(iceHead, film
-          ? `${held ? 'Held ' : ''}Ice ${fmt(film.iceKg, 3)} kg · film ${fmt(film.liquidKg, 3)} kg`
+          ? `${lastStep ? 'Last step · ' : ''}Ice ${fmt(film.iceKg, 3)} kg · film ${fmt(film.liquidKg, 3)} kg`
           : 'Ice — · film —');
-        ice.dataset.held = held ? '1' : '0';
-        setText(iceNote, held ? `Held: last accepted outdoor ice state at simulated ${fmtTime(held.simulatedSeconds)}. Current input: ${st.label.toLowerCase()}; no melting is animated.` : '');
-        hasNote = !!held;
+        ice.dataset.held = lastStep ? '1' : '0';
+        setText(iceNote, held ? `Held: last accepted outdoor ice state at simulated ${fmtTime(held.simulatedSeconds)}. Current input: ${st.label.toLowerCase()}; no melting is animated.` : 'Ice and liquid water retained on the outdoor coil, from the live energy and water balances.');
       } else {
         const c = store.clock;
         ice.dataset.held = '0';
@@ -433,11 +316,10 @@ export function createOverlay(zoomTo: (z: ZoomPreset) => void): Overlay {
         if (fm === 'defrost' && c.iceKg <= 0) notes.push('Ice exhausted: melt and drips stopped. Snapshot readings do not change; this is not a predicted defrost duration.');
         const framed = cfg.mode === 'heating' && (cfg.example === 'frost' || cfg.example === 'defrost');
         if ((c.iceKg > 0 || c.retainedWaterKg > 0) && !framed) notes.push('Retained mass carried through a synthetic snapshot transition; no thaw, drainage or refreezing is modelled.');
-        setText(iceNote, notes.join(' '));
-        hasNote = notes.length > 0;
+        setText(iceNote, `Illustrative example ice and retained water. ${notes.join(' ')}`);
       }
-      iceNote.hidden = !hasNote;
-      const anyDetail = ui.experience === 'examples' || hasNote;
+      film.dataset.source = ui.experience;
+      const anyDetail = ui.experience === 'examples';
       moreBtn.hidden = !anyDetail;
       if (!anyDetail && !detail.hidden) {
         detail.hidden = true;
@@ -447,149 +329,38 @@ export function createOverlay(zoomTo: (z: ZoomPreset) => void): Overlay {
   };
 }
 
-// ---------- drawer ----------
-export interface Drawer { root: HTMLElement; sync(s: AppState): void }
-
-const PROVENANCE: ReadonlyArray<[string, string, string]> = [
-  ['Live engine', 'Generic R32, real refrigerant and humid-air property backend', 'Coil conductances, air flows, compressor displacement and speed are generic assumptions; not manufacturer-calibrated'],
-  ['Field lines', 'Idealized in the reference mode', 'Pipe length and diameter do not reach the engine; no line pressure drop or heat exchange'],
-  ['Outdoor unit', 'Daikin 3MXM52N8', 'declared by owner · suffix and nameplate unknown'],
-  ['Indoor units', 'FTXA25 · FTXA35 · FTXA25', 'owner-reported; complete suffixes unknown'],
-  ['Model references', 'Casing and label selection only', 'They never change live performance'],
-  ['Branch lengths', '7.5 (ground) / 6.5 (first) / 14 m (attic)', 'historical owner blog; as-built survey unknown'],
-  ['Elevation sum', '15.05 m reported', 'not the manufacturer criterion; do not allocate or pass/fail'],
-  ['Casing proportions', 'Both casings drawn to one scale from catalogue family data', 'Daikin Central Europe 2019–20; not tape measurements; dimensions are not annotated'],
-  ['Refrigerant', 'R32, factory charge 1.80 kg', 'catalogue family; installed nameplate unchecked'],
-  ['Line sizes', '6.35 / 9.5 mm', 'catalogue family; as-built unknown'],
-  ['Internal circuit', 'generic explanatory', 'N8 circuit schematic not opened; do not read as Daikin layout'],
-  ['Stop valves', 'common gas stop (p) and liquid stop (q), static open', 'N2-family manual legend, printed page 31; N8 positions unknown'],
-  ['Pipe guidance', '3–25 m per branch, ≤ 50 m total', 'family guidance (2019, N2 variant); not verified N8 installation compliance; heights unknown'],
-  ['Examples', 'constructed R32 snapshots', 'EOS-derived states, freely chosen flows and fans; no manufacturer map'],
-];
-
-const kwh = (j: number): string => fmt(j / 3.6e6, 4);
-
-export function createDrawer(): Drawer {
-  const tabs: ReadonlyArray<{ id: DrawerTab; label: string }> = [
-    { id: 'diagnostics', label: 'Diagnostics' }, { id: 'fixtures', label: 'Examples' }, { id: 'provenance', label: 'Provenance' },
-  ];
-  const toggle = html('button', { type: 'button', class: 'drawer-toggle', 'aria-expanded': 'false', 'aria-controls': 'drawer-body' }, 'Diagnostics, examples and provenance');
-  toggle.addEventListener('click', () => store.update((s) => { s.ui.drawerOpen = !s.ui.drawerOpen; }));
-  const tabBtns = tabs.map((t) => {
-    const b = html('button', { type: 'button', class: 'tab small', role: 'tab' }, t.label);
-    b.addEventListener('click', () => store.update((s) => { s.ui.drawerTab = t.id; s.ui.drawerOpen = true; }));
-    return b;
-  });
-  const bodyEl = html('div', { class: 'drawer-body', id: 'drawer-body' });
-  // A disclosure at the end of the Readings popover, not a permanent bar: it reserves no row of the application grid.
-  const root = html('section', { class: 'drawer diag', 'aria-label': 'Diagnostics, examples and provenance' },
-    html('div', { class: 'drawer-bar' }, toggle, html('div', { class: 'tabs', role: 'tablist' }, ...tabBtns)),
-    bodyEl);
-  bodyEl.addEventListener('click', (e) => {
-    const b = (e.target as HTMLElement).closest<HTMLElement>('[data-fixture]');
-    if (!b) return;
-    const f = FIXTURES[b.dataset.fixture as FixtureId];
-    if (f) store.loadExample(f.mode, f.example);
-  });
-
-  const check = (label: string, resid: number | null, tol = 0.0006): string =>
-    resid === null ? `<tr><td>${label}</td><td>—</td><td>not applicable</td></tr>`
-      : `<tr><td>${label}</td><td>${fmt(resid, 4)} kW</td><td class="${Math.abs(resid) <= tol ? 'ok' : 'bad'}">${Math.abs(resid) <= tol ? 'closes' : 'does not close'}</td></tr>`;
-
-  const ledgerRows = (rows: Fixture['ledger']): string => rows.map((r) => `<tr><td>${escapeHtml(r.label)}</td><td class="n">${r.value === null ? '—' : fmt(r.value, r.digits)} <i>${escapeHtml(r.unit)}</i></td><td>${escapeHtml(r.note ?? '')}</td></tr>`).join('');
-
-  function fixtureDiagnostics(s: AppState, rd: Current): string {
-    const br = branchesFor(rd, activeRooms(s.cfg));
-    const sum = br.reduce((a, b) => a + b.roomKw, 0);
-    const fanSum = br.reduce((a, b) => a + b.fanKw, 0);
-    const work = rd.qCondKw !== null && rd.qEvapKw !== null && rd.pRefKw !== null ? rd.qCondKw - rd.qEvapKw - rd.pRefKw : null;
-    const branchResid = rd.roomKwTotal === null ? null : sum - rd.roomKwTotal;
-    const elec = rd.pRefKw !== null && rd.driveLossKw !== null ? rd.pRefKw + rd.driveLossKw + fanSum + rd.outdoorFanKw + rd.controlsKw - rd.pElecKw : null;
-    return `<div class="cols">
-      <div><h4>Ledger · ${escapeHtml(rd.title)}</h4><table class="tbl"><tbody>${ledgerRows(rd.ledger)}</tbody></table></div>
-      <div><h4>Closure checks (arithmetic on fixture values)</h4>
-        <table class="tbl"><tbody>
-          ${check('Qcond − Qevap − refrigerant work', work)}
-          ${check('Σ branch heat − system total', branchResid)}
-          ${check('Σ electrical parts − total input', elec)}
-        </tbody></table>
-        <h4>Not established</h4>
-        <ul class="plain"><li>Heat-exchanger UA and coil surface: —</li><li>EEV opening and manufacturer control: —</li><li>Calibration against measurements: unknown</li></ul>
-        ${rd.notes.map((n) => `<p class="muted">${escapeHtml(n)}</p>`).join('')}
-      </div></div>`;
-  }
-
-  function liveDiagnostics(s: AppState, rd: Current): string {
-    const st = rd.live!;
+/** Only measurements without a permanent diagram counterpart, inside outdoor settings. */
+export function createModelDiagnostics(): { root: HTMLDetailsElement; sync(s: AppState): void } {
+  const body = html('div', { class: 'fold-body' });
+  const root = html('details', { class: 'fold model-diagnostics' }, html('summary', {}, 'Model diagnostics'), body);
+  root.addEventListener('toggle', () => { if (root.open) sync(store.state); });
+  function sync(s: AppState): void {
+    if (!root.open) return;
+    const rd = currentReadings(s);
+    const st = rd.live;
     const e = rd.engine;
-    const warnings = st.warnings.map((w) => `<li class="bad-t">${escapeHtml(w)}</li>`).join('');
-    const notEstablished = `<h4>Not established</h4><ul class="plain"><li>Calibration against measurements: unknown</li><li>${escapeHtml(fieldLinesNote(s))}</li><li>EEV opening and manufacturer control: —</li></ul>`;
-    if (!rd.usable || !e) {
-      return `<div class="cols"><div><h4>Engine · ${escapeHtml(st.label)}</h4><p class="bad-t">${escapeHtml(st.detail ?? 'Unavailable.')}</p>
-        <p class="muted">Readings are withheld rather than shown stale. Idle and unknown quantities are unavailable, not zero.</p>
-        ${warnings ? `<ul class="plain">${warnings}</ul>` : ''}</div><div>${notEstablished}</div></div>`;
+    const rows: Array<[string, string]> = [];
+    if (e) {
+      const en = e.energy;
+      const kwh = (j: number): string => `${fmt(j / 3.6e6, 4)} kWh`;
+      rows.push(['Electricity consumed', kwh(en.electricityJ)], ['Signed room heat', kwh(en.signedRoomHeatJ)],
+        ['Outdoor exchange', kwh(en.outdoorExchangeJ)], ['Drainage enthalpy', kwh(en.drainageJ)],
+        ['Boundary energy', kwh(en.boundaryEnergyJ)], ['Stored energy change', kwh(en.storedEnergyChangeJ)],
+        ['Whole-system energy residual', `${fmt(en.residualJ, 3)} J`], ['Water residual', `${fmt(en.waterResidualKg, 8)} kg`],
+        ['Shared-pressure closure', `${fmt(e.diagnostics.algebraicResidualW, 3)} W`],
+        ['Thermostat speed demand', `${fmt(e.diagnostics.demandSpeedRps, 1)} rps`],
+        ['Controller speed request', `${fmt(e.diagnostics.speedRps, 1)} rps`]);
+      if (e.cycle) rows.push(['Cycle closure residual', `${fmt(e.cycle.closureResidualW, 3)} W`],
+        ['Mass flow residual', `${fmt(e.cycle.massResidualKgs, 8)} kg/s`], ['Solver iterations', String(e.cycle.iterations)]);
+      if (e.inventory) rows.push(['Compressor admission latch', e.inventory.compressorAdmitted ? 'Armed' : 'Liquid carryover protection']);
     }
-    const en = e.energy;
-    const roomRows = e.rooms.slice(0, s.cfg.unitCount).map((r, i) => `<tr><td>${escapeHtml(s.cfg.rooms[i]?.name ?? r.id)}</td>
-      <td class="n">${fmt(r.temperatureC, 2)}</td><td class="n">${fmt(r.relativeHumidity * 100, 1)}</td><td class="n">${fmt(r.humidityRatio * 1000, 2)}</td>
-      <td class="n">${fmt(r.metalTemperatureC, 1)}</td><td class="n">${fmt(r.fabricTemperatureC, 1)}</td><td class="n">${fmt(r.massFlowKgs, 3)}</td><td class="n">${fmt(r.condensateKgs * 3.6e6, 1)}</td></tr>`).join('');
-    const acct: Array<[string, string]> = [
-      ['Electricity in', `${kwh(en.electricityJ)} kWh`], ['Signed room heat', `${kwh(en.signedRoomHeatJ)} kWh`],
-      ['Outdoor exchange', `${kwh(en.outdoorExchangeJ)} kWh`], ['Drainage enthalpy', `${kwh(en.drainageJ)} kWh`],
-      ['Boundary energy', `${kwh(en.boundaryEnergyJ)} kWh`], ['Stored energy change', `${kwh(en.storedEnergyChangeJ)} kWh`],
-      ['Whole-system residual', `${fmt(en.residualJ, 3)} J`], ['Water residual', `${fmt(en.waterResidualKg, 8)} kg`],
-      ['Shared-pressure closure', `${fmt(e.diagnostics.algebraicResidualW, 3)} W`],
-      ...(e.cycle ? [['Cycle closure residual', `${fmt(e.cycle.closureResidualW, 3)} W`], ['Refrigerant mass residual', `${fmt(e.cycle.massResidualKgs, 8)} kg/s`], ['Solver iterations', String(e.cycle.iterations)]] as Array<[string, string]> : []),
-      ['Compressor speed', `${fmt(e.diagnostics.speedRps, 1)} rps`], ['Simulated time', `${fmt(e.simulatedSeconds, 1)} s`],
-      ['Last step CPU', st.calculationMs === null ? '—' : `${fmt(st.calculationMs, 2)} ms`],
-    ];
-    return `<div class="cols">
-      <div><h4>Ledger · Live engine · ${escapeHtml(st.label)}</h4><table class="tbl"><tbody>${ledgerRows(rd.ledger)}</tbody></table>
-        <h4>Rooms (engine state)</h4>
-        <table class="tbl"><thead><tr><th>Room</th><th>T °C</th><th>RH %</th><th>w g/kg</th><th>Metal °C</th><th>Fabric °C</th><th>Refrigerant kg/s</th><th>Cond. g/h</th></tr></thead><tbody>${roomRows}</tbody></table></div>
-      <div><h4>Accounting and closure (reported by the engine; no pass/fail threshold applied here)</h4>
-        <table class="tbl"><tbody>${acct.map(([k, v]) => `<tr><td>${k}</td><td class="n">${v}</td></tr>`).join('')}</tbody></table>
-        ${warnings ? `<h4>Warnings</h4><ul class="plain">${warnings}</ul>` : ''}
-        ${notEstablished}
-        ${rd.notes.map((n) => `<p class="muted">${escapeHtml(n)}</p>`).join('')}
-      </div></div>`;
+    if (st?.calculationMs !== null && st?.calculationMs !== undefined) rows.push(['Last step CPU', `${fmt(st.calculationMs, 2)} ms`]);
+    setHtml(body, `<p class="hint">${escapeHtml(s.ui.experience === 'live' ? LIVE_BASIS : PREVIEW_BANNER)}</p>
+      <p class="hint">${escapeHtml(fieldLinesNote(s))}</p>
+      ${st?.detail ? `<p class="status">${escapeHtml(st.detail)}</p>` : ''}
+      ${st?.warnings.map(w => `<p class="status">${escapeHtml(w)}</p>`).join('') ?? ''}
+      ${rows.length ? `<table class="tbl"><tbody>${rows.map(([k,v]) => `<tr><td>${escapeHtml(k)}</td><td class="n">${escapeHtml(v)}</td></tr>`).join('')}</tbody></table>` : ''}
+      <p class="hint">Accounting values are reported by the engine; no pass/fail threshold is applied here. Generic coil conductances, air flows, compressor displacement and control laws are assumptions. Calibration against installed equipment is unknown.</p>`);
   }
-
-  function examplesList(s: AppState): string {
-    const cur = s.ui.experience === 'examples' ? fixtureFor(s.cfg.mode, s.cfg.example).id : null;
-    return `<div class="fix-grid">${(Object.values(FIXTURES) as Fixture[]).map((f) => `
-      <button type="button" class="fix${f.id === cur ? ' on' : ''}" data-fixture="${f.id}" aria-pressed="${f.id === cur}">
-        <b>${escapeHtml(f.title)}</b><span>${escapeHtml(f.summary)}</span>
-        <em>${f.conditions.outdoorC} °C / ${f.conditions.outdoorRh} % RH outdoor · rooms ${f.conditions.roomC} °C</em>
-      </button>`).join('')}</div>
-      <p class="muted">Selecting an example switches to the Examples experience and loads its conditions into the configuration. Examples never interpolate: this is not a solver.</p>`;
-  }
-
-  function provenance(): string {
-    return `<table class="tbl prov"><thead><tr><th>Item</th><th>Value</th><th>Status</th></tr></thead><tbody>${PROVENANCE.map(([a, b, c]) => `<tr><td>${escapeHtml(a)}</td><td>${escapeHtml(b)}</td><td>${escapeHtml(c)}</td></tr>`).join('')}</tbody></table>
-      <p class="muted">Sources: owner article “Sizing of my heat pump (Daikin 3MXM52)”; Daikin Central Europe 2019–20 split catalogue; Daikin 3MXM-N installer reference guide (2019, family-level). Details in research/owner-installation.md.</p>`;
-  }
-
-  return {
-    root,
-    sync(s: AppState): void {
-      const open = s.ui.drawerOpen;
-      const live = s.ui.experience === 'live';
-      root.classList.toggle('open', open);
-      toggle.setAttribute('aria-expanded', String(open));
-      tabs.forEach((t, i) => {
-        tabBtns[i]?.setAttribute('aria-selected', String(s.ui.drawerTab === t.id));
-        tabBtns[i]?.classList.toggle('on', s.ui.drawerTab === t.id);
-      });
-      bodyEl.hidden = !open;
-      // The tables are rebuilt only while the Readings popover that hosts them is open.
-      if (!open || root.closest('.ribbon')?.hasAttribute('hidden')) return;
-      let markup: string;
-      if (s.ui.drawerTab === 'diagnostics') {
-        const rd = currentReadings(s);
-        markup = live ? liveDiagnostics(s, rd) : fixtureDiagnostics(s, rd);
-      } else markup = s.ui.drawerTab === 'fixtures' ? examplesList(s) : provenance();
-      setHtml(bodyEl, markup);
-    },
-  };
+  return { root, sync };
 }

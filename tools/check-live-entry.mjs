@@ -30,9 +30,11 @@ try{
     return [...document.querySelectorAll('select')].some(e=>e.value==='live'&&[...e.options].some(o=>o.value==='examples'));
   })()`),true);
   await page.waitFor(`document.querySelector('.opstate')?.dataset.kind==='running'&&document.querySelector('.time')?.textContent!=='00:00.0'`,60000);
-  await activateControl(page,'Readings');
-  assert.match(await page.evaluate(`document.querySelector('.ribbon').innerText`),/Idealized field lines/);
-  await activateControl(page,'Readings');
+  assert.equal(await page.evaluate(`document.querySelector('.hd-readings,.ribbon,.drawer')`),null);
+  await activateControl(page,'Outdoor unit settings');
+  await page.evaluate(`document.querySelector('.model-diagnostics').open=true`);
+  await page.waitFor(`document.querySelector('.model-diagnostics').innerText.includes('Idealized field lines')`);
+  await activateControl(page,'Close');
   assert.equal(await page.evaluate(`document.querySelector('[data-probe="compressor-discharge"]').dataset.source`),'live');
   assert.ok(Number.isFinite(Number(await page.evaluate(`document.querySelector('[data-probe="compressor-discharge"]').dataset.exact`))));
   assert.equal(await page.evaluate(`document.querySelectorAll('.indoor-probes .probe:not(.na)').length`),6);

@@ -40,12 +40,12 @@ export function readingsFor(s: AppState, source: Experience): Readings {
       condOutC: cycle.condenserOutlet.temperatureC, expOutC: cycle.expansionOutlet.temperatureC,
       expQuality: cycle.expansionOutlet.qualityMass, hSuctionKjKg: cycle.suction.hJkg / 1000,
       hDischargeKjKg: cycle.discharge.hJkg / 1000, hCondOutKjKg: cycle.condenserOutlet.hJkg / 1000 } : null,
-    mDotKgS: cycle?.totalMassFlowKgs ?? null, qCondKw: cycle ? cycle.condenserHeatW / 1000 : null,
+    mDotKgS: output?.inventory?.compressorMassFlowKgs ?? cycle?.totalMassFlowKgs ?? null, qCondKw: cycle ? cycle.condenserHeatW / 1000 : null,
     qEvapKw: cycle ? cycle.evaporatorHeatW / 1000 : null, pRefKw: cycle ? cycle.compressorWorkW / 1000 : null,
     driveLossKw: electrical ? electrical.driveLossW / 1000 : null, pElecKw: electrical ? electrical.totalW / 1000 : 0,
     roomKwTotal: signed === undefined ? null : (mode === 'cooling' ? -signed : signed) / 1000,
     roomKwLabel: output?.state === 'defrost' ? 'Signed room heat (defrost)' : mode === 'heating' ? 'Net room heating' : 'Net room cooling',
-    cop, copLabel: output?.state === 'defrost' ? 'COP — (defrost)' : mode === 'heating' ? 'Heating COP' : 'Cooling COP',
+    cop, copLabel: output?.diagnostics.envelopeProtection&&output.diagnostics.demandSpeedRps>0 || output?.inventory && !output.inventory.compressorAdmitted && output.diagnostics.demandSpeedRps > 0 ? 'COP — (protection hold)' : output?.inventory?.lowLiftTransfer ? 'COP — (low-lift transfer)' : output?.state === 'defrost' ? 'COP — (defrost)' : mode === 'heating' ? 'Heating COP' : 'Cooling COP',
     branchKw: output ? rooms.map(r => (mode === 'cooling' ? -r.signedRoomHeatW : r.signedRoomHeatW) / 1000) : null,
     branchOutC: output ? rooms.map(r => r.airOutletC) : null,
     branchFanKw: rooms.map(r => r.fanPowerW / 1000), outdoorFanKw: (electrical?.outdoorFanW ?? 0) / 1000,
@@ -63,7 +63,13 @@ export function readingsFor(s: AppState, source: Experience): Readings {
       { label: 'Outdoor metal temperature', value: output.outdoor.metalTemperatureC, unit: '°C', digits: 2 },
       { label: 'Ice deposition', value: output.outdoor.depositionKgs * 3600, unit: 'kg/h', digits: 3 },
       { label: 'Liquid drainage', value: output.outdoor.drainageKgs * 3600, unit: 'kg/h', digits: 3 },
-      { label: 'Shared-pressure closure residual', value: output.diagnostics.algebraicResidualW, unit: 'W', digits: 3 },
+      ...(output.inventory ? [
+        { label: 'Refrigerant remaining', value: output.inventory.massKg, unit: 'kg', digits: 4 },
+        { label: 'Leaked refrigerant', value: output.inventory.leakedMassKg * 1000, unit: 'g', digits: 4 },
+        { label: 'Refrigerant mass residual', value: output.inventory.massResidualKg, unit: 'kg', digits: 10 },
+        { label: 'Refrigerant energy residual', value: output.inventory.energyResidualJ, unit: 'J', digits: 4 },
+      ] : []),
+      { label: output.inventory ? 'Inventory balance residual' : 'Shared-pressure closure residual', value: output.diagnostics.algebraicResidualW, unit: 'W', digits: 3 },
     ] : [],
     notes: [fault ?? 'Generic coil, compressor, fabric and controller parameters are assumptions; model references identify casings only.', ...warnings],
   };
@@ -80,6 +86,8 @@ export function readingFlowMode(readings: Readings): FlowMode { return flowMode(
 export function segmentFor(id: string, readings: Readings): SegState {
   const fm = readingFlowMode(readings);
   const result = segState(id, fm, readings.cycle, readings.mode);
+  const actual = inventorySegment(id,readings);
+  if (actual) return actual;
   const cycle = readings.engine?.cycle;
   if (!cycle || !id.includes(':')) return result;
   const i = Number(id.split(':')[1]);
@@ -93,3 +101,42 @@ export function segmentFor(id: string, readings: Readings): SegState {
   return state ? { ...result, phase: state.phase === 'two-phase' ? 'two' : state.phase, tempC: state.temperatureC } : result;
 }
 
+
+/** Stored physical refrigerant remains visible at rest. Mid-cell arrows are withheld without an exposed face flow. */
+function inventorySegment(id: string, readings: Readings): SegState | null {
+  const inventory = readings.engine?.inventory;
+  if (!inventory) return null;
+  const cells = inventory.cells, kind = segKind(id), index = Number(id.split(':')[1]);
+  const room = inventory.geometry.rooms[index], port = room ? inventory.coilPorts[room.id] : undefined;
+  const field = room ? inventory.fieldPorts[room.id] : undefined;
+  const cell = (key: string) => cells.find(c => c.id === key)?.state;
+  const dir = (flow: number): -1 | 0 | 1 => Math.abs(flow) < 1e-10 ? 0 : flow > 0 ? 1 : -1;
+  let state: RefrigerantState | undefined | null, flow = 0;
+  if (room && port) {
+    if (kind==='gasField') { state=field?.gasLine; }
+    if (kind==='gasStub') { state=field?.gasHeader ?? field?.gasLine; flow=field?.gasHeaderMassFlowKgs ?? 0; }
+    if (kind==='liqField') { state=field?.smallLine; }
+    if (kind==='fieldStub') { state=field?.smallLine; flow=-(field?.valveMassFlowKgs ?? 0); }
+    if (kind==='inG') { state=port.gasCellState; flow=port.gasFaceMassFlowKgs; }
+    if (kind==='inL') { state=port.smallCellState; flow=-(field?.valveMassFlowKgs ?? 0); }
+    if (kind==='inM') state=cell(`${room.id}:coil:1`);
+    if (kind==='hdrStub') {state=inventory.coilPorts.outdoor.smallCellState;flow=-(field?.valveMassFlowKgs ?? 0);}
+  } else {
+    const outside=inventory.coilPorts.outdoor, heating=inventory.orientation==='heating';
+    if (['coilG','revO'].includes(kind)) { state=outside.gasCellState;flow=outside.gasFaceMassFlowKgs; }
+    if (kind==='coilM') state=cell('outdoor:1');
+    if (kind==='coilL') {state=outside.smallCellState;flow=-outside.smallFaceMassFlowKgs;}
+    if (kind==='liqHdr') {state=outside.smallCellState;flow=-outside.smallFaceMassFlowKgs;}
+    if (kind==='accOut') {state=inventory.compressorSuction ?? cell('accumulator');flow=inventory.compressorMassFlowKgs;}
+    if (kind==='disc') {state=inventory.compressorDischarge;flow=inventory.compressorMassFlowKgs;}
+    if (['gasMan','revI'].includes(kind)) state=inventory.headers.indoorGas ?? cell(`${inventory.geometry.rooms[0].id}:gas`);
+    if (kind==='sAcc') state=cell('accumulator');
+    if (['vDI','vOS','vDO','vIS'].includes(kind)) {
+      const connected=heating?['vDI','vOS']:['vDO','vIS'];
+      if(!connected.includes(kind))return {phase:'off',dir:0,tempC:null};
+      state=(kind==='vDI'||kind==='vDO') ? inventory.compressorDischarge : inventory.compressorSuction;
+      flow=inventory.compressorMassFlowKgs;
+    }
+  }
+  return state ? {phase:state.phase==='two-phase'?'two':state.phase,dir:dir(flow),tempC:state.temperatureC} : {phase:'idle',dir:0,tempC:null};
+}

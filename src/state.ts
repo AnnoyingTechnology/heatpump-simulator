@@ -2,7 +2,7 @@ import type { AppState, Config, Experience, ExampleState, Mode, PipeConfig, Room
 import { DEFAULT_GENERIC_PORT_CAPACITY, OWNER_PORTS, outdoorPortCapacity } from './types';
 import type { Fixture } from './fixtures';
 import { fixtureFor } from './fixtures';
-import { defaultLiveParameters } from './runtime/config';
+import { defaultLiveParameters, CHARGE_MODEL_AVAILABLE } from './runtime/config';
 import { readingsFor, simulation } from './runtime/view';
 import type { Readings } from './runtime/view';
 
@@ -11,11 +11,11 @@ import type { Readings } from './runtime/view';
  * Branch lengths are the owner's historical blog values (7.5 ground / 6.5 first / 14 attic).
  */
 const ROOMS: Omit<RoomConfig, 'cleanlinessOverridePct' | 'enabled'>[] = [
-  { id: 'attic', name: 'Attic', volumeM3: 45, heatLossWPerK: 60, setpointC: 21, airC: 20, indoorClass: 'FTXA25' },
-  { id: 'first', name: 'First floor', volumeM3: 75, heatLossWPerK: 85, setpointC: 21, airC: 20, indoorClass: 'FTXA35' },
-  { id: 'ground', name: 'Ground floor', volumeM3: 50, heatLossWPerK: 70, setpointC: 21, airC: 20, indoorClass: 'FTXA25' },
-  { id: 'zone4', name: 'Lower level 4', volumeM3: 40, heatLossWPerK: 55, setpointC: 21, airC: 20, indoorClass: 'G25' },
-  { id: 'zone5', name: 'Lower level 5', volumeM3: 40, heatLossWPerK: 55, setpointC: 21, airC: 20, indoorClass: 'G25' },
+  { id: 'attic', name: 'Attic', surfaceM2: 18, ceilingHeightM: 2.5, heatLossWPerK: 60, setpointC: 21, airC: 20, indoorClass: 'FTXA25' },
+  { id: 'first', name: 'First floor', surfaceM2: 30, ceilingHeightM: 2.5, heatLossWPerK: 85, setpointC: 21, airC: 20, indoorClass: 'FTXA35' },
+  { id: 'ground', name: 'Ground floor', surfaceM2: 20, ceilingHeightM: 2.5, heatLossWPerK: 70, setpointC: 21, airC: 20, indoorClass: 'FTXA25' },
+  { id: 'zone4', name: 'Lower level 4', surfaceM2: 16, ceilingHeightM: 2.5, heatLossWPerK: 55, setpointC: 21, airC: 20, indoorClass: 'G25' },
+  { id: 'zone5', name: 'Lower level 5', surfaceM2: 16, ceilingHeightM: 2.5, heatLossWPerK: 55, setpointC: 21, airC: 20, indoorClass: 'G25' },
 ];
 
 const PIPES: PipeConfig[] = [
@@ -50,8 +50,6 @@ function defaultUi(): UiState {
     paused: false,
     selected: null,
     tab: 'rooms',
-    drawerOpen: false,
-    drawerTab: 'diagnostics',
     pressure: 'abs',
     zoom: 'overview',
     showTaps: true,
@@ -109,17 +107,31 @@ class Store {
 
   /** Mutates in place via `fn`, then notifies. Subscribers must diff and never rebuild focused inputs. */
   update(fn: (s: AppState) => void): void {
+    const oldModel = this.state.cfg.live.circuitModel;
+    const oldTopology = this.state.cfg.rooms.slice(0,this.state.cfg.unitCount).map(room => room.id).join('|');
     fn(this.state);
+    const newTopology = this.state.cfg.rooms.slice(0,this.state.cfg.unitCount).map(room => room.id).join('|');
+    if (oldModel !== this.state.cfg.live.circuitModel || (this.state.cfg.live.circuitModel === 'inventory' && oldTopology !== newTopology)) {
+      this.resetEpoch += 1;
+      this.state.ui.notice = 'Started a new refrigerant circuit from the current initialization inputs.';
+      if (!this.state.cfg.rooms.slice(0,this.state.cfg.unitCount).some(room => ['gas','small','coil:1'].some(suffix => `${room.id}:${suffix}` === this.state.cfg.live.leakCellId))) {
+        if (this.state.cfg.live.leakCellId !== 'accumulator' && !this.state.cfg.live.leakCellId.startsWith('outdoor:')) this.state.cfg.live.leakCellId = 'outdoor:0';
+      }
+    }
     this.emit();
   }
 
   emit(): void {
+    const zoom = this.state.ui.zoom;
+    if (zoom.startsWith('room:') && !activeRooms(this.state.cfg).some(room => `room:${room.id}` === zoom)) {
+      this.state.ui.zoom = 'overview';
+    }
     for (const l of this.listeners) l(this.state);
   }
 
   reset(): void {
-    const { speed, drawerOpen, pressure, experience } = this.state.ui;
-    this.state = { cfg: defaultConfig(), ui: { ...defaultUi(), speed, drawerOpen, pressure, experience } };
+    const { speed, pressure, experience } = this.state.ui;
+    this.state = { cfg: defaultConfig(), ui: { ...defaultUi(), speed, pressure, experience } };
     Object.assign(this.clock, { previewTimeS: 0, iceKg: 0, retainedWaterKg: 0, seeded: false, melting: false });
     this.resetEpoch += 1;
     this.emit();
@@ -132,6 +144,14 @@ class Store {
     this.state.ui.notice = null;
     this.resetEpoch += 1;
     this.emit();
+  }
+
+  setCircuitModel(model: 'reference' | 'inventory'): void {
+    if (model === 'inventory' && !CHARGE_MODEL_AVAILABLE) return;
+    this.update(s => {
+      s.cfg.live.circuitModel = model;
+      if (model === 'inventory') s.cfg.live.fieldLines = 'idealized';
+    });
   }
 
   /** Live Heating/Cooling edits the mode only: no fixture conditions, outdoor air or rooms are touched. */
@@ -205,7 +225,7 @@ class Store {
     while (cfg.rooms.length < count) {
       let ordinal = cfg.rooms.length + 1;
       while (cfg.rooms.some(r => r.id === `room-${ordinal}`)) ordinal += 1;
-      cfg.rooms.push({ id: `room-${ordinal}`, name: `Room ${ordinal}`, enabled: true, volumeM3: 50,
+      cfg.rooms.push({ id: `room-${ordinal}`, name: `Room ${ordinal}`, enabled: true, surfaceM2: 20, ceilingHeightM: 2.5,
         heatLossWPerK: 60, setpointC: 21, airC: 20, indoorClass: 'G25', cleanlinessOverridePct: null });
       cfg.pipes.push({ lengthM: 10, liquidOdMm: 6.35, gasOdMm: 9.52, lengthSource: 'default' });
     }
@@ -326,7 +346,7 @@ export interface Current extends Readings {
 }
 
 /**
- * The single reading source for ribbon, scene, inspector and drawer. Examples pass through unchanged. Live readings are
+ * The single reading source for the header, scene and equipment settings. Examples pass through unchanged. Live readings are
  * withheld for faults, errors and incompatible pending changes. Compatible target/weather edits keep the completed
  * physical snapshot explicitly labelled until the next physical step solves the new inputs.
  */

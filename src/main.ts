@@ -1,4 +1,4 @@
-import { createDrawer, createHeader, createOverlay, createRibbon } from './chrome';
+import { createHeader, createOverlay } from './chrome';
 import { html } from './dom';
 import { fixtureFor } from './fixtures';
 import { createInspector } from './inspector';
@@ -8,7 +8,7 @@ import type { SceneHooks } from './scene';
 import { createLinesSettings, createOutdoorSettings, createOutdoorUnitCard, createRoomSettings } from './settings';
 import { advanceLedger, store } from './state';
 import type { Clock } from './state';
-import { engineConfigFromUi } from './runtime/config';
+import { engineConfigFromUi, type InventoryInitialization } from './runtime/config';
 import { simulation } from './runtime/view';
 import type { ZoomPreset } from './types';
 
@@ -24,11 +24,9 @@ const hooks: SceneHooks = {
   toggleRoom: (i, anchor) => { select(`indoor:${i}`); pops.toggle('room', i, () => anchor); },
   toggleLines: (i, anchor) => { select(`pipe:${i}`); pops.toggle('lines', i, () => anchor); },
 };
-const scene = createScene(hooks, unitCard);
-const ribbon = createRibbon();
-const header = createHeader(ribbon);
-const overlay = createOverlay((z) => scene.zoomTo(z));
-const drawer = createDrawer();
+const overlay = createOverlay();
+const scene = createScene(hooks, unitCard, overlay.film);
+const header = createHeader();
 const pops = createPopovers({
   inspector: createInspector(() => openOutdoor()),
   room: createRoomSettings(() => openOutdoor('shared')),
@@ -37,10 +35,8 @@ const pops = createPopovers({
 }, () => store.state, () => { if (store.state.ui.selected !== null) select(null); });
 
 // Scenes with more than five rooms are taller than the stage: the scene scrolls vertically inside its own region, while the header,
-// the notice row, the view presets and the legend stay put. Popovers are positioned against the stage, not the scrolled scene.
-const stage = html('main', { class: 'stage' }, html('div', { class: 'scene-scroll' }, scene.root), overlay.root, pops.root);
-// Diagnostics, examples and provenance are a disclosure inside the Readings popover; there is no permanent footer row.
-ribbon.root.append(drawer.root);
+// the zoom-out control and the legend stay put. Popovers are positioned against the stage, not the scrolled scene.
+const stage = html('main', { class: 'stage' }, html('div', { class: 'scene-scroll' }, scene.root), overlay.root, pops.root, scene.guideRoot);
 app.append(header.root, html('div', { class: 'workbench' }, stage));
 
 const anchorFor = (id: string, el: Element | null): Element | null =>
@@ -57,28 +53,37 @@ function selectFromDiagram(id: string | null, el: Element | null): void {
   else pops.open('inspector', 0, () => anchorFor(id, el));
 }
 
-scene.root.addEventListener('click', (e) => {
-  const target = e.target as Element;
-  if (target.closest('input, button, select, textarea, label, .ou')) return;
+function activateDiagram(target: Element): void {
+  if (target.closest('input, button, select, textarea, label, summary, details, a, .rp-ctl, .ou')) return;
   const el = target.closest<SVGElement>('[data-id]');
+  const zoom = target.closest<SVGElement>('[data-zoom-target]')?.dataset.zoomTarget as ZoomPreset | undefined;
+  if (zoom && store.state.ui.zoom !== zoom) {
+    pops.close();
+    store.update(s => { s.ui.zoom = zoom; s.ui.selected = null; });
+    return;
+  }
+  if (zoom && (!el || el.dataset.id === 'outdoor' || el.dataset.id?.startsWith('indoor:'))) return;
   selectFromDiagram(el?.dataset.id ?? null, el);
-});
+}
+scene.root.addEventListener('click', e => activateDiagram(e.target as Element));
 scene.root.addEventListener('keydown', (e) => {
   const target = e.target as Element;
   if (target.closest('input, button, select, textarea')) return;
   if (e.key === 'Enter' || e.key === ' ') {
-    const el = target.closest<SVGElement>('[data-id]');
-    if (!el) return;
+    if (!target.closest('[data-id], [data-zoom-target]')) return;
     e.preventDefault();
-    selectFromDiagram(el.dataset.id ?? null, el);
+    activateDiagram(target);
   }
 });
 window.addEventListener('keydown', (e) => {
   if (e.key !== 'Escape') return;
-  const t = e.target as HTMLElement | null;
-  if (t && (t.tagName === 'INPUT' || t.tagName === 'SELECT')) return;
   if (pops.isOpen()) { pops.dismiss(true); return; }
-  if (store.state.ui.selected !== null) select(null);
+  const guideClose = scene.guideRoot.hidden ? null : scene.guideRoot.querySelector<HTMLButtonElement>('.hl-x');
+  if (guideClose) { guideClose.click(); return; }
+  const film = scene.root.querySelector<HTMLDetailsElement>('.coil-film[open]');
+  if (film) { film.open = false; return; }
+  if (store.state.ui.zoom !== 'overview') store.update(s => { s.ui.zoom = 'overview'; s.ui.selected = null; });
+  else if (store.state.ui.selected !== null) select(null);
 });
 
 let lastZoom: ZoomPreset = 'overview';
@@ -86,11 +91,9 @@ let lastZoom: ZoomPreset = 'overview';
 function render(): void {
   const s = store.state;
   header.sync(s);
-  ribbon.sync(s);
   scene.sync(s);
   overlay.sync(s);
   pops.sync(s);
-  drawer.sync(s);
   if (s.ui.zoom !== lastZoom) {
     lastZoom = s.ui.zoom;
     scene.zoomTo(lastZoom);
@@ -100,10 +103,13 @@ function render(): void {
 let liveConfigSignature = '';
 let liveResetEpoch = -1;
 let liveStarted = false;
+let activeInitialization: InventoryInitialization | undefined;
 function synchronizeRuntime(): void {
   const s = store.state;
   if (s.ui.experience !== 'live') return;
-  const config = engineConfigFromUi(s.cfg, s.cfg.live);
+  const freshRun = !liveStarted || liveResetEpoch !== store.resetEpoch;
+  const config = engineConfigFromUi(s.cfg, s.cfg.live, freshRun ? undefined : activeInitialization);
+  if (freshRun) activeInitialization = config.inventory ? { initialMassKg: config.inventory.initialMassKg, initialFluidTemperatureC: config.inventory.initialFluidTemperatureC, geometry: structuredClone(config.inventory.geometry) } : undefined;
   const signature = JSON.stringify(config);
   if (!liveStarted || liveResetEpoch !== store.resetEpoch) {
     liveStarted = true;

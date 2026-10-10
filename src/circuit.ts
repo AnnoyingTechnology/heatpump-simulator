@@ -153,7 +153,7 @@ export function airRampCss(): string { return rampCss(AIR_STOPS); }
 // ---------- refrigerant probes: which engine or fixture state each materialised sensor reads ----------
 
 /** Refrigerant side of a coil end: whether the fluid enters or leaves there, and its exact temperature (null = unavailable). */
-export interface CoilEnd { role: 'IN' | 'OUT'; tempC: number | null }
+export interface CoilEnd { role: 'IN' | 'OUT' | 'GAS' | 'SM'; tempC: number | null }
 
 export interface CoilProbe {
   /** Gas-pipe end and liquid-pipe end of the coil, in physical position. */
@@ -171,6 +171,16 @@ function coilProbe(gas: CoilEnd, liquid: CoilEnd, heatW: number | null): CoilPro
   const inT = gas.role === 'IN' ? gas.tempC : liquid.tempC;
   const outT = gas.role === 'OUT' ? gas.tempC : liquid.tempC;
   return { gas, liquid, deltaK: inT === null || outT === null ? null : outT - inT, heatW };
+}
+
+/** Physical charge-aware sensors: terminal bulk state persists without circulation.
+ * Accumulating coils may have both faces entering/leaving, so a single ΔT can be undefined. */
+export function inventoryCoilProbe(port: import('./engine/charge').ChargeCandidate['coilPorts'][string], heatW: number | null): CoilProbe {
+  const role = (flow: number, physical: 'GAS' | 'SM'): CoilEnd['role'] => Math.abs(flow) < 1e-10 ? physical : flow > 0 ? 'IN' : 'OUT';
+  const gas: CoilEnd = { role: role(port.gasFaceMassFlowKgs,'GAS'), tempC: port.gas.temperatureC };
+  const liquid: CoilEnd = { role: role(port.smallFaceMassFlowKgs,'SM'), tempC: port.small.temperatureC };
+  const opposite = (gas.role === 'IN' && liquid.role === 'OUT') || (gas.role === 'OUT' && liquid.role === 'IN');
+  return { ...coilProbe(gas,liquid,heatW), deltaK: opposite ? (gas.role === 'OUT' ? gas.tempC! - liquid.tempC! : liquid.tempC! - gas.tempC!) : null };
 }
 
 /**

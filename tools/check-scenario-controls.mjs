@@ -67,7 +67,7 @@ try{
     assert.deepEqual(await run(()=>qa.store.state.cfg.pipes[5]),before.pipes[1]);
   });
   await check('restart applies edited initial temperature while retaining weather and room parameters',async()=>{
-    await run(()=>qa.store.update(s=>{s.cfg.rooms[0].airC=17;s.cfg.rooms[0].volumeM3=67;s.cfg.outdoorC=5}));
+    await run(()=>qa.store.update(s=>{s.cfg.rooms[0].airC=17;s.cfg.rooms[0].surfaceM2=20;s.cfg.rooms[0].ceilingHeightM=3.3;s.cfg.outdoorC=5}));
     await settled();const cfg=await run(()=>qa.store.state.cfg);
     await run(()=>qa.store.restartSimulation());await settled();
     assert.deepEqual(await run(()=>qa.store.state.cfg),cfg);

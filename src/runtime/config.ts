@@ -1,10 +1,18 @@
 import { defaultEngineConfig, defaultRoomConfig } from '../engine/defaults.ts';
 import type { EngineConfig } from '../engine/types.ts';
 import type { Config } from '../types.ts';
-import { outdoorPortCapacity } from '../types.ts';
+import { outdoorPortCapacity, roomVolumeM3 } from '../types.ts';
 
 export interface LiveParameters {
   fieldLines: 'idealized' | 'physical';
+  circuitModel: 'reference' | 'inventory';
+  initialChargeKg: number;
+  initialFluidTemperatureC: number | null;
+  outdoorCoilVolumeL: number;
+  indoorCoilVolumeL: number;
+  accumulatorVolumeL: number;
+  leakCellId: string;
+  leakGramsPerDay: number;
   outdoorAirConductanceWK: number;
   outdoorRefrigerantConductanceWK: number;
   outdoorAirMassFlowKgs: number;
@@ -22,6 +30,8 @@ export interface LiveParameters {
 
 /** Switch only after the transport implementation and independent acceptance checks pass. */
 export const PHYSICAL_FIELD_LINES_AVAILABLE = true;
+/** Promoted only after coupled transient acceptance. */
+export const CHARGE_MODEL_AVAILABLE = false;
 
 /** Family minimum, not a measurement of installed copper. 15.88 mm tubing has a 1 mm minimum in the cited guide. */
 export function pipeWallMmForOd(odMm: number, configuredMm: number): number {
@@ -30,7 +40,10 @@ export function pipeWallMmForOd(odMm: number, configuredMm: number): number {
 
 export function defaultLiveParameters(): LiveParameters {
   const c = defaultEngineConfig(1), r = c.rooms[0];
-  return { fieldLines: 'idealized', outdoorAirConductanceWK: c.outdoor.airConductanceWK,
+  return { fieldLines: 'idealized', circuitModel: 'reference', initialChargeKg: 1.8, initialFluidTemperatureC: null,
+    outdoorCoilVolumeL: Math.PI * .006 ** 2 * 40 / 4 * 1000,
+    indoorCoilVolumeL: Math.PI * .006 ** 2 * 10 / 4 * 1000, accumulatorVolumeL: .6,
+    leakCellId: 'outdoor:0', leakGramsPerDay: 0, outdoorAirConductanceWK: c.outdoor.airConductanceWK,
     outdoorRefrigerantConductanceWK: c.outdoor.refrigerantConductanceWK,
     outdoorAirMassFlowKgs: c.outdoor.airMassFlowKgs, depositionAreaM2: c.outdoor.depositionAreaM2,
     indoorAirConductanceWK: r.airConductanceWK, indoorRefrigerantConductanceWK: r.refrigerantConductanceWK,
@@ -40,7 +53,8 @@ export function defaultLiveParameters(): LiveParameters {
 }
 
 /** Manufacturer references select casings only. Every performance parameter below is a generic assumption. */
-export function engineConfigFromUi(cfg: Config, live: LiveParameters): EngineConfig {
+export type InventoryInitialization = Omit<NonNullable<EngineConfig['inventory']>, 'leak'>;
+export function engineConfigFromUi(cfg: Config, live: LiveParameters, activeInitialization?: InventoryInitialization): EngineConfig {
   const c = defaultEngineConfig(cfg.unitCount);
   c.indoorPortCapacity = outdoorPortCapacity(cfg);
   c.mode = cfg.mode;
@@ -56,7 +70,7 @@ export function engineConfigFromUi(cfg: Config, live: LiveParameters): EngineCon
   c.outdoor.cleanFraction = (live.outdoorCleanlinessOverridePct ?? live.cleanlinessPct) / 100;
   c.rooms = cfg.rooms.slice(0, cfg.unitCount).map((r, i) => {
     const room = defaultRoomConfig(i), p = cfg.pipes[i];
-    return { ...room, id: r.id, enabled: r.enabled, volumeM3: r.volumeM3, initialTemperatureC: r.airC,
+    return { ...room, id: r.id, enabled: r.enabled, volumeM3: roomVolumeM3(r), initialTemperatureC: r.airC,
       setpointC: r.setpointC, envelopeWK: r.heatLossWPerK,
       airConductanceWK: live.indoorAirConductanceWK, refrigerantConductanceWK: live.indoorRefrigerantConductanceWK,
       airMassFlowKgs: live.indoorAirMassFlowKgs,
@@ -68,5 +82,25 @@ export function engineConfigFromUi(cfg: Config, live: LiveParameters): EngineCon
         liquidInsideDiameterM: (p.liquidOdMm - 2 * pipeWallMmForOd(p.liquidOdMm, live.pipeWallThicknessMm)) / 1000,
         insulationConductanceWmK: live.pipeInsulationConductanceWmK } };
   });
+  if (live.circuitModel === 'inventory') {
+    c.inventory = { ...(activeInitialization ?? {
+      initialMassKg: live.initialChargeKg, initialFluidTemperatureC: live.initialFluidTemperatureC ?? cfg.outdoorC,
+      geometry: {
+        rooms: c.rooms.map((room,i) => ({ id: room.id, coilVolumeM3: live.indoorCoilVolumeL / 1000,
+          refrigerantConductanceWK: room.refrigerantConductanceWK, lineLengthM: cfg.pipes[i].lengthM,
+          gasInsideDiameterM: room.pipe.gasInsideDiameterM, smallInsideDiameterM: room.pipe.liquidInsideDiameterM,
+          maximumValveAreaM2: 5e-7 })),
+        outdoorCoilVolumeM3: live.outdoorCoilVolumeL / 1000, outdoorConductanceWK: c.outdoor.refrigerantConductanceWK,
+        accumulatorVolumeM3: live.accumulatorVolumeL / 1000, accumulatorInletAreaM2: 1e-4,
+        displacementM3rev: c.compressor.displacementM3rev, volumetricEfficiency: c.compressor.volumetricEfficiency,
+        isentropicEfficiency: c.compressor.isentropicEfficiency, dischargeCoefficient: .65,
+        superheatTargetK: c.compressor.superheatK, maximumDischargeC: c.compressor.maxDischargeC,
+        maximumPressureRatio: c.compressor.maxPressureRatio,
+      },
+    }), leak: { physicalCellId: live.leakCellId, rateKgs: live.leakGramsPerDay / 1000 / 86400 } };
+    // This inventory formulation stores real field volume but currently idealizes its transport.
+    // Reject the unsupported combination explicitly rather than ignore physical transport.
+    if (live.fieldLines === 'physical') throw new Error('Physical field transport is available in the quasi-steady reference model; the conserved-inventory circuit currently requires idealized transport.');
+  }
   return c;
 }
