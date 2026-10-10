@@ -1,7 +1,7 @@
-# Experimental guarded exact HEOS backend
+# Guarded exact HEOS backend
 
-This artifact is experimental. The production/default loader is unchanged. It
-implements CoolProp 8.0.0 HEOS R32 and humid air without approximation tables,
+This artifact is selected by the production Reference worker after property,
+engine, browser and independent-review acceptance. It implements CoolProp 8.0.0 HEOS R32 and humid air without approximation tables,
 fast-math, changes to EOS coefficients, or charge acceptance changes. The owner
 startup phase sensitivity proposal remains unexecuted; full frost melt/reversal
 and useful heating acceptance remain open.
@@ -87,4 +87,13 @@ preflight plus reusable state, and 1.2 ms for guarded state (~12× faster than
 the preflight path). Cold guarded module initialization was 90 ms in that run.
 These are raw property timings, not a claim of 50× simulation pacing. Independent
 Properties/Reference regressions, same-browser active/idle pacing and scientific
-review are separate integration gates owned by the root agent.
+review are separate integration gates owned by the root agent. They passed:
+seven property-service checks, 25 Reference regressions, seven focused coil/nozzle
+checks and five real-worker browser checks. Active owner-preset heating achieved
+approximately 13× when requesting 50×, with unchanged quarter-second steps;
+idle reached approximately 49×. See `reviews/guarded-backend-science-review.md`
+and `reviews/guarded-simulation-speed-browser-results.json`.
+
+Generated provenance is a build receipt. Its candidate status records the build
+stage; integration and model-release acceptance are recorded here and in
+`PROGRESS.md`. Rebuilding an artifact requires repeating its acceptance checks.

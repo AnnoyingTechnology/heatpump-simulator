@@ -1,0 +1,270 @@
+{
+  "checkedAt": "2026-10-10T19:11:32.885Z",
+  "backend": "CoolProp 8.0.0 exact HEOS, guarded project-owned C ABI",
+  "artifactCommit": "6bbf2c7",
+  "sourceHashes": {
+    "src/engine/properties.ts": "7f4bb2f372a77f30e76844dd7ef9d7afa6d25f72079a09ce66586cdc134404d1",
+    "src/engine/types.ts": "9987c712a34e783aca0d0de9e2ed38883bb6bdf2dec5c579bc6352abbd09555c",
+    "src/engine/cycle.ts": "c7bc98e50ab36aa30b467a5788ac5db21dded35ea93a81af82e32911b900bb8f",
+    "src/engine/engine.ts": "79734fc70a1c7df6abe604203f16824361baa4c734cbb6f89ec726aa9a09e30a",
+    "src/engine/charge.ts": "0c9dd8050fab6b3bd16bcb881f59fc00debc2f85c774c2a1c2216d45d289e168",
+    "src/runtime/controller.ts": "21644811b4cf98fcd9571cbaadfb5c319cdfc00241b0ee3f8b3d06bdba672f58",
+    "public/vendor/coolprop-safe/adapter.js": "06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34",
+    "public/vendor/coolprop-safe/coolprop.js": "6fa2e627803e2453da12cb9fce160ca3326851cd179444edc5ab698e21524d6c",
+    "public/vendor/coolprop-safe/coolprop.wasm": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c"
+  },
+  "suites": [
+    {
+      "name": "Reference",
+      "tests": 25,
+      "failed": 0,
+      "durationMs": 84707.337004,
+      "cases": [
+        "real R32 EOS shared-pressure cycle: one to five branches and both directions",
+        "heat exchanger pinches fail explicitly",
+        "phase-aware integral latent zone agrees with analytical UA requirement",
+        "real field lines close momentum/enthalpy in heating and cooling, including two-phase small pipe",
+        "cold reverse-cycle defrost floats subcooling and retains physical heat signs",
+        "heterogeneous idealized cooling conserves mixed-return enthalpy/entropy and valve allocation",
+        "real dynamic 1–5 branches conserve full stored energy/water and heating/cooling signs",
+        "early-trigger automatic defrost melts and drains finite inventories",
+        "film phase map requires latent melt energy; exhausted film evaporates with exact bounded mass",
+        "wet cooling removes water; timestep halving converges thermal/electrical totals",
+        "configuration edits retain room/ice inventories and min-on history; idle air outlets disappear",
+        "mode reversal conserves cold metal then establishes live cooling instead of imposing subcooling",
+        "unmodified three-branch defaults sustain heating through a natural frost/defrost event",
+        "cleanliness changes only air-side transfer/flow; constant fan and weather response remain physical",
+        "defrost timeout retains physical ice and closes the ledger instead of resetting it",
+        "owner-layout cooling accepts newly added warm rooms without resetting old coil/film inventories",
+        "owner-layout natural frost reverses with hot stored indoor metal and conserves melt energy",
+        "unavailable property backend returns a conserved fault snapshot without throwing again",
+        "all Off aborts defrost/reversal without erasing storage; passive time and reenable remain conservative",
+        "Off of the last active room enters idle and respects minimum-off before another room demands",
+        "connection count follows explicit port capacity and invalid declarations reject before property queries",
+        "six idealized branches use real R32 heating/cooling states and conservative dynamics",
+        "removing a sixth room retains remaining inventories/time and exports its declared storage boundary",
+        "distributed pipe forward/inverse closes gravity and heat for liquid, vapor and two-phase states",
+        "diameter changes Darcy friction and unsupported velocity cannot produce fake pipe states"
+      ],
+      "transcriptSha256": "e432f8bc467703164d816f132488af9e1c905762a0943465e23b0458ff5c5fdc"
+    },
+    {
+      "name": "Inventory core",
+      "tests": 17,
+      "failed": 0,
+      "durationMs": 111011.308351,
+      "cases": [
+        "opt-in pressure-drop core advances the saved passive balances without public restore or state mutation",
+        "opt-in pressure-drop core preserves cold start, reversal and transactional budget rollback",
+        "pressure-drop coupled recovery preserves stores and rejected thermal candidates roll back fully",
+        "initial EEV fraction changes only actuator initialization and retains closed-system owner startup balances",
+        "charge circuit starts from exact equal pressure, conservative candidates commit transactionally",
+        "all Off retains physical charge and local enthalpy leak closes open inventory",
+        "geometry/candidate mutation and foreign restore cannot alter validated inventory",
+        "owner-like 3-branch generic charge cold-start and switched topology retain physical cells",
+        "equal-pressure startup is insensitive to one-decade pressure Jacobian changes and timestep-refines",
+        "reversal retains charge, transfers at low lift and returns to positive compression",
+        "coupled high charge passes former single-phase PH Jacobian regression within compressor domain",
+        "finite passage approaches viscous flow at zero lift and preserves the HEM choking plateau",
+        "submerged protection retains exact equilibrium and finite headspace recovers transactionally",
+        "analytic storage derivatives match independent EOS differences in single and two-phase states",
+        "analytic storage Jacobian retains finite-difference physical solutions and event recovery",
+        "bubble and dew storage slopes follow the actual one-sided pressure and enthalpy branch",
+        "numerical work exhaustion rejects the whole fluid transaction without a physical protection claim"
+      ],
+      "transcriptSha256": "6ca98a42212baed34df916530e8a070cb55511e237f6bf4426b265a17c805b9e"
+    },
+    {
+      "name": "Coil and nozzle",
+      "tests": 7,
+      "failed": 0,
+      "durationMs": 7692.406236,
+      "cases": [],
+      "transcriptSha256": "3b682306c2f59df0741d37f288a52b282e9fc4ab6705d0580f8934a3148136a4"
+    }
+  ],
+  "propertyService": {
+    "passed": 7,
+    "failed": 0,
+    "includesSameInputGetterFaultRecovery": true
+  },
+  "rawNode": {
+    "status": "PASS",
+    "environment": "Node",
+    "initMs": 45.165567,
+    "maxRelative": 1.6462711417781456e-9,
+    "maxLegacyStateRelative": 0,
+    "comparisons": 522,
+    "badStates": 2000,
+    "badStateRecoveryMs": 333.69010400000025,
+    "benchmark": [
+      {
+        "name": "referencePropsSI",
+        "updatesPerBatch": 200,
+        "batchesMs": [
+          62.72869400000036,
+          62.24217700000008,
+          62.342317000000094,
+          61.345376000000215,
+          61.37621399999989
+        ],
+        "medianMs": 62.24217700000008
+      },
+      {
+        "name": "referencePreflightState",
+        "updatesPerBatch": 200,
+        "batchesMs": [
+          16.545118999999886,
+          16.214424000000236,
+          16.160753999999997,
+          16.444699000000128,
+          16.260871999999836
+        ],
+        "medianMs": 16.260871999999836
+      },
+      {
+        "name": "safeState",
+        "updatesPerBatch": 200,
+        "batchesMs": [
+          1.9145199999998113,
+          1.3817560000002231,
+          0.9477170000000115,
+          0.9112089999998716,
+          0.960109999999986
+        ],
+        "medianMs": 0.960109999999986
+      }
+    ],
+    "checksum": 820291.6995547183,
+    "totalMs": 3981.29139
+  },
+  "candidateBrowser": {
+    "checkedAt": "2026-10-10T19:08:35.564Z",
+    "backend": "guarded",
+    "context": "Isolated local Chromium, Reference model; CPU throughput is hardware/workload dependent.",
+    "checks": [
+      {
+        "name": "all requested speeds schedule quarter-second physical steps without a frame-rate ceiling",
+        "passed": true
+      },
+      {
+        "name": "pause and speed changes discard requested backlog; restarting never borrows old clock time",
+        "passed": true
+      },
+      {
+        "name": "actual owner-preset worker clock and room dynamics respond to speed changes",
+        "passed": true
+      },
+      {
+        "name": "fast passive scenes can advance beyond the former 15× animation-frame ceiling",
+        "passed": true
+      },
+      {
+        "name": "header speed readout remains inside the desktop header",
+        "passed": true
+      }
+    ],
+    "records": [
+      {
+        "requested": 1,
+        "wallSeconds": 5.032,
+        "simulatedSeconds": 4.75,
+        "actual": 0.9439586645468998,
+        "rateText": "1.0× actual",
+        "roomChangeC": -0.03760094348547227
+      },
+      {
+        "requested": 2,
+        "wallSeconds": 5.01,
+        "simulatedSeconds": 9.75,
+        "actual": 1.9461077844311379,
+        "rateText": "2.0× actual",
+        "roomChangeC": -0.07320697054950642
+      },
+      {
+        "requested": 50,
+        "wallSeconds": 5.117,
+        "simulatedSeconds": 68,
+        "actual": 13.289036544850498,
+        "rateText": "13.4× actual",
+        "roomChangeC": -0.2534624429944756
+      },
+      {
+        "requested": 50,
+        "scene": "all-off",
+        "wallSeconds": 3.011,
+        "simulatedSeconds": 149,
+        "actual": 49.485220856858184
+      }
+    ]
+  },
+  "productionBrowser": {
+    "checkedAt": "2026-10-10T19:10:24.930Z",
+    "backend": "production",
+    "context": "Isolated local Chromium, Reference model; CPU throughput is hardware/workload dependent.",
+    "checks": [
+      {
+        "name": "all requested speeds schedule quarter-second physical steps without a frame-rate ceiling",
+        "passed": true
+      },
+      {
+        "name": "pause and speed changes discard requested backlog; restarting never borrows old clock time",
+        "passed": true
+      },
+      {
+        "name": "actual owner-preset worker clock and room dynamics respond to speed changes",
+        "passed": true
+      },
+      {
+        "name": "fast passive scenes can advance beyond the former 15× animation-frame ceiling",
+        "passed": true
+      },
+      {
+        "name": "header speed readout remains inside the desktop header",
+        "passed": true
+      }
+    ],
+    "records": [
+      {
+        "requested": 1,
+        "wallSeconds": 5.029,
+        "simulatedSeconds": 4.75,
+        "actual": 0.9445217737124677,
+        "rateText": "1.0× actual",
+        "roomChangeC": -0.03760094348547227
+      },
+      {
+        "requested": 2,
+        "wallSeconds": 5.016,
+        "simulatedSeconds": 9.75,
+        "actual": 1.94377990430622,
+        "rateText": "2.0× actual",
+        "roomChangeC": -0.07320697054950642
+      },
+      {
+        "requested": 50,
+        "wallSeconds": 5.115,
+        "simulatedSeconds": 67.75,
+        "actual": 13.24535679374389,
+        "rateText": "12.9× actual",
+        "roomChangeC": -0.25340823413102953
+      },
+      {
+        "requested": 50,
+        "scene": "all-off",
+        "wallSeconds": 3.024,
+        "simulatedSeconds": 142,
+        "actual": 46.957671957671955
+      }
+    ]
+  },
+  "productionEntry": {
+    "checkedAt": "2026-10-10T19:09:31.199Z",
+    "liveByDefault": true,
+    "realWorkerClock": true,
+    "idealizedByDefault": true,
+    "vectorOnly": true,
+    "productionSubdirectory": true
+  },
+  "limits": "Inventory numerical checks do not certify sustained owner heating or full charged frost/defrost; public charge gate remains closed."
+}

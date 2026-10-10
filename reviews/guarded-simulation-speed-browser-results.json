@@ -1,0 +1,60 @@
+{
+  "checkedAt": "2026-10-10T19:08:35.564Z",
+  "backend": "guarded",
+  "context": "Isolated local Chromium, Reference model; CPU throughput is hardware/workload dependent.",
+  "checks": [
+    {
+      "name": "all requested speeds schedule quarter-second physical steps without a frame-rate ceiling",
+      "passed": true
+    },
+    {
+      "name": "pause and speed changes discard requested backlog; restarting never borrows old clock time",
+      "passed": true
+    },
+    {
+      "name": "actual owner-preset worker clock and room dynamics respond to speed changes",
+      "passed": true
+    },
+    {
+      "name": "fast passive scenes can advance beyond the former 15× animation-frame ceiling",
+      "passed": true
+    },
+    {
+      "name": "header speed readout remains inside the desktop header",
+      "passed": true
+    }
+  ],
+  "records": [
+    {
+      "requested": 1,
+      "wallSeconds": 5.032,
+      "simulatedSeconds": 4.75,
+      "actual": 0.9439586645468998,
+      "rateText": "1.0× actual",
+      "roomChangeC": -0.03760094348547227
+    },
+    {
+      "requested": 2,
+      "wallSeconds": 5.01,
+      "simulatedSeconds": 9.75,
+      "actual": 1.9461077844311379,
+      "rateText": "2.0× actual",
+      "roomChangeC": -0.07320697054950642
+    },
+    {
+      "requested": 50,
+      "wallSeconds": 5.117,
+      "simulatedSeconds": 68,
+      "actual": 13.289036544850498,
+      "rateText": "13.4× actual",
+      "roomChangeC": -0.2534624429944756
+    },
+    {
+      "requested": 50,
+      "scene": "all-off",
+      "wallSeconds": 3.011,
+      "simulatedSeconds": 149,
+      "actual": 49.485220856858184
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 {
-  "checkedAt": "2026-10-10T18:36:29.148Z",
-  "context": "Isolated local Chromium, current public Reference model; CPU throughput is hardware/workload dependent.",
+  "checkedAt": "2026-10-10T19:10:24.930Z",
+  "backend": "production",
+  "context": "Isolated local Chromium, Reference model; CPU throughput is hardware/workload dependent.",
   "checks": [
     {
       "name": "all requested speeds schedule quarter-second physical steps without a frame-rate ceiling",
@@ -26,34 +27,34 @@
   "records": [
     {
       "requested": 1,
-      "wallSeconds": 5.018,
+      "wallSeconds": 5.029,
       "simulatedSeconds": 4.75,
-      "actual": 0.9465922678357912,
+      "actual": 0.9445217737124677,
       "rateText": "1.0× actual",
       "roomChangeC": -0.03760094348547227
     },
     {
       "requested": 2,
-      "wallSeconds": 5.01,
+      "wallSeconds": 5.016,
       "simulatedSeconds": 9.75,
-      "actual": 1.9461077844311379,
+      "actual": 1.94377990430622,
       "rateText": "2.0× actual",
       "roomChangeC": -0.07320697054950642
     },
     {
       "requested": 50,
-      "wallSeconds": 5.117,
-      "simulatedSeconds": 13,
-      "actual": 2.540551104162595,
-      "rateText": "2.6× actual",
-      "roomChangeC": -0.09426953560654283
+      "wallSeconds": 5.115,
+      "simulatedSeconds": 67.75,
+      "actual": 13.24535679374389,
+      "rateText": "12.9× actual",
+      "roomChangeC": -0.25340823413102953
     },
     {
       "requested": 50,
       "scene": "all-off",
-      "wallSeconds": 3.007,
-      "simulatedSeconds": 146.75,
-      "actual": 48.802793481875625
+      "wallSeconds": 3.024,
+      "simulatedSeconds": 142,
+      "actual": 46.957671957671955
     }
   ]
 }

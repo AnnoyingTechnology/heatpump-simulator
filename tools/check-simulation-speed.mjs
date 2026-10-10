@@ -4,6 +4,8 @@ import {writeFile} from 'node:fs/promises';
 import {openPage} from './browser-session.mjs';
 import {startIsolatedDev} from './isolated-dev.mjs';
 const server=await startIsolatedDev(5191),page=await openPage(server.url),checks=[],records=[];
+const backend=process.env.HEATPUMP_QA_BACKEND??'production';
+assert.ok(['production','legacy','guarded'].includes(backend),'supported isolated QA backend');
 const run=fn=>page.evaluate(`(${fn.toString()})()`);
 const settled=()=>page.waitFor('!qv.simulation.isBusy&&qv.simulation.status.output',30000);
 const check=async(name,fn)=>{await fn();checks.push({name,passed:true});console.log(`PASS ${name}`)};
@@ -17,6 +19,17 @@ try{
   globalThis.qp=await import(main.match(/from "([^"]*\/runtime\/pacing\.ts[^"]*)"/)[1]);
   qa.store.update(s=>s.ui.paused=true);
  });await settled();
+ if(backend==='guarded')await run(()=>{globalThis.qaPropertyModulePath='/vendor/coolprop-safe/adapter.js'});
+ if(backend==='legacy')await run(()=>{globalThis.qaPropertyModulePath='/vendor/coolprop/coolprop.js'});
+ if(backend!=='production')await run(()=>{
+  // Override only this disposable QA page's future worker initialization. The
+  // application loader remains unchanged until candidate acceptance.
+  const post=Worker.prototype.postMessage;
+  Worker.prototype.postMessage=function(request,...args){
+   if(request.kind==='initialize')request={...request,propertyModuleUrl:new URL(globalThis.qaPropertyModulePath,location.href).href};
+   return post.call(this,request,...args);
+  };
+ });
  await check('all requested speeds schedule quarter-second physical steps without a frame-rate ceiling',async()=>{
   const records=await run(()=>[.5,1,2,5,10,50].map(speed=>{
    const p=new qp.SimulationPacer();let clock=0,maxBatch=0;
@@ -69,6 +82,7 @@ try{
   }
  });
  assert.equal(page.events.filter(e=>e.method==='Runtime.exceptionThrown').length,0);
- await writeFile('reviews/simulation-speed-browser-results.json',JSON.stringify({checkedAt:new Date().toISOString(),context:'Isolated local Chromium, current public Reference model; CPU throughput is hardware/workload dependent.',checks,records},null,2)+'\n');
+ const resultPath=backend==='production'?'reviews/simulation-speed-browser-results.json':`reviews/${backend}-simulation-speed-browser-results.json`;
+ await writeFile(resultPath,JSON.stringify({checkedAt:new Date().toISOString(),backend,context:'Isolated local Chromium, Reference model; CPU throughput is hardware/workload dependent.',checks,records},null,2)+'\n');
  console.log(JSON.stringify(records,null,2));
 }finally{await page.close();await server.close()}

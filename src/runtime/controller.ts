@@ -75,7 +75,7 @@ export class SimulationRuntime {
       this.status = { state: 'error', output: null, error: event.message || 'Simulation worker failed', calculationMs: 0 };
       this.notify();
     };
-    const propertyModuleUrl = new URL(`${import.meta.env.BASE_URL}vendor/coolprop/coolprop.js`, document.baseURI).href;
+    const propertyModuleUrl = new URL(`${import.meta.env.BASE_URL}vendor/coolprop-safe/adapter.js`, document.baseURI).href;
     this.post({ kind: 'initialize', revision: this.revision, config, propertyModuleUrl });
     this.notify();
   }
