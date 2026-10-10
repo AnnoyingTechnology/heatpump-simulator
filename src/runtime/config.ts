@@ -54,7 +54,7 @@ export function engineConfigFromUi(cfg: Config, live: LiveParameters): EngineCon
   c.outdoor.cleanFraction = (live.outdoorCleanlinessOverridePct ?? live.cleanlinessPct) / 100;
   c.rooms = cfg.rooms.slice(0, cfg.unitCount).map((r, i) => {
     const room = defaultRoomConfig(i), p = cfg.pipes[i];
-    return { ...room, id: r.id, volumeM3: r.volumeM3, initialTemperatureC: r.airC,
+    return { ...room, id: r.id, enabled: r.enabled, volumeM3: r.volumeM3, initialTemperatureC: r.airC,
       setpointC: r.setpointC, envelopeWK: r.heatLossWPerK,
       airConductanceWK: live.indoorAirConductanceWK, refrigerantConductanceWK: live.indoorRefrigerantConductanceWK,
       airMassFlowKgs: live.indoorAirMassFlowKgs,

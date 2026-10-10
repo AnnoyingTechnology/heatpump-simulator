@@ -10,7 +10,7 @@ export type Response =
   | { kind: 'error'; revision: number; message: string };
 
 export interface RuntimeStatus {
-  state: 'loading' | 'ready' | 'error';
+  state: 'loading' | 'updating' | 'ready' | 'error';
   output: EngineOutput | null;
   error: string | null;
   calculationMs: number;

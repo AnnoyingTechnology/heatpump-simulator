@@ -10,7 +10,7 @@ import type { Readings } from './runtime/view';
  * Owner preset: Daikin 3MXM52N8 + FTXA25 / FTXA35 / FTXA25. Stack order is top → bottom.
  * Branch lengths are the owner's historical blog values (7.5 ground / 6.5 first / 14 attic).
  */
-const ROOMS: Omit<RoomConfig, 'cleanlinessOverridePct'>[] = [
+const ROOMS: Omit<RoomConfig, 'cleanlinessOverridePct' | 'enabled'>[] = [
   { id: 'attic', name: 'Attic', volumeM3: 45, heatLossWPerK: 60, setpointC: 21, airC: 20, indoorClass: 'FTXA25' },
   { id: 'first', name: 'First floor', volumeM3: 75, heatLossWPerK: 85, setpointC: 21, airC: 20, indoorClass: 'FTXA35' },
   { id: 'ground', name: 'Ground floor', volumeM3: 50, heatLossWPerK: 70, setpointC: 21, airC: 20, indoorClass: 'FTXA25' },
@@ -36,7 +36,7 @@ export function defaultConfig(): Config {
     outdoorC: fx.conditions.outdoorC,
     outdoorRh: fx.conditions.outdoorRh,
     etaIsPct: 70,
-    rooms: ROOMS.map((r) => ({ ...r, airC: fx.conditions.roomC, setpointC: fx.conditions.setpointC, cleanlinessOverridePct: null })),
+    rooms: ROOMS.map((r) => ({ ...r, enabled: true, airC: fx.conditions.roomC, setpointC: fx.conditions.setpointC, cleanlinessOverridePct: null })),
     pipes: PIPES.map((p) => ({ ...p })),
     live: defaultLiveParameters(),
   };
@@ -223,7 +223,7 @@ export function indoorCleanliness(cfg: Config, i: number): EffectiveCleanliness 
 }
 
 // ---------- reading source ----------
-export type LiveKind = 'loading' | 'fault' | 'running' | 'idle' | 'reversing' | 'defrost' | 'draining';
+export type LiveKind = 'loading' | 'updating' | 'fault' | 'running' | 'idle' | 'reversing' | 'defrost' | 'draining';
 
 export interface LiveStatus {
   kind: LiveKind;
@@ -231,13 +231,13 @@ export interface LiveStatus {
   /** Fault text, or the reason readings are withheld. */
   detail: string | null;
   warnings: string[];
-  /** True only when engine values may be displayed. Faults, errors, loading and a pending mode change withhold them. */
+  /** Completed engine values may be displayed, including explicitly labelled pre-edit snapshots for soft inputs. */
   usable: boolean;
   calculationMs: number | null;
 }
 
 const KIND_LABEL: Record<LiveKind, string> = {
-  loading: 'Loading', fault: 'Fault', running: 'Running', idle: 'Idle', reversing: 'Reversing valve', defrost: 'Defrost', draining: 'Draining',
+  loading: 'Loading', updating: 'Inputs changed', fault: 'Fault', running: 'Running', idle: 'Idle', reversing: 'Reversing valve', defrost: 'Defrost', draining: 'Draining',
 };
 
 export function liveStatus(cfg: Config): LiveStatus {
@@ -253,6 +253,9 @@ export function liveStatus(cfg: Config): LiveStatus {
   if (out.requestedMode !== cfg.mode) {
     return { kind: 'loading', label: 'Applying mode', detail: 'The engine has not yet applied the requested mode.', warnings, usable: false, calculationMs: st.calculationMs };
   }
+  if (st.state === 'updating') return { kind: 'updating', label: KIND_LABEL.updating,
+    detail: 'Readings from the last calculated step; new inputs appear after the next simulation step. If paused, resume to recalculate.',
+    warnings, usable: true, calculationMs: st.calculationMs };
   return { kind: out.state, label: KIND_LABEL[out.state], detail: null, warnings, usable: true, calculationMs: st.calculationMs };
 }
 
@@ -266,7 +269,8 @@ export interface Current extends Readings {
 
 /**
  * The single reading source for ribbon, scene, inspector and drawer. Examples pass through unchanged. Live readings are
- * blanked whenever the engine is loading, faulted, errored or still applying the requested mode: no stale snapshot.
+ * withheld for faults, errors and incompatible pending changes. Compatible target/weather edits keep the completed
+ * physical snapshot explicitly labelled until the next physical step solves the new inputs.
  */
 export function currentReadings(s: AppState): Current {
   if (s.ui.experience === 'examples') {

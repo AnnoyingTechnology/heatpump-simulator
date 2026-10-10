@@ -21,6 +21,8 @@ export const OWNER_PORTS = 3;
 export interface RoomConfig {
   id: string;
   name: string;
+  /** Requested indoor-unit operation. Room/envelope storage remains simulated when off. */
+  enabled: boolean;
   /** Interior volume [m³]. */
   volumeM3: number;
   /** Envelope heat-loss coefficient [W/K]; configuration only. */

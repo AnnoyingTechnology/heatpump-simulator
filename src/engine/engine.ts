@@ -64,6 +64,7 @@ export class HeatPumpEngine {
     if (Math.abs(energyImpulse) > 1e-5 || Math.abs(waterImpulse) > 1e-10) this.warnings.push('Scenario edit added/removed stored energy and water; recorded as a configuration boundary impulse.');
     if (config.mode !== old.mode) { this.state = 'reversing'; this.stateTime = 0; this.cycle = null; this.lastCycle = undefined; }
     this.fault = null; if (this.state === 'fault') { this.state = 'idle'; this.offTime = Infinity; }
+    if (!config.rooms.some(room => room.enabled)) this.abortUnavailableCircuit();
     this.lastOutput = this.makeOutput(this.passiveRoomOutputs(), null, 0, 0, 0, null, 0, 0); return this.snapshot();
   }
   snapshot(): EngineOutput { return structuredClone(this.lastOutput); }
@@ -118,6 +119,15 @@ export class HeatPumpEngine {
         setpointC: c.setpointC, active: false, massFlowKgs: 0, signedRoomHeatW: 0, sensibleRoomHeatW: 0, fanPowerW: 0, airOutletC: null, condensateKgs: 0, drainEnthalpyW: 0 }; });
   }
   private transition(state: OperatingState): void { this.state = state; this.stateTime = 0; this.lastCycle = undefined; }
+  /** User Off removes every refrigerant path, including during reversal/defrost.
+   * Passive heat/moisture exchange continues; no stored inventory is reset. */
+  private abortUnavailableCircuit(): void {
+    if (this.state !== 'idle') {
+      if (this.state === 'draining') this.heatingRuntime = 0;
+      this.transition('idle'); this.offTime = 0;
+    }
+    this.onTime = 0; this.active = this.config.rooms.map(() => false); this.cycle = null;
+  }
   private advance(dt: number): void {
     const config = this.config, outdoor = config.outdoor, p = config.ambientPressurePa;
     const before = deriveOutdoorFilm(this.outdoorEnergyJ, this.outdoorWaterKg, outdoor);
@@ -125,6 +135,7 @@ export class HeatPumpEngine {
     const previousActive = [...this.active];
     const errors = config.rooms.map((room, i) => config.mode === 'heating' ? room.setpointC - tRooms[i] : tRooms[i] - room.setpointC);
     this.active = config.rooms.map((room, i) => room.enabled && errors[i] > (this.active[i] ? -config.control.thermostatDeadbandK : config.control.thermostatDeadbandK));
+    if (!config.rooms.some(room => room.enabled)) this.abortUnavailableCircuit();
     if (this.state === 'reversing' && this.stateTime >= config.control.reversalSeconds) this.transition(config.mode === 'heating' && before.iceKg > config.control.defrostIceThresholdKg ? 'defrost' : 'idle');
     if (this.state === 'draining' && this.stateTime >= config.control.drainageDwellSeconds) { this.transition('reversing'); this.heatingRuntime = 0; }
     if (this.state === 'defrost') {
@@ -133,10 +144,16 @@ export class HeatPumpEngine {
       else if (this.stateTime >= config.control.defrostMaxSeconds) throw new DomainError('Defrost timeout: retained ice/energy conserved; generic source cannot finish');
     }
     if (this.state === 'running' && config.mode === 'heating' && before.iceKg >= config.control.defrostIceThresholdKg && this.heatingRuntime >= config.control.defrostMinHeatingSeconds) this.transition('reversing');
-    if (this.state === 'idle' && this.active.some(Boolean) && this.offTime >= config.control.minOffSeconds) this.transition('running');
+    if (this.state === 'idle' && this.active.some(Boolean) && this.offTime >= config.control.minOffSeconds) {
+      // Retained frost after an Off override may still require reverse defrost.
+      // Do not briefly start a forced heating cycle against an obstructed coil.
+      const frostPending = config.mode === 'heating' && before.iceKg >= config.control.defrostIceThresholdKg && this.heatingRuntime >= config.control.defrostMinHeatingSeconds;
+      this.transition(frostPending ? 'reversing' : 'running');
+    }
     if (this.state === 'running' && !this.active.some(Boolean) && this.onTime < config.control.minOnSeconds) this.active = previousActive.map((active, i) => active && config.rooms[i].enabled);
-    if (this.state === 'running' && !config.rooms.some(room => room.enabled)) { this.transition('idle'); this.offTime = 0; }
-    if (this.state === 'running' && !this.active.some(Boolean) && this.onTime >= config.control.minOnSeconds) { this.transition('idle'); this.offTime = 0; }
+    // A soft thermostat crossing can retain an enabled prior path for minimum-on.
+    // Explicit Off may remove that last path even while other rooms remain enabled.
+    if (this.state === 'running' && !this.active.some(Boolean)) { this.transition('idle'); this.offTime = 0; }
     const running = this.state === 'running' && this.active.some(Boolean), defrost = this.state === 'defrost';
     const effectiveMode: Mode | null = running ? config.mode : defrost ? 'cooling' : null;
     const activeErrors = errors.filter((_, i) => this.active[i]);

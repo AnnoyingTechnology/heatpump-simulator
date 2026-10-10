@@ -88,3 +88,32 @@ test('unavailable property backend returns a conserved fault snapshot without th
   const before=engine.snapshot();moduleStub.HAPropsSI=()=>{throw new Error('backend unavailable');};
   const fault=engine.step(1);assert.equal(fault.state,'fault');assert.equal(fault.simulatedSeconds,before.simulatedSeconds);assert.equal(fault.cycle,null);assert.equal(fault.heatingCOP,null);assert.equal(fault.rooms[0].airOutletC,null);assert.equal(fault.outdoor.filmMassKg,before.outdoor.filmMassKg);assert.equal(fault.energy.residualJ,before.energy.residualJ);
 });
+
+test('all Off aborts defrost/reversal without erasing storage; passive time and reenable remain conservative',()=>{
+  const c=defaultEngineConfig(3);c.outdoorTemperatureC=-3;c.outdoorRelativeHumidity=.99;
+  c.control.defrostIceThresholdKg=1e-6;c.control.defrostMinHeatingSeconds=0;c.control.reversalSeconds=.5;c.control.minOffSeconds=.75;
+  const e=new HeatPumpEngine(p,c);let o;
+  for(let i=0;i<16;i++){o=e.step(.25);assertLedger(o);if(o.state==='defrost')break;}
+  assert.equal(o.state,'defrost');assert.ok(o.outdoor.iceKg>0);assert.ok(o.cycle);
+  const offAt=before=>{
+    c.rooms.forEach(r=>r.enabled=false);const stopped=e.updateConfig(c);
+    assertLedger(stopped);assert.equal(stopped.state,'idle');assert.equal(stopped.simulatedSeconds,before.simulatedSeconds);assert.equal(stopped.cycle,null);assert.equal(stopped.outdoor.filmMassKg,before.outdoor.filmMassKg);assert.equal(stopped.outdoor.filmEnthalpyJ,before.outdoor.filmEnthalpyJ);
+    stopped.rooms.forEach((r,i)=>{assert.equal(r.metalTemperatureC,before.rooms[i].metalTemperatureC);assert.ok(Math.abs(r.temperatureC-before.rooms[i].temperatureC)<1e-8);assert.equal(r.active,false);assert.equal(r.airOutletC,null);assert.equal(r.massFlowKgs,0);});
+    const passive=e.step(.5);assertLedger(passive);assert.equal(passive.state,'idle');assert.equal(passive.simulatedSeconds,before.simulatedSeconds+.5);assert.equal(passive.electrical.compressorW,0);assert.equal(passive.outdoor.fanPowerW,0);assert.ok(passive.rooms.every(r=>r.fanPowerW===0&&r.airOutletC===null));assert.notEqual(passive.rooms[0].temperatureC,stopped.rooms[0].temperatureC);
+    return passive;
+  };
+  offAt(o);c.rooms[0].enabled=true;e.updateConfig(c);o=e.step(.25);assertLedger(o);assert.equal(o.state,'idle');assert.equal(o.cycle,null);
+  o=e.step(.25);assertLedger(o);assert.equal(o.state,'reversing');
+  offAt(o);c.rooms[0].enabled=true;e.updateConfig(c);o=e.step(1);assertLedger(o);assert.equal(o.state,'defrost');assert.ok(o.cycle);assert.ok(o.cycle.branchMassFlowsKgs[0]>0);assert.ok(o.cycle.branchMassFlowsKgs.slice(1).every(m=>m===0));
+  c.rooms.forEach(r=>r.enabled=false);o=e.updateConfig(c);assertLedger(o);assert.equal(o.state,'idle');assert.equal(o.cycle,null);
+});
+
+test('Off of the last active room enters idle and respects minimum-off before another room demands',()=>{
+  const c=defaultEngineConfig(3);c.control.minOffSeconds=.75;c.rooms.slice(1).forEach(r=>r.setpointC=18);
+  const e=new HeatPumpEngine(p,c);let o=e.step(.25);assertLedger(o);assert.equal(o.state,'running');assert.ok(o.cycle);assert.deepEqual(o.rooms.map(r=>r.active),[true,false,false]);
+  const before=o;c.rooms[0].enabled=false;o=e.updateConfig(c);assertLedger(o);assert.equal(o.simulatedSeconds,before.simulatedSeconds);assert.equal(o.outdoor.filmEnthalpyJ,before.outdoor.filmEnthalpyJ);
+  o=e.step(.25);assertLedger(o);assert.equal(o.state,'idle');assert.equal(o.cycle,null);assert.ok(o.rooms.every(r=>r.massFlowKgs===0&&r.fanPowerW===0&&r.airOutletC===null));
+  c.rooms[1].setpointC=23;e.updateConfig(c);o=e.step(.25);assertLedger(o);assert.equal(o.state,'idle');assert.equal(o.cycle,null);
+  o=e.step(.25);assertLedger(o);assert.equal(o.state,'idle');assert.equal(o.cycle,null);
+  o=e.step(.25);assertLedger(o);assert.equal(o.state,'running');assert.ok(o.cycle);assert.deepEqual(o.rooms.map(r=>r.active),[false,true,false]);
+});

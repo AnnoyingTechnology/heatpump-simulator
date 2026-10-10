@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-10-10T13:05:35.577Z",
+  "method": "Controlled browser Worker responses; scheduling and freshness only",
+  "checks": [
+    {
+      "name": "soft edits retain the completed snapshot across passive acknowledgements and paused time",
+      "passed": true
+    },
+    {
+      "name": "overlapping sliders coalesce to the newest inputs with one request in flight",
+      "passed": true
+    },
+    {
+      "name": "hard invalidation stays latched across newer soft edits and old steps",
+      "passed": true
+    },
+    {
+      "name": "current configure errors and fault outputs clear retained operating readings",
+      "passed": true
+    },
+    {
+      "name": "a pre-edit error or fault cannot remain as a good snapshot while recovery is queued",
+      "passed": true
+    },
+    {
+      "name": "native worker failure clears retained readings and pending requests",
+      "passed": true
+    }
+  ]
+}
