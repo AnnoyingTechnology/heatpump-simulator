@@ -1,0 +1,65 @@
+{
+  "checkedAt": "2026-10-10T18:49:13.189Z",
+  "context": "Isolated pinned real-WASM Reference build; generic3-head Node5simseconds, unchangedquarter-secondsteps. Observed performance is workload/hardware dependent. Charge gate stays closed.",
+  "sources": {
+    "src/engine/cycle.ts": "c7bc98e50ab36aa30b467a5788ac5db21dded35ea93a81af82e32911b900bb8f",
+    "src/engine/engine.ts": "79734fc70a1c7df6abe604203f16824361baa4c734cbb6f89ec726aa9a09e30a",
+    "src/runtime/pacing.ts": "32a9e0254d2eee829cd247d5faa0321635e5c14c66e9a2205c44c0c4312e889f",
+    "src/main.ts": "56a5bbdfc47638fded91ac6e7aee9bfb7a30ecd74f2f2eecd3529fd9c13c6dcd"
+  },
+  "regression": {
+    "tests": 25,
+    "passed": 25,
+    "failed": 0,
+    "wallSeconds": 483.579338099,
+    "checks": [
+      "✔ real R32 EOS shared-pressure cycle: one to five branches and both directions (1323.646069ms)",
+      "✔ heat exchanger pinches fail explicitly (1.254473ms)",
+      "✔ phase-aware integral latent zone agrees with analytical UA requirement (0.314403ms)",
+      "✔ real field lines close momentum/enthalpy in heating and cooling, including two-phase small pipe (9287.851816ms)",
+      "✔ cold reverse-cycle defrost floats subcooling and retains physical heat signs (973.678352ms)",
+      "✔ heterogeneous idealized cooling conserves mixed-return enthalpy/entropy and valve allocation (996.327883ms)",
+      "✔ real dynamic 1–5 branches conserve full stored energy/water and heating/cooling signs (14464.191795ms)",
+      "✔ early-trigger automatic defrost melts and drains finite inventories (89481.035641ms)",
+      "✔ film phase map requires latent melt energy; exhausted film evaporates with exact bounded mass (0.984615ms)",
+      "✔ wet cooling removes water; timestep halving converges thermal/electrical totals (29303.918518ms)",
+      "✔ configuration edits retain room/ice inventories and min-on history; idle air outlets disappear (607.993066ms)",
+      "✔ mode reversal conserves cold metal then establishes live cooling instead of imposing subcooling (37783.17915ms)",
+      "✔ unmodified three-branch defaults sustain heating through a natural frost/defrost event (126304.124712ms)",
+      "✔ cleanliness changes only air-side transfer/flow; constant fan and weather response remain physical (5081.494375ms)",
+      "✔ defrost timeout retains physical ice and closes the ledger instead of resetting it (12652.880268ms)",
+      "✔ owner-layout cooling accepts newly added warm rooms without resetting old coil/film inventories (56856.922735ms)",
+      "✔ owner-layout natural frost reverses with hot stored indoor metal and conserves melt energy (107669.992358ms)",
+      "✔ unavailable property backend returns a conserved fault snapshot without throwing again (1.105022ms)",
+      "✔ all Off aborts defrost/reversal without erasing storage; passive time and reenable remain conservative (1361.106814ms)",
+      "✔ Off of the last active room enters idle and respects minimum-off before another room demands (312.286319ms)",
+      "✔ connection count follows explicit port capacity and invalid declarations reject before property queries (1.629179ms)",
+      "✔ six idealized branches use real R32 heating/cooling states and conservative dynamics (871.690762ms)",
+      "✔ removing a sixth room retains remaining inventories/time and exports its declared storage boundary (217.722591ms)",
+      "✔ distributed pipe forward/inverse closes gravity and heat for liquid, vapor and two-phase states (242.216939ms)",
+      "✔ diameter changes Darcy friction and unsupported velocity cannot produce fake pipe states (21.845286ms)"
+    ]
+  },
+  "nodeComparison": {
+    "beforeWarmMedianMs": 388.9726700000001,
+    "afterWarmMedianMs": 60.230797000000166,
+    "roomTemperatureDifferencesC": [
+      -2.887645678129047e-10,
+      -2.887645678129047e-10,
+      -2.887645678129047e-10
+    ],
+    "evaporationDifferenceC": -0.0000036985581406412393,
+    "condensationDifferenceC": -5.255964694583781e-7,
+    "closureResidualW": 0.07249152630355499,
+    "energyResidualJ": -2.029446477536112e-8,
+    "waterResidualKg": 2.732731575749714e-16
+  },
+  "focusedInverseChecks": {
+    "passed": 3,
+    "pressurePerturbationComparisons": 144,
+    "bisectionAgreementMaxAllowedW": 0.0001,
+    "independentGauss4To8ObservedMaxDifferenceW": 0.0000022563,
+    "batchedQuarterStepsProduceIdenticalSnapshots": true
+  },
+  "browserEvidence": "simulation-speed-browser-results.json"
+}
