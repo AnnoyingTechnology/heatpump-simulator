@@ -1,0 +1,185 @@
+{
+  "status": "bounded disposable grouped M/U pilot; not production model",
+  "backend": "CoolProp 8.0.0 public PropsSI",
+  "geometry": {
+    "lowV": 0.001,
+    "highV": 0.0005,
+    "lowUA": 40,
+    "highUA": 40,
+    "metalCapacity": 10000,
+    "displacementM3": 0.000008,
+    "speedRps": 20,
+    "etaVol": 0.8,
+    "etaIs": 0.7,
+    "valveAreaM2": 2e-7
+  },
+  "roundtrips": [
+    {
+      "name": "vapor",
+      "TErrorK": 2.495227136023459e-7,
+      "pErrorPa": 0.00105944718234241,
+      "wallMs": 21.336323999999877
+    },
+    {
+      "name": "liquid",
+      "TErrorK": -5.684341886080802e-14,
+      "pErrorPa": -8.987262845039368e-8,
+      "wallMs": 0.6311759999998685
+    },
+    {
+      "name": "two-phase",
+      "TErrorK": 0,
+      "pErrorPa": -8.149072527885437e-10,
+      "wallMs": 0.9083220000002257
+    }
+  ],
+  "loops": [
+    {
+      "initialHighQuality": 0.05,
+      "initialMassKg": 0.3176123924370289,
+      "durationS": 5,
+      "wallMs": 1561.694215,
+      "calls": 13151,
+      "stepMedianMs": 76.57423300000028,
+      "stepMaxMs": 100.30523799999992,
+      "maxIterations": 2,
+      "maxMassResidualKg": 1.1102230246251565e-16,
+      "maxEnergyResidualJ": 0.000001171761823570705,
+      "lowBar": 7.270733778595648,
+      "highBar": 26.46274620778606,
+      "lowQuality": 0.6709625371812523,
+      "highQuality": 0.05198319383905568,
+      "compressorFlow": 0.0025285811082557635,
+      "valveFlow": 0.0022540653502133583,
+      "workJ": 935.7163085939995
+    },
+    {
+      "initialHighQuality": 0.15,
+      "initialMassKg": 0.19799545091577225,
+      "durationS": 5,
+      "wallMs": 1506.6920370000003,
+      "calls": 13127,
+      "stepMedianMs": 75.1774819999996,
+      "stepMaxMs": 80.814617,
+      "maxIterations": 2,
+      "maxMassResidualKg": 1.1102230246251565e-16,
+      "maxEnergyResidualJ": 0.0000012321015674388036,
+      "lowBar": 7.323794104549162,
+      "highBar": 26.82152789056703,
+      "lowQuality": 0.7137256753477836,
+      "highQuality": 0.15938180314286282,
+      "compressorFlow": 0.0025469585151845367,
+      "valveFlow": 0.0019666296405884197,
+      "workJ": 943.5397298382213
+    }
+  ],
+  "leaks": [
+    {
+      "initialQuality": 0.5,
+      "massLossKg": 0.004259207221279926,
+      "energyResidualJ": 5.6843418860808015e-12,
+      "finalTemperatureC": -3.607855283728611,
+      "finalPressureBar": 7.231738712039475,
+      "finalQuality": 0.503451407176824
+    },
+    {
+      "initialQuality": 1,
+      "massLossKg": 0.0021733922845976195,
+      "energyResidualJ": -3.637978807091713e-12,
+      "finalTemperatureC": -4.075463067318253,
+      "finalPressureBar": 7.120970136713957,
+      "finalQuality": 0.9890208625825305
+    }
+  ],
+  "spatialLoops": [
+    {
+      "cellsPerCoil": 3,
+      "inactiveCells": 0,
+      "durationS": 30,
+      "wallMs": 15831.277560999999,
+      "calls": 121271,
+      "stepMedianMs": 125.7733049999988,
+      "stepMaxMs": 398.5532320000002,
+      "pBar": [
+        7.663670960398813,
+        34.56179990968461
+      ],
+      "temperaturesC": [
+        -1.834856099774413,
+        -1.834856099774413,
+        -1.834856099774413,
+        54.18907149257939,
+        54.18907149257939,
+        43.55467384148335
+      ],
+      "qualities": [
+        0.3565325368709344,
+        0.45226049964029186,
+        0.17269924598209302,
+        0.9006219922281958,
+        0.11304308459274347,
+        -1
+      ],
+      "enthalpiesJkg": [
+        310230.7968059003,
+        340685.8897899891,
+        251745.69166394862,
+        484171.26649685967,
+        329519.69553226884,
+        282234.5558631829
+      ],
+      "inactiveMassChangeKg": null,
+      "maxMassResidualKg": 2.0198009931249317e-11,
+      "maxEnergyResidualJ": 0.000009929018233378883
+    },
+    {
+      "cellsPerCoil": 3,
+      "inactiveCells": 3,
+      "durationS": 30,
+      "wallMs": 16898.126522,
+      "calls": 135244,
+      "stepMedianMs": 130.63584199999605,
+      "stepMaxMs": 436.0263530000011,
+      "pBar": [
+        6.775692132042911,
+        25.063530516818357
+      ],
+      "temperaturesC": [
+        -5.569469779782594,
+        -5.569469779782594,
+        -5.095716958476601,
+        43.96049299606307,
+        40.46201590268004,
+        40.46201590268004,
+        40.46201590268004,
+        30.30393899343636,
+        28.020642178614708
+      ],
+      "qualities": [
+        0.5153859449273965,
+        0.765116564516757,
+        -1,
+        -1,
+        0.26744200837884935,
+        0.005505487948206455,
+        0.09481907134923483,
+        -1,
+        -1
+      ],
+      "enthalpiesJkg": [
+        357220.50955364393,
+        438080.1278209377,
+        514697.36542492104,
+        519236.15456442174,
+        339679.6581169649,
+        277881.24150983425,
+        298952.90431812877,
+        255602.55813267842,
+        251122.63907986987
+      ],
+      "inactiveMassChangeKg": 0.10225264283302898,
+      "maxMassResidualKg": 2.1362134283720025e-11,
+      "maxEnergyResidualJ": 0.000008268834790214896
+    }
+  ]
+}

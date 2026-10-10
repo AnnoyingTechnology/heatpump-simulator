@@ -1,0 +1,814 @@
+{
+  "checkedAt": "2026-10-10T17:12:24.527Z",
+  "sourceFingerprint": {
+    "charge": "01c5332266a71623bbd2aada1193e71b100f5343b9b2558d0578162eeb6fe7ef",
+    "engine": "11e8a28ae5c587dc31e032517d1325d5e8e662274d32443d0428a3c32ab05503",
+    "properties": "4e7437d63e34ebfe4881abd440629cdeaafce44235c20b5d93bef2c3d649e33d",
+    "drive": "6cc2b579e897c0e1e5b50c08960bdb81c6b60b6a90e75a89031c1d9cdabd7a1e"
+  },
+  "requestedSeconds": 60,
+  "config": {
+    "fluid": "R32",
+    "mode": "cooling",
+    "outdoorTemperatureC": 32,
+    "outdoorRelativeHumidity": 0.35,
+    "ambientPressurePa": 101325,
+    "indoorPortCapacity": 5,
+    "rooms": [
+      {
+        "id": "room-1",
+        "enabled": true,
+        "volumeM3": 60,
+        "initialTemperatureC": 30,
+        "initialRelativeHumidity": 0.5,
+        "setpointC": 24,
+        "envelopeWK": 45,
+        "fabricCapacityJK": 4000000,
+        "airFabricWK": 250,
+        "ventilationACH": 0.25,
+        "airMassFlowKgs": 0.15,
+        "fanPowerW": 25,
+        "airConductanceWK": 170,
+        "refrigerantConductanceWK": 350,
+        "naturalAirConductanceWK": 15,
+        "metalCapacityJK": 12000,
+        "pipe": {
+          "lengthM": 0,
+          "gasInsideDiameterM": 0.01,
+          "liquidInsideDiameterM": 0.0048,
+          "elevationM": 0,
+          "insulationConductanceWmK": 0.05
+        }
+      }
+    ],
+    "compressor": {
+      "displacementM3rev": 0.000022,
+      "speedMinRps": 18,
+      "speedMaxRps": 75,
+      "isentropicEfficiency": 0.7,
+      "volumetricEfficiency": 0.8,
+      "driveEfficiency": 0.93,
+      "superheatK": 3,
+      "subcoolK": 1,
+      "maxDischargeC": 145,
+      "maxPressureRatio": 8
+    },
+    "outdoor": {
+      "airMassFlowKgs": 0.9,
+      "fanPowerW": 85,
+      "airConductanceWK": 1100,
+      "refrigerantConductanceWK": 1000,
+      "naturalAirConductanceWK": 35,
+      "metalCapacityJK": 28000,
+      "depositionAreaM2": 2,
+      "frostDensityKgm3": 200,
+      "frostConductivityWmK": 0.15,
+      "finGapM": 0.002,
+      "drainageSeconds": 30
+    },
+    "control": {
+      "controlsW": 15,
+      "proportionalSpeedRpsK": 20,
+      "thermostatDeadbandK": 0.15,
+      "minOnSeconds": 30,
+      "minOffSeconds": 30,
+      "reversalSeconds": 3,
+      "defrostMinHeatingSeconds": 300,
+      "defrostIceThresholdKg": 0.15,
+      "defrostMaxSeconds": 600,
+      "defrostTerminationMetalC": 5,
+      "drainageDwellSeconds": 10,
+      "defrostSpeedRps": 35
+    },
+    "numerics": {
+      "maxStepSeconds": 0.25,
+      "pressureToleranceW": 0.1
+    },
+    "inventory": {
+      "initialMassKg": 0.6,
+      "initialFluidTemperatureC": 32,
+      "leak": {
+        "physicalCellId": "room-1:gas",
+        "rateKgs": 0
+      },
+      "geometry": {
+        "rooms": [
+          {
+            "id": "room-1",
+            "coilVolumeM3": 0.00028274333882308137,
+            "refrigerantConductanceWK": 350,
+            "lineLengthM": 7.5,
+            "gasInsideDiameterM": 0.00792,
+            "smallInsideDiameterM": 0.00475,
+            "maximumValveAreaM2": 5e-7
+          }
+        ],
+        "outdoorCoilVolumeM3": 0.0011309733552923255,
+        "outdoorConductanceWK": 1000,
+        "accumulatorVolumeM3": 0.0006,
+        "accumulatorInletAreaM2": 0.0001,
+        "displacementM3rev": 0.000022,
+        "volumetricEfficiency": 0.8,
+        "isentropicEfficiency": 0.7,
+        "dischargeCoefficient": 0.65,
+        "superheatTargetK": 3,
+        "maximumDischargeC": 145,
+        "maximumPressureRatio": 8
+      }
+    }
+  },
+  "completed": true,
+  "sawCompression": true,
+  "sawUsefulCooling": true,
+  "maxMassResidualKg": 1.1116962905788341e-10,
+  "maxFluidEnergyResidualJ": 0.00008269205136457458,
+  "maxSystemEnergyResidualJ": 0.00008262756819021888,
+  "maxWaterResidualKg": 1.318715102394119e-15,
+  "samples": [
+    {
+      "timeSeconds": 5,
+      "state": "running",
+      "fault": null,
+      "compressorAdmitted": true,
+      "compressorW": 334.8910176174227,
+      "signedRoomHeatW": -41.506941622143856,
+      "roomC": 30.006783767364198,
+      "indoorMetalC": 29.33529536845157,
+      "outdoorMetalC": 32.57098821230638,
+      "wallSeconds": 3.4291327369999998
+    },
+    {
+      "timeSeconds": 10,
+      "state": "running",
+      "fault": null,
+      "compressorAdmitted": true,
+      "compressorW": 412.86056958927765,
+      "signedRoomHeatW": -92.4153116890764,
+      "roomC": 30.00887589423911,
+      "indoorMetalC": 28.843265349244813,
+      "outdoorMetalC": 33.022162700825376,
+      "wallSeconds": 6.604460928000001
+    },
+    {
+      "timeSeconds": 15,
+      "state": "running",
+      "fault": null,
+      "compressorAdmitted": true,
+      "compressorW": 493.17664842623907,
+      "signedRoomHeatW": -151.96887547781589,
+      "roomC": 30.0070264618883,
+      "indoorMetalC": 28.26216284672003,
+      "outdoorMetalC": 33.33998763976411,
+      "wallSeconds": 10.228877357
+    },
+    {
+      "timeSeconds": 20,
+      "state": "running",
+      "fault": null,
+      "compressorAdmitted": true,
+      "compressorW": 560.6691460590305,
+      "signedRoomHeatW": -212.11936899388127,
+      "roomC": 30.000985941721012,
+      "indoorMetalC": 27.673801535740175,
+      "outdoorMetalC": 33.61332934407691,
+      "wallSeconds": 13.399442945
+    },
+    {
+      "timeSeconds": 25,
+      "state": "running",
+      "fault": null,
+      "compressorAdmitted": true,
+      "compressorW": 617.8449049379186,
+      "signedRoomHeatW": -270.04115109318883,
+      "roomC": 29.99093086253373,
+      "indoorMetalC": 27.103515635825843,
+      "outdoorMetalC": 33.85166110766174,
+      "wallSeconds": 17.166923531
+    },
+    {
+      "timeSeconds": 30,
+      "state": "running",
+      "fault": null,
+      "compressorAdmitted": true,
+      "compressorW": 667.5424931654107,
+      "signedRoomHeatW": -325.3205806705326,
+      "roomC": 29.97712309763216,
+      "indoorMetalC": 26.555083824354462,
+      "outdoorMetalC": 34.06022354721045,
+      "wallSeconds": 21.146290775999997
+    },
+    {
+      "timeSeconds": 35,
+      "state": "running",
+      "fault": null,
+      "compressorAdmitted": true,
+      "compressorW": 712.1194533860084,
+      "signedRoomHeatW": -378.06943060484156,
+      "roomC": 29.959823692356395,
+      "indoorMetalC": 26.02759617258696,
+      "outdoorMetalC": 34.244056720164366,
+      "wallSeconds": 24.841178391999996
+    },
+    {
+      "timeSeconds": 40,
+      "state": "running",
+      "fault": null,
+      "compressorAdmitted": true,
+      "compressorW": 757.6537551746136,
+      "signedRoomHeatW": -428.68540914976944,
+      "roomC": 29.939274051908967,
+      "indoorMetalC": 25.51696541765351,
+      "outdoorMetalC": 34.4128603437398,
+      "wallSeconds": 28.060683729999997
+    },
+    {
+      "timeSeconds": 45,
+      "state": "running",
+      "fault": null,
+      "compressorAdmitted": true,
+      "compressorW": 801.5193561352273,
+      "signedRoomHeatW": -478.4236084682383,
+      "roomC": 29.91564039154065,
+      "indoorMetalC": 25.011686217470288,
+      "outdoorMetalC": 34.569890455857475,
+      "wallSeconds": 31.468701450999998
+    },
+    {
+      "timeSeconds": 50,
+      "state": "running",
+      "fault": null,
+      "compressorAdmitted": true,
+      "compressorW": 843.3379746885707,
+      "signedRoomHeatW": -526.7759695607074,
+      "roomC": 29.889064241684082,
+      "indoorMetalC": 24.517084163250697,
+      "outdoorMetalC": 34.713198791857046,
+      "wallSeconds": 35.396673019000005
+    },
+    {
+      "timeSeconds": 55,
+      "state": "running",
+      "fault": null,
+      "compressorAdmitted": true,
+      "compressorW": 883.2212138069585,
+      "signedRoomHeatW": -573.5671300236546,
+      "roomC": 29.859713111049018,
+      "indoorMetalC": 24.034850658854587,
+      "outdoorMetalC": 34.84703376633726,
+      "wallSeconds": 39.750760746
+    },
+    {
+      "timeSeconds": 60,
+      "state": "running",
+      "fault": null,
+      "compressorAdmitted": true,
+      "compressorW": 841.3802204866191,
+      "signedRoomHeatW": -617.907695818341,
+      "roomC": 29.827775018407692,
+      "indoorMetalC": 23.574603295564422,
+      "outdoorMetalC": 34.95722010223128,
+      "wallSeconds": 45.166940188
+    }
+  ],
+  "final": {
+    "provenance": "live-generic-unvalidated",
+    "simulatedSeconds": 60,
+    "state": "running",
+    "requestedMode": "cooling",
+    "effectiveMode": "cooling",
+    "cycle": {
+      "mode": "cooling",
+      "evaporatingC": -23.234526406878587,
+      "condensingC": 37.91319757957683,
+      "lowPressureBarAbs": 3.579511886837062,
+      "highPressureBarAbs": 23.54618921425501,
+      "suction": {
+        "pPa": 357951.1886837062,
+        "pBarAbs": 3.579511886837062,
+        "hJkg": 508828.61320501904,
+        "temperatureC": -23.273611344638,
+        "entropyJkgK": 2244.510131679012,
+        "densityKgm3": 9.887246167460205,
+        "qualityMass": 1,
+        "phase": "two-phase"
+      },
+      "discharge": {
+        "pPa": 2354618.921425501,
+        "pBarAbs": 23.54618921425501,
+        "hJkg": 624469.9349443559,
+        "temperatureC": 122.06615171356032,
+        "entropyJkgK": 2335.776374010779,
+        "densityKgm3": 41.77307735320238,
+        "qualityMass": null,
+        "phase": "vapor"
+      },
+      "condenserOutlet": {
+        "pPa": 2354618.921425501,
+        "pBarAbs": 23.54618921425501,
+        "hJkg": 267840.7919795776,
+        "temperatureC": 36.2851719165908,
+        "entropyJkgK": 1227.4558445725527,
+        "densityKgm3": 911.8740205927411,
+        "qualityMass": null,
+        "phase": "liquid"
+      },
+      "expansionOutlet": {
+        "pPa": 358494.95015227265,
+        "pBarAbs": 3.5849495015227264,
+        "hJkg": 267840.7919795776,
+        "temperatureC": -23.234526406878587,
+        "entropyJkgK": 1280.012907609985,
+        "densityKgm3": 31.52757444266649,
+        "qualityMass": 0.308003763606845,
+        "phase": "two-phase"
+      },
+      "totalMassFlowKgs": 0.00676647061174487,
+      "branchMassFlowsKgs": [
+        0.006014602886796375
+      ],
+      "branchCoilHeatW": [
+        -1716.0888201149728
+      ],
+      "outdoorCoilHeatW": 2417.941635786673,
+      "branchInlets": [
+        {
+          "pPa": 358494.95015227265,
+          "pBarAbs": 3.5849495015227264,
+          "hJkg": 267836.04012389743,
+          "temperatureC": -23.234526406878587,
+          "entropyJkgK": 1279.9938937585741,
+          "densityKgm3": 31.5289321819652,
+          "qualityMass": 0.3079901194546708,
+          "phase": "two-phase"
+        }
+      ],
+      "branchOutlets": [
+        {
+          "pPa": 358494.95015227265,
+          "pBarAbs": 3.5849495015227264,
+          "hJkg": 553125.1505894287,
+          "temperatureC": 23.56925951088806,
+          "entropyJkgK": 2407.062501846127,
+          "densityKgm3": 7.92187036070623,
+          "qualityMass": null,
+          "phase": "vapor"
+        }
+      ],
+      "condenserHeatW": 2417.941635786673,
+      "evaporatorHeatW": 1716.0888201149728,
+      "compressorWorkW": 782.4836050525558,
+      "compressorElectricalW": 841.3802204866191,
+      "driveLossW": 58.89661543406328,
+      "massResidualKgs": 3.2111957537495073e-10,
+      "closureResidualW": 0.00030317355412989855,
+      "iterations": 6,
+      "lineHeatToOutdoorW": 0,
+      "pressureDropsPa": [
+        0
+      ],
+      "transportMethod": "Conserved inventory; idealized adiabatic field transport; finite generic accumulator restriction"
+    },
+    "rooms": [
+      {
+        "id": "room-1",
+        "temperatureC": 29.827775018407692,
+        "relativeHumidity": 0.5045233600659256,
+        "humidityRatio": 0.013360405123599333,
+        "fabricTemperatureC": 29.99983665829621,
+        "metalTemperatureC": 23.574603295564422,
+        "setpointC": 24,
+        "active": true,
+        "massFlowKgs": 0.006014602886796375,
+        "signedRoomHeatW": -617.907695818341,
+        "sensibleRoomHeatW": -617.9076958183814,
+        "fanPowerW": 25,
+        "airOutletC": 25.836357703824092,
+        "condensateKgs": 0,
+        "drainEnthalpyW": 0
+      }
+    ],
+    "inventory": {
+      "massKg": 0.6000000000802796,
+      "initialMassKg": 0.5999999999999998,
+      "storedInternalEnergyJ": 157350.68232975624,
+      "lowLiftTransfer": false,
+      "compressorAdmitted": true,
+      "compressorMassFlowKgs": 0.00676647061174487,
+      "orientation": "cooling",
+      "coilHeatW": {
+        "outdoor": 2417.941635786673,
+        "room-1": -1716.0888201149728
+      },
+      "leakedMassKg": 0,
+      "leakedEnthalpyJ": 0,
+      "massResidualKg": 8.027989384373768e-11,
+      "energyResidualJ": 0.00007579338853247464,
+      "geometry": {
+        "rooms": [
+          {
+            "id": "room-1",
+            "coilVolumeM3": 0.00028274333882308137,
+            "refrigerantConductanceWK": 350,
+            "lineLengthM": 7.5,
+            "gasInsideDiameterM": 0.00792,
+            "smallInsideDiameterM": 0.00475,
+            "maximumValveAreaM2": 5e-7
+          }
+        ],
+        "outdoorCoilVolumeM3": 0.0011309733552923255,
+        "outdoorConductanceWK": 1000,
+        "accumulatorVolumeM3": 0.0006,
+        "accumulatorInletAreaM2": 0.0001,
+        "displacementM3rev": 0.000022,
+        "volumetricEfficiency": 0.8,
+        "isentropicEfficiency": 0.7,
+        "dischargeCoefficient": 0.65,
+        "superheatTargetK": 3,
+        "maximumDischargeC": 145,
+        "maximumPressureRatio": 8
+      },
+      "cells": [
+        {
+          "id": "outdoor:0",
+          "volumeM3": 0.00037699111843077514,
+          "group": "outdoor",
+          "massKg": 0.02996351183151293,
+          "internalEnergyJ": 13457.25387813171,
+          "state": {
+            "pPa": 2354618.921425501,
+            "pBarAbs": 23.54618921425501,
+            "hJkg": 478746.4293057756,
+            "temperatureC": 37.91319757957683,
+            "entropyJkgK": 1905.500080135216,
+            "densityKgm3": 79.4806836729629,
+            "qualityMass": 0.8564656779117851,
+            "phase": "two-phase"
+          }
+        },
+        {
+          "id": "outdoor:1",
+          "volumeM3": 0.00037699111843077514,
+          "group": "outdoor",
+          "massKg": 0.07516148655336828,
+          "internalEnergyJ": 24813.149400800427,
+          "state": {
+            "pPa": 2354618.921425501,
+            "pBarAbs": 23.54618921425501,
+            "hJkg": 341941.3452289567,
+            "temperatureC": 37.91319757957683,
+            "entropyJkgK": 1465.701720376437,
+            "densityKgm3": 199.37203525172643,
+            "qualityMass": 0.29174224552920724,
+            "phase": "two-phase"
+          }
+        },
+        {
+          "id": "outdoor:2",
+          "volumeM3": 0.00037699111843077514,
+          "group": "outdoor",
+          "massKg": 0.3437684068912251,
+          "internalEnergyJ": 91187.53193863697,
+          "state": {
+            "pPa": 2354618.921425501,
+            "pBarAbs": 23.54618921425501,
+            "hJkg": 267840.7919795776,
+            "temperatureC": 36.2851719165908,
+            "entropyJkgK": 1227.4558445725527,
+            "densityKgm3": 911.8740205927411,
+            "qualityMass": null,
+            "phase": "liquid"
+          }
+        },
+        {
+          "id": "room-1:gas",
+          "volumeM3": 0.00036948899517400273,
+          "group": "indoor",
+          "massKg": 0.002926544722882628,
+          "internalEnergyJ": 1486.3993562653109,
+          "state": {
+            "pPa": 358494.95015227265,
+            "pBarAbs": 3.5849495015227264,
+            "hJkg": 553164.0376154792,
+            "temperatureC": 23.61199572951648,
+            "entropyJkgK": 2407.1935490385285,
+            "densityKgm3": 7.920519314802424,
+            "qualityMass": null,
+            "phase": "vapor"
+          }
+        },
+        {
+          "id": "room-1:coil:0",
+          "volumeM3": 0.00009424777960769378,
+          "group": "indoor",
+          "massKg": 0.0007466186918365624,
+          "internalEnergyJ": 379.18622330255835,
+          "state": {
+            "pPa": 358494.95015227265,
+            "pBarAbs": 3.5849495015227264,
+            "hJkg": 553125.1505894287,
+            "temperatureC": 23.56925951088806,
+            "entropyJkgK": 2407.062501846127,
+            "densityKgm3": 7.92187036070623,
+            "qualityMass": null,
+            "phase": "vapor"
+          }
+        },
+        {
+          "id": "room-1:coil:1",
+          "volumeM3": 0.00009424777960769378,
+          "group": "indoor",
+          "massKg": 0.0007484221588524644,
+          "internalEnergyJ": 379.77283492734136,
+          "state": {
+            "pPa": 358494.95015227265,
+            "pBarAbs": 3.5849495015227264,
+            "hJkg": 552576.0870226834,
+            "temperatureC": 22.96588287391762,
+            "entropyJkgK": 2405.210169797535,
+            "densityKgm3": 7.941005740058496,
+            "qualityMass": null,
+            "phase": "vapor"
+          }
+        },
+        {
+          "id": "room-1:coil:2",
+          "volumeM3": 0.00009424777960769378,
+          "group": "indoor",
+          "massKg": 0.0007915522166619687,
+          "internalEnergyJ": 393.90808698893545,
+          "state": {
+            "pPa": 358494.95015227265,
+            "pBarAbs": 3.5849495015227264,
+            "hJkg": 540324.9855644138,
+            "temperatureC": 9.546408578313503,
+            "entropyJkgK": 2362.869357879003,
+            "densityKgm3": 8.398629866473284,
+            "qualityMass": null,
+            "phase": "vapor"
+          }
+        },
+        {
+          "id": "room-1:small",
+          "volumeM3": 0.00013290409546241194,
+          "group": "indoor",
+          "massKg": 0.004190324212539815,
+          "internalEnergyJ": 1074.6743968441226,
+          "state": {
+            "pPa": 358494.95015227265,
+            "pBarAbs": 3.5849495015227264,
+            "hJkg": 267836.04012389743,
+            "temperatureC": -23.234526406878587,
+            "entropyJkgK": 1279.9938937585741,
+            "densityKgm3": 31.5289321819652,
+            "qualityMass": 0.3079901194546708,
+            "phase": "two-phase"
+          }
+        },
+        {
+          "id": "accumulator",
+          "volumeM3": 0.0006,
+          "group": "accumulator",
+          "massKg": 0.1417031328013999,
+          "internalEnergyJ": 24178.806213858894,
+          "state": {
+            "pPa": 357951.1886837062,
+            "pBarAbs": 3.579511886837062,
+            "hJkg": 172145.64311190817,
+            "temperatureC": -23.273611344638,
+            "entropyJkgK": 897.1120365453593,
+            "densityKgm3": 236.1718880023332,
+            "qualityMass": 0.033412075364760874,
+            "phase": "two-phase"
+          }
+        }
+      ],
+      "coilPorts": {
+        "outdoor": {
+          "gas": {
+            "pPa": 2354618.921425501,
+            "pBarAbs": 23.54618921425501,
+            "hJkg": 624469.9349443559,
+            "temperatureC": 122.06615171356032,
+            "entropyJkgK": 2335.776374010779,
+            "densityKgm3": 41.77307735320238,
+            "qualityMass": null,
+            "phase": "vapor"
+          },
+          "small": {
+            "pPa": 2354618.921425501,
+            "pBarAbs": 23.54618921425501,
+            "hJkg": 267840.7919795776,
+            "temperatureC": 36.2851719165908,
+            "entropyJkgK": 1227.4558445725527,
+            "densityKgm3": 911.8740205927411,
+            "qualityMass": null,
+            "phase": "liquid"
+          },
+          "gasCellState": {
+            "pPa": 2354618.921425501,
+            "pBarAbs": 23.54618921425501,
+            "hJkg": 478746.4293057756,
+            "temperatureC": 37.91319757957683,
+            "entropyJkgK": 1905.500080135216,
+            "densityKgm3": 79.4806836729629,
+            "qualityMass": 0.8564656779117851,
+            "phase": "two-phase"
+          },
+          "smallCellState": {
+            "pPa": 2354618.921425501,
+            "pBarAbs": 23.54618921425501,
+            "hJkg": 267840.7919795776,
+            "temperatureC": 36.2851719165908,
+            "entropyJkgK": 1227.4558445725527,
+            "densityKgm3": 911.8740205927411,
+            "qualityMass": null,
+            "phase": "liquid"
+          },
+          "gasFaceMassFlowKgs": 0.00676647061174487,
+          "smallFaceMassFlowKgs": -0.006016970839118403,
+          "flowFromGasKgs": 0.00676647061174487
+        },
+        "room-1": {
+          "gas": {
+            "pPa": 358494.95015227265,
+            "pBarAbs": 3.5849495015227264,
+            "hJkg": 553125.1505894287,
+            "temperatureC": 23.56925951088806,
+            "entropyJkgK": 2407.062501846127,
+            "densityKgm3": 7.92187036070623,
+            "qualityMass": null,
+            "phase": "vapor"
+          },
+          "small": {
+            "pPa": 358494.95015227265,
+            "pBarAbs": 3.5849495015227264,
+            "hJkg": 267836.04012389743,
+            "temperatureC": -23.234526406878587,
+            "entropyJkgK": 1279.9938937585741,
+            "densityKgm3": 31.5289321819652,
+            "qualityMass": 0.3079901194546708,
+            "phase": "two-phase"
+          },
+          "gasCellState": {
+            "pPa": 358494.95015227265,
+            "pBarAbs": 3.5849495015227264,
+            "hJkg": 553125.1505894287,
+            "temperatureC": 23.56925951088806,
+            "entropyJkgK": 2407.062501846127,
+            "densityKgm3": 7.92187036070623,
+            "qualityMass": null,
+            "phase": "vapor"
+          },
+          "smallCellState": {
+            "pPa": 358494.95015227265,
+            "pBarAbs": 3.5849495015227264,
+            "hJkg": 540324.9855644138,
+            "temperatureC": 9.546408578313503,
+            "entropyJkgK": 2362.869357879003,
+            "densityKgm3": 8.398629866473284,
+            "qualityMass": null,
+            "phase": "vapor"
+          },
+          "gasFaceMassFlowKgs": -0.006014602886796375,
+          "smallFaceMassFlowKgs": 0.00601604616181444,
+          "flowFromGasKgs": -0.006014602886796375
+        }
+      },
+      "fieldPorts": {
+        "room-1": {
+          "gasHeader": {
+            "pPa": 358494.95015227265,
+            "pBarAbs": 3.5849495015227264,
+            "hJkg": 553164.0376154792,
+            "temperatureC": 23.61199572951648,
+            "entropyJkgK": 2407.1935490385285,
+            "densityKgm3": 7.920519314802424,
+            "qualityMass": null,
+            "phase": "vapor"
+          },
+          "gasHeaderMassFlowKgs": -0.006012982368261609,
+          "gasLine": {
+            "pPa": 358494.95015227265,
+            "pBarAbs": 3.5849495015227264,
+            "hJkg": 553164.0376154792,
+            "temperatureC": 23.61199572951648,
+            "entropyJkgK": 2407.1935490385285,
+            "densityKgm3": 7.920519314802424,
+            "qualityMass": null,
+            "phase": "vapor"
+          },
+          "smallLine": {
+            "pPa": 358494.95015227265,
+            "pBarAbs": 3.5849495015227264,
+            "hJkg": 267836.04012389743,
+            "temperatureC": -23.234526406878587,
+            "entropyJkgK": 1279.9938937585741,
+            "densityKgm3": 31.5289321819652,
+            "qualityMass": 0.3079901194546708,
+            "phase": "two-phase"
+          },
+          "valveMassFlowKgs": -0.006016970839118403
+        }
+      },
+      "headers": {
+        "indoorGas": {
+          "pPa": 358494.95015227265,
+          "pBarAbs": 3.5849495015227264,
+          "hJkg": 553164.0376154792,
+          "temperatureC": 23.61199572951648,
+          "entropyJkgK": 2407.1935490385285,
+          "densityKgm3": 7.920519314802424,
+          "qualityMass": null,
+          "phase": "vapor"
+        },
+        "outdoorSmall": {
+          "pPa": 2354618.921425501,
+          "pBarAbs": 23.54618921425501,
+          "hJkg": 267840.7919795776,
+          "temperatureC": 36.2851719165908,
+          "entropyJkgK": 1227.4558445725527,
+          "densityKgm3": 911.8740205927411,
+          "qualityMass": null,
+          "phase": "liquid"
+        }
+      },
+      "compressorSuction": {
+        "pPa": 357951.1886837062,
+        "pBarAbs": 3.579511886837062,
+        "hJkg": 508828.61320501904,
+        "temperatureC": -23.273611344638,
+        "entropyJkgK": 2244.510131679012,
+        "densityKgm3": 9.887246167460205,
+        "qualityMass": 1,
+        "phase": "two-phase"
+      },
+      "compressorDischarge": {
+        "pPa": 2354618.921425501,
+        "pBarAbs": 23.54618921425501,
+        "hJkg": 624469.9349443559,
+        "temperatureC": 122.06615171356032,
+        "entropyJkgK": 2335.776374010779,
+        "densityKgm3": 41.77307735320238,
+        "qualityMass": null,
+        "phase": "vapor"
+      }
+    },
+    "outdoor": {
+      "temperatureC": 34.95722010223128,
+      "iceKg": 0,
+      "liquidKg": 0,
+      "thicknessM": 0,
+      "metalTemperatureC": 34.95722010223128,
+      "filmEnthalpyJ": -1.1641532182693481e-10,
+      "filmMassKg": 0,
+      "airOutletC": 34.14728191802851,
+      "fanPowerW": 85,
+      "depositionKgs": 0,
+      "drainageKgs": 0,
+      "meltPowerW": 0
+    },
+    "electrical": {
+      "compressorW": 841.3802204866191,
+      "indoorFansW": 25,
+      "outdoorFanW": 85,
+      "controlsW": 15,
+      "totalW": 966.3802204866191,
+      "driveLossW": 58.89661543406328
+    },
+    "signedRoomHeatW": -617.907695818341,
+    "heatingCOP": null,
+    "coolingCOP": 0.6394043283576258,
+    "energy": {
+      "electricityJ": 45540.89829212832,
+      "signedRoomHeatJ": -18925.742880054604,
+      "outdoorExchangeJ": 81544.17671269,
+      "drainageJ": 0,
+      "configurationEnergyJ": 0,
+      "boundaryEnergyJ": -32017.121336063814,
+      "storedEnergyChangeJ": -32017.12126033008,
+      "residualJ": 0.00007573373295599595,
+      "waterResidualKg": 9.95080753907196e-16
+    },
+    "diagnostics": {
+      "warnings": [
+        "Generic component parameters and control assumptions; not manufacturer calibrated.",
+        "Outdoor metal and retained water/ice share one equilibrium temperature.",
+        "Ice sublimation is excluded; retained ice melts or receives deposition.",
+        "Dirt uses clear-passage scaling of air flow/air-side conductance; forced fan power is constant without a measured fan curve.",
+        "Conserved R32 charge uses three bulk refrigerant cells per coil, shared outdoor/indoor pressures and a finite accumulator restriction; internal geometry and EEV/compressor maps are generic assumptions.",
+        "Field lines store actual refrigerant volume but are hydraulically idealized and adiabatic; friction, ambient line heat, elevation, slip and oil are excluded in this formulation.",
+        "Superheat is controlled by finite EEV movement; subcooling and exchanged heat emerge from the stored charge, rather than fixed charge multipliers.",
+        "Generic inverter control starts at minimum speed, holds 10 s, then accelerates at 0.5 rps/s; pressure/temperature supervision and restart dwell override demand. Stopped discharge predictions are control estimates, not sensor states."
+      ],
+      "fault": null,
+      "algebraicResidualW": 0.00030317355412989855,
+      "speedRps": 38.884291032501125,
+      "demandSpeedRps": 75,
+      "restartDelaySeconds": 0,
+      "envelopeProtection": null,
+      "filmEnergyRateW": -4.656612873077393e-10,
+      "metalEnergyRateW": -553.5706274121071
+    }
+  },
+  "wallSeconds": 45.167801448000006
+}
