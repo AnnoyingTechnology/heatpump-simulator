@@ -227,26 +227,22 @@ function stopValve(label: string, below = false): G {
     below ? txt(0, 19, label, 'dl lbl stop-lbl', 'middle') : txt(9, 3, label, 'dl lbl stop-lbl'));
 }
 
-/** Round pressure dial; value is written by update(). */
+/** Shared round pressure dial for the outdoor unit and every indoor branch. */
 class Gauge {
   readonly g: G;
   private readonly needle: SVGLineElement;
   private readonly val: SVGTextElement;
-  private readonly unit: SVGTextElement | null;
-  constructor(cx: number, cy: number, tag: string, virtual: boolean, branch = false) {
+  constructor(cx: number, cy: number, tag: string, virtual: boolean) {
     this.needle = svg('line', { x1: 0, y1: 0, x2: 0, y2: -6, class: 'g-needle' });
-    this.val = svg('text', { x: branch ? 0 : 10, y: branch ? 24 : 2.5, 'text-anchor': branch ? 'middle' : 'start', class: branch ? 'g-val branch-value' : 'g-val dl' });
-    this.unit = branch ? txt(0, 38, '', 'branch-unit', 'middle') : null;
-    this.g = svg('g', { class: `gauge${virtual ? ' virtual' : ''}${branch ? ' branch-gauge' : ''}`, transform: `translate(${cx} ${cy})` },
+    this.val = svg('text', { x: 10, y: 2.5, class: 'g-val dl' });
+    this.g = svg('g', { class: `gauge${virtual ? ' virtual' : ''}`, transform: `translate(${cx} ${cy})` },
       svg('circle', { r: 8, class: 'g-face' }),
       svg('path', { d: 'M-5.6 4.4A7.2 7.2 0 1 1 5.6 4.4', class: 'g-arc' }),
       this.needle, svg('circle', { r: 1.3, class: 'g-hub' }), this.val,
-      txt(branch ? 0 : 10, branch ? -13 : -4.5, tag, branch ? 'g-tag branch-tag' : 'g-tag dl', branch ? 'middle' : 'start'));
-    if (this.unit) this.g.append(this.unit);
+      txt(10, -4.5, tag, 'g-tag dl'));
   }
   set(barA: number | null, text: string): void {
-    setText(this.val, this.unit ? text.split(' ')[0]! : text);
-    if (this.unit) setText(this.unit, text.includes('bar(g)') ? 'bar(g)' : 'bar(a)');
+    setText(this.val, text);
     const a = barA === null ? -140 : -140 + clamp(barA / 32, 0, 1) * 280;
     setAttr(this.needle, 'transform', `rotate(${a.toFixed(1)})`);
     toggleClass(this.g, 'off', barA === null);
@@ -399,7 +395,7 @@ function roomPanel(i: number, hooks: SceneHooks, guide: HeatLossGuide): RoomPane
   remove.addEventListener('click', () => store.removeRoom(i));
   const tgt = html('div', { class: 'rp-card tgt' }, sp.root);
   const equip = html('div', { class: 'rp eq room-rp', 'data-block': 'equipment' },
-    html('div', { class: 'rp-head' }, html('span', { class: 'eq-tag' }, 'Indoor unit'), swLabel, linesBtn, gearBtn),
+    html('div', { class: 'rp-head' }, html('span', { class: 'eq-tag' }, 'Unit'), swLabel, linesBtn, gearBtn),
     html('div', { class: 'rp-cards' }, tgt));
   const env = html('div', { class: 'rp env room-env', 'data-block': 'environment' },
     html('div', { class: 'rp-head' }, html('span', { class: 'env-tag' }, 'Room'), name, remove),
@@ -554,6 +550,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
 
     // ---- rooms ----
     const zoneW = lay.vbW - wall.x1;
+    const branchTaps: G[] = [];
     for (const b of boxes) {
       const i = b.i;
       const view = svg('g', { class: 'room', 'data-room': i });
@@ -594,19 +591,19 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
         overlayPanel(b.x0 + ROOM_COLS.env.dx, py(ROOM_PANEL_H.env), ROOM_COLS.env.w, ROOM_PANEL_H.env, panel.env)));
       const lc = lineCtlBox(b, lay.ctlX);
       root.append(overlayPanel(lc.x, lc.y, lc.w, lc.h, lineCtlFor(i).root));
-      const gasGauge = new Gauge(lay.ctlX + 39, b.top + 194, 'Gas', true, true);
-      const smallGauge = new Gauge(lay.ctlX + 121, b.top + 194, 'Small', true, true);
+      const gasGauge = new Gauge(lay.ctlX + 24, b.gasY - 20, 'Gas', true);
+      const smallGauge = new Gauge(lay.ctlX + 92, b.liqY - 20, 'Small', true);
       setAttr(gasGauge.g, 'data-branch-pressure', 'gas');
       setAttr(smallGauge.g, 'data-branch-pressure', 'small');
       setAttr(gasGauge.g, 'data-room-id', store.state.cfg.rooms[i]!.id);
       setAttr(smallGauge.g, 'data-room-id', store.state.cfg.rooms[i]!.id);
       gasGauge.g.append(svg('title', {}, 'Indoor coil gas-port pressure. Illustrative gauge connection; not a manufacturer service fitting.'));
       smallGauge.g.append(svg('title', {}, 'Indoor coil small-port pressure. Illustrative gauge connection; not a manufacturer service fitting.'));
-      root.append(svg('g', { class: 'taps branch-taps' },
-        svg('path', { class: 'tap-stub', d: `M${lay.ctlX - 5} ${b.gasY}V${b.top + 194}H${lay.ctlX + 31}` }),
-        svg('path', { class: 'tap-stub', d: `M${lay.wall.x0 - 6} ${b.liqY}V${b.top + 194}H${lay.ctlX + 129}` }),
-        svg('circle', { class: 'node virtual', cx: lay.ctlX - 5, cy: b.gasY, r: 2.2 }),
-        svg('circle', { class: 'node virtual', cx: lay.wall.x0 - 6, cy: b.liqY, r: 2.2 }),
+      branchTaps.push(svg('g', { class: 'taps branch-taps' },
+        svg('path', { class: 'tap-stub', d: `M${lay.ctlX + 24} ${b.gasY}V${b.gasY - 12}` }),
+        svg('path', { class: 'tap-stub', d: `M${lay.ctlX + 92} ${b.liqY}V${b.liqY - 12}` }),
+        svg('circle', { class: 'node virtual', cx: lay.ctlX + 24, cy: b.gasY, r: 2.2 }),
+        svg('circle', { class: 'node virtual', cx: lay.ctlX + 92, cy: b.liqY, r: 2.2 }),
         gasGauge.g, smallGauge.g));
       const at = indoorProbeAt(b);
       rooms.push({
@@ -744,7 +741,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       pipes.set(spec.id, p);
       pipeLayer.append(p.g);
     }
-    root.append(pipeLayer, svg('g', { class: 'ov', transform: `translate(${OUT.x} ${OUT.y})` }, ...overlay));
+    root.append(pipeLayer, ...branchTaps, svg('g', { class: 'ov', transform: `translate(${OUT.x} ${OUT.y})` }, ...overlay));
 
     // EEVs, service port, taps (above pipes)
     for (let i = 0; i < n; i++) {

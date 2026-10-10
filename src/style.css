@@ -617,9 +617,9 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .outdoor-probes [data-readout="outdoor-coil"] text:nth-child(2) { display: none; }
 .coil-film .ice-note { top: auto; bottom: 22px; }
 
-/* Branch manometers remain readable in the overview, alongside their line set. */
-.branch-gauge .branch-value { font: 700 18px var(--font); fill: #1d2a35; }
-.branch-gauge .branch-tag { font: 600 10px var(--font); fill: #52606c; }
+/* Identical manometers use short fittings on the two branch pipes. */
 .branch-taps { pointer-events: none; }
-
-.branch-gauge .branch-unit { font: 500 10px var(--font); fill: #52606c; }
+.branch-taps .dl { opacity: 1; }
+.room-rp .rp-head { gap: 6px; }
+.room-rp.rp.eq { padding: 6px 8px; }
+.room-rp .eq-tag { letter-spacing: .08em; }

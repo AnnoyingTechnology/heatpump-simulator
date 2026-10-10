@@ -67,13 +67,20 @@ try{
   assert.ok(Math.abs(r.end/r.width-.95)<.005);assert.equal(r.intake,9);assert.equal(r.supply,9);assert.ok(r.directions.every(Boolean));assert.ok(Math.abs(r.inlet-r.actual.temperatureC)<.051);assert.ok(Math.abs(r.outlet-r.actual.airOutletC)<.051);assert.equal(r.duplicated,false);assert.match(r.cop,/COP/);assert.ok(r.bold>=800);assert.equal(r.plug,3);assert.notEqual(r.sun,'none');assert.equal(r.snow,'none');
   await run(()=>qa.store.setMode('cooling'));assert.equal(await run(()=>getComputedStyle(document.querySelector('.hm-sun')).display),'none');assert.notEqual(await run(()=>getComputedStyle(document.querySelector('.hm-snow')).display),'none');await settled();
  });
- await check('branch pressures use the actual coil endpoints and pressure convention',async()=>{
+ await check('shared manometers connect directly to branch tubes and show actual endpoint pressures',async()=>{
   await run(()=>{qa.store.reset();qa.store.update(s=>s.ui.paused=true);});await settled();await run(()=>qv.simulation.step(.25));await settled();
-  const r=await run(()=>({out:qv.simulation.status.output,gauges:[...document.querySelectorAll('[data-branch-pressure]')].map(e=>({id:e.dataset.roomId,side:e.dataset.branchPressure,p:Number(e.dataset.pressureAbsolute),shown:e.querySelector('.g-val').textContent+' '+e.querySelector('.branch-unit').textContent})),labels:[...document.querySelectorAll('.g-tag')].map(e=>e.textContent)}));
+  const r=await run(()=>({out:qv.simulation.status.output,gauges:[...document.querySelectorAll('[data-branch-pressure]')].map(e=>({id:e.dataset.roomId,side:e.dataset.branchPressure,p:Number(e.dataset.pressureAbsolute),shown:e.querySelector('.g-val').textContent})),labels:[...document.querySelectorAll('.g-tag')].map(e=>e.textContent)}));
   assert.equal(r.gauges.length,6);assert.ok(r.labels.every(l=>!l.includes('virtual')));
+  const layout=await run(()=>({
+   obsolete:document.querySelectorAll('.branch-value,.branch-unit,.branch-tag').length,
+   branches:[...document.querySelectorAll('.branch-taps')].map(g=>({stubs:[...g.querySelectorAll('.tap-stub')].map(p=>p.getTotalLength()),radii:[...g.querySelectorAll('.g-face')].map(p=>p.getAttribute('r'))})),
+   card:{w:Number(document.querySelector('.room-rp').closest('foreignObject').getAttribute('width')),h:Number(document.querySelector('.room-rp').closest('foreignObject').getAttribute('height'))}
+  }));
+  assert.equal(layout.obsolete,0);assert.ok(layout.branches.every(b=>b.stubs.every(n=>n===12)&&b.radii.every(n=>n==='8')));assert.ok(layout.card.w<250&&layout.card.h<110);
+
   for(const g of r.gauges){const i=r.out.rooms.findIndex(room=>room.id===g.id);const state=g.side==='gas'?r.out.cycle.branchInlets[i]:r.out.cycle.branchOutlets[i];assert.equal(g.p,state.pBarAbs);assert.ok(Math.abs(parseFloat(g.shown)-g.p)<.006);}
   await run(()=>qa.store.update(s=>s.ui.pressure='gauge'));
-  const shown=await run(()=>[...document.querySelectorAll('[data-branch-pressure]')].map(e=>({p:Number(e.dataset.pressureAbsolute),shown:e.querySelector('.g-val').textContent+' '+e.querySelector('.branch-unit').textContent})));
+  const shown=await run(()=>[...document.querySelectorAll('[data-branch-pressure]')].map(e=>({p:Number(e.dataset.pressureAbsolute),shown:e.querySelector('.g-val').textContent})));
   for(const g of shown){assert.match(g.shown,/bar\(g\)/);assert.ok(Math.abs(parseFloat(g.shown)-(g.p-1.01325))<.006);}
   await run(()=>qa.store.update(s=>s.ui.pressure='abs'));
  });

@@ -3,7 +3,7 @@ import { INDOOR_CASE_MM, OUTDOOR_CASE_MM } from './types';
 
 /**
  * Scene geometry as a function of the active room count n. One physical illustration scale for BOTH casings: 0.32 px per mm.
- * Tube routing is schematic. Rows keep at least 242 scene units for intake, equipment and outlet readings. Larger layouts grow vertically
+ * Tube routing is schematic. Rows keep at least 220 scene units for intake, equipment and outlet readings. Larger layouts grow vertically
  * and scroll inside the stage. The generic outdoor casing grows only below the owner
  * envelope, to hold more ports: an explicit assumption, not a published dimension.
  */
@@ -21,11 +21,11 @@ export const STACK_TOP = 36;
 const STACK_FIVE = 738;
 const RISER_PITCH = 14;
 /** Indoor zone width, constant for every n; the whole scene widens instead when the riser corridor grows. */
-export const ZONE_W = 1019;
+export const ZONE_W = 939;
 /** Horizontal budget of one room row, from the wall: pipe corridor with probes, unit, equipment block, environment block. */
-export const ROOM_COLS = { corridor: 124, equip: { dx: 389, w: 322 }, env: { dx: 719, w: 290 } } as const;
+export const ROOM_COLS = { corridor: 124, equip: { dx: 389, w: 242 }, env: { dx: 639, w: 290 } } as const;
 /** Panel heights of one room row: equipment card, and the taller unboxed environment (floor area, ceiling height, volume, air, envelope loss). Both fit the five-room row. */
-export const ROOM_PANEL_H = { equip: 132, env: 144 } as const;
+export const ROOM_PANEL_H = { equip: 108, env: 144 } as const;
 /**
  * Outdoor connection corridor, right of the risers and left of the wall: one line-length block per branch under its line pair
  * (`lineCtl`) and, above the first room, the shared field-line model switch (`modelCtl`). Blocks sit clear of the pair's pipes.
@@ -66,7 +66,7 @@ export function layoutFor(n: number): Layout {
   const ctlX = riserEnd + LINE_CTL.gap;
   const x0 = ctlX + LINE_CTL.w + LINE_CTL.gap;
   const x1 = x0 + 30;
-  const roomH = Math.max(STACK_FIVE / rooms, 242);
+  const roomH = Math.max(STACK_FIVE / rooms, 220);
   const stackBottom = STACK_TOP + roomH * rooms;
   const outH = outdoorHeight(rooms);
   const groundY = OUT.y + outH + 3;
