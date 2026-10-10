@@ -1,0 +1,3227 @@
+{
+  "purpose": "Historical frozen-frost numerical experiments. Rejected cases and source variants preserved; canonical current-source validation is frost-nozzle-validation.json.",
+  "archivedAt": "2026-10-10T18:33:18.428674+00:00",
+  "results": {
+    "frost-adaptive-corrected-budget-0.25.json": {
+      "dt": 0.25,
+      "order": null,
+      "threshold": 0.01,
+      "accepted": true,
+      "wallSeconds": 1.2663000000202374e-05,
+      "candidate": null,
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 1e-12,
+          "flow": 4.58341479902985e-09,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-09,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":724251.3821438709,\"b\":724251.3821438709,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-06,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":724251.3821438708,\"b\":724251.3821438708,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.001,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":724251.3821438708,\"b\":724251.3821438708,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.01,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":724251.3821438708,\"b\":724251.3821438708,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.1,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":724251.3821438708,\"b\":724251.3821438708,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":678110.415793665,\"b\":678114.8362732923,\"coarse\":0.23981595964186078,\"fine\":0.23981596016854792,\"tolerance\":1.4581002804949572e-10,\"width\":4.420479627326131,\"difference\":5.266871383469152e-10}"
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.6,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":678108.2055538513,\"b\":678114.8362732923,\"coarse\":0.3597244544956224,\"fine\":0.3597244534662101,\"tolerance\":2.772876311624588e-10,\"width\":6.630719440989196,\"difference\":1.0294122776421943e-9}"
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-12,
+          "flow": 4.6081516696127423e-08,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-09,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":1776122.0462451512,\"b\":1776122.0462451512,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-06,
+          "flow": 0.0031263461997030296,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.001,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":1776122.046245151,\"b\":1776122.046245151,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.01,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":1776122.0462451512,\"b\":1776122.0462451512,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.1,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":1776122.0462451512,\"b\":1776122.0462451512,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.4,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":1776122.046245151,\"b\":1776122.046245151,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.6,
+          "flow": 0.9003162266875748,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-12,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":724088.5974461181,\"b\":724088.5974461181,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-09,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":724088.5974461181,\"b\":724088.5974461181,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-06,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":724088.5974461181,\"b\":724088.5974461181,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        },
+        {
+          "id": "accumulator",
+          "span": 0.001,
+          "flow": 0.05863469326991918,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.01,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":724088.5974461181,\"b\":724088.5974461181,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        },
+        {
+          "id": "accumulator",
+          "span": 0.1,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":724088.5974461182,\"b\":724088.5974461182,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        },
+        {
+          "id": "accumulator",
+          "span": 0.4,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":724088.5974461181,\"b\":724088.5974461181,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        },
+        {
+          "id": "accumulator",
+          "span": 0.6,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":724088.5974461181,\"b\":724088.5974461181,\"coarse\":0,\"fine\":0,\"tolerance\":null,\"width\":0,\"difference\":0}"
+        }
+      ],
+      "totalWallSeconds": 1.006890851
+    },
+    "frost-adaptive-global-budget-0.125.json": {
+      "dt": 0.125,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": true,
+      "representativeOnly": false,
+      "wallSeconds": 3.3841589099999996,
+      "quadStats": {
+        "fluxCalls": 2300,
+        "densityCalls": 76080,
+        "maxDensityCalls": 300
+      },
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 1e-12,
+          "flow": 4.58341479902985e-09,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-09,
+          "flow": 3.975968212419498e-06,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-06,
+          "flow": 0.00033237423337835166,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.001,
+          "flow": 0.010893938809272809,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.01,
+          "flow": 0.034284896083703,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.1,
+          "flow": 0.1019367022263943,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "flow": 0.15438389435089783,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.6,
+          "flow": 0.15453345999932458,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-12,
+          "flow": 4.6081516696127423e-08,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-09,
+          "flow": 3.930268890643454e-05,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-06,
+          "flow": 0.0031263461997030296,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.001,
+          "flow": 0.10200759022833532,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.01,
+          "flow": 0.3151129992087888,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.1,
+          "flow": 0.7956343357037803,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.4,
+          "flow": 0.900316226692408,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.6,
+          "flow": 0.9003162266875748,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-12,
+          "flow": 1.0449776166449962e-08,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-09,
+          "flow": 1.0141314100170025e-05,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-06,
+          "flow": 0.0017070149673854124,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.001,
+          "flow": 0.05863469326991918,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.01,
+          "flow": 0.17984621864440026,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.1,
+          "flow": 0.4275462982783428,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.4,
+          "flow": 0.4632175309646961,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.6,
+          "flow": 0.4632175309710504,
+          "finite": true
+        }
+      ],
+      "totalWallSeconds": 8.399810589000001,
+      "candidateSummary": {
+        "nonlinearIterations": 3,
+        "snapshotTimeSeconds": 11.125,
+        "pressuresPa": [
+          722652.2539870531,
+          1777942.2876984084,
+          722488.7617271252
+        ],
+        "aggregateMassResidualKg": 4.197571110142739e-12,
+        "aggregateEnergyResidualJ": 8.839453542464071e-07
+      }
+    },
+    "frost-adaptive-global-budget-0.25.json": {
+      "dt": 0.25,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": true,
+      "representativeOnly": false,
+      "wallSeconds": 3.1678209980000003,
+      "quadStats": {
+        "fluxCalls": 2308,
+        "densityCalls": 75960,
+        "maxDensityCalls": 300
+      },
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 1e-12,
+          "flow": 4.58341479902985e-09,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-09,
+          "flow": 3.975968212419498e-06,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-06,
+          "flow": 0.00033237423337835166,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.001,
+          "flow": 0.010893938809272809,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.01,
+          "flow": 0.034284896083703,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.1,
+          "flow": 0.1019367022263943,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "flow": 0.15438389435089783,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.6,
+          "flow": 0.15453345999932458,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-12,
+          "flow": 4.6081516696127423e-08,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-09,
+          "flow": 3.930268890643454e-05,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-06,
+          "flow": 0.0031263461997030296,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.001,
+          "flow": 0.10200759022833532,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.01,
+          "flow": 0.3151129992087888,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.1,
+          "flow": 0.7956343357037803,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.4,
+          "flow": 0.900316226692408,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.6,
+          "flow": 0.9003162266875748,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-12,
+          "flow": 1.0449776166449962e-08,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-09,
+          "flow": 1.0141314100170025e-05,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-06,
+          "flow": 0.0017070149673854124,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.001,
+          "flow": 0.05863469326991918,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.01,
+          "flow": 0.17984621864440026,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.1,
+          "flow": 0.4275462982783428,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.4,
+          "flow": 0.4632175309646961,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.6,
+          "flow": 0.4632175309710504,
+          "finite": true
+        }
+      ],
+      "totalWallSeconds": 7.901204352,
+      "candidateSummary": {
+        "nonlinearIterations": 3,
+        "snapshotTimeSeconds": 11.25,
+        "pressuresPa": [
+          721149.5832001246,
+          1779586.6892475695,
+          720984.6817506514
+        ],
+        "aggregateMassResidualKg": -4.593731645075039e-12,
+        "aggregateEnergyResidualJ": -8.063172884931191e-07
+      }
+    },
+    "frost-adaptive-golden-48-4e-12-0.25.json": {
+      "dt": 0.25,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": false,
+      "representativeOnly": true,
+      "wallSeconds": 1.442799999995259e-05,
+      "candidate": null,
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 1e-12,
+          "flow": 4.58341479902985e-09,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-09,
+          "flow": 3.975968212419498e-06,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-06,
+          "flow": 0.00033237423337835166,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.001,
+          "flow": 0.010893938809272809,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.01,
+          "flow": 0.034284896083703,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.1,
+          "flow": 0.1019367022234622,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "flow": 0.1543838944836159,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.6,
+          "flow": 0.15453345999940377,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-12,
+          "flow": 4.6081516696127423e-08,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-09,
+          "flow": 3.930268890643454e-05,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-06,
+          "flow": 0.0031263461997030296,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.001,
+          "flow": 0.10200759022833532,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.01,
+          "flow": 0.3151129992087888,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.1,
+          "flow": 0.7956343357037803,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.4,
+          "flow": 0.900316226692408,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.6,
+          "flow": 0.9003162266871989,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-12,
+          "flow": 1.0449776166449962e-08,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-09,
+          "flow": 1.0141314100170025e-05,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-06,
+          "flow": 0.0017070149673854124,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.001,
+          "flow": 0.05863469326991918,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.01,
+          "flow": 0.17984621864440026,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.1,
+          "flow": 0.4275462982783428,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.4,
+          "flow": 0.4632175309635093,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.6,
+          "flow": 0.4632175309710504,
+          "finite": true
+        }
+      ],
+      "totalWallSeconds": 7.874828163000001
+    },
+    "frost-adaptive-golden-48-4e-13-0.25.json": {
+      "dt": 0.25,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": false,
+      "representativeOnly": true,
+      "wallSeconds": 1.5889999999899375e-05,
+      "candidate": null,
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 1e-12,
+          "flow": 4.58341479902985e-09,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-09,
+          "flow": 3.975968212419498e-06,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-06,
+          "flow": 0.00033237423337835166,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.001,
+          "flow": 0.010893938809633628,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.01,
+          "flow": 0.034284896083703,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.1,
+          "error": "DomainError: Isentropic integral evaluation budget"
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "error": "DomainError: Isentropic integral evaluation budget"
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.6,
+          "error": "DomainError: Isentropic integral evaluation budget"
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-12,
+          "flow": 4.6081516696127423e-08,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-09,
+          "flow": 3.930268890643454e-05,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-06,
+          "flow": 0.0031263461997030296,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.001,
+          "flow": 0.10200759022833532,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.01,
+          "flow": 0.3151129992087888,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.1,
+          "flow": 0.7956343357037794,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.4,
+          "flow": 0.9003162266924077,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.6,
+          "flow": 0.9003162266871985,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-12,
+          "flow": 1.0449776166449962e-08,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-09,
+          "flow": 1.0141314100170025e-05,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-06,
+          "flow": 0.0017070149673854124,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.001,
+          "flow": 0.05863469326991918,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.01,
+          "flow": 0.17984621864440026,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.1,
+          "flow": 0.4275462982783428,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.4,
+          "flow": 0.4632175309635094,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.6,
+          "flow": 0.46321753097105034,
+          "finite": true
+        }
+      ],
+      "totalWallSeconds": 8.121988602
+    },
+    "frost-adaptive-golden-64-4e-12-0.25.json": {
+      "dt": 0.25,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": false,
+      "representativeOnly": true,
+      "wallSeconds": 1.4646999999968103e-05,
+      "candidate": null,
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 1e-12,
+          "flow": 4.58341479902985e-09,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-09,
+          "flow": 3.975968212419498e-06,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-06,
+          "flow": 0.00033237423337835166,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.001,
+          "flow": 0.010893938809460723,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.01,
+          "flow": 0.034284896083703,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.1,
+          "flow": 0.10193670222351363,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "flow": 0.154383894483616,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.6,
+          "flow": 0.15453345999940377,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-12,
+          "flow": 4.6081516696127423e-08,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-09,
+          "flow": 3.930268890643454e-05,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-06,
+          "flow": 0.0031263461997030296,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.001,
+          "flow": 0.10200759022833532,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.01,
+          "flow": 0.3151129992087888,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.1,
+          "flow": 0.7956343357037845,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.4,
+          "flow": 0.900316226692408,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.6,
+          "flow": 0.9003162266871989,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-12,
+          "flow": 1.0449776166449962e-08,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-09,
+          "flow": 1.0141314100170025e-05,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-06,
+          "flow": 0.0017070149673854124,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.001,
+          "flow": 0.05863469326991918,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.01,
+          "flow": 0.17984621864440026,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.1,
+          "flow": 0.4275462982783428,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.4,
+          "flow": 0.4632175309635093,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.6,
+          "flow": 0.4632175309710504,
+          "finite": true
+        }
+      ],
+      "totalWallSeconds": 9.411178399
+    },
+    "frost-adaptive-integral-0.125.json": {
+      "dt": 0.125,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": true,
+      "wallSeconds": 3.5302532290000004,
+      "candidateSummary": {
+        "nonlinearIterations": 3,
+        "snapshotTimeSeconds": 11.125,
+        "pressuresPa": [
+          722652.2539870531,
+          1777942.2876984084,
+          722488.7617271252
+        ],
+        "aggregateMassResidualKg": 4.197571110142739e-12,
+        "aggregateEnergyResidualJ": 8.839453542464071e-07
+      }
+    },
+    "frost-adaptive-integral-0.25.json": {
+      "dt": 0.25,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": true,
+      "wallSeconds": 6.355266530999999,
+      "quadStats": {
+        "fluxCalls": 3058,
+        "densityCalls": 72312,
+        "maxDensityCalls": 180
+      },
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 1e-12,
+          "flow": 4.58341479902985e-09,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-09,
+          "error": "DomainError: Isentropic integral unresolved error"
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-06,
+          "flow": 0.00033237423337835166,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.001,
+          "flow": 0.010893938809272809,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.01,
+          "flow": 0.034284896083703,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.1,
+          "error": "DomainError: Isentropic integral unresolved error"
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "error": "DomainError: Isentropic integral unresolved error"
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.6,
+          "error": "DomainError: Isentropic integral unresolved error"
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-12,
+          "flow": 4.6081516696127423e-08,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-09,
+          "error": "DomainError: Isentropic integral unresolved error"
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-06,
+          "flow": 0.0031263461997030296,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.001,
+          "flow": 0.10200759022833532,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.01,
+          "error": "DomainError: Isentropic integral unresolved error"
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.1,
+          "error": "DomainError: Isentropic integral unresolved error"
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.4,
+          "flow": 0.900316226692408,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.6,
+          "flow": 0.9003162266875748,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-12,
+          "flow": 1.0449776166449962e-08,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-09,
+          "flow": 1.0141314100170025e-05,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-06,
+          "flow": 0.0017070149673854124,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.001,
+          "flow": 0.05863469326991918,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.01,
+          "flow": 0.17984621864440026,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.1,
+          "error": "DomainError: Isentropic integral unresolved error"
+        },
+        {
+          "id": "accumulator",
+          "span": 0.4,
+          "flow": 0.4632175309646961,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.6,
+          "flow": 0.4632175309710504,
+          "finite": true
+        }
+      ],
+      "totalWallSeconds": 7.991106966999999,
+      "candidateSummary": {
+        "nonlinearIterations": 5,
+        "snapshotTimeSeconds": 11.25,
+        "pressuresPa": [
+          721149.5832009844,
+          1779586.6892471,
+          720984.6817503347
+        ],
+        "aggregateMassResidualKg": -4.157749665389954e-12,
+        "aggregateEnergyResidualJ": -1.452010081948174e-06
+      }
+    },
+    "frost-adaptive-positive-span-0.25.json": {
+      "dt": 0.25,
+      "order": null,
+      "threshold": 0.01,
+      "accepted": true,
+      "wallSeconds": 1.2613999999985026e-05,
+      "candidate": null,
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 1e-12,
+          "flow": 4.58341479902985e-09,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-09,
+          "flow": 3.975968212419498e-06,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-06,
+          "flow": 0.00033237423337835166,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.001,
+          "flow": 0.010893938809272809,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.01,
+          "flow": 0.034284896083703,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.1,
+          "flow": 0.10193670222937017,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":678110.415793665,\"b\":678114.8362732923,\"coarse\":0.23981595964186078,\"fine\":0.23981596016854792,\"tolerance\":1.4581002804949572e-10,\"width\":4.420479627326131,\"difference\":5.266871383469152e-10}"
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.6,
+          "error": "DomainError: Isentropic integral unresolved error {\"a\":678108.2055538513,\"b\":678114.8362732923,\"coarse\":0.3597244544956224,\"fine\":0.3597244534662101,\"tolerance\":2.772876311624588e-10,\"width\":6.630719440989196,\"difference\":1.0294122776421943e-9}"
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-12,
+          "flow": 4.6081516696127423e-08,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-09,
+          "flow": 3.930268890643454e-05,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-06,
+          "flow": 0.0031263461997030296,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.001,
+          "flow": 0.10200759022833532,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.01,
+          "flow": 0.3151129992087888,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.1,
+          "flow": 0.7956343357037803,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.4,
+          "flow": 0.900316226692408,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.6,
+          "flow": 0.9003162266875748,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-12,
+          "flow": 1.0449776166449962e-08,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-09,
+          "flow": 1.0141314100170025e-05,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-06,
+          "flow": 0.0017070149673854124,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.001,
+          "flow": 0.05863469326991918,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.01,
+          "flow": 0.17984621864440026,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.1,
+          "flow": 0.4275462982783428,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.4,
+          "flow": 0.4632175309646961,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.6,
+          "flow": 0.4632175309710504,
+          "finite": true
+        }
+      ],
+      "totalWallSeconds": 3.0385489939999997
+    },
+    "frost-adaptive-reviewed-budget-0.125.json": {
+      "dt": 0.125,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": true,
+      "representativeOnly": false,
+      "wallSeconds": 3.4823429449999996,
+      "quadStats": {
+        "fluxCalls": 1196,
+        "densityCalls": 30792,
+        "maxDensityCalls": 108
+      },
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 1e-12,
+          "flow": 4.58341479902985e-09,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-09,
+          "flow": 3.975968212419498e-06,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-06,
+          "flow": 0.00033237423337835166,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.001,
+          "flow": 0.010893938809272809,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.01,
+          "flow": 0.034284896083703,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.1,
+          "flow": 0.1019367022263943,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "flow": 0.15438389435089783,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.6,
+          "flow": 0.15453345999932458,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-12,
+          "flow": 4.6081516696127423e-08,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-09,
+          "flow": 3.930268890643454e-05,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-06,
+          "flow": 0.0031263461997030296,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.001,
+          "flow": 0.10200759022833532,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.01,
+          "flow": 0.3151129992087888,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.1,
+          "flow": 0.7956343357037803,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.4,
+          "flow": 0.900316226692408,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.6,
+          "flow": 0.9003162266875748,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-12,
+          "flow": 1.0449776166449962e-08,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-09,
+          "flow": 1.0141314100170025e-05,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-06,
+          "flow": 0.0017070149673854124,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.001,
+          "flow": 0.05863469326991918,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.01,
+          "flow": 0.17984621864440026,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.1,
+          "flow": 0.4275462982783428,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.4,
+          "flow": 0.4632175309646961,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.6,
+          "flow": 0.4632175309710504,
+          "finite": true
+        }
+      ],
+      "totalWallSeconds": 8.379068074000001,
+      "candidateSummary": {
+        "nonlinearIterations": 3,
+        "snapshotTimeSeconds": 11.125,
+        "pressuresPa": [
+          722652.2539870531,
+          1777942.2876984084,
+          722488.7617271252
+        ],
+        "aggregateMassResidualKg": 4.197571110142739e-12,
+        "aggregateEnergyResidualJ": 8.839453542464071e-07
+      }
+    },
+    "frost-adaptive-reviewed-budget-0.25.json": {
+      "dt": 0.25,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": true,
+      "representativeOnly": false,
+      "wallSeconds": 3.2558707840000003,
+      "quadStats": {
+        "fluxCalls": 1196,
+        "densityCalls": 30576,
+        "maxDensityCalls": 108
+      },
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 1e-12,
+          "flow": 4.58341479902985e-09,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-09,
+          "flow": 3.975968212419498e-06,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-06,
+          "flow": 0.00033237423337835166,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.001,
+          "flow": 0.010893938809272809,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.01,
+          "flow": 0.034284896083703,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.1,
+          "flow": 0.1019367022263943,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "flow": 0.15438389435089783,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.6,
+          "flow": 0.15453345999932458,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-12,
+          "flow": 4.6081516696127423e-08,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-09,
+          "flow": 3.930268890643454e-05,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-06,
+          "flow": 0.0031263461997030296,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.001,
+          "flow": 0.10200759022833532,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.01,
+          "flow": 0.3151129992087888,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.1,
+          "flow": 0.7956343357037803,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.4,
+          "flow": 0.900316226692408,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.6,
+          "flow": 0.9003162266875748,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-12,
+          "flow": 1.0449776166449962e-08,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-09,
+          "flow": 1.0141314100170025e-05,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-06,
+          "flow": 0.0017070149673854124,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.001,
+          "flow": 0.05863469326991918,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.01,
+          "flow": 0.17984621864440026,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.1,
+          "flow": 0.4275462982783428,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.4,
+          "flow": 0.4632175309646961,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.6,
+          "flow": 0.4632175309710504,
+          "finite": true
+        }
+      ],
+      "totalWallSeconds": 7.958001094999999,
+      "candidateSummary": {
+        "nonlinearIterations": 3,
+        "snapshotTimeSeconds": 11.25,
+        "pressuresPa": [
+          721149.5832001246,
+          1779586.6892475695,
+          720984.6817506514
+        ],
+        "aggregateMassResidualKg": -4.593731645075039e-12,
+        "aggregateEnergyResidualJ": -8.063172884931191e-07
+      }
+    },
+    "frost-equilibrium-density-48-4e-12-0.25.json": {
+      "dt": 0.25,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": false,
+      "representativeOnly": true,
+      "wallSeconds": 1.669099999980972e-05,
+      "candidate": null,
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 1e-12,
+          "flow": 4.58341479902985e-09,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-09,
+          "flow": 3.975968212419498e-06,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-06,
+          "flow": 0.00033237423337835166,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.001,
+          "flow": 0.010893938809272809,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.01,
+          "flow": 0.034284896083703,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.1,
+          "flow": 0.1019367022234622,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "flow": 0.15438389448361584,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.6,
+          "flow": 0.15453345999940382,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-12,
+          "flow": 4.6081516696127423e-08,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-09,
+          "flow": 3.9302688906434554e-05,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-06,
+          "flow": 0.0031263461997030322,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.001,
+          "flow": 0.1020075902283354,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.01,
+          "flow": 0.31511299920878894,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.1,
+          "flow": 0.7956343357037805,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.4,
+          "flow": 0.9003162266924082,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.6,
+          "flow": 0.9003162266871985,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-12,
+          "flow": 1.0449776166449962e-08,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-09,
+          "flow": 1.0141314100170025e-05,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-06,
+          "flow": 0.0017070149673854137,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.001,
+          "flow": 0.05863469326991908,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.01,
+          "flow": 0.1798462186444003,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.1,
+          "flow": 0.4275462982783424,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.4,
+          "flow": 0.46321753095795853,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.6,
+          "flow": 0.4632175309670813,
+          "finite": true
+        }
+      ],
+      "totalWallSeconds": 15.020036258
+    },
+    "frost-integral-convergence.json": [
+      {
+        "id": "outdoor:0",
+        "relativeDrop": 9.99999e-07,
+        "dropPa": 0.7242506578924887,
+        "integrals": {
+          "2": 0.03721289383682669,
+          "4": 0.03721289383682669,
+          "8": 0.03721289383682671
+        },
+        "directJkg": 0.037212893716059625,
+        "order4minus8": -2.0816681711721685e-17,
+        "directMinus8": -1.2076708383323975e-10,
+        "integralFlux": 5.30954119618928,
+        "asymptoteFlux": 5.3095444866855255
+      },
+      {
+        "id": "outdoor:0",
+        "relativeDrop": 1e-06,
+        "dropPa": 0.7242513821438707,
+        "integrals": {
+          "2": 0.037212931049773114,
+          "4": 0.03721293104977313,
+          "8": 0.037212931049773135
+        },
+        "directJkg": 0.03721293096896261,
+        "order4minus8": -6.938893903907228e-18,
+        "directMinus8": -8.081052493835728e-11,
+        "integralFlux": 5.309543850958576,
+        "asymptoteFlux": 5.30954714145976
+      },
+      {
+        "id": "outdoor:0",
+        "relativeDrop": 1.000001e-06,
+        "dropPa": 0.724252106395253,
+        "integrals": {
+          "2": 0.03721296826271957,
+          "4": 0.03721296826271953,
+          "8": 0.03721296826271954
+        },
+        "directJkg": 0.03721296798903495,
+        "order4minus8": -6.938893903907228e-18,
+        "directMinus8": -2.736845888806627e-10,
+        "integralFlux": 5.309546505726544,
+        "asymptoteFlux": 5.309549796232667
+      },
+      {
+        "id": "outdoor:0",
+        "relativeDrop": 0.000225,
+        "dropPa": 162.95656098237092,
+        "integrals": {
+          "2": 8.373684476807584,
+          "4": 8.373684476807583,
+          "8": 8.373684475573876
+        },
+        "directJkg": 8.373684476828203,
+        "order4minus8": 1.233706470316065e-09,
+        "directMinus8": 1.254326420507823e-09,
+        "integralFlux": 79.63210115300718,
+        "asymptoteFlux": 79.6432071218964
+      },
+      {
+        "id": "outdoor:0",
+        "relativeDrop": 0.001,
+        "dropPa": 724.2513821438708,
+        "integrals": {
+          "2": 37.2282996298106,
+          "4": 37.22829962981072,
+          "8": 37.22829962981073
+        },
+        "directJkg": 37.2282996296417,
+        "order4minus8": -7.105427357601002e-15,
+        "directMinus8": -1.6903101140997023e-10,
+        "integralFlux": 167.79854652504093,
+        "asymptoteFlux": 167.90262311049077
+      },
+      {
+        "id": "outdoor:0",
+        "relativeDrop": 0.01,
+        "dropPa": 7242.513821438708,
+        "integrals": {
+          "2": 373.67593179965434,
+          "4": 373.6759318137767,
+          "8": 373.6759318137767
+        },
+        "directJkg": 373.67593181383563,
+        "order4minus8": 0,
+        "directMinus8": 5.894662535865791e-11,
+        "integralFlux": 527.65728252791,
+        "asymptoteFlux": 530.9547141459759
+      },
+      {
+        "id": "outdoor:0",
+        "relativeDrop": 0.05,
+        "dropPa": 36212.56910719354,
+        "integrals": {
+          "2": 1900.2794991146466,
+          "4": 1900.2795477691332,
+          "8": 1900.279548334038
+        },
+        "directJkg": 1900.2795461038477,
+        "order4minus8": -5.649048944178503e-07,
+        "directMinus8": -2.2301903754851082e-06,
+        "integralFlux": 1150.0667870639109,
+        "asymptoteFlux": 1187.2508338043715
+      },
+      {
+        "id": "outdoor:0",
+        "relativeDrop": 0.1,
+        "dropPa": 72425.13821438709,
+        "integrals": {
+          "2": 3887.4332133867892,
+          "4": 3887.0096837792003,
+          "8": 3887.1505467766724
+        },
+        "directJkg": 3887.1415442998405,
+        "order4minus8": -0.1408629974721407,
+        "directMinus8": -0.009002476831938111,
+        "integralFlux": 1568.4331570099948,
+        "asymptoteFlux": 1679.0262311049078
+      },
+      {
+        "id": "room-1:small",
+        "relativeDrop": 9.99999e-07,
+        "dropPa": 1.7761202701231047,
+        "integrals": {
+          "2": 0.0025422769607429726,
+          "4": 0.0025422769607429735,
+          "8": 0.002542276960742971
+        },
+        "directJkg": 0.002542276808526367,
+        "order4minus8": 2.6020852139652106e-18,
+        "directMinus8": -1.5221660390474234e-10,
+        "integralFlux": 49.81672266302801,
+        "asymptoteFlux": 49.8168577101617
+      },
+      {
+        "id": "room-1:small",
+        "relativeDrop": 1e-06,
+        "dropPa": 1.7761220462451508,
+        "integrals": {
+          "2": 0.0025422795030270668,
+          "4": 0.0025422795030270663,
+          "8": 0.0025422795030270724
+        },
+        "directJkg": 0.0025422793987672776,
+        "order4minus8": -6.071532165918825e-18,
+        "directMinus8": -1.0425979480796488e-10,
+        "integralFlux": 49.81674757127283,
+        "asymptoteFlux": 49.816882618609235
+      },
+      {
+        "id": "room-1:small",
+        "relativeDrop": 1.000001e-06,
+        "dropPa": 1.7761238223671971,
+        "integrals": {
+          "2": 0.002542282045311164,
+          "4": 0.0025422820453111675,
+          "8": 0.002542282045311158
+        },
+        "directJkg": 0.002542282163631171,
+        "order4minus8": 9.540979117872439e-18,
+        "directMinus8": 1.1832001307540696e-10,
+        "integralFlux": 49.816772479505254,
+        "asymptoteFlux": 49.81690752704432
+      },
+      {
+        "id": "room-1:small",
+        "relativeDrop": 0.000225,
+        "dropPa": 399.62746040515896,
+        "integrals": {
+          "2": 0.5722444922924131,
+          "4": 0.5722444922924115,
+          "8": 0.5722444922924149
+        },
+        "directJkg": 0.5722444923594594,
+        "order4minus8": -3.4416913763379853e-15,
+        "directMinus8": 6.704448107797134e-11,
+        "integralFlux": 746.7976796935479,
+        "asymptoteFlux": 747.2532392791386
+      },
+      {
+        "id": "room-1:small",
+        "relativeDrop": 0.001,
+        "dropPa": 1776.122046245151,
+        "integrals": {
+          "2": 2.5468729131606582,
+          "4": 2.5468729131607257,
+          "8": 2.54687291316073
+        },
+        "directJkg": 2.5468729131680448,
+        "order4minus8": -4.440892098500626e-15,
+        "directMinus8": 7.314593375440381e-12,
+        "integralFlux": 1571.086970090824,
+        "asymptoteFlux": 1575.3481500405844
+      },
+      {
+        "id": "room-1:small",
+        "relativeDrop": 0.01,
+        "dropPa": 17761.22046245151,
+        "integrals": {
+          "2": 25.885695584002164,
+          "4": 25.885695590260067,
+          "8": 25.885695590260042
+        },
+        "directJkg": 25.885695590404794,
+        "order4minus8": 2.4868995751603507e-14,
+        "directMinus8": 1.447517661290476e-10,
+        "integralFlux": 4849.550260368083,
+        "asymptoteFlux": 4981.688261860924
+      },
+      {
+        "id": "room-1:small",
+        "relativeDrop": 0.05,
+        "dropPa": 88806.10231225756,
+        "integrals": {
+          "2": 139.05084654976474,
+          "4": 139.0508682330372,
+          "8": 139.05086823303725
+        },
+        "directJkg": 139.05086823299644,
+        "order4minus8": -5.684341886080802e-14,
+        "directMinus8": -4.0813574742060155e-11,
+        "integralFlux": 9778.112836787244,
+        "asymptoteFlux": 11139.393596233798
+      },
+      {
+        "id": "room-1:small",
+        "relativeDrop": 0.1,
+        "dropPa": 177612.2046245151,
+        "integrals": {
+          "2": 303.9314086124116,
+          "4": 303.93220166822425,
+          "8": 303.9322016686305
+        },
+        "directJkg": 303.9322016683873,
+        "order4minus8": -4.062599145981949e-10,
+        "directMinus8": -2.432329893053975e-10,
+        "integralFlux": 12241.584823566915,
+        "asymptoteFlux": 15753.481500405844
+      },
+      {
+        "id": "accumulator",
+        "relativeDrop": 9.99999e-07,
+        "dropPa": 0.7240878733575207,
+        "integrals": {
+          "2": 0.001272053781751912,
+          "4": 0.0012720537817519154,
+          "8": 0.0012720537817519108
+        },
+        "directJkg": 0.0012720536615233868,
+        "order4minus8": 4.553649124439119e-18,
+        "directMinus8": -1.2022852396813277e-10,
+        "integralFlux": 28.71127460208681,
+        "asymptoteFlux": 28.711379957419343
+      },
+      {
+        "id": "accumulator",
+        "relativeDrop": 1e-06,
+        "dropPa": 0.7240885974461181,
+        "integrals": {
+          "2": 0.0012720550538100697,
+          "4": 0.001272055053810064,
+          "8": 0.0012720550538100775
+        },
+        "directJkg": 0.0012720549711957574,
+        "order4minus8": -1.3444106938820255e-17,
+        "directMinus8": -8.261432011581749e-11,
+        "integralFlux": 28.711288957629424,
+        "asymptoteFlux": 28.711394313120085
+      },
+      {
+        "id": "accumulator",
+        "relativeDrop": 1.000001e-06,
+        "dropPa": 0.7240893215347156,
+        "integrals": {
+          "2": 0.0012720563258682405,
+          "4": 0.0012720563258682488,
+          "8": 0.001272056325868247
+        },
+        "directJkg": 0.001272056222660467,
+        "order4minus8": 1.734723475976807e-18,
+        "directMinus8": -1.0320777999589525e-10,
+        "integralFlux": 28.71130331316491,
+        "asymptoteFlux": 28.711408668813657
+      },
+      {
+        "id": "accumulator",
+        "relativeDrop": 0.000225,
+        "dropPa": 162.91993442537657,
+        "integrals": {
+          "2": 0.28636925129561946,
+          "4": 0.28636925129561674,
+          "8": 0.28636925129561863
+        },
+        "directJkg": 0.28636925108730793,
+        "order4minus8": -1.887379141862766e-15,
+        "directMinus8": -2.0831070202120827e-10,
+        "integralFlux": 430.3156112956205,
+        "asymptoteFlux": 430.67091469680133
+      },
+      {
+        "id": "accumulator",
+        "relativeDrop": 0.001,
+        "dropPa": 724.0885974461181,
+        "integrals": {
+          "2": 1.2751661764359083,
+          "4": 1.2751661764359479,
+          "8": 1.2751661764359659
+        },
+        "directJkg": 1.2751661764632445,
+        "order4minus8": -1.7985612998927536e-14,
+        "directMinus8": 2.7278623804249946e-11,
+        "integralFlux": 904.6136831529205,
+        "asymptoteFlux": 907.934008286651
+      },
+      {
+        "id": "accumulator",
+        "relativeDrop": 0.01,
+        "dropPa": 7240.885974461182,
+        "integrals": {
+          "2": 13.034110531124014,
+          "4": 13.034110535549955,
+          "8": 13.034110535549987
+        },
+        "directJkg": 13.034110535285436,
+        "order4minus8": -3.197442310920451e-14,
+        "directMinus8": -2.645510477350399e-10,
+        "integralFlux": 2769.248914589071,
+        "asymptoteFlux": 2871.139431312009
+      },
+      {
+        "id": "accumulator",
+        "relativeDrop": 0.05,
+        "dropPa": 36204.42987230591,
+        "integrals": {
+          "2": 71.69294574405436,
+          "4": 71.692961091577,
+          "8": 71.69296109157723
+        },
+        "directJkg": 71.69296109143761,
+        "order4minus8": -2.2737367544323206e-13,
+        "directMinus8": -1.3962164757685969e-10,
+        "integralFlux": 5411.840565277715,
+        "asymptoteFlux": 6420.06294129374
+      },
+      {
+        "id": "accumulator",
+        "relativeDrop": 0.1,
+        "dropPa": 72408.85974461182,
+        "integrals": {
+          "2": 160.91638508170507,
+          "4": 160.91694700666767,
+          "8": 160.9169470069628
+        },
+        "directJkg": 160.91694700691733,
+        "order4minus8": -2.951310307253152e-10,
+        "directMinus8": -4.547473508864641e-11,
+        "integralFlux": 6578.981356251024,
+        "asymptoteFlux": 9079.34008286651
+      }
+    ],
+    "frost-integral-threshold-continuity.json": [
+      {
+        "id": "outdoor:0",
+        "relativeDrop": 0.00999999,
+        "dropPa": 7242.5065789248865,
+        "integrals": {
+          "2": 373.67555656757906,
+          "4": 373.67555658170136,
+          "8": 373.6755565817014
+        },
+        "directJkg": 373.6755565815256,
+        "order4minus8": -5.684341886080802e-14,
+        "directMinus8": -1.758166945364792e-10,
+        "integralFlux": 527.6570220035969,
+        "asymptoteFlux": 530.9544486685525
+      },
+      {
+        "id": "outdoor:0",
+        "relativeDrop": 0.01,
+        "dropPa": 7242.513821438708,
+        "integrals": {
+          "2": 373.67593179965434,
+          "4": 373.6759318137767,
+          "8": 373.6759318137767
+        },
+        "directJkg": 373.67593181383563,
+        "order4minus8": 0,
+        "directMinus8": 5.894662535865791e-11,
+        "integralFlux": 527.65728252791,
+        "asymptoteFlux": 530.9547141459759
+      },
+      {
+        "id": "outdoor:0",
+        "relativeDrop": 0.01000001,
+        "dropPa": 7242.521063952529,
+        "integrals": {
+          "2": 373.67630703173245,
+          "4": 373.6763070458551,
+          "8": 373.67630706551813
+        },
+        "directJkg": 373.6763070456218,
+        "order4minus8": -1.9663048078655265e-08,
+        "directMinus8": -1.989633346966002e-08,
+        "integralFlux": 527.6575430659694,
+        "asymptoteFlux": 530.9549796232667
+      },
+      {
+        "id": "room-1:small",
+        "relativeDrop": 0.00999999,
+        "dropPa": 17761.202701231046,
+        "integrals": {
+          "2": 25.885669231840158,
+          "4": 25.88566923809816,
+          "8": 25.88566923809815
+        },
+        "directJkg": 25.885669238166884,
+        "order4minus8": 1.0658141036401503e-14,
+        "directMinus8": 6.873435154375329e-11,
+        "integralFlux": 4849.547964889481,
+        "asymptoteFlux": 4981.68577101617
+      },
+      {
+        "id": "room-1:small",
+        "relativeDrop": 0.01,
+        "dropPa": 17761.22046245151,
+        "integrals": {
+          "2": 25.885695584002164,
+          "4": 25.885695590260067,
+          "8": 25.885695590260042
+        },
+        "directJkg": 25.885695590404794,
+        "order4minus8": 2.4868995751603507e-14,
+        "directMinus8": 1.447517661290476e-10,
+        "integralFlux": 4849.550260368083,
+        "asymptoteFlux": 4981.688261860924
+      },
+      {
+        "id": "room-1:small",
+        "relativeDrop": 0.01000001,
+        "dropPa": 17761.23822367197,
+        "integrals": {
+          "2": 25.885721936164867,
+          "4": 25.885721942422915,
+          "8": 25.885721942422883
+        },
+        "directJkg": 25.88572194252629,
+        "order4minus8": 3.197442310920451e-14,
+        "directMinus8": 1.0340528433516738e-10,
+        "integralFlux": 4849.552555845325,
+        "asymptoteFlux": 4981.690752704432
+      },
+      {
+        "id": "accumulator",
+        "relativeDrop": 0.00999999,
+        "dropPa": 7240.878733575207,
+        "integrals": {
+          "2": 13.034097180997003,
+          "4": 13.034097185422896,
+          "8": 13.03409718542286
+        },
+        "directJkg": 13.034097185183782,
+        "order4minus8": 3.552713678800501e-14,
+        "directMinus8": -2.390780906580403e-10,
+        "integralFlux": 2769.2476285121834,
+        "asymptoteFlux": 2871.137995741934
+      },
+      {
+        "id": "accumulator",
+        "relativeDrop": 0.01,
+        "dropPa": 7240.885974461182,
+        "integrals": {
+          "2": 13.034110531124014,
+          "4": 13.034110535549955,
+          "8": 13.034110535549987
+        },
+        "directJkg": 13.034110535285436,
+        "order4minus8": -3.197442310920451e-14,
+        "directMinus8": -2.645510477350399e-10,
+        "integralFlux": 2769.248914589071,
+        "asymptoteFlux": 2871.139431312009
+      },
+      {
+        "id": "accumulator",
+        "relativeDrop": 0.01000001,
+        "dropPa": 7240.893215347156,
+        "integrals": {
+          "2": 13.034123881251933,
+          "4": 13.034123885677714,
+          "8": 13.034123885677774
+        },
+        "directJkg": 13.034123885387089,
+        "order4minus8": -6.039613253960852e-14,
+        "directMinus8": -2.906848095562964e-10,
+        "integralFlux": 2769.250200665177,
+        "asymptoteFlux": 2871.1408668813656
+      }
+    ],
+    "frost-isentropic-integral-0.125-4-0.01.json": {
+      "dt": 0.125,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": true,
+      "wallSeconds": 1.1591748700000002,
+      "candidateSummary": {
+        "nonlinearIterations": 3,
+        "snapshotTimeSeconds": 11.125,
+        "pressuresPa": [
+          722652.2539868198,
+          1777942.2876977953,
+          722488.7617269425
+        ],
+        "aggregateMassResidualKg": 4.181263842106819e-12,
+        "aggregateEnergyResidualJ": 8.80665737668096e-07
+      }
+    },
+    "frost-isentropic-integral-0.25-2-0.001.json": {
+      "dt": 0.25,
+      "order": 2,
+      "threshold": 0.001,
+      "accepted": true,
+      "wallSeconds": 0.5652979169999999,
+      "candidateSummary": {
+        "nonlinearIterations": 3,
+        "snapshotTimeSeconds": 11.25,
+        "pressuresPa": [
+          721149.5831997806,
+          1779586.6892509337,
+          720984.681748369
+        ],
+        "aggregateMassResidualKg": -4.389882554689528e-13,
+        "aggregateEnergyResidualJ": 6.45190965542497e-07
+      }
+    },
+    "frost-isentropic-integral-0.25-8-0.001.json": {
+      "dt": 0.25,
+      "order": 8,
+      "threshold": 0.001,
+      "accepted": true,
+      "wallSeconds": 1.3607928870000001,
+      "candidateSummary": {
+        "nonlinearIterations": 3,
+        "snapshotTimeSeconds": 11.25,
+        "pressuresPa": [
+          721149.5831996778,
+          1779586.6892571463,
+          720984.6817491528
+        ],
+        "aggregateMassResidualKg": 6.666802526700266e-14,
+        "aggregateEnergyResidualJ": 1.2568960983116995e-08
+      }
+    },
+    "frost-isentropic-integral-pilot.json": {
+      "accepted": true,
+      "wallSeconds": 0.8227675469999999,
+      "candidateSummary": {
+        "nonlinearIterations": 3,
+        "snapshotTimeSeconds": 11.25,
+        "pressuresPa": [
+          721149.5832090857,
+          1779586.6892573978,
+          720984.6817430094
+        ],
+        "aggregateMassResidualKg": 5.761962088013384e-13,
+        "aggregateEnergyResidualJ": -6.193957915456849e-07
+      }
+    },
+    "frost-nozzle-sensitivity.json": {
+      "checkedAt": "2026-10-10T18:10:12.011Z",
+      "cases": {
+        "accumulator": [
+          {
+            "deltaH": -0.01,
+            "throatPa": 724088.5974461181,
+            "dropPa": 162.78469775267877,
+            "flux": 79.59007741470731,
+            "flowKgs": 0.005160384431704272,
+            "boundaryFlux": 79.59007741470731,
+            "enthalpyClosureJkg": 7.210590410977602e-06
+          },
+          {
+            "deltaH": -0.001,
+            "throatPa": 724088.5974461181,
+            "dropPa": 162.78469775267877,
+            "flux": 79.59010974343413,
+            "flowKgs": 0.005160386521552645,
+            "boundaryFlux": 79.59010974343413,
+            "enthalpyClosureJkg": -5.820766091346741e-11
+          },
+          {
+            "deltaH": -0.0001,
+            "throatPa": 724088.5976532884,
+            "dropPa": 162.78449058241677,
+            "flux": 79.59075384548396,
+            "flowKgs": 0.0051604281617956835,
+            "boundaryFlux": 79.59010954589051,
+            "enthalpyClosureJkg": 5.820766091346741e-11
+          },
+          {
+            "deltaH": -1e-05,
+            "throatPa": 724088.5974461181,
+            "dropPa": 162.78469775267877,
+            "flux": 79.59010952741012,
+            "flowKgs": 0.005160386507472637,
+            "boundaryFlux": 79.59010952741012,
+            "enthalpyClosureJkg": 0
+          },
+          {
+            "deltaH": 0,
+            "throatPa": 724088.5974461181,
+            "dropPa": 162.78469775267877,
+            "flux": 79.59010952357198,
+            "flowKgs": 0.00516038650722331,
+            "boundaryFlux": 79.59010952357198,
+            "enthalpyClosureJkg": -2.9103830456733704e-10
+          },
+          {
+            "deltaH": 1e-05,
+            "throatPa": 724088.5974461181,
+            "dropPa": 162.78469775267877,
+            "flux": 79.59007521557442,
+            "flowKgs": 0.005160384288376734,
+            "boundaryFlux": 79.59007521557442,
+            "enthalpyClosureJkg": 7.2106486186385155e-06
+          },
+          {
+            "deltaH": 0.0001,
+            "throatPa": 724088.5975769411,
+            "dropPa": 162.7845669296803,
+            "flux": 79.59073815691782,
+            "flowKgs": 0.005160427153202179,
+            "boundaryFlux": 79.59007519764793,
+            "enthalpyClosureJkg": 7.210473995655775e-06
+          },
+          {
+            "deltaH": 0.001,
+            "throatPa": 724088.5980002934,
+            "dropPa": 162.78414357744623,
+            "flux": 79.59066880028392,
+            "flowKgs": 0.005160422633823862,
+            "boundaryFlux": 79.59010930481776,
+            "enthalpyClosureJkg": -1.1641532182693481e-10
+          },
+          {
+            "deltaH": 0.01,
+            "throatPa": 724088.5974461181,
+            "dropPa": 162.78469775267877,
+            "flux": 79.59010732744376,
+            "flowKgs": 0.005160386364091192,
+            "boundaryFlux": 79.59010732744376,
+            "enthalpyClosureJkg": 2.3283064365386963e-10
+          }
+        ],
+        "valve": [
+          {
+            "deltaH": -0.01,
+            "throatPa": 1367248.6969804042,
+            "dropPa": 408873.34926474676,
+            "flux": 13851.607965556927,
+            "flowKgs": 0.0021860850028854553,
+            "boundaryFlux": 9782.428538113601,
+            "enthalpyClosureJkg": 5.820766091346741e-11
+          },
+          {
+            "deltaH": -0.001,
+            "throatPa": 1367248.6969804042,
+            "dropPa": 408873.34926474676,
+            "flux": 13851.606670179086,
+            "flowKgs": 0.0021860847978309337,
+            "boundaryFlux": 9782.428262529087,
+            "enthalpyClosureJkg": -2.9103830456733704e-11
+          },
+          {
+            "deltaH": -0.0001,
+            "throatPa": 1367248.6969804042,
+            "dropPa": 408873.34926474676,
+            "flux": 13851.606540641882,
+            "flowKgs": 0.002186084777325573,
+            "boundaryFlux": 9782.428234970641,
+            "enthalpyClosureJkg": -5.820766091346741e-11
+          },
+          {
+            "deltaH": -1e-05,
+            "throatPa": 1367248.6969804042,
+            "dropPa": 408873.34926474676,
+            "flux": 13851.60652768698,
+            "flowKgs": 0.0021860847752748504,
+            "boundaryFlux": 9782.42823221467,
+            "enthalpyClosureJkg": 0
+          },
+          {
+            "deltaH": 0,
+            "throatPa": 1367248.6969804042,
+            "dropPa": 408873.34926474676,
+            "flux": 13851.606526248383,
+            "flowKgs": 0.0021860847750471246,
+            "boundaryFlux": 9782.428231908558,
+            "enthalpyClosureJkg": -5.820766091346741e-11
+          },
+          {
+            "deltaH": 1e-05,
+            "throatPa": 1367248.6969804042,
+            "dropPa": 408873.34926474676,
+            "flux": 13851.60652480884,
+            "flowKgs": 0.002186084774819249,
+            "boundaryFlux": 9782.428231602278,
+            "enthalpyClosureJkg": 2.9103830456733704e-11
+          },
+          {
+            "deltaH": 0.0001,
+            "throatPa": 1367248.6969804042,
+            "dropPa": 408873.34926474676,
+            "flux": 13851.606511855358,
+            "flowKgs": 0.002186084772768751,
+            "boundaryFlux": 9782.428228846453,
+            "enthalpyClosureJkg": -2.9103830456733704e-11
+          },
+          {
+            "deltaH": 0.001,
+            "throatPa": 1367248.6969804042,
+            "dropPa": 408873.34926474676,
+            "flux": 13851.606382317932,
+            "flowKgs": 0.0021860847522633554,
+            "boundaryFlux": 9782.428201288038,
+            "enthalpyClosureJkg": -8.731149137020111e-11
+          },
+          {
+            "deltaH": 0.01,
+            "throatPa": 1367248.3946225203,
+            "dropPa": 408873.65162263066,
+            "flux": 13851.60508693891,
+            "flowKgs": 0.0021860845486197785,
+            "boundaryFlux": 9782.427925703407,
+            "enthalpyClosureJkg": 0
+          }
+        ]
+      }
+    },
+    "frost-phase-partition-48-4e-11-0.125.json": {
+      "dt": 0.125,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": true,
+      "representativeOnly": false,
+      "wallSeconds": 4.1365857649999995,
+      "quadStats": {
+        "fluxCalls": 1612,
+        "densityCalls": 40776,
+        "maxDensityCalls": 108
+      },
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 1e-12,
+          "flow": 4.58341479902985e-09,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-09,
+          "flow": 3.975968212419498e-06,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-06,
+          "flow": 0.00033237423337835166,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.001,
+          "flow": 0.010893938809272809,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.01,
+          "flow": 0.034284896083703,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.1,
+          "flow": 0.10193670222460816,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "flow": 0.15438389448240072,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.6,
+          "flow": 0.15453345998523477,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-12,
+          "flow": 4.6081516696127423e-08,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-09,
+          "flow": 3.930268890643454e-05,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-06,
+          "flow": 0.0031263461997030296,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.001,
+          "flow": 0.10200759022833532,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.01,
+          "flow": 0.3151129992087888,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.1,
+          "flow": 0.7956343357037803,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.4,
+          "flow": 0.900316226692408,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.6,
+          "flow": 0.9003162266871989,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-12,
+          "flow": 1.0449776166449962e-08,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-09,
+          "flow": 1.0141314100170025e-05,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-06,
+          "flow": 0.0017070149673854124,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.001,
+          "flow": 0.05863469326991918,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.01,
+          "flow": 0.17984621864440026,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.1,
+          "flow": 0.4275462982783428,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.4,
+          "flow": 0.4632175309635093,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.6,
+          "flow": 0.4632175309710504,
+          "finite": true
+        }
+      ],
+      "totalWallSeconds": 6.500297326,
+      "candidateSummary": {
+        "nonlinearIterations": 3,
+        "snapshotTimeSeconds": 11.125,
+        "pressuresPa": [
+          722652.2539866096,
+          1777942.2876979636,
+          722488.7617269394
+        ],
+        "aggregateMassResidualKg": 3.795110059545692e-12,
+        "aggregateEnergyResidualJ": 1.0194099928639844e-06
+      }
+    },
+    "frost-phase-partition-48-4e-11-0.25.json": {
+      "dt": 0.25,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": true,
+      "representativeOnly": false,
+      "wallSeconds": 4.1481755819999995,
+      "quadStats": {
+        "fluxCalls": 1612,
+        "densityCalls": 40560,
+        "maxDensityCalls": 108
+      },
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 1e-12,
+          "flow": 4.58341479902985e-09,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-09,
+          "flow": 3.975968212419498e-06,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-06,
+          "flow": 0.00033237423337835166,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.001,
+          "flow": 0.010893938809272809,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.01,
+          "flow": 0.034284896083703,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.1,
+          "flow": 0.10193670222460816,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "flow": 0.15438389448240072,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.6,
+          "flow": 0.15453345998523477,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-12,
+          "flow": 4.6081516696127423e-08,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-09,
+          "flow": 3.930268890643454e-05,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-06,
+          "flow": 0.0031263461997030296,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.001,
+          "flow": 0.10200759022833532,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.01,
+          "flow": 0.3151129992087888,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.1,
+          "flow": 0.7956343357037803,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.4,
+          "flow": 0.900316226692408,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.6,
+          "flow": 0.9003162266871989,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-12,
+          "flow": 1.0449776166449962e-08,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-09,
+          "flow": 1.0141314100170025e-05,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-06,
+          "flow": 0.0017070149673854124,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.001,
+          "flow": 0.05863469326991918,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.01,
+          "flow": 0.17984621864440026,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.1,
+          "flow": 0.4275462982783428,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.4,
+          "flow": 0.4632175309635093,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.6,
+          "flow": 0.4632175309710504,
+          "finite": true
+        }
+      ],
+      "totalWallSeconds": 6.494186586,
+      "candidateSummary": {
+        "nonlinearIterations": 3,
+        "snapshotTimeSeconds": 11.25,
+        "pressuresPa": [
+          721149.5832043634,
+          1779586.68925424,
+          720984.681748161
+        ],
+        "aggregateMassResidualKg": 6.90584742168987e-14,
+        "aggregateEnergyResidualJ": 1.294962714837311e-08
+      }
+    },
+    "frost-phase-partition-48-4e-12-0.25.json": {
+      "dt": 0.25,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": false,
+      "representativeOnly": true,
+      "wallSeconds": 2.172100000007049e-05,
+      "candidate": null,
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 1e-12,
+          "flow": 4.58341479902985e-09,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-09,
+          "flow": 3.975968212419498e-06,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-06,
+          "flow": 0.00033237423337835166,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.001,
+          "flow": 0.010893938809272809,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.01,
+          "flow": 0.034284896083703,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.1,
+          "flow": 0.1019367022225528,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "flow": 0.15438389448240072,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.6,
+          "flow": 0.15453345998523477,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-12,
+          "flow": 4.6081516696127423e-08,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-09,
+          "flow": 3.930268890643454e-05,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-06,
+          "flow": 0.0031263461997030296,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.001,
+          "flow": 0.10200759022833532,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.01,
+          "flow": 0.3151129992087888,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.1,
+          "flow": 0.7956343357037803,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.4,
+          "flow": 0.900316226692408,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.6,
+          "flow": 0.9003162266871989,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-12,
+          "flow": 1.0449776166449962e-08,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-09,
+          "flow": 1.0141314100170025e-05,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-06,
+          "flow": 0.0017070149673854124,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.001,
+          "flow": 0.05863469326991918,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.01,
+          "flow": 0.17984621864440026,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.1,
+          "flow": 0.4275462982783428,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.4,
+          "flow": 0.4632175309635093,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.6,
+          "flow": 0.4632175309710504,
+          "finite": true
+        }
+      ],
+      "totalWallSeconds": 2.690987571
+    },
+    "frost-phase-partition-64-4e-12-0.25.json": {
+      "dt": 0.25,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": false,
+      "representativeOnly": true,
+      "wallSeconds": 1.3666000000057465e-05,
+      "candidate": null,
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 1e-12,
+          "flow": 4.58341479902985e-09,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-09,
+          "flow": 3.975968212419498e-06,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 1e-06,
+          "flow": 0.00033237423337835166,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.001,
+          "flow": 0.010893938809460723,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.01,
+          "flow": 0.034284896083703,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.1,
+          "flow": 0.1019367022225528,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "flow": 0.15438389448240072,
+          "finite": true
+        },
+        {
+          "id": "outdoor:0",
+          "span": 0.6,
+          "flow": 0.15453345998523482,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-12,
+          "flow": 4.6081516696127423e-08,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-09,
+          "flow": 3.930268890643454e-05,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 1e-06,
+          "flow": 0.0031263461997030296,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.001,
+          "flow": 0.10200759022833532,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.01,
+          "flow": 0.3151129992087888,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.1,
+          "flow": 0.7956343357037845,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.4,
+          "flow": 0.900316226692408,
+          "finite": true
+        },
+        {
+          "id": "room-1:small",
+          "span": 0.6,
+          "flow": 0.9003162266871989,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-12,
+          "flow": 1.0449776166449962e-08,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-09,
+          "flow": 1.0141314100170025e-05,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 1e-06,
+          "flow": 0.0017070149673854124,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.001,
+          "flow": 0.05863469326991918,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.01,
+          "flow": 0.17984621864440026,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.1,
+          "flow": 0.4275462982783428,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.4,
+          "flow": 0.4632175309635093,
+          "finite": true
+        },
+        {
+          "id": "accumulator",
+          "span": 0.6,
+          "flow": 0.4632175309710504,
+          "finite": true
+        }
+      ],
+      "totalWallSeconds": 3.147150522999999
+    },
+    "frost-throat-diagnostic-48-4e-11-0.25.json": {
+      "dt": 0.25,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": false,
+      "representativeOnly": true,
+      "wallSeconds": 1.819399999999405e-05,
+      "candidate": null,
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "flow": 0.15438389435153388,
+          "throatPa": 434550.8292880804,
+          "quality": 0.9635575369583288,
+          "finite": true
+        }
+      ],
+      "totalWallSeconds": 1.380049213
+    },
+    "frost-throat-diagnostic-48-4e-12-0.25.json": {
+      "dt": 0.25,
+      "order": 4,
+      "threshold": 0.01,
+      "accepted": false,
+      "representativeOnly": true,
+      "wallSeconds": 1.5047999999978855e-05,
+      "candidate": null,
+      "representative": [
+        {
+          "id": "outdoor:0",
+          "span": 0.4,
+          "flow": 0.1543838944836159,
+          "throatPa": 434550.8292880804,
+          "quality": 0.9635575369583288,
+          "finite": true
+        }
+      ],
+      "totalWallSeconds": 1.7716662459999997
+    }
+  },
+  "experimentalSources": {
+    "probe-frost-adaptive-corrected-budget.mjs": "/** Frozen-state numerical quadrature pilot; constitutive/storage model unchanged. */\nimport factory from '../public/vendor/coolprop/coolprop.js';\nimport {Properties} from '../tests/engine/build/properties.js';\nimport {readFile,writeFile,mkdtemp,cp,rm} from 'node:fs/promises';\nimport {tmpdir} from 'node:os';\nimport {pathToFileURL} from 'node:url';\nconst dt=Number(process.argv[2]??.25),order=Number(process.argv[3]??4),threshold=Number(process.argv[4]??.01);\nconst rules={2:{nodes:[-.5773502691896257,.5773502691896257],weights:[1,1]},4:{nodes:[-.8611363115940526,-.3399810435848563,.3399810435848563,.8611363115940526],weights:[.3478548451374538,.6521451548625461,.6521451548625461,.3478548451374538]},8:{nodes:[-.9602898564975363,-.7966664774136267,-.525532409916329,-.1834346424956498,.1834346424956498,.525532409916329,.7966664774136267,.9602898564975363],weights:[.1012285362903763,.2223810344533745,.3137066458778873,.362683783378362,.362683783378362,.3137066458778873,.2223810344533745,.1012285362903763]}};\nconst rule=rules[order];\nconst saved=JSON.parse(await readFile(new URL('../research/charge-frost-debug-snapshot.json',import.meta.url),'utf8'));\nconst scratch=await mkdtemp(tmpdir()+'/frost-integral-');\nawait cp(new URL('../tests/engine/build/',import.meta.url),scratch,{recursive:true});\nawait writeFile(scratch+'/package.json','{\"type\":\"module\"}');\nconst charge=await readFile(scratch+'/charge.js','utf8');\nconst needle=\"const h = this.properties.prop('H', 'P', p, 'S', up.entropyJkgK), rho = this.properties.prop('D', 'P', p, 'S', up.entropyJkgK);\";\nif(!charge.includes(needle))throw Error('Compiled flux needle absent');\nconst replacement=`const rho=this.properties.prop('D','P',p,'S',up.entropyJkgK);\nconst rules={4:${JSON.stringify(rules[4])},8:${JSON.stringify(rules[8])}};\nlet evaluations=0;\nconst integrate=(a,b,n)=>{const mid=(a+b)/2,half=(b-a)/2,r=rules[n];return half*r.nodes.reduce((sum,node,i)=>{if(++evaluations>8192)throw new DomainError('Isentropic integral evaluation budget');return sum+r.weights[i]/this.properties.prop('D','P',mid+half*node,'S',up.entropyJkgK)},0)};\nconst q4=integrate(p,up.pPa,4),q8=integrate(p,up.pPa,8);\nconst ideal=coefficient*area*rho*Math.sqrt(2*q8);\nconst drop=up.pPa-p,m=corrected(rho*Math.sqrt(2*q8),drop);\nconst beta=2*drop*m/ideal**2/(resistance+2*drop*m/ideal**2);\nconst budget=Math.min(1e-8+1e-9*Math.abs(q8),2*q8*4e-11/Math.max(m*beta,1e-30));\nconst refine=(a,b,coarse,fine,tolerance,depth)=>{if(Math.abs(coarse-fine)<=tolerance)return fine;if(depth>=16)throw new DomainError('Isentropic integral unresolved error '+JSON.stringify({a,b,coarse,fine,tolerance,width:b-a,difference:Math.abs(coarse-fine)}));const mid=(a+b)/2;return refine(a,mid,integrate(a,mid,4),integrate(a,mid,8),tolerance/2,depth+1)+refine(mid,b,integrate(mid,b,4),integrate(mid,b,8),tolerance/2,depth+1)};\nconst dh=refine(p,up.pPa,q4,q8,budget,0);\nthis.quadStats??={fluxCalls:0,densityCalls:0,maxDensityCalls:0};this.quadStats.fluxCalls++;this.quadStats.densityCalls+=evaluations;this.quadStats.maxDensityCalls=Math.max(this.quadStats.maxDensityCalls,evaluations);`;\nlet revised=charge.replace(needle,replacement).replace('2 * (up.hJkg - h)','2 * dh');\nrevised=revised.replace(/if \\(delta \\/ up\\.pPa < 1e-6\\)\\s*return corrected\\(Math\\.sqrt\\(2 \\* up\\.densityKgm3 \\* delta\\), delta\\);/,'');\nif(revised.includes('delta / up.pPa < 1e-6'))throw Error('Failed asymptote removal');\nawait writeFile(scratch+'/charge.js',revised);\nconst {ChargeCircuit}=await import(pathToFileURL(scratch+'/charge.js'));\nconst props=new Properties(await factory()),g=saved.config.inventory.geometry;\nconst circuit=new ChargeCircuit(props,g,{massKg:saved.config.inventory.initialMassKg,fluidTemperatureC:saved.config.inventory.initialFluidTemperatureC});\nconst boundary={orientation:saved.fluid.orientation,compressorSpeedRps:saved.output.diagnostics.speedRps,enabledRoomIds:g.rooms.map(r=>r.id),outdoorMetalC:saved.output.outdoor.metalTemperatureC,indoorMetalCById:Object.fromEntries(saved.output.rooms.map(r=>[r.id,r.metalTemperatureC]))};\nconst start=performance.now();let result;\ntry{const candidate=process.argv.includes('--representative')?null:circuit.prepareSingle(dt,boundary,saved.fluid);result={dt,order,threshold,accepted:true,wallSeconds:(performance.now()-start)/1000,candidate,quadStats:circuit.quadStats};}\ncatch(e){result={dt,order,threshold,accepted:false,wallSeconds:(performance.now()-start)/1000,error:String(e)}}\nconst representative=[];\nfor(const cell of [saved.fluid.cells[0],saved.fluid.cells[7],saved.fluid.cells[8]])for(const span of [1e-12,1e-9,1e-6,.001,.01,.1,.4,.6]){\n try{const flow=circuit.nozzle(cell.state,cell.state.pPa*(1-span),g.accumulatorInletAreaM2,.65,.1);representative.push({id:cell.id,span,flow,finite:flow>=0&&Number.isFinite(flow)});}catch(e){representative.push({id:cell.id,span,error:String(e)});}\n}\nresult.representative=representative;result.totalWallSeconds=(performance.now()-start)/1000;\nawait writeFile(new URL(`../research/frost-adaptive-corrected-budget-${dt}.json`,import.meta.url),JSON.stringify(result,null,2)+'\\n');\nconsole.log({accepted:result.accepted,wallSeconds:result.wallSeconds,error:result.error,candidateKeys:result.candidate&&Object.keys(result.candidate)});\nprops.dispose();await rm(scratch,{recursive:true});\n",
+    "probe-frost-adaptive-global-budget.mjs": "/** Frozen-state numerical quadrature pilot; constitutive/storage model unchanged. */\nimport factory from '../public/vendor/coolprop/coolprop.js';\nimport {Properties} from '../tests/engine/build/properties.js';\nimport {readFile,writeFile,mkdtemp,cp,rm} from 'node:fs/promises';\nimport {tmpdir} from 'node:os';\nimport {pathToFileURL} from 'node:url';\nconst dt=Number(process.argv[2]??.25),order=Number(process.argv[3]??4),threshold=Number(process.argv[4]??.01);\nconst rules={2:{nodes:[-.5773502691896257,.5773502691896257],weights:[1,1]},4:{nodes:[-.8611363115940526,-.3399810435848563,.3399810435848563,.8611363115940526],weights:[.3478548451374538,.6521451548625461,.6521451548625461,.3478548451374538]},8:{nodes:[-.9602898564975363,-.7966664774136267,-.525532409916329,-.1834346424956498,.1834346424956498,.525532409916329,.7966664774136267,.9602898564975363],weights:[.1012285362903763,.2223810344533745,.3137066458778873,.362683783378362,.362683783378362,.3137066458778873,.2223810344533745,.1012285362903763]}};\nconst rule=rules[order];\nconst saved=JSON.parse(await readFile(new URL('../research/charge-frost-debug-snapshot.json',import.meta.url),'utf8'));\nconst scratch=await mkdtemp(tmpdir()+'/frost-integral-');\nawait cp(new URL('../tests/engine/build/',import.meta.url),scratch,{recursive:true});\nawait writeFile(scratch+'/package.json','{\"type\":\"module\"}');\nconst charge=await readFile(scratch+'/charge.js','utf8');\nconst needle=\"const h = this.properties.prop('H', 'P', p, 'S', up.entropyJkgK), rho = this.properties.prop('D', 'P', p, 'S', up.entropyJkgK);\";\nif(!charge.includes(needle))throw Error('Compiled flux needle absent');\nconst replacement=`if(p===up.pPa)return 0;if(!(p>=downPa&&p<up.pPa))throw new DomainError('Isentropic throat pressure outside bracket');const rho=this.properties.prop('D','P',p,'S',up.entropyJkgK);\nconst rules={4:${JSON.stringify(rules[4])},8:${JSON.stringify(rules[8])}};\nlet evaluations=0;\nconst integrate=(a,b,n)=>{const mid=(a+b)/2,half=(b-a)/2,r=rules[n];return half*r.nodes.reduce((sum,node,i)=>{if(++evaluations>8192)throw new DomainError('Isentropic integral evaluation budget');return sum+r.weights[i]/this.properties.prop('D','P',mid+half*node,'S',up.entropyJkgK)},0)};\nconst q4=integrate(p,up.pPa,4),q8=integrate(p,up.pPa,8);\nif(!(Number.isFinite(q8)&&q8>0&&Number.isFinite(q4)&&q4>0))throw new DomainError('Invalid isentropic integral');\nconst ideal=coefficient*area*rho*Math.sqrt(2*q8);\nconst drop=up.pPa-p,m=corrected(rho*Math.sqrt(2*q8),drop);\nconst beta=2*drop*m/ideal**2/(resistance+2*drop*m/ideal**2);\nconst budget=Math.min(1e-8+1e-9*Math.abs(q8),2*q8*4e-11/Math.max(m*beta,1e-30));\nconst panels=[{a:p,b:up.pPa,coarse:q4,fine:q8,depth:0}];\nlet value=q8,error=Math.abs(q4-q8);\nwhile(error>budget){\n let index=0;for(let i=1;i<panels.length;i++)if(Math.abs(panels[i].coarse-panels[i].fine)>Math.abs(panels[index].coarse-panels[index].fine))index=i;\n const parent=panels[index];if(parent.depth>=16)throw new DomainError('Isentropic integral unresolved global error '+JSON.stringify({error,budget,parent}));\n const mid=(parent.a+parent.b)/2;\n if(!(mid>parent.a&&mid<parent.b))throw new DomainError('Isentropic integral pressure resolution');\n const left={a:parent.a,b:mid,coarse:integrate(parent.a,mid,4),fine:integrate(parent.a,mid,8),depth:parent.depth+1};\n const right={a:mid,b:parent.b,coarse:integrate(mid,parent.b,4),fine:integrate(mid,parent.b,8),depth:parent.depth+1};\n panels.splice(index,1,left,right);\n value+=left.fine+right.fine-parent.fine;\n error=panels.reduce((sum,panel)=>sum+Math.abs(panel.coarse-panel.fine),0);\n}\nconst dh=value;if(!(Number.isFinite(dh)&&dh>0))throw new DomainError('Invalid integrated isentropic enthalpy');\nthis.quadStats??={fluxCalls:0,densityCalls:0,maxDensityCalls:0};this.quadStats.fluxCalls++;this.quadStats.densityCalls+=evaluations;this.quadStats.maxDensityCalls=Math.max(this.quadStats.maxDensityCalls,evaluations);`;\nlet revised=charge.replace(needle,replacement).replace('2 * (up.hJkg - h)','2 * dh').replace('(_, i) => downPa * (up.pPa / downPa) ** (i / 12)', '(_, i) => i===0?downPa:i===12?up.pPa:downPa * (up.pPa / downPa) ** (i / 12)');\nrevised=revised.replace(/if \\(delta \\/ up\\.pPa < 1e-6\\)\\s*return corrected\\(Math\\.sqrt\\(2 \\* up\\.densityKgm3 \\* delta\\), delta\\);/,'');\nif(revised.includes('delta / up.pPa < 1e-6'))throw Error('Failed asymptote removal');\nawait writeFile(scratch+'/charge.js',revised);\nconst {ChargeCircuit}=await import(pathToFileURL(scratch+'/charge.js'));\nconst props=new Properties(await factory()),g=saved.config.inventory.geometry;\nconst circuit=new ChargeCircuit(props,g,{massKg:saved.config.inventory.initialMassKg,fluidTemperatureC:saved.config.inventory.initialFluidTemperatureC});\nconst boundary={orientation:saved.fluid.orientation,compressorSpeedRps:saved.output.diagnostics.speedRps,enabledRoomIds:g.rooms.map(r=>r.id),outdoorMetalC:saved.output.outdoor.metalTemperatureC,indoorMetalCById:Object.fromEntries(saved.output.rooms.map(r=>[r.id,r.metalTemperatureC]))};\nconst start=performance.now();let result;\ntry{const candidate=process.argv.includes('--representative')?null:circuit.prepareSingle(dt,boundary,saved.fluid);result={dt,order,threshold,accepted:!!candidate,representativeOnly:!candidate,wallSeconds:(performance.now()-start)/1000,candidate,quadStats:circuit.quadStats};}\ncatch(e){result={dt,order,threshold,accepted:false,wallSeconds:(performance.now()-start)/1000,error:String(e)}}\nconst representative=[];\nfor(const cell of [saved.fluid.cells[0],saved.fluid.cells[7],saved.fluid.cells[8]])for(const span of [1e-12,1e-9,1e-6,.001,.01,.1,.4,.6]){\n try{const flow=circuit.nozzle(cell.state,cell.state.pPa*(1-span),g.accumulatorInletAreaM2,.65,.1);representative.push({id:cell.id,span,flow,finite:flow>=0&&Number.isFinite(flow)});}catch(e){representative.push({id:cell.id,span,error:String(e)});}\n}\nresult.representative=representative;result.totalWallSeconds=(performance.now()-start)/1000;\nawait writeFile(new URL(`../research/frost-adaptive-global-budget-${dt}.json`,import.meta.url),JSON.stringify(result,null,2)+'\\n');\nconsole.log({accepted:result.accepted,wallSeconds:result.wallSeconds,error:result.error,candidateKeys:result.candidate&&Object.keys(result.candidate)});\nprops.dispose();await rm(scratch,{recursive:true});\n",
+    "probe-frost-adaptive-golden.mjs": "/** Frozen-state numerical quadrature pilot; constitutive/storage model unchanged. */\nimport factory from '../public/vendor/coolprop/coolprop.js';\nimport {Properties} from '../tests/engine/build/properties.js';\nimport {readFile,writeFile,mkdtemp,cp,rm} from 'node:fs/promises';\nimport {tmpdir} from 'node:os';\nimport {pathToFileURL} from 'node:url';\nconst golden=Number(process.argv[5]??32),flowBudget=Number(process.argv[6]??4e-11);\nconst dt=Number(process.argv[2]??.25),order=Number(process.argv[3]??4),threshold=Number(process.argv[4]??.01);\nconst rules={2:{nodes:[-.5773502691896257,.5773502691896257],weights:[1,1]},4:{nodes:[-.8611363115940526,-.3399810435848563,.3399810435848563,.8611363115940526],weights:[.3478548451374538,.6521451548625461,.6521451548625461,.3478548451374538]},8:{nodes:[-.9602898564975363,-.7966664774136267,-.525532409916329,-.1834346424956498,.1834346424956498,.525532409916329,.7966664774136267,.9602898564975363],weights:[.1012285362903763,.2223810344533745,.3137066458778873,.362683783378362,.362683783378362,.3137066458778873,.2223810344533745,.1012285362903763]}};\nconst rule=rules[order];\nconst saved=JSON.parse(await readFile(new URL('../research/charge-frost-debug-snapshot.json',import.meta.url),'utf8'));\nconst scratch=await mkdtemp(tmpdir()+'/frost-integral-');\nawait cp(new URL('../tests/engine/build/',import.meta.url),scratch,{recursive:true});\nawait writeFile(scratch+'/package.json','{\"type\":\"module\"}');\nconst charge=await readFile(scratch+'/charge.js','utf8');\nconst needle=\"const h = this.properties.prop('H', 'P', p, 'S', up.entropyJkgK), rho = this.properties.prop('D', 'P', p, 'S', up.entropyJkgK);\";\nif(!charge.includes(needle))throw Error('Compiled flux needle absent');\nconst replacement=`if(p===up.pPa)return 0;if(!(p>=downPa&&p<up.pPa))throw new DomainError('Isentropic throat pressure outside bracket');const rho=this.properties.prop('D','P',p,'S',up.entropyJkgK);\nconst rules={4:${JSON.stringify(rules[4])},8:${JSON.stringify(rules[8])}};\nlet evaluations=0;\nconst integrate=(a,b,n)=>{const mid=(a+b)/2,half=(b-a)/2,r=rules[n];return half*r.nodes.reduce((sum,node,i)=>{if(++evaluations>8192)throw new DomainError('Isentropic integral evaluation budget');const density=this.properties.prop('D','P',mid+half*node,'S',up.entropyJkgK);if(!(Number.isFinite(density)&&density>0))throw new DomainError('Invalid isentropic density');return sum+r.weights[i]/density},0)};\nconst q4=integrate(p,up.pPa,4),q8=integrate(p,up.pPa,8);\nif(!(Number.isFinite(q8)&&q8>0&&Number.isFinite(q4)&&q4>0))throw new DomainError('Invalid isentropic integral');\nconst budgetFor=(integral)=>{\n if(!(Number.isFinite(integral)&&integral>0))throw new DomainError('Invalid refined isentropic integral');\n const ideal=coefficient*area*rho*Math.sqrt(2*integral),drop=up.pPa-p,m=corrected(rho*Math.sqrt(2*integral),drop);\n const sensitivity=2*drop*m/ideal**2,beta=sensitivity/(resistance+sensitivity);\n const budget=Math.min(1e-8+1e-9*integral,2*integral*${flowBudget}/Math.max(m*beta,1e-30));\n if(!(Number.isFinite(budget)&&budget>0))throw new DomainError('Invalid isentropic error budget');\n return budget;\n};\nconst panels=[{a:p,b:up.pPa,coarse:q4,fine:q8,depth:0}];\nlet value=q8,error=Math.abs(q4-q8);\nwhile(error>budgetFor(value)){\n const budget=budgetFor(value);\n let index=0;for(let i=1;i<panels.length;i++)if(Math.abs(panels[i].coarse-panels[i].fine)>Math.abs(panels[index].coarse-panels[index].fine))index=i;\n const parent=panels[index];if(parent.depth>=16)throw new DomainError('Isentropic integral unresolved global error '+JSON.stringify({error,budget,parent}));\n const mid=(parent.a+parent.b)/2;\n if(!(mid>parent.a&&mid<parent.b))throw new DomainError('Isentropic integral pressure resolution');\n const left={a:parent.a,b:mid,coarse:integrate(parent.a,mid,4),fine:integrate(parent.a,mid,8),depth:parent.depth+1};\n const right={a:mid,b:parent.b,coarse:integrate(mid,parent.b,4),fine:integrate(mid,parent.b,8),depth:parent.depth+1};\n panels.splice(index,1,left,right);\n value+=left.fine+right.fine-parent.fine;\n error=panels.reduce((sum,panel)=>sum+Math.abs(panel.coarse-panel.fine),0);\n}\nconst dh=value;if(!(Number.isFinite(dh)&&dh>0))throw new DomainError('Invalid integrated isentropic enthalpy');\nthis.quadStats??={fluxCalls:0,densityCalls:0,maxDensityCalls:0};this.quadStats.fluxCalls++;this.quadStats.densityCalls+=evaluations;this.quadStats.maxDensityCalls=Math.max(this.quadStats.maxDensityCalls,evaluations);`;\nlet revised=charge.replace(needle,replacement).replace('2 * (up.hJkg - h)','2 * dh').replace('(_, i) => downPa * (up.pPa / downPa) ** (i / 12)', '(_, i) => i===0?downPa:i===12?up.pPa:downPa * (up.pPa / downPa) ** (i / 12)');\nrevised=revised.replace(/if \\(delta \\/ up\\.pPa < 1e-6\\)\\s*return corrected\\(Math\\.sqrt\\(2 \\* up\\.densityKgm3 \\* delta\\), delta\\);/,'');\nrevised=revised.replace('i < 32','i < '+golden);\nif(revised.includes('delta / up.pPa < 1e-6'))throw Error('Failed asymptote removal');\nawait writeFile(scratch+'/charge.js',revised);\nconst {ChargeCircuit}=await import(pathToFileURL(scratch+'/charge.js'));\nconst props=new Properties(await factory()),g=saved.config.inventory.geometry;\nconst circuit=new ChargeCircuit(props,g,{massKg:saved.config.inventory.initialMassKg,fluidTemperatureC:saved.config.inventory.initialFluidTemperatureC});\nconst boundary={orientation:saved.fluid.orientation,compressorSpeedRps:saved.output.diagnostics.speedRps,enabledRoomIds:g.rooms.map(r=>r.id),outdoorMetalC:saved.output.outdoor.metalTemperatureC,indoorMetalCById:Object.fromEntries(saved.output.rooms.map(r=>[r.id,r.metalTemperatureC]))};\nconst start=performance.now();let result;\ntry{const candidate=process.argv.includes('--representative')?null:circuit.prepareSingle(dt,boundary,saved.fluid);result={dt,order,threshold,accepted:!!candidate,representativeOnly:!candidate,wallSeconds:(performance.now()-start)/1000,candidate,quadStats:structuredClone(circuit.quadStats)};}\ncatch(e){result={dt,order,threshold,accepted:false,wallSeconds:(performance.now()-start)/1000,error:String(e)}}\nconst representative=[];\nfor(const cell of [saved.fluid.cells[0],saved.fluid.cells[7],saved.fluid.cells[8]])for(const span of [1e-12,1e-9,1e-6,.001,.01,.1,.4,.6]){\n try{const flow=circuit.nozzle(cell.state,cell.state.pPa*(1-span),g.accumulatorInletAreaM2,.65,.1);representative.push({id:cell.id,span,flow,finite:flow>=0&&Number.isFinite(flow)});}catch(e){representative.push({id:cell.id,span,error:String(e)});}\n}\nresult.representative=representative;result.totalWallSeconds=(performance.now()-start)/1000;\nawait writeFile(new URL(`../research/frost-adaptive-golden-${golden}-${flowBudget}-${dt}.json`,import.meta.url),JSON.stringify(result,null,2)+'\\n');\nconsole.log({accepted:result.accepted,wallSeconds:result.wallSeconds,error:result.error,candidateKeys:result.candidate&&Object.keys(result.candidate)});\nprops.dispose();await rm(scratch,{recursive:true});\n",
+    "probe-frost-adaptive-integral.mjs": "/** Frozen-state numerical quadrature pilot; constitutive/storage model unchanged. */\nimport factory from '../public/vendor/coolprop/coolprop.js';\nimport {Properties} from '../tests/engine/build/properties.js';\nimport {readFile,writeFile,mkdtemp,cp,rm} from 'node:fs/promises';\nimport {tmpdir} from 'node:os';\nimport {pathToFileURL} from 'node:url';\nconst dt=Number(process.argv[2]??.25),order=Number(process.argv[3]??4),threshold=Number(process.argv[4]??.01);\nconst rules={2:{nodes:[-.5773502691896257,.5773502691896257],weights:[1,1]},4:{nodes:[-.8611363115940526,-.3399810435848563,.3399810435848563,.8611363115940526],weights:[.3478548451374538,.6521451548625461,.6521451548625461,.3478548451374538]},8:{nodes:[-.9602898564975363,-.7966664774136267,-.525532409916329,-.1834346424956498,.1834346424956498,.525532409916329,.7966664774136267,.9602898564975363],weights:[.1012285362903763,.2223810344533745,.3137066458778873,.362683783378362,.362683783378362,.3137066458778873,.2223810344533745,.1012285362903763]}};\nconst rule=rules[order];\nconst saved=JSON.parse(await readFile(new URL('../research/charge-frost-debug-snapshot.json',import.meta.url),'utf8'));\nconst scratch=await mkdtemp(tmpdir()+'/frost-integral-');\nawait cp(new URL('../tests/engine/build/',import.meta.url),scratch,{recursive:true});\nawait writeFile(scratch+'/package.json','{\"type\":\"module\"}');\nconst charge=await readFile(scratch+'/charge.js','utf8');\nconst needle=\"const h = this.properties.prop('H', 'P', p, 'S', up.entropyJkgK), rho = this.properties.prop('D', 'P', p, 'S', up.entropyJkgK);\";\nif(!charge.includes(needle))throw Error('Compiled flux needle absent');\nconst replacement=`const rho=this.properties.prop('D','P',p,'S',up.entropyJkgK);\nconst rules={4:${JSON.stringify(rules[4])},8:${JSON.stringify(rules[8])}};\nlet evaluations=0;\nconst integrate=(a,b,n)=>{const mid=(a+b)/2,half=(b-a)/2,r=rules[n];return half*r.nodes.reduce((sum,node,i)=>{if(++evaluations>8192)throw new DomainError('Isentropic integral evaluation budget');return sum+r.weights[i]/this.properties.prop('D','P',mid+half*node,'S',up.entropyJkgK)},0)};\nconst q4=integrate(p,up.pPa,4),q8=integrate(p,up.pPa,8);\nconst ideal=coefficient*area*rho*Math.sqrt(2*q8);\nconst budget=Math.min(1e-8+1e-9*Math.abs(q8),2*q8*1e-11/Math.max(ideal,1e-30));\nconst refine=(a,b,coarse,fine,tolerance,depth)=>{if(Math.abs(coarse-fine)<=tolerance)return fine;if(depth>=16)throw new DomainError('Isentropic integral unresolved error');const mid=(a+b)/2;return refine(a,mid,integrate(a,mid,4),integrate(a,mid,8),tolerance/2,depth+1)+refine(mid,b,integrate(mid,b,4),integrate(mid,b,8),tolerance/2,depth+1)};\nconst dh=refine(p,up.pPa,q4,q8,budget,0);\nthis.quadStats??={fluxCalls:0,densityCalls:0,maxDensityCalls:0};this.quadStats.fluxCalls++;this.quadStats.densityCalls+=evaluations;this.quadStats.maxDensityCalls=Math.max(this.quadStats.maxDensityCalls,evaluations);`;\nlet revised=charge.replace(needle,replacement).replace('2 * (up.hJkg - h)','2 * dh');\nrevised=revised.replace(/if \\(delta \\/ up\\.pPa < 1e-6\\)\\s*return corrected\\(Math\\.sqrt\\(2 \\* up\\.densityKgm3 \\* delta\\), delta\\);/,'');\nif(revised.includes('delta / up.pPa < 1e-6'))throw Error('Failed asymptote removal');\nawait writeFile(scratch+'/charge.js',revised);\nconst {ChargeCircuit}=await import(pathToFileURL(scratch+'/charge.js'));\nconst props=new Properties(await factory()),g=saved.config.inventory.geometry;\nconst circuit=new ChargeCircuit(props,g,{massKg:saved.config.inventory.initialMassKg,fluidTemperatureC:saved.config.inventory.initialFluidTemperatureC});\nconst boundary={orientation:saved.fluid.orientation,compressorSpeedRps:saved.output.diagnostics.speedRps,enabledRoomIds:g.rooms.map(r=>r.id),outdoorMetalC:saved.output.outdoor.metalTemperatureC,indoorMetalCById:Object.fromEntries(saved.output.rooms.map(r=>[r.id,r.metalTemperatureC]))};\nconst start=performance.now();let result;\ntry{const candidate=circuit.prepareSingle(dt,boundary,saved.fluid);result={dt,order,threshold,accepted:true,wallSeconds:(performance.now()-start)/1000,candidate,quadStats:circuit.quadStats};}\ncatch(e){result={dt,order,threshold,accepted:false,wallSeconds:(performance.now()-start)/1000,error:String(e)}}\nconst representative=[];\nfor(const cell of [saved.fluid.cells[0],saved.fluid.cells[7],saved.fluid.cells[8]])for(const span of [1e-12,1e-9,1e-6,.001,.01,.1,.4,.6]){\n try{const flow=circuit.nozzle(cell.state,cell.state.pPa*(1-span),g.accumulatorInletAreaM2,.65,.1);representative.push({id:cell.id,span,flow,finite:flow>=0&&Number.isFinite(flow)});}catch(e){representative.push({id:cell.id,span,error:String(e)});}\n}\nresult.representative=representative;result.totalWallSeconds=(performance.now()-start)/1000;\nawait writeFile(new URL(`../research/frost-adaptive-integral-${dt}.json`,import.meta.url),JSON.stringify(result,null,2)+'\\n');\nconsole.log({accepted:result.accepted,wallSeconds:result.wallSeconds,error:result.error,candidateKeys:result.candidate&&Object.keys(result.candidate)});\nprops.dispose();await rm(scratch,{recursive:true});\n",
+    "probe-frost-adaptive-positive-span.mjs": "/** Frozen-state numerical quadrature pilot; constitutive/storage model unchanged. */\nimport factory from '../public/vendor/coolprop/coolprop.js';\nimport {Properties} from '../tests/engine/build/properties.js';\nimport {readFile,writeFile,mkdtemp,cp,rm} from 'node:fs/promises';\nimport {tmpdir} from 'node:os';\nimport {pathToFileURL} from 'node:url';\nconst dt=Number(process.argv[2]??.25),order=Number(process.argv[3]??4),threshold=Number(process.argv[4]??.01);\nconst rules={2:{nodes:[-.5773502691896257,.5773502691896257],weights:[1,1]},4:{nodes:[-.8611363115940526,-.3399810435848563,.3399810435848563,.8611363115940526],weights:[.3478548451374538,.6521451548625461,.6521451548625461,.3478548451374538]},8:{nodes:[-.9602898564975363,-.7966664774136267,-.525532409916329,-.1834346424956498,.1834346424956498,.525532409916329,.7966664774136267,.9602898564975363],weights:[.1012285362903763,.2223810344533745,.3137066458778873,.362683783378362,.362683783378362,.3137066458778873,.2223810344533745,.1012285362903763]}};\nconst rule=rules[order];\nconst saved=JSON.parse(await readFile(new URL('../research/charge-frost-debug-snapshot.json',import.meta.url),'utf8'));\nconst scratch=await mkdtemp(tmpdir()+'/frost-integral-');\nawait cp(new URL('../tests/engine/build/',import.meta.url),scratch,{recursive:true});\nawait writeFile(scratch+'/package.json','{\"type\":\"module\"}');\nconst charge=await readFile(scratch+'/charge.js','utf8');\nconst needle=\"const h = this.properties.prop('H', 'P', p, 'S', up.entropyJkgK), rho = this.properties.prop('D', 'P', p, 'S', up.entropyJkgK);\";\nif(!charge.includes(needle))throw Error('Compiled flux needle absent');\nconst replacement=`if(p>=up.pPa)return 0;const rho=this.properties.prop('D','P',p,'S',up.entropyJkgK);\nconst rules={4:${JSON.stringify(rules[4])},8:${JSON.stringify(rules[8])}};\nlet evaluations=0;\nconst integrate=(a,b,n)=>{const mid=(a+b)/2,half=(b-a)/2,r=rules[n];return half*r.nodes.reduce((sum,node,i)=>{if(++evaluations>8192)throw new DomainError('Isentropic integral evaluation budget');return sum+r.weights[i]/this.properties.prop('D','P',mid+half*node,'S',up.entropyJkgK)},0)};\nconst q4=integrate(p,up.pPa,4),q8=integrate(p,up.pPa,8);\nconst ideal=coefficient*area*rho*Math.sqrt(2*q8);\nconst drop=up.pPa-p,m=corrected(rho*Math.sqrt(2*q8),drop);\nconst beta=2*drop*m/ideal**2/(resistance+2*drop*m/ideal**2);\nconst budget=Math.min(1e-8+1e-9*Math.abs(q8),2*q8*4e-11/Math.max(m*beta,1e-30));\nconst refine=(a,b,coarse,fine,tolerance,depth)=>{if(Math.abs(coarse-fine)<=tolerance)return fine;if(depth>=16)throw new DomainError('Isentropic integral unresolved error '+JSON.stringify({a,b,coarse,fine,tolerance,width:b-a,difference:Math.abs(coarse-fine)}));const mid=(a+b)/2;return refine(a,mid,integrate(a,mid,4),integrate(a,mid,8),tolerance/2,depth+1)+refine(mid,b,integrate(mid,b,4),integrate(mid,b,8),tolerance/2,depth+1)};\nconst dh=refine(p,up.pPa,q4,q8,budget,0);\nthis.quadStats??={fluxCalls:0,densityCalls:0,maxDensityCalls:0};this.quadStats.fluxCalls++;this.quadStats.densityCalls+=evaluations;this.quadStats.maxDensityCalls=Math.max(this.quadStats.maxDensityCalls,evaluations);`;\nlet revised=charge.replace(needle,replacement).replace('2 * (up.hJkg - h)','2 * dh');\nrevised=revised.replace(/if \\(delta \\/ up\\.pPa < 1e-6\\)\\s*return corrected\\(Math\\.sqrt\\(2 \\* up\\.densityKgm3 \\* delta\\), delta\\);/,'');\nif(revised.includes('delta / up.pPa < 1e-6'))throw Error('Failed asymptote removal');\nawait writeFile(scratch+'/charge.js',revised);\nconst {ChargeCircuit}=await import(pathToFileURL(scratch+'/charge.js'));\nconst props=new Properties(await factory()),g=saved.config.inventory.geometry;\nconst circuit=new ChargeCircuit(props,g,{massKg:saved.config.inventory.initialMassKg,fluidTemperatureC:saved.config.inventory.initialFluidTemperatureC});\nconst boundary={orientation:saved.fluid.orientation,compressorSpeedRps:saved.output.diagnostics.speedRps,enabledRoomIds:g.rooms.map(r=>r.id),outdoorMetalC:saved.output.outdoor.metalTemperatureC,indoorMetalCById:Object.fromEntries(saved.output.rooms.map(r=>[r.id,r.metalTemperatureC]))};\nconst start=performance.now();let result;\ntry{const candidate=process.argv.includes('--representative')?null:circuit.prepareSingle(dt,boundary,saved.fluid);result={dt,order,threshold,accepted:true,wallSeconds:(performance.now()-start)/1000,candidate,quadStats:circuit.quadStats};}\ncatch(e){result={dt,order,threshold,accepted:false,wallSeconds:(performance.now()-start)/1000,error:String(e)}}\nconst representative=[];\nfor(const cell of [saved.fluid.cells[0],saved.fluid.cells[7],saved.fluid.cells[8]])for(const span of [1e-12,1e-9,1e-6,.001,.01,.1,.4,.6]){\n try{const flow=circuit.nozzle(cell.state,cell.state.pPa*(1-span),g.accumulatorInletAreaM2,.65,.1);representative.push({id:cell.id,span,flow,finite:flow>=0&&Number.isFinite(flow)});}catch(e){representative.push({id:cell.id,span,error:String(e)});}\n}\nresult.representative=representative;result.totalWallSeconds=(performance.now()-start)/1000;\nawait writeFile(new URL(`../research/frost-adaptive-positive-span-${dt}.json`,import.meta.url),JSON.stringify(result,null,2)+'\\n');\nconsole.log({accepted:result.accepted,wallSeconds:result.wallSeconds,error:result.error,candidateKeys:result.candidate&&Object.keys(result.candidate)});\nprops.dispose();await rm(scratch,{recursive:true});\n",
+    "probe-frost-adaptive-reviewed-budget.mjs": "/** Frozen-state numerical quadrature pilot; constitutive/storage model unchanged. */\nimport factory from '../public/vendor/coolprop/coolprop.js';\nimport {Properties} from '../tests/engine/build/properties.js';\nimport {readFile,writeFile,mkdtemp,cp,rm} from 'node:fs/promises';\nimport {tmpdir} from 'node:os';\nimport {pathToFileURL} from 'node:url';\nconst dt=Number(process.argv[2]??.25),order=Number(process.argv[3]??4),threshold=Number(process.argv[4]??.01);\nconst rules={2:{nodes:[-.5773502691896257,.5773502691896257],weights:[1,1]},4:{nodes:[-.8611363115940526,-.3399810435848563,.3399810435848563,.8611363115940526],weights:[.3478548451374538,.6521451548625461,.6521451548625461,.3478548451374538]},8:{nodes:[-.9602898564975363,-.7966664774136267,-.525532409916329,-.1834346424956498,.1834346424956498,.525532409916329,.7966664774136267,.9602898564975363],weights:[.1012285362903763,.2223810344533745,.3137066458778873,.362683783378362,.362683783378362,.3137066458778873,.2223810344533745,.1012285362903763]}};\nconst rule=rules[order];\nconst saved=JSON.parse(await readFile(new URL('../research/charge-frost-debug-snapshot.json',import.meta.url),'utf8'));\nconst scratch=await mkdtemp(tmpdir()+'/frost-integral-');\nawait cp(new URL('../tests/engine/build/',import.meta.url),scratch,{recursive:true});\nawait writeFile(scratch+'/package.json','{\"type\":\"module\"}');\nconst charge=await readFile(scratch+'/charge.js','utf8');\nconst needle=\"const h = this.properties.prop('H', 'P', p, 'S', up.entropyJkgK), rho = this.properties.prop('D', 'P', p, 'S', up.entropyJkgK);\";\nif(!charge.includes(needle))throw Error('Compiled flux needle absent');\nconst replacement=`if(p===up.pPa)return 0;if(!(p>=downPa&&p<up.pPa))throw new DomainError('Isentropic throat pressure outside bracket');const rho=this.properties.prop('D','P',p,'S',up.entropyJkgK);\nconst rules={4:${JSON.stringify(rules[4])},8:${JSON.stringify(rules[8])}};\nlet evaluations=0;\nconst integrate=(a,b,n)=>{const mid=(a+b)/2,half=(b-a)/2,r=rules[n];return half*r.nodes.reduce((sum,node,i)=>{if(++evaluations>8192)throw new DomainError('Isentropic integral evaluation budget');const density=this.properties.prop('D','P',mid+half*node,'S',up.entropyJkgK);if(!(Number.isFinite(density)&&density>0))throw new DomainError('Invalid isentropic density');return sum+r.weights[i]/density},0)};\nconst q4=integrate(p,up.pPa,4),q8=integrate(p,up.pPa,8);\nif(!(Number.isFinite(q8)&&q8>0&&Number.isFinite(q4)&&q4>0))throw new DomainError('Invalid isentropic integral');\nconst budgetFor=(integral)=>{\n if(!(Number.isFinite(integral)&&integral>0))throw new DomainError('Invalid refined isentropic integral');\n const ideal=coefficient*area*rho*Math.sqrt(2*integral),drop=up.pPa-p,m=corrected(rho*Math.sqrt(2*integral),drop);\n const sensitivity=2*drop*m/ideal**2,beta=sensitivity/(resistance+sensitivity);\n const budget=Math.min(1e-8+1e-9*integral,2*integral*4e-11/Math.max(m*beta,1e-30));\n if(!(Number.isFinite(budget)&&budget>0))throw new DomainError('Invalid isentropic error budget');\n return budget;\n};\nconst panels=[{a:p,b:up.pPa,coarse:q4,fine:q8,depth:0}];\nlet value=q8,error=Math.abs(q4-q8);\nwhile(error>budgetFor(value)){\n const budget=budgetFor(value);\n let index=0;for(let i=1;i<panels.length;i++)if(Math.abs(panels[i].coarse-panels[i].fine)>Math.abs(panels[index].coarse-panels[index].fine))index=i;\n const parent=panels[index];if(parent.depth>=16)throw new DomainError('Isentropic integral unresolved global error '+JSON.stringify({error,budget,parent}));\n const mid=(parent.a+parent.b)/2;\n if(!(mid>parent.a&&mid<parent.b))throw new DomainError('Isentropic integral pressure resolution');\n const left={a:parent.a,b:mid,coarse:integrate(parent.a,mid,4),fine:integrate(parent.a,mid,8),depth:parent.depth+1};\n const right={a:mid,b:parent.b,coarse:integrate(mid,parent.b,4),fine:integrate(mid,parent.b,8),depth:parent.depth+1};\n panels.splice(index,1,left,right);\n value+=left.fine+right.fine-parent.fine;\n error=panels.reduce((sum,panel)=>sum+Math.abs(panel.coarse-panel.fine),0);\n}\nconst dh=value;if(!(Number.isFinite(dh)&&dh>0))throw new DomainError('Invalid integrated isentropic enthalpy');\nthis.quadStats??={fluxCalls:0,densityCalls:0,maxDensityCalls:0};this.quadStats.fluxCalls++;this.quadStats.densityCalls+=evaluations;this.quadStats.maxDensityCalls=Math.max(this.quadStats.maxDensityCalls,evaluations);`;\nlet revised=charge.replace(needle,replacement).replace('2 * (up.hJkg - h)','2 * dh').replace('(_, i) => downPa * (up.pPa / downPa) ** (i / 12)', '(_, i) => i===0?downPa:i===12?up.pPa:downPa * (up.pPa / downPa) ** (i / 12)');\nrevised=revised.replace(/if \\(delta \\/ up\\.pPa < 1e-6\\)\\s*return corrected\\(Math\\.sqrt\\(2 \\* up\\.densityKgm3 \\* delta\\), delta\\);/,'');\nif(revised.includes('delta / up.pPa < 1e-6'))throw Error('Failed asymptote removal');\nawait writeFile(scratch+'/charge.js',revised);\nconst {ChargeCircuit}=await import(pathToFileURL(scratch+'/charge.js'));\nconst props=new Properties(await factory()),g=saved.config.inventory.geometry;\nconst circuit=new ChargeCircuit(props,g,{massKg:saved.config.inventory.initialMassKg,fluidTemperatureC:saved.config.inventory.initialFluidTemperatureC});\nconst boundary={orientation:saved.fluid.orientation,compressorSpeedRps:saved.output.diagnostics.speedRps,enabledRoomIds:g.rooms.map(r=>r.id),outdoorMetalC:saved.output.outdoor.metalTemperatureC,indoorMetalCById:Object.fromEntries(saved.output.rooms.map(r=>[r.id,r.metalTemperatureC]))};\nconst start=performance.now();let result;\ntry{const candidate=process.argv.includes('--representative')?null:circuit.prepareSingle(dt,boundary,saved.fluid);result={dt,order,threshold,accepted:!!candidate,representativeOnly:!candidate,wallSeconds:(performance.now()-start)/1000,candidate,quadStats:structuredClone(circuit.quadStats)};}\ncatch(e){result={dt,order,threshold,accepted:false,wallSeconds:(performance.now()-start)/1000,error:String(e)}}\nconst representative=[];\nfor(const cell of [saved.fluid.cells[0],saved.fluid.cells[7],saved.fluid.cells[8]])for(const span of [1e-12,1e-9,1e-6,.001,.01,.1,.4,.6]){\n try{const flow=circuit.nozzle(cell.state,cell.state.pPa*(1-span),g.accumulatorInletAreaM2,.65,.1);representative.push({id:cell.id,span,flow,finite:flow>=0&&Number.isFinite(flow)});}catch(e){representative.push({id:cell.id,span,error:String(e)});}\n}\nresult.representative=representative;result.totalWallSeconds=(performance.now()-start)/1000;\nawait writeFile(new URL(`../research/frost-adaptive-reviewed-budget-${dt}.json`,import.meta.url),JSON.stringify(result,null,2)+'\\n');\nconsole.log({accepted:result.accepted,wallSeconds:result.wallSeconds,error:result.error,candidateKeys:result.candidate&&Object.keys(result.candidate)});\nprops.dispose();await rm(scratch,{recursive:true});\n",
+    "probe-frost-equilibrium-density.mjs": "/** Frozen-state numerical quadrature pilot; constitutive/storage model unchanged. */\nimport factory from '../public/vendor/coolprop/coolprop.js';\nimport {Properties} from '../tests/engine/build/properties.js';\nimport {readFile,writeFile,mkdtemp,cp,rm} from 'node:fs/promises';\nimport {tmpdir} from 'node:os';\nimport {pathToFileURL} from 'node:url';\nconst golden=Number(process.argv[5]??32),flowBudget=Number(process.argv[6]??4e-11);\nconst dt=Number(process.argv[2]??.25),order=Number(process.argv[3]??4),threshold=Number(process.argv[4]??.01);\nconst rules={2:{nodes:[-.5773502691896257,.5773502691896257],weights:[1,1]},4:{nodes:[-.8611363115940526,-.3399810435848563,.3399810435848563,.8611363115940526],weights:[.3478548451374538,.6521451548625461,.6521451548625461,.3478548451374538]},8:{nodes:[-.9602898564975363,-.7966664774136267,-.525532409916329,-.1834346424956498,.1834346424956498,.525532409916329,.7966664774136267,.9602898564975363],weights:[.1012285362903763,.2223810344533745,.3137066458778873,.362683783378362,.362683783378362,.3137066458778873,.2223810344533745,.1012285362903763]}};\nconst rule=rules[order];\nconst saved=JSON.parse(await readFile(new URL('../research/charge-frost-debug-snapshot.json',import.meta.url),'utf8'));\nconst scratch=await mkdtemp(tmpdir()+'/frost-integral-');\nawait cp(new URL('../tests/engine/build/',import.meta.url),scratch,{recursive:true});\nawait writeFile(scratch+'/package.json','{\"type\":\"module\"}');\nconst charge=await readFile(scratch+'/charge.js','utf8');\nconst needle=\"const h = this.properties.prop('H', 'P', p, 'S', up.entropyJkgK), rho = this.properties.prop('D', 'P', p, 'S', up.entropyJkgK);\";\nif(!charge.includes(needle))throw Error('Compiled flux needle absent');\nconst replacement=`const densityAt=(pressure)=>{const sl=this.properties.prop('S','P',pressure,'Q',0),sv=this.properties.prop('S','P',pressure,'Q',1);if(up.entropyJkgK>=sl&&up.entropyJkgK<=sv){const x=(up.entropyJkgK-sl)/(sv-sl),rl=this.properties.prop('D','P',pressure,'Q',0),rv=this.properties.prop('D','P',pressure,'Q',1);return 1/((1-x)/rl+x/rv);}return this.properties.prop('D','P',pressure,'S',up.entropyJkgK);};\nif(p===up.pPa)return 0;if(!(p>=downPa&&p<up.pPa))throw new DomainError('Isentropic throat pressure outside bracket');const rho=densityAt(p);\nconst rules={4:${JSON.stringify(rules[4])},8:${JSON.stringify(rules[8])}};\nlet evaluations=0;\nconst integrate=(a,b,n)=>{const mid=(a+b)/2,half=(b-a)/2,r=rules[n];return half*r.nodes.reduce((sum,node,i)=>{if(++evaluations>8192)throw new DomainError('Isentropic integral evaluation budget');const density=densityAt(mid+half*node);if(!(Number.isFinite(density)&&density>0))throw new DomainError('Invalid isentropic density');return sum+r.weights[i]/density},0)};\nconst q4=integrate(p,up.pPa,4),q8=integrate(p,up.pPa,8);\nif(!(Number.isFinite(q8)&&q8>0&&Number.isFinite(q4)&&q4>0))throw new DomainError('Invalid isentropic integral');\nconst budgetFor=(integral)=>{\n if(!(Number.isFinite(integral)&&integral>0))throw new DomainError('Invalid refined isentropic integral');\n const ideal=coefficient*area*rho*Math.sqrt(2*integral),drop=up.pPa-p,m=corrected(rho*Math.sqrt(2*integral),drop);\n const sensitivity=2*drop*m/ideal**2,beta=sensitivity/(resistance+sensitivity);\n const budget=Math.min(1e-8+1e-9*integral,2*integral*${flowBudget}/Math.max(m*beta,1e-30));\n if(!(Number.isFinite(budget)&&budget>0))throw new DomainError('Invalid isentropic error budget');\n return budget;\n};\nconst panels=[{a:p,b:up.pPa,coarse:q4,fine:q8,depth:0}];\nlet value=q8,error=Math.abs(q4-q8);\nwhile(error>budgetFor(value)){\n const budget=budgetFor(value);\n let index=0;for(let i=1;i<panels.length;i++)if(Math.abs(panels[i].coarse-panels[i].fine)>Math.abs(panels[index].coarse-panels[index].fine))index=i;\n const parent=panels[index];if(parent.depth>=16)throw new DomainError('Isentropic integral unresolved global error '+JSON.stringify({error,budget,parent}));\n const mid=(parent.a+parent.b)/2;\n if(!(mid>parent.a&&mid<parent.b))throw new DomainError('Isentropic integral pressure resolution');\n const left={a:parent.a,b:mid,coarse:integrate(parent.a,mid,4),fine:integrate(parent.a,mid,8),depth:parent.depth+1};\n const right={a:mid,b:parent.b,coarse:integrate(mid,parent.b,4),fine:integrate(mid,parent.b,8),depth:parent.depth+1};\n panels.splice(index,1,left,right);\n value+=left.fine+right.fine-parent.fine;\n error=panels.reduce((sum,panel)=>sum+Math.abs(panel.coarse-panel.fine),0);\n}\nconst dh=value;if(!(Number.isFinite(dh)&&dh>0))throw new DomainError('Invalid integrated isentropic enthalpy');\nthis.quadStats??={fluxCalls:0,densityCalls:0,maxDensityCalls:0};this.quadStats.fluxCalls++;this.quadStats.densityCalls+=evaluations;this.quadStats.maxDensityCalls=Math.max(this.quadStats.maxDensityCalls,evaluations);`;\nlet revised=charge.replace(needle,replacement).replace('2 * (up.hJkg - h)','2 * dh').replace('(_, i) => downPa * (up.pPa / downPa) ** (i / 12)', '(_, i) => i===0?downPa:i===12?up.pPa:downPa * (up.pPa / downPa) ** (i / 12)');\nrevised=revised.replace(/if \\(delta \\/ up\\.pPa < 1e-6\\)\\s*return corrected\\(Math\\.sqrt\\(2 \\* up\\.densityKgm3 \\* delta\\), delta\\);/,'');\nrevised=revised.replace('i < 32','i < '+golden);\nif(revised.includes('delta / up.pPa < 1e-6'))throw Error('Failed asymptote removal');\nawait writeFile(scratch+'/charge.js',revised);\nconst {ChargeCircuit}=await import(pathToFileURL(scratch+'/charge.js'));\nconst props=new Properties(await factory()),g=saved.config.inventory.geometry;\nconst circuit=new ChargeCircuit(props,g,{massKg:saved.config.inventory.initialMassKg,fluidTemperatureC:saved.config.inventory.initialFluidTemperatureC});\nconst boundary={orientation:saved.fluid.orientation,compressorSpeedRps:saved.output.diagnostics.speedRps,enabledRoomIds:g.rooms.map(r=>r.id),outdoorMetalC:saved.output.outdoor.metalTemperatureC,indoorMetalCById:Object.fromEntries(saved.output.rooms.map(r=>[r.id,r.metalTemperatureC]))};\nconst start=performance.now();let result;\ntry{const candidate=process.argv.includes('--representative')?null:circuit.prepareSingle(dt,boundary,saved.fluid);result={dt,order,threshold,accepted:!!candidate,representativeOnly:!candidate,wallSeconds:(performance.now()-start)/1000,candidate,quadStats:structuredClone(circuit.quadStats)};}\ncatch(e){result={dt,order,threshold,accepted:false,wallSeconds:(performance.now()-start)/1000,error:String(e)}}\nconst representative=[];\nfor(const cell of [saved.fluid.cells[0],saved.fluid.cells[7],saved.fluid.cells[8]])for(const span of [1e-12,1e-9,1e-6,.001,.01,.1,.4,.6]){\n try{const flow=circuit.nozzle(cell.state,cell.state.pPa*(1-span),g.accumulatorInletAreaM2,.65,.1);representative.push({id:cell.id,span,flow,finite:flow>=0&&Number.isFinite(flow)});}catch(e){representative.push({id:cell.id,span,error:String(e)});}\n}\nresult.representative=representative;result.totalWallSeconds=(performance.now()-start)/1000;\nawait writeFile(new URL(`../research/frost-equilibrium-density-${golden}-${flowBudget}-${dt}.json`,import.meta.url),JSON.stringify(result,null,2)+'\\n');\nconsole.log({accepted:result.accepted,wallSeconds:result.wallSeconds,error:result.error,candidateKeys:result.candidate&&Object.keys(result.candidate)});\nprops.dispose();await rm(scratch,{recursive:true});\n",
+    "probe-frost-integral-convergence.mjs": "import factory from '../public/vendor/coolprop/coolprop.js';\nimport {Properties} from '../tests/engine/build/properties.js';\nimport {readFile,writeFile} from 'node:fs/promises';\nconst saved=JSON.parse(await readFile(new URL('../research/charge-frost-debug-snapshot.json',import.meta.url),'utf8')),props=new Properties(await factory());\nconst rule={2:{n:[-.5773502691896257,.5773502691896257],w:[1,1]},4:{n:[-.8611363115940526,-.3399810435848563,.3399810435848563,.8611363115940526],w:[.3478548451374538,.6521451548625461,.6521451548625461,.3478548451374538]},8:{n:[-.9602898564975363,-.7966664774136267,-.525532409916329,-.1834346424956498,.1834346424956498,.525532409916329,.7966664774136267,.9602898564975363],w:[.1012285362903763,.2223810344533745,.3137066458778873,.362683783378362,.362683783378362,.3137066458778873,.2223810344533745,.1012285362903763]}};\nconst rows=[];\nfor(const cell of [saved.fluid.cells[0],saved.fluid.cells[7],saved.fluid.cells[8]])for(const relativeDrop of [.999999e-6,1e-6,1.000001e-6,.000225,.001,.01,.05,.1]){\n const up=cell.state,drop=up.pPa*relativeDrop,p=up.pPa-drop,mid=(p+up.pPa)/2,half=drop/2,integrals={};\n for(const [order,r]of Object.entries(rule))integrals[order]=half*r.n.reduce((a,n,i)=>a+r.w[i]/props.prop('D','P',mid+half*n,'S',up.entropyJkgK),0);\n const direct=up.hJkg-props.prop('H','P',p,'S',up.entropyJkgK),rho=props.prop('D','P',p,'S',up.entropyJkgK);\n rows.push({id:cell.id,relativeDrop,dropPa:drop,integrals,directJkg:direct,order4minus8:integrals[4]-integrals[8],directMinus8:direct-integrals[8],integralFlux:rho*Math.sqrt(2*integrals[8]),asymptoteFlux:Math.sqrt(2*up.densityKgm3*drop)});\n}\nawait writeFile(new URL('../research/frost-integral-convergence.json',import.meta.url),JSON.stringify(rows,null,2)+'\\n');\nconsole.log(rows.map(r=>({id:r.id,drop:r.relativeDrop,quadratureError:r.order4minus8,subtractionError:r.directMinus8,switchRelativeFlux:r.integralFlux/r.asymptoteFlux-1})));props.dispose();\n",
+    "probe-frost-integral-threshold.mjs": "import factory from '../public/vendor/coolprop/coolprop.js';\nimport {Properties} from '../tests/engine/build/properties.js';\nimport {readFile,writeFile} from 'node:fs/promises';\nconst saved=JSON.parse(await readFile(new URL('../research/charge-frost-debug-snapshot.json',import.meta.url),'utf8')),props=new Properties(await factory());\nconst rule={2:{n:[-.5773502691896257,.5773502691896257],w:[1,1]},4:{n:[-.8611363115940526,-.3399810435848563,.3399810435848563,.8611363115940526],w:[.3478548451374538,.6521451548625461,.6521451548625461,.3478548451374538]},8:{n:[-.9602898564975363,-.7966664774136267,-.525532409916329,-.1834346424956498,.1834346424956498,.525532409916329,.7966664774136267,.9602898564975363],w:[.1012285362903763,.2223810344533745,.3137066458778873,.362683783378362,.362683783378362,.3137066458778873,.2223810344533745,.1012285362903763]}};\nconst rows=[];\nfor(const cell of [saved.fluid.cells[0],saved.fluid.cells[7],saved.fluid.cells[8]])for(const relativeDrop of [.00999999,.01,.01000001]){\n const up=cell.state,drop=up.pPa*relativeDrop,p=up.pPa-drop,mid=(p+up.pPa)/2,half=drop/2,integrals={};\n for(const [order,r]of Object.entries(rule))integrals[order]=half*r.n.reduce((a,n,i)=>a+r.w[i]/props.prop('D','P',mid+half*n,'S',up.entropyJkgK),0);\n const direct=up.hJkg-props.prop('H','P',p,'S',up.entropyJkgK),rho=props.prop('D','P',p,'S',up.entropyJkgK);\n rows.push({id:cell.id,relativeDrop,dropPa:drop,integrals,directJkg:direct,order4minus8:integrals[4]-integrals[8],directMinus8:direct-integrals[8],integralFlux:rho*Math.sqrt(2*integrals[8]),asymptoteFlux:Math.sqrt(2*up.densityKgm3*drop)});\n}\nawait writeFile(new URL('../research/frost-integral-threshold-continuity.json',import.meta.url),JSON.stringify(rows,null,2)+'\\n');\nconsole.log(rows.map(r=>({id:r.id,drop:r.relativeDrop,quadratureError:r.order4minus8,subtractionError:r.directMinus8,switchRelativeFlux:r.integralFlux/r.asymptoteFlux-1})));props.dispose();\n",
+    "probe-frost-isentropic-integral.mjs": "/** Frozen-state numerical quadrature pilot; constitutive/storage model unchanged. */\nimport factory from '../public/vendor/coolprop/coolprop.js';\nimport {Properties} from '../tests/engine/build/properties.js';\nimport {readFile,writeFile,mkdtemp,cp,rm} from 'node:fs/promises';\nimport {tmpdir} from 'node:os';\nimport {pathToFileURL} from 'node:url';\nconst dt=Number(process.argv[2]??.25),order=Number(process.argv[3]??4),threshold=Number(process.argv[4]??.01);\nconst rules={2:{nodes:[-.5773502691896257,.5773502691896257],weights:[1,1]},4:{nodes:[-.8611363115940526,-.3399810435848563,.3399810435848563,.8611363115940526],weights:[.3478548451374538,.6521451548625461,.6521451548625461,.3478548451374538]},8:{nodes:[-.9602898564975363,-.7966664774136267,-.525532409916329,-.1834346424956498,.1834346424956498,.525532409916329,.7966664774136267,.9602898564975363],weights:[.1012285362903763,.2223810344533745,.3137066458778873,.362683783378362,.362683783378362,.3137066458778873,.2223810344533745,.1012285362903763]}};\nconst rule=rules[order];\nconst saved=JSON.parse(await readFile(new URL('../research/charge-frost-debug-snapshot.json',import.meta.url),'utf8'));\nconst scratch=await mkdtemp(tmpdir()+'/frost-integral-');\nawait cp(new URL('../tests/engine/build/',import.meta.url),scratch,{recursive:true});\nawait writeFile(scratch+'/package.json','{\"type\":\"module\"}');\nconst charge=await readFile(scratch+'/charge.js','utf8');\nconst needle=\"const h = this.properties.prop('H', 'P', p, 'S', up.entropyJkgK), rho = this.properties.prop('D', 'P', p, 'S', up.entropyJkgK);\";\nif(!charge.includes(needle))throw Error('Compiled flux needle absent');\nconst replacement=`const h = this.properties.prop('H', 'P', p, 'S', up.entropyJkgK), rho = this.properties.prop('D', 'P', p, 'S', up.entropyJkgK);\nlet dh=up.hJkg-h;\nif ((up.pPa-p)/up.pPa < ${threshold}) {\n const nodes=${JSON.stringify(rule.nodes)},weights=${JSON.stringify(rule.weights)};\n const mid=(up.pPa+p)/2,half=(up.pPa-p)/2;\n dh=half*nodes.reduce((sum,node,i)=>sum+weights[i]/this.properties.prop('D','P',mid+half*node,'S',up.entropyJkgK),0);\n}`;\nawait writeFile(scratch+'/charge.js',charge.replace(needle,replacement).replace('2 * (up.hJkg - h)','2 * dh'));\nconst {ChargeCircuit}=await import(pathToFileURL(scratch+'/charge.js'));\nconst props=new Properties(await factory()),g=saved.config.inventory.geometry;\nconst circuit=new ChargeCircuit(props,g,{massKg:saved.config.inventory.initialMassKg,fluidTemperatureC:saved.config.inventory.initialFluidTemperatureC});\nconst boundary={orientation:saved.fluid.orientation,compressorSpeedRps:saved.output.diagnostics.speedRps,enabledRoomIds:g.rooms.map(r=>r.id),outdoorMetalC:saved.output.outdoor.metalTemperatureC,indoorMetalCById:Object.fromEntries(saved.output.rooms.map(r=>[r.id,r.metalTemperatureC]))};\nconst start=performance.now();let result;\ntry{const candidate=circuit.prepareSingle(dt,boundary,saved.fluid);result={dt,order,threshold,accepted:true,wallSeconds:(performance.now()-start)/1000,candidate};}\ncatch(e){result={dt,order,threshold,accepted:false,wallSeconds:(performance.now()-start)/1000,error:String(e)}}\nawait writeFile(new URL(`../research/frost-isentropic-integral-${dt}-${order}-${threshold}.json`,import.meta.url),JSON.stringify(result,null,2)+'\\n');\nconsole.log({accepted:result.accepted,wallSeconds:result.wallSeconds,error:result.error,candidateKeys:result.candidate&&Object.keys(result.candidate)});\nprops.dispose();await rm(scratch,{recursive:true});\n",
+    "probe-frost-phase-partition.mjs": "/** Frozen-state numerical quadrature pilot; constitutive/storage model unchanged. */\nimport factory from '../public/vendor/coolprop/coolprop.js';\nimport {Properties} from '../tests/engine/build/properties.js';\nimport {readFile,writeFile,mkdtemp,cp,rm} from 'node:fs/promises';\nimport {tmpdir} from 'node:os';\nimport {pathToFileURL} from 'node:url';\nconst golden=Number(process.argv[5]??32),flowBudget=Number(process.argv[6]??4e-11);\nconst dt=Number(process.argv[2]??.25),order=Number(process.argv[3]??4),threshold=Number(process.argv[4]??.01);\nconst rules={2:{nodes:[-.5773502691896257,.5773502691896257],weights:[1,1]},4:{nodes:[-.8611363115940526,-.3399810435848563,.3399810435848563,.8611363115940526],weights:[.3478548451374538,.6521451548625461,.6521451548625461,.3478548451374538]},8:{nodes:[-.9602898564975363,-.7966664774136267,-.525532409916329,-.1834346424956498,.1834346424956498,.525532409916329,.7966664774136267,.9602898564975363],weights:[.1012285362903763,.2223810344533745,.3137066458778873,.362683783378362,.362683783378362,.3137066458778873,.2223810344533745,.1012285362903763]}};\nconst rule=rules[order];\nconst saved=JSON.parse(await readFile(new URL('../research/charge-frost-debug-snapshot.json',import.meta.url),'utf8'));\nconst scratch=await mkdtemp(tmpdir()+'/frost-integral-');\nawait cp(new URL('../tests/engine/build/',import.meta.url),scratch,{recursive:true});\nawait writeFile(scratch+'/package.json','{\"type\":\"module\"}');\nconst charge=await readFile(scratch+'/charge.js','utf8');\nconst needle=\"const h = this.properties.prop('H', 'P', p, 'S', up.entropyJkgK), rho = this.properties.prop('D', 'P', p, 'S', up.entropyJkgK);\";\nif(!charge.includes(needle))throw Error('Compiled flux needle absent');\nconst replacement=`this.phaseBoundaryCache??=new Map();const phaseKey=up.pPa+':'+up.entropyJkgK+':'+downPa;let boundaries=this.phaseBoundaryCache.get(phaseKey);\nif(!boundaries){boundaries=[];for(const quality of[0,1]){let a=downPa,b=up.pPa,fa=this.properties.prop('S','P',a,'Q',quality)-up.entropyJkgK,fb=this.properties.prop('S','P',b,'Q',quality)-up.entropyJkgK;if(fa*fb<0){for(let i=0;i<48&&b-a>2e-8;i++){const mid=(a+b)/2,fm=this.properties.prop('S','P',mid,'Q',quality)-up.entropyJkgK;if(fa*fm<=0){b=mid;fb=fm;}else{a=mid;fa=fm;}}boundaries.push((a+b)/2);}}boundaries.sort((a,b)=>a-b);this.phaseBoundaryCache.set(phaseKey,boundaries);}\nif(p===up.pPa)return 0;if(!(p>=downPa&&p<up.pPa))throw new DomainError('Isentropic throat pressure outside bracket');const rho=this.properties.prop('D','P',p,'S',up.entropyJkgK);\nconst rules={4:${JSON.stringify(rules[4])},8:${JSON.stringify(rules[8])}};\nlet evaluations=0;\nconst integrate=(a,b,n)=>{const mid=(a+b)/2,half=(b-a)/2,r=rules[n];return half*r.nodes.reduce((sum,node,i)=>{if(++evaluations>8192)throw new DomainError('Isentropic integral evaluation budget');const density=this.properties.prop('D','P',mid+half*node,'S',up.entropyJkgK);if(!(Number.isFinite(density)&&density>0))throw new DomainError('Invalid isentropic density');return sum+r.weights[i]/density},0)};\nconst points=[p,...boundaries.filter(b=>b>p&&b<up.pPa),up.pPa],initialPanels=points.slice(0,-1).map((a,i)=>({a,b:points[i+1],coarse:integrate(a,points[i+1],4),fine:integrate(a,points[i+1],8),depth:0}));\nconst q4=initialPanels.reduce((sum,panel)=>sum+panel.coarse,0),q8=initialPanels.reduce((sum,panel)=>sum+panel.fine,0);\nif(!(Number.isFinite(q8)&&q8>0&&Number.isFinite(q4)&&q4>0))throw new DomainError('Invalid isentropic integral');\nconst budgetFor=(integral)=>{\n if(!(Number.isFinite(integral)&&integral>0))throw new DomainError('Invalid refined isentropic integral');\n const ideal=coefficient*area*rho*Math.sqrt(2*integral),drop=up.pPa-p,m=corrected(rho*Math.sqrt(2*integral),drop);\n const sensitivity=2*drop*m/ideal**2,beta=sensitivity/(resistance+sensitivity);\n const budget=Math.min(1e-8+1e-9*integral,2*integral*${flowBudget}/Math.max(m*beta,1e-30));\n if(!(Number.isFinite(budget)&&budget>0))throw new DomainError('Invalid isentropic error budget');\n return budget;\n};\nconst panels=initialPanels;\nlet value=q8,error=panels.reduce((sum,panel)=>sum+Math.abs(panel.coarse-panel.fine),0);\nwhile(error>budgetFor(value)){\n const budget=budgetFor(value);\n let index=0;for(let i=1;i<panels.length;i++)if(Math.abs(panels[i].coarse-panels[i].fine)>Math.abs(panels[index].coarse-panels[index].fine))index=i;\n const parent=panels[index];if(parent.depth>=16)throw new DomainError('Isentropic integral unresolved global error '+JSON.stringify({error,budget,parent}));\n const mid=(parent.a+parent.b)/2;\n if(!(mid>parent.a&&mid<parent.b))throw new DomainError('Isentropic integral pressure resolution');\n const left={a:parent.a,b:mid,coarse:integrate(parent.a,mid,4),fine:integrate(parent.a,mid,8),depth:parent.depth+1};\n const right={a:mid,b:parent.b,coarse:integrate(mid,parent.b,4),fine:integrate(mid,parent.b,8),depth:parent.depth+1};\n panels.splice(index,1,left,right);\n value+=left.fine+right.fine-parent.fine;\n error=panels.reduce((sum,panel)=>sum+Math.abs(panel.coarse-panel.fine),0);\n}\nconst dh=value;if(!(Number.isFinite(dh)&&dh>0))throw new DomainError('Invalid integrated isentropic enthalpy');\nthis.quadStats??={fluxCalls:0,densityCalls:0,maxDensityCalls:0};this.quadStats.fluxCalls++;this.quadStats.densityCalls+=evaluations;this.quadStats.maxDensityCalls=Math.max(this.quadStats.maxDensityCalls,evaluations);`;\nlet revised=charge.replace(needle,replacement).replace('2 * (up.hJkg - h)','2 * dh').replace('(_, i) => downPa * (up.pPa / downPa) ** (i / 12)', '(_, i) => i===0?downPa:i===12?up.pPa:downPa * (up.pPa / downPa) ** (i / 12)');\nrevised=revised.replace(/if \\(delta \\/ up\\.pPa < 1e-6\\)\\s*return corrected\\(Math\\.sqrt\\(2 \\* up\\.densityKgm3 \\* delta\\), delta\\);/,'');\nrevised=revised.replace('i < 32','i < '+golden);\nif(revised.includes('delta / up.pPa < 1e-6'))throw Error('Failed asymptote removal');\nawait writeFile(scratch+'/charge.js',revised);\nconst {ChargeCircuit}=await import(pathToFileURL(scratch+'/charge.js'));\nconst props=new Properties(await factory()),g=saved.config.inventory.geometry;\nconst circuit=new ChargeCircuit(props,g,{massKg:saved.config.inventory.initialMassKg,fluidTemperatureC:saved.config.inventory.initialFluidTemperatureC});\nconst boundary={orientation:saved.fluid.orientation,compressorSpeedRps:saved.output.diagnostics.speedRps,enabledRoomIds:g.rooms.map(r=>r.id),outdoorMetalC:saved.output.outdoor.metalTemperatureC,indoorMetalCById:Object.fromEntries(saved.output.rooms.map(r=>[r.id,r.metalTemperatureC]))};\nconst start=performance.now();let result;\ntry{const candidate=process.argv.includes('--representative')?null:circuit.prepareSingle(dt,boundary,saved.fluid);result={dt,order,threshold,accepted:!!candidate,representativeOnly:!candidate,wallSeconds:(performance.now()-start)/1000,candidate,quadStats:structuredClone(circuit.quadStats)};}\ncatch(e){result={dt,order,threshold,accepted:false,wallSeconds:(performance.now()-start)/1000,error:String(e)}}\nconst representative=[];\nfor(const cell of [saved.fluid.cells[0],saved.fluid.cells[7],saved.fluid.cells[8]])for(const span of [1e-12,1e-9,1e-6,.001,.01,.1,.4,.6]){\n try{const flow=circuit.nozzle(cell.state,cell.state.pPa*(1-span),g.accumulatorInletAreaM2,.65,.1);representative.push({id:cell.id,span,flow,finite:flow>=0&&Number.isFinite(flow)});}catch(e){representative.push({id:cell.id,span,error:String(e)});}\n}\nresult.representative=representative;result.totalWallSeconds=(performance.now()-start)/1000;\nawait writeFile(new URL(`../research/frost-phase-partition-${golden}-${flowBudget}-${dt}.json`,import.meta.url),JSON.stringify(result,null,2)+'\\n');\nconsole.log({accepted:result.accepted,wallSeconds:result.wallSeconds,error:result.error,candidateKeys:result.candidate&&Object.keys(result.candidate)});\nprops.dispose();await rm(scratch,{recursive:true});\n",
+    "probe-frost-throat-diagnostic.mjs": "/** Frozen-state numerical quadrature pilot; constitutive/storage model unchanged. */\nimport factory from '../public/vendor/coolprop/coolprop.js';\nimport {Properties} from '../tests/engine/build/properties.js';\nimport {readFile,writeFile,mkdtemp,cp,rm} from 'node:fs/promises';\nimport {tmpdir} from 'node:os';\nimport {pathToFileURL} from 'node:url';\nconst golden=Number(process.argv[5]??32),flowBudget=Number(process.argv[6]??4e-11);\nconst dt=Number(process.argv[2]??.25),order=Number(process.argv[3]??4),threshold=Number(process.argv[4]??.01);\nconst rules={2:{nodes:[-.5773502691896257,.5773502691896257],weights:[1,1]},4:{nodes:[-.8611363115940526,-.3399810435848563,.3399810435848563,.8611363115940526],weights:[.3478548451374538,.6521451548625461,.6521451548625461,.3478548451374538]},8:{nodes:[-.9602898564975363,-.7966664774136267,-.525532409916329,-.1834346424956498,.1834346424956498,.525532409916329,.7966664774136267,.9602898564975363],weights:[.1012285362903763,.2223810344533745,.3137066458778873,.362683783378362,.362683783378362,.3137066458778873,.2223810344533745,.1012285362903763]}};\nconst rule=rules[order];\nconst saved=JSON.parse(await readFile(new URL('../research/charge-frost-debug-snapshot.json',import.meta.url),'utf8'));\nconst scratch=await mkdtemp(tmpdir()+'/frost-integral-');\nawait cp(new URL('../tests/engine/build/',import.meta.url),scratch,{recursive:true});\nawait writeFile(scratch+'/package.json','{\"type\":\"module\"}');\nconst charge=await readFile(scratch+'/charge.js','utf8');\nconst needle=\"const h = this.properties.prop('H', 'P', p, 'S', up.entropyJkgK), rho = this.properties.prop('D', 'P', p, 'S', up.entropyJkgK);\";\nif(!charge.includes(needle))throw Error('Compiled flux needle absent');\nconst replacement=`if(p===up.pPa)return 0;if(!(p>=downPa&&p<up.pPa))throw new DomainError('Isentropic throat pressure outside bracket');const rho=this.properties.prop('D','P',p,'S',up.entropyJkgK);\nconst rules={4:${JSON.stringify(rules[4])},8:${JSON.stringify(rules[8])}};\nlet evaluations=0;\nconst integrate=(a,b,n)=>{const mid=(a+b)/2,half=(b-a)/2,r=rules[n];return half*r.nodes.reduce((sum,node,i)=>{if(++evaluations>8192)throw new DomainError('Isentropic integral evaluation budget');const density=this.properties.prop('D','P',mid+half*node,'S',up.entropyJkgK);if(!(Number.isFinite(density)&&density>0))throw new DomainError('Invalid isentropic density');return sum+r.weights[i]/density},0)};\nconst q4=integrate(p,up.pPa,4),q8=integrate(p,up.pPa,8);\nif(!(Number.isFinite(q8)&&q8>0&&Number.isFinite(q4)&&q4>0))throw new DomainError('Invalid isentropic integral');\nconst budgetFor=(integral)=>{\n if(!(Number.isFinite(integral)&&integral>0))throw new DomainError('Invalid refined isentropic integral');\n const ideal=coefficient*area*rho*Math.sqrt(2*integral),drop=up.pPa-p,m=corrected(rho*Math.sqrt(2*integral),drop);\n const sensitivity=2*drop*m/ideal**2,beta=sensitivity/(resistance+sensitivity);\n const budget=Math.min(1e-8+1e-9*integral,2*integral*${flowBudget}/Math.max(m*beta,1e-30));\n if(!(Number.isFinite(budget)&&budget>0))throw new DomainError('Invalid isentropic error budget');\n return budget;\n};\nconst panels=[{a:p,b:up.pPa,coarse:q4,fine:q8,depth:0}];\nlet value=q8,error=Math.abs(q4-q8);\nwhile(error>budgetFor(value)){\n const budget=budgetFor(value);\n let index=0;for(let i=1;i<panels.length;i++)if(Math.abs(panels[i].coarse-panels[i].fine)>Math.abs(panels[index].coarse-panels[index].fine))index=i;\n const parent=panels[index];if(parent.depth>=16)throw new DomainError('Isentropic integral unresolved global error '+JSON.stringify({error,budget,parent}));\n const mid=(parent.a+parent.b)/2;\n if(!(mid>parent.a&&mid<parent.b))throw new DomainError('Isentropic integral pressure resolution');\n const left={a:parent.a,b:mid,coarse:integrate(parent.a,mid,4),fine:integrate(parent.a,mid,8),depth:parent.depth+1};\n const right={a:mid,b:parent.b,coarse:integrate(mid,parent.b,4),fine:integrate(mid,parent.b,8),depth:parent.depth+1};\n panels.splice(index,1,left,right);\n value+=left.fine+right.fine-parent.fine;\n error=panels.reduce((sum,panel)=>sum+Math.abs(panel.coarse-panel.fine),0);\n}\nconst dh=value;if(!(Number.isFinite(dh)&&dh>0))throw new DomainError('Invalid integrated isentropic enthalpy');\nthis.quadStats??={fluxCalls:0,densityCalls:0,maxDensityCalls:0};this.quadStats.fluxCalls++;this.quadStats.densityCalls+=evaluations;this.quadStats.maxDensityCalls=Math.max(this.quadStats.maxDensityCalls,evaluations);`;\nlet revised=charge.replace(needle,replacement).replace('2 * (up.hJkg - h)','2 * dh').replace('(_, i) => downPa * (up.pPa / downPa) ** (i / 12)', '(_, i) => i===0?downPa:i===12?up.pPa:downPa * (up.pPa / downPa) ** (i / 12)');\nrevised=revised.replace(/if \\(delta \\/ up\\.pPa < 1e-6\\)\\s*return corrected\\(Math\\.sqrt\\(2 \\* up\\.densityKgm3 \\* delta\\), delta\\);/,'');\nrevised=revised.replace('i < 32','i < '+golden);\nif(revised.includes('delta / up.pPa < 1e-6'))throw Error('Failed asymptote removal');\nawait writeFile(scratch+'/charge.js',revised);\nconst {ChargeCircuit}=await import(pathToFileURL(scratch+'/charge.js'));\nconst props=new Properties(await factory()),g=saved.config.inventory.geometry;\nconst circuit=new ChargeCircuit(props,g,{massKg:saved.config.inventory.initialMassKg,fluidTemperatureC:saved.config.inventory.initialFluidTemperatureC});\nconst boundary={orientation:saved.fluid.orientation,compressorSpeedRps:saved.output.diagnostics.speedRps,enabledRoomIds:g.rooms.map(r=>r.id),outdoorMetalC:saved.output.outdoor.metalTemperatureC,indoorMetalCById:Object.fromEntries(saved.output.rooms.map(r=>[r.id,r.metalTemperatureC]))};\nconst start=performance.now();let result;\ntry{const candidate=process.argv.includes('--representative')?null:circuit.prepareSingle(dt,boundary,saved.fluid);result={dt,order,threshold,accepted:!!candidate,representativeOnly:!candidate,wallSeconds:(performance.now()-start)/1000,candidate,quadStats:structuredClone(circuit.quadStats)};}\ncatch(e){result={dt,order,threshold,accepted:false,wallSeconds:(performance.now()-start)/1000,error:String(e)}}\nconst representative=[];\nfor(const cell of [saved.fluid.cells[0]])for(const span of [.4]){\n try{const flow=circuit.nozzle(cell.state,cell.state.pPa*(1-span),g.accumulatorInletAreaM2,.65,.1);const throat=[...circuit.nozzleFluxCache.values()].at(-1).throatPa,quality=props.prop('Q','P',throat,'S',cell.state.entropyJkgK);representative.push({id:cell.id,span,flow,throatPa:throat,quality,finite:flow>=0&&Number.isFinite(flow)});}catch(e){representative.push({id:cell.id,span,error:String(e)});}\n}\nresult.representative=representative;result.totalWallSeconds=(performance.now()-start)/1000;\nawait writeFile(new URL(`../research/frost-throat-diagnostic-${golden}-${flowBudget}-${dt}.json`,import.meta.url),JSON.stringify(result,null,2)+'\\n');\nconsole.log({accepted:result.accepted,wallSeconds:result.wallSeconds,error:result.error,candidateKeys:result.candidate&&Object.keys(result.candidate)});\nprops.dispose();await rm(scratch,{recursive:true});\n"
+  }
+}

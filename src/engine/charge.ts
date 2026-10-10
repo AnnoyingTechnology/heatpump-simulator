@@ -86,7 +86,7 @@ export class ChargeCircuit {
   private revision = 0;
   private candidates = new WeakMap<ChargeCandidate, number>();
   private snapshots = new WeakSet<ChargeSnapshot>();
-  private nozzleFluxCache = new Map<string,{flux:number;throatPa:number}>();
+  private nozzleFluxCache = new Map<string,{flux:number;throatPa:number;flowKgs:number}>();
 
   constructor(private readonly properties: Properties, geometry: ChargeGeometry,
     initial: { massKg: number; fluidTemperatureC: number; orientation?:'heating'|'cooling'; valveOpening?:number },private readonly numerics:ChargeNumerics={}) {
@@ -199,28 +199,71 @@ export class ChargeCircuit {
       const inertial=drop/ideal**2;
       return 2*drop/(resistance+Math.sqrt(resistance**2+4*inertial*drop));
     };
-    const delta=up.pPa-downPa;
-    // Local incompressible asymptote avoids subtracting nearly equal EOS h.
-    // It converges to the same inertial law as delta/p -> 0, but finite
-    // viscosity yields a differentiable linear flow limit at equal pressure.
-    if(delta/up.pPa<1e-6)return corrected(Math.sqrt(2*up.densityKgm3*delta),delta);
-    const key=`${up.pPa}:${up.hJkg}:${up.entropyJkgK}:${downPa}`;
-    const cached=this.nozzleFluxCache.get(key);if(cached!==undefined)return corrected(cached.flux,up.pPa-cached.throatPa);
-    const flux=(p:number)=>{
-      const h=this.properties.prop('H','P',p,'S',up.entropyJkgK),rho=this.properties.prop('D','P',p,'S',up.entropyJkgK);
-      return rho*Math.sqrt(Math.max(0,2*(up.hJkg-h)));
+    // A PH flash may return S/rho at native h different from the supplied
+    // conservative H coordinate. Use dh|s=v dp, never subtract those references.
+    const key=`${up.pPa}:${up.hJkg}:${up.entropyJkgK}:${up.densityKgm3}:${downPa}:${area}:${coefficient}:${passageLengthM}`;
+    const cached=this.nozzleFluxCache.get(key);if(cached!==undefined)return cached.flowKgs;
+    const knots:number[]=[];
+    // This pure R32 domain has monotonically increasing saturated-liquid S and
+    // decreasing saturated-vapor S. Partition the isentrope at its phase kinks.
+    for(const quality of [0,1]){
+      let a=downPa,b=up.pPa,fa=this.properties.prop('S','P',a,'Q',quality)-up.entropyJkgK;
+      const fb=this.properties.prop('S','P',b,'Q',quality)-up.entropyJkgK;
+      if(fa*fb<0){
+        for(let i=0;i<48&&b-a>2e-8;i++){
+          const mid=(a+b)/2,fm=this.properties.prop('S','P',mid,'Q',quality)-up.entropyJkgK;
+          if(fa*fm<=0)b=mid;else{a=mid;fa=fm;}
+        }
+        knots.push((a+b)/2);
+      }
+    }
+    knots.sort((a,b)=>a-b);
+    let densityCalls=0;
+    const density=(pressure:number)=>{
+      if(++densityCalls>65536)throw new DomainError('Isentropic nozzle density work budget exceeded');
+      const value=this.properties.prop('D','P',pressure,'S',up.entropyJkgK);
+      if(!(Number.isFinite(value)&&value>0))throw new DomainError('Invalid isentropic nozzle density');
+      return value;
     };
-    const pressures=Array.from({length:13},(_,i)=>downPa*(up.pPa/downPa)**(i/12)),values=pressures.map(flux);
-    const k=values.indexOf(Math.max(...values));let a=pressures[Math.max(0,k-1)],b=pressures[Math.min(12,k+1)],best=values[k],bestP=pressures[k];
-    const r=(Math.sqrt(5)-1)/2;let c=b-r*(b-a),d=a+r*(b-a),gc=flux(c),gd=flux(d);
-    // A coarse throat maximum contaminates finite pressure derivatives. Resolve
-    // the smooth bracket to 32 golden-section refinements, without rounding EOS
-    // inputs; exact-input caching reuses it for internal-face Jacobian columns.
-    for(let i=0;i<32;i++){if(gc>gd){b=d;d=c;gd=gc;c=b-r*(b-a);gc=flux(c);}else{a=c;c=d;gc=gd;d=a+r*(b-a);gd=flux(d);}}
-    if(gc>best){best=gc;bestP=c;}if(gd>best){best=gd;bestP=d;}
-    if(this.nozzleFluxCache.size>=10000){let removed=0;for(const oldest of this.nozzleFluxCache.keys()){this.nozzleFluxCache.delete(oldest);if(++removed===2000)break;}}
-    this.nozzleFluxCache.set(key,{flux:best,throatPa:bestP});return corrected(best,up.pPa-bestP);
+    const maximum=(flowBudget:number,refinements:number)=>{
+      const flux=(pressure:number)=>{
+        if(pressure===up.pPa)return 0;
+        if(!(pressure>=downPa&&pressure<up.pPa))throw new DomainError('Nozzle throat pressure outside bracket');
+        const rho=density(pressure),drop=up.pPa-pressure;
+        const budget=(integral:number)=>{
+          const ideal=coefficient*area*rho*Math.sqrt(2*integral),m=corrected(rho*Math.sqrt(2*integral),drop);
+          const sensitivity=2*drop*m/ideal**2,beta=sensitivity/(resistance+sensitivity);
+          const limit=Math.min(1e-8+1e-9*integral,2*integral*flowBudget/Math.max(m*beta,1e-30));
+          if(!(Number.isFinite(integral)&&integral>0&&Number.isFinite(limit)&&limit>0))
+            throw new DomainError('Invalid isentropic integral error budget');
+          return limit;
+        };
+        const integral=isentropicVolumeIntegral(pressure,up.pPa,knots,density,budget);
+        return rho*Math.sqrt(2*integral);
+      };
+      // Assign exact bracket endpoints: exponentiation can overshoot by one ULP.
+      const pressures=Array.from({length:13},(_,i)=>i===0?downPa:i===12?up.pPa:downPa*(up.pPa/downPa)**(i/12));
+      const values=pressures.map(flux),k=values.indexOf(Math.max(...values));
+      let a=pressures[Math.max(0,k-1)],b=pressures[Math.min(12,k+1)],best=values[k],bestP=pressures[k];
+      const r=(Math.sqrt(5)-1)/2;let c=b-r*(b-a),d=a+r*(b-a),gc=flux(c),gd=flux(d);
+      for(let i=0;i<refinements;i++){
+        if(gc>gd){b=d;d=c;gd=gc;c=b-r*(b-a);gc=flux(c);}
+        else{a=c;c=d;gc=gd;d=a+r*(b-a);gd=flux(d);}
+      }
+      if(gc>best){best=gc;bestP=c;}if(gd>best){best=gd;bestP=d;}
+      return {flux:best,throatPa:bestP,flowKgs:corrected(best,up.pPa-bestP)};
+    };
+    const coarse=maximum(4e-11,32),fine=maximum(4e-12,48);
+    // The whole corrected flow is checked: scalar integral error alone does
+    // not bound movement of a flat throat maximum entering viscous correction.
+    if(!(Number.isFinite(fine.flowKgs)&&fine.flowKgs>=0)||Math.abs(fine.flowKgs-coarse.flowKgs)>4e-11)
+      throw new DomainError('Isentropic nozzle corrected flow did not converge');
+    if(this.nozzleFluxCache.size>=10000){let removed=0;for(const oldest of this.nozzleFluxCache.keys()){
+      this.nozzleFluxCache.delete(oldest);if(++removed===2000)break;
+    }}
+    this.nozzleFluxCache.set(key,fine);return fine.flowKgs;
   }
+
   private evaluation(z:number[],boundary:ChargeBoundary,openings:number[],admitted:boolean,
     preparedCells?:ChargeCell[]):Evaluation {
     const operation={...this.geometry,...boundary.operating};
@@ -559,6 +602,47 @@ export class ChargeCircuit {
     if(this.candidates.get(candidate)!==this.revision)throw new DomainError('Stale/foreign charge candidate');
     this.current=structuredClone(candidate.snapshot);this.candidates.delete(candidate);this.revision++;
   }
+}
+
+const GAUSS_VOLUME_RULES=[
+  {nodes:[-.8611363115940526,-.3399810435848563,.3399810435848563,.8611363115940526],
+    weights:[.3478548451374538,.6521451548625461,.6521451548625461,.3478548451374538]},
+  {nodes:[-.9602898564975363,-.7966664774136267,-.525532409916329,-.1834346424956498,
+    .1834346424956498,.525532409916329,.7966664774136267,.9602898564975363],
+    weights:[.1012285362903763,.2223810344533745,.3137066458778873,.362683783378362,
+      .362683783378362,.3137066458778873,.2223810344533745,.1012285362903763]},
+];
+
+/** Bounded adaptive integral of real-EOS specific volume, with phase knots.
+ * Order differences estimate quadrature error; they are not interval bounds. */
+function isentropicVolumeIntegral(low:number,high:number,knots:number[],density:(p:number)=>number,
+  budget:(integral:number)=>number):number {
+  let calls=0;
+  const integrate=(a:number,b:number,order:number)=>{
+    const mid=(a+b)/2,half=(b-a)/2,rule=GAUSS_VOLUME_RULES[order];
+    return half*rule.nodes.reduce((sum,node,i)=>{
+      if(++calls>8192)throw new DomainError('Isentropic integral density work budget exceeded');
+      return sum+rule.weights[i]/density(mid+half*node);
+    },0);
+  };
+  const panel=(a:number,b:number,depth:number)=>({a,b,depth,coarse:integrate(a,b,0),fine:integrate(a,b,1)});
+  const points=[low,...knots.filter(p=>p>low&&p<high),high];
+  const panels=points.slice(0,-1).map((a,i)=>panel(a,points[i+1],0));
+  let value=panels.reduce((sum,p)=>sum+p.fine,0);
+  let error=panels.reduce((sum,p)=>sum+Math.abs(p.coarse-p.fine),0);
+  while(error>budget(value)){
+    let index=0;for(let i=1;i<panels.length;i++)
+      if(Math.abs(panels[i].coarse-panels[i].fine)>Math.abs(panels[index].coarse-panels[index].fine))index=i;
+    const prior=panels[index],mid=(prior.a+prior.b)/2;
+    if(prior.depth>=16)throw new DomainError('Isentropic integral unresolved quadrature error');
+    if(!(mid>prior.a&&mid<prior.b))throw new DomainError('Isentropic integral exhausted pressure precision');
+    const left=panel(prior.a,mid,prior.depth+1),right=panel(mid,prior.b,prior.depth+1);
+    panels.splice(index,1,left,right);
+    value+=left.fine+right.fine-prior.fine;
+    error=panels.reduce((sum,p)=>sum+Math.abs(p.coarse-p.fine),0);
+  }
+  if(!(Number.isFinite(value)&&value>0))throw new DomainError('Invalid isentropic volume integral');
+  return value;
 }
 
 function deepFreeze<T>(value:T):T {
