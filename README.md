@@ -42,6 +42,7 @@ Requested speed is limited by actual solver throughput. The worker keeps calcula
 
 ## Project decisions and research
 
+- [Current progress and open validation gates](PROGRESS.md)
 - [Owner decisions and milestone scope](project-brief.md)
 - [Science reference](heatpump-science-reference.md)
 - [Thermodynamic model specification](model-specification.md)
