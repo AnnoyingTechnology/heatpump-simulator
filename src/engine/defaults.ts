@@ -8,7 +8,7 @@ export function defaultRoomConfig(index = 0): RoomConfig {
     pipe: { lengthM: 0, gasInsideDiameterM: .010, liquidInsideDiameterM: .0048, elevationM: 0, insulationConductanceWmK: .05 } };
 }
 export function defaultEngineConfig(roomCount = 3): EngineConfig {
-  return { fluid: 'R32', mode: 'heating', outdoorTemperatureC: 3, outdoorRelativeHumidity: .85, ambientPressurePa: 101325,
+  return { fluid: 'R32', mode: 'heating', outdoorTemperatureC: 3, outdoorRelativeHumidity: .85, ambientPressurePa: 101325, indoorPortCapacity: 5,
     rooms: Array.from({ length: roomCount }, (_, i) => defaultRoomConfig(i)),
     compressor: { displacementM3rev: 22e-6, speedMinRps: 18, speedMaxRps: 75, isentropicEfficiency: .70, volumetricEfficiency: .80, driveEfficiency: .93,
       superheatK: 3, subcoolK: 1, maxDischargeC: 145, maxPressureRatio: 8 },

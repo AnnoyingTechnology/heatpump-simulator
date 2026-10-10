@@ -89,7 +89,9 @@ export class HeatPumpEngine {
   private validateConfig(config: EngineConfig): void {
     if (config.mode !== 'heating' && config.mode !== 'cooling') throw new DomainError('Unsupported operating mode');
     if (config.fluid !== 'R32') throw new DomainError('Only R32 has implemented live model coverage');
-    if (config.rooms.length < 1 || config.rooms.length > 5 || new Set(config.rooms.map(r => r.id)).size !== config.rooms.length) throw new DomainError('Need one to five uniquely identified rooms');
+    if (!(Number.isFinite(config.indoorPortCapacity) && Number.isInteger(config.indoorPortCapacity) && config.indoorPortCapacity > 0)) throw new DomainError('Declared indoor port capacity must be a positive finite integer');
+    if (config.rooms.length < 1 || config.rooms.length > config.indoorPortCapacity) throw new DomainError('Room count must be at least one and within declared indoor port capacity');
+    if (new Set(config.rooms.map(r => r.id)).size !== config.rooms.length) throw new DomainError('Room IDs must be unique');
     if (config.outdoorTemperatureC < -25 || config.outdoorTemperatureC > 45 || config.outdoorRelativeHumidity < 0 || config.outdoorRelativeHumidity > 1) throw new DomainError('Outdoor inputs outside supported −25…45°C /0…100% RH domain');
     if (config.ambientPressurePa < 70000 || config.ambientPressurePa > 110000) throw new DomainError('Ambient pressure outside supported psychrometric domain');
     const c = config.compressor;

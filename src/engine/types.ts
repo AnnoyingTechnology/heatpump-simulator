@@ -15,6 +15,8 @@ export interface RoomConfig {
 }
 export interface EngineConfig {
   fluid: 'R32'; mode: Mode; outdoorTemperatureC: number; outdoorRelativeHumidity: number; ambientPressurePa: number;
+  /** Declared outdoor connection count; not a thermal-capacity or calibrated performance claim. */
+  indoorPortCapacity: number;
   rooms: RoomConfig[];
   compressor: { displacementM3rev: number; speedMinRps: number; speedMaxRps: number; isentropicEfficiency: number; volumetricEfficiency: number; driveEfficiency: number; superheatK: number; subcoolK: number; maxDischargeC: number; maxPressureRatio: number };
   outdoor: { cleanFraction?: number; airMassFlowKgs: number; fanPowerW: number; airConductanceWK: number; refrigerantConductanceWK: number; naturalAirConductanceWK: number; metalCapacityJK: number; depositionAreaM2: number; frostDensityKgm3: number; frostConductivityWmK: number; finGapM: number; drainageSeconds: number };

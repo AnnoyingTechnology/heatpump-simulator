@@ -6,7 +6,7 @@ export type Mode = 'heating' | 'cooling';
 /** Which reading source drives the whole interface: the real worker engine or the constructed example snapshots. */
 export type Experience = 'live' | 'examples';
 export type ExampleState = 'normal' | 'frost' | 'defrost' | 'idle';
-export type SpeedFactor = 0.5 | 1 | 2 | 5 | 10;
+export type SpeedFactor = 0.5 | 1 | 2 | 5 | 10 | 50;
 export type OutdoorKind = 'owner' | 'generic';
 export type IndoorClass = 'FTXA25' | 'FTXA35' | 'G25' | 'G35' | 'G50';
 export type PressureConvention = 'abs' | 'gauge';
@@ -15,8 +15,8 @@ export type SidebarTab = 'rooms' | 'equipment' | 'pipes' | 'advanced';
 export type DrawerTab = 'diagnostics' | 'fixtures' | 'provenance';
 export type ZoomPreset = 'overview' | 'outdoor' | 'rooms';
 
-export const MAX_UNITS = 5;
 export const OWNER_PORTS = 3;
+export const DEFAULT_GENERIC_PORT_CAPACITY = 5;
 
 export interface RoomConfig {
   id: string;
@@ -52,6 +52,8 @@ export interface Config {
   /** Examples experience only; the live engine chooses its own operating state. */
   example: ExampleState;
   outdoorKind: OutdoorKind;
+  /** Declared connection capacity of the generic group; a scenario assumption, not manufacturer data. */
+  genericPortCapacity: number;
   unitCount: number;
   outdoorC: number;
   outdoorRh: number;
@@ -76,6 +78,11 @@ export interface UiState {
   showTaps: boolean;
   showLabels: boolean;
   notice: string | null;
+}
+
+/** A manufacturer's connection limit or the generic group's explicit capacity assumption. */
+export function outdoorPortCapacity(cfg: Pick<Config, 'outdoorKind' | 'genericPortCapacity'>): number {
+  return cfg.outdoorKind === 'owner' ? OWNER_PORTS : cfg.genericPortCapacity;
 }
 
 export interface AppState {

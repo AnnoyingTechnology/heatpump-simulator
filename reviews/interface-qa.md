@@ -52,7 +52,7 @@ After the guarded numerical suite passed and independent review accepted the bou
 - [Actual live frost](../design/interface-live-frost.png)
 - [Vector exchanger fouling](../design/interface-cleanliness.png)
 
-## Practical limits and next review
+## Practical limits and next review (historical sidebar milestone)
 
 The owner accepted the visual direction with a request for clear zones and readily accessible common controls; that revision is verified above. It provides three zoom presets; free pan/zoom is not implemented. Overview labels are intentionally small, with detailed readings available in the inspector and outdoor close-up. Generic rooms four/five are schematic additions. Casings share a physical scale; room zones, expanded internals and drawn pipe routes are schematic. Outdoor/indoor titles have a reserved header row so the status overlay does not cover them; fresh screenshot inspection confirmed this in the overview.
 
@@ -81,3 +81,11 @@ The outdoor drawing is a static grille; indoor heads have horizontal outlet slat
 Branding, publication and the owner-triggered Opus review have not started.
 
 Requested speed is a scheduling target. The main thread submits fixed 0.25 simulated-second chunks with one request in flight; the clock advances only on completed physical steps. Safe real-EOS calls are CPU-limited, especially with physical lines, so these controls do not guarantee real-time or 10× throughput. The backend performance follow-up is recorded in [`coolprop-fast-browser-options.md`](../research/coolprop-fast-browser-options.md).
+
+## Spatial controls and refrigerant instrumentation checkpoint — 2026-10-10
+
+The current workbench has no sidebar or permanently mounted inspector/footer. Environmental weather and room measured-air/volume/heat-loss controls are unboxed; equipment mode, target, On/Off and readings are equipment-local. Common inlet/outlet refrigerant probes remain on the diagram, with independent temperature colours, phase marks and full-precision data attributes. The owner group has three ports; Generic exposes declared capacity with Add/Remove controls and scrolling beyond five rooms. Restart retains configuration. Requested speed includes50×; achieved time remains worker-limited.
+
+Current focused checks: runtime scheduling **7/7**, actual-worker scenario controls **4/4**, actual-worker sensor/control provenance **4/4**, desktop chrome **3/3**, actual-EOS capacity **3/3** (also independently repeated). Build and strict TypeScript passed. Sensor checks compare every heating coil/compressor endpoint against genuine engine output, retain values/focus during target edits, and withhold closed-branch probes. Scenario checks cover Off/on thermal/time continuity, six real branches, room/line identity through removal and edited-input restart. The previous long numerical suite was not repeated for this UI/configuration checkpoint.
+
+The earlier browser harnesses/results involving sidebar tabs are historical until adapted; their prior pass is not a claim that those selectors work in the current interface. A final Sonnet pass is underway for permanent branch-length sliders, larger probe text, label fit and a clipped outdoor coil note. Charge/leak physics has entered a separate conservative-model pilot and is not implemented at this checkpoint. PNG review captures are not application assets.

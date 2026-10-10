@@ -1,4 +1,4 @@
-import { flowMode, tempRampCss, TEMP_RAMP_MAX, TEMP_RAMP_MIN } from './circuit';
+import { AIR_RAMP_MAX, AIR_RAMP_MIN, TEMP_RAMP_MAX, TEMP_RAMP_MIN, TEMP_RAMP_TICKS, airRampCss, flowMode, tempRampCss } from './circuit';
 import { segmented, setHtml } from './controls';
 import type { Field } from './controls';
 import { escapeHtml, fmt, html, setText, svg } from './dom';
@@ -8,7 +8,7 @@ import { simulation, branchesFor } from './runtime/view';
 import { ICE_START_KG, activeRooms, currentReadings, liveStatus, store } from './state';
 import type { Current } from './state';
 import { INDOOR_CLASSES } from './types';
-import type { AppState, DrawerTab, Experience, ExampleState, Mode, SpeedFactor, ZoomPreset } from './types';
+import type { AppState, DrawerTab, Experience, ExampleState, SpeedFactor, ZoomPreset } from './types';
 
 export interface Header {
   root: HTMLElement;
@@ -24,7 +24,7 @@ const fmtTime = (sec: number): string => {
 
 /** Shared one-line statements so every surface says the same thing about the live model. */
 export const LIVE_BASIS = 'Live · generic R32 · real property backend · performance not manufacturer-calibrated';
-/** Shared by the pinned sidebar inputs and the outdoor corner card. */
+/** Shared by the weather card's humidity control and its tooltip. */
 export const HUMIDITY_CONVENTION = 'Relative humidity follows CoolProp: saturation over ice below 0 °C, over liquid water above. Convert weather readings that use a different convention.';
 export function fieldLinesNote(s: AppState): string {
   return s.cfg.live.fieldLines === 'idealized'
@@ -32,7 +32,7 @@ export function fieldLinesNote(s: AppState): string {
     : 'Physical field lines (advanced, slower): uncalibrated homogeneous pipe-loss approximation with assumed bore, level elevation and outdoor-air exposure; not a prediction of installed line losses; some regimes may be unsupported and fail visibly (see Advanced pipe assumptions)';
 }
 
-const SPEED_HELP = 'Requested speed. Live runs are CPU-limited with one worker task in flight, so ×10 may not be reached; the Simulation time shows what actually elapsed.';
+const SPEED_HELP = 'Requested speed. Live runs are CPU-limited with one worker task in flight, so ×10 or ×50 may not be reached; the Simulation time shows what actually elapsed. ×50 is for reaching steady state quickly.';
 
 /** Compact native select for the header. Built once; refresh() never steals an open or focused control. */
 function pick<T extends string | number>(o: {
@@ -73,12 +73,6 @@ export function createHeader(readings: Ribbon): Header {
     ],
     get: () => store.state.ui.experience, set: (v) => store.setExperience(v),
   });
-  const mode = segmented<Mode>({
-    label: 'Mode',
-    options: [{ value: 'heating', text: 'Heating' }, { value: 'cooling', text: 'Cooling' }],
-    get: () => store.state.cfg.mode,
-    set: (m) => (store.state.ui.experience === 'live' ? store.setMode(m) : store.loadExample(m, store.state.cfg.example)),
-  });
   const example = pick<ExampleState>({
     label: 'Example scenario',
     options: [
@@ -92,19 +86,22 @@ export function createHeader(readings: Ribbon): Header {
   });
   const speed = pick<SpeedFactor>({
     label: 'Requested speed',
-    options: ([0.5, 1, 2, 5, 10] as SpeedFactor[]).map((v) => ({ value: v, text: `${v}×` })),
+    options: ([0.5, 1, 2, 5, 10, 50] as SpeedFactor[]).map((v) => ({ value: v, text: `${v}×` })),
     get: () => store.state.ui.speed,
     set: (v) => store.update((s) => { s.ui.speed = Number(v) as SpeedFactor; }),
   });
-  fields.push(experience, mode, example, speed);
+  fields.push(experience, example, speed);
   const speedHelp = html('span', { class: 'sr-only', id: 'speed-help' }, SPEED_HELP);
   speed.sel.setAttribute('aria-describedby', 'speed-help');
   speed.sel.title = SPEED_HELP;
 
   const pause = html('button', { type: 'button', class: 'btn hd-pause' }, 'Pause');
   pause.addEventListener('click', () => store.update((s) => { s.ui.paused = !s.ui.paused; }));
-  const reset = html('button', { type: 'button', class: 'btn ghost hd-reset', 'aria-label': 'Reset simulation', title: 'Reset simulation' }, 'Reset');
-  reset.addEventListener('click', () => store.reset());
+  // Reset restarts the simulation from the CURRENT inputs: clocks, ice inventory and room state start over, and the initial room
+  // temperatures you set are applied. Edited settings are kept (the factory defaults are not restored).
+  const resetHelp = 'Restart the simulation from the current inputs: clock, ice and room state start over; your edited settings and initial room temperatures are kept and applied.';
+  const reset = html('button', { type: 'button', class: 'btn ghost hd-reset', 'aria-label': 'Reset simulation', title: resetHelp }, 'Reset');
+  reset.addEventListener('click', () => store.restartSimulation());
   const time = html('output', { class: 'time', 'aria-label': 'Simulation time' }, '00:00.0');
 
   // Headline readings: label above value, fixed-width cells so the header does not reflow as numbers change.
@@ -137,6 +134,8 @@ export function createHeader(readings: Ribbon): Header {
   const setPop = (open: boolean): void => {
     readings.root.hidden = !open;
     rdBtn.setAttribute('aria-expanded', String(open));
+    // The embedded diagnostics are rendered only while this popover is open; refresh them now.
+    if (open) store.emit();
   };
   rdBtn.addEventListener('click', () => setPop(readings.root.hidden === true));
   document.addEventListener('click', (e) => {
@@ -151,7 +150,7 @@ export function createHeader(readings: Ribbon): Header {
 
   const root = html('header', { class: 'topbar' },
     html('div', { class: 'brand' }, html('span', { class: 'mark', 'aria-hidden': 'true' }), html('b', {}, 'Heatpump Simulator 2026')),
-    html('div', { class: 'hd-group' }, mode.root, pause, speed.root, time, speedHelp),
+    html('div', { class: 'hd-group' }, pause, speed.root, time, speedHelp),
     html('div', { class: 'spacer' }),
     metrics, status,
     html('div', { class: 'hd-group' }, rdBtn, reset),
@@ -325,8 +324,28 @@ export function createOverlay(zoomTo: (z: ZoomPreset) => void): Overlay {
     tube.style.background = tempRampCss();
     return html('li', {}, tube, label);
   };
+  // Refrigerant scale: a wide ramp with a tick and label at every colour stop, a bracket for the common region and one for the
+  // hot-vapour tail. Air has its own short, separate ramp. Both are fixed; neither rescales to the current data.
+  const span = TEMP_RAMP_MAX - TEMP_RAMP_MIN;
+  const at = (t: number): string => `${(((t - TEMP_RAMP_MIN) / span) * 100).toFixed(2)}%`;
   const ramp = html('i', { class: 'ramp' });
   ramp.style.background = tempRampCss();
+  const ticks = html('span', { class: 'lg-ticks' },
+    ...TEMP_RAMP_TICKS.map((t) => {
+      const e = html('span', { class: 'lg-tick' }, String(t).replace('-', '−'));
+      e.style.left = at(t);
+      return e;
+    }));
+  const bracket = (from: number, to: number, cls: string, text: string): HTMLElement => {
+    const e = html('span', { class: `lg-span ${cls}` }, text);
+    e.style.left = at(from);
+    e.style.width = `${(((to - from) / span) * 100).toFixed(2)}%`;
+    return e;
+  };
+  const scale = html('div', { class: 'lg-scale' }, ramp, ticks,
+    html('span', { class: 'lg-spans' }, bracket(-20, 65, 'common', 'common −20…65'), bracket(105, TEMP_RAMP_MAX, 'hot', 'hot vapour')));
+  const airRamp = html('i', { class: 'ramp air' });
+  airRamp.style.background = airRampCss();
   const neutral = (cls: string, label: string): HTMLElement => html('li', {}, html('i', { class: `sw ${cls}` }), label);
   const legendNote = html('p', {}, '');
   legendNote.hidden = true;
@@ -338,12 +357,16 @@ export function createOverlay(zoomTo: (z: ZoomPreset) => void): Overlay {
   });
   const legend = html('div', { class: 'legend', role: 'group', 'aria-label': 'Temperature and phase legend' },
     html('div', { class: 'lg-row' },
-      html('div', { class: 'lg-col' }, html('span', { class: 'lg-h' }, 'Tube colour = temperature'),
-        html('span', { class: 'lg-ramp' }, html('span', {}, `${TEMP_RAMP_MIN} °C`), ramp, html('span', {}, `${TEMP_RAMP_MAX} °C`)),
-        html('ul', {}, neutral('unknown', 'unknown'), neutral('idle', 'no flow'))),
-      html('div', { class: 'lg-col' }, html('span', { class: 'lg-h' }, 'Marks = phase'),
-        html('ul', {}, phaseSample('vapor', 'vapor: dots'), phaseSample('liquid', 'liquid: dashes'), phaseSample('two', 'two-phase: dash-dot'))),
+      html('div', { class: 'lg-col lg-main' }, html('span', { class: 'lg-h' }, 'Refrigerant °C'), scale),
+      html('div', { class: 'lg-col lg-side' },
+        html('div', { class: 'lg-stack' }, html('span', { class: 'lg-h' }, 'Marks = phase'),
+          html('ul', {}, phaseSample('vapor', 'vapor: dots'), phaseSample('liquid', 'liquid: dashes'), phaseSample('two', 'two-phase: dash-dot'))),
+        html('div', { class: 'lg-stack' }, html('span', { class: 'lg-h' }, 'Tube states'),
+          html('ul', {}, neutral('unknown', 'unknown'), neutral('idle', 'no flow'))),
+        html('div', { class: 'lg-stack' }, html('span', { class: 'lg-h' }, 'Air °C (room fills)'),
+          html('span', { class: 'lg-ramp' }, html('span', {}, String(AIR_RAMP_MIN).replace('-', '−')), airRamp, html('span', {}, String(AIR_RAMP_MAX))))),
       detailsBtn),
+    html('p', { class: 'lg-sentence' }, `Pipe colour and probe swatches use this fixed scale and saturate beyond ${String(TEMP_RAMP_MIN).replace('-', '−')} / ${TEMP_RAMP_MAX} °C; probe numbers stay exact. 105 °C and above is hot discharge vapour, not a liquid temperature. Heat can be absorbed at constant temperature during evaporation (ΔT = 0 is valid).`),
     legendNote);
   const root = html('div', { class: 'overlay' },
     html('div', { class: 'ov-top' }, mismatch, ice, moreBtn, html('span', { class: 'spacer' }), zoomSeg.root, detail),
@@ -354,13 +377,13 @@ export function createOverlay(zoomTo: (z: ZoomPreset) => void): Overlay {
       zoomSeg.refresh();
       root.dataset.zoom = s.ui.zoom;
       if (s.ui.experience === 'live') {
-        setText(legendNote, 'The tube interior colour is the reported temperature. Thin white marks over it show phase and drift in the flow direction; they never replace the colour. Hatched = fluid flows but no temperature is reported (e.g. mid-coil passes); solid grey = no flow (idle, closed or switched-off branch, or readings withheld). Arrows show flow direction. Live engine: outdoor air, setpoints, heat-loss coefficients, ηis and generic parameters drive the model; initial room temperature applies on Reset.');
+        setText(legendNote, 'The tube interior colour is the reported temperature. Thin white marks over it show phase and drift in the flow direction; they never replace the colour. Hatched = fluid flows but no temperature is reported (e.g. mid-coil passes); solid grey = no flow (idle, closed or switched-off branch, or readings withheld). Arrows show flow direction. Pills on the pipes are refrigerant probes (IN/OUT at each coil, D/S at the compressor): exact computed values rounded to 0.1 °C, a dash while no cycle or branch circulates. ΔT is OUT − IN; coil heat is the refrigerant\'s, not the room\'s net kW. Live engine: outdoor air, setpoints, heat-loss coefficients, ηis and generic parameters drive the model; initial room temperature applies on Reset.');
         mismatch.hidden = true;
         mismatch.classList.remove('diff');
         mismatchDetail.hidden = true;
         return;
       }
-      setText(legendNote, 'The tube interior colour is the illustrative fixture temperature. Thin white marks over it show phase (dots vapor, dashes liquid, dash-dot two-phase) and drift in the flow direction. Hatched = no temperature in the fixture (e.g. mid-coil passes); solid grey = no flow. Arrows show flow direction.');
+      setText(legendNote, 'The tube interior colour is the illustrative fixture temperature. Thin white marks over it show phase (dots vapor, dashes liquid, dash-dot two-phase) and drift in the flow direction. Hatched = no temperature in the fixture (e.g. mid-coil passes); solid grey = no flow. Arrows show flow direction. Probe pills show the fixture\'s illustrative common-cycle endpoints (not per-branch solver states); no per-branch coil heat exists in a fixture.');
       const fx = fixtureFor(s.cfg.mode, s.cfg.example);
       const diffs: string[] = [];
       if (s.cfg.outdoorC !== fx.conditions.outdoorC || s.cfg.outdoorRh !== fx.conditions.outdoorRh) diffs.push('outdoor air');
@@ -450,7 +473,7 @@ export function createDrawer(): Drawer {
   const tabs: ReadonlyArray<{ id: DrawerTab; label: string }> = [
     { id: 'diagnostics', label: 'Diagnostics' }, { id: 'fixtures', label: 'Examples' }, { id: 'provenance', label: 'Provenance' },
   ];
-  const toggle = html('button', { type: 'button', class: 'drawer-toggle', 'aria-expanded': 'false', 'aria-controls': 'drawer-body' }, 'Diagnostics and examples');
+  const toggle = html('button', { type: 'button', class: 'drawer-toggle', 'aria-expanded': 'false', 'aria-controls': 'drawer-body' }, 'Diagnostics, examples and provenance');
   toggle.addEventListener('click', () => store.update((s) => { s.ui.drawerOpen = !s.ui.drawerOpen; }));
   const tabBtns = tabs.map((t) => {
     const b = html('button', { type: 'button', class: 'tab small', role: 'tab' }, t.label);
@@ -458,9 +481,9 @@ export function createDrawer(): Drawer {
     return b;
   });
   const bodyEl = html('div', { class: 'drawer-body', id: 'drawer-body' });
-  const bannerS = html('span', { class: 'banner-s' }, PREVIEW_BANNER);
-  const root = html('section', { class: 'drawer', 'aria-label': 'Diagnostics and examples' },
-    html('div', { class: 'drawer-bar' }, toggle, html('div', { class: 'tabs', role: 'tablist' }, ...tabBtns), html('span', { class: 'spacer' }), bannerS),
+  // A disclosure at the end of the Readings popover, not a permanent bar: it reserves no row of the application grid.
+  const root = html('section', { class: 'drawer diag', 'aria-label': 'Diagnostics, examples and provenance' },
+    html('div', { class: 'drawer-bar' }, toggle, html('div', { class: 'tabs', role: 'tablist' }, ...tabBtns)),
     bodyEl);
   bodyEl.addEventListener('click', (e) => {
     const b = (e.target as HTMLElement).closest<HTMLElement>('[data-fixture]');
@@ -554,13 +577,13 @@ export function createDrawer(): Drawer {
       const live = s.ui.experience === 'live';
       root.classList.toggle('open', open);
       toggle.setAttribute('aria-expanded', String(open));
-      setText(bannerS, live ? LIVE_BASIS : PREVIEW_BANNER);
       tabs.forEach((t, i) => {
         tabBtns[i]?.setAttribute('aria-selected', String(s.ui.drawerTab === t.id));
         tabBtns[i]?.classList.toggle('on', s.ui.drawerTab === t.id);
       });
       bodyEl.hidden = !open;
-      if (!open) return;
+      // The tables are rebuilt only while the Readings popover that hosts them is open.
+      if (!open || root.closest('.ribbon')?.hasAttribute('hidden')) return;
       let markup: string;
       if (s.ui.drawerTab === 'diagnostics') {
         const rd = currentReadings(s);

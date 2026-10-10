@@ -1,5 +1,5 @@
 import type { AppState, Config, Experience, ExampleState, Mode, PipeConfig, RoomConfig, UiState } from './types';
-import { MAX_UNITS, OWNER_PORTS } from './types';
+import { DEFAULT_GENERIC_PORT_CAPACITY, OWNER_PORTS, outdoorPortCapacity } from './types';
 import type { Fixture } from './fixtures';
 import { fixtureFor } from './fixtures';
 import { defaultLiveParameters } from './runtime/config';
@@ -32,6 +32,7 @@ export function defaultConfig(): Config {
     mode: 'heating',
     example: 'normal',
     outdoorKind: 'owner',
+    genericPortCapacity: DEFAULT_GENERIC_PORT_CAPACITY,
     unitCount: 3,
     outdoorC: fx.conditions.outdoorC,
     outdoorRh: fx.conditions.outdoorRh,
@@ -124,6 +125,15 @@ class Store {
     this.emit();
   }
 
+  /** Start a fresh physical scenario from the edited inputs, without restoring factory defaults. */
+  restartSimulation(): void {
+    Object.assign(this.clock, { previewTimeS: 0, iceKg: 0, retainedWaterKg: 0, seeded: false, melting: false });
+    this.state.ui.selected = null;
+    this.state.ui.notice = null;
+    this.resetEpoch += 1;
+    this.emit();
+  }
+
   /** Live Heating/Cooling edits the mode only: no fixture conditions, outdoor air or rooms are touched. */
   setMode(mode: Mode): void {
     this.update((s) => {
@@ -175,14 +185,62 @@ class Store {
   }
 
   setUnitCount(n: number): void {
+    if (!Number.isSafeInteger(n) || n < 1) return;
     this.update((s) => {
-      const count = Math.max(1, Math.min(MAX_UNITS, n));
-      s.cfg.unitCount = count;
-      if (count > OWNER_PORTS && s.cfg.outdoorKind === 'owner') {
+      if (n > OWNER_PORTS && s.cfg.outdoorKind === 'owner') {
         s.cfg.outdoorKind = 'generic';
-        s.ui.notice = `The 3MXM52N8 has ${OWNER_PORTS} ports. ${count} units switched the outdoor group to a generic compatible unit.`;
+        s.ui.notice = `The 3MXM52N8 has ${OWNER_PORTS} ports. More units require the generic group's declared connection capacity.`;
       } else if (s.ui.notice?.includes('ports')) {
         s.ui.notice = null;
+      }
+      const count = Math.min(outdoorPortCapacity(s.cfg), n);
+      this.ensureRoomSlots(s.cfg, count);
+      s.cfg.unitCount = count;
+      this.pruneSelection(s);
+    });
+  }
+
+  /** Allocate only active rooms; increasing a capacity alone never creates a huge hidden array. */
+  private ensureRoomSlots(cfg: Config, count: number): void {
+    while (cfg.rooms.length < count) {
+      let ordinal = cfg.rooms.length + 1;
+      while (cfg.rooms.some(r => r.id === `room-${ordinal}`)) ordinal += 1;
+      cfg.rooms.push({ id: `room-${ordinal}`, name: `Room ${ordinal}`, enabled: true, volumeM3: 50,
+        heatLossWPerK: 60, setpointC: 21, airC: 20, indoorClass: 'G25', cleanlinessOverridePct: null });
+      cfg.pipes.push({ lengthM: 10, liquidOdMm: 6.35, gasOdMm: 9.52, lengthSource: 'default' });
+    }
+  }
+
+  setGenericPortCapacity(capacity: number): void {
+    if (!Number.isSafeInteger(capacity) || capacity < 1) return;
+    this.update(s => {
+      s.cfg.genericPortCapacity = capacity;
+      if (s.cfg.outdoorKind === 'generic') s.cfg.unitCount = Math.min(s.cfg.unitCount, capacity);
+      this.pruneSelection(s);
+    });
+  }
+
+  addRoom(): void {
+    const cfg = this.state.cfg;
+    if (cfg.unitCount < outdoorPortCapacity(cfg)) this.setUnitCount(cfg.unitCount + 1);
+  }
+
+  /** Remove one active room and its matching lines. Keep its inputs in the inactive pool for reversible re-addition. */
+  removeRoom(index: number): void {
+    const cfg = this.state.cfg;
+    if (!Number.isInteger(index) || index < 0 || index >= cfg.unitCount || cfg.unitCount <= 1) return;
+    this.update(s => {
+      const lastActive = s.cfg.unitCount - 1;
+      const [room] = s.cfg.rooms.splice(index, 1);
+      const [pipe] = s.cfg.pipes.splice(index, 1);
+      s.cfg.rooms.splice(lastActive, 0, room);
+      s.cfg.pipes.splice(lastActive, 0, pipe);
+      s.cfg.unitCount -= 1;
+      const selected = /^(indoor|eev|pipe):(\d+)$/.exec(s.ui.selected ?? '');
+      if (selected) {
+        const previous = Number(selected[2]);
+        if (previous === index) s.ui.selected = null;
+        else if (previous > index) s.ui.selected = `${selected[1]}:${previous - 1}`;
       }
       this.pruneSelection(s);
     });

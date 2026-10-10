@@ -1,4 +1,4 @@
-import { clamp, polyPath, setAttr, svg, toggleClass } from './dom';
+import { clamp, fmt, polyPath, setAttr, setText, svg, toggleClass } from './dom';
 import { phaseLabel, tempColor } from './circuit';
 import type { SegState } from './circuit';
 
@@ -87,6 +87,115 @@ export class Pipe {
       const deg = this.arrowAt.deg + (st.dir < 0 ? 180 : 0);
       setAttr(this.arrow, 'transform', `translate(${this.arrowAt.x} ${this.arrowAt.y}) rotate(${deg})`);
     }
+  }
+}
+
+/** Pill and chip size of every temperature probe, in scene units. */
+export const PROBE = { w: 70, h: 14, chip: 20 } as const;
+
+export interface ProbeSpec {
+  /** Stable identifier written to `data-probe`, e.g. `indoor-gas-0`. */
+  id: string;
+  /** Accessible name, e.g. `Indoor 1 gas-end refrigerant`. */
+  label: string;
+  /** Top-left corner of the pill. */
+  at: Pt;
+  /** Point on the pipe where the clamp sits. */
+  clamp: Pt;
+  /** Pill edge point where the leader leaves the pill. */
+  lead: Pt;
+}
+
+/**
+ * A materialised refrigerant temperature probe: clamp ring on the pipe, leader, and a small pill with a role chip
+ * (IN / OUT / D / S) and the exact temperature rounded to 0.1 °C with a separate unit. Built once; update() writes text and
+ * attributes only. The swatch under the value repeats the refrigerant-scale colour of that exact value.
+ */
+export class Probe {
+  readonly g: SVGGElement;
+  private readonly chip: SVGTextElement;
+  private readonly val: SVGTextElement;
+  private readonly swatch: SVGRectElement;
+  private readonly title: SVGTitleElement;
+  private lastKey = '';
+
+  constructor(readonly spec: ProbeSpec) {
+    const [x, y] = spec.at;
+    this.chip = svg('text', { x: PROBE.chip / 2, y: 10.2, class: 's-tag', 'text-anchor': 'middle' });
+    this.val = svg('text', { x: PROBE.w - 15, y: 10.6, class: 's-val', 'text-anchor': 'end' });
+    this.swatch = svg('rect', { class: 's-swatch', x: PROBE.chip, y: PROBE.h - 2.4, width: PROBE.w - PROBE.chip - 1, height: 1.8, rx: 0.9 });
+    this.title = svg('title');
+    const unit = svg('text', { x: PROBE.w - 13, y: 10.2, class: 's-unit' });
+    unit.textContent = '°C';
+    this.g = svg('g', { class: 'probe', 'data-probe': spec.id, 'aria-label': spec.label, role: 'img' },
+      this.title,
+      svg('path', { class: 's-leader', d: `M${spec.lead[0]} ${spec.lead[1]}L${spec.clamp[0]} ${spec.clamp[1]}` }),
+      svg('circle', { class: 's-clamp', cx: spec.clamp[0], cy: spec.clamp[1], r: 3.2 }),
+      svg('circle', { class: 's-dot', cx: spec.clamp[0], cy: spec.clamp[1], r: 1.1 }),
+      svg('g', { class: 's-pill-g', transform: `translate(${x} ${y})` },
+        svg('rect', { class: 's-pill', width: PROBE.w, height: PROBE.h, rx: 3.4 }),
+        svg('path', { class: 's-chip', d: `M3.4 0H${PROBE.chip}V${PROBE.h}H3.4A3.4 3.4 0 0 1 0 ${PROBE.h - 3.4}V3.4A3.4 3.4 0 0 1 3.4 0z` }),
+        this.chip, this.val, unit, this.swatch));
+  }
+
+  /** `role` is the chip text; `tempC` null shows a dimmed dash, never a zero. */
+  update(role: string, tempC: number | null, source: 'live' | 'example', held: boolean, detail: string): void {
+    const key = `${role}|${tempC}|${source}|${held}|${detail}`;
+    if (key === this.lastKey) return;
+    this.lastKey = key;
+    const text = tempC === null ? '—' : fmt(tempC, 1);
+    setText(this.chip, role);
+    setText(this.val, text);
+    toggleClass(this.g, 'na', tempC === null);
+    toggleClass(this.g, 'held', held);
+    setAttr(this.g, 'data-role', role);
+    setAttr(this.g, 'data-source', source);
+    setAttr(this.g, 'data-temp', tempC === null ? 'unknown' : tempC.toFixed(1));
+    setAttr(this.g, 'data-exact', tempC === null ? '' : String(tempC));
+    setAttr(this.swatch, 'fill', tempC === null ? 'transparent' : tempColor(tempC));
+    setText(this.title, `${this.spec.label} · ${role} · ${tempC === null ? 'unavailable' : `${text} °C`} · ${detail}`);
+  }
+}
+
+/** Signed value with an explicit plus; a value that rounds to zero carries no sign. */
+export function signed(v: number, digits: number): string {
+  const r = Math.round(v * 10 ** digits) / 10 ** digits;
+  return r === 0 ? fmt(0, digits) : r > 0 ? `+${fmt(r, digits)}` : fmt(r, digits);
+}
+
+/**
+ * Two or three quiet lines beside a probe pair: signed ΔT (OUT − IN) from the exact values and the refrigerant-side coil heat
+ * named as absorbed or released. Heat is the refrigerant's, never the room's net kW (they differ while the building stores heat).
+ */
+export class CoilNote {
+  readonly g: SVGGElement;
+  private readonly l1: SVGTextElement;
+  private readonly l2: SVGTextElement;
+  private readonly l3: SVGTextElement;
+  private lastKey = '';
+
+  constructor(readonly id: string, at: Pt, anchor: 'start' | 'end' = 'start', lineGap = 11.5) {
+    const mk = (cls: string, k: number): SVGTextElement => svg('text', { x: at[0], y: at[1] + k * lineGap, class: cls, 'text-anchor': anchor });
+    this.l1 = mk('s-note', 0);
+    this.l2 = mk('s-note', 1);
+    this.l3 = mk('s-note s-ill', 2);
+    this.g = svg('g', { class: 'coil-note', 'data-readout': id }, this.l1, this.l2, this.l3);
+  }
+
+  /** `illustrativeLine` adds the Examples tag as its own visible line (indoor notes reuse line 2 instead). */
+  update(deltaK: number | null, heatW: number | null, source: 'live' | 'example', mode: 'line2-illustrative' | 'line3-illustrative'): void {
+    const key = `${deltaK}|${heatW}|${source}|${mode}`;
+    if (key === this.lastKey) return;
+    this.lastKey = key;
+    const ex = source === 'example';
+    setText(this.l1, `REF ΔT ${deltaK === null ? '—' : signed(deltaK, 1)} K`);
+    let heat = heatW === null ? 'coil heat —' : heatW === 0 ? '0.00 kW' : `${heatW < 0 ? 'absorbs' : 'releases'} ${fmt(Math.abs(heatW) / 1000, 2)} kW`;
+    if (ex && mode === 'line2-illustrative') heat = heatW === null ? 'illustrative' : `${heat} · illustr.`;
+    setText(this.l2, heat);
+    setText(this.l3, ex && mode === 'line3-illustrative' ? 'illustrative' : '');
+    setAttr(this.g, 'data-delta-k', deltaK === null ? 'unknown' : String(deltaK));
+    setAttr(this.g, 'data-heat-w', heatW === null ? 'unknown' : String(heatW));
+    setAttr(this.g, 'data-source', source);
   }
 }
 

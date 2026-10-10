@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-10T13:22:15.350Z",
+  "checkedAt": "2026-10-10T14:56:40.666Z",
   "method": "Controlled browser Worker responses; scheduling and freshness only",
   "checks": [
     {
@@ -12,6 +12,10 @@
     },
     {
       "name": "hard invalidation stays latched across newer soft edits and old steps",
+      "passed": true
+    },
+    {
+      "name": "indoor On/Off keeps the last physical result through queued switches and passive acknowledgements",
       "passed": true
     },
     {

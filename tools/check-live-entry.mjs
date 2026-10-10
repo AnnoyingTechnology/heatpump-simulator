@@ -33,7 +33,9 @@ try{
   await activateControl(page,'Readings');
   assert.match(await page.evaluate(`document.querySelector('.ribbon').innerText`),/Idealized field lines/);
   await activateControl(page,'Readings');
-  assert.match(await page.evaluate(`document.querySelector('.ins-body').innerText`),/REFRIGERANT STATES \(LIVE\)/i);
+  assert.equal(await page.evaluate(`document.querySelector('[data-probe="compressor-discharge"]').dataset.source`),'live');
+  assert.ok(Number.isFinite(Number(await page.evaluate(`document.querySelector('[data-probe="compressor-discharge"]').dataset.exact`))));
+  assert.equal(await page.evaluate(`document.querySelectorAll('.indoor-probes .probe:not(.na)').length`),6);
   assert.equal(await page.evaluate(`document.querySelectorAll('img,image,canvas').length`),0);
   await activateControl(page,'Pause');
   await page.send('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});

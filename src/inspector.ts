@@ -1,13 +1,16 @@
-import { phaseLabel, valvePairs } from './circuit';
+import { indoorCoilProbeLive, outdoorCoilProbe, phaseLabel, valvePairs } from './circuit';
+import type { CoilProbe } from './circuit';
 import { setHtml } from './controls';
+import { signed } from './pipes';
 import { escapeHtml, fmt, html, setText } from './dom';
 import { PREVIEW_BANNER } from './fixtures';
+import type { PopContent } from './popovers';
 import { branchesFor, readingFlowMode, segmentFor } from './runtime/view';
 import { activeRooms, currentReadings, indoorCleanliness, outdoorCleanliness, store } from './state';
 import type { Current, EffectiveCleanliness } from './state';
 import type { RefrigerantState } from './engine/types';
 import type { AppState } from './types';
-import { INDOOR_CLASSES, OWNER_PORTS } from './types';
+import { INDOOR_CLASSES, OWNER_PORTS, outdoorPortCapacity } from './types';
 import { LIVE_BASIS } from './chrome';
 
 type Row = [string, string];
@@ -20,7 +23,8 @@ function block(title: string, body: string, cls = ''): string {
   return `<section class="ins-block ${cls}"><h4>${title}</h4>${body}</section>`;
 }
 
-const EDIT_EQUIPMENT = '<button type="button" class="btn small" data-action="tab" data-tab="equipment">Edit equipment</button>';
+/** Opens the outdoor-unit settings popover, where every outdoor-side control lives. */
+const EDIT_EQUIPMENT = '<button type="button" class="btn small" data-action="edit-outdoor">Open outdoor-unit settings</button>';
 
 const kw = (v: number | null, d = 3): string => (v === null ? '—' : `${fmt(v, d)} <i>kW</i>`);
 const deg = (v: number | null | undefined, d = 1): string => (v === null || v === undefined ? '—' : `${fmt(v, d)} <i>°C</i>`);
@@ -61,13 +65,29 @@ function branchStatesBlock(inlet: RefrigerantState | undefined, outlet: Refriger
     '<p class="muted">Per-branch engine states from the generic control/model; outlets may differ between branches before the returns mix.</p>');
 }
 
+/**
+ * Refrigerant inlet / outlet of one coil as the diagram probes show it: exact values, signed ΔT = OUT − IN, and the refrigerant-side
+ * coil heat (ṁ·(h_in − h_out); negative = absorbs). This is not the room's net kW, which differs while the building stores heat.
+ */
+function coilRefRows(p: CoilProbe, illustrative: boolean): Row[] {
+  const end = (role: 'IN' | 'OUT'): string => (p.gas.role === role ? 'gas end' : 'liquid end');
+  const t = (role: 'IN' | 'OUT'): number | null => (p.gas.role === role ? p.gas.tempC : p.liquid.tempC);
+  const heat = p.heatW === null ? '—' : p.heatW === 0 ? '0.000 <i>kW</i>' : `${p.heatW < 0 ? 'absorbs' : 'releases'} ${fmt(Math.abs(p.heatW) / 1000, 3)} <i>kW</i>`;
+  return [
+    ['Refrigerant IN', `${deg(t('IN'), 2)} · ${end('IN')}${illustrative ? ' <span class="tag warn">illustrative</span>' : ''}`],
+    ['Refrigerant OUT', `${deg(t('OUT'), 2)} · ${end('OUT')}`],
+    ['ΔT (OUT − IN)', p.deltaK === null ? '—' : `${signed(p.deltaK, 2)} <i>K</i>`],
+    ['Refrigerant coil heat', heat],
+  ];
+}
+
 /** Effective cleanliness with provenance. Live: drives air-side conductance and airflow. Examples: illustration only. */
 function cleanRow(c: EffectiveCleanliness, live: boolean): Row {
   const effect = live ? 'drives live air-side UA and airflow' : 'illustration only; fixture readings unchanged';
   return ['Cleanliness', `${fmt(c.pct, 0)} <i>% clear</i> <span class="tag">${c.source}</span> <span class="tag">${effect}</span>`];
 }
 
-function selectedTitle(id: string | null, s: AppState): { title: string; kicker: string } {
+export function inspectorHeading(id: string | null, s: AppState): { title: string; kicker: string } {
   const cfg = s.cfg;
   if (!id) return { title: 'System overview', kicker: 'Nothing selected' };
   const [kind, idx] = id.split(':');
@@ -90,7 +110,8 @@ function selectedTitle(id: string | null, s: AppState): { title: string; kicker:
   }
 }
 
-function body(id: string | null, s: AppState): string {
+/** Read-only instrumentation markup for one selectable object. Also embedded in the room and line-set popovers. */
+export function inspectorHtml(id: string | null, s: AppState): string {
   const cfg = s.cfg;
   const rd = currentReadings(s);
   const live = rd.source === 'live';
@@ -114,7 +135,7 @@ function body(id: string | null, s: AppState): string {
     case 'outdoor':
       return block('Casing', rows([
         ['Status', cfg.outdoorKind === 'owner' ? 'Catalogue family data; installed suffix unknown' : 'Illustrative generic envelope'],
-        ['Ports', cfg.outdoorKind === 'owner' ? `${OWNER_PORTS} (${cfg.unitCount} connected)` : `${cfg.unitCount} (generic)`],
+        ['Ports', cfg.outdoorKind === 'owner' ? `${OWNER_PORTS} (${cfg.unitCount} connected)` : `${outdoorPortCapacity(cfg)} assumed capacity (${cfg.unitCount} connected)`],
         ['Refrigerant', 'R32'],
         ['Air outlet (post-fan)', `${deg(rd.outdoorOutletC)} ${tag}`],
         ['Outdoor fan', kwOf(rd.outdoorFanKw)],
@@ -146,10 +167,15 @@ function body(id: string | null, s: AppState): string {
     case 'coil': {
       const role = fm === 'idle' ? 'Idle' : fm === 'heating' ? 'Evaporator' : 'Condenser';
       const roleRow: Row = ['Role now', role + (fm === 'defrost' ? ' (melting ice)' : '')];
+      const heatW = live ? (ok ? eng?.cycle?.outdoorCoilHeatW ?? null : null)
+        : fm === 'heating' ? (rd.qEvapKw === null ? null : -rd.qEvapKw * 1000)
+          : fm === 'idle' ? null : (rd.qCondKw === null ? null : rd.qCondKw * 1000);
+      const refRows = coilRefRows(outdoorCoilProbe(fm, rd.cycle, heatW), !live);
       if (live) {
         const o = eng?.outdoor;
         return block('Outdoor coil (live engine)', rows([
           roleRow,
+          ...refRows,
           cleanRow(outdoorCleanliness(cfg), true),
           ['Qevap / Qcond', fm === 'heating' ? kw(rd.qEvapKw) : kw(rd.qCondKw)],
           ['Metal temperature', deg(o?.metalTemperatureC)],
@@ -165,6 +191,7 @@ function body(id: string | null, s: AppState): string {
       }
       return block('Outdoor coil', rows([
         roleRow,
+        ...refRows,
         cleanRow(outdoorCleanliness(cfg), false),
         ['Air-side finned surface', '— <i>m²</i> <span class="tag">not yet estimated</span>'],
         ['UA', '— <i>W/K</i> (separate quantity)'],
@@ -254,9 +281,16 @@ function body(id: string | null, s: AppState): string {
         cleanRow(indoorCleanliness(cfg, i), live),
         // Live endpoint phases come from the actual branch states in the block below.
         ...(live ? [] : [['Coil gas end', phaseLabel(fl('inG').phase)] as Row, ['Coil liquid end', phaseLabel(fl('inL').phase)] as Row]),
-      ])) + block(`Readings (${src})`, rows(readingRows)) + (live ? branchStatesBlock(branchCirculating ? eng?.cycle?.branchInlets[i] : undefined, branchCirculating ? eng?.cycle?.branchOutlets[i] : undefined) : '') + block('Room inputs (configuration)', rows([
+      ])) + block(`Readings (${src})`, rows(readingRows)) + (live ? branchStatesBlock(branchCirculating ? eng?.cycle?.branchInlets[i] : undefined, branchCirculating ? eng?.cycle?.branchOutlets[i] : undefined) + (() => {
+        const cy = eng?.cycle;
+        const inl = cy?.branchInlets[i];
+        const outl = cy?.branchOutlets[i];
+        const probe = indoorCoilProbeLive(fm, branchCirculating && cy && inl && outl
+          ? { flowKgs: cy.branchMassFlowsKgs[i] ?? 0, inletC: inl.temperatureC, outletC: outl.temperatureC, heatW: cy.branchCoilHeatW[i] ?? 0 } : null);
+        return block('Refrigerant coil ΔT and heat', rows(coilRefRows(probe, false)) + '<p class="muted">Refrigerant side only (ṁ·Δh); it differs from the room net kW while the building stores heat. ΔT = 0 is valid during evaporation.</p>');
+      })() : '') + block('Room inputs (configuration)', rows([
         [live ? 'Initial air temperature (on Reset)' : 'Air temperature', deg(room.airC)], ['Setpoint', deg(room.setpointC)], ['Volume', `${room.volumeM3} <i>m³</i>`], ['Heat-loss coefficient', `${room.heatLossWPerK} <i>W/K</i>`],
-      ])) + `<button type="button" class="btn small" data-action="tab" data-tab="rooms">Edit room inputs</button>`;
+      ]));
     }
     case 'pipe': {
       if (!pipe || !room) return '';
@@ -271,7 +305,7 @@ function body(id: string | null, s: AppState): string {
       ])) + block('State now', rows([
         ['Gas line', `${phaseLabel(g.phase)}${g.tempC === null ? '' : ' · ' + deg(g.tempC)}`],
         ['Liquid-side line', `${phaseLabel(l.phase)}${l.tempC === null ? '' : ' · ' + deg(l.tempC)}`],
-      ])) + `<button type="button" class="btn small" data-action="tab" data-tab="pipes">Edit pipes</button>`;
+      ]));
     }
     default: {
       const copLabel = rd.copLabel.startsWith('Cool') ? 'Cooling COP' : 'Heating COP';
@@ -281,34 +315,25 @@ function body(id: string | null, s: AppState): string {
         ['Electrical input', rd.electricalKw === null ? '—' : kw(rd.electricalKw)],
         [rd.cop === null && live && eng?.state === 'defrost' ? 'COP' : copLabel, rd.cop === null ? '—' : fmt(rd.cop, 2)],
       ])) + cycleBlock(rd, s) +
-        block('Select a component', '<p>Click or Tab to any equipment, valve, EEV, tube set or room. Press Enter or Space to select; Esc clears.</p>');
+        block('Select a component', '<p>Click or Tab to any equipment, valve, EEV, tube set or room. Press Enter or Space to select; Esc closes.</p>');
     }
   }
 }
 
-export interface Inspector {
-  root: HTMLElement;
-  sync(s: AppState): void;
-}
-
-export function createInspector(onTab: (t: 'rooms' | 'equipment' | 'pipes') => void, onFocus: (id: string) => void): Inspector {
-  const head = html('header', { class: 'ins-head' });
+/** Contextual inspector for equipment that has no settings of its own (compressor, valves, EEVs, coil, fan, casing). */
+export function createInspector(onEditOutdoor: () => void): PopContent {
   const content = html('div', { class: 'ins-body' });
-  const foot = html('footer', { class: 'ins-foot' }, PREVIEW_BANNER);
-  const root = html('aside', { class: 'inspector', 'aria-label': 'Inspector', 'aria-live': 'polite' }, head, content, foot);
+  const foot = html('p', { class: 'ins-foot' }, PREVIEW_BANNER);
+  const root = html('div', { class: 'ins', 'aria-live': 'polite' }, content, foot);
   root.addEventListener('click', (e) => {
     const t = (e.target as HTMLElement).closest<HTMLElement>('[data-action]');
-    if (!t) return;
-    if (t.dataset.action === 'tab' && (t.dataset.tab === 'rooms' || t.dataset.tab === 'equipment' || t.dataset.tab === 'pipes')) onTab(t.dataset.tab);
-    if (t.dataset.action === 'focus' && t.dataset.id) onFocus(t.dataset.id);
+    if (t?.dataset.action === 'edit-outdoor') onEditOutdoor();
   });
   return {
     root,
+    heading: (s) => inspectorHeading(s.ui.selected, s),
     sync(s: AppState): void {
-      const id = s.ui.selected;
-      const t = selectedTitle(id, s);
-      setHtml(head, `<span class="kicker">${escapeHtml(t.kicker)}</span><h2>${escapeHtml(t.title)}</h2>`);
-      setHtml(content, body(id, s));
+      setHtml(content, inspectorHtml(s.ui.selected, s));
       setText(foot, s.ui.experience === 'live' ? LIVE_BASIS : PREVIEW_BANNER);
     },
   };

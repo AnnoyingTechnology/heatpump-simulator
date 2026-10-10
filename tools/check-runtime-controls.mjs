@@ -57,13 +57,26 @@ try {
         const held=rt.status.output;w.answer({...base,cycle:null});ensure(rt.status.output===held,'queued acknowledgement replaced held result');rt.stop();
       });
       check('hard invalidation stays latched across newer soft edits and old steps',()=>{
-        const {rt,w}=setup();rt.step(.25);const hard=structuredClone(config);hard.rooms[0].enabled=false;
+        const {rt,w}=setup();rt.step(.25);const hard=structuredClone(config);hard.rooms[0].enabled=false;hard.rooms[0].volumeM3+=10;
         rt.configure(hard);rt.configure({...hard,outdoorTemperatureC:4});
         ensure(rt.status.state==='loading'&&rt.status.output===null,'soft edit resurrected hard-invalidated output');
         w.answer({...base,simulatedSeconds:base.simulatedSeconds+.25});
         ensure(rt.status.output===null,'old physical step bypassed hard invalidation');
         ensure(w.requests[0].config.rooms[0].enabled===false,'queued enabled change lost');w.answer({...base,cycle:null,state:'idle'});
         ensure(rt.status.state==='ready'&&rt.status.output.cycle===null,'compatible fresh idle state missing');rt.stop();
+      });
+      check('indoor On/Off keeps the last physical result through queued switches and passive acknowledgements',()=>{
+        const {rt,w}=setup();const held=rt.status.output;rt.step(.25);
+        const off=structuredClone(config);off.rooms[0].enabled=false;
+        rt.configure(off);ensure(rt.status.state==='updating'&&rt.status.output===held,'switch blanked the existing circuit');
+        rt.configure(config);rt.configure(off);ensure(w.requests.length===1,'switches created parallel work');
+        w.answer({...base,simulatedSeconds:base.simulatedSeconds+.25});
+        const calculated=rt.status.output;
+        ensure(rt.status.state==='updating'&&calculated.simulatedSeconds===base.simulatedSeconds+.25,'pending switch lost completed history');
+        ensure(w.requests[0].config.rooms[0].enabled===false,'latest switch request lost');
+        w.answer({...base,cycle:null});ensure(rt.status.output===calculated&&rt.status.state==='updating','passive ack flashed/reset readings');
+        ensure(rt.step(.25),'post-switch step rejected');w.answer({...base,simulatedSeconds:base.simulatedSeconds+.5});
+        ensure(rt.status.state==='ready'&&rt.status.output.simulatedSeconds===base.simulatedSeconds+.5,'switch restarted the physical clock');rt.stop();
       });
       check('current configure errors and fault outputs clear retained operating readings',()=>{
         for(const failure of ['error','fault']){
@@ -87,7 +100,7 @@ try {
     } finally {globalThis.Worker=nativeWorker}
     return checks;
   })()`);
-  assert.equal(results.length,6);
+  assert.equal(results.length,7);
   assert.equal(page.events.filter(e=>e.method==='Runtime.exceptionThrown').length,0);
   await writeFile('reviews/runtime-control-results.json',JSON.stringify({checkedAt:new Date().toISOString(),method:'Controlled browser Worker responses; scheduling and freshness only',checks:results},null,2)+'\n');
   results.forEach(r=>console.log(`PASS ${r.name}`));

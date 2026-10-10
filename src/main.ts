@@ -2,8 +2,10 @@ import { createDrawer, createHeader, createOverlay, createRibbon } from './chrom
 import { html } from './dom';
 import { fixtureFor } from './fixtures';
 import { createInspector } from './inspector';
+import { createPopovers } from './popovers';
 import { createScene } from './scene';
-import { createSidebar } from './sidebar';
+import type { SceneHooks } from './scene';
+import { createLinesSettings, createOutdoorSettings, createOutdoorUnitCard, createRoomSettings } from './settings';
 import { advanceLedger, store } from './state';
 import type { Clock } from './state';
 import { engineConfigFromUi } from './runtime/config';
@@ -13,24 +15,53 @@ import type { ZoomPreset } from './types';
 const app = document.getElementById('app');
 if (!app) throw new Error('#app missing');
 
-const scene = createScene();
+// Selection and popovers. Both reference each other lazily: callbacks run only after construction.
+const select = (id: string | null): void => store.update((s) => { s.ui.selected = id; });
+const openOutdoor = (reveal?: string): void => pops.open('outdoor', 0, () => unitCard.root, reveal);
+
+const unitCard = createOutdoorUnitCard(() => pops.toggle('outdoor', 0, () => unitCard.root));
+const hooks: SceneHooks = {
+  toggleRoom: (i, anchor) => { select(`indoor:${i}`); pops.toggle('room', i, () => anchor); },
+  toggleLines: (i, anchor) => { select(`pipe:${i}`); pops.toggle('lines', i, () => anchor); },
+};
+const scene = createScene(hooks, unitCard);
 const ribbon = createRibbon();
 const header = createHeader(ribbon);
-const sidebar = createSidebar();
 const overlay = createOverlay((z) => scene.zoomTo(z));
 const drawer = createDrawer();
-const inspector = createInspector(
-  (t) => sidebar.setTab(t),
-  () => undefined,
-);
+const pops = createPopovers({
+  inspector: createInspector(() => openOutdoor()),
+  room: createRoomSettings(() => openOutdoor('shared')),
+  lines: createLinesSettings(),
+  outdoor: createOutdoorSettings(),
+}, () => store.state, () => { if (store.state.ui.selected !== null) select(null); });
 
-const stage = html('main', { class: 'stage' }, scene.root, overlay.root);
-app.append(header.root, html('div', { class: 'workbench' }, sidebar.root, stage, inspector.root), drawer.root);
+// Scenes with more than five rooms are taller than the stage: the scene scrolls vertically inside its own region, while the header,
+// the notice row, the view presets and the legend stay put. Popovers are positioned against the stage, not the scrolled scene.
+const stage = html('main', { class: 'stage' }, html('div', { class: 'scene-scroll' }, scene.root), overlay.root, pops.root);
+// Diagnostics, examples and provenance are a disclosure inside the Readings popover; there is no permanent footer row.
+ribbon.root.append(drawer.root);
+app.append(header.root, html('div', { class: 'workbench' }, stage));
+
+const anchorFor = (id: string, el: Element | null): Element | null =>
+  (el?.isConnected ? el : scene.root.querySelector(`[data-id="${id}"]`));
+
+/** Rooms open their settings card, line sets their branch controls, every other component the contextual inspector. */
+function selectFromDiagram(id: string | null, el: Element | null): void {
+  select(id);
+  if (id === null) { pops.close(); return; }
+  const [kind, idx] = id.split(':');
+  const i = Number(idx ?? 0);
+  if (kind === 'indoor') pops.open('room', i, () => scene.roomAnchor(i) ?? anchorFor(id, el));
+  else if (kind === 'pipe') pops.open('lines', i, () => anchorFor(id, el));
+  else pops.open('inspector', 0, () => anchorFor(id, el));
+}
 
 scene.root.addEventListener('click', (e) => {
-  if ((e.target as Element).closest('input, button, select, textarea')) return;
-  const el = (e.target as Element).closest<SVGElement>('[data-id]');
-  selectFromDiagram(el?.dataset.id ?? null);
+  const target = e.target as Element;
+  if (target.closest('input, button, select, textarea, label, .ou')) return;
+  const el = target.closest<SVGElement>('[data-id]');
+  selectFromDiagram(el?.dataset.id ?? null, el);
 });
 scene.root.addEventListener('keydown', (e) => {
   const target = e.target as Element;
@@ -39,34 +70,26 @@ scene.root.addEventListener('keydown', (e) => {
     const el = target.closest<SVGElement>('[data-id]');
     if (!el) return;
     e.preventDefault();
-    selectFromDiagram(el.dataset.id ?? null);
+    selectFromDiagram(el.dataset.id ?? null, el);
   }
 });
 window.addEventListener('keydown', (e) => {
   if (e.key !== 'Escape') return;
   const t = e.target as HTMLElement | null;
   if (t && (t.tagName === 'INPUT' || t.tagName === 'SELECT')) return;
-  store.update((s) => { s.ui.selected = null; });
+  if (pops.isOpen()) { pops.dismiss(true); return; }
+  if (store.state.ui.selected !== null) select(null);
 });
 
 let lastZoom: ZoomPreset = 'overview';
-
-/** Selecting a room (click or keyboard) opens its inputs: switch the sidebar to Rooms in the same update. */
-function selectFromDiagram(id: string | null): void {
-  store.update((s) => {
-    s.ui.selected = id;
-    if (id?.startsWith('indoor:')) s.ui.tab = 'rooms';
-  });
-}
 
 function render(): void {
   const s = store.state;
   header.sync(s);
   ribbon.sync(s);
-  sidebar.sync();
   scene.sync(s);
   overlay.sync(s);
-  inspector.sync(s);
+  pops.sync(s);
   drawer.sync(s);
   if (s.ui.zoom !== lastZoom) {
     lastZoom = s.ui.zoom;
@@ -129,8 +152,9 @@ function frame(now: number): void {
   overlay.tick();
   if (s.ui.selected === 'coil' && now - lastInspector > 500) {
     lastInspector = now;
-    inspector.sync(s);
+    pops.sync(s);
   }
+  pops.tick();
   requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);

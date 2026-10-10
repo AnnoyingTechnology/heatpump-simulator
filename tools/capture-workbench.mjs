@@ -30,11 +30,18 @@ try {
   await new Promise(r=>setTimeout(r,100));
   await capture('interface-frost');
   await action(() => {
-    document.querySelector('#tab-equipment').click();
-    [...document.querySelectorAll('button')].find(b=>b.textContent==='5').click();
+    const {store}=globalThis.__qaStateModule;
+    store.setOutdoorKind('generic');
+    store.setGenericPortCapacity(5);
+    store.setUnitCount(5);
     [...document.querySelectorAll('button')].find(b=>b.textContent==='Overview').click();
   });
   await new Promise(r=>setTimeout(r,400));
   await capture('interface-five-rooms');
-  console.log('Captured four interface review views');
+  await action(() => {
+    const {store}=globalThis.__qaStateModule;
+    store.setGenericPortCapacity(8);store.setUnitCount(8);
+  });
+  await capture('interface-eight-rooms');
+  console.log('Captured five interface review views');
 } finally { await page.close(); }

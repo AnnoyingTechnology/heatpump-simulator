@@ -1,16 +1,21 @@
 import { HUMIDITY_CONVENTION } from './chrome';
-import { segKind, tempColor, valvePairs } from './circuit';
+import { airColor, indoorCoilProbeExample, indoorCoilProbeLive, outdoorCoilProbe, segKind, valvePairs } from './circuit';
+import type { CoilProbe } from './circuit';
 import { clamp, fmt, html, setAttr, setText, svg, toggleClass } from './dom';
 import { branchesFor, readingFlowMode, segmentFor, simulation } from './runtime/view';
 import {
-  A, GROUND_Y, L, OUT, ROOM_X1, UNIT, VB_H, VB_W, WALL,
-  pipeSpecs, riserG, roomBoxes, ygOf, ylOf,
+  A, L, OUT, PROBE_AT, ROOM_COLS, UNIT,
+  indoorProbeAt, layoutFor, pipeSpecs, roomBoxes, ygOf, ylOf,
 } from './geometry';
-import { Pipe } from './pipes';
+import type { Layout } from './geometry';
+import { CoilNote, Pipe, Probe } from './pipes';
+import { isolate, pairField, weatherScope } from './settings';
+import type { OutdoorUnitCard, PairField } from './settings';
 import type { Clock } from './state';
 import { ICE_FULL_KG, ICE_START_KG, activeRooms, currentReadings, indoorCleanliness, liveStatus, outdoorCleanliness, store } from './state';
-import type { AppState, ZoomPreset } from './types';
-import { INDOOR_CLASSES, OWNER_PORTS } from './types';
+import { fixtureFor } from './fixtures';
+import type { AppState, RoomConfig, ZoomPreset } from './types';
+import { INDOOR_CLASSES, OWNER_PORTS, outdoorPortCapacity } from './types';
 
 type G = SVGGElement;
 
@@ -46,18 +51,30 @@ function setDirt(g: G, pct: number, who: string, source: 'global' | 'override'):
   g.querySelectorAll('.dirt-spot').forEach((el, i) => setAttr(el, 'opacity', (clamp(d * DIRT_SPOTS - i, 0, 1) * 0.6).toFixed(3)));
 }
 
+/** Hooks the scene calls for controls that open a contextual popover; the owner decides what opens and where it anchors. */
+export interface SceneHooks {
+  toggleRoom(i: number, anchor: HTMLElement): void;
+  toggleLines(i: number, anchor: HTMLElement): void;
+}
+
 export interface Scene {
   root: SVGSVGElement;
   sync(s: AppState): void;
   tick(s: AppState, clock: Clock): void;
   zoomTo(z: ZoomPreset, immediate?: boolean): void;
+  /** The room's indoor-unit panel, used as the anchor of its popovers. */
+  roomAnchor(i: number): HTMLElement | null;
 }
 
-const VIEWBOXES: Record<ZoomPreset, [number, number, number, number]> = {
-  overview: [0, 0, VB_W, VB_H],
-  outdoor: [4, 500, 346, 310],
-  rooms: [434, 0, 666, 790],
-};
+type Box = [number, number, number, number];
+
+function presetsFor(lay: Layout): Record<ZoomPreset, Box> {
+  return {
+    overview: [0, 0, lay.vbW, lay.vbH],
+    outdoor: [2, OUT.y - 22, OUT.x + OUT.w + 30, lay.outH + 66],
+    rooms: [lay.wall.x1 - 4, 0, lay.vbW - lay.wall.x1 + 4, lay.vbH],
+  };
+}
 
 const reduceMotion = (): boolean => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -156,62 +173,156 @@ class Gauge {
   }
 }
 
-/** Setpoint bounds and step shared with the Rooms sidebar slider. */
+/** Target bounds and step. */
 const SP_MIN = 16;
 const SP_MAX = 30;
 const SP_STEP = 0.5;
 
-/** Corner readout panel of one room: built once, refreshed in place so focused controls survive engine updates. */
-interface RoomPanel {
+/** Supported ambient range of the engine's outdoor-air guard. Weather sliders and number bounds follow it. */
+const AMBIENT_MIN = -25;
+const AMBIENT_MAX = 45;
+
+/** Panel height of one room (equipment and environment blocks), in scene units; fits the five-room row. */
+const RP_H = 132;
+
+/** Weather (unboxed, floats in the OUTDOOR zone) above the outdoor-unit card, both left of the riser corridor. */
+const OP = { x: 16, y: 34, w: 322, h: 100 } as const;
+const UP = { x: 16, y: 142, w: 322, h: 374 } as const;
+
+/** Native HTML in a click-through foreignObject; only elements marked `.rp-ctl` (or an opted-in card) take pointer events. */
+function overlayPanel(x: number, y: number, w: number, h: number, el: HTMLElement): SVGForeignObjectElement {
+  return svg('foreignObject', { class: 'panel-fo', x, y, width: w, height: h }, el);
+}
+
+/** One labelled numeric readout: label, large value with a separate unit suffix, and a one-line note. */
+function readCard(label: string, unit: string): { root: HTMLElement; k: HTMLElement; v: HTMLElement; u: HTMLElement; n: HTMLElement } {
+  const k = html('span', { class: 'rp-k' }, label);
+  const v = html('span', { class: 'rp-v' });
+  const u = html('small', {}, unit);
+  const n = html('span', { class: 'rp-n' });
+  return { root: html('div', { class: 'rp-card' }, k, html('span', { class: 'rp-line' }, v, u), n), k, v, u, n };
+}
+
+/** Value text with the unavailable state kept visible as a dimmed dash, never as a zero. */
+function setReading(v: HTMLElement, text: string): void {
+  setText(v, text);
+  toggleClass(v, 'na', text === '—');
+}
+
+interface WeatherPanel {
   root: HTMLDivElement;
+  t: PairField;
+  h: PairField;
+  status: HTMLElement;
+  match: HTMLButtonElement;
+}
+
+/** Outdoor meteorological conditions: environment, not equipment. Built once per scene; no box, no border. */
+function weatherPanel(): WeatherPanel {
+  const t = pairField({
+    label: 'Temperature', unit: '°C', min: AMBIENT_MIN, max: AMBIENT_MAX, step: 0.5, digits: 1, layout: 'block',
+    get: () => store.state.cfg.outdoorC, set: (v) => store.update((s) => { s.cfg.outdoorC = v; }),
+    title: `Outdoor air temperature, supported range ${AMBIENT_MIN}…${AMBIENT_MAX} °C`,
+  });
+  const h = pairField({
+    label: 'Humidity', unit: '% RH', min: 10, max: 100, step: 1, digits: 0, layout: 'block', title: HUMIDITY_CONVENTION,
+    get: () => store.state.cfg.outdoorRh, set: (v) => store.update((s) => { s.cfg.outdoorRh = v; }),
+  });
+  const status = html('span', { class: 'op-status' });
+  const match = html('button', { type: 'button', class: 'rp-btn rp-ctl' }, 'Match fixture');
+  match.addEventListener('click', () => store.update((s) => {
+    const fx = fixtureFor(s.cfg.mode, s.cfg.example);
+    s.cfg.outdoorC = fx.conditions.outdoorC;
+    s.cfg.outdoorRh = fx.conditions.outdoorRh;
+  }));
+  isolate(match);
+  const root = html('div', { class: 'rp op env', 'aria-label': 'Outdoor air' },
+    html('div', { class: 'op-top' }, html('div', { class: 'op-glyph' }), html('div', { class: 'op-ctls' }, t.root, h.root)),
+    html('div', { class: 'op-foot' }, status, match));
+  return { root, t, h, status, match };
+}
+
+/**
+ * One room, split by what it is. `env` is the ROOM environment (measured air and humidity, volume, envelope loss, remove): unboxed, on
+ * the room zone. `equip` is the INDOOR UNIT (requested On/Off, supplied AIR, net room kW, target, settings), a quiet card beside the unit.
+ */
+interface RoomPanel {
+  equip: HTMLDivElement;
+  env: HTMLDivElement;
+  /** Room id this panel last showed; a change means the index was rebound after a removal. */
+  boundId: string;
   name: HTMLElement;
-  vol: HTMLElement;
-  airV: HTMLElement;
-  airN: HTMLElement;
-  spNum: HTMLInputElement;
-  spRange: HTMLInputElement;
+  air: ReturnType<typeof readCard>;
+  sup: ReturnType<typeof readCard>;
+  heat: ReturnType<typeof readCard>;
+  sp: PairField;
+  vol: PairField;
+  loss: PairField;
   /** Direct indoor-unit On/Off switch (configuration `enabled`). */
   sw: HTMLInputElement;
   swText: HTMLElement;
-  supply: HTMLElement;
-  power: HTMLElement;
-  tag: HTMLElement;
+  remove: HTMLButtonElement;
 }
 
-/** Controls never reach the scene's selection or the window shortcuts. */
-function isolate(...els: HTMLElement[]): void {
-  for (const el of els) {
-    for (const ev of ['click', 'dblclick', 'pointerdown', 'keydown', 'keyup'] as const) el.addEventListener(ev, (e) => e.stopPropagation());
-  }
-}
-
-interface PairOpts { min: number; max: number; digits: number; get(): number | undefined; set(v: number): void }
-
-/**
- * Native number + range pair bound to one configuration value. The number commits valid in-range values while typing
- * and clamps on change; sync (below) never rewrites a focused input.
- */
-function bindPair(num: HTMLInputElement, range: HTMLInputElement, o: PairOpts): void {
-  const round = (v: number): number => Math.round(v * 10 ** o.digits) / 10 ** o.digits;
-  range.addEventListener('input', () => { const v = Number(range.value); if (Number.isFinite(v)) o.set(v); });
-  num.addEventListener('input', () => {
-    const v = Number(num.value);
-    if (num.value !== '' && Number.isFinite(v) && v >= o.min && v <= o.max) o.set(round(v));
+function roomPanel(i: number, hooks: SceneHooks): RoomPanel {
+  const edit = (fn: (r: RoomConfig) => void): void => store.update((s) => { const x = s.cfg.rooms[i]; if (x) fn(x); });
+  const at = (): RoomConfig | undefined => store.state.cfg.rooms[i];
+  const sp = pairField({
+    label: 'Target', unit: '°C', min: SP_MIN, max: SP_MAX, step: SP_STEP, digits: 1, layout: 'block',
+    get: () => at()?.setpointC ?? 21, set: (v) => edit((r) => { r.setpointC = v; }),
   });
-  num.addEventListener('change', () => {
-    const v = Number(num.value);
-    if (num.value === '' || !Number.isFinite(v)) { num.value = (o.get() ?? o.min).toFixed(o.digits); return; }
-    const c = round(clamp(v, o.min, o.max));
-    num.value = c.toFixed(o.digits);
-    o.set(c);
+  const vol = pairField({
+    label: 'Volume', unit: 'm³', min: 15, max: 200, step: 1, digits: 0, layout: 'inline',
+    get: () => at()?.volumeM3 ?? 50, set: (v) => edit((r) => { r.volumeM3 = v; }),
   });
-  isolate(num, range);
+  const loss = pairField({
+    label: 'Heat loss', unit: 'W/K', min: 10, max: 250, step: 1, digits: 0, layout: 'inline',
+    get: () => at()?.heatLossWPerK ?? 60, set: (v) => edit((r) => { r.heatLossWPerK = v; }),
+  });
+  // The card is narrow: the "requested" qualifier lives in the tooltip and the accessible name, not in a clipped note.
+  sp.root.title = 'Requested target temperature; compare it with the measured room air';
+  const air = readCard('Measured air', '°C');
+  air.root.className = 'env-read';
+  const sup = readCard('Supplied AIR', '°C');
+  const heat = readCard('Room net kW', 'kW');
+  const name = html('span', { class: 'rp-name' });
+  // Direct indoor-unit On/Off: edits the requested `enabled` configuration only; the target stays editable when off.
+  const sw = html('input', { type: 'checkbox', role: 'switch', class: 'toggle rp-ctl' });
+  const swText = html('span', { class: 'rp-sw-t' });
+  const swLabel = html('label', { class: 'rp-sw rp-ctl' }, sw, swText);
+  sw.addEventListener('change', () => edit((r) => { r.enabled = sw.checked; }));
+  const linesBtn = html('button', { type: 'button', class: 'rp-btn rp-ctl', 'aria-haspopup': 'dialog' }, 'Lines');
+  const gearBtn = html('button', { type: 'button', class: 'rp-btn rp-ctl', 'aria-haspopup': 'dialog' }, 'Settings');
+  const remove = html('button', { type: 'button', class: 'rp-btn rp-ctl rp-remove' }, 'Remove room');
+  remove.addEventListener('click', () => store.removeRoom(i));
+  const tgt = html('div', { class: 'rp-card tgt' }, sp.root);
+  const equip = html('div', { class: 'rp eq room-rp', 'data-block': 'equipment' },
+    html('div', { class: 'rp-head' }, html('span', { class: 'eq-tag' }, 'Indoor unit'), swLabel, linesBtn, gearBtn),
+    html('div', { class: 'rp-cards' }, sup.root, heat.root, tgt));
+  const env = html('div', { class: 'rp env room-env', 'data-block': 'environment' },
+    html('div', { class: 'rp-head' }, html('span', { class: 'env-tag' }, 'Room'), name, remove),
+    html('div', { class: 'env-body' }, air.root, html('div', { class: 'rp-quick' }, vol.root, loss.root)));
+  linesBtn.addEventListener('click', () => hooks.toggleLines(i, equip));
+  gearBtn.addEventListener('click', () => hooks.toggleRoom(i, equip));
+  isolate(sw, swLabel, linesBtn, gearBtn, remove);
+  return { equip, env, boundId: '', name, air, sup, heat, sp, vol, loss, sw, swText, remove };
 }
 
-function syncPair(num: HTMLInputElement, range: HTMLInputElement, v: number, digits: number): void {
-  const t = v.toFixed(digits);
-  if (document.activeElement !== num && num.value !== t) num.value = t;
-  if (document.activeElement !== range && Number(range.value) !== v) range.value = String(v);
+/** Indoor-zone bar: room count against the outdoor group's port capacity, and the direct Add room action. */
+interface RoomsBar {
+  root: HTMLDivElement;
+  count: HTMLElement;
+  add: HTMLButtonElement;
+  hint: HTMLElement;
+}
+
+function roomsBar(): RoomsBar {
+  const count = html('span', { class: 'in-count', role: 'status' });
+  const add = html('button', { type: 'button', class: 'rp-btn rp-ctl in-add' }, '+ Add room');
+  add.addEventListener('click', () => store.addRoom());
+  const hint = html('span', { class: 'in-hint' });
+  isolate(add);
+  return { root: html('div', { class: 'in-bar', 'data-block': 'rooms-bar' }, count, add, hint), count, add, hint };
 }
 
 interface RoomView {
@@ -224,124 +335,34 @@ interface RoomView {
   airWarm: G;
   plume: SVGEllipseElement;
   fan: G;
+  wash: SVGRectElement;
+  gasProbe: Probe;
+  liqProbe: Probe;
+  note: CoilNote;
 }
 
-/** Room corner panel box, right-aligned inside the 614-wide room card; clear of the unit, plume, air paths and dimension text. */
-const RP = { x: 816, w: 268, h: 112 } as const;
-
-/**
- * Outdoor corner card box. The weather glyph sits in its left 64 px; the editable controls and readouts fill the rest.
- * Clear of the OUTDOOR title (y 26), the branch risers (x ≥ 345) and every equipment label (y ≥ 520).
- */
-const OP = { x: 16, y: 38, w: 322, h: 194 } as const;
-/** Outdoor-air bounds and steps, identical to the pinned sidebar sliders. */
-const OT = { min: -20, max: 40, step: 0.5 } as const;
-const OH = { min: 10, max: 100, step: 1 } as const;
-
-interface OutdoorPanel {
-  root: HTMLDivElement;
-  tNum: HTMLInputElement;
-  tRange: HTMLInputElement;
-  tN: HTMLElement;
-  hNum: HTMLInputElement;
-  hRange: HTMLInputElement;
-  hN: HTMLElement;
-  outV: HTMLElement;
-  outN: HTMLElement;
-  iceV: HTMLElement;
-  iceN: HTMLElement;
-}
-
-/** Built once per scene (not per rebuild) so a focused control and its value survive layout rebuilds. */
-function outdoorPanel(): OutdoorPanel {
-  const tN = html('span', { class: 'rp-n' });
-  const hN = html('span', { class: 'rp-n' });
-  const outV = html('span', { class: 'rp-v' });
-  const outN = html('span', { class: 'rp-n' });
-  const iceV = html('span', { class: 'rp-v' });
-  const iceN = html('span', { class: 'rp-n' });
-  const pair = (label: string, b: { min: number; max: number; step: number }): { num: HTMLInputElement; range: HTMLInputElement } => ({
-    num: html('input', { type: 'number', class: 'rp-num rp-ctl', min: b.min, max: b.max, step: b.step, inputmode: 'decimal', 'aria-label': label }),
-    range: html('input', { type: 'range', class: 'rp-range rp-ctl', min: b.min, max: b.max, step: b.step, 'aria-label': label }),
-  });
-  const t = pair('Outdoor temperature (°C)', OT);
-  const h = pair('Outdoor relative humidity (% RH)', OH);
-  h.num.title = HUMIDITY_CONVENTION;
-  h.range.title = HUMIDITY_CONVENTION;
-  bindPair(t.num, t.range, {
-    min: OT.min, max: OT.max, digits: 1, get: () => store.state.cfg.outdoorC,
-    set: (v) => store.update((s) => { s.cfg.outdoorC = v; }),
-  });
-  bindPair(h.num, h.range, {
-    min: OH.min, max: OH.max, digits: 0, get: () => store.state.cfg.outdoorRh,
-    set: (v) => store.update((s) => { s.cfg.outdoorRh = v; }),
-  });
-  const ctl = (k: string, p: { num: HTMLInputElement; range: HTMLInputElement }, unit: string, note: HTMLElement): HTMLElement =>
-    html('div', { class: 'op-ctl' },
-      html('div', { class: 'op-ctl-head' }, html('span', { class: 'rp-k' }, k), note),
-      html('span', { class: 'rp-line' }, p.num, html('small', {}, unit)),
-      p.range);
-  const cell = (k: string, v: HTMLElement, unit: string, n: HTMLElement): HTMLElement =>
-    html('div', { class: 'rp-cell' }, html('span', { class: 'rp-k' }, k), html('span', { class: 'rp-line' }, v, html('small', {}, unit)), n);
-  const hCtl = ctl('Humidity', h, '% RH', hN);
-  hCtl.title = HUMIDITY_CONVENTION;
-  const root = html('div', { class: 'rp op' },
-    html('div', { class: 'op-top' }, html('div', { class: 'op-glyph' }), html('div', { class: 'op-ctls' }, ctl('Temperature', t, '°C', tN), hCtl)),
-    html('div', { class: 'rp-grid op-bottom' }, cell('Fan air out', outV, '°C', outN), cell('Coil ice', iceV, 'kg', iceN)));
-  return { root, tNum: t.num, tRange: t.range, tN, hNum: h.num, hRange: h.range, hN, outV, outN, iceV, iceN };
-}
-
-/** Native HTML in a click-through foreignObject; only elements marked `.rp-ctl` take pointer events. */
-function overlayPanel(x: number, y: number, w: number, h: number, el: HTMLElement): SVGForeignObjectElement {
-  return svg('foreignObject', { class: 'panel-fo', x, y, width: w, height: h }, el);
-}
-
-function roomPanel(i: number): RoomPanel {
-  const name = html('span', { class: 'rp-name' });
-  const vol = html('span', { class: 'rp-vol' });
-  const airV = html('span', { class: 'rp-v' });
-  const airN = html('span', { class: 'rp-n' });
-  const spNum = html('input', { type: 'number', class: 'rp-num rp-ctl', min: SP_MIN, max: SP_MAX, step: SP_STEP, inputmode: 'decimal' });
-  const spRange = html('input', { type: 'range', class: 'rp-range rp-ctl', min: SP_MIN, max: SP_MAX, step: SP_STEP });
-  const supply = html('span', { class: 'rp-supply' });
-  const power = html('span', { class: 'rp-power' });
-  const tag = html('span', { class: 'rp-tag' });
-  bindPair(spNum, spRange, {
-    min: SP_MIN, max: SP_MAX, digits: 1, get: () => store.state.cfg.rooms[i]?.setpointC,
-    set: (v) => store.update((s) => { const x = s.cfg.rooms[i]; if (x) x.setpointC = v; }),
-  });
-  // Direct indoor-unit On/Off: edits the requested `enabled` configuration only; setpoint stays editable when off.
-  const sw = html('input', { type: 'checkbox', role: 'switch', class: 'toggle rp-ctl' });
-  const swText = html('span', { class: 'rp-sw-t' });
-  const swLabel = html('label', { class: 'rp-sw rp-ctl' }, sw, swText);
-  sw.addEventListener('change', () => store.update((s) => { const x = s.cfg.rooms[i]; if (x) x.enabled = sw.checked; }));
-  isolate(sw, swLabel);
-  const root = html('div', { class: 'rp' },
-    html('div', { class: 'rp-head' }, name, vol, swLabel),
-    html('div', { class: 'rp-grid' },
-      html('div', { class: 'rp-cell' }, html('span', { class: 'rp-k' }, 'Air'), html('span', { class: 'rp-line' }, airV, html('small', {}, '°C')), airN),
-      html('div', { class: 'rp-cell' }, html('span', { class: 'rp-k' }, 'Setpoint'), html('span', { class: 'rp-line' }, spNum, html('small', {}, '°C')),
-        html('span', { class: 'rp-n' }, 'requested'))),
-    spRange,
-    html('div', { class: 'rp-foot' }, html('span', { class: 'rp-k' }, 'Supply'), supply, power, tag));
-  return { root, name, vol, airV, airN, spNum, spRange, sw, swText, supply, power, tag };
-}
-
-export function createScene(): Scene {
+export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard): Scene {
+  const first = layoutFor(3);
   const root = svg('svg', {
-    class: 'scene', viewBox: `0 0 ${VB_W} ${VB_H}`, preserveAspectRatio: 'xMidYMid meet', role: 'group',
-    'aria-label': 'Simulator workbench: outdoor zone with the outdoor unit at left, indoor zone with one card per room at right',
+    class: 'scene', viewBox: `0 0 ${first.vbW} ${first.vbH}`, preserveAspectRatio: 'xMidYMid meet', role: 'group',
+    'aria-label': 'Simulator workbench: outdoor zone with the outdoor unit at left, indoor zone with one row per room at right',
   });
   root.dataset.zoom = 'overview';
 
   let built = { n: -1, kind: '' };
+  let layout: Layout = first;
+  let presets = presetsFor(first);
   let pipes = new Map<string, Pipe>();
   let rooms: RoomView[] = [];
   let outLabel: SVGTextElement = txt(0, 0, '');
   let outSub: SVGTextElement = txt(0, 0, '');
   let valveLabel: SVGTextElement = txt(0, 0, '');
   let svcRole: SVGTextElement = txt(0, 0, '');
-  const outPanel: OutdoorPanel = outdoorPanel();
+  // Panels are created once per index and re-attached by every rebuild, so controls keep their DOM identity and value.
+  const weather = weatherPanel();
+  const bar = roomsBar();
+  const roomPanels: RoomPanel[] = [];
+  const panelFor = (i: number): RoomPanel => (roomPanels[i] ??= roomPanel(i, hooks));
   let weatherG: G = svg('g');
   let weatherKind = '';
   let gaugeHP: Gauge | null = null;
@@ -353,49 +374,79 @@ export function createScene(): Scene {
   let frostFill: SVGRectElement = svg('rect');
   let flakes: SVGPathElement[] = [];
   let puddle: SVGEllipseElement = svg('ellipse');
+  let coilGasProbe: Probe | null = null;
+  let coilLiqProbe: Probe | null = null;
+  let compDProbe: Probe | null = null;
+  let compSProbe: Probe | null = null;
+  let coilNote: CoilNote | null = null;
   let lastIce = -1;
   let lastWater = -1;
-  let vb = [...VIEWBOXES.overview] as number[];
+  let vb: number[] = [...presets.overview];
   let anim = 0;
 
+  /** Tall scenes (more than five rooms) scroll vertically in the stage; the outdoor view always fits the stage. */
+  function fit(z: ZoomPreset, box: ArrayLike<number>): void {
+    const tall = layout.tall && z !== 'outdoor';
+    toggleClass(root, 'tall', tall);
+    root.style.aspectRatio = tall ? `${box[2]} / ${box[3]}` : '';
+  }
+
   function rebuild(n: number, kind: 'owner' | 'generic'): void {
+    // A control the user is working in survives the rebuild: its element is re-attached, then focus is restored.
+    const focused = document.activeElement instanceof HTMLElement && root.contains(document.activeElement) ? document.activeElement : null;
     root.replaceChildren(defs());
     pipes = new Map();
     rooms = [];
     inDirt = [];
+    layout = layoutFor(n);
+    presets = presetsFor(layout);
+    const lay = layout;
     const boxes = roomBoxes(n);
     const owner = kind === 'owner';
+    const wall = lay.wall;
+    const zoom = (root.dataset.zoom ?? 'overview') as ZoomPreset;
+    cancelAnimationFrame(anim);
+    vb = [...presets[zoom]];
+    root.setAttribute('viewBox', vb.join(' '));
+    fit(zoom, vb);
 
     // ---- zones: flat OUTDOOR and INDOOR fields with a plain boundary strip between them ----
     root.append(
-      svg('rect', { class: 'zone-out', x: 0, y: 0, width: WALL.x0, height: VB_H }),
-      svg('rect', { class: 'zone-in', x: WALL.x1, y: 0, width: VB_W - WALL.x1, height: VB_H }),
-      svg('rect', { class: 'zone-edge', x: WALL.x0, y: 0, width: WALL.x1 - WALL.x0, height: VB_H }),
-      svg('path', { class: 'zone-base', d: `M14 ${GROUND_Y}H${WALL.x0 - 14}` }),
-      svg('rect', { class: 'zone-card', x: OP.x, y: OP.y, width: OP.w, height: OP.h, rx: 10 }),
+      svg('rect', { class: 'zone-out', x: 0, y: 0, width: wall.x0, height: lay.vbH }),
+      svg('rect', { class: 'zone-in', x: wall.x1, y: 0, width: lay.vbW - wall.x1, height: lay.vbH }),
+      svg('rect', { class: 'zone-edge', x: wall.x0, y: 0, width: wall.x1 - wall.x0, height: lay.vbH }),
+      svg('path', { class: 'zone-base', d: `M14 ${lay.groundY}H${wall.x0 - 14}` }),
     );
-    weatherG = svg('g', { class: 'weather', transform: 'translate(0 40)' });
+    weatherG = svg('g', { class: 'weather', transform: `translate(${OP.x - 24} ${OP.y - 12})` });
     weatherKind = '';
     root.append(
-      weatherG, overlayPanel(OP.x, OP.y, OP.w, OP.h, outPanel.root),
-      txt(16, 26, 'OUTDOOR', 'zone-title'), txt(WALL.x1 + 14, 26, 'INDOOR', 'zone-title'));
+      weatherG, overlayPanel(OP.x, OP.y, OP.w, OP.h, weather.root),
+      overlayPanel(UP.x, UP.y, UP.w, UP.h, unitCard.root),
+      txt(16, 26, 'OUTDOOR', 'zone-title'), txt(wall.x1 + 14, 26, 'INDOOR', 'zone-title'),
+      overlayPanel(wall.x1 + 118, 6, 760, 26, bar.root));
 
     // ---- rooms ----
+    const zoneW = lay.vbW - wall.x1;
     for (const b of boxes) {
       const i = b.i;
       const view = svg('g', { class: 'room', 'data-room': i });
-      const bg = svg('rect', { class: 'room-bg', x: WALL.x1 + 8, y: b.top + 5, width: ROOM_X1 - WALL.x1 - 16, height: b.h - 10, rx: 10 });
-      const wash = svg('rect', { class: 'room-wash', x: WALL.x1 + 8, y: b.top + 5, width: ROOM_X1 - WALL.x1 - 16, height: b.h - 10, rx: 10 });
-      const panel = roomPanel(i);
+      // Quiet fills and light horizontal separators only: no bordered room boxes and no building architecture.
+      const bg = svg('rect', { class: `room-bg${i % 2 ? ' alt' : ''}`, x: wall.x1, y: b.top, width: zoneW, height: b.h });
+      const wash = svg('rect', { class: 'room-wash', x: wall.x1, y: b.top, width: zoneW, height: b.h });
+      const sep = svg('path', { class: 'room-sep', d: `M${wall.x1} ${b.top}H${lay.vbW}` });
+      const panel = panelFor(i);
       const unitX = b.unitX;
       const unitY = b.unitY;
-      const plume = svg('ellipse', { cx: unitX + 190, cy: unitY + UNIT.h + 38, rx: 70, ry: 40, class: 'plume' });
+      // Air cues shrink with the row height so stacked rooms never spill into their neighbours.
+      const k = clamp((b.h - UNIT.dy - UNIT.h - 10) / 52, 0.45, 1);
+      const y0 = unitY + UNIT.h + 2;
+      const yy = (d: number): string => (y0 + d * k).toFixed(1);
+      const plume = svg('ellipse', { cx: unitX + 190, cy: (unitY + UNIT.h + 38 * k).toFixed(1), rx: 58, ry: (40 * k).toFixed(1), class: 'plume' });
       const air = arrowLines('air', [
-        `M${unitX + 150} ${unitY + UNIT.h + 2}C${unitX + 160} ${unitY + UNIT.h + 36} ${unitX + 205} ${unitY + UNIT.h + 52} ${unitX + 300} ${unitY + UNIT.h + 52}`,
-        `M${unitX + 180} ${unitY + UNIT.h + 2}C${unitX + 190} ${unitY + UNIT.h + 30} ${unitX + 225} ${unitY + UNIT.h + 40} ${unitX + 310} ${unitY + UNIT.h + 36}`,
-        `M${unitX + 210} ${unitY + UNIT.h + 2}C${unitX + 220} ${unitY + UNIT.h + 22} ${unitX + 250} ${unitY + UNIT.h + 28} ${unitX + 320} ${unitY + UNIT.h + 22}`,
+        `M${unitX + 150} ${y0}C${unitX + 160} ${yy(34)} ${unitX + 200} ${yy(50)} ${unitX + 240} ${yy(50)}`,
+        `M${unitX + 180} ${y0}C${unitX + 190} ${yy(28)} ${unitX + 215} ${yy(38)} ${unitX + 244} ${yy(34)}`,
+        `M${unitX + 210} ${y0}C${unitX + 220} ${yy(20)} ${unitX + 238} ${yy(26)} ${unitX + 248} ${yy(20)}`,
       ]);
-      const supply = txt(unitX + 150, unitY + UNIT.h + Math.min(66, b.bottom - unitY - UNIT.h - 12), '', 'supply');
 
       // indoor unit (casing only; coil tubes are pipes drawn later)
       const unit = svg('g', { class: `unit${INDOOR_CLASSES[activeClass(i)].generic ? ' generic' : ''}`, transform: `translate(${unitX} ${unitY})` });
@@ -415,24 +466,34 @@ export function createScene(): Scene {
         fan, label,
         svg('path', { d: `M120 ${UNIT.h - 2}H${UNIT.w - 14}`, class: 'louvre' }),
         svg('path', { d: `M126 ${UNIT.h - 2}L${UNIT.w - 22} ${UNIT.h + 7}`, class: 'louvre-flap' }));
-      view.append(bg, wash, plume, air, unit);
-      const wrapper = sel(`indoor:${i}`, `Indoor unit ${i + 1}`, { x: WALL.x1 + 1, y: b.top + 1, w: ROOM_X1 - WALL.x1 - 2, h: b.h - 2, r: 2 }, view);
-      // Corner panel: a sibling of the selectable group (no nested interactive content), above it, click-through except its controls.
-      root.append(wrapper, svg('g', { class: 'room-panel' }, overlayPanel(RP.x, b.top + 10, RP.w, RP.h, panel.root)));
-      rooms.push({ g: wrapper, view, unit, panel, unitLabel: label, airWarm: air, plume, fan });
+      view.append(bg, wash, sep, plume, air, unit);
+      const wrapper = sel(`indoor:${i}`, `Indoor unit ${i + 1}`, { x: wall.x1 + 1, y: b.top + 1, w: zoneW - 2, h: b.h - 2, r: 2 }, view);
+      // Panels: siblings of the selectable group (no nested interactive content), above it, click-through except their controls.
+      const py = b.top + clamp((b.h - RP_H) / 2, 0, 10);
+      root.append(wrapper, svg('g', { class: 'room-panel' },
+        overlayPanel(b.x0 + ROOM_COLS.equip.dx, py, ROOM_COLS.equip.w, RP_H, panel.equip),
+        overlayPanel(b.x0 + ROOM_COLS.env.dx, py, ROOM_COLS.env.w, RP_H, panel.env)));
+      const at = indoorProbeAt(b);
+      rooms.push({
+        g: wrapper, view, unit, panel, unitLabel: label, airWarm: air, plume, fan, wash,
+        gasProbe: new Probe({ id: `indoor-gas-${i}`, label: `Indoor ${i + 1} gas-end refrigerant`, ...at.gas }),
+        liqProbe: new Probe({ id: `indoor-liquid-${i}`, label: `Indoor ${i + 1} liquid-end refrigerant`, ...at.liq }),
+        note: new CoilNote(`indoor-coil-${i}`, at.note),
+      });
     }
+    if (zoneW > 0) root.append(svg('path', { class: 'room-sep', d: `M${wall.x1} ${lay.stackBottom}H${lay.vbW}` }));
 
     // ---- boundary pass-throughs ----
     for (const b of boxes) {
       root.append(
-        svg('rect', { class: 'sleeve', x: WALL.x0 - 2, y: b.gasY - 3.5, width: WALL.x1 - WALL.x0 + 4, height: 7, rx: 2 }),
-        svg('rect', { class: 'sleeve', x: WALL.x0 - 2, y: b.liqY - 3.5, width: WALL.x1 - WALL.x0 + 4, height: 7, rx: 2 }));
+        svg('rect', { class: 'sleeve', x: wall.x0 - 2, y: b.gasY - 3.5, width: wall.x1 - wall.x0 + 4, height: 7, rx: 2 }),
+        svg('rect', { class: 'sleeve', x: wall.x0 - 2, y: b.liqY - 3.5, width: wall.x1 - wall.x0 + 4, height: 7, rx: 2 }));
     }
 
     // ---- outdoor unit ----
     const og = svg('g', { class: 'outdoor', transform: `translate(${OUT.x} ${OUT.y})` });
     const w = OUT.w;
-    const h = OUT.h;
+    const h = lay.outH;
     const caseFill = owner ? 'url(#gCaseOwner)' : 'url(#gCaseGen)';
     og.append(
       svg('rect', { x: 8, y: h - 2, width: 26, height: 5, fill: '#6f7479' }),
@@ -470,9 +531,9 @@ export function createScene(): Scene {
     puddle = svg('ellipse', { class: 'puddle', cx: 36, cy: h + 1, rx: 34, ry: 3 });
     og.append(puddle);
 
-    // outdoor air arrows
+    // outdoor air arrows (the coil probe notes occupy the margin above them)
     og.append(
-      arrowLines('air out-in', ['M-34 60H-4', 'M-34 110H-4', 'M-34 160H-4']),
+      arrowLines('air out-in', ['M-34 92H-4', 'M-34 128H-4', 'M-34 164H-4']),
       arrowLines('air out-out', ['M96 6C110 -12 140 -16 170 -4', 'M120 3C136 -9 160 -10 184 -2']),
     );
 
@@ -557,7 +618,7 @@ export function createScene(): Scene {
           svg('path', { d: 'M-6 6V9M6 6V9', class: 'eev-coil' })),
         svg('g', { class: 'dl eev-num', transform: `translate(${ex - 8} ${ey + 6.5})` }, svg('circle', { r: 3.2 }), txt(0, 1.7, String(i + 1), 'eev-digit', 'middle'))));
     }
-    const [bx, by] = L(272, 181);
+    const [bx, by] = n > 5 ? L(272, lay.feeder + 9) : L(272, 181);
     root.append(
       txt(bx, by, 'Branch EEVs', 'dl lbl eev-group'),
       txt(bx, by + 7, `1–${n}, numbered`, 'dl lbl eev-group'));
@@ -572,7 +633,7 @@ export function createScene(): Scene {
           svg('rect', { x: -4, y: -21, width: 8, height: 7, rx: 1.5, class: 'svc-cap' })), svcRole),
       sel('gasstop', 'Common gas stop valve, static and fully open', { x: sx - 9, y: sy - 9, w: 18, h: 18, r: 4 },
         svg('g', { transform: `translate(${sx} ${sy})` }, stopValve('GAS STOP'))));
-    const [qx, qy] = L(190, 222); // on the common liquid feeder (78,222)→(268,222), upstream of all five branches
+    const [qx, qy] = L(190, lay.feeder); // on the common liquid feeder, upstream of every branch EEV
     root.append(sel('liqstop', 'Common liquid stop valve, static and fully open', { x: qx - 9, y: qy - 9, w: 18, h: 18, r: 4 },
       svg('g', { transform: `translate(${qx} ${qy})` }, stopValve('LIQ STOP', true))));
     gaugeSvc = new Gauge(sx, sy - 44, 'physical SVC', false);
@@ -587,21 +648,42 @@ export function createScene(): Scene {
         svg('path', { d: `M${sx} ${sy - 21}V${sy - 36}`, class: 'tap-stub' }),
         gaugeHP.g, gaugeLP.g, gaugeSvc.g));
 
-    // branch pipe hit regions (selectable)
+    // branch line-set hit regions (selectable): at the riser, and where the pair enters the room. Both open the branch's line settings.
     for (let i = 0; i < n; i++) {
       const b = boxes[i];
       if (!b) continue;
-      const gx = riserG(i);
-      root.append(sel(`pipe:${i}`, `Refrigerant branch ${i + 1} line set`, { x: gx - 8, y: b.gasY - 8, w: 30, h: b.liqY - b.gasY + 16, r: 4 }));
+      root.append(
+        sel(`pipe:${i}`, `Refrigerant branch ${i + 1} line set`, { x: Math.min(b.gx, b.lx) - 8, y: b.gasY - 8, w: Math.abs(b.gx - b.lx) + 22, h: b.liqY - b.gasY + 16, r: 4 }),
+        sel(`pipe:${i}`, `Refrigerant branch ${i + 1} line set at the indoor unit`, { x: wall.x1 + 2, y: b.gasY - 9, w: b.unitX - wall.x1 + 8, h: b.liqY - b.gasY + 18, r: 4 }));
     }
+
+    // ---- refrigerant probes: materialised on the pipes, always visible, drawn last and click-through ----
+    const P = PROBE_AT;
+    coilGasProbe = new Probe({ id: 'outdoor-coil-gas', label: 'Outdoor coil gas-end refrigerant', ...P.coilGas });
+    coilLiqProbe = new Probe({ id: 'outdoor-coil-liquid', label: 'Outdoor coil liquid-end refrigerant', ...P.coilLiq });
+    compDProbe = new Probe({ id: 'compressor-discharge', label: 'Compressor discharge D refrigerant', ...P.compD });
+    compSProbe = new Probe({ id: 'compressor-suction', label: 'Compressor suction S refrigerant', ...P.compS });
+    coilNote = new CoilNote('outdoor-coil', P.coilNote, 'end');
+    root.append(
+      svg('g', { class: 'probes outdoor-probes', transform: `translate(${OUT.x} ${OUT.y})` }, coilGasProbe.g, coilLiqProbe.g, compDProbe.g, compSProbe.g, coilNote.g),
+      svg('g', { class: 'probes indoor-probes' }, ...rooms.flatMap((r) => [r.gasProbe.g, r.liqProbe.g, r.note.g])));
 
     built = { n, kind };
     lastIce = -1;
     lastWater = -1;
+    if (focused?.isConnected && document.activeElement !== focused) focused.focus({ preventScroll: true });
   }
 
   const activeClass = (i: number) => (_state?.cfg.rooms[i]?.indoorClass ?? 'FTXA25');
   let _state: AppState | null = null;
+
+  /** Outdoor-coil refrigerant heat [W], engine sign (negative = refrigerant absorbs). Examples derive it from the fixture ledger. */
+  function outdoorHeatW(live: boolean, fm: string, engineW: number | null | undefined, qEvapKw: number | null, qCondKw: number | null): number | null {
+    if (live) return engineW ?? null;
+    if (fm === 'heating') return qEvapKw === null ? null : -qEvapKw * 1000;
+    if (fm === 'cooling' || fm === 'defrost') return qCondKw === null ? null : qCondKw * 1000;
+    return null;
+  }
 
   function sync(s: AppState): void {
     _state = s;
@@ -610,12 +692,15 @@ export function createScene(): Scene {
     const live = s.ui.experience === 'live';
     const rd = currentReadings(s);
     const fm = readingFlowMode(rd);
+    const held = live && rd.live?.kind === 'updating';
+    const src: 'live' | 'example' = live ? 'live' : 'example';
     root.dataset.source = s.ui.experience;
     root.dataset.fm = fm;
     root.dataset.mode = cfg.mode;
     root.dataset.labels = s.ui.showLabels ? 'on' : 'off';
     root.dataset.taps = s.ui.showTaps ? 'on' : 'off';
     root.dataset.kind = cfg.outdoorKind;
+    root.dataset.held = held ? '1' : '0';
     toggleClass(root, 'paused', s.ui.paused);
     root.style.setProperty('--flow-dur', `${(1.3 / s.ui.speed).toFixed(3)}s`);
     root.dataset.fansOn = rd.outdoorFanOn ? '1' : '0';
@@ -637,8 +722,9 @@ export function createScene(): Scene {
     }
     const pair = valvePairs(fm, cfg.mode);
     setText(valveLabel, fm === 'idle' ? `${pair.a} · ${pair.b} (idle)` : `${pair.a} · ${pair.b}`);
+    const cap = outdoorPortCapacity(cfg);
     setText(outLabel, cfg.outdoorKind === 'owner' ? 'Daikin 3MXM52N8' : 'Generic compatible outdoor');
-    setText(outSub, cfg.outdoorKind === 'owner' ? `${OWNER_PORTS} ports · R32 · suffix unknown` : `${cfg.unitCount} ports · illustrative casing`);
+    setText(outSub, cfg.outdoorKind === 'owner' ? `${OWNER_PORTS} ports · R32 · suffix unknown` : `${n} of ${cap} ports used · assumed${layout.outH > 235 ? ' larger' : ''} casing`);
 
     // gauges
     const hi = rd.cycle?.pHighBarA ?? null;
@@ -651,6 +737,16 @@ export function createScene(): Scene {
     gaugeSvc?.set(svcV, conv(svcV));
     setText(svcRole, fm === 'idle' ? 'SVC · idle' : `SVC · ${svcHigh ? 'HIGH' : 'LOW'}`);
 
+    // refrigerant probes, outdoor side. Only a real cycle produces numbers; everything else is a dash, never a zero.
+    const cyc = live && rd.usable ? rd.engine?.cycle ?? null : null;
+    const basis = live ? (held ? 'last calculated step' : 'live engine') : 'illustrative fixture value';
+    const oc = outdoorCoilProbe(fm, rd.cycle, outdoorHeatW(live, fm, cyc?.outdoorCoilHeatW, rd.qEvapKw, rd.qCondKw));
+    coilGasProbe?.update(oc.gas.role, oc.gas.tempC, src, held, `outdoor coil gas end · ${basis}`);
+    coilLiqProbe?.update(oc.liquid.role, oc.liquid.tempC, src, held, `outdoor coil liquid end · ${basis}`);
+    coilNote?.update(oc.deltaK, oc.heatW, src, 'line3-illustrative');
+    compDProbe?.update('D', rd.cycle?.dischargeC ?? null, src, held, `compressor discharge · ${basis}`);
+    compSProbe?.update('S', rd.cycle?.suctionC ?? null, src, held, `compressor suction · ${basis}`);
+
     // rooms
     const act = activeRooms(cfg);
     const br = branchesFor(rd, act);
@@ -661,17 +757,29 @@ export function createScene(): Scene {
       const eng = rd.engine?.rooms[i] ?? null;
       toggleClass(v.unit, 'generic', info.generic);
       const p = v.panel;
+      // An index rebound to another room (after a removal) must not keep a stale focused value.
+      if (p.boundId !== r.id) {
+        if (p.boundId !== '' && (p.equip.contains(document.activeElement) || p.env.contains(document.activeElement))) (document.activeElement as HTMLElement).blur();
+        p.boundId = r.id;
+      }
       setText(p.name, r.name);
-      setText(p.vol, `${r.volumeM3} m³`);
-      // Air: live engine room temperature, or the configured example input; never the live value in Examples nor the reverse.
-      setText(p.airV, live ? fmt(eng?.temperatureC, 1) : fmt(r.airC, 1));
-      setText(p.airN, live ? (eng ? `${Math.round(eng.relativeHumidity * 100)} % RH` : '—') : 'EXAMPLE input');
-      const spLabel = `Setpoint for ${r.name} (°C)`;
-      setAttr(p.spNum, 'aria-label', spLabel);
-      setAttr(p.spRange, 'aria-label', spLabel);
-      setAttr(p.spRange, 'aria-valuetext', `${fmt(r.setpointC, 1)} °C`);
-      // The focused number field is never rewritten; the range mirrors external edits (its own drags already match).
-      syncPair(p.spNum, p.spRange, r.setpointC, 1);
+      toggleClass(p.remove, 'off', n <= 1);
+      p.remove.disabled = n <= 1;
+      setAttr(p.remove, 'aria-label', `Remove room ${r.name}`);
+      setAttr(p.remove, 'title', n <= 1 ? 'At least one room is required' : `Remove ${r.name} and its refrigerant line set. Its inputs are kept for re-adding.`);
+      // Measured air: live engine room temperature, or the configured example input; never the live value in Examples nor the reverse.
+      setReading(p.air.v, live ? fmt(eng?.temperatureC, 1) : fmt(r.airC, 1));
+      setText(p.air.n, live ? (eng ? `${Math.round(eng.relativeHumidity * 100)} % RH` : '—') : 'EXAMPLE input');
+      // Target, volume and heat loss are editable; a focused field is never rewritten.
+      for (const f of [p.sp, p.vol, p.loss]) f.refresh();
+      const targetLabel = `Target for ${r.name} (°C)`;
+      setAttr(p.sp.num, 'aria-label', targetLabel);
+      setAttr(p.sp.range, 'aria-label', targetLabel);
+      setAttr(p.sp.range, 'aria-valuetext', `${fmt(r.setpointC, 1)} °C`);
+      setAttr(p.vol.num, 'aria-label', `Volume of ${r.name} (m³)`);
+      setAttr(p.vol.range, 'aria-label', `Volume of ${r.name} (m³)`);
+      setAttr(p.loss.num, 'aria-label', `Heat-loss coefficient of ${r.name} (W/K)`);
+      setAttr(p.loss.range, 'aria-label', `Heat-loss coefficient of ${r.name} (W/K)`);
       setText(v.unitLabel, r.indoorClass.startsWith('FTXA') ? r.indoorClass : `${info.label.replace('Generic wall head ', 'Generic ').replace(' class', '')}`);
       // Each indoor fan follows its own reading; a closed branch neither spins nor blows.
       const fanOn = live ? (br[i]?.fanKw ?? 0) > 0 : rd.indoorFansOn;
@@ -684,27 +792,65 @@ export function createScene(): Scene {
       if (p.sw.checked !== r.enabled) p.sw.checked = r.enabled;
       setAttr(p.sw, 'aria-label', `${r.name} indoor unit`);
       setText(p.swText, ({ on: 'On', off: 'Off', closing: 'Off · closing', applying: 'Off · applying', 'requested-off': 'Off requested' })[unitState]);
+      // Examples keep the fixed snapshot; an Off request is never recomputed into it.
+      const exampleNote = r.enabled ? 'EXAMPLE' : 'EXAMPLE · Off not applied';
+      const exampleTitle = !live && rd.usable && !r.enabled ? 'Fixed snapshot: branch flow and these numbers are not recalculated for the Off request.' : '';
+      // Supplied air: numeric, or a labelled unavailable state (fan off, unit off, withheld). Never an invented zero.
       const o = br[i]?.outletC ?? null;
-      // Branch heat from branchesFor: heating output and cooling removal are positive; defrost is signed (negative = extracted).
+      if (rd.usable && o !== null) {
+        setReading(p.sup.v, fmt(o, 1));
+        setText(p.sup.n, live ? 'live' : exampleNote);
+      } else {
+        setReading(p.sup.v, '—');
+        setText(p.sup.n, !rd.usable ? 'unavailable' : !fanOn ? (unitState === 'off' ? 'unit off' : 'fan off') : '');
+      }
+      // Branch heat: heating output and cooling removal are positive; defrost is signed (negative = extracted).
       const kw = !rd.usable ? null : live ? rd.branchKw?.[i] ?? null : br[i]?.roomKw ?? null;
-      const kwWord = fm === 'defrost' ? 'signed heat' : cfg.mode === 'cooling' ? 'cooling' : 'heating';
-      setText(p.supply, !rd.usable || o === null ? (rd.usable && !fanOn ? (unitState === 'off' ? '— (unit off)' : '— (fan off)') : '—') : `${fmt(o, 1)} °C`);
-      setText(p.power, kw === null ? '' : `${fmt(kw, 2)} kW ${kwWord}`);
-      setText(p.tag, rd.usable && !live ? 'EXAMPLE' : '');
-      setAttr(p.tag, 'title', rd.usable && !live && !r.enabled ? 'Fixed snapshot: branch flow and these numbers are not recalculated for the Off request.' : '');
-      v.g.querySelector('.room-wash')?.setAttribute('fill', tempColor(live ? eng?.temperatureC ?? null : r.airC));
+      setText(p.heat.k, fm === 'defrost' ? 'Signed net kW' : cfg.mode === 'cooling' ? 'Net cooling' : 'Net heating');
+      if (kw === null) {
+        setReading(p.heat.v, '—');
+        setText(p.heat.n, rd.usable ? '' : 'unavailable');
+      } else {
+        setReading(p.heat.v, fmt(kw, 2));
+        setText(p.heat.n, fm === 'defrost' ? 'negative = extracted' : live ? 'room, live' : exampleNote);
+      }
+      setAttr(p.sup.n, 'title', exampleTitle);
+      setAttr(p.heat.n, 'title', exampleTitle);
+      v.wash.setAttribute('fill', airColor(live ? eng?.temperatureC ?? null : r.airC));
       v.g.setAttribute('aria-label', `${r.name}, ${r.indoorClass}`);
+
+      // Indoor refrigerant probes: actual branch states only while that branch circulates; Examples use the illustrative common cycle.
+      let ip: CoilProbe;
+      if (live) {
+        const inl = cyc?.branchInlets[i];
+        const outl = cyc?.branchOutlets[i];
+        ip = indoorCoilProbeLive(fm, cyc && inl && outl
+          ? { flowKgs: cyc.branchMassFlowsKgs[i] ?? 0, inletC: inl.temperatureC, outletC: outl.temperatureC, heatW: cyc.branchCoilHeatW[i] ?? 0 }
+          : null);
+      } else ip = indoorCoilProbeExample(fm, rd.cycle);
+      v.gasProbe.update(ip.gas.role, ip.gas.tempC, src, held, `${r.name} indoor coil gas end · ${basis}`);
+      v.liqProbe.update(ip.liquid.role, ip.liquid.tempC, src, held, `${r.name} indoor coil liquid end · ${basis}`);
+      v.note.update(ip.deltaK, ip.heatW, src, 'line2-illustrative');
     });
 
     // coil fouling: configuration-driven in both experiences; independent of the ice layer
-    const oc = outdoorCleanliness(cfg);
-    setDirt(outDirt, oc.pct, 'Outdoor coil', oc.source);
+    const oc2 = outdoorCleanliness(cfg);
+    setDirt(outDirt, oc2.pct, 'Outdoor coil', oc2.source);
     act.forEach((r, i) => {
       const d = inDirt[i];
       if (!d) return;
       const ic = indoorCleanliness(cfg, i);
       setDirt(d, ic.pct, `${r.name} indoor coil`, ic.source);
     });
+
+    // rooms bar: count against the outdoor group's capacity (owner: fixed; generic: a scenario assumption)
+    const full = n >= cap;
+    setText(bar.count, `${n} of ${cap} ${cfg.outdoorKind === 'owner' ? 'ports' : 'assumed ports'}`);
+    bar.add.disabled = full;
+    setAttr(bar.add, 'title', full
+      ? (cfg.outdoorKind === 'owner' ? `The 3MXM52N8 has ${OWNER_PORTS} ports. Choose Generic on the outdoor unit to explore more.` : 'Generic port capacity (an assumption) is reached. Raise it on the outdoor unit.')
+      : 'Add an indoor unit and its room on the next free port');
+    setText(bar.hint, full ? (cfg.outdoorKind === 'owner' ? `Owner unit full (${OWNER_PORTS} ports): choose Generic on the outdoor unit for more.` : 'Capacity reached: raise the assumed port capacity on the outdoor unit.') : '');
 
     // weather
     // The glyph is redrawn only when its category changes (sun / cloud / snow cloud), never per update.
@@ -719,15 +865,20 @@ export function createScene(): Scene {
         if (kind === 'snow') for (const [fx2, fy2] of [[36, 74], [48, 78], [60, 74]] as const) weatherG.append(snowflake(fx2, fy2, 3.2));
       }
     }
-    // Outdoor corner card: the editable temperature and humidity mirror the pinned sidebar both ways (configured inputs,
-    // meaningful while the engine loads); the fan outlet is withheld unless usable.
-    const op = outPanel;
-    syncPair(op.tNum, op.tRange, cfg.outdoorC, 1);
-    syncPair(op.hNum, op.hRange, cfg.outdoorRh, 0);
-    setText(op.tN, live ? 'drives live model' : 'configured');
-    setText(op.hN, cfg.outdoorC < 0 ? 'over ice' : 'over liquid');
-    setText(op.outV, fmt(rd.outdoorOutletC, 1));
-    setText(op.outN, !rd.usable ? 'unavailable' : live ? (rd.outdoorOutletC === null ? 'fan off' : 'live') : 'EXAMPLE');
+    // Weather: ambient inputs only (configured values, meaningful while the engine loads). Machine readings live on the outdoor-unit card.
+    weather.t.refresh();
+    weather.h.refresh();
+    setText(weather.t.note, live ? 'live input' : 'configured');
+    setText(weather.h.note, cfg.outdoorC < 0 ? 'over ice' : 'over liquid');
+    const scope = weatherScope(s);
+    setText(weather.status, scope.text);
+    weather.status.title = scope.text;
+    toggleClass(weather.status, 'diff', scope.diff);
+    weather.match.hidden = live || scope.same;
+
+    // Outdoor-unit card: controls plus the fan outlet, which belongs to the machine (withheld unless usable).
+    unitCard.sync(s);
+    unitCard.setOutlet(fmt(rd.outdoorOutletC, 1), !rd.usable ? 'unavailable' : live ? (rd.outdoorOutletC === null ? 'fan off' : 'live') : 'EXAMPLE');
 
     // selection
     for (const el of root.querySelectorAll<SVGElement>('[data-id]')) {
@@ -750,16 +901,16 @@ export function createScene(): Scene {
     setAttr(root, 'data-ice', liveMode ? (out ? 'live' : held ? 'held' : 'none') : 'example');
     const showIce = liveMode ? film?.iceKg ?? 0 : clock.iceKg;
     const water = liveMode ? film?.liquidKg ?? 0 : clock.retainedWaterKg;
-    setText(outPanel.iceV, liveMode && !film ? '—' : fmt(showIce, 3));
-    setText(outPanel.iceN, liveMode
-      ? (out ? 'live film state' : held ? `held · t ${heldClock(held.simulatedSeconds)}` : 'unavailable')
-      : 'example clock');
-    toggleClass(outPanel.iceN, 'held', !!held);
+    unitCard.setIce(
+      liveMode && !film ? '—' : fmt(showIce, 3),
+      liveMode ? (out ? 'live film state' : held ? `held · t ${heldClock(held.simulatedSeconds)}` : 'unavailable') : 'example clock',
+      !!held);
+    const ph = layout.outH;
     if (Math.abs(water - lastWater) >= 0.0004) {
       lastWater = water;
       const wk = clamp(water / ICE_START_KG, 0, 1.5);
       puddle.style.opacity = water > 0.0004 ? String(clamp(0.35 + wk * 0.5, 0, 0.9)) : '0';
-      setAttr(puddle, 'transform', `translate(36 ${OUT.h + 1}) scale(${(0.25 + Math.min(wk, 1.2) * 0.75).toFixed(3)} ${(0.6 + Math.min(wk, 1.5) * 0.9).toFixed(3)}) translate(-36 ${-(OUT.h + 1)})`);
+      setAttr(puddle, 'transform', `translate(36 ${ph + 1}) scale(${(0.25 + Math.min(wk, 1.2) * 0.75).toFixed(3)} ${(0.6 + Math.min(wk, 1.5) * 0.9).toFixed(3)}) translate(-36 ${-(ph + 1)})`);
     }
     if (Math.abs(showIce - lastIce) < 0.0004) return;
     lastIce = showIce;
@@ -773,9 +924,11 @@ export function createScene(): Scene {
 
   function zoomTo(z: ZoomPreset, immediate = false): void {
     root.dataset.zoom = z;
-    const target = VIEWBOXES[z];
+    const target = presets[z];
     cancelAnimationFrame(anim);
     const start = [...vb];
+    fit(z, target);
+    root.parentElement?.scrollTo?.({ top: 0 });
     if (immediate || reduceMotion()) {
       vb = [...target];
       root.setAttribute('viewBox', vb.join(' '));
@@ -792,5 +945,5 @@ export function createScene(): Scene {
     anim = requestAnimationFrame(step);
   }
 
-  return { root, sync, tick, zoomTo };
+  return { root, sync, tick, zoomTo, roomAnchor: (i) => roomPanels[i]?.equip ?? null };
 }

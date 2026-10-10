@@ -57,8 +57,10 @@ try {
     await activateControl(page,'Readings');
   });
   await check('speed is a compact native control and fan graphics have no mechanical animation',async()=>{
-    assert.deepEqual(await run(()=>[...document.querySelector('select[aria-label="Requested speed"]').options].map(o=>o.value)),['0.5','1','2','5','10']);
+    assert.deepEqual(await run(()=>[...document.querySelector('select[aria-label="Requested speed"]').options].map(o=>o.value)),['0.5','1','2','5','10','50']);
     await activateControl(page,'5×');assert.equal(await run(()=>qa.store.state.ui.speed),5);
+    await activateControl(page,'50×');assert.equal(await run(()=>qa.store.state.ui.speed),50);
+    assert.equal(await run(()=>document.querySelectorAll('#app>.drawer').length),0);
     assert.equal(await run(()=>document.querySelectorAll('.spin').length),0);
     assert.equal(await run(()=>document.querySelectorAll('.room .hub,.room .blade,.room circle.fan-well').length),0);
     assert.equal(await run(()=>document.querySelectorAll('.room .in-fan .slat').length),3);

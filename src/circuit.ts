@@ -78,24 +78,54 @@ export function segState(id: string, fm: FlowMode, c: CycleStates | null, mode: 
   }
 }
 
-/** Sequential-diverging ramp for the tube interior: cold blue → neutral → hot red (−10…105 °C). */
-const STOPS: ReadonlyArray<readonly [number, readonly [number, number, number]]> = [
-  [-10, [47, 95, 179]],
-  [10, [96, 160, 205]],
-  [35, [232, 226, 208]],
-  [65, [240, 152, 100]],
-  [105, [190, 40, 44]],
+type Stops = ReadonlyArray<readonly [number, readonly [number, number, number]]>;
+
+/**
+ * Fixed absolute REFRIGERANT scale, −40…145 °C, never rescaled. Cold blue → pale neutral at 20 °C → amber → red → dark wine.
+ * The common −20…65 °C region holds six of the eight stops; 105 and 145 °C are the superheated hot-vapour tail, not a liquid cap.
+ * Colour is temperature only: phase is the separate monochrome mark. Values beyond the ends saturate; exact numbers never do.
+ */
+const STOPS: Stops = [
+  [-40, [43, 36, 107]],
+  [-20, [44, 92, 178]],
+  [0, [88, 168, 212]],
+  [20, [226, 228, 205]],
+  [40, [244, 190, 110]],
+  [65, [226, 96, 58]],
+  [105, [160, 28, 48]],
+  [145, [92, 10, 56]],
 ];
 
-export const TEMP_RAMP_MIN = -10;
-export const TEMP_RAMP_MAX = 105;
+export const TEMP_RAMP_MIN = -40;
+export const TEMP_RAMP_MAX = 145;
+/** Stop temperatures of the refrigerant scale, for the legend ticks. */
+export const TEMP_RAMP_TICKS: ReadonlyArray<number> = STOPS.map((s) => s[0]);
 
-export function tempColor(t: number | null): string {
+/** Separate AIR scale for room and ambient fills: −30…50 °C covers outdoor extremes and 17…26 °C room targets. */
+const AIR_STOPS: Stops = [
+  [-30, [52, 74, 160]],
+  [-10, [70, 130, 196]],
+  [5, [128, 188, 214]],
+  [17, [190, 224, 216]],
+  [22, [236, 230, 196]],
+  [30, [244, 190, 120]],
+  [40, [230, 120, 70]],
+  [50, [190, 44, 44]],
+];
+
+export const AIR_RAMP_MIN = -30;
+export const AIR_RAMP_MAX = 50;
+export const AIR_RAMP_TICKS: ReadonlyArray<number> = AIR_STOPS.map((s) => s[0]);
+
+function rampColor(stops: Stops, t: number | null): string {
   if (t === null) return 'transparent';
-  const x = Math.min(TEMP_RAMP_MAX, Math.max(TEMP_RAMP_MIN, t));
-  for (let i = 0; i < STOPS.length - 1; i++) {
-    const a = STOPS[i];
-    const b = STOPS[i + 1];
+  const first = stops[0];
+  const last = stops[stops.length - 1];
+  if (!first || !last) return 'transparent';
+  const x = Math.min(last[0], Math.max(first[0], t));
+  for (let i = 0; i < stops.length - 1; i++) {
+    const a = stops[i];
+    const b = stops[i + 1];
     if (!a || !b) continue;
     if (x <= b[0]) {
       const f = (x - a[0]) / (b[0] - a[0]);
@@ -103,13 +133,76 @@ export function tempColor(t: number | null): string {
       return `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
     }
   }
-  const last = STOPS[STOPS.length - 1];
-  return last ? `rgb(${last[1][0]}, ${last[1][1]}, ${last[1][2]})` : 'transparent';
+  return `rgb(${last[1][0]}, ${last[1][1]}, ${last[1][2]})`;
 }
 
-export function tempRampCss(): string {
-  const stops = STOPS.map(([t, rgb]) => `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]}) ${(((t - TEMP_RAMP_MIN) / (TEMP_RAMP_MAX - TEMP_RAMP_MIN)) * 100).toFixed(1)}%`);
-  return `linear-gradient(90deg, ${stops.join(', ')})`;
+function rampCss(stops: Stops): string {
+  const lo = stops[0]?.[0] ?? 0;
+  const hi = stops[stops.length - 1]?.[0] ?? 1;
+  const parts = stops.map(([t, rgb]) => `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]}) ${(((t - lo) / (hi - lo)) * 100).toFixed(2)}%`);
+  return `linear-gradient(90deg, ${parts.join(', ')})`;
+}
+
+/** Refrigerant temperature colour (tubes, probe swatches). */
+export function tempColor(t: number | null): string { return rampColor(STOPS, t); }
+export function tempRampCss(): string { return rampCss(STOPS); }
+/** Air temperature colour (room and ambient fills). Deliberately a different scale from the refrigerant one. */
+export function airColor(t: number | null): string { return rampColor(AIR_STOPS, t); }
+export function airRampCss(): string { return rampCss(AIR_STOPS); }
+
+// ---------- refrigerant probes: which engine or fixture state each materialised sensor reads ----------
+
+/** Refrigerant side of a coil end: whether the fluid enters or leaves there, and its exact temperature (null = unavailable). */
+export interface CoilEnd { role: 'IN' | 'OUT'; tempC: number | null }
+
+export interface CoilProbe {
+  /** Gas-pipe end and liquid-pipe end of the coil, in physical position. */
+  gas: CoilEnd;
+  liquid: CoilEnd;
+  /** OUT − IN [K] from the exact values, or null when either is unavailable. */
+  deltaK: number | null;
+  /** Refrigerant-side coil heat [W], engine sign: negative = the refrigerant absorbs heat, positive = it releases heat. */
+  heatW: number | null;
+}
+
+const NO_END = (role: 'IN' | 'OUT'): CoilEnd => ({ role, tempC: null });
+
+function coilProbe(gas: CoilEnd, liquid: CoilEnd, heatW: number | null): CoilProbe {
+  const inT = gas.role === 'IN' ? gas.tempC : liquid.tempC;
+  const outT = gas.role === 'OUT' ? gas.tempC : liquid.tempC;
+  return { gas, liquid, deltaK: inT === null || outT === null ? null : outT - inT, heatW };
+}
+
+/**
+ * Outdoor coil. Heating: the coil is the evaporator, refrigerant enters at the liquid end (expansion outlet) and leaves at the gas end
+ * (suction). Cooling and defrost: it is the condenser, refrigerant enters at the gas end (discharge) and leaves at the liquid end
+ * (condenser outlet). No cycle (idle, fault, reversing, draining, withheld) → nothing is invented.
+ */
+export function outdoorCoilProbe(fm: FlowMode, c: CycleStates | null, heatW: number | null): CoilProbe {
+  if (fm === 'idle' || !c) return coilProbe(NO_END('OUT'), NO_END('IN'), null);
+  return fm === 'heating'
+    ? coilProbe({ role: 'OUT', tempC: c.suctionC }, { role: 'IN', tempC: c.expOutC }, heatW)
+    : coilProbe({ role: 'IN', tempC: c.dischargeC }, { role: 'OUT', tempC: c.condOutC }, heatW);
+}
+
+/**
+ * Indoor coil, live: the actual branch inlet and outlet states, only while the branch circulates (mass flow > 0).
+ * Heating: gas end IN, liquid end OUT. Cooling and defrost: liquid end IN, gas end OUT.
+ */
+export function indoorCoilProbeLive(fm: FlowMode, b: { flowKgs: number; inletC: number; outletC: number; heatW: number } | null): CoilProbe {
+  const heating = fm === 'heating';
+  if (fm === 'idle' || !b || !(b.flowKgs > 0)) return coilProbe(NO_END(heating ? 'IN' : 'OUT'), NO_END(heating ? 'OUT' : 'IN'), null);
+  return heating
+    ? coilProbe({ role: 'IN', tempC: b.inletC }, { role: 'OUT', tempC: b.outletC }, b.heatW)
+    : coilProbe({ role: 'OUT', tempC: b.outletC }, { role: 'IN', tempC: b.inletC }, b.heatW);
+}
+
+/** Indoor coil, Examples: the fixture's explicitly illustrative common-cycle endpoints; no per-branch refrigerant heat exists. */
+export function indoorCoilProbeExample(fm: FlowMode, c: CycleStates | null): CoilProbe {
+  if (fm === 'idle' || !c) return coilProbe(NO_END(fm === 'heating' ? 'IN' : 'OUT'), NO_END(fm === 'heating' ? 'OUT' : 'IN'), null);
+  return fm === 'heating'
+    ? coilProbe({ role: 'IN', tempC: c.dischargeC }, { role: 'OUT', tempC: c.condOutC }, null)
+    : coilProbe({ role: 'OUT', tempC: c.suctionC }, { role: 'IN', tempC: c.expOutC }, null);
 }
 
 export function phaseLabel(p: Phase): string {

@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-10-10T15:12:16.310Z",
+  "method": "Real worker and self-hosted EOS; configuration continuity",
+  "checks": [
+    {
+      "name": "indoor On/Off retains calculated values without blanking, resetting time or other rooms",
+      "passed": true
+    },
+    {
+      "name": "declared generic capacity permits six rooms and actual six-branch live operation",
+      "passed": true
+    },
+    {
+      "name": "removing a middle room preserves surviving thermal identity, matching lines and physical time",
+      "passed": true
+    },
+    {
+      "name": "restart applies edited initial temperature while retaining weather and room parameters",
+      "passed": true
+    }
+  ]
+}

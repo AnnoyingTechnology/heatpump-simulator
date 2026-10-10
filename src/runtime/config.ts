@@ -1,6 +1,7 @@
 import { defaultEngineConfig, defaultRoomConfig } from '../engine/defaults.ts';
 import type { EngineConfig } from '../engine/types.ts';
 import type { Config } from '../types.ts';
+import { outdoorPortCapacity } from '../types.ts';
 
 export interface LiveParameters {
   fieldLines: 'idealized' | 'physical';
@@ -41,6 +42,7 @@ export function defaultLiveParameters(): LiveParameters {
 /** Manufacturer references select casings only. Every performance parameter below is a generic assumption. */
 export function engineConfigFromUi(cfg: Config, live: LiveParameters): EngineConfig {
   const c = defaultEngineConfig(cfg.unitCount);
+  c.indoorPortCapacity = outdoorPortCapacity(cfg);
   c.mode = cfg.mode;
   c.outdoorTemperatureC = cfg.outdoorC;
   c.outdoorRelativeHumidity = cfg.outdoorRh / 100;

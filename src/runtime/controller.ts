@@ -1,7 +1,7 @@
 import type { EngineConfig, EngineOutput } from '../engine/types.ts';
 import type { Request, Response, RuntimeStatus } from './protocol.ts';
 
-/** One calculation in flight. Soft inputs retain an explicitly labelled completed snapshot. */
+/** One calculation in flight. Compatible control edits retain an explicitly labelled completed snapshot. */
 export class SimulationRuntime {
   private worker: Worker | null = null;
   private revision = 0;
@@ -84,7 +84,7 @@ export class SimulationRuntime {
     if (!this.worker || (!this.initialized && this.status.state === 'error')) { this.start(config); return; }
     this.revision++;
     this.retainSnapshot = !!this.status.output && this.status.state !== 'error'
-      && this.status.output.state !== 'fault' && softInputsOnly(this.submittedConfig, config);
+      && this.status.output.state !== 'fault' && compatibleControlsOnly(this.submittedConfig, config);
     this.submittedConfig = structuredClone(config);
     this.status = { ...this.status, state: this.retainSnapshot ? 'updating' : 'loading',
       output: this.retainSnapshot ? this.status.output : null, error: null };
@@ -104,12 +104,14 @@ export class SimulationRuntime {
   stop(): void { this.worker?.terminate(); this.worker = null; this.busy = false; this.pendingConfig = null; }
 }
 
-/** Only target/weather edits have compatible previously calculated branch/circuit snapshots. */
-function softInputsOnly(previous: EngineConfig | null, next: EngineConfig): boolean {
+/** Weather, targets and On/Off requests preserve the same room/circuit identities and stored state.
+ * A held snapshot describes actual previous flow, not the newly requested switch state. Structural or model
+ * changes still invalidate it; configure acknowledgements never masquerade as completed physical steps. */
+function compatibleControlsOnly(previous: EngineConfig | null, next: EngineConfig): boolean {
   if (!previous) return false;
   const basis = (config: EngineConfig): EngineConfig => ({ ...config,
     outdoorTemperatureC: 0, outdoorRelativeHumidity: 0,
-    rooms: config.rooms.map(room => ({ ...room, setpointC: 0 })),
+    rooms: config.rooms.map(room => ({ ...room, setpointC: 0, enabled: false })),
   });
   return JSON.stringify(basis(previous)) === JSON.stringify(basis(next));
 }

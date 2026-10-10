@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-10-10T15:15:15.967Z",
+  "checks": [
+    {
+      "name": "permanent heating probes match actual outdoor/compressor and per-branch EOS endpoints",
+      "passed": true
+    },
+    {
+      "name": "local controls stay focused and preserve probe values until the next accepted step",
+      "passed": true
+    },
+    {
+      "name": "closed branch probes become unavailable without substituting air or metal temperature",
+      "passed": true
+    },
+    {
+      "name": "environmental controls are unboxed, equipment-local mode and enlarged readouts are permanent",
+      "passed": true
+    }
+  ]
+}
