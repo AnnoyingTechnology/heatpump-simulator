@@ -6,7 +6,7 @@ Reviewed on 2026-10-10. This record covers interface behavior and static hosting
 
 `npm run build` runs strict TypeScript checking and produces a static Vite build. The browser runner uses an isolated local Chromium profile over loopback CDP, separate from the owner's normal browser. No browser settings, client configuration or authenticated external services were changed.
 
-The revised zoned interface production build passed and all **16 Examples/browser checks passed**. Four rendered evidence views were recaptured after the corner-readout and header corrections; five-room rendering was also inspected at 1440×900. The previous workspace layout validation passed. The live worker loads the pinned local CoolProp JS/WASM backend; Examples does not start it unless the user has previously selected Live.
+The revised zoned interface production build passed and all **16 Examples/browser checks passed**. Four rendered evidence views were recaptured after the corner-readout and header corrections; five-room rendering was also inspected at 1440×900. The previous workspace layout validation passed. Live is now the default and starts the worker with the pinned local CoolProp JS/WASM backend. Selecting Examples pauses physical advancement without relabelling its fixtures as real calculations.
 
 The reproducible runner is [`tools/check-workbench.mjs`](../tools/check-workbench.mjs). Recorded results are [`interface-browser-results.json`](interface-browser-results.json). Checks cover:
 
@@ -38,11 +38,14 @@ The two actual advanced-pipe interaction checks passed: selecting finite lines m
 
 The final safe-backend [`tools/check-live-engine.mjs`](../tools/check-live-engine.mjs) passed **seven integration checks** recorded in [`live-browser-results.json`](live-browser-results.json): real worker/EOS data, weather and room input/focus behavior, mode reversal preserving weather, retained-history five-room addition with actual per-branch refrigerant states, rejection/recovery suppressing stale pressures/COP/outlets, source separation, and production worker/WASM under a GitHub Pages project path. Long QA advances use bounded five-second requests rather than one CPU-heavy sixty-second batch, preserving the same simulated scenario horizon.
 
+After the guarded numerical suite passed and independent review accepted the bounded prototype, [`tools/check-live-entry.mjs`](../tools/check-live-entry.mjs) verified the actual production entry point opens in Live without selecting it, advances the real worker clock, retains idealized piping by default, and loads all assets beneath `/heatpump-simulator/` without failed requests or JavaScript exceptions. Results: [`live-entry-browser-results.json`](live-entry-browser-results.json). The 16 Examples and four room/cleanliness checks were repeated after this default change. Strict TypeScript and production build passed.
+
 ## Rendered evidence
 
 [`tools/capture-workbench.mjs`](../tools/capture-workbench.mjs) captures these review views with reduced-motion rendering. Screenshots are evidence only; none is imported or shipped as artwork.
 
 - [Overview](../design/interface-preview.png)
+- [Default Live entry](../design/interface-live.png)
 - [Outdoor circuit close-up](../design/interface-outdoor.png)
 - [Frost preview](../design/interface-frost.png)
 - [Five-room configuration](../design/interface-five-rooms.png)

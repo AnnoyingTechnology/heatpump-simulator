@@ -209,7 +209,7 @@ try {
       const rel=decodeURIComponent(url.pathname.slice('/heatpump-simulator/'.length))||'index.html';
       const file=resolve('dist',rel);
       if(!file.startsWith(resolve('dist')+'/')){res.writeHead(403).end();return;}
-      const mime={'.html':'text/html','.css':'text/css','.js':'text/javascript'}[extname(file)]||'application/octet-stream';
+      const mime={'.html':'text/html','.css':'text/css','.js':'text/javascript','.wasm':'application/wasm'}[extname(file)]||'application/octet-stream';
       res.writeHead(200,{'Content-Type':mime});res.end(await readFile(file));
     }catch{res.writeHead(404).end();}
   });
@@ -228,5 +228,5 @@ try {
   console.log(`${results.length} browser checks passed`);
 } finally {
   await page.close();
-  if(server)await new Promise(r=>server.close(r));
+  if(server)await new Promise(r=>{server.close(r);server.closeAllConnections();});
 }

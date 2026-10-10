@@ -4,7 +4,7 @@ Active new project, commissioned 2026-10-10. This document records owner decisio
 
 ## Current milestone
 
-Independent science research, a browser-feasible thermodynamic architecture and a large runnable kitchen-sink mockup are complete. Following the owner's acceptance and request to continue, implement the live browser engine with independent numerical science review, and revise the interface to clean zones and readily accessible common controls. Keep illustrative examples separate from real calculations. Publication follows the live review. Do not start branding, poster production, or an Opus review yet; Julien will request/trigger Opus 5.5 separately.
+Independent science research, the large vector workbench and the first generic live R32 engine are complete. The owner-requested clean zones, direct room setpoints, corner readings, pinned weather and cleanliness overrides are implemented. The guarded numerical suite passed 21/21 plus a separately added backend-failure case, complemented by independent scientific checks and actual-worker browser evidence. Live is the default; illustrative Examples remain separate. Physical field lines are a bounded advanced sensitivity option; idealized lines remain the default. Broader domain/empirical validation and a supported faster property backend remain follow-up work. Publication, branding and the owner-triggered Opus review have not started.
 
 ## Product
 
@@ -44,3 +44,5 @@ Treat observed facts, historical evidence, model assumptions and unknowns separa
 ## Workspace boundaries
 
 All maintained project artifacts belong in this directory. Respect the parent AGENTS.md. Do not access directories named Intime. Do not change personal skills, global client configuration or memory stores. Do not create GitHub repositories, push, publish, or send messages during this milestone. Keep browser access read-only apart from opening the local preview. No external runtime assets or fonts are required.
+
+The owner requested a local Git repository and regular commits on 2026-10-10. This project has its own local `main` repository; commit verified milestones and keep it separate from the parent agent workspace. No remote is configured.

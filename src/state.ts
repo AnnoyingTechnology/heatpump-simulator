@@ -44,8 +44,7 @@ export function defaultConfig(): Config {
 
 function defaultUi(): UiState {
   return {
-    // Interim default until the live backend has passed its checks; root flips it afterwards.
-    experience: 'examples',
+    experience: 'live',
     speed: 1,
     paused: false,
     selected: null,

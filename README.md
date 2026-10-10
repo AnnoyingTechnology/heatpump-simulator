@@ -1,6 +1,6 @@
 # Heatpump Simulator 2026
 
-A desktop, frontend-only heat-pump sandbox with a real R32 thermodynamic engine, independent science research and a vector workbench. The final numerical suite is running; Examples remains the default until its acceptance gate passes.
+A desktop, frontend-only heat-pump sandbox with a real R32 thermodynamic engine, independent science research and a vector workbench. It opens in Live; Examples provides separate illustrative snapshots.
 
 ## Run locally
 
@@ -28,7 +28,7 @@ The workbench provides live heating/cooling, automatic visible frost/defrost, 1â
 
 In Examples, readings come from explicitly constructed R32 fixtures. Changing configuration does not recalculate heat, COP, pressures or outlet temperatures. Only the illustrative preview clock and iceâ†’retained-liquid ledger advance.
 
-Live uses the pinned self-hosted CoolProp HEOS/psychrometric backend, a quasi-steady shared-pressure cycle, per-branch phase-aware heat transfer, dynamic room air/fabric/metal states and conserved outdoor ice/water enthalpy. Natural frost, latent melting, draining and return to heating have passed independent numerical and actual-worker browser checks. The complete-suite gate remains pending in the engine review.
+Live uses the pinned self-hosted CoolProp HEOS/psychrometric backend, a quasi-steady shared-pressure cycle, per-branch phase-aware heat transfer, dynamic room air/fabric/metal states and conserved outdoor ice/water enthalpy. Instantaneous useful-room COP includes storage effects and starts low while coil metals warm. Natural frost, latent melting, draining and return to heating have passed independent numerical and actual-worker browser checks. The guarded 21-test suite passed, together with the separately added backend-failure regression; the independent review accepts the exercised generic prototype with explicit limits.
 
 This is a generic, uncalibrated R32 reduced-order model. Manufacturer labels/casing dimensions do not establish manufacturer performance or exact installed topology. Generic coil/compressor/control and fouling assumptions are explicit; exact finned exchanger areas remain unknown. Other refrigerants require separate validation. Ice sublimation and indoor icing are outside current coverage, and unsupported operating points stop with an explicit fault while retaining stored inventories.
 
