@@ -2,8 +2,10 @@ import { DomainError, Properties } from './properties.ts';
 import { transportPipe } from './transport.ts';
 import type { CycleOutput, EngineConfig, Mode, RefrigerantState } from './types.ts';
 
-export interface CycleInput { mode: Mode; indoorMetalC: number[]; outdoorMetalC: number; active: boolean[]; speedRps: number; defrost?: boolean; previous?: { evaporatingC: number; condensingC: number; condenserOutletC?: number; branchMassFlowsKgs?: number[] } }
+export interface CycleInput { mode: Mode; indoorMetalC: number[]; outdoorMetalC: number; active: boolean[]; speedRps: number; defrost?: boolean; previous?: { evaporatingC: number; condensingC: number; condenserOutletC?: number; branchMassFlowsKgs?: number[]; pressureJacobian?: CycleOutput['pressureJacobian'] } }
 const clamp = (x: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, x));
+const GAUSS4 = [[-.8611363115940526,.3478548451374538],[-.3399810435848563,.6521451548625461],
+  [.3399810435848563,.6521451548625461],[.8611363115940526,.3478548451374538]];
 
 /** Required ref/metal conductance per kg/s, ∫dh/|T_ref(h)−T_metal|.
  * Pure-fluid latent zone is exact; sensible zones integrate real EOS cp in log(terminal approach).
@@ -25,7 +27,7 @@ export function conductanceIntegral(properties: Properties, pressurePa: number, 
       for (let part = 0; part < intervals; part++) {
         const za = zl + (zh - zl) * part / intervals, zb = zl + (zh - zl) * (part + 1) / intervals;
         const mid = .5 * (za + zb), half = .5 * (zb - za);
-        for (const [node, weight] of [[-Math.sqrt(3 / 5), 5 / 9], [0, 8 / 9], [Math.sqrt(3 / 5), 5 / 9]]) {
+        for (const [node, weight] of GAUSS4) {
           const temperatureK = metalC + direction * Math.exp(mid + node * half) + 273.15;
           integral += half * weight * properties.prop('C', 'P', pressurePa, 'T', temperatureK);
         }
@@ -41,14 +43,50 @@ export function conductanceIntegral(properties: Properties, pressurePa: number, 
 export function coilOutletH(properties: Properties, p: number, inletH: number, flow: number, ua: number, metalC: number, condensing: boolean): number {
   const sat = properties.saturation(p);
   if (condensing ? metalC >= sat.temperatureC : metalC <= sat.temperatureC) throw new DomainError('Coil cannot change phase against incompatible metal');
-  let terminal = properties.prop('H', 'P', p, 'T', metalC + 273.15 + (condensing ? 1e-5 : -1e-5)), origin = inletH;
-  const target = ua / flow;
-  if (target >= conductanceIntegral(properties, p, inletH, terminal, metalC)) return terminal;
-  for (let i = 0; i < 35; i++) {
-    const mid = .5 * (terminal + origin), integral = conductanceIntegral(properties, p, inletH, mid, metalC);
-    if (integral > target) terminal = mid; else origin = mid;
+  if (!(flow > 0 && ua > 0 && Number.isFinite(flow) && Number.isFinite(ua))) throw new DomainError('Invalid coil flow or conductance');
+  const terminal = properties.prop('H', 'P', p, 'T', metalC + 273.15 + (condensing ? 1e-5 : -1e-5));
+  const direction = condensing ? -1 : 1;
+  const low = Math.min(inletH, terminal), high = Math.max(inletH, terminal);
+  const phaseBoundaries = [sat.liquidH, sat.vaporH].filter(h => h > low && h < high).sort((a,b) => direction * (a-b));
+  let origin = inletH, target = ua / flow;
+  const ends = [...phaseBoundaries, terminal];
+  let panels = 0;
+  while (ends.length) {
+    if (++panels > 128) throw new DomainError('Coil outlet integration exceeded work limit');
+    let end = ends[0];
+    // Walk the final sensible zone in the integral's existing <=0.5 logarithmic
+    // panels. Usually the outlet is reached long before the limiting 1e-5 K
+    // approach; evaluating that whole tail for every pressure trial is unnecessary.
+    if (end === terminal) {
+      const approach = Math.abs(properties.prop('T','P',p,'H',origin)-273.15-metalC);
+      if (approach > 1e-5 * Math.exp(.5))
+        end = properties.prop('H','P',p,'T',metalC + 273.15 - direction * approach * Math.exp(-.5));
+    }
+    const required = conductanceIntegral(properties, p, origin, end, metalC);
+    if (target >= required) { target -= required; origin = end; if (end === ends[0]) ends.shift(); continue; }
+    // The pure-fluid latent interval is linear in enthalpy and can be inverted exactly.
+    if (Math.min(origin,end) >= sat.liquidH && Math.max(origin,end) <= sat.vaporH)
+      return origin + direction * target * Math.abs(sat.temperatureC - metalC);
+    // A sensible interval is monotone. Safeguarded Newton uses dI/dh=1/|T-Tmetal|;
+    // no repeated integration over previously crossed phases is needed.
+    const span = end - origin;
+    const maxApproach = Math.max(...[origin,end].map(h => Math.abs(properties.prop('T','P',p,'H',h)-273.15-metalC)));
+    let lower = 0, upper = 1, fraction = .5;
+    for (let i = 0; i < 60; i++) {
+      const h = origin + fraction * span;
+      const residual = conductanceIntegral(properties,p,origin,h,metalC) - target;
+      // Positive cp makes temperature monotone on this single-phase interval.
+      // |dh_error| <= |I_error| max|T-Tmetal| bounds outlet heat error to 1 µW.
+      if (Math.abs(residual) * maxApproach * flow <= 1e-6) return h;
+      if (residual > 0) upper = fraction; else lower = fraction;
+      if ((upper-lower) * Math.abs(span) * flow <= 2e-6) return origin + .5*(lower+upper)*span;
+      const approach = Math.abs(properties.prop('T','P',p,'H',h)-273.15-metalC);
+      const next = fraction - residual * approach / Math.abs(span);
+      fraction = next > lower && next < upper ? next : .5*(lower+upper);
+    }
+    throw new DomainError('Coil outlet enthalpy closure did not converge');
   }
-  return .5 * (terminal + origin);
+  return terminal;
 }
 export function condenserOutletH(properties: Properties, p: number, inletH: number, flow: number, ua: number, metalC: number): number { return coilOutletH(properties,p,inletH,flow,ua,metalC,true); }
 
@@ -172,25 +210,35 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
   let iterations = 0;
   for (const seed of seeds) {
     let te = clamp(seed[0], -39.8, lowMax - .01), tc = clamp(seed[1], highMin + 1e-8, 64.8);
+    let jacobian = seed === seeds[0] ? input.previous?.pressureJacobian : undefined;
+    if (jacobian?.mode !== input.mode || jacobian.floatingCondenser !== floatingCondenser) jacobian = undefined;
     for (let k = 0; k < 35; k++) {
       iterations++;
       let current: Trial; try { current = evaluate(te, tc); } catch(error) { lastRejection = error instanceof Error ? error.message : String(error); rejections.add(lastRejection); break; }
       const norm = Math.hypot(...current.residual);
       if (!best || norm < best.norm) best = { te, tc, trial: current, norm };
-      if (Math.max(...current.residual.map(Math.abs)) <= config.numerics.pressureToleranceW && Math.abs(current.output.massResidualKgs)*250000 <= config.numerics.pressureToleranceW && current.output.suction.phase === 'vapor') return { ...current.output, iterations };
+      if (Math.max(...current.residual.map(Math.abs)) <= config.numerics.pressureToleranceW && Math.abs(current.output.massResidualKgs)*250000 <= config.numerics.pressureToleranceW && current.output.suction.phase === 'vapor') return { ...current.output, iterations, pressureJacobian: jacobian };
       const dt = Math.min(.025, Math.max(1e-9, .2 * (lowMax - te)));
       const dc = floatingCondenser ? .025 : -Math.min(.025, Math.max(1e-9, .2 * (tc - highMin)));
-      let tTrial: Trial, cTrial: Trial; try { tTrial = evaluate(te + dt, tc); cTrial = evaluate(te, tc + dc); } catch { break; }
-      const a = (tTrial.residual[0] - current.residual[0]) / dt, b = (cTrial.residual[0] - current.residual[0]) / dc;
-      const c = (tTrial.residual[1] - current.residual[1]) / dt, e = (cTrial.residual[1] - current.residual[1]) / dc;
-      const determinant = a * e - b * c; if (Math.abs(determinant) < 1e-10) break;
-      const stepT = (-e * current.residual[0] + b * current.residual[1]) / determinant;
-      const stepC = (c * current.residual[0] - a * current.residual[1]) / determinant;
       let accepted = false;
-      for (let scale = 1; scale >= 1 / 128; scale /= 2) {
-        const candidateT = clamp(te + clamp(stepT, -12, 12) * scale, -39.9, lowMax - 1e-9);
-        const candidateC = clamp(tc + clamp(stepC, -12, 12) * scale, highMin + 1e-9, 64.9);
-        try { const candidate = evaluate(candidateT, candidateC); if (Math.hypot(...candidate.residual) < norm) { te = candidateT; tc = candidateC; accepted = true; break; } } catch { /* bounded line-search rejection */ }
+      // Continuation can reuse the previous local slope for its first correction.
+      // Failed/invalid cached directions retry a fresh finite-difference Jacobian.
+      for (const cached of k === 0 && jacobian ? [true,false] : [false]) {
+        if (!cached) {
+          let tTrial: Trial, cTrial: Trial; try { tTrial = evaluate(te + dt, tc); cTrial = evaluate(te, tc + dc); } catch { break; }
+          jacobian = { mode: input.mode, floatingCondenser, matrix: [(tTrial.residual[0]-current.residual[0])/dt, (cTrial.residual[0]-current.residual[0])/dc,
+            (tTrial.residual[1]-current.residual[1])/dt, (cTrial.residual[1]-current.residual[1])/dc] };
+        }
+        const [a,b,c,e] = jacobian!.matrix;
+        const determinant = a * e - b * c; if (!Number.isFinite(determinant) || Math.abs(determinant) < 1e-10) continue;
+        const stepT = (-e * current.residual[0] + b * current.residual[1]) / determinant;
+        const stepC = (c * current.residual[0] - a * current.residual[1]) / determinant;
+        for (let scale = 1; scale >= 1 / 128; scale /= 2) {
+          const candidateT = clamp(te + clamp(stepT, -12, 12) * scale, -39.9, lowMax - 1e-9);
+          const candidateC = clamp(tc + clamp(stepC, -12, 12) * scale, highMin + 1e-9, 64.9);
+          try { const candidate = evaluate(candidateT, candidateC); if (Math.hypot(...candidate.residual) < norm) { te = candidateT; tc = candidateC; accepted = true; break; } } catch { /* bounded line-search rejection */ }
+        }
+        if (accepted) break;
       }
       if (!accepted) break;
     }

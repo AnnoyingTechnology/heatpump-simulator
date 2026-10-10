@@ -45,6 +45,9 @@ h2, h3, h4, h5, p, ul, dl { margin: 0; }
 .time { font: 600 14px var(--mono); font-variant-numeric: tabular-nums; letter-spacing: 0.02em; min-width: 66px; text-align: right; }
 .hd-select { width: auto; padding: 5px 24px 5px 9px; border-radius: 8px; font-weight: 600; font-size: 12px; cursor: pointer; color: var(--ink-2); }
 .hd-select option:disabled { color: #a5a39b; }
+.hd-speed { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 80px; }
+.hd-speed-rate { font: 10px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.hd-speed-rate[data-limited="true"] { color: var(--ink-2); }
 .topbar .btn { padding: 6px 13px; }
 .hd-pause { min-width: 76px; }
 .hd-pause.attn { box-shadow: 0 0 0 3px rgba(232, 89, 12, 0.35); }

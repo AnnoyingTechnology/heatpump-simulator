@@ -12,10 +12,11 @@ Updated 2026-10-10. This is the current implementation checkpoint; detailed evid
 - Conserved refrigerant mass/internal-energy implementation remains experimental and gated. Pressure-conditioning corrections passed the actual-backend core and rollback checks.
 - Product scope uses initial charge adjustments to compare post-loss scenarios. Ongoing leaks were removed. Optional compressor/fan audio is recorded for later, off by default.
 - Recent build, production entry, charge-control and zone-navigation browser checks passed. No publication or remote repository has been configured.
+- Fixed ineffective speed pacing and reduced exchanger-solve overhead. A five-check browser run verified speed response, pause, quarter-second steps, desktop header fit and fast passive scenes. Requested 1×/2× achieved approximately 1×/2×; requested 50× reached 2.5× in active heating and 49× with all units off. The selector now shows achieved speed. Three focused real-EOS tests passed, including 144 outlet/pressure-perturbation comparisons, stale-slope recovery and identical batched/unbatched physical trajectories.
 
 ## In progress
 
-- **Simulation speed:** a fresh browser measurement found ×1, ×5 and ×50 all advancing about 0.65 simulated seconds per wall second on the owner preset. The fixed-quarter-second scheduler and real-EOS calculation throughput are being investigated. The clock is actual completed physical time; faster settings are currently ineffective on this workload.
+- **Simulation speed:** the defect is fixed; high-speed active heating remains CPU-limited. Fresh-source full Reference cooling/frost/transport regressions are running after the exchanger optimization. Further acceleration requires validated backend or numerical improvements rather than changing the displayed clock or physical timestep.
 - **Experimental charge physics:** remove a noisy isentropic nozzle enthalpy subtraction using a bounded real-EOS integral. Independent numerical review is ongoing; conservation limits and physical inventories remain unchanged.
 
 ## Required before charge release

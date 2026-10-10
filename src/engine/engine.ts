@@ -26,7 +26,7 @@ export class HeatPumpEngine {
   private refrigerant: ChargeCircuit | null = null;
   private chargeCandidate: ChargeCandidate | null = null;
   private inventoryDrive: DriveState = newDriveState();
-  private lastCycle: { evaporatingC: number; condensingC: number; condenserOutletC: number; branchMassFlowsKgs: number[] } | undefined;
+  private lastCycle: { evaporatingC: number; condensingC: number; condenserOutletC: number; branchMassFlowsKgs: number[]; pressureJacobian?: CycleOutput['pressureJacobian'] } | undefined;
   private fault: string | null = null;
   private initialEnergy = 0;
   private initialWater = 0;
@@ -243,7 +243,7 @@ export class HeatPumpEngine {
       if (effectiveMode) cycle = inventoryCycle(this.properties, config, charge, effectiveMode, dt);
     } else if (effectiveMode) {
       cycle = solveCycle(this.properties, config, { mode: effectiveMode, indoorMetalC: this.rooms.map(room => room.metalTemperatureC), outdoorMetalC: before.temperatureC, active: this.active, speedRps: speed, defrost, previous: this.lastCycle });
-      this.lastCycle = { evaporatingC: cycle.evaporatingC, condensingC: cycle.condensingC, condenserOutletC: cycle.condenserOutlet.temperatureC, branchMassFlowsKgs: cycle.branchMassFlowsKgs };
+      this.lastCycle = { evaporatingC: cycle.evaporatingC, condensingC: cycle.condensingC, condenserOutletC: cycle.condenserOutlet.temperatureC, branchMassFlowsKgs: cycle.branchMassFlowsKgs, pressureJacobian: cycle.pressureJacobian };
     }
     const outW = this.properties.airW(config.outdoorTemperatureC, config.outdoorRelativeHumidity, p), outH = this.properties.airH(config.outdoorTemperatureC, outW, p);
     const outputs: RoomOutput[] = [];

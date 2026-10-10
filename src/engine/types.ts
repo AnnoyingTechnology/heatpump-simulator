@@ -38,6 +38,8 @@ export interface RoomState { dryAirMassKg: number; airEnthalpyJ: number; humidit
 export interface FilmState { massKg: number; enthalpyJ: number }
 export interface FilmDerived { temperatureC: number; iceKg: number; liquidKg: number; thicknessM: number }
 export interface CycleOutput {
+  /** Numerical warm start only; every returned cycle still satisfies fresh EOS residuals. */
+  pressureJacobian?: { mode: Mode; floatingCondenser: boolean; matrix: [number, number, number, number] };
   mode: Mode; evaporatingC: number; condensingC: number; lowPressureBarAbs: number; highPressureBarAbs: number;
   suction: RefrigerantState; discharge: RefrigerantState; condenserOutlet: RefrigerantState; expansionOutlet: RefrigerantState;
   totalMassFlowKgs: number; branchMassFlowsKgs: number[]; branchCoilHeatW: number[]; outdoorCoilHeatW: number;

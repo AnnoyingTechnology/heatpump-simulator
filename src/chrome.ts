@@ -12,6 +12,7 @@ export interface Header {
   root: HTMLElement;
   sync(s: AppState): void;
   setTime(sec: number): void;
+  setSpeedRate(actual: number | null, paused: boolean, requested: number): void;
 }
 
 const fmtTime = (sec: number): string => {
@@ -30,7 +31,7 @@ export function fieldLinesNote(s: AppState): string {
     : 'Physical field lines (advanced, slower): uncalibrated homogeneous pipe-loss approximation with assumed bore, level elevation and outdoor-air exposure; not a prediction of installed line losses; some regimes may be unsupported and fail visibly (see Advanced pipe assumptions)';
 }
 
-const SPEED_HELP = 'Requested speed. Live runs are CPU-limited with one worker task in flight, so ×10 or ×50 may not be reached; the Simulation time shows what actually elapsed. ×50 is for reaching steady state quickly.';
+const SPEED_HELP = 'Requested simulation speed. The small reading below shows actual completed physical time per wall second. High speeds are limited by calculation throughput; physical timesteps stay unchanged.';
 
 /** Compact native select for the header. Built once; refresh() never steals an open or focused control. */
 function pick<T extends string | number>(o: {
@@ -73,6 +74,8 @@ export function createHeader(): Header {
   const speedHelp = html('span', { class: 'sr-only', id: 'speed-help' }, SPEED_HELP);
   speed.sel.setAttribute('aria-describedby', 'speed-help');
   speed.sel.title = SPEED_HELP;
+  const speedRate = html('output',{class:'hd-speed-rate','aria-label':'Actual simulation speed'},'…');
+  const speedControl = html('div',{class:'hd-speed'},speed.root,speedRate);
 
   const pause = html('button', { type: 'button', class: 'btn hd-pause' }, 'Pause');
   pause.addEventListener('click', () => store.update((s) => { s.ui.paused = !s.ui.paused; }));
@@ -115,7 +118,7 @@ export function createHeader(): Header {
 
   const root = html('header', { class: 'topbar' },
     html('div', { class: 'brand' }, html('span', { class: 'mark', 'aria-hidden': 'true' }), html('b', {}, 'Heatpump Simulator 2026')),
-    html('div', { class: 'hd-group' }, pause, reset, status, speed.root, time, speedHelp),
+    html('div', { class: 'hd-group' }, pause, reset, status, speedControl, time, speedHelp),
     html('div', { class: 'spacer' }),
     metrics);
 
@@ -175,6 +178,13 @@ export function createHeader(): Header {
       }
     },
     setTime(sec: number): void { setText(time, fmtTime(sec)); },
+    setSpeedRate(actual: number | null, paused: boolean, requested: number): void {
+      const limited = !paused && actual !== null && actual < .9*requested;
+      setText(speedRate,paused ? 'Paused' : actual === null ? '…' : `${actual.toFixed(1)}× actual`);
+      speedRate.dataset.limited = String(limited);
+      speedRate.title = paused ? 'Physical time is paused' : actual === null ? 'Measuring completed simulation time' :
+        `${actual.toFixed(2)} simulated seconds per wall second${limited ? '; requested speed is limited by calculation throughput' : ''}`;
+    },
   };
 }
 

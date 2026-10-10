@@ -10,6 +10,7 @@ import { advanceLedger, store } from './state';
 import type { Clock } from './state';
 import { engineConfigFromUi, type InventoryInitialization } from './runtime/config';
 import { simulation } from './runtime/view';
+import { SimulationPacer } from './runtime/pacing';
 import type { ZoomPreset } from './types';
 
 const app = document.getElementById('app');
@@ -129,7 +130,7 @@ scene.zoomTo('overview', true);
 
 let last = performance.now();
 let lastInspector = 0;
-let nextPhysicalStepAt = 0;
+const pacer = new SimulationPacer();
 const liveClock: Clock = { previewTimeS: 0, iceKg: 0, retainedWaterKg: 0, seeded: false, melting: false };
 function frame(now: number): void {
   const dt = Math.min(0.25, (now - last) / 1000);
@@ -137,22 +138,23 @@ function frame(now: number): void {
   const s = store.state;
   const sim = dt * s.ui.speed;
   if (s.ui.experience === 'live') {
-    // Small fixed work chunks keep parameter changes and pause responsive at every requested speed.
-    // A busy worker never builds a backlog; overloaded CPUs run slower in simulated time.
-    if (!s.ui.paused && now >= nextPhysicalStepAt) {
-      if (simulation.step(.25)) nextPhysicalStepAt = now + 250 / s.ui.speed;
-    }
     const output = simulation.status.output;
+    pacer.update(now, output?.simulatedSeconds ?? null, s.ui.speed, s.ui.paused, simulation.status.calculationMs);
+    const seconds = pacer.nextBatch();
+    if (!s.ui.paused && seconds > 0 && simulation.step(seconds)) pacer.submitted(seconds);
     if (output) {
       Object.assign(liveClock, { previewTimeS: output.simulatedSeconds, iceKg: output.outdoor.iceKg,
         retainedWaterKg: output.outdoor.liquidKg, melting: !s.ui.paused && output.outdoor.meltPowerW > 0 });
     } else liveClock.melting = false;
     header.setTime(liveClock.previewTimeS);
+    header.setSpeedRate(pacer.achievedSpeed,s.ui.paused,s.ui.speed);
     scene.tick(s, liveClock);
   } else {
     if (!s.ui.paused) store.clock.previewTimeS += sim;
     advanceLedger(store.clock, fixtureFor(s.cfg.mode, s.cfg.example), sim, s.ui.paused);
     header.setTime(store.clock.previewTimeS);
+    pacer.update(now,store.clock.previewTimeS,s.ui.speed,s.ui.paused,0);
+    header.setSpeedRate(pacer.achievedSpeed,s.ui.paused,s.ui.speed);
     scene.tick(s, store.clock);
   }
   overlay.tick();
