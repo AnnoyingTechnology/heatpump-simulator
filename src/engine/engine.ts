@@ -1,6 +1,6 @@
 import { Properties, DomainError } from './properties.ts';
 import { solveCycle } from './cycle.ts';
-import { ChargeCircuit, type ChargeCandidate, type ChargeBoundary } from './charge.ts';
+import { ChargeCircuit, type ChargeCandidate, type ChargeBoundary, type ChargeNumerics } from './charge.ts';
 import { driveStep, driveRatioThresholds, newDriveState, type DriveState } from './drive.ts';
 import { inventoryCycle } from './charge-output.ts';
 import { airExchange } from './air.ts';
@@ -34,7 +34,10 @@ export class HeatPumpEngine {
   private ledgers = { electricityJ: 0, signedRoomHeatJ: 0, outdoorExchangeJ: 0, drainageJ: 0, configurationEnergyJ: 0, boundaryEnergyJ: 0 };
   private lastOutput!: EngineOutput;
   private warnings: string[] = [];
-  constructor(private properties: Properties, config: EngineConfig) { this.config = structuredClone(config); this.reset(); }
+  private readonly chargeNumerics: ChargeNumerics;
+  constructor(private properties: Properties, config: EngineConfig, chargeNumerics:ChargeNumerics={}) {
+    this.chargeNumerics=Object.freeze({...chargeNumerics});this.config = structuredClone(config); this.reset();
+  }
   getConfig(): EngineConfig { return structuredClone(this.config); }
   reset(config: EngineConfig = this.config): EngineOutput {
     this.validateConfig(config); this.config = structuredClone(config);
@@ -43,7 +46,7 @@ export class HeatPumpEngine {
     this.time = 0; this.state = 'idle'; this.stateTime = 0; this.heatingRuntime = 0; this.onTime = 0; this.offTime = Infinity;
     this.active = config.rooms.map(() => false); this.cycle = null; this.lastCycle = undefined; this.fault = null;
     this.ledgers = { electricityJ: 0, signedRoomHeatJ: 0, outdoorExchangeJ: 0, drainageJ: 0, configurationEnergyJ: 0, boundaryEnergyJ: 0 };
-    this.refrigerant = config.inventory ? new ChargeCircuit(this.properties, config.inventory.geometry, { massKg: config.inventory.initialMassKg, fluidTemperatureC: config.inventory.initialFluidTemperatureC, orientation: config.mode }) : null;
+    this.refrigerant = config.inventory ? new ChargeCircuit(this.properties, config.inventory.geometry, { massKg: config.inventory.initialMassKg, fluidTemperatureC: config.inventory.initialFluidTemperatureC, orientation: config.mode, valveOpening: config.inventory.initialValveOpening },this.chargeNumerics) : null;
     this.chargeCandidate = null;
     this.inventoryDrive = newDriveState();
     this.boundaryWater = 0; this.initialEnergy = this.totalEnergy(); this.initialWater = this.totalWater();
@@ -111,6 +114,8 @@ export class HeatPumpEngine {
     return { dryAirMassKg: mass, airEnthalpyJ: mass * this.properties.airH(room.initialTemperatureC, w, p), humidityRatio: w, fabricTemperatureC: room.initialTemperatureC, metalTemperatureC: room.initialTemperatureC };
   }
   private validateConfig(config: EngineConfig): void {
+    const initialValve=config.inventory?.initialValveOpening;
+    if(initialValve!==undefined&&(!Number.isFinite(initialValve)||initialValve<0||initialValve>1))throw new DomainError('Initial EEV opening must be finite in [0,1]');
     if (config.mode !== 'heating' && config.mode !== 'cooling') throw new DomainError('Unsupported operating mode');
     if (config.fluid !== 'R32') throw new DomainError('Only R32 has implemented live model coverage');
     if (!(Number.isFinite(config.indoorPortCapacity) && Number.isInteger(config.indoorPortCapacity) && config.indoorPortCapacity > 0)) throw new DomainError('Declared indoor port capacity must be a positive finite integer');

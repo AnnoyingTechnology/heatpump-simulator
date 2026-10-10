@@ -5,6 +5,107 @@ import { Properties } from './build/properties.js';
 import { ChargeCircuit, ChargeWorkBudgetError } from './build/charge.js';
 import { HeatPumpEngine } from './build/engine.js';
 import { configured } from './charge-fixture.mjs';
+import { defaultRoomConfig } from './build/defaults.js';
+import { readFile } from 'node:fs/promises';
+
+test('opt-in pressure-drop core advances the saved passive balances without public restore or state mutation',async t=>{
+  const fixture=JSON.parse(await readFile(new URL('../../research/charge-pilot-results.json',import.meta.url),'utf8')).passiveCorner;
+  const previous=fixture.fluid,original=JSON.stringify(previous),props=new Properties(await factory()),results=[];
+  const b={orientation:'heating',compressorSpeedRps:0,enabledRoomIds:fixture.config.inventory.geometry.rooms.map(r=>r.id),
+    outdoorMetalC:fixture.output.outdoor.metalTemperatureC,
+    indoorMetalCById:Object.fromEntries(fixture.output.rooms.map(r=>[r.id,r.metalTemperatureC]))};
+  for(const numerics of [{pressureDerivativeRelativeStep:1e-10},{pressureDerivativeRelativeStep:1e-9},
+    {pressureDerivativeRelativeStep:1e-8},{pressureDifferenceStepPa:1e-5},{pressureDifferenceStepPa:1e-3}]){
+    const c=new ChargeCircuit(props,fixture.config.inventory.geometry,{massKg:1.8,fluidTemperatureC:7},
+      {...numerics,pressureDifferenceCoordinates:true}),before=c.snapshot(),start=performance.now();
+    assert.deepEqual(before.cells.map(v=>[v.id,v.volumeM3]),previous.cells.map(v=>[v.id,v.volumeM3]));
+    // Diagnostic previous-state argument solves real core balances; it neither
+    // authenticates/imports this external snapshot nor changes committed state.
+    const r=c.prepareSingle(.25,b,previous);results.push(r);
+    assert.deepEqual(c.snapshot(),before);assert.ok(Math.abs(r.massResidualKg)<1e-8);assert.ok(Math.abs(r.energyResidualJ)<.001);
+    assert.equal(r.compressorWorkJ,0);assert.equal(r.snapshot.compressorAdmission,false);
+    t.diagnostic(JSON.stringify({numerics,wallMs:performance.now()-start,iterations:r.nonlinearIterations,p:r.snapshot.variables.slice(0,3)}));
+  }
+  for(const r of results)for(let j=0;j<3;j++)assert.ok(Math.abs(r.snapshot.variables[j]-results[1].snapshot.variables[j])<.001);
+  assert.equal(JSON.stringify(previous),original);props.dispose();
+});
+
+test('opt-in pressure-drop core preserves cold start, reversal and transactional budget rollback',async()=>{
+  const props=new Properties(await factory()),finals=[];
+  for(const pressureDifferenceCoordinates of [false,true]){
+    const c=new ChargeCircuit(props,genericGeometry(),{massKg:.6,fluidTemperatureC:20},{pressureDifferenceCoordinates});
+    for(let i=0;i<9;i++){
+      const before=c.snapshot(),b=i<4?boundary():{...boundary(),orientation:'cooling',compressorSpeedRps:i===4?0:18};
+      const r=c.prepareStep(.25,b);assert.deepEqual(c.snapshot(),before);
+      assert.ok(Math.abs(r.massResidualKg)<1e-8);assert.ok(Math.abs(r.energyResidualJ)<.001);c.commit(r);
+    }
+    finals.push(c.snapshot());
+  }
+  for(let j=0;j<3;j++)assert.ok(Math.abs(finals[0].variables[j]-finals[1].variables[j])<1);
+  const g=genericGeometry(),T=20,rv=props.prop('D','T',T+273.15,'Q',1),rl=props.prop('D','T',T+273.15,'Q',0);
+  const V=g.outdoorCoilVolumeM3+g.accumulatorVolumeM3+g.rooms.reduce((s,r)=>s+r.coilVolumeM3+
+    Math.PI*(r.gasInsideDiameterM**2+r.smallInsideDiameterM**2)*r.lineLengthM/4,0);
+  const c=new ChargeCircuit(props,g,{massKg:V*(.97*rl+.03*rv),fluidTemperatureC:T},
+    {pressureDifferenceCoordinates:true,maximumAttempts:1}),before=c.snapshot();
+  assert.throws(()=>c.prepareStep(.25,boundary()),ChargeWorkBudgetError);assert.deepEqual(c.snapshot(),before);
+  props.dispose();
+});
+
+test('pressure-drop coupled recovery preserves stores and rejected thermal candidates roll back fully',async()=>{
+  const props=new Properties(await factory()),cfg=configured(),g=cfg.inventory.geometry,T=20;
+  const volume=g.outdoorCoilVolumeM3+g.accumulatorVolumeM3+g.rooms.reduce((sum,r)=>sum+r.coilVolumeM3+
+    Math.PI*(r.gasInsideDiameterM**2+r.smallInsideDiameterM**2)*r.lineLengthM/4,0);
+  cfg.inventory.initialMassKg=volume*(.97*props.prop('D','T',T+273.15,'Q',0)+.03*props.prop('D','T',T+273.15,'Q',1));
+  const engine=new HeatPumpEngine(props,cfg,{pressureDifferenceCoordinates:true}),before=engine.snapshot();
+  assert.equal(before.inventory.compressorAdmitted,false);
+  let recovered;
+  for(let i=0;i<8;i++){recovered=engine.step(.25);assert.notEqual(recovered.state,'fault',recovered.diagnostics.fault);
+    if(recovered.inventory.compressorAdmitted)break;}
+  assert.equal(recovered.inventory.compressorAdmitted,true);
+  assert.ok(recovered.simulatedSeconds>0&&recovered.simulatedSeconds<=2);
+  assert.ok(Math.abs(recovered.energy.residualJ)<.005);assert.ok(Math.abs(recovered.inventory.massResidualKg)<1e-8);
+  assert.ok(Math.abs(recovered.inventory.energyResidualJ)<.001);assert.ok(Math.abs(recovered.energy.waterResidualKg)<1e-9);
+  assert.deepEqual(recovered.inventory.cells.map(c=>[c.id,c.volumeM3]),before.inventory.cells.map(c=>[c.id,c.volumeM3]));
+  const bad=configured();bad.rooms[0].envelopeWK=1e12;
+  const rejected=new HeatPumpEngine(props,bad,{pressureDifferenceCoordinates:true}),initial=rejected.snapshot(),fault=rejected.step(.25);
+  assert.equal(fault.state,'fault');assert.equal(fault.simulatedSeconds,0);
+  assert.deepEqual(fault.inventory,initial.inventory);assert.deepEqual(fault.rooms,initial.rooms);
+  assert.deepEqual(fault.outdoor,initial.outdoor);assert.deepEqual(fault.energy,initial.energy);
+  props.dispose();
+});
+
+test('initial EEV fraction changes only actuator initialization and retains closed-system owner startup balances',async t=>{
+  const props=new Properties(await factory()),initials=[],last=[];
+  for(const initialValveOpening of [.65,0]) {
+    const cfg=configured();cfg.rooms=Array.from({length:3},(_,i)=>defaultRoomConfig(i));
+    // Current owner-declared attic/upstairs/ground volumes; line and component volumes stay fixed.
+    cfg.rooms.forEach((r,i)=>r.volumeM3=[84,155,100][i]);
+    cfg.inventory.initialMassKg=1.8;cfg.inventory.initialFluidTemperatureC=7;
+    cfg.inventory.initialValveOpening=initialValveOpening;
+    cfg.inventory.geometry.rooms=cfg.rooms.map((r,i)=>({...cfg.inventory.geometry.rooms[0],id:r.id,lineLengthM:[14,6.5,7.5][i]}));
+    const e=new HeatPumpEngine(props,cfg),before=e.snapshot();initials.push(before.inventory);
+    assert.deepEqual(e.refrigerant.snapshot().openings,[initialValveOpening,initialValveOpening,initialValveOpening]);
+    const edit=structuredClone(cfg);edit.inventory.initialValveOpening=.2;
+    assert.throws(()=>e.updateConfig(edit),/Restart/);assert.deepEqual(e.snapshot(),before);
+    let o;for(let i=0;i<4;i++){o=e.step(.25);assert.notEqual(o.state,'fault',o.diagnostics.fault);
+      assert.ok(Math.abs(o.inventory.massResidualKg)<1e-8);assert.ok(Math.abs(o.inventory.energyResidualJ)<.001);
+      assert.ok(Math.abs(o.energy.residualJ)<.005);assert.ok(Math.abs(o.energy.waterResidualKg)<1e-9);}
+    assert.equal(o.simulatedSeconds,1);last.push(o);
+    t.diagnostic(JSON.stringify({initialValveOpening,compressorMassFlowKgs:o.inventory.compressorMassFlowKgs,
+      totalValveFlowKgs:Object.values(o.inventory.fieldPorts).reduce((s,f)=>s+f.valveMassFlowKgs,0),
+      accumulatorMassKg:o.inventory.cells.find(c=>c.id==='accumulator').massKg}));
+  }
+  assert.deepEqual(initials[0].cells,initials[1].cells);
+  assert.equal(initials[0].storedInternalEnergyJ,initials[1].storedInternalEnergyJ);
+  // A closed actuator must not be mistaken for removal of pre-existing wet source holdup.
+  assert.ok(last[1].inventory.cells.find(c=>c.id==='accumulator').massKg>initials[1].cells.find(c=>c.id==='accumulator').massKg);
+  for(const initialValveOpening of[-.1,1.1,NaN,Infinity]) {
+    const cfg=configured();cfg.inventory.initialValveOpening=initialValveOpening;
+    assert.throws(()=>new HeatPumpEngine(props,cfg),/Initial EEV opening/);
+    assert.throws(()=>new ChargeCircuit(props,genericGeometry(),{massKg:.6,fluidTemperatureC:20,valveOpening:initialValveOpening}),/Initial EEV opening/);
+  }
+  props.dispose();
+});
 
 export function genericGeometry(n=1){return {
   rooms:Array.from({length:n},(_,i)=>({id:`room-${i+1}`,coilVolumeM3:Math.PI*.006**2*10/4,refrigerantConductanceWK:350,

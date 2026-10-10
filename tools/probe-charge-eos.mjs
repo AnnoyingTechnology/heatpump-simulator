@@ -2,7 +2,189 @@
 import factory from '../public/vendor/coolprop/coolprop.js';
 import { performance } from 'node:perf_hooks';
 import { pathToFileURL } from 'node:url';
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
+
+/** Actual coupled startup flux diagnosis. No controller or geometry changes. */
+export async function runOwnerStartupFlux({durationSeconds=10,initialValveOpening,roomVolumesM3}={}) {
+  const {Properties}=await import('../tests/engine/build/properties.js');
+  const {HeatPumpEngine}=await import('../tests/engine/build/engine.js');
+  const {createHash}=await import('node:crypto');
+  const sourceHashes=Object.fromEntries(await Promise.all(['charge','engine','properties','drive'].map(async name=>
+    [name,createHash('sha256').update(await readFile(new URL(`../tests/engine/build/${name}.js`,import.meta.url))).digest('hex')])));
+  const saved=JSON.parse(await readFile(new URL('../research/charge-pilot-results.json',import.meta.url),'utf8'));
+  const config=structuredClone(saved.ownerPressureDrop.config),props=new Properties(await factory());
+  if(initialValveOpening!==undefined)config.inventory.initialValveOpening=initialValveOpening;
+  if(roomVolumesM3!==undefined)config.rooms.forEach((r,i)=>r.volumeM3=roomVolumesM3[i]);
+  const engine=new HeatPumpEngine(props,config,{pressureDifferenceCoordinates:true}),initial=engine.snapshot();
+  const accumulatorMass=o=>o.inventory.cells.find(c=>c.id==='accumulator').massKg;
+  let previous=initial,failedOutput=null;const trace=[],start=performance.now();
+  try {
+    for(let i=0;i<durationSeconds/.25;i++) {
+      const o=engine.step(.25);
+      if(o.state==='fault'){failedOutput=o;break;}
+      const inv=o.inventory,acc=inv.cells.find(c=>c.id==='accumulator');
+      trace.push({t:o.simulatedSeconds,admitted:inv.compressorAdmitted,requestedRps:o.diagnostics.demandSpeedRps,
+        actualRps:o.diagnostics.speedRps,compressorMassFlowKgs:inv.compressorMassFlowKgs,
+        compressorElectricalW:o.electrical.compressorW,openings:engine.refrigerant.snapshot().openings,
+        signedRoomHeatW:o.signedRoomHeatW,roomTemperaturesC:o.rooms.map(r=>r.temperatureC),
+        roomMetalTemperaturesC:o.rooms.map(r=>r.metalTemperatureC),outdoorMetalC:o.outdoor.metalTemperatureC,
+        valveMassFlowsKgs:Object.values(inv.fieldPorts).map(f=>f.valveMassFlowKgs),
+        outdoorGasFaceMassFlowKgs:inv.coilPorts.outdoor.gasFaceMassFlowKgs,
+        outdoorSmallFaceMassFlowKgs:inv.coilPorts.outdoor.smallFaceMassFlowKgs,
+        accumulatorMassKg:acc.massKg,accumulatorMassRateKgs:(acc.massKg-accumulatorMass(previous))/.25,
+        accumulatorQualityMass:acc.state.qualityMass,accumulatorTemperatureC:acc.state.temperatureC,
+        massResidualKg:inv.massResidualKg,fluidEnergyResidualJ:inv.energyResidualJ,energyResidualJ:o.energy.residualJ,
+        waterResidualKg:o.energy.waterResidualKg});previous=o;
+    }
+    const finalSourceHashes=Object.fromEntries(await Promise.all(['charge','engine','properties','drive'].map(async name=>
+      [name,createHash('sha256').update(await readFile(new URL(`../tests/engine/build/${name}.js`,import.meta.url))).digest('hex')])));
+    return {status:failedOutput?'bounded startup fault; uncommitted interval rejected':'unchanged owner-generic startup diagnostic; no installed calibration',
+      checkedAt:new Date().toISOString(),sourceHashes,config,requestedSeconds:durationSeconds,acceptedSeconds:previous.simulatedSeconds,
+      sourceHashesUnchanged:JSON.stringify(sourceHashes)===JSON.stringify(finalSourceHashes),
+      failedOutput,lastOutput:previous,lastFluid:engine.refrigerant.snapshot(),
+      initialAccumulatorMassKg:accumulatorMass(initial),wallSeconds:(performance.now()-start)/1000,trace};
+  } finally {props.dispose();}
+}
+
+/** Isolated coordinate comparison, never commits to a production circuit.
+ * Reuses its exact constitutive laws with independently flashed PD cells.
+ * Prior physical M/U are authoritative; the snapshot is not reflashed/rebased. */
+export async function runDensityCorner({dt=.25,pressureRelativeStep=1e-9,maximumIterations=24,
+  branchLimitedPressure=true,coordinate='density',previousSnapshot,pressureDifference=false,savedState,
+  pressureDifferenceStepPa=1e-4,boundaryOverride}={}) {
+  const { Properties }=await import('../tests/engine/build/properties.js');
+  const { ChargeCircuit }=await import('../tests/engine/build/charge.js');
+  const saved=savedState??JSON.parse(await readFile(new URL('../research/charge-owner-debug-snapshot.json',import.meta.url),'utf8'));
+  const props=new Properties(await factory()),g=saved.config.inventory.geometry,previous=previousSnapshot??saved.fluid;
+  const circuit=new ChargeCircuit(props,g,{massKg:saved.config.inventory.initialMassKg,fluidTemperatureC:saved.config.inventory.initialFluidTemperatureC});
+  const n=previous.cells.length,flowOffset=3+n,acc=n-1;
+  const boundary=boundaryOverride??{orientation:previous.orientation,compressorSpeedRps:0,
+    enabledRoomIds:g.rooms.map(r=>r.id),outdoorMetalC:saved.output.outdoor.metalTemperatureC,
+    indoorMetalCById:Object.fromEntries(saved.output.rooms.map(r=>[r.id,r.metalTemperatureC]))};
+  if(boundary.leak?.rateKgs>0)throw Error('This diagnostic pilot supports closed inventory only');
+  const admitted=previous.compressorAdmission;
+  const openings=previous.openings.map((v,i)=>{
+    if(!boundary.enabledRoomIds.includes(g.rooms[i].id))return 0;
+    if(!admitted)return Math.max(0,v-.1*dt);
+    if(v===0&&boundary.compressorSpeedRps>0)return Math.min(.1,.1*dt);
+    const sensor=previous.cells[boundary.orientation==='heating'?0:3+5*i+1].state;
+    const sat=props.saturation(sensor.pPa),sh=sensor.phase==='vapor'?Math.max(0,sensor.temperatureC-sat.temperatureC):0;
+    return Math.max(0,Math.min(1,v+Math.max(-.1*dt,Math.min(.1*dt,.005*dt*(sh-(boundary.operating?.superheatTargetK??g.superheatTargetK))))));
+  });
+  const density=coordinate==='density';
+  const sourcePressure=boundary.orientation==='heating'?0:1;
+  const scales=[1e6,1e6,pressureDifference?1:1e6,...Array(n).fill(density?1000:5e5),...Array(2+5*g.rooms.length).fill(.01)];
+  const groups=previous.cells.map(c=>c.group==='outdoor'?0:c.group==='indoor'?1:2);
+  let evaluations=0;
+  const residual=x=>{
+    evaluations++;const y=x.map((v,i)=>v*scales[i]);
+    if(pressureDifference)y[2]+=y[sourcePressure];
+    const cells=previous.cells.map((c,j)=>{
+      const p=y[groups[j]],state=density?props.pd(p,y[3+j]):props.ph(p,y[3+j]);
+      const M=(density?y[3+j]:state.densityKgm3)*c.volumeM3;
+      return {...c,massKg:M,internalEnergyJ:M*state.hJkg-p*c.volumeM3,state};
+    });
+    const z=[...y.slice(0,3),...cells.map(c=>c.state.hJkg),...y.slice(flowOffset)];
+    const rates=circuit.evaluation(z,boundary,openings,admitted,cells);
+    const local=cells.map((c,j)=>c.massKg-previous.cells[j].massKg-dt*rates.dm[j])
+      .concat(cells.map((c,j)=>c.internalEnergyJ-previous.cells[j].internalEnergyJ-dt*rates.dU[j]),[dt*rates.headerMass]);
+    const f=local.map((v,i)=>v/(i<n||i===2*n?.1:50000));
+    const mass=cells.reduce((s,c,j)=>s+c.massKg-previous.cells[j].massKg,0);
+    const heat=Object.values(rates.heat).reduce((a,b)=>a+b,0);
+    const energy=cells.reduce((s,c,j)=>s+c.internalEnergyJ-previous.cells[j].internalEnergyJ,0)-dt*(rates.work+heat);
+    f[acc]=mass/.1;f[n+acc]=energy/50000;
+    const mTol=previous.cells.map(c=>1e-10+1e-10*c.massKg);
+    const limits=mTol.concat(previous.cells.map((c,j)=>1e-5+1e-9*Math.abs(c.internalEnergyJ)+
+      Math.max(Math.abs(c.state.hJkg),Math.abs(cells[j].state.hJkg))*mTol[j]),[1e-10]);
+    const normalized=Math.max(...local.map((v,i)=>Math.abs(v)/limits[i]),Math.abs(mass)/5e-11,Math.abs(energy)/1e-5);
+    return {y,z,cells,rates,f,local,limits,mass,energy,normalized};
+  };
+  const linear=(matrix,b)=>{
+    const A=matrix.map((row,i)=>[...row,b[i]]),N=b.length;
+    for(let j=0;j<N;j++){
+      let k=j;for(let i=j+1;i<N;i++)if(Math.abs(A[i][j])>Math.abs(A[k][j]))k=i;
+      [A[j],A[k]]=[A[k],A[j]];if(Math.abs(A[j][j])<1e-15)throw Error('Density pilot singular Jacobian');
+      for(let i=j+1;i<N;i++){const f=A[i][j]/A[j][j];for(let q=j;q<=N;q++)A[i][q]-=f*A[j][q];}
+    }
+    const x=Array(N).fill(0);for(let i=N-1;i>=0;i--)x[i]=(A[i][N]-A[i].slice(i+1,N).reduce((s,v,k)=>s+v*x[i+1+k],0))/A[i][i];return x;
+  };
+  const initialPressures=previous.variables.slice(0,3);
+  if(pressureDifference)initialPressures[2]-=initialPressures[sourcePressure];
+  let x=[...initialPressures,...previous.cells.map(c=>density?c.massKg/c.volumeM3:c.state.hJkg),...previous.variables.slice(flowOffset)]
+    .map((v,i)=>v/scales[i]);
+  const start=performance.now();let cur=residual(x),iterations=0,rejected=0,fault=null;
+  const merit=r=>r.f.reduce((s,v)=>s+v*v,0),history=[];
+  try {
+    for(;iterations<maximumIterations&&cur.normalized>1;iterations++){
+      history.push({iteration:iterations,normalized:cur.normalized,mass:cur.mass,energy:cur.energy});
+      const J=Array.from({length:x.length},()=>Array(x.length));
+      const storage=cur.cells.map(c=>circuit.storageDerivatives(c));
+      for(let j=0;j<x.length;j++){
+        let eps=(j<3?pressureRelativeStep:j<flowOffset?(density?1e-7:1e-6):1e-6)*Math.max(1,Math.abs(x[j]));
+        if(pressureDifference&&j===2)eps=Math.max(pressureDifferenceStepPa,eps);
+        if(branchLimitedPressure&&j<3){
+          // Keep a local derivative on the actual upstream-fluid branch. This
+          // changes a derivative interval, never the physical flux or state.
+          const source=boundary.orientation==='heating'?0:1;
+          const gaps=[];if(j===2||(!pressureDifference&&j===source))gaps.push(Math.abs(cur.y[source]-cur.y[2]));
+          if(j===0||j===1)gaps.push(Math.abs(cur.y[0]-cur.y[1]));
+          for(const gap of gaps)if(gap>0)eps=Math.min(eps,Math.max(1e-6,.2*gap)/scales[j]);
+        }
+        if(pressureDifference&&j===2&&cur.y[2]<cur.y[sourcePressure])eps=-eps;
+        if(pressureDifference&&j<2&&cur.y[j]<cur.y[1-j])eps=-eps;
+        if(!density&&j>=3&&j<flowOffset){
+          const s=cur.cells[j-3].state,sat=props.saturation(s.pPa),dl=s.hJkg-sat.liquidH,dv=s.hJkg-sat.vaporH;
+          const near=Math.abs(dl)<Math.abs(dv)?dl:dv;
+          eps=(near<0?-1:1)*Math.min(eps*scales[j],Math.max(5e-6,.2*Math.abs(near)))/scales[j];
+        }
+        const trial=[...x];trial[j]+=eps;let r,delta=eps;
+        try{r=residual(trial);}catch{trial[j]=x[j]-eps;delta=-eps;r=residual(trial);}
+        for(let i=0;i<x.length;i++)J[i][j]=(r.f[i]-cur.f[i])/delta;
+        if(storage&&j<flowOffset){
+          let sumM=0,sumU=0;
+          for(let k=0;k<n;k++){
+            const applies=j<3?(groups[k]===j||(pressureDifference&&j===sourcePressure&&groups[k]===2)):k===j-3,q=cur.cells[k].state.qualityMass;
+            let derivative=applies&&(q===0||q===1)&&r.cells[k].state.qualityMass===null?
+              circuit.storageDerivatives(cur.cells[k],true):storage[k];
+            if(density){
+              const cell=cur.cells[k],V=cell.volumeM3,rho=cell.state.densityKgm3,h=cell.state.hJkg;
+              const rhoP=derivative.massP/V,rhoH=derivative.massH/V;
+              // Exact coordinate chain rule, not a fitted EOS or M/U correction.
+              derivative={massP:0,massH:V,energyP:V*(-rho*rhoP/rhoH-1),energyH:V*(h+rho/rhoH),
+                temperatureP:derivative.temperatureP-derivative.temperatureH*rhoP/rhoH,
+                temperatureH:derivative.temperatureH/rhoH};
+            }
+            const correctionM=(applies?(j<3?derivative.massP:derivative.massH)*scales[j]:0)-
+              (r.cells[k].massKg-cur.cells[k].massKg)/delta;
+            let correctionU=(applies?(j<3?derivative.energyP:derivative.energyH)*scales[j]:0)-
+              (r.cells[k].internalEnergyJ-cur.cells[k].internalEnergyJ)/delta;
+            const coil=circuit.definitions[k].coil;
+            if(coil){const ua=coil==='outdoor'?g.outdoorConductanceWK/3:g.rooms.find(v=>v.id===coil).refrigerantConductanceWK/3;
+              const exactT=applies?(j<3?derivative.temperatureP:derivative.temperatureH)*scales[j]:0;
+              correctionU+=dt*ua*(exactT-(r.cells[k].state.temperatureC-cur.cells[k].state.temperatureC)/delta);}
+            if(k!==acc){J[k][j]+=correctionM/.1;J[n+k][j]+=correctionU/50000;}
+            sumM+=correctionM;sumU+=correctionU;
+          }
+          J[acc][j]+=sumM/.1;J[n+acc][j]+=sumU/50000;
+        }
+      }
+      const step=linear(J,cur.f.map(v=>-v));let accepted=false;
+      for(let a=1;a>=1/4096;a/=2){try{const trial=x.map((v,i)=>v+a*step[i]),r=residual(trial);
+        if(merit(r)<merit(cur)){x=trial;cur=r;accepted=true;break;}}catch{}rejected++;}
+      if(!accepted)throw Error('Density pilot line search failed');
+    }
+    if(cur.normalized>1)throw Error('Density pilot iteration budget exhausted');
+  }catch(error){fault=String(error);}
+  const snapshot=fault?null:{...previous,timeSeconds:previous.timeSeconds+dt,variables:cur.z,cells:cur.cells,openings,
+    compressorWorkJ:previous.compressorWorkJ+dt*cur.rates.work,
+    coilHeatJ:previous.coilHeatJ+dt*Object.values(cur.rates.heat).reduce((a,b)=>a+b,0)};
+  const result={status:fault?'rejected':'accepted isolated frozen-metal step; not production activation',coordinate:density?'p,rho':'p,h',
+    snapshotSeconds:previous.timeSeconds,dt,pressureRelativeStep,branchLimitedPressure,pressureDifference,pressureDifferenceStepPa,wallMs:performance.now()-start,evaluations,iterations,rejected,
+    fault,normalized:cur.normalized,aggregateMassResidualKg:cur.mass,aggregateEnergyResidualJ:cur.energy,
+    maxLocalMassResidualKg:Math.max(...cur.local.slice(0,n).map(Math.abs)),maxLocalEnergyResidualJ:Math.max(...cur.local.slice(n,2*n).map(Math.abs)),
+    pressuresPa:cur.y.slice(0,3),accumulator:cur.cells[acc],heatW:cur.rates.heat,history,snapshot};
+  props.dispose();return result;
+}
 
 export async function createPilot() {
   const cp = await factory(); let calls = 0; const cache = new Map();
@@ -185,6 +367,25 @@ export async function runPilot() {
   return {status:'bounded disposable grouped M/U pilot; not production model',backend:'CoolProp 8.0.0 public PropsSI',geometry:pilot.geometry,roundtrips,loops,leaks,spatialLoops};
 }
 if(process.argv[1] && import.meta.url===pathToFileURL(process.argv[1]).href){
+  if(process.argv.includes('--owner-valve-initialization-comparison')){
+    const cases=[];
+    for(const initialValveOpening of [.65,0])cases.push(await runOwnerStartupFlux({initialValveOpening,roomVolumesM3:[84,155,100]}));
+    const url=new URL('../research/charge-pilot-results.json',import.meta.url),saved=JSON.parse(await readFile(url,'utf8'));
+    saved.ownerValveInitializationComparison={status:'closed-system initial actuator comparison; current owner room volumes',
+      roomVolumesM3:{attic:84,upstairs:155,ground:100},cases};
+    await writeFile(url,JSON.stringify(saved,null,2)+'\n');
+    process.stdout.write(JSON.stringify(cases.map(c=>({initialValveOpening:c.config.inventory.initialValveOpening,
+      wallSeconds:c.wallSeconds,last:c.trace.at(-1)})),null,2)+'\n');
+  }
+  else if(process.argv.includes('--owner-startup-flux')){
+    const result=await runOwnerStartupFlux();
+    const url=new URL('../research/charge-pilot-results.json',import.meta.url),saved=JSON.parse(await readFile(url,'utf8'));
+    saved.ownerStartupFlux=result;await writeFile(url,JSON.stringify(saved,null,2)+'\n');
+    process.stdout.write(JSON.stringify(result,null,2)+'\n');
+  }
+  else if(process.argv.includes('--density-corner')){process.stdout.write(JSON.stringify(await runDensityCorner(),null,2)+'\n');}
+  else {
   const result=await runPilot();if(process.argv.includes('--write'))await writeFile(new URL('../research/charge-pilot-results.json',import.meta.url),JSON.stringify(result,null,2)+'\n');
   process.stdout.write(JSON.stringify(result,null,2)+'\n');
+  }
 }

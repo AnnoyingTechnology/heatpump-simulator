@@ -1,6 +1,52 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createPilot } from '../../tools/probe-charge-eos.mjs';
+import { createPilot, runDensityCorner } from '../../tools/probe-charge-eos.mjs';
+import { readFile } from 'node:fs/promises';
+
+test('saved liquid-accumulator corner advances with pressure-drop coordinates across Jacobian decades',async t=>{
+  const savedState=JSON.parse(await readFile(new URL('../../research/charge-pilot-results.json',import.meta.url),'utf8')).passiveCorner;
+  const original=JSON.stringify(savedState),results=[];
+  for(const pressureRelativeStep of [1e-10,1e-9,1e-8]){
+    const r=await runDensityCorner({coordinate:'enthalpy',pressureDifference:true,pressureRelativeStep,savedState});
+    assert.equal(r.fault,null);assert.ok(r.normalized<=1);
+    assert.ok(Math.abs(r.aggregateMassResidualKg)<5e-11);assert.ok(Math.abs(r.aggregateEnergyResidualJ)<1e-5);
+    results.push(r);
+  }
+  const density=await runDensityCorner({coordinate:'density',pressureDifference:true,savedState});
+  assert.equal(density.fault,null);
+  const dropResults=[];
+  for(const pressureDifferenceStepPa of [1e-5,1e-3]){
+    const r=await runDensityCorner({coordinate:'enthalpy',pressureDifference:true,pressureDifferenceStepPa,savedState});
+    assert.equal(r.fault,null);assert.ok(r.normalized<=1);dropResults.push(r);
+  }
+  for(const r of [...results,...dropResults,density])for(let j=0;j<3;j++)assert.ok(Math.abs(r.pressuresPa[j]-results[1].pressuresPa[j])<.001);
+  assert.equal(JSON.stringify(savedState),original);
+  t.diagnostic(JSON.stringify(results.map(r=>({step:r.pressureRelativeStep,iterations:r.iterations,
+    wallMs:r.wallMs,massResidualKg:r.aggregateMassResidualKg,energyResidualJ:r.aggregateEnergyResidualJ}))));
+});
+
+test('saved protected passive corner timestep-refines without mass or energy reconstruction',async t=>{
+  const savedState=JSON.parse(await readFile(new URL('../../research/charge-pilot-results.json',import.meta.url),'utf8')).passiveCorner;
+  const finals=[],measurements=[];
+  for(const dt of [.25,.125,.0625]){
+    let snapshot=savedState.fluid;const start=performance.now();let evaluations=0;
+    for(let elapsed=0;elapsed<.5-1e-10;elapsed+=dt){
+      const r=await runDensityCorner({coordinate:'enthalpy',pressureDifference:true,dt,previousSnapshot:snapshot,savedState});
+      assert.equal(r.fault,null);assert.ok(r.normalized<=1);snapshot=r.snapshot;evaluations+=r.evaluations;
+      assert.ok(Math.abs(snapshot.cells.reduce((s,c)=>s+c.massKg,0)-snapshot.initialMassKg+snapshot.leakedMassKg)<1e-8);
+      assert.ok(Math.abs(snapshot.cells.reduce((s,c)=>s+c.internalEnergyJ,0)-snapshot.initialEnergyJ-
+        snapshot.compressorWorkJ-snapshot.coilHeatJ+snapshot.leakedEnthalpyJ)<.005);
+    }
+    assert.ok(Math.abs(snapshot.timeSeconds-savedState.fluid.timeSeconds-.5)<1e-12);
+    assert.equal(snapshot.compressorAdmission,false);finals.push(snapshot);
+    measurements.push({dt,wallMs:performance.now()-start,evaluations,p:snapshot.variables.slice(0,3)});
+  }
+  const distance=(a,b)=>Math.max(...a.variables.slice(0,3).map((p,j)=>Math.abs(p-b.variables[j])/1e6),
+    Math.abs(a.cells.at(-1).state.temperatureC-b.cells.at(-1).state.temperatureC)/10);
+  const coarse=distance(finals[0],finals[1]),fine=distance(finals[1],finals[2]);
+  assert.ok(fine<coarse,`${fine} is not smaller than ${coarse}`);assert.ok(fine<1e-4);
+  t.diagnostic(JSON.stringify({measurements,coarseScaledDifference:coarse,fineScaledDifference:fine}));
+});
 
 test('public DU liquid/vapor/wet flashes and invalid-request recovery',async()=>{
   const p=await createPilot();

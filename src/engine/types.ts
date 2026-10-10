@@ -22,6 +22,8 @@ export interface EngineConfig {
   inventory?: {
     initialMassKg: number;
     initialFluidTemperatureC: number;
+    /** Initial actuator fraction only; fluid M/U are unchanged. Generic reference default .65. */
+    initialValveOpening?: number;
     geometry: ChargeGeometry;
     /** An imposed local homogeneous mass-loss scenario, not an inferred hole/orifice leak. */
     leak?: { physicalCellId: string; rateKgs: number };

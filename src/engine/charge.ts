@@ -16,7 +16,9 @@ export interface ChargeGeometry {
   maximumDischargeC: number; maximumPressureRatio: number;
   valvePassageLengthM?: number; accumulatorInletPassageLengthM?: number;
 }
-export interface ChargeNumerics { pressureDerivativeRelativeStep?: number; analyticStorageJacobian?:boolean; maximumSubsteps?:number; maximumAttempts?:number }
+export interface ChargeNumerics { pressureDerivativeRelativeStep?: number; analyticStorageJacobian?:boolean;
+  pressureDifferenceCoordinates?:boolean; pressureDifferenceStepPa?:number;
+  maximumSubsteps?:number; maximumAttempts?:number }
 export class ChargeWorkBudgetError extends DomainError {
   constructor(readonly requestedSeconds:number,readonly provisionalSeconds:number,readonly attempts:number,
     readonly acceptedPieces:number,readonly lastFailure:string) {
@@ -87,7 +89,7 @@ export class ChargeCircuit {
   private nozzleFluxCache = new Map<string,{flux:number;throatPa:number}>();
 
   constructor(private readonly properties: Properties, geometry: ChargeGeometry,
-    initial: { massKg: number; fluidTemperatureC: number; orientation?:'heating'|'cooling' },private readonly numerics:ChargeNumerics={}) {
+    initial: { massKg: number; fluidTemperatureC: number; orientation?:'heating'|'cooling'; valveOpening?:number },private readonly numerics:ChargeNumerics={}) {
     this.geometry=deepFreeze(structuredClone(geometry));this.numerics=deepFreeze(structuredClone(numerics));const g = this.geometry;
     const positive = (v: number) => Number.isFinite(v) && v > 0;
     if (!g.rooms.length || new Set(g.rooms.map(r => r.id)).size !== g.rooms.length ||
@@ -102,6 +104,12 @@ export class ChargeCircuit {
       throw new DomainError('Restriction passage lengths must be finite and positive');
     if([numerics.maximumSubsteps,numerics.maximumAttempts].some(v=>v!==undefined&&(!Number.isInteger(v)||v<1)))
       throw new DomainError('Charge numerical work budgets must be positive integers');
+    if(numerics.pressureDifferenceStepPa!==undefined&&!positive(numerics.pressureDifferenceStepPa))
+      throw new DomainError('Pressure-drop derivative interval must be finite and positive');
+    if(numerics.pressureDifferenceCoordinates!==undefined&&typeof numerics.pressureDifferenceCoordinates!=='boolean')
+      throw new DomainError('Pressure-drop coordinate option must be boolean');
+    if(initial.valveOpening!==undefined&&(!Number.isFinite(initial.valveOpening)||initial.valveOpening<0||initial.valveOpening>1))
+      throw new DomainError('Initial EEV opening must be finite in [0,1]');
     for (let j=0;j<3;j++) {
       this.outdoorIndices.push(this.definitions.length);
       this.definitions.push({id:`outdoor:${j}`,volume:g.outdoorCoilVolumeM3/3,pressureIndex:0,coil:'outdoor',ua:g.outdoorConductanceWK/3});
@@ -126,7 +134,7 @@ export class ChargeCircuit {
     properties.ph(p,h);
     const variables=[p,p,p,...this.definitions.map(()=>h),...Array(2+5*g.rooms.length).fill(0)];
     const cells=this.states(variables);
-    this.current={timeSeconds:0,orientation:initial.orientation??'heating',variables,openings:g.rooms.map(()=>.65),compressorAdmission:this.vaporFraction(cells[this.accumulatorIndex].state)>=.04,initialMassKg:cells.reduce((s,c)=>s+c.massKg,0),
+    this.current={timeSeconds:0,orientation:initial.orientation??'heating',variables,openings:g.rooms.map(()=>initial.valveOpening??.65),compressorAdmission:this.vaporFraction(cells[this.accumulatorIndex].state)>=.04,initialMassKg:cells.reduce((s,c)=>s+c.massKg,0),
       initialEnergyJ:cells.reduce((s,c)=>s+c.internalEnergyJ,0),leakedMassKg:0,leakedEnthalpyJ:0,compressorWorkJ:0,coilHeatJ:0,cells};
   }
 
@@ -213,9 +221,12 @@ export class ChargeCircuit {
     if(this.nozzleFluxCache.size>=10000){let removed=0;for(const oldest of this.nozzleFluxCache.keys()){this.nozzleFluxCache.delete(oldest);if(++removed===2000)break;}}
     this.nozzleFluxCache.set(key,{flux:best,throatPa:bestP});return corrected(best,up.pPa-bestP);
   }
-  private evaluation(z:number[],boundary:ChargeBoundary,openings:number[],admitted:boolean):Evaluation {
+  private evaluation(z:number[],boundary:ChargeBoundary,openings:number[],admitted:boolean,
+    preparedCells?:ChargeCell[]):Evaluation {
     const operation={...this.geometry,...boundary.operating};
-    const cells=this.states(z),dm=cells.map(()=>0),dU=cells.map(()=>0),heat:Record<string,number>={},diagnostics:string[]=[];
+    // An isolated coordinate pilot can supply independently flashed physical
+    // cells to the same face/heat laws. The production PH route stays unchanged.
+    const cells=preparedCells??this.states(z),dm=cells.map(()=>0),dU=cells.map(()=>0),heat:Record<string,number>={},diagnostics:string[]=[];
     const acc=cells[this.accumulatorIndex],inletState=acc.state,heating=boundary.orientation==='heating',pD=z[heating?1:0];
     // Admission is a hybrid control state, held fixed during a nonlinear trial.
     // Trial wet pickup may approach the event from either side; the outer
@@ -337,7 +348,7 @@ export class ChargeCircuit {
       deepFreeze(candidate);this.candidates.set(candidate,this.revision);return candidate;
     } finally {this.current=original;}
   }
-  private prepareSingle(dt:number,boundary:ChargeBoundary):ChargeCandidate {
+  private prepareSingle(dt:number,boundary:ChargeBoundary,previous:ChargeSnapshot=this.current):ChargeCandidate {
     for(const [key,value] of Object.entries(boundary.operating??{})){
       const values=typeof value==='object'?Object.values(value):[value];
       if(values.some(v=>!Number.isFinite(v)||v<=0||(key.endsWith('Efficiency')&&v>1)||(key==='dischargeCoefficient'&&v>1)))
@@ -348,7 +359,6 @@ export class ChargeCircuit {
       (boundary.ambientPressurePa!==undefined&&(!Number.isFinite(boundary.ambientPressurePa)||boundary.ambientPressurePa<70000||boundary.ambientPressurePa>110000)) ||
       boundary.enabledRoomIds.some(id=>!this.geometry.rooms.some(r=>r.id===id)) ||
       (boundary.leak && (!Number.isFinite(boundary.leak.rateKgs)||boundary.leak.rateKgs<0)))throw new DomainError('Invalid charge step boundary');
-    const previous=this.current;
     const openings=this.geometry.rooms.map((r,i)=>{
       if(!boundary.enabledRoomIds.includes(r.id))return 0;
       // Generic carryover safety closes the liquid-feed actuator while the
@@ -362,9 +372,14 @@ export class ChargeCircuit {
       const change=Math.max(-.1*dt,Math.min(.1*dt,.005*dt*(sh-(boundary.operating?.superheatTargetK??this.geometry.superheatTargetK))));
       return Math.max(0,Math.min(1,previous.openings[i]+change));
     });
-    const size=previous.variables.length,scale=previous.variables.map((_,i)=>i<3?1e6:i<this.flowOffset?5e5:.01);
+    const pressureDifference=this.numerics.pressureDifferenceCoordinates??true;
+    const sourcePressure=boundary.orientation==='heating'?0:1;
+    const size=previous.variables.length,scale=previous.variables.map((_,i)=>i===2&&pressureDifference?1:i<3?1e6:i<this.flowOffset?5e5:.01);
     const residual=(x:number[])=>{
       const z=x.map((v,i)=>v*scale[i]);
+      // Solver coordinates may use the accumulator drop, while all physical
+      // states and public snapshots keep their fixed absolute pressures.
+      if(pressureDifference)z[2]+=z[sourcePressure];
       const r=this.evaluation(z,boundary,openings,previous.compressorAdmission),f:number[]=[];
       for(let j=0;j<r.cells.length;j++)f.push((r.cells[j].massKg-previous.cells[j].massKg-dt*r.dm[j])/.1);
       for(let j=0;j<r.cells.length;j++)f.push((r.cells[j].internalEnergyJ-previous.cells[j].internalEnergyJ-dt*r.dU[j])/50000);
@@ -385,6 +400,7 @@ export class ChargeCircuit {
       return {z,r,f,local,aggregateMass,aggregateEnergy};
     };
     let x=previous.variables.map((v,i)=>v/scale[i]);
+    if(pressureDifference)x[2]-=previous.variables[sourcePressure]/scale[2];
     // A zero-lift equilibrium is a nonsmooth nozzle point. This is only a Newton
     // initial guess; all balances still use the unaltered previous physical M/U.
     let cur=residual(x),iterations=0;
@@ -394,7 +410,7 @@ export class ChargeCircuit {
       boundary.compressorSpeedRps>0&&previous.compressorAdmission&&Math.max(...cur.f.map(Math.abs))>1e-12){
       const destination=boundary.orientation==='heating'?1:0,source=1-destination;
       x[source]-=100/scale[source];x[destination]+=100/scale[destination];
-      x[2]-=200/scale[2];cur=residual(x);
+      x[2]-=(pressureDifference?100:200)/scale[2];cur=residual(x);
     }
     const norm=(f:number[])=>Math.max(...f.map(Math.abs));
     const merit=(f:number[])=>f.reduce((sum,v)=>sum+v*v,0);
@@ -423,11 +439,24 @@ export class ChargeCircuit {
       const storage=(this.numerics.analyticStorageJacobian??true)?cur.r.cells.map(c=>this.storageDerivatives(c)):undefined;
       for(let j=0;j<size;j++){
         const z=[...x];let eps=(j<3?(this.numerics.pressureDerivativeRelativeStep??1e-9):1e-6)*Math.max(1,Math.abs(x[j]));
+        if(pressureDifference&&j===2){
+          const gap=cur.z[2]-cur.z[sourcePressure];
+          eps=Math.max(this.numerics.pressureDifferenceStepPa??1e-4,eps);
+          if(gap!==0)eps=Math.min(eps,Math.max(1e-6,.2*Math.abs(gap)));
+          // Probe away from a nonzero upwind switch, including gaps smaller
+          // than the representable derivative floor. At zero use one side.
+          if(gap<0)eps=-eps;
+        }
+        if(pressureDifference&&(j===0||j===1)){
+          const gap=cur.z[j]-cur.z[1-j];
+          if(gap!==0)eps=Math.min(eps,Math.max(1e-6,.2*Math.abs(gap))/scale[j]);
+          if(gap<0)eps=-eps;
+        }
         // Single-phase PH flashes invert temperature numerically. Millipascal
         // pressure trials can fall beneath that inversion's density precision;
         // use a larger local derivative interval once that group contains a
         // single-phase cell. The caller's decade-sensitivity factor still applies.
-        if(!storage&&j<3&&cur.r.cells.some((c,k)=>this.definitions[k].pressureIndex===j&&c.state.phase!=='two-phase'))eps*=100;
+        if(!storage&&!pressureDifference&&j<3&&cur.r.cells.some((c,k)=>this.definitions[k].pressureIndex===j&&c.state.phase!=='two-phase'))eps*=100;
         if(j>=3&&j<this.flowOffset){
           // PH storage derivatives change sharply at bubble/dew endpoints. Keep
           // a local Jacobian trial in the current regime rather than averaging
@@ -445,7 +474,8 @@ export class ChargeCircuit {
         if(storage&&j<this.flowOffset){
           let aggregateMassCorrection=0,aggregateEnergyCorrection=0;
           for(let k=0;k<nCells;k++){
-            const applies=j<3?this.definitions[k].pressureIndex===j:k===j-3;
+            const applies=j<3?(this.definitions[k].pressureIndex===j||
+              (pressureDifference&&j===sourcePressure&&this.definitions[k].pressureIndex===2)):k===j-3;
             const quality=cur.r.cells[k].state.qualityMass;
             // At an exact bubble/dew endpoint choose the one-sided storage
             // derivative of the actual finite-difference trial, for pressure
