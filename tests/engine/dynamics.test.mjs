@@ -18,11 +18,17 @@ test('real dynamic 1–5 branches conserve full stored energy/water and heating/
 });
 test('early-trigger automatic defrost melts and drains finite inventories', () => {
   const c=defaultEngineConfig(3);c.control.defrostMinHeatingSeconds=30;c.control.defrostIceThresholdKg=.005;
-  const e=new HeatPumpEngine(p,c);const states=new Set();let maximumIce=0, melted=false;
-  for(let i=0;i<250;i++){const o=e.step(1);assertLedger(o);states.add(o.state);maximumIce=Math.max(maximumIce,o.outdoor.iceKg);if(o.outdoor.meltPowerW>0)melted=true;
-    if(o.state==='defrost') {assert.equal(o.effectiveMode,'cooling');assert.equal(o.outdoor.fanPowerW,0);assert.ok(o.rooms.every(r=>r.fanPowerW===0&&r.airOutletC===null));assert.equal(o.heatingCOP,null);}
+  const e=new HeatPumpEngine(p,c);const states=new Set();let maximumIce=0, melted=false, actualDefrost=false;
+  // Melt power is a substep diagnostic; one-second batching can hide a short melt burst.
+  for(let i=0;i<1000;i++){const o=e.step(.25);assertLedger(o);states.add(o.state);maximumIce=Math.max(maximumIce,o.outdoor.iceKg);if(o.outdoor.meltPowerW>0)melted=true;
+    if(o.state==='defrost') {
+      if(o.cycle) {actualDefrost=true;assert.equal(o.effectiveMode,'cooling');}
+      else {assert.equal(o.effectiveMode,null);assert.equal(o.electrical.compressorW,0);const off=e.checkpoint().inventoryDrive.offSeconds;
+        assert.ok(o.diagnostics.restartDelaySeconds>0||o.diagnostics.envelopeProtection||(off>=c.control.minOffSeconds&&off<=c.control.minOffSeconds+.25));}
+      assert.equal(o.outdoor.fanPowerW,0);assert.ok(o.rooms.every(r=>r.fanPowerW===0&&r.airOutletC===null));assert.equal(o.heatingCOP,null);
+    }
   }
-  assert.ok(maximumIce>=.005&&melted);for(const state of ['reversing','defrost','draining','running'])assert.ok(states.has(state),state);
+  assert.ok(maximumIce>=.005&&melted&&actualDefrost);for(const state of ['reversing','defrost','draining','running'])assert.ok(states.has(state),state);
 });
 test('film phase map requires latent melt energy; exhausted film evaporates with exact bounded mass', () => {
   const c=defaultEngineConfig(1).outdoor, mass=.1, a=deriveOutdoorFilm(-mass*FUSION_JKG,mass,c), b=deriveOutdoorFilm(0,mass,c);
@@ -31,7 +37,8 @@ test('film phase map requires latent melt energy; exhausted film evaporates with
   assert.equal(air.waterToSurfaceKgs,-.000001);assert.equal(air.evaporationLimited,true);
 });
 test('wet cooling removes water; timestep halving converges thermal/electrical totals', () => {
-  const outputs=[];for(const dt of [.25,.125,.0625]){const c=defaultEngineConfig(1);c.mode='cooling';c.outdoorTemperatureC=32;c.rooms[0].initialTemperatureC=27;c.rooms[0].initialRelativeHumidity=.7;c.rooms[0].setpointC=22;c.numerics.maxStepSeconds=dt;outputs.push(run(c,30).o);}
+  // Observe established cooling after the declared startup/ramp; humid ventilation initially dominates.
+  const outputs=[];for(const dt of [.25,.125,.0625]){const c=defaultEngineConfig(1);c.mode='cooling';c.outdoorTemperatureC=32;c.rooms[0].initialTemperatureC=27;c.rooms[0].initialRelativeHumidity=.7;c.rooms[0].setpointC=22;c.numerics.maxStepSeconds=dt;outputs.push(run(c,60).o);}
   assert.ok(outputs[0].rooms[0].condensateKgs>0);assert.ok(outputs[0].rooms[0].humidityRatio<p.airW(27,.7,101325));
   assert.ok(Math.abs(outputs[1].rooms[0].temperatureC-outputs[2].rooms[0].temperatureC)<.002);
   assert.ok(Math.abs(outputs[1].energy.electricityJ/outputs[2].energy.electricityJ-1)<.002);
@@ -93,7 +100,7 @@ test('all Off aborts defrost/reversal without erasing storage; passive time and 
   const c=defaultEngineConfig(3);c.outdoorTemperatureC=-3;c.outdoorRelativeHumidity=.99;
   c.control.defrostIceThresholdKg=1e-6;c.control.defrostMinHeatingSeconds=0;c.control.reversalSeconds=.5;c.control.minOffSeconds=.75;
   const e=new HeatPumpEngine(p,c);let o;
-  for(let i=0;i<16;i++){o=e.step(.25);assertLedger(o);if(o.state==='defrost')break;}
+  for(let i=0;i<16;i++){o=e.step(.25);assertLedger(o);if(o.state==='defrost'&&o.cycle)break;}
   assert.equal(o.state,'defrost');assert.ok(o.outdoor.iceKg>0);assert.ok(o.cycle);
   const offAt=before=>{
     c.rooms.forEach(r=>r.enabled=false);const stopped=e.updateConfig(c);
@@ -104,7 +111,7 @@ test('all Off aborts defrost/reversal without erasing storage; passive time and 
   };
   offAt(o);c.rooms[0].enabled=true;e.updateConfig(c);o=e.step(.25);assertLedger(o);assert.equal(o.state,'idle');assert.equal(o.cycle,null);
   o=e.step(.25);assertLedger(o);assert.equal(o.state,'reversing');
-  offAt(o);c.rooms[0].enabled=true;e.updateConfig(c);o=e.step(1);assertLedger(o);assert.equal(o.state,'defrost');assert.ok(o.cycle);assert.ok(o.cycle.branchMassFlowsKgs[0]>0);assert.ok(o.cycle.branchMassFlowsKgs.slice(1).every(m=>m===0));
+  offAt(o);c.rooms[0].enabled=true;e.updateConfig(c);o=e.step(1);assertLedger(o);for(let i=0;i<8&&!o.cycle;i++){o=e.step(.25);assertLedger(o);}assert.equal(o.state,'defrost');assert.ok(o.cycle);assert.ok(o.cycle.branchMassFlowsKgs[0]>0);assert.ok(o.cycle.branchMassFlowsKgs.slice(1).every(m=>m===0));
   c.rooms.forEach(r=>r.enabled=false);o=e.updateConfig(c);assertLedger(o);assert.equal(o.state,'idle');assert.equal(o.cycle,null);
 });
 

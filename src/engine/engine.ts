@@ -3,7 +3,7 @@ import { solveCycle } from './cycle.ts';
 import { ChargeCircuit, type ChargeCandidate, type ChargeBoundary, type ChargeNumerics } from './charge.ts';
 import { driveStep, driveRatioThresholds, newDriveState, type DriveState } from './drive.ts';
 import { inventoryCycle } from './charge-output.ts';
-import { airExchange } from './air.ts';
+import { airExchange, equilibrateExhaust } from './air.ts';
 import { deriveOutdoorFilm, filmEnthalpy, FUSION_JKG, WATER_CP_JKGK } from './film.ts';
 import type { EngineConfig, EngineOutput, RoomState, RoomOutput, CycleOutput, OperatingState, Mode } from './types.ts';
 
@@ -242,6 +242,9 @@ export class HeatPumpEngine {
       }
       if (effectiveMode) cycle = inventoryCycle(this.properties, config, charge, effectiveMode, dt);
     } else {
+      // Dedicated reverse-cycle defrost starts at its configured actuator command;
+      // the heating/cooling minimum-speed startup policy does not replace it.
+      const referenceMinimum = defrost ? config.control.defrostSpeedRps : config.compressor.speedMinRps;
       const proposal = (rps: number) => solveCycle(this.properties, config, { mode: effectiveMode!,
         indoorMetalC: this.rooms.map(room => room.metalTemperatureC), outdoorMetalC: before.temperatureC,
         active: this.active, speedRps: rps, defrost, previous: this.lastCycle });
@@ -249,17 +252,17 @@ export class HeatPumpEngine {
       // Predict a restart at minimum speed from the current thermal boundaries;
       // a stale hot discharge would otherwise keep its protection latched forever.
       const observed = effectiveMode && this.cycle?.mode === effectiveMode && this.active.every((enabled,i)=>enabled === (this.cycle!.branchMassFlowsKgs[i] > 0)) ? this.cycle : null;
-      const forecast = effectiveMode && !observed ? proposal(config.compressor.speedMinRps) : null;
+      const forecast = effectiveMode && !observed ? proposal(referenceMinimum) : null;
       const feedback = observed ?? forecast;
       this.inventoryDrive = driveStep(this.inventoryDrive, dt, { demandRps: demandSpeed,
-        minimumRps: config.compressor.speedMinRps, maximumRps: config.compressor.speedMaxRps,
+        minimumRps: referenceMinimum, maximumRps: config.compressor.speedMaxRps,
         maximumRatio: config.compressor.maxPressureRatio, maximumDischargeC: config.compressor.maxDischargeC,
         minimumOffSeconds: config.control.minOffSeconds,
         pressureRatio: feedback ? feedback.highPressureBarAbs / feedback.lowPressureBarAbs : 1,
         predictedDischargeC: feedback?.discharge.temperatureC ?? null, pickupAvailable: !!effectiveMode });
       speed = this.inventoryDrive.speedRps;
       if (effectiveMode && speed > 0) {
-        cycle = forecast && speed === config.compressor.speedMinRps ? forecast : proposal(speed);
+        cycle = forecast && speed === referenceMinimum ? forecast : proposal(speed);
         // Only an independently closed, in-domain cycle is envelope evidence.
         // Solver failures propagate; no arbitrary lower-speed retry hides them.
         if (cycle.discharge.temperatureC >= config.compressor.maxDischargeC - 10 ||
@@ -314,7 +317,7 @@ export class HeatPumpEngine {
     const fanOutside = forcedOutside ? outdoor.fanPowerW : 0;
     const drain = Math.min(before.liquidKg / outdoor.drainageSeconds, before.liquidKg / dt);
     const evaporationAvailable = Math.max(0, before.liquidKg - drain * dt) / dt;
-    const outdoorAir = airExchange(this.properties, config.outdoorTemperatureC, outW, before.temperatureC, mdOut, uaAir, p, evaporationAvailable, false);
+    const outdoorAir = airExchange(this.properties, config.outdoorTemperatureC, outW, before.temperatureC, mdOut, uaAir, p, evaporationAvailable, false, true);
     const candidateMass = outdoorAir.evaporationLimited ? before.iceKg : (this.outdoorWaterKg - dt * drain) + dt * outdoorAir.waterToSurfaceKgs;
     if (candidateMass < -1e-12) throw new DomainError('Outdoor film water exhausted inside substep');
     const drainEnergy = drain * WATER_CP_JKGK * before.temperatureC;
@@ -328,7 +331,11 @@ export class HeatPumpEngine {
     const filmRate = (filmEnthalpy(candidateEnergy, after.temperatureC, outdoor.metalCapacityJK) - filmEnthalpy(this.outdoorEnergyJ, before.temperatureC, outdoor.metalCapacityJK)) / dt;
     const outMetalRate = outdoor.metalCapacityJK * (after.temperatureC - before.temperatureC) / dt;
     const meltedKg = Math.max(0, before.iceKg - after.iceKg); // diagnostic only; evolution is determined by energy, never by this value.
-    const outdoorOutlet = forcedOutside ? this.properties.airT(this.properties.airH(outdoorAir.outletC, outdoorAir.outletHumidityRatio, p) + fanOutside / mdOut, outdoorAir.outletHumidityRatio, p) : null;
+    // Adding fan heat to an already verified gas cannot create condensation.
+    const fanOutletH = outdoorAir.totalOutletEnthalpyJkg + fanOutside / mdOut;
+    const outdoorOutlet = forcedOutside ? outdoorAir.fogWater === 0
+      ? this.properties.airT(fanOutletH,outdoorAir.totalOutletWater,p)
+      : equilibrateExhaust(this.properties,fanOutletH,outdoorAir.totalOutletWater,p,Math.max(config.outdoorTemperatureC,before.temperatureC)).temperatureC : null;
     // Accept the fluid only after every air/metal/film candidate has passed its domain checks.
     if (charge) { this.refrigerant!.commit(charge); this.chargeCandidate = charge; }
     this.rooms = candidateRooms; this.outdoorWaterKg = candidateMass; this.outdoorEnergyJ = candidateEnergy; this.cycle = cycle;

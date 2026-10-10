@@ -1,0 +1,42 @@
+{
+  "startSeconds": 344,
+  "endSeconds": 600,
+  "targetSeconds": 600,
+  "wallSeconds": 50.376983109,
+  "transitions": [
+    {
+      "time": 396.25,
+      "state": "draining",
+      "iceKg": 0
+    },
+    {
+      "time": 406.25,
+      "state": "reversing",
+      "iceKg": 0
+    },
+    {
+      "time": 409.25,
+      "state": "idle",
+      "iceKg": 0
+    },
+    {
+      "time": 426.25,
+      "state": "running",
+      "iceKg": 0
+    }
+  ],
+  "finalIceKg": 0.07141546786998201,
+  "finalEnergyResidualJ": -4.551839083433151e-07,
+  "finalWaterResidualKg": -5.037636974236648e-15,
+  "sourceHashes": {
+    "air": "ac6f645fbacc073afdcb3abf214257d142358af0b1f58e87d61105f342f9cf6e",
+    "engine": "62dbd7135c0f23cff31e30460164ee7778df2cea41a7b086745e23df6974c8fc",
+    "cycle": "3507bfc45f68af571de8c017cab252fb3a457f3b4179f6e063801e2893a72548"
+  },
+  "progressPath": "/tmp/heatpump-cold21-fog-final.json",
+  "inputCheckpoint": "research/reference-cold-defrost-checkpoint.json",
+  "inputScope": "Accepted predecessor Reference state at 344 s; no state/energy/water remapping. This is continuation proof, not a full final-source warmup.",
+  "finalSignedRoomHeatW": 4870.879039173432,
+  "finalHeatingCOP": 2.357693551211276,
+  "finalCompressorSpeedRps": 75
+}

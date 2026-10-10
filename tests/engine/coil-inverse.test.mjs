@@ -31,7 +31,8 @@ test('phase-local exchanger inverse agrees with prior real-EOS bisection, includ
 });
 
 test('stale/singular continuation slopes fall back to freshly closed real-EOS pressure equations',()=>{
-  const c=defaultEngineConfig(3),input={mode:'heating',indoorMetalC:[30,31,29],outdoorMetalC:-3,active:[true,true,true],speedRps:40};
+  // Tight test-only root localization separates cache fallback from the production 0.1 W acceptance band.
+  const c=defaultEngineConfig(3);c.numerics.pressureToleranceW=.001;const input={mode:'heating',indoorMetalC:[30,31,29],outdoorMetalC:-3,active:[true,true,true],speedRps:40};
   const baseline=solveCycle(p,c,input);
   for(const matrix of [[0,0,0,0],[-1,0,0,-1]]){
     const result=solveCycle(p,c,{...input,previous:{evaporatingC:baseline.evaporatingC+.2,condensingC:baseline.condensingC+.2,
