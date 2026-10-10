@@ -17,6 +17,7 @@ export class Properties {
       const pairs: Record<string, [string, number, number]> = {
         'P:H': ['HmassP_INPUTS', y, x], 'P:T': ['PT_INPUTS', x, y],
         'P:S': ['PSmass_INPUTS', x, y], 'P:Q': ['PQ_INPUTS', x, y], 'T:Q': ['QT_INPUTS', y, x],
+        'P:D': ['DmassP_INPUTS', y, x],
         'D:U': ['DmassUmass_INPUTS', x, y],
       };
       const pair = pairs[`${a}:${b}`];
@@ -29,12 +30,12 @@ export class Properties {
           // embind build does not export a complete JS exception/stack lifecycle.
           // Preflight every new flash here before entering its reusable state API;
           // invalid Newton trials must never escape C++ into JavaScript.
-          // Request a computed quantity: density for PH/PT/etc, pressure for DU.
-          // D/U are input echoes in a storage flash and cannot validate its EOS solve.
-          const preflight = a === 'D' && b === 'U' ? 'P' : 'D';
+          // Request a computed quantity: density for PH/PT/etc, pressure for DU,
+          // temperature for PD. Input echoes cannot validate an EOS solve.
+          const preflight = a === 'D' && b === 'U' ? 'P' : a === 'P' && b === 'D' ? 'T' : 'D';
           const preflightKey = `${preflight}:${a}:${x}:${b}:${y}`;
           const computed = this.cache.get(preflightKey) ?? this.module.PropsSI(preflight, a, x, b, y, 'R32');
-          if (!(Number.isFinite(computed) && computed > 0 && computed < (preflight === 'P' ? 1e8 : 1e5))) throw new DomainError('R32 flash outside backend domain');
+          if (!(Number.isFinite(computed) && computed > 0 && computed < (preflight === 'P' ? 1e8 : preflight === 'T' ? 1e4 : 1e5))) throw new DomainError('R32 flash outside backend domain');
           this.cache.set(preflightKey, computed);
           this.state.update(this.module.input_pairs![pair[0]], pair[1], pair[2]); this.lastInput = input;
         }
@@ -63,6 +64,18 @@ export class Properties {
       phase: twoPhase ? 'two-phase' : h < this.saturation(p).liquidH ? 'liquid' : 'vapor' };
   }
   pt(p: number, tC: number): RefrigerantState { return this.ph(p, this.prop('H', 'P', p, 'T', tC + 273.15)); }
+  /** Pressure/density coordinates for an implicit storage solve; computed T validates the flash before native state reuse. */
+  pd(p: number, densityKgm3: number): RefrigerantState {
+    if (!(p > 50000 && p < 5e6)) throw new DomainError('R32 pressure outside selected 0.5–50 bar absolute domain');
+    if (!(Number.isFinite(densityKgm3) && densityKgm3 > 0 && densityKgm3 < 1e5)) throw new DomainError('Nonfinite/nonpositive R32 density');
+    const T = this.prop('T', 'P', p, 'D', densityKgm3);
+    if (!(T > 213.15 && T < 433.15)) throw new DomainError('R32 state outside selected −60…160°C domain');
+    const h = this.prop('H', 'P', p, 'D', densityKgm3), q = this.prop('Q', 'P', p, 'D', densityKgm3);
+    const entropy = this.prop('S', 'P', p, 'D', densityKgm3), twoPhase = q >= 0 && q <= 1;
+    return { pPa: p, pBarAbs: p / 1e5, hJkg: h, temperatureC: T - 273.15,
+      entropyJkgK: entropy, densityKgm3, qualityMass: twoPhase ? q : null,
+      phase: twoPhase ? 'two-phase' : h < this.saturation(p).liquidH ? 'liquid' : 'vapor' };
+  }
   /** Conserved rigid-volume storage flash: rho=M/V, u=U/M. Same selected domain as ph(). */
   du(densityKgm3: number, internalEnergyJkg: number): RefrigerantState {
     if (!(Number.isFinite(densityKgm3) && densityKgm3 > 0 && densityKgm3 < 1e5 && Number.isFinite(internalEnergyJkg))) throw new DomainError('Nonfinite/nonpositive R32 storage state');
