@@ -17,6 +17,16 @@ test('real R32 EOS shared-pressure cycle: one to five branches and both directio
     assert.ok(out.suction.phase === 'vapor' && out.expansionOutlet.phase === 'two-phase');
     assert.ok(Math.abs(out.expansionOutlet.hJkg - out.condenserOutlet.hJkg) < 1e-7);
     assert.ok(out.discharge.entropyJkgK >= out.suction.entropyJkgK);
+    assert.ok(out.expansionOutlet.entropyJkgK >= out.condenserOutlet.entropyJkgK);
+    // These idealized fixtures have fixed uniform metal reservoirs. Their Kelvin
+    // Carnot bound does not apply to transient room COP or melting/storage cycles.
+    const hotK = (mode === 'heating' ? 30 : 38) + 273.15;
+    const coldK = (mode === 'heating' ? -3 : 15) + 273.15;
+    const cop = (mode === 'heating' ? out.condenserHeatW : out.evaporatorHeatW) / out.compressorWorkW;
+    const carnot = (mode === 'heating' ? hotK : coldK) / (hotK - coldK);
+    assert.ok(cop > 0 && cop <= carnot + 1e-6);
+    assert.ok(out.condenserHeatW / hotK - out.evaporatorHeatW / coldK >= -1e-6);
+
   }
 });
 test('heat exchanger pinches fail explicitly', () => {
