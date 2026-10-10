@@ -232,17 +232,21 @@ class Gauge {
   readonly g: G;
   private readonly needle: SVGLineElement;
   private readonly val: SVGTextElement;
-  constructor(cx: number, cy: number, tag: string, virtual: boolean) {
+  private readonly unit: SVGTextElement | null;
+  constructor(cx: number, cy: number, tag: string, virtual: boolean, branch = false) {
     this.needle = svg('line', { x1: 0, y1: 0, x2: 0, y2: -6, class: 'g-needle' });
-    this.val = svg('text', { x: 10, y: 2.5, class: 'g-val dl' });
-    this.g = svg('g', { class: `gauge${virtual ? ' virtual' : ''}`, transform: `translate(${cx} ${cy})` },
+    this.val = svg('text', { x: branch ? 0 : 10, y: branch ? 24 : 2.5, 'text-anchor': branch ? 'middle' : 'start', class: branch ? 'g-val branch-value' : 'g-val dl' });
+    this.unit = branch ? txt(0, 38, '', 'branch-unit', 'middle') : null;
+    this.g = svg('g', { class: `gauge${virtual ? ' virtual' : ''}${branch ? ' branch-gauge' : ''}`, transform: `translate(${cx} ${cy})` },
       svg('circle', { r: 8, class: 'g-face' }),
       svg('path', { d: 'M-5.6 4.4A7.2 7.2 0 1 1 5.6 4.4', class: 'g-arc' }),
       this.needle, svg('circle', { r: 1.3, class: 'g-hub' }), this.val,
-      txt(10, -4.5, tag, 'g-tag dl'));
+      txt(branch ? 0 : 10, branch ? -13 : -4.5, tag, branch ? 'g-tag branch-tag' : 'g-tag dl', branch ? 'middle' : 'start'));
+    if (this.unit) this.g.append(this.unit);
   }
   set(barA: number | null, text: string): void {
-    setText(this.val, text);
+    setText(this.val, this.unit ? text.split(' ')[0]! : text);
+    if (this.unit) setText(this.unit, text.includes('bar(g)') ? 'bar(g)' : 'bar(a)');
     const a = barA === null ? -140 : -140 + clamp(barA / 32, 0, 1) * 280;
     setAttr(this.needle, 'transform', `rotate(${a.toFixed(1)})`);
     toggleClass(this.g, 'off', barA === null);
@@ -259,8 +263,8 @@ const AMBIENT_MIN = -25;
 const AMBIENT_MAX = 45;
 
 /** Floor area and ceiling height bounds of a room; the volume is derived from them. */
-const AREA = { min: 5, max: 250, step: 1 } as const;
-const HEIGHT = { min: 2.2, max: 6, step: 0.1 } as const;
+const AREA = { min: 5, max: 250, step: 0.1 } as const;
+const HEIGHT = { min: 2.2, max: 6, step: 0.01 } as const;
 /** The heat-loss guide panel, in scene units. */
 
 /** Weather (unboxed, floats in the OUTDOOR zone) above the outdoor-unit card, both left of the riser corridor. */
@@ -357,11 +361,11 @@ function roomPanel(i: number, hooks: SceneHooks, guide: HeatLossGuide): RoomPane
     get: () => at()?.setpointC ?? 21, set: (v) => edit((r) => { r.setpointC = v; }),
   });
   const area = pairField({
-    label: 'Floor area', unit: 'm²', ...AREA, digits: 0, layout: 'block',
+    label: 'Floor area', unit: 'm²', ...AREA, digits: 1, layout: 'block',
     get: () => at()?.surfaceM2 ?? 20, set: (v) => edit((r) => { r.surfaceM2 = v; }),
   });
   const height = pairField({
-    label: 'Ceiling height', unit: 'm', ...HEIGHT, digits: 1, layout: 'block',
+    label: 'Ceiling height', unit: 'm', ...HEIGHT, digits: 2, layout: 'block',
     get: () => at()?.ceilingHeightM ?? 2.5, set: (v) => edit((r) => { r.ceilingHeightM = v; }),
   });
   const loss = pairField({
@@ -436,6 +440,8 @@ interface RoomView {
   gasProbe: Probe;
   liqProbe: Probe;
   note: CoilNote;
+  gasGauge: Gauge;
+  smallGauge: Gauge;
 }
 
 export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: HTMLElement): Scene {
@@ -588,9 +594,23 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
         overlayPanel(b.x0 + ROOM_COLS.env.dx, py(ROOM_PANEL_H.env), ROOM_COLS.env.w, ROOM_PANEL_H.env, panel.env)));
       const lc = lineCtlBox(b, lay.ctlX);
       root.append(overlayPanel(lc.x, lc.y, lc.w, lc.h, lineCtlFor(i).root));
+      const gasGauge = new Gauge(lay.ctlX + 39, b.top + 194, 'Gas', true, true);
+      const smallGauge = new Gauge(lay.ctlX + 121, b.top + 194, 'Small', true, true);
+      setAttr(gasGauge.g, 'data-branch-pressure', 'gas');
+      setAttr(smallGauge.g, 'data-branch-pressure', 'small');
+      setAttr(gasGauge.g, 'data-room-id', store.state.cfg.rooms[i]!.id);
+      setAttr(smallGauge.g, 'data-room-id', store.state.cfg.rooms[i]!.id);
+      gasGauge.g.append(svg('title', {}, 'Indoor coil gas-port pressure. Illustrative gauge connection; not a manufacturer service fitting.'));
+      smallGauge.g.append(svg('title', {}, 'Indoor coil small-port pressure. Illustrative gauge connection; not a manufacturer service fitting.'));
+      root.append(svg('g', { class: 'taps branch-taps' },
+        svg('path', { class: 'tap-stub', d: `M${lay.ctlX - 5} ${b.gasY}V${b.top + 194}H${lay.ctlX + 31}` }),
+        svg('path', { class: 'tap-stub', d: `M${lay.wall.x0 - 6} ${b.liqY}V${b.top + 194}H${lay.ctlX + 129}` }),
+        svg('circle', { class: 'node virtual', cx: lay.ctlX - 5, cy: b.gasY, r: 2.2 }),
+        svg('circle', { class: 'node virtual', cx: lay.wall.x0 - 6, cy: b.liqY, r: 2.2 }),
+        gasGauge.g, smallGauge.g));
       const at = indoorProbeAt(b);
       rooms.push({
-        g: wrapper, view, unit, panel, unitLabel: label, fan, wash,
+        g: wrapper, view, unit, panel, unitLabel: label, fan, wash, gasGauge, smallGauge,
         gasProbe: new Probe({ id: `indoor-gas-${i}`, label: `Indoor ${i + 1} gas-end refrigerant`, ...at.gas }),
         liqProbe: new Probe({ id: `indoor-liquid-${i}`, label: `Indoor ${i + 1} liquid-end refrigerant`, ...at.liq }),
         note: new CoilNote(`indoor-coil-${i}`, at.note, 'start', 12.5),
@@ -755,11 +775,11 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
     const [qx, qy] = L(190, lay.feeder); // on the common liquid feeder, upstream of every branch EEV
     root.append(sel('liqstop', 'Common liquid stop valve, static and fully open', { x: qx - 9, y: qy - 9, w: 18, h: 18, r: 4 },
       svg('g', { transform: `translate(${qx} ${qy})` }, stopValve('LIQ STOP', true))));
-    gaugeSvc = new Gauge(sx, sy - 44, 'physical SVC', false);
+    gaugeSvc = new Gauge(sx, sy - 44, 'SVC', false);
     const [hx, hy] = L(150, 136);
     const [lx, ly] = L(158, 198);
-    gaugeHP = new Gauge(hx, hy + 20, 'virtual HP tap', true);
-    gaugeLP = new Gauge(lx, ly + 13, 'virtual LP tap', true);
+    gaugeHP = new Gauge(hx, hy + 20, 'HP', true);
+    gaugeLP = new Gauge(lx, ly + 13, 'LP', true);
     root.append(
       svg('g', { class: 'taps' },
         svg('path', { d: `M${hx} ${hy}V${hy + 12}`, class: 'tap-stub' }), svg('circle', { cx: hx, cy: hy, r: 2.2, class: 'node virtual' }),
@@ -931,8 +951,8 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
         setAttr(f.num, 'aria-label', text);
         setAttr(f.range, 'aria-label', text);
       }
-      setAttr(p.area.range, 'aria-valuetext', `${fmt(r.surfaceM2, 0)} m²`);
-      setAttr(p.height.range, 'aria-valuetext', `${fmt(r.ceilingHeightM, 1)} m`);
+      setAttr(p.area.range, 'aria-valuetext', `${fmt(r.surfaceM2, 1)} m²`);
+      setAttr(p.height.range, 'aria-valuetext', `${fmt(r.ceilingHeightM, 2)} m`);
       setAttr(p.loss.range, 'aria-valuetext', `${fmt(r.heatLossWPerK, 0)} W/K`);
       guide.button(i).setAttribute('aria-label', `Envelope heat-loss guide for ${r.name}`);
       setText(v.unitLabel, r.indoorClass.startsWith('FTXA') ? r.indoorClass : `${info.label.replace('Generic wall head ', 'Generic ').replace(' class', '')}`);
@@ -993,6 +1013,21 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       v.gasProbe.update(ip.gas.role, ip.gas.tempC, src, held, `${r.name} indoor coil gas end · ${basis}`);
       v.liqProbe.update(ip.liquid.role, ip.liquid.tempC, src, held, `${r.name} indoor coil liquid end · ${basis}`);
       v.note.update(ip.deltaK, ip.heatW, src, 'line2-illustrative');
+      let gasPressure: number | null = null, smallPressure: number | null = null;
+      if (port) {
+        gasPressure = port.gas.pBarAbs;
+        smallPressure = port.small.pBarAbs;
+      } else if (live && cyc && (cyc.branchMassFlowsKgs[i] ?? 0) > 0) {
+        const inlet = cyc.branchInlets[i], outlet = cyc.branchOutlets[i];
+        gasPressure = (fm === 'heating' ? inlet : outlet)?.pBarAbs ?? null;
+        smallPressure = (fm === 'heating' ? outlet : inlet)?.pBarAbs ?? null;
+      } else if (!live && fm !== 'idle' && r.enabled) {
+        gasPressure = smallPressure = (fm === 'heating' ? rd.cycle?.pHighBarA : rd.cycle?.pLowBarA) ?? null;
+      }
+      v.gasGauge.set(gasPressure, conv(gasPressure));
+      v.smallGauge.set(smallPressure, conv(smallPressure));
+      setAttr(v.gasGauge.g, 'data-pressure-absolute', gasPressure ?? '');
+      setAttr(v.smallGauge.g, 'data-pressure-absolute', smallPressure ?? '');
     });
 
     // coil fouling: configuration-driven in both experiences; independent of the ice layer

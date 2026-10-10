@@ -11,9 +11,9 @@ import type { Readings } from './runtime/view';
  * Branch lengths are the owner's historical blog values (7.5 ground / 6.5 first / 14 attic).
  */
 const ROOMS: Omit<RoomConfig, 'cleanlinessOverridePct' | 'enabled'>[] = [
-  { id: 'attic', name: 'Attic', surfaceM2: 18, ceilingHeightM: 2.5, heatLossWPerK: 60, setpointC: 21, airC: 20, indoorClass: 'FTXA25' },
-  { id: 'first', name: 'First floor', surfaceM2: 30, ceilingHeightM: 2.5, heatLossWPerK: 85, setpointC: 21, airC: 20, indoorClass: 'FTXA35' },
-  { id: 'ground', name: 'Ground floor', surfaceM2: 20, ceilingHeightM: 2.5, heatLossWPerK: 70, setpointC: 21, airC: 20, indoorClass: 'FTXA25' },
+  { id: 'attic', name: 'Attic (L2)', surfaceM2: 26, ceilingHeightM: 84 / 26, heatLossWPerK: 60, setpointC: 21, airC: 20, indoorClass: 'FTXA25' },
+  { id: 'first', name: 'Upstairs (L1)', surfaceM2: 54.5, ceilingHeightM: 155 / 54.5, heatLossWPerK: 85, setpointC: 21, airC: 20, indoorClass: 'FTXA35' },
+  { id: 'ground', name: 'Ground (L0)', surfaceM2: 45.4, ceilingHeightM: 100 / 45.4, heatLossWPerK: 70, setpointC: 21, airC: 20, indoorClass: 'FTXA25' },
   { id: 'zone4', name: 'Lower level 4', surfaceM2: 16, ceilingHeightM: 2.5, heatLossWPerK: 55, setpointC: 21, airC: 20, indoorClass: 'G25' },
   { id: 'zone5', name: 'Lower level 5', surfaceM2: 16, ceilingHeightM: 2.5, heatLossWPerK: 55, setpointC: 21, airC: 20, indoorClass: 'G25' },
 ];
@@ -114,9 +114,6 @@ class Store {
     if (oldModel !== this.state.cfg.live.circuitModel || (this.state.cfg.live.circuitModel === 'inventory' && oldTopology !== newTopology)) {
       this.resetEpoch += 1;
       this.state.ui.notice = 'Started a new refrigerant circuit from the current initialization inputs.';
-      if (!this.state.cfg.rooms.slice(0,this.state.cfg.unitCount).some(room => ['gas','small','coil:1'].some(suffix => `${room.id}:${suffix}` === this.state.cfg.live.leakCellId))) {
-        if (this.state.cfg.live.leakCellId !== 'accumulator' && !this.state.cfg.live.leakCellId.startsWith('outdoor:')) this.state.cfg.live.leakCellId = 'outdoor:0';
-      }
     }
     this.emit();
   }

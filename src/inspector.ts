@@ -229,7 +229,7 @@ export function inspectorHtml(id: string | null, s: AppState): string {
         ['Role now', fm === 'idle' ? '— (idle)' : high ? 'HIGH side (discharge gas)' : 'LOW side (suction gas)'],
         [`Reading (${src})`, pressure(fm === 'idle' ? null : high ? rd.cycle?.pHighBarA : rd.cycle?.pLowBarA, s)],
         ['Convention', s.ui.pressure === 'abs' ? 'bar(a), absolute' : 'bar(g) = bar(a) − 1.01325 (local ambient assumed)'],
-      ])) + '<p class="muted">The two extra dials near the compressor are <b>virtual</b> explanatory taps, not manufacturer ports.</p>';
+      ])) + '<p class="muted">The two extra dials near the compressor are explanatory taps, not manufacturer ports.</p>';
     case 'gasstop':
     case 'liqstop': {
       const gas = kind === 'gasstop';

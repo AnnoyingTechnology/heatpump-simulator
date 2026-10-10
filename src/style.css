@@ -438,10 +438,6 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .ou-restart-row { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .ou-restart-row .rp-btn.pending { border-color: var(--warn); color: var(--warn); background: #fff4e5; }
 .ou-rnote { flex: 1 1 auto; min-width: 0; font-size: 11px; line-height: 1.2; color: #55606a; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-.ou-site-row { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-.ou-site { width: 100%; box-sizing: border-box; font: 600 12px var(--font); padding: 2px 4px; border: 1px solid #b9c8d2; border-radius: 6px; background: #fff; color: #22303b; }
-.ou-site:focus-visible { outline: 2px solid var(--focus); outline-offset: 1px; }
-.ou-site:disabled, .ou-charge .rp-num:disabled, .ou-charge .rp-range:disabled { opacity: 0.45; cursor: not-allowed; }
 .rp.ln.pending .ln-note { color: var(--warn); font-weight: 650; }
 .rp.ln.pending .ln-num { color: var(--warn); border-bottom-color: var(--warn); }
 
@@ -497,7 +493,7 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .node.virtual { fill: #fff; stroke: #52606c; stroke-width: 0.8; }
 .svc-cap { fill: #dba844; stroke: #7a5a14; stroke-width: 0.8; }
 .svc-stub { stroke: #7a5a14; stroke-width: 2; }
-.tap-stub { stroke: #7b8791; stroke-width: 1; stroke-dasharray: 2 1.5; }
+.tap-stub { fill: none; stroke: #7b8791; stroke-width: 1; stroke-dasharray: 2 1.5; }
 .g-face { fill: #fff; stroke: #52606c; stroke-width: 0.9; }
 .gauge.virtual .g-face { stroke-dasharray: 2 1.2; }
 .g-arc { fill: none; stroke: #aab4bd; stroke-width: 1.4; }
@@ -620,3 +616,10 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .scene[data-fans-on="1"] .outdoor-intake .stream { animation: air 1.8s linear infinite; }
 .outdoor-probes [data-readout="outdoor-coil"] text:nth-child(2) { display: none; }
 .coil-film .ice-note { top: auto; bottom: 22px; }
+
+/* Branch manometers remain readable in the overview, alongside their line set. */
+.branch-gauge .branch-value { font: 700 18px var(--font); fill: #1d2a35; }
+.branch-gauge .branch-tag { font: 600 10px var(--font); fill: #52606c; }
+.branch-taps { pointer-events: none; }
+
+.branch-gauge .branch-unit { font: 500 10px var(--font); fill: #52606c; }

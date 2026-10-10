@@ -3,7 +3,7 @@ import { INDOOR_CASE_MM, OUTDOOR_CASE_MM } from './types';
 
 /**
  * Scene geometry as a function of the active room count n. One physical illustration scale for BOTH casings: 0.32 px per mm.
- * Tube routing is schematic. Rows keep at least 220 scene units for intake, equipment and outlet readings. Larger layouts grow vertically
+ * Tube routing is schematic. Rows keep at least 242 scene units for intake, equipment and outlet readings. Larger layouts grow vertically
  * and scroll inside the stage. The generic outdoor casing grows only below the owner
  * envelope, to hold more ports: an explicit assumption, not a published dimension.
  */
@@ -66,7 +66,7 @@ export function layoutFor(n: number): Layout {
   const ctlX = riserEnd + LINE_CTL.gap;
   const x0 = ctlX + LINE_CTL.w + LINE_CTL.gap;
   const x1 = x0 + 30;
-  const roomH = Math.max(STACK_FIVE / rooms, 220);
+  const roomH = Math.max(STACK_FIVE / rooms, 242);
   const stackBottom = STACK_TOP + roomH * rooms;
   const outH = outdoorHeight(rooms);
   const groundY = OUT.y + outH + 3;

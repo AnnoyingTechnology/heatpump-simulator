@@ -11,6 +11,11 @@ const key=async(value)=>{await page.send('Input.dispatchKeyEvent',{type:'keyDown
 try{
  await page.waitFor('!!document.querySelector(".scene")');
  await run(async()=>{const m=await fetch('/src/main.ts').then(r=>r.text());globalThis.qa=await import(m.match(/from "([^"]*\/state\.ts[^"]*)"/)[1]);globalThis.qv=await import(m.match(/from "([^"]*\/runtime\/view\.ts[^"]*)"/)[1]);qa.store.update(s=>s.ui.paused=true);});await settled();
+ await check('owner floor areas and derived volumes match the supplied defaults',async()=>{
+  const rooms=await run(()=>qa.store.state.cfg.rooms.slice(0,3).map(r=>({id:r.id,area:r.surfaceM2,volume:r.surfaceM2*r.ceilingHeightM})));
+  assert.deepEqual(rooms.map(r=>r.area),[26,54.5,45.4]);
+  for(const [i,v] of [84,155,100].entries())assert.ok(Math.abs(rooms[i].volume-v)<1e-10);
+ });
  await check('duplicate Readings popup and footer are removed; unique controls live in outdoor settings',async()=>{
   assert.equal(await run(()=>document.querySelectorAll('.ribbon,.drawer,.hd-readings,#readings-pop').length),0);
   await run(()=>document.querySelector('button[aria-label="Outdoor unit settings"]').click());
@@ -61,6 +66,16 @@ try{
    plug:document.querySelectorAll('.hm-icon').length,sun:getComputedStyle(document.querySelector('.hm-sun')).display,snow:getComputedStyle(document.querySelector('.hm-snow')).display};});
   assert.ok(Math.abs(r.end/r.width-.95)<.005);assert.equal(r.intake,9);assert.equal(r.supply,9);assert.ok(r.directions.every(Boolean));assert.ok(Math.abs(r.inlet-r.actual.temperatureC)<.051);assert.ok(Math.abs(r.outlet-r.actual.airOutletC)<.051);assert.equal(r.duplicated,false);assert.match(r.cop,/COP/);assert.ok(r.bold>=800);assert.equal(r.plug,3);assert.notEqual(r.sun,'none');assert.equal(r.snow,'none');
   await run(()=>qa.store.setMode('cooling'));assert.equal(await run(()=>getComputedStyle(document.querySelector('.hm-sun')).display),'none');assert.notEqual(await run(()=>getComputedStyle(document.querySelector('.hm-snow')).display),'none');await settled();
+ });
+ await check('branch pressures use the actual coil endpoints and pressure convention',async()=>{
+  await run(()=>{qa.store.reset();qa.store.update(s=>s.ui.paused=true);});await settled();await run(()=>qv.simulation.step(.25));await settled();
+  const r=await run(()=>({out:qv.simulation.status.output,gauges:[...document.querySelectorAll('[data-branch-pressure]')].map(e=>({id:e.dataset.roomId,side:e.dataset.branchPressure,p:Number(e.dataset.pressureAbsolute),shown:e.querySelector('.g-val').textContent+' '+e.querySelector('.branch-unit').textContent})),labels:[...document.querySelectorAll('.g-tag')].map(e=>e.textContent)}));
+  assert.equal(r.gauges.length,6);assert.ok(r.labels.every(l=>!l.includes('virtual')));
+  for(const g of r.gauges){const i=r.out.rooms.findIndex(room=>room.id===g.id);const state=g.side==='gas'?r.out.cycle.branchInlets[i]:r.out.cycle.branchOutlets[i];assert.equal(g.p,state.pBarAbs);assert.ok(Math.abs(parseFloat(g.shown)-g.p)<.006);}
+  await run(()=>qa.store.update(s=>s.ui.pressure='gauge'));
+  const shown=await run(()=>[...document.querySelectorAll('[data-branch-pressure]')].map(e=>({p:Number(e.dataset.pressureAbsolute),shown:e.querySelector('.g-val').textContent+' '+e.querySelector('.branch-unit').textContent})));
+  for(const g of shown){assert.match(g.shown,/bar\(g\)/);assert.ok(Math.abs(parseFloat(g.shown)-(g.p-1.01325))<.006);}
+  await run(()=>qa.store.update(s=>s.ui.pressure='abs'));
  });
  await check('room removal preserves zoom by identity; removing the focused room returns to overview',async()=>{
   await run(()=>{qa.store.setExperience('examples');qa.store.setGenericPortCapacity(8);qa.store.setUnitCount(5);qa.store.update(s=>s.ui.zoom=`room:${s.cfg.rooms[2].id}`);});

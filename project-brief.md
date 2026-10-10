@@ -16,7 +16,7 @@ Outdoor temperature and humidity must remain permanently available while navigat
 
 ## Core scope
 
-- Heating and cooling, one to five indoor units, each serving its own room.
+- Heating and cooling, with indoor-unit count limited by the selected outdoor unit’s port capacity; each indoor unit serves its own room.
 - Room size and heat-loss controls, temperature and setpoint, sensible/latent considerations in the scientific design.
 - Outdoor dry-bulb temperature and relative humidity. Frost accumulation and defrost are mandatory and must be visible.
 - Global exchanger cleanliness from 100% clean to 10% remaining clear passage, with outdoor and individual indoor overrides. Model air-side transfer and airflow effects, keep dirt visible on vector coil artwork and separate from frost. This is a generic blockage sensitivity, not a measured manufacturer fouling curve.
@@ -31,9 +31,13 @@ Outdoor temperature and humidity must remain permanently available while navigat
 - Initial owner preset: Daikin 3MXM52N8 + FTXA25 + FTXA35 + FTXA25. Exact indoor suffixes and installation geometry remain unknown unless established by sources. Owner-provided source: https://blog.julienarnaud.fr/thermal-dimensioning-of-a-heat-pump.html . Fetch scripted requests using a Firefox-like user agent; if rejected, use the authenticated Playwright browser rather than declaring the site unavailable.
 - Research common domestic/small-business refrigerants used over approximately the past 30 years, plus R290 and R1234yf. Offer as simulated fluids only those with validated thermophysical data and suitable model coverage; distinguish pure fluids from blends and account for glide where relevant.
 
+Charge adjustment is the active conserved-inventory milestone. Compare reduced-charge scenarios by changing the initial charge and restarting. The owner removed the ongoing leak feature on 2026-10-10.
+
+Owner floor defaults: Ground (Level 0) 45.4 m² / 100 m³; Upstairs (Level 1) 54.5 m² / 155 m³; Attic (Level 2) 26 m² / 84 m³. Initial ceiling heights are derived from these exact area/volume pairs.
+
 ## Deferred
 
-Charge adjustment, slow leaks, oil transport/return, saving/export/sharing, exhaustive current Daikin/Mitsubishi product catalogues, mixed domestic hot water, three-pipe heat recovery VRV/VRF, French, and branding. Document extension boundaries without building speculative subsystems. No mobile work.
+Oil transport/return, saving/export/sharing, exhaustive current Daikin/Mitsubishi product catalogues, mixed domestic hot water, three-pipe heat recovery VRV/VRF, French, and branding. Optional outdoor audio is also deferred: audio off by default, explicitly enabled by the user, with synthesized compressor sound responding to compressor load and fan sound responding to fan speed. Document extension boundaries without building speculative subsystems. No mobile work.
 
 ## Research and review
 

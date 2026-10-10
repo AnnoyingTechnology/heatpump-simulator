@@ -24,7 +24,7 @@ export interface EngineConfig {
     initialFluidTemperatureC: number;
     geometry: ChargeGeometry;
     /** An imposed local homogeneous mass-loss scenario, not an inferred hole/orifice leak. */
-    leak: { physicalCellId: string; rateKgs: number };
+    leak?: { physicalCellId: string; rateKgs: number };
   };
   rooms: RoomConfig[];
   compressor: { displacementM3rev: number; speedMinRps: number; speedMaxRps: number; isentropicEfficiency: number; volumetricEfficiency: number; driveEfficiency: number; superheatK: number; subcoolK: number; maxDischargeC: number; maxPressureRatio: number };

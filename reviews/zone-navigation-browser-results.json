@@ -1,6 +1,10 @@
 {
-  "checkedAt": "2026-10-10T17:47:56.941Z",
+  "checkedAt": "2026-10-10T18:01:51.116Z",
   "checks": [
+    {
+      "name": "owner floor areas and derived volumes match the supplied defaults",
+      "passed": true
+    },
     {
       "name": "duplicate Readings popup and footer are removed; unique controls live in outdoor settings",
       "passed": true
@@ -23,6 +27,10 @@
     },
     {
       "name": "indoor coil, inlet/outlet flow readings and header symbols are spatial and match engine values",
+      "passed": true
+    },
+    {
+      "name": "branch pressures use the actual coil endpoints and pressure convention",
       "passed": true
     },
     {

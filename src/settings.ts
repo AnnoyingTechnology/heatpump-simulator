@@ -34,7 +34,7 @@ const FLUIDS: ReadonlyArray<{ name: string; note: string; selected?: boolean }> 
   { name: 'R22', note: 'Research only · legacy · validation pending' },
 ];
 
-/** References only; none of these is modelled or editable yet. Charge and leaks live in the inventory model. */
+/** References only; none of these is modelled or editable yet. Charge lives in the inventory model. */
 const PENDING: ReadonlyArray<{ name: string; note: string }> = [
   { name: 'Oil', note:'Pending reference · no lubricant circulation or solubility model' },
   { name: 'Other', note: 'Pending reference · moisture, non-condensables and contamination are not modelled' },
@@ -299,28 +299,12 @@ function pendingStartValues(cfg: AppState['cfg'], inv: Inventory): string[] {
   return out;
 }
 
-/** Physical cells where a homogeneous mass loss can be imposed. Local g/day is a scenario, not an inferred hole. */
-function leakSites(cfg: AppState['cfg']): { id: string; text: string }[] {
-  const sites = [
-    { id: 'outdoor:0', text: 'Outdoor gas end' },
-    { id: 'outdoor:2', text: 'Outdoor small end' },
-    { id: 'accumulator', text: 'Accumulator' },
-  ];
-  for (const r of activeRooms(cfg)) {
-    sites.push({ id: `${r.id}:gas`, text: `${r.name} gas line` }, { id: `${r.id}:coil:1`, text: `${r.name} coil` }, { id: `${r.id}:small`, text: `${r.name} small line` });
-  }
-  return sites;
-}
-
 interface ChargeArea {
   root: HTMLElement;
   sync(s: AppState, inv: Inventory | null): void;
 }
 
-/**
- * Direct charge controls of the outdoor unit: actual remaining mass, the initial-charge draft with its Restart, and the live leak.
- * Initial charge is a start value for the next circuit; the leak rate and site act on the running circuit at once.
- */
+/** Charge is a start value for the next scenario, applied explicitly on Restart. */
 function createChargeArea(): ChargeArea {
   const live = (): LiveParameters => store.state.cfg.live;
   const initial = pairField({
@@ -328,24 +312,13 @@ function createChargeArea(): ChargeArea {
     get: () => live().initialChargeKg, set: (v) => store.update((s) => { s.cfg.live.initialChargeKg = v; }),
     title: 'Scenario start value, applied on Restart. Not a factory prediction.',
   });
-  const leak = pairField({
-    label: 'Slow leak', unit: 'g/day', min: 0, max: 10000, step: 1, digits: 0, layout: 'line',
-    get: () => live().leakGramsPerDay, set: (v) => store.update((s) => { s.cfg.live.leakGramsPerDay = v; }),
-    title: 'Imposed homogeneous mass loss at the chosen site, effective immediately. Large values are accelerated scenarios.',
-  });
-  const siteId = nextId('site');
-  const site = html('select', { id: siteId, class: 'ou-site rp-ctl' });
-  site.addEventListener('change', () => store.update((s) => { s.cfg.live.leakCellId = site.value; }));
-  isolate(site);
-  const siteNote = html('span', { class: 'rp-n' });
-
   const remV = html('span', { class: 'rp-v' });
   const remN1 = html('span', { class: 'rp-n' });
   const remN2 = html('span', { class: 'rp-n' });
   const enable = html('button', { type: 'button', class: 'rp-btn rp-ctl' }, 'Enable inventory');
   enable.addEventListener('click', () => store.setCircuitModel('inventory'));
   const remaining = html('div', { class: 'rp-card ou-rem' },
-    html('span', { class: 'rp-k' }, 'Remaining charge'),
+    html('span', { class: 'rp-k' }, 'System charge'),
     html('span', { class: 'rp-line' }, remV, html('small', {}, 'kg')),
     remN1, remN2, enable);
   const restart = html('button', { type: 'button', class: 'rp-btn rp-ctl' }, 'Restart');
@@ -356,9 +329,7 @@ function createChargeArea(): ChargeArea {
   const root = html('section', { class: 'ou-charge', 'aria-label': 'Refrigerant charge' },
     html('div', { class: 'ou-ch-title' }, 'CHARGE'),
     remaining, initial.root,
-    html('div', { class: 'ou-restart-row' }, restart, restartNote),
-    leak.root,
-    html('div', { class: 'ou-site-row' }, html('label', { class: 'rp-k', for: siteId }, 'Leak site'), site, siteNote));
+    html('div', { class: 'ou-restart-row' }, restart, restartNote));
 
   return {
     root,
@@ -369,23 +340,10 @@ function createChargeArea(): ChargeArea {
       const inventory = model === 'inventory';
       const isLive = s.ui.experience === 'live';
       initial.refresh();
-      leak.refresh();
-
-      const sites = leakSites(cfg);
-      const key = sites.map((x) => `${x.id}|${x.text}`).join('\n');
-      if (site.dataset.key !== key && document.activeElement !== site) {
-        site.replaceChildren(...sites.map((x) => html('option', { value: x.id }, x.text)));
-        site.dataset.key = key;
-      }
-      if (document.activeElement !== site) {
-        const at = sites.findIndex((x) => x.id === cfg.live.leakCellId);
-        if (site.selectedIndex !== at) site.selectedIndex = at;
-      }
-
       if (inv) {
         setText(remV, fmt(inv.massKg, 3));
         setText(remN1, `started with ${fmt(inv.initialMassKg, 3)} kg`);
-        setText(remN2, inv.leakedMassKg > 0 ? `leaked ${fmt(inv.leakedMassKg * 1000, 1)} g` : 'no leak so far');
+        setText(remN2, '');
       } else {
         setText(remV, '—');
         setText(remN1, !inventory ? 'reference model · no inventory' : !isLive ? 'Examples · not modelled' : 'waiting for the circuit');
@@ -407,8 +365,6 @@ function createChargeArea(): ChargeArea {
       restartNote.title = rtext;
       setAttr(restart, 'title', 'Start a new circuit from the current start values (charge, start temperature, line length, bores, volumes). Resets simulated time.');
 
-      for (const el of [leak.num, leak.range, site]) { el.disabled = !inventory; }
-      setText(siteNote, !inventory ? 'inventory model only' : cfg.live.leakGramsPerDay > 0 ? 'imposed local loss, not a hole' : 'no leak imposed');
     },
   };
 }
@@ -612,7 +568,7 @@ export function createOutdoorSettings(): PopContent {
   labels.addEventListener('change', () => store.update((s) => { s.ui.showLabels = labels.checked; }));
   const display = keyed('display', fold('Display and pressure taps', false,
     html('div', { class: 'field' }, html('div', { class: 'field-head' }, html('span', { class: 'lab' }, 'Pressure convention')), pressure.root),
-    html('label', { class: 'check', for: 'opt-taps' }, taps, 'Show pressure taps (physical service port and virtual taps)'),
+    html('label', { class: 'check', for: 'opt-taps' }, taps, 'Show pressure taps'),
     html('label', { class: 'check', for: 'opt-labels' }, labels, 'Component labels at outdoor zoom'),
     html('ul', { class: 'taps-list' },
       html('li', {}, html('b', {}, 'Physical service port'), ' — common gas node, fitted on the static gas stop valve. Role changes: HIGH side in heating, LOW side in cooling and defrost.'),
@@ -626,12 +582,12 @@ export function createOutdoorSettings(): PopContent {
   const refrigerant = keyed('refrigerant', fold('Refrigerant (research gating)', false, list(FLUIDS, false)));
   const pending = keyed('pending', fold('Oil and other (pending)', false, list(PENDING, true)));
 
-  // Refrigerant charge model. Initial charge, leak rate and site are edited on the outdoor-unit card; line length and bores on the line sets.
+  // Refrigerant charge model. Initial charge is edited on the outdoor-unit card; line length and bores on the line sets.
   const circuit = reg(segmented<LiveParameters['circuitModel']>({
     label: 'Refrigerant circuit model', compact: true,
     options: [
       { value: 'reference', text: 'Reference', title: 'Quasi-steady cycle without refrigerant inventory' },
-      { value: 'inventory', text: 'Inventory', title: 'Conserved-mass circuit with charge, leak and idealized field transport', disabled: !CHARGE_MODEL_AVAILABLE },
+      { value: 'inventory', text: 'Inventory', title: 'Conserved-mass circuit with charge and idealized field transport', disabled: !CHARGE_MODEL_AVAILABLE },
     ],
     get: () => cfg().live.circuitModel, set: (v) => store.setCircuitModel(v),
   }));

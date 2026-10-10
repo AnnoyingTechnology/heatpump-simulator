@@ -65,7 +65,6 @@ export function readingsFor(s: AppState, source: Experience): Readings {
       { label: 'Liquid drainage', value: output.outdoor.drainageKgs * 3600, unit: 'kg/h', digits: 3 },
       ...(output.inventory ? [
         { label: 'Refrigerant remaining', value: output.inventory.massKg, unit: 'kg', digits: 4 },
-        { label: 'Leaked refrigerant', value: output.inventory.leakedMassKg * 1000, unit: 'g', digits: 4 },
         { label: 'Refrigerant mass residual', value: output.inventory.massResidualKg, unit: 'kg', digits: 10 },
         { label: 'Refrigerant energy residual', value: output.inventory.energyResidualJ, unit: 'J', digits: 4 },
       ] : []),

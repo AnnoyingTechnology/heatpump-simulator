@@ -15,7 +15,7 @@ try {
   const r=await run(()=>({mass:qv.simulation.status.output.inventory.massKg,
    shown:document.querySelector('.ou-rem .rp-v').textContent,
    probes:[...document.querySelectorAll('[data-probe]')].filter(e=>!e.dataset.probe.startsWith('compressor') && e.dataset.probe!=='outdoor-exhaust-air').map(e=>e.querySelector('.s-val').textContent),
-   gauges:[...document.querySelectorAll('.gauge .g-val')].map(e=>e.textContent)}));
+   gauges:[...document.querySelectorAll('.gauge')].map(e=>e.querySelector('.g-val').textContent+' '+(e.querySelector('.branch-unit')?.textContent??''))}));
   assert.ok(Math.abs(r.mass-1.8)<1e-9);assert.equal(Number(r.shown),1.8);assert.ok(r.probes.every(v=>v!=='—'));assert.ok(r.gauges.every(v=>v.includes('bar')));
   for(let i=0;i<4;i++)await step();
  });
@@ -32,19 +32,22 @@ try {
   assert.equal(await run(()=>qv.simulation.status.output.inventory.geometry.rooms[0].lineLengthM),13);
   assert.equal(await run(()=>qv.simulation.status.output.simulatedSeconds),0);
  });
- await check('live imposed leak and individual Off preserve inventory time with real static probes',async()=>{
-  await run(()=>{const leak=document.querySelectorAll('.ou-charge input[type=range]')[1];leak.value='2000';leak.dispatchEvent(new Event('input',{bubbles:true}));});await settled();
-  const before=await run(()=>({time:qv.simulation.status.output.simulatedSeconds,leak:qv.simulation.status.output.inventory.leakedMassKg}));
+ await check('charge-only scenarios expose no leak controls and individual Off preserves inventory time',async()=>{
+  const ui=await run(()=>({controls:document.querySelectorAll('.ou-charge input[type=range]').length,text:document.querySelector('.ou-charge').innerText,config:qa.store.state.cfg.live}));
+  assert.equal(ui.controls,1);assert.doesNotMatch(ui.text,/leak/i);assert.ok(!('leakCellId' in ui.config));assert.ok(!('leakGramsPerDay' in ui.config));
+  const before=await run(()=>({time:qv.simulation.status.output.simulatedSeconds,mass:qv.simulation.status.output.inventory.massKg}));
   for(let i=0;i<4;i++)await step();
-  const out=await run(()=>qv.simulation.status.output);assert.equal(out.simulatedSeconds,before.time+1);assert.ok(Math.abs(out.inventory.leakedMassKg-before.leak-2/86400)<1e-10);assert.ok(Math.abs(out.energy.residualJ)<.005);
+  const out=await run(()=>qv.simulation.status.output);assert.equal(out.simulatedSeconds,before.time+1);assert.ok(Math.abs(out.inventory.massKg-before.mass)<1e-9);assert.ok(Math.abs(out.energy.residualJ)<.005);
   await run(()=>qa.store.update(s=>s.cfg.rooms.forEach(r=>r.enabled=false)));await settled();await step();
-  const r=await run(()=>({out:qv.simulation.status.output,probes:[...document.querySelectorAll('.indoor-probes .s-val')].map(e=>e.textContent)}));
+  const r=await run(()=>({out:qv.simulation.status.output,probes:[...document.querySelectorAll('.indoor-probes .s-val')].map(e=>e.textContent),gauges:[...document.querySelectorAll('[data-branch-pressure]')].map(e=>({id:e.dataset.roomId,side:e.dataset.branchPressure,p:Number(e.dataset.pressureAbsolute)}))}));
   assert.equal(r.out.simulatedSeconds,out.simulatedSeconds+.25);assert.equal(r.out.electrical.compressorW,0);assert.ok(r.out.rooms.every(room=>room.airOutletC===null));assert.ok(r.probes.every(v=>v!=='—'));
+  for(const gauge of r.gauges)assert.equal(gauge.p,r.out.inventory.coilPorts[gauge.id][gauge.side].pBarAbs);
  });
- await check('new topology explicitly starts a circuit and retains only existing leak sites',async()=>{
-  await run(()=>{qa.store.update(s=>{s.cfg.live.leakCellId='attic:coil:1';s.cfg.live.leakGramsPerDay=0;});qa.store.setOutdoorKind('generic');qa.store.addRoom();});await settled();
-  assert.equal(await run(()=>qa.store.state.cfg.live.leakCellId),'attic:coil:1');assert.equal(await run(()=>qv.simulation.status.output.simulatedSeconds),0);
-  await run(()=>qa.store.removeRoom(0));await settled();assert.equal(await run(()=>qa.store.state.cfg.live.leakCellId),'outdoor:0');assert.match(await run(()=>qa.store.state.ui.notice),/new refrigerant circuit/);
+ await check('new topology explicitly starts a new circuit from the charge draft',async()=>{
+  await run(()=>{qa.store.setOutdoorKind('generic');qa.store.addRoom();});await settled();
+  assert.equal(await run(()=>qv.simulation.status.output.simulatedSeconds),0);
+  assert.ok(Math.abs(await run(()=>qv.simulation.status.output.inventory.massKg)-1.7)<1e-9);
+  await run(()=>qa.store.removeRoom(0));await settled();assert.match(await run(()=>qa.store.state.ui.notice),/new refrigerant circuit/);
  });
  await check('real liquid-filled initialization shows compressor protection separately from simulator Pause and indoor Off',async()=>{
   await run(()=>{qa.store.reset();qa.store.setUnitCount(1);qa.store.update(s=>{s.ui.paused=true;s.ui.experience='live';s.cfg.live.circuitModel='inventory';s.cfg.live.initialFluidTemperatureC=20;s.cfg.outdoorC=20;s.cfg.rooms[0].airC=20;s.cfg.rooms[0].setpointC=21;});});await settled();

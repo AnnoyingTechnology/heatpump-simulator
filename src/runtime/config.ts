@@ -11,8 +11,6 @@ export interface LiveParameters {
   outdoorCoilVolumeL: number;
   indoorCoilVolumeL: number;
   accumulatorVolumeL: number;
-  leakCellId: string;
-  leakGramsPerDay: number;
   outdoorAirConductanceWK: number;
   outdoorRefrigerantConductanceWK: number;
   outdoorAirMassFlowKgs: number;
@@ -43,7 +41,7 @@ export function defaultLiveParameters(): LiveParameters {
   return { fieldLines: 'idealized', circuitModel: 'reference', initialChargeKg: 1.8, initialFluidTemperatureC: null,
     outdoorCoilVolumeL: Math.PI * .006 ** 2 * 40 / 4 * 1000,
     indoorCoilVolumeL: Math.PI * .006 ** 2 * 10 / 4 * 1000, accumulatorVolumeL: .6,
-    leakCellId: 'outdoor:0', leakGramsPerDay: 0, outdoorAirConductanceWK: c.outdoor.airConductanceWK,
+    outdoorAirConductanceWK: c.outdoor.airConductanceWK,
     outdoorRefrigerantConductanceWK: c.outdoor.refrigerantConductanceWK,
     outdoorAirMassFlowKgs: c.outdoor.airMassFlowKgs, depositionAreaM2: c.outdoor.depositionAreaM2,
     indoorAirConductanceWK: r.airConductanceWK, indoorRefrigerantConductanceWK: r.refrigerantConductanceWK,
@@ -97,7 +95,7 @@ export function engineConfigFromUi(cfg: Config, live: LiveParameters, activeInit
         superheatTargetK: c.compressor.superheatK, maximumDischargeC: c.compressor.maxDischargeC,
         maximumPressureRatio: c.compressor.maxPressureRatio,
       },
-    }), leak: { physicalCellId: live.leakCellId, rateKgs: live.leakGramsPerDay / 1000 / 86400 } };
+    }) };
     // This inventory formulation stores real field volume but currently idealizes its transport.
     // Reject the unsupported combination explicitly rather than ignore physical transport.
     if (live.fieldLines === 'physical') throw new Error('Physical field transport is available in the quasi-steady reference model; the conserved-inventory circuit currently requires idealized transport.');
