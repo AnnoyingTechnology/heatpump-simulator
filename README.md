@@ -53,10 +53,12 @@ Requested speed is limited by actual solver throughput. The worker keeps calcula
 - [Observed browser property-backend feasibility](research/coolprop-browser-feasibility.md)
 - [Implemented equations, assumptions and performance](research/engine-implementation.md)
 - [Safe/fast property-backend follow-up](research/coolprop-fast-browser-options.md)
+- [Guarded exact-backend build plan](research/safe-coolprop-build-plan.md)
 - [Charge and leak sources](research/refrigerant-charge-source-register.md)
 - [Conserved refrigerant model design](research/refrigerant-charge-model-design.md)
 - [Independent charge-model review](reviews/charge-model-science-review.md)
 - [Charged frost validation](reviews/charged-frost-validation.md)
+- [Owner startup diagnosis and unexecuted comparison proposal](research/owner-startup-diagnosis.md)
 - [Interface design notes](design/interface-design.md)
 - [Interface browser QA](reviews/interface-qa.md)
 - [Independent science-compliance review](reviews/science-compliance-review.md)
@@ -67,6 +69,6 @@ Heating, cooling, individual room thermal behaviour, and visible frost/defrost a
 
 The conserved R32 circuit now stores actual refrigerant mass and internal energy in coils, physical line volumes and a generic accumulator. Initial charge and geometry define a new scenario at Restart. Compare reduced-charge scenarios to explore conditions after refrigerant loss; ongoing leaks are outside the product scope. Physical coil-end sensors remain meaningful during idle operation, redistribution and reversal. Generic liquid-carryover protection can stop the compressor while passive heat exchange continues; the workbench reports that hold explicitly and suppresses COP.
 
-This inventory implementation remains behind a validation gate while sustained three-head operation and complete charged frost/defrost are being checked. The public default is still the separately validated quasi-steady Reference model, which has no refrigerant inventory or charge response. Inventory line volumes are physical but transport is currently idealized and adiabatic; the Reference model's advanced physical piping remains separately available. Internal volumes, passage geometry, homogeneous two-phase closure and controller assumptions are generic rather than inferred OEM internals. Oil, saving/export, French, mixed water systems, heat-recovery VRF and branding remain later work. An Opus 5.5 review is reserved for the owner to trigger separately.
+This inventory implementation remains behind a validation gate. Its latest frozen-checkpoint continuation resolved the earlier 11 s failure and reached 48.5 s with natural ice, then hit the unchanged numerical work limit before accepted reversal or thaw. Complete charged frost/defrost and sustained three-head heating remain open. The public default is still the separately validated quasi-steady Reference model, which has no refrigerant inventory or charge response. Inventory line volumes are physical but transport is currently idealized and adiabatic; the Reference model's advanced physical piping remains separately available. Internal volumes, passage geometry, homogeneous two-phase closure and controller assumptions are generic rather than inferred OEM internals. Oil, saving/export, French, mixed water systems, heat-recovery VRF and branding remain later work. An Opus 5.5 review is reserved for the owner to trigger separately.
 
 The numerical implementation is in `src/engine/`, its worker/runtime bridge in `src/runtime/`, and real-backend checks run with `npm run test:engine`. The project has its own local Git repository with verified milestone commits; no remote or publication is configured.

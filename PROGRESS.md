@@ -18,8 +18,9 @@ Updated 2026-10-10. This is the current implementation checkpoint; detailed evid
 
 ## In progress
 
-- **Simulation speed:** the defect is fixed and regressions passed; high-speed active heating remains CPU-limited. Further acceleration requires validated backend or numerical improvements rather than changing the displayed clock or physical timestep.
-- **Experimental charge physics:** a reviewed bounded real-EOS isentropic integral fixes the saved numerical rejection. An exact-checkpoint natural frost continuation is progressing; this is conditional validation, not completed physical acceptance. Sustained owner-layout startup remains under scientific investigation.
+- **Simulation speed:** the defect is fixed and regressions passed; high-speed active heating remains CPU-limited. A project-local build of the same exact HEOS backend with native exception guards is underway. It must pass property agreement, failure/recovery, engine and browser checks before integration; no speed improvement is assumed.
+- **Experimental charge physics:** the reviewed isentropic integral resolved the saved 11 s rejection. The single frozen-checkpoint continuation reached 48.5 s with 0.0001067 kg of naturally deposited ice, then stopped at its unchanged density-evaluation work limit. Exact rollback passed, but reversal, thaw, drainage and useful heating return did not. Runtime was 584.4 wall seconds for 37.5 accepted simulated seconds. The full final checkpoint is retained for diagnosis without repeating warmup: `research/charge-frost-continuation-progress.json`.
+- **Owner-layout startup:** conserved-state inspection identifies uniform cold phase allocation and homogeneous outlet transport as coupled uncertainties. A controlled phase-allocation/valve-start comparison is proposed in `research/owner-startup-diagnosis.md`; it has not been run or accepted as a remedy.
 
 ## Required before charge release
 

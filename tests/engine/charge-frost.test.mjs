@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import factory from '../../public/vendor/coolprop/coolprop.js';
 import { Properties } from './build/properties.js';
@@ -19,7 +19,9 @@ test('charged cold humid circuit deposits real ice and supplies finite latent he
   console.log(JSON.stringify({ sourceHashes }));
   const p = new Properties(await factory());
   try {
-    const c = configured();
+    const resumedCheckpoint = process.env.CHARGE_FROST_RESUME_SNAPSHOT
+      ? JSON.parse(await readFile(process.env.CHARGE_FROST_RESUME_SNAPSHOT, 'utf8')) : null;
+    const c = resumedCheckpoint ? structuredClone(resumedCheckpoint.config) : configured();
     const stepSeconds = Number(process.env.CHARGE_FROST_STEP_SECONDS ?? .25);
     assert.ok([.25, .125].includes(stepSeconds), 'supported refinement .25 or .125 s');
     c.numerics.maxStepSeconds = stepSeconds;
@@ -33,7 +35,20 @@ test('charged cold humid circuit deposits real ice and supplies finite latent he
     const chargeNumerics = process.env.CHARGE_FROST_PRESSURE_DROP_COORDINATES === '1'
       ? { pressureDifferenceCoordinates: true } : {};
     console.log(JSON.stringify({ stepSeconds, chargeNumerics }));
-    const e = new HeatPumpEngine(p, c, chargeNumerics), initial = e.snapshot();
+    const e = new HeatPumpEngine(p, c, chargeNumerics);
+    assert.equal(resumedCheckpoint, null, 'Historical continuation requires the isolated reviewed research loader; public restore accepts owned snapshots only.');
+
+    const initial = e.snapshot(), startedAt = performance.now();
+    const saveProgress = async output => {
+      if (!process.env.CHARGE_FROST_PROGRESS_SNAPSHOT) return;
+      await writeFile(process.env.CHARGE_FROST_PROGRESS_SNAPSHOT, JSON.stringify({
+        sourceHashes, originalSourceHashes: resumedCheckpoint?.sourceHashes ?? null,
+        savedAt: new Date().toISOString(), wallSeconds: (performance.now() - startedAt) / 1000,
+        config: e.getConfig(), output, fluid: e.refrigerant.snapshot(),
+        controllerCheckpoint: e.checkpoint(), initialEnergyJ: e.initialEnergy, initialWaterKg: e.initialWater,
+      }, null, 2) + '\n');
+    };
+    await saveProgress(initial);
     const identities = initial.inventory.cells.map(cell => ({ id: cell.id, volumeM3: cell.volumeM3 }));
     assert.equal(initial.outdoor.filmMassKg, 0);
     let prior = initial, maximumIce = 0, maximumLiquid = 0, meltedKg = 0, meltEnergyJ = 0;
@@ -80,7 +95,8 @@ test('charged cold humid circuit deposits real ice and supplies finite latent he
         meltedKg += Math.max(0, prior.outdoor.iceKg - o.outdoor.iceKg);
       }
       if (o.state !== prior.state) console.log(JSON.stringify({ state: o.state, speedRps: o.diagnostics.speedRps, accumulator: o.inventory.cells.find(cell => cell.id === 'accumulator'), orientation: o.inventory.orientation }));
-      if (i % (1 / stepSeconds) === 0 || (o.state !== prior.state)) console.log(JSON.stringify({ time: o.simulatedSeconds, state: o.state, iceKg: o.outdoor.iceKg, outdoorMetalC: o.outdoor.temperatureC, massResidualKg: o.inventory.massResidualKg, fluidEnergyResidualJ: o.inventory.energyResidualJ }));
+      await saveProgress(o);
+      if (i % (1 / stepSeconds) === 0 || (o.state !== prior.state)) console.log(JSON.stringify({ time: o.simulatedSeconds, wallSeconds: (performance.now() - startedAt) / 1000, state: o.state, iceKg: o.outdoor.iceKg, outdoorMetalC: o.outdoor.temperatureC, massResidualKg: o.inventory.massResidualKg, fluidEnergyResidualJ: o.inventory.energyResidualJ }));
       if (sawDefrost && o.state === 'draining') { completed = true; drainedSnapshot ??= o; terminationTrigger ??= prior; }
       if (completed && o.state === 'running' && o.inventory.orientation === 'heating' &&
           o.electrical.compressorW > 0 && o.inventory.coilHeatW['room-1'] > 0 &&
@@ -99,6 +115,6 @@ test('charged cold humid circuit deposits real ice and supplies finite latent he
       `latent heat ${meltEnergyJ}, ice decrease ${meltedKg}`);
     assert.ok(Math.abs(depositedKg - drainedKg - prior.outdoor.filmMassKg) < 1e-9,
       'outdoor deposition, retained ice/liquid and drainage must close independently');
-    console.log(JSON.stringify({ stepSeconds, transitionSeconds, phaseSeconds, chargeNumerics, acceptedSeconds: prior.simulatedSeconds, maximumIceKg: maximumIce, maximumLiquidKg: maximumLiquid, meltedKg, meltEnergyJ, defrostHeatJ, defrostCompressorElectricityJ, depositedKg, drainedKg, maximumMassResidualKg, maximumFluidEnergyResidualJ, maximumFluidSubsteps, totalReportedFluidSubsteps }));
+    console.log(JSON.stringify({ stepSeconds, transitionSeconds, phaseSeconds, chargeNumerics, wallSeconds: (performance.now() - startedAt) / 1000, resumedFromSeconds: initial.simulatedSeconds, acceptedSeconds: prior.simulatedSeconds, maximumIceKg: maximumIce, maximumLiquidKg: maximumLiquid, meltedKg, meltEnergyJ, defrostHeatJ, defrostCompressorElectricityJ, depositedKg, drainedKg, maximumMassResidualKg, maximumFluidEnergyResidualJ, maximumFluidSubsteps, totalReportedFluidSubsteps }));
   } finally { p.dispose(); }
 });
