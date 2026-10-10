@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import Module from '../../public/vendor/coolprop/coolprop.js';import {Properties} from './build/index.js';
+import Module from './backend.mjs';import {Properties} from './build/index.js';
 const m=await Module(),p=new Properties(m);
 test('reusable HEOS state matches independent PropsSI across input switches and cache hits',()=>{
   const points=[['P',8e5,'T',300],['P',25e5,'T',310],['P',8e5,'Q',.5],['T',280,'Q',1],['P',25e5,'S',2000]];
@@ -27,4 +27,20 @@ test('repeated rejected flashes preserve real WASM refrigerant and humid-air ser
     if(i%100===0){assert.ok(Math.abs(p.prop('H','P',8e5,'T',300)-m.PropsSI('H','P',8e5,'T',300,'R32'))<1e-5);assert.ok(Math.abs(p.airH(20,p.airW(20,.5,101325),101325)-expected)<1e-8);}
   }
   assert.equal(m.HAPropsSI('H','T',293.15,'R',.5,'P',101325),expected);
+});
+
+test('undefined two-phase sound speed cannot poison later same-input physical readings',()=>{
+  const point=['P',9e5,'Q',.37];
+  p.clearCache();
+  p.prop('T',...point);
+  assert.throws(()=>p.prop('A',...point));
+  // A native getter failure invalidates a guarded reusable state. H is uncached,
+  // so recovering it at identical inputs requires a new successful update.
+  const actual=p.prop('H',...point),expected=m.PropsSI('H',...point,'R32');
+  assert.ok(Math.abs(actual-expected)<3e-8*Math.abs(expected));
+  for(const point of [['P',9e5,'T',310],['P',3e6,'T',290]])
+    for(const output of ['C','V','A']){
+      const expected=m.PropsSI(output,...point,'R32');
+      assert.ok(Math.abs(p.prop(output,...point)-expected)<3e-8*Math.abs(expected),output);
+    }
 });

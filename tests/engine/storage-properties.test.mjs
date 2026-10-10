@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import Module from '../../public/vendor/coolprop/coolprop.js';
+import Module from './backend.mjs';
 import {Properties} from './build/properties.js';
 const module=await Module(),properties=new Properties(module);
 test('conserved density/internal-energy flash matches independent real R32 states across phases',()=>{

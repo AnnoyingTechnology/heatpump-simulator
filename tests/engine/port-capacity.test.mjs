@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import Factory from '../../public/vendor/coolprop/coolprop.js';
+import Factory from './backend.mjs';
 import { Properties, HeatPumpEngine, defaultEngineConfig } from './build/index.js';
 
 const properties = new Properties(await Factory());

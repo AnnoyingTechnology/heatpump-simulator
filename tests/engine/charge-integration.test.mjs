@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import factory from '../../public/vendor/coolprop/coolprop.js';
+import factory from './backend.mjs';
 import { Properties } from './build/properties.js';
 import { HeatPumpEngine } from './build/engine.js';
 import { configured } from './charge-fixture.mjs';

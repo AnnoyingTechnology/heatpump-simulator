@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import factory from '../../public/vendor/coolprop/coolprop.js';
+import factory from './backend.mjs';
 import { Properties } from './build/properties.js';
 import { HeatPumpEngine } from './build/engine.js';
 import { FUSION_JKG } from './build/film.js';

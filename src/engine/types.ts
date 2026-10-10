@@ -5,7 +5,7 @@ export type OperatingState = 'running' | 'idle' | 'reversing' | 'defrost' | 'dra
 export type Phase = 'vapor' | 'liquid' | 'two-phase';
 export interface RefrigerantState { pPa: number; pBarAbs: number; hJkg: number; temperatureC: number; entropyJkgK: number; densityKgm3: number; qualityMass: number | null; phase: Phase }
 export interface AbstractFluidState { update(pair: unknown, a: number, b: number): void; T(): number; p(): number; hmass(): number; smass(): number; rhomass(): number; Q(): number; cpmass(): number; viscosity(): number; speed_sound(): number; delete(): void }
-export interface CoolPropModule { factory?(backend: string, fluid: string): AbstractFluidState; input_pairs?: Record<string, unknown>; PropsSI(output: string, key1: string, value1: number, key2: string, value2: number, fluid: string): number; HAPropsSI(output: string, key1: string, value1: number, key2: string, value2: number, key3: string, value3: number): number }
+export interface CoolPropModule { readonly guardedStateApi?: true; factory?(backend: string, fluid: string): AbstractFluidState; input_pairs?: Record<string, unknown>; PropsSI(output: string, key1: string, value1: number, key2: string, value2: number, fluid: string): number; HAPropsSI(output: string, key1: string, value1: number, key2: string, value2: number, key3: string, value3: number): number }
 export interface RoomConfig {
   cleanFraction?: number; // Clear-passage surrogate, 0.10…1, default1.
   id: string; enabled: boolean; volumeM3: number; initialTemperatureC: number; initialRelativeHumidity: number;

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import factory from '../../public/vendor/coolprop/coolprop.js';
+import factory from './backend.mjs';
 import {Properties} from './build/properties.js';
 
 test('pressure/density storage coordinates preserve independent EOS states across phase and input switches',async()=>{

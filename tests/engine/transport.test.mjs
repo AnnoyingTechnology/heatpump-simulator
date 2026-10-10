@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import Module from '../../public/vendor/coolprop/coolprop.js';import {Properties,defaultEngineConfig} from './build/index.js';import {transportPipe} from './build/transport.js';
+import Module from './backend.mjs';import {Properties,defaultEngineConfig} from './build/index.js';import {transportPipe} from './build/transport.js';
 const p=new Properties(await Module());
 test('distributed pipe forward/inverse closes gravity and heat for liquid, vapor and two-phase states',()=>{
   const config=defaultEngineConfig(1),pipe=config.rooms[0].pipe;pipe.lengthM=15;

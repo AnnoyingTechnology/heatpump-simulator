@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import Module from '../../public/vendor/coolprop/coolprop.js';
+import Module from './backend.mjs';
 import {Properties,HeatPumpEngine,defaultEngineConfig} from './build/index.js';
 import {coilOutletH,conductanceIntegral,solveCycle} from './build/cycle.js';
 const p=new Properties(await Module());

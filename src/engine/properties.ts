@@ -22,6 +22,7 @@ export class Properties {
       };
       const pair = pairs[`${a}:${b}`];
       const methods: Record<string, keyof AbstractFluidState> = { T:'T', P:'p', H:'hmass', S:'smass', D:'rhomass', Q:'Q', Qmass:'Q' };
+      if (this.module.guardedStateApi) Object.assign(methods, { C:'cpmass', V:'viscosity', A:'speed_sound' });
       if (this.state && pair && methods[output]) {
         const input = `${a}:${x}:${b}:${y}`;
         if (this.lastInput !== input) {
@@ -32,17 +33,35 @@ export class Properties {
           // invalid Newton trials must never escape C++ into JavaScript.
           // Request a computed quantity: density for PH/PT/etc, pressure for DU,
           // temperature for PD. Input echoes cannot validate an EOS solve.
-          const preflight = a === 'D' && b === 'U' ? 'P' : a === 'P' && b === 'D' ? 'T' : 'D';
-          const preflightKey = `${preflight}:${a}:${x}:${b}:${y}`;
-          const computed = this.cache.get(preflightKey) ?? this.module.PropsSI(preflight, a, x, b, y, 'R32');
-          if (!(Number.isFinite(computed) && computed > 0 && computed < (preflight === 'P' ? 1e8 : preflight === 'T' ? 1e4 : 1e5))) throw new DomainError('R32 flash outside backend domain');
-          this.cache.set(preflightKey, computed);
-          this.state.update(this.module.input_pairs![pair[0]], pair[1], pair[2]); this.lastInput = input;
+          if (!this.module.guardedStateApi) {
+            const preflight = a === 'D' && b === 'U' ? 'P' : a === 'P' && b === 'D' ? 'T' : 'D';
+            const preflightKey = `${preflight}:${a}:${x}:${b}:${y}`;
+            const computed = this.cache.get(preflightKey) ?? this.module.PropsSI(preflight, a, x, b, y, 'R32');
+            if (!(Number.isFinite(computed) && computed > 0 && computed < (preflight === 'P' ? 1e8 : preflight === 'T' ? 1e4 : 1e5))) throw new DomainError('R32 flash outside backend domain');
+            this.cache.set(preflightKey, computed);
+          }
+          // A guarded module catches update/getter exceptions inside C++ and
+          // validates computed T/p/density before accepting its reusable state.
+          this.state.update(this.module.input_pairs![pair[0]], pair[1], pair[2]);
+          if (this.module.guardedStateApi) {
+            // Retain the service's preflight bounds using the already flashed
+            // state. This computed getter costs no second EOS solve.
+            const preflight = a === 'D' && b === 'U' ? 'P' : a === 'P' && b === 'D' ? 'T' : 'D';
+            const computed = (this.state[methods[preflight]] as () => number).call(this.state);
+            if (!(Number.isFinite(computed) && computed > 0 && computed < (preflight === 'P' ? 1e8 : preflight === 'T' ? 1e4 : 1e5))) throw new DomainError('R32 flash outside backend domain');
+            this.cache.set(`${preflight}:${a}:${x}:${b}:${y}`, computed);
+          }
+          this.lastInput = input;
         }
         // Qmass=Q applies ONLY to the pure R32 service. Mixtures have a different contract.
         value = (this.state[methods[output]] as () => number).call(this.state);
       } else value = this.module.PropsSI(output, a, x, b, y, 'R32');
-    } catch { throw new DomainError(`R32 ${output}(${a}=${x},${b}=${y}) failed`); }
+    } catch {
+      // A guarded getter can invalidate the native state. A subsequent read of
+      // the same inputs must reflash rather than trust the previous update.
+      this.lastInput = '';
+      throw new DomainError(`R32 ${output}(${a}=${x},${b}=${y}) failed`);
+    }
     if (!Number.isFinite(value) || Math.abs(value) > 1e30) throw new DomainError(`R32 property ${output} outside supported domain`);
     if (this.cache.size > 60000) { let removed = 0; for (const oldest of this.cache.keys()) { this.cache.delete(oldest); if (++removed >= 5000) break; } } this.cache.set(key, value); return value;
   }

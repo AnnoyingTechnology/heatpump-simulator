@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import Module from '../../public/vendor/coolprop/coolprop.js';
+import Module from './backend.mjs';
 import { Properties, HeatPumpEngine, defaultEngineConfig } from './build/index.js';
 import { deriveOutdoorFilm, FUSION_JKG } from './build/film.js';
 import { airExchange } from './build/air.js';

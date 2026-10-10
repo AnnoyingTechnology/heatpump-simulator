@@ -1,4 +1,4 @@
-import Module from '../../public/vendor/coolprop/coolprop.js';
+import Module from './backend.mjs';
 import { Properties, HeatPumpEngine, defaultEngineConfig } from './build/index.js';
 const backend=await Module(),p=new Properties(backend),records=[];
 for(const piping of ['idealized','physical'])for(const count of [1,3,5])for(const mode of ['heating','cooling']) {

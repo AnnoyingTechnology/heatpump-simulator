@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import Module from '../../public/vendor/coolprop/coolprop.js';
+import Module from './backend.mjs';
 import { createPropertyService } from './build/properties.js';
 import { defaultEngineConfig } from './build/defaults.js';
 import { conductanceIntegral, solveCycle } from './build/cycle.js';
