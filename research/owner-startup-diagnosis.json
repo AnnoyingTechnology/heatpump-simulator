@@ -1,0 +1,322 @@
+{
+  "checkedAt": "2026-10-10T18:52:05.945Z",
+  "status": "read-only diagnosis; historical trajectories, proposed new-scenario initial phase allocation only",
+  "geometryVolumesM3": {
+    "outdoor": 0.0011309733552923255,
+    "accumulator": 0.0006,
+    "indoorCoils": 0.0008482300164692441,
+    "gasLines": 0.0013794255819829435,
+    "smallLines": 0.0004961752897263379
+  },
+  "initial": {
+    "massKg": 1.8,
+    "volumeM3": 0.004454804243470851,
+    "temperatureC": 7,
+    "pPa": 1011503.845252282,
+    "densityKgm3": 404.0581587031924,
+    "qualityMass": 0.04260286452286087,
+    "vaporVolumeFraction": 0.6246356462422032,
+    "internalEnergyJ": 401053.4698506643,
+    "liquidMassKg": 1.7233148438588504,
+    "gasLineLiquidKg": 0.5336226804834224
+  },
+  "pairedHistoricalCases": [
+    {
+      "checkedAt": "2026-10-10T17:57:37.003Z",
+      "sourceHashes": {
+        "charge": "c166b3d3de88267090b4b91b3e4dcb95de2d47f26320febccba063cb4958c93d",
+        "engine": "f8586eccb1e50a87c6bdeaa5cbbf370da03d4819b01658098e5851d4a8d25892",
+        "properties": "b5ba7c7eb495a8569faeb51e7745bf861e057009d907f0925de785456925b956",
+        "drive": "6cc2b579e897c0e1e5b50c08960bdb81c6b60b6a90e75a89031c1d9cdabd7a1e"
+      },
+      "initialValveOpening": 0.65,
+      "roomVolumesM3": [
+        84,
+        155,
+        100
+      ],
+      "initialAccumulatorMassKg": 0.24243489522191564,
+      "first": {
+        "t": 0.25,
+        "admitted": true,
+        "EEVFlowKgs": 0.004088878655001123,
+        "sourceInletFlowKgs": 0.0828453997265462,
+        "compressorPickupKgs": 0.008612204671004481,
+        "accumulatorMassKg": 0.2609931939861959,
+        "openings": [
+          0.64625,
+          0.64625,
+          0.64625
+        ]
+      },
+      "oneSecond": {
+        "t": 1,
+        "admitted": true,
+        "EEVFlowKgs": 0.006066616200940817,
+        "sourceInletFlowKgs": 0.08412439179219387,
+        "compressorPickupKgs": 0.00839052078217642,
+        "accumulatorMassKg": 0.31856831149119025,
+        "openings": [
+          0.6349999999999999,
+          0.6349999999999999,
+          0.6349999999999999
+        ]
+      },
+      "last": {
+        "t": 10,
+        "admitted": false,
+        "EEVFlowKgs": 0.004957809936967561,
+        "sourceInletFlowKgs": 0.006546352209866493,
+        "compressorPickupKgs": 0,
+        "accumulatorMassKg": 0.6189293734881749,
+        "openings": [
+          0.4310214263952208,
+          0.4310214263952208,
+          0.4310214263952208
+        ]
+      },
+      "lastAccumulatorVaporVolumeFraction": 0.005162879797407327,
+      "openingSequence": [
+        {
+          "t": 0.25,
+          "opening": 0.64625
+        },
+        {
+          "t": 0.5,
+          "opening": 0.6425
+        },
+        {
+          "t": 0.75,
+          "opening": 0.6387499999999999
+        },
+        {
+          "t": 1,
+          "opening": 0.6349999999999999
+        },
+        {
+          "t": 1.25,
+          "opening": 0.6312499999999999
+        },
+        {
+          "t": 1.5,
+          "opening": 0.6274999999999998
+        },
+        {
+          "t": 1.75,
+          "opening": 0.6237499999999998
+        },
+        {
+          "t": 2,
+          "opening": 0.6199999999999998
+        },
+        {
+          "t": 2.25,
+          "opening": 0.6162499999999997
+        },
+        {
+          "t": 2.5,
+          "opening": 0.6124999999999997
+        }
+      ]
+    },
+    {
+      "checkedAt": "2026-10-10T17:57:56.716Z",
+      "sourceHashes": {
+        "charge": "c166b3d3de88267090b4b91b3e4dcb95de2d47f26320febccba063cb4958c93d",
+        "engine": "f8586eccb1e50a87c6bdeaa5cbbf370da03d4819b01658098e5851d4a8d25892",
+        "properties": "b5ba7c7eb495a8569faeb51e7745bf861e057009d907f0925de785456925b956",
+        "drive": "6cc2b579e897c0e1e5b50c08960bdb81c6b60b6a90e75a89031c1d9cdabd7a1e"
+      },
+      "initialValveOpening": 0,
+      "roomVolumesM3": [
+        84,
+        155,
+        100
+      ],
+      "initialAccumulatorMassKg": 0.24243489522191564,
+      "first": {
+        "t": 0.25,
+        "admitted": true,
+        "EEVFlowKgs": 0.00014447794189173204,
+        "sourceInletFlowKgs": 0.0816348502290858,
+        "compressorPickupKgs": 0.00860893732064665,
+        "accumulatorMassKg": 0.2606913734482772,
+        "openings": [
+          0.025,
+          0.025,
+          0.025
+        ]
+      },
+      "oneSecond": {
+        "t": 1,
+        "admitted": true,
+        "EEVFlowKgs": 0.00012410020827067637,
+        "sourceInletFlowKgs": 0.08168053404743796,
+        "compressorPickupKgs": 0.008373559125318668,
+        "accumulatorMassKg": 0.316689713238827,
+        "openings": [
+          0.013750000000000002,
+          0.013750000000000002,
+          0.013750000000000002
+        ]
+      },
+      "last": {
+        "t": 10,
+        "admitted": true,
+        "EEVFlowKgs": 0,
+        "sourceInletFlowKgs": 0.010381666454493154,
+        "compressorPickupKgs": 0.007923302868692557,
+        "accumulatorMassKg": 0.5814979299223789,
+        "openings": [
+          0,
+          0,
+          0
+        ]
+      },
+      "lastAccumulatorVaporVolumeFraction": 0.07129980745495726,
+      "openingSequence": [
+        {
+          "t": 0.25,
+          "opening": 0.025
+        },
+        {
+          "t": 0.5,
+          "opening": 0.02125
+        },
+        {
+          "t": 0.75,
+          "opening": 0.0175
+        },
+        {
+          "t": 1,
+          "opening": 0.013750000000000002
+        },
+        {
+          "t": 1.25,
+          "opening": 0.010000000000000002
+        },
+        {
+          "t": 1.5,
+          "opening": 0.006250000000000002
+        },
+        {
+          "t": 1.75,
+          "opening": 0.0025000000000000022
+        },
+        {
+          "t": 2,
+          "opening": 0
+        },
+        {
+          "t": 2.25,
+          "opening": 0.025
+        },
+        {
+          "t": 2.5,
+          "opening": 0.02125
+        }
+      ]
+    }
+  ],
+  "proposedSourceCellAllocation": {
+    "assumption": "saturated vapor only in outdoor gas-end cell; gas lines and accumulator unchanged; redistribute phase among other coils and small lines",
+    "groups": [
+      {
+        "id": "gasLines",
+        "V": 0.0013794255819829435,
+        "alpha": 0.6246356462422032,
+        "densityKgm3": 404.05815870319276,
+        "densityDifferenceKgm3": 2.2737367544323206e-13,
+        "massKg": 0.5573681607241082,
+        "qualityMass": 0.04260286452286082,
+        "hJkg": 225310.84526265622,
+        "internalEnergyJ": 124185.79713482574
+      },
+      {
+        "id": "outdoorGasCell",
+        "V": 0.00037699111843077514,
+        "alpha": 1,
+        "densityKgm3": 27.55852167283127,
+        "densityDifferenceKgm3": 0,
+        "massKg": 0.010389317907739417,
+        "qualityMass": 1,
+        "hJkg": 516359.1268008726,
+        "internalEnergyJ": 4983.291156978307
+      },
+      {
+        "id": "accumulator",
+        "V": 0.0006,
+        "alpha": 0.6246356462422032,
+        "densityKgm3": 404.05815870319276,
+        "densityDifferenceKgm3": 2.2737367544323206e-13,
+        "massKg": 0.24243489522191564,
+        "qualityMass": 0.04260286452286082,
+        "hJkg": 225310.84526265622,
+        "internalEnergyJ": 54016.30885646194
+      },
+      {
+        "id": "remainingCoilsAndSmallLines",
+        "V": 0.0020983875430571324,
+        "alpha": 0.5571986144077341,
+        "densityKgm3": 471.6991527238064,
+        "densityDifferenceKgm3": 4.547473508864641e-13,
+        "massKg": 0.9898076261462392,
+        "qualityMass": 0.03255373685230725,
+        "hJkg": 222255.91514944346,
+        "internalEnergyJ": 217868.07270239881
+      }
+    ],
+    "totalMassKg": 1.8000000000000025,
+    "totalEnergyJ": 401053.4698506648,
+    "massDifferenceKg": 2.4424906541753444e-15,
+    "energyDifferenceJ": 4.656612873077393e-10,
+    "feasible": true
+  },
+  "proposedAllocation": {
+    "assumption": "saturated vapor in gas lines and outdoor gas-end cell; accumulator unchanged; uniform remaining phase volume fraction",
+    "groups": [
+      {
+        "id": "gasLines",
+        "V": 0.0013794255819829435,
+        "alpha": 1,
+        "massKg": 0.03801492979713483,
+        "qualityMass": 1,
+        "hJkg": 516359.1268008726,
+        "internalEnergyJ": 18234.0616750299
+      },
+      {
+        "id": "outdoorGasCell",
+        "V": 0.00037699111843077514,
+        "alpha": 1,
+        "massKg": 0.010389317907739417,
+        "qualityMass": 1,
+        "hJkg": 516359.1268008726,
+        "internalEnergyJ": 4983.291156978307
+      },
+      {
+        "id": "accumulator",
+        "V": 0.0006,
+        "alpha": 0.6246356462422032,
+        "massKg": 0.2424348952219155,
+        "qualityMass": 0.042602864522860856,
+        "hJkg": 225310.84526265622,
+        "internalEnergyJ": 54016.30885646191
+      },
+      {
+        "id": "remainingCoilsAndSmallLines",
+        "V": 0.0020983875430571324,
+        "alpha": 0.3104438174441389,
+        "massKg": 1.5091608570732111,
+        "qualityMass": 0.011895675239244022,
+        "hJkg": 215975.87407808992,
+        "internalEnergyJ": 323819.8081621943
+      }
+    ],
+    "totalMassKg": 1.800000000000001,
+    "totalEnergyJ": 401053.46985066443,
+    "massDifferenceKg": 8.881784197001252e-16,
+    "energyDifferenceJ": 1.1641532182693481e-10,
+    "feasible": true,
+    "disclaimer": "A legal equilibrium initial-condition sensitivity test; no measured stopped phase distribution or OEM behavior claimed."
+  }
+}
