@@ -105,6 +105,9 @@ export function createSidebar(): Sidebar {
     label: 'Outdoor humidity', unit: '% RH', min: 10, max: 100, step: 1, digits: 0,
     get: () => cfg().outdoorRh, set: (v) => store.update((s) => { s.cfg.outdoorRh = v; }),
   }));
+  const humidityConvention = 'Relative humidity follows CoolProp: saturation over ice below 0 °C, over liquid water above. Convert weather readings that use a different convention.';
+  rh.root.title = humidityConvention;
+  rh.root.querySelectorAll('input').forEach((input) => { input.title = humidityConvention; });
   const envCompare = html('div', { class: 'env-status' });
   const matchBtn = html('button', { type: 'button', class: 'btn ghost small' }, 'Match fixture');
   matchBtn.addEventListener('click', () => store.update((s) => {

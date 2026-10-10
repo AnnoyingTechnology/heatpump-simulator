@@ -165,12 +165,15 @@ try {
     assert.equal(data.cop,null);assert.equal(data.air,null);assert.match(data.body,/fan off/i);
   });
   await check('preview melt transfers mass, survives mode changes, and reset clears it', async () => {
+    await page.send('Page.bringToFront');
     const before=await run(async () => {
       const {store}=globalThis.__qaStateModule;
       store.clock.iceKg=0.001;store.clock.retainedWaterKg=0;store.update(s=>{s.ui.speed=10;s.ui.paused=false});
       return store.clock.iceKg;
     });
-    await new Promise(r=>setTimeout(r,350));
+    // Concurrent isolated browser targets can throttle animation frames; wait for
+    // actual exhaustion instead of assuming a fixed wall-clock sleep is enough.
+    await page.waitFor('globalThis.__qaStateModule.store.clock.iceKg===0',10000);
     await run(async () => (globalThis.__qaStateModule).store.update(s=>{s.ui.paused=true}));
     const melted=await run(async () => ({...(globalThis.__qaStateModule).store.clock}));
     assert.equal(melted.iceKg,0);assert.ok(Math.abs(melted.retainedWaterKg-before)<1e-12);

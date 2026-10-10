@@ -30,6 +30,10 @@ The additional [`tools/check-room-controls.mjs`](../tools/check-room-controls.mj
 
 Long worker checks run against an immutable temporary source snapshot with a separate Vite instance and HMR disabled. This prevents concurrent source changes from resetting a numerical scenario. Snapshots are deleted when the harness exits; production hosting checks use the real static build.
 
+The actual worker/browser natural-frost check passed without seeded ice or shortened trigger timers. At outdoor 3°C/85% RH and room targets 23°C, it observed defrost at the 305 s sample and resumed heating at 355 s. Room/outdoor corner values matched engine outputs throughout, energy/water residuals remained below 1e−4 J/1e−10 kg, and rejecting then correcting an outdoor input preserved time and visible held ice. See [`live-frost-browser-results.json`](live-frost-browser-results.json) and [`tools/check-live-frost.mjs`](../tools/check-live-frost.mjs).
+
+The two actual advanced-pipe interaction checks passed: selecting finite lines mapped declared lengths/assumed bore into the worker and produced nonzero Darcy friction, editing a length reached the physics, and returning to idealized lines removed that friction without resetting room storage or scenario time. See [`live-pipes-browser-results.json`](live-pipes-browser-results.json). This proves integration for that bounded scenario, not empirical installed-pipe accuracy.
+
 ## Rendered evidence
 
 [`tools/capture-workbench.mjs`](../tools/capture-workbench.mjs) captures these review views with reduced-motion rendering. Screenshots are evidence only; none is imported or shipped as artwork.
@@ -38,6 +42,8 @@ Long worker checks run against an immutable temporary source snapshot with a sep
 - [Outdoor circuit close-up](../design/interface-outdoor.png)
 - [Frost preview](../design/interface-frost.png)
 - [Five-room configuration](../design/interface-five-rooms.png)
+- [Actual live frost](../design/interface-live-frost.png)
+- [Vector exchanger fouling](../design/interface-cleanliness.png)
 
 ## Practical limits and next review
 
@@ -48,3 +54,5 @@ Each room now has a direct setpoint range and number field beside measured air t
 The stage reserves a compact two-row status/view header and a bottom legend. Neither covers equipment or room panels. Five-room frosting headers remain below 150 px in the checked desktop sizes. Held last-accepted ice/liquid remains visible while a live input is pending or rejected, with a held label; stale active cycle readings stay unavailable. Room history charts, broader manufacturer products and other fluids remain later work. Scientific fixture consistency does not establish manufacturer performance; actual numerical acceptance is tracked in [the engine review](engine-science-review.md).
 
 Branding, publication and the owner-triggered Opus review have not started.
+
+Requested speed is a scheduling target. The main thread submits fixed 0.25 simulated-second chunks with one request in flight; the clock advances only on completed physical steps. Safe real-EOS calls are CPU-limited, especially with physical lines, so these controls do not guarantee real-time or 10× throughput. The backend performance follow-up is recorded in [`coolprop-fast-browser-options.md`](../research/coolprop-fast-browser-options.md).

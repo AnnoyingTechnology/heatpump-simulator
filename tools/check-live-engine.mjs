@@ -25,12 +25,19 @@ try{
   await page.waitFor('__qaRuntimeModule.simulation.status.state!=="loading"',30000);
   assert.equal(await run(()=>__qaRuntimeModule.simulation.status.state),'ready');
   const step=async(seconds)=>{
-    const before=await run(()=>__qaRuntimeModule.simulation.status.output.simulatedSeconds);
-    assert.equal(await page.evaluate(`__qaRuntimeModule.simulation.step(${seconds})`),true);
-    await page.waitFor(`__qaRuntimeModule.simulation.status.output?.state==='fault'||__qaRuntimeModule.simulation.status.output?.simulatedSeconds>=${before+seconds-1e-6}`,60000);
-    const status=await run(()=>__qaRuntimeModule.simulation.status);
-    assert.equal(status.output.state==='fault',false,status.output.diagnostics.fault??'physics fault');
-    return status.output;
+    // Bound each request while preserving the exact scenario horizon. Safe EOS flashes
+    // are CPU-limited; one large QA batch must not be mistaken for a stalled worker.
+    let output;
+    for(let remaining=seconds;remaining>1e-9;){
+      const chunk=Math.min(5,remaining);
+      const before=await run(()=>__qaRuntimeModule.simulation.status.output.simulatedSeconds);
+      assert.equal(await page.evaluate(`__qaRuntimeModule.simulation.step(${chunk})`),true);
+      await page.waitFor(`__qaRuntimeModule.simulation.status.output?.state==='fault'||__qaRuntimeModule.simulation.status.output?.simulatedSeconds>=${before+chunk-1e-6}`,60000);
+      const status=await run(()=>__qaRuntimeModule.simulation.status);
+      assert.equal(status.output.state==='fault',false,status.output.diagnostics.fault??'physics fault');
+      output=status.output;remaining-=chunk;
+    }
+    return output;
   };
   const configured=()=>page.waitFor('__qaRuntimeModule.simulation.status.state!=="loading"',30000);
   await check('real local property backend runs in the worker and returns live cycle data',async()=>{
@@ -40,6 +47,8 @@ try{
     assert.ok(output.rooms.every(r=>Number.isFinite(r.temperatureC)));
     assert.equal(await run(()=>document.querySelectorAll('img,canvas,image').length),0);
     assert.match(await run(()=>document.body.innerText),/generic/i);
+    const screenshot=await page.send('Page.captureScreenshot',{format:'png',fromSurface:false,captureBeyondViewport:false});
+    await writeFile('design/interface-live.png',Buffer.from(screenshot.data,'base64'));
   });
   await check('weather and room controls configure live physics without replacing focused inputs',async()=>{
     const before=await run(()=>__qaRuntimeModule.simulation.status.output);
