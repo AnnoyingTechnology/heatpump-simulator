@@ -43,6 +43,9 @@ jobs:
           tests/engine/coil-inverse.test.mjs
           tests/engine/cycle.test.mjs
           tests/engine/dynamics.test.mjs
+          tests/engine/drive.test.mjs
+          tests/engine/reference-protection.test.mjs
+          tests/engine/exhaust-fog.test.mjs
           tests/engine/port-capacity.test.mjs
           tests/engine/transport.test.mjs
       - name: Configure Pages

@@ -1,0 +1,80 @@
+✔ phase-local exchanger inverse agrees with prior real-EOS bisection, including pressure perturbations (456.533194ms)
+✔ stale/singular continuation slopes fall back to freshly closed real-EOS pressure equations (886.734585ms)
+✔ worker batching preserves every quarter-second thermal/control step and its conservation ledgers (1605.832987ms)
+✔ real R32 EOS shared-pressure cycle: one to five branches and both directions (550.334597ms)
+✔ heat exchanger pinches fail explicitly (0.674329ms)
+✔ phase-aware integral latent zone agrees with analytical UA requirement (0.145033ms)
+✔ real field lines close momentum/enthalpy in heating and cooling, including two-phase small pipe (1698.529819ms)
+✔ cold reverse-cycle defrost floats subcooling and retains physical heat signs (179.665732ms)
+✔ heterogeneous idealized cooling conserves mixed-return enthalpy/entropy and valve allocation (184.049601ms)
+✔ idealized warm/cold parallel condensers close the mixed header without equal branch subcooling (88.59087ms)
+✔ startup bounds demand, preserves actuator state across branch demand changes, and waits after Off (1.574953ms)
+✔ safety overrides minimum speed, pickup arming and startup hold until pressure and dwell recover (0.391477ms)
+✔ ratio thresholds stay strictly ordered for all supported positive lifts (0.133401ms)
+✔ temperature protection cannot recover from an unavailable discharge prediction (0.130465ms)
+✔ real dynamic 1–5 branches conserve full stored energy/water and heating/cooling signs (6235.518531ms)
+✖ early-trigger automatic defrost melts and drains finite inventories (28854.532094ms)
+✔ film phase map requires latent melt energy; exhausted film evaporates with exact bounded mass (0.910504ms)
+✔ wet cooling removes water; timestep halving converges thermal/electrical totals (13080.846265ms)
+✔ configuration edits retain room/ice inventories and min-on history; idle air outlets disappear (188.074334ms)
+✔ mode reversal conserves cold metal then establishes live cooling instead of imposing subcooling (9214.261247ms)
+✔ unmodified three-branch defaults sustain heating through a natural frost/defrost event (51365.064606ms)
+✔ cleanliness changes only air-side transfer/flow; constant fan and weather response remain physical (1021.573192ms)
+✔ defrost timeout retains physical ice and closes the ledger instead of resetting it (4784.729688ms)
+✔ owner-layout cooling accepts newly added warm rooms without resetting old coil/film inventories (15213.466515ms)
+✔ owner-layout natural frost reverses with hot stored indoor metal and conserves melt energy (77855.912671ms)
+✔ unavailable property backend returns a conserved fault snapshot without throwing again (1.351494ms)
+✔ all Off aborts defrost/reversal without erasing storage; passive time and reenable remain conservative (865.746609ms)
+✔ Off of the last active room enters idle and respects minimum-off before another room demands (152.670271ms)
+✔ outdoor exhaust equilibrium closes vapor/ice/liquid and fusion enthalpy without depositing mist (18.702871ms)
+✔ supersaturated contact exhaust preserves original contact water/heat and indoor fog stays explicit (6.381397ms)
+✔ dry/unsaturated exhaust and saturation onset retain total H/W; fan heat evaporates fog (26.41931ms)
+✔ outdoor fan phase-flash backend failure rolls back thermal stores, clock and drive (256.462719ms)
+{"mode":"heating","simulatedSeconds":0.25,"pLowBarA":8.131010007042995,"pHighBarA":15.155990001065893,"energyResidualJ":9.763289199327119e-8,"waterResidualKg":5.630465169624566e-16}
+{"mode":"heating","simulatedSeconds":1,"pLowBarA":8.117564573488222,"pHighBarA":15.166710374468092,"energyResidualJ":2.342858351767063e-9,"waterResidualKg":3.667313848432219e-17}
+{"mode":"cooling","simulatedSeconds":0.25,"pLowBarA":16.44833187561464,"pHighBarA":22.277097454302787,"energyResidualJ":-1.9648268789751455e-8,"waterResidualKg":-6.053575067437034e-16}
+{"mode":"cooling","simulatedSeconds":1,"pLowBarA":16.431581387893583,"pHighBarA":22.330928894590414,"energyResidualJ":1.9350272850715555e-7,"waterResidualKg":-6.838334152409198e-16}
+✔ connection count follows explicit port capacity and invalid declarations reject before property queries (2.495636ms)
+✔ six idealized branches use real R32 heating/cooling states and conservative dynamics (522.582109ms)
+✔ removing a sixth room retains remaining inventories/time and exports its declared storage boundary (153.819942ms)
+✔ pressure/density storage coordinates preserve independent EOS states across phase and input switches (1990.848894ms)
+✔ rejected pressure/density flashes recover without native exceptions or fabricated storage states (1649.235868ms)
+✔ reusable HEOS state matches independent PropsSI across input switches and cache hits (27.804496ms)
+✔ repeated rejected flashes preserve real WASM refrigerant and humid-air service (663.400087ms)
+✔ undefined two-phase sound speed cannot poison later same-input physical readings (3.825918ms)
+✔ Reference inverter preserves stores and closes freshly after warmed three-to-one branch change (11835.711158ms)
+✔ conserved density/internal-energy flash matches independent real R32 states across phases (52.853036ms)
+✔ invalid DU trials reject through safe computed-pressure boundary and valid flashes recover (65.351272ms)
+✔ distributed pipe forward/inverse closes gravity and heat for liquid, vapor and two-phase states (90.679549ms)
+✔ diameter changes Darcy friction and unsupported velocity cannot produce fake pipe states (7.704706ms)
+ℹ tests 45
+ℹ suites 0
+ℹ pass 44
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 210921.743574
+
+✖ failing tests:
+
+test at tests/engine/dynamics.test.mjs:19:1
+✖ early-trigger automatic defrost melts and drains finite inventories (28854.532094ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(maximumIce>=.005&&melted&&actualDefrost)
+  
+      at TestContext.<anonymous> (file:///home/julien/Documents/Scripts/Agent/heatpump-simulator/tests/engine/dynamics.test.mjs:29:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

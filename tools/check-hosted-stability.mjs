@@ -23,11 +23,24 @@ try {
       .filter(e => e.getAttribute('aria-label')?.startsWith('Requested target temperature'));
     edit(targets.find(e => e.getAttribute('aria-label').includes('Upstairs')), 22.5);
     edit(targets.find(e => e.getAttribute('aria-label').includes('Ground')), 17.5);
-    const attic = document.querySelector('input[role="switch"]');
+    const attic = document.querySelector('input[role="switch"][aria-label="Attic indoor unit"]');
+    if (!attic) throw Error('Missing attic control');
     if (attic.checked) attic.click();
     const speed = document.querySelector('select[aria-label="Requested speed"]');
     speed.value = '5'; speed.dispatchEvent(new Event('change', { bubbles: true }));
   })()`);
+  result.confirmedControls = await page.evaluate(`(() => {
+    const weather = document.querySelectorAll('[aria-label="Outdoor air"] input[type="number"]');
+    const targets = [...document.querySelectorAll('input[type="number"]')]
+      .filter(e => e.getAttribute('aria-label')?.startsWith('Requested target temperature'));
+    return { outdoorC: Number(weather[0].value), humidityPct: Number(weather[1].value),
+      groundTargetC: Number(targets.find(e => e.getAttribute('aria-label').includes('Ground')).value),
+      upstairsTargetC: Number(targets.find(e => e.getAttribute('aria-label').includes('Upstairs')).value),
+      atticEnabled: document.querySelector('input[role="switch"][aria-label="Attic indoor unit"]').checked,
+      requestedSpeed: Number(document.querySelector('select[aria-label="Requested speed"]').value) };
+  })()`);
+  assert.deepEqual(result.confirmedControls, { outdoorC: -.5, humidityPct: 35,
+    groundTargetC: 17.5, upstairsTargetC: 22.5, atticEnabled: false, requestedSpeed: 5 });
   await activateControl(page, 'Resume');
   const start = Date.now();
   let last = -1, minute = -1;

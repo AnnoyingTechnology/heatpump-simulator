@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-10-10T20:05:33.633648+00:00",
+  "backend": "guarded exact HEOS",
+  "buildPassed": true,
+  "productionEntryPassed": true,
+  "sourceHashes": {
+    "src/engine/air.ts": "ac6f645fbacc073afdcb3abf214257d142358af0b1f58e87d61105f342f9cf6e",
+    "src/engine/engine.ts": "62dbd7135c0f23cff31e30460164ee7778df2cea41a7b086745e23df6974c8fc",
+    "src/engine/cycle.ts": "3507bfc45f68af571de8c017cab252fb3a457f3b4179f6e063801e2893a72548",
+    "src/engine/drive.ts": "0f4a816add30cd9eb1247aaf74aeec8fe71fa0cb038d3c9f85a00d4fa4111514",
+    "tests/engine/dynamics.test.mjs": "3530beab6f2c9033a912c1e36ff55142987412e3043ac5169a68cd6a5427dfc4",
+    "tests/engine/exhaust-fog.test.mjs": "26bc9ba23c03820168c92889106a6877e7fc4ca8ac92a1e4f92f6de0516cc727"
+  },
+  "localVerification": {
+    "fullRun": {
+      "tests": 45,
+      "passed": 44,
+      "failed": 1,
+      "durationMs": 210921.743574,
+      "soleFailure": "Early-trigger test sampled the final diagnostic of each one-second batch and missed a quarter-step melting burst."
+    },
+    "correctedFocusedRun": {
+      "tests": 1,
+      "passed": 1,
+      "failed": 0,
+      "durationMs": 29376.139335,
+      "change": "Same physical configuration and 250 s window; sample each quarter-second. Preserve melt/actual-cycle/ledger assertions and allow the exact final stopped dwell interval."
+    },
+    "disposition": "All 45 released checks verified locally through the full run and corrected focused rerun. A single corrected full-suite run is still required by GitHub Actions before deployment.",
+    "finalFogRun": {
+      "tests": 4,
+      "passed": 4,
+      "failed": 0,
+      "durationMs": 1716.679374
+    }
+  },
+  "limitsUnchanged": {
+    "dischargeC": 145,
+    "cycleResidualW": 0.1,
+    "systemEnergyResidualJ": 0.01,
+    "systemWaterResidualKg": 1e-10
+  }
+}
