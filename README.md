@@ -18,7 +18,15 @@ npm run build
 npm run preview
 ```
 
-The production output is `dist/`, with relative asset URLs suitable for a GitHub Pages project subdirectory. No backend, external runtime assets or API access is needed. Deployment is a later milestone.
+The production output is `dist/`, with relative asset URLs suitable for a GitHub Pages project subdirectory. No backend, external runtime assets or API access is needed.
+
+## GitHub Pages
+
+Repository: https://github.com/AnnoyingTechnology/heatpump-simulator
+
+Site: https://annoyingtechnology.github.io/heatpump-simulator/
+
+`.github/workflows/pages.yml` installs locked dependencies, checks types, builds and verifies the released Reference model with the guarded property backend, then publishes `dist/`. Pushes to `main` deploy automatically; the workflow also supports manual runs. GitHub Pages uses the GitHub Actions publishing source. The existing relative asset base keeps the worker and self-hosted WASM inside the project URL.
 
 ## Current interface
 
@@ -73,6 +81,6 @@ The conserved R32 circuit now stores actual refrigerant mass and internal energy
 
 This inventory implementation remains behind a validation gate. Its latest frozen-checkpoint continuation resolved the earlier 11 s failure and reached 48.5 s with natural ice, then hit the unchanged numerical work limit before accepted reversal or thaw. Complete charged frost/defrost and sustained three-head heating remain open. The public default is still the separately validated quasi-steady Reference model, which has no refrigerant inventory or charge response. Inventory line volumes are physical but transport is currently idealized and adiabatic; the Reference model's advanced physical piping remains separately available. Internal volumes, passage geometry, homogeneous two-phase closure and controller assumptions are generic rather than inferred OEM internals. Oil, saving/export, French, mixed water systems, heat-recovery VRF and branding remain later work. An Opus 5.5 review is reserved for the owner to trigger separately.
 
-The numerical implementation is in `src/engine/`, its worker/runtime bridge in `src/runtime/`, and real-backend checks run with `npm run test:engine`. The project has its own local Git repository with verified milestone commits; no remote or publication is configured.
+The numerical implementation is in `src/engine/`, its worker/runtime bridge in `src/runtime/`, and real-backend checks run with `npm run test:engine`. The project has its own Git repository with verified milestone commits. `origin` points to the owner's GitHub repository above; the Pages workflow verifies the released model before publication. Experimental charge acceptance remains separate.
 
 The public worker selects the independently reviewed guarded exact-HEOS artifact built with `tools/coolprop-safe/`. Engine tests retain the original backend by default for comparison; `HEATPUMP_TEST_BACKEND=guarded` exercises the same assertions against the production artifact after compiling the engine. For example: `HEATPUMP_TEST_BACKEND=guarded node --test tests/engine/properties.test.mjs`. This test selection does not open the charge gate. Reproduction and native failure/recovery checks are documented in `tools/coolprop-safe/README.md`.
