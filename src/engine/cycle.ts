@@ -105,11 +105,12 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
   const activeIndices = input.active.flatMap((a, i) => a ? [i] : []);
   if (!activeIndices.length || !(input.speedRps > 0)) throw new DomainError('No active refrigerant circuit');
   const compressor = config.compressor, heating = input.mode === 'heating';
-  const allocatedCooling = !heating && activeIndices.every(i=>config.rooms[i].pipe.lengthM===0 && config.rooms[i].pipe.elevationM===0);
+  const idealizedBranches = activeIndices.every(i=>config.rooms[i].pipe.lengthM===0 && config.rooms[i].pipe.elevationM===0);
+  const allocatedCooling = !heating && idealizedBranches, allocatedHeating = heating && idealizedBranches;
   const sourceMetal = heating ? [input.outdoorMetalC] : activeIndices.map(i => input.indoorMetalC[i]);
   const sinkMetal = heating ? activeIndices.map(i => input.indoorMetalC[i]) : [input.outdoorMetalC];
   const lowMax = Math.min(45, Math.min(...sourceMetal) - (allocatedCooling ? 0 : compressor.superheatK) - 1e-5);
-  const highMin = floatingCondenser ? input.outdoorMetalC + 1e-5 : Math.max(-5, Math.max(...sinkMetal) + compressor.subcoolK + 1e-5);
+  const highMin = floatingCondenser ? input.outdoorMetalC + 1e-5 : Math.max(-5, Math.max(...sinkMetal) + (allocatedHeating ? 0 : compressor.subcoolK) + 1e-5);
   if (lowMax <= -40 || highMin >= 65) throw new DomainError('Coil temperatures exceed selected subcritical R32 operating envelope');
   const evaluate = (te: number, second: number): Trial => {
     // The alternate startup/defrost controller holds an 8 K saturation lift;
@@ -124,7 +125,8 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
     const h2s = properties.prop('H', 'P', pH, 'S', suction.entropyJkgK);
     let discharge = properties.ph(pH, suction.hJkg + (h2s - suction.hJkg) / compressor.isentropicEfficiency);
     if (discharge.temperatureC > compressor.maxDischargeC || pH / pL > compressor.maxPressureRatio) throw new DomainError('Generic compressor discharge/pressure-ratio envelope exceeded');
-    const condenserOutlet = properties.pt(pH, condenserOutletC);
+    let condenserOutlet = properties.pt(pH, condenserOutletC);
+    const targetCondenserH = condenserOutlet.hJkg;
     let expansionOutlet = properties.ph(pL, condenserOutlet.hJkg);
     const flows = config.rooms.map(() => 0), branchHeat = config.rooms.map(() => 0), pressureDrops = config.rooms.map(() => 0);
     const inlets: RefrigerantState[] = [], outlets: RefrigerantState[] = [];
@@ -132,7 +134,13 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
     for (let i = 0; i < config.rooms.length; i++) {
       const room = config.rooms[i], pipe = room.pipe;
       let inlet = heating ? discharge : expansionOutlet, outlet = heating ? condenserOutlet : suction;
-      if (input.active[i] && allocatedCooling) {
+      if (input.active[i] && allocatedHeating) {
+        // Declared generic UA-proportional allocation; branch outlets follow finite UA.
+        flows[i] = allocatedFlow * room.refrigerantConductanceWK / allocationWeight;
+        outlet = properties.ph(pH, coilOutletH(properties, pH, discharge.hJkg, flows[i], room.refrigerantConductanceWK, input.indoorMetalC[i], true));
+        branchHeat[i] = flows[i] * (discharge.hJkg - outlet.hJkg);
+        mixedReturnH += flows[i] * outlet.hJkg;
+      } else if (input.active[i] && allocatedCooling) {
         flows[i] = allocatedFlow * room.refrigerantConductanceWK / allocationWeight;
         inlet = properties.ph(pL, condenserOutlet.hJkg);
         outlet = properties.ph(pL, coilOutletH(properties, pL, inlet.hJkg, flows[i], room.refrigerantConductanceWK, input.indoorMetalC[i], false));
@@ -175,7 +183,12 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
       inlets.push(inlet); outlets.push(outlet);
     }
     const totalFlow = flows.reduce((a, b) => a + b, 0);
-    let superheatResidual = 0;
+    let superheatResidual = 0, subcoolResidual = 0;
+    if (allocatedHeating) {
+      const mixedH = mixedReturnH / totalFlow;
+      subcoolResidual = totalFlow * (mixedH - targetCondenserH);
+      condenserOutlet = properties.ph(pH, mixedH);
+    }
     if (allocatedCooling) {
       const mixedH = flows.reduce((total,flow,i)=>total+flow*outlets[i].hJkg,0)/totalFlow;
       superheatResidual = totalFlow * (mixedH-targetSuctionH);
@@ -191,7 +204,7 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
     const compressorWork = totalFlow * (discharge.hJkg - suction.hJkg), electric = compressorWork / compressor.driveEfficiency;
     const massResidual = totalFlow - compressorFlow;
     const outdoorResidual = totalFlow * (outdoorOut.hJkg - coilOutletH(properties, heating ? pL : pH, outdoorIn.hJkg, totalFlow, config.outdoor.refrigerantConductanceWK, input.outdoorMetalC, !heating));
-    const residual: [number, number] = [allocatedCooling ? superheatResidual : massResidual * 250000, outdoorResidual];
+    const residual: [number, number] = [allocatedCooling ? superheatResidual : allocatedHeating ? subcoolResidual : massResidual * 250000, outdoorResidual];
     return { residual, output: { mode: input.mode, evaporatingC: te, condensingC: tc, lowPressureBarAbs: pL / 1e5, highPressureBarAbs: pH / 1e5,
       suction, discharge, condenserOutlet, expansionOutlet, totalMassFlowKgs: totalFlow, branchMassFlowsKgs: flows, branchCoilHeatW: branchHeat,
       outdoorCoilHeatW: outdoorHeat, branchInlets: inlets, branchOutlets: outlets,

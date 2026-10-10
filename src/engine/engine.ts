@@ -50,7 +50,7 @@ export class HeatPumpEngine {
     this.chargeCandidate = null;
     this.inventoryDrive = newDriveState();
     this.boundaryWater = 0; this.initialEnergy = this.totalEnergy(); this.initialWater = this.totalWater();
-    this.warnings = ['Generic component parameters and control assumptions; not manufacturer calibrated.', 'Outdoor metal and retained water/ice share one equilibrium temperature.', 'Ice sublimation is excluded; retained ice melts or receives deposition.', 'Dirt uses clear-passage scaling of air flow/air-side conductance; forced fan power is constant without a measured fan curve.', ...(this.refrigerant ? ['Conserved R32 charge uses three bulk refrigerant cells per coil, shared outdoor/indoor pressures and a finite accumulator restriction; internal geometry and EEV/compressor maps are generic assumptions.', 'Field lines store actual refrigerant volume but are hydraulically idealized and adiabatic; friction, ambient line heat, elevation, slip and oil are excluded in this formulation.', 'Superheat is controlled by finite EEV movement; subcooling and exchanged heat emerge from the stored charge, rather than fixed charge multipliers.', 'Generic inverter control starts at minimum speed, holds 10 s, then accelerates at 0.5 rps/s; pressure/temperature supervision and restart dwell override demand. Stopped discharge predictions are control estimates, not sensor states.'] : ['Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.', 'Reported common condenser outlet is a control target; heating branch outlet states and mixed expansion enthalpy are authoritative with field lines.'])];
+    this.warnings = ['Generic component parameters and control assumptions; not manufacturer calibrated.', 'Outdoor metal and retained water/ice share one equilibrium temperature.', 'Ice sublimation is excluded; retained ice melts or receives deposition.', 'Dirt uses clear-passage scaling of air flow/air-side conductance; forced fan power is constant without a measured fan curve.', ...(this.refrigerant ? ['Conserved R32 charge uses three bulk refrigerant cells per coil, shared outdoor/indoor pressures and a finite accumulator restriction; internal geometry and EEV/compressor maps are generic assumptions.', 'Field lines store actual refrigerant volume but are hydraulically idealized and adiabatic; friction, ambient line heat, elevation, slip and oil are excluded in this formulation.', 'Superheat is controlled by finite EEV movement; subcooling and exchanged heat emerge from the stored charge, rather than fixed charge multipliers.', 'Generic inverter control starts at minimum speed, holds 10 s, then accelerates at 0.5 rps/s; pressure/temperature supervision and restart dwell override demand. Stopped discharge predictions are control estimates, not sensor states.'] : ['Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.', 'Idealized parallel indoor coils use generic UA-proportional refrigerant flow and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.', 'Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states.'])];
     this.lastOutput = this.makeOutput(this.passiveRoomOutputs(), null, 0, 0, 0, null, 0, 0); return this.snapshot();
   }
   /** Preserve local temperatures/RH and outdoor ice through structural edits, account inventory impulses explicitly.
@@ -241,9 +241,36 @@ export class HeatPumpEngine {
         speed=0;charge=this.refrigerant.prepareStep(dt,{...boundary,compressorSpeedRps:0});
       }
       if (effectiveMode) cycle = inventoryCycle(this.properties, config, charge, effectiveMode, dt);
-    } else if (effectiveMode) {
-      cycle = solveCycle(this.properties, config, { mode: effectiveMode, indoorMetalC: this.rooms.map(room => room.metalTemperatureC), outdoorMetalC: before.temperatureC, active: this.active, speedRps: speed, defrost, previous: this.lastCycle });
-      this.lastCycle = { evaporatingC: cycle.evaporatingC, condensingC: cycle.condensingC, condenserOutletC: cycle.condenserOutlet.temperatureC, branchMassFlowsKgs: cycle.branchMassFlowsKgs, pressureJacobian: cycle.pressureJacobian };
+    } else {
+      const proposal = (rps: number) => solveCycle(this.properties, config, { mode: effectiveMode!,
+        indoorMetalC: this.rooms.map(room => room.metalTemperatureC), outdoorMetalC: before.temperatureC,
+        active: this.active, speedRps: rps, defrost, previous: this.lastCycle });
+      // Reference pressures are quasi-steady, not stored stopped sensor states.
+      // Predict a restart at minimum speed from the current thermal boundaries;
+      // a stale hot discharge would otherwise keep its protection latched forever.
+      const observed = effectiveMode && this.cycle?.mode === effectiveMode && this.active.every((enabled,i)=>enabled === (this.cycle!.branchMassFlowsKgs[i] > 0)) ? this.cycle : null;
+      const forecast = effectiveMode && !observed ? proposal(config.compressor.speedMinRps) : null;
+      const feedback = observed ?? forecast;
+      this.inventoryDrive = driveStep(this.inventoryDrive, dt, { demandRps: demandSpeed,
+        minimumRps: config.compressor.speedMinRps, maximumRps: config.compressor.speedMaxRps,
+        maximumRatio: config.compressor.maxPressureRatio, maximumDischargeC: config.compressor.maxDischargeC,
+        minimumOffSeconds: config.control.minOffSeconds,
+        pressureRatio: feedback ? feedback.highPressureBarAbs / feedback.lowPressureBarAbs : 1,
+        predictedDischargeC: feedback?.discharge.temperatureC ?? null, pickupAvailable: !!effectiveMode });
+      speed = this.inventoryDrive.speedRps;
+      if (effectiveMode && speed > 0) {
+        cycle = forecast && speed === config.compressor.speedMinRps ? forecast : proposal(speed);
+        // Only an independently closed, in-domain cycle is envelope evidence.
+        // Solver failures propagate; no arbitrary lower-speed retry hides them.
+        if (cycle.discharge.temperatureC >= config.compressor.maxDischargeC - 10 ||
+          cycle.highPressureBarAbs / cycle.lowPressureBarAbs >= driveRatioThresholds(config.compressor.maxPressureRatio).stop) {
+          this.inventoryDrive = { speedRps: 0, startupSeconds: 0, offSeconds: dt,
+            protection: cycle.discharge.temperatureC >= config.compressor.maxDischargeC - 10 ? 'discharge temperature' : 'pressure ratio' };
+          speed = 0; cycle = null; this.lastCycle = undefined;
+        } else this.lastCycle = { evaporatingC: cycle.evaporatingC, condensingC: cycle.condensingC,
+          condenserOutletC: cycle.condenserOutlet.temperatureC, branchMassFlowsKgs: cycle.branchMassFlowsKgs,
+          pressureJacobian: cycle.pressureJacobian };
+      }
     }
     const outW = this.properties.airW(config.outdoorTemperatureC, config.outdoorRelativeHumidity, p), outH = this.properties.airH(config.outdoorTemperatureC, outW, p);
     const outputs: RoomOutput[] = [];
@@ -306,10 +333,10 @@ export class HeatPumpEngine {
     if (charge) { this.refrigerant!.commit(charge); this.chargeCandidate = charge; }
     this.rooms = candidateRooms; this.outdoorWaterKg = candidateMass; this.outdoorEnergyJ = candidateEnergy; this.cycle = cycle;
     this.time += dt; this.stateTime += dt;
-    const compressorRan=charge?charge.compressorMassFlowKgs>0||charge.compressorWorkJ>0:running||defrost;
+    const compressorRan=charge?charge.compressorMassFlowKgs>0||charge.compressorWorkJ>0:!!cycle;
     if (compressorRan) {
-      this.onTime += dt;if(charge)this.offTime=0;
-      if(charge)this.inventoryDrive.offSeconds=0;
+      this.onTime += dt;this.offTime=0;
+      this.inventoryDrive.offSeconds=0;
     } else {
       this.offTime += dt;this.onTime=0;
       if(charge) {
@@ -356,12 +383,12 @@ export class HeatPumpEngine {
       outdoor: { ...film, metalTemperatureC: film.temperatureC, filmEnthalpyJ: filmEnthalpy(this.outdoorEnergyJ, film.temperatureC, this.config.outdoor.metalCapacityJK), filmMassKg: this.outdoorWaterKg,
         airOutletC: outdoorOutlet, fanPowerW: outdoorFanW, depositionKgs, drainageKgs, meltPowerW }, electrical,
       signedRoomHeatW: roomHeatW,
-      heatingCOP: this.state === 'running' && this.config.mode === 'heating' && roomHeatW > 0 && (!inventory || (inventory.compressorAdmitted && !inventory.lowLiftTransfer && comp > 0)) ? roomHeatW / electrical.totalW : null,
-      coolingCOP: this.state === 'running' && this.config.mode === 'cooling' && roomHeatW < 0 && (!inventory || (inventory.compressorAdmitted && !inventory.lowLiftTransfer && comp > 0)) ? -roomHeatW / electrical.totalW : null,
+      heatingCOP: this.state === 'running' && this.config.mode === 'heating' && roomHeatW > 0 && (inventory ? inventory.compressorAdmitted && !inventory.lowLiftTransfer && comp > 0 : !!cycle && comp > 0) ? roomHeatW / electrical.totalW : null,
+      coolingCOP: this.state === 'running' && this.config.mode === 'cooling' && roomHeatW < 0 && (inventory ? inventory.compressorAdmitted && !inventory.lowLiftTransfer && comp > 0 : !!cycle && comp > 0) ? -roomHeatW / electrical.totalW : null,
       energy: { ...this.ledgers, storedEnergyChangeJ: this.totalEnergy() - this.initialEnergy, residualJ: this.totalEnergy() - this.initialEnergy - this.ledgers.boundaryEnergyJ,
         waterResidualKg: this.totalWater() - this.initialWater - this.boundaryWater },
       diagnostics: { warnings: [...new Set([...this.warnings,...(this.chargeCandidate?.diagnostics ?? []), ...(this.inventoryDrive.protection&&demandSpeedRps>0?[`Generic compressor protection hold: ${this.inventoryDrive.protection}.`]:[]), ...(this.refrigerant && !cycle && speedRps > 0 ? ['No complete forward circulation summary: inspect physical face flows and stored refrigerant energy.'] : [])])], fault: this.fault, algebraicResidualW: cycle?.closureResidualW ?? 0, speedRps, demandSpeedRps,
-        restartDelaySeconds:this.refrigerant&&demandSpeedRps>0&&speedRps===0&&!this.inventoryDrive.protection?Math.max(0,this.config.control.minOffSeconds-this.inventoryDrive.offSeconds):0,
-        envelopeProtection:this.refrigerant?this.inventoryDrive.protection:null, filmEnergyRateW, metalEnergyRateW } };
+        restartDelaySeconds:demandSpeedRps>0&&speedRps===0?Math.max(0,this.config.control.minOffSeconds-this.inventoryDrive.offSeconds):0,
+        envelopeProtection:this.inventoryDrive.protection, filmEnergyRateW, metalEnergyRateW } };
   }
 }

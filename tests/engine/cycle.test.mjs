@@ -73,3 +73,16 @@ test('heterogeneous idealized cooling conserves mixed-return enthalpy/entropy an
   const reversed=solveCycle(properties,config,{...args,indoorMetalC:[...metal].reverse()});assert.ok(Math.abs(reversed.evaporatingC-out.evaporatingC)<1e-6);assert.ok(Math.abs(reversed.condensingC-out.condensingC)<1e-6);
   const inactive=solveCycle(properties,config,{...args,active:[true,true,true,true,false]});assert.equal(inactive.branchMassFlowsKgs[4],0);
 });
+
+test('idealized warm/cold parallel condensers close the mixed header without equal branch subcooling', () => {
+  const config = defaultEngineConfig(3);
+  const out = solveCycle(properties, config, { mode: 'heating', indoorMetalC: [19.68488,47.524155,19.679312], outdoorMetalC: -3.592651, active: [false,true,true], speedRps: 29.15 });
+  const mixedH = out.branchMassFlowsKgs.reduce((sum,m,i)=>sum+m*out.branchOutlets[i].hJkg,0)/out.totalMassFlowKgs;
+  assert.ok(Math.abs(mixedH-out.condenserOutlet.hJkg)<1e-7);
+  assert.ok(Math.abs(mixedH-out.expansionOutlet.hJkg)<1e-7);
+  assert.ok(out.closureResidualW<=config.numerics.pressureToleranceW);
+  assert.ok(Math.abs(out.massResidualKgs)*250000<=config.numerics.pressureToleranceW);
+  assert.ok(Math.abs(out.branchOutlets[1].hJkg-out.branchOutlets[2].hJkg)>1000);
+  for (const i of [1,2]) assert.ok(Math.abs(out.branchCoilHeatW[i]-out.branchMassFlowsKgs[i]*(out.branchInlets[i].hJkg-out.branchOutlets[i].hJkg))<1e-7);
+  assert.ok(Math.abs(out.condenserHeatW-out.evaporatorHeatW-out.compressorWorkW)<1e-7);
+});
