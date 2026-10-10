@@ -108,9 +108,10 @@ function frame(now: number): void {
   const s = store.state;
   const sim = dt * s.ui.speed;
   if (s.ui.experience === 'live') {
-    // Fixed requests, never a growing backlog: overloaded CPUs run slower in simulated time.
+    // Small fixed work chunks keep parameter changes and pause responsive at every requested speed.
+    // A busy worker never builds a backlog; overloaded CPUs run slower in simulated time.
     if (!s.ui.paused && now >= nextPhysicalStepAt) {
-      if (simulation.step(.25 * s.ui.speed)) nextPhysicalStepAt = now + 250;
+      if (simulation.step(.25)) nextPhysicalStepAt = now + 250 / s.ui.speed;
     }
     const output = simulation.status.output;
     if (output) {

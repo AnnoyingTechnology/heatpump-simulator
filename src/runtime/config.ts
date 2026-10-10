@@ -20,7 +20,7 @@ export interface LiveParameters {
 }
 
 /** Switch only after the transport implementation and independent acceptance checks pass. */
-export const PHYSICAL_FIELD_LINES_AVAILABLE = false;
+export const PHYSICAL_FIELD_LINES_AVAILABLE = true;
 
 /** Family minimum, not a measurement of installed copper. 15.88 mm tubing has a 1 mm minimum in the cited guide. */
 export function pipeWallMmForOd(odMm: number, configuredMm: number): number {

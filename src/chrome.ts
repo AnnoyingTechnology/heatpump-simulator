@@ -27,7 +27,7 @@ export const LIVE_BASIS = 'Live · generic R32 · real property backend · perfo
 export function fieldLinesNote(s: AppState): string {
   return s.cfg.live.fieldLines === 'idealized'
     ? 'Idealized field lines: pipe length, diameter, elevation, line pressure drop and line heat exchange are excluded'
-    : 'Physical field lines: distributed homogeneous pipe model with assumed bore and outdoor-air exposure; fittings, oil, charge, slip and sonic regimes are not modelled';
+    : 'Physical field lines (advanced, slower): uncalibrated homogeneous pipe-loss approximation with assumed bore, level elevation and outdoor-air exposure; not a prediction of installed line losses; some regimes may be unsupported and fail visibly (see Advanced pipe assumptions)';
 }
 
 export function createHeader(): Header {

@@ -312,8 +312,8 @@ export function createSidebar(): Sidebar {
   const modeSeg = reg(segmented<LiveParameters['fieldLines']>({
     label: 'Field-line model', compact: true,
     options: [
-      { value: 'idealized', text: 'Idealized (reference)', title: 'Zero-length lines: no pipe effects' },
-      { value: 'physical', text: 'Physical', title: PHYSICAL_FIELD_LINES_AVAILABLE ? 'Distributed homogeneous pipe model' : 'Not available until the runtime owner enables it', disabled: !PHYSICAL_FIELD_LINES_AVAILABLE },
+      { value: 'idealized', text: 'Idealized (reference)', title: 'Zero-length lines: no pipe effects; faster default' },
+      { value: 'physical', text: 'Physical (advanced)', title: 'Finite-pipe model: slower, uncalibrated assumptions, some regimes unsupported', disabled: !PHYSICAL_FIELD_LINES_AVAILABLE },
     ],
     get: () => cfg().live.fieldLines, set: (v) => store.update((s) => { s.cfg.live.fieldLines = v; }),
   }));
@@ -332,7 +332,7 @@ export function createSidebar(): Sidebar {
   }));
   const wallReadout = html('p', { class: 'status' });
   const pipeAdvanced = fold('Advanced pipe assumptions', false, wall.root, insulation.root, wallReadout,
-    html('p', { class: 'hint' }, 'Wall minimums are declared family assumptions from the installation guide, not installed-copper measurements and not verified for this N8 unit. Every line with non-zero heat transfer is modelled in outdoor air by assumption; unknown elevation is treated as level, not as the real geometry. Fittings, oil, charge, slip and sonic regimes are not modelled; a high-loss operating point fails visibly.'));
+    html('p', { class: 'hint' }, 'Wall minimums are declared family assumptions from the installation guide, not installed-copper measurements and not verified for this N8 unit. Every line with non-zero heat transfer is modelled in outdoor air by assumption; unknown elevation is treated as level, not as the real geometry. Physical mode only: the model is a bounded homogeneous approximation that omits kinetic energy, slip, fittings, oil return and line charge, and is slower than the reference. In cooling, the controller targets each returning branch at a common suction superheat after line heat; this is separate from the idealized mode\'s conductance-weighted branch allocation and mixed-return control. Some unequal-coil transients and high-loss regimes may be unsupported: the run then fails visibly with conserved inventory rather than being made feasible silently. Results are not an accurate prediction of the installed line losses.'));
   const pipesLead = html('p', { class: 'hint lead' });
   pipesPanel.prepend(pipeMode, pipesLead, pipeTotals);
   pipesPanel.append(pipeAdvanced);
@@ -434,8 +434,8 @@ export function createSidebar(): Sidebar {
     }
 
     pipeModeNote.textContent = c.live.fieldLines === 'idealized'
-      ? `Idealized field lines: the engine receives zero-length lines, so pipe effects (line pressure drop, heat exchange, elevation) are explicitly excluded.${PHYSICAL_FIELD_LINES_AVAILABLE ? '' : ' The physical option is disabled until the runtime owner enables it.'}`
-      : 'Physical field lines: actual distributed homogeneous pipe model with assumed bore and outdoor-air exposure. Fittings, oil, charge, slip and sonic regimes are not modelled; a high-loss operating point fails visibly.';
+      ? `Idealized field lines: the engine receives zero-length lines, so pipe effects (line pressure drop, heat exchange, elevation) are explicitly excluded. This is the default reference; Physical is an optional, slower finite-pipe model.`
+      : 'Physical field lines (advanced, slower): finite pipes with an uncalibrated homogeneous loss approximation, assumed bore, level elevation and outdoor-air exposure. Not a prediction of the installed line losses; some unequal-coil or high-loss cases may be unsupported and fail visibly. Details under Advanced pipe assumptions.';
     const wallLine = (label: string, od: number): string => {
       const w = pipeWallMmForOd(od, c.live.pipeWallThicknessMm);
       return `${label} OD ${fmt(od, 2)} → wall ${fmt(w, 2)}, bore ${fmt(od - 2 * w, 2)}`;
