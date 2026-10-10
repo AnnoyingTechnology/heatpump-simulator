@@ -74,8 +74,8 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
   const highMin = floatingCondenser ? input.outdoorMetalC + 1e-5 : Math.max(-5, Math.max(...sinkMetal) + compressor.subcoolK + 1e-5);
   if (lowMax <= -40 || highMin >= 65) throw new DomainError('Coil temperatures exceed selected subcritical R32 operating envelope');
   const evaluate = (te: number, second: number): Trial => {
-    // During cold-condenser startup/defrost the generic controller imposes an 8 K saturation lift;
-    // a minimum condenser/metal approach (4 K defrost, 8 K cooling). Subcooling floats from finite UA.
+    // The alternate startup/defrost controller holds an 8 K saturation lift;
+    // condenser outlet enthalpy and subcooling follow actual finite UA.
     const tc = floatingCondenser ? te + 8 : second;
     const condenserOutletC = floatingCondenser ? second : tc - compressor.subcoolK;
     if (!(te >= -40 && te <= lowMax && second >= highMin && tc <= 65 && (floatingCondenser || tc - te >= (heating ? 1 : 8)) && condenserOutletC < tc - .001 && (!floatingCondenser || condenserOutletC > input.outdoorMetalC))) throw new DomainError('Pressure-solve point outside coil/domain bounds');

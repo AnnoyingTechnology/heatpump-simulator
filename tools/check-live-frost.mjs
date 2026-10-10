@@ -19,10 +19,10 @@ try{
   });
   await page.waitFor('rt.simulation.status.state!=="loading"',30000);
   let seenDefrost=false,returned=false,heldChecked=false,captured=false;
-  for(let i=0;i<40;i++){
+  for(let i=0;i<160;i++){
     const before=await run(()=>rt.simulation.status.output.simulatedSeconds);
-    assert.equal(await run(()=>rt.simulation.step(20)),true);
-    await page.waitFor(`rt.simulation.status.output?.state==='fault'||rt.simulation.status.output?.simulatedSeconds>=${before+20-1e-6}`,60000);
+    assert.equal(await run(()=>rt.simulation.step(5)),true);
+    await page.waitFor(`rt.simulation.status.output?.state==='fault'||rt.simulation.status.output?.simulatedSeconds>=${before+5-1e-6}`,60000);
     const out=await run(()=>rt.simulation.status.output);
     samples.push({seconds:out.simulatedSeconds,state:out.state,iceKg:out.outdoor.iceKg,waterKg:out.outdoor.liquidKg,energyResidualJ:out.energy.residualJ,waterResidualKg:out.energy.waterResidualKg});
     if(out.state==='fault'){

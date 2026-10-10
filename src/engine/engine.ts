@@ -73,7 +73,10 @@ export class HeatPumpEngine {
     while (remaining > 1e-10 && this.state !== 'fault') {
       const dt = Math.min(remaining, this.config.numerics.maxStepSeconds);
       try { this.advance(dt); } catch (error) { this.fault = error instanceof Error ? error.message : 'Physics failed'; this.state = 'fault'; this.cycle = null;
-        this.lastOutput = this.makeOutput(this.passiveRoomOutputs(), null, 0, 0, 0, null, 0, 0); }
+        let stopped: RoomOutput[];
+        try { stopped = this.passiveRoomOutputs(); }
+        catch { stopped = this.lastOutput.rooms.map(room => ({ ...room, active: false, massFlowKgs: 0, signedRoomHeatW: 0, sensibleRoomHeatW: 0, fanPowerW: 0, airOutletC: null, condensateKgs: 0, drainEnthalpyW: 0 })); }
+        this.lastOutput = this.makeOutput(stopped, null, 0, 0, 0, null, 0, 0); }
       remaining -= dt;
     }
     return this.snapshot();
@@ -198,6 +201,7 @@ export class HeatPumpEngine {
     const filmRate = (filmEnthalpy(candidateEnergy, after.temperatureC, outdoor.metalCapacityJK) - filmEnthalpy(this.outdoorEnergyJ, before.temperatureC, outdoor.metalCapacityJK)) / dt;
     const outMetalRate = outdoor.metalCapacityJK * (after.temperatureC - before.temperatureC) / dt;
     const meltedKg = Math.max(0, before.iceKg - after.iceKg); // diagnostic only; evolution is determined by energy, never by this value.
+    const outdoorOutlet = forcedOutside ? this.properties.airT(this.properties.airH(outdoorAir.outletC, outdoorAir.outletHumidityRatio, p) + fanOutside / mdOut, outdoorAir.outletHumidityRatio, p) : null;
     this.rooms = candidateRooms; this.outdoorWaterKg = candidateMass; this.outdoorEnergyJ = candidateEnergy; this.cycle = cycle;
     this.time += dt; this.stateTime += dt;
     if (running || defrost) this.onTime += dt; else { this.offTime += dt; this.onTime = 0; }
@@ -206,7 +210,6 @@ export class HeatPumpEngine {
     this.ledgers.outdoorExchangeJ += outward * dt; this.ledgers.drainageJ += (indoorDrain + drainEnergy) * dt;
     this.ledgers.boundaryEnergyJ += dt * (electric - outward - indoorDrain - drainEnergy + ventilationEnergy + envelopeEnergy);
     this.boundaryWater += dt * (roomWaterBoundary + outdoorAir.waterToSurfaceKgs - drain);
-    const outdoorOutlet = forcedOutside ? this.properties.airT(this.properties.airH(outdoorAir.outletC, outdoorAir.outletHumidityRatio, p) + fanOutside / mdOut, outdoorAir.outletHumidityRatio, p) : null;
     this.lastOutput = this.makeOutput(outputs, cycle, indoorFans, fanOutside, roomPower, outdoorOutlet,
       outdoorAir.waterToSurfaceKgs, drain, meltedKg * FUSION_JKG / dt, speed, filmRate, indoorMetalRate + outMetalRate);
   }

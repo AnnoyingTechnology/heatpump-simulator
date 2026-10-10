@@ -81,3 +81,10 @@ test('owner-layout natural frost reverses with hot stored indoor metal and conse
   for(let second=0;second<700;second++){const o=e.step(1);assertLedger(o);if(o.state==='defrost')defrost=true;if(defrost&&o.state==='running'){returned=true;break;}}
   assert.ok(defrost&&returned);
 });
+
+test('unavailable property backend returns a conserved fault snapshot without throwing again',()=>{
+  const moduleStub={PropsSI:(...args)=>p.prop(args[0],args[1],args[2],args[3],args[4]),HAPropsSI:(...args)=>p.humid(args[0],args[1],args[2],args[3],args[4],args[6])};
+  const service=new Properties(moduleStub),engine=new HeatPumpEngine(service,defaultEngineConfig(1));
+  const before=engine.snapshot();moduleStub.HAPropsSI=()=>{throw new Error('backend unavailable');};
+  const fault=engine.step(1);assert.equal(fault.state,'fault');assert.equal(fault.simulatedSeconds,before.simulatedSeconds);assert.equal(fault.cycle,null);assert.equal(fault.heatingCOP,null);assert.equal(fault.rooms[0].airOutletC,null);assert.equal(fault.outdoor.filmMassKg,before.outdoor.filmMassKg);assert.equal(fault.energy.residualJ,before.energy.residualJ);
+});
