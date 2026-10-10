@@ -1,0 +1,4824 @@
+{
+  "status": "PASS",
+  "environment": "Node",
+  "initMs": 45.165567,
+  "maxRelative": 1.6462711417781456e-9,
+  "maxLegacyStateRelative": 0,
+  "comparisons": 522,
+  "records": [
+    {
+      "pair": "PT_INPUTS",
+      "output": "T",
+      "actual": 240,
+      "expected": 240,
+      "absoluteError": 0,
+      "legacyStateValue": 240,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "p",
+      "actual": 99999.99999991617,
+      "expected": 100000,
+      "absoluteError": 8.383358363062143e-8,
+      "legacyStateValue": 99999.99999991617,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "hmass",
+      "actual": 512110.78878990427,
+      "expected": 512110.78878990427,
+      "absoluteError": 0,
+      "legacyStateValue": 512110.78878990427,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "smass",
+      "actual": 2450.427001950529,
+      "expected": 2450.427001950529,
+      "absoluteError": 0,
+      "legacyStateValue": 2450.427001950529,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "rhomass",
+      "actual": 2.684453402831604,
+      "expected": 2.684453402831604,
+      "absoluteError": 0,
+      "legacyStateValue": 2.684453402831604,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "cpmass",
+      "actual": 823.9234901222475,
+      "expected": 823.9234901222475,
+      "absoluteError": 0,
+      "legacyStateValue": 823.9234901222475,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000010714468912125823,
+      "expected": 0.000010714468912125823,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000010714468912125823,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "speed_sound",
+      "actual": 216.9765367776863,
+      "expected": 216.9765367776863,
+      "absoluteError": 0,
+      "legacyStateValue": 216.9765367776863,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 240.0000000000036,
+      "expected": 240.0000000000036,
+      "absoluteError": 0,
+      "legacyStateValue": 240.0000000000036,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 99999.99999991617,
+      "expected": 100000,
+      "absoluteError": 8.383358363062143e-8,
+      "legacyStateValue": 99999.99999991617,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 512110.78878990735,
+      "expected": 512110.78878990427,
+      "absoluteError": 3.0850060284137726e-9,
+      "legacyStateValue": 512110.78878990735,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 2450.427001950541,
+      "expected": 2450.427001950541,
+      "absoluteError": 0,
+      "legacyStateValue": 2450.427001950541,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 2.6844534028315583,
+      "expected": 2.6844534028315583,
+      "absoluteError": 0,
+      "legacyStateValue": 2.6844534028315583,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "cpmass",
+      "actual": 823.9234901222438,
+      "expected": 823.9234901222438,
+      "absoluteError": 0,
+      "legacyStateValue": 823.9234901222438,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000010714468912125992,
+      "expected": 0.000010714468912125992,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000010714468912125992,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "speed_sound",
+      "actual": 216.97653677768804,
+      "expected": 216.97653677768804,
+      "absoluteError": 0,
+      "legacyStateValue": 216.97653677768804,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "T",
+      "actual": 240.0000000004974,
+      "expected": 240.0000000004974,
+      "absoluteError": 0,
+      "legacyStateValue": 240.0000000004974,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "p",
+      "actual": 99999.99999991617,
+      "expected": 100000,
+      "absoluteError": 8.383358363062143e-8,
+      "legacyStateValue": 99999.99999991617,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "hmass",
+      "actual": 512110.7887903143,
+      "expected": 512110.7887903143,
+      "absoluteError": 0,
+      "legacyStateValue": 512110.7887903143,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "smass",
+      "actual": 2450.4270019522364,
+      "expected": 2450.427001950529,
+      "absoluteError": 1.7075763025786728e-9,
+      "legacyStateValue": 2450.4270019522364,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "rhomass",
+      "actual": 2.6844534028253335,
+      "expected": 2.6844534028253335,
+      "absoluteError": 0,
+      "legacyStateValue": 2.6844534028253335,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "cpmass",
+      "actual": 823.9234901217712,
+      "expected": 823.9234901217712,
+      "absoluteError": 0,
+      "legacyStateValue": 823.9234901217712,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000010714468912148656,
+      "expected": 0.000010714468912148656,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000010714468912148656,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "speed_sound",
+      "actual": 216.9765367779235,
+      "expected": 216.9765367779235,
+      "absoluteError": 0,
+      "legacyStateValue": 216.9765367779235,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "T",
+      "actual": 240,
+      "expected": 240,
+      "absoluteError": 0,
+      "legacyStateValue": 240,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "p",
+      "actual": 100000,
+      "expected": 100000,
+      "absoluteError": 0,
+      "legacyStateValue": 100000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "hmass",
+      "actual": 512110.7887899012,
+      "expected": 512110.7887899012,
+      "absoluteError": 0,
+      "legacyStateValue": 512110.7887899012,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "smass",
+      "actual": 2450.4270019505193,
+      "expected": 2450.4270019505193,
+      "absoluteError": 0,
+      "legacyStateValue": 2450.4270019505193,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 2.684453402831604,
+      "expected": 2.684453402831604,
+      "absoluteError": 0,
+      "legacyStateValue": 2.684453402831604,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "cpmass",
+      "actual": 823.9234901222901,
+      "expected": 823.9234901222901,
+      "absoluteError": 0,
+      "legacyStateValue": 823.9234901222901,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000010714468912125825,
+      "expected": 0.000010714468912125825,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000010714468912125825,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "speed_sound",
+      "actual": 216.97653677768474,
+      "expected": 216.97653677768474,
+      "absoluteError": 0,
+      "legacyStateValue": 216.97653677768474,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "T",
+      "actual": 240.00000000000466,
+      "expected": 240.00000000000466,
+      "absoluteError": 0,
+      "legacyStateValue": 240.00000000000466,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "p",
+      "actual": 100000.00000000211,
+      "expected": 100000.00000000211,
+      "absoluteError": 0,
+      "legacyStateValue": 100000.00000000211,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "hmass",
+      "actual": 512110.7887899049,
+      "expected": 512110.7887899049,
+      "absoluteError": 0,
+      "legacyStateValue": 512110.7887899049,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "smass",
+      "actual": 2450.427001950532,
+      "expected": 2450.427001950532,
+      "absoluteError": 0,
+      "legacyStateValue": 2450.427001950532,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "rhomass",
+      "actual": 2.684453402831604,
+      "expected": 2.684453402831604,
+      "absoluteError": 0,
+      "legacyStateValue": 2.684453402831604,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "Q",
+      "actual": 10000,
+      "expected": 10000,
+      "absoluteError": 0,
+      "legacyStateValue": 10000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "cpmass",
+      "actual": 823.9234901222873,
+      "expected": 823.9234901222873,
+      "absoluteError": 0,
+      "legacyStateValue": 823.9234901222873,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00001071446891212604,
+      "expected": 0.00001071446891212604,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00001071446891212604,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "speed_sound",
+      "actual": 216.97653677768687,
+      "expected": 216.97653677768687,
+      "absoluteError": 0,
+      "legacyStateValue": 216.97653677768687,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "T",
+      "actual": 240,
+      "expected": 240,
+      "absoluteError": 0,
+      "legacyStateValue": 240,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "p",
+      "actual": 100000,
+      "expected": 100000,
+      "absoluteError": 0,
+      "legacyStateValue": 100000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "hmass",
+      "actual": 512110.7887899012,
+      "expected": 512110.7887899012,
+      "absoluteError": 0,
+      "legacyStateValue": 512110.7887899012,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "smass",
+      "actual": 2450.4270019505193,
+      "expected": 2450.4270019505193,
+      "absoluteError": 0,
+      "legacyStateValue": 2450.4270019505193,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "rhomass",
+      "actual": 2.684453402831604,
+      "expected": 2.684453402831604,
+      "absoluteError": 0,
+      "legacyStateValue": 2.684453402831604,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "cpmass",
+      "actual": 823.9234901222901,
+      "expected": 823.9234901222901,
+      "absoluteError": 0,
+      "legacyStateValue": 823.9234901222901,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000010714468912125825,
+      "expected": 0.000010714468912125825,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000010714468912125825,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "speed_sound",
+      "actual": 216.97653677768474,
+      "expected": 216.97653677768474,
+      "absoluteError": 0,
+      "legacyStateValue": 216.97653677768474,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "T",
+      "actual": 280,
+      "expected": 280,
+      "absoluteError": 0,
+      "legacyStateValue": 280,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "p",
+      "actual": 699999.9988476102,
+      "expected": 700000,
+      "absoluteError": 0.0011523897992447019,
+      "legacyStateValue": 699999.9988476102,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "hmass",
+      "actual": 527371.2286334633,
+      "expected": 527371.2286334633,
+      "absoluteError": 0,
+      "legacyStateValue": 527371.2286334633,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "smass",
+      "actual": 2218.6559378000625,
+      "expected": 2218.6559378000625,
+      "absoluteError": 0,
+      "legacyStateValue": 2218.6559378000625,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "rhomass",
+      "actual": 17.732925889230103,
+      "expected": 17.732925889230103,
+      "absoluteError": 0,
+      "legacyStateValue": 17.732925889230103,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "cpmass",
+      "actual": 1085.933117497215,
+      "expected": 1085.933117497215,
+      "absoluteError": 0,
+      "legacyStateValue": 1085.933117497215,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00001260962349968225,
+      "expected": 0.00001260962349968225,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00001260962349968225,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "speed_sound",
+      "actual": 219.0010641301844,
+      "expected": 219.0010641301844,
+      "absoluteError": 0,
+      "legacyStateValue": 219.0010641301844,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 280.00000002581834,
+      "expected": 280.00000002581834,
+      "absoluteError": 0,
+      "legacyStateValue": 280.00000002581834,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 699999.9988476102,
+      "expected": 700000,
+      "absoluteError": 0.0011523897992447019,
+      "legacyStateValue": 699999.9988476102,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 527371.2286615003,
+      "expected": 527371.2286334633,
+      "absoluteError": 0.000028037000447511673,
+      "legacyStateValue": 527371.2286615003,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 2218.6559379001947,
+      "expected": 2218.6559379001947,
+      "absoluteError": 0,
+      "legacyStateValue": 2218.6559379001947,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 17.732925886638434,
+      "expected": 17.732925886638434,
+      "absoluteError": 0,
+      "legacyStateValue": 17.732925886638434,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "cpmass",
+      "actual": 1085.9331173211383,
+      "expected": 1085.9331173211383,
+      "absoluteError": 0,
+      "legacyStateValue": 1085.9331173211383,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000012609623500817015,
+      "expected": 0.000012609623500817015,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000012609623500817015,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "speed_sound",
+      "actual": 219.0010641465068,
+      "expected": 219.0010641465068,
+      "absoluteError": 0,
+      "legacyStateValue": 219.0010641465068,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "T",
+      "actual": 280.0000000171837,
+      "expected": 280.0000000171837,
+      "absoluteError": 0,
+      "legacyStateValue": 280.0000000171837,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "p",
+      "actual": 699999.9988476102,
+      "expected": 700000,
+      "absoluteError": 0.0011523897992447019,
+      "legacyStateValue": 699999.9988476102,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "hmass",
+      "actual": 527371.2286521237,
+      "expected": 527371.2286521237,
+      "absoluteError": 0,
+      "legacyStateValue": 527371.2286521237,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "smass",
+      "actual": 2218.6559378667066,
+      "expected": 2218.6559378000625,
+      "absoluteError": 6.664413376711309e-8,
+      "legacyStateValue": 2218.6559378667066,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "rhomass",
+      "actual": 17.732925887505186,
+      "expected": 17.732925887505186,
+      "absoluteError": 0,
+      "legacyStateValue": 17.732925887505186,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "cpmass",
+      "actual": 1085.933117380025,
+      "expected": 1085.933117380025,
+      "absoluteError": 0,
+      "legacyStateValue": 1085.933117380025,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000012609623500437509,
+      "expected": 0.000012609623500437509,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000012609623500437509,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "speed_sound",
+      "actual": 219.00106414104798,
+      "expected": 219.00106414104798,
+      "absoluteError": 0,
+      "legacyStateValue": 219.00106414104798,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "T",
+      "actual": 279.9999999999998,
+      "expected": 279.9999999999998,
+      "absoluteError": 0,
+      "legacyStateValue": 279.9999999999998,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "p",
+      "actual": 699999.9999999993,
+      "expected": 700000,
+      "absoluteError": 6.984919309616089e-10,
+      "legacyStateValue": 699999.9999999993,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "hmass",
+      "actual": 527371.228605426,
+      "expected": 527371.228605426,
+      "absoluteError": 0,
+      "legacyStateValue": 527371.228605426,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "smass",
+      "actual": 2218.655937734557,
+      "expected": 2218.655937734557,
+      "absoluteError": 0,
+      "legacyStateValue": 2218.655937734557,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 17.732925889230103,
+      "expected": 17.732925889230103,
+      "absoluteError": 0,
+      "legacyStateValue": 17.732925889230103,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "cpmass",
+      "actual": 1085.9331178077882,
+      "expected": 1085.9331178077882,
+      "absoluteError": 0,
+      "legacyStateValue": 1085.9331178077882,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000012609623499811284,
+      "expected": 0.000012609623499811284,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000012609623499811284,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "speed_sound",
+      "actual": 219.0010641202248,
+      "expected": 219.0010641202248,
+      "absoluteError": 0,
+      "legacyStateValue": 219.0010641202248,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "T",
+      "actual": 280.0000000364148,
+      "expected": 280.0000000364148,
+      "absoluteError": 0,
+      "legacyStateValue": 280.0000000364148,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "p",
+      "actual": 700000.0001255606,
+      "expected": 700000.0001255606,
+      "absoluteError": 0,
+      "legacyStateValue": 700000.0001255606,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "hmass",
+      "actual": 527371.2286408282,
+      "expected": 527371.2286408282,
+      "absoluteError": 0,
+      "legacyStateValue": 527371.2286408282,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "smass",
+      "actual": 2218.655937835705,
+      "expected": 2218.655937835705,
+      "absoluteError": 0,
+      "legacyStateValue": 2218.655937835705,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "rhomass",
+      "actual": 17.732925889230103,
+      "expected": 17.732925889230103,
+      "absoluteError": 0,
+      "legacyStateValue": 17.732925889230103,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "Q",
+      "actual": 10000,
+      "expected": 10000,
+      "absoluteError": 0,
+      "legacyStateValue": 10000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "cpmass",
+      "actual": 1085.9331176348649,
+      "expected": 1085.9331176348649,
+      "absoluteError": 0,
+      "legacyStateValue": 1085.9331176348649,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000012609623501439752,
+      "expected": 0.000012609623501439752,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000012609623501439752,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "speed_sound",
+      "actual": 219.00106413961893,
+      "expected": 219.00106413961893,
+      "absoluteError": 0,
+      "legacyStateValue": 219.00106413961893,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "T",
+      "actual": 280,
+      "expected": 280,
+      "absoluteError": 0,
+      "legacyStateValue": 280,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "p",
+      "actual": 700000,
+      "expected": 700000,
+      "absoluteError": 0,
+      "legacyStateValue": 700000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "hmass",
+      "actual": 527371.2286054263,
+      "expected": 527371.2286054263,
+      "absoluteError": 0,
+      "legacyStateValue": 527371.2286054263,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "smass",
+      "actual": 2218.6559377345575,
+      "expected": 2218.6559377345575,
+      "absoluteError": 0,
+      "legacyStateValue": 2218.6559377345575,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "rhomass",
+      "actual": 17.732925889230103,
+      "expected": 17.732925889230103,
+      "absoluteError": 0,
+      "legacyStateValue": 17.732925889230103,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "cpmass",
+      "actual": 1085.9331178077875,
+      "expected": 1085.9331178077875,
+      "absoluteError": 0,
+      "legacyStateValue": 1085.9331178077875,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000012609623499811294,
+      "expected": 0.000012609623499811294,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000012609623499811294,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "speed_sound",
+      "actual": 219.00106412022492,
+      "expected": 219.00106412022492,
+      "absoluteError": 0,
+      "legacyStateValue": 219.00106412022492,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "T",
+      "actual": 330,
+      "expected": 330,
+      "absoluteError": 0,
+      "legacyStateValue": 330,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "p",
+      "actual": 999999.9999932431,
+      "expected": 1000000,
+      "absoluteError": 0.0000067568616941571236,
+      "legacyStateValue": 999999.9999932431,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "hmass",
+      "actual": 572381.8668915881,
+      "expected": 572381.8668915881,
+      "absoluteError": 0,
+      "legacyStateValue": 572381.8668915881,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "smass",
+      "actual": 2315.3599811202653,
+      "expected": 2315.3599811202653,
+      "absoluteError": 0,
+      "legacyStateValue": 2315.3599811202653,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "rhomass",
+      "actual": 20.803282443022624,
+      "expected": 20.803282443022624,
+      "absoluteError": 0,
+      "legacyStateValue": 20.803282443022624,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "cpmass",
+      "actual": 1031.6236223482701,
+      "expected": 1031.6236223482701,
+      "absoluteError": 0,
+      "legacyStateValue": 1031.6236223482701,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000014845960152097763,
+      "expected": 0.000014845960152097763,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000014845960152097763,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "speed_sound",
+      "actual": 240.06227505484887,
+      "expected": 240.06227505484887,
+      "absoluteError": 0,
+      "legacyStateValue": 240.06227505484887,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 330.0000000000857,
+      "expected": 330.0000000000857,
+      "absoluteError": 0,
+      "legacyStateValue": 330.0000000000857,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 999999.9999932433,
+      "expected": 1000000,
+      "absoluteError": 0.000006756745278835297,
+      "legacyStateValue": 999999.9999932433,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 572381.8668916763,
+      "expected": 572381.8668915881,
+      "absoluteError": 8.824281394481659e-8,
+      "legacyStateValue": 572381.8668916763,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 2315.359981120533,
+      "expected": 2315.359981120533,
+      "absoluteError": 0,
+      "legacyStateValue": 2315.359981120533,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 20.803282443015167,
+      "expected": 20.803282443015167,
+      "absoluteError": 0,
+      "legacyStateValue": 20.803282443015167,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "cpmass",
+      "actual": 1031.6236223481772,
+      "expected": 1031.6236223481772,
+      "absoluteError": 0,
+      "legacyStateValue": 1031.6236223481772,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000014845960152101466,
+      "expected": 0.000014845960152101466,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000014845960152101466,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "speed_sound",
+      "actual": 240.06227505489022,
+      "expected": 240.06227505489022,
+      "absoluteError": 0,
+      "legacyStateValue": 240.06227505489022,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "T",
+      "actual": 330.00000027779197,
+      "expected": 330.00000027779197,
+      "absoluteError": 0,
+      "legacyStateValue": 330.00000027779197,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "p",
+      "actual": 999999.9999932429,
+      "expected": 1000000,
+      "absoluteError": 0.0000067570945248007774,
+      "legacyStateValue": 999999.9999932429,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "hmass",
+      "actual": 572381.8671781648,
+      "expected": 572381.8671781648,
+      "absoluteError": 0,
+      "legacyStateValue": 572381.8671781648,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "smass",
+      "actual": 2315.35998198868,
+      "expected": 2315.3599811202653,
+      "absoluteError": 8.684146450832486e-7,
+      "legacyStateValue": 2315.35998198868,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "rhomass",
+      "actual": 20.803282418860853,
+      "expected": 20.803282418860853,
+      "absoluteError": 0,
+      "legacyStateValue": 20.803282418860853,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "cpmass",
+      "actual": 1031.623622046573,
+      "expected": 1031.623622046573,
+      "absoluteError": 0,
+      "legacyStateValue": 1031.623622046573,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000014845960164108055,
+      "expected": 0.000014845960164108055,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000014845960164108055,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "speed_sound",
+      "actual": 240.06227518900405,
+      "expected": 240.06227518900405,
+      "absoluteError": 0,
+      "legacyStateValue": 240.06227518900405,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "T",
+      "actual": 330.00000000000006,
+      "expected": 330.00000000000006,
+      "absoluteError": 0,
+      "legacyStateValue": 330.00000000000006,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "p",
+      "actual": 1000000.0000000001,
+      "expected": 1000000,
+      "absoluteError": 1.1641532182693481e-10,
+      "legacyStateValue": 1000000.0000000001,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "hmass",
+      "actual": 572381.8668914997,
+      "expected": 572381.8668914997,
+      "absoluteError": 0,
+      "legacyStateValue": 572381.8668914997,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "smass",
+      "actual": 2315.359981120099,
+      "expected": 2315.359981120099,
+      "absoluteError": 0,
+      "legacyStateValue": 2315.359981120099,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 20.803282443022624,
+      "expected": 20.803282443022624,
+      "absoluteError": 0,
+      "legacyStateValue": 20.803282443022624,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "cpmass",
+      "actual": 1031.623622348722,
+      "expected": 1031.623622348722,
+      "absoluteError": 0,
+      "legacyStateValue": 1031.623622348722,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000014845960152098217,
+      "expected": 0.000014845960152098217,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000014845960152098217,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "speed_sound",
+      "actual": 240.06227505483383,
+      "expected": 240.06227505483383,
+      "absoluteError": 0,
+      "legacyStateValue": 240.06227505483383,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "T",
+      "actual": 330.00000000011505,
+      "expected": 330.00000000011505,
+      "absoluteError": 0,
+      "legacyStateValue": 330.00000000011505,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "p",
+      "actual": 1000000.000000436,
+      "expected": 1000000.000000436,
+      "absoluteError": 0,
+      "legacyStateValue": 1000000.000000436,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "hmass",
+      "actual": 572381.8668916103,
+      "expected": 572381.8668916103,
+      "absoluteError": 0,
+      "legacyStateValue": 572381.8668916103,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "smass",
+      "actual": 2315.359981120371,
+      "expected": 2315.359981120371,
+      "absoluteError": 0,
+      "legacyStateValue": 2315.359981120371,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "rhomass",
+      "actual": 20.803282443022624,
+      "expected": 20.803282443022624,
+      "absoluteError": 0,
+      "legacyStateValue": 20.803282443022624,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "Q",
+      "actual": 10000,
+      "expected": 10000,
+      "absoluteError": 0,
+      "legacyStateValue": 10000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "cpmass",
+      "actual": 1031.623622348681,
+      "expected": 1031.623622348681,
+      "absoluteError": 0,
+      "legacyStateValue": 1031.623622348681,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000014845960152103248,
+      "expected": 0.000014845960152103248,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000014845960152103248,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "speed_sound",
+      "actual": 240.0622750548829,
+      "expected": 240.0622750548829,
+      "absoluteError": 0,
+      "legacyStateValue": 240.0622750548829,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "T",
+      "actual": 330,
+      "expected": 330,
+      "absoluteError": 0,
+      "legacyStateValue": 330,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "p",
+      "actual": 999999.9999999998,
+      "expected": 999999.9999999998,
+      "absoluteError": 0,
+      "legacyStateValue": 999999.9999999998,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "hmass",
+      "actual": 572381.8668914996,
+      "expected": 572381.8668914996,
+      "absoluteError": 0,
+      "legacyStateValue": 572381.8668914996,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "smass",
+      "actual": 2315.359981120099,
+      "expected": 2315.359981120099,
+      "absoluteError": 0,
+      "legacyStateValue": 2315.359981120099,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "rhomass",
+      "actual": 20.803282443022624,
+      "expected": 20.803282443022624,
+      "absoluteError": 0,
+      "legacyStateValue": 20.803282443022624,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "cpmass",
+      "actual": 1031.6236223487222,
+      "expected": 1031.6236223487222,
+      "absoluteError": 0,
+      "legacyStateValue": 1031.6236223487222,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000014845960152098217,
+      "expected": 0.000014845960152098217,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000014845960152098217,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "speed_sound",
+      "actual": 240.0622750548338,
+      "expected": 240.0622750548338,
+      "absoluteError": 0,
+      "legacyStateValue": 240.0622750548338,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "T",
+      "actual": 400,
+      "expected": 400,
+      "absoluteError": 0,
+      "legacyStateValue": 400,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "p",
+      "actual": 3000000.0001108507,
+      "expected": 3000000,
+      "absoluteError": 0.00011085066944360733,
+      "legacyStateValue": 3000000.0001108507,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "hmass",
+      "actual": 622727.1268268991,
+      "expected": 622727.1268268991,
+      "absoluteError": 0,
+      "legacyStateValue": 622727.1268268991,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "smass",
+      "actual": 2297.3068428078227,
+      "expected": 2297.3068428078227,
+      "absoluteError": 0,
+      "legacyStateValue": 2297.3068428078227,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "rhomass",
+      "actual": 54.072265092302224,
+      "expected": 54.072265092302224,
+      "absoluteError": 0,
+      "legacyStateValue": 54.072265092302224,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "cpmass",
+      "actual": 1211.168886683863,
+      "expected": 1211.168886683863,
+      "absoluteError": 0,
+      "legacyStateValue": 1211.168886683863,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000018096152735118926,
+      "expected": 0.000018096152735118926,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000018096152735118926,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "speed_sound",
+      "actual": 254.04639799246988,
+      "expected": 254.04639799246988,
+      "absoluteError": 0,
+      "legacyStateValue": 254.04639799246988,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 400.00000004690617,
+      "expected": 400.00000004690617,
+      "absoluteError": 0,
+      "legacyStateValue": 400.00000004690617,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 3000000.0001108507,
+      "expected": 3000000,
+      "absoluteError": 0.00011085066944360733,
+      "legacyStateValue": 3000000.0001108507,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 622727.1268837104,
+      "expected": 622727.1268268991,
+      "absoluteError": 0.000056811259128153324,
+      "legacyStateValue": 622727.1268837104,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 2297.306842949851,
+      "expected": 2297.306842949851,
+      "absoluteError": 0,
+      "legacyStateValue": 2297.306842949851,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 54.07226508203239,
+      "expected": 54.07226508203239,
+      "absoluteError": 0,
+      "legacyStateValue": 54.07226508203239,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "cpmass",
+      "actual": 1211.1688866219972,
+      "expected": 1211.1688866219972,
+      "absoluteError": 0,
+      "legacyStateValue": 1211.1688866219972,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000018096152736921442,
+      "expected": 0.000018096152736921442,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000018096152736921442,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "speed_sound",
+      "actual": 254.04639801646388,
+      "expected": 254.04639801646388,
+      "absoluteError": 0,
+      "legacyStateValue": 254.04639801646388,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "T",
+      "actual": 399.99999999952126,
+      "expected": 399.99999999952126,
+      "absoluteError": 0,
+      "legacyStateValue": 399.99999999952126,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "p",
+      "actual": 3000000.0001108497,
+      "expected": 3000000,
+      "absoluteError": 0.00011084973812103271,
+      "legacyStateValue": 3000000.0001108497,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "hmass",
+      "actual": 622727.1268263191,
+      "expected": 622727.1268263191,
+      "absoluteError": 0,
+      "legacyStateValue": 622727.1268263191,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "smass",
+      "actual": 2297.306842806373,
+      "expected": 2297.3068428078227,
+      "absoluteError": 1.4497345546260476e-9,
+      "legacyStateValue": 2297.306842806373,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "rhomass",
+      "actual": 54.072265092407044,
+      "expected": 54.072265092407044,
+      "absoluteError": 0,
+      "legacyStateValue": 54.072265092407044,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "cpmass",
+      "actual": 1211.1688866844943,
+      "expected": 1211.1688866844943,
+      "absoluteError": 0,
+      "legacyStateValue": 1211.1688866844943,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000018096152735100528,
+      "expected": 0.000018096152735100528,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000018096152735100528,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "speed_sound",
+      "actual": 254.046397992225,
+      "expected": 254.046397992225,
+      "absoluteError": 0,
+      "legacyStateValue": 254.046397992225,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "T",
+      "actual": 399.9999999913197,
+      "expected": 399.9999999913197,
+      "absoluteError": 0,
+      "legacyStateValue": 399.9999999913197,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "p",
+      "actual": 2999999.999909106,
+      "expected": 3000000,
+      "absoluteError": 0.00009089382365345955,
+      "legacyStateValue": 2999999.999909106,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "hmass",
+      "actual": 622727.1268183355,
+      "expected": 622727.1268183355,
+      "absoluteError": 0,
+      "legacyStateValue": 622727.1268183355,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "smass",
+      "actual": 2297.3068427897956,
+      "expected": 2297.3068427897956,
+      "absoluteError": 0,
+      "legacyStateValue": 2297.3068427897956,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 54.072265092302224,
+      "expected": 54.072265092302224,
+      "absoluteError": 0,
+      "legacyStateValue": 54.072265092302224,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "cpmass",
+      "actual": 1211.1688866846828,
+      "expected": 1211.1688866846828,
+      "absoluteError": 0,
+      "legacyStateValue": 1211.1688866846828,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000018096152734751754,
+      "expected": 0.000018096152734751754,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000018096152734751754,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "speed_sound",
+      "actual": 254.0463979887579,
+      "expected": 254.0463979887579,
+      "absoluteError": 0,
+      "legacyStateValue": 254.0463979887579,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "T",
+      "actual": 399.9999999989502,
+      "expected": 399.9999999989502,
+      "absoluteError": 0,
+      "legacyStateValue": 399.9999999989502,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "p",
+      "actual": 2999999.9999890067,
+      "expected": 2999999.9999890067,
+      "absoluteError": 0,
+      "legacyStateValue": 2999999.9999890067,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "hmass",
+      "actual": 622727.1268266619,
+      "expected": 622727.1268266619,
+      "absoluteError": 0,
+      "legacyStateValue": 622727.1268266619,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "smass",
+      "actual": 2297.3068428069173,
+      "expected": 2297.3068428069173,
+      "absoluteError": 0,
+      "legacyStateValue": 2297.3068428069173,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "rhomass",
+      "actual": 54.072265092302224,
+      "expected": 54.072265092302224,
+      "absoluteError": 0,
+      "legacyStateValue": 54.072265092302224,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "Q",
+      "actual": 10000,
+      "expected": 10000,
+      "absoluteError": 0,
+      "legacyStateValue": 10000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "cpmass",
+      "actual": 1211.1688866823933,
+      "expected": 1211.1688866823933,
+      "absoluteError": 0,
+      "legacyStateValue": 1211.1688866823933,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00001809615273506357,
+      "expected": 0.00001809615273506357,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00001809615273506357,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "speed_sound",
+      "actual": 254.0463979920563,
+      "expected": 254.0463979920563,
+      "absoluteError": 0,
+      "legacyStateValue": 254.0463979920563,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "T",
+      "actual": 400,
+      "expected": 400,
+      "absoluteError": 0,
+      "legacyStateValue": 400,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "p",
+      "actual": 2999999.9999999995,
+      "expected": 2999999.9999999995,
+      "absoluteError": 0,
+      "legacyStateValue": 2999999.9999999995,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "hmass",
+      "actual": 622727.1268278074,
+      "expected": 622727.1268278074,
+      "absoluteError": 0,
+      "legacyStateValue": 622727.1268278074,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "smass",
+      "actual": 2297.306842809273,
+      "expected": 2297.306842809273,
+      "absoluteError": 0,
+      "legacyStateValue": 2297.306842809273,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "rhomass",
+      "actual": 54.072265092302224,
+      "expected": 54.072265092302224,
+      "absoluteError": 0,
+      "legacyStateValue": 54.072265092302224,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "cpmass",
+      "actual": 1211.1688866820787,
+      "expected": 1211.1688866820787,
+      "absoluteError": 0,
+      "legacyStateValue": 1211.1688866820787,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000018096152735106468,
+      "expected": 0.000018096152735106468,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000018096152735106468,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "speed_sound",
+      "actual": 254.0463979925101,
+      "expected": 254.0463979925101,
+      "absoluteError": 0,
+      "legacyStateValue": 254.0463979925101,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "T",
+      "actual": 260,
+      "expected": 260,
+      "absoluteError": 0,
+      "legacyStateValue": 260,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "p",
+      "actual": 2999999.9999998035,
+      "expected": 3000000,
+      "absoluteError": 1.9650906324386597e-7,
+      "legacyStateValue": 2999999.9999998035,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "hmass",
+      "actual": 177973.69017499263,
+      "expected": 177973.69017499263,
+      "absoluteError": 0,
+      "legacyStateValue": 177973.69017499263,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "smass",
+      "actual": 909.7895624893475,
+      "expected": 909.7895624893475,
+      "absoluteError": 0,
+      "legacyStateValue": 909.7895624893475,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "rhomass",
+      "actual": 1106.293555505062,
+      "expected": 1106.293555505062,
+      "absoluteError": 0,
+      "legacyStateValue": 1106.293555505062,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "cpmass",
+      "actual": 1665.99083351063,
+      "expected": 1665.99083351063,
+      "absoluteError": 0,
+      "legacyStateValue": 1665.99083351063,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00018506710455124,
+      "expected": 0.00018506710455124,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00018506710455124,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PT_INPUTS",
+      "output": "speed_sound",
+      "actual": 787.1889969756768,
+      "expected": 787.1889969756768,
+      "absoluteError": 0,
+      "legacyStateValue": 787.1889969756768,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 259.9999999995123,
+      "expected": 259.9999999995123,
+      "absoluteError": 0,
+      "legacyStateValue": 259.9999999995123,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 2999999.999999869,
+      "expected": 3000000,
+      "absoluteError": 1.3085082173347473e-7,
+      "legacyStateValue": 2999999.999999869,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 177973.69017418002,
+      "expected": 177973.69017499263,
+      "absoluteError": 8.126080501824617e-7,
+      "legacyStateValue": 177973.69017418002,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 909.7895624862224,
+      "expected": 909.7895624862224,
+      "absoluteError": 0,
+      "legacyStateValue": 909.7895624862224,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 1106.2935555065967,
+      "expected": 1106.2935555065967,
+      "absoluteError": 0,
+      "legacyStateValue": 1106.2935555065967,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "cpmass",
+      "actual": 1665.9908335089324,
+      "expected": 1665.9908335089324,
+      "absoluteError": 0,
+      "legacyStateValue": 1665.9908335089324,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.0001850671045523715,
+      "expected": 0.0001850671045523715,
+      "absoluteError": 0,
+      "legacyStateValue": 0.0001850671045523715,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "speed_sound",
+      "actual": 787.1889969782588,
+      "expected": 787.1889969782588,
+      "absoluteError": 0,
+      "legacyStateValue": 787.1889969782588,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "T",
+      "actual": 260.00000000000034,
+      "expected": 260.00000000000034,
+      "absoluteError": 0,
+      "legacyStateValue": 260.00000000000034,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "p",
+      "actual": 2999999.9999995832,
+      "expected": 3000000,
+      "absoluteError": 4.1676685214042664e-7,
+      "legacyStateValue": 2999999.9999995832,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "hmass",
+      "actual": 177973.69017499304,
+      "expected": 177973.69017499304,
+      "absoluteError": 0,
+      "legacyStateValue": 177973.69017499304,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "smass",
+      "actual": 909.7895624893503,
+      "expected": 909.7895624893475,
+      "absoluteError": 2.7284841053187847e-12,
+      "legacyStateValue": 909.7895624893503,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "rhomass",
+      "actual": 1106.293555505061,
+      "expected": 1106.293555505061,
+      "absoluteError": 0,
+      "legacyStateValue": 1106.293555505061,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "cpmass",
+      "actual": 1665.9908335106322,
+      "expected": 1665.9908335106322,
+      "absoluteError": 0,
+      "legacyStateValue": 1665.9908335106322,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "viscosity",
+      "actual": 0.0001850671045512389,
+      "expected": 0.0001850671045512389,
+      "absoluteError": 0,
+      "legacyStateValue": 0.0001850671045512389,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PSmass_INPUTS",
+      "output": "speed_sound",
+      "actual": 787.1889969756741,
+      "expected": 787.1889969756741,
+      "absoluteError": 0,
+      "legacyStateValue": 787.1889969756741,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "T",
+      "actual": 259.9999999999999,
+      "expected": 259.9999999999999,
+      "absoluteError": 0,
+      "legacyStateValue": 259.9999999999999,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "p",
+      "actual": 2999999.9999999614,
+      "expected": 3000000,
+      "absoluteError": 3.864988684654236e-8,
+      "legacyStateValue": 2999999.9999999614,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "hmass",
+      "actual": 177973.69017499263,
+      "expected": 177973.69017499263,
+      "absoluteError": 0,
+      "legacyStateValue": 177973.69017499263,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "smass",
+      "actual": 909.7895624893466,
+      "expected": 909.7895624893466,
+      "absoluteError": 0,
+      "legacyStateValue": 909.7895624893466,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 1106.293555505062,
+      "expected": 1106.293555505062,
+      "absoluteError": 0,
+      "legacyStateValue": 1106.293555505062,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "cpmass",
+      "actual": 1665.9908335106286,
+      "expected": 1665.9908335106286,
+      "absoluteError": 0,
+      "legacyStateValue": 1665.9908335106286,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00018506710455124008,
+      "expected": 0.00018506710455124008,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00018506710455124008,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassP_INPUTS",
+      "output": "speed_sound",
+      "actual": 787.1889969756776,
+      "expected": 787.1889969756776,
+      "absoluteError": 0,
+      "legacyStateValue": 787.1889969756776,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "T",
+      "actual": 260.0000000000001,
+      "expected": 260.0000000000001,
+      "absoluteError": 0,
+      "legacyStateValue": 260.0000000000001,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "p",
+      "actual": 3000000.00000022,
+      "expected": 3000000.00000022,
+      "absoluteError": 0,
+      "legacyStateValue": 3000000.00000022,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "hmass",
+      "actual": 177973.69017499304,
+      "expected": 177973.69017499304,
+      "absoluteError": 0,
+      "legacyStateValue": 177973.69017499304,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "smass",
+      "actual": 909.7895624893479,
+      "expected": 909.7895624893479,
+      "absoluteError": 0,
+      "legacyStateValue": 909.7895624893479,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "rhomass",
+      "actual": 1106.293555505062,
+      "expected": 1106.293555505062,
+      "absoluteError": 0,
+      "legacyStateValue": 1106.293555505062,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "Q",
+      "actual": 10000,
+      "expected": 10000,
+      "absoluteError": 0,
+      "legacyStateValue": 10000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "cpmass",
+      "actual": 1665.9908335106286,
+      "expected": 1665.9908335106286,
+      "absoluteError": 0,
+      "legacyStateValue": 1665.9908335106286,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00018506710455124003,
+      "expected": 0.00018506710455124003,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00018506710455124003,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassUmass_INPUTS",
+      "output": "speed_sound",
+      "actual": 787.1889969756786,
+      "expected": 787.1889969756786,
+      "absoluteError": 0,
+      "legacyStateValue": 787.1889969756786,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "T",
+      "actual": 260,
+      "expected": 260,
+      "absoluteError": 0,
+      "legacyStateValue": 260,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "p",
+      "actual": 3000000.000000116,
+      "expected": 3000000.000000116,
+      "absoluteError": 0,
+      "legacyStateValue": 3000000.000000116,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "hmass",
+      "actual": 177973.6901749929,
+      "expected": 177973.6901749929,
+      "absoluteError": 0,
+      "legacyStateValue": 177973.6901749929,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "smass",
+      "actual": 909.7895624893476,
+      "expected": 909.7895624893476,
+      "absoluteError": 0,
+      "legacyStateValue": 909.7895624893476,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "rhomass",
+      "actual": 1106.293555505062,
+      "expected": 1106.293555505062,
+      "absoluteError": 0,
+      "legacyStateValue": 1106.293555505062,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "Q",
+      "actual": -1,
+      "expected": -1,
+      "absoluteError": 0,
+      "legacyStateValue": -1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "cpmass",
+      "actual": 1665.9908335106281,
+      "expected": 1665.9908335106281,
+      "absoluteError": 0,
+      "legacyStateValue": 1665.9908335106281,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00018506710455123995,
+      "expected": 0.00018506710455123995,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00018506710455123995,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "DmassT_INPUTS",
+      "output": "speed_sound",
+      "actual": 787.1889969756782,
+      "expected": 787.1889969756782,
+      "absoluteError": 0,
+      "legacyStateValue": 787.1889969756782,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "T",
+      "actual": 221.2407128469112,
+      "expected": 221.2407128469112,
+      "absoluteError": 0,
+      "legacyStateValue": 221.2407128469112,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "p",
+      "actual": 100000,
+      "expected": 100000,
+      "absoluteError": 0,
+      "legacyStateValue": 100000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "hmass",
+      "actual": 114182.08747655833,
+      "expected": 114182.08747655833,
+      "absoluteError": 0,
+      "legacyStateValue": 114182.08747655833,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "smass",
+      "actual": 654.6427730935249,
+      "expected": 654.6427730935249,
+      "absoluteError": 0,
+      "legacyStateValue": 654.6427730935249,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "rhomass",
+      "actual": 1213.6470240027438,
+      "expected": 1213.6470240027438,
+      "absoluteError": 0,
+      "legacyStateValue": 1213.6470240027438,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "Q",
+      "actual": 0,
+      "expected": 0,
+      "absoluteError": 0,
+      "legacyStateValue": 0,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "viscosity",
+      "actual": 0.0003009277095920663,
+      "expected": 0.0003009277095920663,
+      "absoluteError": 0,
+      "legacyStateValue": 0.0003009277095920663,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "T",
+      "actual": 221.2407128469112,
+      "expected": 221.2407128469112,
+      "absoluteError": 0,
+      "legacyStateValue": 221.2407128469112,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "p",
+      "actual": 99999.99999999994,
+      "expected": 99999.99999999994,
+      "absoluteError": 0,
+      "legacyStateValue": 99999.99999999994,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "hmass",
+      "actual": 114182.08747655833,
+      "expected": 114182.08747655833,
+      "absoluteError": 0,
+      "legacyStateValue": 114182.08747655833,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "smass",
+      "actual": 654.6427730935249,
+      "expected": 654.6427730935249,
+      "absoluteError": 0,
+      "legacyStateValue": 654.6427730935249,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "rhomass",
+      "actual": 1213.6470240027438,
+      "expected": 1213.6470240027438,
+      "absoluteError": 0,
+      "legacyStateValue": 1213.6470240027438,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "Q",
+      "actual": 0,
+      "expected": 0,
+      "absoluteError": 0,
+      "legacyStateValue": 0,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.0003009277095920663,
+      "expected": 0.0003009277095920663,
+      "absoluteError": 0,
+      "legacyStateValue": 0.0003009277095920663,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 221.2407128469112,
+      "expected": 221.2407128469112,
+      "absoluteError": 0,
+      "legacyStateValue": 221.2407128469112,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 100000,
+      "expected": 100000,
+      "absoluteError": 0,
+      "legacyStateValue": 100000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 114182.08747655833,
+      "expected": 114182.08747655833,
+      "absoluteError": 0,
+      "legacyStateValue": 114182.08747655833,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 654.6427730935249,
+      "expected": 654.6427730935249,
+      "absoluteError": 0,
+      "legacyStateValue": 654.6427730935249,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 1213.6470240027438,
+      "expected": 1213.6470240027438,
+      "absoluteError": 0,
+      "legacyStateValue": 1213.6470240027438,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": 0,
+      "expected": 0,
+      "absoluteError": 0,
+      "legacyStateValue": 0,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.0003009277095920663,
+      "expected": 0.0003009277095920663,
+      "absoluteError": 0,
+      "legacyStateValue": 0.0003009277095920663,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "T",
+      "actual": 221.2407128469112,
+      "expected": 221.2407128469112,
+      "absoluteError": 0,
+      "legacyStateValue": 221.2407128469112,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "p",
+      "actual": 100000,
+      "expected": 100000,
+      "absoluteError": 0,
+      "legacyStateValue": 100000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "hmass",
+      "actual": 190609.56834422317,
+      "expected": 190609.56834422317,
+      "absoluteError": 0,
+      "legacyStateValue": 190609.56834422317,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "smass",
+      "actual": 1000.0922153964403,
+      "expected": 1000.0922153964403,
+      "absoluteError": 0,
+      "legacyStateValue": 1000.0922153964403,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "rhomass",
+      "actual": 14.613805889650067,
+      "expected": 14.613805889650067,
+      "absoluteError": 0,
+      "legacyStateValue": 14.613805889650067,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "Q",
+      "actual": 0.2,
+      "expected": 0.2,
+      "absoluteError": 0,
+      "legacyStateValue": 0.2,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000010067568334291769,
+      "expected": 0.000010067568334291769,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000010067568334291769,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "T",
+      "actual": 221.2407128469112,
+      "expected": 221.2407128469112,
+      "absoluteError": 0,
+      "legacyStateValue": 221.2407128469112,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "p",
+      "actual": 99999.99999999994,
+      "expected": 99999.99999999994,
+      "absoluteError": 0,
+      "legacyStateValue": 99999.99999999994,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "hmass",
+      "actual": 190609.56834422317,
+      "expected": 190609.56834422317,
+      "absoluteError": 0,
+      "legacyStateValue": 190609.56834422317,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "smass",
+      "actual": 1000.0922153964403,
+      "expected": 1000.0922153964403,
+      "absoluteError": 0,
+      "legacyStateValue": 1000.0922153964403,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "rhomass",
+      "actual": 14.613805889650067,
+      "expected": 14.613805889650067,
+      "absoluteError": 0,
+      "legacyStateValue": 14.613805889650067,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "Q",
+      "actual": 0.2,
+      "expected": 0.2,
+      "absoluteError": 0,
+      "legacyStateValue": 0.2,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000010067568334291769,
+      "expected": 0.000010067568334291769,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000010067568334291769,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 221.2407128469112,
+      "expected": 221.2407128469112,
+      "absoluteError": 0,
+      "legacyStateValue": 221.2407128469112,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 100000,
+      "expected": 100000,
+      "absoluteError": 0,
+      "legacyStateValue": 100000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 190609.56834422317,
+      "expected": 190609.56834422317,
+      "absoluteError": 0,
+      "legacyStateValue": 190609.56834422317,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 1000.0922153964403,
+      "expected": 1000.0922153964403,
+      "absoluteError": 0,
+      "legacyStateValue": 1000.0922153964403,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 14.613805889650067,
+      "expected": 14.613805889650067,
+      "absoluteError": 0,
+      "legacyStateValue": 14.613805889650067,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": 0.20000000000000004,
+      "expected": 0.20000000000000004,
+      "absoluteError": 0,
+      "legacyStateValue": 0.20000000000000004,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000010067568334291769,
+      "expected": 0.000010067568334291769,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000010067568334291769,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "T",
+      "actual": 221.2407128469112,
+      "expected": 221.2407128469112,
+      "absoluteError": 0,
+      "legacyStateValue": 221.2407128469112,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "p",
+      "actual": 100000,
+      "expected": 100000,
+      "absoluteError": 0,
+      "legacyStateValue": 100000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "hmass",
+      "actual": 419892.01094721764,
+      "expected": 419892.01094721764,
+      "absoluteError": 0,
+      "legacyStateValue": 419892.01094721764,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "smass",
+      "actual": 2036.4405423051862,
+      "expected": 2036.4405423051862,
+      "absoluteError": 0,
+      "legacyStateValue": 2036.4405423051862,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "rhomass",
+      "actual": 3.6867461982928824,
+      "expected": 3.6867461982928824,
+      "absoluteError": 0,
+      "legacyStateValue": 3.6867461982928824,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "Q",
+      "actual": 0.8,
+      "expected": 0.8,
+      "absoluteError": 0,
+      "legacyStateValue": 0.8,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000009856176159510407,
+      "expected": 0.000009856176159510407,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000009856176159510407,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "T",
+      "actual": 221.2407128469112,
+      "expected": 221.2407128469112,
+      "absoluteError": 0,
+      "legacyStateValue": 221.2407128469112,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "p",
+      "actual": 99999.99999999994,
+      "expected": 99999.99999999994,
+      "absoluteError": 0,
+      "legacyStateValue": 99999.99999999994,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "hmass",
+      "actual": 419892.01094721764,
+      "expected": 419892.01094721764,
+      "absoluteError": 0,
+      "legacyStateValue": 419892.01094721764,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "smass",
+      "actual": 2036.4405423051862,
+      "expected": 2036.4405423051862,
+      "absoluteError": 0,
+      "legacyStateValue": 2036.4405423051862,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "rhomass",
+      "actual": 3.6867461982928824,
+      "expected": 3.6867461982928824,
+      "absoluteError": 0,
+      "legacyStateValue": 3.6867461982928824,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "Q",
+      "actual": 0.8,
+      "expected": 0.8,
+      "absoluteError": 0,
+      "legacyStateValue": 0.8,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000009856176159510407,
+      "expected": 0.000009856176159510407,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000009856176159510407,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 221.2407128469112,
+      "expected": 221.2407128469112,
+      "absoluteError": 0,
+      "legacyStateValue": 221.2407128469112,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 100000,
+      "expected": 100000,
+      "absoluteError": 0,
+      "legacyStateValue": 100000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 419892.01094721764,
+      "expected": 419892.01094721764,
+      "absoluteError": 0,
+      "legacyStateValue": 419892.01094721764,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 2036.4405423051862,
+      "expected": 2036.4405423051862,
+      "absoluteError": 0,
+      "legacyStateValue": 2036.4405423051862,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 3.6867461982928824,
+      "expected": 3.6867461982928824,
+      "absoluteError": 0,
+      "legacyStateValue": 3.6867461982928824,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": 0.8,
+      "expected": 0.8,
+      "absoluteError": 0,
+      "legacyStateValue": 0.8,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000009856176159510407,
+      "expected": 0.000009856176159510407,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000009856176159510407,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "T",
+      "actual": 221.2407128469112,
+      "expected": 221.2407128469112,
+      "absoluteError": 0,
+      "legacyStateValue": 221.2407128469112,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "p",
+      "actual": 100000,
+      "expected": 100000,
+      "absoluteError": 0,
+      "legacyStateValue": 100000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "hmass",
+      "actual": 496319.49181488244,
+      "expected": 496319.49181488244,
+      "absoluteError": 0,
+      "legacyStateValue": 496319.49181488244,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "smass",
+      "actual": 2381.8899846081017,
+      "expected": 2381.8899846081017,
+      "absoluteError": 0,
+      "legacyStateValue": 2381.8899846081017,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "rhomass",
+      "actual": 2.9511899492008338,
+      "expected": 2.9511899492008338,
+      "absoluteError": 0,
+      "legacyStateValue": 2.9511899492008338,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "Q",
+      "actual": 1,
+      "expected": 1,
+      "absoluteError": 0,
+      "legacyStateValue": 1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00000985367539512336,
+      "expected": 0.00000985367539512336,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00000985367539512336,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "T",
+      "actual": 221.2407128469112,
+      "expected": 221.2407128469112,
+      "absoluteError": 0,
+      "legacyStateValue": 221.2407128469112,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "p",
+      "actual": 99999.99999999994,
+      "expected": 99999.99999999994,
+      "absoluteError": 0,
+      "legacyStateValue": 99999.99999999994,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "hmass",
+      "actual": 496319.49181488244,
+      "expected": 496319.49181488244,
+      "absoluteError": 0,
+      "legacyStateValue": 496319.49181488244,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "smass",
+      "actual": 2381.8899846081017,
+      "expected": 2381.8899846081017,
+      "absoluteError": 0,
+      "legacyStateValue": 2381.8899846081017,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "rhomass",
+      "actual": 2.9511899492008338,
+      "expected": 2.9511899492008338,
+      "absoluteError": 0,
+      "legacyStateValue": 2.9511899492008338,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "Q",
+      "actual": 1,
+      "expected": 1,
+      "absoluteError": 0,
+      "legacyStateValue": 1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00000985367539512336,
+      "expected": 0.00000985367539512336,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00000985367539512336,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 221.2407128469112,
+      "expected": 221.2407128469112,
+      "absoluteError": 0,
+      "legacyStateValue": 221.2407128469112,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 100000,
+      "expected": 100000,
+      "absoluteError": 0,
+      "legacyStateValue": 100000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 496319.49181488244,
+      "expected": 496319.49181488244,
+      "absoluteError": 0,
+      "legacyStateValue": 496319.49181488244,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 2381.8899846081017,
+      "expected": 2381.8899846081017,
+      "absoluteError": 0,
+      "legacyStateValue": 2381.8899846081017,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 2.9511899492008338,
+      "expected": 2.9511899492008338,
+      "absoluteError": 0,
+      "legacyStateValue": 2.9511899492008338,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": 1,
+      "expected": 1,
+      "absoluteError": 0,
+      "legacyStateValue": 1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00000985367539512336,
+      "expected": 0.00000985367539512336,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00000985367539512336,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "T",
+      "actual": 268.55750238433365,
+      "expected": 268.55750238433365,
+      "absoluteError": 0,
+      "legacyStateValue": 268.55750238433365,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "p",
+      "actual": 700000,
+      "expected": 700000,
+      "absoluteError": 0,
+      "legacyStateValue": 700000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "hmass",
+      "actual": 192028.15308283147,
+      "expected": 192028.15308283147,
+      "absoluteError": 0,
+      "legacyStateValue": 192028.15308283147,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "smass",
+      "actual": 970.9602735749013,
+      "expected": 970.9602735749013,
+      "absoluteError": 0,
+      "legacyStateValue": 970.9602735749013,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "rhomass",
+      "actual": 1070.879082475184,
+      "expected": 1070.879082475184,
+      "absoluteError": 0,
+      "legacyStateValue": 1070.879082475184,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "Q",
+      "actual": 0,
+      "expected": 0,
+      "absoluteError": 0,
+      "legacyStateValue": 0,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "viscosity",
+      "actual": 0.0001614029323633076,
+      "expected": 0.0001614029323633076,
+      "absoluteError": 0,
+      "legacyStateValue": 0.0001614029323633076,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "T",
+      "actual": 268.55750238433365,
+      "expected": 268.55750238433365,
+      "absoluteError": 0,
+      "legacyStateValue": 268.55750238433365,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "p",
+      "actual": 700000.0000000027,
+      "expected": 700000.0000000027,
+      "absoluteError": 0,
+      "legacyStateValue": 700000.0000000027,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "hmass",
+      "actual": 192028.15308283147,
+      "expected": 192028.15308283147,
+      "absoluteError": 0,
+      "legacyStateValue": 192028.15308283147,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "smass",
+      "actual": 970.9602735749013,
+      "expected": 970.9602735749013,
+      "absoluteError": 0,
+      "legacyStateValue": 970.9602735749013,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "rhomass",
+      "actual": 1070.879082475184,
+      "expected": 1070.879082475184,
+      "absoluteError": 0,
+      "legacyStateValue": 1070.879082475184,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "Q",
+      "actual": 0,
+      "expected": 0,
+      "absoluteError": 0,
+      "legacyStateValue": 0,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.0001614029323633076,
+      "expected": 0.0001614029323633076,
+      "absoluteError": 0,
+      "legacyStateValue": 0.0001614029323633076,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 268.55750238433365,
+      "expected": 268.55750238433365,
+      "absoluteError": 0,
+      "legacyStateValue": 268.55750238433365,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 700000,
+      "expected": 700000,
+      "absoluteError": 0,
+      "legacyStateValue": 700000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 192028.15308283147,
+      "expected": 192028.15308283147,
+      "absoluteError": 0,
+      "legacyStateValue": 192028.15308283147,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 970.9602735749013,
+      "expected": 970.9602735749013,
+      "absoluteError": 0,
+      "legacyStateValue": 970.9602735749013,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 1070.879082475184,
+      "expected": 1070.879082475184,
+      "absoluteError": 0,
+      "legacyStateValue": 1070.879082475184,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": 0,
+      "expected": 0,
+      "absoluteError": 0,
+      "legacyStateValue": 0,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.0001614029323633076,
+      "expected": 0.0001614029323633076,
+      "absoluteError": 0,
+      "legacyStateValue": 0.0001614029323633076,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "T",
+      "actual": 268.55750238433365,
+      "expected": 268.55750238433365,
+      "absoluteError": 0,
+      "legacyStateValue": 268.55750238433365,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "p",
+      "actual": 700000,
+      "expected": 700000,
+      "absoluteError": 0,
+      "legacyStateValue": 700000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "hmass",
+      "actual": 256493.80327803912,
+      "expected": 256493.80327803912,
+      "absoluteError": 0,
+      "legacyStateValue": 256493.80327803912,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "smass",
+      "actual": 1211.0043967993965,
+      "expected": 1211.0043967993965,
+      "absoluteError": 0,
+      "legacyStateValue": 1211.0043967993965,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "rhomass",
+      "actual": 88.80491178973507,
+      "expected": 88.80491178973507,
+      "absoluteError": 0,
+      "legacyStateValue": 88.80491178973507,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "Q",
+      "actual": 0.2,
+      "expected": 0.2,
+      "absoluteError": 0,
+      "legacyStateValue": 0.2,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00001592337320613402,
+      "expected": 0.00001592337320613402,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00001592337320613402,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "T",
+      "actual": 268.55750238433365,
+      "expected": 268.55750238433365,
+      "absoluteError": 0,
+      "legacyStateValue": 268.55750238433365,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "p",
+      "actual": 700000.0000000027,
+      "expected": 700000.0000000027,
+      "absoluteError": 0,
+      "legacyStateValue": 700000.0000000027,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "hmass",
+      "actual": 256493.80327803912,
+      "expected": 256493.80327803912,
+      "absoluteError": 0,
+      "legacyStateValue": 256493.80327803912,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "smass",
+      "actual": 1211.0043967993965,
+      "expected": 1211.0043967993965,
+      "absoluteError": 0,
+      "legacyStateValue": 1211.0043967993965,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "rhomass",
+      "actual": 88.80491178973507,
+      "expected": 88.80491178973507,
+      "absoluteError": 0,
+      "legacyStateValue": 88.80491178973507,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "Q",
+      "actual": 0.2,
+      "expected": 0.2,
+      "absoluteError": 0,
+      "legacyStateValue": 0.2,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00001592337320613402,
+      "expected": 0.00001592337320613402,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00001592337320613402,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 268.55750238433365,
+      "expected": 268.55750238433365,
+      "absoluteError": 0,
+      "legacyStateValue": 268.55750238433365,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 700000,
+      "expected": 700000,
+      "absoluteError": 0,
+      "legacyStateValue": 700000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 256493.80327803912,
+      "expected": 256493.80327803912,
+      "absoluteError": 0,
+      "legacyStateValue": 256493.80327803912,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 1211.0043967993965,
+      "expected": 1211.0043967993965,
+      "absoluteError": 0,
+      "legacyStateValue": 1211.0043967993965,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 88.80491178973506,
+      "expected": 88.80491178973506,
+      "absoluteError": 0,
+      "legacyStateValue": 88.80491178973506,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": 0.20000000000000004,
+      "expected": 0.20000000000000004,
+      "absoluteError": 0,
+      "legacyStateValue": 0.20000000000000004,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000015923373206134016,
+      "expected": 0.000015923373206134016,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000015923373206134016,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "T",
+      "actual": 268.55750238433365,
+      "expected": 268.55750238433365,
+      "absoluteError": 0,
+      "legacyStateValue": 268.55750238433365,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "p",
+      "actual": 700000,
+      "expected": 700000,
+      "absoluteError": 0,
+      "legacyStateValue": 700000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "hmass",
+      "actual": 449890.753863662,
+      "expected": 449890.753863662,
+      "absoluteError": 0,
+      "legacyStateValue": 449890.753863662,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "smass",
+      "actual": 1931.136766472882,
+      "expected": 1931.136766472882,
+      "absoluteError": 0,
+      "legacyStateValue": 1931.136766472882,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "rhomass",
+      "actual": 23.673616466693197,
+      "expected": 23.673616466693197,
+      "absoluteError": 0,
+      "legacyStateValue": 23.673616466693197,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "Q",
+      "actual": 0.8,
+      "expected": 0.8,
+      "absoluteError": 0,
+      "legacyStateValue": 0.8,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000012161862455730038,
+      "expected": 0.000012161862455730038,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000012161862455730038,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "T",
+      "actual": 268.55750238433365,
+      "expected": 268.55750238433365,
+      "absoluteError": 0,
+      "legacyStateValue": 268.55750238433365,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "p",
+      "actual": 700000.0000000027,
+      "expected": 700000.0000000027,
+      "absoluteError": 0,
+      "legacyStateValue": 700000.0000000027,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "hmass",
+      "actual": 449890.753863662,
+      "expected": 449890.753863662,
+      "absoluteError": 0,
+      "legacyStateValue": 449890.753863662,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "smass",
+      "actual": 1931.136766472882,
+      "expected": 1931.136766472882,
+      "absoluteError": 0,
+      "legacyStateValue": 1931.136766472882,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "rhomass",
+      "actual": 23.673616466693197,
+      "expected": 23.673616466693197,
+      "absoluteError": 0,
+      "legacyStateValue": 23.673616466693197,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "Q",
+      "actual": 0.8,
+      "expected": 0.8,
+      "absoluteError": 0,
+      "legacyStateValue": 0.8,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000012161862455730038,
+      "expected": 0.000012161862455730038,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000012161862455730038,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 268.55750238433365,
+      "expected": 268.55750238433365,
+      "absoluteError": 0,
+      "legacyStateValue": 268.55750238433365,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 700000,
+      "expected": 700000,
+      "absoluteError": 0,
+      "legacyStateValue": 700000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 449890.753863662,
+      "expected": 449890.753863662,
+      "absoluteError": 0,
+      "legacyStateValue": 449890.753863662,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 1931.1367664728825,
+      "expected": 1931.1367664728825,
+      "absoluteError": 0,
+      "legacyStateValue": 1931.1367664728825,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 23.67361646669319,
+      "expected": 23.67361646669319,
+      "absoluteError": 0,
+      "legacyStateValue": 23.67361646669319,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": 0.8000000000000002,
+      "expected": 0.8000000000000002,
+      "absoluteError": 0,
+      "legacyStateValue": 0.8000000000000002,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000012161862455730038,
+      "expected": 0.000012161862455730038,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000012161862455730038,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "T",
+      "actual": 268.55750238433365,
+      "expected": 268.55750238433365,
+      "absoluteError": 0,
+      "legacyStateValue": 268.55750238433365,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "p",
+      "actual": 700000,
+      "expected": 700000,
+      "absoluteError": 0,
+      "legacyStateValue": 700000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "hmass",
+      "actual": 514356.4040588696,
+      "expected": 514356.4040588696,
+      "absoluteError": 0,
+      "legacyStateValue": 514356.4040588696,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "smass",
+      "actual": 2171.1808896973776,
+      "expected": 2171.1808896973776,
+      "absoluteError": 0,
+      "legacyStateValue": 2171.1808896973776,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "rhomass",
+      "actual": 19.023000375053535,
+      "expected": 19.023000375053535,
+      "absoluteError": 0,
+      "legacyStateValue": 19.023000375053535,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "Q",
+      "actual": 1,
+      "expected": 1,
+      "absoluteError": 0,
+      "legacyStateValue": 1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000012110306831350323,
+      "expected": 0.000012110306831350323,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000012110306831350323,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "T",
+      "actual": 268.55750238433365,
+      "expected": 268.55750238433365,
+      "absoluteError": 0,
+      "legacyStateValue": 268.55750238433365,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "p",
+      "actual": 700000.0000000027,
+      "expected": 700000.0000000027,
+      "absoluteError": 0,
+      "legacyStateValue": 700000.0000000027,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "hmass",
+      "actual": 514356.4040588696,
+      "expected": 514356.4040588696,
+      "absoluteError": 0,
+      "legacyStateValue": 514356.4040588696,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "smass",
+      "actual": 2171.1808896973776,
+      "expected": 2171.1808896973776,
+      "absoluteError": 0,
+      "legacyStateValue": 2171.1808896973776,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "rhomass",
+      "actual": 19.023000375053535,
+      "expected": 19.023000375053535,
+      "absoluteError": 0,
+      "legacyStateValue": 19.023000375053535,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "Q",
+      "actual": 1,
+      "expected": 1,
+      "absoluteError": 0,
+      "legacyStateValue": 1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000012110306831350323,
+      "expected": 0.000012110306831350323,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000012110306831350323,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 268.55750238433365,
+      "expected": 268.55750238433365,
+      "absoluteError": 0,
+      "legacyStateValue": 268.55750238433365,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 700000,
+      "expected": 700000,
+      "absoluteError": 0,
+      "legacyStateValue": 700000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 514356.4040588696,
+      "expected": 514356.4040588696,
+      "absoluteError": 0,
+      "legacyStateValue": 514356.4040588696,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 2171.1808896973776,
+      "expected": 2171.1808896973776,
+      "absoluteError": 0,
+      "legacyStateValue": 2171.1808896973776,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 19.023000375053535,
+      "expected": 19.023000375053535,
+      "absoluteError": 0,
+      "legacyStateValue": 19.023000375053535,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": 1,
+      "expected": 1,
+      "absoluteError": 0,
+      "legacyStateValue": 1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000012110306831350323,
+      "expected": 0.000012110306831350323,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000012110306831350323,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "T",
+      "actual": 321.1654755912873,
+      "expected": 321.1654755912873,
+      "absoluteError": 0,
+      "legacyStateValue": 321.1654755912873,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "p",
+      "actual": 3000000,
+      "expected": 3000000,
+      "absoluteError": 0,
+      "legacyStateValue": 3000000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "hmass",
+      "actual": 292984.3725810255,
+      "expected": 292984.3725810255,
+      "absoluteError": 0,
+      "legacyStateValue": 292984.3725810255,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "smass",
+      "actual": 1304.8631374116537,
+      "expected": 1304.8631374116537,
+      "absoluteError": 0,
+      "legacyStateValue": 1304.8631374116537,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "rhomass",
+      "actual": 850.678112839057,
+      "expected": 850.678112839057,
+      "absoluteError": 0,
+      "legacyStateValue": 850.678112839057,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "Q",
+      "actual": 0,
+      "expected": 0,
+      "absoluteError": 0,
+      "legacyStateValue": 0,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00008251531622823802,
+      "expected": 0.00008251531622823802,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00008251531622823802,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "T",
+      "actual": 321.1654755912873,
+      "expected": 321.1654755912873,
+      "absoluteError": 0,
+      "legacyStateValue": 321.1654755912873,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "p",
+      "actual": 2999999.999999956,
+      "expected": 2999999.999999956,
+      "absoluteError": 0,
+      "legacyStateValue": 2999999.999999956,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "hmass",
+      "actual": 292984.3725810255,
+      "expected": 292984.3725810255,
+      "absoluteError": 0,
+      "legacyStateValue": 292984.3725810255,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "smass",
+      "actual": 1304.8631374116537,
+      "expected": 1304.8631374116537,
+      "absoluteError": 0,
+      "legacyStateValue": 1304.8631374116537,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "rhomass",
+      "actual": 850.678112839057,
+      "expected": 850.678112839057,
+      "absoluteError": 0,
+      "legacyStateValue": 850.678112839057,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "Q",
+      "actual": 0,
+      "expected": 0,
+      "absoluteError": 0,
+      "legacyStateValue": 0,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00008251531622823802,
+      "expected": 0.00008251531622823802,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00008251531622823802,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 321.1654755912873,
+      "expected": 321.1654755912873,
+      "absoluteError": 0,
+      "legacyStateValue": 321.1654755912873,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 3000000,
+      "expected": 3000000,
+      "absoluteError": 0,
+      "legacyStateValue": 3000000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 292984.3725810255,
+      "expected": 292984.3725810255,
+      "absoluteError": 0,
+      "legacyStateValue": 292984.3725810255,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 1304.8631374116537,
+      "expected": 1304.8631374116537,
+      "absoluteError": 0,
+      "legacyStateValue": 1304.8631374116537,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 850.6781128390581,
+      "expected": 850.6781128390581,
+      "absoluteError": 0,
+      "legacyStateValue": 850.6781128390581,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": -1.6225526645034497e-16,
+      "expected": -1.6225526645034497e-16,
+      "absoluteError": 0,
+      "legacyStateValue": -1.6225526645034497e-16,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00008251531622823826,
+      "expected": 0.00008251531622823826,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00008251531622823826,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "T",
+      "actual": 321.1654755912873,
+      "expected": 321.1654755912873,
+      "absoluteError": 0,
+      "legacyStateValue": 321.1654755912873,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "p",
+      "actual": 3000000,
+      "expected": 3000000,
+      "absoluteError": 0,
+      "legacyStateValue": 3000000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "hmass",
+      "actual": 336082.42269601044,
+      "expected": 336082.42269601044,
+      "absoluteError": 0,
+      "legacyStateValue": 336082.42269601044,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "smass",
+      "actual": 1439.0557994206647,
+      "expected": 1439.0557994206647,
+      "absoluteError": 0,
+      "legacyStateValue": 1439.0557994206647,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "rhomass",
+      "actual": 323.11008799331506,
+      "expected": 323.11008799331506,
+      "absoluteError": 0,
+      "legacyStateValue": 323.11008799331506,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "Q",
+      "actual": 0.2,
+      "expected": 0.2,
+      "absoluteError": 0,
+      "legacyStateValue": 0.2,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00003244329567442807,
+      "expected": 0.00003244329567442807,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00003244329567442807,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "T",
+      "actual": 321.1654755912873,
+      "expected": 321.1654755912873,
+      "absoluteError": 0,
+      "legacyStateValue": 321.1654755912873,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "p",
+      "actual": 2999999.999999956,
+      "expected": 2999999.999999956,
+      "absoluteError": 0,
+      "legacyStateValue": 2999999.999999956,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "hmass",
+      "actual": 336082.42269601044,
+      "expected": 336082.42269601044,
+      "absoluteError": 0,
+      "legacyStateValue": 336082.42269601044,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "smass",
+      "actual": 1439.0557994206647,
+      "expected": 1439.0557994206647,
+      "absoluteError": 0,
+      "legacyStateValue": 1439.0557994206647,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "rhomass",
+      "actual": 323.11008799331506,
+      "expected": 323.11008799331506,
+      "absoluteError": 0,
+      "legacyStateValue": 323.11008799331506,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "Q",
+      "actual": 0.2,
+      "expected": 0.2,
+      "absoluteError": 0,
+      "legacyStateValue": 0.2,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00003244329567442807,
+      "expected": 0.00003244329567442807,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00003244329567442807,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 321.1654755912873,
+      "expected": 321.1654755912873,
+      "absoluteError": 0,
+      "legacyStateValue": 321.1654755912873,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 3000000,
+      "expected": 3000000,
+      "absoluteError": 0,
+      "legacyStateValue": 3000000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 336082.42269601044,
+      "expected": 336082.42269601044,
+      "absoluteError": 0,
+      "legacyStateValue": 336082.42269601044,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 1439.0557994206647,
+      "expected": 1439.0557994206647,
+      "absoluteError": 0,
+      "legacyStateValue": 1439.0557994206647,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 323.11008799331483,
+      "expected": 323.11008799331483,
+      "absoluteError": 0,
+      "legacyStateValue": 323.11008799331483,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": 0.2000000000000002,
+      "expected": 0.2000000000000002,
+      "absoluteError": 0,
+      "legacyStateValue": 0.2000000000000002,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00003244329567442804,
+      "expected": 0.00003244329567442804,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00003244329567442804,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "T",
+      "actual": 321.1654755912873,
+      "expected": 321.1654755912873,
+      "absoluteError": 0,
+      "legacyStateValue": 321.1654755912873,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "p",
+      "actual": 3000000,
+      "expected": 3000000,
+      "absoluteError": 0,
+      "legacyStateValue": 3000000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "hmass",
+      "actual": 465376.57304096495,
+      "expected": 465376.57304096495,
+      "absoluteError": 0,
+      "legacyStateValue": 465376.57304096495,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "smass",
+      "actual": 1841.6337854476972,
+      "expected": 1841.6337854476972,
+      "absoluteError": 0,
+      "legacyStateValue": 1841.6337854476972,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "rhomass",
+      "actual": 112.95499791168311,
+      "expected": 112.95499791168311,
+      "absoluteError": 0,
+      "legacyStateValue": 112.95499791168311,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "Q",
+      "actual": 0.8,
+      "expected": 0.8,
+      "absoluteError": 0,
+      "legacyStateValue": 0.8,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000016269022593190597,
+      "expected": 0.000016269022593190597,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000016269022593190597,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "T",
+      "actual": 321.1654755912873,
+      "expected": 321.1654755912873,
+      "absoluteError": 0,
+      "legacyStateValue": 321.1654755912873,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "p",
+      "actual": 2999999.999999956,
+      "expected": 2999999.999999956,
+      "absoluteError": 0,
+      "legacyStateValue": 2999999.999999956,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "hmass",
+      "actual": 465376.57304096495,
+      "expected": 465376.57304096495,
+      "absoluteError": 0,
+      "legacyStateValue": 465376.57304096495,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "smass",
+      "actual": 1841.6337854476972,
+      "expected": 1841.6337854476972,
+      "absoluteError": 0,
+      "legacyStateValue": 1841.6337854476972,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "rhomass",
+      "actual": 112.95499791168311,
+      "expected": 112.95499791168311,
+      "absoluteError": 0,
+      "legacyStateValue": 112.95499791168311,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "Q",
+      "actual": 0.8,
+      "expected": 0.8,
+      "absoluteError": 0,
+      "legacyStateValue": 0.8,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000016269022593190597,
+      "expected": 0.000016269022593190597,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000016269022593190597,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 321.1654755912873,
+      "expected": 321.1654755912873,
+      "absoluteError": 0,
+      "legacyStateValue": 321.1654755912873,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 3000000,
+      "expected": 3000000,
+      "absoluteError": 0,
+      "legacyStateValue": 3000000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 465376.57304096495,
+      "expected": 465376.57304096495,
+      "absoluteError": 0,
+      "legacyStateValue": 465376.57304096495,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 1841.6337854476972,
+      "expected": 1841.6337854476972,
+      "absoluteError": 0,
+      "legacyStateValue": 1841.6337854476972,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 112.9549979116831,
+      "expected": 112.9549979116831,
+      "absoluteError": 0,
+      "legacyStateValue": 112.9549979116831,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": 0.8000000000000002,
+      "expected": 0.8000000000000002,
+      "absoluteError": 0,
+      "legacyStateValue": 0.8000000000000002,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.000016269022593190597,
+      "expected": 0.000016269022593190597,
+      "absoluteError": 0,
+      "legacyStateValue": 0.000016269022593190597,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "T",
+      "actual": 321.1654755912873,
+      "expected": 321.1654755912873,
+      "absoluteError": 0,
+      "legacyStateValue": 321.1654755912873,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "p",
+      "actual": 3000000,
+      "expected": 3000000,
+      "absoluteError": 0,
+      "legacyStateValue": 3000000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "hmass",
+      "actual": 508474.6231559498,
+      "expected": 508474.6231559498,
+      "absoluteError": 0,
+      "legacyStateValue": 508474.6231559498,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "smass",
+      "actual": 1975.8264474567077,
+      "expected": 1975.8264474567077,
+      "absoluteError": 0,
+      "legacyStateValue": 1975.8264474567077,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "rhomass",
+      "actual": 92.82921366217303,
+      "expected": 92.82921366217303,
+      "absoluteError": 0,
+      "legacyStateValue": 92.82921366217303,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "Q",
+      "actual": 1,
+      "expected": 1,
+      "absoluteError": 0,
+      "legacyStateValue": 1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "PQ_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00001565891933376049,
+      "expected": 0.00001565891933376049,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00001565891933376049,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "T",
+      "actual": 321.1654755912873,
+      "expected": 321.1654755912873,
+      "absoluteError": 0,
+      "legacyStateValue": 321.1654755912873,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "p",
+      "actual": 2999999.999999956,
+      "expected": 2999999.999999956,
+      "absoluteError": 0,
+      "legacyStateValue": 2999999.999999956,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "hmass",
+      "actual": 508474.6231559498,
+      "expected": 508474.6231559498,
+      "absoluteError": 0,
+      "legacyStateValue": 508474.6231559498,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "smass",
+      "actual": 1975.8264474567077,
+      "expected": 1975.8264474567077,
+      "absoluteError": 0,
+      "legacyStateValue": 1975.8264474567077,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "rhomass",
+      "actual": 92.82921366217303,
+      "expected": 92.82921366217303,
+      "absoluteError": 0,
+      "legacyStateValue": 92.82921366217303,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "Q",
+      "actual": 1,
+      "expected": 1,
+      "absoluteError": 0,
+      "legacyStateValue": 1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "QT_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00001565891933376049,
+      "expected": 0.00001565891933376049,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00001565891933376049,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "T",
+      "actual": 321.1654755912873,
+      "expected": 321.1654755912873,
+      "absoluteError": 0,
+      "legacyStateValue": 321.1654755912873,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "p",
+      "actual": 3000000,
+      "expected": 3000000,
+      "absoluteError": 0,
+      "legacyStateValue": 3000000,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "hmass",
+      "actual": 508474.6231559498,
+      "expected": 508474.6231559498,
+      "absoluteError": 0,
+      "legacyStateValue": 508474.6231559498,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "smass",
+      "actual": 1975.8264474567077,
+      "expected": 1975.8264474567077,
+      "absoluteError": 0,
+      "legacyStateValue": 1975.8264474567077,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "rhomass",
+      "actual": 92.82921366217303,
+      "expected": 92.82921366217303,
+      "absoluteError": 0,
+      "legacyStateValue": 92.82921366217303,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "Q",
+      "actual": 1,
+      "expected": 1,
+      "absoluteError": 0,
+      "legacyStateValue": 1,
+      "legacyStateAbsoluteError": 0
+    },
+    {
+      "pair": "HmassP_INPUTS",
+      "output": "viscosity",
+      "actual": 0.00001565891933376049,
+      "expected": 0.00001565891933376049,
+      "absoluteError": 0,
+      "legacyStateValue": 0.00001565891933376049,
+      "legacyStateAbsoluteError": 0
+    }
+  ],
+  "humid": [
+    {
+      "out": "W",
+      "t": 273.15,
+      "r": 0.9,
+      "p": 101325,
+      "actual": 0.003408953818461992,
+      "expected": 0.003408953818461992
+    },
+    {
+      "out": "H",
+      "t": 273.15,
+      "r": 0.9,
+      "p": 101325,
+      "actual": 8522.245759356329,
+      "expected": 8522.245759356329
+    },
+    {
+      "out": "V",
+      "t": 273.15,
+      "r": 0.9,
+      "p": 101325,
+      "actual": 0.7775653982009767,
+      "expected": 0.7775653982009767
+    },
+    {
+      "out": "W",
+      "t": 298.15,
+      "r": 0.5,
+      "p": 101325,
+      "actual": 0.009925739296161223,
+      "expected": 0.009925739296161223
+    },
+    {
+      "out": "H",
+      "t": 298.15,
+      "r": 0.5,
+      "p": 101325,
+      "actual": 50423.45039075701,
+      "expected": 50423.45039075701
+    },
+    {
+      "out": "V",
+      "t": 298.15,
+      "r": 0.5,
+      "p": 101325,
+      "actual": 0.8577882434265997,
+      "expected": 0.8577882434265997
+    },
+    {
+      "out": "W",
+      "t": 313.15,
+      "r": 0.8,
+      "p": 90000,
+      "actual": 0.04390348440434213,
+      "expected": 0.04390348440434213
+    },
+    {
+      "out": "H",
+      "t": 313.15,
+      "r": 0.8,
+      "p": 90000,
+      "actual": 153251.9811627951,
+      "expected": 153251.9811627951
+    },
+    {
+      "out": "V",
+      "t": 313.15,
+      "r": 0.8,
+      "p": 90000,
+      "actual": 1.068803547817579,
+      "expected": 1.068803547817579
+    }
+  ],
+  "badStates": 2000,
+  "badStateRecoveryMs": 333.69010400000025,
+  "benchmark": [
+    {
+      "name": "referencePropsSI",
+      "updatesPerBatch": 200,
+      "batchesMs": [
+        62.72869400000036,
+        62.24217700000008,
+        62.342317000000094,
+        61.345376000000215,
+        61.37621399999989
+      ],
+      "medianMs": 62.24217700000008
+    },
+    {
+      "name": "referencePreflightState",
+      "updatesPerBatch": 200,
+      "batchesMs": [
+        16.545118999999886,
+        16.214424000000236,
+        16.160753999999997,
+        16.444699000000128,
+        16.260871999999836
+      ],
+      "medianMs": 16.260871999999836
+    },
+    {
+      "name": "safeState",
+      "updatesPerBatch": 200,
+      "batchesMs": [
+        1.9145199999998113,
+        1.3817560000002231,
+        0.9477170000000115,
+        0.9112089999998716,
+        0.960109999999986
+      ],
+      "medianMs": 0.960109999999986
+    }
+  ],
+  "checksum": 820291.6995547183,
+  "totalMs": 3981.29139
+}
