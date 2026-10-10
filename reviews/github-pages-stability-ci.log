@@ -1,0 +1,63 @@
+build	Verify released Reference model and guarded properties	﻿2026-10-10T20:06:08.7513261Z ##[group]Run node --test tests/engine/properties.test.mjs tests/engine/properties-pd.test.mjs tests/engine/storage-properties.test.mjs tests/engine/coil-inverse.test.mjs tests/engine/cycle.test.mjs tests/engine/dynamics.test.mjs tests/engine/drive.test.mjs tests/engine/reference-protection.test.mjs tests/engine/exhaust-fog.test.mjs tests/engine/port-capacity.test.mjs tests/engine/transport.test.mjs
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:08.7515644Z ^[[36;1mnode --test tests/engine/properties.test.mjs tests/engine/properties-pd.test.mjs tests/engine/storage-properties.test.mjs tests/engine/coil-inverse.test.mjs tests/engine/cycle.test.mjs tests/engine/dynamics.test.mjs tests/engine/drive.test.mjs tests/engine/reference-protection.test.mjs tests/engine/exhaust-fog.test.mjs tests/engine/port-capacity.test.mjs tests/engine/transport.test.mjs^[[0m
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:08.7553299Z shell: /usr/bin/bash -e {0}
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:08.7553581Z env:
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:08.7553803Z   HEATPUMP_TEST_BACKEND: guarded
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:08.7554058Z ##[endgroup]
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:16.2598024Z ✔ phase-local exchanger inverse agrees with prior real-EOS bisection, including pressure perturbations (479.168939ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:16.2717720Z ✔ stale/singular continuation slopes fall back to freshly closed real-EOS pressure equations (1295.789533ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:16.2777480Z ✔ worker batching preserves every quarter-second thermal/control step and its conservation ledgers (2538.624733ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:16.3171669Z ✔ real R32 EOS shared-pressure cycle: one to five branches and both directions (623.10352ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:16.3196806Z ✔ heat exchanger pinches fail explicitly (0.927119ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:16.3227041Z ✔ phase-aware integral latent zone agrees with analytical UA requirement (0.242566ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:16.3257228Z ✔ real field lines close momentum/enthalpy in heating and cooling, including two-phase small pipe (2100.043686ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:16.3287103Z ✔ cold reverse-cycle defrost floats subcooling and retains physical heat signs (259.56332ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:16.3307148Z ✔ heterogeneous idealized cooling conserves mixed-return enthalpy/entropy and valve allocation (296.814482ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:16.3308401Z ✔ idealized warm/cold parallel condensers close the mixed header without equal branch subcooling (129.559821ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:16.3309633Z ✔ startup bounds demand, preserves actuator state across branch demand changes, and waits after Off (1.570321ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:16.3310824Z ✔ safety overrides minimum speed, pickup arming and startup hold until pressure and dwell recover (0.422604ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:16.3311863Z ✔ ratio thresholds stay strictly ordered for all supported positive lifts (0.222237ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:06:16.3312864Z ✔ temperature protection cannot recover from an unavailable discharge prediction (0.176321ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.8632012Z ✔ real dynamic 1–5 branches conserve full stored energy/water and heating/cooling signs (11337.005084ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.8635405Z ✔ early-trigger automatic defrost melts and drains finite inventories (35110.006123ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.8639941Z ✔ film phase map requires latent melt energy; exhausted film evaporates with exact bounded mass (1.009349ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.8641275Z ✔ wet cooling removes water; timestep halving converges thermal/electrical totals (15069.657428ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.8642647Z ✔ configuration edits retain room/ice inventories and min-on history; idle air outlets disappear (210.50184ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.8653071Z ✔ mode reversal conserves cold metal then establishes live cooling instead of imposing subcooling (10636.379611ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.8654968Z ✔ unmodified three-branch defaults sustain heating through a natural frost/defrost event (53564.053439ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.8656358Z ✔ cleanliness changes only air-side transfer/flow; constant fan and weather response remain physical (1081.067127ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.8657600Z ✔ defrost timeout retains physical ice and closes the ledger instead of resetting it (5476.703911ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.8658780Z ✔ owner-layout cooling accepts newly added warm rooms without resetting old coil/film inventories (16892.547729ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.8660546Z ✔ owner-layout natural frost reverses with hot stored indoor metal and conserves melt energy (83473.212329ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.8661907Z ✔ unavailable property backend returns a conserved fault snapshot without throwing again (1.222535ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.8663542Z ✔ all Off aborts defrost/reversal without erasing storage; passive time and reenable remain conservative (936.995037ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.8664609Z ✔ Off of the last active room enters idle and respects minimum-off before another room demands (151.522823ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9084218Z ✔ outdoor exhaust equilibrium closes vapor/ice/liquid and fusion enthalpy without depositing mist (29.755272ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9085569Z ✔ supersaturated contact exhaust preserves original contact water/heat and indoor fog stays explicit (11.372529ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9087325Z ✔ dry/unsaturated exhaust and saturation onset retain total H/W; fan heat evaporates fog (37.914111ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9088025Z ✔ outdoor fan phase-flash backend failure rolls back thermal stores, clock and drive (328.869426ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9088880Z {"mode":"heating","simulatedSeconds":0.25,"pLowBarA":8.131010007042995,"pHighBarA":15.155990001065893,"energyResidualJ":9.763289199327119e-8,"waterResidualKg":5.630465169624566e-16}
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9089852Z {"mode":"heating","simulatedSeconds":1,"pLowBarA":8.117564573488222,"pHighBarA":15.166710374468092,"energyResidualJ":2.342858351767063e-9,"waterResidualKg":3.667313848432219e-17}
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9090846Z {"mode":"cooling","simulatedSeconds":0.25,"pLowBarA":16.44833187561464,"pHighBarA":22.277097454302787,"energyResidualJ":-1.9648268789751455e-8,"waterResidualKg":-6.053575067437034e-16}
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9092118Z {"mode":"cooling","simulatedSeconds":1,"pLowBarA":16.431581387893583,"pHighBarA":22.330928894590414,"energyResidualJ":1.9350272850715555e-7,"waterResidualKg":-6.838334152409198e-16}
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9093093Z ✔ connection count follows explicit port capacity and invalid declarations reject before property queries (2.002682ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9093842Z ✔ six idealized branches use real R32 heating/cooling states and conservative dynamics (720.468125ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9094605Z ✔ removing a sixth room retains remaining inventories/time and exports its declared storage boundary (236.191797ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9095552Z ✔ pressure/density storage coordinates preserve independent EOS states across phase and input switches (3694.018513ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9096874Z ✔ rejected pressure/density flashes recover without native exceptions or fabricated storage states (2913.417578ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9097624Z ✔ reusable HEOS state matches independent PropsSI across input switches and cache hits (59.753956ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9098614Z ✔ repeated rejected flashes preserve real WASM refrigerant and humid-air service (1365.318445ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9099550Z ✔ undefined two-phase sound speed cannot poison later same-input physical readings (3.864544ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9100709Z ✔ Reference inverter preserves stores and closes freshly after warmed three-to-one branch change (15449.064436ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9101875Z ✔ conserved density/internal-energy flash matches independent real R32 states across phases (58.909131ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9103029Z ✔ invalid DU trials reject through safe computed-pressure boundary and valid flashes recover (96.876604ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9104180Z ✔ distributed pipe forward/inverse closes gravity and heat for liquid, vapor and two-phase states (138.634914ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9105309Z ✔ diameter changes Darcy friction and unsupported velocity cannot produce fake pipe states (13.411534ms)
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9115115Z ℹ tests 45
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9115664Z ℹ suites 0
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9116146Z ℹ pass 45
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9116446Z ℹ fail 0
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9116705Z ℹ cancelled 0
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9117163Z ℹ skipped 0
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9117924Z ℹ todo 0
+build	Verify released Reference model and guarded properties	2026-10-10T20:10:06.9118372Z ℹ duration_ms 238119.040155

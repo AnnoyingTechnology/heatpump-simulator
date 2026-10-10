@@ -1,8 +1,16 @@
 {
-  "checkedAt": "2026-10-10T19:19:17.036Z",
+  "checkedAt": "2026-10-10T20:11:41.792Z",
   "url": "https://annoyingtechnology.github.io/heatpump-simulator/",
   "wasmUrl": "https://annoyingtechnology.github.io/heatpump-simulator/vendor/coolprop-safe/coolprop.wasm",
   "wasmSha256": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+  "expectedBundles": [
+    "index-G5aE9vy7.js",
+    "worker-4IABHY1z.js"
+  ],
+  "bundleHashes": {
+    "index-G5aE9vy7.js": "e2f62aeaf3e89c5c5d10f4b5d104363f589470feef49a00b9d0b38daa493d2b1",
+    "worker-4IABHY1z.js": "f462f005115a026cd8c209bf27e0c58eecaf1d25804cebbc087cbe040e4644ab"
+  },
   "checks": [
     {
       "name": "hosted site starts a real running worker with physical sensor readings",
@@ -21,7 +29,7 @@
       "passed": true
     }
   ],
-  "achievedRate": "24.5× actual",
+  "achievedRate": "9.8× actual",
   "desktop": {
     "width": 1600,
     "height": 1000

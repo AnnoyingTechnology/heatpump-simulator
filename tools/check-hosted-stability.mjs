@@ -23,7 +23,7 @@ try {
       .filter(e => e.getAttribute('aria-label')?.startsWith('Requested target temperature'));
     edit(targets.find(e => e.getAttribute('aria-label').includes('Upstairs')), 22.5);
     edit(targets.find(e => e.getAttribute('aria-label').includes('Ground')), 17.5);
-    const attic = document.querySelector('input[role="switch"][aria-label="Attic indoor unit"]');
+    const attic = document.querySelector('input[role="switch"][aria-label^="Attic "]');
     if (!attic) throw Error('Missing attic control');
     if (attic.checked) attic.click();
     const speed = document.querySelector('select[aria-label="Requested speed"]');
@@ -36,11 +36,15 @@ try {
     return { outdoorC: Number(weather[0].value), humidityPct: Number(weather[1].value),
       groundTargetC: Number(targets.find(e => e.getAttribute('aria-label').includes('Ground')).value),
       upstairsTargetC: Number(targets.find(e => e.getAttribute('aria-label').includes('Upstairs')).value),
-      atticEnabled: document.querySelector('input[role="switch"][aria-label="Attic indoor unit"]').checked,
+      atticEnabled: document.querySelector('input[role="switch"][aria-label^="Attic "]').checked,
       requestedSpeed: Number(document.querySelector('select[aria-label="Requested speed"]').value) };
   })()`);
   assert.deepEqual(result.confirmedControls, { outdoorC: -.5, humidityPct: 35,
     groundTargetC: 17.5, upstairsTargetC: 22.5, atticEnabled: false, requestedSpeed: 5 });
+  result.startSeconds = await page.evaluate(`(() => {
+    const [m,s] = document.querySelector('.time').textContent.split(':').map(Number);
+    return m*60+s;
+  })()`);
   await activateControl(page, 'Resume');
   const start = Date.now();
   let last = -1, minute = -1;
@@ -62,7 +66,10 @@ try {
       result.samples.push(reading); console.log(JSON.stringify(reading));
     }
     last = reading.time; minute = Math.floor(last / 60);
-    if (last >= 600) { result.passed = true; result.finalSeconds = last; break; }
+    if (last - result.startSeconds >= 600) {
+      result.passed = true; result.finalSeconds = last;
+      result.scenarioSeconds = last - result.startSeconds; break;
+    }
   }
   assert.equal(result.passed, true, 'production endurance timeout');
   assert.deepEqual(page.events.filter(e => e.method === 'Runtime.exceptionThrown'), []);

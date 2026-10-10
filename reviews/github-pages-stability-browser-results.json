@@ -1,0 +1,91 @@
+{
+  "checkedAt": "2026-10-10T20:12:23.431Z",
+  "url": "https://annoyingtechnology.github.io/heatpump-simulator/",
+  "requestedSpeed": 5,
+  "outdoorC": -0.5,
+  "humidityPct": 35,
+  "atticEnabled": false,
+  "upstairsTargetC": 22.5,
+  "groundTargetC": 17.5,
+  "samples": [
+    {
+      "time": 5,
+      "state": "running",
+      "fault": "",
+      "dischargeC": "58.33414153055912"
+    },
+    {
+      "time": 60.3,
+      "state": "running",
+      "fault": "",
+      "dischargeC": "104.70858332125687"
+    },
+    {
+      "time": 120.5,
+      "state": "running",
+      "fault": "",
+      "dischargeC": "125.26625834035576"
+    },
+    {
+      "time": 180.8,
+      "state": "running",
+      "fault": "",
+      "dischargeC": "126.8260308734113"
+    },
+    {
+      "time": 241,
+      "state": "running",
+      "fault": "",
+      "dischargeC": "127.0996799795031"
+    },
+    {
+      "time": 301.5,
+      "state": "running",
+      "fault": "",
+      "dischargeC": "118.57043571796618"
+    },
+    {
+      "time": 361.8,
+      "state": "running",
+      "fault": "",
+      "dischargeC": "120.50442896493689"
+    },
+    {
+      "time": 423,
+      "state": "running",
+      "fault": "",
+      "dischargeC": ""
+    },
+    {
+      "time": 480.8,
+      "state": "running",
+      "fault": "",
+      "dischargeC": "103.55939966220024"
+    },
+    {
+      "time": 541,
+      "state": "running",
+      "fault": "",
+      "dischargeC": "125.08816862698495"
+    },
+    {
+      "time": 601,
+      "state": "running",
+      "fault": "",
+      "dischargeC": "120.06865478853263"
+    }
+  ],
+  "passed": true,
+  "confirmedControls": {
+    "outdoorC": -0.5,
+    "humidityPct": 35,
+    "groundTargetC": 17.5,
+    "upstairsTargetC": 22.5,
+    "atticEnabled": false,
+    "requestedSpeed": 5
+  },
+  "startSeconds": 0.3,
+  "finalSeconds": 601,
+  "scenarioSeconds": 600.7,
+  "wallSeconds": 122.631
+}

@@ -26,7 +26,7 @@
       "durationMs": 29376.139335,
       "change": "Same physical configuration and 250 s window; sample each quarter-second. Preserve melt/actual-cycle/ledger assertions and allow the exact final stopped dwell interval."
     },
-    "disposition": "All 45 released checks verified locally through the full run and corrected focused rerun. A single corrected full-suite run is still required by GitHub Actions before deployment.",
+    "disposition": "All 45 released checks verified locally through the full run and corrected focused rerun. The subsequent corrected full-suite GitHub Actions run passed 45/45 before deployment.",
     "finalFogRun": {
       "tests": 4,
       "passed": 4,
@@ -39,5 +39,15 @@
     "cycleResidualW": 0.1,
     "systemEnergyResidualJ": 0.01,
     "systemWaterResidualKg": 1e-10
+  },
+  "correctedFullSuite": {
+    "environment": "GitHub Actions Node 24 / guarded exact HEOS",
+    "workflowRunId": 38082400611,
+    "deployedCommit": "ce9d221a3849d15650838d289a2fd33ab3f56eab",
+    "tests": 45,
+    "passed": 45,
+    "failed": 0,
+    "durationMs": 238119.040155,
+    "evidence": "github-pages-stability-ci.log"
   }
 }

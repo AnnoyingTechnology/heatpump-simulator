@@ -36,6 +36,8 @@ export async function openPage(url, width = 1600, height = 1000, options = {}) {
   await send('Runtime.enable');
   await send('Page.enable');
   await send('Network.enable');
+  // Each isolated QA tab must exercise the current deployment rather than cached HTML.
+  await send('Network.setCacheDisabled', { cacheDisabled: true });
   // A long numerical QA run must not be replaced by Vite's development reload during concurrent source edits.
   // Blocking applies only to this isolated test target; production checks leave networking untouched.
   if (options.blockedUrls?.length) await send('Network.setBlockedURLs', { urls: options.blockedUrls });
