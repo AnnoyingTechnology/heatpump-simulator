@@ -7,7 +7,7 @@ import { activeRooms, currentReadings, indoorCleanliness, outdoorCleanliness, st
 import type { Current, EffectiveCleanliness } from './state';
 import type { RefrigerantState } from './engine/types';
 import type { AppState } from './types';
-import { INDOOR_CASE_MM, INDOOR_CLASSES, OUTDOOR_CASE_MM, OWNER_PORTS } from './types';
+import { INDOOR_CLASSES, OWNER_PORTS } from './types';
 import { LIVE_BASIS } from './chrome';
 
 type Row = [string, string];
@@ -113,7 +113,6 @@ function body(id: string | null, s: AppState): string {
   switch (kind) {
     case 'outdoor':
       return block('Casing', rows([
-        ['H × W × D', `${OUTDOOR_CASE_MM.h} × ${OUTDOOR_CASE_MM.w} × ${OUTDOOR_CASE_MM.d} <i>mm</i>`],
         ['Status', cfg.outdoorKind === 'owner' ? 'Catalogue family data; installed suffix unknown' : 'Illustrative generic envelope'],
         ['Ports', cfg.outdoorKind === 'owner' ? `${OWNER_PORTS} (${cfg.unitCount} connected)` : `${cfg.unitCount} (generic)`],
         ['Refrigerant', 'R32'],
@@ -240,9 +239,17 @@ function body(id: string | null, s: AppState): string {
       } else {
         readingRows.push(['Allocation', r?.fromFixture ? 'Fixture 25/35/25 split' : 'Illustrative share of fixture totals']);
       }
+      // Requested On/Off versus the actual branch. Examples keep the fixed snapshot flow: the request is not applied to it.
+      const flowNow = eng?.cycle?.branchMassFlowsKgs[i] ?? 0;
+      const operation = room.enabled
+        ? 'On'
+        : !live ? 'Off requested <span class="tag warn">snapshot not recalculated</span>'
+          : !ok ? 'Off requested <span class="tag">applying</span>'
+            : flowNow > 0 || (r?.fanKw ?? 0) > 0 ? 'Off requested <span class="tag warn">branch still open</span>'
+              : 'Off <span class="tag">branch closed</span>';
       return block('Indoor unit', rows([
         ['Model', `${info.label}`],
-        ['Casing H × W × D', `${INDOOR_CASE_MM.h} × ${INDOOR_CASE_MM.w} × ${INDOOR_CASE_MM.d} <i>mm</i>`],
+        ['Operation (requested)', operation],
         ['Nominal class', `${fmt(info.nominalKw, 1)} <i>kW</i> (not drawn larger${live ? '; no effect on live performance' : ''})`],
         cleanRow(indoorCleanliness(cfg, i), live),
         // Live endpoint phases come from the actual branch states in the block below.

@@ -22,7 +22,7 @@ Outdoor temperature and humidity must remain permanently available while navigat
 - Global exchanger cleanliness from 100% clean to 10% remaining clear passage, with outdoor and individual indoor overrides. Model air-side transfer and airflow effects, keep dirt visible on vector coil artwork and separate from frost. This is a generic blockage sensitivity, not a measured manufacturer fouling curve.
 - Readable corner values in room/outdoor zones: current simulated sensor values, requested room setpoint beside current temperature, supply/exhaust temperatures and useful output. Each room has a directly accessible setpoint slider in the diagram. Temperature-history charts are deferred.
 - Pause/reset and simulation speed including 1×, 2×, 5×, 10×; slower-than-real-time is desirable.
-- Selectable/configurable outdoor and indoor equipment, with visuals reflecting dimensions/capacity. Indoor sizes need not differ visibly merely because capacity differs.
+- Selectable/configurable outdoor and indoor equipment, with consistent physical proportions and capacity labels. Do not annotate casing dimensions or draw rulers. Indoor sizes need not differ visibly merely because capacity differs.
 - Tubing diameter and physical length, with per-branch settings and service/manometer locations.
 - Visible reversing/control valves, compressor, heat exchangers, flow direction and refrigerant temperature/phase; the science research must establish the actual circuit rather than force an assumed three-way valve topology.
 - Heat-exchanger surface displayed in m² with a clear definition (primary, finned/air-side, etc.) and source/estimate provenance.

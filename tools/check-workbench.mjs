@@ -5,6 +5,7 @@ import { createServer } from 'node:http';
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve, extname } from 'node:path';
 import { openPage } from './browser-session.mjs';
+import { activateControl } from './browser-controls.mjs';
 
 const results = [];
 async function check(name, fn) {
@@ -17,12 +18,7 @@ let server;
 try {
   await page.waitFor('!!document.querySelector(".scene")');
   const run = (fn) => page.evaluate(`(${fn.toString()})()`);
-  const click = (label) => page.evaluate(`(() => {
-    const b=[...document.querySelectorAll('button')].find(e=>e.textContent===${JSON.stringify(label)} && e.getClientRects().length);
-    if(!b) throw new Error('Missing visible button: '+${JSON.stringify(label)});
-    if(b.disabled) throw new Error('Disabled button: '+${JSON.stringify(label)});
-    b.click();
-  })()`);
+  const click = (label) => activateControl(page,label);
   await run(async () => {
     const source=await fetch('/src/main.ts').then(r=>r.text());
     const url=source.match(/from \"([^\"]*\/state\.ts[^\"]*)\"/)[1];
@@ -83,7 +79,7 @@ try {
     assert.equal(heat.phase,'liquid');assert.equal(heat.pairs.a,'D–I');
     await click('Cooling');
     assert.equal(await run(() => document.querySelector('.scene').dataset.fm),'cooling');
-    assert.equal(await run(() => document.body.innerText.includes('COOLING COP')),true);
+    assert.match(await run(() => document.querySelector('.hd-metrics').innerText),/Cooling COP/i);
     const cool=await run(async () => {
       const {fixtureFor}=await import('/src/fixtures.ts');
       const {segState,valvePairs}=await import('/src/circuit.ts');
@@ -91,11 +87,12 @@ try {
     });
     assert.equal(cool.phase,'two');assert.equal(cool.pairs.a,'D–O');
     await click('Advanced');await click('bar(g)');
-    assert.equal(await run(() => document.body.innerText.includes('9.10bar(g)')),true);
+    assert.match(await run(() => document.querySelector('.ins-body').innerText),/9\.10\s*bar\(g\)/);
     await click('bar(a)');
     await click('Heating');
   });
   await check('configuration inputs stay separate from readings and retain focus', async () => {
+    await click('Details');
     const result=await run(() => {
       const input=document.querySelector('input[aria-label="Outdoor temperature [°C]"]');
       input.focus();input.value='-8';input.dispatchEvent(new Event('input',{bubbles:true}));
@@ -152,9 +149,9 @@ try {
   await check('frost caution appears once across repeated renders',async()=>{
     await click('Frosting');
     await run(async()=>{const {store}=globalThis.__qaStateModule;store.emit();store.emit();store.emit();});
-    assert.equal(await run(()=>document.querySelectorAll('.mismatch .fnote').length),1);
+    assert.equal(await run(()=>(document.querySelector('.mm-detail').textContent.match(/Frosting COP/g)||[]).length),1);
     await click('Normal');
-    assert.equal(await run(()=>document.querySelectorAll('.mismatch .fnote').length),0);
+    assert.equal(await run(()=>(document.querySelector('.mm-detail').textContent.match(/Frosting COP/g)||[]).length),0);
   });
   await check('defrost suppresses useful COP and stopped-fan outlet readings', async () => {
     await click('Defrost');

@@ -3,13 +3,14 @@ import assert from 'node:assert/strict';
 import { writeFile } from 'node:fs/promises';
 import { openPage } from './browser-session.mjs';
 import { startIsolatedDev } from './isolated-dev.mjs';
+import { activateControl } from './browser-controls.mjs';
 
 const isolated = await startIsolatedDev(5177);
 const page = await openPage(isolated.url);
 const results = [];
 const run = fn => page.evaluate(`(${fn.toString()})()`);
 const check = async (name, fn) => { await fn(); results.push({ name, passed: true }); console.log(`PASS ${name}`); };
-const click = label => page.evaluate(`(()=>{const b=[...document.querySelectorAll('button')].find(e=>e.textContent===${JSON.stringify(label)}&&e.getClientRects().length);if(!b)throw Error('Missing '+${JSON.stringify(label)});b.click()})()`);
+const click = label => activateControl(page,label);
 try {
   await page.waitFor('!!document.querySelector(".rp-range")');
   await page.send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] });

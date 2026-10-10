@@ -7,7 +7,8 @@ import { PHYSICAL_FIELD_LINES_AVAILABLE, defaultLiveParameters, pipeWallMmForOd 
 import type { LiveParameters } from './runtime/config';
 import { currentReadings, store } from './state';
 import type { IndoorClass, PipeConfig, RoomConfig, SidebarTab } from './types';
-import { CLEANLINESS_MAX_PCT, CLEANLINESS_MIN_PCT, INDOOR_CASE_MM, INDOOR_CLASSES, MAX_UNITS, OUTDOOR_CASE_MM, OWNER_PORTS } from './types';
+import { CLEANLINESS_MAX_PCT, CLEANLINESS_MIN_PCT, INDOOR_CLASSES, MAX_UNITS, OWNER_PORTS } from './types';
+import { HUMIDITY_CONVENTION } from './chrome';
 
 const TABS: ReadonlyArray<{ id: SidebarTab; label: string }> = [
   { id: 'rooms', label: 'Rooms' },
@@ -105,9 +106,8 @@ export function createSidebar(): Sidebar {
     label: 'Outdoor humidity', unit: '% RH', min: 10, max: 100, step: 1, digits: 0,
     get: () => cfg().outdoorRh, set: (v) => store.update((s) => { s.cfg.outdoorRh = v; }),
   }));
-  const humidityConvention = 'Relative humidity follows CoolProp: saturation over ice below 0 °C, over liquid water above. Convert weather readings that use a different convention.';
-  rh.root.title = humidityConvention;
-  rh.root.querySelectorAll('input').forEach((input) => { input.title = humidityConvention; });
+  rh.root.title = HUMIDITY_CONVENTION;
+  rh.root.querySelectorAll('input').forEach((input) => { input.title = HUMIDITY_CONVENTION; });
   const envCompare = html('div', { class: 'env-status' });
   const matchBtn = html('button', { type: 'button', class: 'btn ghost small' }, 'Match fixture');
   matchBtn.addEventListener('click', () => store.update((s) => {
@@ -171,12 +171,6 @@ export function createSidebar(): Sidebar {
     hint: 'Ratio of ideal isentropic to actual compression work. Motor and drive losses are separate.',
   }));
   const etaStatus = html('p', { class: 'status' });
-  const dims = html('table', { class: 'kv' },
-    html('tbody', {},
-      html('tr', {}, html('th', {}, 'Outdoor H×W×D'), html('td', {}, `${OUTDOOR_CASE_MM.h} × ${OUTDOOR_CASE_MM.w} × ${OUTDOOR_CASE_MM.d} mm`)),
-      html('tr', {}, html('th', {}, 'Indoor H×W×D'), html('td', {}, `${INDOOR_CASE_MM.h} × ${INDOOR_CASE_MM.w} × ${INDOOR_CASE_MM.d} mm`)),
-      html('tr', {}, html('th', {}, 'Source'), html('td', {}, 'Daikin Central Europe 2019–20 catalogue (family data). FTXA25 and FTXA35 share one casing.')),
-      html('tr', {}, html('th', {}, 'Coil surface'), html('td', {}, 'Manufacturer air-side finned surface [m²]: — (not estimated). The live deposition area is a separate generic assumption.'))));
   const fluidList = html('ul', { class: 'fluids' }, ...FLUIDS.map((f) =>
     html('li', { class: f.selected ? 'on' : 'off', 'aria-disabled': f.selected ? undefined : 'true' },
       html('span', { class: 'fl-name' }, f.name), html('span', { class: 'fl-note' }, f.note))));
@@ -244,7 +238,6 @@ export function createSidebar(): Sidebar {
       liveStatusNote, ...liveParams.map((f) => f.root)),
     fold('Refrigerant', false, fluidList),
     fold('Charge, leaks, oil and other (pending)', false, pendingList),
-    fold('Casings and dimensions', false, dims),
   );
 
   // ---------- Rooms ----------
@@ -252,6 +245,7 @@ export function createSidebar(): Sidebar {
   const roomCards: HTMLElement[] = [];
   const airFields: Field[] = [];
   const nowLines: HTMLElement[] = [];
+  const onSwitches: Array<{ box: HTMLInputElement; text: HTMLElement; note: HTMLElement }> = [];
   for (let i = 0; i < MAX_UNITS; i++) {
     const r = (): RoomConfig => cfg().rooms[i] as RoomConfig;
     const vol = reg(slider({ label: 'Volume', unit: 'm³', min: 15, max: 200, step: 1, digits: 0, get: () => r().volumeM3, set: (v) => store.update((s) => { const x = s.cfg.rooms[i]; if (x) x.volumeM3 = v; }) }));
@@ -270,7 +264,15 @@ export function createSidebar(): Sidebar {
       get: () => cfg().rooms[i]?.cleanlinessOverridePct ?? null,
       set: (v) => store.update((s) => { const x = s.cfg.rooms[i]; if (x) x.cleanlinessOverridePct = v; }),
     }));
-    const card = html('section', { class: 'group room-card', 'data-room': i }, html('div', { class: 'card-head' }, title, pick), now, vol.root, loss.root, sp.root, air.root, dirt.root);
+    // Indoor-unit On/Off mirrors the switch in the room's scene card; targets stay editable while off.
+    const onBox = html('input', { type: 'checkbox', role: 'switch', class: 'toggle', id: `room-on-${i}` });
+    onBox.addEventListener('change', () => store.update((s) => { const x = s.cfg.rooms[i]; if (x) x.enabled = onBox.checked; }));
+    const onText = html('span', {});
+    const onNote = html('p', { class: 'hint' });
+    onNote.hidden = true;
+    onSwitches.push({ box: onBox, text: onText, note: onNote });
+    const power = html('div', { class: 'field sw-field' }, html('label', { class: 'check sw-line', for: `room-on-${i}` }, onBox, onText), onNote);
+    const card = html('section', { class: 'group room-card', 'data-room': i }, html('div', { class: 'card-head' }, title, pick), power, now, vol.root, loss.root, sp.root, air.root, dirt.root);
     card.dataset.title = '';
     roomCards.push(card);
     roomsPanel.append(card);
@@ -423,6 +425,16 @@ export function createSidebar(): Sidebar {
       const t = (card as HTMLElement & { titleEl?: HTMLElement }).titleEl;
       if (r && t) t.textContent = `${r.name} · ${r.indoorClass}`;
       card.classList.toggle('picked', ui.selected === `indoor:${i}`);
+      const sw = onSwitches[i];
+      if (sw && r) {
+        if (sw.box.checked !== r.enabled) sw.box.checked = r.enabled;
+        const txt = `Indoor unit ${r.enabled ? 'on' : 'off'}`;
+        if (sw.text.textContent !== txt) sw.text.textContent = txt;
+        sw.note.hidden = r.enabled;
+        sw.note.textContent = live
+          ? 'Heating/cooling for this room is requested off. The room still exchanges heat with outdoors and keeps its stored heat and moisture; setpoint stays editable.'
+          : 'Requested off. Fixed snapshot readings, including this branch flow, are not recalculated.';
+      }
       const eng = rd.engine?.rooms[i];
       const now = nowLines[i];
       if (now) {

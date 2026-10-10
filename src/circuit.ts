@@ -3,7 +3,8 @@ import type { ExampleState, Mode } from './types';
 
 /**
  * Generic explanatory circuit (not a claim about Daikin's internal layout). Segment ids map onto drawn polylines.
- * Phase is encoded by colour/pattern; temperature is a separate numeric value and thin core gradient.
+ * Temperature is the primary, continuous tube colour (full interior width). Phase is a separate monochrome mark
+ * pattern (dots = vapor, dashes = liquid, dash-dot = two-phase); the two encodings never share a channel.
  */
 export type Phase = 'vapor' | 'liquid' | 'two' | 'idle' | 'off';
 export type Dir = -1 | 0 | 1;
@@ -77,7 +78,7 @@ export function segState(id: string, fm: FlowMode, c: CycleStates | null, mode: 
   }
 }
 
-/** Sequential-diverging ramp for the thin temperature core: cold blue → neutral → hot red (−10…105 °C). */
+/** Sequential-diverging ramp for the tube interior: cold blue → neutral → hot red (−10…105 °C). */
 const STOPS: ReadonlyArray<readonly [number, readonly [number, number, number]]> = [
   [-10, [47, 95, 179]],
   [10, [96, 160, 205]],

@@ -1,6 +1,7 @@
 // Screenshots are review evidence; the application illustrations are entirely SVG/CSS.
 import { writeFile } from 'node:fs/promises';
 import { openPage } from './browser-session.mjs';
+import { activateControl } from './browser-controls.mjs';
 const page = await openPage('http://127.0.0.1:5173/');
 try {
   await page.waitFor('!!document.querySelector(".scene")');
@@ -16,10 +17,10 @@ try {
     await writeFile(`design/${name}.png`,Buffer.from(s.data,'base64'));
     await new Promise(r=>setTimeout(r,100));
   }
-  await action(() => [...document.querySelectorAll('button')].find(b=>b.textContent==='Examples').click());
-  await action(() => [...document.querySelectorAll('button')].find(b=>b.textContent==='Pause').click());
+  await activateControl(page,'Examples');
+  await activateControl(page,'Pause');
   await capture('interface-preview');
-  await action(() => [...document.querySelectorAll('button')].find(b=>b.textContent==='Outdoor unit').click());
+  await activateControl(page,'Outdoor unit');
   await new Promise(r=>setTimeout(r,400));
   await capture('interface-outdoor');
   await action(async () => {

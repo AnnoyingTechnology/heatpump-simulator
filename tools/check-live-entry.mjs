@@ -4,6 +4,7 @@ import { createServer } from 'node:http';
 import { readFile, writeFile } from 'node:fs/promises';
 import { extname, resolve } from 'node:path';
 import { openPage } from './browser-session.mjs';
+import { activateControl } from './browser-controls.mjs';
 
 const root=resolve('dist');
 const server=createServer(async(req,res)=>{
@@ -23,12 +24,18 @@ try{
   page=await openPage('http://127.0.0.1:5175/heatpump-simulator/');
   await page.waitFor('!!document.querySelector(".scene")');
   await page.send('Page.bringToFront');
-  assert.equal(await page.evaluate(`[...document.querySelectorAll('button')].find(e=>e.textContent==='Live')?.getAttribute('aria-pressed')`),'true');
+  assert.equal(await page.evaluate(`(()=>{
+    const b=[...document.querySelectorAll('button')].find(e=>e.textContent==='Live');
+    if(b)return b.getAttribute('aria-pressed')==='true';
+    return [...document.querySelectorAll('select')].some(e=>e.value==='live'&&[...e.options].some(o=>o.value==='examples'));
+  })()`),true);
   await page.waitFor(`document.querySelector('.opstate')?.dataset.kind==='running'&&document.querySelector('.time')?.textContent!=='00:00.0'`,60000);
+  await activateControl(page,'Readings');
   assert.match(await page.evaluate(`document.querySelector('.ribbon').innerText`),/Idealized field lines/);
+  await activateControl(page,'Readings');
   assert.match(await page.evaluate(`document.querySelector('.ins-body').innerText`),/REFRIGERANT STATES \(LIVE\)/i);
   assert.equal(await page.evaluate(`document.querySelectorAll('img,image,canvas').length`),0);
-  await page.evaluate(`[...document.querySelectorAll('button')].find(e=>e.textContent==='Pause').click()`);
+  await activateControl(page,'Pause');
   await page.send('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});
   // Allow the single outstanding quarter-second calculation to complete before capturing.
   await new Promise(resolve=>setTimeout(resolve,1500));
@@ -39,4 +46,4 @@ try{
   assert.deepEqual(failed.map(e=>e.params.response.url),[]);
   await writeFile('reviews/live-entry-browser-results.json',JSON.stringify({checkedAt:new Date().toISOString(),liveByDefault:true,realWorkerClock:true,idealizedByDefault:true,vectorOnly:true,productionSubdirectory:true},null,2)+'\n');
   console.log('PASS production starts Live by default, advances the real worker clock and retains idealized piping');
-}finally{if(page)await page.close();await new Promise(resolve=>server.close(resolve));}
+}finally{if(page)await page.close();await new Promise(resolve=>{server.close(resolve);server.closeAllConnections();});}

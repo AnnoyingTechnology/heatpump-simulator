@@ -22,11 +22,15 @@ The production output is `dist/`, with relative asset URLs suitable for a GitHub
 
 ## Current interface
 
-Sonnet 5.5 authored the desktop workbench through local Claude Code. All application illustrations are native SVG/CSS: simple outdoor/indoor/room zones, equipment, pipes, gauges, frost and meltwater. Outdoor temperature and humidity stay available on every sidebar tab; selecting a room opens its inputs directly. PNG screenshots under `design/` are review evidence and are not shipped in the application.
+Sonnet 5.5 authored the desktop workbench through local Claude Code. All application illustrations are native SVG/CSS: simple outdoor/indoor/room zones, equipment, pipes, gauges, frost and meltwater. Outdoor temperature and humidity can be edited directly in the outdoor-zone card and stay available on every sidebar tab. Room cards offer direct target-temperature and individual On/Off controls, synchronized with the sidebar. PNG screenshots under `design/` are review evidence and are not shipped in the application.
 
 The workbench provides live heating/cooling, automatic visible frost/defrost, 1–5 rooms, room volume/heat-loss controls, direct room setpoint sliders beside sensor and supply readings, compressor efficiency, pipe lengths/diameters, pressure conventions, selectable components, view presets, pause/reset and requested speed controls. A global exchanger-cleanliness slider runs from 100% clean to 10% remaining clear passage, with outdoor and individual indoor overrides. Choosing a fourth or fifth room switches the three-port owner preset to a generic outdoor group.
 
+A single header combines playback controls with COP, room heat and electrical input. Readings opens the full measurements, source/scenario controls and model notes; speed uses a compact dropdown. Outdoor fans use a static grille and indoor heads show a horizontal outlet with slats. Airflow cues follow actual fan operation; mechanical blade rotation is omitted.
+
 In Examples, readings come from explicitly constructed R32 fixtures. Changing configuration does not recalculate heat, COP, pressures or outlet temperatures. Only the illustrative preview clock and ice→retained-liquid ledger advance.
+
+Dragging weather or room-target controls keeps the last completed physical readings visible, explicitly labelled until the next simulation step. Paused edits wait for Resume without advancing simulation time. Mode, unit On/Off and structural changes withhold incompatible readings. Pipe interiors encode temperature across their width; separate monochrome marks show vapor, liquid or two-phase fluid. Casing dimension annotations are omitted while equipment proportions remain consistent.
 
 Live uses the pinned self-hosted CoolProp HEOS/psychrometric backend, a quasi-steady shared-pressure cycle, per-branch phase-aware heat transfer, dynamic room air/fabric/metal states and conserved outdoor ice/water enthalpy. Instantaneous useful-room COP includes storage effects and starts low while coil metals warm. Natural frost, latent melting, draining and return to heating have passed independent numerical and actual-worker browser checks. The guarded 21-test suite passed, together with the separately added backend-failure regression; the independent review accepts the exercised generic prototype with explicit limits.
 
@@ -51,6 +55,7 @@ Requested speed is limited by actual solver throughput. The worker keeps calcula
 - [Interface browser QA](reviews/interface-qa.md)
 - [Independent science-compliance review](reviews/science-compliance-review.md)
 - [Independent numerical engine review](reviews/engine-science-review.md)
+- [Control refinement and Off scientific review](reviews/control-refinement-science-review.md)
 
 Heating, cooling, individual room thermal behaviour, and visible frost/defrost are core requirements. The owner preset is Daikin 3MXM52N8 with FTXA25, FTXA35, and FTXA25 indoor units. Exact indoor suffixes and unverified installation details remain unknown. Broader equipment/refrigerant coverage requires property and performance validation.
 

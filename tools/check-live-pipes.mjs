@@ -15,7 +15,7 @@ try{
     globalThis.mapper=await import(src.match(/from "([^"]*\/runtime\/config\.ts[^"]*)"/)[1]);
     qa.store.update(s=>{s.ui.paused=true});qa.store.setExperience('live');
   });
-  await page.waitFor('rt.simulation.status.state!=="loading"',30000);
+  await page.waitFor('!rt.simulation.isBusy&&rt.simulation.status.state!=="loading"',30000);
   const step=async(seconds)=>{
     const before=await run(()=>rt.simulation.status.output.simulatedSeconds);
     assert.equal(await page.evaluate(`rt.simulation.step(${seconds})`),true);
@@ -25,7 +25,7 @@ try{
   await step(1);
   const before=await run(()=>rt.simulation.status.output);
   await click('Pipes');await click('Physical (advanced)');
-  await page.waitFor('rt.simulation.status.state!=="loading"',30000);
+  await page.waitFor('!rt.simulation.isBusy&&rt.simulation.status.state!=="loading"',30000);
   assert.equal(await run(()=>qa.store.state.cfg.live.fieldLines),'physical');
   const config=await run(()=>mapper.engineConfigFromUi(qa.store.state.cfg,qa.store.state.cfg.live));
   assert.deepEqual(config.rooms.map(r=>r.pipe.lengthM),[14,6.5,7.5]);
@@ -39,9 +39,9 @@ try{
   results.push({name:'native physical selector applies historical lengths, assumed bore and Darcy transport without reset',passed:true});
   console.log('PASS native physical selector applies finite line transport without reset');
   await run(()=>{const input=document.querySelector('#panel-pipes input.num');input.focus();input.value='3';input.dispatchEvent(new Event('input',{bubbles:true}));});
-  await page.waitFor('rt.simulation.status.state!=="loading"',30000);await step(1);
+  await page.waitFor('!rt.simulation.isBusy&&rt.simulation.status.state!=="loading"',30000);await step(1);
   assert.equal(await run(()=>mapper.engineConfigFromUi(qa.store.state.cfg,qa.store.state.cfg.live).rooms[0].pipe.lengthM),3);
-  await click('Idealized (reference)');await page.waitFor('rt.simulation.status.state!=="loading"',30000);
+  await click('Idealized (reference)');await page.waitFor('!rt.simulation.isBusy&&rt.simulation.status.state!=="loading"',30000);
   const ideal=await step(1);assert.ok(ideal.cycle.pressureDropsPa.every(p=>p===0));
   results.push({name:'editable length reaches physics; reference mode excludes pipe friction and preserves scenario time',passed:true});
   assert.equal(ideal.simulatedSeconds,4);

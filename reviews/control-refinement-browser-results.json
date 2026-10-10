@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-10-10T13:20:32.043Z",
+  "checks": [
+    {
+      "name": "outdoor temperature and humidity are editable in their zone card and synchronize both ways",
+      "passed": true
+    },
+    {
+      "name": "continuous target dragging preserves layout, focus, pipe colours and calculated readings",
+      "passed": true
+    },
+    {
+      "name": "closed readings disclosure does not hide faults or unavailable headline values",
+      "passed": true
+    },
+    {
+      "name": "individual Off closes its live branch and fan while retaining the room and other units",
+      "passed": true
+    },
+    {
+      "name": "all Off remains idle without removing room thermal states and allows re-enable",
+      "passed": true
+    },
+    {
+      "name": "temperature fills pipes and phase retains an independent monochrome pattern",
+      "passed": true
+    },
+    {
+      "name": "outdoor controls and room switches fit desktop views with one to five rooms",
+      "passed": true
+    }
+  ]
+}

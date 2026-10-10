@@ -17,7 +17,7 @@ try{
     qa.store.update(s=>{s.ui.paused=true;s.cfg.outdoorC=3;s.cfg.outdoorRh=85;s.cfg.rooms.forEach(r=>{r.setpointC=23});});
     qa.store.setExperience('live');
   });
-  await page.waitFor('rt.simulation.status.state!=="loading"',30000);
+  await page.waitFor('!rt.simulation.isBusy&&rt.simulation.status.state!=="loading"',30000);
   let seenDefrost=false,returned=false,heldChecked=false,captured=false;
   for(let i=0;i<160;i++){
     const before=await run(()=>rt.simulation.status.output.simulatedSeconds);
@@ -35,7 +35,7 @@ try{
     assert.equal(await run(()=>document.querySelector('.room-panel .rp-v').textContent),out.rooms[0].temperatureC.toFixed(1));
     if(!heldChecked&&out.outdoor.iceKg>.03){
       await run(()=>qa.store.update(s=>{s.cfg.outdoorC=60}));
-      await page.waitFor('rt.simulation.status.state!=="loading"',30000);
+      await page.waitFor('!rt.simulation.isBusy&&rt.simulation.status.state!=="loading"',30000);
       assert.equal(await run(()=>rt.simulation.status.state),'error');
       assert.equal(await run(()=>rt.simulation.inventory.outdoor.iceKg),out.outdoor.iceKg);
       await page.waitFor('document.querySelector(".scene").dataset.ice==="held"');
@@ -43,7 +43,7 @@ try{
       assert.match(await run(()=>document.querySelector('.chip-ice').textContent),/held/i);
       assert.equal(await run(()=>document.querySelector('.room-panel .rp-v').textContent),'—');
       await run(()=>qa.store.update(s=>{s.cfg.outdoorC=3}));
-      await page.waitFor('rt.simulation.status.state!=="loading"',30000);
+      await page.waitFor('!rt.simulation.isBusy&&rt.simulation.status.state!=="loading"',30000);
       assert.equal(await run(()=>rt.simulation.status.output.outdoor.iceKg),out.outdoor.iceKg);
       assert.equal(await run(()=>rt.simulation.status.output.simulatedSeconds),out.simulatedSeconds);
       heldChecked=true;console.log('PASS rejected configuration retains visible ice and correction preserves physical time/inventory');

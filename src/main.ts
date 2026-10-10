@@ -14,8 +14,8 @@ const app = document.getElementById('app');
 if (!app) throw new Error('#app missing');
 
 const scene = createScene();
-const header = createHeader();
 const ribbon = createRibbon();
+const header = createHeader(ribbon);
 const sidebar = createSidebar();
 const overlay = createOverlay((z) => scene.zoomTo(z));
 const drawer = createDrawer();
@@ -25,7 +25,7 @@ const inspector = createInspector(
 );
 
 const stage = html('main', { class: 'stage' }, scene.root, overlay.root);
-app.append(header.root, ribbon.root, html('div', { class: 'workbench' }, sidebar.root, stage, inspector.root), drawer.root);
+app.append(header.root, html('div', { class: 'workbench' }, sidebar.root, stage, inspector.root), drawer.root);
 
 scene.root.addEventListener('click', (e) => {
   if ((e.target as Element).closest('input, button, select, textarea')) return;

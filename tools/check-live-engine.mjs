@@ -5,6 +5,7 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { resolve, extname } from 'node:path';
 import { openPage } from './browser-session.mjs';
 import { startIsolatedDev } from './isolated-dev.mjs';
+import { activateControl } from './browser-controls.mjs';
 
 const results=[];
 const isolated = await startIsolatedDev();
@@ -12,7 +13,7 @@ const page=await openPage(isolated.url);
 let server;
 const check=async(name,fn)=>{await fn();results.push({name,passed:true});console.log(`PASS ${name}`)};
 const run=fn=>page.evaluate(`(${fn.toString()})()`);
-const click=label=>page.evaluate(`(()=>{const b=[...document.querySelectorAll('button')].find(e=>e.textContent===${JSON.stringify(label)}&&e.getClientRects().length);if(!b)throw Error('Missing button '+${JSON.stringify(label)});b.click()})()`);
+const click=label=>activateControl(page,label);
 try{
   await page.waitFor('!!document.querySelector(".scene")');
   await run(async()=>{
@@ -22,7 +23,7 @@ try{
     __qaStateModule.store.update(s=>{s.ui.paused=true});
   });
   await click('Live');
-  await page.waitFor('__qaRuntimeModule.simulation.status.state!=="loading"',30000);
+  await page.waitFor('!__qaRuntimeModule.simulation.isBusy&&__qaRuntimeModule.simulation.status.state!=="loading"',30000);
   assert.equal(await run(()=>__qaRuntimeModule.simulation.status.state),'ready');
   const step=async(seconds)=>{
     // Bound each request while preserving the exact scenario horizon. Safe EOS flashes
@@ -39,7 +40,7 @@ try{
     }
     return output;
   };
-  const configured=()=>page.waitFor('__qaRuntimeModule.simulation.status.state!=="loading"',30000);
+  const configured=()=>page.waitFor('!__qaRuntimeModule.simulation.isBusy&&__qaRuntimeModule.simulation.status.state!=="loading"',30000);
   await check('real local property backend runs in the worker and returns live cycle data',async()=>{
     const output=await step(30);
     assert.ok(output.cycle&&output.cycle.totalMassFlowKgs>0);
@@ -112,7 +113,7 @@ try{
     const production=await openPage('http://127.0.0.1:5175/heatpump-simulator/');
     try{
       await production.waitFor('!!document.querySelector(".scene")');
-      await production.evaluate(`(()=>{const b=[...document.querySelectorAll('button')].find(e=>e.textContent==='Live');if(!b)throw Error('No Live selector');b.click()})()`);
+      await activateControl(production,'Live');
       await production.waitFor(`/running/i.test(document.body.innerText)`,60000);
       assert.equal(production.events.filter(e=>e.method==='Runtime.exceptionThrown').length,0);
       const failed=production.events.filter(e=>e.method==='Network.responseReceived'&&e.params.response.status>=400);assert.deepEqual(failed.map(e=>e.params.response.url),[]);
@@ -121,4 +122,4 @@ try{
   assert.equal(page.events.filter(e=>e.method==='Runtime.exceptionThrown').length,0);
   await writeFile('reviews/live-browser-results.json',JSON.stringify({checkedAt:new Date().toISOString(),checks:results},null,2)+'\n');
   console.log(`${results.length} live browser checks passed`);
-}finally{await page.close();if(server)await new Promise(resolve=>server.close(resolve));await isolated.close()}
+}finally{await page.close();if(server)await new Promise(resolve=>{server.close(resolve);server.closeAllConnections();});await isolated.close()}
