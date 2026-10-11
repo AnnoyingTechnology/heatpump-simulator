@@ -41,3 +41,7 @@ Visual inspection of Daikin piping drawing 3D097989C confirms three refrigerant 
 8. [Daikin N8 operation range drawing, 3D109333 EN](https://www.daikin.es/content/dam/MDM/TechnicalDrawings/Split/3MXM-N8/EN/3MXM52N8_operange_3D109333_EN.pdf) — primarily hybrid-for-multi envelope; not the normal air-conditioning capacity map. Do not interpret its graphic as ordinary FTXA heating limits.
 
 The N8 tables/docs above supersede generic or reseller N/N9 material for this task. The exact indoor suffixes and compressor internal speed limits remain unknown.
+
+## Later owner clarification, 2026-10-11
+
+Julien distinguishes observed low-load limits of approximately200W in heating and130W in cooling. At1°C outdoors he observes continuous~500W system input except reversal/defrost. Starts ramp over several seconds. These are owner observations, not published compressor-speed limits or a request to force the engine's electrical output. Daily averages70W at12°C,150W at8°C and300–325W at4°C include seasonal heating schedules and cannot be treated as continuous operating floors. The initial universal130W interpretation above is superseded by this mode-specific clarification.

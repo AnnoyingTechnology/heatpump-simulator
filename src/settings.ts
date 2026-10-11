@@ -572,23 +572,14 @@ function createChargeArea(): ChargeArea {
     get: () => live().initialChargeKg, set: (v) => store.update((s) => { s.cfg.live.initialChargeKg = v; }),
     title: 'Scenario start value, applied on Restart. Not a factory prediction.',
   });
-  const remV = html('span', { class: 'rp-v' });
-  const remN1 = html('span', { class: 'rp-n' });
-  const remN2 = html('span', { class: 'rp-n' });
-  const enable = html('button', { type: 'button', class: 'rp-btn rp-ctl' }, 'Enable inventory');
-  enable.addEventListener('click', () => store.setCircuitModel('inventory'));
-  const remaining = html('div', { class: 'rp-card ou-rem' },
-    html('span', { class: 'rp-k' }, 'System charge'),
-    html('span', { class: 'rp-line' }, remV, html('small', {}, 'kg')),
-    remN1, remN2, enable);
   const restart = html('button', { type: 'button', class: 'rp-btn rp-ctl' }, 'Restart');
   restart.addEventListener('click', () => store.restartSimulation());
   const restartNote = html('span', { class: 'ou-rnote' });
-  isolate(restart, enable);
+  isolate(restart);
 
   const root = html('section', { class: 'ou-charge', 'aria-label': 'Refrigerant charge' },
     html('div', { class: 'ou-ch-title' }, 'CHARGE'),
-    remaining, initial.root,
+    initial.root,
     html('div', { class: 'ou-restart-row' }, restart, restartNote));
 
   return {
@@ -598,25 +589,7 @@ function createChargeArea(): ChargeArea {
       const cfg = s.cfg;
       const model = cfg.live.circuitModel;
       const inventory = model === 'inventory';
-      const isLive = s.ui.experience === 'live';
       initial.refresh();
-      if (inv) {
-        setText(remV, fmt(inv.massKg, 3));
-        setText(remN1, `started with ${fmt(inv.initialMassKg, 3)} kg`);
-        setText(remN2, '');
-      } else {
-        setText(remV, '—');
-        setText(remN1, !inventory ? 'reference model · no inventory' : !isLive ? 'Examples · not modelled' : 'waiting for the circuit');
-        setText(remN2, !inventory && !CHARGE_MODEL_AVAILABLE ? 'inventory model gated' : '');
-      }
-      toggleClass(remV, 'na', !inv);
-      remN2.hidden = remN2.textContent === '';
-      enable.hidden = inventory;
-      enable.disabled = !CHARGE_MODEL_AVAILABLE;
-      setAttr(enable, 'title', CHARGE_MODEL_AVAILABLE
-        ? 'Switch to the conserved-inventory circuit. Starts a new circuit from the start values.'
-        : 'The conserved-inventory model is gated until its science review passes.');
-
       const drafts = inv ? pendingStartValues(cfg, inv) : [];
       restart.disabled = !inventory;
       toggleClass(restart, 'pending', drafts.length > 0);

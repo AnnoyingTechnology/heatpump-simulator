@@ -29,6 +29,8 @@ try{
    assert.deepEqual(controls,Array.from({length:4},()=>({w:80,h:42})),`uniform enlarged controls at ${width}`);
    assert.equal(await run(()=>document.querySelectorAll('.brand svg[aria-label="Heatpump Simulator 2026"]').length),1);
    assert.equal(await run(()=>document.querySelector('.brand .mark,.brand b')),null);
+   const overlap=await run(()=>{const els=[...document.querySelectorAll('.brand,.hd-theme,.hd-preset,.hd-speed,.hd-pause,.hd-reset,.hd-run,.hd-metrics')];return els.flatMap((a,i)=>els.slice(i+1).flatMap(b=>{const x=a.getBoundingClientRect(),y=b.getBoundingClientRect();return x.right>y.left+.5&&y.right>x.left+.5?[`${a.className}/${b.className}`]:[]}))});
+   assert.deepEqual(overlap,[],`logo, theme and playback controls must not overlap at ${width}`);
   }
  });
  await check('electricity since start equals the accepted engine ledger, survives edits and clears on Reset',async()=>{

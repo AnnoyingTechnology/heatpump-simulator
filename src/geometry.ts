@@ -125,15 +125,15 @@ export function roomBoxes(n: number): RoomBox[] {
 export const A = {
   compD: [114, 150], compS: [132, 198], accIn: [225, 142], accOut: [212, 198],
   valveO: [176, 106], valveI: [236, 106], valveD: [190, 122], valveS: [224, 122],
-  coilGas: [60, 22], coilLiq: [60, 198], svc: [250, 106], fan: [87, 117],
+  coilGas: [60, 22], coilLiq: [60, 198], svc: [250, 106], fan: [77, 117],
 } as const satisfies Record<string, Pt>;
 
 /**
  * Outdoor fan, drawn flat from the side immediately right of the fin bank.
- * Its disc spans almost the entire fin height; the reverser-to-coil line passes above the disc.
+ * Its disc leaves room above and below for the coil connections.
  * A generic schematic element, not a manufacturer cutaway.
  */
-export const FAN_SIDE = { x: 80, w: 14, h: 203 } as const;
+export const FAN_SIDE = { x: 70, w: 14, h: 180 } as const;
 
 /** Branch expansion bank: explicit header/field faces, shared by tubes and valve drawings. */
 export const EEV = { headerX: 260, centerX: 280, headerFaceX: 271, fieldFaceX: 289 } as const;
@@ -217,7 +217,7 @@ export function pipeSpecs(n: number): PipeSpec[] {
   add({ id: 'coilG', cls: 'coil', title: 'Outdoor coil · gas end', pts: l(cv.slice(0, 6)) });
   add({ id: 'coilM', cls: 'coil', title: 'Outdoor coil · middle passes', pts: l(cv.slice(5, 18)) });
   add({ id: 'coilL', cls: 'coil', title: 'Outdoor coil · liquid end', pts: l(cv.slice(17, 24)) });
-  add({ id: 'liqHdr', cls: 'liq', title: 'Outdoor liquid header', pts: l([A.coilLiq, [78, 198], [78, feeder], [EEV.headerX, feeder], [EEV.headerX, ylOf(0)]]) });
+  add({ id: 'liqHdr', cls: 'liq', title: 'Outdoor liquid header', pts: l([A.coilLiq, [60, 214], [78, 214], [78, feeder], [EEV.headerX, feeder], [EEV.headerX, ylOf(0)]]) });
   add({ id: 'vDO', cls: 'gas', title: 'Reverser internal link D–O', pts: l([A.valveD, [190, 106], A.valveO]) });
   add({ id: 'vIS', cls: 'gas', title: 'Reverser internal link I–S', pts: l([A.valveI, [224, 106], A.valveS]) });
   add({ id: 'vDI', cls: 'gas', title: 'Reverser internal link D–I', pts: l([A.valveD, [190, 114], [230, 114], [230, 106], A.valveI]) });

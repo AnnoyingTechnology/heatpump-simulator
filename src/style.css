@@ -315,11 +315,11 @@ h2, h3, h4, h5, p, ul, dl { margin: 0; }
 /* ---------- top bar ---------- */
 /* One light header: brand and theme chooser, playback/status group, headline readings. */
 .topbar { position: relative; z-index: 20; display: flex; align-items: center; gap: 10px; padding: 0 12px; min-width: 0; background: var(--panel); color: var(--ink); border-bottom: 1px solid var(--line); box-shadow: var(--hd-shadow); }
-.hd-id { display: flex; align-items: center; gap: 6px; flex: 0 1 auto; min-width: 66px; }
+.hd-id { display: flex; align-items: center; gap: 6px; flex: none; min-width: 92px; }
 .brand { display: flex; align-items: center; flex: none; color: var(--ink); }
 .brand-logo { display: block; width: 126px; height: 44px; }
 /* On narrower desktops the header budget goes to the controls; the name stays available to hover and screen readers. */
-@media (max-width: 1499px) {
+@media (max-width: 1699px) {
   .brand-logo { width: 44px; }
   .brand-logo #logo-wordmark { display: none; }
   .hd-id { min-width: 92px; }
@@ -862,11 +862,7 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .ou-col, .ou-charge { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
 .ou-charge { border-left: 2px solid var(--rule); padding-left: 12px; }
 .ou-ch-title { font: 800 10.5px var(--font); letter-spacing: 0.12em; color: var(--env-tag); }
-.ou-rem { gap: 1px; padding: 3px 8px; }
-.ou-rem .rp-v { font-size: 24px; }
-.ou-rem .rp-n { min-height: 0; }
-.ou-rem .rp-btn { align-self: flex-start; margin-top: 2px; }
-.ou-rem [hidden], .ou-charge [hidden] { display: none; }
+.ou-charge [hidden] { display: none; }
 .ou-restart-row { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .ou-restart-row .rp-btn.pending { border-color: var(--warn); color: var(--warn); background: var(--notice-bg); }
 .ou-rnote { flex: 1 1 auto; min-width: 0; font-size: 11px; line-height: 1.2; color: var(--rp-n2); overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
