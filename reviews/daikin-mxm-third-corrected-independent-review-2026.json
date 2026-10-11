@@ -1,0 +1,106 @@
+{
+  "reviewedAt": "2026-10-11",
+  "scope": "Final bounded research-only locator delta and hash review; no broad re-review or runtime acceptance",
+  "decision": "All previously reported extraction corrections are preserved; final two restriction locators match independent printed-page findings. Research metadata is reviewed; typed full-reference multisplit compatibility remains pending.",
+  "candidate": {
+    "path": "research/catalogue/staging/luna-next-daikin-mxm-a8-a9-physical-and-constraints-third-corrected-2026.json",
+    "sha256": "47439a0335128d2abf0e344961a50e0c2b8894cbc97cd882e59a5627bb38e015"
+  },
+  "ledger": {
+    "path": "research/catalogue/staging/luna-next-daikin-mxm-a8-a9-physical-and-constraints-third-corrected-2026.sha256",
+    "sha256": "2d20e0115ebb75259b404a5527272a9e6243bd653289cbaf9f25c637d046bd22"
+  },
+  "previousCandidate": {
+    "path": "research/catalogue/staging/luna-next-daikin-mxm-a8-a9-physical-and-constraints-second-corrected-2026.json",
+    "sha256": "80a31e578d613756cf3c2316ef0272d88b394977d9046801a8055e47c1373217"
+  },
+  "previousIndependentReceipt": {
+    "path": "reviews/daikin-mxm-second-corrected-independent-review-2026.json",
+    "sha256": "2c4695431e6e3954554a3e8ac6e798bd947982b17721255d9c6b910c9d172a7d"
+  },
+  "exactDeltas": [
+    {
+      "path": "$.units[3].compatibility[3].evidence.locator",
+      "before": "Printed pp.32 and 47, installer reference guide restrictions for 3MXM40/3MXM52 with CVXM-A/FVXM-A.",
+      "after": "Printed p.34 §7.1.3 for the ≤30 m total liquid piping restriction; printed p.48 §8.4 for the no-additional-charge rule and CVXM-A9/FVXM-A9 exemption."
+    },
+    {
+      "path": "$.units[4].compatibility[3].evidence.locator",
+      "before": "Printed pp.32 and 47, installer reference guide restrictions for 3MXM40/3MXM52 with CVXM-A/FVXM-A.",
+      "after": "Printed p.34 §7.1.3 for the ≤30 m total liquid piping restriction; printed p.48 §8.4 for the no-additional-charge rule and CVXM-A9/FVXM-A9 exemption."
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "research/catalogue/source-cache/daikin-eu-2026-split-page-329.html",
+      "sha256": "ed7ce858b700324b0cdea0c21b967b42fa8ad9ceade9848154d40533445567f5"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-2mxm-a8-table-2026.html",
+      "sha256": "acefcde6298cfa2aecd460e876476e4f7ca284530ef10e8b599b7bcc994cdbf9"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-2mxm-a9-table-2026.html",
+      "sha256": "0f0bb8a517dde9ded8c1f075d5ef5626e1e629fd65badec92d471b7d13c5ef83"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-3mxm-a8-table-2026.html",
+      "sha256": "23c7ccdb59e5b55a3c891bafbfb0e2cfdd9c2255850457865408731dbc44b79a"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-4mxm-a8-table-2026.html",
+      "sha256": "159fb7c67899c2eeafaf285f98a119b38ba548c0ab3b2eacb49fc7e5a71d3e63"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-5mxm-a8-table-2026.html",
+      "sha256": "e886fae35c49ddee42589d3be229c8af4016c6d1b835608146864c4ac18bdc7f"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-2mxm-a8-product-2026.html",
+      "sha256": "4176ccc9ff7ccc97199c9a210f1780dc37c443f58d8be72062a73eed6fb831b7"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-2mxm-a9-product-2026.html",
+      "sha256": "3902198d38e006a2af4d99c64babb828815a87f41c2ec27c24d6ef612cdd14b7"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-3mxm-a8-product-2026.html",
+      "sha256": "8e40acf0314e214f60f37b6a0403dbdf827f17b061633c4fec1144eadf0cf49a"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-4mxm-a8-product-2026.html",
+      "sha256": "5741bb699b1c57507474b28df15b6029708b98eb35059996ab4a3a4584129e53"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-5mxm-a8-product-2026.html",
+      "sha256": "e5374185cdb6ec80a0ce7b30964939048c4205745c9c56bd8adc1ad48a25daff"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-2mxm-a8-installer-guide-4c-2025.pdf",
+      "sha256": "02d9b5e02434796ceb4d678c4c7abb326fde1a4d1b0876b37aba67ccedb2e217"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-mxm-a8-installer-guide-5c-2025.pdf",
+      "sha256": "251062cd18f1b5859646af9a9ddaffa80ac738380feb0f5303c48a0248264c86"
+    }
+  ],
+  "checks": {
+    "exactlyTwoLocatorDeltas": true,
+    "correct3MXM40And52Associations": true,
+    "printedP34Section7_1_3AndP48Section8_4Verified": true,
+    "allOtherValuesKeysArrayLengthsUnchanged": true,
+    "sourcePinsIdenticalToV2": true,
+    "sourceAndCandidatePinsPassed": 14
+  },
+  "limitations": [
+    "Research-only; exact full-indoor-SKU combination eligibility and typed multi-port/reducer alternatives remain pending",
+    "Minimum heads concerns physically connected heads, not running heads",
+    "No OEM performance/control maps or airflow established",
+    "Source-specific pipe and charge-threshold disagreements remain separate",
+    "Nine models do not complete the current consumer range"
+  ],
+  "runtimeProfilesAccepted": 0,
+  "mutationScope": [
+    "new final independent review receipt only"
+  ]
+}

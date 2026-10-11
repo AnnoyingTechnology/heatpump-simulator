@@ -8,6 +8,7 @@ No compressor map, heat-exchanger UA or electrical operating floor is inferred.
 import hashlib
 import json
 import math
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -15,6 +16,66 @@ ROOT = Path(__file__).resolve().parent.parent
 
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def multisplit_installation(unit, accepted, root):
+    """Promote independently reviewed necessary installation rules, not OEM pair maps."""
+    receipt = accepted['installationReview']
+    path = root / receipt['path']
+    if not path.exists() or sha(path) != receipt['sha256']:
+        raise ValueError('Multisplit independent review receipt is missing or changed')
+    reviewed = json.loads(path.read_text())
+    if reviewed['candidate'] != {'path': accepted['candidateFile'], 'sha256': accepted['candidateSha256']}:
+        raise ValueError('Multisplit review does not bind the accepted candidate')
+    for source in reviewed['sourcePins']:
+        snapshot = root / source['path']
+        if not snapshot.exists() or sha(snapshot) != source['sha256']:
+            raise ValueError('Required multisplit primary source is missing or changed')
+    if accepted.get('compatibleIndoorClasses') != [] or accepted.get('pairingStatus') != 'unknown':
+        raise ValueError('Unresolved multisplit full-SKU eligibility must remain unknown')
+    compatibility = unit['compatibility']
+    ports = []
+    for statement in compatibility:
+        text = statement['description']
+        match = re.match(r'Port ([A-E]) \(gas connection Ø([\d.]+) mm\): (.*?)\. These are', text)
+        if not match:
+            continue
+        letter, diameter, body = match.groups()
+        alternatives = []
+        for part in body.split('; '):
+            if part.startswith('footnote (a)'):
+                if not alternatives or alternatives[-1]['capacityClasses'] != [42] or part != 'footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C':
+                    raise ValueError('Unreviewed conditional connection-class rule')
+                alternatives[-1]['onlyGuideNamedIndoorClasses'] = ['FTXM42R', 'FTXM42A', 'FTXA42C']
+            else:
+                row = re.fullmatch(r'classes ([\d, ]+) -> reducer (.*)', part)
+                if not row:
+                    raise ValueError('Unreviewed connection alternative')
+                classes, reducer = row.groups()
+                if reducer == 'OPTIONAL ACCESSORY (accessory identity not given in table)':
+                    reducer = 'optional accessory (not identified by this table)'
+                if reducer not in ('none', '1+2', '2+4', '5+6', '1+3', 'optional accessory (not identified by this table)'):
+                    raise ValueError('Unreviewed reducer identity')
+                alternatives.append({'capacityClasses': [int(value) for value in classes.split(', ')], 'reducer': reducer})
+        evidence = statement['evidence']
+        expected_page = 37 if evidence['sourceId'] == 'g4c' else 39
+        if f'Printed p.{expected_page},' not in evidence['locator'] or f'port {letter}.' not in evidence['locator']:
+            raise ValueError('Multisplit port source locator is inconsistent')
+        ports.append({'id': letter, 'gasConnectionOuterDiameterMm': float(diameter), 'alternatives': alternatives})
+    if [p['id'] for p in ports] != list('ABCDE'[:accepted['ports']]):
+        raise ValueError('Multisplit named-port topology is incomplete')
+    count = next(c for c in compatibility if c['description'].startswith('At least 2'))
+    if 'physically connected' not in count['description'] or f"maximum {accepted['ports']}" not in count['description']:
+        raise ValueError('Multisplit connected-head count is inconsistent')
+    limit = float(re.search(r'≤([\d.]+) kW', compatibility[0]['description']).group(1))
+    caps = [c for c in compatibility if c['description'].startswith('Maximum allowable total refrigerant charge')]
+    cap = float(re.search(r'is ([\d.]+) kg', caps[0]['description']).group(1)) if caps else None
+    if caps and ('Printed p.48' not in caps[0]['evidence']['locator'] or 'table 8-1' not in caps[0]['evidence']['locator']):
+        raise ValueError('Multisplit charge cap source locator is inconsistent')
+    return {'topology': 'multisplit', 'minimumConnectedHeads': 2, 'maximumConnectedHeads': accepted['ports'],
+            'connectedCapacityClassSumLimitKw': limit, 'ports': ports,
+            'guide': '4P766272-4C (2025.05)' if count['evidence']['sourceId'] == 'g4c' else '4P766272-5C (2025.05)', 'exactEligibility': 'unknown',
+            'publishedMaximumTotalChargeKg': cap}
 
 
 def generate(root=ROOT):
@@ -68,7 +129,10 @@ def generate(root=ROOT):
         identity = accepted.get('identityEvidence', unit['identityEvidence'])
         referenced = {f['evidence']['sourceId'] for f in selected} | {identity['sourceId']}
         if unit['unitType'] == 'outdoor':
-            referenced.add(accepted['pairingEvidence']['sourceId'])
+            if accepted.get('topology') == 'multisplit':
+                referenced |= {c['evidence']['sourceId'] for c in unit['compatibility']}
+            else:
+                referenced.add(accepted['pairingEvidence']['sourceId'])
             pairing_by_indoor = accepted.get('pairingEvidenceByIndoor')
             if pairing_by_indoor is not None:
                 expected = set(accepted['compatibleIndoorClasses'])
@@ -96,6 +160,10 @@ def generate(root=ROOT):
                 raise ValueError('Only validated R32 profiles can be selected')
             profile.update(ports=accepted['ports'],
                            compatibleIndoorClasses=accepted['compatibleIndoorClasses'])
+            if accepted.get('topology') == 'multisplit':
+                if accepted['ports'] != by_key['maximumIndoorUnits'][0]['value']:
+                    raise ValueError('Accepted multisplit head cap disagrees with published value')
+                profile['installation'] = multisplit_installation(unit, accepted, root)
             profile['publishedOperatingRangesC'] = {
                 mode: {'minimum': by_key[mode + 'OutdoorMinimum'][0]['value'],
                        'maximum': by_key[mode + 'OutdoorMaximum'][0]['value'],
@@ -107,7 +175,7 @@ def generate(root=ROOT):
         raise ValueError('Duplicate equipment identity')
     indoor_ids = {p['id'] for p in profiles if p['unitType'] == 'indoor'}
     for p in profiles:
-        if p['unitType'] == 'outdoor' and (p['ports'] != 1 or not set(p['compatibleIndoorClasses']).issubset(indoor_ids)):
+        if p['unitType'] == 'outdoor' and 'installation' not in p and (p['ports'] != 1 or not set(p['compatibleIndoorClasses']).issubset(indoor_ids)):
             raise ValueError('Accepted monosplit topology/pairing is inconsistent')
     groups = [(name, [p for p in profiles if p['unitType'] == kind]) for name, kind in
               [('CATALOGUE_OUTDOORS', 'outdoor'), ('CATALOGUE_INDOORS', 'indoor')]]

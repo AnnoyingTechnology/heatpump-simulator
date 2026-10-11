@@ -1902,6 +1902,1098 @@ export const CATALOGUE_OUTDOORS = [
         "condition": "Outdoor wet-bulb, °CBH operating range; not a rating condition."
       }
     }
+  },
+  {
+    "id": "2MXM40A2V1B9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 552,
+      "w": 852,
+      "d": 350
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": 6.0,
+      "ports": [
+        {
+          "id": "A",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "none"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "none"
+            }
+          ]
+        }
+      ],
+      "guide": "4P766272-4C (2025.05)",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    },
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+      }
+    }
+  },
+  {
+    "id": "2MXM50A2V1B8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 552,
+      "w": 852,
+      "d": 350
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": 8.5,
+      "ports": [
+        {
+          "id": "A",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "none"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "none",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "optional accessory (not identified by this table)"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "1+2"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "1+2",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            },
+            {
+              "capacityClasses": [
+                42,
+                50
+              ],
+              "reducer": "none"
+            }
+          ]
+        }
+      ],
+      "guide": "4P766272-4C (2025.05)",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    },
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 50,
+        "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+      }
+    }
+  },
+  {
+    "id": "2MXM68A2V1B8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 974,
+      "d": 408
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": 10.2,
+      "ports": [
+        {
+          "id": "A",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "none"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "none",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "2+4"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "2+4",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            },
+            {
+              "capacityClasses": [
+                42,
+                50,
+                60
+              ],
+              "reducer": "none"
+            }
+          ]
+        }
+      ],
+      "guide": "4P766272-5C (2025.05)",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": 2.4
+    },
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 50,
+        "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+      }
+    }
+  },
+  {
+    "id": "3MXM40A2V1B8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 974,
+      "d": 408
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": 7.0,
+      "ports": [
+        {
+          "id": "A",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "none"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "2+4"
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "2+4"
+            }
+          ]
+        }
+      ],
+      "guide": "4P766272-5C (2025.05)",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": 2.2
+    },
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 50,
+        "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+      }
+    }
+  },
+  {
+    "id": "3MXM52A2V1B8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 974,
+      "d": 408
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": 9.0,
+      "ports": [
+        {
+          "id": "A",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "none"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "none",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "2+4"
+            },
+            {
+              "capacityClasses": [
+                42,
+                50
+              ],
+              "reducer": "none"
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "2+4"
+            },
+            {
+              "capacityClasses": [
+                42,
+                50
+              ],
+              "reducer": "none"
+            }
+          ]
+        }
+      ],
+      "guide": "4P766272-5C (2025.05)",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": 2.2
+    },
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 50,
+        "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+      }
+    }
+  },
+  {
+    "id": "3MXM68A2V1B8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 974,
+      "d": 408
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": 11.0,
+      "ports": [
+        {
+          "id": "A",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "none"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "none",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35,
+                42
+              ],
+              "reducer": "2+4"
+            },
+            {
+              "capacityClasses": [
+                50,
+                60
+              ],
+              "reducer": "none"
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35,
+                42
+              ],
+              "reducer": "2+4"
+            },
+            {
+              "capacityClasses": [
+                50,
+                60
+              ],
+              "reducer": "none"
+            }
+          ]
+        }
+      ],
+      "guide": "4P766272-5C (2025.05)",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": 2.4
+    },
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 50,
+        "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+      }
+    }
+  },
+  {
+    "id": "4MXM68A2V1B8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 974,
+      "d": 408
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 4,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 4,
+      "connectedCapacityClassSumLimitKw": 11.0,
+      "ports": [
+        {
+          "id": "A",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "none"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "none",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "none"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "none",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "2+4"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "2+4",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            },
+            {
+              "capacityClasses": [
+                42,
+                50,
+                60
+              ],
+              "reducer": "none"
+            }
+          ]
+        },
+        {
+          "id": "D",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "2+4"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "2+4",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            },
+            {
+              "capacityClasses": [
+                42,
+                50,
+                60
+              ],
+              "reducer": "none"
+            }
+          ]
+        }
+      ],
+      "guide": "4P766272-5C (2025.05)",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": 2.6
+    },
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 50,
+        "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+      }
+    }
+  },
+  {
+    "id": "4MXM80A2V1B8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 974,
+      "d": 408
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 4,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 4,
+      "connectedCapacityClassSumLimitKw": 14.5,
+      "ports": [
+        {
+          "id": "A",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "none"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "none",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "2+4"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "2+4",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            },
+            {
+              "capacityClasses": [
+                42,
+                50,
+                60
+              ],
+              "reducer": "none"
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "gasConnectionOuterDiameterMm": 15.9,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "5+6"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "5+6",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            },
+            {
+              "capacityClasses": [
+                42,
+                50,
+                60
+              ],
+              "reducer": "1+3"
+            },
+            {
+              "capacityClasses": [
+                71
+              ],
+              "reducer": "none"
+            }
+          ]
+        },
+        {
+          "id": "D",
+          "gasConnectionOuterDiameterMm": 15.9,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "5+6"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "5+6",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            },
+            {
+              "capacityClasses": [
+                42,
+                50,
+                60
+              ],
+              "reducer": "1+3"
+            },
+            {
+              "capacityClasses": [
+                71
+              ],
+              "reducer": "none"
+            }
+          ]
+        }
+      ],
+      "guide": "4P766272-5C (2025.05)",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": 3.2
+    },
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 50,
+        "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+      }
+    }
+  },
+  {
+    "id": "5MXM90A2V1B8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 974,
+      "d": 408
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 5,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 5,
+      "connectedCapacityClassSumLimitKw": 15.6,
+      "ports": [
+        {
+          "id": "A",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "none"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "none",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "none"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "none",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "2+4"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "2+4",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            },
+            {
+              "capacityClasses": [
+                42,
+                50,
+                60
+              ],
+              "reducer": "none"
+            }
+          ]
+        },
+        {
+          "id": "D",
+          "gasConnectionOuterDiameterMm": 15.9,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "5+6"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "5+6",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            },
+            {
+              "capacityClasses": [
+                42,
+                50,
+                60
+              ],
+              "reducer": "1+3"
+            },
+            {
+              "capacityClasses": [
+                71
+              ],
+              "reducer": "none"
+            }
+          ]
+        },
+        {
+          "id": "E",
+          "gasConnectionOuterDiameterMm": 15.9,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                15,
+                20,
+                25,
+                35
+              ],
+              "reducer": "5+6"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "5+6",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXM42R",
+                "FTXM42A",
+                "FTXA42C"
+              ]
+            },
+            {
+              "capacityClasses": [
+                42,
+                50,
+                60
+              ],
+              "reducer": "1+3"
+            },
+            {
+              "capacityClasses": [
+                71
+              ],
+              "reducer": "none"
+            }
+          ]
+        }
+      ],
+      "guide": "4P766272-5C (2025.05)",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": 3.3
+    },
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 50,
+        "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+      }
+    }
   }
 ] as const;
 

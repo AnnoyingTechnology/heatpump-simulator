@@ -2,6 +2,7 @@ import type { EngineInterzoneLink } from './engine/types';
 import type { LiveParameters } from './runtime/config';
 import { CATALOGUE_INDOORS, CATALOGUE_OUTDOORS } from './equipment-data';
 import { outdoorModelInfo, equipmentManufacturerLabel } from './equipment';
+import type { HeadInstallation } from './equipment-topology';
 
 /** Shared types. Configuration (what the user edits) is kept apart from fixtures (illustrative readings). */
 
@@ -49,6 +50,8 @@ export interface RoomConfig {
   /** Room air temperature INPUT [°C]; never fed by the fixture air readings. */
   airC: number;
   indoorClass: IndoorClass;
+  /** Installed port/class/reducer declarations; an Off head remains connected. */
+  installation?: HeadInstallation;
   /** Published cooling high-fan volume flow; its heating reuse is an explicit assumption. Absent uses editable generic air mass flow. */
   volumetricAirFlowM3s?: number;
   /** Deprecated input, ignored: all coils permanently use Config.live.cleanlinessPct. */

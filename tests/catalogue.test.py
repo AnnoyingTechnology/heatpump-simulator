@@ -75,11 +75,66 @@ class CatalogueAcceptance(unittest.TestCase):
     def test_no_unverified_compressor_or_performance_map_fields_are_accepted(self):
         allowed = {'airflow', 'height', 'width', 'depth', 'capacityClass', 'refrigerant',
                    'heatingOutdoorMinimum', 'heatingOutdoorMaximum',
-                   'coolingOutdoorMinimum', 'coolingOutdoorMaximum'}
+                   'coolingOutdoorMinimum', 'coolingOutdoorMaximum', 'maximumIndoorUnits'}
         for unit in self.review['units']:
             self.assertLessEqual(set(unit['factKeys']), allowed)
             self.assertNotIn('factoryCharge', unit['factKeys'])
         self.assertNotIn('electricalInputKw', module.generate())
+
+    def test_multisplit_profiles_preserve_unknown_exact_eligibility_and_documentary_charge_caps(self):
+        profiles = json.loads(re.search(r'export const CATALOGUE_OUTDOORS = (.*?) as const;', module.generate(), re.S).group(1))
+        multis = [p for p in profiles if 'installation' in p]
+        self.assertEqual(len(multis), 9)
+        self.assertEqual(sum(len(p['installation']['ports']) for p in multis), 28)
+        for profile in multis:
+            installation = profile['installation']
+            self.assertEqual(profile['compatibleIndoorClasses'], [])
+            self.assertEqual(installation['exactEligibility'], 'unknown')
+            self.assertEqual(installation['minimumConnectedHeads'], 2)
+            self.assertEqual(installation['maximumConnectedHeads'], profile['ports'])
+            self.assertIsNone(profile['coolingHighFanFlowM3h'])
+            self.assertNotIn('factoryCharge', profile)
+            self.assertNotIn('nominalCoolingKw', profile)
+        caps = {p['id']: p['installation']['publishedMaximumTotalChargeKg'] for p in multis}
+        self.assertEqual(caps['3MXM52A2V1B8'], 2.2)
+        self.assertIsNone(caps['2MXM50A2V1B8'])
+
+    def test_multisplit_review_binding_and_unknown_pairing_boundary(self):
+        import copy
+        accepted = copy.deepcopy(next(e for e in self.review['units'] if e.get('topology') == 'multisplit'))
+        document = json.loads((ROOT / accepted['candidateFile']).read_text())
+        unit = next(u for u in document['units'] if u['modelReference'] == accepted['candidateReference'])
+        accepted['compatibleIndoorClasses'] = ['FTXA25']
+        with self.assertRaisesRegex(ValueError, 'must remain unknown'):
+            module.multisplit_installation(unit, accepted, ROOT)
+        accepted['compatibleIndoorClasses'] = []
+        accepted['candidateSha256'] = '0' * 64
+        with self.assertRaisesRegex(ValueError, 'does not bind'):
+            module.multisplit_installation(unit, accepted, ROOT)
+
+    def test_multisplit_conditional_42_and_port_C_reducers_stay_distinct(self):
+        profiles = json.loads(re.search(r'export const CATALOGUE_OUTDOORS = (.*?) as const;', module.generate(), re.S).group(1))
+        port_a = next(p for p in profiles if p['id'] == '2MXM50A2V1B8')['installation']['ports'][0]
+        alternatives = [p for p in port_a['alternatives'] if 42 in p['capacityClasses']]
+        self.assertEqual(len(alternatives), 2)
+        self.assertEqual(alternatives[0]['onlyGuideNamedIndoorClasses'], ['FTXM42R', 'FTXM42A', 'FTXA42C'])
+        self.assertNotIn('onlyGuideNamedIndoorClasses', alternatives[1])
+        self.assertIn('optional accessory', alternatives[1]['reducer'])
+        port_c = next(p for p in profiles if p['id'] == '4MXM80A2V1B8')['installation']['ports'][2]
+        self.assertEqual([p['reducer'] for p in port_c['alternatives']], ['5+6', '5+6', '1+3', 'none'])
+
+    def test_multisplit_sources_are_required_instead_of_optional_cache_fallback(self):
+        import shutil
+        accepted = next(e for e in self.review['units'] if e.get('topology') == 'multisplit')
+        doc = json.loads((ROOT / accepted['candidateFile']).read_text())
+        unit = next(u for u in doc['units'] if u['modelReference'] == accepted['candidateReference'])
+        with tempfile.TemporaryDirectory() as directory:
+            isolated = Path(directory)
+            receipt = isolated / accepted['installationReview']['path']
+            receipt.parent.mkdir(parents=True)
+            shutil.copyfile(ROOT / accepted['installationReview']['path'], receipt)
+            with self.assertRaisesRegex(ValueError, 'primary source is missing'):
+                module.multisplit_installation(unit, accepted, isolated)
 
     def test_daikin_colour_pairing_and_unpublished_airflow_are_explicit(self):
         outdoors = [u for u in self.review['units']

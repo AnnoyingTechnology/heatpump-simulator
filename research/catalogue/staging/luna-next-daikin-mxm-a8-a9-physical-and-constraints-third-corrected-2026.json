@@ -1,0 +1,2862 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Daikin MXM A8/A9 multisplit outdoor units — physical and installation constraints, corrected research batch",
+  "market": "France / Europe residential air-to-air; Daikin Europe General Catalogue ECPEN26-500 and exact Daikin France/Europe technical references",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "p329",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/329/",
+      "title": "Daikin Europe General Catalogue ECPEN26-500, printed p.329",
+      "edition": "ECPEN26-500, 02/2026",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "t2a8",
+      "url": "https://www.daikin.eu/en_us/products/product.table.html/2MXM-A8.html",
+      "title": "Daikin Europe Specifications Table 2MXM-A8",
+      "edition": "Product table retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "t3a8",
+      "url": "https://www.daikin.ie/en_gb/products/product.table.html/3MXM-A8.html",
+      "title": "Daikin Europe Specifications Table 3MXM-A8",
+      "edition": "Product table retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "t4a8",
+      "url": "https://www.daikin.eu/en_us/products/product.table.html/4MXM-A8.html",
+      "title": "Daikin Europe Specifications Table 4MXM-A8",
+      "edition": "Product table retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "t5a8",
+      "url": "https://www.daikin.eu/en_us/products/product.table.html/5MXM-A8.html",
+      "title": "Daikin Europe Specifications Table 5MXM-A8",
+      "edition": "Product table retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "t2a9",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/2MXM-A9.html",
+      "title": "Daikin France Tableau avec les données techniques 2MXM-A9",
+      "edition": "Product table retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "g4c",
+      "url": "https://www.daikin.eu/content/dam/document-library/Installer-reference-guide/ac/split/2mxm-a8/2MXM40A9.2MXM50A8_Installer%20reference%20guide_4PEN766272-4C_English.pdf",
+      "title": "Daikin Europe Installer reference guide 2MXM40A9 / 2MXM50A8",
+      "edition": "4PEN766272-4C, 2025.05",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "g5c",
+      "url": "https://www.daikin.eu/content/dam/document-library/Installer-reference-guide/ac/split/2mxm-a8/2MXM68A8.3MXM-A8.4MXM-A8.5MXM-A8_Installer%20reference%20guide_4PEN766272-5C_English.pdf",
+      "title": "Daikin Europe Installer reference guide 2MXM-A8, 3MXM-A8, 4MXM-A8, 5MXM-A8",
+      "edition": "4PEN766272-5C, 2025.05",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "p2a8",
+      "url": "https://www.daikin.eu/en_us/products/product.html/2MXM-A8.html",
+      "title": "Daikin Europe product page 2MXM-A8",
+      "edition": "Product page retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "p3a8",
+      "url": "https://www.daikin.eu/en_us/products/product.html/3MXM-A8.html",
+      "title": "Daikin Europe product page 3MXM-A8",
+      "edition": "Product page retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "p4a8",
+      "url": "https://www.daikin.eu/en_us/products/product.html/4MXM-A8.html",
+      "title": "Daikin Europe product page 4MXM-A8",
+      "edition": "Product page retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "p5a8",
+      "url": "https://www.daikin.eu/en_us/products/product.html/5MXM-A8.html",
+      "title": "Daikin Europe product page 5MXM-A8",
+      "edition": "Product page retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "p2a9",
+      "url": "https://www.daikin.eu/en_us/products/product.html/2MXM-A9.html",
+      "title": "Daikin Europe product page 2MXM-A9",
+      "edition": "Product page retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "2MXM40A2V1B9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "t2a9",
+        "locator": "Exact full model reference column 2MXM40A2V1B9.",
+        "excerpt": "2MXM40A2V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 552,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t2a9",
+            "locator": "Exact model column 2MXM40A2V1B9; Dimensions / Unit / Height.",
+            "excerpt": "2MXM40A2V1B9 | Height | 552 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 852,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t2a9",
+            "locator": "Exact model column 2MXM40A2V1B9; Dimensions / Unit / Width.",
+            "excerpt": "2MXM40A2V1B9 | Width | 852 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 350,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t2a9",
+            "locator": "Exact model column 2MXM40A2V1B9; Dimensions / Unit / Depth.",
+            "excerpt": "2MXM40A2V1B9 | Depth | 350 mm"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 36,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t2a9",
+            "locator": "Exact model column 2MXM40A2V1B9; Weight / Unit.",
+            "excerpt": "2MXM40A2V1B9 | Weight | 36 kg"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t2a9",
+            "locator": "Exact model column 2MXM40A2V1B9; Refrigerant type.",
+            "excerpt": "2MXM40A2V1B9 | Refrigerant | Type | R-32"
+          }
+        },
+        {
+          "key": "factoryCharge",
+          "value": 0.88,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t2a9",
+            "locator": "Exact model column 2MXM40A2V1B9; Refrigerant charge.",
+            "excerpt": "2MXM40A2V1B9 | Refrigerant | Charge | kg | 0.88"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "t2a9",
+            "locator": "Exact model column 2MXM40A2V1B9; cooling outdoor ambient minimum.",
+            "excerpt": "Cooling | Ambient | Min. | °CDB | -10"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "t2a9",
+            "locator": "Exact model class 2MXM40A2V1B9; cooling outdoor ambient maximum.",
+            "excerpt": "Cooling | Ambient | Max. | °CDB | 46"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 2MXM40A2V1B9, heating ambient row.",
+            "excerpt": "2MXM40A2V1B9 | Heating Ambient | °CWB | -15~18"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 2MXM40A2V1B9, heating ambient row.",
+            "excerpt": "2MXM40A2V1B9 | Heating Ambient | °CWB | -15~18"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 2,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "p2a9",
+            "locator": "Product features, maximum indoor units connectable.",
+            "excerpt": "Up to 2 indoor units can be connected to 1 multi outdoor unit."
+          }
+        },
+        {
+          "key": "maximumBranchPipeLength",
+          "value": 20,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "t2a9",
+            "locator": "Piping length OU - IU, Max., for one room.",
+            "excerpt": "Piping length | OU - IU | Max. | m | 20"
+          },
+          "condition": "Maximum length per room / outdoor-to-indoor branch as table labels it."
+        },
+        {
+          "key": "additionalChargePerLength",
+          "value": 0.02,
+          "unit": "kg/m",
+          "evidence": {
+            "sourceId": "t2a9",
+            "locator": "Additional refrigerant charge row, threshold specified in source.",
+            "excerpt": "Additional refrigerant charge | kg/m | 0.02 for piping length exceeding 20 m"
+          },
+          "condition": "Applies only beyond the manufacturer-stated threshold; not an initial charge."
+        },
+        {
+          "key": "supplyPhases",
+          "value": 1,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t2a9",
+            "locator": "Power supply, Phase.",
+            "excerpt": "Power supply | Phase | 1~"
+          }
+        },
+        {
+          "key": "supplyFrequency",
+          "value": 50,
+          "unit": "Hz",
+          "evidence": {
+            "sourceId": "t2a9",
+            "locator": "Power supply, Frequency.",
+            "excerpt": "Power supply | Frequency | Hz | 50"
+          }
+        },
+        {
+          "key": "supplyVoltage",
+          "value": {
+            "minimum": 220,
+            "maximum": 240
+          },
+          "unit": "V",
+          "evidence": {
+            "sourceId": "t2a9",
+            "locator": "Power supply voltage.",
+            "excerpt": "Power supply | Voltage | V | 220-240"
+          }
+        },
+        {
+          "key": "maximumTotalPipeLength",
+          "value": 30,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.33, installer reference guide §7.1.3, Refrigerant piping total length.",
+            "excerpt": "Refrigerant piping total length | ≤30 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.33, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.33, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.33, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.33, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The manufacturer's connected indoor capacity-class sum limit is ≤6.0 kW. This is a connection-class ceiling for the installed combination, not delivered thermal output, nominal cooling capacity, or a compressor rating. Do not convert it to a 3.4 kW nominal rating or add connection classes as output capacity.",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.37, installer reference guide §7.2.6, total indoor unit capacity class table.",
+            "excerpt": "2MXM40A | total connected indoor unit capacity class ≤6.0 kW."
+          }
+        },
+        {
+          "description": "At least 2 indoor units must be physically connected to the outdoor unit (maximum 2). This is an installed connection count, not a minimum number of heads that must be enabled or running; an inactive connected head still occupies a port.",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.37, §7.2.6, note immediately following the connected indoor capacity class table.",
+            "excerpt": "It is NOT possible to connect only 1 indoor unit. Connect at least 2 indoor units."
+          }
+        },
+        {
+          "description": "The 2026 Europe catalogue matrix groups connectable indoor families as FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Family list is recorded only; no unsupported union of these families with every port class is asserted.",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, Connectable indoor units matrix family headings.",
+            "excerpt": "Connectable indoor units | FTXJ-A9 | C/FTXA-C/D | C/FTXM-A | FTXP-N9 | FDXM-F9 | FBA-A(9) | C/FVXM-B | FCAG-B | FFA-A9 | FHA-A(9) | FNA-A9"
+          }
+        },
+        {
+          "description": "Port A (gas connection Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.37, installer reference guide §7.2.6, port/class/reducer table, 2MXM40A2V1B9, port A.",
+            "excerpt": "2MXM40A, port A (Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none."
+          }
+        },
+        {
+          "description": "Port B (gas connection Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.37, installer reference guide §7.2.6, port/class/reducer table, 2MXM40A2V1B9, port B.",
+            "excerpt": "2MXM40A, port B (Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none."
+          }
+        }
+      ],
+      "unknowns": [
+        "No standalone delivered heating/cooling capacity is published for this multi outdoor by these tables; output is combination-specific and cannot be inferred from model digits or the connected indoor-class ceiling.",
+        "Outdoor airflow is not present in the cited technical tables; no value is assumed.",
+        "Exact full-indoor-reference × size combinations and their performance ratings are not included; preserve unknown compatibility until exact matrix cells/table rows are independently aligned.",
+        "Published range and combination limits are not compressor performance maps or minimum/maximum capacity curves.",
+        "Maximum allowable total refrigerant charge, including additional field charge, is not stated in the cited model-matching guide; do not derive a cap from factory charge."
+      ]
+    },
+    {
+      "modelReference": "2MXM50A2V1B8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "t2a8",
+        "locator": "Exact full model reference column 2MXM50A2V1B8.",
+        "excerpt": "2MXM50A2V1B8"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 552,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Exact model column 2MXM50A2V1B8; Dimensions / Unit / Height.",
+            "excerpt": "2MXM50A2V1B8 | Height | 552 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 852,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Exact model column 2MXM50A2V1B8; Dimensions / Unit / Width.",
+            "excerpt": "2MXM50A2V1B8 | Width | 852 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 350,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Exact model column 2MXM50A2V1B8; Dimensions / Unit / Depth.",
+            "excerpt": "2MXM50A2V1B8 | Depth | 350 mm"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 41,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Exact model column 2MXM50A2V1B8; Weight / Unit.",
+            "excerpt": "2MXM50A2V1B8 | Weight | 41 kg"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Exact model column 2MXM50A2V1B8; Refrigerant type.",
+            "excerpt": "2MXM50A2V1B8 | Refrigerant | Type | R-32"
+          }
+        },
+        {
+          "key": "factoryCharge",
+          "value": 1.15,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Exact model column 2MXM50A2V1B8; Refrigerant charge.",
+            "excerpt": "2MXM50A2V1B8 | Refrigerant | Charge | kg | 1.15"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Exact model column 2MXM50A2V1B8; cooling outdoor ambient minimum.",
+            "excerpt": "Cooling | Ambient | Min. | °CDB | -10"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Exact model class 2MXM50A2V1B8; cooling outdoor ambient maximum.",
+            "excerpt": "Cooling | Ambient | Max. | °CDB | 50"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -20,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 2MXM50A2V1B8, heating ambient row.",
+            "excerpt": "2MXM50A2V1B8 | Heating Ambient | °CWB | -20~24"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 2MXM50A2V1B8, heating ambient row.",
+            "excerpt": "2MXM50A2V1B8 | Heating Ambient | °CWB | -20~24"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 2,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "p2a8",
+            "locator": "Product features, maximum indoor units connectable.",
+            "excerpt": "Up to 2 indoor units can be connected to 1 multi outdoor unit."
+          }
+        },
+        {
+          "key": "maximumBranchPipeLength",
+          "value": 20,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Piping length OU - IU, Max., for one room.",
+            "excerpt": "Piping length | OU - IU | Max. | m | 20"
+          },
+          "condition": "Maximum length per room / outdoor-to-indoor branch as table labels it."
+        },
+        {
+          "key": "additionalChargePerLength",
+          "value": 0.02,
+          "unit": "kg/m",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Additional refrigerant charge row, threshold specified in source.",
+            "excerpt": "Additional refrigerant charge | kg/m | 0.02 for piping length exceeding 20 m"
+          },
+          "condition": "Applies only beyond the manufacturer-stated threshold; not an initial charge."
+        },
+        {
+          "key": "supplyPhases",
+          "value": 1,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Power supply, Phase.",
+            "excerpt": "Power supply | Phase | 1~"
+          }
+        },
+        {
+          "key": "supplyFrequency",
+          "value": 50,
+          "unit": "Hz",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Power supply, Frequency.",
+            "excerpt": "Power supply | Frequency | Hz | 50"
+          }
+        },
+        {
+          "key": "supplyVoltage",
+          "value": {
+            "minimum": 220,
+            "maximum": 240
+          },
+          "unit": "V",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Power supply voltage.",
+            "excerpt": "Power supply | Voltage | V | 220-240"
+          }
+        },
+        {
+          "key": "maximumTotalPipeLength",
+          "value": 30,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.33, installer reference guide §7.1.3, Refrigerant piping total length.",
+            "excerpt": "Refrigerant piping total length | ≤30 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.33, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.33, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.33, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.33, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        },
+        {
+          "key": "additionalChargePerLength",
+          "value": 0.02,
+          "unit": "kg/m",
+          "condition": "Europe catalogue p.329 states 0.02 kg/m when piping exceeds 30 m; this conflicts with the exact-model table and guide threshold of 20 m. Preserve as a source-specific statement, not a replacement.",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, Refrigerant / Additional refrigerant charge row, shared A8 columns.",
+            "excerpt": "Additional refrigerant charge | 0.02 kg/m (for piping length exceeding 30 m)"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The manufacturer's connected indoor capacity-class sum limit is ≤8.5 kW. This is a connection-class ceiling for the installed combination, not delivered thermal output, nominal cooling capacity, or a compressor rating. Do not convert it to a 3.4 kW nominal rating or add connection classes as output capacity.",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.37, installer reference guide §7.2.6, total indoor unit capacity class table.",
+            "excerpt": "2MXM50A | total connected indoor unit capacity class ≤8.5 kW."
+          }
+        },
+        {
+          "description": "At least 2 indoor units must be physically connected to the outdoor unit (maximum 2). This is an installed connection count, not a minimum number of heads that must be enabled or running; an inactive connected head still occupies a port.",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.37, §7.2.6, note immediately following the connected indoor capacity class table.",
+            "excerpt": "It is NOT possible to connect only 1 indoor unit. Connect at least 2 indoor units."
+          }
+        },
+        {
+          "description": "The 2026 Europe catalogue matrix groups connectable indoor families as FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Family list is recorded only; no unsupported union of these families with every port class is asserted.",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, Connectable indoor units matrix family headings.",
+            "excerpt": "Connectable indoor units | FTXJ-A9 | C/FTXA-C/D | C/FTXM-A | FTXP-N9 | FDXM-F9 | FBA-A(9) | C/FVXM-B | FCAG-B | FFA-A9 | FHA-A(9) | FNA-A9"
+          }
+        },
+        {
+          "description": "Port A (gas connection Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42 -> reducer OPTIONAL ACCESSORY (accessory identity not given in table). These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.37, installer reference guide §7.2.6, port/class/reducer table, 2MXM50A2V1B8, port A.",
+            "excerpt": "2MXM50A, port A (Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42 -> reducer OPTIONAL ACCESSORY (accessory identity not given in table)."
+          }
+        },
+        {
+          "description": "Port B (gas connection Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 1+2; classes 42 -> reducer 1+2; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g4c",
+            "locator": "Printed p.37, installer reference guide §7.2.6, port/class/reducer table, 2MXM50A2V1B8, port B.",
+            "excerpt": "2MXM50A, port B (Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 1+2; classes 42 -> reducer 1+2; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50 -> reducer none."
+          }
+        },
+        {
+          "description": "The Europe catalogue p.329 reports an additional-charge threshold above 30 m for the shared A8 table row; the exact model technical table and installer guide report 20 m for 2MXM50A2V1B8. These are conflicting source-specific threshold statements and must remain distinguishable.",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, refrigerant charge table; visually merged row across 2MXM50A8 and larger A8 classes.",
+            "excerpt": "System chargeless | 30 m; Additional refrigerant charge | 0.02 kg/m (for piping length exceeding 30 m)."
+          }
+        }
+      ],
+      "unknowns": [
+        "No standalone delivered heating/cooling capacity is published for this multi outdoor by these tables; output is combination-specific and cannot be inferred from model digits or the connected indoor-class ceiling.",
+        "Outdoor airflow is not present in the cited technical tables; no value is assumed.",
+        "Exact full-indoor-reference × size combinations and their performance ratings are not included; preserve unknown compatibility until exact matrix cells/table rows are independently aligned.",
+        "Published range and combination limits are not compressor performance maps or minimum/maximum capacity curves.",
+        "Maximum allowable total refrigerant charge, including additional field charge, is not stated in the cited model-matching guide; do not derive a cap from factory charge.",
+        "Source discrepancy: exact model technical table and guide 4C state no additional charge through 20 m and 0.02 kg/m beyond 20 m; Europe catalogue p.329 visually groups a >30 m threshold across this and larger A8 models. Keep the exact-model table/guide value with its source condition while retaining the catalogue disagreement; do not treat either as a generic engine charge rule."
+      ]
+    },
+    {
+      "modelReference": "2MXM68A2V1B8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "t2a8",
+        "locator": "Exact full model reference column 2MXM68A2V1B8.",
+        "excerpt": "2MXM68A2V1B8"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Exact model column 2MXM68A2V1B8; Dimensions / Unit / Height.",
+            "excerpt": "2MXM68A2V1B8 | Height | 734 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 974,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Exact model column 2MXM68A2V1B8; Dimensions / Unit / Width.",
+            "excerpt": "2MXM68A2V1B8 | Width | 974 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 408,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Exact model column 2MXM68A2V1B8; Dimensions / Unit / Depth.",
+            "excerpt": "2MXM68A2V1B8 | Depth | 408 mm"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 60,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Exact model column 2MXM68A2V1B8; Weight / Unit.",
+            "excerpt": "2MXM68A2V1B8 | Weight | 60 kg"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Exact model column 2MXM68A2V1B8; Refrigerant type.",
+            "excerpt": "2MXM68A2V1B8 | Refrigerant | Type | R-32"
+          }
+        },
+        {
+          "key": "factoryCharge",
+          "value": 2.0,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Exact model column 2MXM68A2V1B8; Refrigerant charge.",
+            "excerpt": "2MXM68A2V1B8 | Refrigerant | Charge | kg | 2.0"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Exact model column 2MXM68A2V1B8; cooling outdoor ambient minimum.",
+            "excerpt": "Cooling | Ambient | Min. | °CDB | -10"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Exact model class 2MXM68A2V1B8; cooling outdoor ambient maximum.",
+            "excerpt": "Cooling | Ambient | Max. | °CDB | 50"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -20,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 2MXM68A2V1B8, heating ambient row.",
+            "excerpt": "2MXM68A2V1B8 | Heating Ambient | °CWB | -20~24"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 2MXM68A2V1B8, heating ambient row.",
+            "excerpt": "2MXM68A2V1B8 | Heating Ambient | °CWB | -20~24"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 2,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "p2a8",
+            "locator": "Product features, maximum indoor units connectable.",
+            "excerpt": "Up to 2 indoor units can be connected to 1 multi outdoor unit."
+          }
+        },
+        {
+          "key": "maximumBranchPipeLength",
+          "value": 25,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Piping length OU - IU, Max., for one room.",
+            "excerpt": "Piping length | OU - IU | Max. | m | 25"
+          },
+          "condition": "Maximum length per room / outdoor-to-indoor branch as table labels it."
+        },
+        {
+          "key": "additionalChargePerLength",
+          "value": 0.02,
+          "unit": "kg/m",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Additional refrigerant charge row, threshold specified in source.",
+            "excerpt": "Additional refrigerant charge | kg/m | 0.02 for piping length exceeding 30 m"
+          },
+          "condition": "Applies only beyond the manufacturer-stated threshold; not an initial charge."
+        },
+        {
+          "key": "supplyPhases",
+          "value": 1,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Power supply, Phase.",
+            "excerpt": "Power supply | Phase | 1~"
+          }
+        },
+        {
+          "key": "supplyFrequency",
+          "value": 50,
+          "unit": "Hz",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Power supply, Frequency.",
+            "excerpt": "Power supply | Frequency | Hz | 50"
+          }
+        },
+        {
+          "key": "supplyVoltage",
+          "value": {
+            "minimum": 220,
+            "maximum": 240
+          },
+          "unit": "V",
+          "evidence": {
+            "sourceId": "t2a8",
+            "locator": "Power supply voltage.",
+            "excerpt": "Power supply | Voltage | V | 220-240"
+          }
+        },
+        {
+          "key": "maximumTotalPipeLength",
+          "value": 50,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Refrigerant piping total length.",
+            "excerpt": "2MXM68 | refrigerant piping total length | ≤50 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The manufacturer's connected indoor capacity-class sum limit is ≤10.2 kW. This is a connection-class ceiling for the installed combination, not delivered thermal output, nominal cooling capacity, or a compressor rating. Do not convert it to a 3.4 kW nominal rating or add connection classes as output capacity.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.38, installer reference guide §7.2.6, total indoor unit capacity class table.",
+            "excerpt": "2MXM68A | total connected indoor unit capacity class ≤10.2 kW."
+          }
+        },
+        {
+          "description": "At least 2 indoor units must be physically connected to the outdoor unit (maximum 2). This is an installed connection count, not a minimum number of heads that must be enabled or running; an inactive connected head still occupies a port.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.38, §7.2.6, note immediately following the connected indoor capacity class table.",
+            "excerpt": "It is NOT possible to connect only 1 indoor unit. Connect at least 2 indoor units."
+          }
+        },
+        {
+          "description": "The 2026 Europe catalogue matrix groups connectable indoor families as FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Family list is recorded only; no unsupported union of these families with every port class is asserted.",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, Connectable indoor units matrix family headings.",
+            "excerpt": "Connectable indoor units | FTXJ-A9 | C/FTXA-C/D | C/FTXM-A | FTXP-N9 | FDXM-F9 | FBA-A(9) | C/FVXM-B | FCAG-B | FFA-A9 | FHA-A(9) | FNA-A9"
+          }
+        },
+        {
+          "description": "Port A (gas connection Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 2MXM68A2V1B8, port A.",
+            "excerpt": "2MXM68A, port A (Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C."
+          }
+        },
+        {
+          "description": "Port B (gas connection Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4; classes 42 -> reducer 2+4; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 2MXM68A2V1B8, port B.",
+            "excerpt": "2MXM68A, port B (Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4; classes 42 -> reducer 2+4; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer none."
+          }
+        },
+        {
+          "description": "Maximum allowable total refrigerant charge, including field-added refrigerant, is 2.4 kg for 2MXM68A2V1B8. Do not exceed this model-specific charge cap.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.48, installer reference guide §8.4, table 8-1 “Maximum allowable refrigerant charge amount”.",
+            "excerpt": "2MXM68 | Maximum allowable refrigerant charge amount | 2.4 kg"
+          }
+        }
+      ],
+      "unknowns": [
+        "No standalone delivered heating/cooling capacity is published for this multi outdoor by these tables; output is combination-specific and cannot be inferred from model digits or the connected indoor-class ceiling.",
+        "Outdoor airflow is not present in the cited technical tables; no value is assumed.",
+        "Exact full-indoor-reference × size combinations and their performance ratings are not included; preserve unknown compatibility until exact matrix cells/table rows are independently aligned.",
+        "Published range and combination limits are not compressor performance maps or minimum/maximum capacity curves."
+      ]
+    },
+    {
+      "modelReference": "3MXM40A2V1B8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "t3a8",
+        "locator": "Exact full model reference column 3MXM40A2V1B8.",
+        "excerpt": "3MXM40A2V1B8"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM40A2V1B8; Dimensions / Unit / Height.",
+            "excerpt": "3MXM40A2V1B8 | Height | 734 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 974,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM40A2V1B8; Dimensions / Unit / Width.",
+            "excerpt": "3MXM40A2V1B8 | Width | 974 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 408,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM40A2V1B8; Dimensions / Unit / Depth.",
+            "excerpt": "3MXM40A2V1B8 | Depth | 408 mm"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 57,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM40A2V1B8; Weight / Unit.",
+            "excerpt": "3MXM40A2V1B8 | Weight | 57 kg"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM40A2V1B8; Refrigerant type.",
+            "excerpt": "3MXM40A2V1B8 | Refrigerant | Type | R-32"
+          }
+        },
+        {
+          "key": "factoryCharge",
+          "value": 1.8,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM40A2V1B8; Refrigerant charge.",
+            "excerpt": "3MXM40A2V1B8 | Refrigerant | Charge | kg | 1.8"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM40A2V1B8; cooling outdoor ambient minimum.",
+            "excerpt": "Cooling | Ambient | Min. | °CDB | -10"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Exact model class 3MXM40A2V1B8; cooling outdoor ambient maximum.",
+            "excerpt": "Cooling | Ambient | Max. | °CDB | 50"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -20,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 3MXM40A2V1B8, heating ambient row.",
+            "excerpt": "3MXM40A2V1B8 | Heating Ambient | °CWB | -20~24"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 3MXM40A2V1B8, heating ambient row.",
+            "excerpt": "3MXM40A2V1B8 | Heating Ambient | °CWB | -20~24"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 3,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "p3a8",
+            "locator": "Product features, maximum indoor units connectable.",
+            "excerpt": "Up to 3 indoor units can be connected to 1 multi outdoor unit."
+          }
+        },
+        {
+          "key": "maximumBranchPipeLength",
+          "value": 25,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Piping length OU - IU, Max., for one room.",
+            "excerpt": "Piping length | OU - IU | Max. | m | 25"
+          },
+          "condition": "Maximum length per room / outdoor-to-indoor branch as table labels it."
+        },
+        {
+          "key": "additionalChargePerLength",
+          "value": 0.02,
+          "unit": "kg/m",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Additional refrigerant charge row, threshold specified in source.",
+            "excerpt": "Additional refrigerant charge | kg/m | 0.02 for piping length exceeding 30 m"
+          },
+          "condition": "Applies only beyond the manufacturer-stated threshold; not an initial charge."
+        },
+        {
+          "key": "supplyPhases",
+          "value": 1,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Power supply, Phase.",
+            "excerpt": "Power supply | Phase | 1~"
+          }
+        },
+        {
+          "key": "supplyFrequency",
+          "value": 50,
+          "unit": "Hz",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Power supply, Frequency.",
+            "excerpt": "Power supply | Frequency | Hz | 50"
+          }
+        },
+        {
+          "key": "supplyVoltage",
+          "value": {
+            "minimum": 220,
+            "maximum": 240
+          },
+          "unit": "V",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Power supply voltage.",
+            "excerpt": "Power supply | Voltage | V | 220-240"
+          }
+        },
+        {
+          "key": "maximumTotalPipeLength",
+          "value": 50,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Refrigerant piping total length.",
+            "excerpt": "3MXM40 | refrigerant piping total length | ≤50 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The manufacturer's connected indoor capacity-class sum limit is ≤7.0 kW. This is a connection-class ceiling for the installed combination, not delivered thermal output, nominal cooling capacity, or a compressor rating. Do not convert it to a 3.4 kW nominal rating or add connection classes as output capacity.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.38, installer reference guide §7.2.6, total indoor unit capacity class table.",
+            "excerpt": "3MXM40A | total connected indoor unit capacity class ≤7.0 kW."
+          }
+        },
+        {
+          "description": "At least 2 indoor units must be physically connected to the outdoor unit (maximum 3). This is an installed connection count, not a minimum number of heads that must be enabled or running; an inactive connected head still occupies a port.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.38, §7.2.6, note immediately following the connected indoor capacity class table.",
+            "excerpt": "It is NOT possible to connect only 1 indoor unit. Connect at least 2 indoor units."
+          }
+        },
+        {
+          "description": "The 2026 Europe catalogue matrix groups connectable indoor families as FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Family list is recorded only; no unsupported union of these families with every port class is asserted.",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, Connectable indoor units matrix family headings.",
+            "excerpt": "Connectable indoor units | FTXJ-A9 | C/FTXA-C/D | C/FTXM-A | FTXP-N9 | FDXM-F9 | FBA-A(9) | C/FVXM-B | FCAG-B | FFA-A9 | FHA-A(9) | FNA-A9"
+          }
+        },
+        {
+          "description": "Special restriction applies only when used with the specifically named CVXM-A and/or FVXM-A indoor references: total liquid piping must be ≤30 m and additional refrigerant charge is not allowed. The guide exempts CVXM-A9/FVXM-A9. This candidate does not extend the restriction to different C/FVXM-B references.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34 §7.1.3 for the ≤30 m total liquid piping restriction; printed p.48 §8.4 for the no-additional-charge rule and CVXM-A9/FVXM-A9 exemption.",
+            "excerpt": "3MXM40 or 3MXM52 with CVXM-A and/or FVXM-A: total liquid refrigerant piping length MUST be ≤30 m; additional refrigerant charge is NOT allowed. CVXM-A9, FVXM-A9 is without this limitation."
+          }
+        },
+        {
+          "description": "Port A (gas connection Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 3MXM40A2V1B8, port A.",
+            "excerpt": "3MXM40A, port A (Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none."
+          }
+        },
+        {
+          "description": "Port B (gas connection Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 3MXM40A2V1B8, port B.",
+            "excerpt": "3MXM40A, port B (Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4."
+          }
+        },
+        {
+          "description": "Port C (gas connection Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 3MXM40A2V1B8, port C.",
+            "excerpt": "3MXM40A, port C (Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4."
+          }
+        },
+        {
+          "description": "Maximum allowable total refrigerant charge, including field-added refrigerant, is 2.2 kg for 3MXM40A2V1B8. Do not exceed this model-specific charge cap.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.48, installer reference guide §8.4, table 8-1 “Maximum allowable refrigerant charge amount”.",
+            "excerpt": "3MXM40 | Maximum allowable refrigerant charge amount | 2.2 kg"
+          }
+        }
+      ],
+      "unknowns": [
+        "No standalone delivered heating/cooling capacity is published for this multi outdoor by these tables; output is combination-specific and cannot be inferred from model digits or the connected indoor-class ceiling.",
+        "Outdoor airflow is not present in the cited technical tables; no value is assumed.",
+        "Exact full-indoor-reference × size combinations and their performance ratings are not included; preserve unknown compatibility until exact matrix cells/table rows are independently aligned.",
+        "Published range and combination limits are not compressor performance maps or minimum/maximum capacity curves."
+      ]
+    },
+    {
+      "modelReference": "3MXM52A2V1B8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "t3a8",
+        "locator": "Exact full model reference column 3MXM52A2V1B8.",
+        "excerpt": "3MXM52A2V1B8"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM52A2V1B8; Dimensions / Unit / Height.",
+            "excerpt": "3MXM52A2V1B8 | Height | 734 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 974,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM52A2V1B8; Dimensions / Unit / Width.",
+            "excerpt": "3MXM52A2V1B8 | Width | 974 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 408,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM52A2V1B8; Dimensions / Unit / Depth.",
+            "excerpt": "3MXM52A2V1B8 | Depth | 408 mm"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 57,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM52A2V1B8; Weight / Unit.",
+            "excerpt": "3MXM52A2V1B8 | Weight | 57 kg"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM52A2V1B8; Refrigerant type.",
+            "excerpt": "3MXM52A2V1B8 | Refrigerant | Type | R-32"
+          }
+        },
+        {
+          "key": "factoryCharge",
+          "value": 1.8,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM52A2V1B8; Refrigerant charge.",
+            "excerpt": "3MXM52A2V1B8 | Refrigerant | Charge | kg | 1.8"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM52A2V1B8; cooling outdoor ambient minimum.",
+            "excerpt": "Cooling | Ambient | Min. | °CDB | -10"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Exact model class 3MXM52A2V1B8; cooling outdoor ambient maximum.",
+            "excerpt": "Cooling | Ambient | Max. | °CDB | 50"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -20,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 3MXM52A2V1B8, heating ambient row.",
+            "excerpt": "3MXM52A2V1B8 | Heating Ambient | °CWB | -20~24"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 3MXM52A2V1B8, heating ambient row.",
+            "excerpt": "3MXM52A2V1B8 | Heating Ambient | °CWB | -20~24"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 3,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "p3a8",
+            "locator": "Product features, maximum indoor units connectable.",
+            "excerpt": "Up to 3 indoor units can be connected to 1 multi outdoor unit."
+          }
+        },
+        {
+          "key": "maximumBranchPipeLength",
+          "value": 25,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Piping length OU - IU, Max., for one room.",
+            "excerpt": "Piping length | OU - IU | Max. | m | 25"
+          },
+          "condition": "Maximum length per room / outdoor-to-indoor branch as table labels it."
+        },
+        {
+          "key": "additionalChargePerLength",
+          "value": 0.02,
+          "unit": "kg/m",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Additional refrigerant charge row, threshold specified in source.",
+            "excerpt": "Additional refrigerant charge | kg/m | 0.02 for piping length exceeding 30 m"
+          },
+          "condition": "Applies only beyond the manufacturer-stated threshold; not an initial charge."
+        },
+        {
+          "key": "supplyPhases",
+          "value": 1,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Power supply, Phase.",
+            "excerpt": "Power supply | Phase | 1~"
+          }
+        },
+        {
+          "key": "supplyFrequency",
+          "value": 50,
+          "unit": "Hz",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Power supply, Frequency.",
+            "excerpt": "Power supply | Frequency | Hz | 50"
+          }
+        },
+        {
+          "key": "supplyVoltage",
+          "value": {
+            "minimum": 220,
+            "maximum": 240
+          },
+          "unit": "V",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Power supply voltage.",
+            "excerpt": "Power supply | Voltage | V | 220-240"
+          }
+        },
+        {
+          "key": "maximumTotalPipeLength",
+          "value": 50,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Refrigerant piping total length.",
+            "excerpt": "3MXM52 | refrigerant piping total length | ≤50 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The manufacturer's connected indoor capacity-class sum limit is ≤9.0 kW. This is a connection-class ceiling for the installed combination, not delivered thermal output, nominal cooling capacity, or a compressor rating. Do not convert it to a 3.4 kW nominal rating or add connection classes as output capacity.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.38, installer reference guide §7.2.6, total indoor unit capacity class table.",
+            "excerpt": "3MXM52A | total connected indoor unit capacity class ≤9.0 kW."
+          }
+        },
+        {
+          "description": "At least 2 indoor units must be physically connected to the outdoor unit (maximum 3). This is an installed connection count, not a minimum number of heads that must be enabled or running; an inactive connected head still occupies a port.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.38, §7.2.6, note immediately following the connected indoor capacity class table.",
+            "excerpt": "It is NOT possible to connect only 1 indoor unit. Connect at least 2 indoor units."
+          }
+        },
+        {
+          "description": "The 2026 Europe catalogue matrix groups connectable indoor families as FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Family list is recorded only; no unsupported union of these families with every port class is asserted.",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, Connectable indoor units matrix family headings.",
+            "excerpt": "Connectable indoor units | FTXJ-A9 | C/FTXA-C/D | C/FTXM-A | FTXP-N9 | FDXM-F9 | FBA-A(9) | C/FVXM-B | FCAG-B | FFA-A9 | FHA-A(9) | FNA-A9"
+          }
+        },
+        {
+          "description": "Special restriction applies only when used with the specifically named CVXM-A and/or FVXM-A indoor references: total liquid piping must be ≤30 m and additional refrigerant charge is not allowed. The guide exempts CVXM-A9/FVXM-A9. This candidate does not extend the restriction to different C/FVXM-B references.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34 §7.1.3 for the ≤30 m total liquid piping restriction; printed p.48 §8.4 for the no-additional-charge rule and CVXM-A9/FVXM-A9 exemption.",
+            "excerpt": "3MXM40 or 3MXM52 with CVXM-A and/or FVXM-A: total liquid refrigerant piping length MUST be ≤30 m; additional refrigerant charge is NOT allowed. CVXM-A9, FVXM-A9 is without this limitation."
+          }
+        },
+        {
+          "description": "Port A (gas connection Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 3MXM52A2V1B8, port A.",
+            "excerpt": "3MXM52A, port A (Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C."
+          }
+        },
+        {
+          "description": "Port B (gas connection Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4; classes 42, 50 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 3MXM52A2V1B8, port B.",
+            "excerpt": "3MXM52A, port B (Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4; classes 42, 50 -> reducer none."
+          }
+        },
+        {
+          "description": "Port C (gas connection Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4; classes 42, 50 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 3MXM52A2V1B8, port C.",
+            "excerpt": "3MXM52A, port C (Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4; classes 42, 50 -> reducer none."
+          }
+        },
+        {
+          "description": "Maximum allowable total refrigerant charge, including field-added refrigerant, is 2.2 kg for 3MXM52A2V1B8. Do not exceed this model-specific charge cap.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.48, installer reference guide §8.4, table 8-1 “Maximum allowable refrigerant charge amount”.",
+            "excerpt": "3MXM52 | Maximum allowable refrigerant charge amount | 2.2 kg"
+          }
+        }
+      ],
+      "unknowns": [
+        "No standalone delivered heating/cooling capacity is published for this multi outdoor by these tables; output is combination-specific and cannot be inferred from model digits or the connected indoor-class ceiling.",
+        "Outdoor airflow is not present in the cited technical tables; no value is assumed.",
+        "Exact full-indoor-reference × size combinations and their performance ratings are not included; preserve unknown compatibility until exact matrix cells/table rows are independently aligned.",
+        "Published range and combination limits are not compressor performance maps or minimum/maximum capacity curves."
+      ]
+    },
+    {
+      "modelReference": "3MXM68A2V1B8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "t3a8",
+        "locator": "Exact full model reference column 3MXM68A2V1B8.",
+        "excerpt": "3MXM68A2V1B8"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM68A2V1B8; Dimensions / Unit / Height.",
+            "excerpt": "3MXM68A2V1B8 | Height | 734 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 974,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM68A2V1B8; Dimensions / Unit / Width.",
+            "excerpt": "3MXM68A2V1B8 | Width | 974 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 408,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM68A2V1B8; Dimensions / Unit / Depth.",
+            "excerpt": "3MXM68A2V1B8 | Depth | 408 mm"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 62,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM68A2V1B8; Weight / Unit.",
+            "excerpt": "3MXM68A2V1B8 | Weight | 62 kg"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM68A2V1B8; Refrigerant type.",
+            "excerpt": "3MXM68A2V1B8 | Refrigerant | Type | R-32"
+          }
+        },
+        {
+          "key": "factoryCharge",
+          "value": 2.0,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM68A2V1B8; Refrigerant charge.",
+            "excerpt": "3MXM68A2V1B8 | Refrigerant | Charge | kg | 2.0"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Exact model column 3MXM68A2V1B8; cooling outdoor ambient minimum.",
+            "excerpt": "Cooling | Ambient | Min. | °CDB | -10"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Exact model class 3MXM68A2V1B8; cooling outdoor ambient maximum.",
+            "excerpt": "Cooling | Ambient | Max. | °CDB | 50"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -20,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 3MXM68A2V1B8, heating ambient row.",
+            "excerpt": "3MXM68A2V1B8 | Heating Ambient | °CWB | -20~24"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 3MXM68A2V1B8, heating ambient row.",
+            "excerpt": "3MXM68A2V1B8 | Heating Ambient | °CWB | -20~24"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 3,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "p3a8",
+            "locator": "Product features, maximum indoor units connectable.",
+            "excerpt": "Up to 3 indoor units can be connected to 1 multi outdoor unit."
+          }
+        },
+        {
+          "key": "maximumBranchPipeLength",
+          "value": 25,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Piping length OU - IU, Max., for one room.",
+            "excerpt": "Piping length | OU - IU | Max. | m | 25"
+          },
+          "condition": "Maximum length per room / outdoor-to-indoor branch as table labels it."
+        },
+        {
+          "key": "additionalChargePerLength",
+          "value": 0.02,
+          "unit": "kg/m",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Additional refrigerant charge row, threshold specified in source.",
+            "excerpt": "Additional refrigerant charge | kg/m | 0.02 for piping length exceeding 30 m"
+          },
+          "condition": "Applies only beyond the manufacturer-stated threshold; not an initial charge."
+        },
+        {
+          "key": "supplyPhases",
+          "value": 1,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Power supply, Phase.",
+            "excerpt": "Power supply | Phase | 1~"
+          }
+        },
+        {
+          "key": "supplyFrequency",
+          "value": 50,
+          "unit": "Hz",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Power supply, Frequency.",
+            "excerpt": "Power supply | Frequency | Hz | 50"
+          }
+        },
+        {
+          "key": "supplyVoltage",
+          "value": {
+            "minimum": 220,
+            "maximum": 240
+          },
+          "unit": "V",
+          "evidence": {
+            "sourceId": "t3a8",
+            "locator": "Power supply voltage.",
+            "excerpt": "Power supply | Voltage | V | 220-240"
+          }
+        },
+        {
+          "key": "maximumTotalPipeLength",
+          "value": 50,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Refrigerant piping total length.",
+            "excerpt": "3MXM68 | refrigerant piping total length | ≤50 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The manufacturer's connected indoor capacity-class sum limit is ≤11.0 kW. This is a connection-class ceiling for the installed combination, not delivered thermal output, nominal cooling capacity, or a compressor rating. Do not convert it to a 3.4 kW nominal rating or add connection classes as output capacity.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.38, installer reference guide §7.2.6, total indoor unit capacity class table.",
+            "excerpt": "3MXM68A | total connected indoor unit capacity class ≤11.0 kW."
+          }
+        },
+        {
+          "description": "At least 2 indoor units must be physically connected to the outdoor unit (maximum 3). This is an installed connection count, not a minimum number of heads that must be enabled or running; an inactive connected head still occupies a port.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.38, §7.2.6, note immediately following the connected indoor capacity class table.",
+            "excerpt": "It is NOT possible to connect only 1 indoor unit. Connect at least 2 indoor units."
+          }
+        },
+        {
+          "description": "The 2026 Europe catalogue matrix groups connectable indoor families as FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Family list is recorded only; no unsupported union of these families with every port class is asserted.",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, Connectable indoor units matrix family headings.",
+            "excerpt": "Connectable indoor units | FTXJ-A9 | C/FTXA-C/D | C/FTXM-A | FTXP-N9 | FDXM-F9 | FBA-A(9) | C/FVXM-B | FCAG-B | FFA-A9 | FHA-A(9) | FNA-A9"
+          }
+        },
+        {
+          "description": "Port A (gas connection Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 3MXM68A2V1B8, port A.",
+            "excerpt": "3MXM68A, port A (Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C."
+          }
+        },
+        {
+          "description": "Port B (gas connection Ø12.7 mm): classes 15, 20, 25, 35, 42 -> reducer 2+4; classes 50, 60 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 3MXM68A2V1B8, port B.",
+            "excerpt": "3MXM68A, port B (Ø12.7 mm): classes 15, 20, 25, 35, 42 -> reducer 2+4; classes 50, 60 -> reducer none."
+          }
+        },
+        {
+          "description": "Port C (gas connection Ø12.7 mm): classes 15, 20, 25, 35, 42 -> reducer 2+4; classes 50, 60 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 3MXM68A2V1B8, port C.",
+            "excerpt": "3MXM68A, port C (Ø12.7 mm): classes 15, 20, 25, 35, 42 -> reducer 2+4; classes 50, 60 -> reducer none."
+          }
+        },
+        {
+          "description": "Maximum allowable total refrigerant charge, including field-added refrigerant, is 2.4 kg for 3MXM68A2V1B8. Do not exceed this model-specific charge cap.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.48, installer reference guide §8.4, table 8-1 “Maximum allowable refrigerant charge amount”.",
+            "excerpt": "3MXM68 | Maximum allowable refrigerant charge amount | 2.4 kg"
+          }
+        }
+      ],
+      "unknowns": [
+        "No standalone delivered heating/cooling capacity is published for this multi outdoor by these tables; output is combination-specific and cannot be inferred from model digits or the connected indoor-class ceiling.",
+        "Outdoor airflow is not present in the cited technical tables; no value is assumed.",
+        "Exact full-indoor-reference × size combinations and their performance ratings are not included; preserve unknown compatibility until exact matrix cells/table rows are independently aligned.",
+        "Published range and combination limits are not compressor performance maps or minimum/maximum capacity curves."
+      ]
+    },
+    {
+      "modelReference": "4MXM68A2V1B8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "t4a8",
+        "locator": "Exact full model reference column 4MXM68A2V1B8.",
+        "excerpt": "4MXM68A2V1B8"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Exact model column 4MXM68A2V1B8; Dimensions / Unit / Height.",
+            "excerpt": "4MXM68A2V1B8 | Height | 734 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 974,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Exact model column 4MXM68A2V1B8; Dimensions / Unit / Width.",
+            "excerpt": "4MXM68A2V1B8 | Width | 974 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 408,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Exact model column 4MXM68A2V1B8; Dimensions / Unit / Depth.",
+            "excerpt": "4MXM68A2V1B8 | Depth | 408 mm"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 63,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Exact model column 4MXM68A2V1B8; Weight / Unit.",
+            "excerpt": "4MXM68A2V1B8 | Weight | 63 kg"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Exact model column 4MXM68A2V1B8; Refrigerant type.",
+            "excerpt": "4MXM68A2V1B8 | Refrigerant | Type | R-32"
+          }
+        },
+        {
+          "key": "factoryCharge",
+          "value": 2.0,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Exact model column 4MXM68A2V1B8; Refrigerant charge.",
+            "excerpt": "4MXM68A2V1B8 | Refrigerant | Charge | kg | 2.0"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Exact model column 4MXM68A2V1B8; cooling outdoor ambient minimum.",
+            "excerpt": "Cooling | Ambient | Min. | °CDB | -10"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Exact model class 4MXM68A2V1B8; cooling outdoor ambient maximum.",
+            "excerpt": "Cooling | Ambient | Max. | °CDB | 50"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -20,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 4MXM68A2V1B8, heating ambient row.",
+            "excerpt": "4MXM68A2V1B8 | Heating Ambient | °CWB | -20~24"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 4MXM68A2V1B8, heating ambient row.",
+            "excerpt": "4MXM68A2V1B8 | Heating Ambient | °CWB | -20~24"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 4,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "p4a8",
+            "locator": "Product features, maximum indoor units connectable.",
+            "excerpt": "Up to 4 indoor units can be connected to 1 multi outdoor unit."
+          }
+        },
+        {
+          "key": "maximumBranchPipeLength",
+          "value": 25,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Piping length OU - IU, Max., for one room.",
+            "excerpt": "Piping length | OU - IU | Max. | m | 25"
+          },
+          "condition": "Maximum length per room / outdoor-to-indoor branch as table labels it."
+        },
+        {
+          "key": "additionalChargePerLength",
+          "value": 0.02,
+          "unit": "kg/m",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Additional refrigerant charge row, threshold specified in source.",
+            "excerpt": "Additional refrigerant charge | kg/m | 0.02 for piping length exceeding 30 m"
+          },
+          "condition": "Applies only beyond the manufacturer-stated threshold; not an initial charge."
+        },
+        {
+          "key": "supplyPhases",
+          "value": 1,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Power supply, Phase.",
+            "excerpt": "Power supply | Phase | 1~"
+          }
+        },
+        {
+          "key": "supplyFrequency",
+          "value": 50,
+          "unit": "Hz",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Power supply, Frequency.",
+            "excerpt": "Power supply | Frequency | Hz | 50"
+          }
+        },
+        {
+          "key": "supplyVoltage",
+          "value": {
+            "minimum": 220,
+            "maximum": 240
+          },
+          "unit": "V",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Power supply voltage.",
+            "excerpt": "Power supply | Voltage | V | 220-240"
+          }
+        },
+        {
+          "key": "maximumTotalPipeLength",
+          "value": 60,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Refrigerant piping total length.",
+            "excerpt": "4MXM68 | refrigerant piping total length | ≤60 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The manufacturer's connected indoor capacity-class sum limit is ≤11.0 kW. This is a connection-class ceiling for the installed combination, not delivered thermal output, nominal cooling capacity, or a compressor rating. Do not convert it to a 3.4 kW nominal rating or add connection classes as output capacity.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.38, installer reference guide §7.2.6, total indoor unit capacity class table.",
+            "excerpt": "4MXM68A | total connected indoor unit capacity class ≤11.0 kW."
+          }
+        },
+        {
+          "description": "At least 2 indoor units must be physically connected to the outdoor unit (maximum 4). This is an installed connection count, not a minimum number of heads that must be enabled or running; an inactive connected head still occupies a port.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.38, §7.2.6, note immediately following the connected indoor capacity class table.",
+            "excerpt": "It is NOT possible to connect only 1 indoor unit. Connect at least 2 indoor units."
+          }
+        },
+        {
+          "description": "The 2026 Europe catalogue matrix groups connectable indoor families as FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Family list is recorded only; no unsupported union of these families with every port class is asserted.",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, Connectable indoor units matrix family headings.",
+            "excerpt": "Connectable indoor units | FTXJ-A9 | C/FTXA-C/D | C/FTXM-A | FTXP-N9 | FDXM-F9 | FBA-A(9) | C/FVXM-B | FCAG-B | FFA-A9 | FHA-A(9) | FNA-A9"
+          }
+        },
+        {
+          "description": "Port A (gas connection Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 4MXM68A2V1B8, port A.",
+            "excerpt": "4MXM68A, port A (Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C."
+          }
+        },
+        {
+          "description": "Port B (gas connection Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 4MXM68A2V1B8, port B.",
+            "excerpt": "4MXM68A, port B (Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C."
+          }
+        },
+        {
+          "description": "Port C (gas connection Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4; classes 42 -> reducer 2+4; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 4MXM68A2V1B8, port C.",
+            "excerpt": "4MXM68A, port C (Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4; classes 42 -> reducer 2+4; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer none."
+          }
+        },
+        {
+          "description": "Port D (gas connection Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4; classes 42 -> reducer 2+4; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 4MXM68A2V1B8, port D.",
+            "excerpt": "4MXM68A, port D (Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4; classes 42 -> reducer 2+4; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer none."
+          }
+        },
+        {
+          "description": "Maximum allowable total refrigerant charge, including field-added refrigerant, is 2.6 kg for 4MXM68A2V1B8. Do not exceed this model-specific charge cap.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.48, installer reference guide §8.4, table 8-1 “Maximum allowable refrigerant charge amount”.",
+            "excerpt": "4MXM68 | Maximum allowable refrigerant charge amount | 2.6 kg"
+          }
+        }
+      ],
+      "unknowns": [
+        "No standalone delivered heating/cooling capacity is published for this multi outdoor by these tables; output is combination-specific and cannot be inferred from model digits or the connected indoor-class ceiling.",
+        "Outdoor airflow is not present in the cited technical tables; no value is assumed.",
+        "Exact full-indoor-reference × size combinations and their performance ratings are not included; preserve unknown compatibility until exact matrix cells/table rows are independently aligned.",
+        "Published range and combination limits are not compressor performance maps or minimum/maximum capacity curves."
+      ]
+    },
+    {
+      "modelReference": "4MXM80A2V1B8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "t4a8",
+        "locator": "Exact full model reference column 4MXM80A2V1B8.",
+        "excerpt": "4MXM80A2V1B8"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Exact model column 4MXM80A2V1B8; Dimensions / Unit / Height.",
+            "excerpt": "4MXM80A2V1B8 | Height | 734 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 974,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Exact model column 4MXM80A2V1B8; Dimensions / Unit / Width.",
+            "excerpt": "4MXM80A2V1B8 | Width | 974 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 408,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Exact model column 4MXM80A2V1B8; Dimensions / Unit / Depth.",
+            "excerpt": "4MXM80A2V1B8 | Depth | 408 mm"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 67,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Exact model column 4MXM80A2V1B8; Weight / Unit.",
+            "excerpt": "4MXM80A2V1B8 | Weight | 67 kg"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Exact model column 4MXM80A2V1B8; Refrigerant type.",
+            "excerpt": "4MXM80A2V1B8 | Refrigerant | Type | R-32"
+          }
+        },
+        {
+          "key": "factoryCharge",
+          "value": 2.4,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Exact model column 4MXM80A2V1B8; Refrigerant charge.",
+            "excerpt": "4MXM80A2V1B8 | Refrigerant | Charge | kg | 2.4"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Exact model column 4MXM80A2V1B8; cooling outdoor ambient minimum.",
+            "excerpt": "Cooling | Ambient | Min. | °CDB | -10"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Exact model class 4MXM80A2V1B8; cooling outdoor ambient maximum.",
+            "excerpt": "Cooling | Ambient | Max. | °CDB | 50"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -20,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 4MXM80A2V1B8, heating ambient row.",
+            "excerpt": "4MXM80A2V1B8 | Heating Ambient | °CWB | -20~24"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 4MXM80A2V1B8, heating ambient row.",
+            "excerpt": "4MXM80A2V1B8 | Heating Ambient | °CWB | -20~24"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 4,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "p4a8",
+            "locator": "Product features, maximum indoor units connectable.",
+            "excerpt": "Up to 4 indoor units can be connected to 1 multi outdoor unit."
+          }
+        },
+        {
+          "key": "maximumBranchPipeLength",
+          "value": 25,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Piping length OU - IU, Max., for one room.",
+            "excerpt": "Piping length | OU - IU | Max. | m | 25"
+          },
+          "condition": "Maximum length per room / outdoor-to-indoor branch as table labels it."
+        },
+        {
+          "key": "additionalChargePerLength",
+          "value": 0.02,
+          "unit": "kg/m",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Additional refrigerant charge row, threshold specified in source.",
+            "excerpt": "Additional refrigerant charge | kg/m | 0.02 for piping length exceeding 30 m"
+          },
+          "condition": "Applies only beyond the manufacturer-stated threshold; not an initial charge."
+        },
+        {
+          "key": "supplyPhases",
+          "value": 1,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Power supply, Phase.",
+            "excerpt": "Power supply | Phase | 1~"
+          }
+        },
+        {
+          "key": "supplyFrequency",
+          "value": 50,
+          "unit": "Hz",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Power supply, Frequency.",
+            "excerpt": "Power supply | Frequency | Hz | 50"
+          }
+        },
+        {
+          "key": "supplyVoltage",
+          "value": {
+            "minimum": 220,
+            "maximum": 240
+          },
+          "unit": "V",
+          "evidence": {
+            "sourceId": "t4a8",
+            "locator": "Power supply voltage.",
+            "excerpt": "Power supply | Voltage | V | 220-240"
+          }
+        },
+        {
+          "key": "maximumTotalPipeLength",
+          "value": 70,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Refrigerant piping total length.",
+            "excerpt": "4MXM80 | refrigerant piping total length | ≤70 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The manufacturer's connected indoor capacity-class sum limit is ≤14.5 kW. This is a connection-class ceiling for the installed combination, not delivered thermal output, nominal cooling capacity, or a compressor rating. Do not convert it to a 3.4 kW nominal rating or add connection classes as output capacity.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.38, installer reference guide §7.2.6, total indoor unit capacity class table.",
+            "excerpt": "4MXM80A | total connected indoor unit capacity class ≤14.5 kW."
+          }
+        },
+        {
+          "description": "At least 2 indoor units must be physically connected to the outdoor unit (maximum 4). This is an installed connection count, not a minimum number of heads that must be enabled or running; an inactive connected head still occupies a port.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.38, §7.2.6, note immediately following the connected indoor capacity class table.",
+            "excerpt": "It is NOT possible to connect only 1 indoor unit. Connect at least 2 indoor units."
+          }
+        },
+        {
+          "description": "The 2026 Europe catalogue matrix groups connectable indoor families as FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Family list is recorded only; no unsupported union of these families with every port class is asserted.",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, Connectable indoor units matrix family headings.",
+            "excerpt": "Connectable indoor units | FTXJ-A9 | C/FTXA-C/D | C/FTXM-A | FTXP-N9 | FDXM-F9 | FBA-A(9) | C/FVXM-B | FCAG-B | FFA-A9 | FHA-A(9) | FNA-A9"
+          }
+        },
+        {
+          "description": "Port A (gas connection Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 4MXM80A2V1B8, port A.",
+            "excerpt": "4MXM80A, port A (Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C."
+          }
+        },
+        {
+          "description": "Port B (gas connection Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4; classes 42 -> reducer 2+4; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 4MXM80A2V1B8, port B.",
+            "excerpt": "4MXM80A, port B (Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4; classes 42 -> reducer 2+4; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer none."
+          }
+        },
+        {
+          "description": "Port C (gas connection Ø15.9 mm): classes 15, 20, 25, 35 -> reducer 5+6; classes 42 -> reducer 5+6; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer 1+3; classes 71 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 4MXM80A2V1B8, port C.",
+            "excerpt": "4MXM80A, port C (Ø15.9 mm): classes 15, 20, 25, 35 -> reducer 5+6; classes 42 -> reducer 5+6; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer 1+3; classes 71 -> reducer none."
+          }
+        },
+        {
+          "description": "Port D (gas connection Ø15.9 mm): classes 15, 20, 25, 35 -> reducer 5+6; classes 42 -> reducer 5+6; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer 1+3; classes 71 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 4MXM80A2V1B8, port D.",
+            "excerpt": "4MXM80A, port D (Ø15.9 mm): classes 15, 20, 25, 35 -> reducer 5+6; classes 42 -> reducer 5+6; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer 1+3; classes 71 -> reducer none."
+          }
+        },
+        {
+          "description": "Maximum allowable total refrigerant charge, including field-added refrigerant, is 3.2 kg for 4MXM80A2V1B8. Do not exceed this model-specific charge cap.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.48, installer reference guide §8.4, table 8-1 “Maximum allowable refrigerant charge amount”.",
+            "excerpt": "4MXM80 | Maximum allowable refrigerant charge amount | 3.2 kg"
+          }
+        }
+      ],
+      "unknowns": [
+        "No standalone delivered heating/cooling capacity is published for this multi outdoor by these tables; output is combination-specific and cannot be inferred from model digits or the connected indoor-class ceiling.",
+        "Outdoor airflow is not present in the cited technical tables; no value is assumed.",
+        "Exact full-indoor-reference × size combinations and their performance ratings are not included; preserve unknown compatibility until exact matrix cells/table rows are independently aligned.",
+        "Published range and combination limits are not compressor performance maps or minimum/maximum capacity curves."
+      ]
+    },
+    {
+      "modelReference": "5MXM90A2V1B8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "t5a8",
+        "locator": "Exact full model reference column 5MXM90A2V1B8.",
+        "excerpt": "5MXM90A2V1B8"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t5a8",
+            "locator": "Exact model column 5MXM90A2V1B8; Dimensions / Unit / Height.",
+            "excerpt": "5MXM90A2V1B8 | Height | 734 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 974,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t5a8",
+            "locator": "Exact model column 5MXM90A2V1B8; Dimensions / Unit / Width.",
+            "excerpt": "5MXM90A2V1B8 | Width | 974 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 408,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "t5a8",
+            "locator": "Exact model column 5MXM90A2V1B8; Dimensions / Unit / Depth.",
+            "excerpt": "5MXM90A2V1B8 | Depth | 408 mm"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 68,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t5a8",
+            "locator": "Exact model column 5MXM90A2V1B8; Weight / Unit.",
+            "excerpt": "5MXM90A2V1B8 | Weight | 68 kg"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t5a8",
+            "locator": "Exact model column 5MXM90A2V1B8; Refrigerant type.",
+            "excerpt": "5MXM90A2V1B8 | Refrigerant | Type | R-32"
+          }
+        },
+        {
+          "key": "factoryCharge",
+          "value": 2.4,
+          "unit": "kg",
+          "evidence": {
+            "sourceId": "t5a8",
+            "locator": "Exact model column 5MXM90A2V1B8; Refrigerant charge.",
+            "excerpt": "5MXM90A2V1B8 | Refrigerant | Charge | kg | 2.4"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "t5a8",
+            "locator": "Exact model column 5MXM90A2V1B8; cooling outdoor ambient minimum.",
+            "excerpt": "Cooling | Ambient | Min. | °CDB | -10"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Exact model class 5MXM90A2V1B8; cooling outdoor ambient maximum.",
+            "excerpt": "Cooling | Ambient | Max. | °CDB | 50"
+          },
+          "condition": "Outdoor dry-bulb temperature, °CDB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -20,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 5MXM90A2V1B8, heating ambient row.",
+            "excerpt": "5MXM90A2V1B8 | Heating Ambient | °CWB | -20~24"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, exact outdoor class 5MXM90A2V1B8, heating ambient row.",
+            "excerpt": "5MXM90A2V1B8 | Heating Ambient | °CWB | -20~24"
+          },
+          "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 5,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "p5a8",
+            "locator": "Product features, maximum indoor units connectable.",
+            "excerpt": "Up to 5 indoor units can be connected to 1 multi outdoor unit."
+          }
+        },
+        {
+          "key": "maximumBranchPipeLength",
+          "value": 25,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "t5a8",
+            "locator": "Piping length OU - IU, Max., for one room.",
+            "excerpt": "Piping length | OU - IU | Max. | m | 25"
+          },
+          "condition": "Maximum length per room / outdoor-to-indoor branch as table labels it."
+        },
+        {
+          "key": "additionalChargePerLength",
+          "value": 0.02,
+          "unit": "kg/m",
+          "evidence": {
+            "sourceId": "t5a8",
+            "locator": "Additional refrigerant charge row, threshold specified in source.",
+            "excerpt": "Additional refrigerant charge | kg/m | 0.02 for piping length exceeding 30 m"
+          },
+          "condition": "Applies only beyond the manufacturer-stated threshold; not an initial charge."
+        },
+        {
+          "key": "supplyPhases",
+          "value": 1,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "t5a8",
+            "locator": "Power supply, Phase.",
+            "excerpt": "Power supply | Phase | 1~"
+          }
+        },
+        {
+          "key": "supplyFrequency",
+          "value": 50,
+          "unit": "Hz",
+          "evidence": {
+            "sourceId": "t5a8",
+            "locator": "Power supply, Frequency.",
+            "excerpt": "Power supply | Frequency | Hz | 50"
+          }
+        },
+        {
+          "key": "supplyVoltage",
+          "value": {
+            "minimum": 220,
+            "maximum": 240
+          },
+          "unit": "V",
+          "evidence": {
+            "sourceId": "t5a8",
+            "locator": "Power supply voltage.",
+            "excerpt": "Power supply | Voltage | V | 220-240"
+          }
+        },
+        {
+          "key": "maximumTotalPipeLength",
+          "value": 80,
+          "unit": "m",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Refrigerant piping total length.",
+            "excerpt": "5MXM90 | refrigerant piping total length | ≤80 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum outdoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 7.5,
+          "unit": "m",
+          "condition": "Outdoor unit installed higher than indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed higher than indoor unit | outdoor-indoor ≤15 m | indoor-indoor ≤7.5 m"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "Outdoor unit installed lower than at least one indoor unit; maximum indoor-to-indoor height difference.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.34, installer reference guide §7.1.3, Height difference outdoor-indoor / indoor-indoor table.",
+            "excerpt": "Outdoor unit installed lower than at least 1 indoor unit | outdoor-indoor ≤7.5 m | indoor-indoor ≤15 m"
+          }
+        },
+        {
+          "key": "maximumTotalPipeLength",
+          "value": 75,
+          "unit": "m",
+          "condition": "Exact model technical table labels this value Actual; it is not the guide installation limit and remains in conflict with guide ≤80 m.",
+          "evidence": {
+            "sourceId": "t5a8",
+            "locator": "Exact model column 5MXM90A2V1B8; Piping length, Total, Actual.",
+            "excerpt": "5MXM90A2V1B8 | Piping length | Total | Actual | m | 75"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The manufacturer's connected indoor capacity-class sum limit is ≤15.6 kW. This is a connection-class ceiling for the installed combination, not delivered thermal output, nominal cooling capacity, or a compressor rating. Do not convert it to a 3.4 kW nominal rating or add connection classes as output capacity.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.38, installer reference guide §7.2.6, total indoor unit capacity class table.",
+            "excerpt": "5MXM90A | total connected indoor unit capacity class ≤15.6 kW."
+          }
+        },
+        {
+          "description": "At least 2 indoor units must be physically connected to the outdoor unit (maximum 5). This is an installed connection count, not a minimum number of heads that must be enabled or running; an inactive connected head still occupies a port.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.38, §7.2.6, note immediately following the connected indoor capacity class table.",
+            "excerpt": "It is NOT possible to connect only 1 indoor unit. Connect at least 2 indoor units."
+          }
+        },
+        {
+          "description": "The 2026 Europe catalogue matrix groups connectable indoor families as FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Family list is recorded only; no unsupported union of these families with every port class is asserted.",
+          "evidence": {
+            "sourceId": "p329",
+            "locator": "Printed p.329, Connectable indoor units matrix family headings.",
+            "excerpt": "Connectable indoor units | FTXJ-A9 | C/FTXA-C/D | C/FTXM-A | FTXP-N9 | FDXM-F9 | FBA-A(9) | C/FVXM-B | FCAG-B | FFA-A9 | FHA-A(9) | FNA-A9"
+          }
+        },
+        {
+          "description": "Port A (gas connection Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 5MXM90A2V1B8, port A.",
+            "excerpt": "5MXM90A, port A (Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C."
+          }
+        },
+        {
+          "description": "Port B (gas connection Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 5MXM90A2V1B8, port B.",
+            "excerpt": "5MXM90A, port B (Ø9.5 mm): classes 15, 20, 25, 35 -> reducer none; classes 42 -> reducer none; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C."
+          }
+        },
+        {
+          "description": "Port C (gas connection Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4; classes 42 -> reducer 2+4; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 5MXM90A2V1B8, port C.",
+            "excerpt": "5MXM90A, port C (Ø12.7 mm): classes 15, 20, 25, 35 -> reducer 2+4; classes 42 -> reducer 2+4; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer none."
+          }
+        },
+        {
+          "description": "Port D (gas connection Ø15.9 mm): classes 15, 20, 25, 35 -> reducer 5+6; classes 42 -> reducer 5+6; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer 1+3; classes 71 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 5MXM90A2V1B8, port D.",
+            "excerpt": "5MXM90A, port D (Ø15.9 mm): classes 15, 20, 25, 35 -> reducer 5+6; classes 42 -> reducer 5+6; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer 1+3; classes 71 -> reducer none."
+          }
+        },
+        {
+          "description": "Port E (gas connection Ø15.9 mm): classes 15, 20, 25, 35 -> reducer 5+6; classes 42 -> reducer 5+6; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer 1+3; classes 71 -> reducer none. These are connection-class/reducer alternatives only; they do not establish exact indoor family or full-reference eligibility. Reducer numbers identify the guide drawing rows and are not globally stable Daikin part numbers.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.39, installer reference guide §7.2.6, port/class/reducer table, 5MXM90A2V1B8, port E.",
+            "excerpt": "5MXM90A, port E (Ø15.9 mm): classes 15, 20, 25, 35 -> reducer 5+6; classes 42 -> reducer 5+6; footnote (a) restricts class 42 to FTXM42R, FTXM42A, FTXA42C; classes 42, 50, 60 -> reducer 1+3; classes 71 -> reducer none."
+          }
+        },
+        {
+          "description": "The exact model technical table states total piping length “Actual 75 m”; installer guide 5C gives installation maximum ≤80 m. Preserve both source-specific values; do not merge them into one universal limit.",
+          "evidence": {
+            "sourceId": "t5a8",
+            "locator": "Exact model column 5MXM90A2V1B8; Piping length / Total / Actual.",
+            "excerpt": "Piping length | Total | Actual | 75 m"
+          }
+        },
+        {
+          "description": "Maximum allowable total refrigerant charge, including field-added refrigerant, is 3.3 kg for 5MXM90A2V1B8. Do not exceed this model-specific charge cap.",
+          "evidence": {
+            "sourceId": "g5c",
+            "locator": "Printed p.48, installer reference guide §8.4, table 8-1 “Maximum allowable refrigerant charge amount”.",
+            "excerpt": "5MXM90 | Maximum allowable refrigerant charge amount | 3.3 kg"
+          }
+        }
+      ],
+      "unknowns": [
+        "No standalone delivered heating/cooling capacity is published for this multi outdoor by these tables; output is combination-specific and cannot be inferred from model digits or the connected indoor-class ceiling.",
+        "Outdoor airflow is not present in the cited technical tables; no value is assumed.",
+        "Exact full-indoor-reference × size combinations and their performance ratings are not included; preserve unknown compatibility until exact matrix cells/table rows are independently aligned.",
+        "Published range and combination limits are not compressor performance maps or minimum/maximum capacity curves.",
+        "Source discrepancy: the exact model technical table labels total piping length 'Actual 75 m', while installer guide 5C gives an installation limit ≤80 m. Preserve both as source-specific facts; do not collapse them into one universal runtime limit."
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    {
+      "modelReference": "All nine exact MXM outdoor references in this file",
+      "reason": "Standalone capacity and exact full-SKU/head-size compatibility combinations with pair-specific ratings remain unresolved; do not treat the family matrix as a compatibleIndoorClasses union."
+    },
+    {
+      "modelReference": "2MXM40A2V1B9 / 2MXM50A2V1B8 / 2MXM68A2V1B8 / 3MXM40A2V1B8 / 3MXM52A2V1B8 / 3MXM68A2V1B8 / 4MXM68A2V1B8 / 4MXM80A2V1B8 / 5MXM90A2V1B8",
+      "reason": "No outdoor airflow published in the cited technical pages; no airflow value is inferred."
+    }
+  ]
+}

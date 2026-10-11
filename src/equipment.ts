@@ -1,4 +1,5 @@
 import { CATALOGUE_INDOORS, CATALOGUE_OUTDOORS } from './equipment-data';
+import { validateMultisplitInstallation, type MultisplitInstallation } from './equipment-topology';
 import type { Config, IndoorClass, OutdoorKind } from './types';
 
 export type EquipmentManufacturer = 'daikin' | 'mitsubishi-electric' | 'generic';
@@ -19,6 +20,8 @@ export interface OutdoorModelInfo {
   coolingHighFanFlowM3h?: number;
   acceptance: 'owner-reference' | 'generic-assumption' | 'reviewed-fields';
   publishedOperatingRangesC?: { cooling: { minimum: number; maximum: number; condition: string }; heating: { minimum: number; maximum: number; condition: string } };
+  /** Necessary installation rules; exact full-SKU eligibility remains unknown. */
+  installation?: MultisplitInstallation;
 }
 
 const baseIndoor: readonly IndoorClass[] = ['FTXA25', 'FTXA35', 'G25', 'G35', 'G50'];
@@ -35,7 +38,10 @@ export const OUTDOOR_MODELS: readonly OutdoorModelInfo[] = [
     id: profile.id, label: `${equipmentManufacturerLabel(profile.manufacturer)} ${profile.id}`, manufacturer: profile.manufacturer,
     ports: profile.ports, compatibleIndoorClasses: profile.compatibleIndoorClasses,
     caseMm: profile.caseMm, coolingHighFanFlowM3h: profile.coolingHighFanFlowM3h ?? undefined,
-    acceptance: profile.acceptance, profileNote: profile.coolingHighFanFlowM3h === null
+    installation: 'installation' in profile ? profile.installation : undefined,
+    acceptance: profile.acceptance, profileNote: 'installation' in profile
+      ? 'Published casing, named ports and necessary connection-class/reducer constraints. Exact indoor full-reference combinations remain unverified. Outdoor airflow, compressor, coil conductance, fan watts and performance remain editable generic assumptions. Published total-charge limits are documentary and do not calibrate the generic circuit.'
+      : profile.coolingHighFanFlowM3h === null
       ? 'Published matched split, casing and operating-range metadata. Outdoor airflow is unpublished in the reviewed table and uses the editable generic mass-flow setting; compressor, coil conductance and fan watts remain generic. This is not an OEM performance map.'
       : PROFILE_NOTE,
     publishedOperatingRangesC: profile.publishedOperatingRangesC,
@@ -54,15 +60,28 @@ export function indoorModelProfile(indoor: IndoorClass) {
 }
 
 export function indoorOptionsForOutdoor(outdoor: OutdoorKind): { value: IndoorClass; text: string; manufacturer: EquipmentManufacturer }[] {
-  return outdoorModelInfo(outdoor).compatibleIndoorClasses.map(value => {
+  const model = outdoorModelInfo(outdoor);
+  const candidates: readonly IndoorClass[] = model.installation
+    ? ['FTXA25', 'FTXA35', ...CATALOGUE_INDOORS.filter(m => m.manufacturer === 'daikin').map(m => m.id)]
+    : model.compatibleIndoorClasses;
+  return candidates.map(value => {
     const profile = indoorModelProfile(value);
     const ownerHead = value === 'FTXA25' || value === 'FTXA35';
     const manufacturer: EquipmentManufacturer = profile?.manufacturer ?? (ownerHead ? 'daikin' : 'generic');
     return { value, manufacturer,
-      text: profile ? `${equipmentManufacturerLabel(manufacturer)} ${value}${profile.coolingHighFanFlowM3h === null ? ' (airflow unpublished; generic/manual)' : ''}`
+      text: (profile ? `${equipmentManufacturerLabel(manufacturer)} ${value}${profile.coolingHighFanFlowM3h === null ? ' (airflow unpublished; generic/manual)' : ''}`
         : ownerHead ? `Daikin ${value} (suffix unknown)`
-        : `Generic wall head ${value === 'G25' ? '2.5' : value === 'G35' ? '3.5' : '5.0'} kW class` };
+        : `Generic wall head ${value === 'G25' ? '2.5' : value === 'G35' ? '3.5' : '5.0'} kW class`) + (model.installation ? ' — combination unverified' : '') };
   });
+}
+
+export function currentInstallationValidation(cfg: Config) {
+  const installation = outdoorModelInfo(cfg).installation;
+  if (!installation) return undefined;
+  return validateMultisplitInstallation(installation, cfg.rooms.slice(0, cfg.unitCount).map(room => ({
+    id: room.id, enabled: room.enabled, installation: room.installation,
+    manufacturer: indoorModelProfile(room.indoorClass)?.manufacturer ?? (room.indoorClass.startsWith('FTXA') ? 'daikin' : 'generic'),
+  })));
 }
 
 /** Profile identity/pairing selects only published or explicitly assumed inputs. */
