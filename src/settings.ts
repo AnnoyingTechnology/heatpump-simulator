@@ -10,8 +10,8 @@ import type { EngineOutput } from './engine/types';
 import { CHARGE_MODEL_AVAILABLE, PHYSICAL_FIELD_LINES_AVAILABLE, defaultLiveParameters, pipeWallMmForOd } from './runtime/config';
 import type { LiveParameters } from './runtime/config';
 import { activeRooms, currentReadings, indoorCleanliness, outdoorCleanliness, store } from './state';
-import type { AppState, Experience, ExampleState, IndoorClass, Mode, OutdoorKind, PipeConfig, RoomConfig } from './types';
-import { CLEANLINESS_MAX_PCT, CLEANLINESS_MIN_PCT, INDOOR_CLASSES, OWNER_PORTS, outdoorPortCapacity } from './types';
+import type { AppState, Experience, ExampleState, IndoorClass, InterzoneLink, Mode, OutdoorKind, PipeConfig, RoomConfig } from './types';
+import { CLEANLINESS_MAX_PCT, CLEANLINESS_MIN_PCT, INDOOR_CLASSES, OWNER_PORTS, interzoneConductance, outdoorPortCapacity } from './types';
 
 /**
  * Object-scoped controls. Every editable property has exactly one bound control instance, owned by the object it belongs to:
@@ -770,12 +770,7 @@ export function createRoomSettings(openShared: () => void): PopContent {
   const reg = <T extends Field>(f: T): T => { fields.push(f); return f; };
 
   const lead = html('p', { class: 'hint lead' });
-  const now = html('p', { class: 'live-now' });
   const offNote = html('p', { class: 'hint' });
-  const air = reg(slider({
-    label: 'Room air temperature (input)', unit: '°C', min: 5, max: 35, step: 0.5, digits: 1,
-    get: () => room()?.airC ?? 20, set: (v) => edit((r) => { r.airC = v; }),
-  }));
   const model = reg(select<IndoorClass>({
     label: 'Model reference (casing and label only)', options: classOptions(),
     get: () => room()?.indoorClass ?? 'FTXA25', set: (v) => edit((r) => { r.indoorClass = v; }),
@@ -796,7 +791,7 @@ export function createRoomSettings(openShared: () => void): PopContent {
   const details = html('details', { class: 'fold' }, html('summary', {}, 'Details and readings'), detailBody);
 
   const root = html('div', { class: 'pop-settings' },
-    lead, now, offNote, air.root,
+    lead, offNote,
     html('section', { class: 'sec' }, html('h3', {}, 'Indoor unit'), model.root, modelHint),
     html('section', { class: 'sec' }, html('h3', {}, 'Heat-exchanger cleanliness'), dirt.root, dirtStatus,
       html('p', { class: 'hint' }, 'Indoor coil air-side UA, refrigerant-side UA and air flow are shared assumptions: one value applies to every unit.'), shareBtn),
@@ -815,13 +810,9 @@ export function createRoomSettings(openShared: () => void): PopContent {
       for (const f of fields) f.refresh();
       const opts = classOptions();
       Array.from(model.sel.options).forEach((o, k) => { o.disabled = !!opts[k]?.disabled; });
-      relabel(air, live ? 'Initial room temperature (on Reset)' : 'Room air temperature (input)', '°C');
       setText(lead, live
-        ? 'Target, floor area, ceiling height and envelope heat loss drive the live model and are on the room card. Initial room temperature is applied when you press Reset.'
-        : 'Configuration inputs. Fixture supply-air readings do not respond to them.');
-      const eng = currentReadings(s).engine?.rooms[i];
-      now.hidden = !live;
-      setText(now, eng ? `Now ${fmt(eng.temperatureC, 1)} °C · ${fmt(eng.relativeHumidity * 100, 0)} % RH` : 'Now — °C · — % RH');
+        ? 'Target, floor area, ceiling height and envelope heat loss drive the live model and are on the room card. Initial room temperature, background gains, air exchange and links to other rooms are in the room\'s Thermal settings.'
+        : 'Configuration inputs. Fixture supply-air readings do not respond to them. Initial room temperature is in the room\'s Thermal settings.');
       offNote.hidden = !r || r.enabled;
       setText(offNote, live
         ? 'Heating/cooling for this room is requested off. The room still exchanges heat with outdoors and keeps its stored heat and moisture; the target stays editable.'
@@ -830,6 +821,202 @@ export function createRoomSettings(openShared: () => void): PopContent {
       setText(dirtStatus, `${live ? 'Drives live model.' : 'Configuration and illustration only; fixed example readings do not change.'} Effective ${fmt(ic.pct, 0)} % clear (${ic.source === 'global' ? 'shared default' : 'override'}).`);
       toggleClass(dirtStatus, 'diff', !live);
       setHtml(detailBody, inspectorHtml(`indoor:${i}`, s));
+    },
+  };
+}
+
+// ---------- room thermal popover (advanced house parameters; one instance, rebinds to the opened room) ----------
+const GAIN = { min: 0, max: 1000, step: 10 } as const;
+const AIR_EXCHANGE = { min: 0, max: 2, step: 0.05 } as const;
+const LINK = { min: 0, max: 500, step: 5 } as const;
+/** Effective outdoor air exchange the engine assumes when a room carries no explicit value (generic engine default). */
+const ACH_DEFAULT = 0.25;
+
+/**
+ * House parameters of one room, deliberately separate from the indoor unit's settings: initial room temperature, sensible background
+ * gains, effective outdoor air exchange and the symmetric effective sensible links to each OTHER active room. Links are addressed by
+ * room id (never by index) and built once per topology signature, not on input; no field is rebuilt while it is being edited.
+ * The owner-house defaults mix reported facts with provisional assumptions; the text says which is which.
+ */
+export function createRoomThermal(openLink: (roomA: string, roomB: string) => void): PopContent {
+  let idx = 0;
+  const cfg = () => store.state.cfg;
+  const room = (): RoomConfig | undefined => cfg().rooms[idx];
+  const edit = (fn: (r: RoomConfig) => void): void => store.update((s) => { const r = s.cfg.rooms[idx]; if (r) fn(r); });
+  const fields: Field[] = [];
+  const reg = <T extends Field>(f: T): T => { fields.push(f); return f; };
+
+  const now = html('p', { class: 'hint' });
+  const air = reg(slider({
+    label: 'Room air temperature (input)', unit: '°C', min: 5, max: 35, step: 0.5, digits: 1,
+    get: () => room()?.airC ?? 20, set: (v) => edit((r) => { r.airC = v; }),
+  }));
+  const gain = reg(pairField({
+    label: 'Background sensible gains', unit: 'W', ...GAIN, digits: 0, layout: 'line',
+    get: () => room()?.internalGainW ?? 0, set: (v) => edit((r) => { r.internalGainW = v; }),
+    title: 'Sensible heat from appliances and occupants in this room, separate from the indoor unit.',
+  }));
+  const ach = reg(pairField({
+    label: 'Effective outdoor air exchange', unit: 'ACH', ...AIR_EXCHANGE, digits: 2, layout: 'line',
+    get: () => room()?.ventilationACH ?? ACH_DEFAULT, set: (v) => edit((r) => { r.ventilationACH = v; }),
+    title: 'Effective unrecovered outdoor-air exchange, not the gross flow rating of a balanced ventilation unit.',
+  }));
+  const linkValue = (a: string, b: string): number =>
+    cfg().interzoneLinks?.find((l) => (l.roomA === a && l.roomB === b) || (l.roomA === b && l.roomB === a))?.conductanceWK ?? 0;
+  const linkBox = html('div', { class: 'th-links' });
+  let linkSig = '';
+  let links: Array<{ f: PairField; btn: HTMLButtonElement; other: string; self: string }> = [];
+  /** One slider per other active room, rebuilt only when the topology (this room or the room list) changes. */
+  function bindLinks(s: AppState, i: number): void {
+    const self = s.cfg.rooms[i];
+    if (!self) return;
+    const others = activeRooms(s.cfg).filter((r) => r.id !== self.id);
+    const sig = `${self.id}|${others.map((r) => `${r.id}:${r.name}`).join('|')}`;
+    if (sig === linkSig) return;
+    linkSig = sig;
+    links = others.map((o) => {
+      const f = pairField({
+        label: `Link to ${o.name}`, unit: 'W/K', ...LINK, digits: 0, layout: 'line',
+        get: () => linkValue(self.id, o.id), set: (v) => store.setInterzoneConductance(self.id, o.id, v),
+        title: `Effective sensible heat transfer between ${self.name} and ${o.name}; 0 isolates them.`,
+      });
+      const name = `Effective sensible link between ${self.name} and ${o.name} [W/K]`;
+      for (const el of [f.num, f.range]) setAttr(el, 'aria-label', name);
+      // The same shared editor as the drawn link: type, direction, exchange area and coefficient live there, not here.
+      const btn = html('button', { type: 'button', class: 'btn ghost small', title: `Characterize the link between ${self.name} and ${o.name}: open passage or solid wall, direction, area` }, 'Edit link');
+      btn.addEventListener('click', () => openLink(self.id, o.id));
+      return { f, btn, other: o.id, self: self.id };
+    });
+    linkBox.replaceChildren(...(links.length
+      ? links.map((l) => html('div', { class: 'th-link' }, l.f.root, l.btn))
+      : [html('p', { class: 'hint' }, 'No other active room.')]));
+  }
+
+  const root = html('div', { class: 'pop-settings' },
+    html('p', { class: 'hint lead' }, 'Advanced house parameters of this room, separate from its indoor unit. In the owner-house defaults the unit targets, the attic being Off and the winter temperatures (about 18 °C ground, 17.5–19 °C attic at 1 °C outdoors) are owner-reported; the gains, air exchange and links below are provisional assumptions, not measurements.'),
+    html('section', { class: 'sec' }, html('h3', {}, 'Initial state'), now, air.root),
+    html('section', { class: 'sec' }, html('h3', {}, 'Background gains'), gain.root,
+      html('p', { class: 'hint' }, 'Assumed allocation; the owner\'s notes give roughly 100–200 W of baseline and audio-video heat, here placed on the ground floor.')),
+    html('section', { class: 'sec' }, html('h3', {}, 'Outdoor air'), ach.root,
+      html('p', { class: 'hint' }, 'An equivalent unrecovered sensible exchange with outdoors (assumed). It is not the gross rating of a heat-recovery ventilation unit, and humidity recovery is not modelled.')),
+    html('section', { class: 'sec' }, html('h3', {}, 'Links to other rooms'), linkBox,
+      html('p', { class: 'hint' }, 'Effective sensible heat transfer between rooms; this is not resolved airflow. Turning a unit off keeps these links active. The default floor links are assumed, not measured. The slider sets the total conductance H; type, direction and area are in the link editor (also on the drawn link).')));
+
+  return {
+    root,
+    heading: (s, i) => ({ kicker: 'Room thermal settings', title: s.cfg.rooms[i]?.name ?? 'Room' }),
+    sync(s: AppState, i: number): void {
+      idx = i;
+      bindLinks(s, i);
+      const live = s.ui.experience === 'live';
+      for (const f of fields) f.refresh();
+      for (const l of links) {
+        l.f.refresh();
+        setText(l.btn, (cfg().interzoneLinks ?? []).some((k) => (k.roomA === l.self && k.roomB === l.other) || (k.roomA === l.other && k.roomB === l.self)) ? 'Edit link' : 'Add link');
+      }
+      relabel(air, live ? 'Initial room temperature (on Reset)' : 'Room air temperature (input)', '°C');
+      const eng = currentReadings(s).engine?.rooms[i];
+      now.hidden = !live;
+      setText(now, eng ? `Now ${fmt(eng.temperatureC, 1)} °C · ${fmt(eng.relativeHumidity * 100, 0)} % RH` : 'Now — °C · — % RH');
+    },
+  };
+}
+
+// ---------- room link popover (one instance, rebinds to the opened link by room pair) ----------
+const LINK_AREA = { min: 0.1, max: 20, step: 0.1 } as const;
+const LINK_COEFF = { opening: { min: 0, max: 100, step: 1, def: 40 }, partition: { min: 0, max: 6, step: 0.1, def: 1.5 } } as const;
+const coeffOf = (l: InterzoneLink): number => l.transferWm2K ?? LINK_COEFF[l.kind ?? 'opening'].def;
+const areaOf = (l: InterzoneLink): number => l.areaM2 ?? l.conductanceWK / coeffOf(l);
+
+/** Signed sensible heat [W] from room A to room B reported by the accepted live engine state; null in Examples, while readings are withheld, or when absent. */
+export function linkHeatW(s: AppState, roomA: string, roomB: string): number | null {
+  if (s.ui.experience !== 'live') return null;
+  for (const t of currentReadings(s).engine?.interzoneTransfers ?? []) {
+    if (t.roomA === roomA && t.roomB === roomB) return t.heatFromAToBW;
+    if (t.roomA === roomB && t.roomB === roomA) return -t.heatFromAToBW;
+  }
+  return null;
+}
+
+/**
+ * The one editor of a drawn room link: type (open passage / solid wall or floor), connection direction, exchange area and, under
+ * Advanced, the effective transfer coefficient; the derived total H = area × coefficient is always shown. Every control is built once
+ * and edits through `store.setInterzoneLink`, which keeps the link object (no engine ledger involved). The popover is pinned to the
+ * room pair by popovers.ts, so `idx` is rebound on every sync and the content closes with its link.
+ */
+export function createLinkSettings(): PopContent {
+  let idx = 0;
+  const link = (): InterzoneLink | undefined => store.state.cfg.interzoneLinks?.[idx];
+  const edit = (patch: Partial<Pick<InterzoneLink, 'kind' | 'orientation' | 'areaM2' | 'transferWm2K'>>): void => {
+    const l = link();
+    if (l) store.setInterzoneLink(l.roomA, l.roomB, patch);
+  };
+  const fields: Field[] = [];
+  const reg = <T extends Field>(f: T): T => { fields.push(f); return f; };
+  const kind = reg(segmented<'opening' | 'partition'>({
+    label: 'Link type', compact: true,
+    options: [
+      { value: 'opening', text: 'Open passage', title: 'A stairwell or doorway: air mixing makes the effective transfer large' },
+      { value: 'partition', text: 'Solid wall or floor', title: 'A conducting partition: a much smaller effective transfer' },
+    ],
+    get: () => link()?.kind ?? 'opening', set: (v) => edit({ kind: v }),
+  }));
+  const orientation = reg(segmented<'horizontal' | 'vertical'>({
+    label: 'Connection direction', compact: true,
+    options: [
+      { value: 'horizontal', text: 'Horizontal', title: 'Between rooms on the same level' },
+      { value: 'vertical', text: 'Vertical', title: 'Between levels' },
+    ],
+    get: () => link()?.orientation ?? 'vertical', set: (v) => edit({ orientation: v }),
+  }));
+  const area = reg(pairField({
+    label: 'Exchange area', unit: 'm²', ...LINK_AREA, digits: 1, layout: 'line',
+    get: () => { const l = link(); return l ? areaOf(l) : 2; }, set: (v) => edit({ areaM2: v }),
+    title: 'Assumed effective exchange area of the opening or partition, not a measured geometry.',
+  }));
+  const coeff = (k: 'opening' | 'partition'): PairField => reg(pairField({
+    label: 'Effective transfer coefficient', unit: 'W/(m²·K)', ...LINK_COEFF[k], digits: k === 'opening' ? 0 : 1, layout: 'line',
+    get: () => { const l = link(); return l ? coeffOf(l) : LINK_COEFF[k].def; }, set: (v) => edit({ transferWm2K: v }),
+    title: 'Assumed effective sensible heat-transfer coefficient per square metre, not resolved buoyancy flow or a material certification.',
+  }));
+  const coeffOpening = coeff('opening');
+  const coeffPartition = coeff('partition');
+  const total = html('p', { class: 'status' });
+  const now = html('p', { class: 'hint' });
+  const remove = html('button', { type: 'button', class: 'btn ghost small' }, 'Remove link');
+  remove.addEventListener('click', () => { const l = link(); if (l) store.setInterzoneConductance(l.roomA, l.roomB, 0); });
+  const field = (label: string, f: Field): HTMLElement => html('div', { class: 'field' }, html('div', { class: 'field-head' }, html('span', { class: 'lab' }, label)), f.root);
+
+  const root = html('div', { class: 'pop-settings' },
+    html('p', { class: 'hint lead' }, 'Effective sensible heat transfer between these two rooms; this is not resolved airflow or buoyancy. Area and coefficient are assumed values, not measured stairwell geometry or material data. Turning a unit off keeps the link active.'),
+    html('section', { class: 'sec' }, field('Link type', kind), field('Connection direction', orientation),
+      html('p', { class: 'hint' }, 'Direction describes the connection (Horizontal between rooms, Vertical between levels), not a surface orientation.')),
+    html('section', { class: 'sec' }, html('h3', {}, 'Exchange'), area.root, total, now),
+    html('section', { class: 'sec' }, html('details', { class: 'fold' }, html('summary', {}, 'Advanced: transfer coefficient'),
+      html('div', { class: 'fold-body' }, coeffOpening.root, coeffPartition.root,
+        html('p', { class: 'hint' }, 'Open passage 0–100 W/(m²·K) (default 40); solid partition 0–6 (default 1.5). Generic assumptions, not calibrated.')))),
+    html('section', { class: 'sec' }, remove));
+
+  return {
+    root,
+    heading: (s, i) => {
+      const l = s.cfg.interzoneLinks?.[i];
+      const name = (id: string): string => s.cfg.rooms.find((r) => r.id === id)?.name ?? id;
+      return { kicker: 'Room link', title: l ? `${name(l.roomA)} ↔ ${name(l.roomB)}` : 'Room link' };
+    },
+    sync(s: AppState, i: number): void {
+      idx = i;
+      const l = s.cfg.interzoneLinks?.[i];
+      if (!l) return;
+      for (const f of fields) f.refresh();
+      const k = l.kind ?? 'opening';
+      coeffOpening.root.hidden = k !== 'opening';
+      coeffPartition.root.hidden = k !== 'partition';
+      setText(total, `Total conductance H = ${fmt(areaOf(l), 1)} m² × ${fmt(coeffOf(l), k === 'opening' ? 0 : 1)} W/(m²·K) = ${fmt(interzoneConductance(l), 0)} W/K`);
+      const name = (id: string): string => s.cfg.rooms.find((r) => r.id === id)?.name ?? id;
+      const q = linkHeatW(s, l.roomA, l.roomB);
+      setText(now, q === null ? 'Now: — (live engine value unavailable)'
+        : `Now: ${fmt(Math.abs(q) / 1000, 2)} kW from ${name(q >= 0 ? l.roomA : l.roomB)} to ${name(q >= 0 ? l.roomB : l.roomA)}`);
     },
   };
 }

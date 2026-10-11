@@ -6,7 +6,10 @@ import type { AppState } from './types';
  * outdoor-unit settings); each content module is built once and shared by every index it serves, so a control is one bound
  * instance per property. Only one shell is visible at a time and none reserves layout space.
  */
-export type PopKind = 'inspector' | 'room' | 'lines' | 'outdoor';
+export type PopKind = 'inspector' | 'room' | 'thermal' | 'link' | 'lines' | 'outdoor';
+
+/** Order-independent identity of a room pair; the link popover is pinned to it, not to an array index. */
+export const pairKey = (a: string, b: string): string => (a < b ? `${a}|${b}` : `${b}|${a}`);
 
 export interface PopContent {
   root: HTMLElement;
@@ -40,6 +43,8 @@ const ORDER: Record<PopKind, ReadonlyArray<'left' | 'right' | 'below' | 'above'>
   inspector: ['right', 'left', 'below', 'above'],
   outdoor: ['right', 'left', 'below', 'above'],
   room: ['left', 'below', 'above', 'right'],
+  thermal: ['left', 'below', 'above', 'right'],
+  link: ['left', 'below', 'above', 'right'],
   lines: ['left', 'below', 'above', 'right'],
 };
 
@@ -47,7 +52,7 @@ export function createPopovers(contents: Record<PopKind, PopContent>, getState: 
   const root = html('div', { class: 'pops' });
   const shells = {} as Record<PopKind, { el: HTMLElement; kicker: HTMLElement; title: HTMLElement }>;
   /** `roomId` pins a room or line-set popover to the room it opened for; indices shift when a room is removed. */
-  let current: { kind: PopKind; i: number; anchor: () => Element | null; roomId: string | null } | null = null;
+  let current: { kind: PopKind; i: number; anchor: () => Element | null; roomId: string | null; pair: string | null } | null = null;
   let opener: HTMLElement | null = null;
   let lastKey = '';
 
@@ -63,7 +68,7 @@ export function createPopovers(contents: Record<PopKind, PopContent>, getState: 
     if (refocus && back?.isConnected) back.focus({ preventScroll: true });
   };
 
-  for (const kind of ['inspector', 'room', 'lines', 'outdoor'] as const) {
+  for (const kind of ['inspector', 'room', 'thermal', 'link', 'lines', 'outdoor'] as const) {
     const content = contents[kind];
     const kicker = html('span', { class: 'kicker' });
     const title = html('h2', {});
@@ -130,8 +135,9 @@ export function createPopovers(contents: Record<PopKind, PopContent>, getState: 
     const active = document.activeElement;
     if (active instanceof HTMLElement && !root.contains(active)) opener = active;
     if (current && current.kind !== kind) shells[current.kind].el.hidden = true;
-    const bound = kind === 'room' || kind === 'lines';
-    current = { kind, i, anchor, roomId: bound ? getState().cfg.rooms[i]?.id ?? null : null };
+    const bound = kind === 'room' || kind === 'thermal' || kind === 'lines';
+    const link = kind === 'link' ? getState().cfg.interzoneLinks?.[i] : undefined;
+    current = { kind, i, anchor, roomId: bound ? getState().cfg.rooms[i]?.id ?? null : null, pair: link ? pairKey(link.roomA, link.roomB) : null };
     lastKey = '';
     shells[kind].el.hidden = false;
     refresh();
@@ -154,9 +160,19 @@ export function createPopovers(contents: Record<PopKind, PopContent>, getState: 
       // A room or line-set popover closes when its room is removed or its index is rebound to another room, so it can never
       // silently edit a different room after the list reflows.
       const gone = current.kind === 'inspector' ? s.ui.selected === null
-        : (current.kind === 'room' || current.kind === 'lines')
+        : (current.kind === 'room' || current.kind === 'thermal' || current.kind === 'lines')
           && (current.i >= s.cfg.unitCount || s.cfg.rooms[current.i]?.id !== current.roomId);
       if (gone) { hide(); return; }
+      if (current.kind === 'link') {
+        // Pinned to the room pair: the link array index shifts when another link is removed, so rebind by pair. The popover closes
+        // when the link is removed or either room is no longer active.
+        const links = s.cfg.interzoneLinks ?? [];
+        const at = links.findIndex((l) => pairKey(l.roomA, l.roomB) === current!.pair);
+        const l = links[at];
+        const active = new Set(s.cfg.rooms.slice(0, s.cfg.unitCount).map((r) => r.id));
+        if (!l || !active.has(l.roomA) || !active.has(l.roomB)) { hide(); return; }
+        current.i = at;
+      }
       refresh();
     },
     tick: () => place(false),

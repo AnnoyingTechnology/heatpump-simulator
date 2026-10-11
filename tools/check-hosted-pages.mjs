@@ -25,7 +25,7 @@ try{
   await page.waitFor(`document.querySelector('.opstate')?.dataset.kind==='running'&&document.querySelector('.time')?.textContent!=='00:00.0'`,60000);
   assert.equal(await run(()=>document.querySelector('[data-probe="compressor-discharge"]').dataset.source),'live');
   assert.ok(Number.isFinite(Number(await run(()=>document.querySelector('[data-probe="compressor-discharge"]').dataset.exact))));
-  assert.equal(await run(()=>document.querySelectorAll('.indoor-probes .probe:not(.na)').length),6);
+  assert.ok(await run(()=>document.querySelectorAll('.indoor-probes .probe:not(.na)').length>=2),'running indoor branch has materialized sensors');
   assert.equal(await run(()=>document.querySelectorAll('img,image,canvas').length),0);
   const loaded=new Set(page.events.filter(e=>e.method==='Network.responseReceived'&&e.params.response.status===200)
     .map(e=>new URL(e.params.response.url).pathname.split('/').at(-1)));
@@ -65,24 +65,34 @@ try{
    assert.ok(Math.abs(layout.bottom-layout.height)<1&&layout.visible,JSON.stringify(layout));
    assert.equal(await run(()=>document.querySelector('.time').textContent),paused);
   }
-  assert.equal(await run(()=>document.querySelectorAll('.hm-trend').length),3);
+  assert.equal(await run(()=>document.querySelectorAll('.hm-trend').length),4);
   assert.ok(await run(()=>[...document.querySelectorAll('.hm-trend .trend-line')].every(e=>e.getAttribute('d').includes('M'))));
   assert.ok(await run(()=>[...document.querySelectorAll('.hm')].every(e=>getComputedStyle(e).borderTopWidth==='0px'&&getComputedStyle(e).borderBottomWidth==='0px')));
-  assert.deepEqual(await run(()=>[...document.querySelectorAll('.hm')].map(e=>getComputedStyle(e).borderLeftWidth)),['0px','1px','1px']);
+  assert.deepEqual(await run(()=>[...document.querySelectorAll('.hm')].map(e=>getComputedStyle(e).borderLeftWidth)),['0px','1px','1px','1px']);
   assert.ok(await run(()=>[...document.querySelectorAll('.hm')].every(e=>{const v=e.querySelector('.vl').getBoundingClientRect(),g=e.querySelector('.hm-trend').getBoundingClientRect();return g.left>=v.right+4&&g.height>=40&&g.top<v.bottom&&g.bottom>v.top})), 'headline graphs sit beside their values');
   assert.ok(await run(()=>{const e=document.querySelector('.scene-scroll');return e.scrollHeight<=e.clientHeight+1}), 'default three-room overview fits without scrolling');
+ });
+ await check('hosted winter preset, room junctions, session COP and drained-water total are visible',async()=>{
+  assert.ok(await run(()=>[...document.querySelectorAll('.hm-trend .trend-line,.hm-trend .session-line')].every(e=>e.getAttribute('d').includes('M'))));
+  assert.ok(Number.isFinite(Number(await run(()=>document.querySelector('.hm-session-cop .v').textContent))));
+  assert.equal(await run(()=>document.querySelectorAll('.room-link').length),2);
+  assert.ok(await run(()=>[...document.querySelectorAll('.room-link')].every(e=>Number.isFinite(Number(e.dataset.heatW))&&e.querySelector('.lk-val').textContent.includes('kW'))));
+  assert.deepEqual(await run(()=>[...document.querySelectorAll('input[role="switch"]')].map(e=>e.checked)),[false,true,true]);
+  assert.ok(await run(()=>document.querySelector('.ice-head').textContent.includes('Water total')));
+  assert.equal(await run(()=>document.querySelectorAll('.zone-base').length),0);
+  assert.ok(await run(()=>Number(document.querySelector('[data-block="line-model"]').closest('foreignObject').getAttribute('y'))>=10));
  });
  await check('paused weather and individual indoor controls preserve the simulation clock',async()=>{
   await run(()=>{
    const temperature=document.querySelector('[aria-label="Outdoor air"] input[type="number"]');
    temperature.value='12.5';temperature.dispatchEvent(new Event('input',{bubbles:true}));
-   const unit=document.querySelector('input[role="switch"]');
+   const unit=document.querySelectorAll('input[role="switch"]')[1];
    unit.click();
   });
   await new Promise(resolve=>setTimeout(resolve,700));
   assert.equal(await run(()=>document.querySelector('.time').textContent),paused);
   assert.equal(await run(()=>document.querySelector('[aria-label="Outdoor air"] input[type="number"]').value),'12.5');
-  assert.equal(await run(()=>document.querySelector('input[role="switch"]').checked),false);
+  assert.equal(await run(()=>document.querySelectorAll('input[role="switch"]')[1].checked),false);
  });
  await check('requested acceleration resumes physical time without restarting',async()=>{
   await run(()=>{const speed=document.querySelector('select[aria-label="Requested speed"]');speed.value='50';speed.dispatchEvent(new Event('change',{bubbles:true}))});

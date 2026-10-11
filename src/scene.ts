@@ -10,13 +10,14 @@ import {
 import type { Layout, RoomBox } from './geometry';
 import { CoilNote, Pipe, Probe } from './pipes';
 import type { Pt } from './pipes';
-import { ENVELOPE_LOSS, createHeatLossGuide, createLossScale, createLineLength, createLineModelSwitch, isolate, pairField, weatherScope } from './settings';
+import { pairKey } from './popovers';
+import { ENVELOPE_LOSS, createHeatLossGuide, createLossScale, linkHeatW, createLineLength, createLineModelSwitch, isolate, pairField, weatherScope } from './settings';
 import type { HeatLossGuide, LineLengthControl, OutdoorUnitCard, PairField } from './settings';
 import type { Clock } from './state';
 import { ICE_FULL_KG, ICE_START_KG, activeRooms, currentReadings, indoorCleanliness, liveStatus, outdoorCleanliness, store } from './state';
 import { fixtureFor } from './fixtures';
-import type { AppState, RoomConfig, ZoomPreset } from './types';
-import { INDOOR_CLASSES, OWNER_PORTS, outdoorPortCapacity, roomVolumeM3 } from './types';
+import type { AppState, InterzoneLink, RoomConfig, ZoomPreset } from './types';
+import { INDOOR_CLASSES, OWNER_PORTS, interzoneConductance, outdoorPortCapacity, roomVolumeM3 } from './types';
 
 type G = SVGGElement;
 
@@ -56,6 +57,12 @@ function setDirt(g: G, pct: number, who: string, source: 'global' | 'override'):
 export interface SceneHooks {
   toggleRoom(i: number, anchor: HTMLElement): void;
   toggleLines(i: number, anchor: HTMLElement): void;
+  /** Advanced room thermal settings (initial temperature, gains, air exchange, links), separate from the indoor-unit settings. */
+  toggleThermal(i: number, anchor: HTMLElement): void;
+  /** A drawn room link was activated: toggle its editor. */
+  toggleLink(roomA: string, roomB: string): void;
+  /** Link placement finished: create the pair if it is new and open its editor. */
+  placeLink(roomA: string, roomB: string): void;
 }
 
 export interface Scene {
@@ -66,6 +73,16 @@ export interface Scene {
   zoomTo(z: ZoomPreset, immediate?: boolean): void;
   /** The room's indoor-unit panel, used as the anchor of its popovers. */
   roomAnchor(i: number): HTMLElement | null;
+  /** The drawn pill of a room link, anchor of its editor. */
+  linkAnchor(roomA: string, roomB: string): Element | null;
+  /** Link placement (“Link rooms”): while active, diagram clicks pick rooms instead of selecting or zooming. */
+  linking: {
+    active(): boolean;
+    /** Handles a diagram click or Enter/Space; true when consumed. */
+    pick(target: Element): boolean;
+    /** Leaves placement; true when it was active (Escape must then do nothing else). */
+    cancel(): boolean;
+  };
 }
 
 type Box = [number, number, number, number];
@@ -347,6 +364,8 @@ interface RoomPanel {
   sw: HTMLInputElement;
   swText: HTMLElement;
   remove: HTMLButtonElement;
+  /** Opens the room's advanced thermal popover. */
+  thermal: HTMLButtonElement;
 }
 
 function roomPanel(i: number, hooks: SceneHooks, guide: HeatLossGuide): RoomPanel {
@@ -393,20 +412,24 @@ function roomPanel(i: number, hooks: SceneHooks, guide: HeatLossGuide): RoomPane
   sw.addEventListener('change', () => edit((r) => { r.enabled = sw.checked; }));
   const linesBtn = html('button', { type: 'button', class: 'rp-btn rp-ctl', 'aria-haspopup': 'dialog' }, 'Lines');
   const gearBtn = html('button', { type: 'button', class: 'rp-btn rp-ctl', 'aria-haspopup': 'dialog' }, 'Settings');
-  const remove = html('button', { type: 'button', class: 'rp-btn rp-ctl rp-remove' }, 'Remove room');
+  // A compact vector ×, so the floor name keeps the width; the accessible name and title are set per room in sync().
+  const remove = html('button', { type: 'button', class: 'rp-btn rp-ctl rp-remove' },
+    svg('svg', { class: 'rp-x', viewBox: '0 0 12 12', 'aria-hidden': 'true' }, svg('path', { d: 'M2.5 2.5L9.5 9.5M9.5 2.5L2.5 9.5' })));
   remove.addEventListener('click', () => store.removeRoom(i));
+  const thermal = html('button', { type: 'button', class: 'rp-btn rp-ctl', 'aria-haspopup': 'dialog', title: 'Advanced room thermal settings: initial temperature, background gains, outdoor air exchange and links to other rooms' }, 'Thermal');
   const tgt = html('div', { class: 'rp-card tgt' }, sp.root);
   const equip = html('div', { class: 'rp eq room-rp', 'data-block': 'equipment' },
     html('div', { class: 'rp-head' }, html('span', { class: 'eq-tag' }, 'Unit'), swLabel, linesBtn, gearBtn),
     html('div', { class: 'rp-cards' }, tgt));
   const env = html('div', { class: 'rp env room-env', 'data-block': 'environment' },
-    html('div', { class: 'rp-head' }, html('span', { class: 'env-tag' }, 'Room'), name, remove),
+    html('div', { class: 'rp-head' }, name, thermal, remove),
     html('div', { class: 'env-geo' }, area.root, sep('×'), height.root, sep('='), volume),
     html('div', { class: 'env-low' }, loss.root, createLossScale()));
   linesBtn.addEventListener('click', () => hooks.toggleLines(i, equip));
   gearBtn.addEventListener('click', () => hooks.toggleRoom(i, equip));
-  isolate(sw, swLabel, linesBtn, gearBtn, remove);
-  return { equip, env, intake: air.root, outlet, boundId: '', name, air, sup, heat, sp, area, height, volume: volumeV, loss, sw, swText, remove };
+  thermal.addEventListener('click', () => hooks.toggleThermal(i, env));
+  isolate(sw, swLabel, linesBtn, gearBtn, remove, thermal);
+  return { equip, env, intake: air.root, outlet, boundId: '', name, air, sup, heat, sp, area, height, volume: volumeV, loss, sw, swText, remove, thermal };
 }
 
 /** Indoor-zone bar: room count against the outdoor group's port capacity, and the direct Add room action. */
@@ -415,15 +438,21 @@ interface RoomsBar {
   count: HTMLElement;
   add: HTMLButtonElement;
   hint: HTMLElement;
+  /** “Link rooms” toggle and its live instruction. */
+  link: HTMLButtonElement;
+  linkHint: HTMLElement;
 }
 
-function roomsBar(): RoomsBar {
+function roomsBar(onLink: () => void): RoomsBar {
   const count = html('span', { class: 'in-count', role: 'status' });
   const add = html('button', { type: 'button', class: 'rp-btn rp-ctl in-add' }, '+ Add room');
   add.addEventListener('click', () => store.addRoom());
+  const link = html('button', { type: 'button', class: 'rp-btn rp-ctl in-link', 'aria-pressed': 'false', title: 'Link two rooms: click the first room, then the second. Escape cancels.' }, 'Link rooms');
+  link.addEventListener('click', onLink);
+  const linkHint = html('span', { class: 'in-link-hint', role: 'status' });
   const hint = html('span', { class: 'in-hint' });
-  isolate(add);
-  return { root: html('div', { class: 'in-bar', 'data-block': 'rooms-bar' }, count, add, hint), count, add, hint };
+  isolate(add, link);
+  return { root: html('div', { class: 'in-bar', 'data-block': 'rooms-bar' }, count, add, link, linkHint, hint), count, add, hint, link, linkHint };
 }
 
 interface RoomView {
@@ -461,7 +490,15 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
   let svcRole: SVGTextElement = txt(0, 0, '');
   // Panels are created once per index and re-attached by every rebuild, so controls keep their DOM identity and value.
   const weather = weatherPanel();
-  const bar = roomsBar();
+  const bar = roomsBar(() => setLinking(!linkMode));
+  // Link placement: off → pick the first room → pick the second. Escape and the toggle cancel; nothing zooms or selects meanwhile.
+  let linkMode = false;
+  let linkSource: string | null = null;
+  // Drawn links (pure SVG in the indoor zone), rebuilt only when the set of linked pairs or the room order changes.
+  let linkLayer: G = svg('g');
+  let linkSig = '';
+  interface LinkView { g: G; arrow: SVGPathElement; ico: SVGTextElement; val: SVGTextElement; title: SVGTitleElement; ax: number; ay: number }
+  const linkViews = new Map<string, LinkView>();
   // One heat-loss guide for every room, mounted above all rows and placed beside the room it is open for.
   const guide = createHeatLossGuide();
   const roomPanels: RoomPanel[] = [];
@@ -538,7 +575,6 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       svg('rect', { class: 'zone-out', 'data-zoom-target': 'outdoor', tabindex: 0, role: 'button', 'aria-label': 'Zoom to outdoor zone', x: 0, y: 0, width: wall.x0, height: lay.vbH }),
       svg('rect', { class: 'zone-in', 'data-zoom-target': 'rooms', tabindex: 0, role: 'button', 'aria-label': 'Zoom to indoor zone', x: wall.x1, y: 0, width: lay.vbW - wall.x1, height: lay.vbH }),
       svg('rect', { class: 'zone-edge', x: wall.x0, y: 0, width: wall.x1 - wall.x0, height: lay.vbH }),
-      svg('path', { class: 'zone-base', d: `M14 ${lay.groundY}H${wall.x0 - 14}` }),
     );
     weatherG = svg('g', { class: 'weather', transform: `translate(${OP.x - 24} ${OP.y - 12})` });
     weatherKind = '';
@@ -548,7 +584,8 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       svg('g', { 'data-zoom-target': 'outdoor', tabindex: 0, role: 'button', 'aria-label': 'Zoom to outdoor zone' }, txt(16, 26, 'OUTDOOR', 'zone-title')),
       svg('g', { 'data-zoom-target': 'rooms', tabindex: 0, role: 'button', 'aria-label': 'Zoom to indoor zone' }, txt(wall.x1 + 14, 26, 'INDOOR', 'zone-title')),
       overlayPanel(wall.x1 + 118, 6, 760, 26, bar.root),
-      overlayPanel(lay.ctlX, 0, LINE_CTL.w, LINE_CTL.modelH, lineModel.root));
+      // 10 units below the scene top so the switch is not glued to the edge; it still ends well above the first room's pipes.
+      overlayPanel(lay.ctlX, 10, LINE_CTL.w, LINE_CTL.modelH, lineModel.root));
 
     // ---- rooms ----
     const zoneW = lay.vbW - wall.x1;
@@ -616,6 +653,10 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       });
     }
     if (zoneW > 0) root.append(svg('path', { class: 'room-sep', d: `M${wall.x1} ${lay.stackBottom}H${lay.vbW}` }));
+    linkLayer = svg('g', { class: 'room-links' });
+    linkViews.clear();
+    linkSig = '';
+    root.append(linkLayer);
 
     // ---- boundary pass-throughs ----
     for (const b of boxes) {
@@ -717,7 +758,8 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
     outSub = txt(w - 10, 31, '', 'out-sub', 'end');
     og.append(outLabel, outSub);
     root.append(og);
-    root.append(overlayPanel(OUT.x, OUT.y + lay.outH + 4, OUT.w, 20, film));
+    // Wide enough for three values (ice, film, whole-system water); it extends left of the casing, clear of the risers on the right.
+    root.append(overlayPanel(40, OUT.y + lay.outH + 4, OUT.x + OUT.w - 40, 20, film));
     const ambientX = OUT.x + OUT.w / 2;
     ambientAir = txt(ambientX, OUT.y - 25, '', 'outdoor-ambient-value', 'middle');
     const inlet = indoorAir(OUT.x, OUT.y - 58, 52, true, OUT.w);
@@ -826,6 +868,130 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
     return null;
   }
 
+  // ---- link placement ("Link rooms") ----
+  function setLinking(on: boolean, source: string | null = null): void {
+    linkMode = on;
+    linkSource = on ? source : null;
+    applyLinkMode();
+  }
+
+  function applyLinkMode(): void {
+    const act = _state ? activeRooms(_state.cfg) : [];
+    if (act.length < 2) linkMode = false;
+    if (!linkMode || !act.some((r) => r.id === linkSource)) linkSource = null;
+    const phase = !linkMode ? 'off' : linkSource ? 'target' : 'source';
+    setAttr(root, 'data-linking', phase);
+    setAttr(bar.link, 'aria-pressed', String(linkMode));
+    bar.link.disabled = act.length < 2;
+    const from = act.find((r) => r.id === linkSource)?.name;
+    setText(bar.linkHint, phase === 'off' ? '' : phase === 'source' ? 'Choose the first room · Esc cancels' : `Choose the room to link with ${from} · Esc cancels`);
+    rooms.forEach((v, i) => {
+      if (linkMode && act[i]?.id === linkSource) v.view.dataset.link = 'source';
+      else delete v.view.dataset.link;
+    });
+  }
+
+  // ---- drawn room links ----
+  // Heat links sit in the free gutter just right of the indoor units: a thin vertical lane between the two rooms' units, with a small
+  // pill (direction, arrow, live kW) on a room separator. Lanes differ for overlapping links, so a non-adjacent link passes the
+  // rooms between without touching pipes, probes, air readings or the room panels. Built only when the link set changes.
+  const LINK_PILL = { w: 80, h: 15, lane: 3, stack: 17 } as const;
+
+  function buildLinks(links: InterzoneLink[], at: Map<string, number>): G[] {
+    const boxes = roomBoxes(layout.n);
+    const spans = links.map((l) => {
+      const a = at.get(l.roomA) ?? 0;
+      const b = at.get(l.roomB) ?? 0;
+      return { l, lo: Math.min(a, b), hi: Math.max(a, b) };
+    }).sort((p, q) => p.lo - q.lo || p.hi - q.hi);
+    const laneEnd: number[] = [];
+    const perSep = new Map<number, number>();
+    const items = spans.map((x) => {
+      let lane = laneEnd.findIndex((end) => end <= x.lo);
+      if (lane < 0) { lane = laneEnd.length; laneEnd.push(0); }
+      laneEnd[lane] = x.hi;
+      const sep = x.lo + 1 + Math.floor((x.hi - x.lo - 1) / 2);
+      const k = perSep.get(sep) ?? 0;
+      perSep.set(sep, k + 1);
+      return { ...x, lane, sep, k };
+    });
+    return items.map(({ l, lo, hi, lane, sep, k }) => {
+      const top = boxes[lo];
+      const bottom = boxes[hi];
+      const sepBox = boxes[sep];
+      if (!top || !bottom || !sepBox) return svg('g');
+      const key = pairKey(l.roomA, l.roomB);
+      const x = top.unitX + UNIT.w + 3.5 + LINK_PILL.lane * (lane % 3);
+      const y1 = top.unitY + UNIT.h / 2;
+      const y2 = bottom.unitY + UNIT.h / 2;
+      const cy = sepBox.top + (k - ((perSep.get(sep) ?? 1) - 1) / 2) * LINK_PILL.stack;
+      const px = x + 2 - LINK_PILL.w;
+      const title = svg('title');
+      const arrow = svg('path', { class: 'lk-arrow', d: 'M-3 -2.6H3L0 2.6z', visibility: 'hidden' });
+      const ico = svg('text', { class: 'lk-ico', x: px + 5, y: cy + 3.8 });
+      const val = svg('text', { class: 'lk-val', x: px + 33, y: cy + 3.8 });
+      const g = svg('g', { class: 'room-link', 'data-link': key, 'data-room-a': l.roomA, 'data-room-b': l.roomB, tabindex: 0, role: 'button' },
+        title,
+        svg('rect', { class: 'lk-hit', x: x - 4, y: y1, width: 8, height: y2 - y1 }),
+        svg('path', { class: 'lk-line', d: `M${x} ${y1}V${y2}` }),
+        svg('circle', { class: 'lk-dot', cx: x, cy: y1, r: 2.4 }), svg('circle', { class: 'lk-dot', cx: x, cy: y2, r: 2.4 }),
+        svg('rect', { class: 'lk-pill', x: px, y: cy - LINK_PILL.h / 2, width: LINK_PILL.w, height: LINK_PILL.h, rx: 4 }),
+        arrow, ico, val);
+      const open = (): void => { setLinking(false); hooks.toggleLink(l.roomA, l.roomB); };
+      g.addEventListener('click', (e) => { e.stopPropagation(); open(); });
+      g.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        e.preventDefault();
+        e.stopPropagation();
+        open();
+      });
+      linkViews.set(key, { g, arrow, ico, val, title, ax: px + 25, ay: cy });
+      return g;
+    });
+  }
+
+  function syncLinks(s: AppState, held: boolean): void {
+    const cfg = s.cfg;
+    const act = activeRooms(cfg);
+    const at = new Map(act.map((r, i) => [r.id, i] as const));
+    const names = new Map(act.map((r) => [r.id, r.name] as const));
+    const links = (cfg.interzoneLinks ?? []).filter((l) => l.roomA !== l.roomB && at.has(l.roomA) && at.has(l.roomB));
+    const sig = `${act.length}|${links.map((l) => `${pairKey(l.roomA, l.roomB)}@${at.get(l.roomA)}-${at.get(l.roomB)}`).join(',')}`;
+    if (sig !== linkSig) {
+      linkSig = sig;
+      linkViews.clear();
+      linkLayer.replaceChildren(...buildLinks(links, at));
+    }
+    for (const l of links) {
+      const v = linkViews.get(pairKey(l.roomA, l.roomB));
+      if (!v) continue;
+      const ia = at.get(l.roomA) ?? 0;
+      const ib = at.get(l.roomB) ?? 0;
+      const q = linkHeatW(s, l.roomA, l.roomB);
+      const known = q !== null && Math.abs(q) >= 0.5;
+      // Heat flows toward the lower index (up the stack) when q > 0 and B is above A, or q < 0 and A is above B.
+      const up = q !== null && (q > 0) === (ib < ia);
+      const kind = l.kind ?? 'opening';
+      const orientation = l.orientation ?? 'vertical';
+      setText(v.val, q === null ? '— kW' : `${fmt(Math.abs(q) / 1000, 2)} kW`);
+      setText(v.ico, orientation === 'vertical' ? '↕' : '↔');
+      setAttr(v.arrow, 'visibility', known ? 'visible' : 'hidden');
+      setAttr(v.arrow, 'transform', `translate(${v.ax} ${v.ay}) rotate(${up ? 180 : 0})`);
+      setAttr(v.g, 'data-kind', kind);
+      setAttr(v.g, 'data-orientation', orientation);
+      setAttr(v.g, 'data-heat-w', q === null ? 'unknown' : String(q));
+      setAttr(v.g, 'data-conductance', String(interzoneConductance(l)));
+      toggleClass(v.g, 'na', q === null);
+      toggleClass(v.g, 'held', held && q !== null);
+      const a = names.get(l.roomA) ?? l.roomA;
+      const b = names.get(l.roomB) ?? l.roomB;
+      const what = `${a} and ${b}: ${kind === 'opening' ? 'open passage' : 'solid wall or floor'}, ${orientation} connection, ${fmt(interzoneConductance(l), 0)} W/K`;
+      const heat = q === null ? 'live heat unavailable' : `${fmt(Math.abs(q) / 1000, 2)} kW from ${q >= 0 ? a : b} to ${q >= 0 ? b : a}${held ? ' (last calculated step)' : ''}`;
+      setAttr(v.g, 'aria-label', `Room link ${what}; ${heat}`);
+      setText(v.title, `${what} · ${heat}. Click to edit.`);
+    }
+  }
+
   function sync(s: AppState): void {
     _state = s;
     const cfg = s.cfg;
@@ -931,6 +1097,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       lineCtl.sync(s, r, inv);
       setText(p.name, r.name);
       setAttr(v.g, 'aria-label', `Zoom to ${r.name} room`);
+      setAttr(p.thermal, 'aria-label', `Thermal settings of ${r.name}`);
       toggleClass(p.remove, 'off', n <= 1);
       p.remove.disabled = n <= 1;
       setAttr(p.remove, 'aria-label', `Remove room ${r.name}`);
@@ -1089,6 +1256,9 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       src, held, live ? (held ? 'last calculated step' : 'live engine') : 'illustrative fixture value', oc.heatW);
     setText(ambientAir, `${fmt(cfg.outdoorC, 1)} °C`);
 
+    syncLinks(s, held);
+    applyLinkMode();
+
     // selection
     for (const el of root.querySelectorAll<SVGElement>('[data-id]')) {
       const on = el.dataset.id === s.ui.selected;
@@ -1153,5 +1323,34 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
   }
 
   window.addEventListener('resize', placeGuide);
-  return { root, guideRoot: guide.root, sync, tick, zoomTo, roomAnchor: (i) => roomPanels[i]?.equip ?? null };
+  const linking: Scene['linking'] = {
+    active: () => linkMode,
+    pick(target): boolean {
+      if (!linkMode) return false;
+      const s = _state;
+      const holder = target.closest<SVGElement>('[data-id^="indoor:"]');
+      const room = s && holder ? s.cfg.rooms[Number(holder.dataset.id?.split(':')[1])] : undefined;
+      // Anything else in the diagram (units, tubes, zones) is inert while placing, so nothing is activated by accident.
+      if (!s || !room || !activeRooms(s.cfg).includes(room)) return true;
+      if (!linkSource) linkSource = room.id;
+      else if (room.id === linkSource) linkSource = null;
+      else {
+        const from = linkSource;
+        setLinking(false);
+        hooks.placeLink(from, room.id);
+        return true;
+      }
+      applyLinkMode();
+      return true;
+    },
+    cancel(): boolean {
+      if (!linkMode) return false;
+      setLinking(false);
+      return true;
+    },
+  };
+  return {
+    root, guideRoot: guide.root, sync, tick, zoomTo, roomAnchor: (i) => roomPanels[i]?.equip ?? null, linking,
+    linkAnchor: (a, b) => linkLayer.querySelector(`[data-link="${pairKey(a, b)}"] .lk-pill`),
+  };
 }

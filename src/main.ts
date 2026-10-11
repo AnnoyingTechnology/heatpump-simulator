@@ -2,10 +2,10 @@ import { createHeader, createOverlay } from './chrome';
 import { html } from './dom';
 import { fixtureFor } from './fixtures';
 import { createInspector } from './inspector';
-import { createPopovers } from './popovers';
+import { createPopovers, pairKey } from './popovers';
 import { createScene } from './scene';
 import type { SceneHooks } from './scene';
-import { createLinesSettings, createOutdoorSettings, createOutdoorUnitCard, createRoomSettings } from './settings';
+import { createLinesSettings, createLinkSettings, createOutdoorSettings, createOutdoorUnitCard, createRoomSettings, createRoomThermal } from './settings';
 import { advanceLedger, store } from './state';
 import type { Clock } from './state';
 import { engineConfigFromUi, type InventoryInitialization } from './runtime/config';
@@ -20,9 +20,21 @@ if (!app) throw new Error('#app missing');
 const select = (id: string | null): void => store.update((s) => { s.ui.selected = id; });
 const openOutdoor = (reveal?: string): void => pops.open('outdoor', 0, () => unitCard.root, reveal);
 
+// Room links are identified by their room pair; the popover index is resolved here and rebound by the popover shell.
+const linkIndex = (a: string, b: string): number => (store.state.cfg.interzoneLinks ?? []).findIndex((l) => pairKey(l.roomA, l.roomB) === pairKey(a, b));
+/** Opens the editor of a link, creating the pair with the generic defaults first when it does not exist yet. */
+const openLink = (a: string, b: string): void => {
+  if (linkIndex(a, b) < 0) store.setInterzoneLink(a, b);
+  const i = linkIndex(a, b);
+  if (i >= 0) pops.open('link', i, () => scene.linkAnchor(a, b));
+};
+
 const unitCard = createOutdoorUnitCard(() => pops.toggle('outdoor', 0, () => unitCard.root));
 const hooks: SceneHooks = {
   toggleRoom: (i, anchor) => { select(`indoor:${i}`); pops.toggle('room', i, () => anchor); },
+  toggleThermal: (i, anchor) => { select(`indoor:${i}`); pops.toggle('thermal', i, () => anchor); },
+  toggleLink: (a, b) => { const i = linkIndex(a, b); if (i >= 0) pops.toggle('link', i, () => scene.linkAnchor(a, b)); },
+  placeLink: openLink,
   toggleLines: (i, anchor) => { select(`pipe:${i}`); pops.toggle('lines', i, () => anchor); },
 };
 const overlay = createOverlay();
@@ -31,6 +43,8 @@ const header = createHeader();
 const pops = createPopovers({
   inspector: createInspector(() => openOutdoor()),
   room: createRoomSettings(() => openOutdoor('shared')),
+  thermal: createRoomThermal(openLink),
+  link: createLinkSettings(),
   lines: createLinesSettings(),
   outdoor: createOutdoorSettings(),
 }, () => store.state, () => { if (store.state.ui.selected !== null) select(null); });
@@ -56,6 +70,8 @@ function selectFromDiagram(id: string | null, el: Element | null): void {
 
 function activateDiagram(target: Element): void {
   if (target.closest('input, button, select, textarea, label, summary, details, a, .rp-ctl, .ou')) return;
+  // While placing a room link, clicks pick rooms; nothing else in the diagram is activated, selected or zoomed.
+  if (scene.linking.pick(target)) return;
   const el = target.closest<SVGElement>('[data-id]');
   const zoom = target.closest<SVGElement>('[data-zoom-target]')?.dataset.zoomTarget as ZoomPreset | undefined;
   if (zoom && store.state.ui.zoom !== zoom) {
@@ -78,6 +94,7 @@ scene.root.addEventListener('keydown', (e) => {
 });
 window.addEventListener('keydown', (e) => {
   if (e.key !== 'Escape') return;
+  if (scene.linking.cancel()) return;
   if (pops.isOpen()) { pops.dismiss(true); return; }
   const guideClose = scene.guideRoot.hidden ? null : scene.guideRoot.querySelector<HTMLButtonElement>('.hl-x');
   if (guideClose) { guideClose.click(); return; }

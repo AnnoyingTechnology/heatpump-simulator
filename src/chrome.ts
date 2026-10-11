@@ -66,6 +66,8 @@ function pick<T extends string | number>(o: {
 
 export function createHeader(): Header {
   const history = new TrendHistory();
+  /** Independent bounded history of the since-restart COP (series index 0 of its own instance). */
+  const sessionHistory = new TrendHistory();
   let historyEpoch = store.resetEpoch;
   const fields: Field[] = [];
   const speed = pick<SpeedFactor>({
@@ -93,11 +95,11 @@ export function createHeader(): Header {
   // Headline readings: value with its trend to the right, label below the value, fixed-width cells so the header does not reflow
   // as numbers change. The plot is 44 px high and stretches to its cell width (non-uniform viewBox, non-scaling strokes); its
   // time ends are HTML laid over the empty strip under the baseline, so the text is never distorted.
-  const metric = (unit: string | null) => {
+  const metric = (unit: string | null, lineClass = 'trend-line') => {
     const k = html('span', { class: 'k' }, '');
     const v = html('b', { class: 'v' }, '—');
     const trendTitle = svg('title', {}, 'Last 2 hours of simulated time; latest reading in each 10-second bin; no history yet');
-    const trendPath = svg('path', { class: 'trend-line', d: '' });
+    const trendPath = svg('path', { class: lineClass, d: '' });
     const trend = svg('svg', { class: 'hm-trend', viewBox: '0 0 112 44', preserveAspectRatio: 'none', role: 'img', 'aria-label': 'Last 2 hours of simulated time' },
       trendTitle, svg('path', { class: 'trend-baseline', d: 'M1 34H111' }), trendPath);
     const plot = html('span', { class: 'hm-plot' }, trend, html('span', { class: 'hm-ends', 'aria-hidden': 'true' }, html('span', {}, '−2h'), html('span', {}, 'now')));
@@ -106,8 +108,16 @@ export function createHeader(): Header {
   };
   const mCop = metric('COP');
   mCop.root.classList.add('hm-cop');
+  // Since-restart COP: the engine's cumulative useful service heat over cumulative HVAC electricity. Its own plot (not one of the
+  // three headline `.trend-line` series) keeps a constant series across mode changes and is cleared only by Restart.
+  const mSession = metric(null, 'session-line');
+  mSession.root.classList.add('hm-session-cop');
+  mSession.k.textContent = 'Since restart';
+  mSession.root.title = 'COP since restart: cumulative useful heating and cooling service divided by all HVAC electricity (compressor, fans, controls), including defrost and reversal penalties; excludes background gains and room-to-room links. Cleared only by Restart.';
   const mHeat = metric('kW');
+  mHeat.root.classList.add('hm-heat');
   const mElec = metric('kW');
+  mElec.root.classList.add('hm-elec');
   const icon = (): SVGSVGElement => svg('svg', { class: 'hm-icon', viewBox: '0 0 24 24', 'aria-hidden': 'true' });
   const plug = icon();
   plug.append(svg('path', { d: 'M8 3v5M16 3v5M6 8h12v3a6 6 0 0 1-6 6v4M12 17v-1' }));
@@ -119,7 +129,7 @@ export function createHeader(): Header {
   sun.classList.add('hm-sun'); snow.classList.add('hm-snow');
   mHeat.root.querySelector('.vl')!.prepend(sun, snow);
   mElec.k.textContent = 'Electrical input';
-  const metrics = html('div', { class: 'hd-metrics', role: 'group', 'aria-label': 'Headline readings' }, mCop.root, mHeat.root, mElec.root);
+  const metrics = html('div', { class: 'hd-metrics', role: 'group', 'aria-label': 'Headline readings' }, mCop.root, mSession.root, mHeat.root, mElec.root);
 
   // Status cell: persistent badge plus one ellipsised line; full detail on hover and in outdoor settings.
   const opState = html('output', { class: 'opstate', role: 'status', 'data-kind': 'loading' }, 'Loading');
@@ -155,20 +165,33 @@ export function createHeader(): Header {
       note.hidden = live && s.ui.experience === 'live' && currentReadings(s).live?.usable === true && currentReadings(s).live?.kind !== 'updating';
       const rd = currentReadings(s);
       const cleared = historyEpoch !== store.resetEpoch;
-      if (cleared) { history.clear(); historyEpoch = store.resetEpoch; }
+      if (cleared) { history.clear(); sessionHistory.clear(); historyEpoch = store.resetEpoch; }
       const output = simulation.status.output;
+      // Since-restart COP from the engine's own cumulative ledger; never an average of instantaneous COP, never clipped (negative
+      // defrost/reversal service stays), undefined without electricity. Mode edits do not touch it; only Restart clears it.
+      const sessionOf = (e: { usefulServiceHeatJ: number; electricityJ: number } | null | undefined): number | null =>
+        e && Number.isFinite(e.electricityJ) && e.electricityJ > 0 && Number.isFinite(e.usefulServiceHeatJ) ? e.usefulServiceHeatJ / e.electricityJ : null;
+      const sessionCop = live ? sessionOf(rd.engine?.energy) : null;
       const accepted = live && simulation.status.state === 'ready' && output && output.state !== 'fault';
       const changed = accepted ? history.accept(output.simulatedSeconds, [rd.cop, rd.roomKwTotal, rd.electricalKw], s.cfg.mode) : false;
-      for (const [i, m] of [mCop, mHeat, mElec].entries()) {
-        if (cleared || changed || !live || !m.trend.dataset.source || m.trend.dataset.source !== s.ui.experience) {
-          const plot = history.plot(i as 0 | 1 | 2);
+      const sessionChanged = accepted ? sessionHistory.accept(output.simulatedSeconds, [sessionOf(output.energy), null, null], 'session') : false;
+      const plots: Array<[typeof mCop, TrendHistory, 0 | 1 | 2, boolean, string, string]> = [
+        [mCop, history, 0, changed, rd.copLabel, 'COP'],
+        [mHeat, history, 1, changed, rd.roomKwLabel, 'kW'],
+        [mElec, history, 2, changed, 'Electrical input', 'kW'],
+        [mSession, sessionHistory, 0, sessionChanged, 'COP since restart', 'COP'],
+      ];
+      for (const [m, hist, series, fresh, label, unit] of plots) {
+        if (cleared || fresh || !live || !m.trend.dataset.source || m.trend.dataset.source !== s.ui.experience) {
+          const plot = hist.plot(series);
           setAttr(m.trendPath, 'd', live ? plot.path : '');
           setText(m.trendTitle, live
-            ? `${i === 0 ? rd.copLabel : i === 1 ? rd.roomKwLabel : 'Electrical input'}: last 2 hours of simulated time, latest reading in each 10-second bin. ${plot.count ? `Scale ${fmt(plot.minimum, 2)}…${fmt(plot.maximum, 2)} ${i === 0 ? 'COP' : 'kW'}.` : 'No accepted history yet.'} Missing readings are gaps.`
+            ? `${label}: last 2 hours of simulated time, latest reading in each 10-second bin. ${plot.count ? `Scale ${fmt(plot.minimum, 2)}…${fmt(plot.maximum, 2)} ${unit}.` : 'No accepted history yet.'} Missing readings are gaps.`
             : 'Illustrative snapshot; no simulated history.');
           m.trend.dataset.source = s.ui.experience;
         }
       }
+      setText(mSession.v, sessionCop === null ? '—' : fmt(sessionCop, 2));
       setText(mCop.k, rd.copLabel);
       setText(mHeat.k, rd.roomKwLabel);
       setText(mCop.v, rd.cop === null ? '—' : fmt(rd.cop, 2));
@@ -224,7 +247,10 @@ export function createOverlay(): Overlay {
   const unzoom = html('button', { type: 'button', class: 'zoom-out', 'aria-label': 'Zoom out to all zones (Escape)' }, '↙ Zoom out');
   unzoom.addEventListener('click', () => store.update(s => { s.ui.zoom = 'overview'; }));
   const iceHead = html('span', { class: 'ice-head' });
-  const ice = html('summary', { class: 'chip-ice', 'aria-label': 'Outdoor coil ice and liquid film; show details' }, iceHead);
+  const ice = html('summary', {
+    class: 'chip-ice', 'aria-label': 'Outdoor coil ice and liquid film, and total drained water; show details',
+    title: 'Ice and film: the outdoor coil now. Water total: cumulative whole-system water actually drained (indoor condensate plus outdoor liquid drainage) since restart, kept across mode changes; frost deposition and melting are not counted until drained. Kilograms (about litres).',
+  }, iceHead);
   const iceNote = html('p', { class: 'ice-note' });
   const film = html('details', { class: 'coil-film rp-ctl' }, ice, iceNote);
   const mismatchText = html('span', { class: 'mm-text' });
@@ -346,16 +372,19 @@ export function createOverlay(): Overlay {
         // Mass values come from the engine's own film state; the preview ledger is not involved.
         // A held inventory is the last accepted film state, not a reading of the current input.
         const film = out?.outdoor ?? held?.outdoor ?? null;
+        // Whole-system drained water from the engine's cumulative ledger; a dash while the field is absent, never an invented zero.
+        const drained = simulation.status.output?.energy?.drainedWaterKg;
+        const water = typeof drained === 'number' && Number.isFinite(drained) ? `${fmt(drained, 3)} kg` : '—';
         setText(iceHead, film
-          ? `${lastStep ? 'Last step · ' : ''}Ice ${fmt(film.iceKg, 3)} kg · film ${fmt(film.liquidKg, 3)} kg`
-          : 'Ice — · film —');
+          ? `${lastStep ? 'Last step · ' : ''}Ice ${fmt(film.iceKg, 3)} kg · film ${fmt(film.liquidKg, 3)} kg · Water total ${water}`
+          : `Ice — · film — · Water total ${water}`);
         ice.dataset.held = lastStep ? '1' : '0';
         setText(iceNote, held ? `Held: last accepted outdoor ice state at simulated ${fmtTime(held.simulatedSeconds)}. Current input: ${st.label.toLowerCase()}; no melting is animated.` : 'Ice and liquid water retained on the outdoor coil, from the live energy and water balances.');
       } else {
         const c = store.clock;
         ice.dataset.held = '0';
         const fm = flowMode(cfg.mode, cfg.example);
-        setText(iceHead, `Scene ice ${fmt(c.iceKg, 3)} kg · retained ${fmt(c.retainedWaterKg, 3)} kg`);
+        setText(iceHead, `Scene ice ${fmt(c.iceKg, 3)} kg · retained ${fmt(c.retainedWaterKg, 3)} kg · Water total —`);
         const notes: string[] = [];
         if (c.seeded) notes.push(`Started from an arbitrary ${ICE_START_KG.toFixed(2)} kg example ice load.`);
         if (fm === 'defrost' && c.iceKg <= 0) notes.push('Ice exhausted: melt and drips stopped. Snapshot readings do not change; this is not a predicted defrost duration.');

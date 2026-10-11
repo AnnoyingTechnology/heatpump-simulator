@@ -72,6 +72,8 @@
   --tr-heat: #c48837;
   --tr-cool: #4b8bab;
   --tr-elec: #496575;
+  --tr-sess: #7a5aa6;
+  --lk-line: #5f7686;
 
   /* scene: selection, zones, rooms, diagram text on the zone background */
   --sel: #1f6a94;
@@ -214,6 +216,8 @@
   --tr-heat: #e0a255;
   --tr-cool: #6db3d6;
   --tr-elec: #8fb0c4;
+  --tr-sess: #b69ae0;
+  --lk-line: #9db6c6;
 
   --sel: #6bb7e3;
   --sel-hover: rgba(107, 183, 227, 0.5);
@@ -307,7 +311,7 @@ h2, h3, h4, h5, p, ul, dl { margin: 0; }
 /* ---------- top bar ---------- */
 /* One light header: brand and theme chooser, playback/status group, headline readings. */
 .topbar { position: relative; z-index: 20; display: flex; align-items: center; gap: 12px; padding: 0 14px; min-width: 0; background: var(--panel); color: var(--ink); border-bottom: 1px solid var(--line); box-shadow: var(--hd-shadow); }
-.hd-id { display: flex; align-items: center; gap: 6px; flex: 0 1 auto; min-width: 0; }
+.hd-id { display: flex; align-items: center; gap: 6px; flex: 0 1 auto; min-width: 66px; }
 .brand { display: flex; align-items: center; gap: 8px; flex: 0 1 auto; min-width: 30px; }
 .brand b { font-size: 13px; letter-spacing: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mark { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, #1f6a94, #12968e); position: relative; flex: none; }
@@ -341,7 +345,7 @@ h2, h3, h4, h5, p, ul, dl { margin: 0; }
 .time { font: 600 14px var(--mono); font-variant-numeric: tabular-nums; letter-spacing: 0.02em; min-width: 66px; text-align: right; }
 .hd-select { width: auto; padding: 5px 24px 5px 9px; border-radius: 8px; font-weight: 600; font-size: 12px; cursor: pointer; color: var(--ink-2); }
 .hd-select option:disabled { color: var(--disabled); }
-.hd-speed { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 80px; }
+.hd-speed { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 70px; }
 .hd-speed-rate { font: 10px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
 .hd-speed-rate[data-limited="true"] { color: var(--ink-2); }
 .topbar .btn { padding: 6px 13px; }
@@ -352,7 +356,10 @@ h2, h3, h4, h5, p, ul, dl { margin: 0; }
 /* Headline readings: three fixed cells, separated by full-height hairlines (no card borders, no radius). In each cell the
    value sits at the left with its label below it, and the two-hour trend fills the space to the right of both. */
 .hd-metrics { display: flex; align-self: stretch; flex: none; }
-.hm { display: grid; grid-template-columns: minmax(112px, 1.25fr) minmax(60px, 1fr); grid-template-rows: auto auto; align-content: center; align-items: center; column-gap: 8px; row-gap: 2px; width: clamp(208px, 14.5vw, 244px); padding: 8px 10px; min-width: 0; }
+.hm { display: grid; grid-template-columns: 104px minmax(36px, 1fr); grid-template-rows: auto auto; align-content: center; align-items: center; column-gap: 6px; row-gap: 2px; width: clamp(172px, 12vw, 224px); padding: 8px; min-width: 0; }
+/* The since-restart COP is a narrower secondary cell right of the instantaneous COP: smaller value, own plot. */
+.hm-session-cop { grid-template-columns: 76px minmax(36px, 1fr); width: clamp(138px, 9.5vw, 170px); }
+.hm-session-cop .v { font-size: 21px; font-weight: 750; }
 .hm + .hm { border-left: 1px solid var(--line); }
 .hm .vl { display: flex; grid-column: 1; grid-row: 1; justify-content: center; align-items: baseline; gap: 4px; white-space: nowrap; }
 .hm .v { font: 750 23px/1.15 var(--font); font-variant-numeric: tabular-nums; }
@@ -369,14 +376,15 @@ h2, h3, h4, h5, p, ul, dl { margin: 0; }
 .hm-trend { display: block; width: 100%; height: 44px; overflow: visible; }
 .hm-trend path { vector-effect: non-scaling-stroke; }
 .hm-trend .trend-baseline { fill: none; stroke: var(--line); stroke-width: 1; }
-.hm-trend .trend-line { fill: none; stroke: var(--tr-cop); stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
-.hm:nth-child(2) .trend-line { stroke: var(--tr-heat); }
-.hd-metrics[data-mode="cooling"] .hm:nth-child(2) .trend-line { stroke: var(--tr-cool); }
-.hm:nth-child(3) .trend-line { stroke: var(--tr-elec); }
+.hm-trend .trend-line, .hm-trend .session-line { fill: none; stroke: var(--tr-cop); stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
+.hm-heat .trend-line { stroke: var(--tr-heat); }
+.hd-metrics[data-mode="cooling"] .hm-heat .trend-line { stroke: var(--tr-cool); }
+.hm-elec .trend-line { stroke: var(--tr-elec); }
+.hm-session-cop .session-line { stroke: var(--tr-sess); }
 /* Time ends lie over the empty strip under the baseline; real text, so the stretched plot never distorts it. */
 .hm-ends { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; font: 8px/1 var(--font); color: var(--muted); pointer-events: none; }
 
-.hd-status { flex: none; width: 172px; display: flex; flex-direction: column; gap: 4px; }
+.hd-status { flex: none; width: 156px; display: flex; flex-direction: column; gap: 4px; }
 .hd-badges { display: flex; min-width: 0; }
 .hd-badges > * { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .opstate { display: inline-block; font-weight: 700; font-size: 12px; }
@@ -540,6 +548,13 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .pop-settings .sec { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--line); }
 .pop-settings .sec h3 { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 8px; }
 .pop-settings .clean-override { margin-bottom: 4px; }
+/* Room thermal popover: one native number + range per link, stacked; the sections reuse the room settings rhythm. */
+.th-links { display: grid; gap: 8px; margin-bottom: 6px; }
+.th-link { display: grid; gap: 3px; justify-items: start; }
+.th-link .pf { justify-self: stretch; }
+.pop[data-pop="thermal"] { width: 380px; }
+.pop-settings .pf.line .rp-k { color: var(--ink-2); }
+.pop-settings .pf.line .rp-num { color: var(--ink); }
 
 /* inspector markup (also embedded in the room and line-set popovers) */
 .ins-body { padding: 0; }
@@ -646,6 +661,11 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .rp-sw-t { overflow: hidden; text-overflow: ellipsis; }
 .eq .rp-btn, .env .rp-btn { padding: 2px 8px; font-size: 10.5px; }
 .rp-remove:disabled { opacity: 0.4; cursor: not-allowed; }
+/* Compact icon button: 22 px hit target, the × is a 10 px vector. */
+.rp-btn.rp-remove, .env .rp-btn.rp-remove { display: inline-grid; place-items: center; width: 22px; height: 22px; padding: 0; }
+.rp-x { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; }
+/* The floor name is shown in full; the buttons keep their size and the name ellipsises only as a last resort. */
+.env .rp-head .rp-name { flex: 0 1 auto; margin-right: auto; }
 .rp-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 .eq .rp-card { padding: 4px 7px; }
 .env-body { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
@@ -819,7 +839,6 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .zone-out { fill: var(--zone-out); }
 .zone-in { fill: var(--zone-in); }
 .zone-edge { fill: var(--zone-edge); }
-.zone-base { stroke: var(--zone-base); stroke-width: 1.5; stroke-dasharray: 6 4; fill: none; }
 .sleeve { fill: var(--sleeve); }
 .fan-guard { fill: none; stroke: #8f9ba7; stroke-width: 0.9; }
 .hub { fill: #4b5661; }
@@ -973,3 +992,25 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .room-rp .rp-head { gap: 6px; }
 .room-rp.rp.eq { padding: 6px 8px; }
 .room-rp .eq-tag { letter-spacing: .08em; }
+
+/* Room links: a thin lane in the gutter right of the indoor units with a small pill (connection direction, flow arrow, live kW).
+   Open passages are dashed, solid partitions solid. Neutral steel, never the refrigerant colours. */
+.room-link { cursor: pointer; outline: none; }
+.lk-hit { fill: transparent; }
+.lk-line { fill: none; stroke: var(--lk-line); stroke-width: 1.6; stroke-linecap: round; }
+.room-link[data-kind="opening"] .lk-line { stroke-dasharray: 4 3; }
+.lk-dot { fill: var(--lk-line); }
+.lk-pill { fill: var(--pill-bg); stroke: var(--lk-line); stroke-width: 1; }
+.lk-arrow { fill: var(--lk-line); }
+.lk-ico { font: 700 11px var(--font); fill: var(--pill-sub); }
+.lk-val { font: 700 10.5px var(--font); fill: var(--pill-ink); font-variant-numeric: tabular-nums; }
+.room-link.na .lk-val { fill: var(--pill-na); }
+.room-link.held .lk-pill { stroke-dasharray: 3 2; }
+.room-link:hover .lk-pill, .room-link:focus-visible .lk-pill { stroke: var(--sel); stroke-width: 1.6; }
+.room-link:focus-visible .lk-pill { stroke: var(--focus); }
+/* "Link rooms" placement: the indoor-zone bar button and its instruction, a crosshair over the rooms, and the chosen source room. */
+.in-link[aria-pressed="true"] { background: var(--hover); border-color: var(--sel); }
+.in-link:disabled { opacity: 0.4; cursor: not-allowed; }
+.in-link-hint { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; color: var(--accent-ink); }
+.scene[data-linking="source"] [data-zoom-target], .scene[data-linking="target"] [data-zoom-target] { cursor: crosshair; }
+.room[data-link="source"] .room-bg { stroke: var(--sel); stroke-width: 2; }

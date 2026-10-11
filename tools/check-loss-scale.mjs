@@ -48,7 +48,7 @@ try{
   }
  });
  await check('loss edits retain focused controls, room zoom, reference elements and accepted physical state',async()=>{
-  await run(()=>{qa.store.reset();qa.store.update(s=>{s.ui.paused=true;s.ui.zoom=`room:${s.cfg.rooms[0].id}`})});
+  await run(()=>{qa.store.reset();qa.store.setExperience('live');qa.store.update(s=>{s.ui.paused=true;s.ui.zoom=`room:${s.cfg.rooms[0].id}`})});
   await page.waitFor('!qv.simulation.isBusy && qv.simulation.status.output',30000);
   const result=await run(()=>{const range=document.querySelector('.room-env input[aria-label^="Envelope heat-loss coefficient"][type="range"]'),scale=document.querySelector('.room-env .ls'),before=JSON.stringify(qv.simulation.status.output),zoom=qa.store.state.ui.zoom;range.focus();range.value='650';range.dispatchEvent(new Event('input',{bubbles:true}));return {focused:document.activeElement===range,same:document.querySelector('.room-env .ls')===scale,zoom:qa.store.state.ui.zoom===zoom,physical:JSON.stringify(qv.simulation.status.output)===before,value:qa.store.state.cfg.rooms[0].heatLossWPerK}});
   assert.deepEqual(result,{focused:true,same:true,zoom:true,physical:true,value:650});

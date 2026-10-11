@@ -68,7 +68,7 @@ try{
   await run(()=>qa.store.setMode('cooling'));assert.equal(await run(()=>getComputedStyle(document.querySelector('.hm-sun')).display),'none');assert.notEqual(await run(()=>getComputedStyle(document.querySelector('.hm-snow')).display),'none');await settled();
  });
  await check('shared manometers connect directly to branch tubes and show actual endpoint pressures',async()=>{
-  await run(()=>{qa.store.reset();qa.store.update(s=>s.ui.paused=true);});await settled();await run(()=>qv.simulation.step(.25));await settled();
+  await run(()=>{qa.store.reset();qa.store.update(s=>{s.ui.paused=true;s.cfg.rooms.forEach(r=>{r.enabled=true;r.setpointC=24})});});await settled();await run(()=>qv.simulation.step(.25));await settled();
   const r=await run(()=>({out:qv.simulation.status.output,gauges:[...document.querySelectorAll('[data-branch-pressure]')].map(e=>({id:e.dataset.roomId,side:e.dataset.branchPressure,p:Number(e.dataset.pressureAbsolute),shown:e.querySelector('.g-val').textContent})),labels:[...document.querySelectorAll('.g-tag')].map(e=>e.textContent)}));
   assert.equal(r.gauges.length,6);assert.ok(r.labels.every(l=>!l.includes('virtual')));
   const layout=await run(()=>({
@@ -96,6 +96,7 @@ try{
     await page.evaluate(`qa.store.setUnitCount(${count});qa.store.update(s=>s.ui.zoom='overview');document.querySelector('.scene-scroll').scrollTop=0`);
     await new Promise(r=>setTimeout(r,350));
     const bad=await run(()=>[...document.querySelectorAll('.room-env,.room-rp,.flow-in,.flow-out,.ou')].flatMap(card=>{const fo=card.closest('foreignObject').getBoundingClientRect();return [...card.querySelectorAll('input,select,button')].filter(e=>e.getBoundingClientRect().width).flatMap(e=>{const b=e.getBoundingClientRect();return b.x<fo.x-.6||b.right>fo.right+.6||b.y<fo.y-.6||b.bottom>fo.bottom+.6?[{label:e.getAttribute('aria-label')||e.textContent,b:{x:b.x,y:b.y,right:b.right,bottom:b.bottom},fo:{x:fo.x,y:fo.y,right:fo.right,bottom:fo.bottom}}]:[]})}));assert.deepEqual(bad,[],JSON.stringify({width,count,bad}));
+    assert.ok(await run(()=>[...document.querySelectorAll('.room-env .rp-name')].every(e=>e.scrollWidth<=e.clientWidth+1)),`room names fit at ${width}, ${count} rooms`);
    }
   }
  });
