@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-10-11T06:53:11.877722+00:00",
+  "applicationCommit": "2ad257fa0ffaad3e7c55513bea5f9d2a8b73b30b",
+  "url": "https://annoyingtechnology.github.io/heatpump-simulator/",
+  "workflow": {
+    "runId": 38119168519,
+    "url": "https://github.com/AnnoyingTechnology/heatpump-simulator/actions/runs/38119168519",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "build",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-10-11T06:46:51Z",
+        "completedAt": "2026-10-11T06:50:22Z"
+      },
+      {
+        "name": "deploy",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-10-11T06:50:27Z",
+        "completedAt": "2026-10-11T06:50:38Z"
+      }
+    ]
+  },
+  "checks": {
+    "referenceAndProperties": {
+      "tests": 52,
+      "pass": 52,
+      "fail": 0,
+      "duration_ms": 199787.540862
+    },
+    "rollingHistory": {
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "duration_ms": 164.879347
+    },
+    "hostedBrowser": {
+      "tests": 6,
+      "pass": 6,
+      "receipt": "reviews/github-pages-browser-results.json"
+    },
+    "midpointScale": {
+      "tests": 3,
+      "pass": 3,
+      "layoutCombinations": 32,
+      "receipt": "reviews/loss-scale-browser-results.json"
+    }
+  },
+  "assetSha256": {
+    "index-5iGa_RFE.js": "f93191492f6f4b80ef421e224991dee7ec691256593f6a5b52d3fc016216be4e",
+    "index-CDcui9zN.css": "9ffa1ed7922d7e34289b9fc7c0671a5172022b027832ed154fa83122c7e5e831",
+    "worker-Bt2PmKhk.js": "62f0f5269a7a4aaaf72cfce9cc49feafcc786311b2397a1ff70be64b21bba4d9"
+  },
+  "wasmSha256": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+  "scope": "Directly labelled insulation-era midpoints; unchanged Reference R32 worker and closed experimental charge gate."
+}
