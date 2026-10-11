@@ -2,6 +2,8 @@
 export const EQUIPMENT_FR: Readonly<Record<string, string>> = {
   'France technical table; current availability unverified': 'Table technique française ; disponibilité actuelle non vérifiée',
   'Europe; France availability unverified': 'Europe ; disponibilité en France non vérifiée',
+  'Published class pairing · factory suffix unpublished · exact OEM combination unknown.': 'Association de classes publiée · suffixe usine non publié · combinaison constructeur exacte inconnue.',
+  'Published catalogue class pairing and casing; factory suffix and exact full-SKU eligibility remain unknown. Indoor cooling high-fan volumetric flow is published; heating reuse is an assumption. Outdoor airflow, compressor, coil conductance, charge and fan watts remain generic/manual; no OEM performance map.': 'Association de classes et enveloppes publiées ; suffixe usine et admissibilité des références complètes inconnus. Débit intérieur à grande vitesse publié en froid ; réutilisation en chauffage supposée. Débit extérieur, compresseur, conductance, charge et puissance des ventilateurs génériques/manuels ; aucune carte constructeur.',
   'Installation declarations': 'Déclarations de raccordement',
   'Installed refrigerant port': 'Port frigorifique raccordé',
   'Declared connection class': 'Classe de raccordement déclarée',
@@ -26,9 +28,13 @@ export const EQUIPMENT_FR: Readonly<Record<string, string>> = {
   'Published casing, named ports and necessary connection-class/reducer constraints. Exact indoor full-reference combinations remain unverified. Outdoor airflow, compressor, coil conductance, fan watts and performance remain editable generic assumptions. Published total-charge limits are documentary and do not calibrate the generic circuit.': 'Enveloppe, ports identifiés et contraintes nécessaires de classe/réducteur publiés. Les combinaisons de références intérieures complètes restent non vérifiées. Débit extérieur, compresseur, conductance, puissance des ventilateurs et performances restent des hypothèses génériques modifiables. Les plafonds publiés de charge totale sont documentaires et ne calibrent pas le circuit générique.',
 };
 export const EQUIPMENT_FR_PATTERNS: readonly (readonly [string, string])[] = [
-  ['{model} (availability unverified)', '{model} (disponibilité non vérifiée)'],
+  ['{model} · catalogue class · suffix unpublished', '{model} · classe du catalogue · suffixe non publié'],
+  ['{model} (class; suffix unpublished)', '{model} (classe ; suffixe non publié)'],
+  ['{label}: published catalogue class pairing. Factory suffix and exact OEM combination are unknown. Outdoor airflow remains generic/manual; no OEM performance map.', '{label} : association de classes publiée au catalogue. Suffixe usine et combinaison constructeur exacte inconnus. Débit extérieur générique/manuel ; aucune carte constructeur.'],
+  ['Published class source: {basis}. Factory suffix unpublished; exact full-SKU eligibility unknown.', 'Source de la classe publiée : {basis}. Suffixe usine non publié ; admissibilité des références complètes inconnue.'],
+  ['{label} (availability unverified)', '{label} (disponibilité non vérifiée)'],
   ["Model: {label}. Change it with the model list on the room's unit block. Source scope: {basis}. Current retail availability is unverified. Outdoor pairing requires its own source evidence.", 'Modèle : {label}. Modifier avec la liste du bloc intérieur. Portée de la source : {basis}. Disponibilité commerciale actuelle non vérifiée. L’association extérieure exige sa propre preuve documentaire.'],
-  ['{model} · EU listed', '{model} · référencé UE'],
+  ['{label} · EU listed', '{label} · référencé UE'],
   ['Source region: {basis}. Current sales status unknown; technical-table presence does not establish France availability.', 'Région de la source : {basis}. Commercialisation actuelle inconnue ; la présence dans une table technique ne prouve pas la disponibilité en France.'],
   ['{model}: exact published one-to-one Europe pairing. France availability and current sales status are unknown. Outdoor airflow uses the generic/manual setting; the cycle has no OEM performance map.', '{model} : association individuelle exacte publiée en Europe. Disponibilité en France et commercialisation actuelle inconnues. Débit extérieur générique/manuel ; le cycle n’a pas de carte de performances constructeur.'],
   ['{model} publishes a maximum of {maximum} connected heads; the minimum is unknown. Remove rooms explicitly before selecting it; existing rooms and history were preserved.', '{model} publie un maximum de {maximum} unités raccordées ; minimum inconnu. Retirer explicitement des pièces avant la sélection ; pièces et historique conservés.'],

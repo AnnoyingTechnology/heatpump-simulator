@@ -1,0 +1,529 @@
+{
+  "scope": "Independent visual table review; published catalogue class identities, not full factory SKU aliases",
+  "candidate": {
+    "path": "research/catalogue/staging/luna-next-daikin-perfera-published-class-physical-corrected-2026.json",
+    "sha256": "ff0444d5fb9aeb5e97f7b271cfec1787c920c88cfe43b1884922fddc14f3de24"
+  },
+  "sourcePins": [
+    {
+      "path": "research/sources/luna-next-daikin-2026-catalogue-p320.html",
+      "sha256": "2becf651c2619e2ced56510cb32ae4a2cc8eabec377eed75e6c716444676f918"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-2026-catalogue-p320-layout.svg",
+      "sha256": "6e893f94b23cbf4c82418519bff09c9ac06c59e9d7aa187b366ad1ff6b9b9a7d"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-2026-catalogue-p320-background.webp",
+      "sha256": "248196cdf69bfd9ec8e2998716ac412986ed603583870a9122c9be42b350b1a3"
+    }
+  ],
+  "layoutReview": {
+    "path": "research/sources/luna-next-daikin-2026-catalogue-p320-layout-review.png",
+    "sha256": "9bf7e181762dec5836fa56222f1d0021c9ec32b3decb01b7aa590544f50eec5d"
+  },
+  "reviewedUnits": [
+    {
+      "reference": "FTXM20A",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 298,
+        "width": 804,
+        "depth": 252,
+        "airflow": 714
+      },
+      "factConditions": {
+        "airflow": "Indoor cooling fan, High setting; source publishes 11.9 m³/min, converted by ×60 to m³/h; class cell 20A and 25A merged."
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+      }
+    },
+    {
+      "reference": "RXM20A",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 610,
+        "width": 923,
+        "depth": 367,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -21,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "coolingOutdoorMinimum": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB).",
+        "coolingOutdoorMaximum": "Outdoor ambient cooling range, maximum, dry-bulb (°CDB).",
+        "heatingOutdoorMinimum": "Outdoor ambient heating range, minimum, wet-bulb (°CWB).",
+        "heatingOutdoorMaximum": "Outdoor ambient heating range, maximum, wet-bulb (°CWB)."
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXM20A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "p320-layout-svg",
+        "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+        "excerpt": "FTXM + RXM | 20A + 20A"
+      }
+    },
+    {
+      "reference": "FTXM25A",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 298,
+        "width": 804,
+        "depth": 252,
+        "airflow": 714
+      },
+      "factConditions": {
+        "airflow": "Indoor cooling fan, High setting; source publishes 11.9 m³/min, converted by ×60 to m³/h; class cell 20A and 25A merged."
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+      }
+    },
+    {
+      "reference": "RXM25A9",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 610,
+        "width": 923,
+        "depth": 367,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -21,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "coolingOutdoorMinimum": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB).",
+        "coolingOutdoorMaximum": "Outdoor ambient cooling range, maximum, dry-bulb (°CDB).",
+        "heatingOutdoorMinimum": "Outdoor ambient heating range, minimum, wet-bulb (°CWB).",
+        "heatingOutdoorMaximum": "Outdoor ambient heating range, maximum, wet-bulb (°CWB)."
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXM25A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "p320-layout-svg",
+        "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+        "excerpt": "FTXM + RXM | 25A + 25A9"
+      }
+    },
+    {
+      "reference": "FTXM35A",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 298,
+        "width": 804,
+        "depth": 252,
+        "airflow": 792
+      },
+      "factConditions": {
+        "airflow": "Indoor cooling fan, High setting; source publishes 13.2 m³/min, converted by ×60 to m³/h; class cell 35A."
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+      }
+    },
+    {
+      "reference": "RXM35A9",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 610,
+        "width": 923,
+        "depth": 367,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -21,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "coolingOutdoorMinimum": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB).",
+        "coolingOutdoorMaximum": "Outdoor ambient cooling range, maximum, dry-bulb (°CDB).",
+        "heatingOutdoorMinimum": "Outdoor ambient heating range, minimum, wet-bulb (°CWB).",
+        "heatingOutdoorMaximum": "Outdoor ambient heating range, maximum, wet-bulb (°CWB)."
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXM35A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "p320-layout-svg",
+        "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+        "excerpt": "FTXM + RXM | 35A + 35A9"
+      }
+    },
+    {
+      "reference": "FTXM42A",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 298,
+        "width": 804,
+        "depth": 252,
+        "airflow": 798
+      },
+      "factConditions": {
+        "airflow": "Indoor cooling fan, High setting; source publishes 13.3 m³/min, converted by ×60 to m³/h; class cell 42A."
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+      }
+    },
+    {
+      "reference": "RXM42A",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 610,
+        "width": 923,
+        "depth": 367,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -21,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "coolingOutdoorMinimum": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB).",
+        "coolingOutdoorMaximum": "Outdoor ambient cooling range, maximum, dry-bulb (°CDB).",
+        "heatingOutdoorMinimum": "Outdoor ambient heating range, minimum, wet-bulb (°CWB).",
+        "heatingOutdoorMaximum": "Outdoor ambient heating range, maximum, wet-bulb (°CWB)."
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXM42A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "p320-layout-svg",
+        "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+        "excerpt": "FTXM + RXM | 42A + 42A"
+      }
+    },
+    {
+      "reference": "FTXM50A",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 298,
+        "width": 804,
+        "depth": 252,
+        "airflow": 762
+      },
+      "factConditions": {
+        "airflow": "Indoor cooling fan, High setting; source publishes 12.7 m³/min, converted by ×60 to m³/h; class cell 50A."
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+      }
+    },
+    {
+      "reference": "RXM50A8",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 610,
+        "width": 923,
+        "depth": 367,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -21,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "coolingOutdoorMinimum": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB).",
+        "coolingOutdoorMaximum": "Outdoor ambient cooling range, maximum, dry-bulb (°CDB).",
+        "heatingOutdoorMinimum": "Outdoor ambient heating range, minimum, wet-bulb (°CWB).",
+        "heatingOutdoorMaximum": "Outdoor ambient heating range, maximum, wet-bulb (°CWB)."
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXM50A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "p320-layout-svg",
+        "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+        "excerpt": "FTXM + RXM | 50A + 50A8"
+      }
+    },
+    {
+      "reference": "FTXM60A",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 298,
+        "width": 997,
+        "depth": 292,
+        "airflow": 936
+      },
+      "factConditions": {
+        "airflow": "Indoor cooling fan, High setting; source publishes 15.6 m³/min, converted by ×60 to m³/h; class cell 60A."
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+      }
+    },
+    {
+      "reference": "RXM60A",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 734,
+        "width": 954,
+        "depth": 401,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -21,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "coolingOutdoorMinimum": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB).",
+        "coolingOutdoorMaximum": "Outdoor ambient cooling range, maximum, dry-bulb (°CDB).",
+        "heatingOutdoorMinimum": "Outdoor ambient heating range, minimum, wet-bulb (°CWB).",
+        "heatingOutdoorMaximum": "Outdoor ambient heating range, maximum, wet-bulb (°CWB)."
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXM60A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "p320-layout-svg",
+        "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+        "excerpt": "FTXM + RXM | 60A + 60A"
+      }
+    },
+    {
+      "reference": "FTXM71A",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 298,
+        "width": 997,
+        "depth": 292,
+        "airflow": 948
+      },
+      "factConditions": {
+        "airflow": "Indoor cooling fan, High setting; source publishes 15.8 m³/min, converted by ×60 to m³/h; class cell 71A."
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+      }
+    },
+    {
+      "reference": "RXM71A",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 734,
+        "width": 954,
+        "depth": 401,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "coolingOutdoorMinimum": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB).",
+        "coolingOutdoorMaximum": "Outdoor ambient cooling range, maximum, dry-bulb (°CDB).",
+        "heatingOutdoorMinimum": "Outdoor ambient heating range, minimum, wet-bulb (°CWB).",
+        "heatingOutdoorMaximum": "Outdoor ambient heating range, maximum, wet-bulb (°CWB)."
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXM71A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "p320-layout-svg",
+        "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+        "excerpt": "FTXM + RXM | 71A + 71A"
+      }
+    }
+  ],
+  "limitations": [
+    "CTXM15A is multi-only and withheld; no mono outdoor invented.",
+    "Current source-listed classes are separate from archived A2/A5 full SKU records; factory suffix, exact full-SKU eligibility and current France retail availability remain unknown.",
+    "Outdoor high-fan airflow unpublished; manual mass-flow retained. Cooling high-fan indoor volumetric flow applied; heating reuse is an explicit generic assumption.",
+    "No charge, electrical operating floor, compressor map, capacity scaling or coil conductance inferred."
+  ],
+  "designatedResearchInputs": [
+    {
+      "path": "research/catalogue/staging/luna-next-daikin-perfera-published-class-physical-2026.json",
+      "sha256": "1944fc6f5a960cb509fb091a408bbe806c4e63abd7e318ded45a8eb971d1b6ef"
+    }
+  ]
+}

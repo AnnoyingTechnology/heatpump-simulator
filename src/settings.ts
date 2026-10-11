@@ -731,7 +731,7 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
       const validation = currentInstallationValidation(c);
       installationStatus.hidden = !validation;
       if (validation) {
-        setText(installationStatus, `Connection constraints: ${validation.topologyStatus} · exact OEM combination: ${validation.eligibilityStatus}. Declarations are in each indoor unit's Settings.`);
+        setText(installationStatus, info.identityKind === 'published-class' ? 'Published class pairing · factory suffix unpublished · exact OEM combination unknown.' : `Connection constraints: ${validation.topologyStatus} · exact OEM combination: ${validation.eligibilityStatus}. Declarations are in each indoor unit's Settings.`);
         setAttr(installationStatus, 'title', validation.findings.map(f => f.message).join('\n'));
         installationStatus.dataset.kind = 'notice';
       }
@@ -954,6 +954,8 @@ export function createOutdoorSettings(): PopContent {
             ? info.installation.ports === null
               ? `${info.label}: published maximum ${info.ports} connected heads. Minimum count and named port/class/reducer rules are unresolved; exact indoor eligibility is unknown and the cycle remains generic.`
               : `${info.label}: published ${info.ports}-port model with necessary class/reducer rules. Exact matched indoor references are unverified; the cycle remains generic.`
+            : info.identityKind === 'published-class'
+              ? `${info.label}: published catalogue class pairing. Factory suffix and exact OEM combination are unknown. Outdoor airflow remains generic/manual; no OEM performance map.`
             : info.marketScope
               ? `${info.label}: exact published one-to-one Europe pairing. France availability and current sales status are unknown. Outdoor airflow uses the generic/manual setting; the cycle has no OEM performance map.`
               : `${info.label}: published ${info.ports}-port model. Its matched indoor units, ports and cooling high-fan airflow are applied; the cycle, compressor, coil conductance and fan watts remain generic assumptions, not an OEM performance map.`);
@@ -962,6 +964,7 @@ export function createOutdoorSettings(): PopContent {
       const flowText = info.coolingHighFanFlowM3h === undefined ? 'no published airflow'
         : `${fmt(info.coolingHighFanFlowM3h, 0)} m³/h cooling high fan (reused in heating as an assumption)`;
       const facts = [`Ports: ${info.ports ?? `${c.genericPortCapacity} (assumed)`}`, `Case: ${info.caseMm.w} × ${info.caseMm.h} × ${info.caseMm.d} mm (the drawing is a generic illustration)`, `Airflow: ${flowText}`];
+      if (info.sourceEdition) facts.push(`Published class source: ${info.sourceEdition}. Factory suffix unpublished; exact full-SKU eligibility unknown.`);
       if (info.marketScope) facts.push(`Source region: ${info.marketScope}. Current sales status unknown; technical-table presence does not establish France availability.`);
       if (info.installation) {
         const i = info.installation;

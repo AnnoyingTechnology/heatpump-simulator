@@ -1107,10 +1107,11 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
     const pair = valvePairs(inv ? inv.orientation : fm, inv?.orientation ?? cfg.mode);
     setText(valveLabel, fm === 'idle' ? `${pair.a} · ${pair.b} (idle)` : `${pair.a} · ${pair.b}`);
     const cap = outdoorPortCapacity(cfg);
-    // The casing carries the exact reference (the brand goes on the second line for catalogue units, so the label stays short).
+    // The casing carries the source reference; class-only identities retain their suffix boundary below.
     const model = outdoorModelInfo(cfg);
-    setText(outLabel, model.acceptance === 'reviewed-fields' ? model.id : cfg.outdoorKind === 'owner' ? model.label : 'Generic compatible outdoor');
+    setText(outLabel, (model.acceptance === 'reviewed-fields' || model.acceptance === 'reviewed-class-fields') ? model.id : cfg.outdoorKind === 'owner' ? model.label : 'Generic compatible outdoor');
     setText(outSub, model.acceptance === 'owner-reference' ? `${OWNER_PORTS} ports · R32 · suffix unknown`
+      : model.identityKind === 'published-class' ? `${equipmentManufacturerLabel(model.manufacturer)} · catalogue class · suffix unpublished`
       : model.ports === null ? `${live ? cfg.live.refrigerant : 'R32'} · ${n} of ${cap} ports used · assumed${layout.outH > 235 ? ' larger' : ''} casing`
         : `${equipmentManufacturerLabel(model.manufacturer)} · ${model.ports} port${model.ports === 1 ? '' : 's'} · published`);
 

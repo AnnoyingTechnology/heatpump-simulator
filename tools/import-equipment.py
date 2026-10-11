@@ -137,8 +137,20 @@ def source_review_metadata(unit, accepted, root):
     metadata = row['runtimeMetadata']
     if any(accepted.get(k) != value for k, value in metadata.items()):
         raise ValueError('Region or availability claim differs from independent source review')
-    if set(metadata) != {'sourceStatus', 'marketScope'} or metadata['sourceStatus'] != 'availability-unknown':
+    class_profile = accepted.get('identityKind') == 'published-class'
+    keys = {'sourceStatus', 'marketScope'} | ({'identityKind', 'sourceEdition'} if class_profile else set())
+    if set(metadata) != keys or metadata['sourceStatus'] != 'availability-unknown':
         raise ValueError('Unreviewed source-status metadata contract')
+    if class_profile:
+        if not isinstance(metadata['sourceEdition'], str) or not metadata['sourceEdition'].strip():
+            raise ValueError('Published class requires an explicit source edition')
+        boundary = 'Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown.'
+        if boundary not in unit.get('unknowns', []):
+            raise ValueError('Published class must retain its explicit unpublished suffix/eligibility boundary')
+        layout = reviewed.get('layoutReview', {})
+        path = root / layout.get('path', '')
+        if not path.is_file() or sha(path) != layout.get('sha256'):
+            raise ValueError('Published class visual layout review is missing or changed')
     return metadata
 
 
@@ -161,6 +173,10 @@ def generate(root=ROOT):
         if doc['manufacturer'] not in ('daikin', 'mitsubishi-electric'):
             raise ValueError('Unreviewed manufacturer')
         unit = next(u for u in doc['units'] if u['modelReference'] == accepted['candidateReference'])
+        if 'identityKind' in accepted and accepted['identityKind'] != 'published-class':
+            raise ValueError('Unreviewed equipment identity kind')
+        if accepted.get('identityKind') == 'published-class' and 'sourceReview' not in accepted:
+            raise ValueError('Published class requires independent source review')
         selected = []
         for fact_key in accepted['factKeys']:
             facts = [f for f in unit['facts'] if f['key'] == fact_key]
@@ -211,7 +227,7 @@ def generate(root=ROOT):
         profile = {
             'id': accepted['reference'], 'manufacturer': doc['manufacturer'],
             'unitType': unit['unitType'],
-            'acceptance': 'reviewed-fields',
+            'acceptance': 'reviewed-class-fields' if accepted.get('identityKind') == 'published-class' else 'reviewed-fields',
             'caseMm': {'h': dimensions['height'], 'w': dimensions['width'], 'd': dimensions['depth']},
             'coolingHighFanFlowM3h': airflow['value'] if airflow else None,
         }

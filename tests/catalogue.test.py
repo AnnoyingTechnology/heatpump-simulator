@@ -41,7 +41,7 @@ class CatalogueAcceptance(unittest.TestCase):
                 flow = next(f for f in unit['facts'] if f['key'] == 'airflow' and f['condition'] == accepted['coolingAirflowCondition'])
                 self.assertEqual(runtime['coolingHighFanFlowM3h'], flow['value'])
             self.assertEqual(runtime['manufacturer'], candidate['manufacturer'])
-            self.assertEqual(runtime['acceptance'], 'reviewed-fields')
+            self.assertEqual(runtime['acceptance'], 'reviewed-class-fields' if accepted.get('identityKind') == 'published-class' else 'reviewed-fields')
             for key, dimension in [('h', 'height'), ('w', 'width'), ('d', 'depth')]:
                 fact = next(f for f in unit['facts'] if f['key'] == dimension)
                 self.assertEqual(runtime['caseMm'][key], fact['value'])
@@ -626,6 +626,52 @@ class CatalogueAcceptance(unittest.TestCase):
             entry = next(e for e in self.review['units'] if e['reference'] == p['id'])
             self.assertEqual(entry['pairingEvidence']['sourceId'], 'siesta-pair-e')
             self.assertEqual(entry['pairingEvidence']['excerpt'], f'ATXC{size}EV1B / ARXC{size}EV1B')
+
+    def test_published_classes_require_separate_review_contract_and_never_alias_factory_suffixes(self):
+        profiles = {p['id']: p for name in ('CATALOGUE_OUTDOORS', 'CATALOGUE_INDOORS') for p in json.loads(re.search(r'export const ' + name + r' = (.*?) as const;', module.generate(), re.S).group(1))}
+        classes = [u for u in self.review['units'] if u.get('identityKind') == 'published-class']
+        self.assertEqual(len(classes), 14)
+        for accepted in classes:
+            profile = profiles[accepted['reference']]
+            self.assertEqual(profile['acceptance'], 'reviewed-class-fields')
+            self.assertEqual(profile['identityKind'], 'published-class')
+            self.assertEqual(profile['sourceEdition'], 'ECPEN26-500 (02/2026), p.320')
+            self.assertEqual(profile['sourceStatus'], 'availability-unknown')
+            self.assertEqual(accepted['reference'], accepted['candidateReference'])
+        for exact in ('FTXM20A2V1B', 'FTXM25A5V1B', 'RXM25A5V1B9'):
+            self.assertNotEqual(profiles[exact]['acceptance'], 'reviewed-class-fields')
+            self.assertNotIn('identityKind', profiles[exact])
+        self.assertNotIn('CTXM15A', profiles)
+
+    def test_perfera_merged_cells_cooling_vs_heating_flow_and_db_wb_ranges(self):
+        profiles = {p['id']: p for name in ('CATALOGUE_OUTDOORS', 'CATALOGUE_INDOORS') for p in json.loads(re.search(r'export const ' + name + r' = (.*?) as const;', module.generate(), re.S).group(1))}
+        outdoors = ['RXM20A', 'RXM25A9', 'RXM35A9', 'RXM42A', 'RXM50A8', 'RXM60A', 'RXM71A']
+        for i, size in enumerate((20, 25, 35, 42, 50, 60, 71)):
+            indoor = profiles[f'FTXM{size}A']; outdoor = profiles[outdoors[i]]
+            self.assertEqual(indoor['coolingHighFanFlowM3h'], [714, 714, 792, 798, 762, 936, 948][i])
+            self.assertEqual(indoor['caseMm'], {'h': 298, 'w': 804 if i < 5 else 997, 'd': 252 if i < 5 else 292})
+            self.assertEqual(outdoor['caseMm'], {'h': 610, 'w': 923, 'd': 367} if i < 5 else {'h': 734, 'w': 954, 'd': 401})
+            self.assertEqual(outdoor['compatibleIndoorClasses'], [f'FTXM{size}A'])
+            self.assertIsNone(outdoor['coolingHighFanFlowM3h'])
+            self.assertEqual(outdoor['publishedOperatingRangesC']['cooling']['maximum'], 50 if i < 6 else 46)
+            heating = outdoor['publishedOperatingRangesC']['heating']
+            self.assertEqual(heating['minimum'], -21 if i < 6 else -15)
+            self.assertIn('wet-bulb', heating['condition'])
+            self.assertNotIn('nominalCoolingKw', outdoor)
+
+    def test_class_suffix_unknown_and_layout_review_are_required_not_optional_cache(self):
+        accepted = next(u for u in self.review['units'] if u.get('identityKind') == 'published-class')
+        doc = json.loads((ROOT / accepted['candidateFile']).read_text()); unit = next(u for u in doc['units'] if u['modelReference'] == accepted['reference'])
+        changed = json.loads(json.dumps(unit)); changed['unknowns'] = []
+        with self.assertRaisesRegex(ValueError, 'unpublished suffix'): module.source_review_metadata(changed, accepted, ROOT)
+        changed = dict(accepted); changed.pop('sourceEdition')
+        with self.assertRaisesRegex(ValueError, 'availability claim'): module.source_review_metadata(unit, changed, ROOT)
+        receipt = json.loads((ROOT / accepted['sourceReview']['path']).read_text())
+        with tempfile.TemporaryDirectory() as directory:
+            isolated = Path(directory)
+            for item in [accepted['sourceReview'], *receipt['sourcePins'], *receipt.get('designatedResearchInputs', [])]:
+                target = isolated / item['path']; target.parent.mkdir(parents=True, exist_ok=True); target.write_bytes((ROOT / item['path']).read_bytes())
+            with self.assertRaisesRegex(ValueError, 'visual layout review'): module.source_review_metadata(unit, accepted, isolated)
 
 
 if __name__ == '__main__':

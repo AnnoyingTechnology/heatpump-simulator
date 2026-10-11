@@ -1,5 +1,5 @@
 import { CATALOGUE_INDOORS, CATALOGUE_OUTDOORS } from './equipment-data';
-import { validateMultisplitInstallation, type MultisplitInstallation } from './equipment-topology';
+import { validateMultisplitInstallation, type MultisplitInstallation, type InstallationValidation } from './equipment-topology';
 import type { Config, IndoorClass, OutdoorKind } from './types';
 
 export type EquipmentManufacturer = 'daikin' | 'mitsubishi-electric' | 'generic';
@@ -18,7 +18,10 @@ export interface OutdoorModelInfo {
   profileNote: string;
   /** Published cooling high-fan airflow; heating reuse is an explicit assumption. */
   coolingHighFanFlowM3h?: number;
-  acceptance: 'owner-reference' | 'generic-assumption' | 'reviewed-fields';
+  acceptance: 'owner-reference' | 'generic-assumption' | 'reviewed-fields' | 'reviewed-class-fields';
+  /** Source-listed class, never an alias to a guessed full factory SKU. */
+  identityKind?: 'published-class';
+  sourceEdition?: string;
   sourceStatus?: 'legacy' | 'availability-unknown';
   /** Region where the exact source applies, without claiming local retail availability. */
   marketScope?: string;
@@ -38,13 +41,17 @@ export const OUTDOOR_MODELS: readonly OutdoorModelInfo[] = [
     compatibleIndoorClasses: [...baseIndoor, ...CATALOGUE_INDOORS.map(m => m.id)], caseMm: { h: 734, w: 958, d: 340 },
     acceptance: 'generic-assumption', profileNote: 'User-defined port capacity and generic compatible equipment assumptions. Manufacturer pairing is not asserted.' },
   ...CATALOGUE_OUTDOORS.map(profile => ({
-    id: profile.id, label: `${equipmentManufacturerLabel(profile.manufacturer)} ${profile.id}`, manufacturer: profile.manufacturer,
+    id: profile.id, label: `${equipmentManufacturerLabel(profile.manufacturer)} ${profile.id}${profile.acceptance === 'reviewed-class-fields' ? ' (class; suffix unpublished)' : ''}`, manufacturer: profile.manufacturer,
     ports: profile.ports, compatibleIndoorClasses: profile.compatibleIndoorClasses,
     caseMm: profile.caseMm, coolingHighFanFlowM3h: profile.coolingHighFanFlowM3h ?? undefined,
     installation: 'installation' in profile ? profile.installation : undefined,
     sourceStatus: 'sourceStatus' in profile ? profile.sourceStatus : undefined,
     marketScope: 'marketScope' in profile ? profile.marketScope : undefined,
-    acceptance: profile.acceptance, profileNote: 'installation' in profile
+    identityKind: 'identityKind' in profile ? profile.identityKind : undefined,
+    sourceEdition: 'sourceEdition' in profile ? profile.sourceEdition : undefined,
+    acceptance: profile.acceptance, profileNote: profile.acceptance === 'reviewed-class-fields'
+      ? 'Published catalogue class pairing and casing; factory suffix and exact full-SKU eligibility remain unknown. Indoor cooling high-fan volumetric flow is published; heating reuse is an assumption. Outdoor airflow, compressor, coil conductance, charge and fan watts remain generic/manual; no OEM performance map.'
+      : 'installation' in profile
       ? profile.installation.ports === null
       ? 'Published legacy reference, casing, R32 and maximum connected head count. Minimum count, named ports, class/reducer rules and exact indoor eligibility remain unknown. Outdoor high-fan airflow and the cycle use editable generic assumptions; no OEM charge or performance map is applied.'
       : 'Published casing, named ports and necessary connection-class/reducer constraints. Exact indoor full-reference combinations remain unverified. Outdoor airflow, compressor, coil conductance, fan watts and performance remain editable generic assumptions. Published total-charge limits are documentary and do not calibrate the generic circuit.'
@@ -76,14 +83,23 @@ export function indoorOptionsForOutdoor(outdoor: OutdoorKind): { value: IndoorCl
     const ownerHead = value === 'FTXA25' || value === 'FTXA35';
     const manufacturer: EquipmentManufacturer = profile?.manufacturer ?? (ownerHead ? 'daikin' : 'generic');
     return { value, manufacturer,
-      text: (profile ? `${equipmentManufacturerLabel(manufacturer)} ${value}${'marketScope' in profile ? ' (availability unverified)' : ''}${profile.coolingHighFanFlowM3h === null ? ' (airflow unpublished; generic/manual)' : ''}`
+      text: (profile ? `${equipmentManufacturerLabel(manufacturer)} ${value}${profile.acceptance === 'reviewed-class-fields' ? ' (class; suffix unpublished)' : ''}${'marketScope' in profile ? ' (availability unverified)' : ''}${profile.coolingHighFanFlowM3h === null ? ' (airflow unpublished; generic/manual)' : ''}`
         : ownerHead ? `Daikin ${value} (suffix unknown)`
         : `Generic wall head ${value === 'G25' ? '2.5' : value === 'G35' ? '3.5' : '5.0'} kW class`) + (model.installation ? ' — combination unverified' : '') };
   });
 }
 
-export function currentInstallationValidation(cfg: Config) {
-  const installation = outdoorModelInfo(cfg).installation;
+export function currentInstallationValidation(cfg: Config): InstallationValidation | undefined {
+  const model = outdoorModelInfo(cfg);
+  if (model.identityKind === 'published-class') {
+    const paired = cfg.unitCount === 1 && model.compatibleIndoorClasses.includes(cfg.rooms[0].indoorClass);
+    const topologyStatus = cfg.unitCount !== 1 ? 'invalid' : paired ? 'valid' : 'unknown';
+    return { status: topologyStatus === 'invalid' ? 'invalid' : 'unknown', topologyStatus, eligibilityStatus: 'unknown',
+      findings: [{ status: 'unknown', code: 'class-suffix-unpublished', message: 'Published catalogue class pairing; factory suffix and exact full-SKU eligibility remain unknown.' },
+        ...(cfg.unitCount !== 1 ? [{ status: 'invalid' as const, code: 'connected-count', message: 'This source-listed monosplit class has one connected head.' }] :
+          !paired ? [{ status: 'unknown' as const, code: 'class-pair-unverified', message: 'This head is not the source-listed partner class; no factory-SKU compatibility is inferred.' }] : [])] };
+  }
+  const installation = model.installation;
   if (!installation) return undefined;
   return validateMultisplitInstallation(installation, cfg.rooms.slice(0, cfg.unitCount).map(room => ({
     id: room.id, enabled: room.enabled, installation: room.installation,

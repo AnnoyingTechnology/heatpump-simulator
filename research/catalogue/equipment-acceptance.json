@@ -6295,6 +6295,391 @@
           "excerpt": "ATXC71EV1B / ARXC71EV1B"
         }
       }
+    },
+    {
+      "reference": "FTXM20A",
+      "candidateFile": "research/catalogue/staging/luna-next-daikin-perfera-published-class-physical-corrected-2026.json",
+      "candidateSha256": "ff0444d5fb9aeb5e97f7b271cfec1787c920c88cfe43b1884922fddc14f3de24",
+      "candidateReference": "FTXM20A",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+      "coolingAirflowCondition": "Indoor cooling fan, High setting; source publishes 11.9 m³/min, converted by ×60 to m³/h; class cell 20A and 25A merged.",
+      "sourceReview": {
+        "path": "reviews/perfera-published-class-independent-acceptance.json",
+        "sha256": "21d3d9339cec53ce708f2b3ffa58bb3283c9d234efb57823418ba2db306871cc"
+      }
+    },
+    {
+      "reference": "RXM20A",
+      "candidateFile": "research/catalogue/staging/luna-next-daikin-perfera-published-class-physical-corrected-2026.json",
+      "candidateSha256": "ff0444d5fb9aeb5e97f7b271cfec1787c920c88cfe43b1884922fddc14f3de24",
+      "candidateReference": "RXM20A",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXM20A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "p320-layout-svg",
+        "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+        "excerpt": "FTXM + RXM | 20A + 20A"
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceReview": {
+        "path": "reviews/perfera-published-class-independent-acceptance.json",
+        "sha256": "21d3d9339cec53ce708f2b3ffa58bb3283c9d234efb57823418ba2db306871cc"
+      }
+    },
+    {
+      "reference": "FTXM25A",
+      "candidateFile": "research/catalogue/staging/luna-next-daikin-perfera-published-class-physical-corrected-2026.json",
+      "candidateSha256": "ff0444d5fb9aeb5e97f7b271cfec1787c920c88cfe43b1884922fddc14f3de24",
+      "candidateReference": "FTXM25A",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+      "coolingAirflowCondition": "Indoor cooling fan, High setting; source publishes 11.9 m³/min, converted by ×60 to m³/h; class cell 20A and 25A merged.",
+      "sourceReview": {
+        "path": "reviews/perfera-published-class-independent-acceptance.json",
+        "sha256": "21d3d9339cec53ce708f2b3ffa58bb3283c9d234efb57823418ba2db306871cc"
+      }
+    },
+    {
+      "reference": "RXM25A9",
+      "candidateFile": "research/catalogue/staging/luna-next-daikin-perfera-published-class-physical-corrected-2026.json",
+      "candidateSha256": "ff0444d5fb9aeb5e97f7b271cfec1787c920c88cfe43b1884922fddc14f3de24",
+      "candidateReference": "RXM25A9",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXM25A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "p320-layout-svg",
+        "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+        "excerpt": "FTXM + RXM | 25A + 25A9"
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceReview": {
+        "path": "reviews/perfera-published-class-independent-acceptance.json",
+        "sha256": "21d3d9339cec53ce708f2b3ffa58bb3283c9d234efb57823418ba2db306871cc"
+      }
+    },
+    {
+      "reference": "FTXM35A",
+      "candidateFile": "research/catalogue/staging/luna-next-daikin-perfera-published-class-physical-corrected-2026.json",
+      "candidateSha256": "ff0444d5fb9aeb5e97f7b271cfec1787c920c88cfe43b1884922fddc14f3de24",
+      "candidateReference": "FTXM35A",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+      "coolingAirflowCondition": "Indoor cooling fan, High setting; source publishes 13.2 m³/min, converted by ×60 to m³/h; class cell 35A.",
+      "sourceReview": {
+        "path": "reviews/perfera-published-class-independent-acceptance.json",
+        "sha256": "21d3d9339cec53ce708f2b3ffa58bb3283c9d234efb57823418ba2db306871cc"
+      }
+    },
+    {
+      "reference": "RXM35A9",
+      "candidateFile": "research/catalogue/staging/luna-next-daikin-perfera-published-class-physical-corrected-2026.json",
+      "candidateSha256": "ff0444d5fb9aeb5e97f7b271cfec1787c920c88cfe43b1884922fddc14f3de24",
+      "candidateReference": "RXM35A9",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXM35A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "p320-layout-svg",
+        "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+        "excerpt": "FTXM + RXM | 35A + 35A9"
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceReview": {
+        "path": "reviews/perfera-published-class-independent-acceptance.json",
+        "sha256": "21d3d9339cec53ce708f2b3ffa58bb3283c9d234efb57823418ba2db306871cc"
+      }
+    },
+    {
+      "reference": "FTXM42A",
+      "candidateFile": "research/catalogue/staging/luna-next-daikin-perfera-published-class-physical-corrected-2026.json",
+      "candidateSha256": "ff0444d5fb9aeb5e97f7b271cfec1787c920c88cfe43b1884922fddc14f3de24",
+      "candidateReference": "FTXM42A",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+      "coolingAirflowCondition": "Indoor cooling fan, High setting; source publishes 13.3 m³/min, converted by ×60 to m³/h; class cell 42A.",
+      "sourceReview": {
+        "path": "reviews/perfera-published-class-independent-acceptance.json",
+        "sha256": "21d3d9339cec53ce708f2b3ffa58bb3283c9d234efb57823418ba2db306871cc"
+      }
+    },
+    {
+      "reference": "RXM42A",
+      "candidateFile": "research/catalogue/staging/luna-next-daikin-perfera-published-class-physical-corrected-2026.json",
+      "candidateSha256": "ff0444d5fb9aeb5e97f7b271cfec1787c920c88cfe43b1884922fddc14f3de24",
+      "candidateReference": "RXM42A",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXM42A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "p320-layout-svg",
+        "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+        "excerpt": "FTXM + RXM | 42A + 42A"
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceReview": {
+        "path": "reviews/perfera-published-class-independent-acceptance.json",
+        "sha256": "21d3d9339cec53ce708f2b3ffa58bb3283c9d234efb57823418ba2db306871cc"
+      }
+    },
+    {
+      "reference": "FTXM50A",
+      "candidateFile": "research/catalogue/staging/luna-next-daikin-perfera-published-class-physical-corrected-2026.json",
+      "candidateSha256": "ff0444d5fb9aeb5e97f7b271cfec1787c920c88cfe43b1884922fddc14f3de24",
+      "candidateReference": "FTXM50A",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+      "coolingAirflowCondition": "Indoor cooling fan, High setting; source publishes 12.7 m³/min, converted by ×60 to m³/h; class cell 50A.",
+      "sourceReview": {
+        "path": "reviews/perfera-published-class-independent-acceptance.json",
+        "sha256": "21d3d9339cec53ce708f2b3ffa58bb3283c9d234efb57823418ba2db306871cc"
+      }
+    },
+    {
+      "reference": "RXM50A8",
+      "candidateFile": "research/catalogue/staging/luna-next-daikin-perfera-published-class-physical-corrected-2026.json",
+      "candidateSha256": "ff0444d5fb9aeb5e97f7b271cfec1787c920c88cfe43b1884922fddc14f3de24",
+      "candidateReference": "RXM50A8",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXM50A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "p320-layout-svg",
+        "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+        "excerpt": "FTXM + RXM | 50A + 50A8"
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceReview": {
+        "path": "reviews/perfera-published-class-independent-acceptance.json",
+        "sha256": "21d3d9339cec53ce708f2b3ffa58bb3283c9d234efb57823418ba2db306871cc"
+      }
+    },
+    {
+      "reference": "FTXM60A",
+      "candidateFile": "research/catalogue/staging/luna-next-daikin-perfera-published-class-physical-corrected-2026.json",
+      "candidateSha256": "ff0444d5fb9aeb5e97f7b271cfec1787c920c88cfe43b1884922fddc14f3de24",
+      "candidateReference": "FTXM60A",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+      "coolingAirflowCondition": "Indoor cooling fan, High setting; source publishes 15.6 m³/min, converted by ×60 to m³/h; class cell 60A.",
+      "sourceReview": {
+        "path": "reviews/perfera-published-class-independent-acceptance.json",
+        "sha256": "21d3d9339cec53ce708f2b3ffa58bb3283c9d234efb57823418ba2db306871cc"
+      }
+    },
+    {
+      "reference": "RXM60A",
+      "candidateFile": "research/catalogue/staging/luna-next-daikin-perfera-published-class-physical-corrected-2026.json",
+      "candidateSha256": "ff0444d5fb9aeb5e97f7b271cfec1787c920c88cfe43b1884922fddc14f3de24",
+      "candidateReference": "RXM60A",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXM60A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "p320-layout-svg",
+        "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+        "excerpt": "FTXM + RXM | 60A + 60A"
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceReview": {
+        "path": "reviews/perfera-published-class-independent-acceptance.json",
+        "sha256": "21d3d9339cec53ce708f2b3ffa58bb3283c9d234efb57823418ba2db306871cc"
+      }
+    },
+    {
+      "reference": "FTXM71A",
+      "candidateFile": "research/catalogue/staging/luna-next-daikin-perfera-published-class-physical-corrected-2026.json",
+      "candidateSha256": "ff0444d5fb9aeb5e97f7b271cfec1787c920c88cfe43b1884922fddc14f3de24",
+      "candidateReference": "FTXM71A",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+      "coolingAirflowCondition": "Indoor cooling fan, High setting; source publishes 15.8 m³/min, converted by ×60 to m³/h; class cell 71A.",
+      "sourceReview": {
+        "path": "reviews/perfera-published-class-independent-acceptance.json",
+        "sha256": "21d3d9339cec53ce708f2b3ffa58bb3283c9d234efb57823418ba2db306871cc"
+      }
+    },
+    {
+      "reference": "RXM71A",
+      "candidateFile": "research/catalogue/staging/luna-next-daikin-perfera-published-class-physical-corrected-2026.json",
+      "candidateSha256": "ff0444d5fb9aeb5e97f7b271cfec1787c920c88cfe43b1884922fddc14f3de24",
+      "candidateReference": "RXM71A",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXM71A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "p320-layout-svg",
+        "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+        "excerpt": "FTXM + RXM | 71A + 71A"
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceReview": {
+        "path": "reviews/perfera-published-class-independent-acceptance.json",
+        "sha256": "21d3d9339cec53ce708f2b3ffa58bb3283c9d234efb57823418ba2db306871cc"
+      }
     }
   ],
   "additionalSourceSnapshots": [

@@ -1,0 +1,1399 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Perfera wall FTXM-A + RXM-A 2026 published class pairs (class-only candidate)",
+  "market": "Daikin Europe residential air-to-air, 2026 General Catalogue class scope; exact current full-SKU mapping and France retail availability unknown.",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "catalogue-p320",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/320/",
+      "title": "Daikin Europe General Catalogue 2026 Split, printed page 320",
+      "edition": "ECPEN26-500, 02/2026; source snapshot SHA-256 2becf651c2619e2ced56510cb32ae4a2cc8eabec377eed75e6c716444676f918",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "p320-layout-svg",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/320/files/assets/common/page-vectorlayers/0042.svg?uni=b27fda89420e61b9c4969d2bc12e86e6",
+      "title": "Daikin ECPEN26-500 p.320 vector text/layout layer",
+      "edition": "Official catalogue renderer asset; pinned as research/sources/luna-next-daikin-2026-catalogue-p320-layout.svg; SHA-256 6e893f94b23cbf4c82418519bff09c9ac06c59e9d7aa187b366ad1ff6b9b9a7d",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "p320-layout-background",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/320/files/assets/common/page-html5-substrates/page0042_2.webp?sameuni",
+      "title": "Daikin ECPEN26-500 p.320 page substrate/background with table cell boundaries",
+      "edition": "Official catalogue renderer asset; pinned as research/sources/luna-next-daikin-2026-catalogue-p320-background.webp; SHA-256 248196cdf69bfd9ec8e2998716ac412986ed603583870a9122c9be42b350b1a3",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FTXM20A",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency-data column headed FTXM + RXM; indoor FTXM-A class header",
+        "excerpt": "FTXM + RXM | 20A + 20"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x804x252 spans FTXM-A class columns 20A–50A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x804x252"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x804x252 spans FTXM-A class columns 20A–50A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x804x252"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x804x252 spans FTXM-A class columns 20A–50A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x804x252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 714,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Fan → Air flow rate → Cooling / Silent operation/Low/Medium/High; merged 20A/25A cell; high is final slash value.",
+            "excerpt": "Cooling Silent operation/Low/Medium/High m³/min 4.9/6.3/8.9/11.9"
+          },
+          "condition": "Indoor cooling fan, High setting; source publishes 11.9 m³/min, converted by ×60 to m³/h; class cell 20A and 25A merged."
+        },
+        {
+          "key": "airflow",
+          "value": 684,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Fan → Air flow rate → Heating / Silent operation/Low/Medium/High; merged 20A/25A cell; high is final slash value.",
+            "excerpt": "Heating Silent operation/Low/Medium/High m³/min 4.9/6.9/9.2/11.4"
+          },
+          "condition": "Indoor heating fan, High setting; source publishes 11.4 m³/min, converted by ×60 to m³/h; class cell 20A and 25A merged."
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current 2026 catalogue class pair FTXM20A / RXM20A; published abbreviated classes only, not exact factory SKU references.",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+            "excerpt": "FTXM + RXM | 20A + 20A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Published identity is class FTXM20A from the current 2026 catalogue; full factory SKU suffix and exact current SKU eligibility are unknown. Do not alias historical A2/A5 references.",
+        "Current France retail availability is not established by the European catalogue."
+      ]
+    },
+    {
+      "modelReference": "RXM20A",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency-data column headed FTXM + RXM; outdoor RXM-A class header",
+        "excerpt": "20A"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 610,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 610x923x367 spans RXM-A class columns 20A–50A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 610x923x367"
+          }
+        },
+        {
+          "key": "width",
+          "value": 923,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 610x923x367 spans RXM-A class columns 20A–50A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 610x923x367"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 367,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 610x923x367 spans RXM-A class columns 20A–50A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 610x923x367"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Refrigerant → Type; merged R-32 cells cover the current RXM-A class columns.",
+            "excerpt": "Refrigerant Type R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Cooling → Ambient Min.~Max., °CDB; class column 20.",
+            "excerpt": "Cooling Ambient Min.~Max. °CDB -10~50"
+          },
+          "condition": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB)."
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Cooling → Ambient Min.~Max., °CDB; class column 20.",
+            "excerpt": "Cooling Ambient Min.~Max. °CDB -10~50"
+          },
+          "condition": "Outdoor ambient cooling range, maximum, dry-bulb (°CDB)."
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Heating → Ambient Min.~Max., °CWB; class column 20.",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -21~18"
+          },
+          "condition": "Outdoor ambient heating range, minimum, wet-bulb (°CWB)."
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Heating → Ambient Min.~Max., °CWB; class column 20.",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -21~18"
+          },
+          "condition": "Outdoor ambient heating range, maximum, wet-bulb (°CWB)."
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current 2026 catalogue class pair FTXM20A / RXM20A; published abbreviated classes only, not exact factory SKU references.",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+            "excerpt": "FTXM + RXM | 20A + 20A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Published identity is class RXM20 from the current 2026 catalogue; full factory SKU suffix and exact current SKU eligibility are unknown. Do not alias historical A2/A5 references.",
+        "Current France retail availability is not established by the European catalogue.",
+        "Outdoor airflow is not published on printed p.320."
+      ]
+    },
+    {
+      "modelReference": "FTXM25A",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency-data column headed FTXM + RXM; indoor FTXM-A class header",
+        "excerpt": "FTXM + RXM | 25A + 25A9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x804x252 spans FTXM-A class columns 20A–50A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x804x252"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x804x252 spans FTXM-A class columns 20A–50A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x804x252"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x804x252 spans FTXM-A class columns 20A–50A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x804x252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 714,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Fan → Air flow rate → Cooling / Silent operation/Low/Medium/High; merged 20A/25A cell; high is final slash value.",
+            "excerpt": "Cooling Silent operation/Low/Medium/High m³/min 4.9/6.3/8.9/11.9"
+          },
+          "condition": "Indoor cooling fan, High setting; source publishes 11.9 m³/min, converted by ×60 to m³/h; class cell 20A and 25A merged."
+        },
+        {
+          "key": "airflow",
+          "value": 684,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Fan → Air flow rate → Heating / Silent operation/Low/Medium/High; merged 20A/25A cell; high is final slash value.",
+            "excerpt": "Heating Silent operation/Low/Medium/High m³/min 4.9/6.9/9.2/11.4"
+          },
+          "condition": "Indoor heating fan, High setting; source publishes 11.4 m³/min, converted by ×60 to m³/h; class cell 20A and 25A merged."
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current 2026 catalogue class pair FTXM25A / RXM25A9; published abbreviated classes only, not exact factory SKU references.",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+            "excerpt": "FTXM + RXM | 25A + 25A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Published identity is class FTXM25A from the current 2026 catalogue; full factory SKU suffix and exact current SKU eligibility are unknown. Do not alias historical A2/A5 references.",
+        "Current France retail availability is not established by the European catalogue."
+      ]
+    },
+    {
+      "modelReference": "RXM25A9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency-data column headed FTXM + RXM; outdoor RXM-A class header",
+        "excerpt": "25A9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 610,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 610x923x367 spans RXM-A class columns 20A–50A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 610x923x367"
+          }
+        },
+        {
+          "key": "width",
+          "value": 923,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 610x923x367 spans RXM-A class columns 20A–50A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 610x923x367"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 367,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 610x923x367 spans RXM-A class columns 20A–50A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 610x923x367"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Refrigerant → Type; merged R-32 cells cover the current RXM-A class columns.",
+            "excerpt": "Refrigerant Type R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Cooling → Ambient Min.~Max., °CDB; class column 25A9.",
+            "excerpt": "Cooling Ambient Min.~Max. °CDB -10~50"
+          },
+          "condition": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB)."
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Cooling → Ambient Min.~Max., °CDB; class column 25A9.",
+            "excerpt": "Cooling Ambient Min.~Max. °CDB -10~50"
+          },
+          "condition": "Outdoor ambient cooling range, maximum, dry-bulb (°CDB)."
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Heating → Ambient Min.~Max., °CWB; class column 25A9.",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -21~18"
+          },
+          "condition": "Outdoor ambient heating range, minimum, wet-bulb (°CWB)."
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Heating → Ambient Min.~Max., °CWB; class column 25A9.",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -21~18"
+          },
+          "condition": "Outdoor ambient heating range, maximum, wet-bulb (°CWB)."
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current 2026 catalogue class pair FTXM25A / RXM25A9; published abbreviated classes only, not exact factory SKU references.",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+            "excerpt": "FTXM + RXM | 25A + 25A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Published identity is class RXM25A9 from the current 2026 catalogue; full factory SKU suffix and exact current SKU eligibility are unknown. Do not alias historical A2/A5 references.",
+        "Current France retail availability is not established by the European catalogue.",
+        "Outdoor airflow is not published on printed p.320."
+      ]
+    },
+    {
+      "modelReference": "FTXM35A",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency-data column headed FTXM + RXM; indoor FTXM-A class header",
+        "excerpt": "FTXM + RXM | 35A + 35A9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x804x252 spans FTXM-A class columns 20A–50A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x804x252"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x804x252 spans FTXM-A class columns 20A–50A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x804x252"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x804x252 spans FTXM-A class columns 20A–50A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x804x252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 792,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Fan → Air flow rate → Cooling / Silent operation/Low/Medium/High; 35A column; high is final slash value.",
+            "excerpt": "Cooling Silent operation/Low/Medium/High m³/min 4.6/7.1/9.4/13.2"
+          },
+          "condition": "Indoor cooling fan, High setting; source publishes 13.2 m³/min, converted by ×60 to m³/h; class cell 35A."
+        },
+        {
+          "key": "airflow",
+          "value": 666,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Fan → Air flow rate → Heating / Silent operation/Low/Medium/High; 35A column; high is final slash value.",
+            "excerpt": "Heating Silent operation/Low/Medium/High m³/min 5.1/6.9/9.4/11.1"
+          },
+          "condition": "Indoor heating fan, High setting; source publishes 11.1 m³/min, converted by ×60 to m³/h; class cell 35A."
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current 2026 catalogue class pair FTXM35A / RXM35A9; published abbreviated classes only, not exact factory SKU references.",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+            "excerpt": "FTXM + RXM | 35A + 35A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Published identity is class FTXM35A from the current 2026 catalogue; full factory SKU suffix and exact current SKU eligibility are unknown. Do not alias historical A2/A5 references.",
+        "Current France retail availability is not established by the European catalogue."
+      ]
+    },
+    {
+      "modelReference": "RXM35A9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency-data column headed FTXM + RXM; outdoor RXM-A class header",
+        "excerpt": "35A9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 610,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 610x923x367 spans RXM-A class columns 20A–50A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 610x923x367"
+          }
+        },
+        {
+          "key": "width",
+          "value": 923,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 610x923x367 spans RXM-A class columns 20A–50A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 610x923x367"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 367,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 610x923x367 spans RXM-A class columns 20A–50A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 610x923x367"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Refrigerant → Type; merged R-32 cells cover the current RXM-A class columns.",
+            "excerpt": "Refrigerant Type R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Cooling → Ambient Min.~Max., °CDB; class column 35A9.",
+            "excerpt": "Cooling Ambient Min.~Max. °CDB -10~50"
+          },
+          "condition": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB)."
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Cooling → Ambient Min.~Max., °CDB; class column 35A9.",
+            "excerpt": "Cooling Ambient Min.~Max. °CDB -10~50"
+          },
+          "condition": "Outdoor ambient cooling range, maximum, dry-bulb (°CDB)."
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Heating → Ambient Min.~Max., °CWB; class column 35A9.",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -21~18"
+          },
+          "condition": "Outdoor ambient heating range, minimum, wet-bulb (°CWB)."
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Heating → Ambient Min.~Max., °CWB; class column 35A9.",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -21~18"
+          },
+          "condition": "Outdoor ambient heating range, maximum, wet-bulb (°CWB)."
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current 2026 catalogue class pair FTXM35A / RXM35A9; published abbreviated classes only, not exact factory SKU references.",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+            "excerpt": "FTXM + RXM | 35A + 35A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Published identity is class RXM35A9 from the current 2026 catalogue; full factory SKU suffix and exact current SKU eligibility are unknown. Do not alias historical A2/A5 references.",
+        "Current France retail availability is not established by the European catalogue.",
+        "Outdoor airflow is not published on printed p.320."
+      ]
+    },
+    {
+      "modelReference": "FTXM42A",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency-data column headed FTXM + RXM; indoor FTXM-A class header",
+        "excerpt": "FTXM + RXM | 42A + 42"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x804x252 spans FTXM-A class columns 20A–50A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x804x252"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x804x252 spans FTXM-A class columns 20A–50A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x804x252"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x804x252 spans FTXM-A class columns 20A–50A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x804x252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 798,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Fan → Air flow rate → Cooling / Silent operation/Low/Medium/High; 42A column; high is final slash value.",
+            "excerpt": "Cooling Silent operation/Low/Medium/High m³/min 5.0/7.2/9.8/13.3"
+          },
+          "condition": "Indoor cooling fan, High setting; source publishes 13.3 m³/min, converted by ×60 to m³/h; class cell 42A."
+        },
+        {
+          "key": "airflow",
+          "value": 840,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Fan → Air flow rate → Heating / Silent operation/Low/Medium/High; 42A column; high is final slash value.",
+            "excerpt": "Heating Silent operation/Low/Medium/High m³/min 5.3/7.1/10.0/14.0"
+          },
+          "condition": "Indoor heating fan, High setting; source publishes 14.0 m³/min, converted by ×60 to m³/h; class cell 42A."
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current 2026 catalogue class pair FTXM42A / RXM42A; published abbreviated classes only, not exact factory SKU references.",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+            "excerpt": "FTXM + RXM | 42A + 42A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Published identity is class FTXM42A from the current 2026 catalogue; full factory SKU suffix and exact current SKU eligibility are unknown. Do not alias historical A2/A5 references.",
+        "Current France retail availability is not established by the European catalogue."
+      ]
+    },
+    {
+      "modelReference": "RXM42A",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency-data column headed FTXM + RXM; outdoor RXM-A class header",
+        "excerpt": "42A"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 610,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 610x923x367 spans RXM-A class columns 20A–50A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 610x923x367"
+          }
+        },
+        {
+          "key": "width",
+          "value": 923,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 610x923x367 spans RXM-A class columns 20A–50A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 610x923x367"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 367,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 610x923x367 spans RXM-A class columns 20A–50A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 610x923x367"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Refrigerant → Type; merged R-32 cells cover the current RXM-A class columns.",
+            "excerpt": "Refrigerant Type R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Cooling → Ambient Min.~Max., °CDB; class column 42.",
+            "excerpt": "Cooling Ambient Min.~Max. °CDB -10~50"
+          },
+          "condition": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB)."
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Cooling → Ambient Min.~Max., °CDB; class column 42.",
+            "excerpt": "Cooling Ambient Min.~Max. °CDB -10~50"
+          },
+          "condition": "Outdoor ambient cooling range, maximum, dry-bulb (°CDB)."
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Heating → Ambient Min.~Max., °CWB; class column 42.",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -21~18"
+          },
+          "condition": "Outdoor ambient heating range, minimum, wet-bulb (°CWB)."
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Heating → Ambient Min.~Max., °CWB; class column 42.",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -21~18"
+          },
+          "condition": "Outdoor ambient heating range, maximum, wet-bulb (°CWB)."
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current 2026 catalogue class pair FTXM42A / RXM42A; published abbreviated classes only, not exact factory SKU references.",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+            "excerpt": "FTXM + RXM | 42A + 42A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Published identity is class RXM42 from the current 2026 catalogue; full factory SKU suffix and exact current SKU eligibility are unknown. Do not alias historical A2/A5 references.",
+        "Current France retail availability is not established by the European catalogue.",
+        "Outdoor airflow is not published on printed p.320."
+      ]
+    },
+    {
+      "modelReference": "FTXM50A",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency-data column headed FTXM + RXM; indoor FTXM-A class header",
+        "excerpt": "FTXM + RXM | 50A + 50A8"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x804x252 spans FTXM-A class columns 20A–50A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x804x252"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x804x252 spans FTXM-A class columns 20A–50A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x804x252"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x804x252 spans FTXM-A class columns 20A–50A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x804x252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 762,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Fan → Air flow rate → Cooling / Silent operation/Low/Medium/High; 50A column; high is final slash value.",
+            "excerpt": "Cooling Silent operation/Low/Medium/High m³/min 5.9/7.8/10.4/12.7"
+          },
+          "condition": "Indoor cooling fan, High setting; source publishes 12.7 m³/min, converted by ×60 to m³/h; class cell 50A."
+        },
+        {
+          "key": "airflow",
+          "value": 870,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Fan → Air flow rate → Heating / Silent operation/Low/Medium/High; 50A column; high is final slash value.",
+            "excerpt": "Heating Silent operation/Low/Medium/High m³/min 6.9/8.6/11.5/14.5"
+          },
+          "condition": "Indoor heating fan, High setting; source publishes 14.5 m³/min, converted by ×60 to m³/h; class cell 50A."
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current 2026 catalogue class pair FTXM50A / RXM50A8; published abbreviated classes only, not exact factory SKU references.",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+            "excerpt": "FTXM + RXM | 50A + 50A8"
+          }
+        }
+      ],
+      "unknowns": [
+        "Published identity is class FTXM50A from the current 2026 catalogue; full factory SKU suffix and exact current SKU eligibility are unknown. Do not alias historical A2/A5 references.",
+        "Current France retail availability is not established by the European catalogue."
+      ]
+    },
+    {
+      "modelReference": "RXM50A8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency-data column headed FTXM + RXM; outdoor RXM-A class header",
+        "excerpt": "50A8"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 610,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 610x923x367 spans RXM-A class columns 20A–50A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 610x923x367"
+          }
+        },
+        {
+          "key": "width",
+          "value": 923,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 610x923x367 spans RXM-A class columns 20A–50A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 610x923x367"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 367,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 610x923x367 spans RXM-A class columns 20A–50A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 610x923x367"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Refrigerant → Type; merged R-32 cells cover the current RXM-A class columns.",
+            "excerpt": "Refrigerant Type R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Cooling → Ambient Min.~Max., °CDB; class column 50A8.",
+            "excerpt": "Cooling Ambient Min.~Max. °CDB -10~50"
+          },
+          "condition": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB)."
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Cooling → Ambient Min.~Max., °CDB; class column 50A8.",
+            "excerpt": "Cooling Ambient Min.~Max. °CDB -10~50"
+          },
+          "condition": "Outdoor ambient cooling range, maximum, dry-bulb (°CDB)."
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Heating → Ambient Min.~Max., °CWB; class column 50A8.",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -21~18"
+          },
+          "condition": "Outdoor ambient heating range, minimum, wet-bulb (°CWB)."
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Heating → Ambient Min.~Max., °CWB; class column 50A8.",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -21~18"
+          },
+          "condition": "Outdoor ambient heating range, maximum, wet-bulb (°CWB)."
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current 2026 catalogue class pair FTXM50A / RXM50A8; published abbreviated classes only, not exact factory SKU references.",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+            "excerpt": "FTXM + RXM | 50A + 50A8"
+          }
+        }
+      ],
+      "unknowns": [
+        "Published identity is class RXM50A8 from the current 2026 catalogue; full factory SKU suffix and exact current SKU eligibility are unknown. Do not alias historical A2/A5 references.",
+        "Current France retail availability is not established by the European catalogue.",
+        "Outdoor airflow is not published on printed p.320."
+      ]
+    },
+    {
+      "modelReference": "FTXM60A",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency-data column headed FTXM + RXM; indoor FTXM-A class header",
+        "excerpt": "FTXM + RXM | 60A + 60"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x997x292 spans FTXM-A class columns 60A–71A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x997x292"
+          }
+        },
+        {
+          "key": "width",
+          "value": 997,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x997x292 spans FTXM-A class columns 60A–71A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x997x292"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 292,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x997x292 spans FTXM-A class columns 60A–71A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x997x292"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 936,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Fan → Air flow rate → Cooling / Silent operation/Low/Medium/High; 60A column; high is final slash value.",
+            "excerpt": "Cooling Silent operation/Low/Medium/High m³/min 8.6/11.2/13.4/15.6"
+          },
+          "condition": "Indoor cooling fan, High setting; source publishes 15.6 m³/min, converted by ×60 to m³/h; class cell 60A."
+        },
+        {
+          "key": "airflow",
+          "value": 954,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Fan → Air flow rate → Heating / Silent operation/Low/Medium/High; 60A column; high is final slash value.",
+            "excerpt": "Heating Silent operation/Low/Medium/High m³/min 10.5/11.8/14.6/15.9"
+          },
+          "condition": "Indoor heating fan, High setting; source publishes 15.9 m³/min, converted by ×60 to m³/h; class cell 60A."
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current 2026 catalogue class pair FTXM60A / RXM60A; published abbreviated classes only, not exact factory SKU references.",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+            "excerpt": "FTXM + RXM | 60A + 60A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Published identity is class FTXM60A from the current 2026 catalogue; full factory SKU suffix and exact current SKU eligibility are unknown. Do not alias historical A2/A5 references.",
+        "Current France retail availability is not established by the European catalogue."
+      ]
+    },
+    {
+      "modelReference": "RXM60A",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency-data column headed FTXM + RXM; outdoor RXM-A class header",
+        "excerpt": "60A"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 734x954x401 spans RXM-A class columns 60A–71A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 734x954x401"
+          }
+        },
+        {
+          "key": "width",
+          "value": 954,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 734x954x401 spans RXM-A class columns 60A–71A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 734x954x401"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 401,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 734x954x401 spans RXM-A class columns 60A–71A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 734x954x401"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Refrigerant → Type; merged R-32 cells cover the current RXM-A class columns.",
+            "excerpt": "Refrigerant Type R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Cooling → Ambient Min.~Max., °CDB; class column 60.",
+            "excerpt": "Cooling Ambient Min.~Max. °CDB -10~50"
+          },
+          "condition": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB)."
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Cooling → Ambient Min.~Max., °CDB; class column 60.",
+            "excerpt": "Cooling Ambient Min.~Max. °CDB -10~50"
+          },
+          "condition": "Outdoor ambient cooling range, maximum, dry-bulb (°CDB)."
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Heating → Ambient Min.~Max., °CWB; class column 60.",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -21~18"
+          },
+          "condition": "Outdoor ambient heating range, minimum, wet-bulb (°CWB)."
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Heating → Ambient Min.~Max., °CWB; class column 60.",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -21~18"
+          },
+          "condition": "Outdoor ambient heating range, maximum, wet-bulb (°CWB)."
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current 2026 catalogue class pair FTXM60A / RXM60A; published abbreviated classes only, not exact factory SKU references.",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+            "excerpt": "FTXM + RXM | 60A + 60A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Published identity is class RXM60 from the current 2026 catalogue; full factory SKU suffix and exact current SKU eligibility are unknown. Do not alias historical A2/A5 references.",
+        "Current France retail availability is not established by the European catalogue.",
+        "Outdoor airflow is not published on printed p.320."
+      ]
+    },
+    {
+      "modelReference": "FTXM71A",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency-data column headed FTXM + RXM; indoor FTXM-A class header",
+        "excerpt": "FTXM + RXM | 71A + 71"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x997x292 spans FTXM-A class columns 60A–71A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x997x292"
+          }
+        },
+        {
+          "key": "width",
+          "value": 997,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x997x292 spans FTXM-A class columns 60A–71A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x997x292"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 292,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Dimensions, Height×Width×Depth row; merged cell containing 298x997x292 spans FTXM-A class columns 60A–71A.",
+            "excerpt": "Indoor unit | Dimensions | Height×Width×Depth mm | 298x997x292"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 948,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Fan → Air flow rate → Cooling / Silent operation/Low/Medium/High; 71A column; high is final slash value.",
+            "excerpt": "Cooling Silent operation/Low/Medium/High m³/min 9.3/11.4/13.6/15.8"
+          },
+          "condition": "Indoor cooling fan, High setting; source publishes 15.8 m³/min, converted by ×60 to m³/h; class cell 71A."
+        },
+        {
+          "key": "airflow",
+          "value": 1038,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Indoor unit → Fan → Air flow rate → Heating / Silent operation/Low/Medium/High; 71A column; high is final slash value.",
+            "excerpt": "Heating Silent operation/Low/Medium/High m³/min 11.2/12.3/15.3/17.3"
+          },
+          "condition": "Indoor heating fan, High setting; source publishes 17.3 m³/min, converted by ×60 to m³/h; class cell 71A."
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current 2026 catalogue class pair FTXM71A / RXM71A; published abbreviated classes only, not exact factory SKU references.",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+            "excerpt": "FTXM + RXM | 71A + 71A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Published identity is class FTXM71A from the current 2026 catalogue; full factory SKU suffix and exact current SKU eligibility are unknown. Do not alias historical A2/A5 references.",
+        "Current France retail availability is not established by the European catalogue."
+      ]
+    },
+    {
+      "modelReference": "RXM71A",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency-data column headed FTXM + RXM; outdoor RXM-A class header",
+        "excerpt": "71A"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 734x954x401 spans RXM-A class columns 60A–71A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 734x954x401"
+          }
+        },
+        {
+          "key": "width",
+          "value": 954,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 734x954x401 spans RXM-A class columns 60A–71A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 734x954x401"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 401,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Dimensions, Height×Width×Depth row; merged cell containing 734x954x401 spans RXM-A class columns 60A–71A.",
+            "excerpt": "Outdoor unit | Dimensions | Height×Width×Depth mm | 734x954x401"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Refrigerant → Type; merged R-32 cells cover the current RXM-A class columns.",
+            "excerpt": "Refrigerant Type R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Cooling → Ambient Min.~Max., °CDB; class column 71.",
+            "excerpt": "Cooling Ambient Min.~Max. °CDB -10~46"
+          },
+          "condition": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB)."
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Cooling → Ambient Min.~Max., °CDB; class column 71.",
+            "excerpt": "Cooling Ambient Min.~Max. °CDB -10~46"
+          },
+          "condition": "Outdoor ambient cooling range, maximum, dry-bulb (°CDB)."
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Heating → Ambient Min.~Max., °CWB; class column 71.",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -15~18"
+          },
+          "condition": "Outdoor ambient heating range, minimum, wet-bulb (°CWB)."
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320, Outdoor unit → Operation range → Heating → Ambient Min.~Max., °CWB; class column 71.",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -15~18"
+          },
+          "condition": "Outdoor ambient heating range, maximum, wet-bulb (°CWB)."
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current 2026 catalogue class pair FTXM71A / RXM71A; published abbreviated classes only, not exact factory SKU references.",
+          "evidence": {
+            "sourceId": "p320-layout-svg",
+            "locator": "Printed p.320 efficiency-data column; matched FTXM-A indoor and RXM-A outdoor class headings; merged-cell alignment verified against paired substrate asset",
+            "excerpt": "FTXM + RXM | 71A + 71A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Published identity is class RXM71 from the current 2026 catalogue; full factory SKU suffix and exact current SKU eligibility are unknown. Do not alias historical A2/A5 references.",
+        "Current France retail availability is not established by the European catalogue.",
+        "Outdoor airflow is not published on printed p.320."
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    {
+      "modelReference": "FTXM20A / RXM20A",
+      "reason": "Printed p.320 publishes this current abbreviated class pair only. Exact full factory SKU reference(s), exact full-SKU compatibility and current France retail eligibility remain unknown."
+    },
+    {
+      "modelReference": "FTXM25A / RXM25A9",
+      "reason": "Printed p.320 publishes this current abbreviated class pair only. Exact full factory SKU reference(s), exact full-SKU compatibility and current France retail eligibility remain unknown."
+    },
+    {
+      "modelReference": "FTXM35A / RXM35A9",
+      "reason": "Printed p.320 publishes this current abbreviated class pair only. Exact full factory SKU reference(s), exact full-SKU compatibility and current France retail eligibility remain unknown."
+    },
+    {
+      "modelReference": "FTXM42A / RXM42A",
+      "reason": "Printed p.320 publishes this current abbreviated class pair only. Exact full factory SKU reference(s), exact full-SKU compatibility and current France retail eligibility remain unknown."
+    },
+    {
+      "modelReference": "FTXM50A / RXM50A8",
+      "reason": "Printed p.320 publishes this current abbreviated class pair only. Exact full factory SKU reference(s), exact full-SKU compatibility and current France retail eligibility remain unknown."
+    },
+    {
+      "modelReference": "FTXM60A / RXM60A",
+      "reason": "Printed p.320 publishes this current abbreviated class pair only. Exact full factory SKU reference(s), exact full-SKU compatibility and current France retail eligibility remain unknown."
+    },
+    {
+      "modelReference": "FTXM71A / RXM71A",
+      "reason": "Printed p.320 publishes this current abbreviated class pair only. Exact full factory SKU reference(s), exact full-SKU compatibility and current France retail eligibility remain unknown."
+    }
+  ]
+}

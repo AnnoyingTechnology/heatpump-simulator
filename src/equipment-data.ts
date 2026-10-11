@@ -3550,6 +3550,223 @@ export const CATALOGUE_OUTDOORS = [
         "condition": "outdoor wet-bulb"
       }
     }
+  },
+  {
+    "id": "RXM20A",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 610,
+      "w": 923,
+      "d": 367
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FTXM20A"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 50,
+        "condition": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB)."
+      },
+      "heating": {
+        "minimum": -21,
+        "maximum": 18,
+        "condition": "Outdoor ambient heating range, minimum, wet-bulb (°CWB)."
+      }
+    }
+  },
+  {
+    "id": "RXM25A9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 610,
+      "w": 923,
+      "d": 367
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FTXM25A"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 50,
+        "condition": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB)."
+      },
+      "heating": {
+        "minimum": -21,
+        "maximum": 18,
+        "condition": "Outdoor ambient heating range, minimum, wet-bulb (°CWB)."
+      }
+    }
+  },
+  {
+    "id": "RXM35A9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 610,
+      "w": 923,
+      "d": 367
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FTXM35A"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 50,
+        "condition": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB)."
+      },
+      "heating": {
+        "minimum": -21,
+        "maximum": 18,
+        "condition": "Outdoor ambient heating range, minimum, wet-bulb (°CWB)."
+      }
+    }
+  },
+  {
+    "id": "RXM42A",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 610,
+      "w": 923,
+      "d": 367
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FTXM42A"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 50,
+        "condition": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB)."
+      },
+      "heating": {
+        "minimum": -21,
+        "maximum": 18,
+        "condition": "Outdoor ambient heating range, minimum, wet-bulb (°CWB)."
+      }
+    }
+  },
+  {
+    "id": "RXM50A8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 610,
+      "w": 923,
+      "d": 367
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FTXM50A"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 50,
+        "condition": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB)."
+      },
+      "heating": {
+        "minimum": -21,
+        "maximum": 18,
+        "condition": "Outdoor ambient heating range, minimum, wet-bulb (°CWB)."
+      }
+    }
+  },
+  {
+    "id": "RXM60A",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 954,
+      "d": 401
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FTXM60A"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 50,
+        "condition": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB)."
+      },
+      "heating": {
+        "minimum": -21,
+        "maximum": 18,
+        "condition": "Outdoor ambient heating range, minimum, wet-bulb (°CWB)."
+      }
+    }
+  },
+  {
+    "id": "RXM71A",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 954,
+      "d": 401
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FTXM71A"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "Outdoor ambient cooling range, minimum, dry-bulb (°CDB)."
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "Outdoor ambient heating range, minimum, wet-bulb (°CWB)."
+      }
+    }
   }
 ] as const;
 
@@ -5792,6 +6009,111 @@ export const CATALOGUE_INDOORS = [
     "coolingHighFanFlowM3h": 1224,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified"
+  },
+  {
+    "id": "FTXM20A",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 298,
+      "w": 804,
+      "d": 252
+    },
+    "coolingHighFanFlowM3h": 714,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+  },
+  {
+    "id": "FTXM25A",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 298,
+      "w": 804,
+      "d": 252
+    },
+    "coolingHighFanFlowM3h": 714,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+  },
+  {
+    "id": "FTXM35A",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 298,
+      "w": 804,
+      "d": 252
+    },
+    "coolingHighFanFlowM3h": 792,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+  },
+  {
+    "id": "FTXM42A",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 298,
+      "w": 804,
+      "d": 252
+    },
+    "coolingHighFanFlowM3h": 798,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+  },
+  {
+    "id": "FTXM50A",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 298,
+      "w": 804,
+      "d": 252
+    },
+    "coolingHighFanFlowM3h": 762,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+  },
+  {
+    "id": "FTXM60A",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 298,
+      "w": 997,
+      "d": 292
+    },
+    "coolingHighFanFlowM3h": 936,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+  },
+  {
+    "id": "FTXM71A",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 298,
+      "w": 997,
+      "d": 292
+    },
+    "coolingHighFanFlowM3h": 948,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.320"
   }
 ] as const;
 
