@@ -1,0 +1,44 @@
+{
+  "checkedAt": "2026-10-11T16:41:06.384Z",
+  "checks": [
+    {
+      "name": "source-reviewed current MXM references are grouped under Daikin",
+      "passed": true
+    },
+    {
+      "name": "same-count selection retains visible house state and labels exact compatibility unknown",
+      "passed": true
+    },
+    {
+      "name": "two-port choice cannot silently delete a third room or reset its clock",
+      "passed": true
+    },
+    {
+      "name": "selected MXM keeps actual worker sensors and accepted time advancing",
+      "passed": true
+    }
+  ],
+  "current": [
+    "2MXM40A2V1B9",
+    "2MXM50A2V1B8",
+    "2MXM68A2V1B8",
+    "3MXM40A2V1B8",
+    "3MXM52A2V1B8",
+    "3MXM68A2V1B8",
+    "4MXM68A2V1B8",
+    "4MXM80A2V1B8",
+    "5MXM90A2V1B8"
+  ],
+  "legacy": [],
+  "scope": "Visible production controls, retained house state and actual worker sensors; no state injection or OEM performance claim",
+  "releaseCommit": "dd318cec4266931c7fe9cba19ef2d2b34a569f25",
+  "githubRun": "38155521036",
+  "githubConclusion": "success",
+  "ciChecks": {
+    "reference": 156,
+    "frontend": 7,
+    "catalogue": 27,
+    "topology": 6,
+    "smoke": 25
+  }
+}
