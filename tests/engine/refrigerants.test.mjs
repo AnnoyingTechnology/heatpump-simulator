@@ -17,11 +17,11 @@ test('qualified fluids use their own EOS and recover their identity after native
       if(fluid.kind==='pure')close(sat.bubbleTemperatureC,sat.dewTemperatureC,`${fluid.id} zero glide`);else assert.ok(sat.dewTemperatureC>sat.bubbleTemperatureC);
       for (const quality of [0,.2,.7,1]) {
         const h = oracle.PropsSI('H','P',pressure,'Q',quality,fluid.backendFluid), state = p.ph(pressure,h);
-        close(state.qualityMass,quality,`${fluid.id} quality`);
+        if(fluid.qualityMass==='unavailable')assert.equal(state.qualityMass,null);else close(state.qualityMass,quality,`${fluid.id} quality`);
         for (const [key,output] of [['temperatureC','T'],['densityKgm3','D'],['entropyJkgK','S']])
           close(state[key]+(key==='temperatureC'?273.15:0),oracle.PropsSI(output,'P',pressure,'H',h,fluid.backendFluid),`${fluid.id} ${key}`);
       }
-      for (const t of [saturationC-5,saturationC+10]) for (const output of ['H','S','D','C','V','A'])
+      for (const t of [sat.bubbleTemperatureC-5,sat.dewTemperatureC+10]) for (const output of ['H','S','D','C','V','A'])
         close(p.prop(output,'P',pressure,'T',t+273.15),oracle.PropsSI(output,'P',pressure,'T',t+273.15,fluid.backendFluid),`${fluid.id} ${output}`);
     }
     for(let i=0;i<25;i++) {
@@ -101,9 +101,9 @@ test('unknown fluids, inventory changes and unresolved blend circuits fail close
   assert.throws(()=>new HeatPumpEngine(p,c),/Restart/);c.fluid='R22';
   c.inventory={initialMassKg:1.8,initialFluidTemperatureC:20,geometry:{}};
   assert.throws(()=>new HeatPumpEngine(p,c),/R32 only/);p.dispose();
-  for(const id of ['R407C']) {
-    const q=new Properties(module,id),c=defaultEngineConfig(1);c.fluid=id;
-    assert.equal(REFRIGERANTS[id].kind,'zeotropic');assert.throws(()=>new HeatPumpEngine(q,c),/pending/);assert.throws(()=>solveCycle(q,c,{}),/pending/);q.dispose();
+  for(const id of ['R407C','R410A']) {
+    const q=new Properties(module,id,'full-mixture'),c=defaultEngineConfig(1);c.fluid=id;
+    assert.equal(q.refrigerant.kind,'zeotropic');assert.throws(()=>new HeatPumpEngine(q,c),/pending/);assert.throws(()=>solveCycle(q,c,{}),/pending/);q.dispose();
   }
 });
 
@@ -130,7 +130,7 @@ test('R410A retains its documented pseudo-pure glide in coil pinches and equilib
 });
 
 test('R407C fixed mass composition resolves nonlinear phase equilibrium and explicit mass quality without releasing its circuit',()=>{
-  const p=new Properties(module,'R407C'),pressure=p.pressureAtSaturationC(40,'bubble'),sat=p.saturation(pressure);
+  const p=new Properties(module,'R407C','full-mixture'),pressure=p.pressureAtSaturationC(40,'bubble'),sat=p.saturation(pressure);
   assert.ok(sat.dewTemperatureC-sat.bubbleTemperatureC>4);
   const molar=Object.entries(REFRIGERANTS.R407C.massFractions).map(([f,y])=>[f,y/oracle.PropsSI('molar_mass','',0,'',0,f)]);
   const total=molar.reduce((s,[,n])=>s+n,0),composition='HEOS::'+molar.map(([f,n])=>`${f}[${n/total}]`).join('&');
@@ -140,7 +140,70 @@ test('R407C fixed mass composition resolves nonlinear phase equilibrium and expl
   assert.ok(Math.abs(state.qualityMass-.5)>.001);
   const fraction=(h-sat.liquidH)/(sat.vaporH-sat.liquidH),linear=sat.bubbleTemperatureC+fraction*(sat.dewTemperatureC-sat.bubbleTemperatureC);
   assert.ok(Math.abs(state.temperatureC-linear)>.005);
-  assert.equal(REFRIGERANTS.R407C.qualification.reference,false);p.dispose();
+  assert.equal(p.refrigerant.qualification.reference,false);p.dispose();
+});
+
+test('R407C published pseudo-pure Reference retains nonzero glide without presenting surrogate Q as mass quality',()=>{
+  const p=new Properties(module,'R407C'),pressure=p.pressureAtSaturationC(40,'bubble'),sat=p.saturation(pressure),glide=sat.dewTemperatureC-sat.bubbleTemperatureC;
+  assert.equal(p.refrigerant.kind,'pseudo-pure');assert.equal(p.refrigerant.qualityMass,'unavailable');
+  assert.ok(glide>4&&glide<6);assert.equal(p.refrigerant.qualification.reference,true);
+  const h=p.prop('H','P',pressure,'Q',.5),state=p.ph(pressure,h);assert.equal(state.phase,'two-phase');assert.equal(state.qualityMass,null);
+  assert.throws(()=>p.prop('Qmass','P',pressure,'H',h),/not resolved blend mass quality/);
+  const metal=sat.bubbleTemperatureC-.2,expected=(sat.vaporH-sat.liquidH)/glide*Math.log((sat.dewTemperatureC-metal)/(sat.bubbleTemperatureC-metal));
+  close(conductanceIntegral(p,pressure,sat.vaporH,sat.liquidH,metal),expected,'R407C approximate glide integral');
+  assert.ok(Math.abs(expected/((sat.vaporH-sat.liquidH)/(sat.dewTemperatureC-metal))-1)>.5);
+  for(const fraction of [.05,.5,.95]){const target=sat.bubbleTemperatureC+fraction*glide;assert.ok(Math.abs(p.ph(pressure,p.equilibriumH(pressure,target)).temperatureC-target)<1e-7);}
+  assert.throws(()=>conductanceIntegral(p,pressure,sat.vaporH,sat.liquidH,sat.bubbleTemperatureC+.5*glide),/pinch/);p.dispose();
+});
+
+test('R407C approximate properties remain within declared sampled full-mixture deviations',()=>{
+  const p=new Properties(module,'R407C'),f=new Properties(module,'R407C','full-mixture');
+  const anchor=f.pt(1e5,300-273.15),reference=p.pt(1e5,300-273.15),dH=anchor.hJkg-reference.hJkg,dS=anchor.entropyJkgK-reference.entropyJkgK;
+  let surrogateDiff=0;
+  for(const pressure of [5.01e4,...[-40,-20,0,20,40,65].map(t=>p.pressureAtSaturationC(t,'bubble')),3.95e6]){
+    for(const q of [0,.05,.25,.5,.75,.95,1]){
+      const hf=f.prop('H','P',pressure,'Q',q),full=f.ph(pressure,hf),approx=p.ph(pressure,hf-dH);
+      assert.ok(Math.abs(full.temperatureC-approx.temperatureC)<.23);
+      assert.ok(Math.abs(approx.densityKgm3/full.densityKgm3-1)<.014);
+      assert.ok(Math.abs(approx.entropyJkgK+dS-full.entropyJkgK)<5.5);
+      assert.equal(approx.qualityMass,null);
+      if(q>0&&q<1)surrogateDiff=Math.max(surrogateDiff,Math.abs(p.prop('Q','P',pressure,'H',hf-dH)-full.qualityMass));
+    }
+    const sat=f.saturation(pressure);
+    for(const t of [sat.bubbleTemperatureC-3,sat.dewTemperatureC+3,136.85,159.999]){
+      if(t<=-60)continue;
+      const full=f.pt(pressure,t),approx=p.pt(pressure,t);
+      assert.ok(Math.abs(approx.densityKgm3/full.densityKgm3-1)<.0004);
+      assert.ok(Math.abs(approx.hJkg+dH-full.hJkg)<110);
+      assert.ok(Math.abs(approx.entropyJkgK+dS-full.entropyJkgK)<.35);
+    }
+  }
+  assert.ok(surrogateDiff>.015&&surrogateDiff<.021,'surrogate Q cannot be presented as full-mixture mass quality');
+  p.dispose();f.dispose();
+});
+
+test('published PPF latent integrals match independent native off-grid temperatures for both heat directions',()=>{
+  const nodes=[[-.8611363115940526,.3478548451374538],[-.3399810435848563,.6521451548625461],[.3399810435848563,.6521451548625461],[.8611363115940526,.3478548451374538]];
+  for(const fluid of ['R407C','R410A']){
+    const p=new Properties(module,fluid);
+    for(const pressure of [7.1e4,1.234e5,7.654e5,1.8765e6,3.4567e6]){
+      const sat=p.saturation(pressure),glide=sat.dewTemperatureC-sat.bubbleTemperatureC;
+      for(const fraction of [.0137,.2719,.6831,.9993]){
+        const h=sat.liquidH+fraction*(sat.vaporH-sat.liquidH),native=oracle.PropsSI('T','P',pressure,'H',h,fluid)-273.15;
+        assert.ok(Math.abs(native-sat.bubbleTemperatureC-fraction*glide)<2e-8);
+      }
+      for(const fractions of [[0,1],[.125,.875],[.0001,.0003],[.9997,.9999]])for(const margin of [.01,.1,3,20])for(const condensing of [true,false]){
+        const a=sat.liquidH+fractions[0]*(sat.vaporH-sat.liquidH),b=sat.liquidH+fractions[1]*(sat.vaporH-sat.liquidH),metal=condensing?sat.bubbleTemperatureC-margin:sat.dewTemperatureC+margin;
+        // The previous adaptive quadrature queries a separately distributed
+        // native PH closure, without assuming the new logarithmic formula.
+        const panel=(lo,hi)=>{const mid=(lo+hi)/2,half=(hi-lo)/2;return nodes.reduce((sum,[node,weight])=>sum+half*weight/Math.abs(oracle.PropsSI('T','P',pressure,'H',mid+node*half,fluid)-273.15-metal),0);};
+        const integrate=(lo,hi,whole,depth=0)=>{const mid=(lo+hi)/2,left=panel(lo,mid),right=panel(mid,hi),refined=left+right;if(Math.abs(refined-whole)<1e-9*Math.max(1,refined))return refined;assert.ok(depth<20);return integrate(lo,mid,left,depth+1)+integrate(mid,hi,right,depth+1);};
+        const numerical=integrate(a,b,panel(a,b));
+        close(conductanceIntegral(p,pressure,condensing?b:a,condensing?a:b,metal),numerical,`${fluid} exact PPF latent integral`);
+      }
+    }
+    p.dispose();
+  }
 });
 
 test('released idealized refrigerants close direct zero-to-minimum startup points at unchanged tolerances',()=>{

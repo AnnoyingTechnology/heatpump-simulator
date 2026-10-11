@@ -1,0 +1,26 @@
+✔ phase-local exchanger inverse agrees with prior real-EOS bisection, including pressure perturbations (374.885438ms)
+✔ stale/singular continuation slopes fall back to freshly closed real-EOS pressure equations (638.936134ms)
+✔ worker batching preserves every quarter-second thermal/control step and its conservation ledgers (945.490921ms)
+✔ real R32 EOS shared-pressure cycle: one to five branches and both directions (263.932363ms)
+✔ heat exchanger pinches fail explicitly (1.25639ms)
+✔ phase-aware integral latent zone agrees with analytical UA requirement (0.172846ms)
+✔ real field lines close momentum/enthalpy in heating and cooling, including two-phase small pipe (1523.477662ms)
+✔ cold reverse-cycle defrost floats subcooling and retains physical heat signs (144.957021ms)
+✔ heterogeneous idealized cooling conserves mixed-return enthalpy/entropy and valve allocation (142.677109ms)
+✔ idealized warm/cold parallel condensers close the mixed header without equal branch subcooling (98.336192ms)
+✔ pressure/density storage coordinates preserve independent EOS states across phase and input switches (2037.197543ms)
+✔ rejected pressure/density flashes recover without native exceptions or fabricated storage states (1944.594014ms)
+✔ reusable HEOS state matches independent PropsSI across input switches and cache hits (26.97841ms)
+✔ repeated rejected flashes preserve real WASM refrigerant and humid-air service (739.875316ms)
+✔ undefined two-phase sound speed cannot poison later same-input physical readings (2.306713ms)
+✔ Reference inverter preserves stores and closes freshly after warmed three-to-one branch change (7983.184386ms)
+✔ conserved density/internal-energy flash matches independent real R32 states across phases (37.702434ms)
+✔ invalid DU trials reject through safe computed-pressure boundary and valid flashes recover (69.018438ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10326.338509

@@ -1,0 +1,145 @@
+{
+  "mode": "heating",
+  "route": "guarded",
+  "cacheAll": false,
+  "start": "2026-10-11T15:52:25.217Z",
+  "output": {
+    "mode": "heating",
+    "evaporatingC": -6.000010001,
+    "condensingC": 33.71062154012334,
+    "lowPressureBarAbs": 3.7147133458226267,
+    "highPressureBarAbs": 14.952209506344891,
+    "suction": {
+      "pPa": 371471.3345822627,
+      "pBarAbs": 3.7147133458226267,
+      "hJkg": 409162.5910968381,
+      "temperatureC": -3.0000099983189443,
+      "entropyJkgK": 1793.8353033882413,
+      "densityKgm3": 15.706946401394024,
+      "qualityMass": null,
+      "phase": "vapor"
+    },
+    "discharge": {
+      "pPa": 1495220.950634489,
+      "pBarAbs": 14.952209506344891,
+      "hJkg": 458548.23770615633,
+      "temperatureC": 68.52001472286577,
+      "entropyJkgK": 1838.0730978207805,
+      "densityKgm3": 53.996997170832145,
+      "qualityMass": null,
+      "phase": "vapor"
+    },
+    "condenserOutlet": {
+      "pPa": 1495220.950634489,
+      "pBarAbs": 14.952209506344891,
+      "hJkg": 248677.76325612116,
+      "temperatureC": 32.71281131259775,
+      "entropyJkgK": 1165.4177288265198,
+      "densityKgm3": 1103.3277744605134,
+      "qualityMass": null,
+      "phase": "liquid"
+    },
+    "expansionOutlet": {
+      "pPa": 371471.3345822627,
+      "pBarAbs": 3.7147133458226267,
+      "hJkg": 248677.76325612116,
+      "temperatureC": -10.51312338907951,
+      "entropyJkgK": 1185.8157573000615,
+      "densityKgm3": 52.545469402412095,
+      "qualityMass": null,
+      "phase": "two-phase"
+    },
+    "totalMassFlowKgs": 0.011057690266581393,
+    "branchMassFlowsKgs": [
+      0.011057690266581393
+    ],
+    "branchCoilHeatW": [
+      2320.682702568972
+    ],
+    "outdoorCoilHeatW": -1774.5915187482865,
+    "branchInlets": [
+      {
+        "pPa": 1495220.950634489,
+        "pBarAbs": 14.952209506344891,
+        "hJkg": 458548.23770615633,
+        "temperatureC": 68.52001472286577,
+        "entropyJkgK": 1838.0730978207805,
+        "densityKgm3": 53.996997170832145,
+        "qualityMass": null,
+        "phase": "vapor"
+      }
+    ],
+    "branchOutlets": [
+      {
+        "pPa": 1495220.950634489,
+        "pBarAbs": 14.952209506344891,
+        "hJkg": 248677.7632561212,
+        "temperatureC": 32.71281131259764,
+        "entropyJkgK": 1165.4177288265191,
+        "densityKgm3": 1103.3277744605139,
+        "qualityMass": null,
+        "phase": "liquid"
+      }
+    ],
+    "condenserHeatW": 2320.682702568972,
+    "evaporatorHeatW": 1774.5915187482865,
+    "compressorWorkW": 546.0911838206863,
+    "compressorElectricalW": 587.1948213125659,
+    "driveLossW": 41.10363749187957,
+    "massResidualKgs": 0,
+    "closureResidualW": 0.038465831931356165,
+    "lineHeatToOutdoorW": 0,
+    "pressureDropsPa": [
+      0
+    ],
+    "transportMethod": "Distributed Darcy/HEOS homogeneous-equilibrium field lines; generic smooth copper, no slip/fittings/oil",
+    "iterations": 3,
+    "pressureJacobian": {
+      "mode": "heating",
+      "floatingCondenser": false,
+      "matrix": [
+        33.660334075591436,
+        -180.35914092346175,
+        10.11419487471343,
+        0
+      ]
+    },
+    "branchValveInlets": [
+      {
+        "pPa": 1495220.950634489,
+        "pBarAbs": 14.952209506344891,
+        "hJkg": 248677.7632561212,
+        "temperatureC": 32.71281131259764,
+        "entropyJkgK": 1165.4177288265191,
+        "densityKgm3": 1103.3277744605139,
+        "qualityMass": null,
+        "phase": "liquid"
+      }
+    ],
+    "branchValveOutlets": [
+      {
+        "pPa": 371471.3345822627,
+        "pBarAbs": 3.7147133458226267,
+        "hJkg": 248677.7632561212,
+        "temperatureC": -10.51312338907951,
+        "entropyJkgK": 1185.8157573000617,
+        "densityKgm3": 52.54546940241205,
+        "qualityMass": null,
+        "phase": "two-phase"
+      }
+    ]
+  },
+  "elapsedMs": 54.50399100000004,
+  "calls": {
+    "all": 6607,
+    "flash": 1335,
+    "cacheHits": 5189,
+    "unique": {
+      "T:Q": 9,
+      "P:T": 1108,
+      "P:H": 184,
+      "P:Q": 27,
+      "P:S": 7
+    }
+  }
+}

@@ -21,6 +21,15 @@ export function conductanceIntegral(properties: Properties, pressurePa: number, 
     const a = knots[i - 1], b = knots[i];
     if (a >= sat.liquidH && b <= sat.vaporH) {
       if (properties.refrigerant.kind === 'pure') integral += (b - a) / Math.abs(sat.temperatureC - metalC);
+      else if (properties.refrigerant.kind === 'pseudo-pure') {
+        // The qualified CoolProp R410A/R407C PPF PH closures interpolate T
+        // linearly in h between distinct bubble/dew endpoints. Integrate that
+        // declared approximation exactly, including its logarithmic pinch.
+        // Full-mixture PH temperature is nonlinear and uses quadrature below.
+        const approachA = Math.abs(endpoint(a) - metalC), approachB = Math.abs(endpoint(b) - metalC);
+        const delta = approachB - approachA;
+        integral += delta === 0 ? (b-a)/approachA : (b-a)*Math.log1p(delta/approachA)/delta;
+      }
       else {
         // Gliding-zone temperatures come from the selected EOS PH flash.
         // R410A uses its documented fixed-composition pseudo-pure approximation;

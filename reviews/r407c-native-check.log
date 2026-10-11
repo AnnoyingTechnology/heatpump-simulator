@@ -1,0 +1,34 @@
+{
+  status: 'PASS',
+  environment: 'Node',
+  initMs: 51.016873000000004,
+  maxRelative: 1.6462711417781456e-9,
+  maxLegacyStateRelative: 0,
+  comparisons: 522,
+  records: undefined,
+  humid: undefined,
+  badStates: 2000,
+  badStateRecoveryMs: 382.67778499999986,
+  benchmark: [
+    {
+      name: 'referencePropsSI',
+      updatesPerBatch: 200,
+      batchesMs: [Array],
+      medianMs: 74.7494429999997
+    },
+    {
+      name: 'referencePreflightState',
+      updatesPerBatch: 200,
+      batchesMs: [Array],
+      medianMs: 18.867629999999735
+    },
+    {
+      name: 'safeState',
+      updatesPerBatch: 200,
+      batchesMs: [Array],
+      medianMs: 1.1191720000006171
+    }
+  ],
+  checksum: 820291.6995547183,
+  totalMs: 4599.708557
+}

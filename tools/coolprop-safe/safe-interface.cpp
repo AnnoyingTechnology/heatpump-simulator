@@ -15,7 +15,7 @@
 
 namespace {
 bool supported(const std::string& fluid) {
-    return fluid == "R32" || fluid == "R22" || fluid == "n-Propane" || fluid == "R134a" || fluid == "R1234yf" || fluid == "R407C-mix" || fluid == "R410A-mix" || fluid == "R410A";
+    return fluid == "R32" || fluid == "R22" || fluid == "n-Propane" || fluid == "R134a" || fluid == "R1234yf" || fluid == "R407C-mix" || fluid == "R410A-mix" || fluid == "R410A" || fluid == "R407C";
 }
 std::unique_ptr<CoolProp::AbstractState> create(const std::string& fluid) {
     if (!supported(fluid)) throw std::invalid_argument("Unsupported refrigerant identifier");

@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-11",
+  "fullMixtureBackend": "guarded R407C-mix",
+  "sourceProbe": "../tools/probe-r407c-cycle.mjs",
+  "qualification": "properties only; coupled circuit remains gated",
+  "cases": [
+    {
+      "mode": "heating",
+      "snapshotAll": true,
+      "nearSolutionSeed": false,
+      "outcome": "externally interrupted without returned cycle",
+      "timeoutSeconds": 180
+    },
+    {
+      "mode": "cooling",
+      "snapshotAll": true,
+      "nearSolutionSeed": true,
+      "outcome": "externally interrupted without returned cycle",
+      "timeoutSeconds": 160,
+      "lastProgress": {
+        "elapsedMs": 157657.444369,
+        "calls": {
+          "all": 2245,
+          "flash": 1344,
+          "cacheHits": 899,
+          "unique": {
+            "T:Q": 6,
+            "P:T": 176,
+            "P:H": 1143,
+            "P:Q": 12,
+            "P:S": 7
+          }
+        }
+      }
+    }
+  ],
+  "note": "These are exploratory local cost observations, not validated bounds or accepted coupled trajectories."
+}

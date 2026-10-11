@@ -1,7 +1,9 @@
 # Generic refrigerant qualification — 2026-10-11
 
 The released comparison circuit uses R22, R32, R290, R134a, R1234yf and the documented
-R410A pseudo-pure EOS. This is generic compatible equipment with the configured
+R410A/R407C pseudo-pure EOSs. [R407C's successor qualification](r407c-reference-comparator.md)
+records its full-mixture deviations and explicitly unavailable mass quality.
+This is generic compatible equipment with the configured
 compressor displacement/efficiencies and coil conductances. Changing fluid does not
 predict an OEM retrofit, rewrite installed tubing, convert catalogue performance,
 or scale COP. The worker restarts with the selected EOS and supplied house settings.
@@ -24,7 +26,7 @@ recreation. An invalid trial therefore cannot silently become an R32 state.
 | R134a | Pure HEOS `R134a` | 0.5–38 | −60–160 | Idealized Reference; lower-pressure comparator |
 | R1234yf | Pure HEOS `R1234yf` | 0.5–32 | −60–136.85 | Idealized Reference; optional comparator |
 | R410A | Fixed-composition pseudo-pure HEOS `R410A`, nominal 50/50 R32/R125 by mass | 0.5–47 | −60–160 | Idealized Reference, explicitly approximate phase treatment |
-| R407C | Explicit HEOS R32/R125/R134a, 23/25/52 by mass | 0.5–40 | −60–160 | Property qualification only; circuit gated |
+| R407C | Published pseudo-pure HEOS `R407C`, nominal R32/R125/R134a 23/25/52 by mass | 0.5–40 | −60–160 | Bounded idealized Reference; mass quality unavailable; full-mixture benchmark remains circuit gated |
 
 Bounds are open. The reference pressure solver retains −40…45°C evaporating and
 −5…65°C condensing limits. These are computational coverage limits, not hardware
@@ -50,9 +52,9 @@ fractionation or establish an explicit mixture's mass-quality accuracy.
 [CoolProp R410A EOS provenance](https://coolprop.org/fluid_properties/fluids/R410A.html),
 [Lemmon 2003 EOS paper](https://doi.org/10.1023/A:1025048800563).
 
-R407C uses native `set_mass_fractions`, which converts the declared mass composition
-using the pinned component molar masses. It never uses the R407C pseudo-pure EOS,
-linear interpolation of endpoint enthalpies/temperatures, or `Qmass=Q`. Its selected
+The explicitly selected R407C full-mixture **benchmark** uses native `set_mass_fractions`, which converts the declared mass composition
+using the pinned component molar masses. It never uses the R407C pseudo-pure EOS
+or `Qmass=Q`. Its selected
 interior states have nonlinear PH temperatures and distinct mass/molar qualities;
 the browser measures about 4.897 K glide at 40°C bubble. The guarded interface exposes
 native `Qmass`. Scalar fallbacks encode the mole fractions from that same native mass
@@ -71,14 +73,18 @@ This is numerical agreement and model-conservation acceptance, not experimental
 validation of any real appliance. An independent analytical R410A glide integral also
 checks the near-pinch coil treatment.
 
+The following original six-fluid evidence is retained as the initial release baseline.
+The current seven-fluid logs, R407C approximation comparison and actual startup
+qualification are linked from [the successor report](r407c-reference-comparator.md).
+
 The [coupled qualification log](../reviews/refrigerants-qualification.log) passes six
 acceptance groups, including 60 s wet cooling and cold frost/reversal trajectories
 for every released fluid. The [additional glide/mixture tests](../reviews/refrigerants-blend-properties.log)
 pass the independent R410A integral and full-equilibrium R407C mass-quality checks.
 
 The [browser results](../reviews/refrigerants-browser-results.json) pin the tested WASM
-hash, show both three-branch directions for each released fluid, twenty native
-rejection/recovery cycles per fluid, resolved R407C property states and zero browser
+hash, show both three-branch directions for all seven released fluids, twenty native
+rejection/recovery cycles per fluid, R407C surrogate states and explicit full-mixture benchmark states, and zero browser
 exceptions. [R32 regression](../reviews/refrigerants-r32-regression.log) passes twenty-two
 existing property/storage/cycle/coil/protection assertions. The original R32 algorithms,
 pressure bounds, accepted-state rollback and conservation contracts are retained.
@@ -97,7 +103,7 @@ therefore not released on the basis of passing property calls alone. Future rele
 requires bounded-cost coupled qualification, including gliding pinches, heterogeneous
 branches, defrost, controller boundaries, and phase-composition-aware transport.
 The [low-speed probe](../reviews/refrigerants-low-speed-probe.json) also closes all
-36 combinations of the six released fluids, both directions and 0.05/0.5/2 rps
+36 combinations of the original six released fluids, both directions and 0.05/0.5/2 rps
 with three idealized branches at unchanged tolerances; maximum residual is
 0.074862 W. These are isolated startup points, not acceptance of a complete
 zero-to-minimum actuator ramp trajectory.

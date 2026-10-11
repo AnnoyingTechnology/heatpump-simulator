@@ -22,10 +22,19 @@ try {
         result.cycles.push({mode,elapsedMs:performance.now()-start,lowPressureBarAbs:out.lowPressureBarAbs,highPressureBarAbs:out.highPressureBarAbs,compressorWorkW:out.compressorWorkW,closureResidualW:out.closureResidualW});}
       p.dispose();return result;})()`));
   }
+  const mixtureBenchmarks=[];
+  for(const id of ['R407C'])mixtureBenchmarks.push(await page.evaluate(`(()=>{const {module:m,engine,cycle}=globalThis.probe;
+    const p=new engine.Properties(m,${JSON.stringify(id)},'full-mixture'),pressure=p.pressureAtSaturationC(40,'bubble'),sat=p.saturation(pressure);
+    p.prop('T','P',pressure,'Q',.5);try{p.prop('A','P',pressure,'Q',.5);throw Error('Two-phase sound unexpectedly defined');}catch(e){if(e.message.includes('unexpectedly'))throw e;}
+    const h=p.prop('H','P',pressure,'Q',.5),middle=p.ph(pressure,h),c=engine.defaultEngineConfig(1);c.fluid=p.fluid;
+    if(Math.abs(middle.qualityMass-.5)<.001)throw Error('Mixture molar quality was presented as mass quality');
+    if(p.refrigerant.qualification.reference)throw Error('Full-mixture circuit unexpectedly released');
+    try{cycle.solveCycle(p,c,{});throw Error('Unqualified mixture cycle unexpectedly accepted');}catch(e){if(e.message.includes('unexpectedly'))throw e;}
+    const result={id:p.fluid,model:p.model,saturation:sat,middle,qualification:p.refrigerant.qualification};p.dispose();return result;})()`));
   const exceptions=page.events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params);
   if(exceptions.length)throw Error('Unexpected native/browser exceptions');
   const wasm=await readFile(new URL('../public/vendor/coolprop-safe/coolprop.wasm',import.meta.url));
-  const result={coolpropCommit:'ae81610e7d23efc57f9d051c8e70a4d66e87537f',wasmSHA256:createHash('sha256').update(wasm).digest('hex'),checkedAt:new Date().toISOString(),browser:await page.evaluate('navigator.userAgent'),fluids,exceptions};
+  const result={coolpropCommit:'ae81610e7d23efc57f9d051c8e70a4d66e87537f',wasmSHA256:createHash('sha256').update(wasm).digest('hex'),checkedAt:new Date().toISOString(),browser:await page.evaluate('navigator.userAgent'),fluids,mixtureBenchmarks,exceptions};
   await writeFile(new URL('../reviews/refrigerants-browser-results.json',import.meta.url),JSON.stringify(result,null,2)+'\n');
   console.log(fluids.map(f=>({id:f.id,glideK:f.saturation.dewTemperatureC-f.saturation.bubbleTemperatureC,cycles:f.cycles.length})));
 }finally{await page.close();}

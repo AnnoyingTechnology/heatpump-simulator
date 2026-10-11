@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-11",
+  "backend": "guarded native CoolProp",
+  "status": "passed",
+  "testsPassed": 3,
+  "durationMs": 25065.633857,
+  "scope": [
+    "R407C cold heating zero-to-minimum ramp",
+    "R407C cold cooling zero-to-minimum ramp",
+    "R407C retained warm heating coils after 300 s running, Off and complete dwell"
+  ],
+  "command": "HEATPUMP_TEST_BACKEND=guarded node --test --test-name-pattern=R407C tests/engine/r407c-warm-startup.test.mjs",
+  "snapshotInputs": {
+    "base": "78d5c44 with this R407C successor engine/property source",
+    "driveCommit": "66ca8be81076b16fcc2b193a7bf219a153d9aab8",
+    "supervisorPatch": "r407c-startup-supervisor-input.patch",
+    "supervisorPatchSha256": "ffd36af49197122be3a70fba5fb093c5d09f9516750426aef7ab64f666e965ad",
+    "testInput": "r407c-startup-test-input.mjs",
+    "sha256": {
+      "src/engine/drive.ts": "5ec2c4e08a7e606d2e81d29efedbb78c8c7a8677126b2495623926b0c2d4cd60",
+      "src/engine/engine.ts": "84a8745a08d37e9326773ad73cadfaec841c1fbb3568beb0f4af55611b642693",
+      "src/engine/cycle.ts": "fca74c6a035724bb0dbe87dfe76859d49ed159127b8e50cadbb5b48bad293384",
+      "src/engine/properties.ts": "f0ec74c7014a0d8ccc5ebb6ca674a2ee1e40dd096ff0d5ceef975b5fe74cabb1",
+      "src/engine/refrigerants.ts": "a18c1bc71dd03f7dfdaf76fbbf2c38bcbcb0576a25c3af1de727f1d5a0083e1b",
+      "tests/engine/r407c-warm-startup.test.mjs": "f070fcd46f347535fae618aa7f5a7833ddda196d90a11ba35bdf097c8cbaa8a3",
+      "tests/engine/backend.mjs": "d77b3152456833cd96d358a71f32bfd2f64dd07d4755b4bce524a28cba9113d8",
+      "tests/engine/fixtures/published-owner-startup-146/published-owner-1C-ground17-600.json": "d9569eb21c1cdc7289c86673c2e672d6d2c5049996e77b0892eaf442d8f0ffdf",
+      "public/vendor/coolprop-safe/coolprop.wasm": "55d4d93788e146f773ba7dbbd14ad47a3e24fc0a273eaad910879f5404bbe0d0"
+    }
+  },
+  "reproduction": "Use the declared drive.ts commit plus the included supervisor patch, this successor source, and the existing fixture/backend; copy the test input into tests/engine and compile the existing test tsconfig before running the command. Supervisor/drive changes belong to the separate startup integration, not this gas successor.",
+  "log": "r407c-real-startup.log",
+  "checks": [
+    "Actual .5 rps at first .25 s; reaches 8 rps",
+    "Unchanged pressure residual, exact branch mass and cycle energy closure",
+    "Actual compressor work and accepted electricity ledger",
+    "Accepted total energy/water ledgers and explicit ramp slew",
+    "Actual warm storage, immediate Off, complete 30 s dwell"
+  ]
+}

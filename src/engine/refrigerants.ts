@@ -7,6 +7,8 @@ export interface RefrigerantDefinition {
   /** Original standard blend composition on a mass basis; the native state converts it. */
   massFractions?: Readonly<Record<string, number>>;
   source: string;
+  /** A pseudo-pure phase parameter must not be presented as resolved blend mass quality. */
+  qualityMass: 'equilibrium' | 'pseudo-pure-approximation' | 'unavailable';
   qualification: { reference: boolean; physicalLines: boolean; physicalLineModes: readonly ('heating' | 'cooling')[]; inventory: boolean; limitation: string | null };
   /** Selected computational envelope, narrower than the EOS validity range; not an appliance pressure rating. */
   domain: { minPressurePa: number; maxPressurePa: number; minTemperatureC: number; maxTemperatureC: number; minEvaporatingC: number; maxEvaporatingC: number; minCondensingC: number; maxCondensingC: number };
@@ -14,12 +16,12 @@ export interface RefrigerantDefinition {
 const domain = { minPressurePa: 5e4, maxPressurePa: 5e6, minTemperatureC: -60, maxTemperatureC: 160,
   minEvaporatingC: -40, maxEvaporatingC: 45, minCondensingC: -5, maxCondensingC: 65 };
 const pure = (id: RefrigerantId, backendFluid: string = id, maxPressurePa = 5e6, maxTemperatureC = 160): RefrigerantDefinition => ({ id, backendFluid, kind: 'pure',
-  source: `https://coolprop.org/fluid_properties/fluids/${backendFluid}.html`, domain: { ...domain, maxPressurePa, maxTemperatureC },
+  source: `https://coolprop.org/fluid_properties/fluids/${backendFluid}.html`, qualityMass: 'equilibrium', domain: { ...domain, maxPressurePa, maxTemperatureC },
   qualification: { reference: true, physicalLines: id === 'R32', physicalLineModes: id === 'R32' ? ['heating','cooling'] : [], inventory: id === 'R32',
     limitation: id === 'R32' ? null : 'Conserved inventory and the complete physical field-line circuit, including reverse-cycle defrost, are qualified for R32 only.' } });
 const blend = (id: 'R407C' | 'R410A', massFractions: Record<string, number>): RefrigerantDefinition => ({
   id, backendFluid: `${id}-mix`, kind: 'zeotropic', massFractions,
-  source: 'https://coolprop.org/fluid_properties/Mixtures.html', domain: { ...domain, maxPressurePa: id === 'R407C' ? 4e6 : 4.7e6 },
+  source: 'https://coolprop.org/fluid_properties/Mixtures.html', qualityMass: 'equilibrium', domain: { ...domain, maxPressurePa: id === 'R407C' ? 4e6 : 4.7e6 },
   qualification: { reference: false, physicalLines: false, physicalLineModes: [], inventory: false,
     limitation: 'Resolved blend property states are available; coupled glide-aware coil/control and phase-composition transport qualification is pending.' },
 });
@@ -31,8 +33,12 @@ function frozen(definition: RefrigerantDefinition): RefrigerantDefinition {
   return Object.freeze(definition);
 }
 const definitions: Record<RefrigerantId, RefrigerantDefinition> = {
-  R22: pure('R22', 'R22', 4.8e6), R407C: blend('R407C', { R32: .23, R125: .25, R134a: .52 }),
-  R410A: { ...blend('R410A', { R32: .5, R125: .5 }), backendFluid: 'R410A', kind: 'pseudo-pure',
+  R22: pure('R22', 'R22', 4.8e6),
+  R407C: { ...blend('R407C', { R32: .23, R125: .25, R134a: .52 }), backendFluid: 'R407C', kind: 'pseudo-pure', qualityMass: 'unavailable',
+    source: 'https://coolprop.org/fluid_properties/fluids/R407C.html',
+    qualification: { reference: true, physicalLines: false, physicalLineModes: [], inventory: false,
+      limitation: 'Lemmon2003 fixed-composition pseudo-pure Reference comparator retains bubble/dew glide; interior phase composition and mass quality are unresolved. Sampled full-mixture deviations are documented; physical field lines, conserved inventory and fractionation are not qualified.' } },
+  R410A: { ...blend('R410A', { R32: .5, R125: .5 }), backendFluid: 'R410A', kind: 'pseudo-pure', qualityMass: 'pseudo-pure-approximation',
     source: 'https://coolprop.org/fluid_properties/fluids/R410A.html',
     qualification: { reference: true, physicalLines: false, physicalLineModes: [], inventory: false, limitation: 'Fixed-composition pseudo-pure EOS preserves small bubble/dew glide; phase compositions/fractionation and physical field lines are not qualified.' } }, R32: pure('R32'),
   R290: pure('R290', 'n-Propane', 4e6), R134a: pure('R134a', 'R134a', 3.8e6), R1234yf: pure('R1234yf', 'R1234yf', 3.2e6, 136.85),
@@ -43,4 +49,9 @@ export function refrigerantDefinition(id: RefrigerantId): RefrigerantDefinition 
   const definition = REFRIGERANTS[id];
   if (!Object.hasOwn(REFRIGERANTS,id)) throw new Error(`Unknown refrigerant ${String(id)}`);
   return definition;
+}
+/** Explicit research backend: never silently replaces the released property model. */
+export function mixtureBenchmarkDefinition(id: RefrigerantId): RefrigerantDefinition {
+  if (id !== 'R407C' && id !== 'R410A') throw new Error(`No fixed-composition mixture benchmark for ${id}`);
+  return frozen(blend(id, id === 'R407C' ? { R32: .23, R125: .25, R134a: .52 } : { R32: .5, R125: .5 }));
 }

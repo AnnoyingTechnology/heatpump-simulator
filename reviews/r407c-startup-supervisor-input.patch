@@ -1,0 +1,10 @@
+--- a/src/engine/engine.ts
++++ b/src/engine/engine.ts
+@@ -357,6 +357,7 @@
+       }
+       this.inventoryDrive = driveStep(this.inventoryDrive, dt, { thermalBoundaryAvailable:heldEnvelope?.available,coolingMode:config.mode==='cooling',coolingCoilC, dischargeEnvelopeExceeded:!!((holdNotRecovered||boundaryDenied)&&heldEnvelope?.dischargeExceeded),pressureRatioAvailable:!(holdNotRecovered||boundaryDenied)||heldEnvelope?.ratio!==null,predictedCondensingC:feedback?.condensingC??((holdNotRecovered||boundaryDenied)?heldEnvelope?.condensingC:null)??null,maximumCondensingC:this.properties.refrigerant.domain.maxCondensingC,demandRps: demandSpeed,
+         minimumRps: referenceMinimum, maximumRps: config.compressor.speedMaxRps,
++        startupFromRest:!conventional&&!defrost&&config.rooms.every(room=>room.pipe.lengthM===0&&room.pipe.elevationM===0),
+         inverterSlew:!conventional&&!defrost?{
+           upRpsPerSecond:config.control.inverterRampUpRpsPerSecond??DEFAULT_INVERTER_SLEW.upRpsPerSecond,
+           downRpsPerSecond:config.control.inverterRampDownRpsPerSecond??DEFAULT_INVERTER_SLEW.downRpsPerSecond}:undefined,

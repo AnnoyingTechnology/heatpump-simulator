@@ -1,7 +1,7 @@
 {
   "coolpropCommit": "ae81610e7d23efc57f9d051c8e70a4d66e87537f",
-  "wasmSHA256": "974919ded434bc66ccf92dc6b5ac997221ac6a1c0bb4eb7b40f592db1c8ed93e",
-  "checkedAt": "2026-10-11T15:09:58.020Z",
+  "wasmSHA256": "55d4d93788e146f773ba7dbbd14ad47a3e24fc0a273eaad910879f5404bbe0d0",
+  "checkedAt": "2026-10-11T15:53:33.220Z",
   "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
   "fluids": [
     {
@@ -37,7 +37,7 @@
       "cycles": [
         {
           "mode": "heating",
-          "elapsedMs": 75.20000004768372,
+          "elapsedMs": 58.799999952316284,
           "lowPressureBarAbs": 6.616919906758626,
           "highPressureBarAbs": 20.917626901808102,
           "compressorWorkW": 844.7335798204928,
@@ -45,7 +45,7 @@
         },
         {
           "mode": "cooling",
-          "elapsedMs": 31.300000190734863,
+          "elapsedMs": 23.90000009536743,
           "lowPressureBarAbs": 16.036491805734002,
           "highPressureBarAbs": 28.285214999901875,
           "compressorWorkW": 952.904103646631,
@@ -83,7 +83,7 @@
       "cycles": [
         {
           "mode": "heating",
-          "elapsedMs": 35.299999952316284,
+          "elapsedMs": 23.700000047683716,
           "lowPressureBarAbs": 4.076889023006199,
           "highPressureBarAbs": 12.587154258092497,
           "compressorWorkW": 493.30667706797647,
@@ -91,7 +91,7 @@
         },
         {
           "mode": "cooling",
-          "elapsedMs": 32.200000047683716,
+          "elapsedMs": 22.899999856948853,
           "lowPressureBarAbs": 10.492722295849559,
           "highPressureBarAbs": 16.59134987983041,
           "compressorWorkW": 491.9897065455469,
@@ -129,7 +129,7 @@
       "cycles": [
         {
           "mode": "heating",
-          "elapsedMs": 20.5,
+          "elapsedMs": 14.299999952316284,
           "lowPressureBarAbs": 3.932906004154724,
           "highPressureBarAbs": 11.308694231374552,
           "compressorWorkW": 429.9373708437229,
@@ -137,7 +137,7 @@
         },
         {
           "mode": "cooling",
-          "elapsedMs": 24.399999856948853,
+          "elapsedMs": 17.90000009536743,
           "lowPressureBarAbs": 9.72420115013522,
           "highPressureBarAbs": 14.532083726468857,
           "compressorWorkW": 392.2816831077214,
@@ -175,7 +175,7 @@
       "cycles": [
         {
           "mode": "heating",
-          "elapsedMs": 38.5,
+          "elapsedMs": 27.800000190734863,
           "lowPressureBarAbs": 2.3427779253963377,
           "highPressureBarAbs": 8.009816043933396,
           "compressorWorkW": 299.20007704166005,
@@ -183,7 +183,7 @@
         },
         {
           "mode": "cooling",
-          "elapsedMs": 27.799999952316284,
+          "elapsedMs": 18.199999809265137,
           "lowPressureBarAbs": 6.936486956775513,
           "highPressureBarAbs": 10.696259316267597,
           "compressorWorkW": 302.1098257748378,
@@ -221,7 +221,7 @@
       "cycles": [
         {
           "mode": "heating",
-          "elapsedMs": 35,
+          "elapsedMs": 20.5,
           "lowPressureBarAbs": 2.5639897981077917,
           "highPressureBarAbs": 8.134910192252239,
           "compressorWorkW": 299.71736539965815,
@@ -229,7 +229,7 @@
         },
         {
           "mode": "cooling",
-          "elapsedMs": 27.200000047683716,
+          "elapsedMs": 15.400000095367432,
           "lowPressureBarAbs": 7.1333074261238,
           "highPressureBarAbs": 10.636660553921782,
           "compressorWorkW": 283.2395481402261,
@@ -267,25 +267,73 @@
       "cycles": [
         {
           "mode": "heating",
-          "elapsedMs": 130.20000004768372,
-          "lowPressureBarAbs": 6.544903917225993,
-          "highPressureBarAbs": 20.391028402565325,
-          "compressorWorkW": 787.8116234386424,
-          "closureResidualW": 0.030352506653104017
+          "elapsedMs": 51.5,
+          "lowPressureBarAbs": 6.544897760247117,
+          "highPressureBarAbs": 20.39099582473822,
+          "compressorWorkW": 787.810429870906,
+          "closureResidualW": 0.010849078458883202
         },
         {
           "mode": "cooling",
-          "elapsedMs": 136.10000014305115,
-          "lowPressureBarAbs": 15.892267022842914,
-          "highPressureBarAbs": 27.374159192660887,
-          "compressorWorkW": 879.0913594626498,
-          "closureResidualW": 0.04013756937619226
+          "elapsedMs": 41.799999952316284,
+          "lowPressureBarAbs": 15.892267022745903,
+          "highPressureBarAbs": 27.374159190338677,
+          "compressorWorkW": 879.0913593242325,
+          "closureResidualW": 0.04013564016179747
         }
       ]
     },
     {
       "id": "R407C",
-      "pressure": 1749045.0605251945,
+      "pressure": 1748864.3239110548,
+      "saturation": {
+        "temperatureC": 44.89592893594471,
+        "dewTemperatureC": 44.89592893594471,
+        "bubbleTemperatureC": 39.99999999999994,
+        "liquidH": 260374.19670778222,
+        "vaporH": 425387.97561783995
+      },
+      "middle": {
+        "pPa": 1748864.3239110548,
+        "pBarAbs": 17.488643239110548,
+        "hJkg": 342881.0861628111,
+        "temperatureC": 42.44796446797233,
+        "entropyJkgK": 1463.910986674818,
+        "densityKgm3": 146.32368415311572,
+        "qualityMass": null,
+        "phase": "two-phase"
+      },
+      "qualification": {
+        "reference": true,
+        "physicalLines": false,
+        "physicalLineModes": [],
+        "inventory": false,
+        "limitation": "Lemmon2003 fixed-composition pseudo-pure Reference comparator retains bubble/dew glide; interior phase composition and mass quality are unresolved. Sampled full-mixture deviations are documented; physical field lines, conserved inventory and fractionation are not qualified."
+      },
+      "cycles": [
+        {
+          "mode": "heating",
+          "elapsedMs": 30.40000009536743,
+          "lowPressureBarAbs": 3.7147133458226267,
+          "highPressureBarAbs": 13.947586523235925,
+          "compressorWorkW": 517.9607417282829,
+          "closureResidualW": 1.7338114066284397e-8
+        },
+        {
+          "mode": "cooling",
+          "elapsedMs": 39.59999990463257,
+          "lowPressureBarAbs": 10.717823407403499,
+          "highPressureBarAbs": 18.101533605402544,
+          "compressorWorkW": 567.263093170453,
+          "closureResidualW": 0.01371300614382833
+        }
+      ]
+    }
+  ],
+  "mixtureBenchmarks": [
+    {
+      "id": "R407C",
+      "model": "full-mixture",
       "saturation": {
         "temperatureC": 44.89671021602845,
         "dewTemperatureC": 44.89671021602845,
@@ -296,11 +344,11 @@
       "middle": {
         "pPa": 1749045.0605251945,
         "pBarAbs": 17.490450605251944,
-        "hJkg": 343768.47729112697,
-        "temperatureC": 42.419334167208035,
-        "entropyJkgK": 1566.014110373852,
-        "densityKgm3": 146.3817969916805,
-        "qualityMass": 0.4877733339476813,
+        "hJkg": 343457.5251242394,
+        "temperatureC": 42.409928149154666,
+        "entropyJkgK": 1565.0287264292715,
+        "densityKgm3": 146.8592239383513,
+        "qualityMass": 0.4858891048495733,
         "phase": "two-phase"
       },
       "qualification": {
@@ -309,8 +357,7 @@
         "physicalLineModes": [],
         "inventory": false,
         "limitation": "Resolved blend property states are available; coupled glide-aware coil/control and phase-composition transport qualification is pending."
-      },
-      "cycles": []
+      }
     }
   ],
   "exceptions": []

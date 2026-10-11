@@ -1,4 +1,4 @@
-import { refrigerantDefinition, type RefrigerantId, type RefrigerantDefinition } from './refrigerants.ts';
+import { refrigerantDefinition, mixtureBenchmarkDefinition, type RefrigerantId, type RefrigerantDefinition } from './refrigerants.ts';
 import type { CoolPropModule, RefrigerantState, AbstractFluidState } from './types.ts';
 
 export class DomainError extends Error { constructor(message: string) { super(message); this.name = 'DomainError'; } }
@@ -8,9 +8,10 @@ export class Properties {
   private cache = new Map<string, number>();
   private state: AbstractFluidState | undefined;
   private lastInput = '';
-  constructor(private module: CoolPropModule, readonly fluid: RefrigerantId = 'R32') {
-    this.refrigerant = refrigerantDefinition(fluid);
-    this.backend = `CoolProp 8.0.0 HEOS ${fluid}`;
+  constructor(private module: CoolPropModule, readonly fluid: RefrigerantId = 'R32', readonly model: 'default' | 'full-mixture' = 'default') {
+    if (model !== 'default' && model !== 'full-mixture') throw new DomainError(`Unknown refrigerant property model ${String(model)}`);
+    this.refrigerant = model === 'full-mixture' ? mixtureBenchmarkDefinition(fluid) : refrigerantDefinition(fluid);
+    this.backend = `CoolProp 8.0.0 HEOS ${this.refrigerant.backendFluid}`;
     if (this.refrigerant.kind === 'zeotropic' && !module.guardedStateApi) throw new DomainError('Explicit blends require the guarded fixed-composition backend');
     if (module.factory && module.input_pairs) this.state = module.factory('HEOS', this.refrigerant.backendFluid);
   }
@@ -25,6 +26,7 @@ export class Properties {
   dispose(): void { this.state?.delete(); this.state = undefined; this.lastInput = ''; this.cache.clear(); }
   clearCache(): void { this.cache.clear(); }
   prop(output: string, a: string, x: number, b: string, y: number): number {
+    if (output === 'Qmass' && this.refrigerant.qualityMass === 'unavailable') throw new DomainError(`${this.fluid} pseudo-pure phase parameter is not resolved blend mass quality`);
     const key = `${output}:${a}:${x}:${b}:${y}`;
     const cached = this.cache.get(key); if (cached !== undefined) return cached;
     let value: number;
@@ -114,7 +116,7 @@ export class Properties {
     const q = this.prop('Q', 'P', p, 'H', h);
     const entropy = this.prop('S', 'P', p, 'H', h), density = this.prop('D', 'P', p, 'H', h);
     const twoPhase = q >= 0 && q <= 1;
-    const quality = twoPhase ? this.prop('Qmass', 'P', p, 'H', h) : null;
+    const quality = twoPhase && this.refrigerant.qualityMass !== 'unavailable' ? this.prop('Qmass', 'P', p, 'H', h) : null;
     return { pPa: p, pBarAbs: p / 1e5, hJkg: h, temperatureC: T - 273.15,
       entropyJkgK: entropy, densityKgm3: density, qualityMass: quality,
       phase: twoPhase ? 'two-phase' : h < this.saturation(p).liquidH ? 'liquid' : 'vapor' };
@@ -129,7 +131,7 @@ export class Properties {
     const h = this.prop('H', 'P', p, 'D', densityKgm3), q = this.prop('Q', 'P', p, 'D', densityKgm3);
     const entropy = this.prop('S', 'P', p, 'D', densityKgm3), twoPhase = q >= 0 && q <= 1;
     return { pPa: p, pBarAbs: p / 1e5, hJkg: h, temperatureC: T - 273.15,
-      entropyJkgK: entropy, densityKgm3, qualityMass: twoPhase ? this.prop('Qmass', 'P', p, 'D', densityKgm3) : null,
+      entropyJkgK: entropy, densityKgm3, qualityMass: twoPhase && this.refrigerant.qualityMass !== 'unavailable' ? this.prop('Qmass', 'P', p, 'D', densityKgm3) : null,
       phase: twoPhase ? 'two-phase' : h < this.saturation(p).liquidH ? 'liquid' : 'vapor' };
   }
   /** Conserved rigid-volume storage flash: rho=M/V, u=U/M. Same selected domain as ph(). */
@@ -142,7 +144,7 @@ export class Properties {
     const h = internalEnergyJkg + p / densityKgm3, q = this.prop('Q', 'D', densityKgm3, 'U', internalEnergyJkg);
     return { pPa: p, pBarAbs: p / 1e5, hJkg: h, temperatureC: t - 273.15,
       entropyJkgK: this.prop('S', 'D', densityKgm3, 'U', internalEnergyJkg), densityKgm3,
-      qualityMass: q >= 0 && q <= 1 ? this.prop('Qmass', 'D', densityKgm3, 'U', internalEnergyJkg) : null,
+      qualityMass: q >= 0 && q <= 1 && this.refrigerant.qualityMass !== 'unavailable' ? this.prop('Qmass', 'D', densityKgm3, 'U', internalEnergyJkg) : null,
       phase: q >= 0 && q <= 1 ? 'two-phase' : h < this.saturation(p).liquidH ? 'liquid' : 'vapor' };
   }
   humid(output: string, a: string, x: number, b: string, y: number, ambientPa: number): number {
@@ -160,10 +162,10 @@ export class Properties {
   airRH(tC: number, w: number, p: number): number { return this.humid('R', 'T', tC + 273.15, 'W', w, p); }
   dryAirSpecificVolume(tC: number, w: number, p: number): number { return this.humid('V', 'T', tC + 273.15, 'W', w, p); }
 }
-export function createPropertyService(module: CoolPropModule, fluid: RefrigerantId = 'R32'): Properties { return new Properties(module, fluid); }
+export function createPropertyService(module: CoolPropModule, fluid: RefrigerantId = 'R32', model: 'default' | 'full-mixture' = 'default'): Properties { return new Properties(module, fluid, model); }
 /** Root supplies an absolute/repository-relative same-origin URL for the self-hosted ESM pair. */
-export async function loadPropertyService(moduleUrl: string, fluid: RefrigerantId = 'R32'): Promise<Properties> {
+export async function loadPropertyService(moduleUrl: string, fluid: RefrigerantId = 'R32', model: 'default' | 'full-mixture' = 'default'): Promise<Properties> {
   const imported = await import(/* @vite-ignore */ moduleUrl);
   const module = await imported.default({ locateFile: (file: string) => new URL(file, moduleUrl).href });
-  return createPropertyService(module, fluid);
+  return createPropertyService(module, fluid, model);
 }

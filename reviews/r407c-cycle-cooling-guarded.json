@@ -1,0 +1,145 @@
+{
+  "mode": "cooling",
+  "route": "guarded",
+  "cacheAll": false,
+  "start": "2026-10-11T15:52:26.882Z",
+  "output": {
+    "mode": "cooling",
+    "evaporatingC": 8.680246837697256,
+    "condensingC": 39.38958072329397,
+    "lowPressureBarAbs": 6.1781004132926025,
+    "highPressureBarAbs": 17.229463402297533,
+    "suction": {
+      "pPa": 617810.0413292602,
+      "pBarAbs": 6.1781004132926025,
+      "hJkg": 416436.33093672246,
+      "temperatureC": 11.680189582831815,
+      "entropyJkgK": 1776.3896694645778,
+      "densityKgm3": 25.83026524792932,
+      "qualityMass": null,
+      "phase": "vapor"
+    },
+    "discharge": {
+      "pPa": 1722946.3402297532,
+      "pBarAbs": 17.229463402297533,
+      "hJkg": 452334.14756002685,
+      "temperatureC": 66.24724646788684,
+      "entropyJkgK": 1808.5597595241293,
+      "densityKgm3": 65.30934358850578,
+      "qualityMass": null,
+      "phase": "vapor"
+    },
+    "condenserOutlet": {
+      "pPa": 1722946.3402297532,
+      "pBarAbs": 17.229463402297533,
+      "hJkg": 257735.291531188,
+      "temperatureC": 38.38958072329399,
+      "entropyJkgK": 1194.0812605301824,
+      "densityKgm3": 1076.2442730391087,
+      "qualityMass": null,
+      "phase": "liquid"
+    },
+    "expansionOutlet": {
+      "pPa": 617810.0413292602,
+      "pBarAbs": 6.1781004132926025,
+      "hJkg": 257735.291531188,
+      "temperatureC": 4.179289092240424,
+      "entropyJkgK": 1207.1944617637203,
+      "densityKgm3": 96.17215885617686,
+      "qualityMass": null,
+      "phase": "two-phase"
+    },
+    "totalMassFlowKgs": 0.018184500605011256,
+    "branchMassFlowsKgs": [
+      0.018184500605011256
+    ],
+    "branchCoilHeatW": [
+      -2885.8991470858564
+    ],
+    "outdoorCoilHeatW": 3538.683015190918,
+    "branchInlets": [
+      {
+        "pPa": 617810.0413292602,
+        "pBarAbs": 6.1781004132926025,
+        "hJkg": 257735.291531188,
+        "temperatureC": 4.179289092240424,
+        "entropyJkgK": 1207.1944617637203,
+        "densityKgm3": 96.17215885617686,
+        "qualityMass": null,
+        "phase": "two-phase"
+      }
+    ],
+    "branchOutlets": [
+      {
+        "pPa": 617810.0413292602,
+        "pBarAbs": 6.1781004132926025,
+        "hJkg": 416436.33093672246,
+        "temperatureC": 11.680189582831815,
+        "entropyJkgK": 1776.3896694645778,
+        "densityKgm3": 25.83026524792932,
+        "qualityMass": null,
+        "phase": "vapor"
+      }
+    ],
+    "condenserHeatW": 3538.683015190918,
+    "evaporatorHeatW": 2885.8991470858564,
+    "compressorWorkW": 652.7838681050617,
+    "compressorElectricalW": 701.9181377473782,
+    "driveLossW": 49.13426964231644,
+    "massResidualKgs": -6.129530983473019e-9,
+    "closureResidualW": 0.039836611317903864,
+    "lineHeatToOutdoorW": 0,
+    "pressureDropsPa": [
+      0
+    ],
+    "transportMethod": "Distributed Darcy/HEOS homogeneous-equilibrium field lines; generic smooth copper, no slip/fittings/oil",
+    "iterations": 6,
+    "pressureJacobian": {
+      "mode": "cooling",
+      "floatingCondenser": false,
+      "matrix": [
+        -192.96415948234616,
+        9.041838066985331,
+        -9.451848450790738,
+        182.82942088227404
+      ]
+    },
+    "branchValveInlets": [
+      {
+        "pPa": 1722946.3402297532,
+        "pBarAbs": 17.229463402297533,
+        "hJkg": 257735.291531188,
+        "temperatureC": 38.38958072329399,
+        "entropyJkgK": 1194.0812605301824,
+        "densityKgm3": 1076.2442730391087,
+        "qualityMass": null,
+        "phase": "liquid"
+      }
+    ],
+    "branchValveOutlets": [
+      {
+        "pPa": 617810.0413292602,
+        "pBarAbs": 6.1781004132926025,
+        "hJkg": 257735.291531188,
+        "temperatureC": 4.179289092240424,
+        "entropyJkgK": 1207.1944617637203,
+        "densityKgm3": 96.17215885617686,
+        "qualityMass": null,
+        "phase": "two-phase"
+      }
+    ]
+  },
+  "elapsedMs": 62.9087219999999,
+  "calls": {
+    "all": 6648,
+    "flash": 1376,
+    "cacheHits": 5088,
+    "unique": {
+      "T:Q": 22,
+      "P:T": 955,
+      "P:H": 301,
+      "P:Q": 66,
+      "P:S": 32
+    }
+  }
+}
