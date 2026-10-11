@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-11T07:25:58.691490+00:00",
+  "checkedAt": "2026-10-11T07:45:17.631434+00:00",
   "host": "10.10.10.204",
   "observedHostname": "ai-multi-gpu",
   "model": "Qwen3.8-Flash-Next",
@@ -52,16 +52,25 @@
       "reasoningTokens": 0,
       "lengthStops": 0,
       "status": "completed"
+    },
+    {
+      "batch": "qwen-mitsubishi-ay-family",
+      "sessionIds": [
+        "ses_ed6252599ffe90sJV1TvZ8DApr"
+      ],
+      "reasoningTokens": 0,
+      "lengthStops": 0,
+      "status": "completed"
     }
   ],
   "staging": {
     "manifestReferences": 12,
-    "candidateUnits": 12,
-    "structuralValidation": "all12 HR indoor/outdoor candidates passed together; no duplicate references",
+    "candidateUnits": 24,
+    "structuralValidation": "HR and AY: all24 candidates passed together; no duplicate references",
     "sourceAcceptance": "Qwen primary table/image provenance recorded; independent acceptance and integration pending",
     "fullCoverage": false,
-    "candidateFacts": 237,
-    "nextBatch": "MSZ-AY family, bounded fresh context, planned"
+    "candidateFacts": 501,
+    "nextBatch": "MSZ-AP family, bounded fresh context, planned"
   },
   "notes": [
     "Initial oversized source scan compacted before saving an index.",

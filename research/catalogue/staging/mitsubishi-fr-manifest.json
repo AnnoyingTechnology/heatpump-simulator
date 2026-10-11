@@ -17,13 +17,13 @@
     },
     {
       "name": "MSZ-AY Mural Compact",
-      "pageLocator": "pp.52-57",
+      "pageLocator": "PDF pp.52-56 (printed pp.51-55); index lead pp.52-57 shifted, PDF p.57 blank nav page",
       "unitTypes": [
         "indoor",
         "outdoor"
       ],
-      "referencesFile": null,
-      "status": "pending"
+      "referencesFile": "mitsubishi-msz-ay.manifest.json",
+      "status": "candidate-drafted;12 unit candidates structure-validated together 2026-10-11 (12/12 PASS); independent source acceptance pending"
     },
     {
       "name": "MSZ-AP Mural Grandes Pieces",
@@ -271,5 +271,5 @@
       "reason": "out of scope per research contract"
     }
   ],
-  "coverageNotes": "Index only. No family fully researched. PUMY mini-DRV (VRF/DRV) and PXZ avec ECS (mixed air+ECS) moved to excludedFamilies on 2026-10-11 root review; PUMY size-availability note (250/300 announced 2nd half 2026) is moot for this pass. Other unit families remain pending, index incomplete. Tables still needing reconciliation: MSZ-LN color-suffix identity, MSZ-RZ suffix, MXZ combination tables vs livret-combinaisons source, PXZ index tables (deferred mixed/ECS scope), SUZ-M/PUZ-ZM shared spec tables, twin/triple/quadri compatibility notes. Exact suffixes must come from printed tables, never inferred."
+  "coverageNotes": "Index only. No family fully researched. PUMY mini-DRV (VRF/DRV) and PXZ avec ECS (mixed air+ECS) moved to excludedFamilies on 2026-10-11 root review; PUMY size-availability note (250/300 announced 2nd half 2026) is moot for this pass. MSZ-HR and MSZ-AY families: per-family reference manifests exist and all unit candidates are structure-validated (candidate-drafted, not accepted). MSZ-AY printed locators corrected to PDF pp.52-56 (printed pp.51-55); spec tables PDF p.54 (Tailles 15/20) and PDF p.56 (Tailles 25/35/42/50). Other unit families remain pending, index incomplete. Tables still needing reconciliation: MSZ-LN color-suffix identity, MSZ-RZ suffix, MXZ combination tables vs livret-combinaisons source, PXZ index tables (deferred mixed/ECS scope), SUZ-M/PUZ-ZM shared spec tables, twin/triple/quadri compatibility notes. Exact suffixes must come from printed tables, never inferred."
 }

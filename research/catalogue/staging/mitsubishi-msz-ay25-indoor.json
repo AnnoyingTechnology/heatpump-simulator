@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "mitsubishi-electric",
+  "family": "MSZ-AY Mural Compact",
+  "market": "France",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "mitsubishi-fr-air-air-2026-2027",
+      "url": "https://confort.mitsubishielectric.fr/sites/default/files/2026-04/RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "title": "PAC Air/Air catalogue 2026-2027",
+      "edition": "RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "MSZ-AY25VGK2",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.56 (printed p.55), page header 'MSZ-AY. Mural Compact R32' + 'INVERTER' + 'MSZ-AY 25/35/42/50 VGK2'; UNITÉS INTÉRIEURES table header, column 1 = MSZ-AY25VGK2 (25-class)",
+        "excerpt": "MSZ-AY. Mural Compact R32 INVERTER ; MSZ-AY 25/35/42/50 VGK2 ; UNITÉS INTÉRIEURES MSZ-AY25VGK2 MSZ-AY35VGK2 MSZ-AY42VGK2 MSZ-AY50VGK2"
+      },
+      "facts": [
+        {
+          "key": "controlStrategy",
+          "value": "inverter",
+          "unit": "none",
+          "condition": "explicit page-level 'INVERTER' label of the MSZ-AY family page",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), page header banner under 'MSZ-AY. Mural Compact R32'",
+            "excerpt": "INVERTER"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 2.5,
+          "unit": "kW",
+          "condition": "nominal cooling capacity of the 25-class split (MUZ-AY25VG2 companion); published min / nominal / max 0.9 / 2.5 / 3.4 kW",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), cooling table row 'Puissance frigorifique min / nominale / max', Taille 25 column",
+            "excerpt": "Puissance frigorifique min / nominale / max kW 0.9 / 2.5 / 3.4"
+          }
+        },
+        {
+          "key": "SEER",
+          "value": 8.7,
+          "unit": "none",
+          "condition": "system/combination seasonal rating for the MSZ-AY25VGK2 + MUZ-AY25VG2 split, not an intrinsic indoor-only performance; published value 8.7, seasonal class A+++ (cell spans the 25/35 columns, visually verified); climate/test conditions not published in this table (unknown)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), cooling table row 'SEER / Classe énergétique saisonnière (D à A+++)', merged 25/35 columns",
+            "excerpt": "SEER / Classe énergétique saisonnière (D à A+++) - 8.7 / A+++"
+          }
+        },
+        {
+          "key": "SCOP",
+          "value": 4.8,
+          "unit": "none",
+          "condition": "system/combination seasonal rating for the MSZ-AY25VGK2 + MUZ-AY25VG2 split, not an intrinsic indoor-only performance; published value 4.8, seasonal class A++ (cell spans the 25/35 columns, visually verified); climate/test conditions not published in this table (unknown)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), heating table row 'SCOP / Classe énergétique saisonnière (D à A+++)', merged 25/35 columns",
+            "excerpt": "SCOP / Classe énergétique saisonnière (D à A+++) - 4.8 / A++"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "condition": "refrigerant circuit shared with MUZ-AY25VG2 outdoor unit; PRP (GWP) 675",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), DONNÉES FRIGORIFIQUES row 'Fluide / PRP (Pouvoir de Réchauffement Planétaire)', row merged across the 25/35/42/50 columns",
+            "excerpt": "Fluide / PRP (Pouvoir de Réchauffement Planétaire) -/- R32 / 675"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 216,
+          "unit": "m3/h",
+          "condition": "cooling mode, silence fan speed, row 'Débit d'air en froid Silence/PV/MV/GV/SGV'",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-AY25VGK2 column, Silence value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 216 / 300 / 378 / 468 / 630"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 300,
+          "unit": "m3/h",
+          "condition": "cooling mode, low fan speed (PV)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-AY25VGK2 column, PV value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 216 / 300 / 378 / 468 / 630"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 378,
+          "unit": "m3/h",
+          "condition": "cooling mode, medium fan speed (MV)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-AY25VGK2 column, MV value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 216 / 300 / 378 / 468 / 630"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 468,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed (GV)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-AY25VGK2 column, GV value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 216 / 300 / 378 / 468 / 630"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 630,
+          "unit": "m3/h",
+          "condition": "cooling mode, super-high fan speed (SGV)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-AY25VGK2 column, SGV value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 216 / 300 / 378 / 468 / 630"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 18,
+          "unit": "dBA",
+          "condition": "cooling mode, silence fan speed, measured at 1 m; footnote (1): mesurée en chambre anéchoïque; row cell spans the 25/35 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', merged 25/35 columns, Silence value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 18 / 24 / 30 / 36 / 42"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 24,
+          "unit": "dBA",
+          "condition": "cooling mode, low fan speed (PV), measured at 1 m; footnote (1); merged 25/35 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', merged 25/35 columns, PV value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 18 / 24 / 30 / 36 / 42"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 30,
+          "unit": "dBA",
+          "condition": "cooling mode, medium fan speed (MV), measured at 1 m; footnote (1); merged 25/35 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', merged 25/35 columns, MV value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 18 / 24 / 30 / 36 / 42"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 36,
+          "unit": "dBA",
+          "condition": "cooling mode, high fan speed (GV), measured at 1 m; footnote (1); merged 25/35 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', merged 25/35 columns, GV value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 18 / 24 / 30 / 36 / 42"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 42,
+          "unit": "dBA",
+          "condition": "cooling mode, super-high fan speed (SGV), measured at 1 m; footnote (1); merged 25/35 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', merged 25/35 columns, SGV value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 18 / 24 / 30 / 36 / 42"
+          }
+        },
+        {
+          "key": "soundPower",
+          "value": 57,
+          "unit": "dBA",
+          "condition": "cooling mode at super-high fan speed (SGV); row cell spans the 25/35/42 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), UNITÉS INTÉRIEURES row 'Puissance acoustique en froid SGV', merged 25/35/42 columns",
+            "excerpt": "Puissance acoustique en froid SGV dB(A) 57"
+          }
+        },
+        {
+          "key": "height",
+          "value": 299,
+          "unit": "mm",
+          "condition": "indoor unit; row 'Hauteur x Largeur x Profondeur' publishes 299 x 798 x 245 merged across the 25/35/42/50 columns (visually verified on page image)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), UNITÉS INTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged 25/35/42/50 columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 299 x 798 x 245"
+          }
+        },
+        {
+          "key": "width",
+          "value": 798,
+          "unit": "mm",
+          "condition": "indoor unit; merged 25/35/42/50 columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), UNITÉS INTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged 25/35/42/50 columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 299 x 798 x 245"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 245,
+          "unit": "mm",
+          "condition": "indoor unit; merged 25/35/42/50 columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), UNITÉS INTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged 25/35/42/50 columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 299 x 798 x 245"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 11,
+          "unit": "kg",
+          "condition": "net weight, indoor unit; 'Poids net' value 11 merged across the 25/35/42/50 columns (visually verified on page image)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), UNITÉS INTÉRIEURES row 'Poids net', merged 25/35/42/50 columns",
+            "excerpt": "Poids net kg 11"
+          }
+        }
+      ],
+      "ratings": [
+        {
+          "mode": "cooling",
+          "combination": "MSZ-AY25VGK2 + MUZ-AY25VG2 (25-class mono-split)",
+          "conditions": "published min / nominal / max table values; rated indoor/outdoor test conditions not published in this table (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.9, "nominal": 2.5, "maximum": 3.4 },
+          "electricalInputKw": { "minimum": null, "nominal": 0.600, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), cooling table rows 'Puissance frigorifique min / nominale / max' and 'Puissance absorbée totale nominale', Taille 25 column",
+            "excerpt": "Puissance frigorifique min / nominale / max kW 0.9 / 2.5 / 3.4 ; Puissance absorbée totale nominale kW 0.600"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-AY25VGK2 + MUZ-AY25VG2 (25-class mono-split)",
+          "conditions": "outdoor +7°C (published row 'à +7°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.0, "nominal": 3.2, "maximum": 4.1 },
+          "electricalInputKw": { "minimum": null, "nominal": 0.780, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), heating table rows 'Puissance calorifique min / nominale / max à +7°C' and 'Puissance absorbée totale nominale', Taille 25 column",
+            "excerpt": "Puissance calorifique min / nominale / max à +7°C kW 1.0 / 3.2 / 4.1 ; Puissance absorbée totale nominale kW 0.780"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-AY25VGK2 + MUZ-AY25VG2 (25-class mono-split)",
+          "conditions": "outdoor -7°C (published row 'à -7°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.7, "nominal": 2.1, "maximum": 2.9 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), heating table row 'Puissance calorifique min / nominale / max à -7°C', Taille 25 column; no separate -7°C electrical row is published",
+            "excerpt": "Puissance calorifique min / nominale / max à -7°C kW 0.7 / 2.1 / 2.9"
+          }
+        }
+      ],
+      "compatibility": [
+        {
+          "description": "mono-split pairing MSZ-AY25VGK2 + MUZ-AY25VG2 is evidenced by the shared 'Tailles 25' column of the printed-p.55 spec table and the 'MSZ-AY 25/35/42/50 VGK2' / 'MUZ-AY 25/35/42 VG2' headers on the same page; multi-split compatibility NOT established here (separate combination tables pending)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.56 (printed p.55), page header 'MSZ-AY 25/35/42/50 VGK2' + outdoor photo labels 'MUZ-AY 25/35/42 VG2 MUZ-AY 50 VG2'; Tailles column 25 spanning cooling/heating tables; UNITÉS INTÉRIEURES header MSZ-AY25VGK2 and UNITÉS EXTÉRIEURES header MUZ-AY25VG2",
+            "excerpt": "MSZ-AY 25/35/42/50 VGK2 ; MUZ-AY 25/35/42 VG2 MUZ-AY 50 VG2 ; Tailles 25 35 42 50 ; UNITÉS EXTÉRIEURES MUZ-AY25VG2 MUZ-AY35VG2 MUZ-AY42VG2 MUZ-AY50VG2"
+          }
+        }
+      ],
+      "unknowns": [
+        "indoor electrical supply / voltage: catalogue publishes 'Alimentation électrique par unité extérieure' only (230 V (1P+N+T) at the MUZ-AY outdoor columns); indoor-only supply not stated",
+        "indoor fan motor output and electrical input: not published",
+        "indoor unit sound pressure in heating mode: not published separately",
+        "indoor unit airflow in heating mode: not published separately",
+        "silent/night mode (-3dB(A)) airflow and sound pressure values: not published in this table (the 'Silence' column values are recorded above as published)",
+        "SEER/SCOP climate class and test conditions: not published in this table; these are system/combination ratings for MSZ-AY25VGK2 + MUZ-AY25VG2",
+        "colour: overview page states 'Coloris : blanc mat' (matte white); no other colour suffix reference is printed",
+        "drain connection: 'Ø des condensats / Pompe de relevage mm 16 / Non fournie' (pump not supplied) recorded only as note, not a schema fact key"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    {
+      "modelReference": "MUZ-AY25VG2",
+      "reason": "paired outdoor unit of this split; its spec-table facts are captured in the separate outdoor candidate file mitsubishi-muz-ay25-outdoor.json"
+    },
+    {
+      "modelReference": "MSZ-AY color/suffix variants",
+      "reason": "only VGK2 indoor suffix is printed (25-50 group 'MSZ-AY 25/35/42/50 VGK2'); overview states 'Coloris : blanc mat'; no other suffix/colour is inferred"
+    }
+  ]
+}

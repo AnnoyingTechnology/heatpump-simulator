@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "family": "MSZ-AY Mural Compact",
+  "sourceId": "mitsubishi-fr-air-air-2026-2027",
+  "edition": "PAC Air/Air catalogue 2026-2027 (RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf)",
+  "market": "France",
+  "status": "reference manifest only; no numerical performance assertions, not overall catalogue coverage",
+  "references": [
+    { "modelReference": "MSZ-AY15VGK2", "unitType": "indoor", "pageLocators": ["PDF p.54 (printed p.53) spec table; overview PDF p.53 (printed p.52)"], "status": "candidate drafted (mitsubishi-msz-ay15-indoor.json, staging only, not accepted)" },
+    { "modelReference": "MSZ-AY20VGK2", "unitType": "indoor", "pageLocators": ["PDF p.54 (printed p.53) spec table; overview PDF p.53 (printed p.52)"], "status": "candidate drafted (mitsubishi-msz-ay20-indoor.json, staging only, not accepted)" },
+    { "modelReference": "MSZ-AY25VGK2", "unitType": "indoor", "pageLocators": ["PDF p.56 (printed p.55) spec table; overview PDF p.55 (printed p.54)"], "status": "candidate drafted (mitsubishi-msz-ay25-indoor.json, staging only, not accepted)" },
+    { "modelReference": "MSZ-AY35VGK2", "unitType": "indoor", "pageLocators": ["PDF p.56 (printed p.55) spec table; overview PDF p.55 (printed p.54)"], "status": "candidate drafted (mitsubishi-msz-ay35-indoor.json, staging only, not accepted)" },
+    { "modelReference": "MSZ-AY42VGK2", "unitType": "indoor", "pageLocators": ["PDF p.56 (printed p.55) spec table; overview PDF p.55 (printed p.54)"], "status": "candidate drafted (mitsubishi-msz-ay42-indoor.json, staging only, not accepted)" },
+    { "modelReference": "MSZ-AY50VGK2", "unitType": "indoor", "pageLocators": ["PDF p.56 (printed p.55) spec table; overview PDF p.55 (printed p.54)"], "status": "candidate drafted (mitsubishi-msz-ay50-indoor.json, staging only, not accepted)" },
+    { "modelReference": "MUZ-AY15VG2", "unitType": "outdoor", "pageLocators": ["PDF p.54 (printed p.53) spec table"], "status": "candidate drafted (mitsubishi-muz-ay15-outdoor.json, staging only, not accepted)" },
+    { "modelReference": "MUZ-AY20VG2", "unitType": "outdoor", "pageLocators": ["PDF p.54 (printed p.53) spec table"], "status": "candidate drafted (mitsubishi-muz-ay20-outdoor.json, staging only, not accepted)" },
+    { "modelReference": "MUZ-AY25VG2", "unitType": "outdoor", "pageLocators": ["PDF p.56 (printed p.55) spec table"], "status": "candidate drafted (mitsubishi-muz-ay25-outdoor.json, staging only, not accepted)" },
+    { "modelReference": "MUZ-AY35VG2", "unitType": "outdoor", "pageLocators": ["PDF p.56 (printed p.55) spec table"], "status": "candidate drafted (mitsubishi-muz-ay35-outdoor.json, staging only, not accepted)" },
+    { "modelReference": "MUZ-AY42VG2", "unitType": "outdoor", "pageLocators": ["PDF p.56 (printed p.55) spec table"], "status": "candidate drafted (mitsubishi-muz-ay42-outdoor.json, staging only, not accepted)" },
+    { "modelReference": "MUZ-AY50VG2", "unitType": "outdoor", "pageLocators": ["PDF p.56 (printed p.55) spec table"], "status": "candidate drafted (mitsubishi-muz-ay50-outdoor.json, staging only, not accepted)" }
+  ],
+  "unresolvedReferences": [
+    { "modelReference": "MSZ-AY / MUZ-AY color or additional suffix variants", "reason": "printed tables and overview pages name only MSZ-AY ..VGK2 indoor and MUZ-AY ..VG2 outdoor; overview states 'Coloris : blanc mat' (white) for both MSZ-AY groups; no other colour/suffix reference is printed, do not infer" },
+    { "modelReference": "MSZ-AY multi-split eligibility", "reason": "MSZ-AY/MUZ-AY spec tables show mono-split pairing only; multi-split compatibility would require MXZ combination tables (separate references, pending)" },
+    { "modelReference": "MSZ-AY60/71 or larger sizes", "reason": "no AY size above 50 is printed in the family pages PDF pp.52-56; do not infer existence" }
+  ],
+  "coverageNotes": "Index lead pp.52-57 shifted: family content is PDF pp.52-56 (printed pp.51-55); PDF p.57 is a blank navigation page. Two spec tables: PDF p.54 (printed p.53) covers Tailles 15/20 (MSZ-AY15VGK2/20VGK2 with MUZ-AY15VG2/20VG2); PDF p.56 (printed p.55) covers Tailles 25/35/42/50 (MSZ-AY25/35/42/50VGK2 with MUZ-AY25/35/42VG2 and MUZ-AY50VG2). Page images (source-cache pages 54 and 56) were visually read to resolve merged cells: p.54 indoor dims 250x760x199 & mass 8 kg merged 15/20; p.54 cooling range -10/+46 merged; p.54 heating ranges distinct per column (-15/+24 for 15, -20/+24 for 20); p.54 liquid 1/4 flare, gas 3/8 flare, length 20/12, fluid R32/675, extra charge 20 g/m / 0.25 kg max, supply 230 V (1P+N+T) all merged; p.56 indoor dims 299x798x245 & mass 11 kg merged 25-50; p.56 indoor sound pressure merged 25/35 (18/24/30/36/42) and separate 42 (21/29/34/38/42), 50 (28/33/36/40/44); p.56 indoor sound power 57 merged 25-42, 58 for 50; p.56 outdoor airflow GV merged 1932 (25/35), 1920 (42), 2430 (50); outdoor sound power 59 (25), 61 merged 35/42, 64 (50) per image; p.56 outdoor dims 550x800x285 merged 25/35/42, 714x800x285 for 50; outdoor mass 27 (25/35 merged), 33 (42), 41 (50); p.56 precharge 7.5 m with 0.55 kg (25/35), 0.70 kg (42), 1.00 kg (50); extra charge 20 g/m / 0.26 kg merged; pipes 1/4 + 3/8 flare, 20/12 merged; electrical supply merged; protection 10 A merged 25-42, 16 A for 50. Outdoor sound power row visually verified on the page image: 59 single cell under MUZ-AY25VG2, 61 spanning MUZ-AY35VG2/MUZ-AY42VG2, 64 under MUZ-AY50VG2. 12 references total (6 indoor + 6 outdoor), all within the 24-candidate batch cap."
+}
