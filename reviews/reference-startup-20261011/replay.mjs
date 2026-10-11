@@ -1,0 +1,10 @@
+import {mkdirSync} from 'node:fs';
+import {resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {spawnSync} from 'node:child_process';
+const [directory,fluid,kind]=process.argv.slice(2);
+if(!directory||!fluid||kind&&!['frost'].includes(kind))throw Error('Usage: node replay.mjs OUTPUT_DIR FLUID [frost]');
+const output=resolve(directory);mkdirSync(output,{recursive:true});
+const script=fileURLToPath(new URL(kind==='frost'?'replay-frost-completion.mjs':'replay-eight-cases.mjs',import.meta.url));
+const result=spawnSync(process.execPath,[script,fluid],{env:{...process.env,STARTUP_REPLAY_OUTPUT:output},stdio:'inherit',timeout:600000});
+if(result.error)throw result.error;process.exit(result.status??1);

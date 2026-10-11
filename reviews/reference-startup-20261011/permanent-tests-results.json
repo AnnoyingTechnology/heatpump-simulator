@@ -1,0 +1,21 @@
+{
+  "baseCommit": "78d5c44",
+  "productionPolicyTested": "66ca8be inventory drive API plus one idealized-only Reference startupFromRest flag, left uncommitted for root adoption",
+  "command": "HEATPUMP_TEST_BACKEND=guarded node --test tests/engine/reference-startup.test.mjs tests/engine/inverter-demand.test.mjs",
+  "passed": 24,
+  "failed": 0,
+  "durationMs": 124141.548423,
+  "newStartupTests": 15,
+  "retainedInverterTests": 9,
+  "scope": "Generic compatible idealized Reference, unchanged published-owner house; six fluid/mode cold starts, real warm restart/Off/dwell, natural frost/defrost return, fixed legacy; no physical-pipe ramp or OEM power assertion",
+  "pins": {
+    "src/engine/engine.ts": "4d1daa851ec81bc9bde2ac88255def0891c27b12e32c816be9d65943ca4e88d4",
+    "src/engine/drive.ts": "5ec2c4e08a7e606d2e81d29efedbb78c8c7a8677126b2495623926b0c2d4cd60",
+    "src/engine/cycle.ts": "7ff3dd7ffe78db9b4941dfa24bf8df6a860c867917a2bd820af3530c4a24b82a",
+    "src/engine/properties.ts": "8f9d12d38fdcb4d1266bca4dc261f84d6f8ccfad08bd2e700df2812d5f127083",
+    "tests/engine/reference-startup.test.mjs": "8e62bdfd9f105abd0cf0b84e3582ba7f1a1611d6f9cad293b6812fd48190b653",
+    "tests/engine/inverter-demand.test.mjs": "ad92b07c62210c5919dc60b4951113b5e361595536810040585a3ff4e7875ba1",
+    "tests/engine/fixtures/published-owner-startup-146/published-owner-1C-ground17-600.json": "d9569eb21c1cdc7289c86673c2e672d6d2c5049996e77b0892eaf442d8f0ffdf",
+    "reviews/reference-startup-20261011/permanent-tests-output.txt": "85520885d82077520d20d9e17802cc36b24defc9ae6acde6eed60b6045debffc"
+  }
+}

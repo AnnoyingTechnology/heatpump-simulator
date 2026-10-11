@@ -58,7 +58,7 @@ function ownerDefaultConfig(){
 function checkActualRamp(before,output,c){
  check(output,c);assert.equal(output.diagnostics.envelopeProtection,null);assert.ok(output.cycle);
  const dt=output.simulatedSeconds-before.simulatedSeconds;
- if(before.diagnostics.speedRps===0)assert.equal(output.diagnostics.speedRps,c.compressor.speedMinRps);
+ if(before.diagnostics.speedRps===0)assert.equal(output.diagnostics.speedRps,c.control.inverterRampUpRpsPerSecond*dt);
  else{
   const difference=output.diagnostics.speedRps-before.diagnostics.speedRps;
   assert.ok(difference<=c.control.inverterRampUpRpsPerSecond*dt+1e-9);
@@ -82,7 +82,7 @@ test('exact published owner house maintains native continuous inverter service f
  c.rooms.forEach(room=>room.enabled=false);e.updateConfig(c);
  const stopped=e.step(.25);check(stopped,c);assert.equal(stopped.electrical.compressorW,0);assert.ok(stopped.rooms.every(room=>room.thermostatCalling===false));
 });
-test('native cold startup and retained-hot-coil restart use admitted speed and actual energy ramp',()=>{
+test('native cold startup and retained-hot-coil restart use actual thermodynamic startup ramps',()=>{
  const c=ownerDefaultConfig(),e=new HeatPumpEngine(p,c);let previous=e.snapshot();
  for(let i=0;i<32;i++){const output=e.step(.25);checkActualRamp(previous,output,c);previous=output;}
  assert.ok(previous.diagnostics.speedRps>c.compressor.speedMinRps,'cold startup accelerates within eight seconds');

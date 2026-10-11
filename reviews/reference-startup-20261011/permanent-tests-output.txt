@@ -1,0 +1,32 @@
+✔ calling branches retain a dimensionless normalized UA reserve when sensible demand crosses zero (9.677442ms)
+✔ room demand balances target load and applies directional antiwindup independently (1.264576ms)
+✔ exact published owner house maintains native continuous inverter service for 1200 seconds (62340.607354ms)
+✔ native cold startup and retained-hot-coil restart use actual thermodynamic startup ramps (21714.114913ms)
+✔ Reference slew configuration rejects nonfinite/nonpositive rates before state mutation (1.96123ms)
+✔ inverter modulates continuously near target when load exceeds minimum capacity (25468.516312ms)
+✔ below-minimum load cycles with dwell, while conventional operation uses a fixed speed (11287.633392ms)
+✔ controller history rolls back on native failure and clears on strategy change (1546.597776ms)
+✔ live minimum-speed edits cannot publish a running command outside the selected range (0.150835ms)
+✔ R22 heating starts with actual conserved subminimum throughput and reaches8rps (2359.12827ms)
+✔ R22 cooling starts with actual conserved subminimum throughput and reaches8rps (2565.514082ms)
+✔ R410A heating starts with actual conserved subminimum throughput and reaches8rps (1671.211021ms)
+✔ R410A cooling starts with actual conserved subminimum throughput and reaches8rps (4529.868001ms)
+✔ R32 heating starts with actual conserved subminimum throughput and reaches8rps (492.152163ms)
+✔ R32 cooling starts with actual conserved subminimum throughput and reaches8rps (2335.164562ms)
+✔ R290 heating starts with actual conserved subminimum throughput and reaches8rps (488.269554ms)
+✔ R290 cooling starts with actual conserved subminimum throughput and reaches8rps (1537.530926ms)
+✔ R134a heating starts with actual conserved subminimum throughput and reaches8rps (521.539403ms)
+✔ R134a cooling starts with actual conserved subminimum throughput and reaches8rps (1025.513558ms)
+✔ R1234yf heating starts with actual conserved subminimum throughput and reaches8rps (414.092211ms)
+✔ R1234yf cooling starts with actual conserved subminimum throughput and reaches8rps (813.157576ms)
+✔ R32 retained warm coils restart through solved low speeds after Off and the full dwell (14720.243927ms)
+✔ natural R32 frost keeps the dedicated defrost command then ramps actual heating return (67524.232003ms)
+✔ fixed-speed Reference keeps its explicit18rps starting command (24.202366ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 124141.548423
