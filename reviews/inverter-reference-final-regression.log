@@ -1,0 +1,64 @@
+✔ phase-local exchanger inverse agrees with prior real-EOS bisection, including pressure perturbations (541.142173ms)
+✔ stale/singular continuation slopes fall back to freshly closed real-EOS pressure equations (1043.076705ms)
+✔ worker batching preserves every quarter-second thermal/control step and its conservation ledgers (1872.543124ms)
+✔ real R32 EOS shared-pressure cycle: one to five branches and both directions (602.668417ms)
+✔ heat exchanger pinches fail explicitly (0.99453ms)
+✔ phase-aware integral latent zone agrees with analytical UA requirement (0.171742ms)
+✔ real field lines close momentum/enthalpy in heating and cooling, including two-phase small pipe (1719.125248ms)
+✔ cold reverse-cycle defrost floats subcooling and retains physical heat signs (172.838473ms)
+✔ heterogeneous idealized cooling conserves mixed-return enthalpy/entropy and valve allocation (231.186995ms)
+✔ idealized warm/cold parallel condensers close the mixed header without equal branch subcooling (90.500949ms)
+✔ startup bounds demand, preserves actuator state across branch demand changes, and waits after Off (1.011662ms)
+✔ safety overrides minimum speed, pickup arming and startup hold until pressure and dwell recover (0.549683ms)
+✔ ratio thresholds stay strictly ordered for all supported positive lifts (0.104226ms)
+✔ temperature protection cannot recover from an unavailable discharge prediction (0.076734ms)
+✔ real dynamic 1–5 branches conserve full stored energy/water and heating/cooling signs (8731.231352ms)
+✔ early-trigger automatic defrost melts and drains finite inventories (37009.800471ms)
+✔ film phase map requires latent melt energy; exhausted film evaporates with exact bounded mass (0.863323ms)
+✔ wet cooling removes water; timestep halving converges thermal/electrical totals (19244.461473ms)
+✔ configuration edits retain room/ice inventories and min-on history; idle air outlets disappear (300.236745ms)
+✔ mode reversal conserves cold metal then establishes live cooling instead of imposing subcooling (15522.720959ms)
+✔ unmodified three-branch defaults sustain heating through a natural frost/defrost event (65516.735138ms)
+✔ cleanliness changes only air-side transfer/flow; constant fan and weather response remain physical (1241.583154ms)
+✔ defrost timeout retains physical ice and closes the ledger instead of resetting it (5563.311959ms)
+✔ owner-layout cooling accepts newly added warm rooms without resetting old coil/film inventories (19185.947528ms)
+✔ owner-layout natural frost reverses with hot stored indoor metal and conserves melt energy (106029.480732ms)
+✔ unavailable property backend returns a conserved fault snapshot without throwing again (1.635976ms)
+✔ all Off aborts defrost/reversal without erasing storage; passive time and reenable remain conservative (1160.429726ms)
+✔ Off of the last active room enters idle and respects minimum-off before another room demands (211.411466ms)
+✔ outdoor exhaust equilibrium closes vapor/ice/liquid and fusion enthalpy without depositing mist (19.696514ms)
+✔ supersaturated contact exhaust preserves original contact water/heat and indoor fog stays explicit (8.533812ms)
+✔ dry/unsaturated exhaust and saturation onset retain total H/W; fan heat evaporates fog (22.228965ms)
+✔ outdoor fan phase-flash backend failure rolls back thermal stores, clock and drive (340.190704ms)
+✔ room demand balances target load and applies directional antiwindup independently (20.503141ms)
+✔ inverter modulates continuously across target when load exceeds minimum capacity (30589.642751ms)
+✔ below-minimum load cycles with dwell, while conventional operation uses a fixed speed (48479.357322ms)
+✔ controller history rolls back on native failure and clears on strategy change (2472.893323ms)
+✔ live minimum-speed edits cannot publish a running command outside the selected range (0.219112ms)
+{"mode":"heating","simulatedSeconds":0.25,"pLowBarA":8.131010007042995,"pHighBarA":15.155989982638323,"energyResidualJ":-1.6969579519354738e-8,"waterResidualKg":5.630465169624566e-16}
+{"mode":"heating","simulatedSeconds":1,"pLowBarA":8.117564573488236,"pHighBarA":15.166710302420377,"energyResidualJ":-2.6184352464042604e-9,"waterResidualKg":3.667313848432219e-17}
+{"mode":"cooling","simulatedSeconds":0.25,"pLowBarA":16.44833187561464,"pHighBarA":22.27709745443697,"energyResidualJ":-2.08150368052884e-8,"waterResidualKg":-6.053575067437034e-16}
+{"mode":"cooling","simulatedSeconds":1,"pLowBarA":16.431581387893583,"pHighBarA":22.33092889459918,"energyResidualJ":1.9140588847221807e-7,"waterResidualKg":-6.838334152409198e-16}
+✔ connection count follows explicit port capacity and invalid declarations reject before property queries (2.407105ms)
+✔ six idealized branches use real R32 heating/cooling states and conservative dynamics (678.162056ms)
+✔ removing a sixth room retains remaining inventories/time and exports its declared storage boundary (210.380783ms)
+✔ pressure/density storage coordinates preserve independent EOS states across phase and input switches (2099.937431ms)
+✔ rejected pressure/density flashes recover without native exceptions or fabricated storage states (1829.915094ms)
+✔ reusable HEOS state matches independent PropsSI across input switches and cache hits (38.562909ms)
+✔ repeated rejected flashes preserve real WASM refrigerant and humid-air service (754.438937ms)
+✔ undefined two-phase sound speed cannot poison later same-input physical readings (2.429116ms)
+✔ Reference inverter preserves stores and closes freshly after warmed three-to-one branch change (10939.055915ms)
+✔ conserved density/internal-energy flash matches independent real R32 states across phases (42.746693ms)
+✔ invalid DU trials reject through safe computed-pressure boundary and valid flashes recover (57.694451ms)
+✔ thermostat holds off through sub-degree fluctuations and stops at the target in both modes (50.753564ms)
+✔ actual heating and cooling restart only beyond the one-degree margin and minimum-off dwell (4297.15517ms)
+✔ distributed pipe forward/inverse closes gravity and heat for liquid, vapor and two-phase states (97.514904ms)
+✔ diameter changes Darcy friction and unsupported velocity cannot produce fake pipe states (7.422703ms)
+ℹ tests 52
+ℹ suites 0
+ℹ pass 52
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 281853.671846

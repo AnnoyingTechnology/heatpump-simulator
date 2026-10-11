@@ -1,0 +1,33 @@
+{
+  "checkedAt": "2026-10-11T06:12:40.985973+00:00",
+  "backend": "guarded",
+  "tests": 52,
+  "passed": 52,
+  "failed": 0,
+  "durationMs": 281853.671846,
+  "log": "reviews/inverter-reference-final-regression.log",
+  "sourceSha256": {
+    "src/engine/demand.ts": "0bc92aff6374ef68f3dead9154df54a53b5694af8162bdf0bc2e7482288ae268",
+    "src/engine/drive.ts": "20eb503ff13439e2a7d22a5c5334c3fa232083a696543c92442cc1a1d3a7296c",
+    "src/engine/engine.ts": "a27647f727b62e13e09d61a6ecf4a4b282c9287bef48a2662087542f44e9b862",
+    "src/engine/cycle.ts": "159c03d3de5e22fb928e606e20a4d7b142c73778d7080a187fa42ccdf4af26ee",
+    "src/engine/defaults.ts": "5ca7d8006c6990e4b6b99a6ef353ec075b720a07701dac39a23ca9fb4fec99f8",
+    "src/engine/types.ts": "c17bfdf3091b4f23fdec3c153a7242e50c7ec403b031a3be8cd022672cf3a371",
+    "tests/engine/inverter-demand.test.mjs": "8619668a954e845a2e72bfebd66f46b916f7c236d6edfd566c258d1bbc116982",
+    "tests/engine/thermostat.test.mjs": "2c8b38fb0da53a18d77544401d12062e2df240290f6ef0dfe5b661993ddf8895"
+  },
+  "frontendHistory": {
+    "tests": 2,
+    "passed": 2
+  },
+  "browser": {
+    "themes": 5,
+    "zoomHistory": 5,
+    "layoutCombinations": 64,
+    "zoneNavigation": 10,
+    "builtSubdirectoryEntry": 1
+  },
+  "scienceReview": "reviews/inverter-control-science-review.md",
+  "manufacturerCalibration": false,
+  "chargeRelease": false
+}

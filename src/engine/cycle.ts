@@ -2,7 +2,7 @@ import { DomainError, Properties } from './properties.ts';
 import { transportPipe } from './transport.ts';
 import type { CycleOutput, EngineConfig, Mode, RefrigerantState } from './types.ts';
 
-export interface CycleInput { mode: Mode; indoorMetalC: number[]; outdoorMetalC: number; active: boolean[]; speedRps: number; defrost?: boolean; previous?: { evaporatingC: number; condensingC: number; condenserOutletC?: number; branchMassFlowsKgs?: number[]; pressureJacobian?: CycleOutput['pressureJacobian'] } }
+export interface CycleInput { mode: Mode; indoorMetalC: number[]; outdoorMetalC: number; active: boolean[]; allocationWeights?: number[]; speedRps: number; defrost?: boolean; previous?: { evaporatingC: number; condensingC: number; condenserOutletC?: number; branchMassFlowsKgs?: number[]; pressureJacobian?: CycleOutput['pressureJacobian'] } }
 const clamp = (x: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, x));
 const GAUSS4 = [[-.8611363115940526,.3478548451374538],[-.3399810435848563,.6521451548625461],
   [.3399810435848563,.6521451548625461],[.8611363115940526,.3478548451374538]];
@@ -121,7 +121,9 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
     const pL = properties.pressureAtSaturationC(te), pH = properties.pressureAtSaturationC(tc);
     let suction = properties.pt(pL, te + compressor.superheatK);
     const targetSuctionH = suction.hJkg, allocatedFlow = suction.densityKgm3 * compressor.displacementM3rev * input.speedRps * compressor.volumetricEfficiency;
-    const allocationWeight = activeIndices.reduce((total,i)=>total+config.rooms[i].refrigerantConductanceWK,0);
+    const weight=(i:number)=>input.allocationWeights?.[i]??config.rooms[i].refrigerantConductanceWK;
+    const allocationWeight = activeIndices.reduce((total,i)=>total+weight(i),0);
+    if(!(allocationWeight>0)||activeIndices.some(i=>!(weight(i)>0&&Number.isFinite(weight(i)))))throw new DomainError('Invalid generic branch allocation weight');
     const h2s = properties.prop('H', 'P', pH, 'S', suction.entropyJkgK);
     let discharge = properties.ph(pH, suction.hJkg + (h2s - suction.hJkg) / compressor.isentropicEfficiency);
     if (discharge.temperatureC > compressor.maxDischargeC || pH / pL > compressor.maxPressureRatio) throw new DomainError('Generic compressor discharge/pressure-ratio envelope exceeded');
@@ -136,12 +138,12 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
       let inlet = heating ? discharge : expansionOutlet, outlet = heating ? condenserOutlet : suction;
       if (input.active[i] && allocatedHeating) {
         // Declared generic UA-proportional allocation; branch outlets follow finite UA.
-        flows[i] = allocatedFlow * room.refrigerantConductanceWK / allocationWeight;
+        flows[i] = allocatedFlow * weight(i) / allocationWeight;
         outlet = properties.ph(pH, coilOutletH(properties, pH, discharge.hJkg, flows[i], room.refrigerantConductanceWK, input.indoorMetalC[i], true));
         branchHeat[i] = flows[i] * (discharge.hJkg - outlet.hJkg);
         mixedReturnH += flows[i] * outlet.hJkg;
       } else if (input.active[i] && allocatedCooling) {
-        flows[i] = allocatedFlow * room.refrigerantConductanceWK / allocationWeight;
+        flows[i] = allocatedFlow * weight(i) / allocationWeight;
         inlet = properties.ph(pL, condenserOutlet.hJkg);
         outlet = properties.ph(pL, coilOutletH(properties, pL, inlet.hJkg, flows[i], room.refrigerantConductanceWK, input.indoorMetalC[i], false));
         branchHeat[i] = flows[i] * (inlet.hJkg - outlet.hJkg);

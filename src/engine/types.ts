@@ -31,8 +31,8 @@ export interface EngineConfig {
   rooms: RoomConfig[];
   compressor: { displacementM3rev: number; speedMinRps: number; speedMaxRps: number; isentropicEfficiency: number; volumetricEfficiency: number; driveEfficiency: number; superheatK: number; subcoolK: number; maxDischargeC: number; maxPressureRatio: number };
   outdoor: { cleanFraction?: number; airMassFlowKgs: number; fanPowerW: number; airConductanceWK: number; refrigerantConductanceWK: number; naturalAirConductanceWK: number; metalCapacityJK: number; depositionAreaM2: number; frostDensityKgm3: number; frostConductivityWmK: number; finGapM: number; drainageSeconds: number };
-  control: { controlsW: number; proportionalSpeedRpsK: number;
-    /** Restart error magnitude; stops at setpoint. Kept under the original config key. */
+  control: { strategy?: 'inverter' | 'on-off'; fixedSpeedRps?: number; controlsW: number; proportionalSpeedRpsK: number;
+    /** Thermostat restart margin, or inverter overshoot margin for below-minimum cycling. */
     thermostatDeadbandK: number;
     minOnSeconds: number; minOffSeconds: number; reversalSeconds: number; defrostMinHeatingSeconds: number; defrostIceThresholdKg: number; defrostMaxSeconds: number; defrostTerminationMetalC: number; drainageDwellSeconds: number; defrostSpeedRps: number };
   numerics: { maxStepSeconds: number; pressureToleranceW: number };

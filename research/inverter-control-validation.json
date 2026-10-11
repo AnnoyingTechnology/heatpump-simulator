@@ -1,0 +1,45 @@
+{
+  "status": "focused native passed; combined release pending",
+  "sourceSha256": {
+    "src/engine/demand.ts": "0bc92aff6374ef68f3dead9154df54a53b5694af8162bdf0bc2e7482288ae268",
+    "src/engine/drive.ts": "20eb503ff13439e2a7d22a5c5334c3fa232083a696543c92442cc1a1d3a7296c",
+    "src/engine/engine.ts": "a27647f727b62e13e09d61a6ecf4a4b282c9287bef48a2662087542f44e9b862",
+    "src/engine/cycle.ts": "159c03d3de5e22fb928e606e20a4d7b142c73778d7080a187fa42ccdf4af26ee",
+    "src/engine/defaults.ts": "5ca7d8006c6990e4b6b99a6ef353ec075b720a07701dac39a23ca9fb4fec99f8",
+    "src/engine/types.ts": "c17bfdf3091b4f23fdec3c153a7242e50c7ec403b031a3be8cd022672cf3a371",
+    "tests/engine/inverter-demand.test.mjs": "8619668a954e845a2e72bfebd66f46b916f7c236d6edfd566c258d1bbc116982"
+  },
+  "nativeBackend": "public/vendor/coolprop-safe/adapter.js",
+  "focused": {
+    "firstCompleteTests": 4,
+    "passed": 4,
+    "wallSeconds": 63.322,
+    "postLiveMinimumClampSelectedTests": 3,
+    "postClampPassed": 3,
+    "postClampWallSeconds": 4.036
+  },
+  "balanced600Seconds": {
+    "noStops": true,
+    "roomTemperatureMinC": 19.67722070904972,
+    "roomTemperatureMaxC": 21.13866975706003,
+    "targetC": 21,
+    "note": "Initial coil startup produces a transient dip; no target-crossing stop. Not an OEM comfort guarantee."
+  },
+  "owner600Seconds": {
+    "time": 600,
+    "roomC": [
+      16.364796630837475,
+      21.041018197208984,
+      17.13459147088912
+    ],
+    "speed": 34.46563689661254,
+    "maxEnergyResidualJ": 8.456408977508545e-07,
+    "maxWaterResidualKg": 3.4763858458575214e-15
+  },
+  "limitations": [
+    "Full release suite and browser combined integration pending.",
+    "Owner run proves stability/conservation, not fully settled targets.",
+    "Native air failure precedes PI commit; exact previous controller/drive/thermal state is preserved.",
+    "Electrical power is not calibrated to owner-declared range."
+  ]
+}

@@ -55,6 +55,6 @@ export function driveStep(previous: DriveState, dt: number, input: DriveInput): 
   if(next.speedRps===0)next.speedRps=input.minimumRps;
   else if(next.startupSeconds>=10)next.speedRps+=Math.max(-dt,Math.min(.5*dt,target-next.speedRps));
   // An envelope limit takes precedence over the ordinary actuator slew/hold.
-  next.speedRps=Math.max(0,Math.min(next.speedRps,limit));
+  next.speedRps=Math.max(input.minimumRps,Math.min(next.speedRps,limit));
   next.startupSeconds+=dt;next.offSeconds=0;return next;
 }

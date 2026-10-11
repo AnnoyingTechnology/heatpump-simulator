@@ -22,6 +22,7 @@ const properties = new Properties(await Module());
 test('actual heating and cooling restart only beyond the one-degree margin and minimum-off dwell', () => {
   for (const mode of ['heating', 'cooling']) {
     const c = defaultEngineConfig(1), sign = mode === 'heating' ? 1 : -1;
+    c.control.strategy = 'on-off';
     c.mode = mode; c.outdoorTemperatureC = mode === 'heating' ? 7 : 32; c.outdoorRelativeHumidity = .35;
     c.rooms[0].initialTemperatureC = mode === 'heating' ? 20 : 27;
     c.rooms[0].setpointC = c.rooms[0].initialTemperatureC + sign * 5;
