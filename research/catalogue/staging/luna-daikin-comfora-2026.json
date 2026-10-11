@@ -1,0 +1,1230 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Comfora FTXP-N + RXP-N",
+  "market": "Europe residential air-to-air; 2026 Daikin Europe catalogue (France distribution status not independently established for every model)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-eu-2026-p321",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/321/",
+      "title": "Daikin Europe General Catalogue 2026 — Split residential air-to-air solutions",
+      "edition": "ECPEN26-500, 2026; official Daikin Europe flipbook page",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-ftxp-n9",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXP-N9.html",
+      "title": "Daikin France technical product table FTXP-N9",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-rxp-n9",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/RXP-N9.html",
+      "title": "Daikin France technical product table RXP-N9",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FTXP20N9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p321",
+        "locator": "Flipbook route 321, printed heading 321; indoor model column in exact combination and indoor-unit tables",
+        "excerpt": "FTXP + RXP | 20N9 + 20N9"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 2.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.6 1.3/2.5/3 1.3/3.5/4 1.7/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 576.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Silent operation/Low/Medium/High m³/min 4.4/5.6/7.5/9.6 4.4/5.8/7.5/9.9 4.5/6.3/8.3/11.5 6/7.6/9.3/11.8 9.2/11.8/14.4/16.8 10.1/11.8/14.4/16.8"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXP20N9.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXP + RXP | 20N9 + 20N9"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "FTXP25N9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p321",
+        "locator": "Flipbook route 321, printed heading 321; indoor model column in exact combination and indoor-unit tables",
+        "excerpt": "FTXP + RXP | 25N9 + 25N9"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 2.5,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.6 1.3/2.5/3 1.3/3.5/4 1.7/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 594.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Silent operation/Low/Medium/High m³/min 4.4/5.6/7.5/9.6 4.4/5.8/7.5/9.9 4.5/6.3/8.3/11.5 6/7.6/9.3/11.8 9.2/11.8/14.4/16.8 10.1/11.8/14.4/16.8"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXP25N9.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXP + RXP | 25N9 + 25N9"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "FTXP35N9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p321",
+        "locator": "Flipbook route 321, printed heading 321; indoor model column in exact combination and indoor-unit tables",
+        "excerpt": "FTXP + RXP | 35N9 + 35N9"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 3.5,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.6 1.3/2.5/3 1.3/3.5/4 1.7/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 690.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Silent operation/Low/Medium/High m³/min 4.4/5.6/7.5/9.6 4.4/5.8/7.5/9.9 4.5/6.3/8.3/11.5 6/7.6/9.3/11.8 9.2/11.8/14.4/16.8 10.1/11.8/14.4/16.8"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXP35N9.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXP + RXP | 35N9 + 35N9"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "FTXP50N9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p321",
+        "locator": "ECPEN26-500 p.321, FTXP + RXP exact size-class combination column",
+        "excerpt": "FTXP + RXP | 50N9 + 50N8"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 5.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.6 1.3/2.5/3 1.3/3.5/4 1.7/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxp-n9",
+            "locator": "Daikin France FTXP-N9 table, FTXP50N5V1B9 column; Dimensions/Unit/Height",
+            "excerpt": "Dimensions Unit Height mm 286 286 286 286"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxp-n9",
+            "locator": "Daikin France FTXP-N9 table, FTXP50N5V1B9 column; Dimensions/Unit/Width",
+            "excerpt": "Width mm 770 770 770 770"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxp-n9",
+            "locator": "Daikin France FTXP-N9 table, FTXP50N5V1B9 column; Dimensions/Unit/Depth",
+            "excerpt": "Depth mm 225 225 225 225"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 708.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxp-n9",
+            "locator": "Daikin France FTXP-N9 table, FTXP50N5V1B9 column; fan airflow Cooling/High",
+            "excerpt": "Ventilateur Débit d'air Rafraîchissement Haut m³/min 9.9 11.5 11.8 9.6"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXP50N8; France FTXP-N9 table cross-identifies full SKU FTXP50N5V1B9 for its physical facts.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXP + RXP | 50N9 + 50N8"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "FTXP60N",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p321",
+        "locator": "Flipbook route 321, printed heading 321; indoor model column in exact combination and indoor-unit tables",
+        "excerpt": "FTXP + RXP | 60N + 60N9"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 6.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.6 1.3/2.5/3 1.3/3.5/4 1.7/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "width",
+          "value": 990,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 263,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1008.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Silent operation/Low/Medium/High m³/min 4.4/5.6/7.5/9.6 4.4/5.8/7.5/9.9 4.5/6.3/8.3/11.5 6/7.6/9.3/11.8 9.2/11.8/14.4/16.8 10.1/11.8/14.4/16.8"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXP60N9.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXP + RXP | 60N + 60N9"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "FTXP71N",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p321",
+        "locator": "Flipbook route 321, printed heading 321; indoor model column in exact combination and indoor-unit tables",
+        "excerpt": "FTXP + RXP | 71N + 71N9"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 7.1,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.6 1.3/2.5/3 1.3/3.5/4 1.7/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "width",
+          "value": 990,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 263,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1008.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Silent operation/Low/Medium/High m³/min 4.4/5.6/7.5/9.6 4.4/5.8/7.5/9.9 4.5/6.3/8.3/11.5 6/7.6/9.3/11.8 9.2/11.8/14.4/16.8 10.1/11.8/14.4/16.8"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXP71N9.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXP + RXP | 71N + 71N9"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "RXP20N9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p321",
+        "locator": "Flipbook route 321, printed heading 321; outdoor model column in exact combination and outdoor-unit tables",
+        "excerpt": "RXP 20N9"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 2.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table nominal cooling capacity for exact paired combination",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.6 1.3/2.5/3 1.3/3.5/4 1.7/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 556,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxp-n9",
+            "locator": "RXP-N9 outdoor technical product table, dimensions row, model header RXP20N5V1B9",
+            "excerpt": "RXP20N5V1B9 | Dimensions | Height mm 556 | Width mm 740 | Depth mm 343"
+          },
+          "condition": "Model-class cross-reference: Daikin 2026 catalogue uses shortened reference RXP20N9"
+        },
+        {
+          "key": "width",
+          "value": 740,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxp-n9",
+            "locator": "RXP-N9 outdoor technical product table, dimensions row, model header RXP20N5V1B9",
+            "excerpt": "RXP20N5V1B9 | Dimensions | Height mm 556 | Width mm 740 | Depth mm 343"
+          },
+          "condition": "Model-class cross-reference: Daikin 2026 catalogue uses shortened reference RXP20N9"
+        },
+        {
+          "key": "depth",
+          "value": 343,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxp-n9",
+            "locator": "RXP-N9 outdoor technical product table, dimensions row, model header RXP20N5V1B9",
+            "excerpt": "RXP20N5V1B9 | Dimensions | Height mm 556 | Width mm 740 | Depth mm 343"
+          },
+          "condition": "Model-class cross-reference: Daikin 2026 catalogue uses shortened reference RXP20N9"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP20N9, refrigerant type",
+            "excerpt": "Refrigerant Type R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP20N9, cooling ambient minimum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP20N9, cooling ambient maximum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP20N9, heating ambient minimum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -15~18"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP20N9, heating ambient maximum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -15~18"
+          },
+          "condition": "outdoor wet-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit outdoor model; exact documented paired indoor references: FTXP20N9.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table exact pair columns",
+            "excerpt": "RXP 20N9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed table and remains unknown.",
+        "Cooling and heating endpoints are catalogue operation-range metadata, not an inferred compressor map."
+      ]
+    },
+    {
+      "modelReference": "RXP25N9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p321",
+        "locator": "Flipbook route 321, printed heading 321; outdoor model column in exact combination and outdoor-unit tables",
+        "excerpt": "RXP 25N9"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 2.5,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table nominal cooling capacity for exact paired combination",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.6 1.3/2.5/3 1.3/3.5/4 1.7/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 556,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxp-n9",
+            "locator": "RXP-N9 outdoor technical product table, dimensions row, model header RXP25N5V1B9",
+            "excerpt": "RXP25N5V1B9 | Dimensions | Height mm 556 | Width mm 740 | Depth mm 343"
+          },
+          "condition": "Model-class cross-reference: Daikin 2026 catalogue uses shortened reference RXP25N9"
+        },
+        {
+          "key": "width",
+          "value": 740,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxp-n9",
+            "locator": "RXP-N9 outdoor technical product table, dimensions row, model header RXP25N5V1B9",
+            "excerpt": "RXP25N5V1B9 | Dimensions | Height mm 556 | Width mm 740 | Depth mm 343"
+          },
+          "condition": "Model-class cross-reference: Daikin 2026 catalogue uses shortened reference RXP25N9"
+        },
+        {
+          "key": "depth",
+          "value": 343,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxp-n9",
+            "locator": "RXP-N9 outdoor technical product table, dimensions row, model header RXP25N5V1B9",
+            "excerpt": "RXP25N5V1B9 | Dimensions | Height mm 556 | Width mm 740 | Depth mm 343"
+          },
+          "condition": "Model-class cross-reference: Daikin 2026 catalogue uses shortened reference RXP25N9"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP25N9, refrigerant type",
+            "excerpt": "Refrigerant Type R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP25N9, cooling ambient minimum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP25N9, cooling ambient maximum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP25N9, heating ambient minimum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -15~18"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP25N9, heating ambient maximum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -15~18"
+          },
+          "condition": "outdoor wet-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit outdoor model; exact documented paired indoor references: FTXP25N9.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table exact pair columns",
+            "excerpt": "RXP 25N9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed table and remains unknown.",
+        "Cooling and heating endpoints are catalogue operation-range metadata, not an inferred compressor map."
+      ]
+    },
+    {
+      "modelReference": "RXP35N9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p321",
+        "locator": "Flipbook route 321, printed heading 321; outdoor model column in exact combination and outdoor-unit tables",
+        "excerpt": "RXP 35N9"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 3.5,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table nominal cooling capacity for exact paired combination",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.6 1.3/2.5/3 1.3/3.5/4 1.7/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 556,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxp-n9",
+            "locator": "RXP-N9 outdoor technical product table, dimensions row, model header RXP35N5V1B9",
+            "excerpt": "RXP35N5V1B9 | Dimensions | Height mm 556 | Width mm 740 | Depth mm 343"
+          },
+          "condition": "Model-class cross-reference: Daikin 2026 catalogue uses shortened reference RXP35N9"
+        },
+        {
+          "key": "width",
+          "value": 740,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxp-n9",
+            "locator": "RXP-N9 outdoor technical product table, dimensions row, model header RXP35N5V1B9",
+            "excerpt": "RXP35N5V1B9 | Dimensions | Height mm 556 | Width mm 740 | Depth mm 343"
+          },
+          "condition": "Model-class cross-reference: Daikin 2026 catalogue uses shortened reference RXP35N9"
+        },
+        {
+          "key": "depth",
+          "value": 343,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxp-n9",
+            "locator": "RXP-N9 outdoor technical product table, dimensions row, model header RXP35N5V1B9",
+            "excerpt": "RXP35N5V1B9 | Dimensions | Height mm 556 | Width mm 740 | Depth mm 343"
+          },
+          "condition": "Model-class cross-reference: Daikin 2026 catalogue uses shortened reference RXP35N9"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP35N9, refrigerant type",
+            "excerpt": "Refrigerant Type R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP35N9, cooling ambient minimum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP35N9, cooling ambient maximum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP35N9, heating ambient minimum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -15~18"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP35N9, heating ambient maximum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -15~18"
+          },
+          "condition": "outdoor wet-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit outdoor model; exact documented paired indoor references: FTXP35N9.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table exact pair columns",
+            "excerpt": "RXP 35N9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed table and remains unknown.",
+        "Cooling and heating endpoints are catalogue operation-range metadata, not an inferred compressor map."
+      ]
+    },
+    {
+      "modelReference": "RXP50N8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p321",
+        "locator": "Flipbook route 321, printed heading 321; outdoor model column in exact combination and outdoor-unit tables",
+        "excerpt": "RXP 50N8"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 5.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table nominal cooling capacity for exact paired combination",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.6 1.3/2.5/3 1.3/3.5/4 1.7/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 610,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP50N8, outdoor dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 610x923x367"
+          }
+        },
+        {
+          "key": "width",
+          "value": 923,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP50N8, outdoor dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 610x923x367"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 367,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP50N8, outdoor dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 610x923x367"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP50N8, refrigerant type",
+            "excerpt": "Refrigerant Type R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP50N8, cooling ambient minimum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP50N8, cooling ambient maximum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP50N8, heating ambient minimum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -15~18"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP50N8, heating ambient maximum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -15~18"
+          },
+          "condition": "outdoor wet-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit outdoor model; exact documented paired indoor references: FTXP50N9.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table exact pair columns",
+            "excerpt": "RXP 50N8"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed table and remains unknown.",
+        "Cooling and heating endpoints are catalogue operation-range metadata, not an inferred compressor map."
+      ]
+    },
+    {
+      "modelReference": "RXP60N9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p321",
+        "locator": "Flipbook route 321, printed heading 321; outdoor model column in exact combination and outdoor-unit tables",
+        "excerpt": "RXP 60N9"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 6.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table nominal cooling capacity for exact paired combination",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.6 1.3/2.5/3 1.3/3.5/4 1.7/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP60N9, outdoor dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 734x954x401"
+          }
+        },
+        {
+          "key": "width",
+          "value": 954,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP60N9, outdoor dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 734x954x401"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 401,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP60N9, outdoor dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 734x954x401"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP60N9, refrigerant type",
+            "excerpt": "Refrigerant Type R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP60N9, cooling ambient minimum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP60N9, cooling ambient maximum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP60N9, heating ambient minimum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -15~18"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP60N9, heating ambient maximum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -15~18"
+          },
+          "condition": "outdoor wet-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit outdoor model; exact documented paired indoor references: FTXP60N.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table exact pair columns",
+            "excerpt": "RXP 60N9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed table and remains unknown.",
+        "Cooling and heating endpoints are catalogue operation-range metadata, not an inferred compressor map."
+      ]
+    },
+    {
+      "modelReference": "RXP71N9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p321",
+        "locator": "Flipbook route 321, printed heading 321; outdoor model column in exact combination and outdoor-unit tables",
+        "excerpt": "RXP 71N9"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 7.1,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table nominal cooling capacity for exact paired combination",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.6 1.3/2.5/3 1.3/3.5/4 1.7/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP71N9, outdoor dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 734x954x401"
+          }
+        },
+        {
+          "key": "width",
+          "value": 954,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP71N9, outdoor dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 734x954x401"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 401,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP71N9, outdoor dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 734x954x401"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP71N9, refrigerant type",
+            "excerpt": "Refrigerant Type R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP71N9, cooling ambient minimum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP71N9, cooling ambient maximum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP71N9, heating ambient minimum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -15~18"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; outdoor unit RXP71N9, heating ambient maximum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -15~18"
+          },
+          "condition": "outdoor wet-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit outdoor model; exact documented paired indoor references: FTXP71N.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p321",
+            "locator": "Flipbook route 321, printed heading 321; efficiency data table exact pair columns",
+            "excerpt": "RXP 71N9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed table and remains unknown.",
+        "Cooling and heating endpoints are catalogue operation-range metadata, not an inferred compressor map."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

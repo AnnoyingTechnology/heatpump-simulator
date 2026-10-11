@@ -1,0 +1,234 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Perfera FVXM-B floor indoor units",
+  "market": "France / Europe residential air-to-air; current Daikin France full SKU and exact RXM-A9 pair tables plus 2026 Europe catalogue",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-eu-2026-p325",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/325/",
+      "title": "Daikin Europe General Catalogue 2026 — Perfera floor FVXM-B",
+      "edition": "ECPEN26-500, 2026; official Daikin Europe flipbook page",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-fvxm-b",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FVXM-B.html",
+      "title": "Daikin France technical product table FVXM-B",
+      "edition": "Daikin France product database, checked 2026-10-11; FVXM35 marked archived",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-fvxm-b-rxm-a9",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FVXM-B---RXM-A9.html",
+      "title": "Daikin France exact system technical table FVXM-B / RXM-A9",
+      "edition": "Daikin France product database, checked 2026-10-11; exact indoor/outdoor SKU combinations",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FVXM25B2V1B",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-fvxm-b",
+        "locator": "Exact full model column header",
+        "excerpt": "FVXM25B2V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 600,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b",
+            "locator": "Exact model column FVXM25B2V1B; dimensions Hauteur",
+            "excerpt": "FVXM25B2V1B | Dimensions | Unité | Hauteur | mm | 600"
+          }
+        },
+        {
+          "key": "width",
+          "value": 750,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b",
+            "locator": "Exact model column FVXM25B2V1B; dimensions Largeur",
+            "excerpt": "FVXM25B2V1B | Dimensions | Unité | Largeur | mm | 750"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 238,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b",
+            "locator": "Exact model column FVXM25B2V1B; dimensions Profondeur",
+            "excerpt": "FVXM25B2V1B | Dimensions | Unité | Profondeur | mm | 238"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 522.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b",
+            "locator": "Exact model column FVXM25B2V1B; cooling high fan airflow",
+            "excerpt": "FVXM25B2V1B | Débit d’air | Rafraîchissement | Haut | m³/min | 8.7; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXM25A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b-rxm-a9",
+            "locator": "Exact full indoor/outdoor SKU table column header",
+            "excerpt": "FVXM25B2V1B / RXM25A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "No nominal cooling class inferred from size code; pair-system nominal rating remains separate evidence."
+      ]
+    },
+    {
+      "modelReference": "FVXM35B2V1B",
+      "unitType": "indoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-fvxm-b",
+        "locator": "Exact full model column header; marked Archived",
+        "excerpt": "FVXM35B2V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 600,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b",
+            "locator": "Exact model column FVXM35B2V1B; dimensions Hauteur",
+            "excerpt": "FVXM35B2V1B | Dimensions | Unité | Hauteur | mm | 600"
+          }
+        },
+        {
+          "key": "width",
+          "value": 750,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b",
+            "locator": "Exact model column FVXM35B2V1B; dimensions Largeur",
+            "excerpt": "FVXM35B2V1B | Dimensions | Unité | Largeur | mm | 750"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 238,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b",
+            "locator": "Exact model column FVXM35B2V1B; dimensions Profondeur",
+            "excerpt": "FVXM35B2V1B | Dimensions | Unité | Profondeur | mm | 238"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 552.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b",
+            "locator": "Exact model column FVXM35B2V1B; cooling high fan airflow",
+            "excerpt": "FVXM35B2V1B | Débit d’air | Rafraîchissement | Haut | m³/min | 9.2; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXM35A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b-rxm-a9",
+            "locator": "Exact full indoor/outdoor SKU table column header",
+            "excerpt": "FVXM35B2V1B / RXM35A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "No nominal cooling class inferred from size code; pair-system nominal rating remains separate evidence."
+      ]
+    },
+    {
+      "modelReference": "FVXM50B2V1B",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-fvxm-b",
+        "locator": "Exact full model column header",
+        "excerpt": "FVXM50B2V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 600,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b",
+            "locator": "Exact model column FVXM50B2V1B; dimensions Hauteur",
+            "excerpt": "FVXM50B2V1B | Dimensions | Unité | Hauteur | mm | 600"
+          }
+        },
+        {
+          "key": "width",
+          "value": 750,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b",
+            "locator": "Exact model column FVXM50B2V1B; dimensions Largeur",
+            "excerpt": "FVXM50B2V1B | Dimensions | Unité | Largeur | mm | 750"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 238,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b",
+            "locator": "Exact model column FVXM50B2V1B; dimensions Profondeur",
+            "excerpt": "FVXM50B2V1B | Dimensions | Unité | Profondeur | mm | 238"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 696.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b",
+            "locator": "Exact model column FVXM50B2V1B; cooling high fan airflow",
+            "excerpt": "FVXM50B2V1B | Débit d’air | Rafraîchissement | Haut | m³/min | 11.6; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXM50A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b-rxm-a9",
+            "locator": "Exact full indoor/outdoor SKU table column header",
+            "excerpt": "FVXM50B2V1B / RXM50A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "No nominal cooling class inferred from size code; pair-system nominal rating remains separate evidence."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

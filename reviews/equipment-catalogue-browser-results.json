@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-11T10:38:29.175Z",
+  "checkedAt": "2026-10-11T12:36:00.381Z",
   "checks": [
     {
       "name": "all reviewed outdoor profiles map to a genuine single matched head without OEM map inference",
@@ -22,7 +22,13 @@
       "passed": true
     }
   ],
-  "outdoorProfiles": 25,
-  "matchedIndoorProfiles": 45,
+  "outdoorProfiles": {
+    "mitsubishi": 25,
+    "daikin": 36
+  },
+  "indoorProfiles": {
+    "mitsubishi": 45,
+    "daikin": 79
+  },
   "scope": "Reviewed topology/flow profiles; generic compressor/coil performance retained."
 }

@@ -104,9 +104,26 @@ export function coilOutletH(properties: Properties, p: number, inletH: number, f
 }
 export function condenserOutletH(properties: Properties, p: number, inletH: number, flow: number, ua: number, metalC: number): number { return coilOutletH(properties,p,inletH,flow,ua,metalC,true); }
 
-interface Trial { residual: [number, number]; output: Omit<CycleOutput, 'iterations'> }
+interface ValveFace { pPa: number; hJkg: number; existing?: RefrigerantState }
+interface ValveFaces { inlet: ValveFace; outlet: ValveFace }
+/** Keep converged face coordinates as diagnostics metadata. Additional flashes
+ * occur only when publishing an accepted solution, never in pressure trials. */
+interface Trial { residual: [number, number]; output: Omit<CycleOutput, 'iterations'>; valveFaces: (ValveFaces | null)[] }
+interface SelectedCycle { output: CycleOutput; valveFaces: (ValveFaces | null)[] }
+
+function acceptedValveStates(properties: Properties, valveFaces: (ValveFaces | null)[]): Pick<CycleOutput, 'branchValveInlets' | 'branchValveOutlets'> {
+  const flash = (face: ValveFace) => face.existing ?? properties.ph(face.pPa, face.hJkg);
+  return { branchValveInlets: valveFaces.map(faces => faces ? flash(faces.inlet) : null),
+    branchValveOutlets: valveFaces.map(faces => faces ? flash(faces.outlet) : null) };
+}
 /** Two shared saturation-pressure unknowns; branch flows are eliminated using coil UA closures. */
 export function solveCycle(properties: Properties, config: EngineConfig, input: CycleInput): CycleOutput {
+  const selected = selectCycle(properties, config, input);
+  // Publication is outside every physical-regime fallback. A diagnostic flash
+  // failure propagates unchanged; it cannot select another operating point.
+  return { ...selected.output, ...acceptedValveStates(properties, selected.valveFaces) };
+}
+function selectCycle(properties: Properties, config: EngineConfig, input: CycleInput): SelectedCycle {
   if(input.mode==='heating'){
     // The idealized shared-header controller can release SC at its existing
     // positive minimum lift. This is a declared alternate controller regime;
@@ -125,7 +142,7 @@ export function solveCycle(properties: Properties, config: EngineConfig, input: 
   try { return solvePressureRegime(properties, config, input, floatingFirst); } catch(error) { first=error; }
   try { return solvePressureRegime(properties, config, input, !floatingFirst); } catch(error) { throw new DomainError(`Neither SC-target nor minimum-lift controller closes: ${first instanceof Error ? first.message : first}; alternate: ${error instanceof Error ? error.message : error}`); }
 }
-function solvePressureRegime(properties: Properties, config: EngineConfig, input: CycleInput, floatingCondenser: boolean): CycleOutput {
+function solvePressureRegime(properties: Properties, config: EngineConfig, input: CycleInput, floatingCondenser: boolean): SelectedCycle {
   const activeIndices = input.active.flatMap((a, i) => a ? [i] : []);
   if (!activeIndices.length || !(input.speedRps > 0)) throw new DomainError('No active refrigerant circuit');
   const compressor = config.compressor, heating = input.mode === 'heating';
@@ -161,6 +178,7 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
     let expansionOutlet = properties.ph(pL, condenserOutlet.hJkg);
     const flows = config.rooms.map(() => 0), branchHeat = config.rooms.map(() => 0), pressureDrops = config.rooms.map(() => 0);
     const inlets: RefrigerantState[] = [], outlets: RefrigerantState[] = [];
+    const valveFaces: (ValveFaces | null)[] = config.rooms.map(() => null);
     let lineHeat = 0, mixedReturnH = 0;
     for (let i = 0; i < config.rooms.length; i++) {
       const room = config.rooms[i], pipe = room.pipe;
@@ -171,11 +189,15 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
         outlet = properties.ph(pH, coilOutletH(properties, pH, discharge.hJkg, flows[i], room.refrigerantConductanceWK, input.indoorMetalC[i], true));
         branchHeat[i] = flows[i] * (discharge.hJkg - outlet.hJkg);
         mixedReturnH += flows[i] * outlet.hJkg;
+        valveFaces[i] = { inlet: { pPa: outlet.pPa, hJkg: outlet.hJkg, existing: outlet },
+          outlet: { pPa: pL, hJkg: outlet.hJkg } };
       } else if (input.active[i] && allocatedCooling) {
         flows[i] = allocatedFlow * weight(i) / allocationWeight;
         inlet = properties.ph(pL, condenserOutlet.hJkg);
         outlet = properties.ph(pL, coilOutletH(properties, pL, inlet.hJkg, flows[i], room.refrigerantConductanceWK, input.indoorMetalC[i], false));
         branchHeat[i] = flows[i] * (inlet.hJkg - outlet.hJkg);
+        valveFaces[i] = { inlet: { pPa: condenserOutlet.pPa, hJkg: condenserOutlet.hJkg, existing: condenserOutlet },
+          outlet: { pPa: inlet.pPa, hJkg: inlet.hJkg, existing: inlet } };
       } else if (input.active[i]) {
         let flow = input.previous?.branchMassFlowsKgs?.[i] || room.refrigerantConductanceWK / conductanceIntegral(properties, heating ? pH : pL, inlet.hJkg, outlet.hJkg, input.indoorMetalC[i]);
         let returnH = outlet.hJkg, heat = 0, drop = 0, converged = false;
@@ -188,6 +210,7 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
             const liquid = transportPipe(properties, outlet.pPa, outlet.hJkg, flow, pipe, pipe.liquidInsideDiameterM, config.outdoorTemperatureC, -pipe.elevationM);
             if (liquid.pPa <= pL) throw new DomainError('Heating liquid line has no expansion-valve pressure authority');
             returnH = liquid.hJkg; heat = gas.heatToOutdoorW + liquid.heatToOutdoorW; drop = gas.frictionPa + liquid.frictionPa;
+            valveFaces[i] = { inlet: { pPa: liquid.pPa, hJkg: liquid.hJkg }, outlet: { pPa: pL, hJkg: liquid.hJkg } };
           } else {
             // Generic EEV target: every returning branch reaches the shared suction superheat.
             const gas = transportPipe(properties, pL, suction.hJkg, flow, pipe, pipe.gasInsideDiameterM, config.outdoorTemperatureC, -pipe.elevationM, true);
@@ -201,6 +224,8 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
             if (Math.abs(small.pPa - gas.pPa) > .2) throw new DomainError('Cooling EEV/field-line pressure closure did not converge');
             inlet = properties.ph(gas.pPa, small.hJkg); returnH = suction.hJkg;
             heat = gas.heatToOutdoorW + small.heatToOutdoorW; drop = gas.frictionPa + small.frictionPa;
+            valveFaces[i] = { inlet: { pPa: condenserOutlet.pPa, hJkg: condenserOutlet.hJkg, existing: condenserOutlet },
+              outlet: { pPa: startP, hJkg: condenserOutlet.hJkg } };
           }
           if (heating ? inlet.hJkg <= outlet.hJkg : outlet.hJkg <= inlet.hJkg) throw new DomainError('Field-line heat/pressure effects reverse the intended indoor coil heat direction');
           const next = room.refrigerantConductanceWK / conductanceIntegral(properties, inlet.pPa, inlet.hJkg, outlet.hJkg, input.indoorMetalC[i]);
@@ -236,7 +261,7 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
     const massResidual = totalFlow - compressorFlow;
     const outdoorResidual = totalFlow * (outdoorOut.hJkg - coilOutletH(properties, heating ? pL : pH, outdoorIn.hJkg, totalFlow, config.outdoor.refrigerantConductanceWK, input.outdoorMetalC, !heating));
     const residual: [number, number] = [allocatedCooling ? superheatResidual : allocatedHeating ? subcoolResidual : massResidual * 250000, outdoorResidual];
-    return { residual, output: { mode: input.mode, evaporatingC: te, condensingC: tc, lowPressureBarAbs: pL / 1e5, highPressureBarAbs: pH / 1e5,
+    return { residual, valveFaces, output: { mode: input.mode, evaporatingC: te, condensingC: tc, lowPressureBarAbs: pL / 1e5, highPressureBarAbs: pH / 1e5,
       suction, discharge, condenserOutlet, expansionOutlet, totalMassFlowKgs: totalFlow, branchMassFlowsKgs: flows, branchCoilHeatW: branchHeat,
       outdoorCoilHeatW: outdoorHeat, branchInlets: inlets, branchOutlets: outlets,
       condenserHeatW: heating ? branchHeat.reduce((a, b) => a + b, 0) : outdoorHeat,
@@ -261,7 +286,7 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
       let current: Trial; try { current = evaluate(te, tc); } catch(error) { lastRejection = error instanceof Error ? error.message : String(error); rejections.add(lastRejection); break; }
       const norm = Math.hypot(...current.residual);
       if (!best || norm < best.norm) best = { te, tc, trial: current, norm };
-      if (Math.max(...current.residual.map(Math.abs)) <= config.numerics.pressureToleranceW && Math.abs(current.output.massResidualKgs)*250000 <= config.numerics.pressureToleranceW && current.output.suction.phase === 'vapor' && (!floatingCondenser||!heating||current.output.condenserOutlet.phase==='liquid') && current.output.compressorWorkW>0) return { ...current.output, iterations, pressureJacobian: jacobian };
+      if (Math.max(...current.residual.map(Math.abs)) <= config.numerics.pressureToleranceW && Math.abs(current.output.massResidualKgs)*250000 <= config.numerics.pressureToleranceW && current.output.suction.phase === 'vapor' && (!floatingCondenser||!heating||current.output.condenserOutlet.phase==='liquid') && current.output.compressorWorkW>0) return { output: { ...current.output, iterations, pressureJacobian: jacobian }, valveFaces: current.valveFaces };
       // A lightly fed hot branch can finish condensation within millikelvins
       // of its metal temperature. Keep pressure differences on the current
       // side of each branch saturation boundary so the local slope resolves

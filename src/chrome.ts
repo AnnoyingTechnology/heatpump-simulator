@@ -7,6 +7,7 @@ import { PREVIEW_BANNER, fixtureFor } from './fixtures';
 import { simulation } from './runtime/view';
 import { ICE_START_KG, currentReadings, liveStatus, store } from './state';
 import { createThemeControl } from './theme';
+import brandSvg from './brand.svg?raw';
 import { INDOOR_CLASSES } from './types';
 import type { AppState, SpeedFactor } from './types';
 
@@ -92,7 +93,7 @@ export function createHeader(): Header {
   const preset = pick<Season | ''>({
     label: 'Quick preset',
     options: [
-      { value: '', text: 'Quick preset' },
+      { value: '', text: 'Presets' },
       { value: 'winter', text: 'Owner\'s winter · 1 °C' },
       { value: 'summer', text: 'Owner\'s summer · 39 °C' },
     ],
@@ -164,9 +165,11 @@ export function createHeader(): Header {
   const status = html('div', { class: 'hd-status' }, html('div', { class: 'hd-badges' }, opState, exTag, speedRate), note);
   const run = html('div', { class: 'hd-run' }, status, time);
 
+  const brand = html('div', { class: 'brand' });
+  setHtml(brand, brandSvg);
   const root = html('header', { class: 'topbar' },
     html('div', { class: 'hd-id' },
-      html('div', { class: 'brand', title: 'Heatpump Simulator 2026' }, html('span', { class: 'mark', 'aria-hidden': 'true' }), html('b', {}, 'Heatpump Simulator 2026')),
+      brand,
       createThemeControl()),
     html('div', { class: 'hd-group' }, preset.root, speedControl, pause, reset, run, speedHelp),
     html('div', { class: 'spacer' }),

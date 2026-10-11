@@ -25,6 +25,10 @@ try{
    assert.deepEqual(units.map(e=>e.text),['COP','kW','kW','kWh']);
    assert.ok(units.every(e=>e.font===e.valueFont&&e.opacity>=.7&&e.opacity<1&&e.right+4<=e.plotLeft),JSON.stringify({width,units}));
    assert.equal(a.cards,5);assert.deepEqual(a.overflow,[],JSON.stringify({width,a}));assert.ok(a.plots.every(p=>p.height>=58&&p.top>=0&&p.bottom<=a.height));
+   const controls=await run(()=>[...document.querySelectorAll('.hd-preset,.hd-speed select,.hd-pause,.hd-reset')].map(e=>({w:e.getBoundingClientRect().width,h:e.getBoundingClientRect().height})));
+   assert.deepEqual(controls,Array.from({length:4},()=>({w:80,h:42})),`uniform enlarged controls at ${width}`);
+   assert.equal(await run(()=>document.querySelectorAll('.brand svg[aria-label="Heatpump Simulator 2026"]').length),1);
+   assert.equal(await run(()=>document.querySelector('.brand .mark,.brand b')),null);
   }
  });
  await check('electricity since start equals the accepted engine ledger, survives edits and clears on Reset',async()=>{

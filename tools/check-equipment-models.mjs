@@ -19,10 +19,10 @@ try{
   const results=await run(()=>qe.OUTDOOR_MODELS.filter(m=>m.acceptance==='reviewed-fields').map(model=>{
    qa.store.setOutdoorKind(model.id);
    const cfg=qa.store.state.cfg,c=qc.engineConfigFromUi(cfg,cfg.live),profile=qe.indoorModelProfile(cfg.rooms[0].indoorClass);
-   return {id:model.id,count:cfg.unitCount,ports:c.indoorPortCapacity,paired:model.compatibleIndoorClasses.includes(cfg.rooms[0].indoorClass),volume:c.outdoor.volumetricAirFlowM3s??null,expected:model.coolingHighFanFlowM3h===undefined?null:model.coolingHighFanFlowM3h/3600,mass:c.outdoor.airMassFlowKgs,configuredMass:cfg.live.outdoorAirMassFlowKgs,note:model.profileNote,indoorVolume:c.rooms[0].volumetricAirFlowM3s,expectedIndoor:profile.coolingHighFanFlowM3h/3600,displacement:c.compressor.displacementM3rev,configured:cfg.live.compressorDisplacementCm3*1e-6};
+   return {id:model.id,count:cfg.unitCount,ports:c.indoorPortCapacity,paired:model.compatibleIndoorClasses.includes(cfg.rooms[0].indoorClass),volume:c.outdoor.volumetricAirFlowM3s??null,expected:model.coolingHighFanFlowM3h===undefined?null:model.coolingHighFanFlowM3h/3600,mass:c.outdoor.airMassFlowKgs,configuredMass:cfg.live.outdoorAirMassFlowKgs,note:model.profileNote,indoorVolume:c.rooms[0].volumetricAirFlowM3s,expectedIndoor:profile.coolingHighFanFlowM3h===null?null:profile.coolingHighFanFlowM3h/3600,displacement:c.compressor.displacementM3rev,configured:cfg.live.compressorDisplacementCm3*1e-6};
   }));
-  assert.equal(results.length,29);
-  for(const r of results){assert.equal(r.count,1);assert.equal(r.ports,1);assert.equal(r.paired,true);assert.equal(r.volume,r.expected);if(r.expected===null){assert.equal(r.mass,r.configuredMass);assert.match(r.note,/unpublished/)}assert.equal(r.indoorVolume,r.expectedIndoor);assert.equal(r.displacement,r.configured)}
+  assert.equal(results.length,61);
+  for(const r of results){assert.equal(r.count,1);assert.equal(r.ports,1);assert.equal(r.paired,true);assert.equal(r.volume,r.expected);if(r.expected===null){assert.equal(r.mass,r.configuredMass);assert.match(r.note,/unpublished/)}assert.equal(r.indoorVolume??null,r.expectedIndoor);assert.equal(r.displacement,r.configured)}
  });
  await check('model changes retain room pool, thermal edits, pipes and user generic airflow overrides',async()=>{
   const result=await run(()=>{
@@ -56,7 +56,7 @@ try{
     streams:[...document.querySelectorAll('.airflow.exhaust .stream')].map(e=>e.getAttribute('d')),
     border:getComputedStyle(document.querySelector('.chip-ice')).borderWidth};
   });
-  assert.equal(r.outdoor,'MUZ-EF35VG2');assert.equal(r.indoor,'MSZ-EF35VGK2S');assert.equal(r.same,true);assert.equal(r.outdoorOptions,31);
+  assert.equal(r.outdoor,'MUZ-EF35VG2');assert.equal(r.indoor,'MSZ-EF35VGK2S');assert.equal(r.same,true);assert.equal(r.outdoorOptions,63);
   assert.deepEqual(r.options,['MSZ-EF35VGK2B','MSZ-EF35VGK2W','MSZ-EF35VGK2S']);
   assert.equal(r.streams.length,4);assert.ok(r.streams.every(d=>!/[CQSA]/i.test(d)));assert.equal(r.border,'0px');
  });
@@ -81,5 +81,5 @@ try{
   assert.notEqual((await run(()=>qv.simulation.status)).state,'error');
  });
  assert.deepEqual(page.events.filter(e=>e.method==='Runtime.exceptionThrown'),[]);
- await writeFile('reviews/equipment-catalogue-browser-results.json',JSON.stringify({checkedAt:new Date().toISOString(),checks,outdoorProfiles:25,matchedIndoorProfiles:45,scope:'Reviewed topology/flow profiles; generic compressor/coil performance retained.'},null,2)+'\n');
+ await writeFile('reviews/equipment-catalogue-browser-results.json',JSON.stringify({checkedAt:new Date().toISOString(),checks,outdoorProfiles:{mitsubishi:25,daikin:36},indoorProfiles:{mitsubishi:45,daikin:79},scope:'Reviewed topology/flow profiles; generic compressor/coil performance retained.'},null,2)+'\n');
 }finally{await page.close();await isolated.close()}

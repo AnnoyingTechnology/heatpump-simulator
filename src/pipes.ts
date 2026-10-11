@@ -81,7 +81,7 @@ export class Pipe {
     setAttr(this.g, 'data-phase', st.phase);
     setAttr(this.g, 'data-dir', st.dir);
     setAttr(this.g, 'data-temp', t === null ? 'unknown' : t.toFixed(1));
-    setAttr(this.layers.fill, 'stroke', t !== null ? tempColor(t) : flowing ? TUBE_UNKNOWN : st.phase === 'off' ? TUBE_OFF : TUBE_IDLE);
+    setAttr(this.layers.fill, 'stroke', t !== null ? tempColor(t) : flowing || st.phase === 'unknown' ? TUBE_UNKNOWN : st.phase === 'off' ? TUBE_OFF : TUBE_IDLE);
     toggleClass(this.g, 'moving', st.dir !== 0 && flowing);
     this.title.textContent = `${this.spec.title} · ${phaseLabel(st.phase)} · ${tempLabel}`;
     if (this.arrow && this.arrowAt) {

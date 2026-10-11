@@ -776,6 +776,13 @@ export function createOutdoorSettings(): PopContent {
   const sourceSection = html('section', { class: 'sec' }, html('h3', {}, 'Simulation source'), source.root, scenario.root,
     html('p', { class: 'hint' }, 'Live uses the physical engine. Examples are fixed illustrative snapshots; their readings do not respond to settings. Switching sources preserves settings. Selecting an example loads its illustrative conditions.'));
   const diagnostics = createModelDiagnostics();
+  const components = fold('What the components do', false,
+    html('p', {}, 'Compressor: raises vapor pressure and supplies the work that moves heat.'),
+    html('p', {}, 'Expansion valves: lower refrigerant pressure without adding or removing heat. Refrigerant can cool sharply and partially flash into vapor here, before reaching the heat exchanger.'),
+    html('p', {}, 'Reversing valve: swaps which coil absorbs heat and which releases it when changing between heating and cooling.'),
+    html('p', {}, 'Coils: exchange heat between refrigerant and air; both temperature changes and evaporation/condensation carry heat.'),
+    html('p', {}, 'Fans: move air through the coils. Accumulator: separates retained liquid from vapor on the compressor suction side.'),
+    html('p', {}, 'Stop valves and service port: isolate the piping for service and allow pressure readings; they do not create the normal expansion pressure drop.'));
 
   // Generic live parameters. Bounds are 0.2×–5× the engine default (always positive, always containing the default),
   // except where a physical floor applies: the maximum compressor speed may not fall below the engine's minimum speed.
@@ -905,7 +912,7 @@ export function createOutdoorSettings(): PopContent {
     html('p', { class: 'hint' }, 'Line volumes follow each branch\'s length and bores and are stored even though field transport is idealized. A start state that floods the circuit is rejected by the model.'),
     guidance));
 
-  const root = html('div', { class: 'pop-settings' }, outdoorNote, sourceSection, profile, coil, charge, comp, clean, shared, display, refrigerant, pending, diagnostics.root);
+  const root = html('div', { class: 'pop-settings' }, outdoorNote, sourceSection, profile, components, coil, charge, comp, clean, shared, display, refrigerant, pending, diagnostics.root);
 
   return {
     root,

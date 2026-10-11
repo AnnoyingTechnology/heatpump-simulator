@@ -104,3 +104,62 @@ fixed from these results. Browser worker-failure retention/diagnostics checks
 are separate evidence. Coverage uses the released reference R32 circuit,
 not every refrigerant or calibrated manufacturer map, and does not replace
 physical calibration or prove robustness for all permitted combinations.
+
+The persistent ±1 K comfort-call/fan revision (engine `868c205b…`, demand
+`2723ec0b…`) passed the twenty retained recovery inputs plus a 1,200-second
+owner −4°C/ground16 case: 21/21, 14,780 accepted seconds and 59,120 public
+requests. Its receipt remains `indoor-comfort-robustness-results.json`; these
+old constant-conductance inputs are preserved separately from opening geometry.
+
+The Candidate A opening-exchange freeze (engine `92174a5b…`, interzone
+`20671a67…`, cycle `294d647a…`, types `2ed28a4c…`) passed all 21 new-geometry
+schedules: 18,746 accepted seconds, 74,984 quarter-second public requests,
+75,129 accepted internal intervals and six retained-state edits. Maximum
+energy residual was 8.270×10⁻⁷ J and water residual 1.394×10⁻¹³ kg. The
+1,800-second frost case completed four defrost/drain cycles, draining 0.623650 kg.
+Both 1,200-second owner reversals, actual 0/1/−4°C owner geometry, wet cooling,
+eight-head reversal, isolated stable/unstable floor and wall openings, and
+large-aperture/small-room adaptive intervals passed. Isolated openings preserved
+per-room total water and initial temperature bounds. One-m³ trajectories had
+decreasing differences under timestep refinement; the adaptive large-aperture
+runs recorded nonuniform actual intervals and every observed difference without
+claiming monotone successive convergence.
+
+`opening-exchange-robustness-results.json` retains the exact source/harness
+hashes, diagnostics, input hashes and numerical comparisons. Twenty-one complete
+inputs are in `tests/engine/fixtures/opening-exchange-robustness/`. The observer
+now validates and integrates every accepted adaptive interval and persists its
+preceding checkpoint. A separate smoke25 passed with the identical observer but
+a later valve-diagnostics cycle/type snapshot; that distinction is explicit in
+the receipt. The later long replay was intentionally stopped after seven passes
+when independent review required moving diagnostic publication outside physical
+fallback selection. The cancellation is recorded in its temporary artifact;
+it is neither a final pass nor evidence of a native crash. The corrected valve
+publication revision requires its own frozen replay receipt.
+
+After a new user report at 146 simulated seconds, the unmodified published
+`1fc0324` frontend was bundled in an isolated temporary copy to obtain canonical
+`engineConfigFromUi(defaultConfig(), defaultConfig().live)` inputs. Six startup
+runs at 0/1/−4°C outdoors and ground16/17, with first21.5, atticOff and actual
+18.3/21.5/18°C initial rooms, each passed 600 seconds. These preserve all other
+frontend mappings, including tubing diameters and floating-point room volume.
+`published-owner-startup-146-robustness-results.json` records the published
+frontend/engine hashes, canonical UI, six complete fixtures, 3,600 accepted
+seconds and residual maxima. The reported fault did not reproduce; its actual
+URL, edited settings and error text were not yet known. Native startup passes
+alone do not diagnose a browser worker failure.
+
+The corrected valve-diagnostic publication freeze (cycle `8d47208f…`, types
+`04eb849d…`, engine/interzone unchanged) then passed all 21 opening schedules,
+the original smoke25 and all six canonical published-default startup inputs.
+Every auxiliary run captured exactly matching engine/backend/harness hashes.
+Combined coverage is 52 completed replays, 22,448 simulated seconds, 89,792
+public requests, 89,937 accepted internal intervals and 12 retained-state edits.
+Maximum energy/water residuals remain 8.270×10⁻⁷ J / 1.394×10⁻¹³ kg; four
+complete defrost/drain cycles occurred in the long frost run. All 21 final
+room/outdoor/energy outputs were bit-identical to the original opening freeze.
+`valve-port-robustness-results.json` records this corrected source, exact fixture
+parity and separate cancelled-run history. No physical fault, invariant failure,
+native exit or timeout occurred within these complete campaigns. The user's
+localhost HMR/reload diagnosis is separate browser evidence, not inferred from
+these native passes.

@@ -76,6 +76,11 @@ export interface CycleOutput {
   suction: RefrigerantState; discharge: RefrigerantState; condenserOutlet: RefrigerantState; expansionOutlet: RefrigerantState;
   totalMassFlowKgs: number; branchMassFlowsKgs: number[]; branchCoilHeatW: number[]; outdoorCoilHeatW: number;
   branchInlets: RefrigerantState[]; branchOutlets: RefrigerantState[]; condenserHeatW: number; evaporatorHeatW: number;
+  /** Actual stream upstream/downstream states at each outdoor branch EEV;
+   * aligned with rooms, null for closed branches. Independent of coil ends.
+   * Optional: older/inventory adapters may not expose authoritative valve faces. */
+  branchValveInlets?: (RefrigerantState | null)[];
+  branchValveOutlets?: (RefrigerantState | null)[];
   compressorWorkW: number; compressorElectricalW: number; driveLossW: number;
   massResidualKgs: number; closureResidualW: number; iterations: number; lineHeatToOutdoorW: number;
   pressureDropsPa: number[]; // Sum of Darcy friction contributions, excluding gravity/acceleration.

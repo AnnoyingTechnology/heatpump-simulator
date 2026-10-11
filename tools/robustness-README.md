@@ -48,25 +48,40 @@ strong-heating to 42°C cooling reversals through 1,200 seconds. `endurance`
 extends generated sequences to fourteen simulated minutes, outdoor grids to
 two minutes, and includes two-hour frost/defrost and one-hour wet cooling runs.
 Requested UI time multipliers change pacing only, so these all exercise the
-actual quarter-second engine steps.
+quarter-second public engine requests; the opening-exchange model can subdivide
+these into smaller accepted physics intervals for stability.
 
 The worker persists the complete accepted checkpoint, configuration, output and
-next operation before each step. This includes a reversible representation of
+next operation before each attempted internal physics interval. This includes a
+reversible representation of
 the legitimate infinite initial off timer. A native abort can therefore be
-located to the exact attempted step. It observes `advance()` exceptions solely
+located to the exact attempted interval. The observer also retains every accepted
+internal output, so conservation, useful-service and fan-energy checks use the
+actual accepted duration. It observes `advance()` exceptions solely
 to preserve the original stack before the public `step()` API catches them;
 the observer does not change arguments, return values or exception decisions.
 
-Checks cover finite accepted outputs, exact accepted clock advance, energy and
+Checks cover finite accepted outputs, exact internal clock advance, energy and
 water conservation, equal/opposite room exchange, nondecreasing electricity
 and drained-water histories, useful service integration and preservation of
-session history through edits. A physical fault must restore the whole prior
-thermal/control/energy transaction; intentional fault-state/cycle/output
-diagnostics are excluded from that physical rollback comparison. Compressor
+session history through edits. Public requests allow only the engine’s declared
+1e−10-second remaining-interval threshold plus floating-point summation error.
+A physical fault must restore the last attempted internal thermal/control/energy
+transaction; earlier accepted intervals remain committed. Intentional
+fault-state/cycle/output diagnostics are excluded from that physical rollback
+comparison. Compressor
 protection holds are valid accepted outcomes and are counted separately.
 State entry counts, completed defrost transitions and the slowest accepted
 step are recorded. Wall times include concurrent CPU contention and checkpoint
 instrumentation; they are evidence of this run, not a clean performance benchmark.
+
+When the engine publishes comfort-call/fan fields, the worker records separate
+call and actual circuit transitions, powered/modulated fan time, fraction
+extrema and fan energy. Transition samples compare accepted step outputs;
+configuration-update snapshots can change displayed activity between steps.
+Room durations sum across heads. Fan commands must stay in 0…1, and an ordinary
+compressor must do zero work while all comfort calls are stopped; defrost and
+reversal paths retain their separate semantics.
 
 The shared branch-flow sum must close exactly within floating-point tolerance.
 Compressor/coil matching instead uses the engine's declared pressure-solve
@@ -81,3 +96,17 @@ rooms within declared port capacity, 10…100% clear passage, room geometry,
 envelope/gains/ventilation, room links and mode/target/weather/on/off edits.
 The unreleased charge model is not silently substituted. Finite coverage is
 evidence of robustness within these scenarios, not proof or OEM calibration.
+
+Opening-exchange fixtures exercise the current owner geometry, retained heating/
+cooling reversals, frost and wet operation, eight-head circuits, stable and
+unstable floor openings, and height-dependent wall openings. The portable
+`tools/robustness-opening-inputs.mjs` records every geometry/configuration patch.
+Large-aperture, small-room networks also check adaptive interval accounting,
+initial temperature bounds and per-room total-water conservation in isolated
+sensible-only exchanges. Multiple maximum-step settings provide explicit
+trajectory-refinement comparisons. Original recovery fixtures remain unchanged.
+
+```sh
+node tools/robustness-opening-inputs.mjs --baseline /tmp/heatpump-indoor-comfort-final-21 --output /tmp/heatpump-opening-inputs
+node tools/robustness-campaign.mjs --replay tests/engine/fixtures/opening-exchange-robustness --workers 4 --timeout 1200 --output /tmp/heatpump-opening-campaign
+```

@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "FDXM-F9 concealed duct indoor units",
+  "market": "France / Europe residential-compatible air-to-air, 2026 Daikin catalogue and current Daikin France technical table",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-eu-2026-p327",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/327/",
+      "title": "Daikin Europe General Catalogue 2026 — Split residential air-to-air solutions",
+      "edition": "ECPEN26-500, 2026; official Daikin Europe flipbook page",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-fdxm-f9",
+      "url": "https://www.daikin.fr/fr_fr/produits/product.table.html/FDXM-F9.html",
+      "title": "Daikin France technical product table FDXM-F9",
+      "edition": "Daikin France product database, checked 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FDXM25F3V1B9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-fdxm-f9",
+        "locator": "Exact full model column header",
+        "excerpt": "FDXM25F3V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 200,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fdxm-f9",
+            "locator": "Exact full model FDXM25F3V1B9; dimensions Hauteur",
+            "excerpt": "FDXM25F3V1B9 | Dimensions | Unité | Hauteur | mm | 200"
+          }
+        },
+        {
+          "key": "width",
+          "value": 750,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fdxm-f9",
+            "locator": "Exact full model FDXM25F3V1B9; dimensions Largeur",
+            "excerpt": "FDXM25F3V1B9 | Dimensions | Unité | Largeur | mm | 750"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 620,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fdxm-f9",
+            "locator": "Exact full model FDXM25F3V1B9; dimensions Profondeur",
+            "excerpt": "FDXM25F3V1B9 | Dimensions | Unité | Profondeur | mm | 620"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 522.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-fdxm-f9",
+            "locator": "Exact full model FDXM25F3V1B9; cooling high fan airflow",
+            "excerpt": "FDXM25F3V1B9 | Débit d’air | Rafraîchissement | Haut | m³/min | 8.7; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "2026 Europe catalogue exact monosplit class pairing with RXM25A9.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "ECPEN26-500 Split page 327, exact FDXM+RXM size pairing column",
+            "excerpt": "FDXM + RXM | 25F9 + 25A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Nominal capacity is pairing-dependent and not represented as an indoor capacity class. Outdoor pairing profiles are accepted only when the exact RXM reference is separately reviewed."
+      ]
+    },
+    {
+      "modelReference": "FDXM35F3V1B9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-fdxm-f9",
+        "locator": "Exact full model column header",
+        "excerpt": "FDXM35F3V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 200,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fdxm-f9",
+            "locator": "Exact full model FDXM35F3V1B9; dimensions Hauteur",
+            "excerpt": "FDXM35F3V1B9 | Dimensions | Unité | Hauteur | mm | 200"
+          }
+        },
+        {
+          "key": "width",
+          "value": 750,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fdxm-f9",
+            "locator": "Exact full model FDXM35F3V1B9; dimensions Largeur",
+            "excerpt": "FDXM35F3V1B9 | Dimensions | Unité | Largeur | mm | 750"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 620,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fdxm-f9",
+            "locator": "Exact full model FDXM35F3V1B9; dimensions Profondeur",
+            "excerpt": "FDXM35F3V1B9 | Dimensions | Unité | Profondeur | mm | 620"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 522.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-fdxm-f9",
+            "locator": "Exact full model FDXM35F3V1B9; cooling high fan airflow",
+            "excerpt": "FDXM35F3V1B9 | Débit d’air | Rafraîchissement | Haut | m³/min | 8.7; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "2026 Europe catalogue exact monosplit class pairing with RXM35A9.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "ECPEN26-500 Split page 327, exact FDXM+RXM size pairing column",
+            "excerpt": "FDXM + RXM | 35F9 + 35A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Nominal capacity is pairing-dependent and not represented as an indoor capacity class. Outdoor pairing profiles are accepted only when the exact RXM reference is separately reviewed."
+      ]
+    },
+    {
+      "modelReference": "FDXM50F3V1B9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-fdxm-f9",
+        "locator": "Exact full model column header",
+        "excerpt": "FDXM50F3V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 200,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fdxm-f9",
+            "locator": "Exact full model FDXM50F3V1B9; dimensions Hauteur",
+            "excerpt": "FDXM50F3V1B9 | Dimensions | Unité | Hauteur | mm | 200"
+          }
+        },
+        {
+          "key": "width",
+          "value": 1150,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fdxm-f9",
+            "locator": "Exact full model FDXM50F3V1B9; dimensions Largeur",
+            "excerpt": "FDXM50F3V1B9 | Dimensions | Unité | Largeur | mm | 1150"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 620,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fdxm-f9",
+            "locator": "Exact full model FDXM50F3V1B9; dimensions Profondeur",
+            "excerpt": "FDXM50F3V1B9 | Dimensions | Unité | Profondeur | mm | 620"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 948.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-fdxm-f9",
+            "locator": "Exact full model FDXM50F3V1B9; cooling high fan airflow",
+            "excerpt": "FDXM50F3V1B9 | Débit d’air | Rafraîchissement | Haut | m³/min | 15.8; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "2026 Europe catalogue exact monosplit class pairing with RXM50A8.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "ECPEN26-500 Split page 327, exact FDXM+RXM size pairing column",
+            "excerpt": "FDXM + RXM | 50F9 + 50A8"
+          }
+        }
+      ],
+      "unknowns": [
+        "Nominal capacity is pairing-dependent and not represented as an indoor capacity class. Outdoor pairing profiles are accepted only when the exact RXM reference is separately reviewed."
+      ]
+    },
+    {
+      "modelReference": "FDXM60F3V1B9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-fdxm-f9",
+        "locator": "Exact full model column header",
+        "excerpt": "FDXM60F3V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 200,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fdxm-f9",
+            "locator": "Exact full model FDXM60F3V1B9; dimensions Hauteur",
+            "excerpt": "FDXM60F3V1B9 | Dimensions | Unité | Hauteur | mm | 200"
+          }
+        },
+        {
+          "key": "width",
+          "value": 1150,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fdxm-f9",
+            "locator": "Exact full model FDXM60F3V1B9; dimensions Largeur",
+            "excerpt": "FDXM60F3V1B9 | Dimensions | Unité | Largeur | mm | 1150"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 620,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-fdxm-f9",
+            "locator": "Exact full model FDXM60F3V1B9; dimensions Profondeur",
+            "excerpt": "FDXM60F3V1B9 | Dimensions | Unité | Profondeur | mm | 620"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 960.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-fdxm-f9",
+            "locator": "Exact full model FDXM60F3V1B9; cooling high fan airflow",
+            "excerpt": "FDXM60F3V1B9 | Débit d’air | Rafraîchissement | Haut | m³/min | 16.0; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "2026 Europe catalogue exact monosplit class pairing with RXM60A.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "ECPEN26-500 Split page 327, exact FDXM+RXM size pairing column",
+            "excerpt": "FDXM + RXM | 60F9 + 60A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Nominal capacity is pairing-dependent and not represented as an indoor capacity class. Outdoor pairing profiles are accepted only when the exact RXM reference is separately reviewed."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

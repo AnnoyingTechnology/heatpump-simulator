@@ -1,0 +1,534 @@
+{
+  "checkedAt": "2026-10-11T12:31:08.878Z",
+  "checks": [
+    {
+      "name": "query/fragment observations initialize actual worker without resets",
+      "passed": true,
+      "scenario": "?outdoor=39&humidity=60&mode=cooling&room.ground.target=24&room.ground.temperature=27&room.ground.enabled=on&room.first.target=24&room.first.temperature=28.2&room.attic.enabled=off",
+      "initial": {
+        "fluid": "R32",
+        "mode": "cooling",
+        "outdoorTemperatureC": 39,
+        "outdoorRelativeHumidity": 0.6,
+        "ambientPressurePa": 101325,
+        "indoorPortCapacity": 3,
+        "rooms": [
+          {
+            "id": "attic",
+            "enabled": false,
+            "volumeM3": 84,
+            "initialTemperatureC": 18.3,
+            "initialRelativeHumidity": 0.5,
+            "setpointC": 21,
+            "envelopeWK": 15,
+            "fabricCapacityJK": 4000000,
+            "airFabricWK": 250,
+            "ventilationACH": 0.5,
+            "airMassFlowKgs": 0.15,
+            "fanPowerW": 25,
+            "airConductanceWK": 170,
+            "refrigerantConductanceWK": 350,
+            "naturalAirConductanceWK": 15,
+            "metalCapacityJK": 12000,
+            "pipe": {
+              "lengthM": 0,
+              "gasInsideDiameterM": 0.00792,
+              "liquidInsideDiameterM": 0.00475,
+              "elevationM": 0,
+              "insulationConductanceWmK": 0.05
+            },
+            "internalGainW": 0,
+            "ventilationRecoveryEfficiency": 0.75,
+            "cleanFraction": 0.95
+          },
+          {
+            "id": "first",
+            "enabled": true,
+            "volumeM3": 155,
+            "initialTemperatureC": 28.2,
+            "initialRelativeHumidity": 0.5,
+            "setpointC": 24,
+            "envelopeWK": 25,
+            "fabricCapacityJK": 4000000,
+            "airFabricWK": 250,
+            "ventilationACH": 0.5,
+            "airMassFlowKgs": 0.15,
+            "fanPowerW": 25,
+            "airConductanceWK": 170,
+            "refrigerantConductanceWK": 350,
+            "naturalAirConductanceWK": 15,
+            "metalCapacityJK": 12000,
+            "pipe": {
+              "lengthM": 0,
+              "gasInsideDiameterM": 0.00792,
+              "liquidInsideDiameterM": 0.00475,
+              "elevationM": 0,
+              "insulationConductanceWmK": 0.05
+            },
+            "internalGainW": 0,
+            "ventilationRecoveryEfficiency": 0.75,
+            "cleanFraction": 0.95
+          },
+          {
+            "id": "ground",
+            "enabled": true,
+            "volumeM3": 100.00000000000001,
+            "initialTemperatureC": 27,
+            "initialRelativeHumidity": 0.5,
+            "setpointC": 24,
+            "envelopeWK": 45,
+            "fabricCapacityJK": 4000000,
+            "airFabricWK": 250,
+            "ventilationACH": 0.5,
+            "airMassFlowKgs": 0.15,
+            "fanPowerW": 25,
+            "airConductanceWK": 170,
+            "refrigerantConductanceWK": 350,
+            "naturalAirConductanceWK": 15,
+            "metalCapacityJK": 12000,
+            "pipe": {
+              "lengthM": 0,
+              "gasInsideDiameterM": 0.00792,
+              "liquidInsideDiameterM": 0.00475,
+              "elevationM": 0,
+              "insulationConductanceWmK": 0.05
+            },
+            "internalGainW": 200,
+            "ventilationRecoveryEfficiency": 0.75,
+            "cleanFraction": 0.95
+          }
+        ],
+        "compressor": {
+          "displacementM3rev": 0.000022,
+          "speedMinRps": 18,
+          "speedMaxRps": 75,
+          "isentropicEfficiency": 0.7,
+          "volumetricEfficiency": 0.8,
+          "driveEfficiency": 0.93,
+          "superheatK": 3,
+          "subcoolK": 1,
+          "maxDischargeC": 145,
+          "maxPressureRatio": 8
+        },
+        "outdoor": {
+          "airMassFlowKgs": 0.9,
+          "fanPowerW": 85,
+          "airConductanceWK": 1100,
+          "refrigerantConductanceWK": 1000,
+          "naturalAirConductanceWK": 35,
+          "metalCapacityJK": 28000,
+          "depositionAreaM2": 2,
+          "frostDensityKgm3": 200,
+          "frostConductivityWmK": 0.15,
+          "finGapM": 0.002,
+          "drainageSeconds": 30,
+          "cleanFraction": 0.95
+        },
+        "control": {
+          "strategy": "inverter",
+          "fixedSpeedRps": 40,
+          "controlsW": 15,
+          "proportionalSpeedRpsK": 20,
+          "thermostatDeadbandK": 1,
+          "minOnSeconds": 30,
+          "minOffSeconds": 30,
+          "reversalSeconds": 3,
+          "defrostMinHeatingSeconds": 300,
+          "defrostIceThresholdKg": 0.15,
+          "defrostMaxSeconds": 600,
+          "defrostTerminationMetalC": 5,
+          "drainageDwellSeconds": 10,
+          "defrostSpeedRps": 35
+        },
+        "numerics": {
+          "maxStepSeconds": 0.25,
+          "pressureToleranceW": 0.1
+        },
+        "interzoneLinks": [
+          {
+            "roomA": "ground",
+            "roomB": "first",
+            "conductanceWK": 13.803680981595093,
+            "openingExchange": {
+              "orientation": "vertical",
+              "areaM2": 4,
+              "lowerRoomId": "ground",
+              "heightM": 2,
+              "backgroundConductanceWK": 0,
+              "floorCoefficient": 0.055,
+              "wallDischargeCoefficient": 0.6
+            }
+          },
+          {
+            "roomA": "first",
+            "roomB": "attic",
+            "conductanceWK": 13.803680981595093,
+            "openingExchange": {
+              "orientation": "vertical",
+              "areaM2": 4,
+              "lowerRoomId": "first",
+              "heightM": 2,
+              "backgroundConductanceWK": 0,
+              "floorCoefficient": 0.055,
+              "wallDischargeCoefficient": 0.6
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "query/fragment observations initialize actual worker without resets",
+      "passed": true,
+      "scenario": "?outdoor=1&mode=heating#outdoor=-4&mode=heating&room.ground.target=16&room.ground.temperature=18&room.ground.enabled=off",
+      "initial": {
+        "fluid": "R32",
+        "mode": "heating",
+        "outdoorTemperatureC": -4,
+        "outdoorRelativeHumidity": 0.35,
+        "ambientPressurePa": 101325,
+        "indoorPortCapacity": 3,
+        "rooms": [
+          {
+            "id": "attic",
+            "enabled": false,
+            "volumeM3": 84,
+            "initialTemperatureC": 18.3,
+            "initialRelativeHumidity": 0.5,
+            "setpointC": 21,
+            "envelopeWK": 15,
+            "fabricCapacityJK": 4000000,
+            "airFabricWK": 250,
+            "ventilationACH": 0.5,
+            "airMassFlowKgs": 0.15,
+            "fanPowerW": 25,
+            "airConductanceWK": 170,
+            "refrigerantConductanceWK": 350,
+            "naturalAirConductanceWK": 15,
+            "metalCapacityJK": 12000,
+            "pipe": {
+              "lengthM": 0,
+              "gasInsideDiameterM": 0.00792,
+              "liquidInsideDiameterM": 0.00475,
+              "elevationM": 0,
+              "insulationConductanceWmK": 0.05
+            },
+            "internalGainW": 0,
+            "ventilationRecoveryEfficiency": 0.75,
+            "cleanFraction": 0.95
+          },
+          {
+            "id": "first",
+            "enabled": true,
+            "volumeM3": 155,
+            "initialTemperatureC": 21.5,
+            "initialRelativeHumidity": 0.5,
+            "setpointC": 21.5,
+            "envelopeWK": 25,
+            "fabricCapacityJK": 4000000,
+            "airFabricWK": 250,
+            "ventilationACH": 0.5,
+            "airMassFlowKgs": 0.15,
+            "fanPowerW": 25,
+            "airConductanceWK": 170,
+            "refrigerantConductanceWK": 350,
+            "naturalAirConductanceWK": 15,
+            "metalCapacityJK": 12000,
+            "pipe": {
+              "lengthM": 0,
+              "gasInsideDiameterM": 0.00792,
+              "liquidInsideDiameterM": 0.00475,
+              "elevationM": 0,
+              "insulationConductanceWmK": 0.05
+            },
+            "internalGainW": 0,
+            "ventilationRecoveryEfficiency": 0.75,
+            "cleanFraction": 0.95
+          },
+          {
+            "id": "ground",
+            "enabled": false,
+            "volumeM3": 100.00000000000001,
+            "initialTemperatureC": 18,
+            "initialRelativeHumidity": 0.5,
+            "setpointC": 16,
+            "envelopeWK": 45,
+            "fabricCapacityJK": 4000000,
+            "airFabricWK": 250,
+            "ventilationACH": 0.5,
+            "airMassFlowKgs": 0.15,
+            "fanPowerW": 25,
+            "airConductanceWK": 170,
+            "refrigerantConductanceWK": 350,
+            "naturalAirConductanceWK": 15,
+            "metalCapacityJK": 12000,
+            "pipe": {
+              "lengthM": 0,
+              "gasInsideDiameterM": 0.00792,
+              "liquidInsideDiameterM": 0.00475,
+              "elevationM": 0,
+              "insulationConductanceWmK": 0.05
+            },
+            "internalGainW": 200,
+            "ventilationRecoveryEfficiency": 0.75,
+            "cleanFraction": 0.95
+          }
+        ],
+        "compressor": {
+          "displacementM3rev": 0.000022,
+          "speedMinRps": 18,
+          "speedMaxRps": 75,
+          "isentropicEfficiency": 0.7,
+          "volumetricEfficiency": 0.8,
+          "driveEfficiency": 0.93,
+          "superheatK": 3,
+          "subcoolK": 1,
+          "maxDischargeC": 145,
+          "maxPressureRatio": 8
+        },
+        "outdoor": {
+          "airMassFlowKgs": 0.9,
+          "fanPowerW": 85,
+          "airConductanceWK": 1100,
+          "refrigerantConductanceWK": 1000,
+          "naturalAirConductanceWK": 35,
+          "metalCapacityJK": 28000,
+          "depositionAreaM2": 2,
+          "frostDensityKgm3": 200,
+          "frostConductivityWmK": 0.15,
+          "finGapM": 0.002,
+          "drainageSeconds": 30,
+          "cleanFraction": 0.95
+        },
+        "control": {
+          "strategy": "inverter",
+          "fixedSpeedRps": 40,
+          "controlsW": 15,
+          "proportionalSpeedRpsK": 20,
+          "thermostatDeadbandK": 1,
+          "minOnSeconds": 30,
+          "minOffSeconds": 30,
+          "reversalSeconds": 3,
+          "defrostMinHeatingSeconds": 300,
+          "defrostIceThresholdKg": 0.15,
+          "defrostMaxSeconds": 600,
+          "defrostTerminationMetalC": 5,
+          "drainageDwellSeconds": 10,
+          "defrostSpeedRps": 35
+        },
+        "numerics": {
+          "maxStepSeconds": 0.25,
+          "pressureToleranceW": 0.1
+        },
+        "interzoneLinks": [
+          {
+            "roomA": "ground",
+            "roomB": "first",
+            "conductanceWK": 13.803680981595093,
+            "openingExchange": {
+              "orientation": "vertical",
+              "areaM2": 4,
+              "lowerRoomId": "ground",
+              "heightM": 2,
+              "backgroundConductanceWK": 0,
+              "floorCoefficient": 0.055,
+              "wallDischargeCoefficient": 0.6
+            }
+          },
+          {
+            "roomA": "first",
+            "roomB": "attic",
+            "conductanceWK": 13.803680981595093,
+            "openingExchange": {
+              "orientation": "vertical",
+              "areaM2": 4,
+              "lowerRoomId": "first",
+              "heightM": 2,
+              "backgroundConductanceWK": 0,
+              "floorCoefficient": 0.055,
+              "wallDischargeCoefficient": 0.6
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "invalid fields retain defaults, valid neighbours and visible explanation",
+      "passed": true,
+      "scenario": "?outdoor=NaN&humidity=110&room.first.target=23&room.ground.temperature=unknown&room.typo.target=21",
+      "initial": {
+        "fluid": "R32",
+        "mode": "heating",
+        "outdoorTemperatureC": 1,
+        "outdoorRelativeHumidity": 0.35,
+        "ambientPressurePa": 101325,
+        "indoorPortCapacity": 3,
+        "rooms": [
+          {
+            "id": "attic",
+            "enabled": false,
+            "volumeM3": 84,
+            "initialTemperatureC": 18.3,
+            "initialRelativeHumidity": 0.5,
+            "setpointC": 21,
+            "envelopeWK": 15,
+            "fabricCapacityJK": 4000000,
+            "airFabricWK": 250,
+            "ventilationACH": 0.5,
+            "airMassFlowKgs": 0.15,
+            "fanPowerW": 25,
+            "airConductanceWK": 170,
+            "refrigerantConductanceWK": 350,
+            "naturalAirConductanceWK": 15,
+            "metalCapacityJK": 12000,
+            "pipe": {
+              "lengthM": 0,
+              "gasInsideDiameterM": 0.00792,
+              "liquidInsideDiameterM": 0.00475,
+              "elevationM": 0,
+              "insulationConductanceWmK": 0.05
+            },
+            "internalGainW": 0,
+            "ventilationRecoveryEfficiency": 0.75,
+            "cleanFraction": 0.95
+          },
+          {
+            "id": "first",
+            "enabled": true,
+            "volumeM3": 155,
+            "initialTemperatureC": 21.5,
+            "initialRelativeHumidity": 0.5,
+            "setpointC": 23,
+            "envelopeWK": 25,
+            "fabricCapacityJK": 4000000,
+            "airFabricWK": 250,
+            "ventilationACH": 0.5,
+            "airMassFlowKgs": 0.15,
+            "fanPowerW": 25,
+            "airConductanceWK": 170,
+            "refrigerantConductanceWK": 350,
+            "naturalAirConductanceWK": 15,
+            "metalCapacityJK": 12000,
+            "pipe": {
+              "lengthM": 0,
+              "gasInsideDiameterM": 0.00792,
+              "liquidInsideDiameterM": 0.00475,
+              "elevationM": 0,
+              "insulationConductanceWmK": 0.05
+            },
+            "internalGainW": 0,
+            "ventilationRecoveryEfficiency": 0.75,
+            "cleanFraction": 0.95
+          },
+          {
+            "id": "ground",
+            "enabled": true,
+            "volumeM3": 100.00000000000001,
+            "initialTemperatureC": 18,
+            "initialRelativeHumidity": 0.5,
+            "setpointC": 17,
+            "envelopeWK": 45,
+            "fabricCapacityJK": 4000000,
+            "airFabricWK": 250,
+            "ventilationACH": 0.5,
+            "airMassFlowKgs": 0.15,
+            "fanPowerW": 25,
+            "airConductanceWK": 170,
+            "refrigerantConductanceWK": 350,
+            "naturalAirConductanceWK": 15,
+            "metalCapacityJK": 12000,
+            "pipe": {
+              "lengthM": 0,
+              "gasInsideDiameterM": 0.00792,
+              "liquidInsideDiameterM": 0.00475,
+              "elevationM": 0,
+              "insulationConductanceWmK": 0.05
+            },
+            "internalGainW": 200,
+            "ventilationRecoveryEfficiency": 0.75,
+            "cleanFraction": 0.95
+          }
+        ],
+        "compressor": {
+          "displacementM3rev": 0.000022,
+          "speedMinRps": 18,
+          "speedMaxRps": 75,
+          "isentropicEfficiency": 0.7,
+          "volumetricEfficiency": 0.8,
+          "driveEfficiency": 0.93,
+          "superheatK": 3,
+          "subcoolK": 1,
+          "maxDischargeC": 145,
+          "maxPressureRatio": 8
+        },
+        "outdoor": {
+          "airMassFlowKgs": 0.9,
+          "fanPowerW": 85,
+          "airConductanceWK": 1100,
+          "refrigerantConductanceWK": 1000,
+          "naturalAirConductanceWK": 35,
+          "metalCapacityJK": 28000,
+          "depositionAreaM2": 2,
+          "frostDensityKgm3": 200,
+          "frostConductivityWmK": 0.15,
+          "finGapM": 0.002,
+          "drainageSeconds": 30,
+          "cleanFraction": 0.95
+        },
+        "control": {
+          "strategy": "inverter",
+          "fixedSpeedRps": 40,
+          "controlsW": 15,
+          "proportionalSpeedRpsK": 20,
+          "thermostatDeadbandK": 1,
+          "minOnSeconds": 30,
+          "minOffSeconds": 30,
+          "reversalSeconds": 3,
+          "defrostMinHeatingSeconds": 300,
+          "defrostIceThresholdKg": 0.15,
+          "defrostMaxSeconds": 600,
+          "defrostTerminationMetalC": 5,
+          "drainageDwellSeconds": 10,
+          "defrostSpeedRps": 35
+        },
+        "numerics": {
+          "maxStepSeconds": 0.25,
+          "pressureToleranceW": 0.1
+        },
+        "interzoneLinks": [
+          {
+            "roomA": "ground",
+            "roomB": "first",
+            "conductanceWK": 13.803680981595093,
+            "openingExchange": {
+              "orientation": "vertical",
+              "areaM2": 4,
+              "lowerRoomId": "ground",
+              "heightM": 2,
+              "backgroundConductanceWK": 0,
+              "floorCoefficient": 0.055,
+              "wallDischargeCoefficient": 0.6
+            }
+          },
+          {
+            "roomA": "first",
+            "roomB": "attic",
+            "conductanceWK": 13.803680981595093,
+            "openingExchange": {
+              "orientation": "vertical",
+              "areaM2": 4,
+              "lowerRoomId": "first",
+              "heightM": 2,
+              "backgroundConductanceWK": 0,
+              "floorCoefficient": 0.055,
+              "wallDischargeCoefficient": 0.6
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "sourceHashes": {
+    "src/main.ts": "5a77d1f6bed6c0fb67d156558ded8f04aee537a1a8268ea926625a343736c39a",
+    "src/preconfiguration.ts": "ca34269e5fdfe040df8dc2cc132eb338689105bdc87cb5dd39e46e52b948a222"
+  }
+}

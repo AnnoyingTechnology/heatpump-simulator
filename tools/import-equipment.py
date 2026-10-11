@@ -26,7 +26,7 @@ def generate(root=ROOT):
     for source in review.get('additionalSourceSnapshots', []):
         path = root / source['sourceFile']
         if path.exists() and sha(path) != source['sourceSha256']:
-            raise ValueError(f"Additional primary PDF changed: {source['sourceFile']}")
+            raise ValueError(f"Additional source snapshot changed: {source['sourceFile']}")
     profiles = []
     for accepted in review['units']:
         candidate = root / accepted['candidateFile']
@@ -49,8 +49,15 @@ def generate(root=ROOT):
             eligible_flow = [f for f in by_key.get('airflow', []) if f['condition'] == accepted['coolingAirflowCondition']]
         else:
             eligible_flow = [f for f in by_key.get('airflow', []) if 'cooling' in f['condition'].lower() or 'froid' in f['condition'].lower()]
+        candidate_has_airflow = any(f['key'] == 'airflow' for f in unit['facts'])
         generic_outdoor_flow = unit['unitType'] == 'outdoor' and accepted.get('unpublishedOutdoorAirflow') is True and 'airflow' not in by_key
-        if not eligible_flow and not generic_outdoor_flow:
+        generic_indoor_flow = unit['unitType'] == 'indoor' and accepted.get('unpublishedIndoorAirflow') is True and not candidate_has_airflow
+        if accepted.get('unpublishedIndoorAirflow') is True and candidate_has_airflow:
+            raise ValueError('Indoor airflow cannot be marked unpublished when candidate facts provide it')
+        if generic_indoor_flow and not any('airflow' in note.lower() and 'unpublished' in note.lower()
+                                           for note in unit.get('unknowns', [])):
+            raise ValueError('Unpublished indoor airflow must be stated in the candidate unknowns')
+        if not eligible_flow and not generic_outdoor_flow and not generic_indoor_flow:
             raise ValueError('Accepted cooling fan-flow condition is absent')
         airflow = max(eligible_flow, key=lambda f: f['value']) if eligible_flow else None
         dimensions = {key: by_key[key][0]['value'] for key in ('height', 'width', 'depth')}
@@ -62,6 +69,15 @@ def generate(root=ROOT):
         referenced = {f['evidence']['sourceId'] for f in selected} | {identity['sourceId']}
         if unit['unitType'] == 'outdoor':
             referenced.add(accepted['pairingEvidence']['sourceId'])
+            pairing_by_indoor = accepted.get('pairingEvidenceByIndoor')
+            if pairing_by_indoor is not None:
+                expected = set(accepted['compatibleIndoorClasses'])
+                if set(pairing_by_indoor) != expected:
+                    raise ValueError('Pairing evidence must cover every compatible indoor reference exactly')
+                for evidence in pairing_by_indoor.values():
+                    if not all(evidence.get(key) for key in ('sourceId', 'locator', 'excerpt')):
+                        raise ValueError('Pairing evidence is incomplete')
+                    referenced.add(evidence['sourceId'])
         if not referenced.issubset(sources):
             raise ValueError('Accepted field references an absent source')
         profile = {

@@ -1,0 +1,1102 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Sensira FTXC-E / RXC-E",
+  "market": "France / Europe residential air-to-air; Daikin France direct technical tables, checked 2026-10-11; current 2026 Europe catalogue page 323 confirms range family",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-eu-2026-p323",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/323/",
+      "title": "Daikin Europe General Catalogue 2026 — Split residential air-to-air solutions",
+      "edition": "ECPEN26-500, 2026; official Daikin Europe flipbook page",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-ftxc-e",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXC-E.html",
+      "title": "Daikin France technical product table FTXC-E",
+      "edition": "Daikin France product database, checked 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-ftxc-e-rxc-e",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXC-E---RXC-E.html",
+      "title": "Daikin France technical product table FTXC-E / RXC-E",
+      "edition": "Daikin France product database, checked 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-rxc-e",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/RXC-E.html",
+      "title": "Daikin France technical product table RXC-E",
+      "edition": "Daikin France product database, checked 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FTXC20EV1B",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxc-e-rxc-e",
+        "locator": "Exact paired-model column header",
+        "excerpt": "FTXC20EV1B / RXC20EV1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 288,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC20EV1B; dimensions Hauteur",
+            "excerpt": "FTXC20EV1B | Dimensions | Unité | Hauteur | mm | 288"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC20EV1B; dimensions Largeur",
+            "excerpt": "FTXC20EV1B | Dimensions | Unité | Largeur | mm | 770"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 234,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC20EV1B; dimensions Profondeur",
+            "excerpt": "FTXC20EV1B | Dimensions | Unité | Profondeur | mm | 234"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 648.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC20EV1B; cooling high airflow",
+            "excerpt": "FTXC20EV1B | Débit d’air | Rafraîchissement | Haut | m³/min | 10.8; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXC20EV1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e-rxc-e",
+            "locator": "Exact paired column header",
+            "excerpt": "FTXC20EV1B / RXC20EV1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Nominal cooling capacity is not published for this exact model pair in the reviewed table; not inferred from size code or Pdesign."
+      ]
+    },
+    {
+      "modelReference": "RXC20EV1B",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxc-e-rxc-e",
+        "locator": "Exact paired-model column header",
+        "excerpt": "FTXC20EV1B / RXC20EV1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 550,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC20EV1B; dimensions Hauteur",
+            "excerpt": "RXC20EV1B | Dimensions | Unité | Hauteur | mm | 550"
+          }
+        },
+        {
+          "key": "width",
+          "value": 658,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC20EV1B; dimensions Largeur",
+            "excerpt": "RXC20EV1B | Dimensions | Unité | Largeur | mm | 658"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 273,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC20EV1B; dimensions Profondeur",
+            "excerpt": "RXC20EV1B | Dimensions | Unité | Profondeur | mm | 273"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC20EV1B; refrigerant type",
+            "excerpt": "RXC20EV1B | Réfrigérant | Type | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": 10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC20EV1B; Rafraîchissement minimum",
+            "excerpt": "RXC20EV1B | Rafraîchissement | Temp. ext. Min. | °CBS | 10"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC20EV1B; Rafraîchissement maximum",
+            "excerpt": "RXC20EV1B | Rafraîchissement | Temp. ext. Max. | °CBS | 46"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC20EV1B; Chauffage minimum",
+            "excerpt": "RXC20EV1B | Chauffage | Temp. ext. Min. | °CBH | -15"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC20EV1B; Chauffage maximum",
+            "excerpt": "RXC20EV1B | Chauffage | Temp. ext. Max. | °CBH | 18"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact monosplit pairing with FTXC20EV1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e-rxc-e",
+            "locator": "Exact paired column header",
+            "excerpt": "FTXC20EV1B / RXC20EV1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed technical table and remains generic/manual. Nominal output is not an unconditional outdoor capacity class."
+      ]
+    },
+    {
+      "modelReference": "FTXC25EV1B",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxc-e-rxc-e",
+        "locator": "Exact paired-model column header",
+        "excerpt": "FTXC25EV1B / RXC25EV1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 288,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC25EV1B; dimensions Hauteur",
+            "excerpt": "FTXC25EV1B | Dimensions | Unité | Hauteur | mm | 288"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC25EV1B; dimensions Largeur",
+            "excerpt": "FTXC25EV1B | Dimensions | Unité | Largeur | mm | 770"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 234,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC25EV1B; dimensions Profondeur",
+            "excerpt": "FTXC25EV1B | Dimensions | Unité | Profondeur | mm | 234"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 648.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC25EV1B; cooling high airflow",
+            "excerpt": "FTXC25EV1B | Débit d’air | Rafraîchissement | Haut | m³/min | 10.8; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXC25EV1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e-rxc-e",
+            "locator": "Exact paired column header",
+            "excerpt": "FTXC25EV1B / RXC25EV1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Nominal cooling capacity is not published for this exact model pair in the reviewed table; not inferred from size code or Pdesign."
+      ]
+    },
+    {
+      "modelReference": "RXC25EV1B",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxc-e-rxc-e",
+        "locator": "Exact paired-model column header",
+        "excerpt": "FTXC25EV1B / RXC25EV1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 550,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC25EV1B; dimensions Hauteur",
+            "excerpt": "RXC25EV1B | Dimensions | Unité | Hauteur | mm | 550"
+          }
+        },
+        {
+          "key": "width",
+          "value": 658,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC25EV1B; dimensions Largeur",
+            "excerpt": "RXC25EV1B | Dimensions | Unité | Largeur | mm | 658"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 273,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC25EV1B; dimensions Profondeur",
+            "excerpt": "RXC25EV1B | Dimensions | Unité | Profondeur | mm | 273"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC25EV1B; refrigerant type",
+            "excerpt": "RXC25EV1B | Réfrigérant | Type | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": 10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC25EV1B; Rafraîchissement minimum",
+            "excerpt": "RXC25EV1B | Rafraîchissement | Temp. ext. Min. | °CBS | 10"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC25EV1B; Rafraîchissement maximum",
+            "excerpt": "RXC25EV1B | Rafraîchissement | Temp. ext. Max. | °CBS | 46"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC25EV1B; Chauffage minimum",
+            "excerpt": "RXC25EV1B | Chauffage | Temp. ext. Min. | °CBH | -15"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC25EV1B; Chauffage maximum",
+            "excerpt": "RXC25EV1B | Chauffage | Temp. ext. Max. | °CBH | 18"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact monosplit pairing with FTXC25EV1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e-rxc-e",
+            "locator": "Exact paired column header",
+            "excerpt": "FTXC25EV1B / RXC25EV1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed technical table and remains generic/manual. Nominal output is not an unconditional outdoor capacity class."
+      ]
+    },
+    {
+      "modelReference": "FTXC35EV1B",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxc-e-rxc-e",
+        "locator": "Exact paired-model column header",
+        "excerpt": "FTXC35EV1B / RXC35EV1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 288,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC35EV1B; dimensions Hauteur",
+            "excerpt": "FTXC35EV1B | Dimensions | Unité | Hauteur | mm | 288"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC35EV1B; dimensions Largeur",
+            "excerpt": "FTXC35EV1B | Dimensions | Unité | Largeur | mm | 770"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 234,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC35EV1B; dimensions Profondeur",
+            "excerpt": "FTXC35EV1B | Dimensions | Unité | Profondeur | mm | 234"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 666.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC35EV1B; cooling high airflow",
+            "excerpt": "FTXC35EV1B | Débit d’air | Rafraîchissement | Haut | m³/min | 11.1; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXC35EV1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e-rxc-e",
+            "locator": "Exact paired column header",
+            "excerpt": "FTXC35EV1B / RXC35EV1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Nominal cooling capacity is not published for this exact model pair in the reviewed table; not inferred from size code or Pdesign."
+      ]
+    },
+    {
+      "modelReference": "RXC35EV1B",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxc-e-rxc-e",
+        "locator": "Exact paired-model column header",
+        "excerpt": "FTXC35EV1B / RXC35EV1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 550,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC35EV1B; dimensions Hauteur",
+            "excerpt": "RXC35EV1B | Dimensions | Unité | Hauteur | mm | 550"
+          }
+        },
+        {
+          "key": "width",
+          "value": 658,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC35EV1B; dimensions Largeur",
+            "excerpt": "RXC35EV1B | Dimensions | Unité | Largeur | mm | 658"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 273,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC35EV1B; dimensions Profondeur",
+            "excerpt": "RXC35EV1B | Dimensions | Unité | Profondeur | mm | 273"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC35EV1B; refrigerant type",
+            "excerpt": "RXC35EV1B | Réfrigérant | Type | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": 10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC35EV1B; Rafraîchissement minimum",
+            "excerpt": "RXC35EV1B | Rafraîchissement | Temp. ext. Min. | °CBS | 10"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC35EV1B; Rafraîchissement maximum",
+            "excerpt": "RXC35EV1B | Rafraîchissement | Temp. ext. Max. | °CBS | 46"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC35EV1B; Chauffage minimum",
+            "excerpt": "RXC35EV1B | Chauffage | Temp. ext. Min. | °CBH | -15"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC35EV1B; Chauffage maximum",
+            "excerpt": "RXC35EV1B | Chauffage | Temp. ext. Max. | °CBH | 18"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact monosplit pairing with FTXC35EV1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e-rxc-e",
+            "locator": "Exact paired column header",
+            "excerpt": "FTXC35EV1B / RXC35EV1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed technical table and remains generic/manual. Nominal output is not an unconditional outdoor capacity class."
+      ]
+    },
+    {
+      "modelReference": "FTXC50EV1B",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxc-e-rxc-e",
+        "locator": "Exact paired-model column header",
+        "excerpt": "FTXC50EV1B / RXC50EV1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 288,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC50EV1B; dimensions Hauteur",
+            "excerpt": "FTXC50EV1B | Dimensions | Unité | Hauteur | mm | 288"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC50EV1B; dimensions Largeur",
+            "excerpt": "FTXC50EV1B | Dimensions | Unité | Largeur | mm | 770"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 234,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC50EV1B; dimensions Profondeur",
+            "excerpt": "FTXC50EV1B | Dimensions | Unité | Profondeur | mm | 234"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 750.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC50EV1B; cooling high airflow",
+            "excerpt": "FTXC50EV1B | Débit d’air | Rafraîchissement | Haut | m³/min | 12.5; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXC50EV1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e-rxc-e",
+            "locator": "Exact paired column header",
+            "excerpt": "FTXC50EV1B / RXC50EV1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Nominal cooling capacity is not published for this exact model pair in the reviewed table; not inferred from size code or Pdesign."
+      ]
+    },
+    {
+      "modelReference": "RXC50EV1B",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxc-e-rxc-e",
+        "locator": "Exact paired-model column header",
+        "excerpt": "FTXC50EV1B / RXC50EV1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 615,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC50EV1B; dimensions Hauteur",
+            "excerpt": "RXC50EV1B | Dimensions | Unité | Hauteur | mm | 615"
+          }
+        },
+        {
+          "key": "width",
+          "value": 845,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC50EV1B; dimensions Largeur",
+            "excerpt": "RXC50EV1B | Dimensions | Unité | Largeur | mm | 845"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 300,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC50EV1B; dimensions Profondeur",
+            "excerpt": "RXC50EV1B | Dimensions | Unité | Profondeur | mm | 300"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC50EV1B; refrigerant type",
+            "excerpt": "RXC50EV1B | Réfrigérant | Type | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC50EV1B; Rafraîchissement minimum",
+            "excerpt": "RXC50EV1B | Rafraîchissement | Temp. ext. Min. | °CBS | -10"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC50EV1B; Rafraîchissement maximum",
+            "excerpt": "RXC50EV1B | Rafraîchissement | Temp. ext. Max. | °CBS | 46"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC50EV1B; Chauffage minimum",
+            "excerpt": "RXC50EV1B | Chauffage | Temp. ext. Min. | °CBH | -15"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC50EV1B; Chauffage maximum",
+            "excerpt": "RXC50EV1B | Chauffage | Temp. ext. Max. | °CBH | 18"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact monosplit pairing with FTXC50EV1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e-rxc-e",
+            "locator": "Exact paired column header",
+            "excerpt": "FTXC50EV1B / RXC50EV1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed technical table and remains generic/manual. Nominal output is not an unconditional outdoor capacity class."
+      ]
+    },
+    {
+      "modelReference": "FTXC60EV1B",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxc-e-rxc-e",
+        "locator": "Exact paired-model column header",
+        "excerpt": "FTXC60EV1B / RXC60EV1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 297,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC60EV1B; dimensions Hauteur",
+            "excerpt": "FTXC60EV1B | Dimensions | Unité | Hauteur | mm | 297"
+          }
+        },
+        {
+          "key": "width",
+          "value": 990,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC60EV1B; dimensions Largeur",
+            "excerpt": "FTXC60EV1B | Dimensions | Unité | Largeur | mm | 990"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 273,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC60EV1B; dimensions Profondeur",
+            "excerpt": "FTXC60EV1B | Dimensions | Unité | Profondeur | mm | 273"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1224.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC60EV1B; cooling high airflow",
+            "excerpt": "FTXC60EV1B | Débit d’air | Rafraîchissement | Haut | m³/min | 20.4; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXC60EV1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e-rxc-e",
+            "locator": "Exact paired column header",
+            "excerpt": "FTXC60EV1B / RXC60EV1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Nominal cooling capacity is not published for this exact model pair in the reviewed table; not inferred from size code or Pdesign."
+      ]
+    },
+    {
+      "modelReference": "RXC60EV1B",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxc-e-rxc-e",
+        "locator": "Exact paired-model column header",
+        "excerpt": "FTXC60EV1B / RXC60EV1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 615,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC60EV1B; dimensions Hauteur",
+            "excerpt": "RXC60EV1B | Dimensions | Unité | Hauteur | mm | 615"
+          }
+        },
+        {
+          "key": "width",
+          "value": 845,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC60EV1B; dimensions Largeur",
+            "excerpt": "RXC60EV1B | Dimensions | Unité | Largeur | mm | 845"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 300,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC60EV1B; dimensions Profondeur",
+            "excerpt": "RXC60EV1B | Dimensions | Unité | Profondeur | mm | 300"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC60EV1B; refrigerant type",
+            "excerpt": "RXC60EV1B | Réfrigérant | Type | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC60EV1B; Rafraîchissement minimum",
+            "excerpt": "RXC60EV1B | Rafraîchissement | Temp. ext. Min. | °CBS | -10"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC60EV1B; Rafraîchissement maximum",
+            "excerpt": "RXC60EV1B | Rafraîchissement | Temp. ext. Max. | °CBS | 46"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC60EV1B; Chauffage minimum",
+            "excerpt": "RXC60EV1B | Chauffage | Temp. ext. Min. | °CBH | -15"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC60EV1B; Chauffage maximum",
+            "excerpt": "RXC60EV1B | Chauffage | Temp. ext. Max. | °CBH | 18"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact monosplit pairing with FTXC60EV1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e-rxc-e",
+            "locator": "Exact paired column header",
+            "excerpt": "FTXC60EV1B / RXC60EV1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed technical table and remains generic/manual. Nominal output is not an unconditional outdoor capacity class."
+      ]
+    },
+    {
+      "modelReference": "FTXC71EV1B",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxc-e-rxc-e",
+        "locator": "Exact paired-model column header",
+        "excerpt": "FTXC71EV1B / RXC71EV1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 297,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC71EV1B; dimensions Hauteur",
+            "excerpt": "FTXC71EV1B | Dimensions | Unité | Hauteur | mm | 297"
+          }
+        },
+        {
+          "key": "width",
+          "value": 990,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC71EV1B; dimensions Largeur",
+            "excerpt": "FTXC71EV1B | Dimensions | Unité | Largeur | mm | 990"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 273,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC71EV1B; dimensions Profondeur",
+            "excerpt": "FTXC71EV1B | Dimensions | Unité | Profondeur | mm | 273"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1224.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e",
+            "locator": "Exact indoor model column FTXC71EV1B; cooling high airflow",
+            "excerpt": "FTXC71EV1B | Débit d’air | Rafraîchissement | Haut | m³/min | 20.4; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXC71EV1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e-rxc-e",
+            "locator": "Exact paired column header",
+            "excerpt": "FTXC71EV1B / RXC71EV1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Nominal cooling capacity is not published for this exact model pair in the reviewed table; not inferred from size code or Pdesign."
+      ]
+    },
+    {
+      "modelReference": "RXC71EV1B",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxc-e-rxc-e",
+        "locator": "Exact paired-model column header",
+        "excerpt": "FTXC71EV1B / RXC71EV1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 695,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC71EV1B; dimensions Hauteur",
+            "excerpt": "RXC71EV1B | Dimensions | Unité | Hauteur | mm | 695"
+          }
+        },
+        {
+          "key": "width",
+          "value": 930,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC71EV1B; dimensions Largeur",
+            "excerpt": "RXC71EV1B | Dimensions | Unité | Largeur | mm | 930"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 350,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC71EV1B; dimensions Profondeur",
+            "excerpt": "RXC71EV1B | Dimensions | Unité | Profondeur | mm | 350"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC71EV1B; refrigerant type",
+            "excerpt": "RXC71EV1B | Réfrigérant | Type | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC71EV1B; Rafraîchissement minimum",
+            "excerpt": "RXC71EV1B | Rafraîchissement | Temp. ext. Min. | °CBS | -10"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC71EV1B; Rafraîchissement maximum",
+            "excerpt": "RXC71EV1B | Rafraîchissement | Temp. ext. Max. | °CBS | 46"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC71EV1B; Chauffage minimum",
+            "excerpt": "RXC71EV1B | Chauffage | Temp. ext. Min. | °CBH | -15"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxc-e",
+            "locator": "Exact outdoor model column RXC71EV1B; Chauffage maximum",
+            "excerpt": "RXC71EV1B | Chauffage | Temp. ext. Max. | °CBH | 18"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact monosplit pairing with FTXC71EV1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxc-e-rxc-e",
+            "locator": "Exact paired column header",
+            "excerpt": "FTXC71EV1B / RXC71EV1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed technical table and remains generic/manual. Nominal output is not an unconditional outdoor capacity class."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

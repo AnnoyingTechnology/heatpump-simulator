@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Stylish Nepura FTXTA-CW/CB + RXTA-C",
+  "market": "France / Europe residential air-to-air",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "range",
+      "url": "https://www.daikin.fr/fr_fr/residentiel/produits-et-suggestions/gammes-de-produits/heat-pumps/air-to-air-heat-pumps.html",
+      "title": "Daikin France current residential air-to-air product range",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "cw",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXTA-CW.html",
+      "title": "Daikin France cw technical product table",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "cb",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXTA-CB.html",
+      "title": "Daikin France cb technical product table",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "cw_pair",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXTA-CW---RXTA-C.html",
+      "title": "Daikin France cw pair technical product table",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "cb_pair",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXTA-CB---RXTA-C.html",
+      "title": "Daikin France cb pair technical product table",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "outdoor",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/RXTA-C.html",
+      "title": "Daikin France outdoor technical product table",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FTXTA30C2V1BW",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "range",
+        "locator": "Air-to-air heat pumps > Stylish family listing",
+        "excerpt": "Stylish | Pompe à chaleur air-air au design primé"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 3.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "cw_pair",
+            "locator": "FTXTA-CW + RXTA-C > cooling, nominal",
+            "excerpt": "Puissance frigorifique | Nom. | kW | 3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "cw",
+            "locator": "FTXTA-CW + RXTA-C > indoor dimensions > height",
+            "excerpt": "Dimensions | Unité | Hauteur | mm | 295"
+          }
+        },
+        {
+          "key": "width",
+          "value": 798,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "cw",
+            "locator": "FTXTA-CW + RXTA-C > indoor dimensions > width",
+            "excerpt": "Dimensions | Unité | Largeur | mm | 798"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 189,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "cw",
+            "locator": "FTXTA-CW + RXTA-C > indoor dimensions > depth",
+            "excerpt": "Dimensions | Unité | Profondeur | mm | 189"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 786,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "cw",
+            "locator": "FTXTA-CW + RXTA-C > fan > cooling > high",
+            "excerpt": "Ventilateur | Débit d’air | Rafraîchissement | Haut | m³/min | 13.1; converted exactly ×60 to m³/h"
+          },
+          "condition": "cooling mode, high fan speed"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "FTXTA30C2V1BW paired with RXTA30C2V1B in Daikin France monosplit product technical table.",
+          "evidence": {
+            "sourceId": "cw_pair",
+            "locator": "FTXTA-CW + RXTA-C > exact model combination",
+            "excerpt": "FTXTA30C2V1BW / RXTA30C2V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Indoor model suffix identifies finish variant; no additional performance assumptions were made."
+      ]
+    },
+    {
+      "modelReference": "FTXTA30C2V1BB",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "range",
+        "locator": "Air-to-air heat pumps > Stylish family listing",
+        "excerpt": "Stylish | Pompe à chaleur air-air au design primé"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 3.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "cb_pair",
+            "locator": "FTXTA-CB + RXTA-C > cooling, nominal",
+            "excerpt": "Puissance frigorifique | Nom. | kW | 3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "cb",
+            "locator": "FTXTA-CB + RXTA-C > indoor dimensions > height",
+            "excerpt": "Dimensions | Unité | Hauteur | mm | 295"
+          }
+        },
+        {
+          "key": "width",
+          "value": 798,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "cb",
+            "locator": "FTXTA-CB + RXTA-C > indoor dimensions > width",
+            "excerpt": "Dimensions | Unité | Largeur | mm | 798"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 189,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "cb",
+            "locator": "FTXTA-CB + RXTA-C > indoor dimensions > depth",
+            "excerpt": "Dimensions | Unité | Profondeur | mm | 189"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 786,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "cb",
+            "locator": "FTXTA-CB + RXTA-C > fan > cooling > high",
+            "excerpt": "Ventilateur | Débit d’air | Rafraîchissement | Haut | m³/min | 13.1; converted exactly ×60 to m³/h"
+          },
+          "condition": "cooling mode, high fan speed"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "FTXTA30C2V1BB paired with RXTA30C2V1B in Daikin France monosplit product technical table.",
+          "evidence": {
+            "sourceId": "cb_pair",
+            "locator": "FTXTA-CB + RXTA-C > exact model combination",
+            "excerpt": "FTXTA30C2V1BB / RXTA30C2V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Indoor model suffix identifies finish variant; no additional performance assumptions were made."
+      ]
+    },
+    {
+      "modelReference": "RXTA30C2V1B",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "outdoor",
+        "locator": "Product technical table heading",
+        "excerpt": "Tableau avec les données techniques pour RXTA-C | RXTA30C2V1B"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 3.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "cw_pair",
+            "locator": "FTXTA-CW + RXTA-C > cooling, nominal",
+            "excerpt": "Puissance frigorifique | Nom. | kW | 3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 605,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "outdoor",
+            "locator": "RXTA-C > dimensions > height",
+            "excerpt": "Dimensions | Unité | Hauteur | mm | 605"
+          }
+        },
+        {
+          "key": "width",
+          "value": 930,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "outdoor",
+            "locator": "RXTA-C > dimensions > width",
+            "excerpt": "Dimensions | Unité | Largeur | mm | 930"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 376,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "outdoor",
+            "locator": "RXTA-C > dimensions > depth",
+            "excerpt": "Dimensions | Unité | Profondeur | mm | 376"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "outdoor",
+            "locator": "RXTA-C > refrigerant",
+            "excerpt": "Réfrigérant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "outdoor",
+            "locator": "RXTA-C > operating range > cooling > outdoor minimum",
+            "excerpt": "Plage de fonctionnement | Rafraîchissement | Temp. ext. | Min. | °CBS | -10"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "outdoor",
+            "locator": "RXTA-C > operating range > cooling > outdoor maximum",
+            "excerpt": "Plage de fonctionnement | Rafraîchissement | Temp. ext. | Max. | °CBS | 46"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -31,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "outdoor",
+            "locator": "RXTA-C > operating range > heating > outdoor minimum",
+            "excerpt": "Plage de fonctionnement | Chauffage | Temp. ext. | Min. | °CBH | -31"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "outdoor",
+            "locator": "RXTA-C > operating range > heating > outdoor maximum",
+            "excerpt": "Plage de fonctionnement | Chauffage | Temp. ext. | Max. | °CBH | 18"
+          },
+          "condition": "outdoor wet-bulb"
+        }
+      ],
+      "ratings": [
+        {
+          "mode": "cooling",
+          "combination": "FTXTA30C2V1BW + RXTA30C2V1B",
+          "conditions": "Indoor 27°C dry-bulb / 19°C wet-bulb; outdoor 35°C dry-bulb; equivalent pipe 5 m; level difference 0 m.",
+          "electricalBoundary": "unknown",
+          "thermalCapacityKw": {
+            "minimum": 1.2,
+            "nominal": 3.0,
+            "maximum": 4.6
+          },
+          "electricalInputKw": {
+            "minimum": null,
+            "nominal": null,
+            "maximum": null
+          },
+          "evidence": {
+            "sourceId": "cw_pair",
+            "locator": "FTXTA-CW + RXTA-C > ratings > cooling",
+            "excerpt": "Puissance frigorifique | Min. 1.2 | Nom. 3 | Max. 4.6 kW; nominal conditions note (3)"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "FTXTA30C2V1BW + RXTA30C2V1B",
+          "conditions": "Indoor 20°C dry-bulb; outdoor 7°C dry-bulb / 6°C wet-bulb; equivalent pipe 5 m; level difference 0 m.",
+          "electricalBoundary": "unknown",
+          "thermalCapacityKw": {
+            "minimum": 0.8,
+            "nominal": 3.2,
+            "maximum": 7.1
+          },
+          "electricalInputKw": {
+            "minimum": null,
+            "nominal": null,
+            "maximum": null
+          },
+          "evidence": {
+            "sourceId": "cw_pair",
+            "locator": "FTXTA-CW + RXTA-C > ratings > heating",
+            "excerpt": "Puissance calorifique | Min. 0.8 | Nom. 3.2 | Max. 7.1 kW; nominal conditions note (4)"
+          }
+        },
+        {
+          "mode": "cooling",
+          "combination": "FTXTA30C2V1BB + RXTA30C2V1B",
+          "conditions": "Indoor 27°C dry-bulb / 19°C wet-bulb; outdoor 35°C dry-bulb; equivalent pipe 5 m; level difference 0 m.",
+          "electricalBoundary": "unknown",
+          "thermalCapacityKw": {
+            "minimum": 1.2,
+            "nominal": 3.0,
+            "maximum": 4.6
+          },
+          "electricalInputKw": {
+            "minimum": null,
+            "nominal": null,
+            "maximum": null
+          },
+          "evidence": {
+            "sourceId": "cb_pair",
+            "locator": "FTXTA-CB + RXTA-C > ratings > cooling",
+            "excerpt": "Puissance frigorifique | Min. 1.2 | Nom. 3 | Max. 4.6 kW; nominal conditions note (3)"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "FTXTA30C2V1BB + RXTA30C2V1B",
+          "conditions": "Indoor 20°C dry-bulb; outdoor 7°C dry-bulb / 6°C wet-bulb; equivalent pipe 5 m; level difference 0 m.",
+          "electricalBoundary": "unknown",
+          "thermalCapacityKw": {
+            "minimum": 0.8,
+            "nominal": 3.2,
+            "maximum": 7.1
+          },
+          "electricalInputKw": {
+            "minimum": null,
+            "nominal": null,
+            "maximum": null
+          },
+          "evidence": {
+            "sourceId": "cb_pair",
+            "locator": "FTXTA-CB + RXTA-C > ratings > heating",
+            "excerpt": "Puissance calorifique | Min. 0.8 | Nom. 3.2 | Max. 7.1 kW; nominal conditions note (4)"
+          }
+        }
+      ],
+      "compatibility": [
+        {
+          "description": "Monosplit outdoor unit with exact documented pairs FTXTA30C2V1BW or FTXTA30C2V1BB.",
+          "evidence": {
+            "sourceId": "cw_pair",
+            "locator": "Exact combination header",
+            "excerpt": "FTXTA30C2V1BW / RXTA30C2V1B"
+          }
+        },
+        {
+          "description": "Monosplit outdoor unit with exact documented pair FTXTA30C2V1BB.",
+          "evidence": {
+            "sourceId": "cb_pair",
+            "locator": "Exact combination header",
+            "excerpt": "FTXTA30C2V1BB / RXTA30C2V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed Daikin tables.",
+        "Electrical input range for the paired system is not published in these tables."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

@@ -1,0 +1,2532 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-11",
+  "reviewer": "Independent Codex catalogue integration agent",
+  "scope": "Frozen accepted Luna Daikin batch only; no app/importer/acceptance/build/git changes by reviewer",
+  "decision": "Reviewed bounded fields accepted after Comfora50 casing and Ururu307 pin corrections; full-range completion not established",
+  "catalogueTests": {
+    "passed": 21,
+    "failed": 0
+  },
+  "runtimeGenerationExact": true,
+  "artifactSha256": {
+    "research/catalogue/equipment-acceptance.json": "3731c83439bab0719f35667950ee0d635fa29773b714c8b1cfabfdacafc66c78",
+    "tools/import-equipment.py": "08acf2241c2ce93793db5deff60fd51197eea04ff8c504b15f0b4ebbf076ec2f",
+    "tests/catalogue.test.py": "46658134f2820a6b27c0982eaa6c5062b6012371d61bd3257a405d22a20315a5",
+    "src/equipment.ts": "91b9c6d89e35f2d2780121d68550110a9da506d3ad6a893adfc8a0a89992875e",
+    "src/equipment-data.ts": "6baef625654f165801eb0bb7ca46638557a2ddc72044cef9713d3275e297da19"
+  },
+  "counts": {
+    "CATALOGUE_OUTDOORS": {
+      "mitsubishi-electric": 25,
+      "daikin": 36
+    },
+    "CATALOGUE_INDOORS": {
+      "mitsubishi-electric": 45,
+      "daikin": 79
+    }
+  },
+  "candidateSnapshots": [
+    {
+      "path": "research/catalogue/staging/luna-daikin-comfora-2026.json",
+      "sha256": "dc5850ce871e55c81d1679ac848bfa04bfc0d49c3e694ff5ea38cdc452a7bf04",
+      "acceptedReferences": [
+        "FTXP20N9",
+        "RXP20N9",
+        "FTXP25N9",
+        "RXP25N9",
+        "FTXP35N9",
+        "RXP35N9",
+        "FTXP50N9",
+        "RXP50N8",
+        "FTXP60N",
+        "RXP60N9",
+        "FTXP71N",
+        "RXP71N9"
+      ]
+    },
+    {
+      "path": "research/catalogue/staging/luna-daikin-emura-2026.json",
+      "sha256": "9ec9f65d33e65cdeb3abe760118b81b47b0360de53eff69cad110a62ba2b0443",
+      "acceptedReferences": [
+        "FTXJ20A2V1BW9",
+        "FTXJ25A2V1BW9",
+        "FTXJ35A2V1BW9",
+        "FTXJ42A2V1BW9",
+        "FTXJ50A2V1BW9",
+        "FTXJ20A2V1BS9",
+        "FTXJ25A2V1BS9",
+        "FTXJ35A2V1BS9",
+        "FTXJ42A2V1BS9",
+        "FTXJ50A2V1BS9",
+        "FTXJ20A2V1BB",
+        "FTXJ25A2V1BB",
+        "FTXJ35A2V1BB",
+        "FTXJ42A2V1BB",
+        "FTXJ50A2V1BB",
+        "RXJ20A5V1B9",
+        "RXJ25A5V1B9",
+        "RXJ35A5V1B9",
+        "RXJ42A5V1B9",
+        "RXJ50A5V1B9"
+      ]
+    },
+    {
+      "path": "research/catalogue/staging/luna-daikin-fdxm-f9-fr-2026.json",
+      "sha256": "f854a90de2f82e23454613cb3d339d3b9069ed4e9574fc151988a4598070cf4a",
+      "acceptedReferences": [
+        "FDXM25F3V1B9",
+        "FDXM35F3V1B9",
+        "FDXM50F3V1B9",
+        "FDXM60F3V1B9"
+      ]
+    },
+    {
+      "path": "research/catalogue/staging/luna-daikin-ftxta-cw-cb.json",
+      "sha256": "7680ed38ac701aaca5bc43b785111ec3e58ce5dad6835cf9e585c09583a9b4c9",
+      "acceptedReferences": [
+        "FTXTA30C2V1BW",
+        "FTXTA30C2V1BB",
+        "RXTA30C2V1B"
+      ]
+    },
+    {
+      "path": "research/catalogue/staging/luna-daikin-ftxtj-nepura-2026.json",
+      "sha256": "4a38010a6b590141fe12e275b8ffc96851c68ecc55fbbfaed2414800e1c4c134",
+      "acceptedReferences": [
+        "FTXTJ30AW",
+        "FTXTJ30AB",
+        "RXTJ30A"
+      ]
+    },
+    {
+      "path": "research/catalogue/staging/luna-daikin-nepura-ftxtm-fvxtm-2026.json",
+      "sha256": "014b921898cd8ad0edcdea8bdd51eccbdfeafe927b1f1dd21cb225e64da71750",
+      "acceptedReferences": [
+        "FTXTM30A",
+        "FTXTM40A",
+        "FVXTM30B",
+        "RXTM30A",
+        "RXTM40A"
+      ]
+    },
+    {
+      "path": "research/catalogue/staging/luna-daikin-perfera-ftxm-a-fr-legacy.json",
+      "sha256": "e8e20d7df6aacae1819631e55dcea85423f55e2ea4f2854b5a8dd6eff53c399b",
+      "acceptedReferences": [
+        "FTXM20A5V1B",
+        "FTXM20A2V1B",
+        "FTXM25A2V1B",
+        "FTXM25A5V1B",
+        "FTXM35A5V1B",
+        "FTXM35A2V1B",
+        "FTXM42A2V1B",
+        "FTXM42A5V1B",
+        "FTXM50A5V1B",
+        "FTXM50A2V1B",
+        "FTXM60A2V1B",
+        "FTXM71A2V1B"
+      ]
+    },
+    {
+      "path": "research/catalogue/staging/luna-daikin-perfera-fvxm-b-fr-2026.json",
+      "sha256": "b86be0da91044af68f96adf02aac3122f772f2c589e0dea53d7a17afd671054e",
+      "acceptedReferences": [
+        "FVXM25B2V1B",
+        "FVXM35B2V1B",
+        "FVXM50B2V1B"
+      ]
+    },
+    {
+      "path": "research/catalogue/staging/luna-daikin-perfera-rxm-a9-fr-legacy-pairs.json",
+      "sha256": "cce2c446cbf32f75b140670bf608d33d0076dbe208dcd6234da1ef3109f07fa2",
+      "acceptedReferences": [
+        "RXM25A5V1B9",
+        "RXM35A5V1B9",
+        "RXM50A5V1B9"
+      ]
+    },
+    {
+      "path": "research/catalogue/staging/luna-daikin-sensira-ftxc-e-fr-2026.json",
+      "sha256": "def85631d3eff0c8798af9771aa1dd9df1f8333c2b91329ab6c58b030eb7b0ea",
+      "acceptedReferences": [
+        "FTXC20EV1B",
+        "RXC20EV1B",
+        "FTXC25EV1B",
+        "RXC25EV1B",
+        "FTXC35EV1B",
+        "RXC35EV1B",
+        "FTXC50EV1B",
+        "RXC50EV1B",
+        "FTXC60EV1B",
+        "RXC60EV1B",
+        "FTXC71EV1B",
+        "RXC71EV1B"
+      ]
+    },
+    {
+      "path": "research/catalogue/staging/luna-daikin-sensira-ftxf-2026.json",
+      "sha256": "849da6f9b6e6af3afdeccad098d7fffb104c51b68c644f94ffc6f89d8a6d68b2",
+      "acceptedReferences": [
+        "FTXF20F5V1B",
+        "FTXF25F5V1B",
+        "FTXF35F5V1B",
+        "FTXF42F5V1B",
+        "FTXF50F5V1B",
+        "FTXF60F2V1B",
+        "RXF20F5V1B",
+        "RXF25F5V1B",
+        "RXF35F5V1B",
+        "RXF42F5V1B",
+        "RXF50F5V1B",
+        "FTXF71F2V1B"
+      ]
+    },
+    {
+      "path": "research/catalogue/staging/luna-daikin-ururu-sarara-2026.json",
+      "sha256": "f72d7fd221b5428e1f762db07f7120a94dd317f7a7ec3a83d587b10f038e8cc7",
+      "acceptedReferences": [
+        "FTXZ25N",
+        "RXZ25N",
+        "FTXZ35N",
+        "RXZ35N",
+        "FTXZ50N",
+        "RXZ50N"
+      ]
+    }
+  ],
+  "acceptanceSourceSnapshots": [
+    {
+      "sourceFile": "research/catalogue/source-cache/daikin-fr-split-installer-2022.pdf",
+      "sourceSha256": "814243080bf6b8795adccb3f8c670a87d0b692d7c1c09ec32c306f04add187ad",
+      "observedSha256": "814243080bf6b8795adccb3f8c670a87d0b692d7c1c09ec32c306f04add187ad",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/catalogue/source-cache/daikin-eu-2026-split-page-321.html",
+      "sourceSha256": "0a15650ca7d3b2e50f1d050dfa17000242040572dc2230bf40500b77543dd4d7",
+      "observedSha256": "0a15650ca7d3b2e50f1d050dfa17000242040572dc2230bf40500b77543dd4d7",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-current-air-air-range.html",
+      "sourceSha256": "1692c16708884096e9bd1b28a5ca8993d83d1ecaa3271f2355823568d55109fe",
+      "observedSha256": "1692c16708884096e9bd1b28a5ca8993d83d1ecaa3271f2355823568d55109fe",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-ftxta-cb-pair-table.html",
+      "sourceSha256": "a529c233304785e487fcb99b593e92040d5cd2ee7169bf02cd87a309c7ae424b",
+      "observedSha256": "a529c233304785e487fcb99b593e92040d5cd2ee7169bf02cd87a309c7ae424b",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-ftxta-cb-single-table.html",
+      "sourceSha256": "47a34ba4616b85b20c837b2b5d32b9761ab386b461b3b03524966b9d4d1076e2",
+      "observedSha256": "47a34ba4616b85b20c837b2b5d32b9761ab386b461b3b03524966b9d4d1076e2",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-ftxta-cw-pair-table.html",
+      "sourceSha256": "1a196f03789ef388c9ce0fac0c861da245d8988274fba035bcd3efe522e2b854",
+      "observedSha256": "1a196f03789ef388c9ce0fac0c861da245d8988274fba035bcd3efe522e2b854",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-ftxta-cw-single-table.html",
+      "sourceSha256": "8b53c1a1ecd30a043e3a2a7819d4bcb7c60d1803ce1e1118818981771b33379d",
+      "observedSha256": "8b53c1a1ecd30a043e3a2a7819d4bcb7c60d1803ce1e1118818981771b33379d",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-rxta-c-table.html",
+      "sourceSha256": "0516df40ef6b087585546a6dd5a761dadd25162324e11d026de87038765e8f94",
+      "observedSha256": "0516df40ef6b087585546a6dd5a761dadd25162324e11d026de87038765e8f94",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/catalogue/source-cache/daikin-eu-2026-split-page-348.html",
+      "sourceSha256": "ed5ca26baeeb5bcb3dfd81318ec1295d71940d67e505e4b2d714d31e4b792d82",
+      "observedSha256": "ed5ca26baeeb5bcb3dfd81318ec1295d71940d67e505e4b2d714d31e4b792d82",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/catalogue/source-cache/daikin-eu-2026-split-page-350.html",
+      "sourceSha256": "3608e35939dce9227998680ed3d5f205d472bc5439d09bc6f8c20a7392e5e47c",
+      "observedSha256": "3608e35939dce9227998680ed3d5f205d472bc5439d09bc6f8c20a7392e5e47c",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/catalogue/source-cache/daikin-eu-2026-split-page-344.html",
+      "sourceSha256": "dbfc8d2f146a95453173f586ca1879906b718d47d38f6a3e1eed8b96b7e33f9e",
+      "observedSha256": "dbfc8d2f146a95453173f586ca1879906b718d47d38f6a3e1eed8b96b7e33f9e",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-ftxp-n9-table.html",
+      "sourceSha256": "5e1ec7e8c40b006db05f7b0f9e9dd9da0f00cec660e8d5e688812367e9db3eab",
+      "observedSha256": "5e1ec7e8c40b006db05f7b0f9e9dd9da0f00cec660e8d5e688812367e9db3eab",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-rxp-n9-table.html",
+      "sourceSha256": "d0a4eb5dd3567a94b76c30fc3ab16ee28b4af04bf934d49a9a47712d43449d4e",
+      "observedSha256": "d0a4eb5dd3567a94b76c30fc3ab16ee28b4af04bf934d49a9a47712d43449d4e",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-emura-ftxj-aw9---rxj-a9.html",
+      "sourceSha256": "3bedd89cd9a827f4ca55f9019cc8a776b82f007fd2b71339d634c72f401592fa",
+      "observedSha256": "3bedd89cd9a827f4ca55f9019cc8a776b82f007fd2b71339d634c72f401592fa",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-emura-ftxj-as9---rxj-a9.html",
+      "sourceSha256": "fc5b3674f6ad4bdcbf6dedd664f3297f475a7a9cac7809c97f03be8cc6cc0a62",
+      "observedSha256": "fc5b3674f6ad4bdcbf6dedd664f3297f475a7a9cac7809c97f03be8cc6cc0a62",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-emura-ftxj-ab---rxj-a9.html",
+      "sourceSha256": "66158daa2f22c52a465885a1b7afa9e719ec9d746ce617ec6f0ce0bfc0e2c5f2",
+      "observedSha256": "66158daa2f22c52a465885a1b7afa9e719ec9d746ce617ec6f0ce0bfc0e2c5f2",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-emura-ftxj-aw9.html",
+      "sourceSha256": "7d1b3793ecb8b856bc04d84ff7af214f9b84197c4321b3c73daf8e4e1e5f030b",
+      "observedSha256": "7d1b3793ecb8b856bc04d84ff7af214f9b84197c4321b3c73daf8e4e1e5f030b",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-emura-ftxj-as9.html",
+      "sourceSha256": "1f3913e7c484f04d259f9c058547d5c8ddd3d35e77b70427d9fc86224b82f1bb",
+      "observedSha256": "1f3913e7c484f04d259f9c058547d5c8ddd3d35e77b70427d9fc86224b82f1bb",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-emura-ftxj-ab.html",
+      "sourceSha256": "37aa9dbf30f4956a7c1cae03dd432325868b0b2ccb65c36e30086a67afb3866b",
+      "observedSha256": "37aa9dbf30f4956a7c1cae03dd432325868b0b2ccb65c36e30086a67afb3866b",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-emura-rxj-a9.html",
+      "sourceSha256": "70c6b5a3100869dfe605bb4923481d19a0b9292847cc724ca1addfcf2b4c8cc1",
+      "observedSha256": "70c6b5a3100869dfe605bb4923481d19a0b9292847cc724ca1addfcf2b4c8cc1",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/catalogue/source-cache/daikin-eu-2026-split-page-322.html",
+      "sourceSha256": "b64a02f21c99daf9f3b6777330715014cd9217fac753594fb8b6550a797f6817",
+      "observedSha256": "b64a02f21c99daf9f3b6777330715014cd9217fac753594fb8b6550a797f6817",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-rxf-f-table.html",
+      "sourceSha256": "083fd8ed38052874ba87df4dab26607835bf66933dfa3b6a269262477b30736e",
+      "observedSha256": "083fd8ed38052874ba87df4dab26607835bf66933dfa3b6a269262477b30736e",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/catalogue/source-cache/daikin-eu-2026-split-page-323.html",
+      "sourceSha256": "de459846df88b583911ad0125bb0d547a275813573464e5f2524e97e67ff67b9",
+      "observedSha256": "de459846df88b583911ad0125bb0d547a275813573464e5f2524e97e67ff67b9",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-ftxc-e.html",
+      "sourceSha256": "3d544f531665983471bb339afff8855057aac801164f16436f844b59adab62c0",
+      "observedSha256": "3d544f531665983471bb339afff8855057aac801164f16436f844b59adab62c0",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-ftxc-e-pair-rxc-e.html",
+      "sourceSha256": "e0619231c9bbafa997eeb52615e76795361c5cdd1156a01a426a9d4ec124ecdf",
+      "observedSha256": "e0619231c9bbafa997eeb52615e76795361c5cdd1156a01a426a9d4ec124ecdf",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-rxc-e.html",
+      "sourceSha256": "4a30265f8b3f852a898c694d870b93711d889c8981d50b0f765900fc5c6613c3",
+      "observedSha256": "4a30265f8b3f852a898c694d870b93711d889c8981d50b0f765900fc5c6613c3",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/catalogue/source-cache/daikin-eu-2026-split-page-327.html",
+      "sourceSha256": "8cde915bfffbf9a83c63eaa4b030f0848fc5c82c5e67ddc6e2855353c7b38be0",
+      "observedSha256": "8cde915bfffbf9a83c63eaa4b030f0848fc5c82c5e67ddc6e2855353c7b38be0",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-fdxm-f9-table.html",
+      "sourceSha256": "0aab88e4d862274a178a230c968b82d1e044a39c76a6c8f9ef84e6bb5bb9ae24",
+      "observedSha256": "0aab88e4d862274a178a230c968b82d1e044a39c76a6c8f9ef84e6bb5bb9ae24",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-ftxm-a-table.html",
+      "sourceSha256": "e6ab92a63f05386179d79ab4373b22774b40646634f0eca10f9ffe39063603d4",
+      "observedSha256": "e6ab92a63f05386179d79ab4373b22774b40646634f0eca10f9ffe39063603d4",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/catalogue/source-cache/daikin-eu-2026-split-page-320.html",
+      "sourceSha256": "2becf651c2619e2ced56510cb32ae4a2cc8eabec377eed75e6c716444676f918",
+      "observedSha256": "2becf651c2619e2ced56510cb32ae4a2cc8eabec377eed75e6c716444676f918",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-rxm-a9.html",
+      "sourceSha256": "beafecde9d6c056fa088c70bd3f7702f489d92b0c72960638dfc8a8cc90d4af8",
+      "observedSha256": "beafecde9d6c056fa088c70bd3f7702f489d92b0c72960638dfc8a8cc90d4af8",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-ftxm-a-pair-rxm-a9.html",
+      "sourceSha256": "69a9264119cc37eba9e2bb3d60daaf59ee691bacd53080ea73b416b34840858b",
+      "observedSha256": "69a9264119cc37eba9e2bb3d60daaf59ee691bacd53080ea73b416b34840858b",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/catalogue/source-cache/daikin-eu-2026-split-page-325.html",
+      "sourceSha256": "227c32e9dd938d780567ddbda22105ec6910313701b057a0933bbae38ddd6b56",
+      "observedSha256": "227c32e9dd938d780567ddbda22105ec6910313701b057a0933bbae38ddd6b56",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-fvxm-b.html",
+      "sourceSha256": "80f531eff9a553969c86ac8bad8dad8cb59225736d5e71d238f554fd9868f5dc",
+      "observedSha256": "80f531eff9a553969c86ac8bad8dad8cb59225736d5e71d238f554fd9868f5dc",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-fvxm-b-pair-rxm-a9.html",
+      "sourceSha256": "f70af7c7a261b07ce6c3f68bfd8ff562b97adf95414c139f43ee5ab5c70b64f4",
+      "observedSha256": "f70af7c7a261b07ce6c3f68bfd8ff562b97adf95414c139f43ee5ab5c70b64f4",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-ftxf-f-table-2026.html",
+      "sourceSha256": "0e4002cc0957a600116dcb7ede34c3924a4796ee95ee6ef1975951e0d7d643be",
+      "observedSha256": "0e4002cc0957a600116dcb7ede34c3924a4796ee95ee6ef1975951e0d7d643be",
+      "matches": true
+    },
+    {
+      "sourceFile": "research/catalogue/source-cache/daikin-eu-2026-split-page-307.html",
+      "sourceSha256": "6ed56c9960c23278782b8416ea2b32afa7aa28a3199c5b0a88d784efeb1a8dd0",
+      "observedSha256": "6ed56c9960c23278782b8416ea2b32afa7aa28a3199c5b0a88d784efeb1a8dd0",
+      "matches": true
+    }
+  ],
+  "independentPrimaryChecks": {
+    "checks": [
+      {
+        "ref": "FTXTA30C2V1BW",
+        "key": "height",
+        "candidate": 295,
+        "primary": 295.0,
+        "file": "research/sources/luna-daikin-ftxta-cw-single-table.html"
+      },
+      {
+        "ref": "FTXTA30C2V1BW",
+        "key": "width",
+        "candidate": 798,
+        "primary": 798.0,
+        "file": "research/sources/luna-daikin-ftxta-cw-single-table.html"
+      },
+      {
+        "ref": "FTXTA30C2V1BW",
+        "key": "depth",
+        "candidate": 189,
+        "primary": 189.0,
+        "file": "research/sources/luna-daikin-ftxta-cw-single-table.html"
+      },
+      {
+        "ref": "FTXTA30C2V1BW",
+        "key": "airflow",
+        "candidate": 786,
+        "primary": 786.0,
+        "file": "research/sources/luna-daikin-ftxta-cw-single-table.html"
+      },
+      {
+        "ref": "FTXTA30C2V1BB",
+        "key": "height",
+        "candidate": 295,
+        "primary": 295.0,
+        "file": "research/sources/luna-daikin-ftxta-cb-single-table.html"
+      },
+      {
+        "ref": "FTXTA30C2V1BB",
+        "key": "width",
+        "candidate": 798,
+        "primary": 798.0,
+        "file": "research/sources/luna-daikin-ftxta-cb-single-table.html"
+      },
+      {
+        "ref": "FTXTA30C2V1BB",
+        "key": "depth",
+        "candidate": 189,
+        "primary": 189.0,
+        "file": "research/sources/luna-daikin-ftxta-cb-single-table.html"
+      },
+      {
+        "ref": "FTXTA30C2V1BB",
+        "key": "airflow",
+        "candidate": 786,
+        "primary": 786.0,
+        "file": "research/sources/luna-daikin-ftxta-cb-single-table.html"
+      },
+      {
+        "ref": "RXTA30C2V1B",
+        "key": "height",
+        "candidate": 605,
+        "primary": 605.0,
+        "file": "research/sources/luna-daikin-rxta-c-table.html"
+      },
+      {
+        "ref": "RXTA30C2V1B",
+        "key": "width",
+        "candidate": 930,
+        "primary": 930.0,
+        "file": "research/sources/luna-daikin-rxta-c-table.html"
+      },
+      {
+        "ref": "RXTA30C2V1B",
+        "key": "depth",
+        "candidate": 376,
+        "primary": 376.0,
+        "file": "research/sources/luna-daikin-rxta-c-table.html"
+      },
+      {
+        "ref": "RXTA30C2V1B",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-rxta-c-table.html"
+      },
+      {
+        "ref": "RXTA30C2V1B",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -31,
+        "primary": -31.0,
+        "file": "research/sources/luna-daikin-rxta-c-table.html"
+      },
+      {
+        "pair": "FTXTA30C2V1BW / RXTA30C2V1B",
+        "file": "research/sources/luna-daikin-ftxta-cw-pair-table.html"
+      },
+      {
+        "pair": "FTXTA30C2V1BB / RXTA30C2V1B",
+        "file": "research/sources/luna-daikin-ftxta-cb-pair-table.html"
+      },
+      {
+        "ref": "FTXJ20A2V1BW9",
+        "key": "height",
+        "candidate": 305,
+        "primary": 305.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ20A2V1BW9",
+        "key": "width",
+        "candidate": 900,
+        "primary": 900.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ20A2V1BW9",
+        "key": "depth",
+        "candidate": 212,
+        "primary": 212.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ20A2V1BW9",
+        "key": "airflow",
+        "candidate": 660.0,
+        "primary": 660.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ25A2V1BW9",
+        "key": "height",
+        "candidate": 305,
+        "primary": 305.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ25A2V1BW9",
+        "key": "width",
+        "candidate": 900,
+        "primary": 900.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ25A2V1BW9",
+        "key": "depth",
+        "candidate": 212,
+        "primary": 212.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ25A2V1BW9",
+        "key": "airflow",
+        "candidate": 684.0,
+        "primary": 684.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ35A2V1BW9",
+        "key": "height",
+        "candidate": 305,
+        "primary": 305.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ35A2V1BW9",
+        "key": "width",
+        "candidate": 900,
+        "primary": 900.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ35A2V1BW9",
+        "key": "depth",
+        "candidate": 212,
+        "primary": 212.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ35A2V1BW9",
+        "key": "airflow",
+        "candidate": 708.0,
+        "primary": 708.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ42A2V1BW9",
+        "key": "height",
+        "candidate": 305,
+        "primary": 305.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ42A2V1BW9",
+        "key": "width",
+        "candidate": 900,
+        "primary": 900.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ42A2V1BW9",
+        "key": "depth",
+        "candidate": 212,
+        "primary": 212.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ42A2V1BW9",
+        "key": "airflow",
+        "candidate": 780.0,
+        "primary": 780.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ50A2V1BW9",
+        "key": "height",
+        "candidate": 305,
+        "primary": 305.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ50A2V1BW9",
+        "key": "width",
+        "candidate": 900,
+        "primary": 900.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ50A2V1BW9",
+        "key": "depth",
+        "candidate": 212,
+        "primary": 212.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ50A2V1BW9",
+        "key": "airflow",
+        "candidate": 810.0,
+        "primary": 810.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9.html"
+      },
+      {
+        "ref": "FTXJ20A2V1BS9",
+        "key": "height",
+        "candidate": 305,
+        "primary": 305.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ20A2V1BS9",
+        "key": "width",
+        "candidate": 900,
+        "primary": 900.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ20A2V1BS9",
+        "key": "depth",
+        "candidate": 212,
+        "primary": 212.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ20A2V1BS9",
+        "key": "airflow",
+        "candidate": 660.0,
+        "primary": 660.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ25A2V1BS9",
+        "key": "height",
+        "candidate": 305,
+        "primary": 305.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ25A2V1BS9",
+        "key": "width",
+        "candidate": 900,
+        "primary": 900.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ25A2V1BS9",
+        "key": "depth",
+        "candidate": 212,
+        "primary": 212.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ25A2V1BS9",
+        "key": "airflow",
+        "candidate": 684.0,
+        "primary": 684.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ35A2V1BS9",
+        "key": "height",
+        "candidate": 305,
+        "primary": 305.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ35A2V1BS9",
+        "key": "width",
+        "candidate": 900,
+        "primary": 900.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ35A2V1BS9",
+        "key": "depth",
+        "candidate": 212,
+        "primary": 212.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ35A2V1BS9",
+        "key": "airflow",
+        "candidate": 708.0,
+        "primary": 708.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ42A2V1BS9",
+        "key": "height",
+        "candidate": 305,
+        "primary": 305.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ42A2V1BS9",
+        "key": "width",
+        "candidate": 900,
+        "primary": 900.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ42A2V1BS9",
+        "key": "depth",
+        "candidate": 212,
+        "primary": 212.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ42A2V1BS9",
+        "key": "airflow",
+        "candidate": 780.0,
+        "primary": 780.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ50A2V1BS9",
+        "key": "height",
+        "candidate": 305,
+        "primary": 305.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ50A2V1BS9",
+        "key": "width",
+        "candidate": 900,
+        "primary": 900.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ50A2V1BS9",
+        "key": "depth",
+        "candidate": 212,
+        "primary": 212.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ50A2V1BS9",
+        "key": "airflow",
+        "candidate": 810.0,
+        "primary": 810.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-as9.html"
+      },
+      {
+        "ref": "FTXJ20A2V1BB",
+        "key": "height",
+        "candidate": 305,
+        "primary": 305.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ20A2V1BB",
+        "key": "width",
+        "candidate": 900,
+        "primary": 900.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ20A2V1BB",
+        "key": "depth",
+        "candidate": 212,
+        "primary": 212.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ20A2V1BB",
+        "key": "airflow",
+        "candidate": 660.0,
+        "primary": 660.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ25A2V1BB",
+        "key": "height",
+        "candidate": 305,
+        "primary": 305.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ25A2V1BB",
+        "key": "width",
+        "candidate": 900,
+        "primary": 900.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ25A2V1BB",
+        "key": "depth",
+        "candidate": 212,
+        "primary": 212.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ25A2V1BB",
+        "key": "airflow",
+        "candidate": 684.0,
+        "primary": 684.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ35A2V1BB",
+        "key": "height",
+        "candidate": 305,
+        "primary": 305.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ35A2V1BB",
+        "key": "width",
+        "candidate": 900,
+        "primary": 900.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ35A2V1BB",
+        "key": "depth",
+        "candidate": 212,
+        "primary": 212.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ35A2V1BB",
+        "key": "airflow",
+        "candidate": 708.0,
+        "primary": 708.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ42A2V1BB",
+        "key": "height",
+        "candidate": 305,
+        "primary": 305.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ42A2V1BB",
+        "key": "width",
+        "candidate": 900,
+        "primary": 900.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ42A2V1BB",
+        "key": "depth",
+        "candidate": 212,
+        "primary": 212.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ42A2V1BB",
+        "key": "airflow",
+        "candidate": 780.0,
+        "primary": 780.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ50A2V1BB",
+        "key": "height",
+        "candidate": 305,
+        "primary": 305.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ50A2V1BB",
+        "key": "width",
+        "candidate": 900,
+        "primary": 900.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ50A2V1BB",
+        "key": "depth",
+        "candidate": 212,
+        "primary": 212.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "FTXJ50A2V1BB",
+        "key": "airflow",
+        "candidate": 810.0,
+        "primary": 810.0,
+        "file": "research/sources/luna-daikin-emura-ftxj-ab.html"
+      },
+      {
+        "ref": "RXJ20A5V1B9",
+        "key": "height",
+        "candidate": 552,
+        "primary": 552.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ20A5V1B9",
+        "key": "width",
+        "candidate": 840,
+        "primary": 840.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ20A5V1B9",
+        "key": "depth",
+        "candidate": 350,
+        "primary": 350.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ20A5V1B9",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ20A5V1B9",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -21,
+        "primary": -21.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "pair": "FTXJ20A2V1BW9 / RXJ20A5V1B9",
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9---rxj-a9.html"
+      },
+      {
+        "pair": "FTXJ20A2V1BS9 / RXJ20A5V1B9",
+        "file": "research/sources/luna-daikin-emura-ftxj-as9---rxj-a9.html"
+      },
+      {
+        "pair": "FTXJ20A2V1BB / RXJ20A5V1B9",
+        "file": "research/sources/luna-daikin-emura-ftxj-ab---rxj-a9.html"
+      },
+      {
+        "ref": "RXJ25A5V1B9",
+        "key": "height",
+        "candidate": 552,
+        "primary": 552.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ25A5V1B9",
+        "key": "width",
+        "candidate": 840,
+        "primary": 840.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ25A5V1B9",
+        "key": "depth",
+        "candidate": 350,
+        "primary": 350.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ25A5V1B9",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ25A5V1B9",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -21,
+        "primary": -21.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "pair": "FTXJ25A2V1BW9 / RXJ25A5V1B9",
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9---rxj-a9.html"
+      },
+      {
+        "pair": "FTXJ25A2V1BS9 / RXJ25A5V1B9",
+        "file": "research/sources/luna-daikin-emura-ftxj-as9---rxj-a9.html"
+      },
+      {
+        "pair": "FTXJ25A2V1BB / RXJ25A5V1B9",
+        "file": "research/sources/luna-daikin-emura-ftxj-ab---rxj-a9.html"
+      },
+      {
+        "ref": "RXJ35A5V1B9",
+        "key": "height",
+        "candidate": 552,
+        "primary": 552.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ35A5V1B9",
+        "key": "width",
+        "candidate": 840,
+        "primary": 840.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ35A5V1B9",
+        "key": "depth",
+        "candidate": 350,
+        "primary": 350.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ35A5V1B9",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ35A5V1B9",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -21,
+        "primary": -21.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "pair": "FTXJ35A2V1BW9 / RXJ35A5V1B9",
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9---rxj-a9.html"
+      },
+      {
+        "pair": "FTXJ35A2V1BS9 / RXJ35A5V1B9",
+        "file": "research/sources/luna-daikin-emura-ftxj-as9---rxj-a9.html"
+      },
+      {
+        "pair": "FTXJ35A2V1BB / RXJ35A5V1B9",
+        "file": "research/sources/luna-daikin-emura-ftxj-ab---rxj-a9.html"
+      },
+      {
+        "ref": "RXJ42A5V1B9",
+        "key": "height",
+        "candidate": 734,
+        "primary": 734.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ42A5V1B9",
+        "key": "width",
+        "candidate": 954,
+        "primary": 954.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ42A5V1B9",
+        "key": "depth",
+        "candidate": 408,
+        "primary": 408.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ42A5V1B9",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ42A5V1B9",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -21,
+        "primary": -21.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "pair": "FTXJ42A2V1BW9 / RXJ42A5V1B9",
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9---rxj-a9.html"
+      },
+      {
+        "pair": "FTXJ42A2V1BS9 / RXJ42A5V1B9",
+        "file": "research/sources/luna-daikin-emura-ftxj-as9---rxj-a9.html"
+      },
+      {
+        "pair": "FTXJ42A2V1BB / RXJ42A5V1B9",
+        "file": "research/sources/luna-daikin-emura-ftxj-ab---rxj-a9.html"
+      },
+      {
+        "ref": "RXJ50A5V1B9",
+        "key": "height",
+        "candidate": 734,
+        "primary": 734.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ50A5V1B9",
+        "key": "width",
+        "candidate": 954,
+        "primary": 954.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ50A5V1B9",
+        "key": "depth",
+        "candidate": 408,
+        "primary": 408.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ50A5V1B9",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "ref": "RXJ50A5V1B9",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -21,
+        "primary": -21.0,
+        "file": "research/sources/luna-daikin-emura-rxj-a9.html"
+      },
+      {
+        "pair": "FTXJ50A2V1BW9 / RXJ50A5V1B9",
+        "file": "research/sources/luna-daikin-emura-ftxj-aw9---rxj-a9.html"
+      },
+      {
+        "pair": "FTXJ50A2V1BS9 / RXJ50A5V1B9",
+        "file": "research/sources/luna-daikin-emura-ftxj-as9---rxj-a9.html"
+      },
+      {
+        "pair": "FTXJ50A2V1BB / RXJ50A5V1B9",
+        "file": "research/sources/luna-daikin-emura-ftxj-ab---rxj-a9.html"
+      },
+      {
+        "ref": "RXF20F5V1B",
+        "key": "height",
+        "candidate": 556,
+        "primary": 556.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF20F5V1B",
+        "key": "width",
+        "candidate": 740,
+        "primary": 740.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF20F5V1B",
+        "key": "depth",
+        "candidate": 343,
+        "primary": 343.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF20F5V1B",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF20F5V1B",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -15,
+        "primary": -15.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF25F5V1B",
+        "key": "height",
+        "candidate": 556,
+        "primary": 556.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF25F5V1B",
+        "key": "width",
+        "candidate": 740,
+        "primary": 740.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF25F5V1B",
+        "key": "depth",
+        "candidate": 343,
+        "primary": 343.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF25F5V1B",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF25F5V1B",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -15,
+        "primary": -15.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF35F5V1B",
+        "key": "height",
+        "candidate": 556,
+        "primary": 556.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF35F5V1B",
+        "key": "width",
+        "candidate": 740,
+        "primary": 740.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF35F5V1B",
+        "key": "depth",
+        "candidate": 343,
+        "primary": 343.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF35F5V1B",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF35F5V1B",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -15,
+        "primary": -15.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF42F5V1B",
+        "key": "height",
+        "candidate": 556,
+        "primary": 556.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF42F5V1B",
+        "key": "width",
+        "candidate": 740,
+        "primary": 740.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF42F5V1B",
+        "key": "depth",
+        "candidate": 343,
+        "primary": 343.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF42F5V1B",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF42F5V1B",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -15,
+        "primary": -15.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF50F5V1B",
+        "key": "height",
+        "candidate": 610,
+        "primary": 610.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF50F5V1B",
+        "key": "width",
+        "candidate": 923,
+        "primary": 923.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF50F5V1B",
+        "key": "depth",
+        "candidate": 367,
+        "primary": 367.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF50F5V1B",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "RXF50F5V1B",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -15,
+        "primary": -15.0,
+        "file": "research/sources/luna-daikin-rxf-f-table.html"
+      },
+      {
+        "ref": "FTXC20EV1B",
+        "key": "height",
+        "candidate": 288,
+        "primary": 288.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC20EV1B",
+        "key": "width",
+        "candidate": 770,
+        "primary": 770.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC20EV1B",
+        "key": "depth",
+        "candidate": 234,
+        "primary": 234.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC20EV1B",
+        "key": "airflow",
+        "candidate": 648.0,
+        "primary": 648.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "RXC20EV1B",
+        "key": "height",
+        "candidate": 550,
+        "primary": 550.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC20EV1B",
+        "key": "width",
+        "candidate": 658,
+        "primary": 658.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC20EV1B",
+        "key": "depth",
+        "candidate": 273,
+        "primary": 273.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC20EV1B",
+        "key": "coolingOutdoorMinimum",
+        "candidate": 10,
+        "primary": 10.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC20EV1B",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -15,
+        "primary": -15.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "FTXC25EV1B",
+        "key": "height",
+        "candidate": 288,
+        "primary": 288.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC25EV1B",
+        "key": "width",
+        "candidate": 770,
+        "primary": 770.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC25EV1B",
+        "key": "depth",
+        "candidate": 234,
+        "primary": 234.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC25EV1B",
+        "key": "airflow",
+        "candidate": 648.0,
+        "primary": 648.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "RXC25EV1B",
+        "key": "height",
+        "candidate": 550,
+        "primary": 550.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC25EV1B",
+        "key": "width",
+        "candidate": 658,
+        "primary": 658.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC25EV1B",
+        "key": "depth",
+        "candidate": 273,
+        "primary": 273.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC25EV1B",
+        "key": "coolingOutdoorMinimum",
+        "candidate": 10,
+        "primary": 10.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC25EV1B",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -15,
+        "primary": -15.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "FTXC35EV1B",
+        "key": "height",
+        "candidate": 288,
+        "primary": 288.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC35EV1B",
+        "key": "width",
+        "candidate": 770,
+        "primary": 770.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC35EV1B",
+        "key": "depth",
+        "candidate": 234,
+        "primary": 234.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC35EV1B",
+        "key": "airflow",
+        "candidate": 666.0,
+        "primary": 666.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "RXC35EV1B",
+        "key": "height",
+        "candidate": 550,
+        "primary": 550.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC35EV1B",
+        "key": "width",
+        "candidate": 658,
+        "primary": 658.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC35EV1B",
+        "key": "depth",
+        "candidate": 273,
+        "primary": 273.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC35EV1B",
+        "key": "coolingOutdoorMinimum",
+        "candidate": 10,
+        "primary": 10.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC35EV1B",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -15,
+        "primary": -15.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "FTXC50EV1B",
+        "key": "height",
+        "candidate": 288,
+        "primary": 288.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC50EV1B",
+        "key": "width",
+        "candidate": 770,
+        "primary": 770.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC50EV1B",
+        "key": "depth",
+        "candidate": 234,
+        "primary": 234.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC50EV1B",
+        "key": "airflow",
+        "candidate": 750.0,
+        "primary": 750.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "RXC50EV1B",
+        "key": "height",
+        "candidate": 615,
+        "primary": 615.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC50EV1B",
+        "key": "width",
+        "candidate": 845,
+        "primary": 845.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC50EV1B",
+        "key": "depth",
+        "candidate": 300,
+        "primary": 300.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC50EV1B",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC50EV1B",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -15,
+        "primary": -15.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "FTXC60EV1B",
+        "key": "height",
+        "candidate": 297,
+        "primary": 297.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC60EV1B",
+        "key": "width",
+        "candidate": 990,
+        "primary": 990.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC60EV1B",
+        "key": "depth",
+        "candidate": 273,
+        "primary": 273.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC60EV1B",
+        "key": "airflow",
+        "candidate": 1224.0,
+        "primary": 1224.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "RXC60EV1B",
+        "key": "height",
+        "candidate": 615,
+        "primary": 615.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC60EV1B",
+        "key": "width",
+        "candidate": 845,
+        "primary": 845.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC60EV1B",
+        "key": "depth",
+        "candidate": 300,
+        "primary": 300.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC60EV1B",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC60EV1B",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -15,
+        "primary": -15.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "FTXC71EV1B",
+        "key": "height",
+        "candidate": 297,
+        "primary": 297.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC71EV1B",
+        "key": "width",
+        "candidate": 990,
+        "primary": 990.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC71EV1B",
+        "key": "depth",
+        "candidate": 273,
+        "primary": 273.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "FTXC71EV1B",
+        "key": "airflow",
+        "candidate": 1224.0,
+        "primary": 1224.0,
+        "file": "research/sources/luna-daikin-ftxc-e.html"
+      },
+      {
+        "ref": "RXC71EV1B",
+        "key": "height",
+        "candidate": 695,
+        "primary": 695.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC71EV1B",
+        "key": "width",
+        "candidate": 930,
+        "primary": 930.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC71EV1B",
+        "key": "depth",
+        "candidate": 350,
+        "primary": 350.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC71EV1B",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "RXC71EV1B",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -15,
+        "primary": -15.0,
+        "file": "research/sources/luna-daikin-rxc-e.html"
+      },
+      {
+        "ref": "FDXM25F3V1B9",
+        "key": "height",
+        "candidate": 200,
+        "primary": 200.0,
+        "file": "research/sources/luna-daikin-fdxm-f9-table.html"
+      },
+      {
+        "ref": "FDXM25F3V1B9",
+        "key": "width",
+        "candidate": 750,
+        "primary": 750.0,
+        "file": "research/sources/luna-daikin-fdxm-f9-table.html"
+      },
+      {
+        "ref": "FDXM25F3V1B9",
+        "key": "depth",
+        "candidate": 620,
+        "primary": 620.0,
+        "file": "research/sources/luna-daikin-fdxm-f9-table.html"
+      },
+      {
+        "ref": "FDXM25F3V1B9",
+        "key": "airflow",
+        "candidate": 522.0,
+        "primary": 522.0,
+        "file": "research/sources/luna-daikin-fdxm-f9-table.html"
+      },
+      {
+        "ref": "FDXM35F3V1B9",
+        "key": "height",
+        "candidate": 200,
+        "primary": 200.0,
+        "file": "research/sources/luna-daikin-fdxm-f9-table.html"
+      },
+      {
+        "ref": "FDXM35F3V1B9",
+        "key": "width",
+        "candidate": 750,
+        "primary": 750.0,
+        "file": "research/sources/luna-daikin-fdxm-f9-table.html"
+      },
+      {
+        "ref": "FDXM35F3V1B9",
+        "key": "depth",
+        "candidate": 620,
+        "primary": 620.0,
+        "file": "research/sources/luna-daikin-fdxm-f9-table.html"
+      },
+      {
+        "ref": "FDXM35F3V1B9",
+        "key": "airflow",
+        "candidate": 522.0,
+        "primary": 522.0,
+        "file": "research/sources/luna-daikin-fdxm-f9-table.html"
+      },
+      {
+        "ref": "FDXM50F3V1B9",
+        "key": "height",
+        "candidate": 200,
+        "primary": 200.0,
+        "file": "research/sources/luna-daikin-fdxm-f9-table.html"
+      },
+      {
+        "ref": "FDXM50F3V1B9",
+        "key": "width",
+        "candidate": 1150,
+        "primary": 1150.0,
+        "file": "research/sources/luna-daikin-fdxm-f9-table.html"
+      },
+      {
+        "ref": "FDXM50F3V1B9",
+        "key": "depth",
+        "candidate": 620,
+        "primary": 620.0,
+        "file": "research/sources/luna-daikin-fdxm-f9-table.html"
+      },
+      {
+        "ref": "FDXM50F3V1B9",
+        "key": "airflow",
+        "candidate": 948.0,
+        "primary": 948.0,
+        "file": "research/sources/luna-daikin-fdxm-f9-table.html"
+      },
+      {
+        "ref": "FDXM60F3V1B9",
+        "key": "height",
+        "candidate": 200,
+        "primary": 200.0,
+        "file": "research/sources/luna-daikin-fdxm-f9-table.html"
+      },
+      {
+        "ref": "FDXM60F3V1B9",
+        "key": "width",
+        "candidate": 1150,
+        "primary": 1150.0,
+        "file": "research/sources/luna-daikin-fdxm-f9-table.html"
+      },
+      {
+        "ref": "FDXM60F3V1B9",
+        "key": "depth",
+        "candidate": 620,
+        "primary": 620.0,
+        "file": "research/sources/luna-daikin-fdxm-f9-table.html"
+      },
+      {
+        "ref": "FDXM60F3V1B9",
+        "key": "airflow",
+        "candidate": 960.0,
+        "primary": 960.0,
+        "file": "research/sources/luna-daikin-fdxm-f9-table.html"
+      },
+      {
+        "ref": "FTXM20A5V1B",
+        "key": "height",
+        "candidate": 298,
+        "primary": 298.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM20A5V1B",
+        "key": "width",
+        "candidate": 804,
+        "primary": 804.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM20A5V1B",
+        "key": "depth",
+        "candidate": 252,
+        "primary": 252.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM20A5V1B",
+        "key": "airflow",
+        "candidate": 714,
+        "primary": 714.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM20A2V1B",
+        "key": "height",
+        "candidate": 298,
+        "primary": 298.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM20A2V1B",
+        "key": "width",
+        "candidate": 804,
+        "primary": 804.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM20A2V1B",
+        "key": "depth",
+        "candidate": 252,
+        "primary": 252.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM20A2V1B",
+        "key": "airflow",
+        "candidate": 714,
+        "primary": 714.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM25A2V1B",
+        "key": "height",
+        "candidate": 298,
+        "primary": 298.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM25A2V1B",
+        "key": "width",
+        "candidate": 804,
+        "primary": 804.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM25A2V1B",
+        "key": "depth",
+        "candidate": 252,
+        "primary": 252.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM25A2V1B",
+        "key": "airflow",
+        "candidate": 714,
+        "primary": 714.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM25A5V1B",
+        "key": "height",
+        "candidate": 298,
+        "primary": 298.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM25A5V1B",
+        "key": "width",
+        "candidate": 804,
+        "primary": 804.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM25A5V1B",
+        "key": "depth",
+        "candidate": 252,
+        "primary": 252.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM25A5V1B",
+        "key": "airflow",
+        "candidate": 714,
+        "primary": 714.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM35A5V1B",
+        "key": "height",
+        "candidate": 298,
+        "primary": 298.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM35A5V1B",
+        "key": "width",
+        "candidate": 804,
+        "primary": 804.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM35A5V1B",
+        "key": "depth",
+        "candidate": 252,
+        "primary": 252.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM35A5V1B",
+        "key": "airflow",
+        "candidate": 792,
+        "primary": 792.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM35A2V1B",
+        "key": "height",
+        "candidate": 298,
+        "primary": 298.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM35A2V1B",
+        "key": "width",
+        "candidate": 804,
+        "primary": 804.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM35A2V1B",
+        "key": "depth",
+        "candidate": 252,
+        "primary": 252.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM35A2V1B",
+        "key": "airflow",
+        "candidate": 792,
+        "primary": 792.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM42A2V1B",
+        "key": "height",
+        "candidate": 298,
+        "primary": 298.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM42A2V1B",
+        "key": "width",
+        "candidate": 804,
+        "primary": 804.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM42A2V1B",
+        "key": "depth",
+        "candidate": 252,
+        "primary": 252.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM42A2V1B",
+        "key": "airflow",
+        "candidate": 798,
+        "primary": 798.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM42A5V1B",
+        "key": "height",
+        "candidate": 298,
+        "primary": 298.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM42A5V1B",
+        "key": "width",
+        "candidate": 804,
+        "primary": 804.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM42A5V1B",
+        "key": "depth",
+        "candidate": 252,
+        "primary": 252.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM42A5V1B",
+        "key": "airflow",
+        "candidate": 798,
+        "primary": 798.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM50A5V1B",
+        "key": "height",
+        "candidate": 298,
+        "primary": 298.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM50A5V1B",
+        "key": "width",
+        "candidate": 804,
+        "primary": 804.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM50A5V1B",
+        "key": "depth",
+        "candidate": 252,
+        "primary": 252.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM50A5V1B",
+        "key": "airflow",
+        "candidate": 762,
+        "primary": 762.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM50A2V1B",
+        "key": "height",
+        "candidate": 298,
+        "primary": 298.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM50A2V1B",
+        "key": "width",
+        "candidate": 804,
+        "primary": 804.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM50A2V1B",
+        "key": "depth",
+        "candidate": 252,
+        "primary": 252.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM50A2V1B",
+        "key": "airflow",
+        "candidate": 762,
+        "primary": 762.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM60A2V1B",
+        "key": "height",
+        "candidate": 298,
+        "primary": 298.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM60A2V1B",
+        "key": "width",
+        "candidate": 997,
+        "primary": 997.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM60A2V1B",
+        "key": "depth",
+        "candidate": 292,
+        "primary": 292.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM60A2V1B",
+        "key": "airflow",
+        "candidate": 936,
+        "primary": 936.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM71A2V1B",
+        "key": "height",
+        "candidate": 298,
+        "primary": 298.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM71A2V1B",
+        "key": "width",
+        "candidate": 997,
+        "primary": 997.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM71A2V1B",
+        "key": "depth",
+        "candidate": 292,
+        "primary": 292.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "FTXM71A2V1B",
+        "key": "airflow",
+        "candidate": 948,
+        "primary": 948.0,
+        "file": "research/sources/luna-daikin-ftxm-a-table.html"
+      },
+      {
+        "ref": "RXM25A5V1B9",
+        "key": "height",
+        "candidate": 610,
+        "primary": 610.0,
+        "file": "research/sources/luna-daikin-rxm-a9.html"
+      },
+      {
+        "ref": "RXM25A5V1B9",
+        "key": "width",
+        "candidate": 923,
+        "primary": 923.0,
+        "file": "research/sources/luna-daikin-rxm-a9.html"
+      },
+      {
+        "ref": "RXM25A5V1B9",
+        "key": "depth",
+        "candidate": 367,
+        "primary": 367.0,
+        "file": "research/sources/luna-daikin-rxm-a9.html"
+      },
+      {
+        "ref": "RXM25A5V1B9",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-rxm-a9.html"
+      },
+      {
+        "ref": "RXM25A5V1B9",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -21,
+        "primary": -21.0,
+        "file": "research/sources/luna-daikin-rxm-a9.html"
+      },
+      {
+        "pair": "FTXM25A2V1B / RXM25A5V1B9",
+        "file": "research/sources/luna-daikin-ftxm-a-pair-rxm-a9.html"
+      },
+      {
+        "pair": "FTXM25A5V1B / RXM25A5V1B9",
+        "file": "research/sources/luna-daikin-ftxm-a-pair-rxm-a9.html"
+      },
+      {
+        "pair": "FVXM25B2V1B / RXM25A5V1B9",
+        "file": "research/sources/luna-daikin-fvxm-b-pair-rxm-a9.html"
+      },
+      {
+        "ref": "RXM35A5V1B9",
+        "key": "height",
+        "candidate": 610,
+        "primary": 610.0,
+        "file": "research/sources/luna-daikin-rxm-a9.html"
+      },
+      {
+        "ref": "RXM35A5V1B9",
+        "key": "width",
+        "candidate": 923,
+        "primary": 923.0,
+        "file": "research/sources/luna-daikin-rxm-a9.html"
+      },
+      {
+        "ref": "RXM35A5V1B9",
+        "key": "depth",
+        "candidate": 367,
+        "primary": 367.0,
+        "file": "research/sources/luna-daikin-rxm-a9.html"
+      },
+      {
+        "ref": "RXM35A5V1B9",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-rxm-a9.html"
+      },
+      {
+        "ref": "RXM35A5V1B9",
+        "key": "heatingOutdoorMinimum",
+        "candidate": -21,
+        "primary": -21.0,
+        "file": "research/sources/luna-daikin-rxm-a9.html"
+      },
+      {
+        "pair": "FTXM35A2V1B / RXM35A5V1B9",
+        "file": "research/sources/luna-daikin-ftxm-a-pair-rxm-a9.html"
+      },
+      {
+        "pair": "FTXM35A5V1B / RXM35A5V1B9",
+        "file": "research/sources/luna-daikin-ftxm-a-pair-rxm-a9.html"
+      },
+      {
+        "pair": "FVXM35B2V1B / RXM35A5V1B9",
+        "file": "research/sources/luna-daikin-fvxm-b-pair-rxm-a9.html"
+      },
+      {
+        "ref": "RXM50A5V1B9",
+        "key": "height",
+        "candidate": 734,
+        "primary": 734.0,
+        "file": "research/sources/luna-daikin-rxm-a9.html"
+      },
+      {
+        "ref": "RXM50A5V1B9",
+        "key": "width",
+        "candidate": 954,
+        "primary": 954.0,
+        "file": "research/sources/luna-daikin-rxm-a9.html"
+      },
+      {
+        "ref": "RXM50A5V1B9",
+        "key": "depth",
+        "candidate": 401,
+        "primary": 401.0,
+        "file": "research/sources/luna-daikin-rxm-a9.html"
+      },
+      {
+        "ref": "RXM50A5V1B9",
+        "key": "coolingOutdoorMinimum",
+        "candidate": -10,
+        "primary": -10.0,
+        "file": "research/sources/luna-daikin-rxm-a9.html"
+      },
+      {
+        "pair": "FTXM50A2V1B / RXM50A5V1B9",
+        "file": "research/sources/luna-daikin-ftxm-a-pair-rxm-a9.html"
+      },
+      {
+        "pair": "FTXM50A5V1B / RXM50A5V1B9",
+        "file": "research/sources/luna-daikin-ftxm-a-pair-rxm-a9.html"
+      },
+      {
+        "pair": "FVXM50B2V1B / RXM50A5V1B9",
+        "file": "research/sources/luna-daikin-fvxm-b-pair-rxm-a9.html"
+      },
+      {
+        "ref": "FVXM25B2V1B",
+        "key": "height",
+        "candidate": 600,
+        "primary": 600.0,
+        "file": "research/sources/luna-daikin-fvxm-b.html"
+      },
+      {
+        "ref": "FVXM25B2V1B",
+        "key": "width",
+        "candidate": 750,
+        "primary": 750.0,
+        "file": "research/sources/luna-daikin-fvxm-b.html"
+      },
+      {
+        "ref": "FVXM25B2V1B",
+        "key": "depth",
+        "candidate": 238,
+        "primary": 238.0,
+        "file": "research/sources/luna-daikin-fvxm-b.html"
+      },
+      {
+        "ref": "FVXM25B2V1B",
+        "key": "airflow",
+        "candidate": 522.0,
+        "primary": 522.0,
+        "file": "research/sources/luna-daikin-fvxm-b.html"
+      },
+      {
+        "ref": "FVXM35B2V1B",
+        "key": "height",
+        "candidate": 600,
+        "primary": 600.0,
+        "file": "research/sources/luna-daikin-fvxm-b.html"
+      },
+      {
+        "ref": "FVXM35B2V1B",
+        "key": "width",
+        "candidate": 750,
+        "primary": 750.0,
+        "file": "research/sources/luna-daikin-fvxm-b.html"
+      },
+      {
+        "ref": "FVXM35B2V1B",
+        "key": "depth",
+        "candidate": 238,
+        "primary": 238.0,
+        "file": "research/sources/luna-daikin-fvxm-b.html"
+      },
+      {
+        "ref": "FVXM35B2V1B",
+        "key": "airflow",
+        "candidate": 552.0,
+        "primary": 552.0,
+        "file": "research/sources/luna-daikin-fvxm-b.html"
+      },
+      {
+        "ref": "FVXM50B2V1B",
+        "key": "height",
+        "candidate": 600,
+        "primary": 600.0,
+        "file": "research/sources/luna-daikin-fvxm-b.html"
+      },
+      {
+        "ref": "FVXM50B2V1B",
+        "key": "width",
+        "candidate": 750,
+        "primary": 750.0,
+        "file": "research/sources/luna-daikin-fvxm-b.html"
+      },
+      {
+        "ref": "FVXM50B2V1B",
+        "key": "depth",
+        "candidate": 238,
+        "primary": 238.0,
+        "file": "research/sources/luna-daikin-fvxm-b.html"
+      },
+      {
+        "ref": "FVXM50B2V1B",
+        "key": "airflow",
+        "candidate": 696.0,
+        "primary": 696.0,
+        "file": "research/sources/luna-daikin-fvxm-b.html"
+      },
+      {
+        "ref": "FTXF71F2V1B",
+        "key": "airflow",
+        "candidate": 1038,
+        "primary": 1038.0,
+        "file": "research/sources/luna-daikin-ftxf-f-table-2026.html"
+      }
+    ],
+    "errors": [],
+    "pairGaps": [
+      {
+        "ref": "RXTM30A",
+        "pair": "FTXTM30A",
+        "source": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/348/"
+      },
+      {
+        "ref": "RXTM30A",
+        "pair": "FVXTM30B",
+        "source": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/350/"
+      },
+      {
+        "ref": "RXTM40A",
+        "pair": "FTXTM40A",
+        "source": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/348/"
+      },
+      {
+        "ref": "RXTJ30A",
+        "pair": "FTXTJ30AW",
+        "source": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/344/"
+      },
+      {
+        "ref": "RXTJ30A",
+        "pair": "FTXTJ30AB",
+        "source": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/344/"
+      }
+    ],
+    "statusErrors": []
+  },
+  "manuallyVerifiedEUExactPairs": [
+    {
+      "outdoor": "RXTM30A",
+      "indoor": "FTXTM30A",
+      "page": 348,
+      "column": "FTXTM + RXTM 30A + 30A"
+    },
+    {
+      "outdoor": "RXTM30A",
+      "indoor": "FVXTM30B",
+      "page": 350,
+      "column": "FVXTM + RXTM 30B + 30A"
+    },
+    {
+      "outdoor": "RXTM40A",
+      "indoor": "FTXTM40A",
+      "page": 348,
+      "column": "FTXTM + RXTM 40A + 40A"
+    },
+    {
+      "outdoor": "RXTJ30A",
+      "indoor": "FTXTJ30AW",
+      "page": 344,
+      "column": "FTXTJ + RXTJ 30AW + 30A"
+    },
+    {
+      "outdoor": "RXTJ30A",
+      "indoor": "FTXTJ30AB",
+      "page": 344,
+      "column": "FTXTJ + RXTJ 30AB + 30A"
+    }
+  ],
+  "nullIndoorFlowAdditionalNegativeChecks": [
+    "Reject unpublished flag when candidate has airflow facts",
+    "Reject missing explicit unpublished-airflow unknown note"
+  ],
+  "provenanceHtmlAssetsToStage": [
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-321.html",
+    "research/sources/luna-daikin-current-air-air-range.html",
+    "research/sources/luna-daikin-ftxta-cb-pair-table.html",
+    "research/sources/luna-daikin-ftxta-cb-single-table.html",
+    "research/sources/luna-daikin-ftxta-cw-pair-table.html",
+    "research/sources/luna-daikin-ftxta-cw-single-table.html",
+    "research/sources/luna-daikin-rxta-c-table.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-348.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-350.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-344.html",
+    "research/sources/luna-daikin-ftxp-n9-table.html",
+    "research/sources/luna-daikin-rxp-n9-table.html",
+    "research/sources/luna-daikin-emura-ftxj-aw9---rxj-a9.html",
+    "research/sources/luna-daikin-emura-ftxj-as9---rxj-a9.html",
+    "research/sources/luna-daikin-emura-ftxj-ab---rxj-a9.html",
+    "research/sources/luna-daikin-emura-ftxj-aw9.html",
+    "research/sources/luna-daikin-emura-ftxj-as9.html",
+    "research/sources/luna-daikin-emura-ftxj-ab.html",
+    "research/sources/luna-daikin-emura-rxj-a9.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-322.html",
+    "research/sources/luna-daikin-rxf-f-table.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-323.html",
+    "research/sources/luna-daikin-ftxc-e.html",
+    "research/sources/luna-daikin-ftxc-e-pair-rxc-e.html",
+    "research/sources/luna-daikin-rxc-e.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-327.html",
+    "research/sources/luna-daikin-fdxm-f9-table.html",
+    "research/sources/luna-daikin-ftxm-a-table.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-320.html",
+    "research/sources/luna-daikin-rxm-a9.html",
+    "research/sources/luna-daikin-ftxm-a-pair-rxm-a9.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-325.html",
+    "research/sources/luna-daikin-fvxm-b.html",
+    "research/sources/luna-daikin-fvxm-b-pair-rxm-a9.html",
+    "research/sources/luna-daikin-ftxf-f-table-2026.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-307.html"
+  ],
+  "ignoredHtmlAssetsRequiringForceAdd": [
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-321.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-348.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-350.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-344.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-322.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-323.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-327.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-320.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-325.html",
+    "research/catalogue/source-cache/daikin-eu-2026-split-page-307.html"
+  ],
+  "optionalHistoricalPrimaryPdfCaches": [
+    "research/catalogue/source-cache/daikin-fr-split-installer-2022.pdf"
+  ],
+  "limits": [
+    "No full Daikin or Mitsubishi consumer-range claim",
+    "No OEM compressor/performance map, UA, fan watts, factory charge or operating electrical floor accepted",
+    "Abbreviated official EU references retained; full suffix-specific compatibility not inferred",
+    "Indoor cooling-high airflow reuse in heating is an explicit generic assumption",
+    "Runtime does not currently export current/legacy status; archived status retained in evidence and coverage documents",
+    "Importer checks source hash only if local snapshot exists; source assets must be staged for audit on clean checkout"
+  ]
+}

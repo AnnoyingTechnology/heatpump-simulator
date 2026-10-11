@@ -88,15 +88,27 @@ export function segmentFor(id: string, readings: Readings): SegState {
   const actual = inventorySegment(id,readings);
   if (actual) return actual;
   const cycle = readings.engine?.cycle;
+  // The common header is a mixed stream; branch valve faces retain their individual PH states.
+  if (cycle && segKind(id) === 'liqHdr') {
+    const state = fm === 'heating' ? cycle.expansionOutlet : cycle.condenserOutlet;
+    return { ...result, phase: state.phase === 'two-phase' ? 'two' : state.phase, tempC: state.temperatureC };
+  }
   if (!cycle || !id.includes(':')) return result;
   const i = Number(id.split(':')[1]);
   if (!(cycle.branchMassFlowsKgs[i] > 0)) return { phase: 'idle', dir: 0, tempC: null };
   const kind = segKind(id), heating = fm === 'heating';
-  let state: RefrigerantState | undefined;
+  let state: RefrigerantState | null | undefined;
   if (['gasField', 'inG'].includes(kind)) state = heating ? cycle.branchInlets[i] : cycle.branchOutlets[i];
   // Zero-length individual returns retain their own state until the header mixing node.
   if (kind === 'gasStub' && !heating && readings.fieldLines === 'idealized') state = cycle.branchOutlets[i];
   if (['liqField', 'fieldStub', 'inL'].includes(kind)) state = heating ? cycle.branchOutlets[i] : cycle.branchInlets[i];
+  if (kind === 'hdrStub') state = heating ? cycle.branchValveOutlets?.[i] : cycle.branchValveInlets?.[i];
+  // Field tubing uses its outdoor valve-face state as the representative colour;
+  // the indoor coil-end probe independently shows any modeled line heat/pressure change.
+  if (kind === 'fieldStub' || kind === 'liqField') {
+    state = heating ? cycle.branchValveInlets?.[i] : cycle.branchValveOutlets?.[i];
+  }
+  if (['hdrStub', 'fieldStub', 'liqField'].includes(kind) && !state) return { phase: 'unknown', dir: 0, tempC: null };
   return state ? { ...result, phase: state.phase === 'two-phase' ? 'two' : state.phase, tempC: state.temperatureC } : result;
 }
 

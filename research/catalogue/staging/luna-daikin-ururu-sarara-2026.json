@@ -1,0 +1,613 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Ururu Sarara FTXZ-N + RXZ-N",
+  "market": "Europe residential air-to-air; 2026 Daikin Europe catalogue (France distribution status not independently established for every model)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-eu-2026-p307",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/307/",
+      "title": "Daikin Europe General Catalogue 2026 — Split residential air-to-air solutions",
+      "edition": "ECPEN26-500, 2026; official Daikin Europe flipbook page",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FTXZ25N",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p307",
+        "locator": "Flipbook route 307, printed heading 307; indoor model column in exact combination and indoor-unit tables",
+        "excerpt": "FTXZ-N + RXZ-N | 25N + 25N"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 2.5,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 0.6/2.5/3.9 0.6/3.5/5.3 0.6/5.0/5.8"
+          }
+        },
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 295x798x372"
+          }
+        },
+        {
+          "key": "width",
+          "value": 798,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 295x798x372"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 372,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 295x798x372"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 642.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Silent operation/Low/High m³/min 4.0/5.3/10.7 4.0/5.6/12.1 4.6/6.6/15.0"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXZ25N.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXZ-N + RXZ-N | 25N + 25N"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "FTXZ35N",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p307",
+        "locator": "Flipbook route 307, printed heading 307; indoor model column in exact combination and indoor-unit tables",
+        "excerpt": "FTXZ-N + RXZ-N | 35N + 35N"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 3.5,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 0.6/2.5/3.9 0.6/3.5/5.3 0.6/5.0/5.8"
+          }
+        },
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 295x798x372"
+          }
+        },
+        {
+          "key": "width",
+          "value": 798,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 295x798x372"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 372,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 295x798x372"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 726.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Silent operation/Low/High m³/min 4.0/5.3/10.7 4.0/5.6/12.1 4.6/6.6/15.0"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXZ35N.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXZ-N + RXZ-N | 35N + 35N"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "FTXZ50N",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p307",
+        "locator": "Flipbook route 307, printed heading 307; indoor model column in exact combination and indoor-unit tables",
+        "excerpt": "FTXZ-N + RXZ-N | 50N + 50N"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 5.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 0.6/2.5/3.9 0.6/3.5/5.3 0.6/5.0/5.8"
+          }
+        },
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 295x798x372"
+          }
+        },
+        {
+          "key": "width",
+          "value": 798,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 295x798x372"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 372,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 295x798x372"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 900.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Silent operation/Low/High m³/min 4.0/5.3/10.7 4.0/5.6/12.1 4.6/6.6/15.0"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXZ50N.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXZ-N + RXZ-N | 50N + 50N"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "RXZ25N",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p307",
+        "locator": "Flipbook route 307, printed heading 307; outdoor model column in exact combination and outdoor-unit tables",
+        "excerpt": "RXZ 25N"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 2.5,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; efficiency data table nominal cooling capacity for exact paired combination",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 0.6/2.5/3.9 0.6/3.5/5.3 0.6/5.0/5.8"
+          }
+        },
+        {
+          "key": "height",
+          "value": 693,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ25N, dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 693x795x300"
+          }
+        },
+        {
+          "key": "width",
+          "value": 795,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ25N, dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 693x795x300"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 300,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ25N, dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 693x795x300"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ25N, refrigerant type",
+            "excerpt": "Refrigerant Type R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ25N, cooling ambient minimum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~43"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 43,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ25N, cooling ambient maximum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~43"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -20,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ25N, heating ambient minimum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -20~18"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ25N, heating ambient maximum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -20~18"
+          },
+          "condition": "outdoor wet-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit outdoor model; exact documented paired indoor references: FTXZ25N.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; efficiency data table exact pair columns",
+            "excerpt": "RXZ 25N"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed table and remains unknown.",
+        "Electrical input is published only as condition-specific nominal table data; no steady compressor map or minimum is inferred."
+      ]
+    },
+    {
+      "modelReference": "RXZ35N",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p307",
+        "locator": "Flipbook route 307, printed heading 307; outdoor model column in exact combination and outdoor-unit tables",
+        "excerpt": "RXZ 35N"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 3.5,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; efficiency data table nominal cooling capacity for exact paired combination",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 0.6/2.5/3.9 0.6/3.5/5.3 0.6/5.0/5.8"
+          }
+        },
+        {
+          "key": "height",
+          "value": 693,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ35N, dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 693x795x300"
+          }
+        },
+        {
+          "key": "width",
+          "value": 795,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ35N, dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 693x795x300"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 300,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ35N, dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 693x795x300"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ35N, refrigerant type",
+            "excerpt": "Refrigerant Type R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ35N, cooling ambient minimum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~43"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 43,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ35N, cooling ambient maximum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~43"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -20,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ35N, heating ambient minimum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -20~18"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ35N, heating ambient maximum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -20~18"
+          },
+          "condition": "outdoor wet-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit outdoor model; exact documented paired indoor references: FTXZ35N.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; efficiency data table exact pair columns",
+            "excerpt": "RXZ 35N"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed table and remains unknown.",
+        "Electrical input is published only as condition-specific nominal table data; no steady compressor map or minimum is inferred."
+      ]
+    },
+    {
+      "modelReference": "RXZ50N",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p307",
+        "locator": "Flipbook route 307, printed heading 307; outdoor model column in exact combination and outdoor-unit tables",
+        "excerpt": "RXZ 50N"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 5.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; efficiency data table nominal cooling capacity for exact paired combination",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 0.6/2.5/3.9 0.6/3.5/5.3 0.6/5.0/5.8"
+          }
+        },
+        {
+          "key": "height",
+          "value": 693,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ50N, dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 693x795x300"
+          }
+        },
+        {
+          "key": "width",
+          "value": 795,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ50N, dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 693x795x300"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 300,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ50N, dimensions H×W×D",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 693x795x300"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ50N, refrigerant type",
+            "excerpt": "Refrigerant Type R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ50N, cooling ambient minimum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~43"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 43,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ50N, cooling ambient maximum",
+            "excerpt": "Operation range Cooling Ambient Min.~Max. °CDB -10~43"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -20,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ50N, heating ambient minimum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -20~18"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; outdoor unit RXZ50N, heating ambient maximum",
+            "excerpt": "Heating Ambient Min.~Max. °CWB -20~18"
+          },
+          "condition": "outdoor wet-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit outdoor model; exact documented paired indoor references: FTXZ50N.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p307",
+            "locator": "Flipbook route 307, printed heading 307; efficiency data table exact pair columns",
+            "excerpt": "RXZ 50N"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed table and remains unknown.",
+        "Electrical input is published only as condition-specific nominal table data; no steady compressor map or minimum is inferred."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

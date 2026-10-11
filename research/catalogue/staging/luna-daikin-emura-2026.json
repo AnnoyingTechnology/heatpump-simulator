@@ -1,0 +1,1851 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Emura FTXJ-AW9/AS9/AB + RXJ-A9",
+  "market": "France / Europe residential air-to-air; Daikin France current product database, checked 2026-10-11",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXJ-AW9---RXJ-A9.html",
+      "title": "Daikin France technical product table FTXJ-AW9---RXJ-A9",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXJ-AS9---RXJ-A9.html",
+      "title": "Daikin France technical product table FTXJ-AS9---RXJ-A9",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXJ-AB---RXJ-A9.html",
+      "title": "Daikin France technical product table FTXJ-AB---RXJ-A9",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-emura-ftxj-aw9",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXJ-AW9.html",
+      "title": "Daikin France technical product table FTXJ-AW9",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-emura-ftxj-as9",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXJ-AS9.html",
+      "title": "Daikin France technical product table FTXJ-AS9",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-emura-ftxj-ab",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXJ-AB.html",
+      "title": "Daikin France technical product table FTXJ-AB",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-emura-rxj-a9",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/RXJ-A9.html",
+      "title": "Daikin France technical product table RXJ-A9",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FTXJ20A2V1BW9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+        "locator": "Exact Daikin France monosplit pair header",
+        "excerpt": "FTXJ20A2V1BW9 / RXJ20A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ20A2V1BW9; dimensions row height",
+            "excerpt": "FTXJ20A2V1BW9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 900,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ20A2V1BW9; dimensions row width",
+            "excerpt": "FTXJ20A2V1BW9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 212,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ20A2V1BW9; dimensions row depth",
+            "excerpt": "FTXJ20A2V1BW9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 2.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+            "locator": "Exact monosplit pair column, nominal cooling capacity",
+            "excerpt": "FTXJ20A2V1BW9 / RXJ20A5V1B9; Cooling nominal capacity 2 kW"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 660.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ20A2V1BW9; cooling high fan airflow",
+            "excerpt": "FTXJ20A2V1BW9 | Air flow rate | Cooling | High | 11 m³/min; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXJ20A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ20A2V1BW9 / RXJ20A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Model suffixes AW9, AS9 and AB are distinct full references; no shared identity was inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXJ25A2V1BW9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+        "locator": "Exact Daikin France monosplit pair header",
+        "excerpt": "FTXJ25A2V1BW9 / RXJ25A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ25A2V1BW9; dimensions row height",
+            "excerpt": "FTXJ25A2V1BW9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 900,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ25A2V1BW9; dimensions row width",
+            "excerpt": "FTXJ25A2V1BW9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 212,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ25A2V1BW9; dimensions row depth",
+            "excerpt": "FTXJ25A2V1BW9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 2.5,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+            "locator": "Exact monosplit pair column, nominal cooling capacity",
+            "excerpt": "FTXJ25A2V1BW9 / RXJ25A5V1B9; Cooling nominal capacity 2.5 kW"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 684.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ25A2V1BW9; cooling high fan airflow",
+            "excerpt": "FTXJ25A2V1BW9 | Air flow rate | Cooling | High | 11.4 m³/min; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXJ25A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ25A2V1BW9 / RXJ25A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Model suffixes AW9, AS9 and AB are distinct full references; no shared identity was inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXJ35A2V1BW9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+        "locator": "Exact Daikin France monosplit pair header",
+        "excerpt": "FTXJ35A2V1BW9 / RXJ35A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ35A2V1BW9; dimensions row height",
+            "excerpt": "FTXJ35A2V1BW9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 900,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ35A2V1BW9; dimensions row width",
+            "excerpt": "FTXJ35A2V1BW9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 212,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ35A2V1BW9; dimensions row depth",
+            "excerpt": "FTXJ35A2V1BW9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 3.4,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+            "locator": "Exact monosplit pair column, nominal cooling capacity",
+            "excerpt": "FTXJ35A2V1BW9 / RXJ35A5V1B9; Cooling nominal capacity 3.4 kW"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 708.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ35A2V1BW9; cooling high fan airflow",
+            "excerpt": "FTXJ35A2V1BW9 | Air flow rate | Cooling | High | 11.8 m³/min; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXJ35A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ35A2V1BW9 / RXJ35A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Model suffixes AW9, AS9 and AB are distinct full references; no shared identity was inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXJ42A2V1BW9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+        "locator": "Exact Daikin France monosplit pair header",
+        "excerpt": "FTXJ42A2V1BW9 / RXJ42A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ42A2V1BW9; dimensions row height",
+            "excerpt": "FTXJ42A2V1BW9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 900,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ42A2V1BW9; dimensions row width",
+            "excerpt": "FTXJ42A2V1BW9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 212,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ42A2V1BW9; dimensions row depth",
+            "excerpt": "FTXJ42A2V1BW9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 4.2,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+            "locator": "Exact monosplit pair column, nominal cooling capacity",
+            "excerpt": "FTXJ42A2V1BW9 / RXJ42A5V1B9; Cooling nominal capacity 4.2 kW"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 780.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ42A2V1BW9; cooling high fan airflow",
+            "excerpt": "FTXJ42A2V1BW9 | Air flow rate | Cooling | High | 13 m³/min; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXJ42A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ42A2V1BW9 / RXJ42A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Model suffixes AW9, AS9 and AB are distinct full references; no shared identity was inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXJ50A2V1BW9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+        "locator": "Exact Daikin France monosplit pair header",
+        "excerpt": "FTXJ50A2V1BW9 / RXJ50A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ50A2V1BW9; dimensions row height",
+            "excerpt": "FTXJ50A2V1BW9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 900,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ50A2V1BW9; dimensions row width",
+            "excerpt": "FTXJ50A2V1BW9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 212,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ50A2V1BW9; dimensions row depth",
+            "excerpt": "FTXJ50A2V1BW9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 5.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+            "locator": "Exact monosplit pair column, nominal cooling capacity",
+            "excerpt": "FTXJ50A2V1BW9 / RXJ50A5V1B9; Cooling nominal capacity 5 kW"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 810.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9",
+            "locator": "Indoor product table exact FTXJ50A2V1BW9; cooling high fan airflow",
+            "excerpt": "FTXJ50A2V1BW9 | Air flow rate | Cooling | High | 13.5 m³/min; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXJ50A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ50A2V1BW9 / RXJ50A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Model suffixes AW9, AS9 and AB are distinct full references; no shared identity was inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXJ20A2V1BS9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+        "locator": "Exact Daikin France monosplit pair header",
+        "excerpt": "FTXJ20A2V1BS9 / RXJ20A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ20A2V1BS9; dimensions row height",
+            "excerpt": "FTXJ20A2V1BS9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 900,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ20A2V1BS9; dimensions row width",
+            "excerpt": "FTXJ20A2V1BS9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 212,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ20A2V1BS9; dimensions row depth",
+            "excerpt": "FTXJ20A2V1BS9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 2.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+            "locator": "Exact monosplit pair column, nominal cooling capacity",
+            "excerpt": "FTXJ20A2V1BS9 / RXJ20A5V1B9; Cooling nominal capacity 2 kW"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 660.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ20A2V1BS9; cooling high fan airflow",
+            "excerpt": "FTXJ20A2V1BS9 | Air flow rate | Cooling | High | 11 m³/min; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXJ20A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ20A2V1BS9 / RXJ20A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Model suffixes AW9, AS9 and AB are distinct full references; no shared identity was inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXJ25A2V1BS9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+        "locator": "Exact Daikin France monosplit pair header",
+        "excerpt": "FTXJ25A2V1BS9 / RXJ25A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ25A2V1BS9; dimensions row height",
+            "excerpt": "FTXJ25A2V1BS9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 900,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ25A2V1BS9; dimensions row width",
+            "excerpt": "FTXJ25A2V1BS9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 212,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ25A2V1BS9; dimensions row depth",
+            "excerpt": "FTXJ25A2V1BS9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 2.5,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+            "locator": "Exact monosplit pair column, nominal cooling capacity",
+            "excerpt": "FTXJ25A2V1BS9 / RXJ25A5V1B9; Cooling nominal capacity 2.5 kW"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 684.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ25A2V1BS9; cooling high fan airflow",
+            "excerpt": "FTXJ25A2V1BS9 | Air flow rate | Cooling | High | 11.4 m³/min; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXJ25A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ25A2V1BS9 / RXJ25A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Model suffixes AW9, AS9 and AB are distinct full references; no shared identity was inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXJ35A2V1BS9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+        "locator": "Exact Daikin France monosplit pair header",
+        "excerpt": "FTXJ35A2V1BS9 / RXJ35A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ35A2V1BS9; dimensions row height",
+            "excerpt": "FTXJ35A2V1BS9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 900,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ35A2V1BS9; dimensions row width",
+            "excerpt": "FTXJ35A2V1BS9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 212,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ35A2V1BS9; dimensions row depth",
+            "excerpt": "FTXJ35A2V1BS9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 3.4,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+            "locator": "Exact monosplit pair column, nominal cooling capacity",
+            "excerpt": "FTXJ35A2V1BS9 / RXJ35A5V1B9; Cooling nominal capacity 3.4 kW"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 708.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ35A2V1BS9; cooling high fan airflow",
+            "excerpt": "FTXJ35A2V1BS9 | Air flow rate | Cooling | High | 11.8 m³/min; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXJ35A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ35A2V1BS9 / RXJ35A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Model suffixes AW9, AS9 and AB are distinct full references; no shared identity was inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXJ42A2V1BS9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+        "locator": "Exact Daikin France monosplit pair header",
+        "excerpt": "FTXJ42A2V1BS9 / RXJ42A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ42A2V1BS9; dimensions row height",
+            "excerpt": "FTXJ42A2V1BS9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 900,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ42A2V1BS9; dimensions row width",
+            "excerpt": "FTXJ42A2V1BS9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 212,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ42A2V1BS9; dimensions row depth",
+            "excerpt": "FTXJ42A2V1BS9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 4.2,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+            "locator": "Exact monosplit pair column, nominal cooling capacity",
+            "excerpt": "FTXJ42A2V1BS9 / RXJ42A5V1B9; Cooling nominal capacity 4.2 kW"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 780.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ42A2V1BS9; cooling high fan airflow",
+            "excerpt": "FTXJ42A2V1BS9 | Air flow rate | Cooling | High | 13 m³/min; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXJ42A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ42A2V1BS9 / RXJ42A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Model suffixes AW9, AS9 and AB are distinct full references; no shared identity was inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXJ50A2V1BS9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+        "locator": "Exact Daikin France monosplit pair header",
+        "excerpt": "FTXJ50A2V1BS9 / RXJ50A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ50A2V1BS9; dimensions row height",
+            "excerpt": "FTXJ50A2V1BS9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 900,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ50A2V1BS9; dimensions row width",
+            "excerpt": "FTXJ50A2V1BS9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 212,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ50A2V1BS9; dimensions row depth",
+            "excerpt": "FTXJ50A2V1BS9 | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 5.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+            "locator": "Exact monosplit pair column, nominal cooling capacity",
+            "excerpt": "FTXJ50A2V1BS9 / RXJ50A5V1B9; Cooling nominal capacity 5 kW"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 810.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9",
+            "locator": "Indoor product table exact FTXJ50A2V1BS9; cooling high fan airflow",
+            "excerpt": "FTXJ50A2V1BS9 | Air flow rate | Cooling | High | 13.5 m³/min; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXJ50A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ50A2V1BS9 / RXJ50A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Model suffixes AW9, AS9 and AB are distinct full references; no shared identity was inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXJ20A2V1BB",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+        "locator": "Exact Daikin France monosplit pair header",
+        "excerpt": "FTXJ20A2V1BB / RXJ20A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ20A2V1BB; dimensions row height",
+            "excerpt": "FTXJ20A2V1BB | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 900,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ20A2V1BB; dimensions row width",
+            "excerpt": "FTXJ20A2V1BB | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 212,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ20A2V1BB; dimensions row depth",
+            "excerpt": "FTXJ20A2V1BB | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 2.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+            "locator": "Exact monosplit pair column, nominal cooling capacity",
+            "excerpt": "FTXJ20A2V1BB / RXJ20A5V1B9; Cooling nominal capacity 2 kW"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 660.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ20A2V1BB; cooling high fan airflow",
+            "excerpt": "FTXJ20A2V1BB | Air flow rate | Cooling | High | 11 m³/min; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXJ20A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ20A2V1BB / RXJ20A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Model suffixes AW9, AS9 and AB are distinct full references; no shared identity was inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXJ25A2V1BB",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+        "locator": "Exact Daikin France monosplit pair header",
+        "excerpt": "FTXJ25A2V1BB / RXJ25A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ25A2V1BB; dimensions row height",
+            "excerpt": "FTXJ25A2V1BB | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 900,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ25A2V1BB; dimensions row width",
+            "excerpt": "FTXJ25A2V1BB | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 212,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ25A2V1BB; dimensions row depth",
+            "excerpt": "FTXJ25A2V1BB | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 2.5,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+            "locator": "Exact monosplit pair column, nominal cooling capacity",
+            "excerpt": "FTXJ25A2V1BB / RXJ25A5V1B9; Cooling nominal capacity 2.5 kW"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 684.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ25A2V1BB; cooling high fan airflow",
+            "excerpt": "FTXJ25A2V1BB | Air flow rate | Cooling | High | 11.4 m³/min; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXJ25A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ25A2V1BB / RXJ25A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Model suffixes AW9, AS9 and AB are distinct full references; no shared identity was inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXJ35A2V1BB",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+        "locator": "Exact Daikin France monosplit pair header",
+        "excerpt": "FTXJ35A2V1BB / RXJ35A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ35A2V1BB; dimensions row height",
+            "excerpt": "FTXJ35A2V1BB | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 900,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ35A2V1BB; dimensions row width",
+            "excerpt": "FTXJ35A2V1BB | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 212,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ35A2V1BB; dimensions row depth",
+            "excerpt": "FTXJ35A2V1BB | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 3.4,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+            "locator": "Exact monosplit pair column, nominal cooling capacity",
+            "excerpt": "FTXJ35A2V1BB / RXJ35A5V1B9; Cooling nominal capacity 3.4 kW"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 708.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ35A2V1BB; cooling high fan airflow",
+            "excerpt": "FTXJ35A2V1BB | Air flow rate | Cooling | High | 11.8 m³/min; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXJ35A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ35A2V1BB / RXJ35A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Model suffixes AW9, AS9 and AB are distinct full references; no shared identity was inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXJ42A2V1BB",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+        "locator": "Exact Daikin France monosplit pair header",
+        "excerpt": "FTXJ42A2V1BB / RXJ42A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ42A2V1BB; dimensions row height",
+            "excerpt": "FTXJ42A2V1BB | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 900,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ42A2V1BB; dimensions row width",
+            "excerpt": "FTXJ42A2V1BB | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 212,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ42A2V1BB; dimensions row depth",
+            "excerpt": "FTXJ42A2V1BB | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 4.2,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+            "locator": "Exact monosplit pair column, nominal cooling capacity",
+            "excerpt": "FTXJ42A2V1BB / RXJ42A5V1B9; Cooling nominal capacity 4.2 kW"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 780.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ42A2V1BB; cooling high fan airflow",
+            "excerpt": "FTXJ42A2V1BB | Air flow rate | Cooling | High | 13 m³/min; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXJ42A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ42A2V1BB / RXJ42A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Model suffixes AW9, AS9 and AB are distinct full references; no shared identity was inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXJ50A2V1BB",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+        "locator": "Exact Daikin France monosplit pair header",
+        "excerpt": "FTXJ50A2V1BB / RXJ50A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ50A2V1BB; dimensions row height",
+            "excerpt": "FTXJ50A2V1BB | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 900,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ50A2V1BB; dimensions row width",
+            "excerpt": "FTXJ50A2V1BB | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 212,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ50A2V1BB; dimensions row depth",
+            "excerpt": "FTXJ50A2V1BB | Dimensions | Height 305 mm | Width 900 mm | Depth 212 mm"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 5.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+            "locator": "Exact monosplit pair column, nominal cooling capacity",
+            "excerpt": "FTXJ50A2V1BB / RXJ50A5V1B9; Cooling nominal capacity 5 kW"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 810.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab",
+            "locator": "Indoor product table exact FTXJ50A2V1BB; cooling high fan airflow",
+            "excerpt": "FTXJ50A2V1BB | Air flow rate | Cooling | High | 13.5 m³/min; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with RXJ50A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ50A2V1BB / RXJ50A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Model suffixes AW9, AS9 and AB are distinct full references; no shared identity was inferred."
+      ]
+    },
+    {
+      "modelReference": "RXJ20A5V1B9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-rxj-a9",
+        "locator": "Outdoor technical table exact model column",
+        "excerpt": "RXJ20A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 552,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ20A5V1B9; dimensions row height",
+            "excerpt": "RXJ20A5V1B9 | Dimensions | Height 552 mm | Width 840 mm | Depth 350 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 840,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ20A5V1B9; dimensions row width",
+            "excerpt": "RXJ20A5V1B9 | Dimensions | Height 552 mm | Width 840 mm | Depth 350 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 350,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ20A5V1B9; dimensions row depth",
+            "excerpt": "RXJ20A5V1B9 | Dimensions | Height 552 mm | Width 840 mm | Depth 350 mm"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ20A5V1B9; refrigerant row",
+            "excerpt": "RXJ20A5V1B9 | Refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ20A5V1B9; operation range Cooling minimum °CBS",
+            "excerpt": "RXJ20A5V1B9 | Operation range | Cooling minimum °CBS -10°C"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ20A5V1B9; operation range Cooling maximum °CBS",
+            "excerpt": "RXJ20A5V1B9 | Operation range | Cooling maximum °CBS 50°C"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ20A5V1B9; operation range Heating minimum °CBH",
+            "excerpt": "RXJ20A5V1B9 | Operation range | Heating minimum °CBH -21°C"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ20A5V1B9; operation range Heating maximum °CBH",
+            "excerpt": "RXJ20A5V1B9 | Operation range | Heating maximum °CBH 18°C"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with FTXJ20A2V1BW9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ20A2V1BW9 / RXJ20A5V1B9"
+          }
+        },
+        {
+          "description": "Exact documented monosplit pair with FTXJ20A2V1BS9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ20A2V1BS9 / RXJ20A5V1B9"
+          }
+        },
+        {
+          "description": "Exact documented monosplit pair with FTXJ20A2V1BB.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ20A2V1BB / RXJ20A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed technical table.",
+        "Operating ranges retain the published dry-/wet-bulb conditions and do not constitute an OEM compressor map."
+      ]
+    },
+    {
+      "modelReference": "RXJ25A5V1B9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-rxj-a9",
+        "locator": "Outdoor technical table exact model column",
+        "excerpt": "RXJ25A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 552,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ25A5V1B9; dimensions row height",
+            "excerpt": "RXJ25A5V1B9 | Dimensions | Height 552 mm | Width 840 mm | Depth 350 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 840,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ25A5V1B9; dimensions row width",
+            "excerpt": "RXJ25A5V1B9 | Dimensions | Height 552 mm | Width 840 mm | Depth 350 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 350,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ25A5V1B9; dimensions row depth",
+            "excerpt": "RXJ25A5V1B9 | Dimensions | Height 552 mm | Width 840 mm | Depth 350 mm"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ25A5V1B9; refrigerant row",
+            "excerpt": "RXJ25A5V1B9 | Refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ25A5V1B9; operation range Cooling minimum °CBS",
+            "excerpt": "RXJ25A5V1B9 | Operation range | Cooling minimum °CBS -10°C"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ25A5V1B9; operation range Cooling maximum °CBS",
+            "excerpt": "RXJ25A5V1B9 | Operation range | Cooling maximum °CBS 50°C"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ25A5V1B9; operation range Heating minimum °CBH",
+            "excerpt": "RXJ25A5V1B9 | Operation range | Heating minimum °CBH -21°C"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ25A5V1B9; operation range Heating maximum °CBH",
+            "excerpt": "RXJ25A5V1B9 | Operation range | Heating maximum °CBH 18°C"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with FTXJ25A2V1BW9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ25A2V1BW9 / RXJ25A5V1B9"
+          }
+        },
+        {
+          "description": "Exact documented monosplit pair with FTXJ25A2V1BS9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ25A2V1BS9 / RXJ25A5V1B9"
+          }
+        },
+        {
+          "description": "Exact documented monosplit pair with FTXJ25A2V1BB.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ25A2V1BB / RXJ25A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed technical table.",
+        "Operating ranges retain the published dry-/wet-bulb conditions and do not constitute an OEM compressor map."
+      ]
+    },
+    {
+      "modelReference": "RXJ35A5V1B9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-rxj-a9",
+        "locator": "Outdoor technical table exact model column",
+        "excerpt": "RXJ35A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 552,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ35A5V1B9; dimensions row height",
+            "excerpt": "RXJ35A5V1B9 | Dimensions | Height 552 mm | Width 840 mm | Depth 350 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 840,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ35A5V1B9; dimensions row width",
+            "excerpt": "RXJ35A5V1B9 | Dimensions | Height 552 mm | Width 840 mm | Depth 350 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 350,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ35A5V1B9; dimensions row depth",
+            "excerpt": "RXJ35A5V1B9 | Dimensions | Height 552 mm | Width 840 mm | Depth 350 mm"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ35A5V1B9; refrigerant row",
+            "excerpt": "RXJ35A5V1B9 | Refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ35A5V1B9; operation range Cooling minimum °CBS",
+            "excerpt": "RXJ35A5V1B9 | Operation range | Cooling minimum °CBS -10°C"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ35A5V1B9; operation range Cooling maximum °CBS",
+            "excerpt": "RXJ35A5V1B9 | Operation range | Cooling maximum °CBS 50°C"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ35A5V1B9; operation range Heating minimum °CBH",
+            "excerpt": "RXJ35A5V1B9 | Operation range | Heating minimum °CBH -21°C"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ35A5V1B9; operation range Heating maximum °CBH",
+            "excerpt": "RXJ35A5V1B9 | Operation range | Heating maximum °CBH 18°C"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with FTXJ35A2V1BW9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ35A2V1BW9 / RXJ35A5V1B9"
+          }
+        },
+        {
+          "description": "Exact documented monosplit pair with FTXJ35A2V1BS9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ35A2V1BS9 / RXJ35A5V1B9"
+          }
+        },
+        {
+          "description": "Exact documented monosplit pair with FTXJ35A2V1BB.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ35A2V1BB / RXJ35A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed technical table.",
+        "Operating ranges retain the published dry-/wet-bulb conditions and do not constitute an OEM compressor map."
+      ]
+    },
+    {
+      "modelReference": "RXJ42A5V1B9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-rxj-a9",
+        "locator": "Outdoor technical table exact model column",
+        "excerpt": "RXJ42A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ42A5V1B9; dimensions row height",
+            "excerpt": "RXJ42A5V1B9 | Dimensions | Height 734 mm | Width 954 mm | Depth 408 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 954,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ42A5V1B9; dimensions row width",
+            "excerpt": "RXJ42A5V1B9 | Dimensions | Height 734 mm | Width 954 mm | Depth 408 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 408,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ42A5V1B9; dimensions row depth",
+            "excerpt": "RXJ42A5V1B9 | Dimensions | Height 734 mm | Width 954 mm | Depth 408 mm"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ42A5V1B9; refrigerant row",
+            "excerpt": "RXJ42A5V1B9 | Refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ42A5V1B9; operation range Cooling minimum °CBS",
+            "excerpt": "RXJ42A5V1B9 | Operation range | Cooling minimum °CBS -10°C"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ42A5V1B9; operation range Cooling maximum °CBS",
+            "excerpt": "RXJ42A5V1B9 | Operation range | Cooling maximum °CBS 50°C"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ42A5V1B9; operation range Heating minimum °CBH",
+            "excerpt": "RXJ42A5V1B9 | Operation range | Heating minimum °CBH -21°C"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ42A5V1B9; operation range Heating maximum °CBH",
+            "excerpt": "RXJ42A5V1B9 | Operation range | Heating maximum °CBH 18°C"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with FTXJ42A2V1BW9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ42A2V1BW9 / RXJ42A5V1B9"
+          }
+        },
+        {
+          "description": "Exact documented monosplit pair with FTXJ42A2V1BS9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ42A2V1BS9 / RXJ42A5V1B9"
+          }
+        },
+        {
+          "description": "Exact documented monosplit pair with FTXJ42A2V1BB.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ42A2V1BB / RXJ42A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed technical table.",
+        "Operating ranges retain the published dry-/wet-bulb conditions and do not constitute an OEM compressor map."
+      ]
+    },
+    {
+      "modelReference": "RXJ50A5V1B9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-emura-rxj-a9",
+        "locator": "Outdoor technical table exact model column",
+        "excerpt": "RXJ50A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ50A5V1B9; dimensions row height",
+            "excerpt": "RXJ50A5V1B9 | Dimensions | Height 734 mm | Width 954 mm | Depth 408 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 954,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ50A5V1B9; dimensions row width",
+            "excerpt": "RXJ50A5V1B9 | Dimensions | Height 734 mm | Width 954 mm | Depth 408 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 408,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ50A5V1B9; dimensions row depth",
+            "excerpt": "RXJ50A5V1B9 | Dimensions | Height 734 mm | Width 954 mm | Depth 408 mm"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ50A5V1B9; refrigerant row",
+            "excerpt": "RXJ50A5V1B9 | Refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ50A5V1B9; operation range Cooling minimum °CBS",
+            "excerpt": "RXJ50A5V1B9 | Operation range | Cooling minimum °CBS -10°C"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ50A5V1B9; operation range Cooling maximum °CBS",
+            "excerpt": "RXJ50A5V1B9 | Operation range | Cooling maximum °CBS 50°C"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ50A5V1B9; operation range Heating minimum °CBH",
+            "excerpt": "RXJ50A5V1B9 | Operation range | Heating minimum °CBH -21°C"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-rxj-a9",
+            "locator": "Outdoor table exact RXJ50A5V1B9; operation range Heating maximum °CBH",
+            "excerpt": "RXJ50A5V1B9 | Operation range | Heating maximum °CBH 18°C"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pair with FTXJ50A2V1BW9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-aw9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ50A2V1BW9 / RXJ50A5V1B9"
+          }
+        },
+        {
+          "description": "Exact documented monosplit pair with FTXJ50A2V1BS9.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-as9-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ50A2V1BS9 / RXJ50A5V1B9"
+          }
+        },
+        {
+          "description": "Exact documented monosplit pair with FTXJ50A2V1BB.",
+          "evidence": {
+            "sourceId": "daikin-fr-emura-ftxj-ab-pair-rxj-a9",
+            "locator": "Exact model pair header",
+            "excerpt": "FTXJ50A2V1BB / RXJ50A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed technical table.",
+        "Operating ranges retain the published dry-/wet-bulb conditions and do not constitute an OEM compressor map."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

@@ -1,0 +1,1244 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Sensira FTXF-F + RXF-F/D",
+  "market": "Europe residential air-to-air; 2026 Daikin Europe catalogue (France distribution status not independently established for every model)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-eu-2026-p322",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/322/",
+      "title": "Daikin Europe General Catalogue 2026 — Split residential air-to-air solutions",
+      "edition": "ECPEN26-500, 2026; official Daikin Europe flipbook page",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-rxf-f",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/RXF-F.html",
+      "title": "Daikin France RXF-F technical product table",
+      "edition": "Daikin France product database, archived F-series references; retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-ftxf-f",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXF-F.html",
+      "title": "Daikin France technical product table FTXF-F",
+      "edition": "Daikin France product database, checked 2026-10-11; exact full model refs and Archived markers",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FTXF20F5V1B",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxf-f",
+        "locator": "Daikin France FTXF-F table, exact column header",
+        "excerpt": "FTXF20F5V1B"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 2.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.4 1.3/2.5/2.8 1.3/3.3/3.8 1.4/4.2/4.3 1.3/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 588.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Silent operation/Low/Medium/High m³/min 4.3/6/8/9.8 4.3/6.2/8/10 4.4/6.4/8/11.5 4.9/6.9/9/12.6 6.4/7.2/9/12.6 10.7/12.2/14.8/17.3"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXF20F5V1B.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXF + RXF | 20F + 20F"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "FTXF25F5V1B",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxf-f",
+        "locator": "Daikin France FTXF-F table, exact column header",
+        "excerpt": "FTXF25F5V1B"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 2.5,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.4 1.3/2.5/2.8 1.3/3.3/3.8 1.4/4.2/4.3 1.3/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 600.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Silent operation/Low/Medium/High m³/min 4.3/6/8/9.8 4.3/6.2/8/10 4.4/6.4/8/11.5 4.9/6.9/9/12.6 6.4/7.2/9/12.6 10.7/12.2/14.8/17.3"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXF25F5V1B.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXF + RXF | 25F + 25F"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "FTXF35F5V1B",
+      "unitType": "indoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxf-f",
+        "locator": "Daikin France FTXF-F table, exact column header",
+        "excerpt": "FTXF35F5V1B"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 3.3,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.4 1.3/2.5/2.8 1.3/3.3/3.8 1.4/4.2/4.3 1.3/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 690.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Silent operation/Low/Medium/High m³/min 4.3/6/8/9.8 4.3/6.2/8/10 4.4/6.4/8/11.5 4.9/6.9/9/12.6 6.4/7.2/9/12.6 10.7/12.2/14.8/17.3"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXF35F5V1B.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXF + RXF | 35F + 35F"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "FTXF42F5V1B",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxf-f",
+        "locator": "Daikin France FTXF-F table, exact column header",
+        "excerpt": "FTXF42F5V1B"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 4.2,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.4 1.3/2.5/2.8 1.3/3.3/3.8 1.4/4.2/4.3 1.3/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "width",
+          "value": 990,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 263,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 756.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Silent operation/Low/Medium/High m³/min 4.3/6/8/9.8 4.3/6.2/8/10 4.4/6.4/8/11.5 4.9/6.9/9/12.6 6.4/7.2/9/12.6 10.7/12.2/14.8/17.3"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXF42F5V1B.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXF + RXF | 42F + 42F"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "FTXF50F5V1B",
+      "unitType": "indoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxf-f",
+        "locator": "Daikin France FTXF-F table, exact column header",
+        "excerpt": "FTXF50F5V1B"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 5.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.4 1.3/2.5/2.8 1.3/3.3/3.8 1.4/4.2/4.3 1.3/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "width",
+          "value": 990,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 263,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 756.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Silent operation/Low/Medium/High m³/min 4.3/6/8/9.8 4.3/6.2/8/10 4.4/6.4/8/11.5 4.9/6.9/9/12.6 6.4/7.2/9/12.6 10.7/12.2/14.8/17.3"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXF50F5V1B.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXF + RXF | 50F + 50F"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "FTXF60F2V1B",
+      "unitType": "indoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxf-f",
+        "locator": "Daikin France FTXF-F table, exact column header",
+        "excerpt": "FTXF60F2V1B"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 6.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.4 1.3/2.5/2.8 1.3/3.3/3.8 1.4/4.2/4.3 1.3/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "width",
+          "value": 990,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 263,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1038.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Silent operation/Low/Medium/High m³/min 4.3/6/8/9.8 4.3/6.2/8/10 4.4/6.4/8/11.5 4.9/6.9/9/12.6 6.4/7.2/9/12.6 10.7/12.2/14.8/17.3"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXF60D9.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXF + RXF | 60F + 60D9"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "FTXF71F2V1B",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxf-f",
+        "locator": "Daikin France FTXF-F table, exact column header",
+        "excerpt": "FTXF71F2V1B"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 7.1,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.4 1.3/2.5/2.8 1.3/3.3/3.8 1.4/4.2/4.3 1.3/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "width",
+          "value": 990,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 263,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 286x770x225 295x990x263"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1038,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published 17.3 m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxf-f",
+            "locator": "Daikin France FTXF-F table, airflow row Rafraîchissement/Haut, FTXF71F2V1B column",
+            "excerpt": "Débit d'air Rafraîchissement Haut m³/min 9.8 10 12.6 17.3 11.5 12.6 17.3"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXF71D9.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXF + RXF | 71F + 71D9"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "RXF20F5V1B",
+      "unitType": "outdoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-rxf-f",
+        "locator": "Daikin France RXF-F table, exact full model column",
+        "excerpt": "RXF20F5V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 2.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table nominal cooling capacity for exact paired combination",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.4 1.3/2.5/2.8 1.3/3.3/3.8 1.4/4.2/4.3 1.3/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 556,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; dimensions height",
+            "excerpt": "RXF20F5V1B | Dimensions | Unité | Hauteur | mm | 556"
+          }
+        },
+        {
+          "key": "width",
+          "value": 740,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; dimensions width",
+            "excerpt": "RXF20F5V1B | Dimensions | Unité | Largeur | mm | 740"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 343,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; dimensions depth",
+            "excerpt": "RXF20F5V1B | Dimensions | Unité | Profondeur | mm | 343"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Rafraîchissement",
+            "excerpt": "RXF20F5V1B | Rafraîchissement | Temp. ext. | Min. | °CBS | -10"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Rafraîchissement",
+            "excerpt": "RXF20F5V1B | Rafraîchissement | Temp. ext. | Max. | °CBS | 48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Chauffage",
+            "excerpt": "RXF20F5V1B | Chauffage | Temp. ext. | Min. | °CBH | -15"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Chauffage",
+            "excerpt": "RXF20F5V1B | Chauffage | Temp. ext. | Max. | °CBH | 18"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Réfrigérant",
+            "excerpt": "RXF20F5V1B | Réfrigérant | R-32"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with FTXF20F5V1B5V1B.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "ECPEN26-500 Split, page 322; exact monosplit column",
+            "excerpt": "FTXF + RXF | 20F + 20F; exact French models FTXF20F5V1B / RXF20F5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Daikin France marks this full F-series reference archived; outdoor airflow is unpublished. Published limits are metadata, not an OEM compressor map."
+      ]
+    },
+    {
+      "modelReference": "RXF25F5V1B",
+      "unitType": "outdoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-rxf-f",
+        "locator": "Daikin France RXF-F table, exact full model column",
+        "excerpt": "RXF25F5V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 2.5,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table nominal cooling capacity for exact paired combination",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.4 1.3/2.5/2.8 1.3/3.3/3.8 1.4/4.2/4.3 1.3/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 556,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; dimensions height",
+            "excerpt": "RXF25F5V1B | Dimensions | Unité | Hauteur | mm | 556"
+          }
+        },
+        {
+          "key": "width",
+          "value": 740,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; dimensions width",
+            "excerpt": "RXF25F5V1B | Dimensions | Unité | Largeur | mm | 740"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 343,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; dimensions depth",
+            "excerpt": "RXF25F5V1B | Dimensions | Unité | Profondeur | mm | 343"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Rafraîchissement",
+            "excerpt": "RXF25F5V1B | Rafraîchissement | Temp. ext. | Min. | °CBS | -10"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Rafraîchissement",
+            "excerpt": "RXF25F5V1B | Rafraîchissement | Temp. ext. | Max. | °CBS | 48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Chauffage",
+            "excerpt": "RXF25F5V1B | Chauffage | Temp. ext. | Min. | °CBH | -15"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Chauffage",
+            "excerpt": "RXF25F5V1B | Chauffage | Temp. ext. | Max. | °CBH | 18"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Réfrigérant",
+            "excerpt": "RXF25F5V1B | Réfrigérant | R-32"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with FTXF25F5V1B5V1B.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "ECPEN26-500 Split, page 322; exact monosplit column",
+            "excerpt": "FTXF + RXF | 25F + 25F; exact French models FTXF25F5V1B / RXF25F5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Daikin France marks this full F-series reference archived; outdoor airflow is unpublished. Published limits are metadata, not an OEM compressor map."
+      ]
+    },
+    {
+      "modelReference": "RXF35F5V1B",
+      "unitType": "outdoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-rxf-f",
+        "locator": "Daikin France RXF-F table, exact full model column",
+        "excerpt": "RXF35F5V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 3.3,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table nominal cooling capacity for exact paired combination",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.4 1.3/2.5/2.8 1.3/3.3/3.8 1.4/4.2/4.3 1.3/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 556,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; dimensions height",
+            "excerpt": "RXF35F5V1B | Dimensions | Unité | Hauteur | mm | 556"
+          }
+        },
+        {
+          "key": "width",
+          "value": 740,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; dimensions width",
+            "excerpt": "RXF35F5V1B | Dimensions | Unité | Largeur | mm | 740"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 343,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; dimensions depth",
+            "excerpt": "RXF35F5V1B | Dimensions | Unité | Profondeur | mm | 343"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Rafraîchissement",
+            "excerpt": "RXF35F5V1B | Rafraîchissement | Temp. ext. | Min. | °CBS | -10"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Rafraîchissement",
+            "excerpt": "RXF35F5V1B | Rafraîchissement | Temp. ext. | Max. | °CBS | 48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Chauffage",
+            "excerpt": "RXF35F5V1B | Chauffage | Temp. ext. | Min. | °CBH | -15"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Chauffage",
+            "excerpt": "RXF35F5V1B | Chauffage | Temp. ext. | Max. | °CBH | 18"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Réfrigérant",
+            "excerpt": "RXF35F5V1B | Réfrigérant | R-32"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with FTXF35F5V1B5V1B.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "ECPEN26-500 Split, page 322; exact monosplit column",
+            "excerpt": "FTXF + RXF | 35F + 35F; exact French models FTXF35F5V1B / RXF35F5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Daikin France marks this full F-series reference archived; outdoor airflow is unpublished. Published limits are metadata, not an OEM compressor map."
+      ]
+    },
+    {
+      "modelReference": "RXF42F5V1B",
+      "unitType": "outdoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-rxf-f",
+        "locator": "Daikin France RXF-F table, exact full model column",
+        "excerpt": "RXF42F5V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 4.2,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table nominal cooling capacity for exact paired combination",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.4 1.3/2.5/2.8 1.3/3.3/3.8 1.4/4.2/4.3 1.3/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 556,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; dimensions height",
+            "excerpt": "RXF42F5V1B | Dimensions | Unité | Hauteur | mm | 556"
+          }
+        },
+        {
+          "key": "width",
+          "value": 740,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; dimensions width",
+            "excerpt": "RXF42F5V1B | Dimensions | Unité | Largeur | mm | 740"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 343,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; dimensions depth",
+            "excerpt": "RXF42F5V1B | Dimensions | Unité | Profondeur | mm | 343"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Rafraîchissement",
+            "excerpt": "RXF42F5V1B | Rafraîchissement | Temp. ext. | Min. | °CBS | -10"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Rafraîchissement",
+            "excerpt": "RXF42F5V1B | Rafraîchissement | Temp. ext. | Max. | °CBS | 48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Chauffage",
+            "excerpt": "RXF42F5V1B | Chauffage | Temp. ext. | Min. | °CBH | -15"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Chauffage",
+            "excerpt": "RXF42F5V1B | Chauffage | Temp. ext. | Max. | °CBH | 18"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Réfrigérant",
+            "excerpt": "RXF42F5V1B | Réfrigérant | R-32"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with FTXF42F5V1B5V1B.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "ECPEN26-500 Split, page 322; exact monosplit column",
+            "excerpt": "FTXF + RXF | 42F + 42F; exact French models FTXF42F5V1B / RXF42F5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Daikin France marks this full F-series reference archived; outdoor airflow is unpublished. Published limits are metadata, not an OEM compressor map."
+      ]
+    },
+    {
+      "modelReference": "RXF50F5V1B",
+      "unitType": "outdoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-rxf-f",
+        "locator": "Daikin France RXF-F table, exact full model column",
+        "excerpt": "RXF50F5V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 5.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table nominal cooling capacity for exact paired combination",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.4 1.3/2.5/2.8 1.3/3.3/3.8 1.4/4.2/4.3 1.3/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        },
+        {
+          "key": "height",
+          "value": 610,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; dimensions height",
+            "excerpt": "RXF50F5V1B | Dimensions | Unité | Hauteur | mm | 610"
+          }
+        },
+        {
+          "key": "width",
+          "value": 923,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; dimensions width",
+            "excerpt": "RXF50F5V1B | Dimensions | Unité | Largeur | mm | 923"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 367,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; dimensions depth",
+            "excerpt": "RXF50F5V1B | Dimensions | Unité | Profondeur | mm | 367"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Rafraîchissement",
+            "excerpt": "RXF50F5V1B | Rafraîchissement | Temp. ext. | Min. | °CBS | -10"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Rafraîchissement",
+            "excerpt": "RXF50F5V1B | Rafraîchissement | Temp. ext. | Max. | °CBS | 48"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Chauffage",
+            "excerpt": "RXF50F5V1B | Chauffage | Temp. ext. | Min. | °CBH | -15"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Chauffage",
+            "excerpt": "RXF50F5V1B | Chauffage | Temp. ext. | Max. | °CBH | 18"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-rxf-f",
+            "locator": "Exact RXF-F full-reference column; Réfrigérant",
+            "excerpt": "RXF50F5V1B | Réfrigérant | R-32"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with FTXF50F5V1B5V1B.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "ECPEN26-500 Split, page 322; exact monosplit column",
+            "excerpt": "FTXF + RXF | 50F + 50F; exact French models FTXF50F5V1B / RXF50F5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Daikin France marks this full F-series reference archived; outdoor airflow is unpublished. Published limits are metadata, not an OEM compressor map."
+      ]
+    },
+    {
+      "modelReference": "RXF60D9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p322",
+        "locator": "Flipbook route 322, printed heading 322; outdoor model column in exact combination and outdoor-unit tables",
+        "excerpt": "RXF outdoor table | RXF60D9"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 6.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table nominal cooling capacity for exact paired combination",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.4 1.3/2.5/2.8 1.3/3.3/3.8 1.4/4.2/4.3 1.3/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit outdoor model; exact documented paired indoor references: FTXF60F2V1B.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table exact pair columns",
+            "excerpt": "RXF outdoor table | RXF60D9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor casing dimensions, R32 status, operating limits and outdoor airflow require additional explicit model-column acceptance before runtime promotion."
+      ]
+    },
+    {
+      "modelReference": "RXF71D9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p322",
+        "locator": "Flipbook route 322, printed heading 322; outdoor model column in exact combination and outdoor-unit tables",
+        "excerpt": "RXF outdoor table | RXF71D9"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 7.1,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table nominal cooling capacity for exact paired combination",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2/2.4 1.3/2.5/2.8 1.3/3.3/3.8 1.4/4.2/4.3 1.3/5/5.3 1.7/6/7 2.3/7.1/7.3"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit outdoor model; exact documented paired indoor references: FTXF71F.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p322",
+            "locator": "Flipbook route 322, printed heading 322; efficiency data table exact pair columns",
+            "excerpt": "RXF outdoor table | RXF71D9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor casing dimensions, R32 status, operating limits and outdoor airflow require additional explicit model-column acceptance before runtime promotion."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

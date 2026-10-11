@@ -59,7 +59,7 @@ export function indoorOptionsForOutdoor(outdoor: OutdoorKind): { value: IndoorCl
     const ownerHead = value === 'FTXA25' || value === 'FTXA35';
     const manufacturer: EquipmentManufacturer = profile?.manufacturer ?? (ownerHead ? 'daikin' : 'generic');
     return { value, manufacturer,
-      text: profile ? `${equipmentManufacturerLabel(manufacturer)} ${value}`
+      text: profile ? `${equipmentManufacturerLabel(manufacturer)} ${value}${profile.coolingHighFanFlowM3h === null ? ' (airflow unpublished; generic/manual)' : ''}`
         : ownerHead ? `Daikin ${value} (suffix unknown)`
         : `Generic wall head ${value === 'G25' ? '2.5' : value === 'G35' ? '3.5' : '5.0'} kW class` };
   });
@@ -69,6 +69,6 @@ export function indoorOptionsForOutdoor(outdoor: OutdoorKind): { value: IndoorCl
 export function applyIndoorProfile(room: Config['rooms'][number], indoor: IndoorClass): void {
   room.indoorClass = indoor;
   const profile = indoorModelProfile(indoor);
-  if (profile) room.volumetricAirFlowM3s = profile.coolingHighFanFlowM3h / 3600;
+  if (profile && profile.coolingHighFanFlowM3h !== null) room.volumetricAirFlowM3s = profile.coolingHighFanFlowM3h / 3600;
   else delete room.volumetricAirFlowM3s;
 }

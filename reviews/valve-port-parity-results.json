@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-11T12:18:56.662Z",
+  "baselineCommit": "1fc0324910cb4333f442cc64f32cc4d89b7e7bb3",
+  "backend": "guarded",
+  "passed": true,
+  "excludedFields": [
+    "cycle.branchValveInlets",
+    "cycle.branchValveOutlets"
+  ],
+  "exactDirectCycleComparisons": 11,
+  "exactFullOutputComparisons": 162,
+  "secondsPerMode": 20,
+  "physics": "same UA/residual/flow/energy/controller/opening outputs after excluding only added diagnostic fields"
+}

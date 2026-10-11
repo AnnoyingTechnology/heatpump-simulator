@@ -1,0 +1,295 @@
+{
+  "status": "PASS",
+  "snapshot": "/tmp/heatpump-valve-science-snapshot-osvyohga",
+  "backend": "guarded native HEOS R32",
+  "hashes": {
+    "src/engine/cycle.ts": "8d47208fd11a57d3cd1ea57d2e843237a767ce05a840bda955b454195dd63c40",
+    "src/engine/types.ts": "04eb849dfb52d4cfef49205961b04d68647d00bc5b384eb60500201ed4083392",
+    "src/engine/engine.ts": "92174a5beb3fbbefd9c9bfba64a3f0155261a11782c9420f4bdfe3d6ae887903",
+    "src/engine/properties.ts": "6fb2812381e471623e449a5b593cd4e1d9874f32e559b33bd05c2eac7b6ad36e",
+    "src/engine/transport.ts": "928ab51cd8ca1193e68ba0821ee88ae2966521314ad9b1fd1b9894f253e2ed31",
+    "tests/engine/build/cycle.js": "eb95772b78585351ecacb8183931ddf0c993210340600619fe8d2b358de979e2",
+    "tests/engine/build/types.js": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "public/vendor/coolprop-safe/adapter.js": "06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34",
+    "public/vendor/coolprop-safe/coolprop.js": "6fa2e627803e2453da12cb9fce160ca3326851cd179444edc5ab698e21524d6c",
+    "public/vendor/coolprop-safe/coolprop.wasm": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c"
+  },
+  "cases": [
+    {
+      "name": "heating-ideal",
+      "closureResidualW": 0.015668280485976748,
+      "exactPhysicalParity": true,
+      "ports": [
+        {
+          "branch": 0,
+          "inletPhase": "liquid",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 1849201.3065454967,
+          "outletPressurePa": 880641.2903502733,
+          "enthalpyJkg": 239358.71213631355,
+          "entropyIncreaseJkgK": 7.631407659705701
+        },
+        {
+          "branch": 1,
+          "inletPhase": "two-phase",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 1849201.3065454967,
+          "outletPressurePa": 880641.2903502733,
+          "enthalpyJkg": 261095.20377699286,
+          "entropyIncreaseJkgK": 13.929570988439991
+        }
+      ]
+    },
+    {
+      "name": "heating-ideal-inactive",
+      "closureResidualW": 0.09204098979054204,
+      "exactPhysicalParity": true,
+      "ports": [
+        {
+          "branch": 0,
+          "inletPhase": "liquid",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 1892851.0395442967,
+          "outletPressurePa": 881329.0630395546,
+          "enthalpyJkg": 238078.2760139809,
+          "entropyIncreaseJkgK": 7.471293733751281
+        },
+        {
+          "branch": 2,
+          "inletPhase": "two-phase",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 1892851.0395442967,
+          "outletPressurePa": 881329.0630395546,
+          "enthalpyJkg": 265849.51244945766,
+          "entropyIncreaseJkgK": 15.6661687315584
+        }
+      ]
+    },
+    {
+      "name": "heating-physical",
+      "closureResidualW": 0.03887433154136233,
+      "exactPhysicalParity": true,
+      "ports": [
+        {
+          "branch": 0,
+          "inletPhase": "liquid",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 1832541.1718469253,
+          "outletPressurePa": 880108.6000893323,
+          "enthalpyJkg": 248915.190033366,
+          "entropyIncreaseJkgK": 10.12085278749214
+        },
+        {
+          "branch": 1,
+          "inletPhase": "liquid",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 1834193.8976474698,
+          "outletPressurePa": 880108.6000893323,
+          "enthalpyJkg": 248806.0875054918,
+          "entropyIncreaseJkgK": 10.094670851299497
+        }
+      ]
+    },
+    {
+      "name": "heating-physical-inactive",
+      "closureResidualW": 0.031318837776704904,
+      "exactPhysicalParity": true,
+      "ports": [
+        {
+          "branch": 0,
+          "inletPhase": "liquid",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 1855134.8544475953,
+          "outletPressurePa": 880467.5398736872,
+          "enthalpyJkg": 249879.57797870986,
+          "entropyIncreaseJkgK": 10.476273217707558
+        },
+        {
+          "branch": 2,
+          "inletPhase": "liquid",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 1858441.8944118777,
+          "outletPressurePa": 880467.5398736872,
+          "enthalpyJkg": 249649.9204414961,
+          "entropyIncreaseJkgK": 10.419412938364076
+        }
+      ]
+    },
+    {
+      "name": "cooling-ideal",
+      "closureResidualW": 0.04785361790637613,
+      "exactPhysicalParity": true,
+      "ports": [
+        {
+          "branch": 0,
+          "inletPhase": "liquid",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 2530305.2198892594,
+          "outletPressurePa": 1215054.5717445856,
+          "enthalpyJkg": 275239.93052907276,
+          "entropyIncreaseJkgK": 12.715366094535511
+        },
+        {
+          "branch": 1,
+          "inletPhase": "liquid",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 2530305.2198892594,
+          "outletPressurePa": 1215054.5717445856,
+          "enthalpyJkg": 275239.93052907276,
+          "entropyIncreaseJkgK": 12.715366094535511
+        }
+      ]
+    },
+    {
+      "name": "cooling-ideal-inactive",
+      "closureResidualW": 0.015889766189548675,
+      "exactPhysicalParity": true,
+      "ports": [
+        {
+          "branch": 0,
+          "inletPhase": "liquid",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 2530872.388836724,
+          "outletPressurePa": 1216981.3177102872,
+          "enthalpyJkg": 275259.24225445185,
+          "entropyIncreaseJkgK": 12.6820517492597
+        },
+        {
+          "branch": 2,
+          "inletPhase": "liquid",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 2530872.388836724,
+          "outletPressurePa": 1216981.3177102872,
+          "enthalpyJkg": 275259.24225445185,
+          "entropyIncreaseJkgK": 12.6820517492597
+        }
+      ]
+    },
+    {
+      "name": "cooling-physical",
+      "closureResidualW": 0.006711509319751784,
+      "exactPhysicalParity": true,
+      "ports": [
+        {
+          "branch": 0,
+          "inletPhase": "liquid",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 2531792.998046205,
+          "outletPressurePa": 1259250.6995761998,
+          "enthalpyJkg": 275290.58410190005,
+          "entropyIncreaseJkgK": 11.822237463801912
+        },
+        {
+          "branch": 1,
+          "inletPhase": "liquid",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 2531792.998046205,
+          "outletPressurePa": 1268554.5870417776,
+          "enthalpyJkg": 275290.58410190005,
+          "entropyIncreaseJkgK": 11.63753459947543
+        }
+      ]
+    },
+    {
+      "name": "cooling-physical-inactive",
+      "closureResidualW": 0.0042585942821430495,
+      "exactPhysicalParity": true,
+      "ports": [
+        {
+          "branch": 0,
+          "inletPhase": "liquid",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 2535979.7023484437,
+          "outletPressurePa": 1269533.6400377941,
+          "enthalpyJkg": 275433.05235837563,
+          "entropyIncreaseJkgK": 11.673077329762464
+        },
+        {
+          "branch": 2,
+          "inletPhase": "liquid",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 2535979.7023484437,
+          "outletPressurePa": 1288027.7632096498,
+          "enthalpyJkg": 275433.05235837563,
+          "entropyIncreaseJkgK": 11.313097682391344
+        }
+      ]
+    },
+    {
+      "name": "defrost-liquid-outlet",
+      "closureResidualW": 0.026070720314892906,
+      "exactPhysicalParity": true,
+      "ports": [
+        {
+          "branch": 0,
+          "inletPhase": "liquid",
+          "outletPhase": "liquid",
+          "inletPressurePa": 1464308.6256126116,
+          "outletPressurePa": 1165540.1202897846,
+          "enthalpyJkg": 217724.83240854548,
+          "entropyIncreaseJkgK": 1.0338480086663822
+        },
+        {
+          "branch": 1,
+          "inletPhase": "liquid",
+          "outletPhase": "liquid",
+          "inletPressurePa": 1464308.6256126116,
+          "outletPressurePa": 1165540.1202897846,
+          "enthalpyJkg": 217724.83240854548,
+          "entropyIncreaseJkgK": 1.0338480086663822
+        }
+      ]
+    },
+    {
+      "name": "heterogeneous-warm-heating",
+      "closureResidualW": 0.05323968676360889,
+      "exactPhysicalParity": true,
+      "ports": [
+        {
+          "branch": 0,
+          "inletPhase": "liquid",
+          "outletPhase": "liquid",
+          "inletPressurePa": 1823727.664821639,
+          "outletPressurePa": 1530962.2092880455,
+          "enthalpyJkg": 230443.85029390318,
+          "entropyIncreaseJkgK": 1.0141650936493534
+        },
+        {
+          "branch": 1,
+          "inletPhase": "liquid",
+          "outletPhase": "liquid",
+          "inletPressurePa": 1823727.664821639,
+          "outletPressurePa": 1530962.2092880455,
+          "enthalpyJkg": 236031.09426494854,
+          "entropyIncreaseJkgK": 1.0164036358617068
+        },
+        {
+          "branch": 2,
+          "inletPhase": "two-phase",
+          "outletPhase": "two-phase",
+          "inletPressurePa": 1823727.664821639,
+          "outletPressurePa": 1530962.2092880455,
+          "enthalpyJkg": 264236.69007154764,
+          "entropyIncreaseJkgK": 2.4471664507343576
+        }
+      ]
+    }
+  ],
+  "diagnosticFailure": {
+    "fault": "independent accepted diagnostic PH failure",
+    "failures": 1,
+    "laterPtCalls": 0,
+    "laterPressureCalls": 0
+  },
+  "engineFault": {
+    "fault": "independent engine valve publication failure",
+    "publicationFailures": 1,
+    "simulatedSeconds": 0,
+    "retainedStateUnchanged": true,
+    "compressorW": 0
+  },
+  "limitations": [
+    "Pipe endpoint reconstruction uses existing transportPipe and is a consistency check, not an independent validation of its correlation.",
+    "Ten exact direct-cycle parity cases supplement the implementer full-output parity receipt; no OEM controller/topology calibration is asserted."
+  ]
+}

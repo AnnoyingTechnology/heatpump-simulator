@@ -1,0 +1,421 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Perfera FTXM-A historical exact pairs with RXM-A9",
+  "market": "France archived FTXM-A indoor SKUs; RXM-A9 outdoor references listed by Daikin France; exact per-SKU table pairs reviewed 2026-10-11",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-eu-2026-p320",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/320/",
+      "title": "Daikin Europe General Catalogue 2026 — Perfera FTXM-A family",
+      "edition": "ECPEN26-500, 2026; official Daikin Europe flipbook page",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-rxm-a9",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/RXM-A9.html",
+      "title": "Daikin France technical product table RXM-A9",
+      "edition": "Daikin France product database, checked 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-ftxm-a-rxm-a9",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXM-A---RXM-A9.html",
+      "title": "Daikin France exact system technical table FTXM-A / RXM-A9",
+      "edition": "Daikin France product database, checked 2026-10-11; exact indoor/outdoor SKU combinations",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-fvxm-b-rxm-a9",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FVXM-B---RXM-A9.html",
+      "title": "Daikin France exact system technical table FVXM-B / RXM-A9",
+      "edition": "Daikin France product database, checked 2026-10-11; exact indoor/outdoor SKU combinations",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "RXM25A5V1B9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-rxm-a9",
+        "locator": "Exact outdoor full-model column header",
+        "excerpt": "RXM25A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 610,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM25A5V1B9; dimensions Hauteur",
+            "excerpt": "RXM25A5V1B9 | Dimensions | Unité | Hauteur | mm | 610"
+          }
+        },
+        {
+          "key": "width",
+          "value": 923,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM25A5V1B9; dimensions Largeur",
+            "excerpt": "RXM25A5V1B9 | Dimensions | Unité | Largeur | mm | 923"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 367,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM25A5V1B9; dimensions Profondeur",
+            "excerpt": "RXM25A5V1B9 | Dimensions | Unité | Profondeur | mm | 367"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM25A5V1B9; refrigerant type",
+            "excerpt": "RXM25A5V1B9 | Réfrigérant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM25A5V1B9; Rafraîchissement minimum",
+            "excerpt": "RXM25A5V1B9 | Rafraîchissement | Temp. ext. | Min. | °CBS | -10"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM25A5V1B9; Rafraîchissement maximum",
+            "excerpt": "RXM25A5V1B9 | Rafraîchissement | Temp. ext. | Max. | °CBS | 50"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM25A5V1B9; Chauffage minimum",
+            "excerpt": "RXM25A5V1B9 | Chauffage | Temp. ext. | Min. | °CBH | -21"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM25A5V1B9; Chauffage maximum",
+            "excerpt": "RXM25A5V1B9 | Chauffage | Temp. ext. | Max. | °CBH | 18"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact verified monosplit pair with FTXM25A2V1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a-rxm-a9",
+            "locator": "Exact full indoor/outdoor SKU table column header",
+            "excerpt": "FTXM25A2V1B / RXM25A5V1B9"
+          }
+        },
+        {
+          "description": "Exact verified monosplit pair with FTXM25A5V1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a-rxm-a9",
+            "locator": "Exact full indoor/outdoor SKU table column header",
+            "excerpt": "FTXM25A5V1B / RXM25A5V1B9"
+          }
+        },
+        {
+          "description": "Exact documented monosplit pair with FVXM25B2V1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b-rxm-a9",
+            "locator": "Exact full indoor/outdoor SKU table column header",
+            "excerpt": "FVXM25B2V1B / RXM25A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed table. Exact compatible historical FTXM full references are limited to the system pairing table; no capacity class or performance map inferred.",
+        "Exact compatible indoor references are individually cited from the FTXM-A/RXM-A9 and FVXM-B/RXM-A9 system tables; RXM-A8 is unreviewed."
+      ]
+    },
+    {
+      "modelReference": "RXM35A5V1B9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-rxm-a9",
+        "locator": "Exact outdoor full-model column header",
+        "excerpt": "RXM35A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 610,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM35A5V1B9; dimensions Hauteur",
+            "excerpt": "RXM35A5V1B9 | Dimensions | Unité | Hauteur | mm | 610"
+          }
+        },
+        {
+          "key": "width",
+          "value": 923,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM35A5V1B9; dimensions Largeur",
+            "excerpt": "RXM35A5V1B9 | Dimensions | Unité | Largeur | mm | 923"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 367,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM35A5V1B9; dimensions Profondeur",
+            "excerpt": "RXM35A5V1B9 | Dimensions | Unité | Profondeur | mm | 367"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM35A5V1B9; refrigerant type",
+            "excerpt": "RXM35A5V1B9 | Réfrigérant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM35A5V1B9; Rafraîchissement minimum",
+            "excerpt": "RXM35A5V1B9 | Rafraîchissement | Temp. ext. | Min. | °CBS | -10"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM35A5V1B9; Rafraîchissement maximum",
+            "excerpt": "RXM35A5V1B9 | Rafraîchissement | Temp. ext. | Max. | °CBS | 50"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM35A5V1B9; Chauffage minimum",
+            "excerpt": "RXM35A5V1B9 | Chauffage | Temp. ext. | Min. | °CBH | -21"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM35A5V1B9; Chauffage maximum",
+            "excerpt": "RXM35A5V1B9 | Chauffage | Temp. ext. | Max. | °CBH | 18"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact verified monosplit pair with FTXM35A2V1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a-rxm-a9",
+            "locator": "Exact full indoor/outdoor SKU table column header",
+            "excerpt": "FTXM35A2V1B / RXM35A5V1B9"
+          }
+        },
+        {
+          "description": "Exact verified monosplit pair with FTXM35A5V1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a-rxm-a9",
+            "locator": "Exact full indoor/outdoor SKU table column header",
+            "excerpt": "FTXM35A5V1B / RXM35A5V1B9"
+          }
+        },
+        {
+          "description": "Exact documented monosplit pair with FVXM35B2V1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b-rxm-a9",
+            "locator": "Exact full indoor/outdoor SKU table column header",
+            "excerpt": "FVXM35B2V1B / RXM35A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed table. Exact compatible historical FTXM full references are limited to the system pairing table; no capacity class or performance map inferred.",
+        "Exact compatible indoor references are individually cited from the FTXM-A/RXM-A9 and FVXM-B/RXM-A9 system tables; RXM-A8 is unreviewed."
+      ]
+    },
+    {
+      "modelReference": "RXM50A5V1B9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-rxm-a9",
+        "locator": "Exact outdoor full-model column header",
+        "excerpt": "RXM50A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM50A5V1B9; dimensions Hauteur",
+            "excerpt": "RXM50A5V1B9 | Dimensions | Unité | Hauteur | mm | 734"
+          }
+        },
+        {
+          "key": "width",
+          "value": 954,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM50A5V1B9; dimensions Largeur",
+            "excerpt": "RXM50A5V1B9 | Dimensions | Unité | Largeur | mm | 954"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 401,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM50A5V1B9; dimensions Profondeur",
+            "excerpt": "RXM50A5V1B9 | Dimensions | Unité | Profondeur | mm | 401"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM50A5V1B9; refrigerant type",
+            "excerpt": "RXM50A5V1B9 | Réfrigérant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM50A5V1B9; Rafraîchissement minimum",
+            "excerpt": "RXM50A5V1B9 | Rafraîchissement | Temp. ext. | Min. | °CBS | -10"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM50A5V1B9; Rafraîchissement maximum",
+            "excerpt": "RXM50A5V1B9 | Rafraîchissement | Temp. ext. | Max. | °CBS | 46"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM50A5V1B9; Chauffage minimum",
+            "excerpt": "RXM50A5V1B9 | Chauffage | Temp. ext. | Min. | °CBH | -15"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-fr-rxm-a9",
+            "locator": "Exact outdoor full-model column RXM50A5V1B9; Chauffage maximum",
+            "excerpt": "RXM50A5V1B9 | Chauffage | Temp. ext. | Max. | °CBH | 18"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact verified monosplit pair with FTXM50A2V1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a-rxm-a9",
+            "locator": "Exact full indoor/outdoor SKU table column header",
+            "excerpt": "FTXM50A2V1B / RXM50A5V1B9"
+          }
+        },
+        {
+          "description": "Exact verified monosplit pair with FTXM50A5V1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a-rxm-a9",
+            "locator": "Exact full indoor/outdoor SKU table column header",
+            "excerpt": "FTXM50A5V1B / RXM50A5V1B9"
+          }
+        },
+        {
+          "description": "Exact documented monosplit pair with FVXM50B2V1B.",
+          "evidence": {
+            "sourceId": "daikin-fr-fvxm-b-rxm-a9",
+            "locator": "Exact full indoor/outdoor SKU table column header",
+            "excerpt": "FVXM50B2V1B / RXM50A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor airflow is not published in the reviewed table. Exact compatible historical FTXM full references are limited to the system pairing table; no capacity class or performance map inferred.",
+        "Exact compatible indoor references are individually cited from the FTXM-A/RXM-A9 and FVXM-B/RXM-A9 system tables; RXM-A8 is unreviewed."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

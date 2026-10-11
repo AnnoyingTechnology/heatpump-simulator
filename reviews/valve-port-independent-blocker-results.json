@@ -1,0 +1,31 @@
+{
+  "status": "BLOCKED",
+  "historicalCandidateOnly": true,
+  "supersededByFinalPassingReceipt": "reviews/valve-port-independent-results.json",
+  "correctedCycleSha256": "8d47208fd11a57d3cd1ea57d2e843237a767ce05a840bda955b454195dd63c40",
+  "reviewedDate": "2026-10-11",
+  "candidateSnapshot": "/tmp/heatpump-valve-science-snapshot-im0w8d2p",
+  "candidateHashes": {
+    "src/engine/cycle.ts": "bb917edb2c1dfee6d57280519b7e9baf33030f2d5124f577e96b8449b3cc7008",
+    "src/engine/types.ts": "04eb849dfb52d4cfef49205961b04d68647d00bc5b384eb60500201ed4083392"
+  },
+  "normalChecksBeforeFailure": {
+    "directCycleCases": 10,
+    "exactPhysicalParityAfterRemovingOnlyNewArrays": true,
+    "rawNativePHStates": true,
+    "IsoenthalpicPressureDropAndEntropy": true,
+    "pipeEndpointAndHeatConsistency": true,
+    "inactiveNulls": true,
+    "liquidDefrostAndMixedHeatingPhasesPreserved": true
+  },
+  "diagnosticFailure": {
+    "injections": 1,
+    "expectedDirectError": "independent accepted diagnostic PH failure",
+    "observedError": "Neither heating SC-target nor minimum-lift controller closes: independent accepted diagnostic PH failure; alternate: No feasible shared-pressure operating point (best residual 2011.2 W at 21.994170,22.916250; equations 2011.236,-0.114)",
+    "alternatePhysicalSolveObserved": true,
+    "returnedAlternateCycleInThisFixture": false
+  },
+  "requiredCorrection": "Publish valve diagnostics after physical regime selection catches, propagate publication failures directly, and preserve whole engine rollback.",
+  "finalCorrectedSourceAcceptance": "pending",
+  "frontendFinalReview": "pending"
+}

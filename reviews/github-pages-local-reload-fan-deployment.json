@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-10-11T12:31:31.000Z",
+  "url": "https://annoyingtechnology.github.io/heatpump-simulator/",
+  "wasmUrl": "https://annoyingtechnology.github.io/heatpump-simulator/vendor/coolprop-safe/coolprop.wasm",
+  "wasmSha256": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+  "expectedBundles": [
+    "index-CxHv7n3f.js",
+    "index-zOai9EJ_.css",
+    "worker-CGg5qQjo.js"
+  ],
+  "bundleHashes": {
+    "index-CxHv7n3f.js": "5e9eee9b6fb3608d289e0d881ec76eefd0d0ae344e5a4d041c8155f22ce91fd1",
+    "index-zOai9EJ_.css": "cc011b0c0226460af87bd233175437906abcbb6efa80a296c9421f9e6a7c4e5d",
+    "worker-CGg5qQjo.js": "413c4e365e8f5d0543c443c7bcaf26f8d7fd9ff42a9bdcf6740ec18904a0d00e"
+  },
+  "checks": [
+    {
+      "name": "hosted site starts a real running worker with physical sensor readings",
+      "passed": true
+    },
+    {
+      "name": "hosted whole-house ruler keeps RT markers beside average U and estimated exposed area",
+      "passed": true
+    },
+    {
+      "name": "hosted zoom keeps the temperature scales at the bottom and headline trends use borderless separators",
+      "passed": true
+    },
+    {
+      "name": "hosted winter preset, room junctions, session COP and drained-water total are visible",
+      "passed": true
+    },
+    {
+      "name": "paused weather and individual indoor controls preserve the simulation clock",
+      "passed": true
+    },
+    {
+      "name": "requested acceleration resumes physical time without restarting",
+      "passed": true
+    },
+    {
+      "name": "hosted application and assets report no runtime or loading errors",
+      "passed": true
+    }
+  ],
+  "achievedRate": "42.9\u00d7",
+  "resumedOperatingState": "idle",
+  "desktop": {
+    "width": 1600,
+    "height": 1000
+  },
+  "applicationCommit": "52bc693c4dc8350e21334a2b13706737c86d84f3",
+  "githubRun": "38138999800",
+  "githubConclusion": "success",
+  "releaseChecks": {
+    "reference": 109,
+    "history": 2,
+    "catalogue": 7,
+    "smoke": 25
+  }
+}

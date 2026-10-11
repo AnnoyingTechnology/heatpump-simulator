@@ -1,0 +1,1351 @@
+{
+  "status": "PASS",
+  "frontendHashes": {
+    "src/runtime/view.ts": "ffb6f27ac117229f08fe0dc36369234e8c935d655e2a4b6613a84b4dbb48ed04",
+    "src/geometry.ts": "87a2d3e7ce568a0e7e9948413213ed8165734491fac5ee56b12f45aa695ff786",
+    "src/scene.ts": "db9fe1ebf8571adc70912f40d949f0159207c57359316e6e45a7038940cce0aa",
+    "src/inspector.ts": "9baef35d3d32864ad129c34a9659329ca9e5dc15acc9f557b25965444a9ce1bf",
+    "src/settings.ts": "089bbd528f0b84522dc86fc1e4f60fd43df575c8e5fc1501c002144d1d0be9ed",
+    "src/circuit.ts": "7cd30eba752813694404d48474002b3ee0e556b90fe70965c7f706841dc4c94c",
+    "src/pipes.ts": "01603d1f53797b730150fe55e467b3b08a6456ffc3eae9ae7f6d8e04df31c4a6",
+    "src/style.css": "8e778ec8f88715ff8e8058db514bfc27eb3211edb01466a178c723e454a3bda9"
+  },
+  "engineSnapshot": "/tmp/heatpump-valve-science-snapshot-osvyohga",
+  "cycleSha256": "8d47208fd11a57d3cd1ea57d2e843237a767ce05a840bda955b454195dd63c40",
+  "checks": [
+    {
+      "name": "Seven frozen native cycle fixtures map actual individual valve faces, common mix, modes, phases and inactive branches",
+      "passed": true,
+      "cases": [
+        {
+          "name": "mixed-heating",
+          "segments": [
+            {
+              "id": "fieldStub:0",
+              "phase": "liquid",
+              "dir": -1,
+              "tempC": 17.000009999999975
+            },
+            {
+              "id": "liqField:0",
+              "phase": "liquid",
+              "dir": -1,
+              "tempC": 17.000009999999975
+            },
+            {
+              "id": "hdrStub:0",
+              "phase": "liquid",
+              "dir": -1,
+              "tempC": 16.971267345717138
+            },
+            {
+              "id": "inL:0",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 17.000009999999975
+            },
+            {
+              "id": "fieldStub:1",
+              "phase": "liquid",
+              "dir": -1,
+              "tempC": 20.000009999999975
+            },
+            {
+              "id": "liqField:1",
+              "phase": "liquid",
+              "dir": -1,
+              "tempC": 20.000009999999975
+            },
+            {
+              "id": "hdrStub:1",
+              "phase": "liquid",
+              "dir": -1,
+              "tempC": 19.96040569014741
+            },
+            {
+              "id": "inL:1",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 20.000009999999975
+            },
+            {
+              "id": "fieldStub:2",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 27.879448191331278
+            },
+            {
+              "id": "liqField:2",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 27.879448191331278
+            },
+            {
+              "id": "hdrStub:2",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 21.36174372155864
+            },
+            {
+              "id": "inL:2",
+              "phase": "two",
+              "dir": 1,
+              "tempC": 27.879448191331278
+            },
+            {
+              "id": "liqHdr",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 21.36174372155864
+            }
+          ]
+        },
+        {
+          "name": "physical-heating",
+          "segments": [
+            {
+              "id": "fieldStub:0",
+              "phase": "liquid",
+              "dir": -1,
+              "tempC": 26.73446222796713
+            },
+            {
+              "id": "liqField:0",
+              "phase": "liquid",
+              "dir": -1,
+              "tempC": 26.73446222796713
+            },
+            {
+              "id": "hdrStub:0",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 2.4960619914171502
+            },
+            {
+              "id": "inL:0",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 27.168086404530413
+            },
+            {
+              "id": "fieldStub:1",
+              "phase": "liquid",
+              "dir": -1,
+              "tempC": 26.679000646388772
+            },
+            {
+              "id": "liqField:1",
+              "phase": "liquid",
+              "dir": -1,
+              "tempC": 26.679000646388772
+            },
+            {
+              "id": "hdrStub:1",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 2.4960619914171502
+            },
+            {
+              "id": "inL:1",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 27.178808857143167
+            },
+            {
+              "id": "liqHdr",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 2.4960619914171502
+            }
+          ]
+        },
+        {
+          "name": "physical-cooling",
+          "segments": [
+            {
+              "id": "fieldStub:0",
+              "phase": "two",
+              "dir": 1,
+              "tempC": 14.409007276916839
+            },
+            {
+              "id": "liqField:0",
+              "phase": "two",
+              "dir": 1,
+              "tempC": 14.409007276916839
+            },
+            {
+              "id": "hdrStub:0",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 39.87780767614379
+            },
+            {
+              "id": "inL:0",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 13.429599019835905
+            },
+            {
+              "id": "fieldStub:1",
+              "phase": "two",
+              "dir": 1,
+              "tempC": 14.664943624708314
+            },
+            {
+              "id": "liqField:1",
+              "phase": "two",
+              "dir": 1,
+              "tempC": 14.664943624708314
+            },
+            {
+              "id": "hdrStub:1",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 39.87780767614379
+            },
+            {
+              "id": "inL:1",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 13.457194580490864
+            },
+            {
+              "id": "liqHdr",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 39.87780767614379
+            }
+          ]
+        },
+        {
+          "name": "ideal-cooling",
+          "segments": [
+            {
+              "id": "fieldStub:0",
+              "phase": "two",
+              "dir": 1,
+              "tempC": 13.173382844800472
+            },
+            {
+              "id": "liqField:0",
+              "phase": "two",
+              "dir": 1,
+              "tempC": 13.173382844800472
+            },
+            {
+              "id": "hdrStub:0",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 39.853578978168684
+            },
+            {
+              "id": "inL:0",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 13.173382844800472
+            },
+            {
+              "id": "fieldStub:1",
+              "phase": "two",
+              "dir": 1,
+              "tempC": 13.173382844800472
+            },
+            {
+              "id": "liqField:1",
+              "phase": "two",
+              "dir": 1,
+              "tempC": 13.173382844800472
+            },
+            {
+              "id": "hdrStub:1",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 39.853578978168684
+            },
+            {
+              "id": "inL:1",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 13.173382844800472
+            },
+            {
+              "id": "liqHdr",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 39.853578978168684
+            }
+          ]
+        },
+        {
+          "name": "liquid-defrost",
+          "segments": [
+            {
+              "id": "fieldStub:0",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 9.992289391670226
+            },
+            {
+              "id": "liqField:0",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 9.992289391670226
+            },
+            {
+              "id": "hdrStub:0",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 10.001743376684658
+            },
+            {
+              "id": "inL:0",
+              "phase": "liquid",
+              "dir": -1,
+              "tempC": 9.992289391670226
+            },
+            {
+              "id": "fieldStub:1",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 9.992289391670226
+            },
+            {
+              "id": "liqField:1",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 9.992289391670226
+            },
+            {
+              "id": "hdrStub:1",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 10.001743376684658
+            },
+            {
+              "id": "inL:1",
+              "phase": "liquid",
+              "dir": -1,
+              "tempC": 9.992289391670226
+            },
+            {
+              "id": "liqHdr",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 10.001743376684658
+            }
+          ]
+        },
+        {
+          "name": "inactive-heating",
+          "segments": [
+            {
+              "id": "fieldStub:0",
+              "phase": "liquid",
+              "dir": -1,
+              "tempC": 21.09762380128302
+            },
+            {
+              "id": "liqField:0",
+              "phase": "liquid",
+              "dir": -1,
+              "tempC": 21.09762380128302
+            },
+            {
+              "id": "hdrStub:0",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 2.540168931808296
+            },
+            {
+              "id": "inL:0",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 21.09762380128302
+            },
+            {
+              "id": "fieldStub:2",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 29.301660183161232
+            },
+            {
+              "id": "liqField:2",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 29.301660183161232
+            },
+            {
+              "id": "hdrStub:2",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 2.540168931808296
+            },
+            {
+              "id": "inL:2",
+              "phase": "two",
+              "dir": 1,
+              "tempC": 29.301660183161232
+            },
+            {
+              "id": "liqHdr",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 2.540168931808296
+            }
+          ]
+        },
+        {
+          "name": "inactive-physical-cooling",
+          "segments": [
+            {
+              "id": "fieldStub:0",
+              "phase": "two",
+              "dir": 1,
+              "tempC": 14.69179355134861
+            },
+            {
+              "id": "liqField:0",
+              "phase": "two",
+              "dir": 1,
+              "tempC": 14.69179355134861
+            },
+            {
+              "id": "hdrStub:0",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 39.94593078880905
+            },
+            {
+              "id": "inL:0",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 13.820293827968783
+            },
+            {
+              "id": "fieldStub:2",
+              "phase": "two",
+              "dir": 1,
+              "tempC": 15.196075078944773
+            },
+            {
+              "id": "liqField:2",
+              "phase": "two",
+              "dir": 1,
+              "tempC": 15.196075078944773
+            },
+            {
+              "id": "hdrStub:2",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 39.94593078880905
+            },
+            {
+              "id": "inL:2",
+              "phase": "two",
+              "dir": -1,
+              "tempC": 13.874950339181055
+            },
+            {
+              "id": "liqHdr",
+              "phase": "liquid",
+              "dir": 1,
+              "tempC": 39.94593078880905
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Materialized pipe phase, temperature color, direction, indoor probes and EEV inspector retain actual branch faces",
+      "passed": true,
+      "cases": [
+        {
+          "name": "mixed-heating",
+          "segments": [
+            {
+              "id": "hdrStub:0",
+              "phase": "liquid",
+              "dir": "-1",
+              "temp": "17.0",
+              "stroke": "rgb(205, 219, 206)"
+            },
+            {
+              "id": "fieldStub:0",
+              "phase": "liquid",
+              "dir": "-1",
+              "temp": "17.0",
+              "stroke": "rgb(205, 219, 206)"
+            },
+            {
+              "id": "liqField:0",
+              "phase": "liquid",
+              "dir": "-1",
+              "temp": "17.0",
+              "stroke": "rgb(205, 219, 206)"
+            },
+            {
+              "id": "inL:0",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "17.0",
+              "stroke": "rgb(205, 219, 206)"
+            },
+            {
+              "id": "hdrStub:1",
+              "phase": "liquid",
+              "dir": "-1",
+              "temp": "20.0",
+              "stroke": "rgb(226, 228, 205)"
+            },
+            {
+              "id": "fieldStub:1",
+              "phase": "liquid",
+              "dir": "-1",
+              "temp": "20.0",
+              "stroke": "rgb(226, 228, 205)"
+            },
+            {
+              "id": "liqField:1",
+              "phase": "liquid",
+              "dir": "-1",
+              "temp": "20.0",
+              "stroke": "rgb(226, 228, 205)"
+            },
+            {
+              "id": "inL:1",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "20.0",
+              "stroke": "rgb(226, 228, 205)"
+            },
+            {
+              "id": "hdrStub:2",
+              "phase": "two",
+              "dir": "-1",
+              "temp": "21.4",
+              "stroke": "rgb(227, 225, 199)"
+            },
+            {
+              "id": "fieldStub:2",
+              "phase": "two",
+              "dir": "-1",
+              "temp": "27.9",
+              "stroke": "rgb(233, 213, 168)"
+            },
+            {
+              "id": "liqField:2",
+              "phase": "two",
+              "dir": "-1",
+              "temp": "27.9",
+              "stroke": "rgb(233, 213, 168)"
+            },
+            {
+              "id": "inL:2",
+              "phase": "two",
+              "dir": "1",
+              "temp": "27.9",
+              "stroke": "rgb(233, 213, 168)"
+            }
+          ],
+          "probes": [
+            {
+              "branch": 0,
+              "role": "OUT",
+              "exact": "17.000009999999975"
+            },
+            {
+              "branch": 1,
+              "role": "OUT",
+              "exact": "20.000009999999975"
+            },
+            {
+              "branch": 2,
+              "role": "OUT",
+              "exact": "27.879448191331278"
+            }
+          ],
+          "inspector": {
+            "Location": "Outdoor casing, in the branch liquid line",
+            "Flow direction": "Field side → header side",
+            "Upstream": "Field-side line: Liquid · 17.0 °C · 18.24 bar(a)",
+            "Downstream": "Header-side line: Liquid · 17.0 °C · 15.31 bar(a)",
+            "Branch refrigerant flow": "0.0022 kg/s",
+            "Opening": "— (no calibration map)",
+            "Outlet T / quality": "17.0 °C · —"
+          }
+        },
+        {
+          "name": "physical-heating",
+          "segments": [
+            {
+              "id": "hdrStub:0",
+              "phase": "two",
+              "dir": "-1",
+              "temp": "2.5",
+              "stroke": "rgb(105, 175, 211)"
+            },
+            {
+              "id": "fieldStub:0",
+              "phase": "liquid",
+              "dir": "-1",
+              "temp": "26.7",
+              "stroke": "rgb(232, 215, 173)"
+            },
+            {
+              "id": "liqField:0",
+              "phase": "liquid",
+              "dir": "-1",
+              "temp": "26.7",
+              "stroke": "rgb(232, 215, 173)"
+            },
+            {
+              "id": "inL:0",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "27.2",
+              "stroke": "rgb(232, 214, 171)"
+            },
+            {
+              "id": "hdrStub:1",
+              "phase": "two",
+              "dir": "-1",
+              "temp": "2.5",
+              "stroke": "rgb(105, 175, 211)"
+            },
+            {
+              "id": "fieldStub:1",
+              "phase": "liquid",
+              "dir": "-1",
+              "temp": "26.7",
+              "stroke": "rgb(232, 215, 173)"
+            },
+            {
+              "id": "liqField:1",
+              "phase": "liquid",
+              "dir": "-1",
+              "temp": "26.7",
+              "stroke": "rgb(232, 215, 173)"
+            },
+            {
+              "id": "inL:1",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "27.2",
+              "stroke": "rgb(232, 214, 171)"
+            }
+          ],
+          "probes": [
+            {
+              "branch": 0,
+              "role": "OUT",
+              "exact": "27.168086404530413"
+            },
+            {
+              "branch": 1,
+              "role": "OUT",
+              "exact": "27.178808857143167"
+            }
+          ],
+          "inspector": {
+            "Location": "Outdoor casing, in the branch liquid line",
+            "Flow direction": "Field side → header side",
+            "Upstream": "Field-side line: Liquid · 26.7 °C · 18.33 bar(a)",
+            "Downstream": "Header-side line: Two-phase · 2.5 °C · 8.80 bar(a)",
+            "Branch refrigerant flow": "0.0088 kg/s",
+            "Opening": "— (no calibration map)",
+            "Outlet T / quality": "2.5 °C · 0.143"
+          }
+        },
+        {
+          "name": "physical-cooling",
+          "segments": [
+            {
+              "id": "hdrStub:0",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "39.9",
+              "stroke": "rgb(244, 190, 111)"
+            },
+            {
+              "id": "fieldStub:0",
+              "phase": "two",
+              "dir": "1",
+              "temp": "14.4",
+              "stroke": "rgb(187, 211, 207)"
+            },
+            {
+              "id": "liqField:0",
+              "phase": "two",
+              "dir": "1",
+              "temp": "14.4",
+              "stroke": "rgb(187, 211, 207)"
+            },
+            {
+              "id": "inL:0",
+              "phase": "two",
+              "dir": "-1",
+              "temp": "13.4",
+              "stroke": "rgb(181, 208, 207)"
+            },
+            {
+              "id": "hdrStub:1",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "39.9",
+              "stroke": "rgb(244, 190, 111)"
+            },
+            {
+              "id": "fieldStub:1",
+              "phase": "two",
+              "dir": "1",
+              "temp": "14.7",
+              "stroke": "rgb(189, 212, 207)"
+            },
+            {
+              "id": "liqField:1",
+              "phase": "two",
+              "dir": "1",
+              "temp": "14.7",
+              "stroke": "rgb(189, 212, 207)"
+            },
+            {
+              "id": "inL:1",
+              "phase": "two",
+              "dir": "-1",
+              "temp": "13.5",
+              "stroke": "rgb(181, 208, 207)"
+            }
+          ],
+          "probes": [
+            {
+              "branch": 0,
+              "role": "IN",
+              "exact": "13.429599019835905"
+            },
+            {
+              "branch": 1,
+              "role": "IN",
+              "exact": "13.457194580490864"
+            }
+          ],
+          "inspector": {
+            "Location": "Outdoor casing, in the branch liquid line",
+            "Flow direction": "Header side → field side",
+            "Upstream": "Header-side line: Liquid · 39.9 °C · 25.32 bar(a)",
+            "Downstream": "Field-side line: Two-phase · 14.4 °C · 12.59 bar(a)",
+            "Branch refrigerant flow": "0.0108 kg/s",
+            "Opening": "— (no calibration map)",
+            "Outlet T / quality": "14.4 °C · 0.170"
+          }
+        },
+        {
+          "name": "ideal-cooling",
+          "segments": [
+            {
+              "id": "hdrStub:0",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "39.9",
+              "stroke": "rgb(244, 190, 111)"
+            },
+            {
+              "id": "fieldStub:0",
+              "phase": "two",
+              "dir": "1",
+              "temp": "13.2",
+              "stroke": "rgb(179, 208, 207)"
+            },
+            {
+              "id": "liqField:0",
+              "phase": "two",
+              "dir": "1",
+              "temp": "13.2",
+              "stroke": "rgb(179, 208, 207)"
+            },
+            {
+              "id": "inL:0",
+              "phase": "two",
+              "dir": "-1",
+              "temp": "13.2",
+              "stroke": "rgb(179, 208, 207)"
+            },
+            {
+              "id": "hdrStub:1",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "39.9",
+              "stroke": "rgb(244, 190, 111)"
+            },
+            {
+              "id": "fieldStub:1",
+              "phase": "two",
+              "dir": "1",
+              "temp": "13.2",
+              "stroke": "rgb(179, 208, 207)"
+            },
+            {
+              "id": "liqField:1",
+              "phase": "two",
+              "dir": "1",
+              "temp": "13.2",
+              "stroke": "rgb(179, 208, 207)"
+            },
+            {
+              "id": "inL:1",
+              "phase": "two",
+              "dir": "-1",
+              "temp": "13.2",
+              "stroke": "rgb(179, 208, 207)"
+            }
+          ],
+          "probes": [
+            {
+              "branch": 0,
+              "role": "IN",
+              "exact": "13.173382844800472"
+            },
+            {
+              "branch": 1,
+              "role": "IN",
+              "exact": "13.173382844800472"
+            }
+          ],
+          "inspector": {
+            "Location": "Outdoor casing, in the branch liquid line",
+            "Flow direction": "Header side → field side",
+            "Upstream": "Header-side line: Liquid · 39.9 °C · 25.30 bar(a)",
+            "Downstream": "Field-side line: Two-phase · 13.2 °C · 12.15 bar(a)",
+            "Branch refrigerant flow": "0.0115 kg/s",
+            "Opening": "— (no calibration map)",
+            "Outlet T / quality": "13.2 °C · 0.176"
+          }
+        },
+        {
+          "name": "liquid-defrost",
+          "segments": [
+            {
+              "id": "hdrStub:0",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "10.0",
+              "stroke": "rgb(157, 198, 208)"
+            },
+            {
+              "id": "fieldStub:0",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "10.0",
+              "stroke": "rgb(157, 198, 209)"
+            },
+            {
+              "id": "liqField:0",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "10.0",
+              "stroke": "rgb(157, 198, 209)"
+            },
+            {
+              "id": "inL:0",
+              "phase": "liquid",
+              "dir": "-1",
+              "temp": "10.0",
+              "stroke": "rgb(157, 198, 209)"
+            },
+            {
+              "id": "hdrStub:1",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "10.0",
+              "stroke": "rgb(157, 198, 208)"
+            },
+            {
+              "id": "fieldStub:1",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "10.0",
+              "stroke": "rgb(157, 198, 209)"
+            },
+            {
+              "id": "liqField:1",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "10.0",
+              "stroke": "rgb(157, 198, 209)"
+            },
+            {
+              "id": "inL:1",
+              "phase": "liquid",
+              "dir": "-1",
+              "temp": "10.0",
+              "stroke": "rgb(157, 198, 209)"
+            }
+          ],
+          "probes": [
+            {
+              "branch": 0,
+              "role": "IN",
+              "exact": "9.992289391670226"
+            },
+            {
+              "branch": 1,
+              "role": "IN",
+              "exact": "9.992289391670226"
+            }
+          ],
+          "inspector": {
+            "Location": "Outdoor casing, in the branch liquid line",
+            "Flow direction": "Header side → field side",
+            "Upstream": "Header-side line: Liquid · 10.0 °C · 14.64 bar(a)",
+            "Downstream": "Field-side line: Liquid · 10.0 °C · 11.66 bar(a)",
+            "Branch refrigerant flow": "0.0110 kg/s",
+            "Opening": "— (no calibration map)",
+            "Outlet T / quality": "10.0 °C · —"
+          }
+        },
+        {
+          "name": "inactive-heating",
+          "segments": [
+            {
+              "id": "hdrStub:0",
+              "phase": "two",
+              "dir": "-1",
+              "temp": "2.5",
+              "stroke": "rgb(106, 176, 211)"
+            },
+            {
+              "id": "fieldStub:0",
+              "phase": "liquid",
+              "dir": "-1",
+              "temp": "21.1",
+              "stroke": "rgb(227, 226, 200)"
+            },
+            {
+              "id": "liqField:0",
+              "phase": "liquid",
+              "dir": "-1",
+              "temp": "21.1",
+              "stroke": "rgb(227, 226, 200)"
+            },
+            {
+              "id": "inL:0",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "21.1",
+              "stroke": "rgb(227, 226, 200)"
+            },
+            {
+              "id": "hdrStub:1",
+              "phase": "idle",
+              "dir": "0",
+              "temp": "unknown",
+              "stroke": "#a5abb1"
+            },
+            {
+              "id": "fieldStub:1",
+              "phase": "idle",
+              "dir": "0",
+              "temp": "unknown",
+              "stroke": "#a5abb1"
+            },
+            {
+              "id": "liqField:1",
+              "phase": "idle",
+              "dir": "0",
+              "temp": "unknown",
+              "stroke": "#a5abb1"
+            },
+            {
+              "id": "inL:1",
+              "phase": "idle",
+              "dir": "0",
+              "temp": "unknown",
+              "stroke": "#a5abb1"
+            },
+            {
+              "id": "hdrStub:2",
+              "phase": "two",
+              "dir": "-1",
+              "temp": "2.5",
+              "stroke": "rgb(106, 176, 211)"
+            },
+            {
+              "id": "fieldStub:2",
+              "phase": "two",
+              "dir": "-1",
+              "temp": "29.3",
+              "stroke": "rgb(234, 210, 161)"
+            },
+            {
+              "id": "liqField:2",
+              "phase": "two",
+              "dir": "-1",
+              "temp": "29.3",
+              "stroke": "rgb(234, 210, 161)"
+            },
+            {
+              "id": "inL:2",
+              "phase": "two",
+              "dir": "1",
+              "temp": "29.3",
+              "stroke": "rgb(234, 210, 161)"
+            }
+          ],
+          "probes": [
+            {
+              "branch": 0,
+              "role": "OUT",
+              "exact": "21.09762380128302"
+            },
+            {
+              "branch": 1,
+              "role": "OUT",
+              "exact": ""
+            },
+            {
+              "branch": 2,
+              "role": "OUT",
+              "exact": "29.301660183161232"
+            }
+          ],
+          "inspector": {
+            "Location": "Outdoor casing, in the branch liquid line",
+            "Flow direction": "Field side → header side",
+            "Upstream": "Field-side line: Liquid · 21.1 °C · 18.93 bar(a)",
+            "Downstream": "Header-side line: Two-phase · 2.5 °C · 8.81 bar(a)",
+            "Branch refrigerant flow": "0.0083 kg/s",
+            "Opening": "— (no calibration map)",
+            "Outlet T / quality": "2.5 °C · 0.108"
+          }
+        },
+        {
+          "name": "inactive-physical-cooling",
+          "segments": [
+            {
+              "id": "hdrStub:0",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "39.9",
+              "stroke": "rgb(244, 190, 110)"
+            },
+            {
+              "id": "fieldStub:0",
+              "phase": "two",
+              "dir": "1",
+              "temp": "14.7",
+              "stroke": "rgb(189, 212, 207)"
+            },
+            {
+              "id": "liqField:0",
+              "phase": "two",
+              "dir": "1",
+              "temp": "14.7",
+              "stroke": "rgb(189, 212, 207)"
+            },
+            {
+              "id": "inL:0",
+              "phase": "two",
+              "dir": "-1",
+              "temp": "13.8",
+              "stroke": "rgb(183, 209, 207)"
+            },
+            {
+              "id": "hdrStub:1",
+              "phase": "idle",
+              "dir": "0",
+              "temp": "unknown",
+              "stroke": "#a5abb1"
+            },
+            {
+              "id": "fieldStub:1",
+              "phase": "idle",
+              "dir": "0",
+              "temp": "unknown",
+              "stroke": "#a5abb1"
+            },
+            {
+              "id": "liqField:1",
+              "phase": "idle",
+              "dir": "0",
+              "temp": "unknown",
+              "stroke": "#a5abb1"
+            },
+            {
+              "id": "inL:1",
+              "phase": "idle",
+              "dir": "0",
+              "temp": "unknown",
+              "stroke": "#a5abb1"
+            },
+            {
+              "id": "hdrStub:2",
+              "phase": "liquid",
+              "dir": "1",
+              "temp": "39.9",
+              "stroke": "rgb(244, 190, 110)"
+            },
+            {
+              "id": "fieldStub:2",
+              "phase": "two",
+              "dir": "1",
+              "temp": "15.2",
+              "stroke": "rgb(193, 214, 207)"
+            },
+            {
+              "id": "liqField:2",
+              "phase": "two",
+              "dir": "1",
+              "temp": "15.2",
+              "stroke": "rgb(193, 214, 207)"
+            },
+            {
+              "id": "inL:2",
+              "phase": "two",
+              "dir": "-1",
+              "temp": "13.9",
+              "stroke": "rgb(184, 210, 207)"
+            }
+          ],
+          "probes": [
+            {
+              "branch": 0,
+              "role": "IN",
+              "exact": "13.820293827968783"
+            },
+            {
+              "branch": 1,
+              "role": "IN",
+              "exact": ""
+            },
+            {
+              "branch": 2,
+              "role": "IN",
+              "exact": "13.874950339181055"
+            }
+          ],
+          "inspector": {
+            "Location": "Outdoor casing, in the branch liquid line",
+            "Flow direction": "Header side → field side",
+            "Upstream": "Header-side line: Liquid · 39.9 °C · 25.36 bar(a)",
+            "Downstream": "Field-side line: Two-phase · 14.7 °C · 12.70 bar(a)",
+            "Branch refrigerant flow": "0.0103 kg/s",
+            "Opening": "— (no calibration map)",
+            "Outlet T / quality": "14.7 °C · 0.169"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Materialized EEV body joins both faces inside casing, with continuous field stub/line seam",
+      "passed": true,
+      "layoutRows": 24,
+      "materializedValves": [
+        {
+          "branch": 0,
+          "center": {
+            "x": 419.99999999999994,
+            "y": 645
+          },
+          "headerFace": {
+            "x": 410.99999999999994,
+            "y": 645
+          },
+          "fieldFace": {
+            "x": 428.99999999999994,
+            "y": 645
+          }
+        },
+        {
+          "branch": 1,
+          "center": {
+            "x": 419.99999999999994,
+            "y": 667
+          },
+          "headerFace": {
+            "x": 410.99999999999994,
+            "y": 667
+          },
+          "fieldFace": {
+            "x": 428.99999999999994,
+            "y": 667
+          }
+        },
+        {
+          "branch": 2,
+          "center": {
+            "x": 419.99999999999994,
+            "y": 689
+          },
+          "headerFace": {
+            "x": 410.99999999999994,
+            "y": 689
+          },
+          "fieldFace": {
+            "x": 428.99999999999994,
+            "y": 689
+          }
+        }
+      ],
+      "componentRoles": [
+        "Compressor · pressure ↑",
+        "Fan · moves air",
+        "Accumulator · liquid trap",
+        "Reverser · heat / cool",
+        "Expansion valves",
+        "Lower pressure",
+        "Outdoor coil · exchanges heat"
+      ],
+      "sideFan": {
+        "height": 203,
+        "width": 14,
+        "genericSchematic": true
+      }
+    },
+    {
+      "name": "Missing optional live valve faces withhold phase/temperature/arrows",
+      "passed": true,
+      "segments": {
+        "selectorCases": [
+          {
+            "name": "mixed-heating",
+            "absent": "missing",
+            "segments": [
+              {
+                "id": "hdrStub:0",
+                "phase": "unknown",
+                "dir": 0,
+                "tempC": null
+              },
+              {
+                "id": "fieldStub:0",
+                "phase": "unknown",
+                "dir": 0,
+                "tempC": null
+              },
+              {
+                "id": "liqField:0",
+                "phase": "unknown",
+                "dir": 0,
+                "tempC": null
+              }
+            ]
+          },
+          {
+            "name": "mixed-heating",
+            "absent": "null",
+            "segments": [
+              {
+                "id": "hdrStub:0",
+                "phase": "unknown",
+                "dir": 0,
+                "tempC": null
+              },
+              {
+                "id": "fieldStub:0",
+                "phase": "unknown",
+                "dir": 0,
+                "tempC": null
+              },
+              {
+                "id": "liqField:0",
+                "phase": "unknown",
+                "dir": 0,
+                "tempC": null
+              }
+            ]
+          },
+          {
+            "name": "liquid-defrost",
+            "absent": "missing",
+            "segments": [
+              {
+                "id": "hdrStub:0",
+                "phase": "unknown",
+                "dir": 0,
+                "tempC": null
+              },
+              {
+                "id": "fieldStub:0",
+                "phase": "unknown",
+                "dir": 0,
+                "tempC": null
+              },
+              {
+                "id": "liqField:0",
+                "phase": "unknown",
+                "dir": 0,
+                "tempC": null
+              }
+            ]
+          },
+          {
+            "name": "liquid-defrost",
+            "absent": "null",
+            "segments": [
+              {
+                "id": "hdrStub:0",
+                "phase": "unknown",
+                "dir": 0,
+                "tempC": null
+              },
+              {
+                "id": "fieldStub:0",
+                "phase": "unknown",
+                "dir": 0,
+                "tempC": null
+              },
+              {
+                "id": "liqField:0",
+                "phase": "unknown",
+                "dir": 0,
+                "tempC": null
+              }
+            ]
+          }
+        ],
+        "rendered": [
+          {
+            "id": "hdrStub:0",
+            "phase": "unknown",
+            "dir": 0,
+            "temp": "unknown",
+            "stroke": "url(#pTempNone)",
+            "moving": false,
+            "markOpacity": "0",
+            "arrowOpacity": "0"
+          },
+          {
+            "id": "fieldStub:0",
+            "phase": "unknown",
+            "dir": 0,
+            "temp": "unknown",
+            "stroke": "url(#pTempNone)",
+            "moving": false,
+            "markOpacity": "0",
+            "arrowOpacity": "0"
+          },
+          {
+            "id": "liqField:0",
+            "phase": "unknown",
+            "dir": 0,
+            "temp": "unknown",
+            "stroke": "url(#pTempNone)",
+            "moving": false,
+            "markOpacity": "0",
+            "arrowOpacity": "0"
+          }
+        ],
+        "inspector": {
+          "Location": "Outdoor casing, in the branch liquid line",
+          "Flow direction": "Header side → field side",
+          "Upstream": "Header-side line: —",
+          "Downstream": "Field-side line: —",
+          "Branch refrigerant flow": "0.0110 kg/s",
+          "Opening": "— (no calibration map)",
+          "Outlet T / quality": "— · —"
+        }
+      }
+    }
+  ],
+  "scope": "Read-only isolated browser uses frozen native direct-cycle fixtures to verify selector and materialized geometry. Root owns actual-worker color/inspector gate. Whole field-line color represents outdoor valve face; no spatial PH field is claimed."
+}

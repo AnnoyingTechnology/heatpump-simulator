@@ -135,6 +135,9 @@ export const A = {
  */
 export const FAN_SIDE = { x: 80, w: 14, h: 203 } as const;
 
+/** Branch expansion bank: explicit header/field faces, shared by tubes and valve drawings. */
+export const EEV = { headerX: 260, centerX: 280, headerFaceX: 271, fieldFaceX: 289 } as const;
+
 const COIL_ROWS = 12;
 const COIL_Y0 = 22;
 
@@ -214,7 +217,7 @@ export function pipeSpecs(n: number): PipeSpec[] {
   add({ id: 'coilG', cls: 'coil', title: 'Outdoor coil · gas end', pts: l(cv.slice(0, 6)) });
   add({ id: 'coilM', cls: 'coil', title: 'Outdoor coil · middle passes', pts: l(cv.slice(5, 18)) });
   add({ id: 'coilL', cls: 'coil', title: 'Outdoor coil · liquid end', pts: l(cv.slice(17, 24)) });
-  add({ id: 'liqHdr', cls: 'liq', title: 'Outdoor liquid header', pts: l([A.coilLiq, [78, 198], [78, feeder], [268, feeder], [268, ylOf(0)]]) });
+  add({ id: 'liqHdr', cls: 'liq', title: 'Outdoor liquid header', pts: l([A.coilLiq, [78, 198], [78, feeder], [EEV.headerX, feeder], [EEV.headerX, ylOf(0)]]) });
   add({ id: 'vDO', cls: 'gas', title: 'Reverser internal link D–O', pts: l([A.valveD, [190, 106], A.valveO]) });
   add({ id: 'vIS', cls: 'gas', title: 'Reverser internal link I–S', pts: l([A.valveI, [224, 106], A.valveS]) });
   add({ id: 'vDI', cls: 'gas', title: 'Reverser internal link D–I', pts: l([A.valveD, [190, 114], [230, 114], [230, 106], A.valveI]) });
@@ -227,8 +230,8 @@ export function pipeSpecs(n: number): PipeSpec[] {
     const b = boxes[i];
     if (!b) continue;
     add({ id: `gasStub:${i}`, cls: 'gas', title: `Branch ${i + 1} gas stub`, halo: true, pts: l([[250, yg], [OUT.w, yg]]) });
-    add({ id: `hdrStub:${i}`, cls: 'liq', title: `Branch ${i + 1} liquid stub (header side of EEV)`, pts: l([[268, yl], [279, yl]]) });
-    add({ id: `fieldStub:${i}`, cls: 'liq', title: `Branch ${i + 1} liquid stub (field side of EEV)`, pts: l([[293, yl], [OUT.w, yl]]) });
+    add({ id: `hdrStub:${i}`, cls: 'liq', title: `Branch ${i + 1} liquid stub (header side of EEV)`, pts: l([[EEV.headerX, yl], [EEV.headerFaceX, yl]]) });
+    add({ id: `fieldStub:${i}`, cls: 'liq', title: `Branch ${i + 1} liquid stub (field side of EEV)`, pts: l([[EEV.fieldFaceX, yl], [OUT.w, yl]]) });
     add({
       id: `gasField:${i}`, cls: 'gas', insul: true, title: `Branch ${i + 1} gas field line`,
       pts: [L(OUT.w, yg), [b.gx, OUT.y + yg], [b.gx, b.gasY], [b.unitX + COIL_LEFT, b.gasY]],

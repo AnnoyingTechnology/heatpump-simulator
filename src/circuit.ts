@@ -6,7 +6,7 @@ import type { ExampleState, Mode } from './types';
  * Temperature is the primary, continuous tube colour (full interior width). Phase is a separate monochrome mark
  * pattern (dots = vapor, dashes = liquid, dash-dot = two-phase); the two encodings never share a channel.
  */
-export type Phase = 'vapor' | 'liquid' | 'two' | 'idle' | 'off';
+export type Phase = 'vapor' | 'liquid' | 'two' | 'idle' | 'off' | 'unknown';
 export type Dir = -1 | 0 | 1;
 
 export interface SegState {
@@ -221,6 +221,7 @@ export function phaseLabel(p: Phase): string {
     case 'liquid': return 'Liquid';
     case 'two': return 'Two-phase';
     case 'idle': return 'Idle (no flow)';
+    case 'unknown': return 'State unavailable';
     default: return 'Not connected';
   }
 }

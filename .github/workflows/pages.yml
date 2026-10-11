@@ -33,7 +33,7 @@ jobs:
       - name: Compile engine checks
         run: npx tsc -p tests/engine/tsconfig.json
       - name: Verify rolling metric history
-        run: npx tsc -p tests/frontend/tsconfig.json && node --test tests/trends.test.mjs
+        run: npx tsc -p tests/frontend/tsconfig.json && node --test tests/trends.test.mjs tests/preconfiguration.test.mjs
       - name: Verify released Reference model and guarded properties
         env:
           HEATPUMP_TEST_BACKEND: guarded
@@ -44,6 +44,7 @@ jobs:
           tests/engine/storage-properties.test.mjs
           tests/engine/coil-inverse.test.mjs
           tests/engine/cycle.test.mjs
+          tests/engine/valve-ports.test.mjs
           tests/engine/dynamics.test.mjs
           tests/engine/drive.test.mjs
           tests/engine/thermostat.test.mjs

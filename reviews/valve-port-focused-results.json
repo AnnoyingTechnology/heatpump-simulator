@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-10-11T12:19:26.901147+00:00",
+  "backend": "guarded",
+  "passed": true,
+  "tests": 25,
+  "newValveTests": 8,
+  "adjacentTests": 17,
+  "typecheckPassed": true,
+  "command": "HEATPUMP_TEST_BACKEND=guarded node --test tests/engine/valve-ports.test.mjs tests/engine/warm-heating-regime.test.mjs tests/engine/transport.test.mjs tests/engine/opening-exchange.test.mjs",
+  "sourceSha256": {
+    "src/engine/cycle.ts": "8d47208fd11a57d3cd1ea57d2e843237a767ce05a840bda955b454195dd63c40",
+    "src/engine/types.ts": "04eb849dfb52d4cfef49205961b04d68647d00bc5b384eb60500201ed4083392",
+    "tests/engine/valve-ports.test.mjs": "f9938a0009d09039afcc353a8c1753ce7e67ea6f8524da952fab96882d0e84f8"
+  },
+  "parityReceipt": "reviews/valve-port-parity-results.json",
+  "contract": {
+    "branchValveInlets": "Optional array of stream-upstream RefrigerantState or null for inactive, aligned with rooms",
+    "branchValveOutlets": "Optional array of stream-downstream RefrigerantState or null for inactive, aligned with rooms"
+  },
+  "scope": "Accepted-output-only PH diagnostics published outside all physical regime fallback catches. Internal Trial retains face p/h coordinates without extra flashes during residual trials. Physics, residual, allocation, flow, UA, controller and energy calculations unchanged.",
+  "diagnosticFailureRegression": {
+    "passed": true,
+    "propagatesOriginalErrorObject": true,
+    "diagnosticFailureHits": 1,
+    "propertyQueriesAfterFailure": 0,
+    "rejectsPreviousImplementation": true,
+    "previousSnapshot": "/tmp/heatpump-valve-science-snapshot-im0w8d2p"
+  }
+}

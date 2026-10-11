@@ -211,8 +211,12 @@ export function inspectorHtml(id: string | null, s: AppState): string {
     case 'eev': {
       const flow = live ? eng?.cycle?.branchMassFlowsKgs[i] ?? 0 : null;
       const open = live ? (flow ?? 0) > 0 : fm !== 'idle';
-      const before = 'Liquid (high pressure)';
-      const after = 'Two-phase (low pressure)';
+      const valveIn = live && ok ? eng?.cycle?.branchValveInlets?.[i] : null;
+      const valveOut = live && ok ? eng?.cycle?.branchValveOutlets?.[i] : null;
+      const describe = (st: RefrigerantState | null | undefined): string => st
+        ? `${phaseLabel(st.phase === 'two-phase' ? 'two' : st.phase)} · ${deg(st.temperatureC)} · ${pressure(st.pBarAbs, s)}` : '—';
+      const before = live ? describe(valveIn) : 'Illustrative high-pressure stream';
+      const after = live ? describe(valveOut) : 'Illustrative low-pressure stream';
       return block('Expansion valve', rows([
         ['Location', 'Outdoor casing, in the branch liquid line'],
         ['Flow direction', !open ? 'None' : high ? 'Field side → header side' : 'Header side → field side'],
@@ -220,8 +224,8 @@ export function inspectorHtml(id: string | null, s: AppState): string {
         ['Downstream', !open ? '—' : high ? 'Header-side line: ' + after : 'Field-side line: ' + after],
         ...(live ? [['Branch refrigerant flow', ok ? num(flow, 4, 'kg/s') : '—'] as Row] : []),
         ['Opening', '— (no calibration map)'],
-        ['Outlet T / quality', rd.cycle ? `${deg(rd.cycle.expOutC)} · ${quality(rd.cycle.expQuality)}` : '—'],
-      ])) + '<p class="muted">Cooling: the small field line downstream of the outdoor EEV is two-phase. Heating: the small field return is high-pressure liquid.</p>';
+        ['Outlet T / quality', live ? `${deg(valveOut?.temperatureC)} · ${quality(valveOut?.qualityMass)}` : rd.cycle ? `${deg(rd.cycle.expOutC)} · ${quality(rd.cycle.expQuality)}` : '—'],
+      ])) + '<p class="muted">The expansion valve lowers pressure at essentially constant refrigerant enthalpy. The temperature can fall sharply here, before the coil. Phase follows the actual branch state; it need not always be a liquid/vapor mixture.</p>';
     }
     case 'service':
       return block('Physical service port', rows([

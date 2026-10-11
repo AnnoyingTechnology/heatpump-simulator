@@ -4,7 +4,7 @@ import type { CoilProbe } from './circuit';
 import { clamp, fmt, html, setAttr, setText, svg, toggleClass } from './dom';
 import { branchesFor, readingFlowMode, segmentFor, simulation } from './runtime/view';
 import {
-  A, FAN_SIDE, L, LINE_CTL, INDOOR_COIL, OUT, PILL, PROBE_AT, ROOM_COLS, ROOM_PANEL_H, UNIT,
+  A, EEV, FAN_SIDE, L, LINE_CTL, INDOOR_COIL, OUT, PILL, PROBE_AT, ROOM_COLS, ROOM_PANEL_H, UNIT,
   indoorProbeAt, layoutFor, lineCtlBox, pipeSpecs, roomBoxes, ygOf, ylOf,
 } from './geometry';
 import type { Layout, RoomBox } from './geometry';
@@ -736,7 +736,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
         svg('rect', { class: 'fan-shroud', x: FAN_SIDE.x, y: fanTop, width: FAN_SIDE.w, height: FAN_SIDE.h, rx: 4 }),
         svg('path', { class: 'fan-blades', d: `M${fanX} ${fanTop + 5}V${fanBottom - 5}` }),
         svg('circle', { class: 'hub', cx: fanX, cy: A.fan[1], r: 3.2 }))));
-    const fanLabel = txt(FAN_SIDE.x - 5, A.fan[1], 'Fan', 'dl lbl', 'middle');
+    const fanLabel = txt(FAN_SIDE.x - 5, A.fan[1], 'Fan · moves air', 'dl lbl', 'middle');
     fanLabel.setAttribute('transform', `rotate(-90 ${FAN_SIDE.x - 5} ${A.fan[1]})`);
     overlay.push(fanLabel);
 
@@ -748,7 +748,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       svg('path', { d: 'M104 178v14M110 178v14M116 178v14M122 178v14', class: 'windings' }),
       svg('rect', { x: 108, y: 146, width: 12, height: 6, rx: 2, fill: '#59636c' })));
     overlay.push(
-      txt(114, 231, 'Compressor', 'dl lbl', 'middle'),
+      txt(114, 231, 'Compressor · pressure ↑', 'dl lbl', 'middle'),
       svg('g', { class: 'port-badge fixed' }, svg('circle', { cx: 104, cy: 146, r: 5 }), txt(104, 148.4, 'D', 'pb', 'middle')),
       svg('g', { class: 'port-badge fixed' }, svg('circle', { cx: 140, cy: 198, r: 5 }), txt(140, 200.4, 'S', 'pb', 'middle')));
 
@@ -757,7 +757,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       svg('rect', { x: 212, y: 142, width: 26, height: 72, rx: 12, fill: 'url(#gSteel)', stroke: '#6d7882', 'stroke-width': 1.4 }),
       svg('path', { d: 'M219 150V196a6 6 0 0 0 12 0V150', class: 'utube' }),
       svg('path', { d: 'M213 192H237', class: 'level' })));
-    overlay.push(txt(225, 231, 'Accumulator', 'dl lbl', 'middle'));
+    overlay.push(txt(225, 231, 'Accumulator · liquid trap', 'dl lbl', 'middle'));
 
     // reversing valve
     valveLabel = txt(206, 85, '', 'valve-pair', 'middle');
@@ -767,13 +767,13 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       valveLabel,
       ...[['O', 176, 106], ['I', 236, 106], ['D', 190, 122], ['S', 224, 122]].map(([l, x, y]) =>
         svg('g', { class: `port-badge${l === 'D' || l === 'S' ? ' fixed' : ''}` }, svg('circle', { cx: Number(x), cy: Number(y), r: 5.2 }), txt(Number(x), Number(y) + 2.4, String(l), 'pb', 'middle'))),
-      txt(206, 77, '4-way valve', 'dl lbl', 'middle'),
+      txt(206, 77, 'Reverser · heat / cool', 'dl lbl', 'middle'),
     );
 
     // outdoor coil selectable overlay
     og.append(sel('coil', 'Outdoor coil', { x: 4, y: 6, w: 64, h: 223, r: 4 }));
     // Sits above the casing, on the zone background: it follows the theme, unlike the labels printed on the white casing.
-    overlay.push(txt(6, -3, 'Outdoor coil', 'dl lbl lbl-ext'));
+    overlay.push(txt(6, -3, 'Outdoor coil · exchanges heat', 'dl lbl lbl-ext'));
 
     outLabel = txt(w - 10, 20, '', 'out-label', 'end');
     outSub = txt(w - 10, 31, '', 'out-sub', 'end');
@@ -813,18 +813,18 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
     // EEVs, service port, taps (above pipes)
     for (let i = 0; i < n; i++) {
       const y = ylOf(i);
-      const [ex, ey] = L(286, y);
+      const [ex, ey] = L(EEV.centerX, y);
       root.append(sel(`eev:${i}`, `Outdoor expansion valve ${i + 1}`, { x: ex - 10, y: ey - 8, w: 20, h: 16, r: 3 },
         svg('g', { class: 'eev', transform: `translate(${ex} ${ey})` },
-          svg('rect', { x: -8, y: -6, width: 16, height: 12, rx: 3, class: 'eev-body' }),
+          svg('rect', { x: -10, y: -6, width: 20, height: 12, rx: 3, class: 'eev-body' }),
           svg('path', { d: 'M-5 -3.6L0 0L-5 3.6zM5 -3.6L0 0L5 3.6z', class: 'eev-tie' }),
           svg('path', { d: 'M-6 6V9M6 6V9', class: 'eev-coil' })),
         svg('g', { class: 'dl eev-num', transform: `translate(${ex - 8} ${ey + 6.5})` }, svg('circle', { r: 3.2 }), txt(0, 1.7, String(i + 1), 'eev-digit', 'middle'))));
     }
-    const [bx, by] = n > 5 ? L(272, lay.feeder + 9) : L(272, 181);
+    const [bx, by] = L(OUT.w - 10, 48);
     root.append(
-      txt(bx, by, 'Branch EEVs', 'dl lbl eev-group'),
-      txt(bx, by + 7, `1–${n}, numbered`, 'dl lbl eev-group'));
+      txt(bx, by, 'Expansion valves', 'dl lbl eev-group', 'end'),
+      txt(bx, by + 7, 'Lower pressure', 'dl lbl eev-group', 'end'));
 
     // common service isolation valves: static, fully open, no control. Gas stop carries the service fitting.
     const [sx, sy] = L(A.svc[0], A.svc[1]);

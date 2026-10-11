@@ -116,7 +116,7 @@ const metadata = { createdAt: new Date().toISOString(), preset, seed, workers, t
   nodeVersion: process.version, platform: process.platform, architecture: process.arch,
   extendedComponentAndLineBounds: args.includes('--extended'),
   segmentDurationCapSeconds: durationCap===Infinity ? null : durationCap,
-  method: 'Independent Node child processes; immutable TypeScript snapshot compiled once; production guarded HEOS; fixed accepted 0.25-second steps; full before-step checkpoint persisted for native aborts.',
+  method: 'Independent Node child processes; immutable TypeScript snapshot compiled once; production guarded HEOS; 0.25-second public requests with every accepted adaptive physics interval checked; full before-interval checkpoint persisted for native aborts.',
   limits: 'Reference R32 engine only. Passing a finite campaign is not proof of correctness. Generic component parameters, not calibrated manufacturer maps. The screenshot scenario is reconstructed from visible controls, not a saved exact pre-crash state.',
   scenarios: scenarios.map(s => ({ id: s.id, requestedSeconds: s.operations.filter(o => o.type === 'step').reduce((n,o)=>n+o.seconds,0) })) };
 writeFileSync(`${destination}/manifest.json`, JSON.stringify(metadata, null, 2));

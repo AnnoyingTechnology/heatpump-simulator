@@ -1,0 +1,2733 @@
+{
+  "checkedAt": "2026-10-11T12:10:05.423Z",
+  "sourceHashes": {
+    "src/engine/engine.ts": "92174a5beb3fbbefd9c9bfba64a3f0155261a11782c9420f4bdfe3d6ae887903",
+    "src/engine/cycle.ts": "bb917edb2c1dfee6d57280519b7e9baf33030f2d5124f577e96b8449b3cc7008",
+    "src/engine/types.ts": "04eb849dfb52d4cfef49205961b04d68647d00bc5b384eb60500201ed4083392",
+    "src/state.ts": "66f03aba92d30dcabba20870f9a62b818a24d4122ef4fb78e0391d545679565b",
+    "src/runtime/config.ts": "b5b16659135246f17688d3d3d20d59ce9ef79ea3a370d259acd02d46e99fa748",
+    "src/runtime/controller.ts": "a230d89571b17c2f32a286b079d7aa36758e3e6c647f15c85832ed599b02cb49",
+    "src/main.ts": "5a77d1f6bed6c0fb67d156558ded8f04aee537a1a8268ea926625a343736c39a"
+  },
+  "config": {
+    "mode": "heating",
+    "example": "normal",
+    "outdoorKind": "owner",
+    "genericPortCapacity": 5,
+    "unitCount": 3,
+    "outdoorC": 1,
+    "outdoorRh": 35,
+    "etaIsPct": 70,
+    "rooms": [
+      {
+        "id": "attic",
+        "name": "Attic (L2)",
+        "surfaceM2": 26,
+        "ceilingHeightM": 3.230769230769231,
+        "heatLossWPerK": 15,
+        "setpointC": 21,
+        "airC": 18.3,
+        "enabled": false,
+        "internalGainW": 0,
+        "indoorClass": "FTXA25",
+        "envelopeQualityWPerM3K": 0.17857142857142858,
+        "cleanlinessOverridePct": null,
+        "envelopeAreaOverrideM2": null,
+        "averageUValueWm2K": 0.16322973508715521
+      },
+      {
+        "id": "first",
+        "name": "Upstairs (L1)",
+        "surfaceM2": 54.5,
+        "ceilingHeightM": 2.8440366972477062,
+        "heatLossWPerK": 25,
+        "setpointC": 21.5,
+        "airC": 21.5,
+        "enabled": true,
+        "internalGainW": 0,
+        "indoorClass": "FTXA35",
+        "envelopeQualityWPerM3K": 0.16129032258064516,
+        "cleanlinessOverridePct": null,
+        "envelopeAreaOverrideM2": null,
+        "averageUValueWm2K": 0.26320389384698967
+      },
+      {
+        "id": "ground",
+        "name": "Ground (L0)",
+        "surfaceM2": 45.4,
+        "ceilingHeightM": 2.2026431718061676,
+        "heatLossWPerK": 45,
+        "setpointC": 17,
+        "airC": 18,
+        "enabled": true,
+        "internalGainW": 200,
+        "indoorClass": "FTXA25",
+        "envelopeQualityWPerM3K": 0.44999999999999996,
+        "cleanlinessOverridePct": null,
+        "envelopeAreaOverrideM2": null,
+        "averageUValueWm2K": 0.4295318711641601
+      },
+      {
+        "id": "zone4",
+        "name": "Lower level 4",
+        "surfaceM2": 16,
+        "ceilingHeightM": 2.5,
+        "heatLossWPerK": 55,
+        "setpointC": 21,
+        "airC": 20,
+        "enabled": true,
+        "indoorClass": "G25",
+        "envelopeQualityWPerM3K": 1.375,
+        "cleanlinessOverridePct": null,
+        "envelopeAreaOverrideM2": null,
+        "averageUValueWm2K": 0.7638888888888888
+      },
+      {
+        "id": "zone5",
+        "name": "Lower level 5",
+        "surfaceM2": 16,
+        "ceilingHeightM": 2.5,
+        "heatLossWPerK": 55,
+        "setpointC": 21,
+        "airC": 20,
+        "enabled": true,
+        "indoorClass": "G25",
+        "envelopeQualityWPerM3K": 1.375,
+        "cleanlinessOverridePct": null,
+        "envelopeAreaOverrideM2": null,
+        "averageUValueWm2K": 0.7638888888888888
+      }
+    ],
+    "pipes": [
+      {
+        "lengthM": 14,
+        "liquidOdMm": 6.35,
+        "gasOdMm": 9.52,
+        "lengthSource": "owner-reported"
+      },
+      {
+        "lengthM": 6.5,
+        "liquidOdMm": 6.35,
+        "gasOdMm": 9.52,
+        "lengthSource": "owner-reported"
+      },
+      {
+        "lengthM": 7.5,
+        "liquidOdMm": 6.35,
+        "gasOdMm": 9.52,
+        "lengthSource": "owner-reported"
+      },
+      {
+        "lengthM": 10,
+        "liquidOdMm": 6.35,
+        "gasOdMm": 9.52,
+        "lengthSource": "default"
+      },
+      {
+        "lengthM": 10,
+        "liquidOdMm": 6.35,
+        "gasOdMm": 9.52,
+        "lengthSource": "default"
+      }
+    ],
+    "interzoneLinks": [
+      {
+        "roomA": "ground",
+        "roomB": "first",
+        "lowerRoomId": "ground",
+        "openingAreaM2": 4,
+        "contactAreaM2": 45,
+        "insulationMm": 120,
+        "openingTransferWm2K": 40,
+        "openingModel": "buoyancy",
+        "backgroundConductanceWK": 0,
+        "openingHeightM": 2,
+        "floorCoefficient": 0.055,
+        "wallDischargeCoefficient": 0.6,
+        "conductanceWK": 13.803680981595093,
+        "orientation": "vertical"
+      },
+      {
+        "roomA": "first",
+        "roomB": "attic",
+        "lowerRoomId": "first",
+        "openingAreaM2": 4,
+        "contactAreaM2": 45,
+        "insulationMm": 120,
+        "openingTransferWm2K": 40,
+        "openingModel": "buoyancy",
+        "backgroundConductanceWK": 0,
+        "openingHeightM": 2,
+        "floorCoefficient": 0.055,
+        "wallDischargeCoefficient": 0.6,
+        "conductanceWK": 13.803680981595093,
+        "orientation": "vertical"
+      }
+    ],
+    "ventilation": {
+      "mode": "dual",
+      "grossACH": 0.5,
+      "sensibleEfficiencyPct": 75
+    },
+    "live": {
+      "fieldLines": "idealized",
+      "circuitModel": "reference",
+      "initialChargeKg": 1.8,
+      "initialFluidTemperatureC": null,
+      "outdoorCoilVolumeL": 1.1309733552923256,
+      "indoorCoilVolumeL": 0.2827433388230814,
+      "accumulatorVolumeL": 0.6,
+      "outdoorAirConductanceWK": 1100,
+      "outdoorRefrigerantConductanceWK": 1000,
+      "outdoorAirMassFlowKgs": 0.9,
+      "depositionAreaM2": 2,
+      "indoorAirConductanceWK": 170,
+      "indoorRefrigerantConductanceWK": 350,
+      "indoorAirMassFlowKgs": 0.15,
+      "compressorDisplacementCm3": 22,
+      "compressorMaxSpeedRps": 75,
+      "cleanlinessPct": 95,
+      "outdoorCleanlinessOverridePct": null,
+      "pipeWallThicknessMm": 0.8,
+      "pipeInsulationConductanceWmK": 0.05
+    }
+  },
+  "samples": [
+    {
+      "status": "loading",
+      "error": null,
+      "epoch": 2
+    },
+    {
+      "status": "loading",
+      "error": null,
+      "epoch": 2
+    },
+    {
+      "status": "loading",
+      "error": null,
+      "epoch": 2
+    },
+    {
+      "status": "loading",
+      "error": null,
+      "epoch": 2
+    },
+    {
+      "time": 2.5,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.302803823176816,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.48520636138744,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.988002795018986,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 7.5,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.308108706051087,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.45700795246188,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.964231915127698,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 13.5,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.313975205815893,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.42557369703394,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.936096737403773,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 18.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.318262168344575,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.402507016943275,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.914121522726987,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 23.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.32245993425829,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.379919334368935,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.891271659840413,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 29.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.327104821876503,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.35504240325838,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.864229479835956,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 34.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.330675670574294,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.33611107122107,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.84200562935473,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 43.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.336488937370632,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.30598315072092,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.80270612931389,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 53.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.34214319020674,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.2781324618457,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.760083229631675,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 62.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.34662360421106,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.257773229845895,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.722643201883557,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 71.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.350626139502936,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.241531619155353,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.686058041112176,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 79.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.353851478349384,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.230287280893947,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.654242166323286,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 84.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.355733569240385,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.224680490824426,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.634688446284883,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 89.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.357527255249693,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.220102133449984,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.61538611245726,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 94.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.35924369206907,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.216499638590562,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.5963323540131,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 99.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.36089328605425,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.21382170657813,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.577524368941624,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 105.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.36279816496244,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.21175842821276,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.555275276457053,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 111.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.364636174768066,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.21087126372771,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.5333712705837,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 116.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.36612700681121,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.210972394636258,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.51537808833973,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 121.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.367588759750618,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.21178982580119,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.497618471839075,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 126.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.36902838232686,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.213280530569648,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.480089678266097,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 130.75,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.370310429633605,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.215163588531937,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.46450886142412,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 135.5,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.371654661787886,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.217674492088236,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.448260692725796,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 140.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.37299421796928,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.22069056639441,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.43221385487226,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 145.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.374403971667903,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.224376579696468,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.41553741763397,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 150.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.375817948611314,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.228552411114094,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.399078835969306,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 156.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.377526195743428,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.234162929823697,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.379612369582446,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 161.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.37896374212471,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.239300699119156,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.36362374733011,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 166.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.38041766040601,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.244826615149577,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.347844545189616,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 171.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.381891007733486,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.250712093047184,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.33227216555582,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 176.75,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.383537393854112,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.25756906310795,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.315378351376637,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 180.75,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.38475347623421,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.262789020106425,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.303245222176997,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 185.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.386141961018552,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.268878613600577,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.289747928465545,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 189,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.3873165110208,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.274117133706,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.278622236686317,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 194.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.388989053176772,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.28168244796143,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.26323054833722,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 199,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.390531954993605,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.288741513116975,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.24948782843228,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 203,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.391853958215677,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.294830774595937,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.23804831338356,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 206.75,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.393112757452002,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.300650464510795,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.227433272554606,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 211,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.394562656155188,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.30736612511697,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.215529682522003,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 215.5,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.396125332044164,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.314604488738496,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.203071136016263,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 219.5,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.397538519429588,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.32113933742272,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.19212091912243,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 223.75,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.399065265088552,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.328177216021345,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.18061282579066,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 228.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.400710449778387,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.335725425112173,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.168568287136793,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 231.5,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.401917084193087,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.341232863022697,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.159958391615078,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 237.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.404089991588478,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.351079350899624,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.144906081338263,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 242,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.405921804162176,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.359300757487745,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.13264351320953,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 246.75,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.40778690802466,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.36759032646347,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.120534441149687,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 251.5,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.409685208180065,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.37593853768618,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.108576945024993,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 255.75,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.411411685955613,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.38345036881816,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.098005060479124,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 260.5,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.41337235079692,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.39188560489214,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.086329564955236,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 265,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.415259810524333,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.3999085684365,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.07540339337703,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 269.75,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.41728343513239,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.40840356879869,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.064010762616192,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 274,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.419120965198488,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.416021644893476,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.053938247251097,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 277.5,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.420653070399567,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.422304131732346,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.045728011465314,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 282,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.42264758460834,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.430388996980753,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.035283281378383,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 286.5,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.424669419117095,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.438477550643654,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.024962353999058,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 290.75,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.426603572758097,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.446115894824857,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.015327143287095,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 295.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.42867709752022,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.454198456157826,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 17.005242685695464,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 299.25,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.430541902404855,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.461375276005697,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 16.996379050712676,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    },
+    {
+      "time": 304,
+      "status": "ready",
+      "error": null,
+      "fault": null,
+      "state": "running",
+      "rooms": [
+        {
+          "id": "attic",
+          "t": 18.432782279621847,
+          "target": 21,
+          "calling": false
+        },
+        {
+          "id": "first",
+          "t": 21.469884460362096,
+          "target": 21.5,
+          "calling": true
+        },
+        {
+          "id": "ground",
+          "t": 16.98597466981579,
+          "target": 17,
+          "calling": false
+        }
+      ],
+      "epoch": 2
+    }
+  ],
+  "diagnostic": {
+    "format": "heatpump-diagnostic-v1",
+    "createdAt": "2026-10-11T12:10:05.415Z",
+    "applicationAsset": "http://127.0.0.1:5210/@vite/client",
+    "runtimeAsset": "http://127.0.0.1:5210/src/runtime/controller.ts",
+    "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "status": "ready",
+    "error": null,
+    "failure": null,
+    "initialConfig": {
+      "fluid": "R32",
+      "mode": "heating",
+      "outdoorTemperatureC": 1,
+      "outdoorRelativeHumidity": 0.35,
+      "ambientPressurePa": 101325,
+      "indoorPortCapacity": 3,
+      "rooms": [
+        {
+          "id": "attic",
+          "enabled": false,
+          "volumeM3": 84,
+          "initialTemperatureC": 18.3,
+          "initialRelativeHumidity": 0.5,
+          "setpointC": 21,
+          "envelopeWK": 15,
+          "fabricCapacityJK": 4000000,
+          "airFabricWK": 250,
+          "ventilationACH": 0.5,
+          "airMassFlowKgs": 0.15,
+          "fanPowerW": 25,
+          "airConductanceWK": 170,
+          "refrigerantConductanceWK": 350,
+          "naturalAirConductanceWK": 15,
+          "metalCapacityJK": 12000,
+          "pipe": {
+            "lengthM": 0,
+            "gasInsideDiameterM": 0.00792,
+            "liquidInsideDiameterM": 0.00475,
+            "elevationM": 0,
+            "insulationConductanceWmK": 0.05
+          },
+          "internalGainW": 0,
+          "ventilationRecoveryEfficiency": 0.75,
+          "cleanFraction": 0.95
+        },
+        {
+          "id": "first",
+          "enabled": true,
+          "volumeM3": 155,
+          "initialTemperatureC": 21.5,
+          "initialRelativeHumidity": 0.5,
+          "setpointC": 21.5,
+          "envelopeWK": 25,
+          "fabricCapacityJK": 4000000,
+          "airFabricWK": 250,
+          "ventilationACH": 0.5,
+          "airMassFlowKgs": 0.15,
+          "fanPowerW": 25,
+          "airConductanceWK": 170,
+          "refrigerantConductanceWK": 350,
+          "naturalAirConductanceWK": 15,
+          "metalCapacityJK": 12000,
+          "pipe": {
+            "lengthM": 0,
+            "gasInsideDiameterM": 0.00792,
+            "liquidInsideDiameterM": 0.00475,
+            "elevationM": 0,
+            "insulationConductanceWmK": 0.05
+          },
+          "internalGainW": 0,
+          "ventilationRecoveryEfficiency": 0.75,
+          "cleanFraction": 0.95
+        },
+        {
+          "id": "ground",
+          "enabled": true,
+          "volumeM3": 100.00000000000001,
+          "initialTemperatureC": 18,
+          "initialRelativeHumidity": 0.5,
+          "setpointC": 17,
+          "envelopeWK": 45,
+          "fabricCapacityJK": 4000000,
+          "airFabricWK": 250,
+          "ventilationACH": 0.5,
+          "airMassFlowKgs": 0.15,
+          "fanPowerW": 25,
+          "airConductanceWK": 170,
+          "refrigerantConductanceWK": 350,
+          "naturalAirConductanceWK": 15,
+          "metalCapacityJK": 12000,
+          "pipe": {
+            "lengthM": 0,
+            "gasInsideDiameterM": 0.00792,
+            "liquidInsideDiameterM": 0.00475,
+            "elevationM": 0,
+            "insulationConductanceWmK": 0.05
+          },
+          "internalGainW": 200,
+          "ventilationRecoveryEfficiency": 0.75,
+          "cleanFraction": 0.95
+        }
+      ],
+      "compressor": {
+        "displacementM3rev": 0.000022,
+        "speedMinRps": 18,
+        "speedMaxRps": 75,
+        "isentropicEfficiency": 0.7,
+        "volumetricEfficiency": 0.8,
+        "driveEfficiency": 0.93,
+        "superheatK": 3,
+        "subcoolK": 1,
+        "maxDischargeC": 145,
+        "maxPressureRatio": 8
+      },
+      "outdoor": {
+        "airMassFlowKgs": 0.9,
+        "fanPowerW": 85,
+        "airConductanceWK": 1100,
+        "refrigerantConductanceWK": 1000,
+        "naturalAirConductanceWK": 35,
+        "metalCapacityJK": 28000,
+        "depositionAreaM2": 2,
+        "frostDensityKgm3": 200,
+        "frostConductivityWmK": 0.15,
+        "finGapM": 0.002,
+        "drainageSeconds": 30,
+        "cleanFraction": 0.95
+      },
+      "control": {
+        "strategy": "inverter",
+        "fixedSpeedRps": 40,
+        "controlsW": 15,
+        "proportionalSpeedRpsK": 20,
+        "thermostatDeadbandK": 1,
+        "minOnSeconds": 30,
+        "minOffSeconds": 30,
+        "reversalSeconds": 3,
+        "defrostMinHeatingSeconds": 300,
+        "defrostIceThresholdKg": 0.15,
+        "defrostMaxSeconds": 600,
+        "defrostTerminationMetalC": 5,
+        "drainageDwellSeconds": 10,
+        "defrostSpeedRps": 35
+      },
+      "numerics": {
+        "maxStepSeconds": 0.25,
+        "pressureToleranceW": 0.1
+      },
+      "interzoneLinks": [
+        {
+          "roomA": "ground",
+          "roomB": "first",
+          "conductanceWK": 13.803680981595093,
+          "openingExchange": {
+            "orientation": "vertical",
+            "areaM2": 4,
+            "lowerRoomId": "ground",
+            "heightM": 2,
+            "backgroundConductanceWK": 0,
+            "floorCoefficient": 0.055,
+            "wallDischargeCoefficient": 0.6
+          }
+        },
+        {
+          "roomA": "first",
+          "roomB": "attic",
+          "conductanceWK": 13.803680981595093,
+          "openingExchange": {
+            "orientation": "vertical",
+            "areaM2": 4,
+            "lowerRoomId": "first",
+            "heightM": 2,
+            "backgroundConductanceWK": 0,
+            "floorCoefficient": 0.055,
+            "wallDischargeCoefficient": 0.6
+          }
+        }
+      ]
+    },
+    "requestedConfig": {
+      "fluid": "R32",
+      "mode": "heating",
+      "outdoorTemperatureC": 1,
+      "outdoorRelativeHumidity": 0.35,
+      "ambientPressurePa": 101325,
+      "indoorPortCapacity": 3,
+      "rooms": [
+        {
+          "id": "attic",
+          "enabled": false,
+          "volumeM3": 84,
+          "initialTemperatureC": 18.3,
+          "initialRelativeHumidity": 0.5,
+          "setpointC": 21,
+          "envelopeWK": 15,
+          "fabricCapacityJK": 4000000,
+          "airFabricWK": 250,
+          "ventilationACH": 0.5,
+          "airMassFlowKgs": 0.15,
+          "fanPowerW": 25,
+          "airConductanceWK": 170,
+          "refrigerantConductanceWK": 350,
+          "naturalAirConductanceWK": 15,
+          "metalCapacityJK": 12000,
+          "pipe": {
+            "lengthM": 0,
+            "gasInsideDiameterM": 0.00792,
+            "liquidInsideDiameterM": 0.00475,
+            "elevationM": 0,
+            "insulationConductanceWmK": 0.05
+          },
+          "internalGainW": 0,
+          "ventilationRecoveryEfficiency": 0.75,
+          "cleanFraction": 0.95
+        },
+        {
+          "id": "first",
+          "enabled": true,
+          "volumeM3": 155,
+          "initialTemperatureC": 21.5,
+          "initialRelativeHumidity": 0.5,
+          "setpointC": 21.5,
+          "envelopeWK": 25,
+          "fabricCapacityJK": 4000000,
+          "airFabricWK": 250,
+          "ventilationACH": 0.5,
+          "airMassFlowKgs": 0.15,
+          "fanPowerW": 25,
+          "airConductanceWK": 170,
+          "refrigerantConductanceWK": 350,
+          "naturalAirConductanceWK": 15,
+          "metalCapacityJK": 12000,
+          "pipe": {
+            "lengthM": 0,
+            "gasInsideDiameterM": 0.00792,
+            "liquidInsideDiameterM": 0.00475,
+            "elevationM": 0,
+            "insulationConductanceWmK": 0.05
+          },
+          "internalGainW": 0,
+          "ventilationRecoveryEfficiency": 0.75,
+          "cleanFraction": 0.95
+        },
+        {
+          "id": "ground",
+          "enabled": true,
+          "volumeM3": 100.00000000000001,
+          "initialTemperatureC": 18,
+          "initialRelativeHumidity": 0.5,
+          "setpointC": 17,
+          "envelopeWK": 45,
+          "fabricCapacityJK": 4000000,
+          "airFabricWK": 250,
+          "ventilationACH": 0.5,
+          "airMassFlowKgs": 0.15,
+          "fanPowerW": 25,
+          "airConductanceWK": 170,
+          "refrigerantConductanceWK": 350,
+          "naturalAirConductanceWK": 15,
+          "metalCapacityJK": 12000,
+          "pipe": {
+            "lengthM": 0,
+            "gasInsideDiameterM": 0.00792,
+            "liquidInsideDiameterM": 0.00475,
+            "elevationM": 0,
+            "insulationConductanceWmK": 0.05
+          },
+          "internalGainW": 200,
+          "ventilationRecoveryEfficiency": 0.75,
+          "cleanFraction": 0.95
+        }
+      ],
+      "compressor": {
+        "displacementM3rev": 0.000022,
+        "speedMinRps": 18,
+        "speedMaxRps": 75,
+        "isentropicEfficiency": 0.7,
+        "volumetricEfficiency": 0.8,
+        "driveEfficiency": 0.93,
+        "superheatK": 3,
+        "subcoolK": 1,
+        "maxDischargeC": 145,
+        "maxPressureRatio": 8
+      },
+      "outdoor": {
+        "airMassFlowKgs": 0.9,
+        "fanPowerW": 85,
+        "airConductanceWK": 1100,
+        "refrigerantConductanceWK": 1000,
+        "naturalAirConductanceWK": 35,
+        "metalCapacityJK": 28000,
+        "depositionAreaM2": 2,
+        "frostDensityKgm3": 200,
+        "frostConductivityWmK": 0.15,
+        "finGapM": 0.002,
+        "drainageSeconds": 30,
+        "cleanFraction": 0.95
+      },
+      "control": {
+        "strategy": "inverter",
+        "fixedSpeedRps": 40,
+        "controlsW": 15,
+        "proportionalSpeedRpsK": 20,
+        "thermostatDeadbandK": 1,
+        "minOnSeconds": 30,
+        "minOffSeconds": 30,
+        "reversalSeconds": 3,
+        "defrostMinHeatingSeconds": 300,
+        "defrostIceThresholdKg": 0.15,
+        "defrostMaxSeconds": 600,
+        "defrostTerminationMetalC": 5,
+        "drainageDwellSeconds": 10,
+        "defrostSpeedRps": 35
+      },
+      "numerics": {
+        "maxStepSeconds": 0.25,
+        "pressureToleranceW": 0.1
+      },
+      "interzoneLinks": [
+        {
+          "roomA": "ground",
+          "roomB": "first",
+          "conductanceWK": 13.803680981595093,
+          "openingExchange": {
+            "orientation": "vertical",
+            "areaM2": 4,
+            "lowerRoomId": "ground",
+            "heightM": 2,
+            "backgroundConductanceWK": 0,
+            "floorCoefficient": 0.055,
+            "wallDischargeCoefficient": 0.6
+          }
+        },
+        {
+          "roomA": "first",
+          "roomB": "attic",
+          "conductanceWK": 13.803680981595093,
+          "openingExchange": {
+            "orientation": "vertical",
+            "areaM2": 4,
+            "lowerRoomId": "first",
+            "heightM": 2,
+            "backgroundConductanceWK": 0,
+            "floorCoefficient": 0.055,
+            "wallDischargeCoefficient": 0.6
+          }
+        }
+      ]
+    },
+    "acceptedOutput": {
+      "provenance": "live-generic-unvalidated",
+      "simulatedSeconds": 304.75,
+      "state": "running",
+      "requestedMode": "heating",
+      "effectiveMode": "heating",
+      "cycle": {
+        "mode": "heating",
+        "evaporatingC": -4.264583240023422,
+        "condensingC": 48.604609696538915,
+        "lowPressureBarAbs": 7.076538961490414,
+        "highPressureBarAbs": 30.41406542423044,
+        "suction": {
+          "pPa": 707653.8961490414,
+          "pBarAbs": 7.076538961490414,
+          "hJkg": 517989.77204856323,
+          "temperatureC": -1.2645832041176845,
+          "entropyJkgK": 2183.131671312389,
+          "densityKgm3": 18.8552344149277,
+          "qualityMass": null,
+          "phase": "vapor"
+        },
+        "discharge": {
+          "pPa": 3041406.542423044,
+          "pBarAbs": 30.41406542423044,
+          "hJkg": 606218.9886166865,
+          "temperatureC": 113.77561894590377,
+          "entropyJkgK": 2253.465335784111,
+          "densityKgm3": 58.11147472600101,
+          "qualityMass": null,
+          "phase": "vapor"
+        },
+        "condenserOutlet": {
+          "pPa": 3041406.542423044,
+          "pBarAbs": 30.41406542423044,
+          "hJkg": 291944.99072308146,
+          "temperatureC": 47.605268254283374,
+          "entropyJkgK": 1301.4734313021643,
+          "densityKgm3": 853.9633270161561,
+          "qualityMass": null,
+          "phase": "liquid"
+        },
+        "expansionOutlet": {
+          "pPa": 707653.8961490414,
+          "pBarAbs": 7.076538961490414,
+          "hJkg": 291944.99072308146,
+          "temperatureC": -4.264583240023285,
+          "entropyJkgK": 1342.5312899450066,
+          "densityKgm3": 59.88171091268852,
+          "qualityMass": 0.3087007707301813,
+          "phase": "two-phase"
+        },
+        "totalMassFlowKgs": 0.005973338262649096,
+        "branchMassFlowsKgs": [
+          0,
+          0.005973338262649096,
+          0
+        ],
+        "branchCoilHeatW": [
+          0,
+          1877.2648965735727,
+          0
+        ],
+        "outdoorCoilHeatW": -1350.241941363648,
+        "branchInlets": [
+          {
+            "pPa": 3041406.542423044,
+            "pBarAbs": 30.41406542423044,
+            "hJkg": 606218.9886166865,
+            "temperatureC": 113.77561894590377,
+            "entropyJkgK": 2253.465335784111,
+            "densityKgm3": 58.11147472600101,
+            "qualityMass": null,
+            "phase": "vapor"
+          },
+          {
+            "pPa": 3041406.542423044,
+            "pBarAbs": 30.41406542423044,
+            "hJkg": 606218.9886166865,
+            "temperatureC": 113.77561894590377,
+            "entropyJkgK": 2253.465335784111,
+            "densityKgm3": 58.11147472600101,
+            "qualityMass": null,
+            "phase": "vapor"
+          },
+          {
+            "pPa": 3041406.542423044,
+            "pBarAbs": 30.41406542423044,
+            "hJkg": 606218.9886166865,
+            "temperatureC": 113.77561894590377,
+            "entropyJkgK": 2253.465335784111,
+            "densityKgm3": 58.11147472600101,
+            "qualityMass": null,
+            "phase": "vapor"
+          }
+        ],
+        "branchOutlets": [
+          {
+            "pPa": 3041406.542423044,
+            "pBarAbs": 30.41406542423044,
+            "hJkg": 291943.4449866387,
+            "temperatureC": 47.604609643486924,
+            "entropyJkgK": 1301.4686118566126,
+            "densityKgm3": 853.9676253534374,
+            "qualityMass": null,
+            "phase": "liquid"
+          },
+          {
+            "pPa": 3041406.542423044,
+            "pBarAbs": 30.41406542423044,
+            "hJkg": 291944.99072308146,
+            "temperatureC": 47.605268254283374,
+            "entropyJkgK": 1301.4734313021643,
+            "densityKgm3": 853.9633270161561,
+            "qualityMass": null,
+            "phase": "liquid"
+          },
+          {
+            "pPa": 3041406.542423044,
+            "pBarAbs": 30.41406542423044,
+            "hJkg": 291943.4449866387,
+            "temperatureC": 47.604609643486924,
+            "entropyJkgK": 1301.4686118566126,
+            "densityKgm3": 853.9676253534374,
+            "qualityMass": null,
+            "phase": "liquid"
+          }
+        ],
+        "condenserHeatW": 1877.2648965735727,
+        "evaporatorHeatW": 1350.241941363648,
+        "compressorWorkW": 527.0229552099246,
+        "compressorElectricalW": 566.6913496880909,
+        "driveLossW": 39.668394478166306,
+        "massResidualKgs": 0,
+        "closureResidualW": 0.009233206637662987,
+        "lineHeatToOutdoorW": 0,
+        "pressureDropsPa": [
+          0,
+          0,
+          0
+        ],
+        "transportMethod": "Distributed Darcy/HEOS homogeneous-equilibrium field lines; generic smooth copper, no slip/fittings/oil",
+        "branchValveInlets": [
+          null,
+          {
+            "pPa": 3041406.542423044,
+            "pBarAbs": 30.41406542423044,
+            "hJkg": 291944.99072308146,
+            "temperatureC": 47.605268254283374,
+            "entropyJkgK": 1301.4734313021643,
+            "densityKgm3": 853.9633270161561,
+            "qualityMass": null,
+            "phase": "liquid"
+          },
+          null
+        ],
+        "branchValveOutlets": [
+          null,
+          {
+            "pPa": 707653.8961490414,
+            "pBarAbs": 7.076538961490414,
+            "hJkg": 291944.99072308146,
+            "temperatureC": -4.264583240023285,
+            "entropyJkgK": 1342.5312899450066,
+            "densityKgm3": 59.88171091268852,
+            "qualityMass": 0.3087007707301813,
+            "phase": "two-phase"
+          },
+          null
+        ],
+        "iterations": 3,
+        "pressureJacobian": {
+          "mode": "heating",
+          "floatingCondenser": false,
+          "matrix": [
+            34.585214020265674,
+            -282.72010936971515,
+            6.968000012462089,
+            0
+          ]
+        }
+      },
+      "rooms": [
+        {
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0,
+          "id": "attic",
+          "temperatureC": 18.433138554256175,
+          "relativeHumidity": 0.4799087446417172,
+          "humidityRatio": 0.0063395418320589085,
+          "fabricTemperatureC": 18.301419953813628,
+          "metalTemperatureC": 18.31586534469081,
+          "setpointC": 21,
+          "active": false,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "massFlowKgs": 0,
+          "signedRoomHeatW": -1.0607109509422623,
+          "sensibleRoomHeatW": -1.0607109509413348,
+          "fanPowerW": 0,
+          "airOutletC": null,
+          "condensateKgs": 0,
+          "drainEnthalpyW": 0,
+          "interzoneHeatW": 405.7401925567031,
+          "internalGainW": 0
+        },
+        {
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0,
+          "id": "first",
+          "temperatureC": 21.4712264334741,
+          "relativeHumidity": 0.4840156455520841,
+          "humidityRatio": 0.00773586828534212,
+          "fabricTemperatureC": 21.496405165778906,
+          "metalTemperatureC": 44.57559982580521,
+          "setpointC": 21.5,
+          "active": true,
+          "thermostatCalling": true,
+          "fanSpeedFraction": 0.6359578145085294,
+          "massFlowKgs": 0.005973338262649096,
+          "signedRoomHeatW": 1439.5929493212136,
+          "sensibleRoomHeatW": 1439.592949321213,
+          "fanPowerW": 6.430206695193949,
+          "airOutletC": 37.02926598631689,
+          "condensateKgs": 0,
+          "drainEnthalpyW": 0,
+          "interzoneHeatW": -467.66201601427474,
+          "internalGainW": 0
+        },
+        {
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0,
+          "id": "ground",
+          "temperatureC": 16.98434379746226,
+          "relativeHumidity": 0.5160921889299354,
+          "humidityRatio": 0.006221009803095621,
+          "fabricTemperatureC": 17.989137061442914,
+          "metalTemperatureC": 17.87812741054884,
+          "setpointC": 17,
+          "active": false,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "massFlowKgs": 0,
+          "signedRoomHeatW": 8.086601890550781,
+          "sensibleRoomHeatW": 8.08660189055006,
+          "fanPowerW": 0,
+          "airOutletC": null,
+          "condensateKgs": 0,
+          "drainEnthalpyW": 0,
+          "interzoneHeatW": 61.92182345757163,
+          "internalGainW": 200
+        }
+      ],
+      "interzoneTransfers": [
+        {
+          "roomA": "ground",
+          "roomB": "first",
+          "heatFromAToBW": -61.93549650936592,
+          "solidHeatFromAToBW": -61.93549650936592,
+          "backgroundHeatFromAToBW": 0,
+          "buoyancyHeatFromAToBW": 0,
+          "effectiveConductanceWK": 13.803680981595093,
+          "equivalentExchangeM3s": 0,
+          "buoyancyState": "stable"
+        },
+        {
+          "roomA": "first",
+          "roomB": "attic",
+          "heatFromAToBW": 405.80355365597535,
+          "solidHeatFromAToBW": 41.93679587877506,
+          "backgroundHeatFromAToBW": 0,
+          "buoyancyHeatFromAToBW": 363.86675777720035,
+          "effectiveConductanceWK": 133.57202615233058,
+          "equivalentExchangeM3s": 0.09921168420372391,
+          "buoyancyState": "unstable"
+        }
+      ],
+      "inventory": null,
+      "outdoor": {
+        "temperatureC": -1.264384547671457,
+        "iceKg": 0,
+        "liquidKg": 0,
+        "thicknessM": 0,
+        "metalTemperatureC": -1.264384547671457,
+        "filmEnthalpyJ": 0,
+        "filmMassKg": 0,
+        "airOutletC": -0.4921063547679978,
+        "fanPowerW": 85,
+        "depositionKgs": 0,
+        "drainageKgs": 0,
+        "meltPowerW": 0
+      },
+      "electrical": {
+        "compressorW": 566.6913496880909,
+        "indoorFansW": 6.430206695193949,
+        "outdoorFanW": 85,
+        "controlsW": 15,
+        "totalW": 673.1215563832849,
+        "driveLossW": 39.668394478166306
+      },
+      "signedRoomHeatW": 1446.6188402608223,
+      "heatingCOP": 2.149119763796566,
+      "coolingCOP": null,
+      "energy": {
+        "electricityJ": 180509.6948267654,
+        "signedRoomHeatJ": 310001.45645783277,
+        "usefulServiceHeatJ": 310001.45645783277,
+        "drainedWaterKg": 0,
+        "outdoorExchangeJ": -341724.10526880436,
+        "drainageJ": 0,
+        "configurationEnergyJ": 0,
+        "boundaryEnergyJ": -200298.11589261703,
+        "storedEnergyChangeJ": -200298.11589232087,
+        "residualJ": 2.9616057872772217e-7,
+        "waterResidualKg": -3.733124920302089e-15
+      },
+      "diagnostics": {
+        "warnings": [
+          "Generic component parameters and control assumptions; not manufacturer calibrated.",
+          "Outdoor metal and retained water/ice share one equilibrium temperature.",
+          "Ice sublimation is excluded; retained ice melts or receives deposition.",
+          "Dirt scales air flow and air-side conductance at fixed fan command. Generic inverter indoor fans command 25–100% airflow across the thermostat band, linear air-side conductance and cubic electric power; no measured fan map.",
+          "Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.",
+          "Idealized parallel indoor coils use generic demand-proportional flow for inverter operation, normalized 5% UA reserve for calling inverter branches and UA allocation for fixed-speed/defrost, and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.",
+          "Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states.",
+          "Interzone openings use a buoyancy-informed sensible equivalent with reference air density 1.2 kg/m³ and cp 1006 J/(kg K); no inter-room air/water transport or resolved stratification.",
+          "Internal gains are prescribed sensible heat supplied to room air, separate from HVAC output and COP."
+        ],
+        "fault": null,
+        "algebraicResidualW": 0.009233206637662987,
+        "speedRps": 18,
+        "demandSpeedRps": 18,
+        "restartDelaySeconds": 0,
+        "envelopeProtection": null,
+        "filmEnergyRateW": 0,
+        "metalEnergyRateW": 458.20969442798446
+      }
+    },
+    "recentRequests": [
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 283,
+        "seconds": 0.75
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 283.75,
+        "seconds": 0.75
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 284.5,
+        "seconds": 1
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 285.5,
+        "seconds": 1
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 286.5,
+        "seconds": 0.75
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 287.25,
+        "seconds": 1
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 288.25,
+        "seconds": 0.75
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 289,
+        "seconds": 1
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 290,
+        "seconds": 0.75
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 290.75,
+        "seconds": 1
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 291.75,
+        "seconds": 0.75
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 292.5,
+        "seconds": 1
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 293.5,
+        "seconds": 1
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 294.5,
+        "seconds": 0.75
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 295.25,
+        "seconds": 1
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 296.25,
+        "seconds": 1
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 297.25,
+        "seconds": 1
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 298.25,
+        "seconds": 1
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 299.25,
+        "seconds": 1
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 300.25,
+        "seconds": 1
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 301.25,
+        "seconds": 1
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 302.25,
+        "seconds": 0.75
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 303,
+        "seconds": 1
+      },
+      {
+        "kind": "step",
+        "revision": 3,
+        "atAcceptedSeconds": 304,
+        "seconds": 0.75
+      }
+    ]
+  },
+  "passed": true,
+  "scope": "Unchanged actual defaultConfig reset/startup through50x requested browser pacer; stopped at first fault or300 accepted seconds"
+}

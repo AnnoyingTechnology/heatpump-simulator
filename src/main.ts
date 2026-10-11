@@ -1,3 +1,4 @@
+import { readPreconfiguration } from './preconfiguration';
 import { createHeader, createOverlay } from './chrome';
 import { html } from './dom';
 import { fixtureFor } from './fixtures';
@@ -12,6 +13,21 @@ import { engineConfigFromUi, type InventoryInitialization } from './runtime/conf
 import { simulation } from './runtime/view';
 import { SimulationPacer } from './runtime/pacing';
 import type { ZoomPreset } from './types';
+
+// Apply external observations before constructing controls or starting the worker.
+const preconfiguration = readPreconfiguration(new URL(window.location.href), store.state.cfg.rooms.map(room => room.id));
+if (preconfiguration.applied.length || preconfiguration.issues.length) store.update(s => {
+  if (preconfiguration.outdoorC !== undefined) s.cfg.outdoorC = preconfiguration.outdoorC;
+  if (preconfiguration.outdoorRh !== undefined) s.cfg.outdoorRh = preconfiguration.outdoorRh;
+  if (preconfiguration.mode !== undefined) s.cfg.mode = preconfiguration.mode;
+  for (const input of preconfiguration.rooms) {
+    const room = s.cfg.rooms.find(room => room.id === input.id)!;
+    if (input.setpointC !== undefined) room.setpointC = input.setpointC;
+    if (input.airC !== undefined) room.airC = input.airC;
+    if (input.enabled !== undefined) room.enabled = input.enabled;
+  }
+  s.ui.notice = preconfiguration.issues.length ? `URL inputs ignored: ${preconfiguration.issues.join('; ')}` : 'Started from URL room observations.';
+});
 
 const app = document.getElementById('app');
 if (!app) throw new Error('#app missing');

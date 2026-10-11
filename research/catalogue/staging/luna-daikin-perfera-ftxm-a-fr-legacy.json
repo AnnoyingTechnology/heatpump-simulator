@@ -1,0 +1,722 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Historical Perfera wall FTXM-A full indoor SKUs",
+  "market": "Daikin France archived full references; FTXM-A family also appears in Daikin Europe 2026 catalogue; pairing status per exact SKU not promoted",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-eu-2026-p320",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/320/",
+      "title": "Daikin Europe General Catalogue 2026 — Perfera FTXM-A family",
+      "edition": "ECPEN26-500, 2026; official Daikin Europe flipbook page",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-ftxm-a",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXM-A.html",
+      "title": "Daikin France technical product table FTXM-A",
+      "edition": "Daikin France product database; each exact full reference marked archived; checked 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FTXM20A5V1B",
+      "unitType": "indoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxm-a",
+        "locator": "Exact full model column header, marked archived",
+        "excerpt": "FTXM20A5V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM20A5V1B; dimensions Hauteur",
+            "excerpt": "FTXM20A5V1B | Dimensions | Unité | Hauteur | mm | 298"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM20A5V1B; dimensions Largeur",
+            "excerpt": "FTXM20A5V1B | Dimensions | Unité | Largeur | mm | 804"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM20A5V1B; dimensions Profondeur",
+            "excerpt": "FTXM20A5V1B | Dimensions | Unité | Profondeur | mm | 252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 714,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM20A5V1B; cooling high fan airflow",
+            "excerpt": "FTXM20A5V1B | Ventilateur | Débit d’air | Rafraîchissement | Haut | m³/min | 11.9; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France database marks this full SKU archived. ECPEN26-500 p.320 lists the FTXM-20A family in Europe, but no suffix-specific pairing is asserted here; no nominal cooling class inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXM20A2V1B",
+      "unitType": "indoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxm-a",
+        "locator": "Exact full model column header, marked archived",
+        "excerpt": "FTXM20A2V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM20A2V1B; dimensions Hauteur",
+            "excerpt": "FTXM20A2V1B | Dimensions | Unité | Hauteur | mm | 298"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM20A2V1B; dimensions Largeur",
+            "excerpt": "FTXM20A2V1B | Dimensions | Unité | Largeur | mm | 804"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM20A2V1B; dimensions Profondeur",
+            "excerpt": "FTXM20A2V1B | Dimensions | Unité | Profondeur | mm | 252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 714,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM20A2V1B; cooling high fan airflow",
+            "excerpt": "FTXM20A2V1B | Ventilateur | Débit d’air | Rafraîchissement | Haut | m³/min | 11.9; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France database marks this full SKU archived. ECPEN26-500 p.320 lists the FTXM-20A family in Europe, but no suffix-specific pairing is asserted here; no nominal cooling class inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXM25A2V1B",
+      "unitType": "indoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxm-a",
+        "locator": "Exact full model column header, marked archived",
+        "excerpt": "FTXM25A2V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM25A2V1B; dimensions Hauteur",
+            "excerpt": "FTXM25A2V1B | Dimensions | Unité | Hauteur | mm | 298"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM25A2V1B; dimensions Largeur",
+            "excerpt": "FTXM25A2V1B | Dimensions | Unité | Largeur | mm | 804"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM25A2V1B; dimensions Profondeur",
+            "excerpt": "FTXM25A2V1B | Dimensions | Unité | Profondeur | mm | 252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 714,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM25A2V1B; cooling high fan airflow",
+            "excerpt": "FTXM25A2V1B | Ventilateur | Débit d’air | Rafraîchissement | Haut | m³/min | 11.9; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France database marks this full SKU archived. ECPEN26-500 p.320 lists the FTXM-25A family in Europe, but no suffix-specific pairing is asserted here; no nominal cooling class inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXM25A5V1B",
+      "unitType": "indoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxm-a",
+        "locator": "Exact full model column header, marked archived",
+        "excerpt": "FTXM25A5V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM25A5V1B; dimensions Hauteur",
+            "excerpt": "FTXM25A5V1B | Dimensions | Unité | Hauteur | mm | 298"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM25A5V1B; dimensions Largeur",
+            "excerpt": "FTXM25A5V1B | Dimensions | Unité | Largeur | mm | 804"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM25A5V1B; dimensions Profondeur",
+            "excerpt": "FTXM25A5V1B | Dimensions | Unité | Profondeur | mm | 252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 714,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM25A5V1B; cooling high fan airflow",
+            "excerpt": "FTXM25A5V1B | Ventilateur | Débit d’air | Rafraîchissement | Haut | m³/min | 11.9; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France database marks this full SKU archived. ECPEN26-500 p.320 lists the FTXM-25A family in Europe, but no suffix-specific pairing is asserted here; no nominal cooling class inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXM35A5V1B",
+      "unitType": "indoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxm-a",
+        "locator": "Exact full model column header, marked archived",
+        "excerpt": "FTXM35A5V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM35A5V1B; dimensions Hauteur",
+            "excerpt": "FTXM35A5V1B | Dimensions | Unité | Hauteur | mm | 298"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM35A5V1B; dimensions Largeur",
+            "excerpt": "FTXM35A5V1B | Dimensions | Unité | Largeur | mm | 804"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM35A5V1B; dimensions Profondeur",
+            "excerpt": "FTXM35A5V1B | Dimensions | Unité | Profondeur | mm | 252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 792,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM35A5V1B; cooling high fan airflow",
+            "excerpt": "FTXM35A5V1B | Ventilateur | Débit d’air | Rafraîchissement | Haut | m³/min | 13.2; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France database marks this full SKU archived. ECPEN26-500 p.320 lists the FTXM-35A family in Europe, but no suffix-specific pairing is asserted here; no nominal cooling class inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXM35A2V1B",
+      "unitType": "indoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxm-a",
+        "locator": "Exact full model column header, marked archived",
+        "excerpt": "FTXM35A2V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM35A2V1B; dimensions Hauteur",
+            "excerpt": "FTXM35A2V1B | Dimensions | Unité | Hauteur | mm | 298"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM35A2V1B; dimensions Largeur",
+            "excerpt": "FTXM35A2V1B | Dimensions | Unité | Largeur | mm | 804"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM35A2V1B; dimensions Profondeur",
+            "excerpt": "FTXM35A2V1B | Dimensions | Unité | Profondeur | mm | 252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 792,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM35A2V1B; cooling high fan airflow",
+            "excerpt": "FTXM35A2V1B | Ventilateur | Débit d’air | Rafraîchissement | Haut | m³/min | 13.2; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France database marks this full SKU archived. ECPEN26-500 p.320 lists the FTXM-35A family in Europe, but no suffix-specific pairing is asserted here; no nominal cooling class inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXM42A2V1B",
+      "unitType": "indoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxm-a",
+        "locator": "Exact full model column header, marked archived",
+        "excerpt": "FTXM42A2V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM42A2V1B; dimensions Hauteur",
+            "excerpt": "FTXM42A2V1B | Dimensions | Unité | Hauteur | mm | 298"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM42A2V1B; dimensions Largeur",
+            "excerpt": "FTXM42A2V1B | Dimensions | Unité | Largeur | mm | 804"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM42A2V1B; dimensions Profondeur",
+            "excerpt": "FTXM42A2V1B | Dimensions | Unité | Profondeur | mm | 252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 798,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM42A2V1B; cooling high fan airflow",
+            "excerpt": "FTXM42A2V1B | Ventilateur | Débit d’air | Rafraîchissement | Haut | m³/min | 13.3; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France database marks this full SKU archived. ECPEN26-500 p.320 lists the FTXM-42A family in Europe, but no suffix-specific pairing is asserted here; no nominal cooling class inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXM42A5V1B",
+      "unitType": "indoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxm-a",
+        "locator": "Exact full model column header, marked archived",
+        "excerpt": "FTXM42A5V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM42A5V1B; dimensions Hauteur",
+            "excerpt": "FTXM42A5V1B | Dimensions | Unité | Hauteur | mm | 298"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM42A5V1B; dimensions Largeur",
+            "excerpt": "FTXM42A5V1B | Dimensions | Unité | Largeur | mm | 804"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM42A5V1B; dimensions Profondeur",
+            "excerpt": "FTXM42A5V1B | Dimensions | Unité | Profondeur | mm | 252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 798,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM42A5V1B; cooling high fan airflow",
+            "excerpt": "FTXM42A5V1B | Ventilateur | Débit d’air | Rafraîchissement | Haut | m³/min | 13.3; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France database marks this full SKU archived. ECPEN26-500 p.320 lists the FTXM-42A family in Europe, but no suffix-specific pairing is asserted here; no nominal cooling class inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXM50A5V1B",
+      "unitType": "indoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxm-a",
+        "locator": "Exact full model column header, marked archived",
+        "excerpt": "FTXM50A5V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM50A5V1B; dimensions Hauteur",
+            "excerpt": "FTXM50A5V1B | Dimensions | Unité | Hauteur | mm | 298"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM50A5V1B; dimensions Largeur",
+            "excerpt": "FTXM50A5V1B | Dimensions | Unité | Largeur | mm | 804"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM50A5V1B; dimensions Profondeur",
+            "excerpt": "FTXM50A5V1B | Dimensions | Unité | Profondeur | mm | 252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 762,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM50A5V1B; cooling high fan airflow",
+            "excerpt": "FTXM50A5V1B | Ventilateur | Débit d’air | Rafraîchissement | Haut | m³/min | 12.7; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France database marks this full SKU archived. ECPEN26-500 p.320 lists the FTXM-50A family in Europe, but no suffix-specific pairing is asserted here; no nominal cooling class inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXM50A2V1B",
+      "unitType": "indoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxm-a",
+        "locator": "Exact full model column header, marked archived",
+        "excerpt": "FTXM50A2V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM50A2V1B; dimensions Hauteur",
+            "excerpt": "FTXM50A2V1B | Dimensions | Unité | Hauteur | mm | 298"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM50A2V1B; dimensions Largeur",
+            "excerpt": "FTXM50A2V1B | Dimensions | Unité | Largeur | mm | 804"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM50A2V1B; dimensions Profondeur",
+            "excerpt": "FTXM50A2V1B | Dimensions | Unité | Profondeur | mm | 252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 762,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM50A2V1B; cooling high fan airflow",
+            "excerpt": "FTXM50A2V1B | Ventilateur | Débit d’air | Rafraîchissement | Haut | m³/min | 12.7; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France database marks this full SKU archived. ECPEN26-500 p.320 lists the FTXM-50A family in Europe, but no suffix-specific pairing is asserted here; no nominal cooling class inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXM60A2V1B",
+      "unitType": "indoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxm-a",
+        "locator": "Exact full model column header, marked archived",
+        "excerpt": "FTXM60A2V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM60A2V1B; dimensions Hauteur",
+            "excerpt": "FTXM60A2V1B | Dimensions | Unité | Hauteur | mm | 298"
+          }
+        },
+        {
+          "key": "width",
+          "value": 997,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM60A2V1B; dimensions Largeur",
+            "excerpt": "FTXM60A2V1B | Dimensions | Unité | Largeur | mm | 997"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 292,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM60A2V1B; dimensions Profondeur",
+            "excerpt": "FTXM60A2V1B | Dimensions | Unité | Profondeur | mm | 292"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 936,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM60A2V1B; cooling high fan airflow",
+            "excerpt": "FTXM60A2V1B | Ventilateur | Débit d’air | Rafraîchissement | Haut | m³/min | 15.6; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France database marks this full SKU archived. ECPEN26-500 p.320 lists the FTXM-60A family in Europe, but no suffix-specific pairing is asserted here; no nominal cooling class inferred."
+      ]
+    },
+    {
+      "modelReference": "FTXM71A2V1B",
+      "unitType": "indoor",
+      "status": "legacy",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxm-a",
+        "locator": "Exact full model column header, marked archived",
+        "excerpt": "FTXM71A2V1B (Archived)"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM71A2V1B; dimensions Hauteur",
+            "excerpt": "FTXM71A2V1B | Dimensions | Unité | Hauteur | mm | 298"
+          }
+        },
+        {
+          "key": "width",
+          "value": 997,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM71A2V1B; dimensions Largeur",
+            "excerpt": "FTXM71A2V1B | Dimensions | Unité | Largeur | mm | 997"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 292,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM71A2V1B; dimensions Profondeur",
+            "excerpt": "FTXM71A2V1B | Dimensions | Unité | Profondeur | mm | 292"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 948,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxm-a",
+            "locator": "Exact full model column FTXM71A2V1B; cooling high fan airflow",
+            "excerpt": "FTXM71A2V1B | Ventilateur | Débit d’air | Rafraîchissement | Haut | m³/min | 15.8; converted exactly ×60 to m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France database marks this full SKU archived. ECPEN26-500 p.320 lists the FTXM-71A family in Europe, but no suffix-specific pairing is asserted here; no nominal cooling class inferred."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}
