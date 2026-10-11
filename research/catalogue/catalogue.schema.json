@@ -3,24 +3,359 @@
   "title": "Source-backed heatpump catalogue candidate",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schemaVersion", "manufacturer", "family", "market", "checkedAt", "sources", "units", "unresolvedReferences"],
+  "required": [
+    "schemaVersion",
+    "manufacturer",
+    "family",
+    "market",
+    "checkedAt",
+    "sources",
+    "units",
+    "unresolvedReferences"
+  ],
   "properties": {
-    "schemaVersion": {"const": 1},
-    "manufacturer": {"enum": ["daikin", "mitsubishi-electric"]},
-    "family": {"type": "string", "minLength": 1},
-    "market": {"type": "string", "minLength": 1},
-    "checkedAt": {"type": "string", "format": "date"},
-    "sources": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/source"}},
-    "units": {"type": "array", "items": {"$ref": "#/$defs/unit"}},
-    "unresolvedReferences": {"type": "array", "items": {"type": "object", "required": ["modelReference", "reason"], "properties": {"modelReference": {"type": "string"}, "reason": {"type": "string"}}, "additionalProperties": false}}
+    "schemaVersion": {
+      "const": 1
+    },
+    "manufacturer": {
+      "enum": [
+        "daikin",
+        "mitsubishi-electric"
+      ]
+    },
+    "family": {
+      "type": "string",
+      "minLength": 1
+    },
+    "market": {
+      "type": "string",
+      "minLength": 1
+    },
+    "checkedAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/unit"
+      }
+    },
+    "unresolvedReferences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "modelReference",
+          "reason"
+        ],
+        "properties": {
+          "modelReference": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
   },
   "$defs": {
-    "source": {"type": "object", "required": ["id", "url", "title", "retrievedAt"], "additionalProperties": false, "properties": {"id": {"type": "string"}, "url": {"type": "string", "format": "uri"}, "title": {"type": "string"}, "edition": {"type": ["string", "null"]}, "retrievedAt": {"type": "string", "format": "date"}}},
-    "evidence": {"type": "object", "required": ["sourceId", "locator", "excerpt"], "additionalProperties": false, "properties": {"sourceId": {"type": "string"}, "locator": {"type": "string", "minLength": 1}, "excerpt": {"type": "string", "minLength": 1}}},
-    "fact": {"type": "object", "required": ["key", "value", "unit", "evidence"], "additionalProperties": false, "properties": {"key": {"enum": ["refrigerant", "factoryCharge", "maximumIndoorUnits", "controlStrategy", "height", "width", "depth", "mass", "airflow", "fanMotorOutput", "fanElectricalInput", "heatingOutdoorMinimum", "heatingOutdoorMaximum", "coolingOutdoorMinimum", "coolingOutdoorMaximum", "maximumTotalPipeLength", "maximumBranchPipeLength", "maximumHeightDifference", "additionalChargePerLength", "prechargedPipeLength", "liquidConnectionDiameter", "gasConnectionDiameter", "soundPressure", "soundPower", "supplyVoltage", "supplyPhases", "supplyFrequency"]}, "value": {"type": ["number", "string", "null"]}, "unit": {"enum": ["none", "kg", "mm", "m", "m3/h", "W", "degC", "kg/m", "dBA", "V", "Hz"]}, "condition": {"type": ["string", "null"]}, "evidence": {"$ref": "#/$defs/evidence"}}},
-    "range": {"type": "object", "additionalProperties": false, "properties": {"minimum": {"type": ["number", "null"]}, "nominal": {"type": ["number", "null"]}, "maximum": {"type": ["number", "null"]}}},
-    "rating": {"type": "object", "required": ["mode", "combination", "conditions", "electricalBoundary", "thermalCapacityKw", "electricalInputKw", "evidence"], "additionalProperties": false, "properties": {"mode": {"enum": ["heating", "cooling"]}, "combination": {"type": ["string", "null"]}, "conditions": {"type": ["string", "null"]}, "electricalBoundary": {"enum": ["outdoor-only", "complete-system", "unknown"]}, "thermalCapacityKw": {"$ref": "#/$defs/range"}, "electricalInputKw": {"$ref": "#/$defs/range"}, "evidence": {"$ref": "#/$defs/evidence"}}},
-    "compatibility": {"type": "object", "required": ["description", "evidence"], "additionalProperties": false, "properties": {"description": {"type": "string"}, "evidence": {"$ref": "#/$defs/evidence"}}},
-    "unit": {"type": "object", "required": ["modelReference", "unitType", "status", "identityEvidence", "facts", "ratings", "compatibility", "unknowns"], "additionalProperties": false, "properties": {"modelReference": {"type": "string", "minLength": 1}, "unitType": {"enum": ["outdoor", "indoor"]}, "status": {"enum": ["current", "legacy", "unknown"]}, "identityEvidence": {"$ref": "#/$defs/evidence"}, "facts": {"type": "array", "items": {"$ref": "#/$defs/fact"}}, "ratings": {"type": "array", "items": {"$ref": "#/$defs/rating"}}, "compatibility": {"type": "array", "items": {"$ref": "#/$defs/compatibility"}}, "unknowns": {"type": "array", "items": {"type": "string"}}}}
+    "source": {
+      "type": "object",
+      "required": [
+        "id",
+        "url",
+        "title",
+        "retrievedAt"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "title": {
+          "type": "string"
+        },
+        "edition": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "retrievedAt": {
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "sourceId",
+        "locator",
+        "excerpt"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "sourceId": {
+          "type": "string"
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "excerpt": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "fact": {
+      "type": "object",
+      "required": [
+        "key",
+        "value",
+        "unit",
+        "evidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "enum": [
+            "capacityClass",
+            "SEER",
+            "SCOP",
+            "refrigerant",
+            "factoryCharge",
+            "maximumIndoorUnits",
+            "controlStrategy",
+            "height",
+            "width",
+            "depth",
+            "mass",
+            "airflow",
+            "fanMotorOutput",
+            "fanElectricalInput",
+            "heatingOutdoorMinimum",
+            "heatingOutdoorMaximum",
+            "coolingOutdoorMinimum",
+            "coolingOutdoorMaximum",
+            "maximumTotalPipeLength",
+            "maximumBranchPipeLength",
+            "maximumHeightDifference",
+            "additionalChargePerLength",
+            "prechargedPipeLength",
+            "liquidConnectionDiameter",
+            "gasConnectionDiameter",
+            "soundPressure",
+            "soundPower",
+            "supplyVoltage",
+            "supplyPhases",
+            "supplyFrequency"
+          ]
+        },
+        "value": {
+          "oneOf": [
+            {
+              "type": [
+                "number",
+                "string",
+                "null"
+              ]
+            },
+            {
+              "$ref": "#/$defs/range"
+            }
+          ]
+        },
+        "unit": {
+          "enum": [
+            "none",
+            "kg",
+            "mm",
+            "m",
+            "m3/h",
+            "W",
+            "kW",
+            "degC",
+            "kg/m",
+            "dBA",
+            "V",
+            "Hz"
+          ]
+        },
+        "condition": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        }
+      }
+    },
+    "range": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "minimum": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "nominal": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "maximum": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      }
+    },
+    "rating": {
+      "type": "object",
+      "required": [
+        "mode",
+        "combination",
+        "conditions",
+        "electricalBoundary",
+        "thermalCapacityKw",
+        "electricalInputKw",
+        "evidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "mode": {
+          "enum": [
+            "heating",
+            "cooling"
+          ]
+        },
+        "combination": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "conditions": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "electricalBoundary": {
+          "enum": [
+            "outdoor-only",
+            "complete-system",
+            "unknown"
+          ]
+        },
+        "thermalCapacityKw": {
+          "$ref": "#/$defs/range"
+        },
+        "electricalInputKw": {
+          "$ref": "#/$defs/range"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "required": [
+        "description",
+        "evidence"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "type": "string"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        }
+      }
+    },
+    "unit": {
+      "type": "object",
+      "required": [
+        "modelReference",
+        "unitType",
+        "status",
+        "identityEvidence",
+        "facts",
+        "ratings",
+        "compatibility",
+        "unknowns"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "modelReference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unitType": {
+          "enum": [
+            "outdoor",
+            "indoor"
+          ]
+        },
+        "status": {
+          "enum": [
+            "current",
+            "legacy",
+            "unknown"
+          ]
+        },
+        "identityEvidence": {
+          "$ref": "#/$defs/evidence"
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/fact"
+          }
+        },
+        "ratings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/rating"
+          }
+        },
+        "compatibility": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/compatibility"
+          }
+        },
+        "unknowns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
   }
 }

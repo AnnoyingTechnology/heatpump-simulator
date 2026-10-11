@@ -20,6 +20,8 @@ Produce UTF-8 JSON per family under `research/catalogue/staging/`. Use the forma
 
 Every manufacturer fact has a source ID and locator. Use SI units, explicitly named in the schema. Convert units exactly; preserve the manufacturer's original value/unit in evidence. Separate thermal kW, electrical kW, amperes, RPM and compressor frequency. Fan motor output is not fan electrical input. Sound power is not sound pressure. Default operating limits are not rating conditions, and capacity class is not actual delivered power.
 
+Numeric facts may use a min/nominal/max object when the source publishes a range (for example 220–240 V supply). Do not replace a range with a guessed midpoint. Connection counts and control strategies remain single facts; different phase/model variants remain distinct references.
+
 Ratings are tied to a mode, indoor combination and test conditions. Store min/nominal/max values exactly as published; do not turn a rated-table minimum into a universal modulation floor or a maximum into a universal protection threshold. Do not combine incompatible rows. Missing conditions remain unknown. Outdoor-only and complete-system electrical boundaries must be explicit; if unstated use `unknown`.
 
 Compatibility needs its own source evidence: supported indoor families/references, port count, capacity class limits and any special piping restrictions. Never assume that any two R32 units are compatible. Do not expand a generic class table into exact suffix-combination performance without evidence.
