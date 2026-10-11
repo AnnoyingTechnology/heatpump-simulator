@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-10-11T17:34:32.979Z",
+  "url": "https://annoyingtechnology.github.io/heatpump-simulator/?outdoor=39&humidity=60&mode=cooling&room.ground.target=24&room.ground.temperature=27&room.ground.enabled=on&room.first.target=24&room.first.temperature=28.2&room.attic.enabled=off",
+  "state": {
+    "outdoor": 39,
+    "rh": 60,
+    "mode": "Cooling",
+    "targets": [
+      21,
+      24,
+      24
+    ],
+    "enabled": [
+      false,
+      true,
+      true
+    ],
+    "temperatures": [
+      18.3,
+      28.2,
+      27
+    ],
+    "clock": "00:00:00"
+  },
+  "bundleHashes": {
+    "index-D8CAH00P.js": "caddef96d4f5d9acaaaa63a9704e1fe83691795be744991e413fac7413d5f628",
+    "index-DYviNUyh.css": "ad37e1e1aa64039bac3043fb5b0c77859c0c31242610217f0cfeb0a9c55f4c0f",
+    "worker-D1Pf9ckG.js": "663b127fbdaa84fedfed746269f20048d437447185084ecbc544db80b7d3fbc9"
+  },
+  "scope": "Visible production controls and actual-worker room air; no state injection",
+  "passed": true,
+  "releaseCommit": "943ec5ac1286aeee6895a2f75fbbd3e34e5634e1",
+  "githubRun": "38159366844",
+  "githubConclusion": "success"
+}
