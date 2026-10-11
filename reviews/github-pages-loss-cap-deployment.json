@@ -1,0 +1,63 @@
+{
+  "checkedAt": "2026-10-11T07:23:46.369668+00:00",
+  "applicationCommit": "368f6b00e54097234d8f9d4417b51fe9bd137bd7",
+  "url": "https://annoyingtechnology.github.io/heatpump-simulator/",
+  "workflow": {
+    "runId": 38120839677,
+    "url": "https://github.com/AnnoyingTechnology/heatpump-simulator/actions/runs/38120839677",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "build",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-10-11T07:17:01Z",
+        "completedAt": "2026-10-11T07:22:12Z"
+      },
+      {
+        "name": "deploy",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-10-11T07:22:16Z",
+        "completedAt": "2026-10-11T07:22:24Z"
+      }
+    ]
+  },
+  "checks": {
+    "referenceAndProperties": {
+      "tests": 52,
+      "pass": 52,
+      "fail": 0,
+      "duration_ms": 292823.875607
+    },
+    "rollingHistory": {
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "duration_ms": 238.409861
+    },
+    "hostedBrowser": {
+      "tests": 6,
+      "pass": 6,
+      "receipt": "reviews/github-pages-browser-results.json"
+    },
+    "lossScale": {
+      "tests": 4,
+      "pass": 4,
+      "layoutCombinations": 32,
+      "domainWK": [
+        0,
+        750
+      ],
+      "receipt": "reviews/loss-scale-browser-results.json"
+    }
+  },
+  "assetSha256": {
+    "index-CDcui9zN.css": "9ffa1ed7922d7e34289b9fc7c0671a5172022b027832ed154fa83122c7e5e831",
+    "index-xx84d2m0.js": "ba8159a74f4d8cfb67b7fb8f852c36ffa1242c0e0f7fc33f1d83a0bc1bb2081b",
+    "worker-Bt2PmKhk.js": "62f0f5269a7a4aaaf72cfce9cc49feafcc786311b2397a1ff70be64b21bba4d9"
+  },
+  "wasmSha256": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+  "scope": "0\u2013750 W/K envelope-loss controls and directly labelled midpoint scale; unchanged Reference worker and closed charge gate."
+}
