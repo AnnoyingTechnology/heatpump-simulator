@@ -3,7 +3,17 @@ import assert from 'node:assert/strict';
 import factory from './backend.mjs';
 import { Properties } from './build/properties.js';
 import { HeatPumpEngine } from './build/engine.js';
+import { ChargeCircuit } from './build/charge.js';
 import { configured } from './charge-fixture.mjs';
+
+test('direct inventory construction rejects every released alternate fluid before initializing stored charge',async()=>{
+  const module=await factory(),geometry=configured().inventory.geometry;
+  for(const fluid of ['R22','R290','R134a','R1234yf','R410A','R407C']){
+    const p=new Properties(module,fluid);
+    try{assert.throws(()=>new ChargeCircuit(p,geometry,{massKg:.6,fluidTemperatureC:20}),/inventory research supports R32 only/);}
+    finally{p.dispose();}
+  }
+});
 
 test('coupled refrigerant, metal, rooms and outdoor film conserve energy through charge-aware cold start',async()=>{
   const p=new Properties(await factory()),e=new HeatPumpEngine(p,configured());

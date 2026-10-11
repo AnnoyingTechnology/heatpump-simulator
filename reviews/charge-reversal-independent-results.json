@@ -1,0 +1,75 @@
+{
+  "historyPath": "/tmp/charge-owner-pi-900-results.json",
+  "historySHA256": "0b424753f4fd0c9951570bb00b8e0f43336bbe099d6914e049d7682fefde6a26",
+  "historicalSources": {
+    "src/engine/charge.ts": "bf3889391cdc99cb6e4d4d3521be4aede47c31d07790b39e22345d63f26af330",
+    "src/engine/charge-valve.ts": "eec1323c0d9c8a500210616a0eb9f038b74cb5af0f00436c40b796d84fff252d",
+    "src/engine/charge-faces.ts": "8df1ed35ee5eb671e2a47b6a4c208ee267d6dacd16b0e1a12447bf20c44f4bf6",
+    "src/engine/charge-isentrope.ts": "22671d4807a8cd9429469c35ab7bc7afa4fefe5a44ffcf4d01c8b3ff977adfb4",
+    "src/engine/engine.ts": "222be1955b0fefc3b83433ea0af2a16448ccfacd5114d5e3f585a0855223e954",
+    "public/vendor/coolprop-safe/coolprop.wasm": "55d4d93788e146f773ba7dbbd14ad47a3e24fc0a273eaad910879f5404bbe0d0"
+  },
+  "snapshotSources": {
+    "src/engine/charge.ts": "bf3889391cdc99cb6e4d4d3521be4aede47c31d07790b39e22345d63f26af330",
+    "src/engine/charge-valve.ts": "360d75254a51387a9ad5e28c01d8896cbf08b9711c0d839d3bc487e0e666e7b4",
+    "src/engine/charge-faces.ts": "8df1ed35ee5eb671e2a47b6a4c208ee267d6dacd16b0e1a12447bf20c44f4bf6",
+    "src/engine/charge-isentrope.ts": "22671d4807a8cd9429469c35ab7bc7afa4fefe5a44ffcf4d01c8b3ff977adfb4",
+    "src/engine/engine.ts": "222be1955b0fefc3b83433ea0af2a16448ccfacd5114d5e3f585a0855223e954",
+    "public/vendor/coolprop-safe/coolprop.wasm": "55d4d93788e146f773ba7dbbd14ad47a3e24fc0a273eaad910879f5404bbe0d0"
+  },
+  "time420": true,
+  "seconds": 0.01,
+  "scope": "Independent conservative zero-speed topology sensitivity at retained420s state, not a staged-defrost success test.",
+  "cases": [
+    {
+      "orientation": "heating",
+      "wallSeconds": 0.7372993709999999,
+      "previousAccumulator": {
+        "massKg": 0.5113007700093626,
+        "pPa": 623401.8363344284,
+        "quality": 0.004300056885012417
+      },
+      "nextAccumulator": {
+        "massKg": 0.5114055645046772,
+        "pPa": 624258.5191211394,
+        "quality": 0.004299883362160405
+      },
+      "deltaMassKg": 0.0001047944953146418,
+      "openings": [
+        0.2545934740315156,
+        0.2545934740315156,
+        0.2545934740315156
+      ],
+      "massResidualKg": 5.040412531798211e-14,
+      "energyResidualJ": -0.00044468644773587584,
+      "admission": true
+    },
+    {
+      "orientation": "cooling",
+      "wallSeconds": 5.7332379499999995,
+      "previousAccumulator": {
+        "massKg": 0.5113007700093626,
+        "pPa": 623401.8363344284,
+        "quality": 0.004300056885012417
+      },
+      "nextAccumulator": {
+        "massKg": 0.517117207145437,
+        "pPa": 683097.1628030092,
+        "quality": 0.0043192560212502555
+      },
+      "deltaMassKg": 0.005816437136074382,
+      "openings": [
+        0.2545934740315156,
+        0.2545934740315156,
+        0.2545934740315156
+      ],
+      "massResidualKg": 5.040412531798211e-14,
+      "energyResidualJ": -0.0004438161849975586,
+      "admission": true
+    }
+  ],
+  "status": "PASS retained-state conservative topology sensitivity",
+  "diagnosticScript": "/tmp/heatpump-review-pi-rtje4n8n/review-reversal-topology.mjs",
+  "diagnosticScriptSHA256": "308def96fbb8365375ee0562cf45b443900cada98aac11cf4e4d8b9db3d81163",
+  "sourceReadOnly": true
+}

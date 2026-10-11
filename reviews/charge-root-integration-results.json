@@ -1,0 +1,23 @@
+{
+  "checkedAt": "2026-10-11T16:57:54.989388+00:00",
+  "publicInventoryGate": false,
+  "checks": {
+    "inventoryBaseline": 50,
+    "referenceRegression": 156,
+    "integrationAfterR32ConstructorGuard": 5,
+    "uniqueInventoryChecks": 51,
+    "typecheckBuild": true
+  },
+  "baselineSourceCommit": "74bcc9d",
+  "changesAfterBaseline": "Direct R32-only constructor guard and clarified research qualification wording; five integration checks repeated including all six alternate-fluid rejections. Reference execution never constructs inventory. No physical laws, tolerances or native backend changes.",
+  "finalSourceHashes": {
+    "src/engine/charge.ts": "1fc275c645ca84bd1d2cb96503b796697403347920ff498c86285cbebf858b08",
+    "src/engine/charge-valve.ts": "360d75254a51387a9ad5e28c01d8896cbf08b9711c0d839d3bc487e0e666e7b4",
+    "src/engine/charge-faces.ts": "8df1ed35ee5eb671e2a47b6a4c208ee267d6dacd16b0e1a12447bf20c44f4bf6",
+    "src/engine/charge-isentrope.ts": "22671d4807a8cd9429469c35ab7bc7afa4fefe5a44ffcf4d01c8b3ff977adfb4",
+    "src/engine/engine.ts": "be852e517b92a46e03994be1e6b198e61c47f80328d40bebd8743c6b4aafe8a8",
+    "src/engine/refrigerants.ts": "9be549057e4471d38b7155024897863fa6091e276977c808b3026b66f03cbb37",
+    "public/vendor/coolprop-safe/coolprop.wasm": "55d4d93788e146f773ba7dbbd14ad47a3e24fc0a273eaad910879f5404bbe0d0"
+  },
+  "scope": "Gated numerical/control integration and rollback; no full-cycle, browser throughput or public charge approval"
+}

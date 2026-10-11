@@ -9,6 +9,7 @@ export interface RefrigerantDefinition {
   source: string;
   /** A pseudo-pure phase parameter must not be presented as resolved blend mass quality. */
   qualityMass: 'equilibrium' | 'pseudo-pure-approximation' | 'unavailable';
+  /** inventory means permitted research fluid; public inventory release has its own gate. */
   qualification: { reference: boolean; physicalLines: boolean; physicalLineModes: readonly ('heating' | 'cooling')[]; inventory: boolean; limitation: string | null };
   /** Selected computational envelope, narrower than the EOS validity range; not an appliance pressure rating. */
   domain: { minPressurePa: number; maxPressurePa: number; minTemperatureC: number; maxTemperatureC: number; minEvaporatingC: number; maxEvaporatingC: number; minCondensingC: number; maxCondensingC: number };
@@ -18,7 +19,7 @@ const domain = { minPressurePa: 5e4, maxPressurePa: 5e6, minTemperatureC: -60, m
 const pure = (id: RefrigerantId, backendFluid: string = id, maxPressurePa = 5e6, maxTemperatureC = 160): RefrigerantDefinition => ({ id, backendFluid, kind: 'pure',
   source: `https://coolprop.org/fluid_properties/fluids/${backendFluid}.html`, qualityMass: 'equilibrium', domain: { ...domain, maxPressurePa, maxTemperatureC },
   qualification: { reference: true, physicalLines: id === 'R32', physicalLineModes: id === 'R32' ? ['heating','cooling'] : [], inventory: id === 'R32',
-    limitation: id === 'R32' ? null : 'Conserved inventory and the complete physical field-line circuit, including reverse-cycle defrost, are qualified for R32 only.' } });
+    limitation: id === 'R32' ? null : 'Physical field lines are qualified for R32 only. Conserved inventory research is restricted to R32 and its public release remains gated.' } });
 const blend = (id: 'R407C' | 'R410A', massFractions: Record<string, number>): RefrigerantDefinition => ({
   id, backendFluid: `${id}-mix`, kind: 'zeotropic', massFractions,
   source: 'https://coolprop.org/fluid_properties/Mixtures.html', qualityMass: 'equilibrium', domain: { ...domain, maxPressurePa: id === 'R407C' ? 4e6 : 4.7e6 },

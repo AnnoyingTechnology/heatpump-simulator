@@ -107,6 +107,7 @@ export class ChargeCircuit {
 
   constructor(private readonly properties: Properties, geometry: ChargeGeometry,
     initial: { massKg: number; fluidTemperatureC: number; orientation?:'heating'|'cooling'; valveOpening?:number },private readonly numerics:ChargeNumerics={}) {
+    if(properties.fluid!=='R32')throw new DomainError('Conserved inventory research supports R32 only; its public release remains separately gated');
     this.geometry=deepFreeze(structuredClone(geometry));this.numerics=deepFreeze(structuredClone(numerics));const g = this.geometry;
     this.coilCellCount=numerics.coilCells??3;this.branchFlowCount=this.coilCellCount+2;
     if(!Number.isInteger(this.coilCellCount)||this.coilCellCount<2||this.coilCellCount>48)throw new DomainError('Coil cells must be an integer in 2…48');
