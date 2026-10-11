@@ -124,14 +124,15 @@ export function pairField(o: PairOpts): PairField {
 // ---------- envelope heat-loss guide (local, non-modal help in the scene) ----------
 /** Reference bands supplied for this simulator. Their reference size, boundaries and air exchange are unspecified: never scaled or applied. */
 export interface HeatLossBand { era: string; note?: string; min: number; max: number }
-/** Single source of the bands: the guide table and the scale under every Envelope loss slider both render from it. */
+/** Single source of the supplied bands: the guide table shows the ranges, the scale under every Envelope loss slider shows their midpoints. */
 export const HEAT_LOSS_BANDS: ReadonlyArray<HeatLossBand> = [
   { era: 'Pre-1974', note: 'very poorly insulated', min: 650, max: 850 },
-  { era: 'RT 1974', min: 400, max: 600 }, { era: 'RT 1982', min: 350, max: 480 }, { era: 'RT 1988', min: 300, max: 400 },
-  { era: 'RT 2000', min: 240, max: 340 }, { era: 'RT 2005', min: 200, max: 300 },
-  { era: 'RT 2012', min: 110, max: 180 }, { era: 'RE 2020 (from 2022)', min: 80, max: 150 },
+  { era: 'RT1974', min: 400, max: 600 }, { era: 'RT1982', min: 350, max: 480 }, { era: 'RT1988', min: 300, max: 400 },
+  { era: 'RT2000', min: 240, max: 340 }, { era: 'RT2005', min: 200, max: 300 },
+  { era: 'RT2012', min: 110, max: 180 }, { era: 'RE2020', note: 'from 2022', min: 80, max: 150 },
 ];
-const bandText = (b: HeatLossBand): string => `${b.min}–${b.max}`;
+/** Band midpoint in W/K: 750, 500, 415, 350, 290, 250, 145, 115. */
+const midpoint = (b: HeatLossBand): number => (b.min + b.max) / 2;
 
 const HEAT_LOSS_SOURCES: ReadonlyArray<readonly [string, string]> = [
   ['Th-Bat general rules', 'https://rt-re-batiment.developpement-durable.gouv.fr/IMG/pdf/1-fascicule_generalites.pdf'],
@@ -143,32 +144,85 @@ const HEAT_LOSS_SOURCES: ReadonlyArray<readonly [string, string]> = [
 export const ENVELOPE_LOSS = { min: 0, max: 1000, step: 1 } as const;
 
 /**
- * Static reference scale for the Envelope loss slider, built once per room: a numeric 0…W/K ruler aligned to the slider track
- * (inset by the thumb radius) with the eight bands stacked translucently on it, and a key that names every band and range.
- * The bands overlap, so they are a key, not disjoint slider zones. They are supplied building-reference examples of unspecified
- * size: never scaled by room size, never a default, no legal performance implied. Nothing here reacts to the slider.
+ * Scale metrics in px (the panel is 290 scene units wide; the plot is inset 8 by the native thumb travel). `charW` is a deliberately
+ * conservative allowance per character for this bounded vocabulary at 650 10px system-ui: measured 42 px for the six-character
+ * names and 51 px for Pre-1974 (7.0 and 6.4 per character), so 7.4 leaves about 5–8 % for font variation. Pads separate labels
+ * and keep leaders clear of labels.
+ */
+const LS = { band: 11, pitch: 11, gap: 2, charW: 7.4, labelPad: 4, stemPad: 2 } as const;
+
+interface LossMark { band: HeatLossBand; mid: number; x: number; w: number; above: boolean; tier: number }
+
+/**
+ * Places each midpoint label on the side (above or below the axis band) and tier where neither it nor its leader collides with
+ * another label or leader. Labels are centred on the exact midpoint; a leader runs from the axis band to its label and may
+ * not cross a nearer label on the same side. Markers go left to right; sides alternate in the order A0, B0, A1, B1, …
+ */
+function placeMarks(plotW: number): LossMark[] {
+  const span = ENVELOPE_LOSS.max - ENVELOPE_LOSS.min;
+  const placed: LossMark[] = [];
+  const marks = HEAT_LOSS_BANDS.map((band) => {
+    const mid = midpoint(band);
+    return { band, mid, x: ((mid - ENVELOPE_LOSS.min) / span) * plotW, w: band.era.length * LS.charW };
+  }).sort((a, b) => a.x - b.x);
+  for (const m of marks) {
+    const [a, b] = [m.x - m.w / 2, m.x + m.w / 2];
+    for (let slot = 0; ; slot++) {
+      const above = slot % 2 === 0;
+      const tier = slot >> 1;
+      const clash = placed.some((p) => {
+        if (p.above !== above) return false;
+        const [pa, pb] = [p.x - p.w / 2, p.x + p.w / 2];
+        if (p.tier === tier) return a < pb + LS.labelPad && pa < b + LS.labelPad;
+        // The farther leader must clear the nearer label.
+        return p.tier < tier ? m.x >= pa - LS.stemPad && m.x <= pb + LS.stemPad : p.x >= a - LS.stemPad && p.x <= b + LS.stemPad;
+      });
+      if (!clash) { placed.push({ ...m, above, tier }); break; }
+    }
+  }
+  return placed;
+}
+
+/**
+ * Static reference scale for the Envelope loss slider, built once per room: a numeric 0…1000 W/K axis band aligned to the slider
+ * track (inset by the thumb radius) and one midpoint marker per supplied band, labelled directly on the scale (no legend, no
+ * range bars). Closely spaced low values are staggered above and below the band with leader lines from the exact midpoint.
+ * The supplied ranges and notes stay in the help guide. These are building-reference examples of unspecified size: never scaled
+ * by room size, never a default, no classification of the slider. Nothing here reacts to the slider or is rebuilt.
  */
 export function createLossScale(): HTMLElement {
   const span = ENVELOPE_LOSS.max - ENVELOPE_LOSS.min;
-  const at = (v: number): string => `${(((v - ENVELOPE_LOSS.min) / span) * 100).toFixed(2)}%`;
-  const ruler = html('div', { class: 'ls-ruler', 'aria-hidden': 'true' },
-    html('div', { class: 'ls-track' }, ...HEAT_LOSS_BANDS.map((b) => {
-      const e = html('i', { class: 'ls-band' });
-      e.style.left = at(b.min);
-      e.style.width = `${(((b.max - b.min) / span) * 100).toFixed(2)}%`;
-      return e;
-    })),
-    html('div', { class: 'ls-ticks' }, ...[0, 250, 500, 750, 1000].map((v) => {
-      const e = html('span', { class: 'ls-tick' }, String(v));
-      e.style.left = at(v);
-      return e;
-    })));
-  const key = html('ul', { class: 'ls-key' }, ...HEAT_LOSS_BANDS.map((b, k) => html('li', { class: k === 0 || k === HEAT_LOSS_BANDS.length - 1 ? 'wide' : '' },
-    html('span', { class: 'ls-era' }, b.era), ...(b.note ? [html('span', { class: 'ls-note' }, `(${b.note})`)] : []), html('b', { class: 'ls-r' }, bandText(b)))));
-  return html('div', {
-    class: 'ls', role: 'group', 'aria-label': 'Building reference examples, W/K',
-    title: 'Supplied building-reference examples for an unspecified reference building. Not scaled by room size, not statutory, never applied automatically.',
-  }, ruler, key);
+  const at = (v: number): string => `${(((v - ENVELOPE_LOSS.min) / span) * 100).toFixed(3)}%`;
+  const marks = placeMarks(274);
+  const tiersAbove = Math.max(0, ...marks.filter((m) => m.above).map((m) => m.tier + 1));
+  const tiersBelow = Math.max(0, ...marks.filter((m) => !m.above).map((m) => m.tier + 1));
+  const bandTop = tiersAbove * LS.pitch + LS.gap;
+  const bandBottom = bandTop + LS.band;
+  const plot = html('div', { class: 'ls-plot' });
+  plot.style.height = `${bandBottom + LS.gap + tiersBelow * LS.pitch}px`;
+  const band = html('div', { class: 'ls-band', 'aria-hidden': 'true' }, ...[0, 250, 500, 750, 1000].map((v) => {
+    const e = html('span', { class: `ls-tick${v === ENVELOPE_LOSS.max ? ' end' : ''}`, 'data-value': v }, html('span', { class: 'ls-n' }, String(v)));
+    e.style.left = at(v);
+    return e;
+  }));
+  band.style.top = `${bandTop}px`;
+  band.style.height = `${LS.band}px`;
+  plot.append(band);
+  for (const m of marks) {
+    const reach = LS.gap + m.tier * LS.pitch;
+    const e = html('span', {
+      class: `ls-m ${m.above ? 'up' : 'down'}`, role: 'img', 'data-era': m.band.era, 'data-midpoint': m.mid,
+      'aria-label': `${m.band.era} reference midpoint ${m.mid} W/K`,
+    }, html('i', { class: 'ls-stem' }), html('span', { class: 'ls-lab' }, m.band.era));
+    e.style.left = at(m.mid);
+    const stem = e.firstElementChild as HTMLElement;
+    const lab = e.lastElementChild as HTMLElement;
+    stem.style.top = `${m.above ? bandTop - reach : bandBottom}px`;
+    stem.style.height = `${reach}px`;
+    lab.style.top = `${m.above ? bandTop - reach - LS.pitch : bandBottom + reach}px`;
+    plot.append(e);
+  }
+  return html('div', { class: 'ls', role: 'group', 'aria-label': 'Building reference midpoints, W/K, from supplied examples' }, plot);
 }
 
 export interface HeatLossGuide {
@@ -201,7 +255,7 @@ export function createHeatLossGuide(): HeatLossGuide {
     html('table', { class: 'hl-tbl' },
       html('caption', {}, 'Reference bands supplied for this simulator'),
       html('thead', {}, html('tr', {}, html('th', { scope: 'col' }, 'Construction era'), html('th', { scope: 'col' }, 'Indicative H (W/K)'))),
-      html('tbody', {}, ...HEAT_LOSS_BANDS.map((b) => html('tr', {}, html('th', { scope: 'row' }, b.note ? `${b.era} (${b.note})` : b.era), html('td', {}, bandText(b)))))),
+      html('tbody', {}, ...HEAT_LOSS_BANDS.map((b) => html('tr', {}, html('th', { scope: 'row' }, b.note ? `${b.era} (${b.note})` : b.era), html('td', {}, `${b.min}–${b.max}`))))),
     html('p', { class: 'hl-note' }, 'Indicative only: the room size, exposed surfaces and air exchange behind these bands are unspecified. They are not RT/RE requirements and are never applied to a room automatically.'),
     sources);
   const guide: HeatLossGuide = {

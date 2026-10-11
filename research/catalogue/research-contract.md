@@ -2,6 +2,10 @@
 
 Owner request: Qwen3.8-Flash-Next performs catalogue population through OpenCode. Its current endpoint is on `10.10.10.204`; do not use Ulmus or silently substitute a cloud model. Keep all maintained files inside this project. This task does not authorize server changes, global client configuration edits or simulator physics edits.
 
+## Observed inference route (2026-10-11)
+
+The current host `10.10.10.204` identifies as `ai-multi-gpu`. Its loaded API model is `Qwen3.8-Flash-Next`, served on that host’s loopback `127.0.0.1:19623/v1`. Use a process-scoped SSH forward as `ai@10.10.10.204` and the project launcher, not the stale Ulmus-labelled global provider. Local port19624 is forwarded to that remote loopback API. A direct canary with `reasoning_effort: none` and `enable_thinking: false` returned READY with two completion tokens and no reasoning block. OpenCode uses the `off` variant with `reasoningEffort: none`. Re-check this dated route if unavailable; do not switch hosts or models.
+
 ## Scope and completion
 
 Start with the current Daikin and Mitsubishi Electric consumer air-to-air ranges sold in France/Europe: single-split and multi-split outdoor units, and compatible wall, floor, ceiling, cassette and ducted indoor units. Exclude Mitsubishi Heavy Industries, VRV/VRF, hydronic equipment and automotive parts from this pass. Record exclusions explicitly. Colours and suffixes are distinct references when the manufacturer names them as such. Discontinued models belong in a separate historical section; the owner's exact 3MXM52N8 and FTXA25/35 references must be preserved, with indoor suffixes unknown.

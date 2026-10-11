@@ -42,16 +42,16 @@ try{
  await activateControl(page,'Pause');
  await new Promise(resolve=>setTimeout(resolve,1200));
  const paused=await run(()=>document.querySelector('.time').textContent);
- await check('every hosted room shows all eight loss-reference bands directly beneath its slider',async()=>{
+ await check('every hosted room shows all eight labelled loss-reference midpoints without a separate legend',async()=>{
   const scales=await run(()=>[...document.querySelectorAll('.room-env')].map(room=>({
-   bands:[...room.querySelectorAll('.ls-key li')].map(li=>[li.querySelector('.ls-era').textContent,li.querySelector('.ls-r').textContent]),
+   markers:[...room.querySelectorAll('.ls-m')].map(m=>[m.querySelector('.ls-lab').textContent,Number(m.dataset.midpoint)]),
    below:room.querySelector('.ls').getBoundingClientRect().top>=room.querySelector('input[aria-label^="Envelope heat-loss coefficient"][type="range"]').getBoundingClientRect().bottom,
-   ticks:[...room.querySelectorAll('.ls-tick')].map(t=>t.textContent),
+   ticks:[...room.querySelectorAll('.ls-tick')].map(t=>t.textContent),legends:room.querySelectorAll('.ls-key').length,
   })));
   assert.equal(scales.length,3);
   for(const scale of scales){
-   assert.deepEqual(scale.bands,[['Pre-1974','650–850'],['RT 1974','400–600'],['RT 1982','350–480'],['RT 1988','300–400'],['RT 2000','240–340'],['RT 2005','200–300'],['RT 2012','110–180'],['RE 2020 (from 2022)','80–150']]);
-   assert.equal(scale.below,true);
+   assert.deepEqual(scale.markers,[['RE2020',115],['RT2012',145],['RT2005',250],['RT2000',290],['RT1988',350],['RT1982',415],['RT1974',500],['Pre-1974',750]]);
+   assert.equal(scale.below,true);assert.equal(scale.legends,0);
    assert.deepEqual(scale.ticks,['0','250','500','750','1000']);
   }
  });
