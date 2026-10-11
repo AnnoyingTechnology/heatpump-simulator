@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-11T15:06:18.715Z",
+  "checks": [
+    {
+      "name": "room graphs show accepted physical temperatures including the disabled head",
+      "passed": true
+    },
+    {
+      "name": "paused target and unit edits preserve clock and recorded history",
+      "passed": true
+    },
+    {
+      "name": "histories follow persistent room IDs when a room is removed",
+      "passed": true
+    },
+    {
+      "name": "Examples hide real history; returning and restarting never fabricate or retain another session",
+      "passed": true
+    },
+    {
+      "name": "charts fit unboxed room settings at four desktop widths",
+      "passed": true
+    }
+  ],
+  "source": "accepted engine room.temperatureC and target; ten-second bins, two-hour physical-time window"
+}

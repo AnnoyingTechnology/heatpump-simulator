@@ -29,10 +29,10 @@ export const ROOM_COLS = { corridor: 124, equip: { dx: 389, w: 242 }, env: { dx:
 /**
  * Panel heights of one room row: equipment card (head, permanent indoor-model select, target), and the unboxed environment (name,
  * floor area × height = volume, Average U control with its better/poorer ends and the derived exposed area and whole-room envelope W/K;
- * the building reference ruler lives once in the indoor header). Rows are at least 220 units high for every room count, so both fit; the equipment
+ * a two-hour accepted-temperature chart; the building reference ruler lives once in the indoor header). Rows are at least 220 units high for every room count, so both fit; the equipment
  * card ends at 10 + 136 = 146, which leaves the band above the next separator free for room-link chips.
  */
-export const ROOM_PANEL_H = { equip: 136, env: 168 } as const;
+export const ROOM_PANEL_H = { equip: 136, env: 218 } as const;
 /**
  * Outdoor connection corridor, right of the risers and left of the wall: one line-length block per branch under its line pair
  * (`lineCtl`) and, above the first room, the shared field-line model switch (`modelCtl`). Blocks sit clear of the pair's pipes.

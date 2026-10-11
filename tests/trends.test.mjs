@@ -26,3 +26,21 @@ test('COP gaps, mode changes, negative defrost heat and unavailable numbers rema
   h.accept(100, [NaN, Infinity, null], 'cooling');
   assert.ok(!/NaN|Infinity/.test(h.plot(0).path)); assert.equal(h.plot(0).count, 3);
 });
+
+
+test('room temperatures share nonzero bounds and target changes use steps, with bounded accepted history', () => {
+  const h = new TrendHistory();
+  h.accept(0, [18, 21, null], 'room-a');
+  h.accept(10, [18.1, 22, null], 'room-a');
+  h.accept(20, [18.2, 22, null], 'room-a');
+  const range = h.extent([0, 1], 1, false);
+  assert.ok(range.minimum > 17 && range.minimum < 18);
+  assert.ok(range.maximum > 22 && range.maximum < 23);
+  assert.ok(h.plot(1, 1, range, true).path.includes('H'));
+  assert.ok(h.plot(1, 1, range, true).path.includes('V'));
+  assert.ok(!h.plot(0, 1, range).path.includes('H'));
+  const same = new TrendHistory(); same.accept(0, [21, 21, null], 'r');
+  assert.deepEqual(same.extent([0, 1], 1, false), { minimum: 20.5, maximum: 21.5 });
+  assert.throws(() => h.plot(0, 1, {minimum: 22, maximum: 20}), /ordered/);
+  assert.equal(h.accept(20, [0, 0, null], 'room-a'), false);
+});

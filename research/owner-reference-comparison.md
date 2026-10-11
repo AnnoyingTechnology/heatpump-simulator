@@ -1,0 +1,11 @@
+# Measured references and model scope
+
+Seven historical six-to-eight-hour electrical/temperature references and one cycling comparison were audited locally. Their source checksums and independent aggregate/counter calculations passed. The seven reference windows agree between power integration and the circuit counter within 0.21%; the cycling example differs by 1.21%. Those checks support electrical consistency, not instrument accuracy or continuous compressor operation.
+
+Winter circuit averages span 371–487 W near 1°C reported local outdoor temperature. Summer averages span 701–888 W near 38–40°C. The recorded room-temperature profiles differ from today's operating preset. Historical targets, mode, active heads and fans are unavailable; outdoor humidity, delivered heat, solar admission and fabric state are also unknown. A numerical power overlap cannot establish calibration or measured COP.
+
+84 explicitly hypothetical native refrigerant operating points closed within the original pressure/mass/first-law and safety limits. Their assumptions are separate from observations; no historical settings were invented and no model parameter was fitted. Native moisture/ventilation sensitivity shows that unmeasured humidity can alter energy/water boundary flux by kilowatts, so solar gains cannot be extracted uniquely from electrical input alone.
+
+The next useful validation is a documented winter night and summer afternoon with circuit energy, local outdoor temperature/humidity, indoor readings and actual control settings. Compare energy and temperature drift together, preserve storage uncertainty, and hold out independent days if fitting is later attempted. No raw household export, recorder path, entity identifier or detailed daily schedule is included here. Raw exports remain local and untracked.
+
+Comparison completed 2026-10-11 against the released cycle source `bc2071f37492b2484cef9778ef924f48dabfa7a2b2be17bc835052c9d2ec6f1b`, without changing production physics. Independent measurement audit and native sensitivity harnesses are retained locally in `/tmp/heatpump-ha-reference-comparison-20261011/`; their private source inputs are not required by the public simulator. The earlier two-hour owner run is a separately recorded current-preset test, not a replay of historical controls.

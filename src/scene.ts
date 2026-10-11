@@ -1,3 +1,4 @@
+import { TrendHistory } from './trends';
 import { temperatureSymbol, powerSymbol } from './measurement-symbols';
 import { HUMIDITY_CONVENTION } from './chrome';
 import { airColor, indoorCoilProbeExample, indoorCoilProbeLive, inventoryCoilProbe, outdoorCoilProbe, segKind, valvePairs } from './circuit';
@@ -331,6 +332,29 @@ interface WeatherPanel {
   match: HTMLButtonElement;
 }
 
+/** A room's accepted-temperature history, independent of its indoor-unit command and indexed by persistent room id. */
+function roomChart() {
+  const actual = svg('path', { class: 'room-chart-actual', d: '' });
+  const target = svg('path', { class: 'room-chart-target', d: '' });
+  const title = svg('title', {}, 'Room temperature history · last 2 hours of simulated time');
+  const graph = svg('svg', { viewBox: '0 0 112 44', preserveAspectRatio: 'none', role: 'img', 'aria-label': 'Room temperature history' }, title,
+    svg('path', { class: 'room-chart-base', d: 'M1 34H111' }), target, actual);
+  const range = html('span', { class: 'room-chart-range' });
+  const root = html('div', { class: 'room-chart' },
+    html('div', { class: 'room-chart-caption' }, html('span', {}, 'Temperature · 2 h'), range), graph);
+  function update(history: TrendHistory, name: string, seconds: number): void {
+    const bounds = history.extent([0, 1], 1, false);
+    const plot = history.plot(0, 1, bounds);
+    setAttr(actual, 'd', plot.path);
+    setAttr(target, 'd', history.plot(1, 1, bounds, true).path);
+    setAttr(root, 'data-count', plot.count);
+    setAttr(root, 'data-seconds', seconds);
+    setText(range, plot.count ? `${fmt(bounds.minimum, 1)}–${fmt(bounds.maximum, 1)} °C` : '—');
+    setText(title, `${name}: room air (solid), requested target (dashed). Last 2 hours of accepted simulated time; latest value per 10-second bin. ${plot.count ? `Scale ${fmt(bounds.minimum, 1)}–${fmt(bounds.maximum, 1)} °C.` : 'No accepted history yet.'} Missing readings are gaps.`);
+  }
+  return { root, update };
+}
+
 /** Outdoor meteorological conditions: environment, not equipment. Built once per scene; no box, no border. */
 function weatherPanel(): WeatherPanel {
   const t = pairField({
@@ -358,12 +382,13 @@ function weatherPanel(): WeatherPanel {
 
 /**
  * One room, split by what it is. `env` is the ROOM environment (floor area, ceiling height, derived volume, Average U with its derived
- * exposed area and whole-room envelope W/K, remove): unboxed, on the room zone. `equip` is the INDOOR UNIT (requested On/Off, supplied AIR, net room kW, target,
+ * exposed area and whole-room envelope W/K, accepted-temperature chart, remove): unboxed, on the room zone. `equip` is the INDOOR UNIT (requested On/Off, supplied AIR, net room kW, target,
  * settings), a quiet card beside the unit.
  */
 interface RoomPanel {
   equip: HTMLDivElement;
   env: HTMLDivElement;
+  chart: ReturnType<typeof roomChart>;
   /** Room id this panel last showed; a change means the index was rebound after a removal. */
   boundId: string;
   name: HTMLElement;
@@ -438,15 +463,16 @@ function roomPanel(i: number, hooks: SceneHooks): RoomPanel {
     html('div', { class: 'rp-head' }, html('span', { class: 'eq-tag' }, 'Unit'), swLabel, linesBtn, gearBtn),
     model.root,
     html('div', { class: 'rp-cards' }, tgt));
+  const chart = roomChart();
   const env = html('div', { class: 'rp env room-env', 'data-block': 'environment' },
     html('div', { class: 'rp-head' }, name, thermal, remove),
     html('div', { class: 'env-geo' }, area.root, sep('×'), height.root, sep('='), volume),
-    html('div', { class: 'env-low' }, insulation.root));
+    html('div', { class: 'env-low' }, insulation.root), chart.root);
   linesBtn.addEventListener('click', () => hooks.toggleLines(i, equip));
   gearBtn.addEventListener('click', () => hooks.toggleRoom(i, equip));
   thermal.addEventListener('click', () => hooks.toggleThermal(i, env));
   isolate(sw, swLabel, linesBtn, gearBtn, remove, thermal);
-  return { equip, env, intake: air.root, outlet, boundId: '', name, air, sup, heat, sp, model, area, height, volume: volumeV, insulation, sw, swText, remove, thermal };
+  return { equip, env, chart, intake: air.root, outlet, boundId: '', name, air, sup, heat, sp, model, area, height, volume: volumeV, insulation, sw, swText, remove, thermal };
 }
 
 /** Indoor-zone bar: room count against the outdoor group's port capacity, and the direct Add room action. */
@@ -496,6 +522,8 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
   });
   root.dataset.zoom = 'overview';
 
+  const roomHistories = new Map<string, TrendHistory>();
+  let roomHistoryEpoch = store.resetEpoch;
   let built = { n: -1, kind: '' };
   let layout: Layout = first;
   let presets = presetsFor(first);
@@ -1128,6 +1156,9 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
 
     // rooms
     const br = branchesFor(rd, act);
+    if (roomHistoryEpoch !== store.resetEpoch) { roomHistories.clear(); roomHistoryEpoch = store.resetEpoch; }
+    const roomIds = new Set(cfg.rooms.map(room => room.id));
+    for (const id of roomHistories.keys()) if (!roomIds.has(id)) roomHistories.delete(id);
     act.forEach((r, i) => {
       const v = rooms[i];
       if (!v) return;
@@ -1135,6 +1166,12 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       const eng = rd.engine?.rooms[i] ?? rd.retainedRooms?.find(room => room.id === r.id) ?? null;
       toggleClass(v.unit, 'generic', info.generic);
       const p = v.panel;
+      let history = roomHistories.get(r.id);
+      if (!history) { history = new TrendHistory(); roomHistories.set(r.id, history); }
+      if (live && rd.usable && rd.engine && eng) history.accept(rd.engine.simulatedSeconds, [eng.temperatureC, r.setpointC, null], r.id);
+      p.chart.root.hidden = !live;
+      setAttr(p.chart.root, 'data-room-id', r.id);
+      p.chart.update(history, r.name, rd.engine?.simulatedSeconds ?? 0);
       // An index rebound to another room (after a removal) must not keep a stale focused value.
       const lineCtl = lineCtlFor(i);
       if (p.boundId !== r.id) {

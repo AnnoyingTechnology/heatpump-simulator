@@ -1100,3 +1100,13 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 }
 .rp-line > .measurement-symbol { color: inherit; margin-right: 3px; }
 .measurement-symbol.hm-icon { width: 18px; height: 18px; color: var(--icon); }
+
+/* Compact accepted room-temperature history; solid actual air, dashed requested target. */
+.room-chart { height: 46px; flex: none; min-width: 0; margin-top: 4px; pointer-events: none; }
+.room-chart-caption { display: flex; justify-content: space-between; gap: 5px; font-size: 10px; line-height: 12px; color: var(--rp-ink); }
+.room-chart-range { opacity: .75; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.room-chart svg { display: block; width: 100%; height: 34px; overflow: visible; }
+.room-chart path { fill: none; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
+.room-chart-actual { stroke: var(--accent); stroke-width: 1.7; }
+.room-chart-target { stroke: var(--rp-ink); stroke-width: 1; stroke-dasharray: 3 3; opacity: .65; }
+.room-chart-base { stroke: var(--rp-ink); stroke-width: .5; opacity: .15; }

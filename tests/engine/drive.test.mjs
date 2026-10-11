@@ -53,3 +53,22 @@ test('Reference inverter starts at its admitted minimum and immediately follows 
   assert.ok(derated.speedRps<39,'envelope derating overrides ordinary downward slew');
   assert.ok(derated.speedRps>=request.minimumRps);
 });
+
+test('inventory startup ramps real displacement from rest consistently with timestep and retains restart guards',()=>{
+ const request={...input,demandRps:18,inverterSlew:DEFAULT_INVERTER_SLEW,startupFromRest:true};
+ for(const dt of [.25,.1,.025]){
+  let state=newDriveState();
+  for(let i=0;i<Math.round(10/dt);i++){
+   const previous=state.speedRps;state=driveStep(state,dt,request);
+   assert.ok(state.speedRps-previous<=2*dt+1e-10);
+   assert.ok(Math.abs(state.speedRps-Math.min(18,(i+1)*dt*2))<1e-9);
+  }
+  assert.equal(state.speedRps,18);
+ }
+ let state=driveStep(newDriveState(),.25,request);assert.equal(state.speedRps,.5);
+ state=driveStep(state,.25,{...request,demandRps:0});assert.equal(state.speedRps,0);
+ for(let i=0;i<119;i++){state=driveStep(state,.25,request);assert.equal(state.speedRps,0)}
+ state=driveStep(state,.25,request);assert.equal(state.speedRps,.5);
+ assert.equal(driveStep(state,.25,{...request,pickupAvailable:false}).speedRps,0);
+ assert.equal(driveStep(state,.25,{...request,predictedDischargeC:140}).speedRps,0);
+});

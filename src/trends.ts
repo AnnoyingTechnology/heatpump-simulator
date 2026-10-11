@@ -23,10 +23,24 @@ export class TrendHistory {
     return true;
   }
 
-  plot(index: 0 | 1 | 2, minimumSpan = 1): { path: string; minimum: number; maximum: number; count: number } {
+  /** Shared bounds for related traces; temperatures use includeZero=false and an honest minimum span. */
+  extent(indices: readonly (0 | 1 | 2)[], minimumSpan = 1, includeZero = true): { minimum: number; maximum: number } {
     if (!(Number.isFinite(minimumSpan) && minimumSpan > 0)) throw new RangeError('Trend scale span must be positive and finite');
+    const values = this.samples.flatMap(s => indices.map(i => s.values[i])).filter((v): v is number => v !== null);
+    if (!values.length) return { minimum: 0, maximum: minimumSpan };
+    if (includeZero) {
+      const minimum = Math.min(0, ...values);
+      return { minimum, maximum: Math.max(minimumSpan, ...values) };
+    }
+    const low = Math.min(...values), high = Math.max(...values);
+    const padding = Math.max(.1, (minimumSpan - (high - low)) / 2);
+    return { minimum: low - padding, maximum: high + padding };
+  }
+
+  plot(index: 0 | 1 | 2, minimumSpan = 1, bounds?: { minimum: number; maximum: number }, step = false): { path: string; minimum: number; maximum: number; count: number } {
+    const { minimum, maximum } = bounds ?? this.extent([index], minimumSpan);
+    if (!(Number.isFinite(minimum) && Number.isFinite(maximum) && maximum > minimum)) throw new RangeError('Trend bounds must be finite and ordered');
     const values = this.samples.map(s => s.values[index]).filter((v): v is number => v !== null);
-    const minimum = Math.min(0, ...values), maximum = Math.max(minimumSpan, ...values);
     let path = '', previous: Sample | null = null;
     for (const sample of this.samples) {
       const value = sample.values[index];
@@ -36,7 +50,8 @@ export class TrendHistory {
       // A missing bin or different operating mode has no fabricated connecting segment.
       const connected = previous && previous.series === sample.series && sample.seconds - previous.seconds <= 2 * this.sampleSeconds;
       const position = `${x.toFixed(2)} ${y.toFixed(2)}`;
-      path += `${connected ? 'L' : 'M'}${position}`;
+      if (connected && step) path += `H${x.toFixed(2)}V${y.toFixed(2)}`;
+      else path += `${connected ? 'L' : 'M'}${position}`;
       if (!connected) path += `L${position}`; // a round-capped point also shows very short histories
       previous = sample;
     }
