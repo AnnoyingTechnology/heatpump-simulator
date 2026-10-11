@@ -31,7 +31,10 @@ export interface EngineConfig {
   rooms: RoomConfig[];
   compressor: { displacementM3rev: number; speedMinRps: number; speedMaxRps: number; isentropicEfficiency: number; volumetricEfficiency: number; driveEfficiency: number; superheatK: number; subcoolK: number; maxDischargeC: number; maxPressureRatio: number };
   outdoor: { cleanFraction?: number; airMassFlowKgs: number; fanPowerW: number; airConductanceWK: number; refrigerantConductanceWK: number; naturalAirConductanceWK: number; metalCapacityJK: number; depositionAreaM2: number; frostDensityKgm3: number; frostConductivityWmK: number; finGapM: number; drainageSeconds: number };
-  control: { controlsW: number; proportionalSpeedRpsK: number; thermostatDeadbandK: number; minOnSeconds: number; minOffSeconds: number; reversalSeconds: number; defrostMinHeatingSeconds: number; defrostIceThresholdKg: number; defrostMaxSeconds: number; defrostTerminationMetalC: number; drainageDwellSeconds: number; defrostSpeedRps: number };
+  control: { controlsW: number; proportionalSpeedRpsK: number;
+    /** Restart error magnitude; stops at setpoint. Kept under the original config key. */
+    thermostatDeadbandK: number;
+    minOnSeconds: number; minOffSeconds: number; reversalSeconds: number; defrostMinHeatingSeconds: number; defrostIceThresholdKg: number; defrostMaxSeconds: number; defrostTerminationMetalC: number; drainageDwellSeconds: number; defrostSpeedRps: number };
   numerics: { maxStepSeconds: number; pressureToleranceW: number };
 }
 export interface RoomState { dryAirMassKg: number; airEnthalpyJ: number; humidityRatio: number; fabricTemperatureC: number; metalTemperatureC: number }

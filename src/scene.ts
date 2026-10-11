@@ -375,7 +375,7 @@ function roomPanel(i: number, hooks: SceneHooks, guide: HeatLossGuide): RoomPane
     html('span', { class: 'rp-k' }, 'Volume'), html('span', { class: 'rp-line' }, volumeV, html('small', {}, 'm³')));
   const sep = (glyph: string): HTMLElement => html('span', { class: 'env-op', 'aria-hidden': 'true' }, glyph);
   // The card is narrow: the "requested" qualifier lives in the tooltip and the accessible name, not in a clipped note.
-  sp.root.title = 'Requested target temperature; compare it with the measured room air';
+  sp.root.title = 'Stops at the requested target; heating restarts 1 °C below it, cooling 1 °C above it. Minimum run/restart times and compressor protection still apply.';
   const air = readCard('Room air', '°C');
   air.root.className = 'env-read flow-in';
   const sup = readCard('Supply air', '°C');

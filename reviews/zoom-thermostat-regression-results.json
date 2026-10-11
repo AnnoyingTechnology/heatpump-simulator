@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-11T05:32:11.346976+00:00",
+  "referenceAndProperties": {
+    "tests": 47,
+    "pass": 47,
+    "fail": 0,
+    "durationMs": 210915.496033,
+    "backend": "guarded",
+    "log": "reviews/zoom-thermostat-regression.log"
+  },
+  "trendHistory": {
+    "tests": 2,
+    "pass": 2,
+    "fail": 0
+  },
+  "sourceSha256": {
+    "src/engine/engine.ts": "ea2e234743b2176d3f8147f924610a74804a1e6c1baa0e44ec4b894032559cc6",
+    "src/engine/defaults.ts": "125bc640ced48ca115af181aad1bc4c7b2a4b5b142c683af717dbb79ea6fdae6",
+    "src/engine/thermostat.ts": "624305969795b54b99745ac84d1c966dbc0e66263ee8579111ea2054c971d5f5",
+    "src/trends.ts": "b909bb0b85c5046f3ad04b3042061a7326a272c760f0b2fc6944c10c4eb9c7d2",
+    "src/chrome.ts": "40dd6559bcfa96184e97a13391dc671272d673be169cf0445ccddaa6470445a0",
+    "src/style.css": "e44590a66a88bb417e4d6008dd2bae6988f41d6c99ffb672fcfc5b50e7ae227d"
+  },
+  "thermostatPolicy": "Stop at target; restart heating at target minus 1 K, cooling at target plus 1 K. Minimum-on/off and protection unchanged. Explicit Off overrides demand.",
+  "historyPolicy": "Two hours of accepted physical time, latest sample per ten-second bin, no invented example history; zero-inclusive automatic vertical scale, reset clears history."
+}

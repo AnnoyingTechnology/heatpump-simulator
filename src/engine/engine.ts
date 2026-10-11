@@ -2,6 +2,7 @@ import { Properties, DomainError } from './properties.ts';
 import { solveCycle } from './cycle.ts';
 import { ChargeCircuit, type ChargeCandidate, type ChargeBoundary, type ChargeNumerics } from './charge.ts';
 import { driveStep, driveRatioThresholds, newDriveState, type DriveState } from './drive.ts';
+import { thermostatDemand } from './thermostat.ts';
 import { inventoryCycle } from './charge-output.ts';
 import { airExchange, equilibrateExhaust } from './air.ts';
 import { deriveOutdoorFilm, filmEnthalpy, FUSION_JKG, WATER_CP_JKGK } from './film.ts';
@@ -168,7 +169,7 @@ export class HeatPumpEngine {
     const tRooms = this.rooms.map(r => this.properties.airT(r.airEnthalpyJ / r.dryAirMassKg, r.humidityRatio, p));
     const previousActive = [...this.active];
     const errors = config.rooms.map((room, i) => config.mode === 'heating' ? room.setpointC - tRooms[i] : tRooms[i] - room.setpointC);
-    this.active = config.rooms.map((room, i) => room.enabled && errors[i] > (this.active[i] ? -config.control.thermostatDeadbandK : config.control.thermostatDeadbandK));
+    this.active = config.rooms.map((room, i) => thermostatDemand(room.enabled, errors[i], this.active[i], config.control.thermostatDeadbandK));
     if (!config.rooms.some(room => room.enabled)) this.abortUnavailableCircuit();
     if (this.state === 'reversing' && this.stateTime >= config.control.reversalSeconds) this.transition(config.mode === 'heating' && before.iceKg > config.control.defrostIceThresholdKg ? 'defrost' : 'idle');
     if (this.state === 'draining' && this.stateTime >= config.control.drainageDwellSeconds) { this.transition('reversing'); this.heatingRuntime = 0; }

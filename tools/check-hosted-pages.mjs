@@ -42,6 +42,20 @@ try{
  await activateControl(page,'Pause');
  await new Promise(resolve=>setTimeout(resolve,1200));
  const paused=await run(()=>document.querySelector('.time').textContent);
+ await check('hosted zoom keeps the temperature scales at the bottom and headline trends use borderless separators',async()=>{
+  for(const zoom of ['overview','outdoor','overview']) {
+   if(zoom==='outdoor') await run(()=>document.querySelector('.zone-out').dispatchEvent(new MouseEvent('click',{bubbles:true})));
+   else await run(()=>{const button=document.querySelector('.zoom-out');if(!button.hidden)button.click()});
+   await new Promise(resolve=>setTimeout(resolve,650));
+   const layout=await run(()=>{const legend=document.querySelector('.legend').getBoundingClientRect(),ramp=document.querySelector('.lg-scale .ramp').getBoundingClientRect();return {bottom:legend.bottom,height:innerHeight,visible:!!document.elementFromPoint(ramp.x+ramp.width/2,ramp.y+ramp.height/2)?.closest('.legend')}});
+   assert.ok(Math.abs(layout.bottom-layout.height)<1&&layout.visible,JSON.stringify(layout));
+   assert.equal(await run(()=>document.querySelector('.time').textContent),paused);
+  }
+  assert.equal(await run(()=>document.querySelectorAll('.hm-trend').length),3);
+  assert.ok(await run(()=>[...document.querySelectorAll('.hm-trend .trend-line')].every(e=>e.getAttribute('d').includes('M'))));
+  assert.ok(await run(()=>[...document.querySelectorAll('.hm')].every(e=>getComputedStyle(e).borderTopWidth==='0px'&&getComputedStyle(e).borderBottomWidth==='0px')));
+  assert.deepEqual(await run(()=>[...document.querySelectorAll('.hm')].map(e=>getComputedStyle(e).borderLeftWidth)),['0px','1px','1px']);
+ });
  await check('paused weather and individual indoor controls preserve the simulation clock',async()=>{
   await run(()=>{
    const temperature=document.querySelector('[aria-label="Outdoor air"] input[type="number"]');

@@ -1,7 +1,8 @@
 import { AIR_RAMP_MAX, AIR_RAMP_MIN, TEMP_RAMP_MAX, TEMP_RAMP_MIN, TEMP_RAMP_TICKS, airRampCss, flowMode, tempRampCss } from './circuit';
 import { setHtml } from './controls';
 import type { Field } from './controls';
-import { escapeHtml, fmt, html, setText, svg } from './dom';
+import { escapeHtml, fmt, html, setAttr, setText, svg } from './dom';
+import { TrendHistory } from './trends';
 import { PREVIEW_BANNER, fixtureFor } from './fixtures';
 import { simulation } from './runtime/view';
 import { ICE_START_KG, currentReadings, liveStatus, store } from './state';
@@ -63,6 +64,8 @@ function pick<T extends string | number>(o: {
 }
 
 export function createHeader(): Header {
+  const history = new TrendHistory();
+  let historyEpoch = store.resetEpoch;
   const fields: Field[] = [];
   const speed = pick<SpeedFactor>({
     label: 'Requested speed',
@@ -87,11 +90,16 @@ export function createHeader(): Header {
   const time = html('output', { class: 'time', 'aria-label': 'Simulation time' }, '00:00.0');
 
   // Headline readings: label below value, fixed-width cells so the header does not reflow as numbers change.
-  const metric = (unit: string | null): { root: HTMLElement; k: HTMLElement; v: HTMLElement } => {
+  const metric = (unit: string | null) => {
     const k = html('span', { class: 'k' }, '');
     const v = html('b', { class: 'v' }, '—');
-    const root = html('div', { class: 'hm' }, k, html('span', { class: 'vl' }, v, ...(unit ? [html('i', {}, unit)] : [])));
-    return { root, k, v };
+    const trendTitle = svg('title', {}, 'Last 2 hours of simulated time; latest reading in each 10-second bin; no history yet');
+    const trendPath = svg('path', { class: 'trend-line', d: '' });
+    const trend = svg('svg', { class: 'hm-trend', viewBox: '0 0 112 22', role: 'img', 'aria-label': 'Last 2 hours of simulated time' },
+      trendTitle, svg('path', { class: 'trend-baseline', d: 'M1 15H111' }), trendPath,
+      svg('text', { x: 1, y: 21, class: 'trend-time' }, '−2h'), svg('text', { x: 111, y: 21, 'text-anchor': 'end', class: 'trend-time' }, 'now'));
+    const root = html('div', { class: 'hm' }, k, html('span', { class: 'vl' }, v, ...(unit ? [html('i', {}, unit)] : [])), trend);
+    return { root, k, v, trend, trendTitle, trendPath };
   };
   const mCop = metric('COP');
   mCop.root.classList.add('hm-cop');
@@ -138,8 +146,24 @@ export function createHeader(): Header {
 
       sun.style.display = s.cfg.mode === 'heating' ? '' : 'none';
       snow.style.display = s.cfg.mode === 'cooling' ? '' : 'none';
+      metrics.dataset.mode = s.cfg.mode;
       note.hidden = live && s.ui.experience === 'live' && currentReadings(s).live?.usable === true && currentReadings(s).live?.kind !== 'updating';
       const rd = currentReadings(s);
+      const cleared = historyEpoch !== store.resetEpoch;
+      if (cleared) { history.clear(); historyEpoch = store.resetEpoch; }
+      const output = simulation.status.output;
+      const accepted = live && simulation.status.state === 'ready' && output && output.state !== 'fault';
+      const changed = accepted ? history.accept(output.simulatedSeconds, [rd.cop, rd.roomKwTotal, rd.electricalKw], s.cfg.mode) : false;
+      for (const [i, m] of [mCop, mHeat, mElec].entries()) {
+        if (cleared || changed || !live || !m.trend.dataset.source || m.trend.dataset.source !== s.ui.experience) {
+          const plot = history.plot(i as 0 | 1 | 2);
+          setAttr(m.trendPath, 'd', live ? plot.path : '');
+          setText(m.trendTitle, live
+            ? `${i === 0 ? rd.copLabel : i === 1 ? rd.roomKwLabel : 'Electrical input'}: last 2 hours of simulated time, latest reading in each 10-second bin. ${plot.count ? `Scale ${fmt(plot.minimum, 2)}…${fmt(plot.maximum, 2)} ${i === 0 ? 'COP' : 'kW'}.` : 'No accepted history yet.'} Missing readings are gaps.`
+            : 'Illustrative snapshot; no simulated history.');
+          m.trend.dataset.source = s.ui.experience;
+        }
+      }
       setText(mCop.k, rd.copLabel);
       setText(mHeat.k, rd.roomKwLabel);
       setText(mCop.v, rd.cop === null ? '—' : fmt(rd.cop, 2));
