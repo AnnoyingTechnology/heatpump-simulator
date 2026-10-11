@@ -24,6 +24,8 @@ Updated 2026-10-11. This is the current implementation checkpoint; detailed evid
 
 ## In progress
 
+- **Inverter comfort control:** replace target-triggered shutdown in the Reference model with sensible-loss feed-forward and bounded room feedback, preserving independently solved heat exchange, actuator limits, protection, defrost and physical state. Conventional fixed-speed thermostat control remains a separate strategy. Independent review and native validation are required before deployment; below-minimum-load cycling remains physically necessary.
+- **Interface refinement:** Sonnet 5.5 is implementing System/Light/Dark themes with persistent explicit overrides and reviewing the compact outdoor controls. Headline graphs sit to the right of values; the default three-room overview uses reclaimed outdoor space to avoid unnecessary scrolling. Browser verification is pending for this combined pass.
 - **Simulation speed:** pacing and exact-backend improvements are complete and verified. Requested 50× active heating remains CPU-limited, with achieved speed shown beside the selector. Physical piping and experimental inventory workloads have separate performance limits.
 - **Experimental charge physics:** the reviewed isentropic integral resolved the saved 11 s rejection. The single frozen-checkpoint continuation reached 48.5 s with 0.0001067 kg of naturally deposited ice, then stopped at its unchanged density-evaluation work limit. Exact rollback passed, but reversal, thaw, drainage and useful heating return did not. Runtime was 584.4 wall seconds for 37.5 accepted simulated seconds. The full final checkpoint is retained for diagnosis without repeating warmup: `research/charge-frost-continuation-progress.json`.
 - **Owner-layout startup:** conserved-state inspection identifies uniform cold phase allocation and homogeneous outlet transport as coupled uncertainties. The independent review conceptually accepted the bounded phase-allocation/valve-start comparison proposed in `research/owner-startup-diagnosis.md`; it has not been run or accepted as a remedy.
@@ -39,7 +41,9 @@ The public charge gate remains closed. The Reference model has no charge respons
 
 ## Later
 
-Validated additional refrigerants/equipment, saved scenarios/export, French, optional outdoor sound, mixed water systems, heat-recovery VRF and branding. The owner will trigger the proposed Opus review.
+Import the Daikin and Mitsubishi consumer ranges later with a GPT Luna research agent, using primary manufacturer references, declared connection counts, refrigerants and validated operating/modulation limits. Preserve distinct inverter and conventional fixed-speed control strategies for future catalogue entries; the recalled 130–2350 W range for the owner's unit is not yet verified.
+
+Validated additional refrigerants, saved scenarios/export, French, optional outdoor sound, mixed water systems, heat-recovery VRF and branding. The owner will trigger the proposed Opus review.
 
 ## Maintenance
 
