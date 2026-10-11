@@ -26,6 +26,14 @@ try {
   await choose('2MXM40A2V1B9');assert.equal(await run(()=>document.querySelector('.ou-model-select').value),'3MXM52A2V1B8');assert.deepEqual(await run(snapshot),before);
   assert.match(await run(()=>document.querySelector('.ou-slot').textContent),/Add or remove rooms explicitly/);
  });
+ if(process.env.HEATPUMP_HOSTED_LEGACY==='1')await check('legacy same-count selection retains the house and keeps unpublished constraints unknown',async()=>{
+  await choose('3MXM52N2V1B8');
+  await page.waitFor('document.querySelector("[data-probe=\"compressor-discharge\"]")?.dataset.source==="live"',60000);
+  assert.equal(await run(()=>document.querySelector('.ou-model-select').value),'3MXM52N2V1B8');
+  assert.deepEqual(await run(snapshot),before);
+  assert.match(await run(()=>document.querySelector('[data-installation-status]').textContent),/exact OEM combination: unknown/);
+  assert.match(await run(()=>document.querySelector('.ou-model-select').selectedOptions[0].textContent),/legacy/);
+ });
  await check('selected MXM keeps actual worker sensors and accepted time advancing',async()=>{
   await run(()=>{const e=document.querySelector('.language-select');e.value='en';e.dispatchEvent(new Event('change',{bubbles:true}));document.querySelector('.hd-pause').click()});await page.waitFor(`document.querySelector('.time').textContent!==${JSON.stringify(before.clock)} && document.querySelector('.opstate').dataset.kind==='running'`,60000);
   assert.equal(await run(()=>document.querySelector('[data-probe="compressor-discharge"]').dataset.source),'live');assert.ok(Number.isFinite(await run(()=>Number(document.querySelector('[data-probe="compressor-discharge"]').dataset.exact))));
