@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-10-11T17:21:04.540Z",
+  "url": "https://annoyingtechnology.github.io/heatpump-simulator/",
+  "wasmUrl": "https://annoyingtechnology.github.io/heatpump-simulator/vendor/coolprop-safe/coolprop.wasm",
+  "wasmSha256": "55d4d93788e146f773ba7dbbd14ad47a3e24fc0a273eaad910879f5404bbe0d0",
+  "expectedBundles": [
+    "index-C8Hxt7rI.js",
+    "index-DYviNUyh.css",
+    "worker-D1Pf9ckG.js"
+  ],
+  "bundleHashes": {
+    "index-C8Hxt7rI.js": "99d596b178dc22e6dff7a15cb5ea8698d1237f6a6ea9272627d2b20cb46df232",
+    "index-DYviNUyh.css": "ad37e1e1aa64039bac3043fb5b0c77859c0c31242610217f0cfeb0a9c55f4c0f",
+    "worker-D1Pf9ckG.js": "663b127fbdaa84fedfed746269f20048d437447185084ecbc544db80b7d3fbc9"
+  },
+  "checks": [
+    {
+      "name": "hosted site starts a real running worker with physical sensor readings",
+      "passed": true
+    },
+    {
+      "name": "hosted whole-house ruler keeps RT markers beside average U and estimated exposed area",
+      "passed": true
+    },
+    {
+      "name": "hosted zoom keeps the temperature scales at the bottom and headline trends use borderless separators",
+      "passed": true
+    },
+    {
+      "name": "hosted winter preset, room junctions, session COP and drained-water total are visible",
+      "passed": true
+    },
+    {
+      "name": "paused weather and individual indoor controls preserve the simulation clock",
+      "passed": true
+    },
+    {
+      "name": "requested acceleration resumes physical time without restarting",
+      "passed": true
+    },
+    {
+      "name": "hosted application and assets report no runtime or loading errors",
+      "passed": true
+    }
+  ],
+  "achievedRate": "48.0\u00d7",
+  "resumedOperatingState": "idle",
+  "desktop": {
+    "width": 1600,
+    "height": 1000
+  },
+  "releaseCommit": "0fa3ed5ccdb89dda15d8d6886aa4f98907d8e832",
+  "githubRun": "38158063398",
+  "githubConclusion": "success",
+  "ciChecks": {
+    "reference": 156,
+    "frontend": 7,
+    "catalogue": 36,
+    "topology": 7,
+    "smoke": 25,
+    "chargeCore": 51
+  },
+  "publicationNote": "Charge core is CI-qualified for its focused scope only; public charge response remains gated. The predecessor cf8ef72 completed CI successfully but was superseded before asset verification."
+}
