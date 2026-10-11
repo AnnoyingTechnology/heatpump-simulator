@@ -1,0 +1,68 @@
+{
+  "checkedAt": "2026-10-11T17:27:38.914384+00:00",
+  "integratedCommit": "36a3a4e",
+  "sourceChecks": 40,
+  "browserAssertions": 58,
+  "topologyChecks": 7,
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "candidateSha256": "ff0444d5fb9aeb5e97f7b271cfec1787c920c88cfe43b1884922fddc14f3de24",
+  "rootVisualReadback": {
+    "source": "research/sources/luna-next-daikin-2026-catalogue-p320-layout-review.png",
+    "classPairs": [
+      [
+        20,
+        "RXM20A",
+        11.9,
+        11.4
+      ],
+      [
+        25,
+        "RXM25A9",
+        11.9,
+        11.4
+      ],
+      [
+        35,
+        "RXM35A9",
+        13.2,
+        11.1
+      ],
+      [
+        42,
+        "RXM42A",
+        13.3,
+        14
+      ],
+      [
+        50,
+        "RXM50A8",
+        12.7,
+        14.5
+      ],
+      [
+        60,
+        "RXM60A",
+        15.6,
+        15.9
+      ],
+      [
+        71,
+        "RXM71A",
+        15.8,
+        17.3
+      ]
+    ],
+    "verified": [
+      "merged casing dimensions",
+      "separate cooling/heating high fan values times60",
+      "cooling DB / heating WB bounds",
+      "CTXM15A multi-only excluded"
+    ]
+  },
+  "limitations": [
+    "No factory suffix mapping",
+    "No current France retail confirmation",
+    "Generic compressor/exchanger/charge assumptions"
+  ]
+}

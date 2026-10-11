@@ -1,4 +1,6 @@
-# Remaining bounded Daikin coverage after current MXM integration
+# Historical bounded Daikin coverage audit after current MXM integration
+
+Superseded for current counts and accepted Siesta/Perfera coverage by [the maintained family ledger](daikin-luna-coverage.md). The following records the earlier MXM checkpoint.
 
 This is an inherited-staging audit, not new manufacturer discovery or a full-range claim. Root runtime before this pass has 41 Daikin outdoor / 119 indoor and 25 Mitsubishi outdoor / 45 indoor exact-reference profiles. The reviewed current MXM addition gives 50 Daikin outdoor / 119 indoor profiles. Owner and Generic remain separate presets. Class references are not silently upgraded to full factory suffixes.
 
