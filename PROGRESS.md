@@ -33,7 +33,7 @@ Updated 2026-10-11. This is the current implementation checkpoint; detailed evid
 
 ## In progress
 
-- **Owner winter preset and general room links:** owner-confirmed ground17°C/upstairs21.5°C/atticOff targets, approximate observed ground18°C/attic17.5–19°C, and lumped per-floor losses are implemented locally. Native1200s benchmark approximates room temperatures with649W input, accepted by the owner as a useful starting point. Engine links/gains and cumulative service heat/water accounting have focused validation; Sonnet is completing visual link characterization, sessionCOP history and outdoor layout refinement before release.
+- **Owner winter preset and general room links:** owner-confirmed ground17°C/upstairs21.5°C/atticOff targets, approximate observed ground18°C/attic17.5–19°C, and lumped per-floor losses are implemented locally. Native1200s benchmark approximates room temperatures with649W input, accepted by the owner as a useful starting point. Engine links/gains, cumulative service heat/water accounting and accepted junction-power diagnostics passed the full 69/69 guarded Reference/property suite in244.37s, with independent science acceptance; Sonnet is completing visual link characterization, sessionCOP history and outdoor layout refinement before release.
 
 
 - **Simulation speed:** pacing and exact-backend improvements are complete and verified. Requested 50× active heating remains CPU-limited, with achieved speed shown beside the selector. Physical piping and experimental inventory workloads have separate performance limits.

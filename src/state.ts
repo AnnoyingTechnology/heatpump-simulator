@@ -1,4 +1,4 @@
-import type { AppState, Config, Experience, ExampleState, Mode, PipeConfig, RoomConfig, UiState } from './types';
+import type { AppState, Config, Experience, ExampleState, Mode, PipeConfig, RoomConfig, InterzoneLink, UiState } from './types';
 import { DEFAULT_GENERIC_PORT_CAPACITY, OWNER_PORTS, outdoorPortCapacity } from './types';
 import type { Fixture } from './fixtures';
 import { fixtureFor } from './fixtures';
@@ -10,13 +10,16 @@ import type { RoomOutput } from './engine/types';
 /**
  * Owner preset: Daikin 3MXM52N8 + FTXA25 / FTXA35 / FTXA25. Stack order is top → bottom.
  * Branch lengths are the owner's historical blog values (7.5 ground / 6.5 first / 14 attic).
+ * Winter targets/Off and observed temperatures are owner-reported. Envelope split, interzone conductance,
+ * residual air exchange and gain allocation are provisional house assumptions, not measured properties.
+ * See research/owner-house-calibration.md; refrigerant/OEM performance is never fitted to these observations.
  */
-const ROOMS: Omit<RoomConfig, 'cleanlinessOverridePct' | 'enabled'>[] = [
-  { id: 'attic', name: 'Attic (L2)', surfaceM2: 26, ceilingHeightM: 84 / 26, heatLossWPerK: 60, setpointC: 21, airC: 20, indoorClass: 'FTXA25' },
-  { id: 'first', name: 'Upstairs (L1)', surfaceM2: 54.5, ceilingHeightM: 155 / 54.5, heatLossWPerK: 85, setpointC: 21, airC: 20, indoorClass: 'FTXA35' },
-  { id: 'ground', name: 'Ground (L0)', surfaceM2: 45.4, ceilingHeightM: 100 / 45.4, heatLossWPerK: 70, setpointC: 21, airC: 20, indoorClass: 'FTXA25' },
-  { id: 'zone4', name: 'Lower level 4', surfaceM2: 16, ceilingHeightM: 2.5, heatLossWPerK: 55, setpointC: 21, airC: 20, indoorClass: 'G25' },
-  { id: 'zone5', name: 'Lower level 5', surfaceM2: 16, ceilingHeightM: 2.5, heatLossWPerK: 55, setpointC: 21, airC: 20, indoorClass: 'G25' },
+const ROOMS: Omit<RoomConfig, 'cleanlinessOverridePct'>[] = [
+  { id: 'attic', name: 'Attic (L2)', surfaceM2: 26, ceilingHeightM: 84 / 26, heatLossWPerK: 15, setpointC: 21, airC: 18.3, enabled: false, internalGainW: 0, ventilationACH: .25, indoorClass: 'FTXA25' },
+  { id: 'first', name: 'Upstairs (L1)', surfaceM2: 54.5, ceilingHeightM: 155 / 54.5, heatLossWPerK: 25, setpointC: 21.5, airC: 21.5, enabled: true, internalGainW: 0, ventilationACH: .25, indoorClass: 'FTXA35' },
+  { id: 'ground', name: 'Ground (L0)', surfaceM2: 45.4, ceilingHeightM: 100 / 45.4, heatLossWPerK: 45, setpointC: 17, airC: 18, enabled: true, internalGainW: 200, ventilationACH: .25, indoorClass: 'FTXA25' },
+  { id: 'zone4', name: 'Lower level 4', surfaceM2: 16, ceilingHeightM: 2.5, heatLossWPerK: 55, setpointC: 21, airC: 20, enabled: true, indoorClass: 'G25' },
+  { id: 'zone5', name: 'Lower level 5', surfaceM2: 16, ceilingHeightM: 2.5, heatLossWPerK: 55, setpointC: 21, airC: 20, enabled: true, indoorClass: 'G25' },
 ];
 
 const PIPES: PipeConfig[] = [
@@ -28,18 +31,21 @@ const PIPES: PipeConfig[] = [
 ];
 
 export function defaultConfig(): Config {
-  const fx = fixtureFor('heating', 'normal');
   return {
     mode: 'heating',
     example: 'normal',
     outdoorKind: 'owner',
     genericPortCapacity: DEFAULT_GENERIC_PORT_CAPACITY,
     unitCount: 3,
-    outdoorC: fx.conditions.outdoorC,
-    outdoorRh: fx.conditions.outdoorRh,
+    outdoorC: 1,
+    outdoorRh: 35, // Benchmark humidity is unknown; this remains an explicit scenario assumption.
     etaIsPct: 70,
-    rooms: ROOMS.map((r) => ({ ...r, enabled: true, airC: fx.conditions.roomC, setpointC: fx.conditions.setpointC, cleanlinessOverridePct: null })),
+    rooms: ROOMS.map((r) => ({ ...r, cleanlinessOverridePct: null })),
     pipes: PIPES.map((p) => ({ ...p })),
+    interzoneLinks: [
+      { roomA: 'ground', roomB: 'first', conductanceWK: 200, kind: 'opening', orientation: 'vertical', areaM2: 5, transferWm2K: 40 },
+      { roomA: 'first', roomB: 'attic', conductanceWK: 120, kind: 'opening', orientation: 'vertical', areaM2: 3, transferWm2K: 40 },
+    ],
     live: defaultLiveParameters(),
   };
 }
@@ -235,6 +241,42 @@ class Store {
       s.cfg.genericPortCapacity = capacity;
       if (s.cfg.outdoorKind === 'generic') s.cfg.unitCount = Math.min(s.cfg.unitCount, capacity);
       this.pruneSelection(s);
+    });
+  }
+
+  /** General sensible connection; zero disconnects. Configuration uses stable room IDs, never indices. */
+  setInterzoneConductance(roomA: string, roomB: string, conductanceWK: number): void {
+    const ids = new Set(this.state.cfg.rooms.slice(0, this.state.cfg.unitCount).map(r => r.id));
+    if (roomA === roomB || !ids.has(roomA) || !ids.has(roomB) || !Number.isFinite(conductanceWK) || conductanceWK < 0) return;
+    this.update(s => {
+      const links = s.cfg.interzoneLinks ??= [];
+      const at = links.findIndex(l => (l.roomA === roomA && l.roomB === roomB) || (l.roomA === roomB && l.roomB === roomA));
+      if (conductanceWK === 0) { if (at >= 0) links.splice(at, 1); }
+      else if (at >= 0) {
+        links[at].conductanceWK = conductanceWK;
+        if (links[at].areaM2 !== undefined && links[at].transferWm2K !== undefined) links[at].transferWm2K = conductanceWK / links[at].areaM2!;
+      }
+      else links.push({ roomA, roomB, conductanceWK });
+    });
+  }
+
+  /** Create or characterize a visual connection; H = area × effective coefficient. */
+  setInterzoneLink(roomA: string, roomB: string, patch: Partial<Pick<InterzoneLink, 'kind' | 'orientation' | 'areaM2' | 'transferWm2K'>> = {}): void {
+    const ids = new Set(this.state.cfg.rooms.slice(0, this.state.cfg.unitCount).map(r => r.id));
+    if (roomA === roomB || !ids.has(roomA) || !ids.has(roomB)) return;
+    const existing = this.state.cfg.interzoneLinks?.find(l => (l.roomA === roomA && l.roomB === roomB) || (l.roomA === roomB && l.roomB === roomA));
+    const kind = patch.kind ?? existing?.kind ?? 'opening';
+    const orientation = patch.orientation ?? existing?.orientation ?? 'vertical';
+    const changedKind = patch.kind !== undefined && patch.kind !== existing?.kind;
+    const transferWm2K = patch.transferWm2K ?? (changedKind ? undefined : existing?.transferWm2K) ?? (kind === 'opening' ? 40 : 1.5);
+    const areaM2 = patch.areaM2 ?? existing?.areaM2 ?? (existing ? existing.conductanceWK / transferWm2K : 2);
+    if (!['opening', 'partition'].includes(kind) || !['horizontal', 'vertical'].includes(orientation) ||
+      !Number.isFinite(areaM2) || areaM2 <= 0 || !Number.isFinite(transferWm2K) || transferWm2K < 0 || !Number.isFinite(areaM2 * transferWm2K)) return;
+    const link: InterzoneLink = { roomA, roomB, kind, orientation, areaM2, transferWm2K, conductanceWK: areaM2 * transferWm2K };
+    this.update(s => {
+      const links = s.cfg.interzoneLinks ??= [];
+      const at = links.findIndex(l => (l.roomA === roomA && l.roomB === roomB) || (l.roomA === roomB && l.roomB === roomA));
+      if (at >= 0) links[at] = link; else links.push(link);
     });
   }
 

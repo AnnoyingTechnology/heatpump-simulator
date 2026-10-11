@@ -104,14 +104,15 @@ export class SimulationRuntime {
   stop(): void { this.worker?.terminate(); this.worker = null; this.busy = false; this.pendingConfig = null; }
 }
 
-/** Weather, targets and On/Off requests preserve the same room/circuit identities and stored state.
+/** Weather, room boundary gains/losses/links, targets and On/Off requests preserve room/circuit identities and stored state.
  * A held snapshot describes actual previous flow, not the newly requested switch state. Structural or model
  * changes still invalidate it; configure acknowledgements never masquerade as completed physical steps. */
 function compatibleControlsOnly(previous: EngineConfig | null, next: EngineConfig): boolean {
   if (!previous) return false;
   const basis = (config: EngineConfig): EngineConfig => ({ ...config,
-    outdoorTemperatureC: 0, outdoorRelativeHumidity: 0,
-    rooms: config.rooms.map(room => ({ ...room, setpointC: 0, enabled: false })),
+    outdoorTemperatureC: 0, outdoorRelativeHumidity: 0, interzoneLinks: [],
+    rooms: config.rooms.map(room => ({ ...room, setpointC: 0, enabled: false,
+      envelopeWK: 0, ventilationACH: 0, internalGainW: 0 })),
   });
   return JSON.stringify(basis(previous)) === JSON.stringify(basis(next));
 }

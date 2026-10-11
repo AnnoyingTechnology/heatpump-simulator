@@ -27,6 +27,10 @@ export interface RoomConfig {
   ceilingHeightM: number;
   /** Envelope heat-loss coefficient [W/K]; configuration only. */
   heatLossWPerK: number;
+  /** Sensible background heat source [W], separate from indoor-unit power. */
+  internalGainW?: number;
+  /** Effective outdoor air exchange [1/h]; gross heat-recovery ventilation flow is not this value. */
+  ventilationACH?: number;
   setpointC: number;
   /** Room air temperature INPUT [°C]; never fed by the fixture air readings. */
   airC: number;
@@ -51,6 +55,22 @@ export interface PipeConfig {
   lengthSource: LengthSource;
 }
 
+/** A general sensible connection. Area/coefficient are effective assumptions; direction describes the connection, not surface normal. */
+export interface InterzoneLink {
+  roomA: string;
+  roomB: string;
+  conductanceWK: number;
+  kind?: 'opening' | 'partition';
+  orientation?: 'horizontal' | 'vertical';
+  areaM2?: number;
+  transferWm2K?: number;
+}
+
+export function interzoneConductance(link: InterzoneLink): number {
+  return link.areaM2 !== undefined && link.transferWm2K !== undefined
+    ? link.areaM2 * link.transferWm2K : link.conductanceWK;
+}
+
 export interface Config {
   mode: Mode;
   /** Examples experience only; the live engine chooses its own operating state. */
@@ -65,6 +85,8 @@ export interface Config {
   etaIsPct: number;
   rooms: RoomConfig[];
   pipes: PipeConfig[];
+  /** Symmetric effective sensible interzone conductance; room identities survive reorder/removal. */
+  interzoneLinks?: InterzoneLink[];
   /** Generic live-engine assumptions (not manufacturer-calibrated); ignored by the examples. */
   live: LiveParameters;
 }

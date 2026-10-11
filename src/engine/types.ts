@@ -8,6 +8,8 @@ export interface AbstractFluidState { update(pair: unknown, a: number, b: number
 export interface CoolPropModule { readonly guardedStateApi?: true; factory?(backend: string, fluid: string): AbstractFluidState; input_pairs?: Record<string, unknown>; PropsSI(output: string, key1: string, value1: number, key2: string, value2: number, fluid: string): number; HAPropsSI(output: string, key1: string, value1: number, key2: string, value2: number, key3: string, value3: number): number }
 export interface RoomConfig {
   cleanFraction?: number; // Clear-passage surrogate, 0.10…1, default1.
+  /** Prescribed sensible gains to room air; separate from HVAC output/electricity. Default zero. */
+  internalGainW?: number;
   id: string; enabled: boolean; volumeM3: number; initialTemperatureC: number; initialRelativeHumidity: number;
   setpointC: number; envelopeWK: number; fabricCapacityJK: number; airFabricWK: number; ventilationACH: number;
   airMassFlowKgs: number; fanPowerW: number; airConductanceWK: number; refrigerantConductanceWK: number;
@@ -29,6 +31,8 @@ export interface EngineConfig {
     leak?: { physicalCellId: string; rateKgs: number };
   };
   rooms: RoomConfig[];
+  /** Effective sensible conductances between air nodes, without air/moisture transport or resolved buoyancy. */
+  interzoneLinks?: { roomA: string; roomB: string; conductanceWK: number }[];
   compressor: { displacementM3rev: number; speedMinRps: number; speedMaxRps: number; isentropicEfficiency: number; volumetricEfficiency: number; driveEfficiency: number; superheatK: number; subcoolK: number; maxDischargeC: number; maxPressureRatio: number };
   outdoor: { cleanFraction?: number; airMassFlowKgs: number; fanPowerW: number; airConductanceWK: number; refrigerantConductanceWK: number; naturalAirConductanceWK: number; metalCapacityJK: number; depositionAreaM2: number; frostDensityKgm3: number; frostConductivityWmK: number; finGapM: number; drainageSeconds: number };
   control: { strategy?: 'inverter' | 'on-off'; fixedSpeedRps?: number; controlsW: number; proportionalSpeedRpsK: number;
@@ -53,13 +57,21 @@ export interface CycleOutput {
   transportMethod: string;
 }
 export interface RoomOutput {
+  /** Last accepted substep powers into room air; excluded from HVAC heat and COP. */
+  interzoneHeatW?: number; internalGainW?: number;
   id: string; temperatureC: number; relativeHumidity: number; humidityRatio: number; fabricTemperatureC: number; metalTemperatureC: number;
   setpointC: number; active: boolean; massFlowKgs: number; signedRoomHeatW: number; sensibleRoomHeatW: number; fanPowerW: number;
   airOutletC: number | null; condensateKgs: number; drainEnthalpyW: number;
 }
+export interface InterzoneTransfer {
+  roomA: string; roomB: string;
+  /** Instantaneous sensible heat at accepted temperatures/canonical conductance; positive A → B. */
+  heatFromAToBW: number;
+}
 export interface EngineOutput {
   provenance: 'live-generic-unvalidated'; simulatedSeconds: number; state: OperatingState; requestedMode: Mode; effectiveMode: Mode | null;
   cycle: CycleOutput | null; rooms: RoomOutput[];
+  interzoneTransfers?: InterzoneTransfer[];
   inventory: {
     massKg: number; initialMassKg: number; storedInternalEnergyJ: number;
     lowLiftTransfer: boolean; compressorAdmitted: boolean; compressorMassFlowKgs: number; orientation: Mode; coilHeatW: Record<string,number>;
@@ -76,6 +88,16 @@ export interface EngineOutput {
   outdoor: FilmDerived & { metalTemperatureC: number; filmEnthalpyJ: number; filmMassKg: number; airOutletC: number | null; fanPowerW: number; depositionKgs: number; drainageKgs: number; meltPowerW: number };
   electrical: { compressorW: number; indoorFansW: number; outdoorFanW: number; controlsW: number; totalW: number; driveLossW: number };
   signedRoomHeatW: number; heatingCOP: number | null; coolingCOP: number | null;
-  energy: { electricityJ: number; signedRoomHeatJ: number; outdoorExchangeJ: number; drainageJ: number; configurationEnergyJ: number; boundaryEnergyJ: number; storedEnergyChangeJ: number; residualJ: number; waterResidualKg: number };
+  energy: {
+    /** Integrates requested heating: +HVAC room heat; requested cooling: -HVAC room heat.
+     * Mode changes preserve service history; defrost/reversal heat of the wrong sign subtracts.
+     * Excludes prescribed internal gains and interzone exchange. Session COP divides by
+     * cumulative electricityJ, including fans/controls while Off; undefined at zero electricity. */
+    usefulServiceHeatJ: number;
+    /** Cumulative positive indoor condensate drains plus actual outdoor liquid
+     * drainage; excludes retained/deposited frost, melting and evaporation. */
+    drainedWaterKg: number;
+    electricityJ: number; signedRoomHeatJ: number; outdoorExchangeJ: number; drainageJ: number; configurationEnergyJ: number; boundaryEnergyJ: number; storedEnergyChangeJ: number; residualJ: number; waterResidualKg: number;
+  };
   diagnostics: { warnings: string[]; fault: string | null; algebraicResidualW: number; speedRps: number; demandSpeedRps: number; restartDelaySeconds: number; envelopeProtection: 'pressure ratio'|'discharge temperature'|null; filmEnergyRateW: number; metalEnergyRateW: number };
 }

@@ -1,7 +1,7 @@
 import { defaultEngineConfig, defaultRoomConfig } from '../engine/defaults.ts';
 import type { EngineConfig } from '../engine/types.ts';
 import type { Config } from '../types.ts';
-import { outdoorPortCapacity, roomVolumeM3 } from '../types.ts';
+import { outdoorPortCapacity, roomVolumeM3, interzoneConductance } from '../types.ts';
 
 export interface LiveParameters {
   fieldLines: 'idealized' | 'physical';
@@ -70,6 +70,7 @@ export function engineConfigFromUi(cfg: Config, live: LiveParameters, activeInit
     const room = defaultRoomConfig(i), p = cfg.pipes[i];
     return { ...room, id: r.id, enabled: r.enabled, volumeM3: roomVolumeM3(r), initialTemperatureC: r.airC,
       setpointC: r.setpointC, envelopeWK: r.heatLossWPerK,
+      internalGainW: r.internalGainW ?? 0, ventilationACH: r.ventilationACH ?? room.ventilationACH,
       airConductanceWK: live.indoorAirConductanceWK, refrigerantConductanceWK: live.indoorRefrigerantConductanceWK,
       airMassFlowKgs: live.indoorAirMassFlowKgs,
       cleanFraction: (r.cleanlinessOverridePct ?? live.cleanlinessPct) / 100,
@@ -80,6 +81,8 @@ export function engineConfigFromUi(cfg: Config, live: LiveParameters, activeInit
         liquidInsideDiameterM: (p.liquidOdMm - 2 * pipeWallMmForOd(p.liquidOdMm, live.pipeWallThicknessMm)) / 1000,
         insulationConductanceWmK: live.pipeInsulationConductanceWmK } };
   });
+  const activeIds = new Set(c.rooms.map(r => r.id));
+  c.interzoneLinks = (cfg.interzoneLinks ?? []).filter(link => activeIds.has(link.roomA) && activeIds.has(link.roomB)).map(link => ({ roomA: link.roomA, roomB: link.roomB, conductanceWK: interzoneConductance(link) }));
   if (live.circuitModel === 'inventory') {
     c.inventory = { ...(activeInitialization ?? {
       initialMassKg: live.initialChargeKg, initialFluidTemperatureC: live.initialFluidTemperatureC ?? cfg.outdoorC,

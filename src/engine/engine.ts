@@ -5,6 +5,7 @@ import { driveStep, driveRatioThresholds, newDriveState, type DriveState } from 
 import { thermostatDemand } from './thermostat.ts';
 import { inventoryCycle } from './charge-output.ts';
 import {roomDemand} from './demand.ts';
+import {interzoneHeatPowers, interzoneTransfers} from './interzone.ts';
 import { airExchange, equilibrateExhaust } from './air.ts';
 import { deriveOutdoorFilm, filmEnthalpy, FUSION_JKG, WATER_CP_JKGK } from './film.ts';
 import type { EngineConfig, EngineOutput, RoomState, RoomOutput, CycleOutput, OperatingState, Mode } from './types.ts';
@@ -35,7 +36,7 @@ export class HeatPumpEngine {
   private initialEnergy = 0;
   private initialWater = 0;
   private boundaryWater = 0;
-  private ledgers = { electricityJ: 0, signedRoomHeatJ: 0, outdoorExchangeJ: 0, drainageJ: 0, configurationEnergyJ: 0, boundaryEnergyJ: 0 };
+  private ledgers = { electricityJ: 0, signedRoomHeatJ: 0, usefulServiceHeatJ: 0, drainedWaterKg: 0, outdoorExchangeJ: 0, drainageJ: 0, configurationEnergyJ: 0, boundaryEnergyJ: 0 };
   private lastOutput!: EngineOutput;
   private warnings: string[] = [];
   private readonly chargeNumerics: ChargeNumerics;
@@ -49,7 +50,7 @@ export class HeatPumpEngine {
     this.outdoorWaterKg = 0; this.outdoorEnergyJ = config.outdoor.metalCapacityJK * config.outdoorTemperatureC;
     this.time = 0; this.state = 'idle'; this.stateTime = 0; this.heatingRuntime = 0; this.onTime = 0; this.offTime = Infinity;
     this.active = config.rooms.map(() => false); this.cycle = null; this.lastCycle = undefined; this.fault = null;
-    this.ledgers = { electricityJ: 0, signedRoomHeatJ: 0, outdoorExchangeJ: 0, drainageJ: 0, configurationEnergyJ: 0, boundaryEnergyJ: 0 };
+    this.ledgers = { electricityJ: 0, signedRoomHeatJ: 0, usefulServiceHeatJ: 0, drainedWaterKg: 0, outdoorExchangeJ: 0, drainageJ: 0, configurationEnergyJ: 0, boundaryEnergyJ: 0 };
     this.refrigerant = config.inventory ? new ChargeCircuit(this.properties, config.inventory.geometry, { massKg: config.inventory.initialMassKg, fluidTemperatureC: config.inventory.initialFluidTemperatureC, orientation: config.mode, valveOpening: config.inventory.initialValveOpening },this.chargeNumerics) : null;
     this.chargeCandidate = null;
     this.inverterCycling=false;this.inventoryDrive = newDriveState();this.demandIntegralW=config.rooms.map(()=>0);
@@ -128,6 +129,15 @@ export class HeatPumpEngine {
     if (!(Number.isFinite(config.indoorPortCapacity) && Number.isInteger(config.indoorPortCapacity) && config.indoorPortCapacity > 0)) throw new DomainError('Declared indoor port capacity must be a positive finite integer');
     if (config.rooms.length < 1 || config.rooms.length > config.indoorPortCapacity) throw new DomainError('Room count must be at least one and within declared indoor port capacity');
     if (new Set(config.rooms.map(r => r.id)).size !== config.rooms.length) throw new DomainError('Room IDs must be unique');
+    const roomIds = new Set(config.rooms.map(room => room.id)), linkedPairs = new Set<string>();
+    if (config.interzoneLinks !== undefined && !Array.isArray(config.interzoneLinks)) throw new DomainError('Interzone links must be an array');
+    for (const link of config.interzoneLinks ?? []) {
+      if (!link || !roomIds.has(link.roomA) || !roomIds.has(link.roomB) || link.roomA === link.roomB) throw new DomainError('Interzone links must join distinct existing room IDs');
+      if (!(Number.isFinite(link.conductanceWK) && link.conductanceWK >= 0)) throw new DomainError('Interzone conductance must be finite and nonnegative');
+      const key = JSON.stringify([link.roomA, link.roomB].sort());
+      if (linkedPairs.has(key)) throw new DomainError('Interzone room pairs must be unique');
+      linkedPairs.add(key);
+    }
     if (config.outdoorTemperatureC < -25 || config.outdoorTemperatureC > 45 || config.outdoorRelativeHumidity < 0 || config.outdoorRelativeHumidity > 1) throw new DomainError('Outdoor inputs outside supported −25…45°C /0…100% RH domain');
     if (config.ambientPressurePa < 70000 || config.ambientPressurePa > 110000) throw new DomainError('Ambient pressure outside supported psychrometric domain');
     if(config.control.strategy!==undefined&&! ['inverter','on-off'].includes(config.control.strategy))throw new DomainError('Unknown compressor control strategy');
@@ -144,6 +154,7 @@ export class HeatPumpEngine {
     if (o.fanPowerW < 0) throw new DomainError('Outdoor fan power must be nonnegative');
     if (!(o.metalCapacityJK > 0 && o.airMassFlowKgs > 0 && o.refrigerantConductanceWK > 0 && o.airConductanceWK >= 0 && o.naturalAirConductanceWK >= 0 && o.depositionAreaM2 > 0 && o.frostDensityKgm3 > 0 && o.frostDensityKgm3 < 917 && o.frostConductivityWmK > 0 && o.finGapM > 0 && o.drainageSeconds > 0)) throw new DomainError('Outdoor physical parameters outside domain');
     for (const room of config.rooms) {
+      if (room.internalGainW !== undefined && !(Number.isFinite(room.internalGainW) && room.internalGainW >= 0)) throw new DomainError(`Room ${room.id} internal gain must be finite and nonnegative`);
       if (!((room.cleanFraction ?? 1) >= .1 && (room.cleanFraction ?? 1) <= 1)) throw new DomainError('Indoor clear passage must be 0.1…1');
       if (!(room.pipe.lengthM >= 0 && room.pipe.lengthM <= 50 && Math.abs(room.pipe.elevationM) <= room.pipe.lengthM && room.pipe.insulationConductanceWmK >= 0)) throw new DomainError('Pipe parameters outside domain');
       if (!(room.volumeM3 > 0 && room.fabricCapacityJK > 0 && room.metalCapacityJK > 0 && room.airFabricWK >= 0 && room.envelopeWK >= 0 && room.ventilationACH >= 0 && room.airMassFlowKgs > 0 && room.airConductanceWK >= 0 && room.refrigerantConductanceWK > 0 && room.naturalAirConductanceWK >= 0 && room.fanPowerW >= 0)) throw new DomainError(`Room ${room.id} physical parameters outside domain`);
@@ -155,9 +166,12 @@ export class HeatPumpEngine {
   private totalEnergy(): number { return (this.refrigerant?.snapshot().cells.reduce((total, cell) => total + cell.internalEnergyJ, 0) ?? 0) + this.outdoorEnergyJ + sum(this.rooms.map((room, i) => room.airEnthalpyJ + this.config.rooms[i].fabricCapacityJK * room.fabricTemperatureC + this.config.rooms[i].metalCapacityJK * room.metalTemperatureC)); }
   private totalWater(): number { return this.outdoorWaterKg + sum(this.rooms.map(room => room.dryAirMassKg * room.humidityRatio)); }
   private passiveRoomOutputs(): RoomOutput[] {
-    return this.rooms.map((room, i) => { const c = this.config.rooms[i], t = this.properties.airT(room.airEnthalpyJ / room.dryAirMassKg, room.humidityRatio, this.config.ambientPressurePa);
+    const temperatures = this.rooms.map(room => this.properties.airT(room.airEnthalpyJ / room.dryAirMassKg, room.humidityRatio, this.config.ambientPressurePa));
+    const linkHeat = interzoneHeatPowers(this.config, temperatures);
+    return this.rooms.map((room, i) => { const c = this.config.rooms[i], t = temperatures[i];
       return { id: c.id, temperatureC: t, relativeHumidity: this.properties.airRH(t, room.humidityRatio, this.config.ambientPressurePa), humidityRatio: room.humidityRatio, fabricTemperatureC: room.fabricTemperatureC, metalTemperatureC: room.metalTemperatureC,
-        setpointC: c.setpointC, active: false, massFlowKgs: 0, signedRoomHeatW: 0, sensibleRoomHeatW: 0, fanPowerW: 0, airOutletC: null, condensateKgs: 0, drainEnthalpyW: 0 }; });
+        setpointC: c.setpointC, active: false, massFlowKgs: 0, signedRoomHeatW: 0, sensibleRoomHeatW: 0, fanPowerW: 0, airOutletC: null, condensateKgs: 0, drainEnthalpyW: 0,
+        interzoneHeatW: linkHeat[i], internalGainW: c.internalGainW ?? 0 }; });
   }
   private transition(state: OperatingState): void { this.state = state; this.stateTime = 0; this.lastCycle = undefined; }
   /** User Off removes every refrigerant path, including during reversal/defrost.
@@ -175,6 +189,7 @@ export class HeatPumpEngine {
     const previousDriveOffSeconds=this.inventoryDrive.offSeconds;
     const before = deriveOutdoorFilm(this.outdoorEnergyJ, this.outdoorWaterKg, outdoor);
     const tRooms = this.rooms.map(r => this.properties.airT(r.airEnthalpyJ / r.dryAirMassKg, r.humidityRatio, p));
+    const linkHeat = interzoneHeatPowers(config, tRooms);
     const previousActive = [...this.active];
     const errors = config.rooms.map((room, i) => config.mode === 'heating' ? room.setpointC - tRooms[i] : tRooms[i] - room.setpointC);
     const demand=roomDemand(config,this.rooms,tRooms,this.active,this.demandIntegralW,dt,false,
@@ -309,7 +324,7 @@ export class HeatPumpEngine {
     }
     const outW = this.properties.airW(config.outdoorTemperatureC, config.outdoorRelativeHumidity, p), outH = this.properties.airH(config.outdoorTemperatureC, outW, p);
     const outputs: RoomOutput[] = [];
-    let roomPower = 0, indoorFans = 0, indoorDrain = 0, ventilationEnergy = 0, envelopeEnergy = 0, roomWaterBoundary = 0, indoorMetalRate = 0;
+    let roomPower = 0, indoorFans = 0, indoorDrain = 0, indoorCondensate = 0, ventilationEnergy = 0, envelopeEnergy = 0, internalGainPower = 0, roomWaterBoundary = 0, indoorMetalRate = 0;
     // Compute all candidate states transactionally before accepting the substep.
     const candidateRooms = this.rooms.map((room, i) => {
       const c = config.rooms[i], forced = running && this.active[i], fan = forced ? c.fanPowerW : 0;
@@ -325,7 +340,8 @@ export class HeatPumpEngine {
       const waterVent = ventilation * (outW - room.humidityRatio);
       const qRef = charge ? -charge.integratedCoilHeatJ[c.id] / dt : cycle?.branchCoilHeatW[i] ?? 0;
       const metalRate = qRef + air.heatFromAirW - air.drainEnthalpyW;
-      const next: RoomState = { ...room, airEnthalpyJ: room.airEnthalpyJ + dt * (useful + qFabric + qEnvelope + qVent),
+      const internalGain = c.internalGainW ?? 0;
+      const next: RoomState = { ...room, airEnthalpyJ: room.airEnthalpyJ + dt * (useful + qFabric + qEnvelope + qVent + linkHeat[i] + internalGain),
         humidityRatio: room.humidityRatio + dt * (waterVent - air.waterToSurfaceKgs) / room.dryAirMassKg,
         fabricTemperatureC: room.fabricTemperatureC - dt * qFabric / c.fabricCapacityJK,
         metalTemperatureC: room.metalTemperatureC + dt * metalRate / c.metalCapacityJK };
@@ -334,9 +350,12 @@ export class HeatPumpEngine {
       const outlet = forced ? this.properties.airT(this.properties.airH(air.outletC, air.outletHumidityRatio, p) + fan / md, air.outletHumidityRatio, p) : null;
       outputs.push({ id: c.id, temperatureC: nextT, relativeHumidity: nextRH, humidityRatio: next.humidityRatio, fabricTemperatureC: next.fabricTemperatureC, metalTemperatureC: next.metalTemperatureC,
         setpointC: c.setpointC, active: running && this.active[i], massFlowKgs: cycle?.branchMassFlowsKgs[i] ?? 0, signedRoomHeatW: useful, sensibleRoomHeatW: air.sensibleToAirW + fan,
-        fanPowerW: fan, airOutletC: outlet, condensateKgs: Math.max(0, air.waterToSurfaceKgs), drainEnthalpyW: air.drainEnthalpyW });
+        fanPowerW: fan, airOutletC: outlet, condensateKgs: Math.max(0, air.waterToSurfaceKgs), drainEnthalpyW: air.drainEnthalpyW,
+        interzoneHeatW: linkHeat[i], internalGainW: internalGain });
       roomPower += useful; indoorFans += fan; indoorDrain += air.drainEnthalpyW; ventilationEnergy += qVent; envelopeEnergy += qEnvelope;
       roomWaterBoundary += waterVent - air.waterToSurfaceKgs; indoorMetalRate += metalRate;
+      indoorCondensate += Math.max(0, air.waterToSurfaceKgs);
+      internalGainPower += internalGain;
       return next;
     });
     const forcedOutside = running;
@@ -389,8 +408,16 @@ export class HeatPumpEngine {
     }
     if (running && config.mode === 'heating' && compressorRan) this.heatingRuntime += dt;
     this.ledgers.electricityJ += electric * dt; this.ledgers.signedRoomHeatJ += roomPower * dt;
+    // Account requested heating/cooling service, not the circuit's effective mode:
+    // reverse-cycle heating defrost must subtract heat rather than earn cooling credit.
+    this.ledgers.usefulServiceHeatJ += (config.mode === 'heating' ? roomPower : -roomPower) * dt;
+    // Indoor surface water drains immediately in this model. Outdoors only
+    // actual drained liquid counts; deposition/melting merely changes storage.
+    this.ledgers.drainedWaterKg += (indoorCondensate + drain) * dt;
     this.ledgers.outdoorExchangeJ += outward * dt; this.ledgers.drainageJ += (indoorDrain + drainEnergy) * dt;
-    this.ledgers.boundaryEnergyJ += dt * (electric - outward - indoorDrain - drainEnergy + ventilationEnergy + envelopeEnergy) - (charge?.leakEnthalpyJ ?? 0);
+    // Link powers only redistribute storage within this boundary. Prescribed
+    // gains supply external energy but are neither heat-pump power nor electricity.
+    this.ledgers.boundaryEnergyJ += dt * (electric - outward - indoorDrain - drainEnergy + ventilationEnergy + envelopeEnergy + internalGainPower) - (charge?.leakEnthalpyJ ?? 0);
     this.boundaryWater += dt * (roomWaterBoundary + outdoorAir.waterToSurfaceKgs - drain);
     this.lastOutput = this.makeOutput(outputs, cycle, indoorFans, fanOutside, roomPower, outdoorOutlet,
       outdoorAir.waterToSurfaceKgs, drain, meltedKg * FUSION_JKG / dt, speed, filmRate, indoorMetalRate + outMetalRate, charge ? work : undefined, demandSpeed);
@@ -422,6 +449,7 @@ export class HeatPumpEngine {
     const effectiveMode = inventory && (this.state === 'running' || this.state === 'defrost') ? inventory.orientation : cycle?.mode ?? null;
     const electrical = { compressorW: comp, indoorFansW, outdoorFanW, controlsW: this.config.control.controlsW, totalW: comp + indoorFansW + outdoorFanW + this.config.control.controlsW, driveLossW: compressorWorkW === undefined ? cycle?.driveLossW ?? 0 : comp - compressorWorkW };
     return { provenance: 'live-generic-unvalidated', simulatedSeconds: this.time, state: this.state, requestedMode: this.config.mode, effectiveMode, cycle, rooms,
+      interzoneTransfers: interzoneTransfers(this.config, rooms.map(room => room.temperatureC)),
       inventory,
       outdoor: { ...film, metalTemperatureC: film.temperatureC, filmEnthalpyJ: filmEnthalpy(this.outdoorEnergyJ, film.temperatureC, this.config.outdoor.metalCapacityJK), filmMassKg: this.outdoorWaterKg,
         airOutletC: outdoorOutlet, fanPowerW: outdoorFanW, depositionKgs, drainageKgs, meltPowerW }, electrical,
@@ -430,7 +458,10 @@ export class HeatPumpEngine {
       coolingCOP: this.state === 'running' && this.config.mode === 'cooling' && roomHeatW < 0 && (inventory ? inventory.compressorAdmitted && !inventory.lowLiftTransfer && comp > 0 : !!cycle && comp > 0) ? -roomHeatW / electrical.totalW : null,
       energy: { ...this.ledgers, storedEnergyChangeJ: this.totalEnergy() - this.initialEnergy, residualJ: this.totalEnergy() - this.initialEnergy - this.ledgers.boundaryEnergyJ,
         waterResidualKg: this.totalWater() - this.initialWater - this.boundaryWater },
-      diagnostics: { warnings: [...new Set([...this.warnings,...(this.chargeCandidate?.diagnostics ?? []), ...(this.inventoryDrive.protection&&demandSpeedRps>0?[`Generic compressor protection hold: ${this.inventoryDrive.protection}.`]:[]), ...(this.refrigerant && !cycle && speedRps > 0 ? ['No complete forward circulation summary: inspect physical face flows and stored refrigerant energy.'] : [])])], fault: this.fault, algebraicResidualW: cycle?.closureResidualW ?? 0, speedRps, demandSpeedRps,
+      diagnostics: { warnings: [...new Set([...this.warnings,
+        ...(this.config.interzoneLinks?.length ? ['Interzone links exchange sensible heat through prescribed conductance; they do not transport air/water or resolve buoyancy.'] : []),
+        ...(this.config.rooms.some(room => (room.internalGainW ?? 0) > 0) ? ['Internal gains are prescribed sensible heat supplied to room air, separate from HVAC output and COP.'] : []),
+        ...(this.chargeCandidate?.diagnostics ?? []), ...(this.inventoryDrive.protection&&demandSpeedRps>0?[`Generic compressor protection hold: ${this.inventoryDrive.protection}.`]:[]), ...(this.refrigerant && !cycle && speedRps > 0 ? ['No complete forward circulation summary: inspect physical face flows and stored refrigerant energy.'] : [])])], fault: this.fault, algebraicResidualW: cycle?.closureResidualW ?? 0, speedRps, demandSpeedRps,
         restartDelaySeconds:demandSpeedRps>0&&speedRps===0?Math.max(0,this.config.control.minOffSeconds-this.inventoryDrive.offSeconds):0,
         envelopeProtection:this.inventoryDrive.protection, filmEnergyRateW, metalEnergyRateW } };
   }

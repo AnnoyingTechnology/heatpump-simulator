@@ -18,9 +18,15 @@ test('real dynamic 1–5 branches conserve full stored energy/water and heating/
 });
 test('early-trigger automatic defrost melts and drains finite inventories', () => {
   const c=defaultEngineConfig(3);c.control.defrostMinHeatingSeconds=30;c.control.defrostIceThresholdKg=.005;
-  const e=new HeatPumpEngine(p,c);const states=new Set();let maximumIce=0, melted=false, actualDefrost=false;
+  const e=new HeatPumpEngine(p,c);const states=new Set();let maximumIce=0, melted=false, actualDefrost=false, drainedWaterKg=0, outdoorDrainedKg=0, sawUncreditedDeposition=false;
   // Melt power is a substep diagnostic; one-second batching can hide a short melt burst.
-  for(let i=0;i<1000;i++){const o=e.step(.25);assertLedger(o);states.add(o.state);maximumIce=Math.max(maximumIce,o.outdoor.iceKg);if(o.outdoor.meltPowerW>0)melted=true;
+  for(let i=0;i<1000;i++){const before=e.snapshot(),o=e.step(.25);assertLedger(o);states.add(o.state);maximumIce=Math.max(maximumIce,o.outdoor.iceKg);if(o.outdoor.meltPowerW>0)melted=true;
+    const indoorDrainedKgs=o.rooms.reduce((total,room)=>total+room.condensateKgs,0);
+    drainedWaterKg+=.25*(indoorDrainedKgs+o.outdoor.drainageKgs);outdoorDrainedKg+=.25*o.outdoor.drainageKgs;
+    assert.ok(Math.abs(o.energy.drainedWaterKg-drainedWaterKg)<1e-12);
+    if(o.outdoor.depositionKgs>0&&indoorDrainedKgs===0&&o.outdoor.drainageKgs===0){
+      assert.equal(o.energy.drainedWaterKg,before.energy.drainedWaterKg);sawUncreditedDeposition=true;
+    }
     if(o.state==='defrost') {
       if(o.cycle) {actualDefrost=true;assert.equal(o.effectiveMode,'cooling');}
       else {assert.equal(o.effectiveMode,null);assert.equal(o.electrical.compressorW,0);const off=e.checkpoint().inventoryDrive.offSeconds;
@@ -28,7 +34,7 @@ test('early-trigger automatic defrost melts and drains finite inventories', () =
       assert.equal(o.outdoor.fanPowerW,0);assert.ok(o.rooms.every(r=>r.fanPowerW===0&&r.airOutletC===null));assert.equal(o.heatingCOP,null);
     }
   }
-  assert.ok(maximumIce>=.005&&melted&&actualDefrost);for(const state of ['reversing','defrost','draining','running'])assert.ok(states.has(state),state);
+  assert.ok(maximumIce>=.005&&melted&&actualDefrost);assert.ok(outdoorDrainedKg>0&&sawUncreditedDeposition);for(const state of ['reversing','defrost','draining','running'])assert.ok(states.has(state),state);
 });
 test('film phase map requires latent melt energy; exhausted film evaporates with exact bounded mass', () => {
   const c=defaultEngineConfig(1).outdoor, mass=.1, a=deriveOutdoorFilm(-mass*FUSION_JKG,mass,c), b=deriveOutdoorFilm(0,mass,c);
