@@ -13,10 +13,17 @@ try{
   const a=await run(()=>{const speed=document.querySelector('[aria-label="Requested speed"]'),pause=document.querySelector('.hd-pause'),rate=document.querySelector('.hd-speed-rate'),clock=document.querySelector('.time');return {before:!!(speed.compareDocumentPosition(pause)&Node.DOCUMENT_POSITION_FOLLOWING),count:document.querySelectorAll('.hd-speed-rate').length,withStatus:!!rate.closest('.hd-badges'),withClock:rate.closest('.hd-run')===clock.closest('.hd-run'),clockFont:parseFloat(getComputedStyle(clock).fontSize)}});
   assert.deepEqual(a,{before:true,count:1,withStatus:true,withClock:true,clockFont:19});
  });
+ await check('elapsed clock includes hours and whole seconds across minute/day boundaries',async()=>{
+  const clocks=await run(async()=>{const {createHeader}=await import('/src/chrome.ts');const h=createHeader();return [0,.999,59.999,60,3599.999,3600,86399,86400,360000].map(t=>{h.setTime(t);return h.root.querySelector('.time').textContent})});
+  assert.deepEqual(clocks,['00:00:00','00:00:00','00:00:59','00:01:00','00:59:59','01:00:00','23:59:59','24:00:00','100:00:00']);
+ });
  await check('five readings and taller plots fit the single header at four desktop widths',async()=>{
   for(const [width,height]of [[1280,720],[1440,900],[1600,1000],[1920,1080]]){
    await page.send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:false});
    const a=await run(()=>{const h=document.querySelector('.topbar').getBoundingClientRect();return {cards:document.querySelectorAll('.hm').length,plots:[...document.querySelectorAll('.hm-trend')].map(e=>{const r=e.getBoundingClientRect();return {height:r.height,top:r.top,bottom:r.bottom}}),overflow:[...document.querySelectorAll('.topbar button,.topbar select,.time,.hd-speed-rate,.hm')].filter(e=>e.getClientRects().length).filter(e=>{const r=e.getBoundingClientRect();return r.left<h.left-.5||r.right>h.right+.5||r.top<h.top-.5||r.bottom>h.bottom+.5}).map(e=>e.className),height:h.height}});
+   const units=await run(()=>[...document.querySelectorAll('.hm i')].map(e=>{const c=getComputedStyle(e),v=getComputedStyle(e.closest('.hm').querySelector('.v')),r=e.closest('.vl').getBoundingClientRect(),p=e.closest('.hm').querySelector('.hm-plot').getBoundingClientRect();return {text:e.textContent,font:c.fontSize,valueFont:v.fontSize,opacity:Number(c.opacity),right:r.right,plotLeft:p.left}}));
+   assert.deepEqual(units.map(e=>e.text),['COP','kW','kW','kWh']);
+   assert.ok(units.every(e=>e.font===e.valueFont&&e.opacity>=.7&&e.opacity<1&&e.right+4<=e.plotLeft),JSON.stringify({width,units}));
    assert.equal(a.cards,5);assert.deepEqual(a.overflow,[],JSON.stringify({width,a}));assert.ok(a.plots.every(p=>p.height>=58&&p.top>=0&&p.bottom<=a.height));
   }
  });

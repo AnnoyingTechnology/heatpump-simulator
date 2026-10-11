@@ -42,8 +42,8 @@ try {
   assert.deepEqual(result.confirmedControls, { outdoorC: -.5, humidityPct: 35,
     groundTargetC: 17.5, upstairsTargetC: 22.5, atticEnabled: false, requestedSpeed: 5 });
   result.startSeconds = await page.evaluate(`(() => {
-    const [m,s] = document.querySelector('.time').textContent.split(':').map(Number);
-    return m*60+s;
+    const [h,m,s] = document.querySelector('.time').textContent.split(':').map(Number);
+    return h*3600+m*60+s;
   })()`);
   await activateControl(page, 'Resume');
   const start = Date.now();
@@ -52,8 +52,8 @@ try {
     await new Promise(r => setTimeout(r, 1000));
     const reading = await page.evaluate(`(() => {
       const text = document.querySelector('.time').textContent;
-      const [m,s] = text.split(':').map(Number);
-      return { time: m*60+s, state: document.querySelector('.opstate').dataset.kind,
+      const [h,m,s] = text.split(':').map(Number);
+      return { time: h*3600+m*60+s, state: document.querySelector('.opstate').dataset.kind,
         fault: document.querySelector('.mismatch').textContent,
         dischargeC: document.querySelector('[data-probe="compressor-discharge"]')?.dataset.exact };
     })()`);

@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-10T19:10:24.930Z",
+  "checkedAt": "2026-10-11T10:56:31.246Z",
   "backend": "production",
   "context": "Isolated local Chromium, Reference model; CPU throughput is hardware/workload dependent.",
   "checks": [
@@ -27,34 +27,34 @@
   "records": [
     {
       "requested": 1,
-      "wallSeconds": 5.029,
+      "wallSeconds": 5.018,
       "simulatedSeconds": 4.75,
-      "actual": 0.9445217737124677,
-      "rateText": "1.0× actual",
-      "roomChangeC": -0.03760094348547227
+      "actual": 0.9465922678357912,
+      "rateText": "1.0×",
+      "roomChangeC": 0.010634457852745527
     },
     {
       "requested": 2,
-      "wallSeconds": 5.016,
+      "wallSeconds": 5.015,
       "simulatedSeconds": 9.75,
-      "actual": 1.94377990430622,
-      "rateText": "2.0× actual",
-      "roomChangeC": -0.07320697054950642
+      "actual": 1.9441674975074776,
+      "rateText": "2.0×",
+      "roomChangeC": 0.021225069849151623
     },
     {
       "requested": 50,
-      "wallSeconds": 5.115,
-      "simulatedSeconds": 67.75,
-      "actual": 13.24535679374389,
-      "rateText": "12.9× actual",
-      "roomChangeC": -0.25340823413102953
+      "wallSeconds": 5.128,
+      "simulatedSeconds": 72.25,
+      "actual": 14.0893135725429,
+      "rateText": "19.3×",
+      "roomChangeC": 0.11468999279497893
     },
     {
       "requested": 50,
       "scene": "all-off",
-      "wallSeconds": 3.024,
-      "simulatedSeconds": 142,
-      "actual": 46.957671957671955
+      "wallSeconds": 3.045,
+      "simulatedSeconds": 139.5,
+      "actual": 45.8128078817734
     }
   ]
 }

@@ -22,7 +22,7 @@ const check=async(name,fn)=>{await fn();checks.push({name,passed:true});console.
 try{
  await page.send('Page.bringToFront');
  await check('hosted site starts a real running worker with physical sensor readings',async()=>{
-  await page.waitFor(`document.querySelector('.opstate')?.dataset.kind==='running'&&document.querySelector('.time')?.textContent!=='00:00.0'`,60000);
+  await page.waitFor(`document.querySelector('.opstate')?.dataset.kind==='running'&&document.querySelector('.time')?.textContent!=='00:00:00'`,60000);
   assert.equal(await run(()=>document.querySelector('[data-probe="compressor-discharge"]').dataset.source),'live');
   assert.ok(Number.isFinite(Number(await run(()=>document.querySelector('[data-probe="compressor-discharge"]').dataset.exact))));
   assert.ok(await run(()=>document.querySelectorAll('.indoor-probes .probe:not(.na)').length>=2),'running indoor branch has materialized sensors');
@@ -46,6 +46,10 @@ try{
   const a=await run(()=>{const e=document.querySelector('[data-block="house-loss"]');return {count:document.querySelectorAll('.ls').length,markers:[...e.querySelectorAll('.ls-m')].map(m=>[m.querySelector('.ls-lab').textContent,Number(m.dataset.midpoint)]),ticks:[...e.querySelectorAll('.ls-tick')].map(t=>t.textContent),total:Number(e.dataset.totalWk),envelope:Number(e.dataset.envelopeWk),bounds:[...document.querySelectorAll('.room-env input[type="range"][aria-label^="Average U"]')].map(i=>[i.min,i.max])}});
   assert.equal(a.count,1);assert.deepEqual(a.markers,[['RE2020',115],['RT2012',145],['RT2005',250],['RT2000',290],['RT1988',350],['RT1982',415],['RT1974',500],['Pre-1974',750]]);assert.deepEqual(a.ticks,['0','250','500','750']);assert.equal(a.envelope,85);assert.ok(Math.abs(a.total-99.4075)<1e-9);assert.deepEqual(a.bounds,[['0','3'],['0','3'],['0','3']]);
   assert.ok(await run(()=>!!document.querySelector('select[aria-label="Quick preset"]')));
+  assert.equal(await run(()=>document.querySelector('select[aria-label="Ventilation type"]').value),'dual');
+  assert.equal(await run(()=>document.querySelector('input[type="number"][aria-label="Recovery [%]"]').value),'75');
+  assert.equal(await run(()=>document.querySelector('input[type="number"][aria-label="Shared coil cleanliness [% clear]"]').value),'95');
+  assert.equal(await run(()=>document.querySelectorAll('.clean-override,.ou [aria-label^="Compressor efficiency"]').length),0);
   assert.ok(await run(()=>[...document.querySelectorAll('.room-panel select[aria-label^="Indoor model"]')].every(s=>s.querySelector('optgroup[label="Daikin"]'))));
  });
  await check('hosted zoom keeps the temperature scales at the bottom and headline trends use borderless separators',async()=>{
@@ -67,6 +71,8 @@ try{
  await check('hosted winter preset, room junctions, session COP and drained-water total are visible',async()=>{
   assert.ok(await run(()=>[...document.querySelectorAll('.hm-trend .trend-line,.hm-trend .session-line')].every(e=>e.getAttribute('d').includes('M'))));
   assert.ok(Number.isFinite(Number(await run(()=>document.querySelector('.hm-session-cop .v').textContent))));
+  assert.ok(Number(await run(()=>document.querySelector('.hm-energy').dataset.exactKwh))>0);
+  assert.ok(await run(()=>document.querySelector('.energy-line').getAttribute('d').includes('M')));
   assert.equal(await run(()=>document.querySelectorAll('.room-link').length),2);
   assert.ok(await run(()=>[...document.querySelectorAll('.room-link')].every(e=>Number.isFinite(Number(e.dataset.heatW))&&e.querySelector('.lk-val').textContent.includes('kW'))));
   assert.deepEqual(await run(()=>[...document.querySelectorAll('input[role="switch"]')].map(e=>e.checked)),[false,true,true]);

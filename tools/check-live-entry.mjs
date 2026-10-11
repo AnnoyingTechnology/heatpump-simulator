@@ -29,7 +29,7 @@ try{
     if(b)return b.getAttribute('aria-pressed')==='true';
     return [...document.querySelectorAll('select')].some(e=>e.value==='live'&&[...e.options].some(o=>o.value==='examples'));
   })()`),true);
-  await page.waitFor(`document.querySelector('.opstate')?.dataset.kind==='running'&&document.querySelector('.time')?.textContent!=='00:00.0'`,60000);
+  await page.waitFor(`document.querySelector('.opstate')?.dataset.kind==='running'&&document.querySelector('.time')?.textContent!=='00:00:00'`,60000);
   assert.equal(await page.evaluate(`document.querySelector('.hd-readings,.ribbon,.drawer')`),null);
   await activateControl(page,'Outdoor unit settings');
   await page.evaluate(`document.querySelector('.model-diagnostics').open=true`);
@@ -37,7 +37,7 @@ try{
   await activateControl(page,'Close');
   assert.equal(await page.evaluate(`document.querySelector('[data-probe="compressor-discharge"]').dataset.source`),'live');
   assert.ok(Number.isFinite(Number(await page.evaluate(`document.querySelector('[data-probe="compressor-discharge"]').dataset.exact`))));
-  assert.equal(await page.evaluate(`document.querySelectorAll('.indoor-probes .probe:not(.na)').length`),6);
+  assert.ok(await page.evaluate(`document.querySelectorAll('.indoor-probes .probe:not(.na)').length>=2`),'an actual running branch exposes both refrigerant sensors; inactive branches have no circulating readings');
   assert.equal(await page.evaluate(`document.querySelectorAll('img,image,canvas').length`),0);
   await activateControl(page,'Pause');
   await page.send('Emulation.setEmulatedMedia',{features:[{name:'prefers-reduced-motion',value:'reduce'}]});

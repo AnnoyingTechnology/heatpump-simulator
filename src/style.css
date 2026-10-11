@@ -320,8 +320,8 @@ h2, h3, h4, h5, p, ul, dl { margin: 0; }
 .brand b { font-size: 13px; letter-spacing: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mark { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, #1f6a94, #12968e); position: relative; flex: none; }
 .mark::after { content: ""; position: absolute; inset: 8px; border: 2px solid #fff; border-radius: 50%; border-right-color: transparent; }
-/* Below 1420 px the header budget goes to the controls: the mark stays, the name stays available to hover and screen readers. */
-@media (max-width: 1419px) {
+/* On narrower desktops the header budget goes to the controls; the name stays available to hover and screen readers. */
+@media (max-width: 1499px) {
   .brand b { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
   .brand .mark { display: none; }
   .hd-id { min-width: 30px; }
@@ -348,7 +348,7 @@ h2, h3, h4, h5, p, ul, dl { margin: 0; }
 }
 
 .hd-group { display: flex; align-items: center; gap: 6px; flex: none; }
-/* Status, achieved speed and clock read as one unit after the controls. The clock keeps tenths and room for three-digit minutes. */
+/* Status, achieved speed and elapsed hours/minutes/seconds read as one unit after the controls. */
 .hd-run { display: flex; align-items: center; gap: 8px; flex: none; }
 .time { font: 650 19px/1 var(--mono); font-variant-numeric: tabular-nums; letter-spacing: 0; min-width: 8ch; text-align: right; white-space: nowrap; }
 /* Action select: shows its placeholder at rest; the longer option texts only appear in the open list. */
@@ -364,22 +364,22 @@ h2, h3, h4, h5, p, ul, dl { margin: 0; }
 .hd-pause.attn { box-shadow: 0 0 0 3px rgba(232, 89, 12, 0.35); }
 .hd-reset { padding: 5px 10px; font-size: 12px; }
 
-/* Headline readings: three fixed cells, separated by full-height hairlines (no card borders, no radius). In each cell the
+/* Headline readings: five fixed cells, separated by full-height hairlines (no card borders, no radius). In each cell the
    value sits at the left with its label below it, and the two-hour trend fills the space to the right of both. */
 .hd-metrics { display: flex; align-self: stretch; flex: none; }
-.hm { display: grid; grid-template-columns: 88px minmax(36px, 1fr); grid-template-rows: auto auto; align-content: center; align-items: center; column-gap: 6px; row-gap: 2px; width: clamp(146px, 10.5vw, 208px); padding: 5px 8px; min-width: 0; }
+.hm { display: grid; grid-template-columns: 110px minmax(36px, 1fr); grid-template-rows: auto auto; align-content: center; align-items: center; column-gap: 6px; row-gap: 2px; width: clamp(168px, 11.5vw, 220px); padding: 5px 8px; min-width: 0; }
 /* The since-restart COP is a narrower secondary cell right of the instantaneous COP: smaller value, own plot. */
 .hm-session-cop { grid-template-columns: 46px minmax(36px, 1fr); width: clamp(104px, 8vw, 160px); }
-.hm-energy { grid-template-columns: 70px minmax(36px, 1fr); width: clamp(128px, 9vw, 176px); }
+.hm-energy { grid-template-columns: 110px minmax(36px, 1fr); width: clamp(168px, 11.5vw, 220px); }
 .hm-energy .v { font-size: 21px; }
 .hm-session-cop .v { font-size: 21px; font-weight: 750; }
 .hm-session-cop .k { font-size: 9px; }
 .hm + .hm { border-left: 1px solid var(--line); }
 .hm .vl { display: flex; grid-column: 1; grid-row: 1; justify-content: center; align-items: baseline; gap: 4px; white-space: nowrap; }
 .hm .v { font: 750 21px/1.15 var(--font); font-variant-numeric: tabular-nums; }
-.hm i { font-size: 12px; }
+.hm i { font: 600 21px/1.15 var(--font); color: var(--ink); opacity: .72; }
 .hm-cop .v { font-size: 24px; font-weight: 850; }
-.hm-cop i { font-size: 14px; font-weight: 750; color: var(--ink); }
+.hm-cop i { font-size: 24px; font-weight: 750; }
 .hm .k { grid-column: 1; grid-row: 2; text-align: center; max-width: 100%; font-size: 10px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .hm-icon { align-self: center; flex: none; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; color: var(--icon); }
 .hm-sun { color: var(--c-heat); }
@@ -400,11 +400,19 @@ h2, h3, h4, h5, p, ul, dl { margin: 0; }
 .hm-ends { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; font: 8px/1 var(--font); color: var(--muted); pointer-events: none; }
 
 .hd-status { flex: none; width: 104px; display: flex; flex-direction: column; gap: 4px; }
-@media (max-width: 1419px) {
+@media (max-width: 1499px) {
+  .topbar { gap: 6px; padding-inline: 8px; }
+  .hd-group { gap: 5px; }
+  .hd-run { gap: 6px; }
   .hd-status { width: 100px; }
-  .hd-select.hd-preset { width: 96px; }
+  .hd-select.hd-preset { width: 76px; }
+  .hd-speed { width: 64px; }
   .hd-pause { min-width: 70px; }
   .topbar .btn { padding-inline: 9px; }
+}
+@media (max-width: 1359px) {
+  .hm, .hm-energy { grid-template-columns: 110px minmax(26px, 1fr); width: 158px; }
+  .hm-session-cop { grid-template-columns: 46px minmax(26px, 1fr); width: 94px; }
 }
 .hd-badges { display: flex; align-items: center; gap: 6px; min-width: 0; }
 .hd-badges .opstate, .hd-badges .hd-ex { min-width: 0; }

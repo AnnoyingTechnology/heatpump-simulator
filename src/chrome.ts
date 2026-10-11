@@ -18,9 +18,11 @@ export interface Header {
 }
 
 const fmtTime = (sec: number): string => {
-  const m = Math.floor(sec / 60);
-  const s = sec - m * 60;
-  return `${String(m).padStart(2, '0')}:${s.toFixed(1).padStart(4, '0')}`;
+  const wholeSeconds = Math.floor(sec);
+  const h = Math.floor(wholeSeconds / 3600);
+  const m = Math.floor(wholeSeconds / 60) % 60;
+  const s = wholeSeconds % 60;
+  return [h, m, s].map(value => String(value).padStart(2, '0')).join(':');
 };
 
 /** Shared one-line statements so every surface says the same thing about the live model. */
@@ -110,7 +112,7 @@ export function createHeader(): Header {
   const resetHelp = 'Restart the simulation from the current inputs: clock, ice and room state start over; your edited settings and initial room temperatures are kept and applied.';
   const reset = html('button', { type: 'button', class: 'btn ghost hd-reset', 'aria-label': 'Reset simulation', title: resetHelp }, 'Reset');
   reset.addEventListener('click', () => store.restartSimulation());
-  const time = html('output', { class: 'time', 'aria-label': 'Simulation time' }, '00:00.0');
+  const time = html('output', { class: 'time', 'aria-label': 'Simulation time' }, '00:00:00');
 
   // Headline readings: value with its trend to the right, label below the value, fixed-width cells so the header does not reflow
   // as numbers change. The plot fills most of the header height and stretches to its cell width (non-uniform viewBox, non-scaling strokes); its
@@ -138,9 +140,9 @@ export function createHeader(): Header {
   mHeat.root.classList.add('hm-heat');
   const mElec = metric('kW');
   mElec.root.classList.add('hm-elec');
-  const mEnergy = metric(null, 'energy-line');
+  const mEnergy = metric('kWh', 'energy-line');
   mEnergy.root.classList.add('hm-energy');
-  mEnergy.k.textContent = 'Total · kWh';
+  mEnergy.k.textContent = 'Since start';
   mEnergy.root.title = 'Electrical energy since start: cumulative compressor, fan and control electricity from the engine ledger. Kept across settings and mode changes; cleared on Reset.';
   const icon = (): SVGSVGElement => svg('svg', { class: 'hm-icon', viewBox: '0 0 24 24', 'aria-hidden': 'true' });
   const plug = icon();
