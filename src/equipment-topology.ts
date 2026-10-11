@@ -66,7 +66,7 @@ export function validateMultisplitInstallation(profile: MultisplitInstallation, 
   let sum = 0, sumKnown = true;
   for (const head of heads) {
     const assignment = head.installation ?? {};
-    if (head.manufacturer !== 'daikin') add('invalid', 'manufacturer', 'This published Daikin installation does not certify another manufacturer or a generic head.', head.id);
+    if (head.manufacturer !== 'daikin') add('unknown', 'manufacturer', 'Exact compatibility of another manufacturer or a generic head is not established by these sources.', head.id);
     const kw = assignment.connectedCapacityKw;
     if (kw === undefined) { sumKnown = false; add('unknown', 'capacity-contribution', 'Connected capacity-class contribution is undeclared; nominal cooling output is not substituted.', head.id); }
     else if (!Number.isFinite(kw) || kw <= 0) { sumKnown = false; add('invalid', 'capacity-contribution', 'Declared connection-capacity contribution must be a positive finite value.', head.id); }
@@ -94,7 +94,7 @@ export function validateMultisplitInstallation(profile: MultisplitInstallation, 
   // A known partial sum already exceeding the ceiling cannot be rescued by undeclared positive heads.
   if (sum > profile.connectedCapacityClassSumLimitKw + 1e-9) add('invalid', 'class-sum', `Declared connected class sum ${sum} kW exceeds ${profile.connectedCapacityClassSumLimitKw} kW; this is not delivered output.`);
   const topologyStatus: InstallationStatus = findings.some(f => f.status === 'invalid') ? 'invalid' : !sumKnown || findings.length ? 'unknown' : 'valid';
-  const eligibilityStatus: InstallationStatus = heads.some(h => h.manufacturer !== 'daikin') ? 'invalid' : 'unknown';
+  const eligibilityStatus: InstallationStatus = 'unknown';
   add(eligibilityStatus, 'exact-eligibility', 'Exact full-reference indoor combination eligibility is not established by these port/class rules.');
-  return { status: topologyStatus === 'invalid' || eligibilityStatus === 'invalid' ? 'invalid' : 'unknown', topologyStatus, eligibilityStatus, findings };
+  return { status: topologyStatus === 'invalid' ? 'invalid' : 'unknown', topologyStatus, eligibilityStatus, findings };
 }

@@ -43,5 +43,5 @@ test('unknown class/contribution never inferred from head ID or nominalCoolingKw
 });
 test('generic/other manufacturer cannot become an approved Daikin combination',()=>{
  const heads=[head('MSZ-AP25VGK','A',25,2.5),head('FTXA25','B',25,2.5)];heads[0].manufacturer='mitsubishi-electric';
- const result=validate(model('2MXM40A2V1B9'),heads);assert.equal(result.status,'invalid');assert.equal(result.eligibilityStatus,'invalid');
+ const result=validate(model('2MXM40A2V1B9'),heads);assert.equal(result.status,'unknown');assert.equal(result.eligibilityStatus,'unknown');assert.ok(result.findings.some(f=>f.code==='manufacturer'&&f.status==='unknown'));
 });

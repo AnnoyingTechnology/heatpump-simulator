@@ -3,7 +3,8 @@ import { createModelDiagnostics } from './chrome';
 import type { Field } from './controls';
 import { nextId, segmented, select, setHtml, slider } from './controls';
 import { clamp, escapeHtml, fmt, html, setAttr, setText, toggleClass } from './dom';
-import { OUTDOOR_MODELS, indoorModelProfile, indoorOptionsForOutdoor, outdoorModelInfo } from './equipment';
+import { OUTDOOR_MODELS, currentInstallationValidation, indoorModelProfile, indoorOptionsForOutdoor, outdoorModelInfo } from './equipment';
+import { CONNECTION_CLASSES, type CapacityClass } from './equipment-topology';
 import type { OutdoorModelInfo } from './equipment';
 import { defaultEngineConfig } from './engine/defaults';
 import { REFRIGERANTS, refrigerantDefinition, type RefrigerantId } from './engine/refrigerants';
@@ -171,6 +172,9 @@ export function createIndoorModelSelect(index: number): IndoorModelControl {
         builtFor = outdoor;
         select.replaceChildren(...optgroups(indoorOptionsForOutdoor(outdoor).map((o) => ({ value: o.value, text: o.text, title: o.text, maker: indoorMaker(o.value) }))));
       }
+      select.querySelectorAll<HTMLOptionElement>('option[data-retained]').forEach(option => { if (option.value !== room.indoorClass) option.remove(); });
+      if (![...select.options].some(option => option.value === room.indoorClass))
+        select.append(html('option', { value: room.indoorClass, 'data-retained': 'true' }, `${room.indoorClass} — retained; pairing unverified`));
       if (select.value !== room.indoorClass) select.value = room.indoorClass;
       const label = `Indoor model for ${room.name}`;
       setAttr(select, 'aria-label', label);
@@ -622,7 +626,7 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
   // Electric units, the editable generic group). Options are static; selection goes through the store, which applies the published topology.
   const modelSel = html('select', { class: 'ou-model-select rp-ctl', 'aria-label': 'Outdoor model' },
     ...optgroups(OUTDOOR_MODELS.map((m) => ({
-      value: m.id, text: m.label, maker: m.manufacturer,
+      value: m.id, text: m.label + (m.installation ? ' · combination unverified' : ''), maker: m.manufacturer,
       title: `${m.label} · ${m.ports === null ? 'user-declared ports' : `${m.ports} port${m.ports === 1 ? '' : 's'}`} · case ${m.caseMm.w} × ${m.caseMm.h} × ${m.caseMm.d} mm`,
     }))));
   modelSel.addEventListener('change', () => store.setOutdoorKind(modelSel.value as OutdoorKind));
@@ -699,6 +703,7 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
   const gear = html('button', { type: 'button', class: 'rp-btn rp-ctl', 'aria-haspopup': 'dialog', 'aria-label': 'Outdoor unit settings' }, 'Settings');
   gear.addEventListener('click', onSettings);
   const slot = html('p', { class: 'ou-slot', role: 'status' });
+  const installationStatus = html('p', { class: 'ou-slot', role: 'status', 'data-installation-status': 'true' });
 
   // Two columns: the machine's equipment settings and readouts at left, its refrigerant charge at right.
   const charge = createChargeArea();
@@ -711,7 +716,7 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
         html('div', { class: 'ou-row ou-fluid' }, html('span', { class: 'rp-k' }, 'Refrigerant'), fluidSel),
         cleanGlobal.root),
       charge.root),
-    slot);
+    slot, installationStatus);
   isolate(root);
 
   return {
@@ -723,6 +728,13 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
       for (const f of fields) f.refresh();
       charge.sync(s, inv);
       const info = outdoorModelInfo(c);
+      const validation = currentInstallationValidation(c);
+      installationStatus.hidden = !validation;
+      if (validation) {
+        setText(installationStatus, `Connection constraints: ${validation.topologyStatus} · exact OEM combination: ${validation.eligibilityStatus}. Declarations are in each indoor unit's Settings.`);
+        setAttr(installationStatus, 'title', validation.findings.map(f => f.message).join('\n'));
+        installationStatus.dataset.kind = 'notice';
+      }
       const caps = outdoorPortCapacity(c);
       setText(modelText, `${caps} port${caps === 1 ? '' : 's'}${info.ports === null ? ' assumed' : ''}`);
       const published = info.coolingHighFanFlowM3h !== undefined && c.outdoorVolumetricAirFlowM3s !== undefined;
@@ -927,23 +939,30 @@ export function createOutdoorSettings(): PopContent {
       toggleClass(draftStatus, 'diff', drafts.length > 0);
       fluidAuto.checked = c.live.initialFluidTemperatureC === null;
       fluidT.root.hidden = fluidAuto.checked;
+      const info = outdoorModelInfo(c);
       if (c.outdoorKind === 'owner') {
         const total = c.pipes.slice(0, c.unitCount).reduce((a, p) => a + p.lengthM, 0);
         const extra = total > 30 ? Math.min(2.2, Math.round((total - 30) * 20 / 100) / 10) : 0;
         setText(guidance, `Reference only, published N8 family guidance (verify the actual nameplate; not applied to the model): no additional charge up to 30 m, beyond that 20 g/m rounded to 0.1 kg, family maximum 2.2 kg. Total one-way length now ${fmt(total, 1)} m → ${fmt(extra, 1)} kg additional.`);
-      } else setText(guidance, 'Generic group: no published charge guidance attached.');
+      } else setText(guidance, info.installation ? 'Published installation charge caps are documentary limits. The generic cycle charge remains a manual assumption.' : 'Generic group: no published charge guidance attached.');
       guidance.hidden = false;
-      const info = outdoorModelInfo(c);
       setText(outdoorNote, info.acceptance === 'owner-reference'
         ? `Declared by owner; exact suffix and nameplate unknown. ${OWNER_PORTS} refrigerant ports (fixed), factory R32. Choose the generic editable outdoor to explore more connections.`
         : info.ports === null
           ? `Illustrative generic compatible group. Its port capacity (${c.genericPortCapacity}) is a scenario assumption, not manufacturer data; rooms are added and removed in the indoor zone. Up to five ports it keeps the owner casing envelope; beyond that the casing is an assumed larger drawing, not a published dimension.`
-          : `${info.label}: published ${info.ports}-port model. Its matched indoor units, ports and cooling high-fan airflow are applied; the cycle, compressor, coil conductance and fan watts remain generic assumptions, not an OEM performance map.`);
+          : info.installation
+            ? `${info.label}: published ${info.ports}-port model with necessary class/reducer rules. Exact matched indoor references are unverified; the cycle remains generic.`
+            : `${info.label}: published ${info.ports}-port model. Its matched indoor units, ports and cooling high-fan airflow are applied; the cycle, compressor, coil conductance and fan watts remain generic assumptions, not an OEM performance map.`);
       // Published model profile (facts, no performance claim) and the airflow provenance next to the two mass-flow fields.
       setText(profileText, info.profileNote);
       const flowText = info.coolingHighFanFlowM3h === undefined ? 'no published airflow'
         : `${fmt(info.coolingHighFanFlowM3h, 0)} m³/h cooling high fan (reused in heating as an assumption)`;
       const facts = [`Ports: ${info.ports ?? `${c.genericPortCapacity} (assumed)`}`, `Case: ${info.caseMm.w} × ${info.caseMm.h} × ${info.caseMm.d} mm (the drawing is a generic illustration)`, `Airflow: ${flowText}`];
+      if (info.installation) {
+        const i = info.installation;
+        facts.push(`Connected heads: ${i.minimumConnectedHeads}…${i.maximumConnectedHeads}; connection-class sum ceiling ${i.connectedCapacityClassSumLimitKw} kW (not delivered output). Exact OEM eligibility unknown.`);
+        facts.push(`Published maximum total charge: ${i.publishedMaximumTotalChargeKg === null ? 'unpublished' : `${i.publishedMaximumTotalChargeKg} kg`}. Documentary only; generic cycle charge is not OEM-calibrated and this value is not applied.`);
+      }
       const range = info.publishedOperatingRangesC;
       if (range) facts.push(`Published operating range: cooling ${range.cooling.minimum}…${range.cooling.maximum} °C, heating ${range.heating.minimum}…${range.heating.maximum} °C (information only, not applied)`);
       setHtml(profileFacts, facts.map((f) => `<li>${escapeHtml(f)}</li>`).join(''));
@@ -978,6 +997,53 @@ export function createOutdoorSettings(): PopContent {
 }
 
 // ---------- room settings popover (one instance, rebinds to the opened room) ----------
+/** Advanced installation declarations, independent of physics and OEM approval. */
+function createInstallationDeclarations(index: () => number): { root: HTMLElement; sync(s: AppState): void } {
+  const port = html('select', { 'aria-label': 'Installed refrigerant port' });
+  const klass = html('select', { 'aria-label': 'Declared connection class' }, html('option', { value: '' }, 'Undeclared'),
+    ...CONNECTION_CLASSES.map(value => html('option', { value }, String(value))));
+  const kw = html('input', { type: 'number', min: 0.1, step: 0.1, 'aria-label': 'Declared connected capacity contribution (kW)', placeholder: 'Unknown' });
+  const named = html('select', { 'aria-label': 'Declared guide-named indoor class' },
+    ...['', 'FTXM42R', 'FTXM42A', 'FTXA42C'].map(value => html('option', { value }, value || 'Undeclared')));
+  const reducer = html('select', { 'aria-label': 'Installed reducer' },
+    ...['', 'none', '1+2', '2+4', '5+6', '1+3', 'optional accessory (not identified by this table)'].map(value => html('option', { value }, value || 'Undeclared')));
+  port.addEventListener('change', () => store.setHeadInstallation(index(), { portId: port.value || undefined }));
+  klass.addEventListener('change', () => store.setHeadInstallation(index(), { capacityClass: klass.value ? Number(klass.value) as CapacityClass : undefined }));
+  kw.addEventListener('change', () => store.setHeadInstallation(index(), { connectedCapacityKw: kw.value ? Number(kw.value) : undefined }));
+  named.addEventListener('change', () => store.setHeadInstallation(index(), { guideNamedIndoorClass: named.value || undefined }));
+  reducer.addEventListener('change', () => store.setHeadInstallation(index(), { reducer: reducer.value || undefined }));
+  const field = (label: string, control: HTMLElement) => html('label', { class: 'field' }, html('span', { class: 'lab' }, label), control);
+  const status = html('p', { class: 'hint', role: 'status' });
+  const root = fold('Installation declarations', false,
+    html('p', { class: 'hint' }, 'Declared connections, independent of the generic cycle. Off heads remain connected. Exact OEM full-reference combinations are unverified; these declarations do not approve a pairing.'),
+    field('Physical port', port), field('Connection class', klass), field('Connected capacity-class contribution · kW', kw),
+    html('p', { class: 'hint' }, 'Enter the connection contribution explicitly. Nominal matched cooling output and model digits are not substituted.'),
+    field('Guide-named class for conditional 42', named), field('Reducer drawing IDs', reducer), status);
+  isolate(root);
+  let builtFor = '';
+  return { root, sync(s): void {
+    const model = outdoorModelInfo(s.cfg), installation = model.installation, room = s.cfg.rooms[index()];
+    root.hidden = !installation;
+    if (!installation || !room) return;
+    if (builtFor !== model.id) {
+      builtFor = model.id;
+      port.replaceChildren(html('option', { value: '' }, 'Unassigned'), ...installation.ports.map(p => html('option', { value: p.id }, `${p.id} · gas Ø${p.gasConnectionOuterDiameterMm} mm`)));
+    }
+    const assignment = room.installation ?? {};
+    port.querySelectorAll<HTMLOptionElement>('option[data-retained]').forEach(option => { if (option.value !== assignment.portId) option.remove(); });
+    if (assignment.portId && ![...port.options].some(option => option.value === assignment.portId))
+      port.append(html('option', { value: assignment.portId, 'data-retained': 'true' }, `${assignment.portId} — retained; unavailable on this model`));
+    if (document.activeElement !== port) port.value = assignment.portId ?? '';
+    if (document.activeElement !== klass) klass.value = assignment.capacityClass === undefined ? '' : String(assignment.capacityClass);
+    if (document.activeElement !== kw) kw.value = assignment.connectedCapacityKw === undefined ? '' : String(assignment.connectedCapacityKw);
+    if (document.activeElement !== named) named.value = assignment.guideNamedIndoorClass ?? '';
+    if (document.activeElement !== reducer) reducer.value = assignment.reducer ?? '';
+    const validation = currentInstallationValidation(s.cfg)!;
+    const local = validation.findings.filter(f => !f.headId || f.headId === room.id);
+    setText(status, `${installation.guide} · constraints ${validation.topologyStatus}; exact OEM eligibility ${validation.eligibilityStatus}. ${local.map(f => f.message).join(' ')}`);
+  } };
+}
+
 export function createRoomSettings(openShared: () => void): PopContent {
   let idx = 0;
   const cfg = () => store.state.cfg;
@@ -996,10 +1062,11 @@ export function createRoomSettings(openShared: () => void): PopContent {
   shareBtn.addEventListener('click', openShared);
   const detailBody = html('div', { class: 'fold-body' });
   const details = html('details', { class: 'fold' }, html('summary', {}, 'Details and readings'), detailBody);
+  const installation = createInstallationDeclarations(() => idx);
 
   const root = html('div', { class: 'pop-settings' },
     lead, offNote,
-    html('section', { class: 'sec' }, html('h3', {}, 'Indoor unit'), modelFact, modelHint),
+    html('section', { class: 'sec' }, html('h3', {}, 'Indoor unit'), modelFact, modelHint), installation.root,
     html('section', { class: 'sec' }, html('h3', {}, 'Heat-exchanger cleanliness'), dirtStatus,
       html('p', { class: 'hint' }, 'Indoor coil air-side UA, refrigerant-side UA and air flow are shared assumptions: one value applies to every unit.'), shareBtn),
     details);
@@ -1012,6 +1079,7 @@ export function createRoomSettings(openShared: () => void): PopContent {
     },
     sync(s: AppState, i: number): void {
       idx = i;
+      installation.sync(s);
       const live = s.ui.experience === 'live';
       const r = s.cfg.rooms[i];
       for (const f of fields) f.refresh();

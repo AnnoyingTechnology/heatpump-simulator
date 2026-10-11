@@ -1,5 +1,6 @@
 import type { AppState, Config, Experience, ExampleState, IndoorClass, Mode, OutdoorKind, PipeConfig, RoomConfig, InterzoneLink, UiState } from './types';
-import { applyIndoorProfile, outdoorModelInfo } from './equipment';
+import { applyIndoorProfile, indoorOptionsForOutdoor, outdoorModelInfo } from './equipment';
+import { CONNECTION_CLASSES, type HeadInstallation } from './equipment-topology';
 import { DEFAULT_GENERIC_PORT_CAPACITY, OWNER_PORTS, outdoorPortCapacity, roomVolumeM3, roomExposedEnvelopeAreaM2, roomEnvelopeConductanceWK, interzoneConductance, hasInterzoneGeometry, INTERZONE_GEOMETRY_DEFAULTS } from './types';
 import type { Fixture } from './fixtures';
 import { fixtureFor } from './fixtures';
@@ -289,6 +290,12 @@ class Store {
 
   setUnitCount(n: number): void {
     if (!Number.isSafeInteger(n) || n < 1) return;
+    const installation = outdoorModelInfo(this.state.cfg).installation;
+    if (installation && n < installation.minimumConnectedHeads) {
+      this.state.ui.notice = 'This outdoor model requires at least two connected heads. Off heads may remain connected.';
+      this.emit();
+      return;
+    }
     this.update((s) => {
       if (n > OWNER_PORTS && s.cfg.outdoorKind === 'owner') {
         s.cfg.outdoorKind = 'generic';
@@ -438,6 +445,12 @@ class Store {
   removeRoom(index: number): void {
     const cfg = this.state.cfg;
     if (!Number.isInteger(index) || index < 0 || index >= cfg.unitCount || cfg.unitCount <= 1) return;
+    const installation = outdoorModelInfo(cfg).installation;
+    if (installation && cfg.unitCount <= installation.minimumConnectedHeads) {
+      this.state.ui.notice = 'At least two heads must remain connected; switching a head Off is allowed.';
+      this.emit();
+      return;
+    }
     this.update(s => {
       const lastActive = s.cfg.unitCount - 1;
       const [room] = s.cfg.rooms.splice(index, 1);
@@ -458,29 +471,52 @@ class Store {
   setOutdoorKind(kind: OutdoorKind): void {
     if (kind === this.state.cfg.outdoorKind) return;
     const model = outdoorModelInfo(kind);
+    if (model.installation && (this.state.cfg.unitCount < model.installation.minimumConnectedHeads || this.state.cfg.unitCount > model.installation.maximumConnectedHeads)) {
+      this.state.ui.notice = `${model.id} requires ${model.installation.minimumConnectedHeads}–${model.installation.maximumConnectedHeads} connected heads. Add or remove rooms explicitly before selecting it; existing rooms and history were preserved.`;
+      this.emit();
+      return;
+    }
     this.update((s) => {
       s.cfg.outdoorKind = kind;
       if (kind !== 'generic') s.cfg.live.refrigerant = 'R32';
       const oldCount = s.cfg.unitCount;
-      s.cfg.unitCount = Math.min(oldCount, outdoorPortCapacity(s.cfg));
+      if (!model.installation) s.cfg.unitCount = Math.min(oldCount, outdoorPortCapacity(s.cfg));
       if (model.coolingHighFanFlowM3h !== undefined) s.cfg.outdoorVolumetricAirFlowM3s = model.coolingHighFanFlowM3h / 3600;
       else delete s.cfg.outdoorVolumetricAirFlowM3s;
       for (const room of s.cfg.rooms.slice(0, s.cfg.unitCount)) {
-        if (!model.compatibleIndoorClasses.includes(room.indoorClass)) {
+        if (!model.installation && !model.compatibleIndoorClasses.includes(room.indoorClass)) {
           applyIndoorProfile(room, model.compatibleIndoorClasses[0]);
         }
       }
       s.ui.notice = oldCount > s.cfg.unitCount
         ? `${model.label} accepts ${outdoorPortCapacity(s.cfg)} indoor unit${outdoorPortCapacity(s.cfg) === 1 ? '' : 's'}. Other rooms and settings remain in the inactive room pool.`
-        : null;
+        : model.installation ? 'Published multi-port constraints selected; exact indoor combinations are unverified. Room identities, declarations and generic cycle assumptions are retained.' : null;
       this.pruneSelection(s);
     });
   }
 
   setIndoorClass(index: number, indoor: IndoorClass): void {
     const room = this.state.cfg.rooms[index];
-    if (!room || !outdoorModelInfo(this.state.cfg).compatibleIndoorClasses.includes(indoor)) return;
-    this.update(s => applyIndoorProfile(s.cfg.rooms[index], indoor));
+    if (!room || !indoorOptionsForOutdoor(this.state.cfg.outdoorKind).some(option => option.value === indoor)) return;
+    this.update(s => {
+      const target = s.cfg.rooms[index];
+      if (target.indoorClass !== indoor && target.installation) delete target.installation.guideNamedIndoorClass;
+      applyIndoorProfile(target, indoor);
+    });
+  }
+
+  /** Installation declarations change metadata checks only, never the thermodynamic configuration. */
+  setHeadInstallation(index: number, patch: Partial<HeadInstallation>): void {
+    const cfg = this.state.cfg, room = cfg.rooms[index], profile = outdoorModelInfo(cfg).installation;
+    if (!profile || !room || index < 0 || index >= cfg.unitCount) return;
+    if (patch.capacityClass !== undefined && !CONNECTION_CLASSES.includes(patch.capacityClass)) return;
+    if (patch.connectedCapacityKw !== undefined && (!Number.isFinite(patch.connectedCapacityKw) || patch.connectedCapacityKw <= 0)) return;
+    if (patch.portId !== undefined && !profile.ports.some(port => port.id === patch.portId)) return;
+    this.update(s => {
+      const target = s.cfg.rooms[index];
+      target.installation = { ...target.installation, ...patch };
+      for (const key of Object.keys(target.installation) as (keyof HeadInstallation)[]) if (target.installation[key] === undefined) delete target.installation[key];
+    });
   }
 }
 

@@ -1,3 +1,5 @@
+import { EQUIPMENT_FR, EQUIPMENT_FR_PATTERNS } from './equipment-fr.ts';
+
 /** Presentation catalogue. Manufacturer references, user labels and model data are
  * intentionally not translated. Dynamic placeholders retain their supplied values. */
 const BASE: Readonly<Record<string, string>> = {
@@ -237,6 +239,7 @@ export const FR_PATTERNS: readonly (readonly [string, string])[] = [
  ['Generic {fluid} · uncalibrated. Efficiency and cleanliness drive the model.','{fluid} générique · non étalonné. Rendement et propreté agissent sur le moteur.'],
  ['Generic {fluid} model using real refrigerant and humid-air properties; manufacturer performance is not calibrated.','Modèle générique {fluid} utilisant les propriétés réelles du frigorigène et de l’air humide ; performances constructeur non étalonnées.'],
  ['Refrigerant {fluid}: {detail}','Frigorigène {fluid} : {detail}'],
+ ...EQUIPMENT_FR_PATTERNS,
  ['{label}: last 2 hours of simulated time, latest reading in each 10-second bin. {scale} Missing readings are gaps.','{label} : 2 dernières heures simulées, dernière valeur par intervalle de 10 s. {scale} Les données manquantes restent des interruptions.'],
  ['Scale {range}.','Échelle {range}.'],
  ['Examples · {label}','Exemples · {label}'],
@@ -288,7 +291,7 @@ export const FR_PATTERNS: readonly (readonly [string, string])[] = [
  ['Last step · {detail}','Dernier pas · {detail}'],
 ];
 
-export const FR: Readonly<Record<string,string>> = {...BASE, ...{
+export const FR: Readonly<Record<string,string>> = {...BASE, ...EQUIPMENT_FR, ...{
   "Requested simulation speed. The reading beside the status and clock shows actual completed physical time per wall second. High speeds are limited by calculation throughput; physical timesteps stay unchanged.": "Vitesse de simulation demandée. La valeur près de l’état et de la durée indique le temps physique réellement calculé par seconde. Les grandes vitesses dépendent de la capacité de calcul ; les pas physiques restent inchangés.",
   "Quick preset (applied once). Owner's winter: heating, 1 °C outdoors, ground 17 °C, upstairs 21.5 °C, attic off, extra rooms 21 °C. Owner's summer: cooling, 39 °C outdoors, all indoor units on, targets 24 °C. Kept: edited equipment, geometry, humidity, solar and background gains, and the clock, energy and accepted state; physical time is not reset.": "Préréglage appliqué une fois. Hiver : chauffage, extérieur 1 °C, rez-de-chaussée 17 °C, étage 21,5 °C, combles arrêtés, autres pièces 21 °C. Été : froid, extérieur 39 °C, toutes les unités en marche, consignes 24 °C. Équipements, géométrie, humidité, apports solaires/internes, durée, énergie et état physique sont conservés.",
   "Restart the simulation from the current inputs: clock, ice and room state start over; your edited settings and initial room temperatures are kept and applied.": "Relancer depuis les réglages actuels : durée, givre et état des pièces repartent de zéro. Les réglages modifiés et températures initiales sont conservés et appliqués.",
