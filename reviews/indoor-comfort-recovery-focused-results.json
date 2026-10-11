@@ -1,0 +1,105 @@
+{
+  "checkedAt": "2026-10-11T11:28:46.987308+00:00",
+  "backend": "guarded",
+  "immutableSnapshot": "/tmp/heatpump-indoor-comfort-final-fallback-hr9qhcdk",
+  "sourceHashes": {
+    "src/engine/engine.ts": "41b9ed30c02a6b8ae90d66333230dee01dde997910b0f6ffa8bd5e7ed1257b71",
+    "src/engine/demand.ts": "2723ec0b56398de36cace269a12f120622c1e0eef5caf2cfb6c4c61aaeba4301",
+    "src/engine/thermostat.ts": "f09821cdd3853d7e6c18e27e85ce278a333414ccc2b0366b51b9fa2c62873db0",
+    "src/engine/types.ts": "a29004e7e12e9a5e5995df642ff1c30d54b01d302d29b67ad1a4fe26e80d1771"
+  },
+  "testHashes": {
+    "tests/engine/dynamics.test.mjs": "f8b5f19a436d6d627bcec1d5fad56c5cf7bddbae456d688a892c1767571b8a1a",
+    "tests/engine/restart-preflight.test.mjs": "a722e9680eb14a95145f4f6eb5d446b7a7fe11671e9bce5adc8f36e118eb76b3",
+    "tests/engine/reference-envelope.test.mjs": "a0065145e5411b879be8c9c91b20a40664cbd80228e9ca6606e4590334307d43",
+    "tests/engine/thermostat.test.mjs": "60b0ee18b95e18b8417e001594fe0e1f60c8099a8f999bfd6aa905ee2a36bc96",
+    "tests/engine/inverter-demand.test.mjs": "aa09095e2b126ef8f42f13181f01b03b6353dc59ab149dab306ec24593e5026d"
+  },
+  "compiledHashes": {
+    "tests/engine/build/air.js": "ac8302044d196da0528b0ca99b76db9f550d26b57adc42c0de89a68ee9b5ed94",
+    "tests/engine/build/charge-output.js": "4ed7ae6f5cc6b6f0b52465b8cbba32f400f890e729ba71cd2db804a11c435fa0",
+    "tests/engine/build/charge.js": "716d6e0134395d6f67245751af1d915e179ab2c599b8a66950bbf8006fac9b1d",
+    "tests/engine/build/cycle.js": "e24ab41245578772ebd43bc2e5be4a58933410093ed2ee2475eb2021b67ef48c",
+    "tests/engine/build/defaults.js": "b1bcc26d4004cb951b5440c02becc157363373d64aef5f088b809c1bd20a2ed8",
+    "tests/engine/build/demand.js": "0ae77679b69e9caa1fc11107ea060f58b7e6493cafac3a3d6468c85786eb9b90",
+    "tests/engine/build/drive.js": "9795fb61cb25ffbd4fa0dfd41f926b4fa423d4dd6cb74f130f242562c326a0b9",
+    "tests/engine/build/engine.js": "9c28f6b9f1dc24e0e0119f9b2dcfe0aaa51fe984e4e2ddcc17a614bcd6368958",
+    "tests/engine/build/envelope.js": "500ad61198fd0a91fe0f5e741a08c8b1b5c965a88cb8eecbf1025c8a5413b924",
+    "tests/engine/build/film.js": "2af475cdfb6faa4512ac7a17c45393f3be33ab88e2cb5be334138956ecf33d51",
+    "tests/engine/build/index.js": "2a58c1821531507d4843729995d2ffc8bbf2176ace4cb1e0269090322f8488c3",
+    "tests/engine/build/interzone.js": "677d003f3074e81bd06c7754444c0cdefd77fb56302e3db72536bfec8e602c60",
+    "tests/engine/build/properties.js": "42a1e8c94947bb4a8f967ba89b51c462d3a0af43d4eb22d4d3cd7daa089f4400",
+    "tests/engine/build/thermostat.js": "692434f3b605d64679f64c982dc414846e260a033422c73f3af4a013e7b39823",
+    "tests/engine/build/transport.js": "5bc7c0f1850837de00043e755290d8e3d131d4ee3adb27646557344409bc1dcf",
+    "tests/engine/build/types.js": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "tests/engine/build/ventilation.js": "337f30b24c963ac3f68d4b0d8f5b6942610e73ca3b6ae10f4d6aa5de6811e570"
+  },
+  "gates": [
+    {
+      "name": "envelope-preflight",
+      "exitCode": 0,
+      "summary": {
+        "tests": 8,
+        "pass": 8,
+        "fail": 0,
+        "duration_ms": 39118.498323
+      },
+      "log": "reviews/indoor-comfort-envelope-preflight-focused.tap",
+      "runLocation": "/home/julien/Documents/Scripts/Agent/heatpump-simulator",
+      "provenance": "Final frozen source/test/compiled-JS hashes matched the immutable snapshot after this run."
+    },
+    {
+      "name": "thermostat",
+      "exitCode": 0,
+      "summary": {
+        "tests": 5,
+        "pass": 5,
+        "fail": 0,
+        "duration_ms": 5484.67732
+      },
+      "log": "reviews/indoor-comfort-thermostat-focused.tap",
+      "runLocation": "/tmp/heatpump-indoor-comfort-final-fallback-hr9qhcdk",
+      "provenance": "Final frozen source/test/compiled-JS hashes matched the immutable snapshot after this run."
+    },
+    {
+      "name": "fault",
+      "exitCode": 0,
+      "summary": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "duration_ms": 1642.145029
+      },
+      "log": "reviews/indoor-comfort-fault-focused.tap",
+      "runLocation": "/tmp/heatpump-indoor-comfort-final-fallback-hr9qhcdk",
+      "provenance": "Final frozen source/test/compiled-JS hashes matched the immutable snapshot after this run."
+    }
+  ],
+  "totalTests": 14,
+  "pass": 14,
+  "fail": 0,
+  "originalFailuresResolved": [
+    {
+      "failure": "Initializer exact configured temperature versus a native round-trip slightly above it.",
+      "resolution": "Re-enable fixture uses observed temperature + 0.001 K. Pure helper/reset retain exact-target assertions. No physical temperature tolerance or controller source changed."
+    },
+    {
+      "failure": "Historical sequence-3 replay did not enter an incidental hold under the new comfort controller.",
+      "resolution": "Keep its entire unchanged original schedule with mandatory no-fault/energy/water/EOS envelope assertions. Add a distinct generic low-efficiency cold-source calling fixture that must enter a discharge hold, retain zero work, and freshly restart after real warm-boundary evolution plus minimum-off dwell."
+    },
+    {
+      "failure": "Historical sequence-16 room temperatures already exceed targets by 2.86\u201310.75 K, so the new thermostat correctly eliminates ordinary demand.",
+      "resolution": "Explicitly migrate missing historical comfort-call fields in the test helper. Assert original satisfied saved state remains idle and conserved. Add a distinct renewed-call extension using only target edits; verify no stored-energy/water/configuration impulse, then require actual hot-source thermal hold, physical fan/store evolution, and fresh EOS recovery. Original checkpoint files are unchanged."
+    }
+  ],
+  "metadataFaultFix": {
+    "sourceOwner": "parent",
+    "change": "When both advance and passive output reconstruction fail, stopped fallback zeros fanSpeedFraction and reports the restored accepted thermostatCalling latch.",
+    "test": "Backend callbacks fail after a prior accepted running interval with positive fan command; fraction, fan watts and flow stop while rooms, call history, ledgers and drive roll back."
+  },
+  "reviewAgreement": "Independent science reviewer agreed to the explicit historical-checkpoint migration and deliberate hot/cold protection coverage extensions before execution.",
+  "limitations": [
+    "Thermostat, initialization, fan/UA and 95/5 allocation are declared generic controller assumptions, not manufacturer maps.",
+    "These focused gates supplement the separately pinned full Reference regression and 21-scenario robustness receipt."
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "checkedAt": "2026-10-11T11:17:31.487629+00:00",
+  "backend": "guarded",
+  "sourceHashes": {
+    "src/engine/thermostat.ts": "f09821cdd3853d7e6c18e27e85ce278a333414ccc2b0366b51b9fa2c62873db0",
+    "src/engine/demand.ts": "2723ec0b56398de36cace269a12f120622c1e0eef5caf2cfb6c4c61aaeba4301",
+    "src/engine/engine.ts": "868c205bc0d7a5a5285463b4c179e7b9584efeb91605f232be49ebcf980d0015",
+    "src/engine/types.ts": "a29004e7e12e9a5e5995df642ff1c30d54b01d302d29b67ad1a4fe26e80d1771",
+    "tests/engine/thermostat.test.mjs": "60b0ee18b95e18b8417e001594fe0e1f60c8099a8f999bfd6aa905ee2a36bc96",
+    "tests/engine/inverter-demand.test.mjs": "aa09095e2b126ef8f42f13181f01b03b6353dc59ab149dab306ec24593e5026d",
+    "tests/engine/dynamics.test.mjs": "2cbdae28641443de9479b336e56a24a40469562d9e30da8264f7c55a73fef4ec"
+  },
+  "sourceSnapshot": "/tmp/heatpump-indoor-control-focused-9x56jw0b",
+  "snapshotNote": "The immutable source snapshot contains unchanged final production sources and the initializer fixture before its one test-only correction. Current final thermostat test hash is recorded above.",
+  "typecheck": {
+    "command": "npm run check; ./node_modules/.bin/tsc -p tests/engine/tsconfig.json",
+    "exitCode": 0
+  },
+  "runs": [
+    {
+      "command": "HEATPUMP_TEST_BACKEND=guarded node --test --test-concurrency=1 tests/engine/thermostat.test.mjs tests/engine/inverter-demand.test.mjs",
+      "tests": 11,
+      "pass": 10,
+      "fail": 1,
+      "durationMs": 62437.451942,
+      "details": "All six inverter tests passed. Four of five thermostat tests passed. The initializer re-enable fixture compared configured 21 C to a native round-trip slightly above 21 C, so it legitimately seeded the noncalling side."
+    },
+    {
+      "command": "HEATPUMP_TEST_BACKEND=guarded node --test tests/engine/thermostat.test.mjs",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "exitCode": 0,
+      "durationMs": 8427.943383,
+      "log": "/tmp/heatpump-indoor-comfort-thermostat-focused.tap",
+      "details": "Final initializer re-enable fixture sets its target to the observed temperature + 0.001 K. Exact target initialization remains asserted against both the helper and reset. No production source or physical temperature tolerance changed."
+    }
+  ],
+  "finalPassingGroups": {
+    "thermostat": 5,
+    "inverterDemand": 6
+  },
+  "invariants": [
+    "Inclusive symmetric heating/cooling thermostat boundaries, with persistent independent room calls inside the band.",
+    "Actual variable fan airflow/conductance and cubic electrical fan watts, with fan heat and conservation closure.",
+    "Individual branch stops; final call stops ordinary compressor and all forced fans even before minimum-on.",
+    "Restart obeys both the complete restart margin and minimum-off dwell.",
+    "New/reset/explicit enable history seeding is distinct from persistent history.",
+    "Normalized 95% demand/5% active-UA branch command reserve, zero-request fallback and all-Off zero shares.",
+    "Above-minimum load retains continuous inverter modulation; genuine below-minimum load cycles with dwell; conventional command remains fixed speed.",
+    "Native failure rolls back thermostat calls, demand integrals, drive and room stores."
+  ],
+  "limitations": [
+    "Controller thresholds and fan/UA/allocation maps are explicit generic assumptions, not equipment calibration.",
+    "Full frozen Reference regression and 21-scenario recovery/owner endurance are independently run by parent and robustness agents.",
+    "No settings edit resets physical stores, and no EOS tolerance or displayed temperature was clamped."
+  ]
+}

@@ -19,12 +19,39 @@ test('held-envelope estimate detects excessive discharge before an out-of-envelo
 test('retained cold-start and hot dirty cooling failures close or protect throughout their original schedules',async()=>{
  for(const fixture of ['robustness-20261011/sequence-3.json','robustness-20261012/grid-cooling-45-0.json']){
   const scenario=JSON.parse(await readFile(new URL(`./fixtures/${fixture}`,import.meta.url),'utf8'));
-  const e=new HeatPumpEngine(p,scenario.config);let holds=0;
+  const e=new HeatPumpEngine(p,scenario.config);
   for(const operation of scenario.operations){if(operation.type==='update'){e.updateConfig(operation.config);continue;}if(operation.type!=='step')throw Error('Unknown fixture operation');
    for(let elapsed=0;elapsed<operation.seconds-1e-10;elapsed+=.25){const o=e.step(Math.min(.25,operation.seconds-elapsed));assert.equal(o.diagnostics.fault,null,`${scenario.id} ${o.simulatedSeconds}`);assert.ok(Math.abs(o.energy.residualJ)<.01);assert.ok(Math.abs(o.energy.waterResidualKg)<1e-10);
-    if(o.diagnostics.envelopeProtection)holds++;if(o.cycle){assert.ok(o.cycle.closureResidualW<=scenario.config.numerics.pressureToleranceW);assert.ok(o.cycle.condensingC<63);assert.ok(o.cycle.discharge.temperatureC<scenario.config.compressor.maxDischargeC);}else assert.equal(o.electrical.compressorW,0);
+    if(o.cycle){assert.ok(o.cycle.closureResidualW<=scenario.config.numerics.pressureToleranceW);assert.ok(o.cycle.condensingC<63);assert.ok(o.cycle.discharge.temperatureC<scenario.config.compressor.maxDischargeC);}else assert.equal(o.electrical.compressorW,0);
    }
   }
-  if(fixture.includes('sequence-3'))assert.ok(holds>0,'cold case exercises an actual protection hold');
+  // A historical trajectory need not encounter the same hold after comfort
+  // calls change. Mandatory actual cold-envelope holds are provoked below.
  }
+});
+
+test('declared low-efficiency cold-source demand holds discharge, retains stores and recovers on a warmed boundary',()=>{
+ const c=defaultEngineConfig(1);c.outdoorTemperatureC=-20;c.outdoorRelativeHumidity=.2;
+ c.rooms[0].initialTemperatureC=30;c.rooms[0].setpointC=35;
+ c.compressor.isentropicEfficiency=.4186110433423892; // Deliberate generic envelope provocation, not owner calibration.
+ const e=new HeatPumpEngine(p,c);let o=e.step(.25);
+ const check=o=>{assert.equal(o.diagnostics.fault,null);assert.ok(Math.abs(o.energy.residualJ)<.01);assert.ok(Math.abs(o.energy.waterResidualKg)<1e-10);};
+ check(o);assert.equal(o.diagnostics.envelopeProtection,'discharge temperature');assert.equal(o.cycle,null);assert.equal(o.electrical.compressorW,0);assert.equal(o.rooms[0].thermostatCalling,true);
+ const heldAt=o.simulatedSeconds;
+ for(let i=0;i<4;i++){o=e.step(.25);check(o);assert.equal(o.diagnostics.envelopeProtection,'discharge temperature');assert.equal(o.electrical.compressorW,0);}
+ const stores=e.checkpoint();c.outdoorTemperatureC=20;const configured=e.updateConfig(c);
+ assert.equal(e.checkpoint().outdoorEnergyJ,stores.outdoorEnergyJ);assert.equal(e.checkpoint().outdoorWaterKg,stores.outdoorWaterKg);
+ assert.ok(Math.abs(configured.energy.configurationEnergyJ-o.energy.configurationEnergyJ)<1e-5);
+ let heldWarmIntervals=0;
+ for(let i=0;i<720;i++){
+  o=e.step(.25);check(o);
+  if(o.cycle){
+   assert.ok(heldWarmIntervals>0);assert.ok(o.simulatedSeconds-heldAt>=c.control.minOffSeconds);
+   assert.equal(o.diagnostics.envelopeProtection,null);assert.ok(o.cycle.compressorWorkW>0);
+   assert.ok(o.cycle.closureResidualW<=c.numerics.pressureToleranceW);assert.ok(Math.abs(o.cycle.massResidualKgs)*250000<=c.numerics.pressureToleranceW);
+   assert.ok(o.cycle.discharge.temperatureC<c.compressor.maxDischargeC);return;
+  }
+  heldWarmIntervals++;assert.equal(o.electrical.compressorW,0);assert.equal(o.rooms[0].thermostatCalling,true);
+ }
+ assert.fail('real thermal evolution did not release the cold discharge hold within 180 s');
 });

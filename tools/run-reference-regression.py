@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parent.parent
 parser = argparse.ArgumentParser()
 parser.add_argument('--concurrency', type=int, default=3)
 parser.add_argument('--receipt', default='reviews/indoor-moisture-reference-regression-results.json')
+parser.add_argument('--test-file', action='append', help='Run only this released check; repeat for a focused immutable verification.')
 args = parser.parse_args()
 snapshot = Path(tempfile.mkdtemp(prefix='heatpump-reference-regression-'))
 sources = ('src/engine', 'public/vendor/coolprop-safe', 'tests/engine',
@@ -28,7 +29,10 @@ for prefix in sources:
         if path.is_file():
             hashes[str(path.relative_to(snapshot))] = hashlib.sha256(path.read_bytes()).hexdigest()
 workflow = (ROOT / '.github/workflows/pages.yml').read_text()
-files = re.findall(r'tests/engine/[\w-]+\.test\.mjs', workflow)
+released_files = re.findall(r'tests/engine/[\w-]+\.test\.mjs', workflow)
+files = args.test_file or released_files
+if any(file not in released_files for file in files):
+    raise SystemExit('Focused checks must be listed in the release workflow')
 for file in files:
     if not (snapshot / file).exists():
         raise SystemExit(f'Missing release check: {file}')
@@ -47,7 +51,7 @@ for key in ('tests', 'pass', 'fail', 'duration_ms'):
         summary[key] = float(matches[-1]) if key == 'duration_ms' else int(matches[-1])
 receipt = {'checkedAt':time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime()),
            'exitCode':result.returncode, 'wallSeconds':time.monotonic()-started,
-           'backend':'guarded', 'testConcurrency':args.concurrency, 'files':files,
+           'backend':'guarded', 'testConcurrency':args.concurrency, 'selection':'focused' if args.test_file else 'complete-release', 'files':files,
            'sourceHashes':hashes, 'summary':summary, 'immutableSnapshot':str(snapshot), 'log':str(log)}
 (ROOT / args.receipt).write_text(json.dumps(receipt, indent=2)+'\n')
 print(json.dumps({k:receipt[k] for k in ('exitCode','wallSeconds','summary','immutableSnapshot')}), flush=True)

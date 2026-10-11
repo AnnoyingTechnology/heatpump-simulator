@@ -39,14 +39,35 @@ async function retainedEngine(sequence, ordinary = false) {
   engine.updateConfig(receipt.config);
   // Restore the immutable preceding accepted transaction; the original initial
   // scenario preserves the energy/water ledger origins through those edits.
-  engine.restoreCheckpoint(structuredClone(receipt.acceptedCheckpoint));
+  // Historical inverter checkpoints predate the persistent comfort-call field.
+  // Recorded active flags supply their prior request history; a time-zero reset
+  // has no prior history and uses the current explicit initialization policy.
+  const migrated=structuredClone(receipt.acceptedCheckpoint);
+  migrated.thermostatCalls ??= migrated.time === 0 ? engine.checkpoint().thermostatCalls : [...migrated.active];
+  engine.restoreCheckpoint(migrated);
   return { engine, config: receipt.config, checkpoint: receipt.acceptedCheckpoint };
 }
 
-test('saved hot-source restart uses a visible thermal hold, evolves fan/thermal stores and freshly resumes', async () => {
+test('saved satisfied hot-source checkpoint stops; a renewed-call extension holds and freshly resumes', async () => {
   const { engine, config, checkpoint } = await retainedEngine(16);
-  const before = engine.snapshot();
   let output = engine.step(.25), holds = 0;
+  assert.equal(output.diagnostics.fault, null);
+  assert.equal(output.state, 'idle');
+  assert.ok(output.rooms.every(room => room.temperatureC > room.setpointC + config.control.thermostatDeadbandK));
+  assert.ok(output.rooms.every(room => !room.thermostatCalling));
+  assert.equal(output.cycle, null); assert.equal(output.electrical.compressorW, 0);
+  assert.ok(Math.abs(output.energy.residualJ) < .01); assert.ok(Math.abs(output.energy.waterResidualKg) < 1e-10);
+  // This extension is deliberately renewed demand, not the historical schedule:
+  // keep every hot thermal store but request heat from its previously active paths.
+  const stores = engine.checkpoint();
+  config.rooms.forEach((room,i) => { if(checkpoint.active[i]) room.setpointC = output.rooms[i].temperatureC + 1.05; });
+  const before = engine.updateConfig(config), configured = engine.checkpoint();
+  configured.rooms.forEach((room,i) => assert.equal(room.metalTemperatureC, stores.rooms[i].metalTemperatureC));
+  assert.equal(configured.outdoorEnergyJ, stores.outdoorEnergyJ); assert.equal(configured.outdoorWaterKg, stores.outdoorWaterKg);
+  assert.ok(Math.abs(before.energy.configurationEnergyJ - output.energy.configurationEnergyJ) < 1e-5);
+  assert.ok(Math.abs(before.energy.boundaryEnergyJ - output.energy.boundaryEnergyJ) < 1e-5);
+  assert.ok(Math.abs(engine.totalWater() - (stores.rooms.reduce((total,room) => total + room.dryAirMassKg * room.humidityRatio + (room.retainedWaterKg??0),0)+stores.outdoorWaterKg)) < 1e-10);
+  output = engine.step(.25);
   assert.equal(output.diagnostics.fault, null);
   assert.equal(output.diagnostics.envelopeProtection, 'thermal boundary');
   assert.equal(output.cycle, null);

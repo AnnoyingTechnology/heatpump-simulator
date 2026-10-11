@@ -3,9 +3,9 @@ import {estimateHeldEnvelope}from'./envelope.ts';
 import { solveCycle } from './cycle.ts';
 import { ChargeCircuit, type ChargeCandidate, type ChargeBoundary, type ChargeNumerics } from './charge.ts';
 import { driveStep, driveRatioThresholds, newDriveState, type DriveState } from './drive.ts';
-import { thermostatDemand } from './thermostat.ts';
+import { initialThermostatDemand } from './thermostat.ts';
 import { inventoryCycle } from './charge-output.ts';
-import {roomDemand} from './demand.ts';
+import {roomDemand,inverterAllocationWeights} from './demand.ts';
 import {interzoneHeatPowers, interzoneTransfers} from './interzone.ts';
 import { ventilationExchange } from './ventilation.ts';
 import { airExchange, equilibrateExhaust, equilibrateRoomAir } from './air.ts';
@@ -27,6 +27,7 @@ export class HeatPumpEngine {
   private onTime = 0;
   private offTime = Infinity;
   private active: boolean[] = [];
+  private thermostatCalls: boolean[] = [];
   private cycle: CycleOutput | null = null;
   private refrigerant: ChargeCircuit | null = null;
   private chargeCandidate: ChargeCandidate | null = null;
@@ -51,13 +52,15 @@ export class HeatPumpEngine {
     this.rooms = config.rooms.map(room => this.newRoom(room));
     this.outdoorWaterKg = 0; this.outdoorEnergyJ = config.outdoor.metalCapacityJK * config.outdoorTemperatureC;
     this.time = 0; this.state = 'idle'; this.stateTime = 0; this.heatingRuntime = 0; this.onTime = 0; this.offTime = Infinity;
-    this.active = config.rooms.map(() => false); this.cycle = null; this.lastCycle = undefined; this.fault = null;
+    this.active = config.rooms.map(() => false);
+    this.thermostatCalls = config.rooms.map(room => initialThermostatDemand(room.enabled, (config.mode === 'heating' ? 1 : -1) * (room.setpointC - room.initialTemperatureC)));
+    this.cycle = null; this.lastCycle = undefined; this.fault = null;
     this.ledgers = { electricityJ: 0, signedRoomHeatJ: 0, usefulServiceHeatJ: 0, drainedWaterKg: 0, outdoorExchangeJ: 0, drainageJ: 0, configurationEnergyJ: 0, boundaryEnergyJ: 0 };
     this.refrigerant = config.inventory ? new ChargeCircuit(this.properties, config.inventory.geometry, { massKg: config.inventory.initialMassKg, fluidTemperatureC: config.inventory.initialFluidTemperatureC, orientation: config.mode, valveOpening: config.inventory.initialValveOpening },this.chargeNumerics) : null;
     this.chargeCandidate = null;
     this.inverterCycling=false;this.inventoryDrive = newDriveState();this.demandIntegralW=config.rooms.map(()=>0);
     this.boundaryWater = 0; this.initialEnergy = this.totalEnergy(); this.initialWater = this.totalWater();
-    this.warnings = ['Generic component parameters and control assumptions; not manufacturer calibrated.', 'Outdoor metal and retained water/ice share one equilibrium temperature.', 'Ice sublimation is excluded; retained ice melts or receives deposition.', 'Dirt uses clear-passage scaling of air flow/air-side conductance; forced fan power is constant without a measured fan curve.', ...(this.refrigerant ? ['Conserved R32 charge uses three bulk refrigerant cells per coil, shared outdoor/indoor pressures and a finite accumulator restriction; internal geometry and EEV/compressor maps are generic assumptions.', 'Field lines store actual refrigerant volume but are hydraulically idealized and adiabatic; friction, ambient line heat, elevation, slip and oil are excluded in this formulation.', 'Superheat is controlled by finite EEV movement; subcooling and exchanged heat emerge from the stored charge, rather than fixed charge multipliers.', 'Generic inverter control starts at minimum speed, holds 10 s, then accelerates at 0.5 rps/s; pressure/temperature supervision and restart dwell override demand. Stopped discharge predictions are control estimates, not sensor states.'] : ['Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.', 'Idealized parallel indoor coils use generic demand-proportional flow for inverter operation, UA allocation for fixed-speed/defrost and retained minimum-on paths, and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.', 'Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states.'])];
+    this.warnings = ['Generic component parameters and control assumptions; not manufacturer calibrated.', 'Outdoor metal and retained water/ice share one equilibrium temperature.', 'Ice sublimation is excluded; retained ice melts or receives deposition.', 'Dirt scales air flow and air-side conductance at fixed fan command. Generic inverter indoor fans command 25–100% airflow across the thermostat band, linear air-side conductance and cubic electric power; no measured fan map.', ...(this.refrigerant ? ['Conserved R32 charge uses three bulk refrigerant cells per coil, shared outdoor/indoor pressures and a finite accumulator restriction; internal geometry and EEV/compressor maps are generic assumptions.', 'Field lines store actual refrigerant volume but are hydraulically idealized and adiabatic; friction, ambient line heat, elevation, slip and oil are excluded in this formulation.', 'Superheat is controlled by finite EEV movement; subcooling and exchanged heat emerge from the stored charge, rather than fixed charge multipliers.', 'Generic inverter control starts at minimum speed, holds 10 s, then accelerates at 0.5 rps/s; pressure/temperature supervision and restart dwell override demand. Stopped discharge predictions are control estimates, not sensor states.'] : ['Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.', 'Idealized parallel indoor coils use generic demand-proportional flow for inverter operation, normalized 5% UA reserve for calling inverter branches and UA allocation for fixed-speed/defrost, and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.', 'Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states.'])];
     this.lastOutput = this.makeOutput(this.passiveRoomOutputs(), null, 0, 0, 0, null, 0, 0); return this.snapshot();
   }
   /** Preserve local temperatures/RH and outdoor ice through structural edits, account inventory impulses explicitly.
@@ -70,6 +73,7 @@ export class HeatPumpEngine {
     this.demandIntegralW=config.rooms.map(r=>config.mode===old.mode&&config.control.strategy===old.control.strategy?(oldIntegral.get(r.id)??0):0);
     if(config.mode!==old.mode||config.control.strategy!==old.control.strategy)this.inverterCycling=false;
     const priorActive = new Map(old.rooms.map((room, i) => [room.id, this.active[i]]));
+    const priorCalls = new Map(old.rooms.map((room, i) => [room.id, this.thermostatCalls[i]]));
     const oldStates = new Map(old.rooms.map((room, i) => [room.id, { state: this.rooms[i], config: room }]));
     const previousOutdoor = deriveOutdoorFilm(this.outdoorEnergyJ, this.outdoorWaterKg, old.outdoor);
     this.rooms = config.rooms.map(room => {
@@ -84,6 +88,11 @@ export class HeatPumpEngine {
     });
     this.outdoorEnergyJ += (config.outdoor.metalCapacityJK - old.outdoor.metalCapacityJK) * previousOutdoor.temperatureC;
     this.config = structuredClone(config); this.active = config.rooms.map(room => room.enabled && (priorActive.get(room.id) ?? false));
+    this.thermostatCalls = config.rooms.map((room,i) => {
+      const previous = oldStates.get(room.id);
+      if (previous?.config.enabled && config.mode === old.mode) return room.enabled && (priorCalls.get(room.id) ?? false);
+      return initialThermostatDemand(room.enabled, (config.mode === 'heating' ? 1 : -1) * (room.setpointC - this.roomTemperature(this.rooms[i])));
+    });
     const energyImpulse = this.totalEnergy() - beforeEnergy, waterImpulse = this.totalWater() - beforeWater;
     this.ledgers.boundaryEnergyJ += energyImpulse; this.ledgers.configurationEnergyJ += energyImpulse; this.boundaryWater += waterImpulse;
     if (Math.abs(energyImpulse) > 1e-5 || Math.abs(waterImpulse) > 1e-10) this.warnings.push('Scenario edit added/removed stored energy and water; recorded as a configuration boundary impulse.');
@@ -102,7 +111,7 @@ export class HeatPumpEngine {
       try { this.advance(dt); } catch (error) { this.restoreCheckpoint(checkpoint); this.fault = error instanceof Error ? error.message : 'Physics failed'; this.state = 'fault'; this.cycle = null;
         let stopped: RoomOutput[];
         try { stopped = this.passiveRoomOutputs(); }
-        catch { stopped = this.lastOutput.rooms.map(room => ({ ...room, active: false, massFlowKgs: 0, signedRoomHeatW: 0, sensibleRoomHeatW: 0, fanPowerW: 0, airOutletC: null, condensateKgs: 0, drainEnthalpyW: 0 })); }
+        catch { stopped = this.lastOutput.rooms.map((room,i) => ({ ...room, active: false, thermostatCalling: this.thermostatCalls[i], fanSpeedFraction: 0, massFlowKgs: 0, signedRoomHeatW: 0, sensibleRoomHeatW: 0, fanPowerW: 0, airOutletC: null, condensateKgs: 0, drainEnthalpyW: 0 })); }
         this.lastOutput = this.makeOutput(stopped, null, 0, 0, 0, null, 0, 0); }
       remaining -= dt;
     }
@@ -112,7 +121,7 @@ export class HeatPumpEngine {
   private checkpoint() {
     return { rooms: this.rooms, outdoorEnergyJ: this.outdoorEnergyJ, outdoorWaterKg: this.outdoorWaterKg,
       time: this.time, state: this.state, stateTime: this.stateTime, heatingRuntime: this.heatingRuntime,
-      onTime: this.onTime, offTime: this.offTime, active: [...this.active], cycle: this.cycle,
+      onTime: this.onTime, offTime: this.offTime, active: [...this.active], thermostatCalls: [...this.thermostatCalls], cycle: this.cycle,
       lastCycle: this.lastCycle, ledgers: { ...this.ledgers }, boundaryWater: this.boundaryWater,
       chargeCandidate: this.chargeCandidate, inventoryDrive: {...this.inventoryDrive}, demandIntegralW:[...this.demandIntegralW], inverterCycling:this.inverterCycling, fluid: this.refrigerant?.snapshot(), lastOutput: this.lastOutput };
   }
@@ -193,7 +202,7 @@ export class HeatPumpEngine {
     const linkHeat = interzoneHeatPowers(this.config, temperatures);
     return this.rooms.map((room, i) => { const c = this.config.rooms[i], t = temperatures[i];
       return { retainedWaterKg:room.retainedWaterKg??0,retainedIceKg:room.retainedIceKg??0,id: c.id, temperatureC: t, relativeHumidity: this.roomRH(t,room.humidityRatio,this.config.ambientPressurePa,room.retainedWaterKg??0), humidityRatio: room.humidityRatio, fabricTemperatureC: room.fabricTemperatureC, metalTemperatureC: room.metalTemperatureC,
-        setpointC: c.setpointC, active: false, massFlowKgs: 0, signedRoomHeatW: 0, sensibleRoomHeatW: 0, fanPowerW: 0, airOutletC: null, condensateKgs: 0, drainEnthalpyW: 0,
+        setpointC: c.setpointC, active: false, thermostatCalling: this.thermostatCalls[i], fanSpeedFraction: 0, massFlowKgs: 0, signedRoomHeatW: 0, sensibleRoomHeatW: 0, fanPowerW: 0, airOutletC: null, condensateKgs: 0, drainEnthalpyW: 0,
         interzoneHeatW: linkHeat[i], internalGainW: c.internalGainW ?? 0 }; });
   }
   private transition(state: OperatingState): void { this.state = state; this.stateTime = 0; this.lastCycle = undefined; }
@@ -204,7 +213,7 @@ export class HeatPumpEngine {
       if (this.state === 'draining') this.heatingRuntime = 0;
       this.transition('idle'); this.offTime = 0;
     }
-    this.onTime = 0; this.active = this.config.rooms.map(() => false); this.cycle = null;
+    this.onTime = 0; this.active = this.config.rooms.map(() => false); this.thermostatCalls = this.config.rooms.map(() => false); this.cycle = null;
     this.inventoryDrive.speedRps=0;this.inventoryDrive.startupSeconds=0;
   }
   private advance(dt: number): void {
@@ -213,21 +222,11 @@ export class HeatPumpEngine {
     const before = deriveOutdoorFilm(this.outdoorEnergyJ, this.outdoorWaterKg, outdoor);
     const tRooms = this.rooms.map(r => this.roomTemperature(r,p));
     const linkHeat = interzoneHeatPowers(config, tRooms);
-    const previousActive = [...this.active];
     const errors = config.rooms.map((room, i) => config.mode === 'heating' ? room.setpointC - tRooms[i] : tRooms[i] - room.setpointC);
-    const demand=roomDemand(config,this.rooms,tRooms,this.active,this.demandIntegralW,dt,false,
+    const demand=roomDemand(config,this.rooms,tRooms,this.thermostatCalls,this.demandIntegralW,dt,false,
       this.inventoryDrive.speedRps>=config.compressor.speedMaxRps-.01||!!this.inventoryDrive.protection);
-    this.active = this.refrigerant ? config.rooms.map((room,i)=>thermostatDemand(room.enabled,errors[i],this.active[i],config.control.thermostatDeadbandK)) : demand.active;
-    if(!this.refrigerant&&config.control.strategy!=='on-off'){
-      if(this.state==='defrost'||this.state==='reversing'||this.state==='draining')this.inverterCycling=false;
-      if(this.inverterCycling&&errors.some((e,i)=>config.rooms[i].enabled&&e>=0))this.inverterCycling=false;
-      const capacity=this.cycle?(config.mode==='heating'?this.cycle.condenserHeatW:this.cycle.evaporatorHeatW):0;
-      const minimumEstimate=this.inventoryDrive.speedRps>0?capacity*config.compressor.speedMinRps/this.inventoryDrive.speedRps:0;
-      const totalRequest=demand.heatW.reduce((a,b)=>a+b,0);
-      if(this.state==='running'&&this.cycle?.mode===config.mode&&minimumEstimate>0&&totalRequest<minimumEstimate&&
-        errors.every((e,i)=>!config.rooms[i].enabled||e<=-config.control.thermostatDeadbandK))this.inverterCycling=true;
-      if(this.inverterCycling)this.active=config.rooms.map(()=>false);
-    }
+    this.thermostatCalls = demand.active;
+    this.active = [...this.thermostatCalls];
     if (!config.rooms.some(room => room.enabled)) this.abortUnavailableCircuit();
     if (this.state === 'reversing' && this.stateTime >= config.control.reversalSeconds) this.transition(config.mode === 'heating' && before.iceKg > config.control.defrostIceThresholdKg ? 'defrost' : 'idle');
     if (this.state === 'draining' && this.stateTime >= config.control.drainageDwellSeconds) { this.transition('reversing'); this.heatingRuntime = 0; }
@@ -243,9 +242,8 @@ export class HeatPumpEngine {
       const frostPending = config.mode === 'heating' && before.iceKg >= config.control.defrostIceThresholdKg && this.heatingRuntime >= config.control.defrostMinHeatingSeconds;
       this.transition(frostPending ? 'reversing' : 'running');
     }
-    if (this.state === 'running' && !this.active.some(Boolean) && this.onTime < config.control.minOnSeconds) this.active = previousActive.map((active, i) => active && config.rooms[i].enabled);
-    // A soft thermostat crossing can retain an enabled prior path for minimum-on.
-    // Explicit Off may remove that last path even while other rooms remain enabled.
+    // No comfort call means no ordinary compressor demand. Minimum-off dwell
+    // still protects restart; defrost retains its separate enabled source paths.
     if (this.state === 'running' && !this.active.some(Boolean)) { this.transition('idle'); this.offTime = 0; }
     const running = this.state === 'running' && this.active.some(Boolean), defrost = this.state === 'defrost';
     const effectiveMode: Mode | null = running ? config.mode : defrost ? 'cooling' : null;
@@ -305,7 +303,7 @@ export class HeatPumpEngine {
       // the heating/cooling minimum-speed startup policy does not replace it.
       const conventional=config.control.strategy==='on-off';
       const referenceMinimum = defrost ? config.control.defrostSpeedRps : conventional ? config.control.fixedSpeedRps??40 : config.compressor.speedMinRps;
-      const allocationWeights=!conventional&&!defrost&&demand.heatW.some((q,i)=>this.active[i]&&q>0)?this.active.map((on,i)=>on?(demand.heatW[i]>0?demand.heatW[i]:config.rooms[i].refrigerantConductanceWK):0):undefined;
+      const allocationWeights=!conventional&&!defrost?inverterAllocationWeights(config,this.active,demand.heatW):undefined;
       const proposal = (rps: number) => solveCycle(this.properties, config, { mode: effectiveMode!,
         indoorMetalC: this.rooms.map(room => room.metalTemperatureC), outdoorMetalC: before.temperatureC,
         active: this.active, allocationWeights, speedRps: rps, defrost, previous: this.lastCycle });
@@ -372,8 +370,9 @@ export class HeatPumpEngine {
       const wouldFreeze=this.rooms.some((room,i)=>{
         if(!this.active[i])return false;
         const c=config.rooms[i],clear=c.cleanFraction??1;
-        const md=(c.volumetricAirFlowM3s===undefined?c.airMassFlowKgs:c.volumetricAirFlowM3s/this.properties.dryAirSpecificVolume(tRooms[i],room.humidityRatio,p))*clear;
-        const air=airExchange(this.properties,tRooms[i],room.humidityRatio,room.metalTemperatureC,md,c.airConductanceWK*clear,p,0,true,true);
+        const fraction=demand.fanFraction[i];
+        const md=(c.volumetricAirFlowM3s===undefined?c.airMassFlowKgs:c.volumetricAirFlowM3s/this.properties.dryAirSpecificVolume(tRooms[i],room.humidityRatio,p))*fraction*clear;
+        const air=airExchange(this.properties,tRooms[i],room.humidityRatio,room.metalTemperatureC,md,c.airConductanceWK*fraction*clear,p,0,true,true);
         return room.metalTemperatureC+dt*((cycle!.branchCoilHeatW[i]??0)+air.heatFromAirW-air.drainEnthalpyW)/c.metalCapacityJK<2;
       });
       if(wouldFreeze){this.inventoryDrive={...this.inventoryDrive,speedRps:0,startupSeconds:0,offSeconds:dt,protection:'indoor antifreeze',antifreezeHold:true};speed=0;cycle=null;this.lastCycle=undefined;}
@@ -385,12 +384,14 @@ export class HeatPumpEngine {
     let roomPower = 0, indoorFans = 0, indoorDrain = 0, indoorCondensate = 0, ventilationEnergy = 0, envelopeEnergy = 0, internalGainPower = 0, roomWaterBoundary = 0, indoorMetalRate = 0;
     // Compute all candidate states transactionally before accepting the substep.
     const candidateRooms = this.rooms.map((room, i) => {
-      const c = config.rooms[i], forced = running && this.active[i], fan = forced ? c.fanPowerW : 0;
+      const c = config.rooms[i], forced = running && this.active[i];
+      const fanFraction = forced ? demand.fanFraction[i] : 0;
+      const fan = c.fanPowerW * fanFraction ** 3;
       const clear = c.cleanFraction ?? 1;
       const inletDryFlow=c.volumetricAirFlowM3s===undefined?c.airMassFlowKgs:c.volumetricAirFlowM3s/this.properties.dryAirSpecificVolume(tRooms[i],room.humidityRatio,p);
-      const md = (forced ? inletDryFlow : Math.max(.005, c.naturalAirConductanceWK / 1006)) * clear;
+      const md = (forced ? inletDryFlow * fanFraction : Math.max(.005, c.naturalAirConductanceWK / 1006)) * clear;
       const air = airExchange(this.properties, tRooms[i], room.humidityRatio, room.metalTemperatureC, md,
-        (forced ? c.airConductanceWK : c.naturalAirConductanceWK) * clear, p, 0, true, true);
+        (forced ? c.airConductanceWK * fanFraction : c.naturalAirConductanceWK) * clear, p, 0, true, true);
       const useful = air.signedHeatToAirW + fan, ventilation = room.dryAirMassKg * c.ventilationACH / 3600;
       const qFabric = c.airFabricWK * (room.fabricTemperatureC - tRooms[i]);
       // Simple envelope maps entirely to the air node; H is distinct from fabric coupling and ventilation.
@@ -412,7 +413,7 @@ export class HeatPumpEngine {
       const fanH=air.totalOutletEnthalpyJkg+fan/md;
       const outlet=forced ? air.fogWater>0 ? equilibrateExhaust(this.properties,fanH,air.totalOutletWater,p,tRooms[i]).temperatureC : this.properties.airT(fanH,air.totalOutletWater,p) : null;
       outputs.push({ retainedWaterKg:next.retainedWaterKg,retainedIceKg:next.retainedIceKg,id: c.id, temperatureC: nextT, relativeHumidity: nextRH, humidityRatio: next.humidityRatio, fabricTemperatureC: next.fabricTemperatureC, metalTemperatureC: next.metalTemperatureC,
-        setpointC: c.setpointC, active: running && this.active[i], massFlowKgs: cycle?.branchMassFlowsKgs[i] ?? 0, signedRoomHeatW: useful, sensibleRoomHeatW: air.sensibleToAirW + fan,
+        setpointC: c.setpointC, active: running && this.active[i], thermostatCalling: this.thermostatCalls[i], fanSpeedFraction: fanFraction, massFlowKgs: cycle?.branchMassFlowsKgs[i] ?? 0, signedRoomHeatW: useful, sensibleRoomHeatW: air.sensibleToAirW + fan,
         fanPowerW: fan, airOutletC: outlet, condensateKgs: Math.max(0, air.waterToSurfaceKgs), drainEnthalpyW: air.drainEnthalpyW,
         interzoneHeatW: linkHeat[i], internalGainW: internalGain });
       roomPower += useful; indoorFans += fan; indoorDrain += air.drainEnthalpyW; ventilationEnergy += qVent; envelopeEnergy += qEnvelope;
@@ -455,7 +456,7 @@ export class HeatPumpEngine {
     if (charge) { this.refrigerant!.commit(charge); this.chargeCandidate = charge; }
     if(!this.refrigerant&&running&&cycle&&speed>0&&!this.inventoryDrive.protection&&this.inventoryDrive.startupSeconds>=10){
       const saturated=speed<demandSpeed-.01||speed>=config.compressor.speedMaxRps-.01;
-      this.demandIntegralW=roomDemand(config,this.rooms,tRooms,this.active,this.demandIntegralW,dt,true,saturated).integralW;
+      this.demandIntegralW=roomDemand(config,this.rooms,tRooms,this.thermostatCalls,this.demandIntegralW,dt,true,saturated).integralW;
     }
     this.rooms = candidateRooms; this.outdoorWaterKg = candidateMass; this.outdoorEnergyJ = candidateEnergy; this.cycle = cycle;
     this.time += dt; this.stateTime += dt;

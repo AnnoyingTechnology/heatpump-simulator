@@ -1,0 +1,2544 @@
+{
+  "checkedAt": "2026-10-11T11:20:23.688Z",
+  "sourceHashes": {
+    "src/engine/engine.ts": "868c205bc0d7a5a5285463b4c179e7b9584efeb91605f232be49ebcf980d0015",
+    "src/engine/demand.ts": "2723ec0b56398de36cace269a12f120622c1e0eef5caf2cfb6c4c61aaeba4301",
+    "src/engine/thermostat.ts": "f09821cdd3853d7e6c18e27e85ce278a333414ccc2b0366b51b9fa2c62873db0",
+    "src/engine/types.ts": "a29004e7e12e9a5e5995df642ff1c30d54b01d302d29b67ad1a4fe26e80d1771",
+    "src/scene.ts": "8e0d5ac49afc1b992f829bef09b9446b58b53a511860f248b3bba55ac2e023f5",
+    "src/style.css": "8e778ec8f88715ff8e8058db514bfc27eb3211edb01466a178c723e454a3bda9"
+  },
+  "scenario": "owner defaults except−4°C outdoors and16°C ground target; actual guarded worker,600s in5s batches; retained-state target sweep checks fan modulation within a call; explicit all-Off retains stores/time",
+  "samples": [
+    {
+      "time": 5,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.5788828022778034e-8,
+      "waterResidual": 4.356324329046757e-16,
+      "ground": {
+        "temperatureC": 17.98871531846288,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 10,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.0648363968357444e-8,
+      "waterResidual": 1.1761425167122752e-15,
+      "ground": {
+        "temperatureC": 17.97729707080549,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 15,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -4.1211023926734924e-8,
+      "waterResidual": 7.840950111415168e-16,
+      "ground": {
+        "temperatureC": 17.965763099770925,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 20,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.291926648467779e-9,
+      "waterResidual": 1.2750217548429532e-15,
+      "ground": {
+        "temperatureC": 17.95413134708855,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 25,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.0905932867899537e-7,
+      "waterResidual": 9.8879238130678e-16,
+      "ground": {
+        "temperatureC": 17.94242003920516,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 30,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.7433194443583488e-7,
+      "waterResidual": 7.528699885739343e-16,
+      "ground": {
+        "temperatureC": 17.930647094280857,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 35,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.7631100490689278e-7,
+      "waterResidual": 1.186550857568136e-15,
+      "ground": {
+        "temperatureC": 17.91882996395583,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 40,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.0867370292544365e-7,
+      "waterResidual": 1.7746221159242737e-15,
+      "ground": {
+        "temperatureC": 17.906985584006975,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 45,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.421431079506874e-7,
+      "waterResidual": 1.717376241217039e-15,
+      "ground": {
+        "temperatureC": 17.895130330636448,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 50,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.4243414625525475e-7,
+      "waterResidual": 1.6688039838896884e-15,
+      "ground": {
+        "temperatureC": 17.883279982359568,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 55,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.050502760335803e-7,
+      "waterResidual": 1.4536982728685643e-15,
+      "ground": {
+        "temperatureC": 17.87144968756087,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 60,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.305597834289074e-7,
+      "waterResidual": 9.575673587391975e-16,
+      "ground": {
+        "temperatureC": 17.85965393769777,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 65,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.4029501471668482e-7,
+      "waterResidual": 1.842276331487369e-15,
+      "ground": {
+        "temperatureC": 17.847906545924673,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 70,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.1020165402442217e-7,
+      "waterResidual": 2.1510571102112408e-15,
+      "ground": {
+        "temperatureC": 17.836220631111246,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 75,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.4199758879840374e-7,
+      "waterResidual": 2.976785484776201e-15,
+      "ground": {
+        "temperatureC": 17.824608606928678,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 80,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.0637450031936169e-7,
+      "waterResidual": 3.0461744238152733e-15,
+      "ground": {
+        "temperatureC": 17.813082175707905,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 85,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.0349322110414505e-7,
+      "waterResidual": 3.157196726277789e-15,
+      "ground": {
+        "temperatureC": 17.801652326752503,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 90,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.4770193956792355e-7,
+      "waterResidual": 3.899658373995862e-15,
+      "ground": {
+        "temperatureC": 17.79032933876931,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 95,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -7.031485438346863e-8,
+      "waterResidual": 3.3792413312028202e-15,
+      "ground": {
+        "temperatureC": 17.779122786047992,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 100,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -2.7299392968416214e-8,
+      "waterResidual": 3.434752482434078e-15,
+      "ground": {
+        "temperatureC": 17.76804154790682,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 105,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 4.8516085371375084e-8,
+      "waterResidual": 3.767819389821625e-15,
+      "ground": {
+        "temperatureC": 17.757093821237902,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 110,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.314926289021969e-8,
+      "waterResidual": 2.8102520310824275e-15,
+      "ground": {
+        "temperatureC": 17.746287135634816,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 115,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -3.763125278055668e-8,
+      "waterResidual": 3.0600522116230877e-15,
+      "ground": {
+        "temperatureC": 17.735628370781,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 120,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 7.482594810426235e-8,
+      "waterResidual": 2.5118795932144167e-15,
+      "ground": {
+        "temperatureC": 17.725123775742986,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 125,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.1437805369496346e-8,
+      "waterResidual": 2.643718577388654e-15,
+      "ground": {
+        "temperatureC": 17.714778989860633,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 130,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.835884854197502e-8,
+      "waterResidual": 2.6367796834847468e-15,
+      "ground": {
+        "temperatureC": 17.704599064913566,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 135,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.076841726899147e-9,
+      "waterResidual": 2.4077961846558082e-15,
+      "ground": {
+        "temperatureC": 17.694588488290435,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 140,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -2.5524059310555458e-8,
+      "waterResidual": 2.5396351688300456e-15,
+      "ground": {
+        "temperatureC": 17.68475120689652,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 145,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -5.718902684748173e-8,
+      "waterResidual": 1.6514567491299204e-15,
+      "ground": {
+        "temperatureC": 17.675090651560197,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 150,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -5.058245733380318e-8,
+      "waterResidual": 2.4702462297909733e-15,
+      "ground": {
+        "temperatureC": 17.665609761731275,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 155,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -2.3399479687213898e-8,
+      "waterResidual": 2.9559688030644793e-15,
+      "ground": {
+        "temperatureC": 17.656311010273214,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 160,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -4.802132025361061e-9,
+      "waterResidual": 2.491062911502695e-15,
+      "ground": {
+        "temperatureC": 17.64719642818369,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 165,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.8888385966420174e-8,
+      "waterResidual": 2.2343238370581275e-15,
+      "ground": {
+        "temperatureC": 17.63826762909622,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 170,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.100124791264534e-8,
+      "waterResidual": 2.0122792321330962e-15,
+      "ground": {
+        "temperatureC": 17.629525833432297,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 175,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -3.748573362827301e-8,
+      "waterResidual": 2.0122792321330962e-15,
+      "ground": {
+        "temperatureC": 17.62097189209726,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 180,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 4.8603396862745285e-9,
+      "waterResidual": 1.8665624601510444e-15,
+      "ground": {
+        "temperatureC": 17.612606309625562,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 185,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.192690201103687e-8,
+      "waterResidual": 1.887379141862766e-15,
+      "ground": {
+        "temperatureC": 17.604429266700436,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 190,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -1.917942427098751e-8,
+      "waterResidual": 1.3739009929736312e-15,
+      "ground": {
+        "temperatureC": 17.59644064198409,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 195,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.5157427191734314e-8,
+      "waterResidual": 1.5543122344752192e-15,
+      "ground": {
+        "temperatureC": 17.58864003321105,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 200,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -3.7049176171422005e-8,
+      "waterResidual": 1.9984014443252818e-15,
+      "ground": {
+        "temperatureC": 17.581026777506622,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 205,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.282912075519562e-8,
+      "waterResidual": 2.373101715136272e-15,
+      "ground": {
+        "temperatureC": 17.573599970903103,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 210,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.1720112524926662e-7,
+      "waterResidual": 2.3592239273284576e-15,
+      "ground": {
+        "temperatureC": 17.566358487034222,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 215,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.0157236829400063e-7,
+      "waterResidual": 3.5110803153770576e-15,
+      "ground": {
+        "temperatureC": 17.55930099500364,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 220,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.2508826330304146e-7,
+      "waterResidual": 3.1502578323738817e-15,
+      "ground": {
+        "temperatureC": 17.552425976416373,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 225,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.6900594346225262e-7,
+      "waterResidual": 3.566591466608315e-15,
+      "ground": {
+        "temperatureC": 17.545731741582358,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 230,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.3128737919032574e-7,
+      "waterResidual": 3.2335245592207684e-15,
+      "ground": {
+        "temperatureC": 17.539216444900262,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 235,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.2610765881836414e-7,
+      "waterResidual": 3.566591466608315e-15,
+      "ground": {
+        "temperatureC": 17.532878099430377,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 240,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.1868618205189705e-7,
+      "waterResidual": 3.4833247397614286e-15,
+      "ground": {
+        "temperatureC": 17.52671459067608,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 245,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.1271989680826664e-7,
+      "waterResidual": 3.858025010572419e-15,
+      "ground": {
+        "temperatureC": 17.52072368959284,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 250,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.2465246729552746e-7,
+      "waterResidual": 3.400058012914542e-15,
+      "ground": {
+        "temperatureC": 17.514903064845726,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 255,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.5160261429846287e-7,
+      "waterResidual": 3.5388358909926865e-15,
+      "ground": {
+        "temperatureC": 17.509250294339722,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 260,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.398155629634857e-7,
+      "waterResidual": 3.039235529911366e-15,
+      "ground": {
+        "temperatureC": 17.503762876046324,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 265,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.940068952739239e-7,
+      "waterResidual": 3.2335245592207684e-15,
+      "ground": {
+        "temperatureC": 17.498438237757284,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 270,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.3923424780368805e-7,
+      "waterResidual": 3.566591466608315e-15,
+      "ground": {
+        "temperatureC": 17.493273693453943,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 275,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.462773747742176e-7,
+      "waterResidual": 4.218847493575595e-15,
+      "ground": {
+        "temperatureC": 17.488266279822312,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 280,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.2992102205753326e-7,
+      "waterResidual": 4.3021142204224816e-15,
+      "ground": {
+        "temperatureC": 17.483412756183498,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 285,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.525055944919586e-7,
+      "waterResidual": 3.899658373995862e-15,
+      "ground": {
+        "temperatureC": 17.47870967537591,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 290,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.715678419917822e-7,
+      "waterResidual": 3.760880495917718e-15,
+      "ground": {
+        "temperatureC": 17.474153442221336,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 295,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.410095814615488e-7,
+      "waterResidual": 4.107825191113079e-15,
+      "ground": {
+        "temperatureC": 17.469740361221227,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 300,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.49624315276742e-7,
+      "waterResidual": 3.566591466608315e-15,
+      "ground": {
+        "temperatureC": 17.465466675110008,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 305,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.568129613995552e-7,
+      "waterResidual": 3.747002708109903e-15,
+      "ground": {
+        "temperatureC": 17.461328596287785,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 310,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.9994483813643456e-7,
+      "waterResidual": 3.982925100842749e-15,
+      "ground": {
+        "temperatureC": 17.457322332403294,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 315,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.804743755608797e-7,
+      "waterResidual": 3.858025010572419e-15,
+      "ground": {
+        "temperatureC": 17.453444106582822,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 320,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 4.350440576672554e-7,
+      "waterResidual": 3.2335245592207684e-15,
+      "ground": {
+        "temperatureC": 17.449690174252567,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 325,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 4.529138095676899e-7,
+      "waterResidual": 3.5110803153770576e-15,
+      "ground": {
+        "temperatureC": 17.446056835773447,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 330,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.818713594228029e-7,
+      "waterResidual": 3.4833247397614286e-15,
+      "ground": {
+        "temperatureC": 17.442540446859255,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 335,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.6705750972032547e-7,
+      "waterResidual": 3.372302437298913e-15,
+      "ground": {
+        "temperatureC": 17.43913742682713,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 340,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.969762474298477e-7,
+      "waterResidual": 3.5110803153770576e-15,
+      "ground": {
+        "temperatureC": 17.43584426519351,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 345,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 4.0727900341153145e-7,
+      "waterResidual": 3.6914915568786455e-15,
+      "ground": {
+        "temperatureC": 17.432657526235005,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 350,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.423774614930153e-7,
+      "waterResidual": 3.191891195797325e-15,
+      "ground": {
+        "temperatureC": 17.429573852452165,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 355,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.2869866117835045e-7,
+      "waterResidual": 3.2751579226442118e-15,
+      "ground": {
+        "temperatureC": 17.426589967111738,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 360,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.689776010811329e-7,
+      "waterResidual": 3.3861802251067274e-15,
+      "ground": {
+        "temperatureC": 17.42370267603627,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 365,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.8381979316473007e-7,
+      "waterResidual": 3.913536161803677e-15,
+      "ground": {
+        "temperatureC": 17.420908868495417,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 370,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.0122312232851982e-7,
+      "waterResidual": 3.608224830031759e-15,
+      "ground": {
+        "temperatureC": 17.418205517533124,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 375,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.2764940038323402e-7,
+      "waterResidual": 2.7478019859472624e-15,
+      "ground": {
+        "temperatureC": 17.41558968000544,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 380,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 8.64383764564991e-8,
+      "waterResidual": 3.247402347028583e-15,
+      "ground": {
+        "temperatureC": 17.41305849612843,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 385,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.0884832590818405e-8,
+      "waterResidual": 3.0808688933348094e-15,
+      "ground": {
+        "temperatureC": 17.41060918871716,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 390,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 9.388895705342293e-8,
+      "waterResidual": 2.6922908347160046e-15,
+      "ground": {
+        "temperatureC": 17.408239062173493,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 395,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.9336661100387573e-8,
+      "waterResidual": 2.4424906541753444e-15,
+      "ground": {
+        "temperatureC": 17.405945501306633,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 400,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 5.547190085053444e-8,
+      "waterResidual": 2.9698465908722937e-15,
+      "ground": {
+        "temperatureC": 17.40372596995519,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 405,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.1723022907972336e-7,
+      "waterResidual": 2.7200464103316335e-15,
+      "ground": {
+        "temperatureC": 17.40157800936487,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 410,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.2817403078079224e-8,
+      "waterResidual": 2.4702462297909733e-15,
+      "ground": {
+        "temperatureC": 17.399499236652048,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 415,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -4.540197551250458e-9,
+      "waterResidual": 2.831068712794149e-15,
+      "ground": {
+        "temperatureC": 17.397487343310218,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 420,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -8.242204785346985e-8,
+      "waterResidual": 2.6645352591003757e-15,
+      "ground": {
+        "temperatureC": 17.395540093347336,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 425,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.1827872842550278e-8,
+      "waterResidual": 2.0816681711721685e-15,
+      "ground": {
+        "temperatureC": 17.393655321598942,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 430,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 6.402842700481415e-9,
+      "waterResidual": 2.581268532253489e-15,
+      "ground": {
+        "temperatureC": 17.391830931880065,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 435,
+      "state": "running",
+      "fault": null,
+      "energyResidual": -6.222398951649666e-8,
+      "waterResidual": 2.0816681711721685e-15,
+      "ground": {
+        "temperatureC": 17.390064895234673,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 440,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 5.011679604649544e-8,
+      "waterResidual": 1.5265566588595902e-15,
+      "ground": {
+        "temperatureC": 17.388355248036873,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 445,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.100124791264534e-8,
+      "waterResidual": 2.220446049250313e-15,
+      "ground": {
+        "temperatureC": 17.386700090280385,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 450,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.137392923235893e-8,
+      "waterResidual": 2.3314683517128287e-15,
+      "ground": {
+        "temperatureC": 17.385097583847823,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 455,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.5797711461782455e-8,
+      "waterResidual": 2.3592239273284576e-15,
+      "ground": {
+        "temperatureC": 17.383545950706946,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 460,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.1012889444828033e-7,
+      "waterResidual": 1.7208456881689926e-15,
+      "ground": {
+        "temperatureC": 17.382043471097916,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 465,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.4988472685217857e-7,
+      "waterResidual": 1.6930901125533637e-15,
+      "ground": {
+        "temperatureC": 17.380588481900816,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 470,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.3207318261265755e-7,
+      "waterResidual": 1.8318679906315083e-15,
+      "ground": {
+        "temperatureC": 17.379179374809894,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 475,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.5040859580039978e-7,
+      "waterResidual": 1.887379141862766e-15,
+      "ground": {
+        "temperatureC": 17.37781459485825,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 480,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.227017492055893e-7,
+      "waterResidual": 2.3314683517128287e-15,
+      "ground": {
+        "temperatureC": 17.376492638674847,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 485,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 7.101334631443024e-8,
+      "waterResidual": 2.3592239273284576e-15,
+      "ground": {
+        "temperatureC": 17.37521205295974,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 490,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.1170050129294395e-7,
+      "waterResidual": 2.4702462297909733e-15,
+      "ground": {
+        "temperatureC": 17.373971432876488,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 495,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.5133991837501526e-7,
+      "waterResidual": 1.7763568394002505e-15,
+      "ground": {
+        "temperatureC": 17.372769420487884,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 500,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.7811544239521027e-7,
+      "waterResidual": 1.970645868709653e-15,
+      "ground": {
+        "temperatureC": 17.37160470337966,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 505,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 1.939479261636734e-7,
+      "waterResidual": 1.3322676295501878e-15,
+      "ground": {
+        "temperatureC": 17.370476013102405,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 510,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.1955929696559906e-7,
+      "waterResidual": 1.6653345369377348e-15,
+      "ground": {
+        "temperatureC": 17.36938212374099,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 515,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.0995579436421394e-7,
+      "waterResidual": 2.1371793224034263e-15,
+      "ground": {
+        "temperatureC": 17.368321850599443,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 520,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.7922214940190315e-7,
+      "waterResidual": 1.942890293094024e-15,
+      "ground": {
+        "temperatureC": 17.36729404889593,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 525,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.800370566546917e-7,
+      "waterResidual": 1.2490009027033011e-15,
+      "ground": {
+        "temperatureC": 17.366297612401695,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 530,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.5710399970412254e-7,
+      "waterResidual": 1.4155343563970746e-15,
+      "ground": {
+        "temperatureC": 17.365331472195635,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 535,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.435998223721981e-7,
+      "waterResidual": 1.0824674490095276e-15,
+      "ground": {
+        "temperatureC": 17.36439459542629,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 540,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.9173679649829865e-7,
+      "waterResidual": 9.43689570931383e-16,
+      "ground": {
+        "temperatureC": 17.36348598423706,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 545,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.9051443561911583e-7,
+      "waterResidual": 8.604228440844963e-16,
+      "ground": {
+        "temperatureC": 17.36260467453127,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 550,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.679298631846905e-7,
+      "waterResidual": 8.604228440844963e-16,
+      "ground": {
+        "temperatureC": 17.361749734918476,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 555,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.016320988535881e-7,
+      "waterResidual": 1.1934897514720433e-15,
+      "ground": {
+        "temperatureC": 17.360920265579068,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 560,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.148452378809452e-7,
+      "waterResidual": 1.0824674490095276e-15,
+      "ground": {
+        "temperatureC": 17.36011539711717,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 565,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.16067598760128e-7,
+      "waterResidual": 1.304512053934559e-15,
+      "ground": {
+        "temperatureC": 17.35933428965194,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 570,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.3085234463214874e-7,
+      "waterResidual": 8.604228440844963e-16,
+      "ground": {
+        "temperatureC": 17.35857613183049,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 575,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.514570951461792e-7,
+      "waterResidual": 1.2212453270876722e-15,
+      "ground": {
+        "temperatureC": 17.357840139719542,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 580,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.9959483072161674e-7,
+      "waterResidual": 1.6653345369377348e-15,
+      "ground": {
+        "temperatureC": 17.357125556069604,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 585,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.7747591957449913e-7,
+      "waterResidual": 1.2212453270876722e-15,
+      "ground": {
+        "temperatureC": 17.35643164934413,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 590,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.998276613652706e-7,
+      "waterResidual": 1.6375789613221059e-15,
+      "ground": {
+        "temperatureC": 17.3557577128434,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 595,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 2.8329668566584587e-7,
+      "waterResidual": 1.4155343563970746e-15,
+      "ground": {
+        "temperatureC": 17.355103063969068,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    },
+    {
+      "time": 600,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.2782554626464844e-7,
+      "waterResidual": 1.2490009027033011e-15,
+      "ground": {
+        "temperatureC": 17.354467043380737,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    }
+  ],
+  "modulation": [
+    {
+      "error": 1.1,
+      "time": 600.25,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.0244700610637665e-7,
+      "waterResidual": 1.2490009027033011e-15,
+      "ground": {
+        "temperatureC": 17.354571979804348,
+        "calling": true,
+        "fan": 1,
+        "watts": 25
+      },
+      "ui": {
+        "fan": "1",
+        "fraction": 1,
+        "duration": "1.8s",
+        "calling": "1"
+      },
+      "epoch": 2
+    },
+    {
+      "error": 0.8,
+      "time": 600.5,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.1833769753575325e-7,
+      "waterResidual": 1.582067810090848e-15,
+      "ground": {
+        "temperatureC": 17.354661639195683,
+        "calling": true,
+        "fan": 0.9250000000000216,
+        "watts": 19.786328125001383
+      },
+      "ui": {
+        "fan": "1",
+        "fraction": 0.9250000000000216,
+        "duration": "1.9459459459459005s",
+        "calling": "1"
+      },
+      "epoch": 2
+    },
+    {
+      "error": 0.2,
+      "time": 600.75,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.4330878406763077e-7,
+      "waterResidual": 1.0824674490095276e-15,
+      "ground": {
+        "temperatureC": 17.354708094636692,
+        "calling": true,
+        "fan": 0.7000000000000424,
+        "watts": 8.575000000001557
+      },
+      "ui": {
+        "fan": "1",
+        "fraction": 0.7000000000000424,
+        "duration": "2.5714285714284157s",
+        "calling": "1"
+      },
+      "epoch": 2
+    },
+    {
+      "error": -0.2,
+      "time": 601,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.636232577264309e-7,
+      "waterResidual": 1.7486012637846216e-15,
+      "ground": {
+        "temperatureC": 17.35473110852439,
+        "calling": true,
+        "fan": 0.549999999999979,
+        "watts": 4.159374999999523
+      },
+      "ui": {
+        "fan": "1",
+        "fraction": 0.549999999999979,
+        "duration": "3.272727272727398s",
+        "calling": "1"
+      },
+      "epoch": 2
+    },
+    {
+      "error": -0.8,
+      "time": 601.25,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.8475263863801956e-7,
+      "waterResidual": 1.5265566588595902e-15,
+      "ground": {
+        "temperatureC": 17.354725012217386,
+        "calling": true,
+        "fan": 0.32500000000004237,
+        "watts": 0.8582031250003357
+      },
+      "ui": {
+        "fan": "1",
+        "fraction": 0.32500000000004237,
+        "duration": "5.538461538460816s",
+        "calling": "1"
+      },
+      "epoch": 2
+    },
+    {
+      "error": -1.1,
+      "time": 601.5,
+      "state": "running",
+      "fault": null,
+      "energyResidual": 3.7834979593753815e-7,
+      "waterResidual": 1.4710455076283324e-15,
+      "ground": {
+        "temperatureC": 17.354694073141502,
+        "calling": false,
+        "fan": 0,
+        "watts": 0
+      },
+      "ui": {
+        "fan": "0",
+        "fraction": 0,
+        "duration": "1.8s",
+        "calling": "0"
+      },
+      "epoch": 2
+    }
+  ],
+  "allOffStopsCompressor": true,
+  "resetEpochRetained": true
+}

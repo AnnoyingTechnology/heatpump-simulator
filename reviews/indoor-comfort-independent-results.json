@@ -1,0 +1,154 @@
+{
+  "checkedAt": "2026-10-11T11:25:56.539Z",
+  "snapshot": "/tmp/heatpump-indoor-comfort-final-fallback-hr9qhcdk",
+  "method": "Reviewer independent threshold table and frozen native two-mode interval heat/water/metal reconstruction; fault-transition rollback and stopped/dwell checks. Shared EOS and air-exchange implementation, no experimental calibration.",
+  "sourceHashes": {
+    "src/engine/thermostat.ts": "f09821cdd3853d7e6c18e27e85ce278a333414ccc2b0366b51b9fa2c62873db0",
+    "src/engine/demand.ts": "2723ec0b56398de36cace269a12f120622c1e0eef5caf2cfb6c4c61aaeba4301",
+    "src/engine/engine.ts": "41b9ed30c02a6b8ae90d66333230dee01dde997910b0f6ffa8bd5e7ed1257b71",
+    "src/engine/types.ts": "a29004e7e12e9a5e5995df642ff1c30d54b01d302d29b67ad1a4fe26e80d1771",
+    "src/engine/cycle.ts": "294d647a26f60d319641c9b7fe4645378472dd5c70a8e6c0ef6075168aaf29e4",
+    "src/engine/drive.ts": "d94247f20b359a61980e0d5af121d5299133f3b65a49358c4c40540a6655d0dd",
+    "src/engine/envelope.ts": "eaab1d96df755b322050854fa8b7108e1f4918fbeb4dd1206d815ba9c74dc4e3",
+    "src/engine/air.ts": "6dfb70bd7b7c5b84501e0de1633cf8378ea0b2bd0eb903dafe09c31625745d15",
+    "src/engine/ventilation.ts": "6aef508a062fca992c2b7a1961ae69c12ae5317c5824326ffe57a1a0a4ecd8d8",
+    "src/engine/properties.ts": "6fb2812381e471623e449a5b593cd4e1d9874f32e559b33bd05c2eac7b6ad36e",
+    "src/engine/defaults.ts": "5ca7d8006c6990e4b6b99a6ef353ec075b720a07701dac39a23ca9fb4fec99f8",
+    "public/vendor/coolprop-safe/adapter.js": "06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34",
+    "public/vendor/coolprop-safe/coolprop.js": "6fa2e627803e2453da12cb9fce160ca3326851cd179444edc5ab698e21524d6c",
+    "public/vendor/coolprop-safe/coolprop.wasm": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c"
+  },
+  "scalar": [
+    {
+      "prior": false,
+      "error": -1.001,
+      "expected": false
+    },
+    {
+      "prior": false,
+      "error": -1,
+      "expected": false
+    },
+    {
+      "prior": false,
+      "error": -0.999,
+      "expected": false
+    },
+    {
+      "prior": false,
+      "error": -0.001,
+      "expected": false
+    },
+    {
+      "prior": false,
+      "error": 0,
+      "expected": false
+    },
+    {
+      "prior": false,
+      "error": 0.001,
+      "expected": false
+    },
+    {
+      "prior": false,
+      "error": 0.999,
+      "expected": false
+    },
+    {
+      "prior": false,
+      "error": 1,
+      "expected": true
+    },
+    {
+      "prior": false,
+      "error": 1.001,
+      "expected": true
+    },
+    {
+      "prior": true,
+      "error": -1.001,
+      "expected": false
+    },
+    {
+      "prior": true,
+      "error": -1,
+      "expected": false
+    },
+    {
+      "prior": true,
+      "error": -0.999,
+      "expected": true
+    },
+    {
+      "prior": true,
+      "error": -0.001,
+      "expected": true
+    },
+    {
+      "prior": true,
+      "error": 0,
+      "expected": true
+    },
+    {
+      "prior": true,
+      "error": 0.001,
+      "expected": true
+    },
+    {
+      "prior": true,
+      "error": 0.999,
+      "expected": true
+    },
+    {
+      "prior": true,
+      "error": 1,
+      "expected": true
+    },
+    {
+      "prior": true,
+      "error": 1.001,
+      "expected": true
+    }
+  ],
+  "runs": [
+    {
+      "mode": "heating",
+      "first": {
+        "fanFraction": 0.625,
+        "fanW": 6.103515625,
+        "branchMassKgs": 0.00019456642595274627,
+        "closureW": 0.0319688400337951,
+        "energyResidualJ": -3.938112058676779e-9,
+        "waterResidualKg": 0
+      },
+      "wetInterval": null,
+      "rollback": true,
+      "allCallsOff": true,
+      "restartHeldByDwell": true,
+      "faultFallbackFanCommandZero": true,
+      "stoppedAt": 0.5
+    },
+    {
+      "mode": "cooling",
+      "first": {
+        "fanFraction": 0.625,
+        "fanW": 6.103515625,
+        "branchMassKgs": 0.0003887531701648697,
+        "closureW": 0.031702221938479165,
+        "energyResidualJ": 6.561862164744525e-9,
+        "waterResidualKg": 0
+      },
+      "wetInterval": {
+        "condensateKgs": 1.0491852917511154e-7,
+        "fanW": 6.103749449716593,
+        "energyResidualJ": 1.1789978771048482e-8,
+        "waterResidualKg": -1.0624609543118547e-16
+      },
+      "rollback": true,
+      "allCallsOff": true,
+      "restartHeldByDwell": true,
+      "faultFallbackFanCommandZero": true,
+      "stoppedAt": 0.5
+    }
+  ]
+}

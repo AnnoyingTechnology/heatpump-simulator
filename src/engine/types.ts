@@ -38,7 +38,7 @@ export interface EngineConfig {
   compressor: { displacementM3rev: number; speedMinRps: number; speedMaxRps: number; isentropicEfficiency: number; volumetricEfficiency: number; driveEfficiency: number; superheatK: number; subcoolK: number; maxDischargeC: number; maxPressureRatio: number };
   outdoor: { cleanFraction?: number; volumetricAirFlowM3s?: number; airMassFlowKgs: number; fanPowerW: number; airConductanceWK: number; refrigerantConductanceWK: number; naturalAirConductanceWK: number; metalCapacityJK: number; depositionAreaM2: number; frostDensityKgm3: number; frostConductivityWmK: number; finGapM: number; drainageSeconds: number };
   control: { strategy?: 'inverter' | 'on-off'; fixedSpeedRps?: number; controlsW: number; proportionalSpeedRpsK: number;
-    /** Thermostat restart margin, or inverter overshoot margin for below-minimum cycling. */
+    /** Symmetric per-room thermostat call/stop margin in either mode. */
     thermostatDeadbandK: number;
     minOnSeconds: number; minOffSeconds: number; reversalSeconds: number; defrostMinHeatingSeconds: number; defrostIceThresholdKg: number; defrostMaxSeconds: number; defrostTerminationMetalC: number; drainageDwellSeconds: number; defrostSpeedRps: number };
   numerics: { maxStepSeconds: number; pressureToleranceW: number };
@@ -67,6 +67,10 @@ export interface RoomOutput {
   interzoneHeatW?: number; internalGainW?: number;
   id: string; temperatureC: number; relativeHumidity: number; humidityRatio: number; fabricTemperatureC: number; metalTemperatureC: number;
   setpointC: number; active: boolean; massFlowKgs: number; signedRoomHeatW: number; sensibleRoomHeatW: number; fanPowerW: number;
+  /** Comfort demand is distinct from defrost refrigerant paths and protection holds. */
+  thermostatCalling?: boolean;
+  /** Accepted commanded fraction of the configured high-fan airflow, before dirt. */
+  fanSpeedFraction?: number;
   airOutletC: number | null; condensateKgs: number; drainEnthalpyW: number;
 }
 export interface InterzoneTransfer {

@@ -49,8 +49,8 @@ test('wet cooling removes water; timestep halving converges thermal/electrical t
   assert.ok(Math.abs(outputs[1].rooms[0].temperatureC-outputs[2].rooms[0].temperatureC)<.002);
   assert.ok(Math.abs(outputs[1].energy.electricityJ/outputs[2].energy.electricityJ-1)<.002);
 });
-test('configuration edits retain room/ice inventories and min-on history; idle air outlets disappear', () => {
-  const c=defaultEngineConfig(1),e=new HeatPumpEngine(p,c);let o=e.step(1);c.rooms[0].setpointC=18;e.updateConfig(c);o=e.step(1);assertLedger(o);assert.ok(o.cycle,'min-on must preserve compressor');
+test('configuration edits retain room/ice inventories; all comfort calls off stops despite minimum-on', () => {
+  const c=defaultEngineConfig(1),e=new HeatPumpEngine(p,c);let o=e.step(1);c.rooms[0].setpointC=18;e.updateConfig(c);o=e.step(1);assertLedger(o);assert.equal(o.cycle,null,'no phantom refrigerant path after every call stops');assert.equal(o.electrical.compressorW,0);
   c.rooms[0].volumeM3*=2;const oldT=o.rooms[0].temperatureC,oldW=o.rooms[0].humidityRatio;const edited=e.updateConfig(c);assert.ok(Math.abs(edited.rooms[0].temperatureC-oldT)<1e-6);assert.equal(edited.rooms[0].humidityRatio,oldW);assertLedger(edited);
   c.rooms[0].enabled=false;e.updateConfig(c);o=e.step(1);assertLedger(o);assert.equal(o.state,'idle');assert.equal(o.cycle,null);assert.equal(o.rooms[0].airOutletC,null);
   c.control.controlsW=-1;assert.throws(()=>e.updateConfig(c),/Control/);
@@ -98,8 +98,11 @@ test('owner-layout natural frost reverses with hot stored indoor metal and conse
 test('unavailable property backend returns a conserved fault snapshot without throwing again',()=>{
   const moduleStub={PropsSI:(...args)=>p.prop(args[0],args[1],args[2],args[3],args[4]),HAPropsSI:(...args)=>p.humid(args[0],args[1],args[2],args[3],args[4],args[6])};
   const service=new Properties(moduleStub),engine=new HeatPumpEngine(service,defaultEngineConfig(1));
-  const before=engine.snapshot();moduleStub.HAPropsSI=()=>{throw new Error('backend unavailable');};
+  const before=engine.step(.25),checkpoint=engine.checkpoint();assertLedger(before);assert.ok(before.cycle);assert.ok(before.rooms[0].fanPowerW>0);assert.ok(before.rooms[0].fanSpeedFraction>0);
+  moduleStub.HAPropsSI=()=>{throw new Error('backend unavailable');};
   const fault=engine.step(1);assert.equal(fault.state,'fault');assert.equal(fault.simulatedSeconds,before.simulatedSeconds);assert.equal(fault.cycle,null);assert.equal(fault.heatingCOP,null);assert.equal(fault.rooms[0].airOutletC,null);assert.equal(fault.outdoor.filmMassKg,before.outdoor.filmMassKg);assert.equal(fault.energy.residualJ,before.energy.residualJ);
+  assert.equal(fault.rooms[0].fanPowerW,0);assert.equal(fault.rooms[0].fanSpeedFraction,0);assert.equal(fault.rooms[0].thermostatCalling,checkpoint.thermostatCalls[0]);
+  const restored=engine.checkpoint();assert.deepEqual(restored.thermostatCalls,checkpoint.thermostatCalls);assert.deepEqual(restored.rooms,checkpoint.rooms);assert.deepEqual(restored.ledgers,checkpoint.ledgers);assert.deepEqual(restored.inventoryDrive,checkpoint.inventoryDrive);
 });
 
 test('all Off aborts defrost/reversal without erasing storage; passive time and reenable remain conservative',()=>{

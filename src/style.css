@@ -1009,8 +1009,10 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .airflow path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
 .airflow .stream { stroke-dasharray: 12 8; }
 .airflow .head { stroke-width: 1.25; }
-.room[data-fan="1"] .supply, .room[data-fan="1"] .intake, .scene[data-fans-on="1"] .exhaust { opacity: .7; }
-.room[data-fan="1"] .supply .stream, .room[data-fan="1"] .intake .stream, .scene[data-fans-on="1"] .exhaust .stream { animation: air 1.8s linear infinite; }
+.room[data-fan="1"] .supply, .room[data-fan="1"] .intake { opacity: var(--indoor-air-opacity, .7); }
+.room[data-fan="1"] .supply .stream, .room[data-fan="1"] .intake .stream { animation: air var(--indoor-air-duration, 1.8s) linear infinite; }
+.scene[data-fans-on="1"] .exhaust { opacity: .7; }
+.scene[data-fans-on="1"] .exhaust .stream { animation: air 1.8s linear infinite; }
 .room[data-air="warm"] .supply, .exhaust[data-air="warm"] { color: var(--air-warm); }
 .room[data-air="cool"] .supply, .exhaust[data-air="cool"] { color: var(--air-cool); }
 @keyframes air { to { stroke-dashoffset: -20; } }

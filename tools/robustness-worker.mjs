@@ -15,6 +15,10 @@ let engine, properties, output, currentOperation, before, exception, faultRollba
 let steps = 0, updates = 0, maxEnergyResidualJ = 0, maxWaterResidualKg = 0, maxStepWallMs = 0, completedDefrosts = 0;
 const stateEntries = {};
 const protectionCounts = {}, states = {}, start = performance.now();
+const comfortRooms = {}, comfortTransitions = [];
+let ordinaryNoCallSeconds = 0, ordinaryCompressorWithoutCallSeconds = 0;
+const comfortTelemetry = () => ({ rooms: comfortRooms, transitions: comfortTransitions,
+  recordedTransitionLimit: 128, ordinaryNoCallSeconds, ordinaryCompressorWithoutCallSeconds });
 const finite = (value, path = 'output') => {
   if (typeof value === 'number') assert.ok(Number.isFinite(value), `${path} is nonfinite: ${value}`);
   if (value && typeof value === 'object') for (const [k, v] of Object.entries(value)) finite(v, `${path}.${k}`);
@@ -54,6 +58,35 @@ try {
         throw Object.assign(new Error(output.diagnostics.fault), { cause: exception });
       }
       finite(output); assert.equal(output.simulatedSeconds, previous.simulatedSeconds + .25, 'Accepted clock did not advance exactly one step');
+      for (const room of output.rooms) {
+        if (typeof room.thermostatCalling !== 'boolean' || room.fanSpeedFraction === undefined) continue;
+        const priorRoom = previous.rooms.find(r => r.id === room.id);
+        const entry = comfortRooms[room.id] ??= { callingSeconds: 0, notCallingSeconds: 0, poweredFanSeconds: 0,
+          modulatedFanSeconds: 0, minPoweredFanFraction: null, maxPoweredFanFraction: 0, fanEnergyJ: 0, callTransitions: 0, circuitTransitions: 0 };
+        entry[room.thermostatCalling ? 'callingSeconds' : 'notCallingSeconds'] += .25;
+        entry.fanEnergyJ += room.fanPowerW * .25;
+        assert.ok(room.fanSpeedFraction >= 0 && room.fanSpeedFraction <= 1, 'Accepted indoor fan exceeds its declared command range');
+        if (room.fanPowerW > 0) {
+          entry.poweredFanSeconds += .25;
+          if (room.fanSpeedFraction < 1) entry.modulatedFanSeconds += .25;
+          entry.minPoweredFanFraction = Math.min(entry.minPoweredFanFraction ?? Infinity, room.fanSpeedFraction);
+          entry.maxPoweredFanFraction = Math.max(entry.maxPoweredFanFraction, room.fanSpeedFraction);
+        }
+        const callChanged = typeof priorRoom?.thermostatCalling === 'boolean' && room.thermostatCalling !== priorRoom.thermostatCalling;
+        const circuitChanged = priorRoom && room.active !== priorRoom.active;
+        if (callChanged) entry.callTransitions++;
+        if (circuitChanged) entry.circuitTransitions++;
+        if ((callChanged || circuitChanged) && comfortTransitions.length < 128) comfortTransitions.push({
+          roomId: room.id, simulatedSeconds: output.simulatedSeconds, requestedMode: config.mode, state: output.state,
+          calling: room.thermostatCalling, circuitActive: room.active, fanFraction: room.fanSpeedFraction,
+          temperatureBeforeC: priorRoom?.temperatureC, temperatureAfterC: room.temperatureC, setpointC: room.setpointC });
+      }
+      const noCall = output.rooms.every(r => r.thermostatCalling === false);
+      if (noCall && output.state !== 'defrost' && output.state !== 'reversing') {
+        ordinaryNoCallSeconds += .25;
+        if (output.electrical.compressorW > 1e-9) ordinaryCompressorWithoutCallSeconds += .25;
+        assert.ok(output.electrical.compressorW <= 1e-9, 'Ordinary compressor is powered with every comfort call stopped');
+      }
       assert.ok(output.energy.electricityJ >= previous.energy.electricityJ, 'Electricity ledger decreased');
       assert.ok(output.energy.drainedWaterKg >= previous.energy.drainedWaterKg, 'Drained water ledger decreased');
       assert.ok(output.outdoor.iceKg >= -1e-12 && output.outdoor.liquidKg >= -1e-12, 'Negative retained water');
@@ -83,12 +116,13 @@ try {
   }
   save(resultPath, { id: scenario.id, outcome: 'pass', steps, updates, simulatedSeconds: output.simulatedSeconds,
     wallSeconds: (performance.now() - start) / 1000, maxEnergyResidualJ, maxWaterResidualKg, protectionCounts, states, stateEntries, completedDefrosts, maxStepWallMs,
-    final: { rooms: output.rooms, outdoor: output.outdoor, energy: output.energy } });
+    comfort: comfortTelemetry(), final: { rooms: output.rooms, outdoor: output.outdoor, energy: output.energy } });
 } catch (e) {
   save(resultPath, { id: scenario.id, outcome: e?.name === 'AssertionError' ? 'invariant-failure' : output?.diagnostics?.fault ? 'physical-fault' : 'exception', faultRollbackVerified,
     error: errorInfo(e), originalException: exception ?? e.cause ?? null, steps, updates, simulatedSeconds: output?.simulatedSeconds ?? 0,
     wallSeconds: (performance.now() - start) / 1000, operation: currentOperation, config,
-    acceptedCheckpoint: before, faultOutput: output, maxEnergyResidualJ, maxWaterResidualKg }); process.exitCode = 1;
+    acceptedCheckpoint: before, faultOutput: output, maxEnergyResidualJ, maxWaterResidualKg,
+    comfort: comfortTelemetry() }); process.exitCode = 1;
 } finally {
   try { properties?.dispose(); }
   catch (error) {

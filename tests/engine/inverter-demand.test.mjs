@@ -2,32 +2,46 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import Module from './backend.mjs';
 import {Properties,HeatPumpEngine,defaultEngineConfig} from './build/index.js';
-import {roomDemand} from './build/demand.js';
+import {roomDemand,inverterAllocationWeights} from './build/demand.js';
 import {driveStep} from './build/drive.js';
 const p=new Properties(await Module());
+test('calling branches retain a dimensionless normalized UA reserve when sensible demand crosses zero',()=>{
+ const c=defaultEngineConfig(3);c.rooms[0].refrigerantConductanceWK=100;c.rooms[1].refrigerantConductanceWK=300;
+ const shares=inverterAllocationWeights(c,[true,true,false],[1000,0,2000]);
+ assert.ok(Math.abs(shares.reduce((a,b)=>a+b,0)-1)<1e-12);assert.ok(shares[1]>0);assert.equal(shares[2],0);
+ assert.deepEqual(inverterAllocationWeights(c,[true,true,false],[0,0,2000]),[.25,.75,0]);
+ assert.deepEqual(inverterAllocationWeights(c,[false,false,false],[0,0,0]),[0,0,0]);
+ const e=new HeatPumpEngine(p,c),rooms=e.checkpoint().rooms;
+ for(const gains of [0,1000,3000]){
+  c.rooms[0].internalGainW=gains;
+  const d=roomDemand(c,rooms,c.rooms.map(r=>r.setpointC),[true,true,false],[0,0,0],.25,false);
+  assert.equal(d.active[0],true,'zero/nonzero PI request cannot toggle the call');assert.ok(d.fanFraction[0]>0);
+ }
+});
 function check(o,c){assert.equal(o.diagnostics.fault,null);assert.ok(Math.abs(o.energy.residualJ)<.01);assert.ok(Math.abs(o.energy.waterResidualKg)<1e-10);if(o.cycle)assert.ok(o.cycle.closureResidualW<=c.numerics.pressureToleranceW);else assert.equal(o.electrical.compressorW,0);}
 test('room demand balances target load and applies directional antiwindup independently',()=>{
  const c=defaultEngineConfig(2);const e=new HeatPumpEngine(p,c);const rooms=e.checkpoint().rooms;
  const t=c.rooms.map(r=>r.setpointC);const base=roomDemand(c,rooms,t,[true,true],[0,0],.25,false);
  assert.ok(base.heatW.every(q=>q>0));assert.ok(base.active.every(Boolean));
- const saturated=roomDemand(c,rooms,[t[0]-1,t[1]+1],[true,true],[0,0],1,true,true);
+ const saturated=roomDemand(c,rooms,[t[0]-1,t[1]+.5],[true,true],[0,0],1,true,true);
  const lower=roomDemand(c,rooms,[t[0]+100,t[1]],[false,true],[0,0],1,true,false);
  assert.equal(lower.integralW[0],0);
  assert.equal(saturated.integralW[0],0);assert.ok(saturated.integralW[1]<0);
  const approaching=roomDemand(c,rooms,[t[0]-2,t[1]-2],[true,true],[0,0],1,false);
  assert.ok(approaching.heatW[0]>base.heatW[0]);
 });
-test('inverter modulates continuously across target when load exceeds minimum capacity',()=>{
+test('inverter modulates continuously near target when load exceeds minimum capacity',()=>{
  const c=defaultEngineConfig(1);c.rooms[0].initialTemperatureC=21;c.rooms[0].envelopeWK=150;c.control.thermostatDeadbandK=.15;
- const e=new HeatPumpEngine(p,c);let crossed=false;
- for(let i=0;i<2400;i++){const o=e.step(.25);check(o,c);assert.ok(o.cycle);crossed ||= o.rooms[0].temperatureC>21;}
- assert.ok(crossed);assert.ok(e.snapshot().diagnostics.speedRps<c.compressor.speedMaxRps);
+ const e=new HeatPumpEngine(p,c);
+ for(let i=0;i<2400;i++){const o=e.step(.25);check(o,c);assert.ok(o.cycle);assert.equal(o.rooms[0].thermostatCalling,true);}
+ const final=e.snapshot();assert.ok(Math.abs(final.rooms[0].temperatureC-c.rooms[0].setpointC)<.2);
+ assert.ok(final.diagnostics.speedRps>c.compressor.speedMinRps);assert.ok(final.diagnostics.speedRps<c.compressor.speedMaxRps);
 });
 test('below-minimum load cycles with dwell, while conventional operation uses a fixed speed',()=>{
  for(const strategy of ['inverter','on-off']){
-  const c=defaultEngineConfig(1);c.control.strategy=strategy;c.control.thermostatDeadbandK=.15;c.rooms[0].initialTemperatureC=21;
+  const c=defaultEngineConfig(1);c.control.strategy=strategy;c.control.thermostatDeadbandK=.15;c.rooms[0].initialTemperatureC=21;c.rooms[0].envelopeWK=5;c.rooms[0].airFabricWK=0;
   const e=new HeatPumpEngine(p,c);let running=false,stopped=false,restarted=false;
-  for(let i=0;i<1600;i++){const o=e.step(.25);check(o,c);if(o.cycle){if(stopped)restarted=true;running=true;if(strategy==='on-off')assert.equal(o.diagnostics.speedRps,c.control.fixedSpeedRps);}else if(running)stopped=true;}
+  for(let i=0;i<2400;i++){const o=e.step(.25);check(o,c);if(o.cycle){if(stopped)restarted=true;running=true;if(strategy==='on-off')assert.equal(o.diagnostics.speedRps,c.control.fixedSpeedRps);}else if(running)stopped=true;}
   assert.ok(stopped&&restarted,strategy);
  }
 });
@@ -38,7 +52,7 @@ test('controller history rolls back on native failure and clears on strategy cha
  const before=e.checkpoint();assert.ok(before.demandIntegralW[0]>0);
  const original=p.airH;p.airH=()=>{throw new Error('injected native air failure');};
  try{const o=e.step(.25);assert.match(o.diagnostics.fault,/injected native/);}finally{p.airH=original;}
- const after=e.checkpoint();assert.deepEqual(after.demandIntegralW,before.demandIntegralW);assert.equal(after.inverterCycling,before.inverterCycling);assert.deepEqual(after.inventoryDrive,before.inventoryDrive);assert.deepEqual(after.rooms,before.rooms);
+ const after=e.checkpoint();assert.deepEqual(after.demandIntegralW,before.demandIntegralW);assert.equal(after.inverterCycling,before.inverterCycling);assert.deepEqual(after.thermostatCalls,before.thermostatCalls);assert.deepEqual(after.inventoryDrive,before.inventoryDrive);assert.deepEqual(after.rooms,before.rooms);
  c.control.strategy='on-off';e.updateConfig(c);assert.deepEqual(e.checkpoint().demandIntegralW,[0]);
  const invalid=structuredClone(c);delete invalid.control.fixedSpeedRps;invalid.compressor.speedMinRps=50;
  assert.throws(()=>new HeatPumpEngine(p,invalid),/Fixed compressor speed/);

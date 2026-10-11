@@ -16,23 +16,47 @@ upper and lower saturation block integration in the direction of further
 saturation independently for each room. Configuration mode/strategy changes
 clear the integral; room-ID matching preserves it across ordinary edits.
 
-Accepted cycle thermal capacity per actual speed is a lagged control estimate.
-The total request sets speed from that estimate, within configured speed limits;
-restart uses the existing fresh minimum-speed EOS forecast. Every actual operating
-point freshly satisfies the original equations and tolerances. Positive room
-requests supply relative branch flow weights in idealized lines; actual finite-UA
-branch outlets mix before expansion. Defrost/fixed-speed use UA allocation.
-Minimum-on retention of a zero-request path uses its UA coefficient as a declared
-relative fallback weight, not a requested or delivered watt quantity. Physical
-field-line heating retains its earlier branch-control scope.
+Every room has a stored thermostat call separate from its physical refrigerant
+path. In heating a satisfied room starts calling at target−1 K and a calling
+room stops at target+1 K; cooling reverses these thresholds. The default margin
+is 1 K on each side and remains configurable in the engine. Inside the band the
+call retains its previous state, independent of instantaneous positive/zero PI
+request. Explicit Off always clears it. New/reset/explicitly enabled units seed
+unknown history as calling at or beyond target in the demand direction. A mode
+change seeds the opposite-direction call; ordinary target/weather/size edits
+preserve known history. This initialization policy is a generic assumption.
 
-Target crossing alone does not turn an inverter branch off. Cycling is necessary
-when aggregate demand is below estimated minimum-speed capacity and every enabled
-room exceeds target by the configured comfort margin. A checkpointed latch stops
-normal demand until an enabled room returns to target. Minimum-on/off dwell still
-applies. This estimate is not an OEM minimum-capacity map or a guarantee that every
-load can be met continuously. Protection and defrost freeze ordinary integration.
-All controller state participates in whole-step rollback; no stored heat is reset.
+Calling inverter rooms use a continuous 25–100% commanded fan fraction across
+the band, reaching the low end just before the stop boundary. Configured high-fan
+flow and air-side conductance scale by that fraction; fan electrical watts scale
+by its cube. The cube is an ideal fan-affinity surrogate, including a simplified
+motor assumption, and linear conductance is a bounded generic heat-exchanger
+approximation. Neither is a measured domestic-unit map. Dirt scales the remaining
+flow/conductance at unchanged fan command. Actual thermal evolution and prospective
+cooling antifreeze checks use the same commanded flow/conductance. The SVG stream
+slows and fades with the accepted fan fraction. Fixed-speed units retain full
+fan command while calling.
+
+Accepted cycle thermal capacity per actual speed is a lagged control estimate.
+The total positive request sets speed within configured limits; restart uses a
+fresh minimum-speed EOS forecast. Every actual operating point freshly satisfies
+the original equations and tolerances. Idealized inverter branch allocation
+combines 95% normalized positive thermal-request shares with a 5% normalized
+active refrigerant-UA reserve. The latter is an explicit generic valve-opening
+assumption that retains a positive refrigerant path for a calling room whose PI
+request reaches zero. With no positive request, allocation uses normalized UA.
+Defrost/fixed-speed use UA allocation. Physical field-line heating retains its
+earlier branch-control scope. These shares are dimensionless, not OEM EEV maps.
+
+When the final comfort call stops, ordinary compressor operation stops without
+forcing heat into a satisfied room for minimum-on dwell. Minimum-off restart
+dwell and physical envelope protections remain. Defrost/reversal paths are
+separate safety states; explicit all-unit Off aborts the circuit while retaining
+stored heat, frost and water. A latched comfort call can remain true during a
+compressor protection hold while the physical fan/source behaves independently.
+The former global minimum-load latch is retained as an inactive checkpoint field
+for compatibility. Protection and defrost freeze ordinary integration. All
+controller history participates in whole-step rollback; no stored heat is reset.
 
 ## Manufacturer evidence
 
@@ -46,9 +70,9 @@ The [Danfoss VZN application guide](https://assets.danfoss.com/documents/latest/
 separates minimum speed, timing and operating-envelope control; its compressor
 specific values are not transplanted to this domestic generic model.
 
-Focused native tests passed; see `inverter-control-validation.json` for pinned
-source hashes, stability/conservation results and limits. Combined full regression
-and browser integration remain release gates. No new charge-model acceptance is implied.
+`inverter-control-validation.json` records the earlier controller and is historical
+evidence. The current symmetric thermostat and fan update has separate release
+checks under `reviews/indoor-comfort-*`. No new charge-model acceptance is implied.
 
 Exact manufacturer combination research is recorded separately in
 `daikin-3mxm52n8-specifications.md`. Its tabulated electrical ranges depend on

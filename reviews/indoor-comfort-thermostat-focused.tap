@@ -1,0 +1,13 @@
+✔ thermostat call persists between inclusive symmetric one-degree thresholds in both modes (13.595456ms)
+✔ inverter fan stays on and varies continuously inside a retained call (4.626886ms)
+✔ new and explicitly enabled thermostats seed history at target, then retain the full restart band (13.41647ms)
+✔ both modes retain independent inverter branches, modulate fans and stop when the final call stops (668.733178ms)
+✔ actual heating and cooling restart only beyond the one-degree margin and minimum-off dwell (3186.971923ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5484.67732

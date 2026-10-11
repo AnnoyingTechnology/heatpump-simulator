@@ -1152,6 +1152,11 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       // Each indoor fan follows its own reading; a closed branch neither spins nor blows.
       const fanOn = live ? (br[i]?.fanKw ?? 0) > 0 : rd.indoorFansOn;
       v.view.dataset.fan = fanOn ? '1' : '0';
+      const fanFraction = fanOn ? live ? eng?.fanSpeedFraction ?? 1 : 1 : 0;
+      v.view.dataset.fanFraction = String(fanFraction);
+      v.view.dataset.thermostatCalling = live && eng?.thermostatCalling ? '1' : '0';
+      v.view.style.setProperty('--indoor-air-duration', `${fanFraction > 0 ? 1.8 / fanFraction : 1.8}s`);
+      v.view.style.setProperty('--indoor-air-opacity', String(.35 + .35 * fanFraction));
       // Requested On/Off versus the actual backend branch. Live: off is shown as settled only once the branch has no
       // refrigerant flow and no fan power. Examples: fixed snapshot flow is not recalculated, so it is labelled requested.
       const branchOpen = live && rd.usable && ((rd.engine?.cycle?.branchMassFlowsKgs[i] ?? 0) > 0 || (br[i]?.fanKw ?? 0) > 0);
