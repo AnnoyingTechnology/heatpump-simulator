@@ -1,0 +1,62 @@
+{
+  "checkedAt": "2026-10-11T16:59:39.159Z",
+  "url": "https://annoyingtechnology.github.io/heatpump-simulator/",
+  "wasmUrl": "https://annoyingtechnology.github.io/heatpump-simulator/vendor/coolprop-safe/coolprop.wasm",
+  "wasmSha256": "55d4d93788e146f773ba7dbbd14ad47a3e24fc0a273eaad910879f5404bbe0d0",
+  "expectedBundles": [
+    "index-Btv-WLmn.js",
+    "index-DYviNUyh.css",
+    "worker-BtbMbeYO.js"
+  ],
+  "bundleHashes": {
+    "index-Btv-WLmn.js": "f6f79daddb78a738bf2ff1c25d29e74ffdee6969ff72ff45474c32e0ba810c10",
+    "index-DYviNUyh.css": "ad37e1e1aa64039bac3043fb5b0c77859c0c31242610217f0cfeb0a9c55f4c0f",
+    "worker-BtbMbeYO.js": "24d028752964df1d23fa89b8da92bf1d3418aad6df74a61480a52b6aeac737dd"
+  },
+  "checks": [
+    {
+      "name": "hosted site starts a real running worker with physical sensor readings",
+      "passed": true
+    },
+    {
+      "name": "hosted whole-house ruler keeps RT markers beside average U and estimated exposed area",
+      "passed": true
+    },
+    {
+      "name": "hosted zoom keeps the temperature scales at the bottom and headline trends use borderless separators",
+      "passed": true
+    },
+    {
+      "name": "hosted winter preset, room junctions, session COP and drained-water total are visible",
+      "passed": true
+    },
+    {
+      "name": "paused weather and individual indoor controls preserve the simulation clock",
+      "passed": true
+    },
+    {
+      "name": "requested acceleration resumes physical time without restarting",
+      "passed": true
+    },
+    {
+      "name": "hosted application and assets report no runtime or loading errors",
+      "passed": true
+    }
+  ],
+  "achievedRate": "48.8\u00d7",
+  "resumedOperatingState": "idle",
+  "desktop": {
+    "width": 1600,
+    "height": 1000
+  },
+  "releaseCommit": "56eadf35c339001006cb5d55d4637bfb545f5e1d",
+  "githubRun": "38157081493",
+  "githubConclusion": "success",
+  "ciChecks": {
+    "reference": 156,
+    "frontend": 7,
+    "catalogue": 32,
+    "topology": 7,
+    "smoke": 25
+  }
+}

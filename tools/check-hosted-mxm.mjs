@@ -28,7 +28,7 @@ try {
  });
  if(process.env.HEATPUMP_HOSTED_LEGACY==='1')await check('legacy same-count selection retains the house and keeps unpublished constraints unknown',async()=>{
   await choose('3MXM52N2V1B8');
-  await page.waitFor('document.querySelector("[data-probe=\"compressor-discharge\"]")?.dataset.source==="live"',60000);
+  await page.waitFor("document.querySelector('[data-probe=compressor-discharge]')?.dataset.source==='live'",60000);
   assert.equal(await run(()=>document.querySelector('.ou-model-select').value),'3MXM52N2V1B8');
   assert.deepEqual(await run(snapshot),before);
   assert.match(await run(()=>document.querySelector('[data-installation-status]').textContent),/exact OEM combination: unknown/);
