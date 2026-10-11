@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-11T15:57:11.262Z",
+  "checkedAt": "2026-10-11T16:04:39.426Z",
   "checks": [
     {
       "name": "factory R32 remains fixed and choosing generic equipment retains the current house and accepted history",
@@ -10,7 +10,7 @@
       "passed": true
     },
     {
-      "name": "unsupported property-only and physical-line combinations cannot be selected or silently substituted",
+      "name": "unqualified physical-line combinations cannot be selected or silently substituted",
       "passed": true
     },
     {
@@ -28,7 +28,8 @@
     "R290",
     "R134a",
     "R1234yf",
-    "R410A"
+    "R410A",
+    "R407C"
   ],
   "chargeRelease": false
 }

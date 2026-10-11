@@ -1,6 +1,8 @@
 /** Presentation catalogue. Manufacturer references, user labels and model data are
  * intentionally not translated. Dynamic placeholders retain their supplied values. */
 const BASE: Readonly<Record<string, string>> = {
+"Lemmon2003 fixed-composition pseudo-pure Reference comparator retains bubble/dew glide; interior phase composition and mass quality are unresolved. Sampled full-mixture deviations are documented; physical field lines, conserved inventory and fractionation are not qualified.":"Comparateur de référence pseudo-pur Lemmon2003 à composition fixe : glissement bulle/rosée conservé, composition des phases et titre massique non résolus. Écarts échantillonnés au mélange complet documentés ; liaisons physiques, inventaire et fractionnement non qualifiés.",
+
 "Examples use fixed R32 snapshots; fluid selection applies to Live only.":"Exemples : valeurs R32 figées ; choix du fluide réservé à la simulation.",
 
  "Refrigerant qualification":"Qualification du frigorigène",

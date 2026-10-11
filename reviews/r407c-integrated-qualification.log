@@ -1,0 +1,37 @@
+✔ R22 heating starts with actual conserved subminimum throughput and reaches8rps (2185.225081ms)
+✔ R22 cooling starts with actual conserved subminimum throughput and reaches8rps (2488.791917ms)
+✔ R407C heating starts with actual conserved subminimum throughput and reaches8rps (357.592561ms)
+✔ R407C cooling starts with actual conserved subminimum throughput and reaches8rps (1209.31469ms)
+✔ R410A heating starts with actual conserved subminimum throughput and reaches8rps (866.853755ms)
+✔ R410A cooling starts with actual conserved subminimum throughput and reaches8rps (3457.848758ms)
+✔ R32 heating starts with actual conserved subminimum throughput and reaches8rps (436.479054ms)
+✔ R32 cooling starts with actual conserved subminimum throughput and reaches8rps (1991.115272ms)
+✔ R290 heating starts with actual conserved subminimum throughput and reaches8rps (426.799803ms)
+✔ R290 cooling starts with actual conserved subminimum throughput and reaches8rps (1316.445724ms)
+✔ R134a heating starts with actual conserved subminimum throughput and reaches8rps (435.379329ms)
+✔ R134a cooling starts with actual conserved subminimum throughput and reaches8rps (882.295353ms)
+✔ R1234yf heating starts with actual conserved subminimum throughput and reaches8rps (360.701816ms)
+✔ R1234yf cooling starts with actual conserved subminimum throughput and reaches8rps (672.878576ms)
+✔ R32 retained warm coils restart through solved low speeds after Off and the full dwell (12820.240451ms)
+✔ natural R32 frost keeps the dedicated defrost command then ramps actual heating return (59293.262322ms)
+✔ fixed-speed Reference keeps its explicit18rps starting command (20.290639ms)
+✔ qualified fluids use their own EOS and recover their identity after native rejection (3396.050432ms)
+✔ qualified fluids conserve real EOS heating/cooling and reverse defrost cycles with one, three and five branches (2163.479253ms)
+✔ qualified R32 physical field-line modes conserve cycles (1263.859081ms)
+✔ coupled moisture, frost/reversal, inverter and Off transitions conserve energy and water for released fluids (98206.130881ms)
+✔ unknown fluids, inventory changes and unresolved blend circuits fail closed (16.907627ms)
+✔ released alternate fluids reject physical field lines and preserve their configured hardware (2.278027ms)
+✔ R410A retains its documented pseudo-pure glide in coil pinches and equilibrium temperature inverses (1.746665ms)
+✔ R407C fixed mass composition resolves nonlinear phase equilibrium and explicit mass quality without releasing its circuit (668.936426ms)
+✔ R407C published pseudo-pure Reference retains nonzero glide without presenting surrogate Q as mass quality (1.840001ms)
+✔ R407C approximate properties remain within declared sampled full-mixture deviations (9226.372102ms)
+✔ published PPF latent integrals match independent native off-grid temperatures for both heat directions (2740.284329ms)
+✔ released idealized refrigerants close direct zero-to-minimum startup points at unchanged tolerances (542.890315ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 29
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 118380.857019

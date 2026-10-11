@@ -20,7 +20,7 @@ try{
  });
  await check('each qualified fluid starts a fresh real worker and room history without replacing house inputs',async()=>{
   const rooms=await run(()=>JSON.stringify(qa.store.state.cfg.rooms));
-  for(const fluid of ['R22','R290','R134a','R1234yf','R410A','R32']){
+  for(const fluid of ['R22','R290','R134a','R1234yf','R410A','R407C','R32']){
    const epoch=await run(()=>qa.store.resetEpoch);await choose(fluid);
    assert.equal(await run(()=>qa.store.resetEpoch),epoch+1);
    assert.equal(await run(()=>qv.simulation.status.output.simulatedSeconds),0);
@@ -31,11 +31,11 @@ try{
    await run(()=>qv.simulation.step(2));await settle();
    const a=await run(()=>{const o=qv.simulation.status.output;return {time:o.simulatedSeconds,fault:o.diagnostics.fault,error:qv.simulation.status.error,rps:o.diagnostics.actualSpeedRps,work:o.cycle?.compressorWorkW,residual:o.energy.residualJ}});
    assert.equal(a.time,2);assert.equal(a.fault,null);assert.equal(a.error,null);assert.ok(a.work>0);assert.ok(Math.abs(a.residual)<.001);
+   if(fluid==='R407C') assert.ok(await run(()=>{const c=qv.simulation.status.output.cycle;return [c.suction,c.discharge,c.condenserOutlet,c.expansionOutlet,...c.branchInlets,...c.branchOutlets].every(s=>s.qualityMass===null)}));
   }
  });
- await check('unsupported property-only and physical-line combinations cannot be selected or silently substituted',async()=>{
-  assert.equal(await run(()=>document.querySelector('.ou-fluid-select option[value="R407C"]').disabled),true);
-  await choose('R407C');assert.equal(await run(()=>qa.store.state.cfg.live.refrigerant),'R32');
+ await check('unqualified physical-line combinations cannot be selected or silently substituted',async()=>{
+  assert.equal(await run(()=>document.querySelector('.ou-fluid-select option[value="R407C"]').disabled),false);
   await choose('R290');
   assert.equal(await run(()=>document.querySelector('[data-block="line-model"] button:last-child').disabled),true);
   await choose('R32');
@@ -74,5 +74,5 @@ try{
   await run(()=>qi.setLanguage('en'));
  });
  assert.deepEqual(page.events.filter(e=>e.method==='Runtime.exceptionThrown'),[]);
- await writeFile('reviews/refrigerant-selection-browser-results.json',JSON.stringify({checkedAt:new Date().toISOString(),checks,fluids:['R32','R22','R290','R134a','R1234yf','R410A'],chargeRelease:false},null,2)+'\n');
+ await writeFile('reviews/refrigerant-selection-browser-results.json',JSON.stringify({checkedAt:new Date().toISOString(),checks,fluids:['R32','R22','R290','R134a','R1234yf','R410A','R407C'],chargeRelease:false},null,2)+'\n');
 }finally{await page.close();await dev.close()}

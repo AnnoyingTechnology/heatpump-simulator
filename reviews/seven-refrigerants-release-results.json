@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-10-11T16:13:27.317425+00:00",
+  "scope": "Seven-fluid idealized Reference startup/selection; charge remains gated",
+  "nativeRegression": {
+    "passed": 156,
+    "failed": 0,
+    "receipt": "reviews/seven-refrigerants-reference-regression.log"
+  },
+  "frontend": 7,
+  "selectionBrowser": {
+    "passed": 5,
+    "receipt": "reviews/seven-refrigerants-selection-browser-results.json"
+  },
+  "fullStartupTrajectories": {
+    "passed": 48,
+    "receipt": "reviews/reference-startup-20261011/six-fluid-startup-qualification-results.json"
+  },
+  "sourceHashes": {
+    "src/engine/envelope.ts": "422e28da3fe5dfec8a62bb9f949340cd04b96ec9e5592bdc6eb13f673065b5d8",
+    "src/engine/properties.ts": "f0ec74c7014a0d8ccc5ebb6ca674a2ee1e40dd096ff0d5ceef975b5fe74cabb1",
+    "src/engine/engine.ts": "cf5b31a477594c685846d25604fe381167b17ce0514adee323e38376d0e19cea",
+    "src/engine/air.ts": "6dfb70bd7b7c5b84501e0de1633cf8378ea0b2bd0eb903dafe09c31625745d15",
+    "src/engine/thermostat.ts": "f09821cdd3853d7e6c18e27e85ce278a333414ccc2b0366b51b9fa2c62873db0",
+    "src/engine/refrigerants.ts": "a18c1bc71dd03f7dfdaf76fbbf2c38bcbcb0576a25c3af1de727f1d5a0083e1b",
+    "src/engine/charge.ts": "0c9dd8050fab6b3bd16bcb881f59fc00debc2f85c774c2a1c2216d45d289e168",
+    "src/engine/drive.ts": "5ec2c4e08a7e606d2e81d29efedbb78c8c7a8677126b2495623926b0c2d4cd60",
+    "src/engine/demand.ts": "8caaf0dfd771521ab38bea1005febb63b7d187be8f77e598b9e48b6810234abf",
+    "src/engine/transport.ts": "02615da8ff2c906a163d1510abe30aaf7fe952b2555c138ed6f544f75c7cf31f",
+    "src/engine/ventilation.ts": "6aef508a062fca992c2b7a1961ae69c12ae5317c5824326ffe57a1a0a4ecd8d8",
+    "src/engine/interzone.ts": "20671a676f3174e1757f4368ef0b4f1046a07b4b35d8e5377aaf689c8a43ee2b",
+    "src/engine/types.ts": "d3f1d7bb9520ed37ac7c62b1d66dfa2c0ad62abef79facf95c361c52744bd43a",
+    "src/engine/defaults.ts": "0ea966a23c72ce8b4173fc5a5e11e3b317a8a4819ef3ca23916e24f0f8dde7fb",
+    "src/engine/cycle.ts": "18b69ea40bd380d7da6d0bef273f777690a714ee1dbf1c5ccd9f79349ebc9091",
+    "src/engine/film.ts": "3cfeda3465b8c5226e6ed82bada490abdc42577fdadd4a1d0a2e3fb682285dbb",
+    "src/engine/charge-output.ts": "ca0bed2dd4836af7e72dce71e28e5d0b11309358f4c3da0bb6365a9079142ff7",
+    "src/engine/index.ts": "291433fac0758af34a02c1caa28d576151add1cf56c72a1c565a240e57a9295a",
+    "public/vendor/coolprop-safe/coolprop.wasm": "55d4d93788e146f773ba7dbbd14ad47a3e24fc0a273eaad910879f5404bbe0d0",
+    "public/vendor/coolprop-safe/LICENSE-CoolProp": "9bf835333ef602af4cb19338b9f9d43671e174fa029b00280e9bdba6ea4719b2",
+    "public/vendor/coolprop-safe/adapter.js": "77c6dcdca6c4c0634abb44560bdb5c8a611634f9f7bf97bada1f0937e6212902",
+    "public/vendor/coolprop-safe/coolprop.js": "6fa2e627803e2453da12cb9fce160ca3326851cd179444edc5ab698e21524d6c",
+    "public/vendor/coolprop-safe/provenance.json": "1f05372e5c7ef53023327103d9e7f8643ce584ba197386c3b87151998f8094b7",
+    "src/runtime/config.ts": "81261241228505092a8d9bf302313596183476d91a1b4ff6f95049e5cfc64e74",
+    "src/runtime/controller.ts": "a25ac35fc65d46ac0567e1609d9c2a705ce7243d51ec20fec47bbc6322b8d7f2",
+    "src/runtime/worker.ts": "c6936e7df679c065df39a83f89c1b785085baed027009970e7546daf7abc6fa8"
+  },
+  "initialRejections": "reviews/refrigerant-startup-reference-initial-rejections.log",
+  "smokeBeforeSeedCorrection": {
+    "passed": 25,
+    "sourcePinned": true,
+    "note": "Separate earlier snapshot; final deployed source must pass CI smoke again."
+  },
+  "r407cIntegration": {
+    "passed": 29,
+    "receipt": "reviews/r407c-integrated-qualification.log"
+  },
+  "releaseStatus": "Local qualification; independent hosted deployment gate remains pending"
+}
