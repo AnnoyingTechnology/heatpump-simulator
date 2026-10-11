@@ -111,15 +111,29 @@ def source_review_metadata(unit, accepted, root):
         path = root / source['path']
         if not path.exists() or sha(path) != source['sha256']:
             raise ValueError('Required source-qualified primary snapshot is missing or changed')
+    if accepted['reference'] != unit['modelReference']:
+        raise ValueError('Source-reviewed identity cannot be renamed or aliased')
+    for item in [*reviewed.get('designatedResearchInputs', []), *([reviewed['primaryTableReadback']] if 'primaryTableReadback' in reviewed else [])]:
+        path = root / item['path']
+        if not path.exists() or sha(path) != item['sha256']:
+            raise ValueError('Designated research input or independent primary readback is missing or changed')
     row = next(r for r in reviewed['reviewedUnits'] if r['reference'] == unit['modelReference'])
     if unit['status'] != row['candidateStatus'] or set(accepted['factKeys']) != set(row['factKeys']):
         raise ValueError('Source-reviewed status or applied field set changed')
-    for fact in unit['facts']:
-        if fact['key'] in row['factValues']:
-            if fact['value'] != row['factValues'][fact['key']] or fact.get('condition') != row.get('factConditions', {}).get(fact['key']):
-                raise ValueError('Source-qualified fact or condition differs from independent readback')
-    if accepted['ports'] != row['ports'] or accepted['compatibleIndoorClasses'] != row['compatibleIndoorClasses'] or accepted['pairingEvidence'] != row['pairingEvidence']:
-        raise ValueError('Source-reviewed exact pairing or topology changed')
+    if set(row['factValues']) != set(accepted['factKeys']):
+        raise ValueError('Independent readback must cover every applied field exactly')
+    for key, value in row['factValues'].items():
+        condition = row.get('factConditions', {}).get(key)
+        if key == 'airflow' and accepted.get('coolingAirflowCondition') != condition:
+            raise ValueError('Source-reviewed cooling airflow condition changed')
+        facts = [f for f in unit['facts'] if f['key'] == key and f.get('condition') == condition]
+        if len(facts) != 1 or facts[0]['value'] != value:
+            raise ValueError('Source-qualified fact or condition differs from independent readback')
+    if unit['unitType'] == 'outdoor':
+        if accepted['ports'] != row['ports'] or accepted['compatibleIndoorClasses'] != row['compatibleIndoorClasses'] or accepted['pairingEvidence'] != row['pairingEvidence']:
+            raise ValueError('Source-reviewed exact pairing or topology changed')
+    elif any(key in accepted for key in ('ports', 'compatibleIndoorClasses', 'pairingEvidence')):
+        raise ValueError('Indoor physical-field review cannot certify an outdoor pairing')
     metadata = row['runtimeMetadata']
     if any(accepted.get(k) != value for k, value in metadata.items()):
         raise ValueError('Region or availability claim differs from independent source review')

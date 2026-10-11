@@ -1,0 +1,470 @@
+{
+  "scope": "Independent bounded source review/correction of designated Luna exact indoor research; physical fields only, no OEM pairing certification",
+  "candidate": {
+    "path": "research/catalogue/staging/reviewed-luna-siesta-exact-indoor-2026.json",
+    "sha256": "0d2bc595d99bf92023777a67aaad6c17a9eb8662ac8d747963b7242806441e9f"
+  },
+  "designatedResearchInputs": [
+    {
+      "path": "research/catalogue/staging/luna-siesta-atxm-a-exact-indoor-2026.json",
+      "sha256": "d1208053a90c4951dac3eed6238c5a9746e0e96a938fb5491eb1c5d65de1e6c0"
+    },
+    {
+      "path": "research/catalogue/staging/luna-siesta-atxp-n9-exact-indoor-2026.json",
+      "sha256": "23e27a07f285a5e21bbb4712c59cd33ce9067298de5584e3071e5fd4868bd6be"
+    },
+    {
+      "path": "research/catalogue/staging/luna-siesta-atxf-f-exact-indoor-2026.json",
+      "sha256": "3bdecb91c6029619961d675064188d5529be6dce3841c4ad43178119099bf43d"
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "research/sources/luna-siesta-ATXM-A.html",
+      "sha256": "893727172a0efd7f97ece3aed89a049aa64b19f1502b41f7367b63891d77e88d"
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXP-N9.html",
+      "sha256": "75f28ae6e95d4b82b06565a0d2803901203d11a24f0119fbe819c6890fa0de09"
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXF-F.html",
+      "sha256": "3e49ed4b1e1044825cc19b0713434436a2c90f31b89e0e2eca91f57eb79669ea"
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXM-A---ARXM-A.html",
+      "sha256": "9ac548e61ee1ff177f8b42d03248b0fb7d600e4227bd39ba05aaf18b53f735cb"
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXF-F---ARXF-A9.html",
+      "sha256": "a9560779cf1c27f41d9d823e87fbc023d4a27ba887322141c6d5d7860e674162"
+    }
+  ],
+  "primaryTableReadback": {
+    "path": "reviews/siesta-primary-table-readback-2026.json",
+    "sha256": "4b8bb93c24f3a783d03f5fadf47a94939d4f218b14bef8bfb03151bde6079534"
+  },
+  "reviewedUnits": [
+    {
+      "reference": "ATXM20A2V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 298.0,
+        "width": 804.0,
+        "depth": 252.0,
+        "airflow": 714.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXM20A5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 298.0,
+        "width": 804.0,
+        "depth": 252.0,
+        "airflow": 714.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXM25A2V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 298.0,
+        "width": 804.0,
+        "depth": 252.0,
+        "airflow": 714.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXM25A5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 298.0,
+        "width": 804.0,
+        "depth": 252.0,
+        "airflow": 714.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXM35A2V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 298.0,
+        "width": 804.0,
+        "depth": 252.0,
+        "airflow": 792.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXM35A5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 298.0,
+        "width": 804.0,
+        "depth": 252.0,
+        "airflow": 792.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXM50A2V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 298.0,
+        "width": 804.0,
+        "depth": 252.0,
+        "airflow": 762.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXM50A5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 298.0,
+        "width": 804.0,
+        "depth": 252.0,
+        "airflow": 762.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXP20N5V1B9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 286.0,
+        "width": 770.0,
+        "depth": 225.0,
+        "airflow": 570.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXP25N5V1B9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 286.0,
+        "width": 770.0,
+        "depth": 225.0,
+        "airflow": 582.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXP35N5V1B9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 286.0,
+        "width": 770.0,
+        "depth": 225.0,
+        "airflow": 690.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXF20F5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 286.0,
+        "width": 770.0,
+        "depth": 225.0,
+        "airflow": 588.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXF25F5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 286.0,
+        "width": 770.0,
+        "depth": 225.0,
+        "airflow": 600.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXF35F5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 286.0,
+        "width": 770.0,
+        "depth": 225.0,
+        "airflow": 690.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXF42F5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 286.0,
+        "width": 770.0,
+        "depth": 225.0,
+        "airflow": 756.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXF50F5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 286.0,
+        "width": 770.0,
+        "depth": 225.0,
+        "airflow": 756.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXF60F2V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 295.0,
+        "width": 990.0,
+        "depth": 263.0,
+        "airflow": 1038.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    },
+    {
+      "reference": "ATXF71F2V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 295.0,
+        "width": 990.0,
+        "depth": 263.0,
+        "airflow": 1038.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      }
+    }
+  ],
+  "findings": [
+    "All18 exact references/dimensions are unchanged from designated Luna research. Cooling and heating fan-flow supplements are read from individually labeled pinned source columns, not inferred from family names.",
+    "ATXF source header is 71/20/25/35/50/42/60; every field is associated by full reference rather than numeric order.",
+    "8 exact ARXM/ARXF monosplit pair columns remain documentary only until those distinct outdoor physical profiles are reviewed. ATXP exact pairing remains unknown.",
+    "No archived markers were present in these three indoor HTML tables. Technical-table presence does not establish current retail availability.",
+    "The two ATXF documentary pairing descriptions are corrected from Europe-listed to France-table because their exact pinned source is daikin.fr; original Luna candidates remain unchanged."
+  ]
+}

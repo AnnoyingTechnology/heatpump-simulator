@@ -1,0 +1,365 @@
+{
+  "scope": "Independent cached primary table readback; source cells only, not runtime acceptance or sales status",
+  "sources": [
+    {
+      "path": "research/sources/luna-siesta-ATXM-A.html",
+      "sha256": "893727172a0efd7f97ece3aed89a049aa64b19f1502b41f7367b63891d77e88d",
+      "header": [
+        "ATXM20A2V1B",
+        "ATXM20A5V1B",
+        "ATXM25A2V1B",
+        "ATXM25A5V1B",
+        "ATXM35A2V1B",
+        "ATXM35A5V1B",
+        "ATXM50A2V1B",
+        "ATXM50A5V1B"
+      ]
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXP-N9.html",
+      "sha256": "75f28ae6e95d4b82b06565a0d2803901203d11a24f0119fbe819c6890fa0de09",
+      "header": [
+        "ATXP20N5V1B9",
+        "ATXP25N5V1B9",
+        "ATXP35N5V1B9"
+      ]
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXF-F.html",
+      "sha256": "3e49ed4b1e1044825cc19b0713434436a2c90f31b89e0e2eca91f57eb79669ea",
+      "header": [
+        "ATXF71F2V1B",
+        "ATXF20F5V1B",
+        "ATXF25F5V1B",
+        "ATXF35F5V1B",
+        "ATXF50F5V1B",
+        "ATXF42F5V1B",
+        "ATXF60F2V1B"
+      ]
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXM-A---ARXM-A.html",
+      "sha256": "9ac548e61ee1ff177f8b42d03248b0fb7d600e4227bd39ba05aaf18b53f735cb",
+      "header": [
+        "ATXM25A2V1B / ARXM25A5V1B",
+        "ATXM25A5V1B / ARXM25A5V1B",
+        "ATXM35A2V1B / ARXM35A5V1B",
+        "ATXM35A5V1B / ARXM35A5V1B",
+        "ATXM50A2V1B / ARXM50A5V1B",
+        "ATXM50A5V1B / ARXM50A5V1B"
+      ]
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXF-F---ARXF-A9.html",
+      "sha256": "a9560779cf1c27f41d9d823e87fbc023d4a27ba887322141c6d5d7860e674162",
+      "header": [
+        "ATXF60F2V1B / ARXF60A5V1B9",
+        "ATXF71F2V1B / ARXF71A5V1B9"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "reference": "ATXM20A2V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXM-A.html",
+      "facts": {
+        "height": 298.0,
+        "width": 804.0,
+        "depth": 252.0,
+        "coolingHighFanM3min": 11.9,
+        "heatingHighFanM3min": 11.4,
+        "coolingHighFanM3h": 714.0,
+        "heatingHighFanM3h": 684.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXM20A5V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXM-A.html",
+      "facts": {
+        "height": 298.0,
+        "width": 804.0,
+        "depth": 252.0,
+        "coolingHighFanM3min": 11.9,
+        "heatingHighFanM3min": 11.4,
+        "coolingHighFanM3h": 714.0,
+        "heatingHighFanM3h": 684.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXM25A2V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXM-A.html",
+      "facts": {
+        "height": 298.0,
+        "width": 804.0,
+        "depth": 252.0,
+        "coolingHighFanM3min": 11.9,
+        "heatingHighFanM3min": 11.4,
+        "coolingHighFanM3h": 714.0,
+        "heatingHighFanM3h": 684.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXM25A5V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXM-A.html",
+      "facts": {
+        "height": 298.0,
+        "width": 804.0,
+        "depth": 252.0,
+        "coolingHighFanM3min": 11.9,
+        "heatingHighFanM3min": 11.4,
+        "coolingHighFanM3h": 714.0,
+        "heatingHighFanM3h": 684.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXM35A2V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXM-A.html",
+      "facts": {
+        "height": 298.0,
+        "width": 804.0,
+        "depth": 252.0,
+        "coolingHighFanM3min": 13.2,
+        "heatingHighFanM3min": 11.1,
+        "coolingHighFanM3h": 792.0,
+        "heatingHighFanM3h": 666.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXM35A5V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXM-A.html",
+      "facts": {
+        "height": 298.0,
+        "width": 804.0,
+        "depth": 252.0,
+        "coolingHighFanM3min": 13.2,
+        "heatingHighFanM3min": 11.1,
+        "coolingHighFanM3h": 792.0,
+        "heatingHighFanM3h": 666.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXM50A2V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXM-A.html",
+      "facts": {
+        "height": 298.0,
+        "width": 804.0,
+        "depth": 252.0,
+        "coolingHighFanM3min": 12.7,
+        "heatingHighFanM3min": 14.5,
+        "coolingHighFanM3h": 762.0,
+        "heatingHighFanM3h": 870.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXM50A5V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXM-A.html",
+      "facts": {
+        "height": 298.0,
+        "width": 804.0,
+        "depth": 252.0,
+        "coolingHighFanM3min": 12.7,
+        "heatingHighFanM3min": 14.5,
+        "coolingHighFanM3h": 762.0,
+        "heatingHighFanM3h": 870.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXP20N5V1B9",
+      "sourcePath": "research/sources/luna-siesta-ATXP-N9.html",
+      "facts": {
+        "height": 286.0,
+        "width": 770.0,
+        "depth": 225.0,
+        "coolingHighFanM3min": 9.5,
+        "heatingHighFanM3min": 10.4,
+        "coolingHighFanM3h": 570.0,
+        "heatingHighFanM3h": 624.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXP25N5V1B9",
+      "sourcePath": "research/sources/luna-siesta-ATXP-N9.html",
+      "facts": {
+        "height": 286.0,
+        "width": 770.0,
+        "depth": 225.0,
+        "coolingHighFanM3min": 9.7,
+        "heatingHighFanM3min": 10.4,
+        "coolingHighFanM3h": 582.0,
+        "heatingHighFanM3h": 624.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXP35N5V1B9",
+      "sourcePath": "research/sources/luna-siesta-ATXP-N9.html",
+      "facts": {
+        "height": 286.0,
+        "width": 770.0,
+        "depth": 225.0,
+        "coolingHighFanM3min": 11.5,
+        "heatingHighFanM3min": 11.5,
+        "coolingHighFanM3h": 690.0,
+        "heatingHighFanM3h": 690.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXF71F2V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXF-F.html",
+      "facts": {
+        "height": 295.0,
+        "width": 990.0,
+        "depth": 263.0,
+        "coolingHighFanM3min": 17.3,
+        "heatingHighFanM3min": 17.9,
+        "coolingHighFanM3h": 1038.0,
+        "heatingHighFanM3h": 1074.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXF20F5V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXF-F.html",
+      "facts": {
+        "height": 286.0,
+        "width": 770.0,
+        "depth": 225.0,
+        "coolingHighFanM3min": 9.8,
+        "heatingHighFanM3min": 10.4,
+        "coolingHighFanM3h": 588.0,
+        "heatingHighFanM3h": 624.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXF25F5V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXF-F.html",
+      "facts": {
+        "height": 286.0,
+        "width": 770.0,
+        "depth": 225.0,
+        "coolingHighFanM3min": 10.0,
+        "heatingHighFanM3min": 10.4,
+        "coolingHighFanM3h": 600.0,
+        "heatingHighFanM3h": 624.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXF35F5V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXF-F.html",
+      "facts": {
+        "height": 286.0,
+        "width": 770.0,
+        "depth": 225.0,
+        "coolingHighFanM3min": 11.5,
+        "heatingHighFanM3min": 11.9,
+        "coolingHighFanM3h": 690.0,
+        "heatingHighFanM3h": 714.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXF50F5V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXF-F.html",
+      "facts": {
+        "height": 286.0,
+        "width": 770.0,
+        "depth": 225.0,
+        "coolingHighFanM3min": 12.6,
+        "heatingHighFanM3min": 12.8,
+        "coolingHighFanM3h": 756.0,
+        "heatingHighFanM3h": 768.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXF42F5V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXF-F.html",
+      "facts": {
+        "height": 286.0,
+        "width": 770.0,
+        "depth": 225.0,
+        "coolingHighFanM3min": 12.6,
+        "heatingHighFanM3min": 12.8,
+        "coolingHighFanM3h": 756.0,
+        "heatingHighFanM3h": 768.0
+      },
+      "status": "availability-unknown"
+    },
+    {
+      "reference": "ATXF60F2V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXF-F.html",
+      "facts": {
+        "height": 295.0,
+        "width": 990.0,
+        "depth": 263.0,
+        "coolingHighFanM3min": 17.3,
+        "heatingHighFanM3min": 17.9,
+        "coolingHighFanM3h": 1038.0,
+        "heatingHighFanM3h": 1074.0
+      },
+      "status": "availability-unknown"
+    }
+  ],
+  "pairings": [
+    {
+      "indoor": "ATXM25A2V1B",
+      "outdoor": "ARXM25A5V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXM-A---ARXM-A.html",
+      "scope": "monosplit exact full-reference header only"
+    },
+    {
+      "indoor": "ATXM25A5V1B",
+      "outdoor": "ARXM25A5V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXM-A---ARXM-A.html",
+      "scope": "monosplit exact full-reference header only"
+    },
+    {
+      "indoor": "ATXM35A2V1B",
+      "outdoor": "ARXM35A5V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXM-A---ARXM-A.html",
+      "scope": "monosplit exact full-reference header only"
+    },
+    {
+      "indoor": "ATXM35A5V1B",
+      "outdoor": "ARXM35A5V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXM-A---ARXM-A.html",
+      "scope": "monosplit exact full-reference header only"
+    },
+    {
+      "indoor": "ATXM50A2V1B",
+      "outdoor": "ARXM50A5V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXM-A---ARXM-A.html",
+      "scope": "monosplit exact full-reference header only"
+    },
+    {
+      "indoor": "ATXM50A5V1B",
+      "outdoor": "ARXM50A5V1B",
+      "sourcePath": "research/sources/luna-siesta-ATXM-A---ARXM-A.html",
+      "scope": "monosplit exact full-reference header only"
+    },
+    {
+      "indoor": "ATXF60F2V1B",
+      "outdoor": "ARXF60A5V1B9",
+      "sourcePath": "research/sources/luna-siesta-ATXF-F---ARXF-A9.html",
+      "scope": "monosplit exact full-reference header only"
+    },
+    {
+      "indoor": "ATXF71F2V1B",
+      "outdoor": "ARXF71A5V1B9",
+      "sourcePath": "research/sources/luna-siesta-ATXF-F---ARXF-A9.html",
+      "scope": "monosplit exact full-reference header only"
+    }
+  ]
+}

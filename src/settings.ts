@@ -1092,7 +1092,8 @@ export function createRoomSettings(openShared: () => void): PopContent {
       const cls = r?.indoorClass;
       const profile = cls ? indoorModelProfile(cls) : undefined;
       const known = cls ? indoorOptionsForOutdoor(s.cfg.outdoorKind).find((o) => o.value === cls) : undefined;
-      setText(modelFact, `Model: ${known?.text ?? cls ?? '—'}. Change it with the model list on the room's unit block.`);
+      setText(modelFact, `Model: ${known?.text ?? cls ?? '—'}. Change it with the model list on the room's unit block.`
+        + (profile && 'marketScope' in profile ? ' Listed in a France technical table; current retail availability is unverified. Outdoor pairing requires its own source evidence.' : ''));
       const nominal = cls ? (INDOOR_CLASSES[cls].nominalKw === null ? 'Capacity depends on the matched system; no individual output map is accepted.' : `Nominal ${INDOOR_CLASSES[cls].nominalKw} kW is a class label, not an output map.`) : '';
       setText(modelHint, profile && r?.volumetricAirFlowM3s !== undefined
         ? `Published airflow · generic cycle: ${fmt(r.volumetricAirFlowM3s * 3600, 0)} m³/h (cooling high fan; reused in heating as an assumption). Fan watts, coil UA and compressor stay generic. ${nominal}`

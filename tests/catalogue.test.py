@@ -551,6 +551,67 @@ class CatalogueAcceptance(unittest.TestCase):
             shutil.copyfile(ROOT / accepted['sourceReview']['path'], path)
             with self.assertRaisesRegex(ValueError, 'primary snapshot'): module.source_review_metadata(unit, accepted, isolated)
 
+    def test_siesta_exact_head_flows_follow_source_header_not_class_or_ftx_alias(self):
+        profiles = json.loads(re.search(r'export const CATALOGUE_INDOORS = (.*?) as const;', module.generate(), re.S).group(1))
+        readback = json.loads((ROOT / 'reviews/siesta-primary-table-readback-2026.json').read_text())
+        self.assertEqual(len(readback['units']), 18)
+        expected = {row['reference']: row for row in readback['units']}
+        accepted = [row for row in self.review['units'] if row['candidateFile'].endswith('reviewed-luna-siesta-exact-indoor-2026.json')]
+        self.assertEqual({row['reference'] for row in accepted}, set(expected))
+        for row in accepted:
+            p = next(p for p in profiles if p['id'] == row['reference'])
+            self.assertEqual(p['coolingHighFanFlowM3h'], expected[p['id']]['facts']['coolingHighFanM3min'] * 60)
+            self.assertNotIn('nominalCoolingKw', p)
+            self.assertEqual(p['sourceStatus'], 'availability-unknown')
+            self.assertEqual(p['marketScope'], 'France technical table; current availability unverified')
+        by_id = {p['id']: p for p in profiles}
+        self.assertEqual(by_id['ATXP25N5V1B9']['coolingHighFanFlowM3h'], 582)
+        self.assertEqual(by_id['ATXF42F5V1B']['caseMm'], {'h': 286, 'w': 770, 'd': 225})
+        self.assertEqual(by_id['ATXF71F2V1B']['coolingHighFanFlowM3h'], 1038)
+
+    def test_siesta_review_cannot_claim_heating_as_cooling_or_alias_exact_reference(self):
+        import copy
+        accepted = copy.deepcopy(next(e for e in self.review['units'] if e['reference'] == 'ATXM35A5V1B'))
+        doc = json.loads((ROOT / accepted['candidateFile']).read_text())
+        unit = next(u for u in doc['units'] if u['modelReference'] == accepted['candidateReference'])
+        module.source_review_metadata(unit, accepted, ROOT)
+        accepted['coolingAirflowCondition'] = 'heating high fan'
+        with self.assertRaisesRegex(ValueError, 'cooling airflow condition'): module.source_review_metadata(unit, accepted, ROOT)
+        accepted['coolingAirflowCondition'] = 'cooling high fan'
+        accepted['reference'] = 'FTXM35A5V1B'
+        with self.assertRaisesRegex(ValueError, 'renamed or aliased'): module.source_review_metadata(unit, accepted, ROOT)
+        accepted['reference'] = 'ATXM35A5V1B'
+        next(f for f in unit['facts'] if f['key'] == 'airflow' and f['condition'] == 'cooling high fan')['value'] = 666
+        with self.assertRaisesRegex(ValueError, 'fact or condition'): module.source_review_metadata(unit, accepted, ROOT)
+
+    def test_siesta_documentary_arx_pairs_do_not_rewrite_rx_eligibility(self):
+        readback = json.loads((ROOT / 'reviews/siesta-primary-table-readback-2026.json').read_text())
+        self.assertEqual(len(readback['pairings']), 8)
+        self.assertTrue(all(row['outdoor'].startswith(('ARXM', 'ARXF')) for row in readback['pairings']))
+        rxf = next(e for e in self.review['units'] if e['reference'] == 'RXF60D5V1B9')
+        self.assertEqual(rxf['compatibleIndoorClasses'], ['FTXF60F2V1B'])
+        self.assertNotIn('ATXF60F2V1B', rxf['compatibleIndoorClasses'])
+        self.assertFalse(any(row['indoor'].startswith('ATXP') for row in readback['pairings']))
+
+    def test_siesta_designated_research_and_readback_are_required_hash_pins(self):
+        import shutil
+        accepted = next(e for e in self.review['units'] if e['reference'] == 'ATXP20N5V1B9')
+        doc = json.loads((ROOT / accepted['candidateFile']).read_text())
+        unit = next(u for u in doc['units'] if u['modelReference'] == accepted['candidateReference'])
+        receipt = json.loads((ROOT / accepted['sourceReview']['path']).read_text())
+        with tempfile.TemporaryDirectory() as directory:
+            isolated = Path(directory)
+            for pin in [accepted['sourceReview'], *receipt['sourcePins']]:
+                target = isolated / pin['path']; target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(ROOT / pin['path'], target)
+            with self.assertRaisesRegex(ValueError, 'Designated research input'): module.source_review_metadata(unit, accepted, isolated)
+            for pin in [*receipt['designatedResearchInputs'], receipt['primaryTableReadback']]:
+                target = isolated / pin['path']; target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(ROOT / pin['path'], target)
+            module.source_review_metadata(unit, accepted, isolated)
+            (isolated / receipt['primaryTableReadback']['path']).write_text('{}')
+            with self.assertRaisesRegex(ValueError, 'primary readback'): module.source_review_metadata(unit, accepted, isolated)
+
 
 if __name__ == '__main__':
     unittest.main()

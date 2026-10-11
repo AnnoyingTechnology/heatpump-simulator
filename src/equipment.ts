@@ -76,7 +76,7 @@ export function indoorOptionsForOutdoor(outdoor: OutdoorKind): { value: IndoorCl
     const ownerHead = value === 'FTXA25' || value === 'FTXA35';
     const manufacturer: EquipmentManufacturer = profile?.manufacturer ?? (ownerHead ? 'daikin' : 'generic');
     return { value, manufacturer,
-      text: (profile ? `${equipmentManufacturerLabel(manufacturer)} ${value}${profile.coolingHighFanFlowM3h === null ? ' (airflow unpublished; generic/manual)' : ''}`
+      text: (profile ? `${equipmentManufacturerLabel(manufacturer)} ${value}${'marketScope' in profile ? ' (availability unverified)' : ''}${profile.coolingHighFanFlowM3h === null ? ' (airflow unpublished; generic/manual)' : ''}`
         : ownerHead ? `Daikin ${value} (suffix unknown)`
         : `Generic wall head ${value === 'G25' ? '2.5' : value === 'G35' ? '3.5' : '5.0'} kW class`) + (model.installation ? ' — combination unverified' : '') };
   });

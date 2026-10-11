@@ -1,0 +1,1379 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Siesta exact indoor references; independently reviewed airflow supplement to Luna extraction",
+  "market": "France primary technical table; exact listed references, current retail availability unknown",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-atxm-a",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/ATXM-A.html",
+      "title": "Daikin France ATXM-A technical table",
+      "edition": "Official online product technical table; snapshot retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-atxm-a-pair",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/ATXM-A---ARXM-A.html",
+      "title": "Daikin France ATXM-A / ARXM-A pairing table",
+      "edition": "Official online product technical table; snapshot retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-atxp-n9",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/ATXP-N9.html",
+      "title": "Daikin France ATXP-N9 technical table",
+      "edition": "Official online product technical table; snapshot retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-atxf-f",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/ATXF-F.html",
+      "title": "Daikin France ATXF-F technical table",
+      "edition": "Official online product technical table; snapshot retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-atxf-f-pair",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/ATXF-F---ARXF-A9.html",
+      "title": "Daikin France ATXF-F / ARXF-A9 pairing table",
+      "edition": "Official online product technical table; snapshot retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "ATXM20A2V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxm-a",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXM20A2V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM20A2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM20A2V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM20A2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM20A2V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM20A2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM20A2V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 714.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM20A2V1B; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXM20A2V1B | Rafraîchissement | Haut | m³/min | 11.9; converted to 714 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 684.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM20A2V1B; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXM20A2V1B | Chauffage | Haut | m³/min | 11.4; converted to 684 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXM20A5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxm-a",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXM20A5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM20A5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM20A5V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM20A5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM20A5V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM20A5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM20A5V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 714.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM20A5V1B; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXM20A5V1B | Rafraîchissement | Haut | m³/min | 11.9; converted to 714 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 684.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM20A5V1B; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXM20A5V1B | Chauffage | Haut | m³/min | 11.4; converted to 684 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXM25A2V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxm-a",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXM25A2V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM25A2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM25A2V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM25A2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM25A2V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM25A2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM25A2V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 714.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM25A2V1B; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXM25A2V1B | Rafraîchissement | Haut | m³/min | 11.9; converted to 714 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 684.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM25A2V1B; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXM25A2V1B | Chauffage | Haut | m³/min | 11.4; converted to 684 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing listed by manufacturer: ATXM25A2V1B / ARXM25A5V1B. This does not establish multisplit or cross-family eligibility.",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a-pair",
+            "locator": "Exact pairing column ATXM25A2V1B / ARXM25A5V1B",
+            "excerpt": "ATXM25A2V1B / ARXM25A5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXM25A5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxm-a",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXM25A5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM25A5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM25A5V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM25A5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM25A5V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM25A5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM25A5V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 714.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM25A5V1B; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXM25A5V1B | Rafraîchissement | Haut | m³/min | 11.9; converted to 714 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 684.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM25A5V1B; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXM25A5V1B | Chauffage | Haut | m³/min | 11.4; converted to 684 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing listed by manufacturer: ATXM25A5V1B / ARXM25A5V1B. This does not establish multisplit or cross-family eligibility.",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a-pair",
+            "locator": "Exact pairing column ATXM25A5V1B / ARXM25A5V1B",
+            "excerpt": "ATXM25A5V1B / ARXM25A5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXM35A2V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxm-a",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXM35A2V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM35A2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM35A2V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM35A2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM35A2V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM35A2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM35A2V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 792.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM35A2V1B; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXM35A2V1B | Rafraîchissement | Haut | m³/min | 13.2; converted to 792 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 666.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM35A2V1B; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXM35A2V1B | Chauffage | Haut | m³/min | 11.1; converted to 666 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing listed by manufacturer: ATXM35A2V1B / ARXM35A5V1B. This does not establish multisplit or cross-family eligibility.",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a-pair",
+            "locator": "Exact pairing column ATXM35A2V1B / ARXM35A5V1B",
+            "excerpt": "ATXM35A2V1B / ARXM35A5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXM35A5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxm-a",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXM35A5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM35A5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM35A5V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM35A5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM35A5V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM35A5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM35A5V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 792.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM35A5V1B; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXM35A5V1B | Rafraîchissement | Haut | m³/min | 13.2; converted to 792 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 666.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM35A5V1B; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXM35A5V1B | Chauffage | Haut | m³/min | 11.1; converted to 666 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing listed by manufacturer: ATXM35A5V1B / ARXM35A5V1B. This does not establish multisplit or cross-family eligibility.",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a-pair",
+            "locator": "Exact pairing column ATXM35A5V1B / ARXM35A5V1B",
+            "excerpt": "ATXM35A5V1B / ARXM35A5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXM50A2V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxm-a",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXM50A2V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM50A2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM50A2V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM50A2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM50A2V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM50A2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM50A2V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 762.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM50A2V1B; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXM50A2V1B | Rafraîchissement | Haut | m³/min | 12.7; converted to 762 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 870.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM50A2V1B; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXM50A2V1B | Chauffage | Haut | m³/min | 14.5; converted to 870 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing listed by manufacturer: ATXM50A2V1B / ARXM50A5V1B. This does not establish multisplit or cross-family eligibility.",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a-pair",
+            "locator": "Exact pairing column ATXM50A2V1B / ARXM50A5V1B",
+            "excerpt": "ATXM50A2V1B / ARXM50A5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXM50A5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxm-a",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXM50A5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 298,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM50A5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM50A5V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "width",
+          "value": 804,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM50A5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM50A5V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 252,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM50A5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXM50A5V1B | Dimensions | Unit | Height/Width/Depth | mm | 298/804/252"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 762.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM50A5V1B; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXM50A5V1B | Rafraîchissement | Haut | m³/min | 12.7; converted to 762 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 870.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a",
+            "locator": "Exact full-reference column ATXM50A5V1B; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXM50A5V1B | Chauffage | Haut | m³/min | 14.5; converted to 870 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing listed by manufacturer: ATXM50A5V1B / ARXM50A5V1B. This does not establish multisplit or cross-family eligibility.",
+          "evidence": {
+            "sourceId": "daikin-fr-atxm-a-pair",
+            "locator": "Exact pairing column ATXM50A5V1B / ARXM50A5V1B",
+            "excerpt": "ATXM50A5V1B / ARXM50A5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXP20N5V1B9",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxp-n9",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXP20N5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxp-n9",
+            "locator": "Exact full-reference column ATXP20N5V1B9; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXP20N5V1B9 | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxp-n9",
+            "locator": "Exact full-reference column ATXP20N5V1B9; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXP20N5V1B9 | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxp-n9",
+            "locator": "Exact full-reference column ATXP20N5V1B9; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXP20N5V1B9 | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 570.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxp-n9",
+            "locator": "Exact full-reference column ATXP20N5V1B9; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXP20N5V1B9 | Rafraîchissement | Haut | m³/min | 9.5; converted to 570 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 624.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxp-n9",
+            "locator": "Exact full-reference column ATXP20N5V1B9; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXP20N5V1B9 | Chauffage | Haut | m³/min | 10.4; converted to 624 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXP25N5V1B9",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxp-n9",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXP25N5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxp-n9",
+            "locator": "Exact full-reference column ATXP25N5V1B9; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXP25N5V1B9 | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxp-n9",
+            "locator": "Exact full-reference column ATXP25N5V1B9; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXP25N5V1B9 | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxp-n9",
+            "locator": "Exact full-reference column ATXP25N5V1B9; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXP25N5V1B9 | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 582.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxp-n9",
+            "locator": "Exact full-reference column ATXP25N5V1B9; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXP25N5V1B9 | Rafraîchissement | Haut | m³/min | 9.7; converted to 582 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 624.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxp-n9",
+            "locator": "Exact full-reference column ATXP25N5V1B9; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXP25N5V1B9 | Chauffage | Haut | m³/min | 10.4; converted to 624 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXP35N5V1B9",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxp-n9",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXP35N5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxp-n9",
+            "locator": "Exact full-reference column ATXP35N5V1B9; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXP35N5V1B9 | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxp-n9",
+            "locator": "Exact full-reference column ATXP35N5V1B9; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXP35N5V1B9 | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxp-n9",
+            "locator": "Exact full-reference column ATXP35N5V1B9; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXP35N5V1B9 | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 690.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxp-n9",
+            "locator": "Exact full-reference column ATXP35N5V1B9; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXP35N5V1B9 | Rafraîchissement | Haut | m³/min | 11.5; converted to 690 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 690.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxp-n9",
+            "locator": "Exact full-reference column ATXP35N5V1B9; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXP35N5V1B9 | Chauffage | Haut | m³/min | 11.5; converted to 690 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXF20F5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxf-f",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXF20F5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF20F5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF20F5V1B | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF20F5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF20F5V1B | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF20F5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF20F5V1B | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 588.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF20F5V1B; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXF20F5V1B | Rafraîchissement | Haut | m³/min | 9.8; converted to 588 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 624.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF20F5V1B; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXF20F5V1B | Chauffage | Haut | m³/min | 10.4; converted to 624 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXF25F5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxf-f",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXF25F5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF25F5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF25F5V1B | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF25F5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF25F5V1B | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF25F5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF25F5V1B | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 600.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF25F5V1B; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXF25F5V1B | Rafraîchissement | Haut | m³/min | 10; converted to 600 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 624.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF25F5V1B; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXF25F5V1B | Chauffage | Haut | m³/min | 10.4; converted to 624 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXF35F5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxf-f",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXF35F5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF35F5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF35F5V1B | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF35F5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF35F5V1B | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF35F5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF35F5V1B | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 690.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF35F5V1B; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXF35F5V1B | Rafraîchissement | Haut | m³/min | 11.5; converted to 690 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 714.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF35F5V1B; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXF35F5V1B | Chauffage | Haut | m³/min | 11.9; converted to 714 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXF42F5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxf-f",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXF42F5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF42F5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF42F5V1B | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF42F5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF42F5V1B | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF42F5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF42F5V1B | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 756.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF42F5V1B; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXF42F5V1B | Rafraîchissement | Haut | m³/min | 12.6; converted to 756 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 768.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF42F5V1B; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXF42F5V1B | Chauffage | Haut | m³/min | 12.8; converted to 768 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXF50F5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxf-f",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXF50F5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF50F5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF50F5V1B | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF50F5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF50F5V1B | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF50F5V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF50F5V1B | Dimensions | Unit | Height/Width/Depth | mm | 286/770/225"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 756.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF50F5V1B; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXF50F5V1B | Rafraîchissement | Haut | m³/min | 12.6; converted to 756 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 768.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF50F5V1B; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXF50F5V1B | Chauffage | Haut | m³/min | 12.8; converted to 768 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXF60F2V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxf-f",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXF60F2V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF60F2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF60F2V1B | Dimensions | Unit | Height/Width/Depth | mm | 295/990/263"
+          }
+        },
+        {
+          "key": "width",
+          "value": 990,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF60F2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF60F2V1B | Dimensions | Unit | Height/Width/Depth | mm | 295/990/263"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 263,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF60F2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF60F2V1B | Dimensions | Unit | Height/Width/Depth | mm | 295/990/263"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1038.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF60F2V1B; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXF60F2V1B | Rafraîchissement | Haut | m³/min | 17.3; converted to 1038 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1074.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF60F2V1B; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXF60F2V1B | Chauffage | Haut | m³/min | 17.9; converted to 1074 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact France-table monosplit pairing; France availability/status unresolved: ATXF60F2V1B / ARXF60A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f-pair",
+            "locator": "Exact pairing column ATXF60F2V1B / ARXF60A5V1B9",
+            "excerpt": "ATXF60F2V1B / ARXF60A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    },
+    {
+      "modelReference": "ATXF71F2V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-atxf-f",
+        "locator": "Exact full model-reference table header",
+        "excerpt": "ATXF71F2V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF71F2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF71F2V1B | Dimensions | Unit | Height/Width/Depth | mm | 295/990/263"
+          }
+        },
+        {
+          "key": "width",
+          "value": 990,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF71F2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF71F2V1B | Dimensions | Unit | Height/Width/Depth | mm | 295/990/263"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 263,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF71F2V1B; Dimensions / Unit / Height, Width, Depth",
+            "excerpt": "ATXF71F2V1B | Dimensions | Unit | Height/Width/Depth | mm | 295/990/263"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1038.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF71F2V1B; Ventilateur / Débit d’air / Rafraîchissement / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXF71F2V1B | Rafraîchissement | Haut | m³/min | 17.3; converted to 1038 m³/h"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1074.0,
+          "unit": "m3/h",
+          "condition": "heating high fan",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f",
+            "locator": "Exact full-reference column ATXF71F2V1B; Ventilateur / Débit d’air / Chauffage / Haut; published m³/min multiplied by 60",
+            "excerpt": "ATXF71F2V1B | Chauffage | Haut | m³/min | 17.9; converted to 1074 m³/h"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact France-table monosplit pairing; France availability/status unresolved: ATXF71F2V1B / ARXF71A5V1B9.",
+          "evidence": {
+            "sourceId": "daikin-fr-atxf-f-pair",
+            "locator": "Exact pairing column ATXF71F2V1B / ARXF71A5V1B9",
+            "excerpt": "ATXF71F2V1B / ARXF71A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "France product table establishes exact listed reference and physical dimensions; market availability/status for this exact suffix is unverified.",
+        "No nominal thermal capacity or connection class is inferred from model digits. Published cooling high-fan volume flow is applied; heating reuses cooling airflow as an explicit current-engine assumption. Exact outdoor compatibility is a separate source boundary; no ATX/FTX or ARX/RX alias is made."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

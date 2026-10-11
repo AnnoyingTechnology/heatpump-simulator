@@ -5306,6 +5306,240 @@ export const CATALOGUE_INDOORS = [
     },
     "coolingHighFanFlowM3h": 810,
     "nominalCoolingKw": 5.0
+  },
+  {
+    "id": "ATXM20A2V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 298,
+      "w": 804,
+      "d": 252
+    },
+    "coolingHighFanFlowM3h": 714.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXM20A5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 298,
+      "w": 804,
+      "d": 252
+    },
+    "coolingHighFanFlowM3h": 714.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXM25A2V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 298,
+      "w": 804,
+      "d": 252
+    },
+    "coolingHighFanFlowM3h": 714.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXM25A5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 298,
+      "w": 804,
+      "d": 252
+    },
+    "coolingHighFanFlowM3h": 714.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXM35A2V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 298,
+      "w": 804,
+      "d": 252
+    },
+    "coolingHighFanFlowM3h": 792.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXM35A5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 298,
+      "w": 804,
+      "d": 252
+    },
+    "coolingHighFanFlowM3h": 792.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXM50A2V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 298,
+      "w": 804,
+      "d": 252
+    },
+    "coolingHighFanFlowM3h": 762.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXM50A5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 298,
+      "w": 804,
+      "d": 252
+    },
+    "coolingHighFanFlowM3h": 762.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXP20N5V1B9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 286,
+      "w": 770,
+      "d": 225
+    },
+    "coolingHighFanFlowM3h": 570.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXP25N5V1B9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 286,
+      "w": 770,
+      "d": 225
+    },
+    "coolingHighFanFlowM3h": 582.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXP35N5V1B9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 286,
+      "w": 770,
+      "d": 225
+    },
+    "coolingHighFanFlowM3h": 690.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXF20F5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 286,
+      "w": 770,
+      "d": 225
+    },
+    "coolingHighFanFlowM3h": 588.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXF25F5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 286,
+      "w": 770,
+      "d": 225
+    },
+    "coolingHighFanFlowM3h": 600.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXF35F5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 286,
+      "w": 770,
+      "d": 225
+    },
+    "coolingHighFanFlowM3h": 690.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXF42F5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 286,
+      "w": 770,
+      "d": 225
+    },
+    "coolingHighFanFlowM3h": 756.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXF50F5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 286,
+      "w": 770,
+      "d": 225
+    },
+    "coolingHighFanFlowM3h": 756.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXF60F2V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 990,
+      "d": 263
+    },
+    "coolingHighFanFlowM3h": 1038.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXF71F2V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 990,
+      "d": 263
+    },
+    "coolingHighFanFlowM3h": 1038.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified"
   }
 ] as const;
 
