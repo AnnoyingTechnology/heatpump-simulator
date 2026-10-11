@@ -61,6 +61,8 @@ export interface PairOpts {
   unit: string;
   min: number;
   max: number;
+  /** Optional narrower slider scale; the number input retains `max`. */
+  rangeMax?: number;
   step: number;
   digits: number;
   get(): number;
@@ -88,7 +90,8 @@ export function pairField(o: PairOpts): PairField {
   const layout = o.layout ?? 'block';
   const aria = `${o.label} [${o.unit}]`;
   const num = html('input', { type: 'number', class: 'rp-num rp-ctl', min: o.min, max: o.max, step: o.step, inputmode: 'decimal', 'aria-label': aria });
-  const range = html('input', { type: 'range', class: 'rp-range rp-ctl', min: o.min, max: o.max, step: o.step, 'aria-label': aria });
+  const rangeMax = o.rangeMax ?? o.max;
+  const range = html('input', { type: 'range', class: 'rp-range rp-ctl', min: o.min, max: rangeMax, step: o.step, 'aria-label': aria });
   const note = html('span', { class: 'rp-n' });
   const key = html('span', { class: 'rp-k' }, o.label);
   const shown = o.suffix ?? o.unit;
@@ -119,7 +122,8 @@ export function pairField(o: PairOpts): PairField {
     thermometer?.update(v);
     const t = v.toFixed(o.digits);
     if (document.activeElement !== num && num.value !== t) num.value = t;
-    if (document.activeElement !== range && Number(range.value) !== v) range.value = String(v);
+    const rangeValue = clamp(v, o.min, rangeMax);
+    if (document.activeElement !== range && Number(range.value) !== rangeValue) range.value = String(rangeValue);
   };
   refresh();
   return { root, num, range, note, refresh };

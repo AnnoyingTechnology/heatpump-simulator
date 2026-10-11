@@ -291,8 +291,8 @@ const SP_STEP = 0.5;
 const AMBIENT_MIN = -25;
 const AMBIENT_MAX = 45;
 
-/** Floor area and ceiling height bounds of a room; the volume is derived from them. */
-const AREA = { min: 5, max: 250, step: 0.1 } as const;
+/** Floor-area slider spans 5–100 m²; typed areas retain the existing 250 m² limit. Volume is derived. */
+const AREA = { min: 5, max: 250, rangeMax: 100, step: 0.1 } as const;
 const HEIGHT = { min: 2.2, max: 6, step: 0.01 } as const;
 /** The heat-loss guide panel, in scene units. */
 
@@ -1208,7 +1208,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
         setAttr(f.num, 'aria-label', text);
         setAttr(f.range, 'aria-label', text);
       }
-      setAttr(p.area.range, 'aria-valuetext', `${fmt(r.surfaceM2, 1)} m²`);
+      setAttr(p.area.range, 'aria-valuetext', `${fmt(Number(p.area.range.value), 1)} m²`);
       setAttr(p.height.range, 'aria-valuetext', `${fmt(r.ceilingHeightM, 2)} m`);
       setText(v.unitLabel, r.indoorClass.startsWith('FTXA') || r.indoorClass.startsWith('MSZ-') ? r.indoorClass : `${info.label.replace('Generic wall head ', 'Generic ').replace(' class', '')}`);
       // Each indoor fan follows its own reading; a closed branch neither spins nor blows.

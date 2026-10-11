@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-10-11T19:49:19.268Z",
+  "checks": [
+    "Three room-area sliders span 5–100 m²; number fields retain 250 m² limit",
+    "Native End key selects 100 m²",
+    "Native typing retains 125 m² on blur, slider stays at 100 and volume uses 125",
+    "Paused physical clock and room-chart timestamps retained",
+    "Native slider ArrowLeft returns configuration to 99.9 m²",
+    "No browser exceptions"
+  ],
+  "bounds": [
+    {
+      "max": "100",
+      "min": "5",
+      "numberMax": "250"
+    },
+    {
+      "max": "100",
+      "min": "5",
+      "numberMax": "250"
+    },
+    {
+      "max": "100",
+      "min": "5",
+      "numberMax": "250"
+    }
+  ],
+  "typed": {
+    "value": "125.0",
+    "range": "100",
+    "volume": "403.8",
+    "height": "3.23",
+    "aria": "100.0 m²"
+  }
+}
