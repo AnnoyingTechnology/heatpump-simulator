@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "mitsubishi-electric",
+  "family": "MSZ-LN Mural Design Premium/Premium+",
+  "market": "France",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "mitsubishi-fr-air-air-2026-2027",
+      "url": "https://confort.mitsubishielectric.fr/sites/default/files/2026-04/RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "title": "PAC Air/Air catalogue 2026-2027",
+      "edition": "RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "MSZ-LN18VG3",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), page header 'MSZ-LN. Mural Design Premium R32' + 'INVERTER'; UNITÉS INTÉRIEURES table header, column 1 = MSZ-LN18VG3 (18-class)",
+        "excerpt": "MSZ-LN. Mural Design Premium R32 INVERTER ; UNITÉS INTÉRIEURES MSZ-LN18VG3 MSZ-LN25VG3 MSZ-LN35VG3 MSZ-LN50VG3 MSZ-LN60VG3"
+      },
+      "facts": [
+        {
+          "key": "controlStrategy",
+          "value": "inverter",
+          "unit": "none",
+          "condition": "explicit page-level 'INVERTER' label of the MSZ-LN family page",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), page header under 'MSZ-LN. Mural Design Premium R32'",
+            "excerpt": "INVERTER"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 282,
+          "unit": "m3/h",
+          "condition": "cooling mode, Silence fan speed (row 'Débit d'air en froid Silence/PV/MV/GV/SGV', first value)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-LN18VG3 column, Silence value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 282 / 354 / 426 / 552 / 744"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 354,
+          "unit": "m3/h",
+          "condition": "cooling mode, PV fan speed",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-LN18VG3 column, PV value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 282 / 354 / 426 / 552 / 744"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 426,
+          "unit": "m3/h",
+          "condition": "cooling mode, MV fan speed",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-LN18VG3 column, MV value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 282 / 354 / 426 / 552 / 744"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 552,
+          "unit": "m3/h",
+          "condition": "cooling mode, GV fan speed",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-LN18VG3 column, GV value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 282 / 354 / 426 / 552 / 744"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 744,
+          "unit": "m3/h",
+          "condition": "cooling mode, SGV fan speed",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-LN18VG3 column, SGV value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 282 / 354 / 426 / 552 / 744"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 19,
+          "unit": "dBA",
+          "condition": "cooling mode, Silence fan speed, measured at 1 m; footnote (1): mesurée en chambre anéchoïque",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', merged MSZ-LN18VG3/MSZ-LN25VG3 columns (visually verified), Silence value",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 19 / 23 / 29 / 36 / 42"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 23,
+          "unit": "dBA",
+          "condition": "cooling mode, PV fan speed, measured at 1 m; footnote (1)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', merged 18/25 columns, PV value (18 cell shows 23 vs 24 in 25 cell)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 19 / 23 / 29 / 36 / 42"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 29,
+          "unit": "dBA",
+          "condition": "cooling mode, MV fan speed, measured at 1 m; footnote (1)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', merged 18/25 columns, MV value",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 19 / 23 / 29 / 36 / 42"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 36,
+          "unit": "dBA",
+          "condition": "cooling mode, GV fan speed, measured at 1 m; footnote (1)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', merged 18/25 columns, GV value",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 19 / 23 / 29 / 36 / 42"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 42,
+          "unit": "dBA",
+          "condition": "cooling mode, SGV fan speed, measured at 1 m; footnote (1); 18-cell SGV value 42 (25-cell shows 43)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', merged 18/25 columns, SGV value (visually verified)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 19 / 23 / 29 / 36 / 42"
+          }
+        },
+        {
+          "key": "soundPower",
+          "value": 58,
+          "unit": "dBA",
+          "condition": "cooling mode at super-high fan speed (SGV); merged 18/25 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), UNITÉS INTÉRIEURES row 'Puissance acoustique en froid SGV', merged MSZ-LN18VG3/MSZ-LN25VG3 columns",
+            "excerpt": "Puissance acoustique en froid SGV dB(A) 58"
+          }
+        },
+        {
+          "key": "height",
+          "value": 307,
+          "unit": "mm",
+          "condition": "indoor unit; row 'Hauteur x Largeur x Profondeur' publishes 307 x 890 x 233 merged across all 5 indoor columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), UNITÉS INTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged all indoor columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 307 x 890 x 233"
+          }
+        },
+        {
+          "key": "width",
+          "value": 890,
+          "unit": "mm",
+          "condition": "indoor unit; merged all indoor columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), UNITÉS INTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged all indoor columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 307 x 890 x 233"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 233,
+          "unit": "mm",
+          "condition": "indoor unit; merged all indoor columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), UNITÉS INTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged all indoor columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 307 x 890 x 233"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 14,
+          "unit": "kg",
+          "condition": "net weight, indoor unit; 'Poids net' value 14 merged across 18/25/35 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), UNITÉS INTÉRIEURES row 'Poids net', merged 18/25/35 columns",
+            "excerpt": "Poids net kg 14"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "capacityClass: the 18-class cooling capacity row is inside the 'Compatible uniquement avec les multisplits' merged area of the Tailles table; no mono-split capacity is printed for Taille 18, so no value is recorded",
+        "SEER/SCOP for Taille 18: SEER 10.5/A+++ and SCOP 5.2/A+++ appear under the Taille 18 column but sit in the 'Compatible uniquement avec les multisplits' merged zone; the matched combination is not printed, so no seasonal fact is recorded here",
+        "heating+7C/-7C thermal and electrical values under Taille 18 are inside the multisplit-only merged zone with no printed combination; not recorded as unit facts",
+        "no MUZ-LN outdoor reference is printed for Taille 18",
+        "indoor electrical supply / voltage: not published for the indoor unit",
+        "indoor fan motor output and electrical input: not published",
+        "indoor airflow / sound pressure in heating mode: not published separately",
+        "colour variants VG3W/VG3V/VG3B/VG3R printed on PDF p.67 marketing page only; per-colour values not published separately"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    {
+      "modelReference": "MSZ-LN18VG3R/VG3B/VG3V/VG3W",
+      "reason": "colour suffixes printed on marketing page PDF p.67 (printed p.66); spec table PDF p.68 shows base VG3 only; per-colour fact equality not source-explicit"
+    }
+  ]
+}

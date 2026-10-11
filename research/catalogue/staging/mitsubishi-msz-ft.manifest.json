@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "family": "MSZ-FT Mural Compact+ (Hyper Heating)",
+  "sourceId": "mitsubishi-fr-air-air-2026-2027",
+  "edition": "PAC Air/Air catalogue 2026-2027 (RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf)",
+  "market": "France",
+  "status": "reference manifest only; no numerical performance assertions, not overall catalogue coverage",
+  "references": [
+    { "modelReference": "MSZ-FT25VGK2", "unitType": "indoor", "pageLocators": ["PDF pp.70-72 (printed pp.69-71); full spec table PDF p.72 (printed p.71)"], "status": "candidate-drafted (mitsubishi-msz-ft25-indoor.json, staging only, not accepted)" },
+    { "modelReference": "MSZ-FT35VGK2", "unitType": "indoor", "pageLocators": ["PDF pp.70-72 (printed pp.69-71); full spec table PDF p.72 (printed p.71)"], "status": "candidate-drafted (mitsubishi-msz-ft35-indoor.json, staging only, not accepted)" },
+    { "modelReference": "MSZ-FT50VGK2", "unitType": "indoor", "pageLocators": ["PDF pp.70-72 (printed pp.69-71); full spec table PDF p.72 (printed p.71)"], "status": "candidate-drafted (mitsubishi-msz-ft50-indoor.json, staging only, not accepted)" },
+    { "modelReference": "MUZ-FT25VGHZ2", "unitType": "outdoor", "pageLocators": ["PDF p.72 (printed p.71), UNITÉS EXTÉRIEURES header 'MUZ-FT25VGHZ2'; photo caption 'MUZ-FT 25 VGHZ2'"], "status": "candidate-drafted (mitsubishi-muz-ft25-outdoor.json, staging only, not accepted)" },
+    { "modelReference": "MUZ-FT35VGHZ2", "unitType": "outdoor", "pageLocators": ["PDF p.72 (printed p.71), UNITÉS EXTÉRIEURES header 'MUZ-FT35VGHZ2'; photo caption 'MUZ-FT 35/50 VGHZ2'"], "status": "candidate-drafted (mitsubishi-muz-ft35-outdoor.json, staging only, not accepted)" },
+    { "modelReference": "MUZ-FT50VGHZ2", "unitType": "outdoor", "pageLocators": ["PDF p.72 (printed p.71), UNITÉS EXTÉRIEURES header 'MUZ-FT50VGHZ2'; photo caption 'MUZ-FT 35/50 VGHZ2'"], "status": "candidate-drafted (mitsubishi-muz-ft50-outdoor.json, staging only, not accepted)" }
+  ],
+  "unresolvedReferences": [
+    { "modelReference": "MSZ-FT / MUZ-FT colour or other suffix variants", "reason": "only indoor suffix VGK2 and outdoor suffix VGHZ2 are printed (indoor header 'MSZ-FT 25/35/50 VGK2' PDF pp.71-72; outdoor headers 'MUZ-FT25VGHZ2 / MUZ-FT35VGHZ2 / MUZ-FT50VGHZ2' PDF p.72); no colour suffix is printed anywhere in the FT pages; do not infer" },
+    { "modelReference": "MSZ-FT multi-split eligibility", "reason": "mono-split pairing is evidenced by the shared Tailles columns of the PDF p.72 table; multi-split compatibility requires the separate MXZ combination tables (pending, separate source)" }
+  ],
+  "coverageNotes": "Index leads pp.68-71 were shifted: actual family pages are PDF p.70 (divider, printed p.69, 'HYPER HEATING' band), PDF p.71 (marketing, printed p.70, header 'MSZ-FT 25/35/50 VGK2', 'MODE CHAUD -25/+24°C', 'MODE FROID -10/+46°C', SCOP 'JUSQU'À 4,6', 'À PARTIR DE 19dB(A)'), PDF p.72 (full spec table, printed p.71, visually verified with page image mitsubishi-air-air-2026-2027-page-72.png), PDF p.73 begins MSZ-LN. Printed outdoor suffixes are VGHZ2 (never inferred from the Hyper Heating family name). No MUZ-FT is printed for any Taille other than 25/35/50. Hyper Heating rows: heating capacity published at +7/-7/-10/-15/-20/-25°C; 'Puissance absorbée totale nominale' and COP rows sit inside the heating block; SCOP merged 25/35 = 4.6/A++ and 50 = 4.3/A+; SEER merged 25/35 = 8.6/A+++ and 50 = 7.2/A++. Merged cells verified visually: indoor dims 280x838x229 and mass 10 kg merged all 3 columns; indoor sound power 60 dBA merged all 3; outdoor airflow GV 1824 (25) / 2412 (merged 35/50); outdoor dims 550x800x285 (25) / 714x800x285 (merged 35/50); outdoor mass 34 (25) / 40 (merged 35/50); pipe 20/12 m (25) / 30/15 m (merged 35/50); extra charge 20 g/m with 0.25 kg max (25) / 0.45 kg max (merged 35/50); liquid 1/4 flare and gas 3/8 flare merged all columns; supply 230 V (1P+N+T) 50 Hz merged all columns. All 6 references have per-unit candidate files; validator run recorded in family index entry."
+}

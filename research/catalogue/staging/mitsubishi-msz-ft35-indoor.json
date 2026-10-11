@@ -1,0 +1,363 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "mitsubishi-electric",
+  "family": "MSZ-FT Mural Compact+ (Hyper Heating)",
+  "market": "France",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "mitsubishi-fr-air-air-2026-2027",
+      "url": "https://confort.mitsubishielectric.fr/sites/default/files/2026-04/RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "title": "PAC Air/Air catalogue 2026-2027",
+      "edition": "RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "MSZ-FT35VGK2",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.72 (printed p.71), page header 'MSZ-FT. Mural Compact +' + 'HYPER HEATING' band + photo caption 'MSZ-FT 25/35/50 VGK2'; UNITÉS INTÉRIEURES table header, column 2 = MSZ-FT35VGK2 (Taille 35)",
+        "excerpt": "MSZ-FT. Mural Compact + R32 HYPER HEATING ; MSZ-FT 25/35/50 VGK2 ; UNITÉS INTÉRIEURES MSZ-FT25VGK2 MSZ-FT35VGK2 MSZ-FT50VGK2"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 3.5,
+          "unit": "kW",
+          "condition": "nominal cooling capacity of the 35-class Hyper Heating split (MUZ-FT35VGHZ2 companion); published min / nominal / max 0.8 / 3.5 / 4.0 kW",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), cooling table row 'Puissance frigorifique min / nominale / max', Taille 35 column",
+            "excerpt": "Puissance frigorifique min / nominale / max kW 0.8 / 3.5 / 4.0"
+          }
+        },
+        {
+          "key": "SEER",
+          "value": 8.6,
+          "unit": "none",
+          "condition": "system/combination seasonal rating for the MSZ-FT35VGK2 + MUZ-FT35VGHZ2 split (merged 25/35 cells), not an intrinsic indoor-only performance; seasonal class A+++; climate/test conditions not published in this table (unknown)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), cooling table row 'SEER / Classe énergétique saisonnière (D à A++++)', merged 25/35 columns (visually verified)",
+            "excerpt": "SEER / Classe énergétique saisonnière (D à A+++) - 8.6 / A+++"
+          }
+        },
+        {
+          "key": "SCOP",
+          "value": 4.6,
+          "unit": "none",
+          "condition": "system/combination seasonal rating for the MSZ-FT35VGK2 + MUZ-FT35VGHZ2 split (merged 25/35 cells), not an intrinsic indoor-only performance; seasonal class A++; climate/test conditions not published in this table (unknown)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), heating table row 'SCOP / Classe énergétique saisonnière (D à A++++)', merged 25/35 columns (visually verified)",
+            "excerpt": "SCOP / Classe énergétique saisonnière (D à A+++) - 4.6 / A++"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "condition": "refrigerant circuit shared with MUZ-FT35VGHZ2 outdoor unit; PRP (GWP) 675",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), DONNÉES FRIGORIFIQUES row 'Fluide / PRP (Pouvoir de Réchauffement Planétaire)', row merged across all size columns",
+            "excerpt": "Fluide / PRP (Pouvoir de Réchauffement Planétaire) -/- R32 / 675"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 234,
+          "unit": "m3/h",
+          "condition": "cooling mode, silent fan speed (Silence)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-FT35VGK2 column, Silence value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 234 / 354 / 498 / 642 / 786"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 354,
+          "unit": "m3/h",
+          "condition": "cooling mode, low fan speed (PV)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-FT35VGK2 column, PV value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 234 / 354 / 498 / 642 / 786"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 498,
+          "unit": "m3/h",
+          "condition": "cooling mode, medium fan speed (MV)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-FT35VGK2 column, MV value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 234 / 354 / 498 / 642 / 786"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 642,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed (GV)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-FT35VGK2 column, GV value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 234 / 354 / 498 / 642 / 786"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 786,
+          "unit": "m3/h",
+          "condition": "cooling mode, super-high fan speed (SGV)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-FT35VGK2 column, SGV value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 234 / 354 / 498 / 642 / 786"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 19,
+          "unit": "dBA",
+          "condition": "cooling mode, silent fan speed (Silence), measured at 1 m; footnote (1): mesurée en chambre anéchoïque",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', MSZ-FT35VGK2 column, Silence value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 19 / 27 / 36 / 42 / 47"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 27,
+          "unit": "dBA",
+          "condition": "cooling mode, low fan speed (PV), measured at 1 m; footnote (1): mesurée en chambre anéchoïque",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', MSZ-FT35VGK2 column, PV value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 19 / 27 / 36 / 42 / 47"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 36,
+          "unit": "dBA",
+          "condition": "cooling mode, medium fan speed (MV), measured at 1 m; footnote (1): mesurée en chambre anéchoïque",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', MSZ-FT35VGK2 column, MV value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 19 / 27 / 36 / 42 / 47"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 42,
+          "unit": "dBA",
+          "condition": "cooling mode, high fan speed (GV), measured at 1 m; footnote (1): mesurée en chambre anéchoïque",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', MSZ-FT35VGK2 column, GV value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 19 / 27 / 36 / 42 / 47"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 47,
+          "unit": "dBA",
+          "condition": "cooling mode, super-high fan speed (SGV), measured at 1 m; footnote (1): mesurée en chambre anéchoïque",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', MSZ-FT35VGK2 column, SGV value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 19 / 27 / 36 / 42 / 47"
+          }
+        },
+        {
+          "key": "soundPower",
+          "value": 60,
+          "unit": "dBA",
+          "condition": "cooling mode at super-high fan speed (SGV); row 'Puissance acoustique en froid SGV' value 60 is a single merged cell spanning all three indoor columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), UNITÉS INTÉRIEURES row 'Puissance acoustique en froid SGV', merged MSZ-FT25VGK2/MSZ-FT35VGK2/MSZ-FT50VGK2 columns",
+            "excerpt": "Puissance acoustique en froid SGV dB(A) 60"
+          }
+        },
+        {
+          "key": "height",
+          "value": 280,
+          "unit": "mm",
+          "condition": "indoor unit; row 'Hauteur x Largeur x Profondeur' publishes 280 x 838 x 229 merged across all three indoor columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), UNITÉS INTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged all three columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 280 x 838 x 229"
+          }
+        },
+        {
+          "key": "width",
+          "value": 838,
+          "unit": "mm",
+          "condition": "indoor unit; merged all three columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), UNITÉS INTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged all three columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 280 x 838 x 229"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 229,
+          "unit": "mm",
+          "condition": "indoor unit; merged all three columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), UNITÉS INTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged all three columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 280 x 838 x 229"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 10,
+          "unit": "kg",
+          "condition": "net weight, indoor unit; 'Poids net' value 10 merged across all three indoor columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), UNITÉS INTÉRIEURES row 'Poids net', merged all three columns",
+            "excerpt": "Poids net kg 10"
+          }
+        }
+      ],
+      "ratings": [
+        {
+          "mode": "cooling",
+          "combination": "MSZ-FT35VGK2 + MUZ-FT35VGHZ2 (35-class mono-split Hyper Heating)",
+          "conditions": "published min / nominal / max table values; rated indoor/outdoor test conditions not published in this table (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.8, "nominal": 3.5, "maximum": 4.0 },
+          "electricalInputKw": { "minimum": null, "nominal": 0.910, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), cooling table rows 'Puissance frigorifique min / nominale / max' and 'Puissance absorbée totale nominale', Taille 35 column",
+            "excerpt": "Puissance frigorifique min / nominale / max kW 0.8 / 3.5 / 4.0 ; Puissance absorbée totale nominale kW 0.910"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-FT35VGK2 + MUZ-FT35VGHZ2 (35-class mono-split Hyper Heating)",
+          "conditions": "outdoor +7°C (published row 'à +7°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.9, "nominal": 4.0, "maximum": 6.6 },
+          "electricalInputKw": { "minimum": null, "nominal": 1.020, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), heating table rows 'Puissance calorifique min / nominale / max à +7°C' and 'Puissance absorbée totale nominale' (single row inside the heating block, Taille 35 column)",
+            "excerpt": "Puissance calorifique min / nominale / max à +7°C kW 0.9 / 4.0 / 6.6 ; Puissance absorbée totale nominale kW 1.020"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-FT35VGK2 + MUZ-FT35VGHZ2 (35-class mono-split Hyper Heating)",
+          "conditions": "outdoor -7°C (published row 'à -7°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.6, "nominal": 4.0, "maximum": 4.9 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), heating table row 'Puissance calorifique min / nominale / max à -7°C', Taille 35 column; no separate -7°C electrical row is published",
+            "excerpt": "Puissance calorifique min / nominale / max à -7°C kW 0.6 / 4.0 / 4.9"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-FT35VGK2 + MUZ-FT35VGHZ2 (35-class mono-split Hyper Heating)",
+          "conditions": "outdoor -10°C (published row 'à -10°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.5, "nominal": 4.0, "maximum": 4.8 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), heating table row 'Puissance calorifique min / nominale / max à -10°C', Taille 35 column",
+            "excerpt": "Puissance calorifique min / nominale / max à -10°C kW 0.5 / 4.0 / 4.8"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-FT35VGK2 + MUZ-FT35VGHZ2 (35-class mono-split Hyper Heating)",
+          "conditions": "outdoor -15°C (published row 'à -15°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.4, "nominal": 4.0, "maximum": 4.3 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), heating table row 'Puissance calorifique min / nominale / max à -15°C', Taille 35 column",
+            "excerpt": "Puissance calorifique min / nominale / max à -15°C kW 0.4 / 4.0 / 4.3"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-FT35VGK2 + MUZ-FT35VGHZ2 (35-class mono-split Hyper Heating)",
+          "conditions": "outdoor -20°C (published row 'à -20°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.3, "nominal": 3.0, "maximum": 3.8 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), heating table row 'Puissance calorifique min / nominale / max à -20°C', Taille 35 column",
+            "excerpt": "Puissance calorifique min / nominale / max à -20°C kW 0.3 / 3.0 / 3.8"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-FT35VGK2 + MUZ-FT35VGHZ2 (35-class mono-split Hyper Heating)",
+          "conditions": "outdoor -25°C (published row 'à -25°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.2, "nominal": 2.5, "maximum": 3.3 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), heating table row 'Puissance calorifique min / nominale / max à -25°C', Taille 35 column",
+            "excerpt": "Puissance calorifique min / nominale / max à -25°C kW 0.2 / 2.5 / 3.3"
+          }
+        }
+      ],
+      "compatibility": [
+        {
+          "description": "mono-split pairing MSZ-FT35VGK2 + MUZ-FT35VGHZ2 is evidenced by the shared 'Tailles 35' column of the PDF p.72 spec table and the UNITÉS EXTÉRIEURES header MUZ-FT35VGHZ2; multi-split compatibility NOT established here (separate combination tables pending)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.72 (printed p.71), 'Tailles' header row 25 35 50 spanning cooling/heating tables; UNITÉS INTÉRIEURES header MSZ-FT35VGK2 and UNITÉS EXTÉRIEURES header MUZ-FT35VGHZ2",
+            "excerpt": "Tailles 25 35 50 ; UNITÉS INTÉRIEURES ... MSZ-FT35VGK2 ... ; UNITÉS EXTÉRIEURES MUZ-FT25VGHZ2 MUZ-FT35VGHZ2 MUZ-FT50VGHZ2"
+          }
+        }
+      ],
+      "unknowns": [
+        "indoor electrical supply / voltage: catalogue publishes 'Alimentation électrique par unité extérieure' only (230 V (1P+N+T) at MUZ-FT columns); indoor-only supply not stated",
+        "indoor fan motor output and electrical input: not published",
+        "indoor unit sound pressure in heating mode: not published separately",
+        "indoor unit airflow in heating mode: not published separately",
+        "mode nuit (-3dB(A)) values: marketing bullet 'Mode nuit (-3dB(A)) disponible' (PDF p.72) without published numeric values",
+        "SEER/SCOP climate class and test conditions: not published in this table; these are system/combination ratings for MSZ-FT35VGK2 + MUZ-FT35VGHZ2",
+        "heating electrical input at -7/-10/-15/-20/-25°C: no separate electrical rows published; the single 'Puissance absorbée totale nominale' row is not attributed to a specific outdoor temperature",
+        "drain connection: 'Ø des condensats / Pompe de relevage mm 16 / Non fournie' recorded only as note, not a schema fact key",
+        "controlStrategy: no explicit 'INVERTER' page label is printed on the MSZ-FT pages (unlike MSZ-HR); not recorded as fact"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    {
+      "modelReference": "MUZ-FT35VGHZ2",
+      "reason": "paired outdoor unit of this split; its spec-table facts are on the same table (PDF p.72 / printed p.71) but captured in the separate outdoor candidate file mitsubishi-muz-ft35-outdoor.json"
+    },
+    {
+      "modelReference": "MSZ-FT colour/suffix variants",
+      "reason": "only indoor suffix VGK2 is printed ('MSZ-FT 25/35/50 VGK2'); no colour suffix printed anywhere in the FT pages; do not infer"
+    }
+  ]
+}

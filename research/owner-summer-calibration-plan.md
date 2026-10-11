@@ -1,0 +1,11 @@
+# Owner summer calibration — planned, not performed
+
+Owner request, 2026-10-11: retain a quick winter operating preset at 1 °C outdoors (ground target 17 °C, upstairs 21.5 °C, attic Off), and a summer preset at 39 °C outdoors, every indoor unit On, all targets 24 °C. These apply operating settings to the current house without resetting its accepted temperature, moisture, energy or time. They retain edited geometry, equipment, humidity and gains; selecting winter does not silently discard an entered solar gain.
+
+Window solar heat is a separate prescribed sensible input in W for each room, initially zero because there is no measured allocation yet. It adds to occupants/appliances at the room-air energy boundary and stays outside HVAC output/COP. It is an effective admitted heat rate, not solar irradiance on the pane, glazing area, an astronomical sun model or a manufacturer performance correction. It can also be nonzero in winter when useful evidence supports it. A summer preset with zero window gain is an uncalibrated starting scenario.
+
+Later, explicitly retrieve the owner's Home Assistant historical data for the summer heatwave. This task has **not** been performed, and no Home Assistant access or configuration change is part of the present pass. First select stable measured periods and their dates, identify whole-system HVAC electricity rather than grid import after PV/battery, and establish outdoor temperature/humidity, actual room temperatures, targets, active heads, fan settings and shading/window conditions. Determine averaging windows, time alignment, sensor units and missing data before fitting anything.
+
+Calibrate effective room envelope/exchange and admitted window gains within physically justified bounds. Reuse winter envelope constraints and actual room geometry; do not bend refrigerant properties, conservation tolerances, compressor maps or OEM claims to force agreement. Separate transient storage, occupancy/appliances, inter-room transfers and solar gain. Check more than one time window and report uncertainty; a single stable electrical-power observation cannot identify all these terms independently.
+
+Existing winter/retrospective observations and their averaging/schedule caveats remain in [owner-heating-calibration-points.md](owner-heating-calibration-points.md).

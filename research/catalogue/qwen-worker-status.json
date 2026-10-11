@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-11T09:19:53.788837+00:00",
+  "checkedAt": "2026-10-11T10:04:48.556892+00:00",
   "host": "10.10.10.204",
   "observedHostname": "ai-multi-gpu",
   "model": "Qwen3.8-Flash-Next",
@@ -79,18 +79,33 @@
     },
     {
       "batch": "qwen-mitsubishi-ln-family",
-      "status": "running",
+      "status": "completed",
+      "thinking": "off"
+    },
+    {
+      "batch": "qwen-mitsubishi-ft-family",
+      "status": "completed",
+      "thinking": "off"
+    },
+    {
+      "batch": "qwen-daikin-fr-index",
+      "status": "completed",
+      "thinking": "off"
+    },
+    {
+      "batch": "qwen-daikin-stylish-family",
+      "status": "running; airflow conversion review found x6 instead of x60; not accepted",
       "thinking": "off"
     }
   ],
   "staging": {
     "manifestReferences": 12,
-    "candidateUnits": 37,
+    "candidateUnits": 52,
     "structuralValidation": "HR/AY/AP/EF: 37 candidates structure-validated; independent selected-field acceptance recorded in equipment-acceptance.json",
-    "sourceAcceptance": "18 outdoor and 26 compatible indoor profile objects accepted; interface integration under verification",
+    "sourceAcceptance": "25 Mitsubishi outdoor / 45 compatible indoor profiles accepted; all runtime values source-reviewed; Daikin extraction remains unaccepted",
     "fullCoverage": false,
     "candidateFacts": 589,
-    "nextBatch": "MSZ-LN family; fresh bounded context, running"
+    "nextBatch": "Daikin Stylish extraction/review; current full-range coverage incomplete"
   },
   "notes": [
     "Initial oversized source scan compacted before saving an index.",
