@@ -244,6 +244,8 @@ export function createHeader(): Header {
       }
       const st = rd.live!;
       const held = st.kind === 'updating';
+      const standby = st.label === 'Standby';
+      if (standby) note.hidden = false;
       metrics.dataset.held = held ? '1' : '0';
       pause.classList.toggle('attn', held && s.ui.paused);
       setText(opState, held ? 'Last calculated step' : st.label);
@@ -258,7 +260,7 @@ export function createHeader(): Header {
         setAttr(status, 'title', `${st.detail ?? ''}\n${LIVE_BASIS}`);
       } else {
         note.dataset.tone = 'warn';
-        setText(note, '');
+        setText(note, standby ? s.cfg.mode === 'cooling' ? 'No cooling demand' : 'No heating demand' : '');
         setAttr(status, 'title', `${st.detail ? `${st.detail}\n` : ''}${LIVE_BASIS}\n${fieldLinesNote(s)}`);
       }
     },

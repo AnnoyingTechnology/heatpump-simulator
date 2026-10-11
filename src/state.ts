@@ -583,6 +583,15 @@ export function liveStatus(cfg: Config): LiveStatus {
         : `Compressor restart dwell: ${Math.ceil(delay)} seconds remaining.`,
       warnings, usable: true, calculationMs: st.calculationMs };
   }
+  if (out.state === 'idle' && !out.rooms.some(room => room.thermostatCalling)) {
+    const enabled = cfg.rooms.slice(0, cfg.unitCount).some(room => room.enabled);
+    return { kind: 'idle', label: enabled ? 'Standby' : 'All units off',
+      detail: !enabled ? 'All indoor units are switched off. Room temperatures continue evolving.'
+        : cfg.mode === 'cooling'
+          ? 'No cooling demand. A waiting indoor unit starts at target + 1 °C. Season presets preserve current room temperatures; warm rooms naturally or set initial room temperatures in Thermal settings and Reset for a new run.'
+          : 'No heating demand. A waiting indoor unit starts at target − 1 °C. Room temperatures continue evolving.',
+      warnings, usable: true, calculationMs: st.calculationMs };
+  }
   return { kind: out.state, label: KIND_LABEL[out.state], detail: null, warnings, usable: true, calculationMs: st.calculationMs };
 }
 

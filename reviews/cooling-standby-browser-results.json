@@ -1,0 +1,202 @@
+{
+  "checkedAt": "2026-10-11T20:12:40.964Z",
+  "checks": [
+    "Native summer preset preserves room temperatures, physical clock and reset epoch",
+    "Cold rooms correctly stay idle; visible standby reason and cooling restart threshold",
+    "Standby label and visible demand reason translate to French",
+    "Native Thermal settings and Reset initialize fresh summer run at26°C",
+    "Warm summer startup closes cooling cycles, ramps0.5→8+rps and removes heat with conserved energy/water",
+    "Running cooling clears the standby message",
+    "No Chromium page exceptions"
+  ],
+  "exceptions": [],
+  "cold": {
+    "roomC": [
+      18.37883771864199,
+      21.504227883434623,
+      18.104069972739126
+    ],
+    "state": "idle",
+    "compressorW": 0,
+    "label": "Standby",
+    "note": "No cooling demand"
+  },
+  "warm": [
+    {
+      "seconds": 0.25,
+      "speedRps": 0.5,
+      "compressorW": 9.75393498908237,
+      "signedRoomHeatW": 75,
+      "fault": null
+    },
+    {
+      "seconds": 0.5,
+      "speedRps": 1,
+      "compressorW": 19.50879852275558,
+      "signedRoomHeatW": 74.50620060860543,
+      "fault": null
+    },
+    {
+      "seconds": 0.75,
+      "speedRps": 1.5,
+      "compressorW": 29.265975617641732,
+      "signedRoomHeatW": 73.82050435701687,
+      "fault": null
+    },
+    {
+      "seconds": 1,
+      "speedRps": 2,
+      "compressorW": 39.02684016922305,
+      "signedRoomHeatW": 72.94334948819306,
+      "fault": null
+    },
+    {
+      "seconds": 1.25,
+      "speedRps": 2.5,
+      "compressorW": 48.79275484586354,
+      "signedRoomHeatW": 71.87517997059643,
+      "fault": null
+    },
+    {
+      "seconds": 1.5,
+      "speedRps": 3,
+      "compressorW": 58.5650710149503,
+      "signedRoomHeatW": 70.61644548741523,
+      "fault": null
+    },
+    {
+      "seconds": 1.75,
+      "speedRps": 3.5,
+      "compressorW": 68.45376098685078,
+      "signedRoomHeatW": 69.16760139256704,
+      "fault": null
+    },
+    {
+      "seconds": 2,
+      "speedRps": 4,
+      "compressorW": 78.25837792774828,
+      "signedRoomHeatW": 67.53018714473495,
+      "fault": null
+    },
+    {
+      "seconds": 2.25,
+      "speedRps": 4.5,
+      "compressorW": 88.07336984206957,
+      "signedRoomHeatW": 65.70374223938455,
+      "fault": null
+    },
+    {
+      "seconds": 2.5,
+      "speedRps": 5,
+      "compressorW": 97.90004067877216,
+      "signedRoomHeatW": 63.68873832322092,
+      "fault": null
+    },
+    {
+      "seconds": 2.75,
+      "speedRps": 5.5,
+      "compressorW": 108.07011077909324,
+      "signedRoomHeatW": 61.48565250759823,
+      "fault": null
+    },
+    {
+      "seconds": 3,
+      "speedRps": 6,
+      "compressorW": 118.59652000147535,
+      "signedRoomHeatW": 59.09621113193346,
+      "fault": null
+    },
+    {
+      "seconds": 3.25,
+      "speedRps": 6.5,
+      "compressorW": 129.25532430055372,
+      "signedRoomHeatW": 56.52189915938642,
+      "fault": null
+    },
+    {
+      "seconds": 3.5,
+      "speedRps": 7,
+      "compressorW": 140.05382442290218,
+      "signedRoomHeatW": 53.76361613866952,
+      "fault": null
+    },
+    {
+      "seconds": 3.75,
+      "speedRps": 7.5,
+      "compressorW": 150.9872385426892,
+      "signedRoomHeatW": 50.822289810977644,
+      "fault": null
+    },
+    {
+      "seconds": 4,
+      "speedRps": 8,
+      "compressorW": 162.05396288748665,
+      "signedRoomHeatW": 47.698841028124605,
+      "fault": null
+    },
+    {
+      "seconds": 4.25,
+      "speedRps": 8.5,
+      "compressorW": 173.26482885900813,
+      "signedRoomHeatW": 44.39419286290175,
+      "fault": null
+    },
+    {
+      "seconds": 4.5,
+      "speedRps": 9,
+      "compressorW": 184.60975855130215,
+      "signedRoomHeatW": 40.909306617219194,
+      "fault": null
+    },
+    {
+      "seconds": 4.75,
+      "speedRps": 9.5,
+      "compressorW": 196.09175862500746,
+      "signedRoomHeatW": 37.24512101517074,
+      "fault": null
+    },
+    {
+      "seconds": 5,
+      "speedRps": 10,
+      "compressorW": 207.7177091084654,
+      "signedRoomHeatW": 33.40259011535005,
+      "fault": null
+    },
+    {
+      "seconds": 5.25,
+      "speedRps": 10.5,
+      "compressorW": 219.4847876663246,
+      "signedRoomHeatW": 29.38269453318439,
+      "fault": null
+    },
+    {
+      "seconds": 5.5,
+      "speedRps": 11,
+      "compressorW": 231.39705145606123,
+      "signedRoomHeatW": 25.18641307613196,
+      "fault": null
+    },
+    {
+      "seconds": 5.75,
+      "speedRps": 11.5,
+      "compressorW": 243.4530971983261,
+      "signedRoomHeatW": 20.814742721511873,
+      "fault": null
+    },
+    {
+      "seconds": 6,
+      "speedRps": 12,
+      "compressorW": 255.65327214909382,
+      "signedRoomHeatW": 16.268682580180162,
+      "fault": null
+    },
+    {
+      "seconds": 60,
+      "speedRps": 58.78819049242839,
+      "compressorW": 2223.188602283126,
+      "signedRoomHeatW": -2147.6904078071857,
+      "fault": null
+    }
+  ],
+  "scope": "Actual guarded browser worker and native summer preset, initial temperature sliders and Reset; no user session modified, no physics changes"
+}

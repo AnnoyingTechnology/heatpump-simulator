@@ -3,6 +3,13 @@ import { EQUIPMENT_FR, EQUIPMENT_FR_PATTERNS } from './equipment-fr.ts';
 /** Presentation catalogue. Manufacturer references, user labels and model data are
  * intentionally not translated. Dynamic placeholders retain their supplied values. */
 const BASE: Readonly<Record<string, string>> = {
+ 'Standby': 'En attente',
+ 'All units off': 'Unités arrêtées',
+ 'No cooling demand': 'Pas de besoin de froid',
+ 'No heating demand': 'Pas de besoin de chauffage',
+ 'All indoor units are switched off. Room temperatures continue evolving.': 'Toutes les unités intérieures sont arrêtées. La température des pièces continue d’évoluer.',
+ 'No cooling demand. A waiting indoor unit starts at target + 1 °C. Season presets preserve current room temperatures; warm rooms naturally or set initial room temperatures in Thermal settings and Reset for a new run.': 'Pas de besoin de froid. Une unité en attente démarre à la consigne + 1 °C. Les préréglages saisonniers conservent la température actuelle des pièces ; laisser les pièces se réchauffer ou régler les températures initiales dans les paramètres thermiques puis relancer la simulation.',
+ 'No heating demand. A waiting indoor unit starts at target − 1 °C. Room temperatures continue evolving.': 'Pas de besoin de chauffage. Une unité en attente démarre à la consigne − 1 °C. La température des pièces continue d’évoluer.',
 "Lemmon2003 fixed-composition pseudo-pure Reference comparator retains bubble/dew glide; interior phase composition and mass quality are unresolved. Sampled full-mixture deviations are documented; physical field lines, conserved inventory and fractionation are not qualified.":"Comparateur de référence pseudo-pur Lemmon2003 à composition fixe : glissement bulle/rosée conservé, composition des phases et titre massique non résolus. Écarts échantillonnés au mélange complet documentés ; liaisons physiques, inventaire et fractionnement non qualifiés.",
 
 "Examples use fixed R32 snapshots; fluid selection applies to Live only.":"Exemples : valeurs R32 figées ; choix du fluide réservé à la simulation.",
