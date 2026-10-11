@@ -1,0 +1,288 @@
+{
+  "checkedAt": "2026-10-11T18:33:15.910Z",
+  "sourceCommit": "8c4d17356e2c8fe7735d229152011f656131f686",
+  "compiledEngineSHA256": {
+    "index.js": "3c1461363fbd97602ecda2115ba70bc02f7826beac9436efa35d8bbf5b2a384e",
+    "cycle.js": "03fd1e1267f5a14843fc94b26f4bd1c1ff85a0bbf73ae553a9efd91a9d332097",
+    "air.js": "ac8302044d196da0528b0ca99b76db9f550d26b57adc42c0de89a68ee9b5ed94",
+    "defaults.js": "7ca8c9a833b6e837d0e8fbc51f12d657efa8ff9cacd1b99cb4379c933c275a65",
+    "properties.js": "a0b2507b0554ce919bf420b61d5727082a4456f66c0ef938e873e6033e218744"
+  },
+  "model": "Current Reference cycle and air-side equations, guarded production R32 HEOS",
+  "boundary": {
+    "indoorC": 21,
+    "indoorRH": 0.45,
+    "outdoorC": 1,
+    "outdoorRH": 0.02,
+    "cleanFraction": 0.95,
+    "fanFraction": 1,
+    "indoorUnits": "Identical generic profiles; three connected, two or three active",
+    "limitations": "Steady prescribed inlet temperatures; no thermostat, startup, frost/defrost, house transfer, charge or OEM efficiency map. Zero-length idealized Reference transport."
+  },
+  "cases": [
+    {
+      "two": {
+        "heads": 2,
+        "requestedHeatW": 1500,
+        "deliveredHeatW": 1500.000000000117,
+        "electricalW": 431.0691353304857,
+        "COP": 3.479720251486155,
+        "compressorW": 281.0691353304857,
+        "indoorFansW": 50,
+        "outdoorFanW": 85,
+        "controlsW": 15,
+        "indoorMetalC": 28.43724430555575,
+        "outdoorMetalC": -0.9651398226827557,
+        "speedRps": 13.415446451694265,
+        "condensingC": 30.18079216638332,
+        "evaporatingC": -3.9651498236827556,
+        "closureResidualW": 0.009337190093089422,
+        "equilibriumResidualW": [
+          5.166609753359808e-7,
+          0.000032393524634244386
+        ]
+      },
+      "three": {
+        "heads": 3,
+        "requestedHeatW": 1500,
+        "deliveredHeatW": 1500.0000000002779,
+        "electricalW": 426.0401783802866,
+        "COP": 3.5207946952396747,
+        "compressorW": 251.0401783802866,
+        "indoorFansW": 75,
+        "outdoorFanW": 85,
+        "controlsW": 15,
+        "indoorMetalC": 25.87288616804561,
+        "outdoorMetalC": -0.969979001961299,
+        "speedRps": 13.1470086906289,
+        "condensingC": 27.036067322765348,
+        "evaporatingC": -3.969989002961299,
+        "closureResidualW": 0.008225888555023314,
+        "equilibriumResidualW": [
+          -9.651614618633175e-7,
+          0.000016305331428156933
+        ]
+      },
+      "COPImprovementPercent": 1.1803949968672622,
+      "electricalSavingPercent": 1.166624222897239,
+      "refinedTwo": {
+        "heads": 2,
+        "requestedHeatW": 1500,
+        "deliveredHeatW": 1500.000000000117,
+        "electricalW": 431.0676379555689,
+        "COP": 3.479732338790706,
+        "compressorW": 281.0676379555689,
+        "indoorFansW": 50,
+        "outdoorFanW": 85,
+        "controlsW": 15,
+        "indoorMetalC": 28.43724430555575,
+        "outdoorMetalC": -0.9651421257224237,
+        "speedRps": 13.41536790753107,
+        "condensingC": 30.1808106799782,
+        "evaporatingC": -3.965152126722424,
+        "closureResidualW": 0.0007294839365454254,
+        "equilibriumResidualW": [
+          0.0000015742291452625068,
+          0.00003173979712300934
+        ]
+      },
+      "refinedThree": {
+        "heads": 3,
+        "requestedHeatW": 1500,
+        "deliveredHeatW": 1500.0000000002779,
+        "electricalW": 426.03922865766384,
+        "COP": 3.5208025437619406,
+        "compressorW": 251.03922865766384,
+        "indoorFansW": 75,
+        "outdoorFanW": 85,
+        "controlsW": 15,
+        "indoorMetalC": 25.87288616804561,
+        "outdoorMetalC": -0.969980468011607,
+        "speedRps": 13.146941272406659,
+        "condensingC": 27.0361103533344,
+        "evaporatingC": -3.969990469011607,
+        "closureResidualW": 0.000807606176715348,
+        "equilibriumResidualW": [
+          -7.945413926790934e-8,
+          0.000018898332427852438
+        ]
+      }
+    },
+    {
+      "two": {
+        "heads": 2,
+        "requestedHeatW": 3000,
+        "deliveredHeatW": 2999.9999999999154,
+        "electricalW": 907.9438373306368,
+        "COP": 3.3041691310113883,
+        "compressorW": 757.9438373306368,
+        "indoorFansW": 50,
+        "outdoorFanW": 85,
+        "controlsW": 15,
+        "indoorMetalC": 36.12882663770951,
+        "outdoorMetalC": -2.71192682114445,
+        "speedRps": 28.933328650844924,
+        "condensingC": 39.48198920558533,
+        "evaporatingC": -5.71193682214445,
+        "closureResidualW": 0.00860839634857966,
+        "equilibriumResidualW": [
+          -0.0001333092827735527,
+          0.0014346129514706263
+        ]
+      },
+      "three": {
+        "heads": 3,
+        "requestedHeatW": 3000,
+        "deliveredHeatW": 3000.0000000002947,
+        "electricalW": 825.4366575963259,
+        "COP": 3.6344399929321094,
+        "compressorW": 650.4366575963259,
+        "indoorFansW": 75,
+        "outdoorFanW": 85,
+        "controlsW": 15,
+        "indoorMetalC": 31.001363485340377,
+        "outdoorMetalC": -2.835898791021526,
+        "speedRps": 28.561996248131464,
+        "condensingC": 33.28734777635585,
+        "evaporatingC": -5.835908792021526,
+        "closureResidualW": 0.004586056895895456,
+        "equilibriumResidualW": [
+          0.00027745242641685763,
+          0.0002739843744166137
+        ]
+      },
+      "COPImprovementPercent": 9.995579791026831,
+      "electricalSavingPercent": 9.08725587883088,
+      "refinedTwo": {
+        "heads": 2,
+        "requestedHeatW": 3000,
+        "deliveredHeatW": 2999.9999999999154,
+        "electricalW": 907.9455790308142,
+        "COP": 3.304162792666784,
+        "compressorW": 757.9455790308142,
+        "indoorFansW": 50,
+        "outdoorFanW": 85,
+        "controlsW": 15,
+        "indoorMetalC": 36.12882663770951,
+        "outdoorMetalC": -2.711923998298677,
+        "speedRps": 28.9333999239157,
+        "condensingC": 39.48198045571099,
+        "evaporatingC": -5.711933999298677,
+        "closureResidualW": 0.00013366049241130812,
+        "equilibriumResidualW": [
+          -0.0010756939332168258,
+          0.002289459190251364
+        ]
+      },
+      "refinedThree": {
+        "heads": 3,
+        "requestedHeatW": 3000,
+        "deliveredHeatW": 3000.0000000002947,
+        "electricalW": 825.4375471858012,
+        "COP": 3.634436076028187,
+        "compressorW": 650.4375471858012,
+        "indoorFansW": 75,
+        "outdoorFanW": 85,
+        "controlsW": 15,
+        "indoorMetalC": 31.001363485340377,
+        "outdoorMetalC": -2.835897577496979,
+        "speedRps": 28.562037611249483,
+        "condensingC": 33.287343976516205,
+        "evaporatingC": -5.835907578496979,
+        "closureResidualW": 0.00034599727208502374,
+        "equilibriumResidualW": [
+          0.00038873891389812343,
+          0.0002560510461080412
+        ]
+      }
+    },
+    {
+      "two": {
+        "heads": 2,
+        "requestedHeatW": 4500,
+        "deliveredHeatW": 4499.9999999997835,
+        "electricalW": 1572.9131427481593,
+        "COP": 2.8609335618732783,
+        "compressorW": 1422.9131427481593,
+        "indoorFansW": 50,
+        "outdoorFanW": 85,
+        "controlsW": 15,
+        "indoorMetalC": 43.81786607682743,
+        "outdoorMetalC": -4.169521716270371,
+        "speedRps": 46.36262981332203,
+        "condensingC": 48.5588194915473,
+        "evaporatingC": -7.3864562854340265,
+        "closureResidualW": 0.004094712641131528,
+        "equilibriumResidualW": [
+          0.00226667150582216,
+          -0.002011568736634217
+        ]
+      },
+      "three": {
+        "heads": 3,
+        "requestedHeatW": 4500,
+        "deliveredHeatW": 4499.999999999873,
+        "electricalW": 1366.7538957230893,
+        "COP": 3.292472781004309,
+        "compressorW": 1191.7538957230893,
+        "indoorFansW": 75,
+        "outdoorFanW": 85,
+        "controlsW": 15,
+        "indoorMetalC": 36.12882663770951,
+        "outdoorMetalC": -4.4836327222824925,
+        "speedRps": 46.01434522349488,
+        "condensingC": 39.440466365805285,
+        "evaporatingC": -7.867849783804272,
+        "closureResidualW": 0.006981844245392918,
+        "equilibriumResidualW": [
+          -0.006747136380909069,
+          0.006386447528711869
+        ]
+      },
+      "COPImprovementPercent": 15.083860208500187,
+      "electricalSavingPercent": 13.106842420101671,
+      "refinedTwo": {
+        "heads": 2,
+        "requestedHeatW": 4500,
+        "deliveredHeatW": 4499.9999999997835,
+        "electricalW": 1572.9095947861942,
+        "COP": 2.8609400151897915,
+        "compressorW": 1422.9095947861942,
+        "indoorFansW": 50,
+        "outdoorFanW": 85,
+        "controlsW": 15,
+        "indoorMetalC": 43.81786607682743,
+        "outdoorMetalC": -4.16952946972209,
+        "speedRps": 46.36254334398633,
+        "condensingC": 48.558802683193896,
+        "evaporatingC": -7.386496076986424,
+        "closureResidualW": 0.0008188858435216407,
+        "equilibriumResidualW": [
+          -0.011566727608624205,
+          0.013211599800797558
+        ]
+      },
+      "refinedThree": {
+        "heads": 3,
+        "requestedHeatW": 4500,
+        "deliveredHeatW": 4499.999999999873,
+        "electricalW": 1366.7585594911923,
+        "COP": 3.2924615461527473,
+        "compressorW": 1191.7585594911923,
+        "indoorFansW": 75,
+        "outdoorFanW": 85,
+        "controlsW": 15,
+        "indoorMetalC": 36.12882663770951,
+        "outdoorMetalC": -4.483626523807793,
+        "speedRps": 46.01453315952787,
+        "condensingC": 39.44047149075759,
+        "evaporatingC": -7.867898587321398,
+        "closureResidualW": 0.0008336443653113093,
+        "equilibriumResidualW": [
+          0.00311925228106702,
+          -0.002891529349653865
+        ]
+      }
+    }
+  ]
+}
