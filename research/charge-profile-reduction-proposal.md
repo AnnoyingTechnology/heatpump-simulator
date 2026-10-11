@@ -155,3 +155,11 @@ Independent review accepted the conservation/reference derivation conditionally;
 it did not establish transient accuracy, zero-flow phase geometry, or production
 readiness. The uniform 7 °C initialization is declared, not an observed refrigerant
 distribution. Carryover protection may remain its legitimate physical outcome.
+
+## 2026-10-11 qualification receipt: global P1 rejected
+
+The independent `charge-axial.ts` experiment implements exact pressure/linear-enthalpy density moments and the storage-derived internal mass-flow identity reviewed above. Saturation partitions, flat-slope limits, energy-reference invariance, reconstruction conditioning, both-direction inlet forcing, Off heat and transactional failure tests pass. It is deliberately absent from the coupled/public engine.
+
+An adiabatic hot inlet into a flat wet tube decisively rejects its outlet transport: at1 second P1 predicts226441 J/kg versus FV3/6/12 approximately244164/242897/242814 J/kg, below the initial242151 J/kg. Refining P1 time steps0.05/0.025/0.0125 seconds gives226631/226441/226346 J/kg; the undershoot persists. Integrated outlet energy differs from FV12 by about99 J, or4.1%. Both directions show the same failure. Exact global M/U/W conservation is insufficient to establish admissible local phase/outlet behavior.
+
+The retained alternative is ordinary conservative finite volumes with optional MC internal-face reconstruction and exact mass-based elimination of redundant face unknowns. It retains actual coil endpoints and finite storage rather than adding fictitious separators or clamping profile moments. [Numerical/spatial receipt and remaining gates](../reviews/charge-fv-numerical-checkpoint.md) distinguish its qualified balances, incomplete spatial accuracy and unresolved owner startup/control/throughput.

@@ -1,6 +1,8 @@
+import {isentropicR32Density} from './charge-isentrope.ts';
 import { Properties, DomainError } from './properties.ts';
 import type { RefrigerantState } from './types.ts';
 import {constant,coordinate,add,subtract,multiply,divide,scale as differentialScale,compose,type Differential} from './charge-derivatives.ts';
+import {boundedEnthalpyFaces,boundedFaceWeights} from './charge-faces.ts';
 
 /** Generic R32 inventory foundation. Idealized hydraulic/adiabatic field lines;
  * their real physical volume remains. Geometry/charge edits require a new circuit. */
@@ -22,6 +24,10 @@ export interface ChargeNumerics { pressureDerivativeRelativeStep?: number; analy
   storageCoordinates?:'enthalpy'|'density';
   analyticFluxJacobian?:boolean;
   predictTurnover?:boolean;
+  eliminateInternalFlows?:boolean;
+  polynomialThroatSearch?:boolean;
+  coilCells?:number;
+  coilReconstruction?:'constant'|'mc';
   maximumSubsteps?:number; maximumAttempts?:number }
 export class ChargeWorkBudgetError extends DomainError {
   constructor(readonly requestedSeconds:number,readonly provisionalSeconds:number,readonly attempts:number,
@@ -86,6 +92,9 @@ export class ChargeCircuit {
   private readonly outdoorIndices: number[] = [];
   private readonly accumulatorIndex: number;
   private readonly flowOffset: number;
+  private readonly coilCellCount:number;
+  private readonly branchFlowCount:number;
+  private branchFace(room:number,face:number):number{return this.flowOffset+this.coilCellCount-1+this.branchFlowCount*room+face;}
   private current: ChargeSnapshot;
   private revision = 0;
   private candidates = new WeakMap<ChargeCandidate, number>();
@@ -96,6 +105,8 @@ export class ChargeCircuit {
   constructor(private readonly properties: Properties, geometry: ChargeGeometry,
     initial: { massKg: number; fluidTemperatureC: number; orientation?:'heating'|'cooling'; valveOpening?:number },private readonly numerics:ChargeNumerics={}) {
     this.geometry=deepFreeze(structuredClone(geometry));this.numerics=deepFreeze(structuredClone(numerics));const g = this.geometry;
+    this.coilCellCount=numerics.coilCells??3;this.branchFlowCount=this.coilCellCount+2;
+    if(!Number.isInteger(this.coilCellCount)||this.coilCellCount<2||this.coilCellCount>48)throw new DomainError('Coil cells must be an integer in 2…48');
     const positive = (v: number) => Number.isFinite(v) && v > 0;
     if (!g.rooms.length || new Set(g.rooms.map(r => r.id)).size !== g.rooms.length ||
       ![g.outdoorCoilVolumeM3,g.outdoorConductanceWK,g.accumulatorVolumeM3,g.accumulatorInletAreaM2,
@@ -116,11 +127,14 @@ export class ChargeCircuit {
     if(numerics.storageCoordinates!==undefined&&!['enthalpy','density'].includes(numerics.storageCoordinates))throw new DomainError('Unknown charge storage coordinate');
     if(numerics.analyticFluxJacobian!==undefined&&typeof numerics.analyticFluxJacobian!=='boolean')throw new DomainError('Flux Jacobian option must be boolean');
     if(numerics.predictTurnover!==undefined&&typeof numerics.predictTurnover!=='boolean')throw new DomainError('Turnover predictor option must be boolean');
+    if(numerics.eliminateInternalFlows!==undefined&&typeof numerics.eliminateInternalFlows!=='boolean')throw new DomainError('Flow elimination option must be boolean');
+    if(numerics.polynomialThroatSearch!==undefined&&typeof numerics.polynomialThroatSearch!=='boolean')throw new DomainError('Polynomial throat option must be boolean');
+    if(numerics.coilReconstruction!==undefined&&!['constant','mc'].includes(numerics.coilReconstruction))throw new DomainError('Unknown coil reconstruction');
     if(initial.valveOpening!==undefined&&(!Number.isFinite(initial.valveOpening)||initial.valveOpening<0||initial.valveOpening>1))
       throw new DomainError('Initial EEV opening must be finite in [0,1]');
-    for (let j=0;j<3;j++) {
+    for (let j=0;j<this.coilCellCount;j++) {
       this.outdoorIndices.push(this.definitions.length);
-      this.definitions.push({id:`outdoor:${j}`,volume:g.outdoorCoilVolumeM3/3,pressureIndex:0,coil:'outdoor',ua:g.outdoorConductanceWK/3});
+      this.definitions.push({id:`outdoor:${j}`,volume:g.outdoorCoilVolumeM3/this.coilCellCount,pressureIndex:0,coil:'outdoor',ua:g.outdoorConductanceWK/this.coilCellCount});
     }
     for (const room of g.rooms) {
       if (!room.id || room.id==='outdoor' || ![room.coilVolumeM3,room.refrigerantConductanceWK,room.gasInsideDiameterM,
@@ -129,7 +143,7 @@ export class ChargeCircuit {
       const indices: number[]=[];
       const add=(id:string,volume:number,coil?:string,ua=0)=>{indices.push(this.definitions.length);this.definitions.push({id,volume,pressureIndex:1,coil,ua});};
       add(`${room.id}:gas`,Math.PI*room.gasInsideDiameterM**2*room.lineLengthM/4);
-      for(let j=0;j<3;j++)add(`${room.id}:coil:${j}`,room.coilVolumeM3/3,room.id,room.refrigerantConductanceWK/3);
+      for(let j=0;j<this.coilCellCount;j++)add(`${room.id}:coil:${j}`,room.coilVolumeM3/this.coilCellCount,room.id,room.refrigerantConductanceWK/this.coilCellCount);
       add(`${room.id}:small`,Math.PI*room.smallInsideDiameterM**2*room.lineLengthM/4);
       this.roomIndices.push(indices);
     }
@@ -140,7 +154,7 @@ export class ChargeCircuit {
     // Computed P/U force a real public EOS flash; T/D are only initialization inputs.
     const p=properties.prop('P','T',T,'D',rho),u=properties.prop('U','T',T,'D',rho),h=u+p/rho;
     properties.ph(p,h);
-    const variables=[p,p,p,...this.definitions.map(()=>h),...Array(2+5*g.rooms.length).fill(0)];
+    const variables=[p,p,p,...this.definitions.map(()=>h),...Array(this.coilCellCount-1+this.branchFlowCount*g.rooms.length).fill(0)];
     const cells=this.states(variables);
     this.current={timeSeconds:0,orientation:initial.orientation??'heating',variables,openings:g.rooms.map(()=>initial.valveOpening??.65),compressorAdmission:this.vaporFraction(cells[this.accumulatorIndex].state)>=.04,initialMassKg:cells.reduce((s,c)=>s+c.massKg,0),
       initialEnergyJ:cells.reduce((s,c)=>s+c.internalEnergyJ,0),leakedMassKg:0,leakedEnthalpyJ:0,compressorWorkJ:0,coilHeatJ:0,cells};
@@ -199,6 +213,23 @@ export class ChargeCircuit {
     return {massP:0,massH:V,energyP:V*(-rho*rhoP/rhoH-1),energyH:V*(cell.state.hJkg+rho/rhoH),
       temperatureP:ph.temperatureP-ph.temperatureH*rhoP/rhoH,temperatureH:ph.temperatureH/rhoH};
   }
+  /** Exact backward-Euler local mass elimination. This changes solver size,
+   * not a physical face law or retained component inventory. */
+  private storageFaceFlows(z:number[],cells:ChargeCell[],previous:ChargeSnapshot,dt:number,boundary:ChargeBoundary,openings:number[]):void{
+    const coefficient=boundary.operating?.dischargeCoefficient??this.geometry.dischargeCoefficient;
+    const leak=(j:number)=>boundary.leak?.physicalCellId===cells[j].id?boundary.leak.rateKgs:0;
+    const rate=(j:number)=>(cells[j].massKg-previous.cells[j].massKg)/dt+leak(j);
+    let totalValveFlow=0;
+    for(let i=0;i<this.roomIndices.length;i++){
+      const indices=this.roomIndices[i],small=cells[indices.at(-1)!].state,out=cells[this.outdoorIndices.at(-1)!].state;
+      const area=this.geometry.rooms[i].maximumValveAreaM2*openings[i];
+      let flow=small.pPa>=out.pPa?this.nozzle(small,out.pPa,area,coefficient):-this.nozzle(out,small.pPa,area,coefficient);
+      totalValveFlow+=flow;
+      for(let j=this.branchFlowCount-1;j>=0;j--){flow+=rate(indices[j]);z[this.branchFace(i,j)]=flow;}
+    }
+    let flow=-totalValveFlow;
+    for(let j=this.coilCellCount-1;j>=1;j--){flow+=rate(this.outdoorIndices[j]);z[this.flowOffset+j-1]=flow;}
+  }
   /** Homogeneous-equilibrium isentropic throat with downstream dissipation. */
   private nozzle(up:RefrigerantState,downPa:number,area:number,coefficient=this.geometry.dischargeCoefficient,passageLengthM=this.geometry.valvePassageLengthM??.005):number {
     if(area===0 || downPa>=up.pPa)return 0;
@@ -237,35 +268,9 @@ export class ChargeCircuit {
     let densityCalls=0;
     const density=(pressure:number)=>{
       if(++densityCalls>65536)throw new DomainError('Isentropic nozzle density work budget exceeded');
-      // Keep the public PS preflight/error boundary. Pure-fluid coexistence
-      // also permits a direct entropy lever rule, which avoids inversion noise
-      // at the dew endpoint. Outside coexistence refine the public PS temperature
-      // by ds/dT|p=cp/T; this changes no EOS or thermodynamic state specification.
-      let value=this.properties.prop('D','P',pressure,'S',up.entropyJkgK);
-      const sl=this.properties.prop('S','P',pressure,'Q',0),sv=this.properties.prop('S','P',pressure,'Q',1);
-      if(up.entropyJkgK>=sl&&up.entropyJkgK<=sv){
-        const quality=(up.entropyJkgK-sl)/(sv-sl);
-        value=1/((1-quality)/this.properties.prop('D','P',pressure,'Q',0)+quality/this.properties.prop('D','P',pressure,'Q',1));
-      }else{
-        let temperature=this.properties.prop('T','P',pressure,'S',up.entropyJkgK);
-        const saturation=this.properties.prop('T','P',pressure,'Q',0);
-        {
-          // The entropy comparison establishes the single-phase side. Impose
-          // that side only near saturation, where an otherwise valid PT query
-          // is ambiguous under the backend's pressure proximity guard.
-          const pressureInput=Math.abs(temperature-saturation)<1e-4?(up.entropyJkgK>sv?'P|gas':'P|liquid'):'P';
-          for(let i=0;i<4;i++){
-            const residual=this.properties.prop('S',pressureInput,pressure,'T',temperature)-up.entropyJkgK;
-            if(Math.abs(residual)<1e-11)break;
-            const cp=this.properties.prop('C',pressureInput,pressure,'T',temperature);
-            const next=temperature-residual*temperature/cp;
-            if(next===temperature)break;temperature=next;
-          }
-          value=this.properties.prop('D',pressureInput,pressure,'T',temperature);
-        }
-      }
-      if(!(Number.isFinite(value)&&value>0))throw new DomainError('Invalid isentropic nozzle density');
-      return value;
+      // Coexistence is exactly determined by pure-fluid PQ entropy/volume
+      // lever rules; only actual single-phase states need the PS inverse flash.
+      return isentropicR32Density(this.properties,pressure,up.entropyJkgK);
     };
     const maximum=(flowBudget:number,refinements:number)=>{
       // Reuse one phase-partitioned EOS antiderivative for this isentrope.
@@ -276,7 +281,7 @@ export class ChargeCircuit {
       const flux=(pressure:number)=>{
         if(pressure===up.pPa)return 0;
         if(!(pressure>=downPa&&pressure<up.pPa))throw new DomainError('Nozzle throat pressure outside bracket');
-        const rho=density(pressure),drop=up.pPa-pressure;
+        const rho=this.numerics.polynomialThroatSearch?volume.density(pressure):density(pressure),drop=up.pPa-pressure;
         const budget=(integral:number)=>{
           const ideal=coefficient*area*rho*Math.sqrt(2*integral),m=corrected(rho*Math.sqrt(2*integral),drop);
           const sensitivity=2*drop*m/ideal**2,beta=sensitivity/(resistance+sensitivity);
@@ -299,13 +304,14 @@ export class ChargeCircuit {
         else{a=c;c=d;gc=gd;d=a+r*(b-a);gd=flux(d);}
       }
       if(gc>best){best=gc;bestP=c;}if(gd>best){best=gd;bestP=d;}
+      if(this.numerics.polynomialThroatSearch)best=density(bestP)*Math.sqrt(2*volume(bestP));
       return {flux:best,throatPa:bestP,flowKgs:corrected(best,up.pPa-bestP)};
     };
-    const coarse=maximum(4e-11,32),fine=maximum(4e-12,48);
+    const coarse=maximum(4e-11,48),fine=maximum(4e-12,64);
     // The whole corrected flow is checked: scalar integral error alone does
     // not bound movement of a flat throat maximum entering viscous correction.
     if(!(Number.isFinite(fine.flowKgs)&&fine.flowKgs>=0)||Math.abs(fine.flowKgs-coarse.flowKgs)>4e-11)
-      throw new DomainError('Isentropic nozzle corrected flow did not converge');
+      throw new DomainError(`Isentropic nozzle corrected flow did not converge: up ${up.pPa} Pa, down ${downPa} Pa, h ${up.hJkg} J/kg, area ${area} m2, length ${passageLengthM} m, coarse ${coarse.flowKgs}, fine ${fine.flowKgs}, throat ${coarse.throatPa}/${fine.throatPa} Pa`);
     if(this.nozzleFluxCache.size>=10000){let removed=0;for(const oldest of this.nozzleFluxCache.keys()){
       this.nozzleFluxCache.delete(oldest);if(++removed===2000)break;
     }}
@@ -343,13 +349,18 @@ export class ChargeCircuit {
       mc=S.densityKgm3*operation.displacementM3rev*boundary.compressorSpeedRps*operation.volumetricEfficiency;
     } else if(boundary.compressorSpeedRps>0)diagnostics.push('Compressor protected against accumulator liquid carryover');
     const work=mc*((D?.hJkg??S.hJkg)-S.hJkg);
+    const reconstructed=new Map<number,{left:number;right:number}>();
+    if(this.numerics.coilReconstruction==='mc')for(const indices of [this.outdoorIndices,...this.roomIndices.map(i=>i.slice(1,-1))]){
+      const faces=boundedEnthalpyFaces(indices.map(j=>cells[j].state.hJkg));indices.forEach((j,k)=>reconstructed.set(j,faces[k]));
+    }
     const face=(a:number,b:number,m:number,hPositive?:number,hNegative?:number)=>{
-      const h=m>=0?(hPositive??cells[a].state.hJkg):(hNegative??cells[b].state.hJkg);
+      const sameCoil=this.definitions[a].coil&&this.definitions[a].coil===this.definitions[b].coil;
+      const h=m>=0?(hPositive??(sameCoil?reconstructed.get(a)?.right:undefined)??cells[a].state.hJkg):
+        (hNegative??(sameCoil?reconstructed.get(b)?.left:undefined)??cells[b].state.hJkg);
       dm[a]-=m;dm[b]+=m;dU[a]-=m*h;dU[b]+=m*h;
     };
-    face(this.outdoorIndices[0],this.outdoorIndices[1],z[this.flowOffset]);
-    face(this.outdoorIndices[1],this.outdoorIndices[2],z[this.flowOffset+1]);
-    const branches=this.roomIndices.map((indices,i)=>({indices,f:z.slice(this.flowOffset+2+5*i,this.flowOffset+7+5*i)}));
+    for(let j=1;j<this.coilCellCount;j++)face(this.outdoorIndices[j-1],this.outdoorIndices[j],z[this.flowOffset+j-1]);
+    const branches=this.roomIndices.map((indices,i)=>({indices,f:z.slice(this.branchFace(i,0),this.branchFace(i,0)+this.branchFlowCount)}));
     // Indoor gas header has zero storage. Mix only actual entering streams.
     let incomingM=heating?mc:0,incomingH=heating?mc*(D?.hJkg??S.hJkg):0;
     for(const b of branches)if(b.f[0]<0){incomingM-=b.f[0];incomingH-=b.f[0]*cells[b.indices[0]].state.hJkg;}
@@ -371,16 +382,16 @@ export class ChargeCircuit {
     for(let i=0;i<branches.length;i++) {
       const b=branches[i];headerMass-=b.f[0];
       dm[b.indices[0]]+=b.f[0];dU[b.indices[0]]+=b.f[0]*(b.f[0]>=0?headerH:cells[b.indices[0]].state.hJkg);
-      for(let j=1;j<5;j++)face(b.indices[j-1],b.indices[j],b.f[j]);
-      const small=cells[b.indices[4]].state,out=cells[this.outdoorIndices[2]].state,area=this.geometry.rooms[i].maximumValveAreaM2*openings[i];
+      for(let j=1;j<this.branchFlowCount;j++)face(b.indices[j-1],b.indices[j],b.f[j]);
+      const small=cells[b.indices.at(-1)!].state,out=cells[this.outdoorIndices.at(-1)!].state,area=this.geometry.rooms[i].maximumValveAreaM2*openings[i];
       const valve=small.pPa>=out.pPa?this.nozzle(small,out.pPa,area,operation.dischargeCoefficient):-this.nozzle(out,small.pPa,area,operation.dischargeCoefficient);
-      face(b.indices[4],this.outdoorIndices[2],valve);valves.push(valve);
+      face(b.indices.at(-1)!,this.outdoorIndices.at(-1)!,valve);valves.push(valve);
     }
     for(let j=0;j<cells.length;j++){
       const c=this.definitions[j];if(!c.coil)continue;
       const metalC=c.coil==='outdoor'?boundary.outdoorMetalC:boundary.indoorMetalCById[c.coil];
-      const ua=c.coil==='outdoor'?operation.outdoorConductanceWK/3:
-        (boundary.operating?.indoorConductanceWKById?.[c.coil]??this.geometry.rooms.find(r=>r.id===c.coil)!.refrigerantConductanceWK)/3;
+      const ua=c.coil==='outdoor'?operation.outdoorConductanceWK/this.coilCellCount:
+        (boundary.operating?.indoorConductanceWKById?.[c.coil]??this.geometry.rooms.find(r=>r.id===c.coil)!.refrigerantConductanceWK)/this.coilCellCount;
       const q=ua*(metalC-cells[j].state.temperatureC);dU[j]+=q;heat[c.coil]=(heat[c.coil]??0)+q;
     }
     if(boundary.leak && boundary.leak.rateKgs>0){const j=cells.findIndex(c=>c.id===boundary.leak!.physicalCellId);
@@ -466,14 +477,22 @@ export class ChargeCircuit {
       work=multiply(mc,subtract(hD,hS));
     }
     const dm=r.cells.map(()=>C(0)),dU=r.cells.map(()=>C(0)),heat:Record<string,Differential>={};
-    const face=(a:number,b:number,m:Differential,hPositive=enthalpies[a],hNegative=enthalpies[b])=>{
-      const flux=multiply(m,m.value>=0?hPositive:hNegative);
+    const reconstructed=new Map<number,{left:Differential;right:Differential}>();
+    if(this.numerics.coilReconstruction==='mc')for(const indices of [this.outdoorIndices,...this.roomIndices.map(i=>i.slice(1,-1))]){
+      const weights=boundedFaceWeights(indices.map(j=>r.cells[j].state.hJkg));
+      const sum=(terms:[number,number][])=>terms.reduce((sum,[k,w])=>add(sum,differentialScale(enthalpies[indices[k]],w)),C(0));
+      indices.forEach((j,k)=>reconstructed.set(j,{left:sum(weights[k].left),right:sum(weights[k].right)}));
+    }
+    const face=(a:number,b:number,m:Differential,hPositive?:Differential,hNegative?:Differential)=>{
+      const sameCoil=this.definitions[a].coil&&this.definitions[a].coil===this.definitions[b].coil;
+      const h=m.value>=0?(hPositive??(sameCoil?reconstructed.get(a)?.right:undefined)??enthalpies[a]):
+        (hNegative??(sameCoil?reconstructed.get(b)?.left:undefined)??enthalpies[b]);
+      const flux=multiply(m,h);
       dm[a]=subtract(dm[a],m);dm[b]=add(dm[b],m);dU[a]=subtract(dU[a],flux);dU[b]=add(dU[b],flux);
     };
     const flow=(index:number)=>coordinate(z[index],size,index,scales[index]);
-    face(this.outdoorIndices[0],this.outdoorIndices[1],flow(this.flowOffset));
-    face(this.outdoorIndices[1],this.outdoorIndices[2],flow(this.flowOffset+1));
-    const branches=this.roomIndices.map((indices,i)=>({indices,f:Array.from({length:5},(_,j)=>flow(this.flowOffset+2+5*i+j))}));
+    for(let j=1;j<this.coilCellCount;j++)face(this.outdoorIndices[j-1],this.outdoorIndices[j],flow(this.flowOffset+j-1));
+    const branches=this.roomIndices.map((indices,i)=>({indices,f:Array.from({length:this.branchFlowCount},(_,j)=>flow(this.branchFace(i,j)))}));
     let incomingM=heating?mc:C(0),incomingH=heating?multiply(mc,hD):C(0),feed=C(0);
     for(const branch of branches)if(branch.f[0].value<0){
       incomingM=subtract(incomingM,branch.f[0]);incomingH=subtract(incomingH,multiply(branch.f[0],enthalpies[branch.indices[0]]));
@@ -496,13 +515,13 @@ export class ChargeCircuit {
     for(let i=0;i<branches.length;i++){
       const b=branches[i];headerMass=subtract(headerMass,b.f[0]);
       dm[b.indices[0]]=add(dm[b.indices[0]],b.f[0]);dU[b.indices[0]]=add(dU[b.indices[0]],multiply(b.f[0],b.f[0].value>=0?headerH:enthalpies[b.indices[0]]));
-      for(let j=1;j<5;j++)face(b.indices[j-1],b.indices[j],b.f[j]);
-      face(b.indices[4],this.outdoorIndices[2],nozzleBetween(b.indices[4],this.outdoorIndices[2],this.geometry.rooms[i].maximumValveAreaM2*openings[i],operation.valvePassageLengthM??.005));
+      for(let j=1;j<this.branchFlowCount;j++)face(b.indices[j-1],b.indices[j],b.f[j]);
+      face(b.indices.at(-1)!,this.outdoorIndices.at(-1)!,nozzleBetween(b.indices.at(-1)!,this.outdoorIndices.at(-1)!,this.geometry.rooms[i].maximumValveAreaM2*openings[i],operation.valvePassageLengthM??.005));
     }
     for(let j=0;j<r.cells.length;j++){
       const definition=this.definitions[j];if(!definition.coil)continue;
       const metal=definition.coil==='outdoor'?boundary.outdoorMetalC:boundary.indoorMetalCById[definition.coil];
-      const ua=definition.coil==='outdoor'?operation.outdoorConductanceWK/3:(operation.indoorConductanceWKById?.[definition.coil]??this.geometry.rooms.find(room=>room.id===definition.coil)!.refrigerantConductanceWK)/3;
+      const ua=definition.coil==='outdoor'?operation.outdoorConductanceWK/this.coilCellCount:(operation.indoorConductanceWKById?.[definition.coil]??this.geometry.rooms.find(room=>room.id===definition.coil)!.refrigerantConductanceWK)/this.coilCellCount;
       const q=differentialScale(subtract(C(metal),temperatures[j]),ua);dU[j]=add(dU[j],q);heat[definition.coil]=add(heat[definition.coil]??C(0),q);
     }
     let leakH=C(0);
@@ -605,10 +624,12 @@ export class ChargeCircuit {
     });
     const pressureDifference=this.numerics.pressureDifferenceCoordinates??true;
     const densityCoordinates=this.numerics.storageCoordinates==='density';
+    const eliminatedFlows=this.numerics.eliminateInternalFlows??false;
     const sourcePressure=boundary.orientation==='heating'?0:1;
-    const size=previous.variables.length,scale=previous.variables.map((_,i)=>i===2&&pressureDifference?1:i<3?1e6:i<this.flowOffset?(densityCoordinates?500:5e5):.01);
+    const size=eliminatedFlows?this.flowOffset:previous.variables.length,scale=previous.variables.map((_,i)=>i===2&&pressureDifference?1:i<3?1e6:i<this.flowOffset?(densityCoordinates?500:5e5):.01);
     const residual=(x:number[])=>{
       const z=x.map((v,i)=>v*scale[i]);
+      if(eliminatedFlows)z.push(...previous.variables.slice(this.flowOffset));
       // Solver coordinates may use the accumulator drop, while all physical
       // states and public snapshots keep their fixed absolute pressures.
       if(pressureDifference)z[2]+=z[sourcePressure];
@@ -620,6 +641,7 @@ export class ChargeCircuit {
         return {id:definition.id,volumeM3:definition.volume,group:(['outdoor','indoor','accumulator'] as const)[definition.pressureIndex],
           massKg:mass,internalEnergyJ:mass*state.hJkg-state.pPa*definition.volume,state};
       });
+      if(eliminatedFlows){prepared??=this.states(z);this.storageFaceFlows(z,prepared,previous,dt,boundary,openings);}
       const r=this.evaluation(z,boundary,openings,previous.compressorAdmission,prepared),f:number[]=[];
       for(let j=0;j<r.cells.length;j++)f.push((r.cells[j].massKg-previous.cells[j].massKg-dt*r.dm[j])/.1);
       for(let j=0;j<r.cells.length;j++)f.push((r.cells[j].internalEnergyJ-previous.cells[j].internalEnergyJ-dt*r.dU[j])/50000);
@@ -637,11 +659,12 @@ export class ChargeCircuit {
       const aggregateEnergy=energyChange-dt*(r.work+Object.values(r.heat).reduce((a,b)=>a+b,0))+leakedH;
       f[this.accumulatorIndex]=aggregateMass/.1;
       f[r.cells.length+this.accumulatorIndex]=aggregateEnergy/50000;
-      return {z,r,f,local,aggregateMass,aggregateEnergy};
+      const reduced=eliminatedFlows?[f[this.outdoorIndices[0]],f[this.accumulatorIndex],...f.slice(r.cells.length,2*r.cells.length),f[2*r.cells.length]]:f;
+      return {z,r,f:reduced,local,aggregateMass,aggregateEnergy};
     };
-    let x=previous.variables.map((v,i)=>(densityCoordinates&&i>=3&&i<this.flowOffset?previous.cells[i-3].massKg/this.definitions[i-3].volume:v)/scale[i]);
+    let x=previous.variables.slice(0,size).map((v,i)=>(densityCoordinates&&i>=3&&i<this.flowOffset?previous.cells[i-3].massKg/this.definitions[i-3].volume:v)/scale[i]);
     if(pressureDifference)x[2]-=previous.variables[sourcePressure]/scale[2];
-    if(boundary.orientation!==previous.orientation){
+    if(!eliminatedFlows&&boundary.orientation!==previous.orientation){
       const rates=this.evaluation(previous.variables,boundary,openings,previous.compressorAdmission);
       // Algebraic face flows have no stored inertia in this pressure-region
       // reduction. A new valve topology needs a continuity-consistent Newton
@@ -652,10 +675,10 @@ export class ChargeCircuit {
       const totalGasVolume=this.roomIndices.reduce((sum,indices)=>sum+this.definitions[indices[0]].volume,0);
       for(let i=0;i<this.roomIndices.length;i++){
         const flow=required*this.definitions[this.roomIndices[i][0]].volume/totalGasVolume;
-        for(let j=0;j<5;j++)x[this.flowOffset+2+5*i+j]=flow/scale[this.flowOffset+2+5*i+j];
+        for(let j=0;j<this.branchFlowCount;j++)x[this.branchFace(i,j)]=flow/scale[this.branchFace(i,j)];
       }
       const outdoorFlow=boundary.orientation==='heating'?-rates.accumulatorFeedKgs:rates.mc;
-      x[this.flowOffset]=outdoorFlow/scale[this.flowOffset];x[this.flowOffset+1]=outdoorFlow/scale[this.flowOffset+1];
+      for(let j=0;j<this.coilCellCount-1;j++)x[this.flowOffset+j]=outdoorFlow/scale[this.flowOffset+j];
     }
     // A zero-lift equilibrium is a nonsmooth nozzle point. This is only a Newton
     // initial guess; all balances still use the unaltered previous physical M/U.
@@ -697,21 +720,44 @@ export class ChargeCircuit {
       J=Array.from({length:size},()=>Array<number>(size));jacobianAge=0;
       if(this.numerics.analyticFluxJacobian){
         const derivatives=this.fluxDerivatives(cur.z,boundary,openings,previous.compressorAdmission,cur.r,scale);
+        const flowGradients=Array.from({length:previous.variables.length-this.flowOffset},()=>Array<number>(size).fill(0));
+        if(eliminatedFlows){
+          const totalValve=Array<number>(size).fill(0);
+          for(let i=0;i<this.roomIndices.length;i++){
+            const indices=this.roomIndices[i];
+            // dm_small=f4-valve-leak. At fixed face coordinates its physical
+            // coordinate derivative is -d(valve); leakage rate is prescribed.
+            const valve=derivatives.dm[indices.at(-1)!].gradient.slice(0,size).map(v=>-v);
+            let flow=[...valve];for(let j=0;j<size;j++)totalValve[j]+=valve[j];
+            for(let k=this.branchFlowCount-1;k>=0;k--){
+              flow=flow.map((v,j)=>v+derivatives.masses[indices[k]].gradient[j]/dt);
+              flowGradients[this.coilCellCount-1+this.branchFlowCount*i+k]=flow;
+            }
+          }
+          let flow=totalValve.map(v=>-v);
+          for(let k=this.coilCellCount-1;k>=1;k--){
+            flow=flow.map((v,j)=>v+derivatives.masses[this.outdoorIndices[k]].gradient[j]/dt);flowGradients[k-1]=flow;
+          }
+        }
+        const gradient=(node:Differential,j:number)=>node.gradient[j]+(eliminatedFlows?
+          flowGradients.reduce((sum,row,k)=>sum+node.gradient[this.flowOffset+k]*row[j]/scale[this.flowOffset+k],0):0);
+        const full=Array.from({length:previous.variables.length},()=>Array<number>(size));
         for(let j=0;j<size;j++){
           let aggregateMass=0,aggregateEnergy=0,coilHeat=0;
           for(let k=0;k<nCells;k++){
-            const mass=derivatives.masses[k].gradient[j],energy=derivatives.energies[k].gradient[j];
-            J[k][j]=(mass-dt*derivatives.dm[k].gradient[j])/.1;
-            J[nCells+k][j]=(energy-dt*derivatives.dU[k].gradient[j])/50000;
+            const mass=gradient(derivatives.masses[k],j),energy=gradient(derivatives.energies[k],j);
+            full[k][j]=(mass-dt*gradient(derivatives.dm[k],j))/.1;
+            full[nCells+k][j]=(energy-dt*gradient(derivatives.dU[k],j))/50000;
             aggregateMass+=mass;aggregateEnergy+=energy;
           }
-          for(const q of Object.values(derivatives.heat))coilHeat+=q.gradient[j];
-          J[2*nCells][j]=dt*derivatives.headerMass.gradient[j]/.1;
-          J[this.accumulatorIndex][j]=aggregateMass/.1;
-          J[nCells+this.accumulatorIndex][j]=(aggregateEnergy-dt*(derivatives.work.gradient[j]+coilHeat-derivatives.leakH.gradient[j]))/50000;
+          for(const q of Object.values(derivatives.heat))coilHeat+=gradient(q,j);
+          full[2*nCells][j]=dt*gradient(derivatives.headerMass,j)/.1;
+          full[this.accumulatorIndex][j]=aggregateMass/.1;
+          full[nCells+this.accumulatorIndex][j]=(aggregateEnergy-dt*(gradient(derivatives.work,j)+coilHeat-gradient(derivatives.leakH,j)))/50000;
         }
+        J=eliminatedFlows?[full[this.outdoorIndices[0]],full[this.accumulatorIndex],...full.slice(nCells,2*nCells),full[2*nCells]]:full;
       }else{
-      const storage=(this.numerics.analyticStorageJacobian??true)?cur.r.cells.map(c=>this.coordinateStorageDerivatives(c)):undefined;
+      const storage=!eliminatedFlows&&(this.numerics.analyticStorageJacobian??true)?cur.r.cells.map(c=>this.coordinateStorageDerivatives(c)):undefined;
       for(let j=0;j<size;j++){
         const z=[...x];let eps=(j<3?(this.numerics.pressureDerivativeRelativeStep??1e-9):1e-6)*Math.max(1,Math.abs(x[j]));
         if(pressureDifference&&j===2){
@@ -765,8 +811,8 @@ export class ChargeCircuit {
             const coil=this.definitions[k].coil;
             if(coil){
               const operation={...this.geometry,...boundary.operating};
-              const ua=coil==='outdoor'?operation.outdoorConductanceWK/3:
-                (boundary.operating?.indoorConductanceWKById?.[coil]??this.geometry.rooms.find(room=>room.id===coil)!.refrigerantConductanceWK)/3;
+              const ua=coil==='outdoor'?operation.outdoorConductanceWK/this.coilCellCount:
+                (boundary.operating?.indoorConductanceWKById?.[coil]??this.geometry.rooms.find(room=>room.id===coil)!.refrigerantConductanceWK)/this.coilCellCount;
               const exactT=applies?(j<3?derivative.temperatureP:derivative.temperatureH)*scale[j]:0;
               const finiteT=(trial.r.cells[k].state.temperatureC-cur.r.cells[k].state.temperatureC)/delta;
               // Energy residual contains -dt*UA*(metal-T). Correct this local
@@ -811,26 +857,26 @@ export class ChargeCircuit {
     const snapshot:ChargeSnapshot={...previous,timeSeconds:previous.timeSeconds+dt,orientation:boundary.orientation,variables:cur.z,openings,
       leakedMassKg:previous.leakedMassKg+leakMass,leakedEnthalpyJ:previous.leakedEnthalpyJ+leakH,
       compressorWorkJ:previous.compressorWorkJ+work,coilHeatJ:previous.coilHeatJ+heatJ,cells:r.cells};
-    const outGas=r.cells[this.outdoorIndices[0]].state,outSmall=r.cells[this.outdoorIndices[2]].state;
+    const outGas=r.cells[this.outdoorIndices[0]].state,outSmall=r.cells[this.outdoorIndices.at(-1)!].state;
     const outGasFlow=boundary.orientation==='heating'?-r.accumulatorFeedKgs:r.mc;
     const outSmallFlow=r.valves.reduce((a,b)=>a+b,0);
     const incomingSmallM=r.valves.reduce((sum,m)=>sum+Math.max(0,m),0);
-    const inletSmallH=incomingSmallM>0?r.valves.reduce((sum,m,i)=>sum+Math.max(0,m)*r.cells[this.roomIndices[i][4]].state.hJkg,0)/incomingSmallM:outSmall.hJkg;
+    const inletSmallH=incomingSmallM>0?r.valves.reduce((sum,m,i)=>sum+Math.max(0,m)*r.cells[this.roomIndices[i].at(-1)!].state.hJkg,0)/incomingSmallM:outSmall.hJkg;
     const coilPorts:ChargeCandidate['coilPorts']={outdoor:{
       gas:outGasFlow>0?(boundary.orientation==='heating'?this.properties.ph(outGas.pPa,r.accumulatorInletOutflowState.hJkg):(r.discharge??outGas)):outGas,
       small:outSmallFlow>0?this.properties.ph(outSmall.pPa,inletSmallH):outSmall,
       gasCellState:outGas,smallCellState:outSmall,gasFaceMassFlowKgs:outGasFlow,smallFaceMassFlowKgs:outSmallFlow,flowFromGasKgs:outGasFlow}};
     const fieldPorts:ChargeCandidate['fieldPorts']={};
     for(let i=0;i<this.geometry.rooms.length;i++){
-      const indices=this.roomIndices[i],gasCell=r.cells[indices[1]].state,smallCell=r.cells[indices[3]].state;
-      const gasFlow=cur.z[this.flowOffset+3+5*i],smallFlow=-cur.z[this.flowOffset+6+5*i];
+      const indices=this.roomIndices[i],gasCell=r.cells[indices[1]].state,smallCell=r.cells[indices.at(-2)!].state;
+      const gasFlow=cur.z[this.branchFace(i,1)],smallFlow=-cur.z[this.branchFace(i,this.branchFlowCount-1)];
       coilPorts[this.geometry.rooms[i].id]={gas:gasFlow>0?r.cells[indices[0]].state:gasCell,
-        small:smallFlow>0?r.cells[indices[4]].state:smallCell,gasCellState:gasCell,smallCellState:smallCell,
+        small:smallFlow>0?r.cells[indices.at(-1)!].state:smallCell,gasCellState:gasCell,smallCellState:smallCell,
         gasFaceMassFlowKgs:gasFlow,smallFaceMassFlowKgs:smallFlow,flowFromGasKgs:gasFlow};
-      const headerFlow=cur.z[this.flowOffset+2+5*i];
+      const headerFlow=cur.z[this.branchFace(i,0)];
       fieldPorts[this.geometry.rooms[i].id]={gasHeader:Math.abs(headerFlow)>1e-12?
         (headerFlow>0?r.indoorGasHeader:r.cells[indices[0]].state):null,
-        gasHeaderMassFlowKgs:headerFlow,gasLine:r.cells[indices[0]].state,smallLine:r.cells[indices[4]].state,valveMassFlowKgs:r.valves[i]};
+        gasHeaderMassFlowKgs:headerFlow,gasLine:r.cells[indices[0]].state,smallLine:r.cells[indices.at(-1)!].state,valveMassFlowKgs:r.valves[i]};
     }
     const candidate:ChargeCandidate={acceptedSeconds:dt,snapshot,integratedCoilHeatJ:coilHeat,compressorWorkJ:work,leakMassKg:leakMass,leakEnthalpyJ:leakH,
       lowLiftTransfer:r.lowLiftTransfer,
@@ -859,7 +905,7 @@ export class ChargeCircuit {
  * adaptive quadrature. This is numerical EOS interpolation, not a fluid table
  * with fitted thermodynamics or a changed storage flash. */
 function isentropicVolumePrimitive(low:number,high:number,knots:number[],density:(p:number)=>number,relative:number) {
-  interface Panel {a:number;b:number;power:number[];coarsePower:number[];total:number}
+  interface Panel {a:number;b:number;coefficients:number[];power:number[];coarsePower:number[];total:number}
   const panels:Panel[]=[];let calls=0;
   const value=(p:number)=>{if(++calls>8192)throw new DomainError('Isentropic integral density work budget exceeded');return 1/density(p);};
   const coefficients=(samples:number[])=>{
@@ -898,7 +944,7 @@ function isentropicVolumePrimitive(low:number,high:number,knots:number[],density
       if(depth>=16||!(mid>a&&mid<b))throw new DomainError(`Isentropic integral unresolved quadrature error: ${a}…${b}, relative ${error/scale}`);
       fit(a,mid,depth+1);fit(mid,b,depth+1);return;
     }
-    panels.push({a,b,power,coarsePower,total});
+    panels.push({a,b,coefficients:fine,power,coarsePower,total});
   };
   const points=[low,...knots.filter(p=>p>low&&p<high),high];
   for(let i=0;i<points.length-1;i++)fit(points[i],points[i+1],0);
@@ -914,6 +960,13 @@ function isentropicVolumePrimitive(low:number,high:number,knots:number[],density
     const t=p<=panel.a?-1:2*(p-panel.a)/(panel.b-panel.a)-1,half=(panel.b-panel.a)/2;
     return sum+4*Math.abs(tail(panel.power,t,half)-tail(panel.coarsePower,t,half));
   },0);
+  integrate.density=(p:number)=>{
+    const panel=panels.find(panel=>p>=panel.a&&p<=panel.b);
+    if(!panel)throw new DomainError('Polynomial throat pressure outside primitive');
+    const t=2*(p-panel.a)/(panel.b-panel.a)-1,v=evaluate(panel.coefficients,t);
+    if(!(Number.isFinite(v)&&v>0))throw new DomainError('Invalid polynomial isentropic density');
+    return 1/v;
+  };
   return integrate;
 }
 

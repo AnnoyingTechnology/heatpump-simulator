@@ -91,3 +91,19 @@ test('density-coordinate backend outage preserves all committed fluid storage an
     assert.deepEqual(c.snapshot(),before);c.restore(before);assert.deepEqual(c.snapshot(),before);
   }finally{props.dispose();}
 });
+
+test('eliminating internal face unknowns solves every original saved mass/energy row with no inventory projection',async t=>{
+  const props=new Properties(await factory());
+  try{
+    for(const saved of [corner,late])for(const orientation of ['heating','cooling']){
+      const c=circuit(props,saved,{storageCoordinates:'density',analyticFluxJacobian:true,eliminateInternalFlows:true,polynomialThroatSearch:true});
+      const before=c.snapshot(),input=structuredClone(saved.fluid),b=boundary(saved,orientation),dt=orientation==='heating'?.25:.003;
+      const started=performance.now(),candidate=c.prepareSingle(dt,b,input);
+      originalBalances(c,saved,b,dt,candidate);assert.deepEqual(c.snapshot(),before);assert.deepEqual(input,saved.fluid);
+      assert.equal(candidate.snapshot.variables.length,saved.fluid.variables.length);
+      t.diagnostic(JSON.stringify({eliminatedFlows:true,savedSeconds:saved.output.simulatedSeconds,orientation,dt,
+        originalUnknowns:saved.fluid.variables.length,solvedUnknowns:c.flowOffset,iterations:candidate.nonlinearIterations,
+        wallMs:performance.now()-started,massResidualKg:candidate.massResidualKg,energyResidualJ:candidate.energyResidualJ}));
+    }
+  }finally{props.dispose();}
+});

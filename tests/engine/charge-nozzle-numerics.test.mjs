@@ -90,3 +90,31 @@ test('unresolved single-phase EOS density noise stops bounded quadrature without
     assert.deepEqual(c.snapshot(),before);
   }finally{props.dispose();}
 });
+
+test('polynomial throat search agrees with independent real-EOS search without changing corrected-flow allowance',async t=>{
+  const module=await factory(),props=new Properties(module);
+  const original=circuit(props),optimized=new ChargeCircuit(props,geometry,{massKg:saved.config.inventory.initialMassKg,
+    fluidTemperatureC:saved.config.inventory.initialFluidTemperatureC},{polynomialThroatSearch:true});
+  try{
+    let maximumDifference=0;
+    for(const cell of [saved.fluid.cells[0],saved.fluid.cells[7],saved.fluid.cells[8]])for(const span of [1e-12,1e-9,1e-6,.001,.01,.1,.4,.6]){
+      const down=cell.state.pPa*(1-span),a=original.nozzle(cell.state,down,geometry.accumulatorInletAreaM2,.65,.1),
+        b=optimized.nozzle(cell.state,down,geometry.accumulatorInletAreaM2,.65,.1);
+      maximumDifference=Math.max(maximumDifference,Math.abs(a-b));
+      assert.ok(Math.abs(a-b)<=4e-11,`${cell.id}, span ${span}: native ${a} vs polynomial ${b}`);
+    }
+    t.diagnostic(JSON.stringify({independentNozzleSearchMaximumDifferenceKgs:maximumDifference,allowanceKgs:4e-11}));
+  }finally{props.dispose();}
+});
+
+// Conservative Off/restart reached this wet restriction without state resets.
+test('wet restart throat resolves corrected flow at strict allowance across the former search interval failure',async t=>{
+  const props=new Properties(await factory()),native=circuit(props),fast=new ChargeCircuit(props,geometry,
+    {massKg:saved.config.inventory.initialMassKg,fluidTemperatureC:saved.config.inventory.initialFluidTemperatureC},{polynomialThroatSearch:true});
+  try{
+    const up=props.ph(1987040.3023543248,241124.22321107646),area=1.5053326760407502e-7;
+    const a=native.nozzle(up,448448.75821199635,area,.65,.005),b=fast.nozzle(up,448448.75821199635,area,.65,.005);
+    assert.ok(a>0&&b>0);assert.ok(Math.abs(a-b)<=4e-11);
+    t.diagnostic(JSON.stringify({wetRestartNativeFlowKgs:a,polynomialFlowKgs:b,allowanceKgs:4e-11}));
+  }finally{props.dispose();}
+});
