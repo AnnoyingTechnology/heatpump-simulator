@@ -45,3 +45,14 @@ test('generic/other manufacturer cannot become an approved Daikin combination',(
  const heads=[head('MSZ-AP25VGK','A',25,2.5),head('FTXA25','B',25,2.5)];heads[0].manufacturer='mitsubishi-electric';
  const result=validate(model('2MXM40A2V1B9'),heads);assert.equal(result.status,'unknown');assert.equal(result.eligibilityStatus,'unknown');assert.ok(result.findings.some(f=>f.code==='manufacturer'&&f.status==='unknown'));
 });
+
+test('legacy unknown constraints stay unknown at one or two installed heads; published maximum still rejects excess',()=>{
+ const profile=model('2MXM40N2V1B');
+ const one=[head('FTXA25','A',25,2.5)];
+ const result=validate(profile,one);assert.equal(result.topologyStatus,'unknown');assert.equal(result.eligibilityStatus,'unknown');
+ assert.ok(result.findings.some(f=>f.code==='minimum-count-unpublished'));
+ assert.ok(!result.findings.some(f=>f.code==='connected-count'||f.code==='port-absent'||f.code==='reducer-or-class'));
+ const two=[...one,head('FTXA35','B',35,3.5)];two[1].enabled=false;assert.equal(validate(profile,two).status,'unknown');
+ const three=[...two,head('FTXA25','C',25,2.5)];assert.equal(validate(profile,three).topologyStatus,'invalid');
+ one[0].manufacturer='mitsubishi-electric';assert.equal(validate(profile,one).eligibilityStatus,'unknown');
+});

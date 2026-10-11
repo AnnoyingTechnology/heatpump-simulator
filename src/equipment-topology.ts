@@ -16,10 +16,12 @@ export interface EquipmentPort {
 }
 export interface MultisplitInstallation {
   readonly topology: 'multisplit';
-  readonly minimumConnectedHeads: number;
+  /** Null is unpublished, never zero or an inherited two-head rule. */
+  readonly minimumConnectedHeads: number | null;
   readonly maximumConnectedHeads: number;
-  readonly connectedCapacityClassSumLimitKw: number;
-  readonly ports: readonly EquipmentPort[];
+  readonly connectedCapacityClassSumLimitKw: number | null;
+  /** Null leaves per-port identity/class/reducer constraints unknown. */
+  readonly ports: readonly EquipmentPort[] | null;
   readonly guide: string;
   /** No full-reference combination is certified by port rules alone. */
   readonly exactEligibility: 'unknown';
@@ -60,8 +62,11 @@ export interface InstallationValidation {
 export function validateMultisplitInstallation(profile: MultisplitInstallation, heads: readonly InstalledHead[]): InstallationValidation {
   const findings: InstallationFinding[] = [];
   const add = (status: 'invalid' | 'unknown', code: string, message: string, headId?: string) => findings.push({ status, code, message, headId });
-  if (heads.length < profile.minimumConnectedHeads || heads.length > profile.maximumConnectedHeads)
-    add('invalid', 'connected-count', `Requires ${profile.minimumConnectedHeads}–${profile.maximumConnectedHeads} connected heads; ${heads.length} installed.`);
+  if (profile.minimumConnectedHeads === null) add('unknown', 'minimum-count-unpublished', 'Minimum connected head count is unpublished in the reviewed legacy source.');
+  if (profile.connectedCapacityClassSumLimitKw === null) add('unknown', 'class-sum-unpublished', 'Connected class-sum ceiling is unpublished in the reviewed legacy source.');
+  if (profile.ports === null) add('unknown', 'port-constraints-unpublished', 'Named port/class/reducer constraints are unresolved in the reviewed legacy source.');
+  if ((profile.minimumConnectedHeads !== null && heads.length < profile.minimumConnectedHeads) || heads.length > profile.maximumConnectedHeads)
+    add('invalid', 'connected-count', `Connected head limit: minimum ${profile.minimumConnectedHeads ?? 'unknown'}, maximum ${profile.maximumConnectedHeads}; ${heads.length} installed.`);
   const occupied = new Set<string>();
   let sum = 0, sumKnown = true;
   for (const head of heads) {
@@ -71,6 +76,7 @@ export function validateMultisplitInstallation(profile: MultisplitInstallation, 
     if (kw === undefined) { sumKnown = false; add('unknown', 'capacity-contribution', 'Connected capacity-class contribution is undeclared; nominal cooling output is not substituted.', head.id); }
     else if (!Number.isFinite(kw) || kw <= 0) { sumKnown = false; add('invalid', 'capacity-contribution', 'Declared connection-capacity contribution must be a positive finite value.', head.id); }
     else sum += kw;
+    if (profile.ports === null) continue;
     if (!assignment.portId) { add('unknown', 'port-unassigned', 'Assign a physical port to this installed head.', head.id); continue; }
     const port = profile.ports.find(p => p.id === assignment.portId);
     if (!port) { add('invalid', 'port-absent', `Port ${assignment.portId} does not exist on this outdoor model.`, head.id); continue; }
@@ -92,7 +98,7 @@ export function validateMultisplitInstallation(profile: MultisplitInstallation, 
     else if (matching.some(p => p.reducer.startsWith('optional accessory'))) add('unknown', 'accessory-identity', 'The guide permits an optional accessory here but does not identify the accessory part.', head.id);
   }
   // A known partial sum already exceeding the ceiling cannot be rescued by undeclared positive heads.
-  if (sum > profile.connectedCapacityClassSumLimitKw + 1e-9) add('invalid', 'class-sum', `Declared connected class sum ${sum} kW exceeds ${profile.connectedCapacityClassSumLimitKw} kW; this is not delivered output.`);
+  if (profile.connectedCapacityClassSumLimitKw !== null && sum > profile.connectedCapacityClassSumLimitKw + 1e-9) add('invalid', 'class-sum', `Declared connected class sum ${sum} kW exceeds ${profile.connectedCapacityClassSumLimitKw} kW; this is not delivered output.`);
   const topologyStatus: InstallationStatus = findings.some(f => f.status === 'invalid') ? 'invalid' : !sumKnown || findings.length ? 'unknown' : 'valid';
   const eligibilityStatus: InstallationStatus = 'unknown';
   add(eligibilityStatus, 'exact-eligibility', 'Exact full-reference indoor combination eligibility is not established by these port/class rules.');

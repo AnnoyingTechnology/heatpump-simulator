@@ -2994,6 +2994,330 @@ export const CATALOGUE_OUTDOORS = [
         "condition": "Outdoor wet-bulb temperature, °CWB; published operating boundary, not a rating condition."
       }
     }
+  },
+  {
+    "id": "2MXM40N2V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550.0,
+      "w": 765.0,
+      "d": 285.0
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Reviewed legacy N-generation sources; port/class/reducer rules unresolved",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    },
+    "sourceStatus": "legacy",
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": null,
+        "maximum": null,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": null,
+        "maximum": null,
+        "condition": "unpublished"
+      }
+    }
+  },
+  {
+    "id": "2MXM50N2V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550.0,
+      "w": 765.0,
+      "d": 285.0
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Reviewed legacy N-generation sources; port/class/reducer rules unresolved",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    },
+    "sourceStatus": "legacy",
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": null,
+        "maximum": null,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": null,
+        "maximum": null,
+        "condition": "unpublished"
+      }
+    }
+  },
+  {
+    "id": "2MXM68N2V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734.0,
+      "w": 958.0,
+      "d": 340.0
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Reviewed legacy N-generation sources; port/class/reducer rules unresolved",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    },
+    "sourceStatus": "legacy",
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10.0,
+        "maximum": 46.0,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": null,
+        "maximum": null,
+        "condition": "unpublished"
+      }
+    }
+  },
+  {
+    "id": "3MXM40N2V1B8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734.0,
+      "w": 974.0,
+      "d": 401.0
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Reviewed legacy N-generation sources; port/class/reducer rules unresolved",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    },
+    "sourceStatus": "legacy",
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10.0,
+        "maximum": 46.0,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": null,
+        "maximum": null,
+        "condition": "unpublished"
+      }
+    }
+  },
+  {
+    "id": "3MXM52N2V1B8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734.0,
+      "w": 974.0,
+      "d": 401.0
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Reviewed legacy N-generation sources; port/class/reducer rules unresolved",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    },
+    "sourceStatus": "legacy",
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10.0,
+        "maximum": 46.0,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": null,
+        "maximum": null,
+        "condition": "unpublished"
+      }
+    }
+  },
+  {
+    "id": "3MXM68N2V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734.0,
+      "w": 958.0,
+      "d": 340.0
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Reviewed legacy N-generation sources; port/class/reducer rules unresolved",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    },
+    "sourceStatus": "legacy",
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10.0,
+        "maximum": 46.0,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": -15.0,
+        "maximum": 18.0,
+        "condition": "outdoor wet-bulb"
+      }
+    }
+  },
+  {
+    "id": "4MXM68N2V1B9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734.0,
+      "w": 958.0,
+      "d": 340.0
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 4,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 4,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Reviewed legacy N-generation sources; port/class/reducer rules unresolved",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    },
+    "sourceStatus": "legacy",
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10.0,
+        "maximum": 46.0,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": null,
+        "maximum": null,
+        "condition": "unpublished"
+      }
+    }
+  },
+  {
+    "id": "4MXM80N2V1B9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734.0,
+      "w": 974.0,
+      "d": 401.0
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 4,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 4,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Reviewed legacy N-generation sources; port/class/reducer rules unresolved",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    },
+    "sourceStatus": "legacy",
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10.0,
+        "maximum": 46.0,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": null,
+        "maximum": null,
+        "condition": "unpublished"
+      }
+    }
+  },
+  {
+    "id": "5MXM90N2V1B9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734.0,
+      "w": 974.0,
+      "d": 401.0
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 5,
+    "compatibleIndoorClasses": [],
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 5,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Reviewed legacy N-generation sources; port/class/reducer rules unresolved",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    },
+    "sourceStatus": "legacy",
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10.0,
+        "maximum": 46.0,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": null,
+        "maximum": null,
+        "condition": "unpublished"
+      }
+    }
   }
 ] as const;
 

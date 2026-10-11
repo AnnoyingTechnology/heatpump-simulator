@@ -19,7 +19,8 @@ export interface OutdoorModelInfo {
   /** Published cooling high-fan airflow; heating reuse is an explicit assumption. */
   coolingHighFanFlowM3h?: number;
   acceptance: 'owner-reference' | 'generic-assumption' | 'reviewed-fields';
-  publishedOperatingRangesC?: { cooling: { minimum: number; maximum: number; condition: string }; heating: { minimum: number; maximum: number; condition: string } };
+  sourceStatus?: 'legacy';
+  publishedOperatingRangesC?: { cooling: { minimum: number | null; maximum: number | null; condition: string }; heating: { minimum: number | null; maximum: number | null; condition: string } };
   /** Necessary installation rules; exact full-SKU eligibility remains unknown. */
   installation?: MultisplitInstallation;
 }
@@ -39,8 +40,11 @@ export const OUTDOOR_MODELS: readonly OutdoorModelInfo[] = [
     ports: profile.ports, compatibleIndoorClasses: profile.compatibleIndoorClasses,
     caseMm: profile.caseMm, coolingHighFanFlowM3h: profile.coolingHighFanFlowM3h ?? undefined,
     installation: 'installation' in profile ? profile.installation : undefined,
+    sourceStatus: 'sourceStatus' in profile ? profile.sourceStatus : undefined,
     acceptance: profile.acceptance, profileNote: 'installation' in profile
-      ? 'Published casing, named ports and necessary connection-class/reducer constraints. Exact indoor full-reference combinations remain unverified. Outdoor airflow, compressor, coil conductance, fan watts and performance remain editable generic assumptions. Published total-charge limits are documentary and do not calibrate the generic circuit.'
+      ? profile.installation.ports === null
+      ? 'Published legacy reference, casing, R32 and maximum connected head count. Minimum count, named ports, class/reducer rules and exact indoor eligibility remain unknown. Outdoor high-fan airflow and the cycle use editable generic assumptions; no OEM charge or performance map is applied.'
+      : 'Published casing, named ports and necessary connection-class/reducer constraints. Exact indoor full-reference combinations remain unverified. Outdoor airflow, compressor, coil conductance, fan watts and performance remain editable generic assumptions. Published total-charge limits are documentary and do not calibrate the generic circuit.'
       : profile.coolingHighFanFlowM3h === null
       ? 'Published matched split, casing and operating-range metadata. Outdoor airflow is unpublished in the reviewed table and uses the editable generic mass-flow setting; compressor, coil conductance and fan watts remain generic. This is not an OEM performance map.'
       : PROFILE_NOTE,

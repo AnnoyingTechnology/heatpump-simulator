@@ -83,7 +83,7 @@ class CatalogueAcceptance(unittest.TestCase):
 
     def test_multisplit_profiles_preserve_unknown_exact_eligibility_and_documentary_charge_caps(self):
         profiles = json.loads(re.search(r'export const CATALOGUE_OUTDOORS = (.*?) as const;', module.generate(), re.S).group(1))
-        multis = [p for p in profiles if 'installation' in p]
+        multis = [p for p in profiles if 'installation' in p and p['installation']['minimumConnectedHeads'] is not None]
         self.assertEqual(len(multis), 9)
         self.assertEqual(sum(len(p['installation']['ports']) for p in multis), 28)
         for profile in multis:
@@ -98,6 +98,45 @@ class CatalogueAcceptance(unittest.TestCase):
         caps = {p['id']: p['installation']['publishedMaximumTotalChargeKg'] for p in multis}
         self.assertEqual(caps['3MXM52A2V1B8'], 2.2)
         self.assertIsNone(caps['2MXM50A2V1B8'])
+
+    def test_legacy_profiles_do_not_borrow_a_generation_bounds_ports_or_super_low_airflow(self):
+        profiles = json.loads(re.search(r'export const CATALOGUE_OUTDOORS = (.*?) as const;', module.generate(), re.S).group(1))
+        legacy = [p for p in profiles if p.get('installation', {}).get('guide', '').startswith('Reviewed legacy')]
+        self.assertEqual(len(legacy), 9)
+        by_id = {p['id']: p for p in legacy}
+        for p in legacy:
+            self.assertEqual(p['sourceStatus'], 'legacy')
+            self.assertEqual(p['compatibleIndoorClasses'], [])
+            self.assertIsNone(p['installation']['minimumConnectedHeads'])
+            self.assertIsNone(p['installation']['connectedCapacityClassSumLimitKw'])
+            self.assertIsNone(p['installation']['ports'])
+            self.assertIsNone(p['installation']['publishedMaximumTotalChargeKg'])
+            self.assertIsNone(p['coolingHighFanFlowM3h'])
+            self.assertEqual(p['installation']['exactEligibility'], 'unknown')
+            self.assertNotIn('factoryCharge', p)
+        for ref in ('2MXM40N2V1B', '2MXM50N2V1B'):
+            self.assertIsNone(by_id[ref]['publishedOperatingRangesC']['cooling']['maximum'])
+            self.assertIsNone(by_id[ref]['publishedOperatingRangesC']['cooling']['minimum'])
+        for ref in ('3MXM40N2V1B8', '3MXM52N2V1B8', '4MXM80N2V1B9', '5MXM90N2V1B9'):
+            self.assertEqual(by_id[ref]['publishedOperatingRangesC']['cooling']['maximum'], 46)
+            self.assertIsNone(by_id[ref]['publishedOperatingRangesC']['heating']['minimum'])
+            self.assertIsNone(by_id[ref]['publishedOperatingRangesC']['heating']['maximum'])
+        self.assertEqual(by_id['3MXM68N2V1B']['publishedOperatingRangesC']['heating'],
+                         {'minimum': -15.0, 'maximum': 18.0, 'condition': 'outdoor wet-bulb'})
+        self.assertNotIn('3MXM52N8', by_id)  # owner family never silently aliases a full nameplate
+
+    def test_unknown_legacy_endpoints_need_explicit_receipt_bound_unknowns(self):
+        import copy
+        accepted = copy.deepcopy(next(e for e in self.review['units'] if e.get('installationSourceBoundary') == 'legacy-unresolved'))
+        doc = json.loads((ROOT / accepted['candidateFile']).read_text())
+        unit = next(u for u in doc['units'] if u['modelReference'] == accepted['candidateReference'])
+        accepted['unpublishedOperatingEndpoints'] = []
+        with self.assertRaisesRegex(ValueError, 'must be explicit'):
+            module.multisplit_installation(unit, accepted, ROOT)
+        accepted['unpublishedOperatingEndpoints'] = next(e for e in self.review['units'] if e['reference'] == accepted['reference'])['unpublishedOperatingEndpoints']
+        unit['facts'].append({'key': 'heatingOutdoorMinimum', 'value': -20})
+        with self.assertRaisesRegex(ValueError, 'cannot be inferred'):
+            module.multisplit_installation(unit, accepted, ROOT)
 
     def test_multisplit_review_binding_and_unknown_pairing_boundary(self):
         import copy

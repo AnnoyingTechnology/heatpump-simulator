@@ -291,7 +291,7 @@ class Store {
   setUnitCount(n: number): void {
     if (!Number.isSafeInteger(n) || n < 1) return;
     const installation = outdoorModelInfo(this.state.cfg).installation;
-    if (installation && n < installation.minimumConnectedHeads) {
+    if (installation && installation.minimumConnectedHeads !== null && n < installation.minimumConnectedHeads) {
       this.state.ui.notice = 'This outdoor model requires at least two connected heads. Off heads may remain connected.';
       this.emit();
       return;
@@ -446,7 +446,7 @@ class Store {
     const cfg = this.state.cfg;
     if (!Number.isInteger(index) || index < 0 || index >= cfg.unitCount || cfg.unitCount <= 1) return;
     const installation = outdoorModelInfo(cfg).installation;
-    if (installation && cfg.unitCount <= installation.minimumConnectedHeads) {
+    if (installation && installation.minimumConnectedHeads !== null && cfg.unitCount <= installation.minimumConnectedHeads) {
       this.state.ui.notice = 'At least two heads must remain connected; switching a head Off is allowed.';
       this.emit();
       return;
@@ -471,8 +471,10 @@ class Store {
   setOutdoorKind(kind: OutdoorKind): void {
     if (kind === this.state.cfg.outdoorKind) return;
     const model = outdoorModelInfo(kind);
-    if (model.installation && (this.state.cfg.unitCount < model.installation.minimumConnectedHeads || this.state.cfg.unitCount > model.installation.maximumConnectedHeads)) {
-      this.state.ui.notice = `${model.id} requires ${model.installation.minimumConnectedHeads}–${model.installation.maximumConnectedHeads} connected heads. Add or remove rooms explicitly before selecting it; existing rooms and history were preserved.`;
+    if (model.installation && ((model.installation.minimumConnectedHeads !== null && this.state.cfg.unitCount < model.installation.minimumConnectedHeads) || this.state.cfg.unitCount > model.installation.maximumConnectedHeads)) {
+      this.state.ui.notice = model.installation.minimumConnectedHeads === null
+        ? `${model.id} publishes a maximum of ${model.installation.maximumConnectedHeads} connected heads; the minimum is unknown. Remove rooms explicitly before selecting it; existing rooms and history were preserved.`
+        : `${model.id} requires ${model.installation.minimumConnectedHeads}–${model.installation.maximumConnectedHeads} connected heads. Add or remove rooms explicitly before selecting it; existing rooms and history were preserved.`;
       this.emit();
       return;
     }
@@ -511,7 +513,7 @@ class Store {
     if (!profile || !room || index < 0 || index >= cfg.unitCount) return;
     if (patch.capacityClass !== undefined && !CONNECTION_CLASSES.includes(patch.capacityClass)) return;
     if (patch.connectedCapacityKw !== undefined && (!Number.isFinite(patch.connectedCapacityKw) || patch.connectedCapacityKw <= 0)) return;
-    if (patch.portId !== undefined && !profile.ports.some(port => port.id === patch.portId)) return;
+    if (patch.portId !== undefined && !profile.ports?.some(port => port.id === patch.portId)) return;
     this.update(s => {
       const target = s.cfg.rooms[index];
       target.installation = { ...target.installation, ...patch };

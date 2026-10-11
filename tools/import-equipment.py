@@ -33,6 +33,26 @@ def multisplit_installation(unit, accepted, root):
             raise ValueError('Required multisplit primary source is missing or changed')
     if accepted.get('compatibleIndoorClasses') != [] or accepted.get('pairingStatus') != 'unknown':
         raise ValueError('Unresolved multisplit full-SKU eligibility must remain unknown')
+    if accepted.get('installationSourceBoundary') == 'legacy-unresolved':
+        readback = next(r for r in reviewed['reviewedReadbacks'] if r['reference'] == unit['modelReference'])
+        if readback['maximumConnectedHeads'] != accepted['ports']:
+            raise ValueError('Legacy published maximum head count is inconsistent')
+        for field in ('minimumConnectedHeads', 'classSumLimit', 'namedPortConstraints', 'highFanAirflow'):
+            if readback[field] is not None:
+                raise ValueError('Unreviewed legacy installation or high-fan inference')
+        if set(accepted.get('unpublishedOperatingEndpoints', [])) != set(readback['unpublishedEndpoints']):
+            raise ValueError('Unpublished legacy operating endpoints must be explicit and receipt-bound')
+        facts = {f['key']: f['value'] for f in unit['facts']}
+        for key, value in readback['operatingEndpoints'].items():
+            if facts.get(key) != value or key not in accepted['factKeys']:
+                raise ValueError('Legacy operating endpoint disagrees with independent source readback')
+        for key in readback['unpublishedEndpoints']:
+            if key in facts or not any(key in note and 'unpublished' in note for note in unit.get('unknowns', [])):
+                raise ValueError('Unpublished legacy endpoint cannot be inferred or omitted from unknowns')
+        return {'topology': 'multisplit', 'minimumConnectedHeads': None,
+                'maximumConnectedHeads': accepted['ports'], 'connectedCapacityClassSumLimitKw': None,
+                'ports': None, 'guide': 'Reviewed legacy N-generation sources; port/class/reducer rules unresolved',
+                'exactEligibility': 'unknown', 'publishedMaximumTotalChargeKg': None}
     compatibility = unit['compatibility']
     ports = []
     for statement in compatibility:
@@ -164,11 +184,24 @@ def generate(root=ROOT):
                 if accepted['ports'] != by_key['maximumIndoorUnits'][0]['value']:
                     raise ValueError('Accepted multisplit head cap disagrees with published value')
                 profile['installation'] = multisplit_installation(unit, accepted, root)
-            profile['publishedOperatingRangesC'] = {
-                mode: {'minimum': by_key[mode + 'OutdoorMinimum'][0]['value'],
-                       'maximum': by_key[mode + 'OutdoorMaximum'][0]['value'],
-                       'condition': by_key[mode + 'OutdoorMinimum'][0]['condition']}
-                for mode in ('cooling', 'heating')}
+                if accepted.get('installationSourceBoundary') == 'legacy-unresolved':
+                    if unit.get('status') != 'legacy':
+                        raise ValueError('Legacy source boundary cannot imply current availability')
+                    profile['sourceStatus'] = 'legacy'
+            if accepted.get('installationSourceBoundary') == 'legacy-unresolved':
+                receipt = json.loads((root / accepted['installationReview']['path']).read_text())
+                readback = next(r for r in receipt['reviewedReadbacks'] if r['reference'] == unit['modelReference'])
+                profile['publishedOperatingRangesC'] = {
+                    mode: {'minimum': by_key[mode + 'OutdoorMinimum'][0]['value'] if mode + 'OutdoorMinimum' in by_key else None,
+                           'maximum': by_key[mode + 'OutdoorMaximum'][0]['value'] if mode + 'OutdoorMaximum' in by_key else None,
+                           'condition': readback['operatingConditions'][mode]}
+                    for mode in ('cooling', 'heating')}
+            else:
+                profile['publishedOperatingRangesC'] = {
+                    mode: {'minimum': by_key[mode + 'OutdoorMinimum'][0]['value'],
+                           'maximum': by_key[mode + 'OutdoorMaximum'][0]['value'],
+                           'condition': by_key[mode + 'OutdoorMinimum'][0]['condition']}
+                    for mode in ('cooling', 'heating')}
         profiles.append(profile)
     refs = [p['id'] for p in profiles]
     if len(refs) != len(set(refs)):

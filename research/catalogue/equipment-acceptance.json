@@ -5256,6 +5256,275 @@
         "sha256": "ef4221bc0ad5542b9962e1a97b0b65ea44aaeb27598804288089357666432768"
       },
       "reviewNote": "Source-reviewed physical fields and necessary connection constraints; exact indoor full-SKU eligibility unknown. Generic physics only; no factory charge, total charge cap, compressor or output map applied to cycle."
+    },
+    {
+      "reference": "2MXM40N2V1B",
+      "candidateReference": "2MXM40N2V1B",
+      "candidateFile": "research/catalogue/staging/reviewed-owner-generation-daikin-multisplit-2026.json",
+      "candidateSha256": "b112e3d68d4a0772e68bab211446afab3468b506f4e07358ec4fe1603afde357",
+      "factKeys": [
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "refrigerant"
+      ],
+      "ports": 2,
+      "compatibleIndoorClasses": [],
+      "pairingStatus": "unknown",
+      "topology": "multisplit",
+      "installationSourceBoundary": "legacy-unresolved",
+      "unpublishedOperatingEndpoints": [
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "installationReview": {
+        "path": "reviews/owner-generation-independent-acceptance.json",
+        "sha256": "995766abfd78692a3d2123d8e48579021ee9b93b945a496bbd8f72a542d80843"
+      },
+      "reviewNote": "Exact legacy source identity/casing/R32/maximum connected head count only. Unpublished limits/connection matrices remain unknown; no A-generation rules, OEM charge calibration or performance maps. Super-low airflow not promoted to high-fan."
+    },
+    {
+      "reference": "2MXM50N2V1B",
+      "candidateReference": "2MXM50N2V1B",
+      "candidateFile": "research/catalogue/staging/reviewed-owner-generation-daikin-multisplit-2026.json",
+      "candidateSha256": "b112e3d68d4a0772e68bab211446afab3468b506f4e07358ec4fe1603afde357",
+      "factKeys": [
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "refrigerant"
+      ],
+      "ports": 2,
+      "compatibleIndoorClasses": [],
+      "pairingStatus": "unknown",
+      "topology": "multisplit",
+      "installationSourceBoundary": "legacy-unresolved",
+      "unpublishedOperatingEndpoints": [
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "installationReview": {
+        "path": "reviews/owner-generation-independent-acceptance.json",
+        "sha256": "995766abfd78692a3d2123d8e48579021ee9b93b945a496bbd8f72a542d80843"
+      },
+      "reviewNote": "Exact legacy source identity/casing/R32/maximum connected head count only. Unpublished limits/connection matrices remain unknown; no A-generation rules, OEM charge calibration or performance maps. Super-low airflow not promoted to high-fan."
+    },
+    {
+      "reference": "2MXM68N2V1B",
+      "candidateReference": "2MXM68N2V1B",
+      "candidateFile": "research/catalogue/staging/reviewed-owner-generation-daikin-multisplit-2026.json",
+      "candidateSha256": "b112e3d68d4a0772e68bab211446afab3468b506f4e07358ec4fe1603afde357",
+      "factKeys": [
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 2,
+      "compatibleIndoorClasses": [],
+      "pairingStatus": "unknown",
+      "topology": "multisplit",
+      "installationSourceBoundary": "legacy-unresolved",
+      "unpublishedOperatingEndpoints": [
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "installationReview": {
+        "path": "reviews/owner-generation-independent-acceptance.json",
+        "sha256": "995766abfd78692a3d2123d8e48579021ee9b93b945a496bbd8f72a542d80843"
+      },
+      "reviewNote": "Exact legacy source identity/casing/R32/maximum connected head count only. Unpublished limits/connection matrices remain unknown; no A-generation rules, OEM charge calibration or performance maps. Super-low airflow not promoted to high-fan."
+    },
+    {
+      "reference": "3MXM40N2V1B8",
+      "candidateReference": "3MXM40N2V1B8",
+      "candidateFile": "research/catalogue/staging/reviewed-owner-generation-daikin-multisplit-2026.json",
+      "candidateSha256": "b112e3d68d4a0772e68bab211446afab3468b506f4e07358ec4fe1603afde357",
+      "factKeys": [
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 3,
+      "compatibleIndoorClasses": [],
+      "pairingStatus": "unknown",
+      "topology": "multisplit",
+      "installationSourceBoundary": "legacy-unresolved",
+      "unpublishedOperatingEndpoints": [
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "installationReview": {
+        "path": "reviews/owner-generation-independent-acceptance.json",
+        "sha256": "995766abfd78692a3d2123d8e48579021ee9b93b945a496bbd8f72a542d80843"
+      },
+      "reviewNote": "Exact legacy source identity/casing/R32/maximum connected head count only. Unpublished limits/connection matrices remain unknown; no A-generation rules, OEM charge calibration or performance maps. Super-low airflow not promoted to high-fan."
+    },
+    {
+      "reference": "3MXM52N2V1B8",
+      "candidateReference": "3MXM52N2V1B8",
+      "candidateFile": "research/catalogue/staging/reviewed-owner-generation-daikin-multisplit-2026.json",
+      "candidateSha256": "b112e3d68d4a0772e68bab211446afab3468b506f4e07358ec4fe1603afde357",
+      "factKeys": [
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 3,
+      "compatibleIndoorClasses": [],
+      "pairingStatus": "unknown",
+      "topology": "multisplit",
+      "installationSourceBoundary": "legacy-unresolved",
+      "unpublishedOperatingEndpoints": [
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "installationReview": {
+        "path": "reviews/owner-generation-independent-acceptance.json",
+        "sha256": "995766abfd78692a3d2123d8e48579021ee9b93b945a496bbd8f72a542d80843"
+      },
+      "reviewNote": "Exact legacy source identity/casing/R32/maximum connected head count only. Unpublished limits/connection matrices remain unknown; no A-generation rules, OEM charge calibration or performance maps. Super-low airflow not promoted to high-fan."
+    },
+    {
+      "reference": "3MXM68N2V1B",
+      "candidateReference": "3MXM68N2V1B",
+      "candidateFile": "research/catalogue/staging/reviewed-owner-generation-daikin-multisplit-2026.json",
+      "candidateSha256": "b112e3d68d4a0772e68bab211446afab3468b506f4e07358ec4fe1603afde357",
+      "factKeys": [
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "ports": 3,
+      "compatibleIndoorClasses": [],
+      "pairingStatus": "unknown",
+      "topology": "multisplit",
+      "installationSourceBoundary": "legacy-unresolved",
+      "unpublishedOperatingEndpoints": [],
+      "unpublishedOutdoorAirflow": true,
+      "installationReview": {
+        "path": "reviews/owner-generation-independent-acceptance.json",
+        "sha256": "995766abfd78692a3d2123d8e48579021ee9b93b945a496bbd8f72a542d80843"
+      },
+      "reviewNote": "Exact legacy source identity/casing/R32/maximum connected head count only. Unpublished limits/connection matrices remain unknown; no A-generation rules, OEM charge calibration or performance maps. Super-low airflow not promoted to high-fan."
+    },
+    {
+      "reference": "4MXM68N2V1B9",
+      "candidateReference": "4MXM68N2V1B9",
+      "candidateFile": "research/catalogue/staging/reviewed-owner-generation-daikin-multisplit-2026.json",
+      "candidateSha256": "b112e3d68d4a0772e68bab211446afab3468b506f4e07358ec4fe1603afde357",
+      "factKeys": [
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 4,
+      "compatibleIndoorClasses": [],
+      "pairingStatus": "unknown",
+      "topology": "multisplit",
+      "installationSourceBoundary": "legacy-unresolved",
+      "unpublishedOperatingEndpoints": [
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "installationReview": {
+        "path": "reviews/owner-generation-independent-acceptance.json",
+        "sha256": "995766abfd78692a3d2123d8e48579021ee9b93b945a496bbd8f72a542d80843"
+      },
+      "reviewNote": "Exact legacy source identity/casing/R32/maximum connected head count only. Unpublished limits/connection matrices remain unknown; no A-generation rules, OEM charge calibration or performance maps. Super-low airflow not promoted to high-fan."
+    },
+    {
+      "reference": "4MXM80N2V1B9",
+      "candidateReference": "4MXM80N2V1B9",
+      "candidateFile": "research/catalogue/staging/reviewed-owner-generation-daikin-multisplit-2026.json",
+      "candidateSha256": "b112e3d68d4a0772e68bab211446afab3468b506f4e07358ec4fe1603afde357",
+      "factKeys": [
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 4,
+      "compatibleIndoorClasses": [],
+      "pairingStatus": "unknown",
+      "topology": "multisplit",
+      "installationSourceBoundary": "legacy-unresolved",
+      "unpublishedOperatingEndpoints": [
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "installationReview": {
+        "path": "reviews/owner-generation-independent-acceptance.json",
+        "sha256": "995766abfd78692a3d2123d8e48579021ee9b93b945a496bbd8f72a542d80843"
+      },
+      "reviewNote": "Exact legacy source identity/casing/R32/maximum connected head count only. Unpublished limits/connection matrices remain unknown; no A-generation rules, OEM charge calibration or performance maps. Super-low airflow not promoted to high-fan."
+    },
+    {
+      "reference": "5MXM90N2V1B9",
+      "candidateReference": "5MXM90N2V1B9",
+      "candidateFile": "research/catalogue/staging/reviewed-owner-generation-daikin-multisplit-2026.json",
+      "candidateSha256": "b112e3d68d4a0772e68bab211446afab3468b506f4e07358ec4fe1603afde357",
+      "factKeys": [
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 5,
+      "compatibleIndoorClasses": [],
+      "pairingStatus": "unknown",
+      "topology": "multisplit",
+      "installationSourceBoundary": "legacy-unresolved",
+      "unpublishedOperatingEndpoints": [
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "installationReview": {
+        "path": "reviews/owner-generation-independent-acceptance.json",
+        "sha256": "995766abfd78692a3d2123d8e48579021ee9b93b945a496bbd8f72a542d80843"
+      },
+      "reviewNote": "Exact legacy source identity/casing/R32/maximum connected head count only. Unpublished limits/connection matrices remain unknown; no A-generation rules, OEM charge calibration or performance maps. Super-low airflow not promoted to high-fan."
     }
   ],
   "additionalSourceSnapshots": [
@@ -5538,6 +5807,82 @@
     {
       "sourceFile": "research/sources/luna-next-daikin-mxm-a8-installer-guide-5c-2025.pdf",
       "sourceSha256": "251062cd18f1b5859646af9a9ddaffa80ac738380feb0f5303c48a0248264c86"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/2MXM40N-combinations-3D102222E-EN.pdf",
+      "sourceSha256": "2ba0956faabd78ebaa93ec505e61cb92950f4b828d9eaa4f91f55ed7b6fb1ba4"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/2MXM50N-combinations-3D102231F-EN.pdf",
+      "sourceSha256": "50caba2d6d82e79981f270344ca51cbf8f10eb7908435d9a2774a607fc37a8dc"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/3MXM-N8-piping-3D097989C-EN.pdf",
+      "sourceSha256": "9882df1e0fa0f6f6877bb2a7ab28efa8d065276f380bc0540239b1d57c70c63e"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/3MXM40N8-combinations-3D105370D-EN.pdf",
+      "sourceSha256": "ef2481b90e08ee75521bee3afdfd24845b526f2ee1b0f3c8cfb821a86a8f3c00"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/3MXM52N8-cooling-combinations-3D105371B-EN.pdf",
+      "sourceSha256": "fa40ae4b14f1cdad2b9255dc0f2e89695dd476271be00d0a58deb45e5f000747"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/3MXM52N8-heating-combinations-3D105372E-EN.pdf",
+      "sourceSha256": "896d9684675dab36f6db275b756f23f6cfd1fe9a5c067fe961f394bb6cbe37ec"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/4MXM68N9-combinations-3D105394C-EN.pdf",
+      "sourceSha256": "71cb69dd9b5bdfdb41ed8b63d5d34a659dfadbb8d2c7523299d498073634bf8c"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/5MXM-N9-combinations-3D105425A-EN.pdf",
+      "sourceSha256": "97779e5b71a94e9bc457eaf799a9aef598692b959381d45113909259b605fdb2"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/5MXM-N9-combinations-3D105436B-EN.pdf",
+      "sourceSha256": "475675c59fb6f4d7c596d650fddc2a7e05811ec8dec2772742626d527e069535"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/daikin-2mxm-n-product-2026.html",
+      "sourceSha256": "fb23b87f7f57919b69a94f1dc5dce03f9273bcb685db5f396502a7a1a224b2ba"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/daikin-2mxm-n-table-2026.html",
+      "sourceSha256": "a1965e4b84c55b84f30edc2784d5fe46e85053917eb650959e246ca24bcaa02f"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/daikin-3mxm-n-product-2026.html",
+      "sourceSha256": "db080de8ad9c83745c4da97b5046b88bc68106bda2fb5a9c47b9dd2002854c28"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/daikin-3mxm-n-table-2026.html",
+      "sourceSha256": "84da4a02ebb3e81c6b937ec100dece6c08128ec1a7c1506650a63675ce33d047"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/daikin-3mxm-n8-product-2026.html",
+      "sourceSha256": "ca93bf8de6133f2702b26afea97be1e068cfdde9a6a9953ebfd24ae75b0513d0"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/daikin-3mxm-n8-table-2026.html",
+      "sourceSha256": "64bd1e8d66fd8fa60e63feed5c69fdae59b91d715f37bc6ad0f77362a921bfc8"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/daikin-4mxm-n9-product-2026.html",
+      "sourceSha256": "ffc56d1492454406f55204b6e13efd5864f2d075175a41fc2e5a6d11b526fe47"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/daikin-4mxm-n9-table-2026.html",
+      "sourceSha256": "2fe11f0a376ebf627a3193d47a00265edb8cc851313e5587a8ff84fe68751ede"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/daikin-5mxm-n9-product-2026.html",
+      "sourceSha256": "7f4e076c9ce3693a8aac2afdce5007f8e094c9e8efc0d7b55e8596dfa5c2751f"
+    },
+    {
+      "sourceFile": "research/sources/luna-owner-generation/daikin-5mxm-n9-table-2026.html",
+      "sourceSha256": "99453fb8fdcb0c876fc4e3612ba0f9205545f2da5ce609c28ad06b8ce187b323"
     }
   ]
 }

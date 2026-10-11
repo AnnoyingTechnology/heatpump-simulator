@@ -626,7 +626,7 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
   // Electric units, the editable generic group). Options are static; selection goes through the store, which applies the published topology.
   const modelSel = html('select', { class: 'ou-model-select rp-ctl', 'aria-label': 'Outdoor model' },
     ...optgroups(OUTDOOR_MODELS.map((m) => ({
-      value: m.id, text: m.label + (m.installation ? ' · combination unverified' : ''), maker: m.manufacturer,
+      value: m.id, text: m.label + (m.sourceStatus === 'legacy' ? ' · legacy' : '') + (m.installation ? ' · combination unverified' : ''), maker: m.manufacturer,
       title: `${m.label} · ${m.ports === null ? 'user-declared ports' : `${m.ports} port${m.ports === 1 ? '' : 's'}`} · case ${m.caseMm.w} × ${m.caseMm.h} × ${m.caseMm.d} mm`,
     }))));
   modelSel.addEventListener('change', () => store.setOutdoorKind(modelSel.value as OutdoorKind));
@@ -951,7 +951,9 @@ export function createOutdoorSettings(): PopContent {
         : info.ports === null
           ? `Illustrative generic compatible group. Its port capacity (${c.genericPortCapacity}) is a scenario assumption, not manufacturer data; rooms are added and removed in the indoor zone. Up to five ports it keeps the owner casing envelope; beyond that the casing is an assumed larger drawing, not a published dimension.`
           : info.installation
-            ? `${info.label}: published ${info.ports}-port model with necessary class/reducer rules. Exact matched indoor references are unverified; the cycle remains generic.`
+            ? info.installation.ports === null
+              ? `${info.label}: published maximum ${info.ports} connected heads. Minimum count and named port/class/reducer rules are unresolved; exact indoor eligibility is unknown and the cycle remains generic.`
+              : `${info.label}: published ${info.ports}-port model with necessary class/reducer rules. Exact matched indoor references are unverified; the cycle remains generic.`
             : `${info.label}: published ${info.ports}-port model. Its matched indoor units, ports and cooling high-fan airflow are applied; the cycle, compressor, coil conductance and fan watts remain generic assumptions, not an OEM performance map.`);
       // Published model profile (facts, no performance claim) and the airflow provenance next to the two mass-flow fields.
       setText(profileText, info.profileNote);
@@ -960,11 +962,11 @@ export function createOutdoorSettings(): PopContent {
       const facts = [`Ports: ${info.ports ?? `${c.genericPortCapacity} (assumed)`}`, `Case: ${info.caseMm.w} × ${info.caseMm.h} × ${info.caseMm.d} mm (the drawing is a generic illustration)`, `Airflow: ${flowText}`];
       if (info.installation) {
         const i = info.installation;
-        facts.push(`Connected heads: ${i.minimumConnectedHeads}…${i.maximumConnectedHeads}; connection-class sum ceiling ${i.connectedCapacityClassSumLimitKw} kW (not delivered output). Exact OEM eligibility unknown.`);
+        facts.push(`Connected heads: ${i.minimumConnectedHeads ?? 'unknown'}…${i.maximumConnectedHeads}; connection-class sum ceiling ${i.connectedCapacityClassSumLimitKw === null ? 'unknown' : `${i.connectedCapacityClassSumLimitKw} kW`} (not delivered output). Exact OEM eligibility unknown.`);
         facts.push(`Published maximum total charge: ${i.publishedMaximumTotalChargeKg === null ? 'unpublished' : `${i.publishedMaximumTotalChargeKg} kg`}. Documentary only; generic cycle charge is not OEM-calibrated and this value is not applied.`);
       }
       const range = info.publishedOperatingRangesC;
-      if (range) facts.push(`Published operating range: cooling ${range.cooling.minimum}…${range.cooling.maximum} °C, heating ${range.heating.minimum}…${range.heating.maximum} °C (information only, not applied)`);
+      if (range) facts.push(`Published operating range: cooling ${range.cooling.minimum ?? 'unknown'}…${range.cooling.maximum ?? 'unknown'} °C (${range.cooling.condition}), heating ${range.heating.minimum ?? 'unknown'}…${range.heating.maximum ?? 'unknown'} °C (${range.heating.condition}) (information only, not applied)`);
       setHtml(profileFacts, facts.map((f) => `<li>${escapeHtml(f)}</li>`).join(''));
       reapply.hidden = info.coolingHighFanFlowM3h === undefined;
       const outProfile = c.outdoorVolumetricAirFlowM3s !== undefined;
@@ -1027,12 +1029,13 @@ function createInstallationDeclarations(index: () => number): { root: HTMLElemen
     if (!installation || !room) return;
     if (builtFor !== model.id) {
       builtFor = model.id;
-      port.replaceChildren(html('option', { value: '' }, 'Unassigned'), ...installation.ports.map(p => html('option', { value: p.id }, `${p.id} · gas Ø${p.gasConnectionOuterDiameterMm} mm`)));
+      port.replaceChildren(html('option', { value: '' }, 'Unassigned'), ...(installation.ports ?? []).map(p => html('option', { value: p.id }, `${p.id} · gas Ø${p.gasConnectionOuterDiameterMm} mm`)));
     }
     const assignment = room.installation ?? {};
+    for (const control of [port, klass, kw, named, reducer]) control.disabled = installation.ports === null;
     port.querySelectorAll<HTMLOptionElement>('option[data-retained]').forEach(option => { if (option.value !== assignment.portId) option.remove(); });
     if (assignment.portId && ![...port.options].some(option => option.value === assignment.portId))
-      port.append(html('option', { value: assignment.portId, 'data-retained': 'true' }, `${assignment.portId} — retained; unavailable on this model`));
+      port.append(html('option', { value: assignment.portId, 'data-retained': 'true' }, `${assignment.portId} — retained; ${installation.ports === null ? 'source constraints unknown' : 'unavailable on this model'}`));
     if (document.activeElement !== port) port.value = assignment.portId ?? '';
     if (document.activeElement !== klass) klass.value = assignment.capacityClass === undefined ? '' : String(assignment.capacityClass);
     if (document.activeElement !== kw) kw.value = assignment.connectedCapacityKw === undefined ? '' : String(assignment.connectedCapacityKw);
