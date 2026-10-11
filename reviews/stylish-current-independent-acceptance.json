@@ -1,0 +1,3043 @@
+{
+  "root": "/home/julien/Documents/Scripts/Agent/heatpump-simulator",
+  "snapshot": "/tmp/heatpump-stylish-integration-3g5t39sq/project",
+  "output": "/tmp/heatpump-stylish-integration-3g5t39sq",
+  "baseline": "cf71dd4",
+  "inputCandidates": {
+    "research/catalogue/staging/luna-next-daikin-stylish-physical-2026.json": "86a5c6b275639c82d4a2d15e5e5445cccf7a59d113d21c6f0c0f1e747f85b492",
+    "research/catalogue/staging/luna-next-daikin-stylish-cd-finish-pairs-2026.json": "00a11c1fe4f8bc4a1948ee61bed3c106bda0f99b41d56bc38a26c3a316f1ef4e"
+  },
+  "derivedCandidate": {
+    "path": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+    "sha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b"
+  },
+  "newEntries": 45,
+  "acceptanceCountBefore": 185,
+  "acceptanceCountAfter": 230,
+  "sourcePins": [
+    {
+      "path": "research/sources/luna-next-daikin-2026-catalogue-p315.html",
+      "sha256": "78dc59876286ee6e8536bbf168e61cc556f7bcba0b8545b53c05f13182727be4"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-2026-catalogue-p317.html",
+      "sha256": "edb62277030ef27c3bc11483ad7c4f382f5eadf0c09bad37af84f64d3ca5112c"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-rxa-a8-table-2026.html",
+      "sha256": "d14eed16fe07583197a018407fd68c4f79496d1754e2127185479e656d1599f4"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-rxa-b8-table-2026.html",
+      "sha256": "429fadf982b34df126920d7927111149f5fdf3d1458684580f592f3aec41ea9d"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html",
+      "sha256": "6a9f72880db2898066b2650215e57d1716e20bd1c0a4137abe1442097c9f883d"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-b8-table.html",
+      "sha256": "10f8de5a5f330693f39d59aaba01ec96794d714fe8bd627803148dec0e7f6976"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html",
+      "sha256": "779bc4b37b460f8defcbd3e87b2067e0d3978ca98cf00f7346d9783de25dde8c"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-b8-table.html",
+      "sha256": "ae4b7c8bc02cb1c2e00fe52462d8f188b021e2f90862b4abe091e7c4500823e6"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html",
+      "sha256": "adff81f287d2a3d1a7e2350a747fc4ce016c0e45d3326a6f2ba957b8d9f3851f"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-b8-table.html",
+      "sha256": "787b18dc33fe526f6123616a2de0bfd738cea3230f4e51b85da6bc1da3f29461"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html",
+      "sha256": "e2652ddbe689c0dc33f487d63b42e248605fd0d9a2903df86b66d2cf113e185d"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-b8-table.html",
+      "sha256": "6cc5647a0fb2bea6f572cda240d2e5943d96639f6cebbd6a4729543f05a40b44"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html",
+      "sha256": "1f0ac870a1e67176ac4a04af27bde2ecec32938484d42932ad2d58eb73df8885"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-b8-table.html",
+      "sha256": "378731d903fb1929cc986315f0ae486e03878a53a9c80651e0db728c015f3e38"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html",
+      "sha256": "f05b5d6a59d97bd190a72f179f67fe93bc72b6a6d89d98bcf6feb92d6638f02f"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-b8-table.html",
+      "sha256": "54dccad320560e53320f56f7f9dde3e158bcdc9c322dd98498bab3ee577db506"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html",
+      "sha256": "be6bb9e097befd3e43ca5573aea2cf8583e9ae64d560e6edfb8f02882e16b6b8"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-b8-table.html",
+      "sha256": "11246da5dcd3bda3195cf216fd22d7b773608b30a1f84e917cfbd42a3fb17c68"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html",
+      "sha256": "2c947593bc18dc5bbc3dabe76f97e8df621a00ddaf2e3c443424090305ef10fb"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-b8-table.html",
+      "sha256": "247445db6643f09c728153de7928653427d93fa0ece47db3f4472e2b2a481f62"
+    }
+  ],
+  "mutations": [
+    "research/catalogue/equipment-acceptance.json",
+    "src/equipment-data.ts",
+    "tests/catalogue.test.py",
+    "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json"
+  ],
+  "reviewedAt": "2026-10-11",
+  "decision": "45 reviewed Stylish monosplit profiles ready for parent application after inverter publication gate; root remains unchanged",
+  "protectedRootBaselineHashes": {
+    "research/catalogue/equipment-acceptance.json": "3731c83439bab0719f35667950ee0d635fa29773b714c8b1cfabfdacafc66c78",
+    "src/equipment-data.ts": "6baef625654f165801eb0bb7ca46638557a2ddc72044cef9713d3275e297da19",
+    "src/equipment.ts": "91b9c6d89e35f2d2780121d68550110a9da506d3ad6a893adfc8a0a89992875e",
+    "tools/import-equipment.py": "08acf2241c2ce93793db5deff60fd51197eea04ff8c504b15f0b4ebbf076ec2f",
+    "tests/catalogue.test.py": "46658134f2820a6b27c0982eaa6c5062b6012371d61bd3257a405d22a20315a5"
+  },
+  "patch": {
+    "path": "/tmp/heatpump-stylish-integration-3g5t39sq/stylish-only-integration.patch",
+    "sha256": "30fb48fc6853b6f2ede538a8d1e82e05261d025c72f456d1e6abecb7c696f351"
+  },
+  "updatedArtifactHashes": {
+    "research/catalogue/equipment-acceptance.json": "e2e613ad7b072ff5a9577c6f5e3b0449d3568bbe01f36eb7edefeee3ba58836e",
+    "src/equipment-data.ts": "443b1f96e51391dd4b01876539a87a8128edd23d6146a40138a5a7ec9e73d09d",
+    "tests/catalogue.test.py": "3e25e542148c0b3dfba4b549b56bd67e752ec6e937582507025ea7bd6c545b86",
+    "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b"
+  },
+  "isolatedValidation": {
+    "existingCatalogueTestsPassed": 21,
+    "totalCatalogueTestsPassedWithRegressions": 23,
+    "structuralCandidateRecordsPassed": 45,
+    "typescriptCheckPassed": true,
+    "generatedEquipmentMatchesAcceptance": true
+  },
+  "resultingCatalogueCounts": {
+    "CATALOGUE_OUTDOORS": {
+      "mitsubishi-electric": 25,
+      "daikin": 41
+    },
+    "CATALOGUE_INDOORS": {
+      "mitsubishi-electric": 45,
+      "daikin": 119
+    }
+  },
+  "newAcceptanceEntries": [
+    {
+      "reference": "FTXA20D2V1BG",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA20D2V1BG",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA25D2V1BG",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA25D2V1BG",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA35D2V1BG",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA35D2V1BG",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA42D2V1BG",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA42D2V1BG",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA50D2V1BG",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA50D2V1BG",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA20D2V1BP",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA20D2V1BP",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA25D2V1BP",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA25D2V1BP",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA35D2V1BP",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA35D2V1BP",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA42D2V1BP",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA42D2V1BP",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA50D2V1BP",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA50D2V1BP",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA20D2V1BL",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA20D2V1BL",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA25D2V1BL",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA25D2V1BL",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA35D2V1BL",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA35D2V1BL",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA42D2V1BL",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA42D2V1BL",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA50D2V1BL",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA50D2V1BL",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA20D2V1BC",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA20D2V1BC",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA25D2V1BC",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA25D2V1BC",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA35D2V1BC",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA35D2V1BC",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA42D2V1BC",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA42D2V1BC",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA50D2V1BC",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA50D2V1BC",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA20D2V1BY",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA20D2V1BY",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA25D2V1BY",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA25D2V1BY",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA35D2V1BY",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA35D2V1BY",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA42D2V1BY",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA42D2V1BY",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA50D2V1BY",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA50D2V1BY",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA20C2V1BW",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA20C2V1BW",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA25C2V1BW",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA25C2V1BW",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA35C2V1BW",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA35C2V1BW",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA42C2V1BW",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA42C2V1BW",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA50C2V1BW",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA50C2V1BW",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA20C2V1BS",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA20C2V1BS",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA25C2V1BS",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA25C2V1BS",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA35C2V1BS",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA35C2V1BS",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA42C2V1BS",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA42C2V1BS",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA50C2V1BS",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA50C2V1BS",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA20C2V1BB",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA20C2V1BB",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA25C2V1BB",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA25C2V1BB",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA35C2V1BB",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA35C2V1BB",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA42C2V1BB",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA42C2V1BB",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "FTXA50C2V1BB",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "FTXA50C2V1BB",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "Cooling, high fan setting; published m³/min value converted exactly by ×60."
+    },
+    {
+      "reference": "RXA20A5V1B8",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "RXA20A5V1B8",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXA20D2V1BG",
+        "FTXA20D2V1BP",
+        "FTXA20D2V1BL",
+        "FTXA20D2V1BC",
+        "FTXA20D2V1BY",
+        "FTXA20C2V1BW",
+        "FTXA20C2V1BS",
+        "FTXA20C2V1BB"
+      ],
+      "pairingEvidence": {
+        "sourceId": "pair-dg-a8",
+        "locator": "Exact full pair table column heading",
+        "excerpt": "FTXA20D2V1BG / RXA20A5V1B8"
+      },
+      "pairingEvidenceByIndoor": {
+        "FTXA20D2V1BG": {
+          "sourceId": "pair-dg-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA20D2V1BG / RXA20A5V1B8"
+        },
+        "FTXA20D2V1BP": {
+          "sourceId": "pair-dp-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA20D2V1BP / RXA20A5V1B8"
+        },
+        "FTXA20D2V1BL": {
+          "sourceId": "pair-dl-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA20D2V1BL / RXA20A5V1B8"
+        },
+        "FTXA20D2V1BC": {
+          "sourceId": "pair-dc-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA20D2V1BC / RXA20A5V1B8"
+        },
+        "FTXA20D2V1BY": {
+          "sourceId": "pair-dy-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA20D2V1BY / RXA20A5V1B8"
+        },
+        "FTXA20C2V1BW": {
+          "sourceId": "pair-cw-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA20C2V1BW / RXA20A5V1B8"
+        },
+        "FTXA20C2V1BS": {
+          "sourceId": "pair-cs-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA20C2V1BS / RXA20A5V1B8"
+        },
+        "FTXA20C2V1BB": {
+          "sourceId": "pair-cb-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA20C2V1BB / RXA20A5V1B8"
+        }
+      }
+    },
+    {
+      "reference": "RXA25A5V1B8",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "RXA25A5V1B8",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXA25D2V1BG",
+        "FTXA25D2V1BP",
+        "FTXA25D2V1BL",
+        "FTXA25D2V1BC",
+        "FTXA25D2V1BY",
+        "FTXA25C2V1BW",
+        "FTXA25C2V1BS",
+        "FTXA25C2V1BB"
+      ],
+      "pairingEvidence": {
+        "sourceId": "pair-dg-a8",
+        "locator": "Exact full pair table column heading",
+        "excerpt": "FTXA25D2V1BG / RXA25A5V1B8"
+      },
+      "pairingEvidenceByIndoor": {
+        "FTXA25D2V1BG": {
+          "sourceId": "pair-dg-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA25D2V1BG / RXA25A5V1B8"
+        },
+        "FTXA25D2V1BP": {
+          "sourceId": "pair-dp-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA25D2V1BP / RXA25A5V1B8"
+        },
+        "FTXA25D2V1BL": {
+          "sourceId": "pair-dl-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA25D2V1BL / RXA25A5V1B8"
+        },
+        "FTXA25D2V1BC": {
+          "sourceId": "pair-dc-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA25D2V1BC / RXA25A5V1B8"
+        },
+        "FTXA25D2V1BY": {
+          "sourceId": "pair-dy-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA25D2V1BY / RXA25A5V1B8"
+        },
+        "FTXA25C2V1BW": {
+          "sourceId": "pair-cw-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA25C2V1BW / RXA25A5V1B8"
+        },
+        "FTXA25C2V1BS": {
+          "sourceId": "pair-cs-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA25C2V1BS / RXA25A5V1B8"
+        },
+        "FTXA25C2V1BB": {
+          "sourceId": "pair-cb-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA25C2V1BB / RXA25A5V1B8"
+        }
+      }
+    },
+    {
+      "reference": "RXA35A5V1B8",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "RXA35A5V1B8",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXA35D2V1BG",
+        "FTXA35D2V1BP",
+        "FTXA35D2V1BL",
+        "FTXA35D2V1BC",
+        "FTXA35D2V1BY",
+        "FTXA35C2V1BW",
+        "FTXA35C2V1BS",
+        "FTXA35C2V1BB"
+      ],
+      "pairingEvidence": {
+        "sourceId": "pair-dg-a8",
+        "locator": "Exact full pair table column heading",
+        "excerpt": "FTXA35D2V1BG / RXA35A5V1B8"
+      },
+      "pairingEvidenceByIndoor": {
+        "FTXA35D2V1BG": {
+          "sourceId": "pair-dg-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA35D2V1BG / RXA35A5V1B8"
+        },
+        "FTXA35D2V1BP": {
+          "sourceId": "pair-dp-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA35D2V1BP / RXA35A5V1B8"
+        },
+        "FTXA35D2V1BL": {
+          "sourceId": "pair-dl-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA35D2V1BL / RXA35A5V1B8"
+        },
+        "FTXA35D2V1BC": {
+          "sourceId": "pair-dc-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA35D2V1BC / RXA35A5V1B8"
+        },
+        "FTXA35D2V1BY": {
+          "sourceId": "pair-dy-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA35D2V1BY / RXA35A5V1B8"
+        },
+        "FTXA35C2V1BW": {
+          "sourceId": "pair-cw-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA35C2V1BW / RXA35A5V1B8"
+        },
+        "FTXA35C2V1BS": {
+          "sourceId": "pair-cs-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA35C2V1BS / RXA35A5V1B8"
+        },
+        "FTXA35C2V1BB": {
+          "sourceId": "pair-cb-a8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA35C2V1BB / RXA35A5V1B8"
+        }
+      }
+    },
+    {
+      "reference": "RXA42B5V1B8",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "RXA42B5V1B8",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXA42D2V1BG",
+        "FTXA42D2V1BP",
+        "FTXA42D2V1BL",
+        "FTXA42D2V1BC",
+        "FTXA42D2V1BY",
+        "FTXA42C2V1BW",
+        "FTXA42C2V1BS",
+        "FTXA42C2V1BB"
+      ],
+      "pairingEvidence": {
+        "sourceId": "pair-dg-b8",
+        "locator": "Exact full pair table column heading",
+        "excerpt": "FTXA42D2V1BG / RXA42B5V1B8"
+      },
+      "pairingEvidenceByIndoor": {
+        "FTXA42D2V1BG": {
+          "sourceId": "pair-dg-b8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA42D2V1BG / RXA42B5V1B8"
+        },
+        "FTXA42D2V1BP": {
+          "sourceId": "pair-dp-b8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA42D2V1BP / RXA42B5V1B8"
+        },
+        "FTXA42D2V1BL": {
+          "sourceId": "pair-dl-b8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA42D2V1BL / RXA42B5V1B8"
+        },
+        "FTXA42D2V1BC": {
+          "sourceId": "pair-dc-b8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA42D2V1BC / RXA42B5V1B8"
+        },
+        "FTXA42D2V1BY": {
+          "sourceId": "pair-dy-b8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA42D2V1BY / RXA42B5V1B8"
+        },
+        "FTXA42C2V1BW": {
+          "sourceId": "pair-cw-b8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA42C2V1BW / RXA42B5V1B8"
+        },
+        "FTXA42C2V1BS": {
+          "sourceId": "pair-cs-b8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA42C2V1BS / RXA42B5V1B8"
+        },
+        "FTXA42C2V1BB": {
+          "sourceId": "pair-cb-b8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA42C2V1BB / RXA42B5V1B8"
+        }
+      }
+    },
+    {
+      "reference": "RXA50B5V1B8",
+      "candidateFile": "research/catalogue/staging/luna-reviewed-daikin-stylish-cd-2026.json",
+      "candidateReference": "RXA50B5V1B8",
+      "candidateSha256": "8232b6b1dbe11ef966d85ed3857cc0247f562ecf418ecb078684221d77f1661b",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXA50D2V1BG",
+        "FTXA50D2V1BP",
+        "FTXA50D2V1BL",
+        "FTXA50D2V1BC",
+        "FTXA50D2V1BY",
+        "FTXA50C2V1BW",
+        "FTXA50C2V1BS",
+        "FTXA50C2V1BB"
+      ],
+      "pairingEvidence": {
+        "sourceId": "pair-dg-b8",
+        "locator": "Exact full pair table column heading",
+        "excerpt": "FTXA50D2V1BG / RXA50B5V1B8"
+      },
+      "pairingEvidenceByIndoor": {
+        "FTXA50D2V1BG": {
+          "sourceId": "pair-dg-b8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA50D2V1BG / RXA50B5V1B8"
+        },
+        "FTXA50D2V1BP": {
+          "sourceId": "pair-dp-b8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA50D2V1BP / RXA50B5V1B8"
+        },
+        "FTXA50D2V1BL": {
+          "sourceId": "pair-dl-b8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA50D2V1BL / RXA50B5V1B8"
+        },
+        "FTXA50D2V1BC": {
+          "sourceId": "pair-dc-b8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA50D2V1BC / RXA50B5V1B8"
+        },
+        "FTXA50D2V1BY": {
+          "sourceId": "pair-dy-b8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA50D2V1BY / RXA50B5V1B8"
+        },
+        "FTXA50C2V1BW": {
+          "sourceId": "pair-cw-b8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA50C2V1BW / RXA50B5V1B8"
+        },
+        "FTXA50C2V1BS": {
+          "sourceId": "pair-cs-b8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA50C2V1BS / RXA50B5V1B8"
+        },
+        "FTXA50C2V1BB": {
+          "sourceId": "pair-cb-b8",
+          "locator": "Exact full pair table column heading",
+          "excerpt": "FTXA50C2V1BB / RXA50B5V1B8"
+        }
+      }
+    }
+  ],
+  "independentPrimaryChecks": {
+    "physicalAppliedFieldChecks": [
+      {
+        "reference": "FTXA20D2V1BG",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BG",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BG",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BG",
+        "key": "airflow",
+        "value": 660.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BG",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BG",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BG",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BG",
+        "key": "airflow",
+        "value": 690.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BG",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BG",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BG",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BG",
+        "key": "airflow",
+        "value": 714.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BG",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BG",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BG",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BG",
+        "key": "airflow",
+        "value": 786.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BG",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BG",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BG",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BG",
+        "key": "airflow",
+        "value": 810.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BP",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BP",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BP",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BP",
+        "key": "airflow",
+        "value": 660.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BP",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BP",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BP",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BP",
+        "key": "airflow",
+        "value": 690.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BP",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BP",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BP",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BP",
+        "key": "airflow",
+        "value": 714.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BP",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BP",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BP",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BP",
+        "key": "airflow",
+        "value": 786.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BP",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BP",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BP",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BP",
+        "key": "airflow",
+        "value": 810.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BL",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BL",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BL",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BL",
+        "key": "airflow",
+        "value": 660.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BL",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BL",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BL",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BL",
+        "key": "airflow",
+        "value": 690.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BL",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BL",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BL",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BL",
+        "key": "airflow",
+        "value": 714.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BL",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BL",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BL",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BL",
+        "key": "airflow",
+        "value": 786.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BL",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BL",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BL",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BL",
+        "key": "airflow",
+        "value": 810.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BC",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BC",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BC",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BC",
+        "key": "airflow",
+        "value": 660.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BC",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BC",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BC",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BC",
+        "key": "airflow",
+        "value": 690.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BC",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BC",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BC",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BC",
+        "key": "airflow",
+        "value": 714.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BC",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BC",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BC",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BC",
+        "key": "airflow",
+        "value": 786.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BC",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BC",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BC",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BC",
+        "key": "airflow",
+        "value": 810.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BY",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BY",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BY",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20D2V1BY",
+        "key": "airflow",
+        "value": 660.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BY",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BY",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BY",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA25D2V1BY",
+        "key": "airflow",
+        "value": 690.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BY",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BY",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BY",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA35D2V1BY",
+        "key": "airflow",
+        "value": 714.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BY",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BY",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BY",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA42D2V1BY",
+        "key": "airflow",
+        "value": 786.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BY",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BY",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BY",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA50D2V1BY",
+        "key": "airflow",
+        "value": 810.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+      },
+      {
+        "reference": "FTXA20C2V1BW",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA20C2V1BW",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA20C2V1BW",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA20C2V1BW",
+        "key": "airflow",
+        "value": 660.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA25C2V1BW",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA25C2V1BW",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA25C2V1BW",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA25C2V1BW",
+        "key": "airflow",
+        "value": 690.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA35C2V1BW",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA35C2V1BW",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA35C2V1BW",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA35C2V1BW",
+        "key": "airflow",
+        "value": 714.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA42C2V1BW",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA42C2V1BW",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA42C2V1BW",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA42C2V1BW",
+        "key": "airflow",
+        "value": 786.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA50C2V1BW",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA50C2V1BW",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA50C2V1BW",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA50C2V1BW",
+        "key": "airflow",
+        "value": 810.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA20C2V1BS",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA20C2V1BS",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA20C2V1BS",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA20C2V1BS",
+        "key": "airflow",
+        "value": 660.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA25C2V1BS",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA25C2V1BS",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA25C2V1BS",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA25C2V1BS",
+        "key": "airflow",
+        "value": 690.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA35C2V1BS",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA35C2V1BS",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA35C2V1BS",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA35C2V1BS",
+        "key": "airflow",
+        "value": 714.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA42C2V1BS",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA42C2V1BS",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA42C2V1BS",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA42C2V1BS",
+        "key": "airflow",
+        "value": 786.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA50C2V1BS",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA50C2V1BS",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA50C2V1BS",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA50C2V1BS",
+        "key": "airflow",
+        "value": 810.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA20C2V1BB",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA20C2V1BB",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA20C2V1BB",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA20C2V1BB",
+        "key": "airflow",
+        "value": 660.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA25C2V1BB",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA25C2V1BB",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA25C2V1BB",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA25C2V1BB",
+        "key": "airflow",
+        "value": 690.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA35C2V1BB",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA35C2V1BB",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA35C2V1BB",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA35C2V1BB",
+        "key": "airflow",
+        "value": 714.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA42C2V1BB",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA42C2V1BB",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA42C2V1BB",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA42C2V1BB",
+        "key": "airflow",
+        "value": 786.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA50C2V1BB",
+        "key": "height",
+        "value": 295,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA50C2V1BB",
+        "key": "width",
+        "value": 798,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA50C2V1BB",
+        "key": "depth",
+        "value": 189,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "FTXA50C2V1BB",
+        "key": "airflow",
+        "value": 810.0,
+        "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+      },
+      {
+        "reference": "RXA20A5V1B8",
+        "key": "height",
+        "value": 550.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA20A5V1B8",
+        "key": "width",
+        "value": 840.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA20A5V1B8",
+        "key": "depth",
+        "value": 350.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA20A5V1B8",
+        "key": "refrigerant",
+        "value": "R-32",
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA20A5V1B8",
+        "key": "coolingOutdoorMinimum",
+        "value": -10.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA20A5V1B8",
+        "key": "coolingOutdoorMaximum",
+        "value": 46.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA20A5V1B8",
+        "key": "heatingOutdoorMinimum",
+        "value": -15.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA20A5V1B8",
+        "key": "heatingOutdoorMaximum",
+        "value": 18.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA25A5V1B8",
+        "key": "height",
+        "value": 550.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA25A5V1B8",
+        "key": "width",
+        "value": 840.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA25A5V1B8",
+        "key": "depth",
+        "value": 350.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA25A5V1B8",
+        "key": "refrigerant",
+        "value": "R-32",
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA25A5V1B8",
+        "key": "coolingOutdoorMinimum",
+        "value": -10.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA25A5V1B8",
+        "key": "coolingOutdoorMaximum",
+        "value": 46.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA25A5V1B8",
+        "key": "heatingOutdoorMinimum",
+        "value": -15.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA25A5V1B8",
+        "key": "heatingOutdoorMaximum",
+        "value": 18.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA35A5V1B8",
+        "key": "height",
+        "value": 550.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA35A5V1B8",
+        "key": "width",
+        "value": 840.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA35A5V1B8",
+        "key": "depth",
+        "value": 350.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA35A5V1B8",
+        "key": "refrigerant",
+        "value": "R-32",
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA35A5V1B8",
+        "key": "coolingOutdoorMinimum",
+        "value": -10.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA35A5V1B8",
+        "key": "coolingOutdoorMaximum",
+        "value": 46.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA35A5V1B8",
+        "key": "heatingOutdoorMinimum",
+        "value": -15.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA35A5V1B8",
+        "key": "heatingOutdoorMaximum",
+        "value": 18.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-a8-table-2026.html"
+      },
+      {
+        "reference": "RXA42B5V1B8",
+        "key": "height",
+        "value": 734.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-b8-table-2026.html"
+      },
+      {
+        "reference": "RXA42B5V1B8",
+        "key": "width",
+        "value": 954.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-b8-table-2026.html"
+      },
+      {
+        "reference": "RXA42B5V1B8",
+        "key": "depth",
+        "value": 401.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-b8-table-2026.html"
+      },
+      {
+        "reference": "RXA42B5V1B8",
+        "key": "refrigerant",
+        "value": "R-32",
+        "sourcePath": "research/sources/luna-next-daikin-rxa-b8-table-2026.html"
+      },
+      {
+        "reference": "RXA42B5V1B8",
+        "key": "coolingOutdoorMinimum",
+        "value": -10.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-b8-table-2026.html"
+      },
+      {
+        "reference": "RXA42B5V1B8",
+        "key": "coolingOutdoorMaximum",
+        "value": 46.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-b8-table-2026.html"
+      },
+      {
+        "reference": "RXA42B5V1B8",
+        "key": "heatingOutdoorMinimum",
+        "value": -15.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-b8-table-2026.html"
+      },
+      {
+        "reference": "RXA42B5V1B8",
+        "key": "heatingOutdoorMaximum",
+        "value": 18.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-b8-table-2026.html"
+      },
+      {
+        "reference": "RXA50B5V1B8",
+        "key": "height",
+        "value": 734.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-b8-table-2026.html"
+      },
+      {
+        "reference": "RXA50B5V1B8",
+        "key": "width",
+        "value": 954.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-b8-table-2026.html"
+      },
+      {
+        "reference": "RXA50B5V1B8",
+        "key": "depth",
+        "value": 401.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-b8-table-2026.html"
+      },
+      {
+        "reference": "RXA50B5V1B8",
+        "key": "refrigerant",
+        "value": "R-32",
+        "sourcePath": "research/sources/luna-next-daikin-rxa-b8-table-2026.html"
+      },
+      {
+        "reference": "RXA50B5V1B8",
+        "key": "coolingOutdoorMinimum",
+        "value": -10.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-b8-table-2026.html"
+      },
+      {
+        "reference": "RXA50B5V1B8",
+        "key": "coolingOutdoorMaximum",
+        "value": 46.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-b8-table-2026.html"
+      },
+      {
+        "reference": "RXA50B5V1B8",
+        "key": "heatingOutdoorMinimum",
+        "value": -15.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-b8-table-2026.html"
+      },
+      {
+        "reference": "RXA50B5V1B8",
+        "key": "heatingOutdoorMaximum",
+        "value": 18.0,
+        "sourcePath": "research/sources/luna-next-daikin-rxa-b8-table-2026.html"
+      }
+    ],
+    "pairIdentityAndNominalCoolingChecks": [
+      {
+        "ref": "FTXA20D2V1BG",
+        "pair": "FTXA20D2V1BG / RXA20A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA20D2V1BG",
+        "test": "nominalPairCoolingCapacity",
+        "value": 2.0,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA25D2V1BG",
+        "pair": "FTXA25D2V1BG / RXA25A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA25D2V1BG",
+        "test": "nominalPairCoolingCapacity",
+        "value": 2.5,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA35D2V1BG",
+        "pair": "FTXA35D2V1BG / RXA35A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA35D2V1BG",
+        "test": "nominalPairCoolingCapacity",
+        "value": 3.4,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA42D2V1BG",
+        "pair": "FTXA42D2V1BG / RXA42B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA42D2V1BG",
+        "test": "nominalPairCoolingCapacity",
+        "value": 4.2,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-b8-table.html"
+      },
+      {
+        "ref": "FTXA50D2V1BG",
+        "pair": "FTXA50D2V1BG / RXA50B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA50D2V1BG",
+        "test": "nominalPairCoolingCapacity",
+        "value": 5.0,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-b8-table.html"
+      },
+      {
+        "ref": "FTXA20D2V1BP",
+        "pair": "FTXA20D2V1BP / RXA20A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA20D2V1BP",
+        "test": "nominalPairCoolingCapacity",
+        "value": 2.0,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA25D2V1BP",
+        "pair": "FTXA25D2V1BP / RXA25A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA25D2V1BP",
+        "test": "nominalPairCoolingCapacity",
+        "value": 2.5,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA35D2V1BP",
+        "pair": "FTXA35D2V1BP / RXA35A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA35D2V1BP",
+        "test": "nominalPairCoolingCapacity",
+        "value": 3.4,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA42D2V1BP",
+        "pair": "FTXA42D2V1BP / RXA42B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA42D2V1BP",
+        "test": "nominalPairCoolingCapacity",
+        "value": 4.2,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-b8-table.html"
+      },
+      {
+        "ref": "FTXA50D2V1BP",
+        "pair": "FTXA50D2V1BP / RXA50B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA50D2V1BP",
+        "test": "nominalPairCoolingCapacity",
+        "value": 5.0,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-b8-table.html"
+      },
+      {
+        "ref": "FTXA20D2V1BL",
+        "pair": "FTXA20D2V1BL / RXA20A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA20D2V1BL",
+        "test": "nominalPairCoolingCapacity",
+        "value": 2.0,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA25D2V1BL",
+        "pair": "FTXA25D2V1BL / RXA25A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA25D2V1BL",
+        "test": "nominalPairCoolingCapacity",
+        "value": 2.5,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA35D2V1BL",
+        "pair": "FTXA35D2V1BL / RXA35A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA35D2V1BL",
+        "test": "nominalPairCoolingCapacity",
+        "value": 3.4,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA42D2V1BL",
+        "pair": "FTXA42D2V1BL / RXA42B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA42D2V1BL",
+        "test": "nominalPairCoolingCapacity",
+        "value": 4.2,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-b8-table.html"
+      },
+      {
+        "ref": "FTXA50D2V1BL",
+        "pair": "FTXA50D2V1BL / RXA50B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA50D2V1BL",
+        "test": "nominalPairCoolingCapacity",
+        "value": 5.0,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-b8-table.html"
+      },
+      {
+        "ref": "FTXA20D2V1BC",
+        "pair": "FTXA20D2V1BC / RXA20A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA20D2V1BC",
+        "test": "nominalPairCoolingCapacity",
+        "value": 2.0,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA25D2V1BC",
+        "pair": "FTXA25D2V1BC / RXA25A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA25D2V1BC",
+        "test": "nominalPairCoolingCapacity",
+        "value": 2.5,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA35D2V1BC",
+        "pair": "FTXA35D2V1BC / RXA35A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA35D2V1BC",
+        "test": "nominalPairCoolingCapacity",
+        "value": 3.4,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA42D2V1BC",
+        "pair": "FTXA42D2V1BC / RXA42B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA42D2V1BC",
+        "test": "nominalPairCoolingCapacity",
+        "value": 4.2,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-b8-table.html"
+      },
+      {
+        "ref": "FTXA50D2V1BC",
+        "pair": "FTXA50D2V1BC / RXA50B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA50D2V1BC",
+        "test": "nominalPairCoolingCapacity",
+        "value": 5.0,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-b8-table.html"
+      },
+      {
+        "ref": "FTXA20D2V1BY",
+        "pair": "FTXA20D2V1BY / RXA20A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA20D2V1BY",
+        "test": "nominalPairCoolingCapacity",
+        "value": 2.0,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA25D2V1BY",
+        "pair": "FTXA25D2V1BY / RXA25A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA25D2V1BY",
+        "test": "nominalPairCoolingCapacity",
+        "value": 2.5,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA35D2V1BY",
+        "pair": "FTXA35D2V1BY / RXA35A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA35D2V1BY",
+        "test": "nominalPairCoolingCapacity",
+        "value": 3.4,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA42D2V1BY",
+        "pair": "FTXA42D2V1BY / RXA42B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA42D2V1BY",
+        "test": "nominalPairCoolingCapacity",
+        "value": 4.2,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-b8-table.html"
+      },
+      {
+        "ref": "FTXA50D2V1BY",
+        "pair": "FTXA50D2V1BY / RXA50B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA50D2V1BY",
+        "test": "nominalPairCoolingCapacity",
+        "value": 5.0,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-b8-table.html"
+      },
+      {
+        "ref": "FTXA20C2V1BW",
+        "pair": "FTXA20C2V1BW / RXA20A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA20C2V1BW",
+        "test": "nominalPairCoolingCapacity",
+        "value": 2.0,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA25C2V1BW",
+        "pair": "FTXA25C2V1BW / RXA25A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA25C2V1BW",
+        "test": "nominalPairCoolingCapacity",
+        "value": 2.5,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA35C2V1BW",
+        "pair": "FTXA35C2V1BW / RXA35A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA35C2V1BW",
+        "test": "nominalPairCoolingCapacity",
+        "value": 3.4,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA42C2V1BW",
+        "pair": "FTXA42C2V1BW / RXA42B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA42C2V1BW",
+        "test": "nominalPairCoolingCapacity",
+        "value": 4.2,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-b8-table.html"
+      },
+      {
+        "ref": "FTXA50C2V1BW",
+        "pair": "FTXA50C2V1BW / RXA50B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA50C2V1BW",
+        "test": "nominalPairCoolingCapacity",
+        "value": 5.0,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-b8-table.html"
+      },
+      {
+        "ref": "FTXA20C2V1BS",
+        "pair": "FTXA20C2V1BS / RXA20A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA20C2V1BS",
+        "test": "nominalPairCoolingCapacity",
+        "value": 2.0,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA25C2V1BS",
+        "pair": "FTXA25C2V1BS / RXA25A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA25C2V1BS",
+        "test": "nominalPairCoolingCapacity",
+        "value": 2.5,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA35C2V1BS",
+        "pair": "FTXA35C2V1BS / RXA35A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA35C2V1BS",
+        "test": "nominalPairCoolingCapacity",
+        "value": 3.4,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA42C2V1BS",
+        "pair": "FTXA42C2V1BS / RXA42B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA42C2V1BS",
+        "test": "nominalPairCoolingCapacity",
+        "value": 4.2,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-b8-table.html"
+      },
+      {
+        "ref": "FTXA50C2V1BS",
+        "pair": "FTXA50C2V1BS / RXA50B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA50C2V1BS",
+        "test": "nominalPairCoolingCapacity",
+        "value": 5.0,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-b8-table.html"
+      },
+      {
+        "ref": "FTXA20C2V1BB",
+        "pair": "FTXA20C2V1BB / RXA20A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA20C2V1BB",
+        "test": "nominalPairCoolingCapacity",
+        "value": 2.0,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA25C2V1BB",
+        "pair": "FTXA25C2V1BB / RXA25A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA25C2V1BB",
+        "test": "nominalPairCoolingCapacity",
+        "value": 2.5,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA35C2V1BB",
+        "pair": "FTXA35C2V1BB / RXA35A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA35C2V1BB",
+        "test": "nominalPairCoolingCapacity",
+        "value": 3.4,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html"
+      },
+      {
+        "ref": "FTXA42C2V1BB",
+        "pair": "FTXA42C2V1BB / RXA42B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA42C2V1BB",
+        "test": "nominalPairCoolingCapacity",
+        "value": 4.2,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-b8-table.html"
+      },
+      {
+        "ref": "FTXA50C2V1BB",
+        "pair": "FTXA50C2V1BB / RXA50B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "FTXA50C2V1BB",
+        "test": "nominalPairCoolingCapacity",
+        "value": 5.0,
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-b8-table.html"
+      },
+      {
+        "ref": "RXA20A5V1B8",
+        "pair": "FTXA20D2V1BG / RXA20A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA20A5V1B8",
+        "pair": "FTXA20D2V1BP / RXA20A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA20A5V1B8",
+        "pair": "FTXA20D2V1BL / RXA20A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA20A5V1B8",
+        "pair": "FTXA20D2V1BC / RXA20A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA20A5V1B8",
+        "pair": "FTXA20D2V1BY / RXA20A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA20A5V1B8",
+        "pair": "FTXA20C2V1BW / RXA20A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA20A5V1B8",
+        "pair": "FTXA20C2V1BS / RXA20A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA20A5V1B8",
+        "pair": "FTXA20C2V1BB / RXA20A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA25A5V1B8",
+        "pair": "FTXA25D2V1BG / RXA25A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA25A5V1B8",
+        "pair": "FTXA25D2V1BP / RXA25A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA25A5V1B8",
+        "pair": "FTXA25D2V1BL / RXA25A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA25A5V1B8",
+        "pair": "FTXA25D2V1BC / RXA25A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA25A5V1B8",
+        "pair": "FTXA25D2V1BY / RXA25A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA25A5V1B8",
+        "pair": "FTXA25C2V1BW / RXA25A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA25A5V1B8",
+        "pair": "FTXA25C2V1BS / RXA25A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA25A5V1B8",
+        "pair": "FTXA25C2V1BB / RXA25A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA35A5V1B8",
+        "pair": "FTXA35D2V1BG / RXA35A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA35A5V1B8",
+        "pair": "FTXA35D2V1BP / RXA35A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA35A5V1B8",
+        "pair": "FTXA35D2V1BL / RXA35A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA35A5V1B8",
+        "pair": "FTXA35D2V1BC / RXA35A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA35A5V1B8",
+        "pair": "FTXA35D2V1BY / RXA35A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA35A5V1B8",
+        "pair": "FTXA35C2V1BW / RXA35A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA35A5V1B8",
+        "pair": "FTXA35C2V1BS / RXA35A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA35A5V1B8",
+        "pair": "FTXA35C2V1BB / RXA35A5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA42B5V1B8",
+        "pair": "FTXA42D2V1BG / RXA42B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA42B5V1B8",
+        "pair": "FTXA42D2V1BP / RXA42B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA42B5V1B8",
+        "pair": "FTXA42D2V1BL / RXA42B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA42B5V1B8",
+        "pair": "FTXA42D2V1BC / RXA42B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA42B5V1B8",
+        "pair": "FTXA42D2V1BY / RXA42B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA42B5V1B8",
+        "pair": "FTXA42C2V1BW / RXA42B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA42B5V1B8",
+        "pair": "FTXA42C2V1BS / RXA42B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA42B5V1B8",
+        "pair": "FTXA42C2V1BB / RXA42B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA50B5V1B8",
+        "pair": "FTXA50D2V1BG / RXA50B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA50B5V1B8",
+        "pair": "FTXA50D2V1BP / RXA50B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA50B5V1B8",
+        "pair": "FTXA50D2V1BL / RXA50B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA50B5V1B8",
+        "pair": "FTXA50D2V1BC / RXA50B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA50B5V1B8",
+        "pair": "FTXA50D2V1BY / RXA50B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA50B5V1B8",
+        "pair": "FTXA50C2V1BW / RXA50B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA50B5V1B8",
+        "pair": "FTXA50C2V1BS / RXA50B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      },
+      {
+        "ref": "RXA50B5V1B8",
+        "pair": "FTXA50C2V1BB / RXA50B5V1B8",
+        "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-b8-table.html",
+        "test": "exactPairHeader"
+      }
+    ],
+    "physicalAppliedFieldChecksPassed": 200,
+    "pairIdentityAndNominalCoolingChecksPassed": 120
+  },
+  "appliedFieldScope": [
+    "Indoor casing",
+    "Indoor published cooling-high volumetric flow, heating reuse explicitly generic",
+    "Nominal matched-pair cooling capacity, informational",
+    "Outdoor casing and R32 identity",
+    "Full-SKU France DB cooling/WB heating operating-range metadata",
+    "Exact full-reference one-port pair eligibility, eight alternative finish heads per outdoor"
+  ],
+  "explicitExclusions": [
+    "No OEM performance/control map",
+    "No fan watts, UA, displacement or electrical minimum floor",
+    "Outdoor airflow remains unknown and uses editable generic/manual mass flow",
+    "FactoryCharge and mass remain candidate-only, never accepted or applied",
+    "No CTXA15 or multisplit import",
+    "No archived/full-reference alias substitution"
+  ],
+  "conflictingPrimaryMetadata": "Exact France full-SKU RXA-A8/B8 rows are retained. Europe p315/317 abbreviated-class case/range data differ; this patch does not declare them equivalent or substitute A9 values. Published range values are documentary, not proven OEM performance curves.",
+  "baselinePreservationCheck": {
+    "existingAcceptanceRecordsUnchanged": 185,
+    "existingSourceSnapshotsUnchanged": 37,
+    "otherAcceptanceMetadataUnchanged": true,
+    "existingRuntimeProfilesUnchanged": {
+      "CATALOGUE_OUTDOORS": 61,
+      "CATALOGUE_INDOORS": 124
+    }
+  },
+  "appliedRootSourceHashes": {
+    "src/equipment-data.ts": "443b1f96e51391dd4b01876539a87a8128edd23d6146a40138a5a7ec9e73d09d",
+    "research/catalogue/equipment-acceptance.json": "e2e613ad7b072ff5a9577c6f5e3b0449d3568bbe01f36eb7edefeee3ba58836e",
+    "tests/catalogue.test.py": "3e25e542148c0b3dfba4b549b56bd67e752ec6e937582507025ea7bd6c545b86"
+  },
+  "rootValidation": {
+    "catalogueTests": 23,
+    "typescript": "passed",
+    "equipmentConfigBrowserChecks": 6,
+    "productionEntry": "passed"
+  }
+}

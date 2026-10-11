@@ -1,0 +1,3639 @@
+{
+  "recordedAt": "2026-10-11T13:24:59.967Z",
+  "frozenSource": "/tmp/heatpump-inverter-full-119tzqi8",
+  "destination": "/tmp/heatpump-inverter-ui-domain-final4",
+  "hashes": {
+    "src/engine/air.ts": "6dfb70bd7b7c5b84501e0de1633cf8378ea0b2bd0eb903dafe09c31625745d15",
+    "src/engine/charge-output.ts": "ca0bed2dd4836af7e72dce71e28e5d0b11309358f4c3da0bb6365a9079142ff7",
+    "src/engine/charge.ts": "0c9dd8050fab6b3bd16bcb881f59fc00debc2f85c774c2a1c2216d45d289e168",
+    "src/engine/cycle.ts": "bc2071f37492b2484cef9778ef924f48dabfa7a2b2be17bc835052c9d2ec6f1b",
+    "src/engine/defaults.ts": "0ea966a23c72ce8b4173fc5a5e11e3b317a8a4819ef3ca23916e24f0f8dde7fb",
+    "src/engine/demand.ts": "8caaf0dfd771521ab38bea1005febb63b7d187be8f77e598b9e48b6810234abf",
+    "src/engine/drive.ts": "2949522b6555d0c0a333df8c8a8d51b91b1f99dc0474d4555c3112937a7b8cc9",
+    "src/engine/engine.ts": "075c4d973b00d54424286a39be42c05692c258520e31cb8c66d6d49e1c04f051",
+    "src/engine/envelope.ts": "eaab1d96df755b322050854fa8b7108e1f4918fbeb4dd1206d815ba9c74dc4e3",
+    "src/engine/film.ts": "3cfeda3465b8c5226e6ed82bada490abdc42577fdadd4a1d0a2e3fb682285dbb",
+    "src/engine/index.ts": "f8aba3f8724f99dcd1c17be93cfc3622a9fe276d968cc36f5bbf70e9c3773ebd",
+    "src/engine/interzone.ts": "20671a676f3174e1757f4368ef0b4f1046a07b4b35d8e5377aaf689c8a43ee2b",
+    "src/engine/properties.ts": "6fb2812381e471623e449a5b593cd4e1d9874f32e559b33bd05c2eac7b6ad36e",
+    "src/engine/thermostat.ts": "f09821cdd3853d7e6c18e27e85ce278a333414ccc2b0366b51b9fa2c62873db0",
+    "src/engine/transport.ts": "928ab51cd8ca1193e68ba0821ee88ae2966521314ad9b1fd1b9894f253e2ed31",
+    "src/engine/types.ts": "3e6bf8635fc92e066f842f4651045feda443155c222899dd6768caff5ce60f34",
+    "src/engine/ventilation.ts": "6aef508a062fca992c2b7a1961ae69c12ae5317c5824326ffe57a1a0a4ecd8d8",
+    "compiled/air.js": "ac8302044d196da0528b0ca99b76db9f550d26b57adc42c0de89a68ee9b5ed94",
+    "compiled/charge-output.js": "4ed7ae6f5cc6b6f0b52465b8cbba32f400f890e729ba71cd2db804a11c435fa0",
+    "compiled/charge.js": "716d6e0134395d6f67245751af1d915e179ab2c599b8a66950bbf8006fac9b1d",
+    "compiled/cycle.js": "a50087b8ccad76a75d491c1f00b20329d35ccf3613a799f0dec1ff0fe8d72d59",
+    "compiled/defaults.js": "7ca8c9a833b6e837d0e8fbc51f12d657efa8ff9cacd1b99cb4379c933c275a65",
+    "compiled/demand.js": "f99ef79a17914088230c186eb07894615b90a324fa113d5a88d9ba2a2d3047c5",
+    "compiled/drive.js": "75b8e133089ff1346f87af2f38114e9a619f10ed7acf3b631c16399d83cb6d1f",
+    "compiled/engine.js": "11744870c6e9152c2db7156d4362be9ee0bd82c76cd05e8e586a335629656b99",
+    "compiled/envelope.js": "500ad61198fd0a91fe0f5e741a08c8b1b5c965a88cb8eecbf1025c8a5413b924",
+    "compiled/film.js": "2af475cdfb6faa4512ac7a17c45393f3be33ab88e2cb5be334138956ecf33d51",
+    "compiled/index.js": "2a58c1821531507d4843729995d2ffc8bbf2176ace4cb1e0269090322f8488c3",
+    "compiled/interzone.js": "b902baf062859b3867b7496e92cd641ac9c033a710cae60ef4e715c5195887e9",
+    "compiled/properties.js": "42a1e8c94947bb4a8f967ba89b51c462d3a0af43d4eb22d4d3cd7daa089f4400",
+    "compiled/thermostat.js": "692434f3b605d64679f64c982dc414846e260a033422c73f3af4a013e7b39823",
+    "compiled/transport.js": "5bc7c0f1850837de00043e755290d8e3d131d4ee3adb27646557344409bc1dcf",
+    "compiled/types.js": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "compiled/ventilation.js": "337f30b24c963ac3f68d4b0d8f5b6942610e73ca3b6ae10f4d6aa5de6811e570",
+    "public/vendor/coolprop-safe/LICENSE-CoolProp": "9bf835333ef602af4cb19338b9f9d43671e174fa029b00280e9bdba6ea4719b2",
+    "public/vendor/coolprop-safe/adapter.js": "06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34",
+    "public/vendor/coolprop-safe/coolprop.js": "6fa2e627803e2453da12cb9fce160ca3326851cd179444edc5ab698e21524d6c",
+    "public/vendor/coolprop-safe/coolprop.wasm": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+    "public/vendor/coolprop-safe/licenses/Emscripten-LICENSE": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86",
+    "public/vendor/coolprop-safe/licenses/boost_headers-LICENSE": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "public/vendor/coolprop-safe/licenses/compiler-rt-LICENSE.TXT": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.APACHE": "03379001a7b12a2ec997a25554247d985270b353c10d5bafee9ac8d6519820b7",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.BSD": "51928dce36213c5333ba3172e847d735d4c6e9b7ff2722a326c49067155b82eb",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.MINPACK": "c87b7f8ee88f6195e91743820c00354833583aef091b72e2d4a49c8e28e798a0",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.MPL2": "66a3107d5ad6a058aab753eaac2047ccb2ed0e39465dd0fe5844da3e300d5172",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.README": "db640ff2bd90c6abd6a4d3fbb351e0ee4d555417cf840492054d1cbb2ea85644",
+    "public/vendor/coolprop-safe/licenses/eigen-LICENSE": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+    "public/vendor/coolprop-safe/licenses/fmt-LICENSE": "07580f2a3b35709ce703d523f447b242f6dfec7582a8c0df102c7fa2849375f8",
+    "public/vendor/coolprop-safe/licenses/if97-LICENSE": "e22c3d30ef8d88ab468d9ea20392ca1df22fa3fd0a92dc3e996d89cf3cfdbd03",
+    "public/vendor/coolprop-safe/licenses/libcxx-LICENSE.TXT": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+    "public/vendor/coolprop-safe/licenses/libcxxabi-LICENSE.TXT": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",
+    "public/vendor/coolprop-safe/licenses/miniz-header-notice.txt": "dfdeccf4fcb0cef3d71b31fa915e804f272fa57f00d4ff5076d2c8e8efc22057",
+    "public/vendor/coolprop-safe/licenses/msgpack-c-COPYING": "664550b43996452a5a2c7471bb0ff77185a58c69ccafa60f983dc4c162e1ee22",
+    "public/vendor/coolprop-safe/licenses/msgpack-c-LICENSE_1_0.txt": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "public/vendor/coolprop-safe/licenses/multicomplex-README.md": "d58933ccd086958d576969174c04af6506cc5586da9d2125ec644d534225c018",
+    "public/vendor/coolprop-safe/licenses/musl-COPYRIGHT": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af",
+    "public/vendor/coolprop-safe/licenses/nlohmann_json-LICENSE.MIT": "46a65cffd1ea955132d95a8dd921640714a8d6b537d2e4e482d31145ae95b603",
+    "public/vendor/coolprop-safe/licenses/refprop_headers-LICENSE": "f21f633c596509e89b2baedfd657c8f1b8018954b06576590971684b210e91f8",
+    "public/vendor/coolprop-safe/licenses/valijson-LICENSE": "61b5766db38eaa3f320c366357956d7743424bfbf90fd78f5943866ba237589e",
+    "public/vendor/coolprop-safe/provenance.json": "fffa34344622d1d2266c5d389552e3e672706422f317193ebf756bc0a157f697",
+    "reviews/inverter-ui-domain-worker.mjs": "afc22a8ad153118a2af5008bfacb1ff025e9e63c614fbbf4cb3609b82f1db429",
+    "reviews/inverter-ui-domain-replay.mjs": "1afbf7e52bd625cdc0577dc80b9ab501340dbce3fcbf06d2e9722205c13bfd47",
+    "reviews/inverter-continuity-browser-results.json": "02cb353216d7c92051b2361d7d5c9b79370eb5223e69255032862fb6ce11857e",
+    "inputs/ui-owner-minus4-ground16.json": "8f6f705e4b8789418a59c5bb737c6580faeabbb69be958bb52c35a18f1d91ccd",
+    "inputs/ui-natural-frost-defrost-return.json": "00ea423f0131e57cb5b98e6878d2b4152c0bcbcddc511397d88d23c5fb4f5d92",
+    "inputs/ui-owner-strong-heat-to42cooling.json": "aab5c208bebc096d56bb559edd92fe10012b37aea2ab649c0c427fcc0c4ee20c",
+    "inputs/ui-physical-owner-heating.json": "7c88b754638ccf762c506162e499dd137c1ac05e8bc3eaad797afbde9a35d90c",
+    "inputs/ui-owner-default1C-two-hour.json": "856ec701f8d8d9f4ddd3e21d224a7936ad7b3c424357a6b5e95ff1866efe532e"
+  },
+  "cases": [
+    {
+      "id": "ui-owner-minus4-ground16",
+      "seconds": 1200,
+      "minimumRps": 8,
+      "timeoutSeconds": 600
+    },
+    {
+      "id": "ui-natural-frost-defrost-return",
+      "seconds": 1800,
+      "minimumRps": 8,
+      "timeoutSeconds": 600
+    },
+    {
+      "id": "ui-owner-strong-heat-to42cooling",
+      "seconds": 1200,
+      "minimumRps": 8,
+      "timeoutSeconds": 600
+    },
+    {
+      "id": "ui-physical-owner-heating",
+      "seconds": 1200,
+      "minimumRps": 8,
+      "timeoutSeconds": 600
+    },
+    {
+      "id": "ui-owner-default1C-two-hour",
+      "seconds": 7200,
+      "minimumRps": 8,
+      "timeoutSeconds": 900
+    }
+  ],
+  "method": "Frozen126-check engine and guarded HEOS; verbatim source-pinned actual browser diagnostic.initialConfig and explicitly scoped case edits; copied original robustness invariant+rollback harness with extra observation only.",
+  "results": [
+    {
+      "id": "ui-owner-minus4-ground16",
+      "outcome": "pass",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "wallSeconds": 96.469,
+      "result": {
+        "id": "ui-owner-minus4-ground16",
+        "outcome": "pass",
+        "steps": 4800,
+        "updates": 0,
+        "simulatedSeconds": 1200,
+        "compressorTransitions": [
+          {
+            "atSeconds": 0.25,
+            "running": true,
+            "state": "running",
+            "effectiveMode": "heating",
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              false
+            ],
+            "temperaturesC": [
+              18.300059433243973,
+              21.498290075831562,
+              17.998293856107694
+            ],
+            "speedRps": 8,
+            "inputW": 245.3401068279219,
+            "ordinaryStop": false
+          }
+        ],
+        "runningSeconds": 1200,
+        "ordinaryStopTransitions": 0,
+        "heatingReturnedAfterDefrost": false,
+        "maxIceKg": 0,
+        "averageElectricalW": 569.3952459831618,
+        "finalOutput": {
+          "provenance": "live-generic-unvalidated",
+          "simulatedSeconds": 1200,
+          "state": "running",
+          "requestedMode": "heating",
+          "effectiveMode": "heating",
+          "cycle": {
+            "mode": "heating",
+            "evaporatingC": -8.5810286537496,
+            "condensingC": 48.82958653069141,
+            "lowPressureBarAbs": 6.118547812456771,
+            "highPressureBarAbs": 30.573340484366444,
+            "suction": {
+              "pPa": 611854.781245677,
+              "pBarAbs": 6.118547812456771,
+              "hJkg": 516838.1236296981,
+              "temperatureC": -5.581028531642687,
+              "entropyJkgK": 2199.0825654137034,
+              "densityKgm3": 16.337920821508753,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            "discharge": {
+              "pPa": 3057334.0484366445,
+              "pBarAbs": 30.573340484366444,
+              "hJkg": 615467.5194386435,
+              "temperatureC": 121.4430761987602,
+              "entropyJkgK": 2276.423345252654,
+              "densityKgm3": 56.53651587552989,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            "condenserOutlet": {
+              "pPa": 3057334.0484366445,
+              "pBarAbs": 30.573340484366444,
+              "hJkg": 292426.12941087695,
+              "temperatureC": 47.82156486450526,
+              "entropyJkgK": 1302.914774606891,
+              "densityKgm3": 852.7700121916124,
+              "qualityMass": null,
+              "phase": "liquid"
+            },
+            "expansionOutlet": {
+              "pPa": 611854.781245677,
+              "pBarAbs": 6.118547812456771,
+              "hJkg": 292426.12941087695,
+              "temperatureC": -8.581028653749627,
+              "entropyJkgK": 1350.9380726349864,
+              "densityKgm3": 49.39977946197016,
+              "qualityMass": 0.3267508683559755,
+              "phase": "two-phase"
+            },
+            "totalMassFlowKgs": 0.004234805139857273,
+            "branchMassFlowsKgs": [
+              0,
+              0.004234805139857273,
+              0
+            ],
+            "branchCoilHeatW": [
+              0,
+              1368.0173388762237,
+              0
+            ],
+            "outdoorCoilHeatW": -950.3410665634844,
+            "branchInlets": [
+              {
+                "pPa": 3057334.0484366445,
+                "pBarAbs": 30.573340484366444,
+                "hJkg": 615467.5194386435,
+                "temperatureC": 121.4430761987602,
+                "entropyJkgK": 2276.423345252654,
+                "densityKgm3": 56.53651587552989,
+                "qualityMass": null,
+                "phase": "vapor"
+              },
+              {
+                "pPa": 3057334.0484366445,
+                "pBarAbs": 30.573340484366444,
+                "hJkg": 615467.5194386435,
+                "temperatureC": 121.4430761987602,
+                "entropyJkgK": 2276.423345252654,
+                "densityKgm3": 56.53651587552989,
+                "qualityMass": null,
+                "phase": "vapor"
+              },
+              {
+                "pPa": 3057334.0484366445,
+                "pBarAbs": 30.573340484366444,
+                "hJkg": 615467.5194386435,
+                "temperatureC": 121.4430761987602,
+                "entropyJkgK": 2276.423345252654,
+                "densityKgm3": 56.53651587552989,
+                "qualityMass": null,
+                "phase": "vapor"
+              }
+            ],
+            "branchOutlets": [
+              {
+                "pPa": 3057334.0484366445,
+                "pBarAbs": 30.573340484366444,
+                "hJkg": 292445.0115904424,
+                "temperatureC": 47.82958653069136,
+                "entropyJkgK": 1302.9736020722517,
+                "densityKgm3": 852.7173828977291,
+                "qualityMass": null,
+                "phase": "liquid"
+              },
+              {
+                "pPa": 3057334.0484366445,
+                "pBarAbs": 30.573340484366444,
+                "hJkg": 292426.12941087695,
+                "temperatureC": 47.82156486450526,
+                "entropyJkgK": 1302.914774606891,
+                "densityKgm3": 852.7700121916124,
+                "qualityMass": null,
+                "phase": "liquid"
+              },
+              {
+                "pPa": 3057334.0484366445,
+                "pBarAbs": 30.573340484366444,
+                "hJkg": 292445.0115904424,
+                "temperatureC": 47.82958653069136,
+                "entropyJkgK": 1302.9736020722517,
+                "densityKgm3": 852.7173828977291,
+                "qualityMass": null,
+                "phase": "liquid"
+              }
+            ],
+            "condenserHeatW": 1368.0173388762237,
+            "evaporatorHeatW": 950.3410665634844,
+            "compressorWorkW": 417.6762723127391,
+            "compressorElectricalW": 449.1142713040205,
+            "driveLossW": 31.437998991281404,
+            "massResidualKgs": 0,
+            "closureResidualW": 0.07996235107541919,
+            "lineHeatToOutdoorW": 0,
+            "pressureDropsPa": [
+              0,
+              0,
+              0
+            ],
+            "transportMethod": "Distributed Darcy/HEOS homogeneous-equilibrium field lines; generic smooth copper, no slip/fittings/oil",
+            "iterations": 2,
+            "pressureJacobian": {
+              "mode": "heating",
+              "floatingCondenser": false,
+              "matrix": [
+                28.767751576820423,
+                -275.9014700709533,
+                5.576318983733425,
+                0
+              ]
+            },
+            "branchValveInlets": [
+              null,
+              {
+                "pPa": 3057334.0484366445,
+                "pBarAbs": 30.573340484366444,
+                "hJkg": 292426.12941087695,
+                "temperatureC": 47.82156486450526,
+                "entropyJkgK": 1302.914774606891,
+                "densityKgm3": 852.7700121916124,
+                "qualityMass": null,
+                "phase": "liquid"
+              },
+              null
+            ],
+            "branchValveOutlets": [
+              null,
+              {
+                "pPa": 611854.781245677,
+                "pBarAbs": 6.118547812456771,
+                "hJkg": 292426.12941087695,
+                "temperatureC": -8.581028653749627,
+                "entropyJkgK": 1350.9380726349864,
+                "densityKgm3": 49.39977946197016,
+                "qualityMass": 0.3267508683559755,
+                "phase": "two-phase"
+              },
+              null
+            ]
+          },
+          "rooms": [
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "attic",
+              "temperatureC": 18.383203910940153,
+              "relativeHumidity": 0.4326435464034756,
+              "humidityRatio": 0.005691422926142684,
+              "fabricTemperatureC": 18.299240741385987,
+              "metalTemperatureC": 18.30036728711377,
+              "setpointC": 21,
+              "active": false,
+              "thermostatCalling": false,
+              "fanSpeedFraction": 0,
+              "massFlowKgs": 0,
+              "signedRoomHeatW": -0.749416851324924,
+              "sensibleRoomHeatW": -0.749416851323378,
+              "fanPowerW": 0,
+              "airOutletC": null,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 445.8532916653467,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "first",
+              "temperatureC": 21.625340827829916,
+              "relativeHumidity": 0.42973412123509536,
+              "humidityRatio": 0.006924487247713148,
+              "fabricTemperatureC": 21.49194508664178,
+              "metalTemperatureC": 46.01650417411383,
+              "setpointC": 21.5,
+              "active": true,
+              "thermostatCalling": true,
+              "fanSpeedFraction": 0.5780020259155805,
+              "massFlowKgs": 0.004234805139857273,
+              "signedRoomHeatW": 1379.5699653207648,
+              "sensibleRoomHeatW": 1379.569965320775,
+              "fanPowerW": 4.827564562126482,
+              "airOutletC": 38.05441375953785,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": -531.3322537274126,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "ground",
+              "temperatureC": 15.432749734075173,
+              "relativeHumidity": 0.5122274364295687,
+              "humidityRatio": 0.005586749971237126,
+              "fabricTemperatureC": 17.86603450094276,
+              "metalTemperatureC": 16.809494042602488,
+              "setpointC": 16,
+              "active": false,
+              "thermostatCalling": false,
+              "fanSpeedFraction": 0,
+              "massFlowKgs": 0,
+              "signedRoomHeatW": 12.456662449531208,
+              "sensibleRoomHeatW": 12.456662449532498,
+              "fanPowerW": 0,
+              "airOutletC": null,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 85.47896206206597,
+              "internalGainW": 200
+            }
+          ],
+          "interzoneTransfers": [
+            {
+              "roomA": "ground",
+              "roomB": "first",
+              "heatFromAToBW": -85.4805519076575,
+              "solidHeatFromAToBW": -85.4805519076575,
+              "backgroundHeatFromAToBW": 0,
+              "buoyancyHeatFromAToBW": 0,
+              "effectiveConductanceWK": 13.803680981595093,
+              "equivalentExchangeM3s": 0,
+              "buoyancyState": "stable"
+            },
+            {
+              "roomA": "first",
+              "roomB": "attic",
+              "heatFromAToBW": 445.8512627548643,
+              "solidHeatFromAToBW": 44.75342369939857,
+              "backgroundHeatFromAToBW": 0,
+              "buoyancyHeatFromAToBW": 401.0978390554658,
+              "effectiveConductanceWK": 137.51771568690475,
+              "equivalentExchangeM3s": 0.10248014803289403,
+              "buoyancyState": "unstable"
+            }
+          ],
+          "inventory": null,
+          "outdoor": {
+            "temperatureC": -5.579544025137722,
+            "iceKg": 0,
+            "liquidKg": 0,
+            "thicknessM": 0,
+            "metalTemperatureC": -5.579544025137722,
+            "filmEnthalpyJ": 0,
+            "filmMassKg": 0,
+            "airOutletC": -5.0114112135534015,
+            "fanPowerW": 85,
+            "depositionKgs": 0,
+            "drainageKgs": 0,
+            "meltPowerW": 0
+          },
+          "electrical": {
+            "compressorW": 449.1142713040205,
+            "indoorFansW": 4.827564562126482,
+            "outdoorFanW": 85,
+            "controlsW": 15,
+            "totalW": 553.941835866147,
+            "driveLossW": 31.437998991281404
+          },
+          "signedRoomHeatW": 1391.2772109189712,
+          "heatingCOP": 2.5115943964469865,
+          "coolingCOP": null,
+          "energy": {
+            "electricityJ": 683274.2951797942,
+            "signedRoomHeatJ": 1550231.778421891,
+            "usefulServiceHeatJ": 1550231.778421891,
+            "drainedWaterKg": 0,
+            "outdoorExchangeJ": -1102646.6365841995,
+            "drainageJ": 0,
+            "configurationEnergyJ": 0,
+            "boundaryEnergyJ": -1597494.2360245849,
+            "storedEnergyChangeJ": -1597494.2360247672,
+            "residualJ": -1.8230639398097992e-7,
+            "waterResidualKg": 7.771561172376096e-16
+          },
+          "diagnostics": {
+            "warnings": [
+              "Generic component parameters and control assumptions; not manufacturer calibrated.",
+              "Outdoor metal and retained water/ice share one equilibrium temperature.",
+              "Ice sublimation is excluded; retained ice melts or receives deposition.",
+              "Dirt scales air flow and air-side conductance at fixed fan command. Generic inverter indoor fans command 25–100% airflow across the thermostat band, linear air-side conductance and cubic electric power; no measured fan map.",
+              "Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.",
+              "Idealized parallel indoor coils use generic demand-proportional flow for inverter operation, normalized 5% UA reserve for calling inverter branches and UA allocation for fixed-speed/defrost, and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.",
+              "Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states.",
+              "Interzone openings use a buoyancy-informed sensible equivalent with reference air density 1.2 kg/m³ and cp 1006 J/(kg K); no inter-room air/water transport or resolved stratification.",
+              "Internal gains are prescribed sensible heat supplied to room air, separate from HVAC output and COP."
+            ],
+            "fault": null,
+            "algebraicResidualW": 0.07996235107541919,
+            "speedRps": 14.727328589095311,
+            "demandSpeedRps": 14.727328589095311,
+            "rawDemandSpeedRps": 14.727328589095311,
+            "restartDelaySeconds": 0,
+            "envelopeProtection": null,
+            "filmEnergyRateW": 0,
+            "metalEnergyRateW": -12.641332296835415
+          }
+        },
+        "wallSeconds": 96.32006354,
+        "maxEnergyResidualJ": 4.28641214966774e-7,
+        "maxWaterResidualKg": 4.565792188770956e-15,
+        "protectionCounts": {},
+        "states": {
+          "running": 4800
+        },
+        "stateEntries": {
+          "running": 1
+        },
+        "completedDefrosts": 0,
+        "maxStepWallMs": 83.44591100000002,
+        "comfort": {
+          "rooms": {
+            "attic": {
+              "callingSeconds": 0,
+              "notCallingSeconds": 1200,
+              "poweredFanSeconds": 0,
+              "modulatedFanSeconds": 0,
+              "minPoweredFanFraction": null,
+              "maxPoweredFanFraction": 0,
+              "fanEnergyJ": 0,
+              "callTransitions": 0,
+              "circuitTransitions": 0
+            },
+            "first": {
+              "callingSeconds": 1200,
+              "notCallingSeconds": 0,
+              "poweredFanSeconds": 1200,
+              "modulatedFanSeconds": 1200,
+              "minPoweredFanFraction": 0.5780020259155805,
+              "maxPoweredFanFraction": 0.8063265822729022,
+              "fanEnergyJ": 9331.40277440882,
+              "callTransitions": 0,
+              "circuitTransitions": 1
+            },
+            "ground": {
+              "callingSeconds": 0,
+              "notCallingSeconds": 1200,
+              "poweredFanSeconds": 0,
+              "modulatedFanSeconds": 0,
+              "minPoweredFanFraction": null,
+              "maxPoweredFanFraction": 0,
+              "fanEnergyJ": 0,
+              "callTransitions": 0,
+              "circuitTransitions": 0
+            }
+          },
+          "transitions": [
+            {
+              "roomId": "first",
+              "simulatedSeconds": 0.25,
+              "requestedMode": "heating",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 0.624999999999936,
+              "temperatureBeforeC": 21.50000000000017,
+              "temperatureAfterC": 21.498290075831562,
+              "setpointC": 21.5
+            }
+          ],
+          "recordedTransitionLimit": 128,
+          "ordinaryNoCallSeconds": 0,
+          "ordinaryCompressorWithoutCallSeconds": 0
+        },
+        "internalSteps": {
+          "accepted": 4800,
+          "refinedPublicCalls": 0,
+          "maxPerPublicCall": 1,
+          "minDt": 0.25,
+          "maxDt": 0.25,
+          "maxClockErrorSeconds": 0
+        },
+        "openingEdges": {
+          "[\"ground\",\"first\"]": {
+            "stateSeconds": {
+              "stable": 1200
+            },
+            "maxAbsoluteHeatW": 85.4805519076575,
+            "maxEquivalentExchangeM3s": 0,
+            "maxEffectiveConductanceWK": 13.803680981595093
+          },
+          "[\"first\",\"attic\"]": {
+            "stateSeconds": {
+              "unstable": 1200
+            },
+            "maxAbsoluteHeatW": 446.56099719695123,
+            "maxEquivalentExchangeM3s": 0.1025384553950871,
+            "maxEffectiveConductanceWK": 137.58810433454425
+          }
+        },
+        "final": {
+          "rooms": [
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "attic",
+              "temperatureC": 18.383203910940153,
+              "relativeHumidity": 0.4326435464034756,
+              "humidityRatio": 0.005691422926142684,
+              "fabricTemperatureC": 18.299240741385987,
+              "metalTemperatureC": 18.30036728711377,
+              "setpointC": 21,
+              "active": false,
+              "thermostatCalling": false,
+              "fanSpeedFraction": 0,
+              "massFlowKgs": 0,
+              "signedRoomHeatW": -0.749416851324924,
+              "sensibleRoomHeatW": -0.749416851323378,
+              "fanPowerW": 0,
+              "airOutletC": null,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 445.8532916653467,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "first",
+              "temperatureC": 21.625340827829916,
+              "relativeHumidity": 0.42973412123509536,
+              "humidityRatio": 0.006924487247713148,
+              "fabricTemperatureC": 21.49194508664178,
+              "metalTemperatureC": 46.01650417411383,
+              "setpointC": 21.5,
+              "active": true,
+              "thermostatCalling": true,
+              "fanSpeedFraction": 0.5780020259155805,
+              "massFlowKgs": 0.004234805139857273,
+              "signedRoomHeatW": 1379.5699653207648,
+              "sensibleRoomHeatW": 1379.569965320775,
+              "fanPowerW": 4.827564562126482,
+              "airOutletC": 38.05441375953785,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": -531.3322537274126,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "ground",
+              "temperatureC": 15.432749734075173,
+              "relativeHumidity": 0.5122274364295687,
+              "humidityRatio": 0.005586749971237126,
+              "fabricTemperatureC": 17.86603450094276,
+              "metalTemperatureC": 16.809494042602488,
+              "setpointC": 16,
+              "active": false,
+              "thermostatCalling": false,
+              "fanSpeedFraction": 0,
+              "massFlowKgs": 0,
+              "signedRoomHeatW": 12.456662449531208,
+              "sensibleRoomHeatW": 12.456662449532498,
+              "fanPowerW": 0,
+              "airOutletC": null,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 85.47896206206597,
+              "internalGainW": 200
+            }
+          ],
+          "outdoor": {
+            "temperatureC": -5.579544025137722,
+            "iceKg": 0,
+            "liquidKg": 0,
+            "thicknessM": 0,
+            "metalTemperatureC": -5.579544025137722,
+            "filmEnthalpyJ": 0,
+            "filmMassKg": 0,
+            "airOutletC": -5.0114112135534015,
+            "fanPowerW": 85,
+            "depositionKgs": 0,
+            "drainageKgs": 0,
+            "meltPowerW": 0
+          },
+          "energy": {
+            "electricityJ": 683274.2951797942,
+            "signedRoomHeatJ": 1550231.778421891,
+            "usefulServiceHeatJ": 1550231.778421891,
+            "drainedWaterKg": 0,
+            "outdoorExchangeJ": -1102646.6365841995,
+            "drainageJ": 0,
+            "configurationEnergyJ": 0,
+            "boundaryEnergyJ": -1597494.2360245849,
+            "storedEnergyChangeJ": -1597494.2360247672,
+            "residualJ": -1.8230639398097992e-7,
+            "waterResidualKg": 7.771561172376096e-16
+          }
+        }
+      }
+    },
+    {
+      "id": "ui-natural-frost-defrost-return",
+      "outcome": "pass",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "wallSeconds": 222.281,
+      "result": {
+        "id": "ui-natural-frost-defrost-return",
+        "outcome": "pass",
+        "steps": 7200,
+        "updates": 0,
+        "simulatedSeconds": 1800,
+        "compressorTransitions": [
+          {
+            "atSeconds": 0.25,
+            "running": true,
+            "state": "running",
+            "effectiveMode": "heating",
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              18.30032953066484,
+              21.498565961958718,
+              17.99894798477709
+            ],
+            "speedRps": 8,
+            "inputW": 276.2456122020508,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 300.25,
+            "running": false,
+            "state": "reversing",
+            "effectiveMode": null,
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              18.63073391808706,
+              22.40188932783633,
+              20.546403975891394
+            ],
+            "speedRps": 0,
+            "inputW": 15,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 330.25,
+            "running": true,
+            "state": "defrost",
+            "effectiveMode": "cooling",
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              18.66918411526825,
+              22.211591012738268,
+              20.286271901313057
+            ],
+            "speedRps": 35,
+            "inputW": 392.82540128387933,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 361.75,
+            "running": false,
+            "state": "draining",
+            "effectiveMode": null,
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              18.692879739631223,
+              22.018002291511095,
+              20.018406754735167
+            ],
+            "speedRps": 0,
+            "inputW": 15,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 391.75,
+            "running": true,
+            "state": "running",
+            "effectiveMode": "heating",
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              18.702209708956673,
+              21.84120382500629,
+              19.77237467208124
+            ],
+            "speedRps": 8,
+            "inputW": 327.7364836354244,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 691.75,
+            "running": false,
+            "state": "reversing",
+            "effectiveMode": null,
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              18.921604064651547,
+              22.93072124229002,
+              21.739087425091782
+            ],
+            "speedRps": 0,
+            "inputW": 15,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 730.25,
+            "running": true,
+            "state": "defrost",
+            "effectiveMode": "cooling",
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              18.957495271401513,
+              22.65300563105518,
+              21.3023711385718
+            ],
+            "speedRps": 35,
+            "inputW": 396.2035169363496,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 759.25,
+            "running": false,
+            "state": "draining",
+            "effectiveMode": null,
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              18.96748010107609,
+              22.45336637101275,
+              20.987434193144054
+            ],
+            "speedRps": 0,
+            "inputW": 15,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 789.25,
+            "running": true,
+            "state": "running",
+            "effectiveMode": "heating",
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              18.965307288133943,
+              22.25574098065465,
+              20.676014632075237
+            ],
+            "speedRps": 8,
+            "inputW": 334.9209218955863,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 1091.5,
+            "running": false,
+            "state": "reversing",
+            "effectiveMode": null,
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              19.101466651640123,
+              23.201853982133002,
+              22.18987088240152
+            ],
+            "speedRps": 0,
+            "inputW": 15,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 1144,
+            "running": true,
+            "state": "defrost",
+            "effectiveMode": "cooling",
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              19.131325610467,
+              22.806744422993972,
+              21.556417496895904
+            ],
+            "speedRps": 35,
+            "inputW": 396.1629338884488,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 1172.5,
+            "running": false,
+            "state": "draining",
+            "effectiveMode": null,
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              19.12893925958656,
+              22.605619064486575,
+              21.233641370941598
+            ],
+            "speedRps": 0,
+            "inputW": 15,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 1202.5,
+            "running": true,
+            "state": "running",
+            "effectiveMode": "heating",
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              19.115433408051103,
+              22.402798150453066,
+              20.909259104740613
+            ],
+            "speedRps": 8,
+            "inputW": 335.78397081714314,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 1506.25,
+            "running": false,
+            "state": "reversing",
+            "effectiveMode": null,
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              19.186348886691633,
+              23.30437387954936,
+              22.33285086267233
+            ],
+            "speedRps": 0,
+            "inputW": 15,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 1563,
+            "running": true,
+            "state": "defrost",
+            "effectiveMode": "cooling",
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              19.209612907848282,
+              22.87234723822644,
+              21.64185376354544
+            ],
+            "speedRps": 35,
+            "inputW": 396.1553368588902,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 1591.25,
+            "running": false,
+            "state": "draining",
+            "effectiveMode": null,
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              19.202599088649947,
+              22.671672598447287,
+              21.320781654823065
+            ],
+            "speedRps": 0,
+            "inputW": 15,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 1621.25,
+            "running": true,
+            "state": "running",
+            "effectiveMode": "heating",
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              19.184772691020612,
+              22.467412989470176,
+              20.995269564030593
+            ],
+            "speedRps": 8,
+            "inputW": 336.26929863543336,
+            "ordinaryStop": false
+          }
+        ],
+        "runningSeconds": 1502.25,
+        "ordinaryStopTransitions": 0,
+        "heatingReturnedAfterDefrost": true,
+        "maxIceKg": 0.16436692044917545,
+        "averageElectricalW": 1416.5822300507539,
+        "finalOutput": {
+          "provenance": "live-generic-unvalidated",
+          "simulatedSeconds": 1800,
+          "state": "running",
+          "requestedMode": "heating",
+          "effectiveMode": "heating",
+          "cycle": {
+            "mode": "heating",
+            "evaporatingC": -6.09638287759802,
+            "condensingC": 51.22343952481143,
+            "lowPressureBarAbs": 6.6570096379296855,
+            "highPressureBarAbs": 32.30817401984983,
+            "suction": {
+              "pPa": 665700.9637929685,
+              "pBarAbs": 6.6570096379296855,
+              "hJkg": 517518.596997769,
+              "temperatureC": -3.096382712418631,
+              "entropyJkgK": 2189.854521345489,
+              "densityKgm3": 17.750932173160383,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            "discharge": {
+              "pPa": 3230817.4019849827,
+              "pBarAbs": 32.30817401984983,
+              "hJkg": 614076.4962477416,
+              "temperatureC": 122.01606724486123,
+              "entropyJkgK": 2265.37058344545,
+              "densityKgm3": 60.19847420834472,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            "condenserOutlet": {
+              "pPa": 3230817.4019849827,
+              "pBarAbs": 32.30817401984983,
+              "hJkg": 297850.2213137973,
+              "temperatureC": 50.22342933581518,
+              "entropyJkgK": 1319.1140462203734,
+              "densityKgm3": 839.0963612126476,
+              "qualityMass": null,
+              "phase": "liquid"
+            },
+            "expansionOutlet": {
+              "pPa": 665700.9637929685,
+              "pBarAbs": 6.6570096379296855,
+              "hJkg": 297850.2213137973,
+              "temperatureC": -6.096382877598046,
+              "entropyJkgK": 1367.3645646820503,
+              "densityKgm3": 52.42647657843411,
+              "qualityMass": 0.3340154308312929,
+              "phase": "two-phase"
+            },
+            "totalMassFlowKgs": 0.015379800147930816,
+            "branchMassFlowsKgs": [
+              0,
+              0.007763344629905867,
+              0.00761645551802495
+            ],
+            "branchCoilHeatW": [
+              0,
+              2399.1603341205496,
+              2464.3365758881378
+            ],
+            "outdoorCoilHeatW": -3378.4557168400706,
+            "branchInlets": [
+              {
+                "pPa": 3230817.4019849827,
+                "pBarAbs": 32.30817401984983,
+                "hJkg": 614076.4962477416,
+                "temperatureC": 122.01606724486123,
+                "entropyJkgK": 2265.37058344545,
+                "densityKgm3": 60.19847420834472,
+                "qualityMass": null,
+                "phase": "vapor"
+              },
+              {
+                "pPa": 3230817.4019849827,
+                "pBarAbs": 32.30817401984983,
+                "hJkg": 614076.4962477416,
+                "temperatureC": 122.01606724486123,
+                "entropyJkgK": 2265.37058344545,
+                "densityKgm3": 60.19847420834472,
+                "qualityMass": null,
+                "phase": "vapor"
+              },
+              {
+                "pPa": 3230817.4019849827,
+                "pBarAbs": 32.30817401984983,
+                "hJkg": 614076.4962477416,
+                "temperatureC": 122.01606724486123,
+                "entropyJkgK": 2265.37058344545,
+                "densityKgm3": 60.19847420834472,
+                "qualityMass": null,
+                "phase": "vapor"
+              }
+            ],
+            "branchOutlets": [
+              {
+                "pPa": 3230817.4019849827,
+                "pBarAbs": 32.30817401984983,
+                "hJkg": 297850.24586529017,
+                "temperatureC": 50.223439524811624,
+                "entropyJkgK": 1319.114122913398,
+                "densityKgm3": 839.0962901672559,
+                "qualityMass": null,
+                "phase": "liquid"
+              },
+              {
+                "pPa": 3230817.4019849827,
+                "pBarAbs": 32.30817401984983,
+                "hJkg": 305039.5478069199,
+                "temperatureC": 51.223439524810544,
+                "entropyJkgK": 1341.2894508224254,
+                "densityKgm3": 714.8290103210877,
+                "qualityMass": 0.022974949045321883,
+                "phase": "two-phase"
+              },
+              {
+                "pPa": 3230817.4019849827,
+                "pBarAbs": 32.30817401984983,
+                "hJkg": 290522.2432154632,
+                "temperatureC": 47.1262774739468,
+                "entropyJkgK": 1296.3447862369849,
+                "densityKgm3": 859.5845429709146,
+                "qualityMass": null,
+                "phase": "liquid"
+              }
+            ],
+            "condenserHeatW": 4863.496910008687,
+            "evaporatorHeatW": 3378.4557168400706,
+            "compressorWorkW": 1485.0411931686174,
+            "compressorElectricalW": 1596.818487278083,
+            "driveLossW": 111.77729410946563,
+            "massResidualKgs": -1.734723475976807e-18,
+            "closureResidualW": 0.027366650854845766,
+            "lineHeatToOutdoorW": 0,
+            "pressureDropsPa": [
+              0,
+              0,
+              0
+            ],
+            "transportMethod": "Distributed Darcy/HEOS homogeneous-equilibrium field lines; generic smooth copper, no slip/fittings/oil",
+            "iterations": 4,
+            "pressureJacobian": {
+              "mode": "heating",
+              "floatingCondenser": false,
+              "matrix": [
+                72.23696283165656,
+                -444.1957986922961,
+                182.0033207618808,
+                50.03348191835356
+              ]
+            },
+            "branchValveInlets": [
+              null,
+              {
+                "pPa": 3230817.4019849827,
+                "pBarAbs": 32.30817401984983,
+                "hJkg": 305039.5478069199,
+                "temperatureC": 51.223439524810544,
+                "entropyJkgK": 1341.2894508224254,
+                "densityKgm3": 714.8290103210877,
+                "qualityMass": 0.022974949045321883,
+                "phase": "two-phase"
+              },
+              {
+                "pPa": 3230817.4019849827,
+                "pBarAbs": 32.30817401984983,
+                "hJkg": 290522.2432154632,
+                "temperatureC": 47.1262774739468,
+                "entropyJkgK": 1296.3447862369849,
+                "densityKgm3": 859.5845429709146,
+                "qualityMass": null,
+                "phase": "liquid"
+              }
+            ],
+            "branchValveOutlets": [
+              null,
+              {
+                "pPa": 665700.9637929685,
+                "pBarAbs": 6.6570096379296855,
+                "hJkg": 305039.5478069199,
+                "temperatureC": -6.096382877598046,
+                "entropyJkgK": 1394.2854750617341,
+                "densityKgm3": 49.31546067547114,
+                "qualityMass": 0.35616579365635487,
+                "phase": "two-phase"
+              },
+              {
+                "pPa": 665700.9637929685,
+                "pBarAbs": 6.6570096379296855,
+                "hJkg": 290522.2432154632,
+                "temperatureC": -6.096382877598046,
+                "entropyJkgK": 1339.924464161055,
+                "densityKgm3": 56.02918750905273,
+                "qualityMass": 0.3114378814867913,
+                "phase": "two-phase"
+              }
+            ]
+          },
+          "rooms": [
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "attic",
+              "temperatureC": 19.141653623718412,
+              "relativeHumidity": 0.4399264948492102,
+              "humidityRatio": 0.006072109543400706,
+              "fabricTemperatureC": 18.364896529468666,
+              "metalTemperatureC": 18.81156147297625,
+              "setpointC": 21,
+              "active": false,
+              "thermostatCalling": false,
+              "fanSpeedFraction": 0,
+              "massFlowKgs": 0,
+              "signedRoomHeatW": -2.987081283468809,
+              "sensibleRoomHeatW": -2.987081283468603,
+              "fanPowerW": 0,
+              "airOutletC": null,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 558.568602200335,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "first",
+              "temperatureC": 22.933443431487945,
+              "relativeHumidity": 0.4128162014382381,
+              "humidityRatio": 0.007206581843992796,
+              "fabricTemperatureC": 21.60249249304547,
+              "metalTemperatureC": 46.225355720927936,
+              "setpointC": 26,
+              "active": true,
+              "thermostatCalling": true,
+              "fanSpeedFraction": 1,
+              "massFlowKgs": 0.007763344629905867,
+              "signedRoomHeatW": 2296.6247531293257,
+              "sensibleRoomHeatW": 2296.6247531293425,
+              "fanPowerW": 25,
+              "airOutletC": 38.73206674395112,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": -574.746383921985,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "ground",
+              "temperatureC": 21.762002868585796,
+              "relativeHumidity": 0.36832770695277817,
+              "humidityRatio": 0.005975805915208598,
+              "fabricTemperatureC": 18.303692120796367,
+              "metalTemperatureC": 45.79709935281226,
+              "setpointC": 26,
+              "active": true,
+              "thermostatCalling": true,
+              "fanSpeedFraction": 1,
+              "massFlowKgs": 0.00761645551802495,
+              "signedRoomHeatW": 2366.7218857608195,
+              "sensibleRoomHeatW": 2366.721885760827,
+              "fanPowerW": 25,
+              "airOutletC": 38.08005332040716,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 16.17778172164991,
+              "internalGainW": 200
+            }
+          ],
+          "interzoneTransfers": [
+            {
+              "roomA": "ground",
+              "roomB": "first",
+              "heatFromAToBW": -16.170191819201438,
+              "solidHeatFromAToBW": -16.170191819201438,
+              "backgroundHeatFromAToBW": 0,
+              "buoyancyHeatFromAToBW": 0,
+              "effectiveConductanceWK": 13.803680981595093,
+              "equivalentExchangeM3s": 0,
+              "buoyancyState": "stable"
+            },
+            {
+              "roomA": "first",
+              "roomB": "attic",
+              "heatFromAToBW": 558.7545919744591,
+              "solidHeatFromAToBW": 52.340656855714414,
+              "backgroundHeatFromAToBW": 0,
+              "buoyancyHeatFromAToBW": 506.4139351187448,
+              "effectiveConductanceWK": 147.35906268579237,
+              "equivalentExchangeM3s": 0.11063235727650537,
+              "buoyancyState": "unstable"
+            }
+          ],
+          "inventory": null,
+          "outdoor": {
+            "temperatureC": -2.6475422692901005,
+            "iceKg": 0.08991676672206274,
+            "liquidKg": 0,
+            "thicknessM": 0.00022479191680515684,
+            "metalTemperatureC": -2.6475422692901005,
+            "filmEnthalpyJ": -30487.164427098498,
+            "filmMassKg": 0.08991676672206274,
+            "airOutletC": -0.2174672092542096,
+            "fanPowerW": 85,
+            "depositionKgs": 0.0005118237769622546,
+            "drainageKgs": 0,
+            "meltPowerW": 0
+          },
+          "electrical": {
+            "compressorW": 1596.818487278083,
+            "indoorFansW": 50,
+            "outdoorFanW": 85,
+            "controlsW": 15,
+            "totalW": 1746.818487278083,
+            "driveLossW": 111.77729410946563
+          },
+          "signedRoomHeatW": 4660.359557606676,
+          "heatingCOP": 2.6679128893743926,
+          "coolingCOP": null,
+          "energy": {
+            "electricityJ": 2549848.014091357,
+            "signedRoomHeatJ": 5729739.575405959,
+            "usefulServiceHeatJ": 5729739.575405959,
+            "drainedWaterKg": 0.5689942080619617,
+            "outdoorExchangeJ": -3663289.3044385896,
+            "drainageJ": 7607.892530610072,
+            "configurationEnergyJ": 0,
+            "boundaryEnergyJ": 2540069.267424643,
+            "storedEnergyChangeJ": 2540069.2674255073,
+            "residualJ": 8.642673492431641e-7,
+            "waterResidualKg": 2.914335439641036e-15
+          },
+          "diagnostics": {
+            "warnings": [
+              "Generic component parameters and control assumptions; not manufacturer calibrated.",
+              "Outdoor metal and retained water/ice share one equilibrium temperature.",
+              "Ice sublimation is excluded; retained ice melts or receives deposition.",
+              "Dirt scales air flow and air-side conductance at fixed fan command. Generic inverter indoor fans command 25–100% airflow across the thermostat band, linear air-side conductance and cubic electric power; no measured fan map.",
+              "Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.",
+              "Idealized parallel indoor coils use generic demand-proportional flow for inverter operation, normalized 5% UA reserve for calling inverter branches and UA allocation for fixed-speed/defrost, and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.",
+              "Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states.",
+              "Interzone openings use a buoyancy-informed sensible equivalent with reference air density 1.2 kg/m³ and cp 1006 J/(kg K); no inter-room air/water transport or resolved stratification.",
+              "Internal gains are prescribed sensible heat supplied to room air, separate from HVAC output and COP."
+            ],
+            "fault": null,
+            "algebraicResidualW": 0.027366650854845766,
+            "speedRps": 49.22852910528877,
+            "demandSpeedRps": 75,
+            "rawDemandSpeedRps": 102.06175315122391,
+            "restartDelaySeconds": 0,
+            "envelopeProtection": null,
+            "filmEnergyRateW": -174.43734906829195,
+            "metalEnergyRateW": 119.71883142045368
+          }
+        },
+        "wallSeconds": 222.114409016,
+        "maxEnergyResidualJ": 9.327195584774017e-7,
+        "maxWaterResidualKg": 6.050715484207103e-15,
+        "protectionCounts": {
+          "thermal boundary": 555
+        },
+        "states": {
+          "running": 5540,
+          "reversing": 96,
+          "defrost": 1132,
+          "draining": 160,
+          "idle": 272
+        },
+        "stateEntries": {
+          "running": 5,
+          "reversing": 8,
+          "defrost": 4,
+          "draining": 4,
+          "idle": 4
+        },
+        "completedDefrosts": 4,
+        "maxStepWallMs": 725.9356960000005,
+        "comfort": {
+          "rooms": {
+            "attic": {
+              "callingSeconds": 0,
+              "notCallingSeconds": 1800,
+              "poweredFanSeconds": 0,
+              "modulatedFanSeconds": 0,
+              "minPoweredFanFraction": null,
+              "maxPoweredFanFraction": 0,
+              "fanEnergyJ": 0,
+              "callTransitions": 0,
+              "circuitTransitions": 0
+            },
+            "first": {
+              "callingSeconds": 1800,
+              "notCallingSeconds": 0,
+              "poweredFanSeconds": 1385,
+              "modulatedFanSeconds": 0,
+              "minPoweredFanFraction": 1,
+              "maxPoweredFanFraction": 1,
+              "fanEnergyJ": 34625,
+              "callTransitions": 0,
+              "circuitTransitions": 9
+            },
+            "ground": {
+              "callingSeconds": 1800,
+              "notCallingSeconds": 0,
+              "poweredFanSeconds": 1385,
+              "modulatedFanSeconds": 0,
+              "minPoweredFanFraction": 1,
+              "maxPoweredFanFraction": 1,
+              "fanEnergyJ": 34625,
+              "callTransitions": 0,
+              "circuitTransitions": 9
+            }
+          },
+          "transitions": [
+            {
+              "roomId": "first",
+              "simulatedSeconds": 0.25,
+              "requestedMode": "heating",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 1,
+              "temperatureBeforeC": 21.50000000000017,
+              "temperatureAfterC": 21.498565961958718,
+              "setpointC": 26
+            },
+            {
+              "roomId": "ground",
+              "simulatedSeconds": 0.25,
+              "requestedMode": "heating",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 1,
+              "temperatureBeforeC": 18,
+              "temperatureAfterC": 17.99894798477709,
+              "setpointC": 26
+            },
+            {
+              "roomId": "first",
+              "simulatedSeconds": 300.25,
+              "requestedMode": "heating",
+              "state": "reversing",
+              "calling": true,
+              "circuitActive": false,
+              "fanFraction": 0,
+              "temperatureBeforeC": 22.403542675504752,
+              "temperatureAfterC": 22.40188932783633,
+              "setpointC": 26
+            },
+            {
+              "roomId": "ground",
+              "simulatedSeconds": 300.25,
+              "requestedMode": "heating",
+              "state": "reversing",
+              "calling": true,
+              "circuitActive": false,
+              "fanFraction": 0,
+              "temperatureBeforeC": 20.548652513292097,
+              "temperatureAfterC": 20.546403975891394,
+              "setpointC": 26
+            },
+            {
+              "roomId": "first",
+              "simulatedSeconds": 391.75,
+              "requestedMode": "heating",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 1,
+              "temperatureBeforeC": 21.84139552977973,
+              "temperatureAfterC": 21.84120382500629,
+              "setpointC": 26
+            },
+            {
+              "roomId": "ground",
+              "simulatedSeconds": 391.75,
+              "requestedMode": "heating",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 1,
+              "temperatureBeforeC": 19.772168391058358,
+              "temperatureAfterC": 19.77237467208124,
+              "setpointC": 26
+            },
+            {
+              "roomId": "first",
+              "simulatedSeconds": 691.75,
+              "requestedMode": "heating",
+              "state": "reversing",
+              "calling": true,
+              "circuitActive": false,
+              "fanFraction": 0,
+              "temperatureBeforeC": 22.932621835140594,
+              "temperatureAfterC": 22.93072124229002,
+              "setpointC": 26
+            },
+            {
+              "roomId": "ground",
+              "simulatedSeconds": 691.75,
+              "requestedMode": "heating",
+              "state": "reversing",
+              "calling": true,
+              "circuitActive": false,
+              "fanFraction": 0,
+              "temperatureBeforeC": 21.742062090070135,
+              "temperatureAfterC": 21.739087425091782,
+              "setpointC": 26
+            },
+            {
+              "roomId": "first",
+              "simulatedSeconds": 789.25,
+              "requestedMode": "heating",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 1,
+              "temperatureBeforeC": 22.255994855022777,
+              "temperatureAfterC": 22.25574098065465,
+              "setpointC": 26
+            },
+            {
+              "roomId": "ground",
+              "simulatedSeconds": 789.25,
+              "requestedMode": "heating",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 1,
+              "temperatureBeforeC": 20.676250918335313,
+              "temperatureAfterC": 20.676014632075237,
+              "setpointC": 26
+            },
+            {
+              "roomId": "first",
+              "simulatedSeconds": 1091.5,
+              "requestedMode": "heating",
+              "state": "reversing",
+              "calling": true,
+              "circuitActive": false,
+              "fanFraction": 0,
+              "temperatureBeforeC": 23.2038721408004,
+              "temperatureAfterC": 23.201853982133002,
+              "setpointC": 26
+            },
+            {
+              "roomId": "ground",
+              "simulatedSeconds": 1091.5,
+              "requestedMode": "heating",
+              "state": "reversing",
+              "calling": true,
+              "circuitActive": false,
+              "fanFraction": 0,
+              "temperatureBeforeC": 22.193090431920155,
+              "temperatureAfterC": 22.18987088240152,
+              "setpointC": 26
+            },
+            {
+              "roomId": "first",
+              "simulatedSeconds": 1202.5,
+              "requestedMode": "heating",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 1,
+              "temperatureBeforeC": 22.403092715820833,
+              "temperatureAfterC": 22.402798150453066,
+              "setpointC": 26
+            },
+            {
+              "roomId": "ground",
+              "simulatedSeconds": 1202.5,
+              "requestedMode": "heating",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 1,
+              "temperatureBeforeC": 20.909607886380115,
+              "temperatureAfterC": 20.909259104740613,
+              "setpointC": 26
+            },
+            {
+              "roomId": "first",
+              "simulatedSeconds": 1506.25,
+              "requestedMode": "heating",
+              "state": "reversing",
+              "calling": true,
+              "circuitActive": false,
+              "fanFraction": 0,
+              "temperatureBeforeC": 23.3064256124685,
+              "temperatureAfterC": 23.30437387954936,
+              "setpointC": 26
+            },
+            {
+              "roomId": "ground",
+              "simulatedSeconds": 1506.25,
+              "requestedMode": "heating",
+              "state": "reversing",
+              "calling": true,
+              "circuitActive": false,
+              "fanFraction": 0,
+              "temperatureBeforeC": 22.336116920342988,
+              "temperatureAfterC": 22.33285086267233,
+              "setpointC": 26
+            },
+            {
+              "roomId": "first",
+              "simulatedSeconds": 1621.25,
+              "requestedMode": "heating",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 1,
+              "temperatureBeforeC": 22.467717028359857,
+              "temperatureAfterC": 22.467412989470176,
+              "setpointC": 26
+            },
+            {
+              "roomId": "ground",
+              "simulatedSeconds": 1621.25,
+              "requestedMode": "heating",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 1,
+              "temperatureBeforeC": 20.995626344242567,
+              "temperatureAfterC": 20.995269564030593,
+              "setpointC": 26
+            }
+          ],
+          "recordedTransitionLimit": 128,
+          "ordinaryNoCallSeconds": 0,
+          "ordinaryCompressorWithoutCallSeconds": 0
+        },
+        "internalSteps": {
+          "accepted": 7200,
+          "refinedPublicCalls": 0,
+          "maxPerPublicCall": 1,
+          "minDt": 0.25,
+          "maxDt": 0.25,
+          "maxClockErrorSeconds": 0
+        },
+        "openingEdges": {
+          "[\"ground\",\"first\"]": {
+            "stateSeconds": {
+              "stable": 1800
+            },
+            "maxAbsoluteHeatW": 48.307610114470336,
+            "maxEquivalentExchangeM3s": 0,
+            "maxEffectiveConductanceWK": 13.803680981595093
+          },
+          "[\"first\",\"attic\"]": {
+            "stateSeconds": {
+              "unstable": 1800
+            },
+            "maxAbsoluteHeatW": 630.3064908861751,
+            "maxEquivalentExchangeM3s": 0.11528460720139551,
+            "maxEffectiveConductanceWK": 152.97525879511977
+          }
+        },
+        "final": {
+          "rooms": [
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "attic",
+              "temperatureC": 19.141653623718412,
+              "relativeHumidity": 0.4399264948492102,
+              "humidityRatio": 0.006072109543400706,
+              "fabricTemperatureC": 18.364896529468666,
+              "metalTemperatureC": 18.81156147297625,
+              "setpointC": 21,
+              "active": false,
+              "thermostatCalling": false,
+              "fanSpeedFraction": 0,
+              "massFlowKgs": 0,
+              "signedRoomHeatW": -2.987081283468809,
+              "sensibleRoomHeatW": -2.987081283468603,
+              "fanPowerW": 0,
+              "airOutletC": null,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 558.568602200335,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "first",
+              "temperatureC": 22.933443431487945,
+              "relativeHumidity": 0.4128162014382381,
+              "humidityRatio": 0.007206581843992796,
+              "fabricTemperatureC": 21.60249249304547,
+              "metalTemperatureC": 46.225355720927936,
+              "setpointC": 26,
+              "active": true,
+              "thermostatCalling": true,
+              "fanSpeedFraction": 1,
+              "massFlowKgs": 0.007763344629905867,
+              "signedRoomHeatW": 2296.6247531293257,
+              "sensibleRoomHeatW": 2296.6247531293425,
+              "fanPowerW": 25,
+              "airOutletC": 38.73206674395112,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": -574.746383921985,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "ground",
+              "temperatureC": 21.762002868585796,
+              "relativeHumidity": 0.36832770695277817,
+              "humidityRatio": 0.005975805915208598,
+              "fabricTemperatureC": 18.303692120796367,
+              "metalTemperatureC": 45.79709935281226,
+              "setpointC": 26,
+              "active": true,
+              "thermostatCalling": true,
+              "fanSpeedFraction": 1,
+              "massFlowKgs": 0.00761645551802495,
+              "signedRoomHeatW": 2366.7218857608195,
+              "sensibleRoomHeatW": 2366.721885760827,
+              "fanPowerW": 25,
+              "airOutletC": 38.08005332040716,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 16.17778172164991,
+              "internalGainW": 200
+            }
+          ],
+          "outdoor": {
+            "temperatureC": -2.6475422692901005,
+            "iceKg": 0.08991676672206274,
+            "liquidKg": 0,
+            "thicknessM": 0.00022479191680515684,
+            "metalTemperatureC": -2.6475422692901005,
+            "filmEnthalpyJ": -30487.164427098498,
+            "filmMassKg": 0.08991676672206274,
+            "airOutletC": -0.2174672092542096,
+            "fanPowerW": 85,
+            "depositionKgs": 0.0005118237769622546,
+            "drainageKgs": 0,
+            "meltPowerW": 0
+          },
+          "energy": {
+            "electricityJ": 2549848.014091357,
+            "signedRoomHeatJ": 5729739.575405959,
+            "usefulServiceHeatJ": 5729739.575405959,
+            "drainedWaterKg": 0.5689942080619617,
+            "outdoorExchangeJ": -3663289.3044385896,
+            "drainageJ": 7607.892530610072,
+            "configurationEnergyJ": 0,
+            "boundaryEnergyJ": 2540069.267424643,
+            "storedEnergyChangeJ": 2540069.2674255073,
+            "residualJ": 8.642673492431641e-7,
+            "waterResidualKg": 2.914335439641036e-15
+          }
+        }
+      }
+    },
+    {
+      "id": "ui-owner-strong-heat-to42cooling",
+      "outcome": "pass",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "wallSeconds": 166.578,
+      "result": {
+        "id": "ui-owner-strong-heat-to42cooling",
+        "outcome": "pass",
+        "steps": 4800,
+        "updates": 1,
+        "simulatedSeconds": 1200,
+        "compressorTransitions": [
+          {
+            "atSeconds": 0.25,
+            "running": true,
+            "state": "running",
+            "effectiveMode": "heating",
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              18.30028508175576,
+              21.498524856998188,
+              17.998848042518546
+            ],
+            "speedRps": 8,
+            "inputW": 278.0894622009797,
+            "ordinaryStop": false
+          },
+          {
+            "atSeconds": 330.25,
+            "running": true,
+            "state": "running",
+            "effectiveMode": "cooling",
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              true
+            ],
+            "temperaturesC": [
+              18.826137873457583,
+              22.290404385500267,
+              20.558143127598214
+            ],
+            "speedRps": 8,
+            "inputW": 252.55319940889632,
+            "ordinaryStop": false
+          }
+        ],
+        "runningSeconds": 1170,
+        "ordinaryStopTransitions": 0,
+        "heatingReturnedAfterDefrost": false,
+        "maxIceKg": 0.019646182607516494,
+        "averageElectricalW": 1839.769659393003,
+        "finalOutput": {
+          "provenance": "live-generic-unvalidated",
+          "simulatedSeconds": 1200,
+          "state": "running",
+          "requestedMode": "cooling",
+          "effectiveMode": "cooling",
+          "cycle": {
+            "mode": "cooling",
+            "evaporatingC": -1.9028294144308104,
+            "condensingC": 54.585489493585506,
+            "lowPressureBarAbs": 7.646759092422668,
+            "highPressureBarAbs": 34.872053014824125,
+            "suction": {
+              "pPa": 764675.9092422668,
+              "pBarAbs": 7.646759092422668,
+              "hJkg": 518557.59494797874,
+              "temperatureC": 1.097170587782557,
+              "entropyJkgK": 2174.555915465894,
+              "densityKgm3": 20.361537550068828,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            "discharge": {
+              "pPa": 3487205.3014824125,
+              "pBarAbs": 34.872053014824125,
+              "hJkg": 610683.5716390113,
+              "temperatureC": 121.81594269587401,
+              "entropyJkgK": 2246.4894128855017,
+              "densityKgm3": 66.0254952806402,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            "condenserOutlet": {
+              "pPa": 3487205.3014824125,
+              "pBarAbs": 34.872053014824125,
+              "hJkg": 305675.47105373605,
+              "temperatureC": 53.585489238781406,
+              "entropyJkgK": 1342.2356990305886,
+              "densityKgm3": 818.8700407018993,
+              "qualityMass": null,
+              "phase": "liquid"
+            },
+            "expansionOutlet": {
+              "pPa": 764675.9092422668,
+              "pBarAbs": 7.646759092422668,
+              "hJkg": 305675.47105373605,
+              "temperatureC": -1.9028294144308688,
+              "entropyJkgK": 1389.8017885760949,
+              "densityKgm3": 58.46131514738217,
+              "qualityMass": 0.34247290745243536,
+              "phase": "two-phase"
+            },
+            "totalMassFlowKgs": 0.017540379778857893,
+            "branchMassFlowsKgs": [
+              0,
+              0.010324062264165051,
+              0.007216317514692843
+            ],
+            "branchCoilHeatW": [
+              0,
+              -2156.2075209248037,
+              -1577.8257803100912
+            ],
+            "outdoorCoilHeatW": 5349.957919893815,
+            "branchInlets": [
+              {
+                "pPa": 764675.9092422668,
+                "pBarAbs": 7.646759092422668,
+                "hJkg": 305675.47105373605,
+                "temperatureC": -1.9028294144308688,
+                "entropyJkgK": 1389.8017885760949,
+                "densityKgm3": 58.46131514738217,
+                "qualityMass": 0.34247290745243536,
+                "phase": "two-phase"
+              },
+              {
+                "pPa": 764675.9092422668,
+                "pBarAbs": 7.646759092422668,
+                "hJkg": 305675.47105373605,
+                "temperatureC": -1.9028294144308688,
+                "entropyJkgK": 1389.8017885760949,
+                "densityKgm3": 58.46131514738217,
+                "qualityMass": 0.34247290745243536,
+                "phase": "two-phase"
+              },
+              {
+                "pPa": 764675.9092422668,
+                "pBarAbs": 7.646759092422668,
+                "hJkg": 305675.47105373605,
+                "temperatureC": -1.9028294144308688,
+                "entropyJkgK": 1389.8017885760949,
+                "densityKgm3": 58.46131514738217,
+                "qualityMass": 0.34247290745243536,
+                "phase": "two-phase"
+              }
+            ],
+            "branchOutlets": [
+              {
+                "pPa": 764675.9092422668,
+                "pBarAbs": 7.646759092422668,
+                "hJkg": 518557.5950185598,
+                "temperatureC": 1.097170585569188,
+                "entropyJkgK": 2174.5559154563084,
+                "densityKgm3": 20.361537550361962,
+                "qualityMass": null,
+                "phase": "vapor"
+              },
+              {
+                "pPa": 764675.9092422668,
+                "pBarAbs": 7.646759092422668,
+                "hJkg": 514528.09764133685,
+                "temperatureC": -1.9028294144308688,
+                "entropyJkgK": 2159.773420489265,
+                "densityKgm3": 20.799310759502568,
+                "qualityMass": 0.9987334842532815,
+                "phase": "two-phase"
+              },
+              {
+                "pPa": 764675.9092422668,
+                "pBarAbs": 7.646759092422668,
+                "hJkg": 524322.4162716462,
+                "temperatureC": 6.0708665095211245,
+                "entropyJkgK": 2195.3895597847513,
+                "densityKgm3": 19.737697346388938,
+                "qualityMass": null,
+                "phase": "vapor"
+              }
+            ],
+            "condenserHeatW": 5349.957919893815,
+            "evaporatorHeatW": 3734.0333012348947,
+            "compressorWorkW": 1615.9246186589205,
+            "compressorElectricalW": 1737.5533533966886,
+            "driveLossW": 121.62873473776813,
+            "massResidualKgs": 2.525167575040399e-13,
+            "closureResidualW": 0.011915531208879945,
+            "lineHeatToOutdoorW": 0,
+            "pressureDropsPa": [
+              0,
+              0,
+              0
+            ],
+            "transportMethod": "Distributed Darcy/HEOS homogeneous-equilibrium field lines; generic smooth copper, no slip/fittings/oil",
+            "iterations": 4,
+            "pressureJacobian": {
+              "mode": "cooling",
+              "floatingCondenser": false,
+              "matrix": [
+                -429.9799019678404,
+                24.490076569578214,
+                -64.78454125031081,
+                784.9058212007407
+              ]
+            },
+            "branchValveInlets": [
+              null,
+              {
+                "pPa": 3487205.3014824125,
+                "pBarAbs": 34.872053014824125,
+                "hJkg": 305675.47105373605,
+                "temperatureC": 53.585489238781406,
+                "entropyJkgK": 1342.2356990305886,
+                "densityKgm3": 818.8700407018993,
+                "qualityMass": null,
+                "phase": "liquid"
+              },
+              {
+                "pPa": 3487205.3014824125,
+                "pBarAbs": 34.872053014824125,
+                "hJkg": 305675.47105373605,
+                "temperatureC": 53.585489238781406,
+                "entropyJkgK": 1342.2356990305886,
+                "densityKgm3": 818.8700407018993,
+                "qualityMass": null,
+                "phase": "liquid"
+              }
+            ],
+            "branchValveOutlets": [
+              null,
+              {
+                "pPa": 764675.9092422668,
+                "pBarAbs": 7.646759092422668,
+                "hJkg": 305675.47105373605,
+                "temperatureC": -1.9028294144308688,
+                "entropyJkgK": 1389.8017885760949,
+                "densityKgm3": 58.46131514738217,
+                "qualityMass": 0.34247290745243536,
+                "phase": "two-phase"
+              },
+              {
+                "pPa": 764675.9092422668,
+                "pBarAbs": 7.646759092422668,
+                "hJkg": 305675.47105373605,
+                "temperatureC": -1.9028294144308688,
+                "entropyJkgK": 1389.8017885760949,
+                "densityKgm3": 58.46131514738217,
+                "qualityMass": 0.34247290745243536,
+                "phase": "two-phase"
+              }
+            ]
+          },
+          "rooms": [
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "attic",
+              "temperatureC": 19.997850943863114,
+              "relativeHumidity": 0.5303616263849432,
+              "humidityRatio": 0.007741064330652009,
+              "fabricTemperatureC": 18.385211283324356,
+              "metalTemperatureC": 19.08316656529376,
+              "setpointC": 17,
+              "active": false,
+              "thermostatCalling": false,
+              "fanSpeedFraction": 0,
+              "massFlowKgs": 0,
+              "signedRoomHeatW": -8.290559529684895,
+              "sensibleRoomHeatW": -8.290559529686956,
+              "fanPowerW": 0,
+              "airOutletC": null,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": -6.1196529272677065,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "first",
+              "temperatureC": 19.55417002901538,
+              "relativeHumidity": 0.5603881992761691,
+              "humidityRatio": 0.007959917953603691,
+              "fabricTemperatureC": 21.464170611404537,
+              "metalTemperatureC": 4.257855222244259,
+              "setpointC": 17,
+              "active": true,
+              "thermostatCalling": true,
+              "fanSpeedFraction": 1,
+              "massFlowKgs": 0.010324062264165051,
+              "signedRoomHeatW": -2140.391287142049,
+              "sensibleRoomHeatW": -1464.3695921591252,
+              "fanPowerW": 25,
+              "airOutletC": 9.489972246745992,
+              "condensateKgs": 0.0002686462368872298,
+              "drainEnthalpyW": 4.781218355656891,
+              "interzoneHeatW": -0.9586221044596224,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "ground",
+              "temperatureC": 19.041499594842207,
+              "relativeHumidity": 0.5216849288497397,
+              "humidityRatio": 0.007168215366521541,
+              "fabricTemperatureC": 18.12962274452141,
+              "metalTemperatureC": 6.070880612727467,
+              "setpointC": 17,
+              "active": true,
+              "thermostatCalling": true,
+              "fanSpeedFraction": 1,
+              "massFlowKgs": 0.007216317514692843,
+              "signedRoomHeatW": -1556.23082813996,
+              "sensibleRoomHeatW": -1238.2318570607601,
+              "fanPowerW": 25,
+              "airOutletC": 10.518683661408545,
+              "condensateKgs": 0.00012626961454678684,
+              "drainEnthalpyW": 3.2042510076441646,
+              "interzoneHeatW": 7.078275031727329,
+              "internalGainW": 200
+            }
+          ],
+          "interzoneTransfers": [
+            {
+              "roomA": "ground",
+              "roomB": "first",
+              "heatFromAToBW": -7.076739122022339,
+              "solidHeatFromAToBW": -7.076739122022339,
+              "backgroundHeatFromAToBW": 0,
+              "buoyancyHeatFromAToBW": 0,
+              "effectiveConductanceWK": 13.803680981595093,
+              "equivalentExchangeM3s": 0,
+              "buoyancyState": "stable"
+            },
+            {
+              "roomA": "first",
+              "roomB": "attic",
+              "heatFromAToBW": -6.124429806180355,
+              "solidHeatFromAToBW": -6.124429806180355,
+              "backgroundHeatFromAToBW": 0,
+              "buoyancyHeatFromAToBW": 0,
+              "effectiveConductanceWK": 13.803680981595093,
+              "equivalentExchangeM3s": 0,
+              "buoyancyState": "stable"
+            }
+          ],
+          "inventory": null,
+          "outdoor": {
+            "temperatureC": 50.731542727752306,
+            "iceKg": 0,
+            "liquidKg": 0,
+            "thicknessM": 0,
+            "metalTemperatureC": 50.731542727752306,
+            "filmEnthalpyJ": 0,
+            "filmMassKg": 0,
+            "airOutletC": 48.12706538772312,
+            "fanPowerW": 85,
+            "depositionKgs": 0,
+            "drainageKgs": 0,
+            "meltPowerW": 0
+          },
+          "electrical": {
+            "compressorW": 1737.5533533966886,
+            "indoorFansW": 50,
+            "outdoorFanW": 85,
+            "controlsW": 15,
+            "totalW": 1887.5533533966886,
+            "driveLossW": 121.62873473776813
+          },
+          "signedRoomHeatW": -3704.9126748116937,
+          "heatingCOP": null,
+          "coolingCOP": 1.9628121600614001,
+          "energy": {
+            "electricityJ": 2207723.5912716035,
+            "signedRoomHeatJ": -1641105.6985767714,
+            "usefulServiceHeatJ": 3724837.476056187,
+            "drainedWaterKg": 0.31136849078338263,
+            "outdoorExchangeJ": 2787101.1090387497,
+            "drainageJ": 9902.155629385163,
+            "configurationEnergyJ": 5.960464477539063e-8,
+            "boundaryEnergyJ": 2210911.022259464,
+            "storedEnergyChangeJ": 2210911.0222592056,
+            "residualJ": -2.584420144557953e-7,
+            "waterResidualKg": -5.2735593669694936e-15
+          },
+          "diagnostics": {
+            "warnings": [
+              "Generic component parameters and control assumptions; not manufacturer calibrated.",
+              "Outdoor metal and retained water/ice share one equilibrium temperature.",
+              "Ice sublimation is excluded; retained ice melts or receives deposition.",
+              "Dirt scales air flow and air-side conductance at fixed fan command. Generic inverter indoor fans command 25–100% airflow across the thermostat band, linear air-side conductance and cubic electric power; no measured fan map.",
+              "Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.",
+              "Idealized parallel indoor coils use generic demand-proportional flow for inverter operation, normalized 5% UA reserve for calling inverter branches and UA allocation for fixed-speed/defrost, and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.",
+              "Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states.",
+              "Interzone openings use a buoyancy-informed sensible equivalent with reference air density 1.2 kg/m³ and cp 1006 J/(kg K); no inter-room air/water transport or resolved stratification.",
+              "Internal gains are prescribed sensible heat supplied to room air, separate from HVAC output and COP."
+            ],
+            "fault": null,
+            "algebraicResidualW": 0.011915531208879945,
+            "speedRps": 48.94583648067339,
+            "demandSpeedRps": 75,
+            "rawDemandSpeedRps": 84.65734780243976,
+            "restartDelaySeconds": 0,
+            "envelopeProtection": null,
+            "filmEnergyRateW": 0,
+            "metalEnergyRateW": -8.905369345556302
+          }
+        },
+        "wallSeconds": 166.445557075,
+        "maxEnergyResidualJ": 5.264300853013992e-7,
+        "maxWaterResidualKg": 9.298117831235686e-15,
+        "protectionCounts": {},
+        "states": {
+          "running": 4680,
+          "reversing": 12,
+          "idle": 108
+        },
+        "stateEntries": {
+          "running": 2,
+          "idle": 1
+        },
+        "completedDefrosts": 0,
+        "maxStepWallMs": 943.5845150000023,
+        "comfort": {
+          "rooms": {
+            "attic": {
+              "callingSeconds": 0,
+              "notCallingSeconds": 1200,
+              "poweredFanSeconds": 0,
+              "modulatedFanSeconds": 0,
+              "minPoweredFanFraction": null,
+              "maxPoweredFanFraction": 0,
+              "fanEnergyJ": 0,
+              "callTransitions": 0,
+              "circuitTransitions": 0
+            },
+            "first": {
+              "callingSeconds": 1200,
+              "notCallingSeconds": 0,
+              "poweredFanSeconds": 1170,
+              "modulatedFanSeconds": 0,
+              "minPoweredFanFraction": 1,
+              "maxPoweredFanFraction": 1,
+              "fanEnergyJ": 29250,
+              "callTransitions": 0,
+              "circuitTransitions": 2
+            },
+            "ground": {
+              "callingSeconds": 1200,
+              "notCallingSeconds": 0,
+              "poweredFanSeconds": 1170,
+              "modulatedFanSeconds": 0,
+              "minPoweredFanFraction": 1,
+              "maxPoweredFanFraction": 1,
+              "fanEnergyJ": 29250,
+              "callTransitions": 0,
+              "circuitTransitions": 2
+            }
+          },
+          "transitions": [
+            {
+              "roomId": "first",
+              "simulatedSeconds": 0.25,
+              "requestedMode": "heating",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 1,
+              "temperatureBeforeC": 21.50000000000017,
+              "temperatureAfterC": 21.498524856998188,
+              "setpointC": 26
+            },
+            {
+              "roomId": "ground",
+              "simulatedSeconds": 0.25,
+              "requestedMode": "heating",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 1,
+              "temperatureBeforeC": 18,
+              "temperatureAfterC": 17.998848042518546,
+              "setpointC": 26
+            },
+            {
+              "roomId": "first",
+              "simulatedSeconds": 330.25,
+              "requestedMode": "cooling",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 1,
+              "temperatureBeforeC": 22.28761315853069,
+              "temperatureAfterC": 22.290404385500267,
+              "setpointC": 17
+            },
+            {
+              "roomId": "ground",
+              "simulatedSeconds": 330.25,
+              "requestedMode": "cooling",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 1,
+              "temperatureBeforeC": 20.55214160099723,
+              "temperatureAfterC": 20.558143127598214,
+              "setpointC": 17
+            }
+          ],
+          "recordedTransitionLimit": 128,
+          "ordinaryNoCallSeconds": 0,
+          "ordinaryCompressorWithoutCallSeconds": 0
+        },
+        "internalSteps": {
+          "accepted": 4800,
+          "refinedPublicCalls": 0,
+          "maxPerPublicCall": 1,
+          "minDt": 0.25,
+          "maxDt": 0.25,
+          "maxClockErrorSeconds": 0
+        },
+        "openingEdges": {
+          "[\"ground\",\"first\"]": {
+            "stateSeconds": {
+              "stable": 1200
+            },
+            "maxAbsoluteHeatW": 48.308422285761935,
+            "maxEquivalentExchangeM3s": 0,
+            "maxEffectiveConductanceWK": 13.803680981595093
+          },
+          "[\"first\",\"attic\"]": {
+            "stateSeconds": {
+              "unstable": 947.5,
+              "stable": 252.5
+            },
+            "maxAbsoluteHeatW": 538.9329830955849,
+            "maxEquivalentExchangeM3s": 0.10934431740234797,
+            "maxEffectiveConductanceWK": 145.80414094970956
+          }
+        },
+        "final": {
+          "rooms": [
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "attic",
+              "temperatureC": 19.997850943863114,
+              "relativeHumidity": 0.5303616263849432,
+              "humidityRatio": 0.007741064330652009,
+              "fabricTemperatureC": 18.385211283324356,
+              "metalTemperatureC": 19.08316656529376,
+              "setpointC": 17,
+              "active": false,
+              "thermostatCalling": false,
+              "fanSpeedFraction": 0,
+              "massFlowKgs": 0,
+              "signedRoomHeatW": -8.290559529684895,
+              "sensibleRoomHeatW": -8.290559529686956,
+              "fanPowerW": 0,
+              "airOutletC": null,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": -6.1196529272677065,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "first",
+              "temperatureC": 19.55417002901538,
+              "relativeHumidity": 0.5603881992761691,
+              "humidityRatio": 0.007959917953603691,
+              "fabricTemperatureC": 21.464170611404537,
+              "metalTemperatureC": 4.257855222244259,
+              "setpointC": 17,
+              "active": true,
+              "thermostatCalling": true,
+              "fanSpeedFraction": 1,
+              "massFlowKgs": 0.010324062264165051,
+              "signedRoomHeatW": -2140.391287142049,
+              "sensibleRoomHeatW": -1464.3695921591252,
+              "fanPowerW": 25,
+              "airOutletC": 9.489972246745992,
+              "condensateKgs": 0.0002686462368872298,
+              "drainEnthalpyW": 4.781218355656891,
+              "interzoneHeatW": -0.9586221044596224,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "ground",
+              "temperatureC": 19.041499594842207,
+              "relativeHumidity": 0.5216849288497397,
+              "humidityRatio": 0.007168215366521541,
+              "fabricTemperatureC": 18.12962274452141,
+              "metalTemperatureC": 6.070880612727467,
+              "setpointC": 17,
+              "active": true,
+              "thermostatCalling": true,
+              "fanSpeedFraction": 1,
+              "massFlowKgs": 0.007216317514692843,
+              "signedRoomHeatW": -1556.23082813996,
+              "sensibleRoomHeatW": -1238.2318570607601,
+              "fanPowerW": 25,
+              "airOutletC": 10.518683661408545,
+              "condensateKgs": 0.00012626961454678684,
+              "drainEnthalpyW": 3.2042510076441646,
+              "interzoneHeatW": 7.078275031727329,
+              "internalGainW": 200
+            }
+          ],
+          "outdoor": {
+            "temperatureC": 50.731542727752306,
+            "iceKg": 0,
+            "liquidKg": 0,
+            "thicknessM": 0,
+            "metalTemperatureC": 50.731542727752306,
+            "filmEnthalpyJ": 0,
+            "filmMassKg": 0,
+            "airOutletC": 48.12706538772312,
+            "fanPowerW": 85,
+            "depositionKgs": 0,
+            "drainageKgs": 0,
+            "meltPowerW": 0
+          },
+          "energy": {
+            "electricityJ": 2207723.5912716035,
+            "signedRoomHeatJ": -1641105.6985767714,
+            "usefulServiceHeatJ": 3724837.476056187,
+            "drainedWaterKg": 0.31136849078338263,
+            "outdoorExchangeJ": 2787101.1090387497,
+            "drainageJ": 9902.155629385163,
+            "configurationEnergyJ": 5.960464477539063e-8,
+            "boundaryEnergyJ": 2210911.022259464,
+            "storedEnergyChangeJ": 2210911.0222592056,
+            "residualJ": -2.584420144557953e-7,
+            "waterResidualKg": -5.2735593669694936e-15
+          }
+        }
+      }
+    },
+    {
+      "id": "ui-physical-owner-heating",
+      "outcome": "pass",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "wallSeconds": 150.838,
+      "result": {
+        "id": "ui-physical-owner-heating",
+        "outcome": "pass",
+        "steps": 4800,
+        "updates": 0,
+        "simulatedSeconds": 1200,
+        "compressorTransitions": [
+          {
+            "atSeconds": 0.25,
+            "running": true,
+            "state": "running",
+            "effectiveMode": "heating",
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              false
+            ],
+            "temperaturesC": [
+              18.30028508175576,
+              21.498499635090013,
+              17.998796910292526
+            ],
+            "speedRps": 8,
+            "inputW": 240.58345981415547,
+            "ordinaryStop": false
+          }
+        ],
+        "runningSeconds": 1200,
+        "ordinaryStopTransitions": 0,
+        "heatingReturnedAfterDefrost": false,
+        "maxIceKg": 0,
+        "averageElectricalW": 445.0598099655752,
+        "finalOutput": {
+          "provenance": "live-generic-unvalidated",
+          "simulatedSeconds": 1200,
+          "state": "running",
+          "requestedMode": "heating",
+          "effectiveMode": "heating",
+          "cycle": {
+            "mode": "heating",
+            "evaporatingC": -3.4792573102227,
+            "condensingC": 44.590421282271926,
+            "lowPressureBarAbs": 7.262429780281656,
+            "highPressureBarAbs": 27.677581261686118,
+            "suction": {
+              "pPa": 726242.9780281656,
+              "pBarAbs": 7.262429780281656,
+              "hJkg": 518183.6155959697,
+              "temperatureC": -0.47925731022269247,
+              "entropyJkgK": 2180.268998529124,
+              "densityKgm3": 19.345582504320646,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            "discharge": {
+              "pPa": 2767758.126168612,
+              "pBarAbs": 27.677581261686118,
+              "hJkg": 598357.6384265735,
+              "temperatureC": 104.43304185751555,
+              "entropyJkgK": 2245.6524602272934,
+              "densityKgm3": 54.18835567395677,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            "condenserOutlet": {
+              "pPa": 2767758.126168612,
+              "pBarAbs": 27.677581261686118,
+              "hJkg": 283161.4150663233,
+              "temperatureC": 43.59042128227196,
+              "entropyJkgK": 1274.9103546350434,
+              "densityKgm3": 875.503407994901,
+              "qualityMass": null,
+              "phase": "liquid"
+            },
+            "expansionOutlet": {
+              "pPa": 726242.9780281656,
+              "pBarAbs": 7.262429780281656,
+              "hJkg": 279490.3507292988,
+              "temperatureC": -3.4792573102226925,
+              "entropyJkgK": 1295.2133818008979,
+              "densityKgm3": 70.38995689908788,
+              "qualityMass": 0.26676712184805274,
+              "phase": "two-phase"
+            },
+            "totalMassFlowKgs": 0.003728578171206466,
+            "branchMassFlowsKgs": [
+              0,
+              0.003728578171206466,
+              0
+            ],
+            "branchCoilHeatW": [
+              0,
+              1142.8966496167877,
+              0
+            ],
+            "outdoorCoilHeatW": -889.9864969958725,
+            "branchInlets": [
+              {
+                "pPa": 2767758.126168612,
+                "pBarAbs": 27.677581261686118,
+                "hJkg": 598357.6384265735,
+                "temperatureC": 104.43304185751555,
+                "entropyJkgK": 2245.6524602272934,
+                "densityKgm3": 54.18835567395677,
+                "qualityMass": null,
+                "phase": "vapor"
+              },
+              {
+                "pPa": 2766784.443816888,
+                "pBarAbs": 27.66784443816888,
+                "hJkg": 589653.0060116292,
+                "temperatureC": 97.38709305648433,
+                "entropyJkgK": 2222.4277158561144,
+                "densityKgm3": 56.02486196129827,
+                "qualityMass": null,
+                "phase": "vapor"
+              },
+              {
+                "pPa": 2767758.126168612,
+                "pBarAbs": 27.677581261686118,
+                "hJkg": 598357.6384265735,
+                "temperatureC": 104.43304185751555,
+                "entropyJkgK": 2245.6524602272934,
+                "densityKgm3": 54.18835567395677,
+                "qualityMass": null,
+                "phase": "vapor"
+              }
+            ],
+            "branchOutlets": [
+              {
+                "pPa": 2767758.126168612,
+                "pBarAbs": 27.677581261686118,
+                "hJkg": 283161.4150663233,
+                "temperatureC": 43.59042128227196,
+                "entropyJkgK": 1274.9103546350434,
+                "densityKgm3": 875.503407994901,
+                "qualityMass": null,
+                "phase": "liquid"
+              },
+              {
+                "pPa": 2766784.443816888,
+                "pBarAbs": 27.66784443816888,
+                "hJkg": 283129.5546749559,
+                "temperatureC": 43.57560653116218,
+                "entropyJkgK": 1274.81327493211,
+                "densityKgm3": 875.5803608236977,
+                "qualityMass": null,
+                "phase": "liquid"
+              },
+              {
+                "pPa": 2767758.126168612,
+                "pBarAbs": 27.677581261686118,
+                "hJkg": 283161.4150663233,
+                "temperatureC": 43.59042128227196,
+                "entropyJkgK": 1274.9103546350434,
+                "densityKgm3": 875.503407994901,
+                "qualityMass": null,
+                "phase": "liquid"
+              }
+            ],
+            "condenserHeatW": 1142.8966496167877,
+            "evaporatorHeatW": 889.9864969958725,
+            "compressorWorkW": 298.935111423998,
+            "compressorElectricalW": 321.4356036817183,
+            "driveLossW": 22.500492257720282,
+            "massResidualKgs": 1.1991988702964376e-7,
+            "closureResidualW": 0.02997997175741094,
+            "lineHeatToOutdoorW": 46.024958803082896,
+            "pressureDropsPa": [
+              0,
+              2020.4085847354295,
+              0
+            ],
+            "transportMethod": "Distributed Darcy/HEOS homogeneous-equilibrium field lines; generic smooth copper, no slip/fittings/oil",
+            "iterations": 2,
+            "pressureJacobian": {
+              "mode": "heating",
+              "floatingCondenser": false,
+              "matrix": [
+                -33.73464409224957,
+                351.38187188255876,
+                4.9081782099206865,
+                -0.0014776664161405412
+              ]
+            },
+            "branchValveInlets": [
+              null,
+              {
+                "pPa": 2765741.7308182656,
+                "pBarAbs": 27.657417308182655,
+                "hJkg": 279490.3507292988,
+                "temperatureC": 41.93066273483845,
+                "entropyJkgK": 1263.2971057084696,
+                "densityKgm3": 885.1766208538053,
+                "qualityMass": null,
+                "phase": "liquid"
+              },
+              null
+            ],
+            "branchValveOutlets": [
+              null,
+              {
+                "pPa": 726242.9780281656,
+                "pBarAbs": 7.262429780281656,
+                "hJkg": 279490.3507292988,
+                "temperatureC": -3.4792573102226925,
+                "entropyJkgK": 1295.2133818008979,
+                "densityKgm3": 70.38995689908788,
+                "qualityMass": 0.26676712184805274,
+                "phase": "two-phase"
+              },
+              null
+            ]
+          },
+          "rooms": [
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "attic",
+              "temperatureC": 18.583885635317245,
+              "relativeHumidity": 0.43266337962360524,
+              "humidityRatio": 0.005764413792330316,
+              "fabricTemperatureC": 18.31172797850991,
+              "metalTemperatureC": 18.408240967400534,
+              "setpointC": 21,
+              "active": false,
+              "thermostatCalling": false,
+              "fanSpeedFraction": 0,
+              "massFlowKgs": 0,
+              "signedRoomHeatW": -1.5893809569176354,
+              "sensibleRoomHeatW": -1.5893809569150588,
+              "fanPowerW": 0,
+              "airOutletC": null,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 404.3289431751512,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "first",
+              "temperatureC": 21.614801552569247,
+              "relativeHumidity": 0.4344936773962961,
+              "humidityRatio": 0.006997478113900766,
+              "fabricTemperatureC": 21.493377086169115,
+              "metalTemperatureC": 42.001486621346274,
+              "setpointC": 21.5,
+              "active": true,
+              "thermostatCalling": true,
+              "fanSpeedFraction": 0.5819515838028053,
+              "massFlowKgs": 0.003728578171206466,
+              "signedRoomHeatW": 1161.799302659591,
+              "sensibleRoomHeatW": 1161.7993026595843,
+              "fanPowerW": 4.927204322719963,
+              "airOutletC": 35.35545490576567,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": -479.20716551745426,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "ground",
+              "temperatureC": 16.190212837244985,
+              "relativeHumidity": 0.49430324484529137,
+              "humidityRatio": 0.005659740837424733,
+              "fabricTemperatureC": 17.905480707639136,
+              "metalTemperatureC": 17.160118784456778,
+              "setpointC": 17,
+              "active": false,
+              "thermostatCalling": false,
+              "fanSpeedFraction": 0,
+              "massFlowKgs": 0,
+              "signedRoomHeatW": 8.776148547806415,
+              "sensibleRoomHeatW": 8.776148547804612,
+              "fanPowerW": 0,
+              "airOutletC": null,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 74.87822234230303,
+              "internalGainW": 200
+            }
+          ],
+          "interzoneTransfers": [
+            {
+              "roomA": "ground",
+              "roomB": "first",
+              "heatFromAToBW": -74.87929208269688,
+              "solidHeatFromAToBW": -74.87929208269688,
+              "backgroundHeatFromAToBW": 0,
+              "buoyancyHeatFromAToBW": 0,
+              "effectiveConductanceWK": 13.803680981595093,
+              "equivalentExchangeM3s": 0,
+              "buoyancyState": "stable"
+            },
+            {
+              "roomA": "first",
+              "roomB": "attic",
+              "heatFromAToBW": 404.32586606202455,
+              "solidHeatFromAToBW": 41.83779640378532,
+              "backgroundHeatFromAToBW": 0,
+              "buoyancyHeatFromAToBW": 362.4880696582392,
+              "effectiveConductanceWK": 133.400555178914,
+              "equivalentExchangeM3s": 0.09906964396729531,
+              "buoyancyState": "unstable"
+            }
+          ],
+          "inventory": null,
+          "outdoor": {
+            "temperatureC": -0.47811571283055976,
+            "iceKg": 0,
+            "liquidKg": 0,
+            "thicknessM": 0,
+            "metalTemperatureC": -0.47811571283055976,
+            "filmEnthalpyJ": 0,
+            "filmMassKg": 0,
+            "airOutletC": 0.06028924191451779,
+            "fanPowerW": 85,
+            "depositionKgs": 0,
+            "drainageKgs": 0,
+            "meltPowerW": 0
+          },
+          "electrical": {
+            "compressorW": 321.4356036817183,
+            "indoorFansW": 4.927204322719963,
+            "outdoorFanW": 85,
+            "controlsW": 15,
+            "totalW": 426.36280800443825,
+            "driveLossW": 22.500492257720282
+          },
+          "signedRoomHeatW": 1168.9860702504795,
+          "heatingCOP": 2.7417637005484563,
+          "coolingCOP": null,
+          "energy": {
+            "electricityJ": 534071.7719586903,
+            "signedRoomHeatJ": 1316775.037880697,
+            "usefulServiceHeatJ": 1316775.037880697,
+            "drainedWaterKg": 0,
+            "outdoorExchangeJ": -978554.182441194,
+            "drainageJ": 0,
+            "configurationEnergyJ": 0,
+            "boundaryEnergyJ": -1238056.4208474252,
+            "storedEnergyChangeJ": -1238056.420847267,
+            "residualJ": 1.5832483768463135e-7,
+            "waterResidualKg": -1.3322676295501878e-15
+          },
+          "diagnostics": {
+            "warnings": [
+              "Generic component parameters and control assumptions; not manufacturer calibrated.",
+              "Outdoor metal and retained water/ice share one equilibrium temperature.",
+              "Ice sublimation is excluded; retained ice melts or receives deposition.",
+              "Dirt scales air flow and air-side conductance at fixed fan command. Generic inverter indoor fans command 25–100% airflow across the thermostat band, linear air-side conductance and cubic electric power; no measured fan map.",
+              "Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.",
+              "Idealized parallel indoor coils use generic demand-proportional flow for inverter operation, normalized 5% UA reserve for calling inverter branches and UA allocation for fixed-speed/defrost, and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.",
+              "Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states.",
+              "Interzone openings use a buoyancy-informed sensible equivalent with reference air density 1.2 kg/m³ and cp 1006 J/(kg K); no inter-room air/water transport or resolved stratification.",
+              "Internal gains are prescribed sensible heat supplied to room air, separate from HVAC output and COP."
+            ],
+            "fault": null,
+            "algebraicResidualW": 0.02997997175741094,
+            "speedRps": 10.95052158691291,
+            "demandSpeedRps": 10.95052158691291,
+            "rawDemandSpeedRps": 10.95052158691291,
+            "restartDelaySeconds": 0,
+            "envelopeProtection": null,
+            "filmEnergyRateW": 0,
+            "metalEnergyRateW": -16.001487790937453
+          }
+        },
+        "wallSeconds": 150.70299610700002,
+        "maxEnergyResidualJ": 5.002366378903389e-7,
+        "maxWaterResidualKg": 5.065392549852277e-15,
+        "protectionCounts": {},
+        "states": {
+          "running": 4800
+        },
+        "stateEntries": {
+          "running": 1
+        },
+        "completedDefrosts": 0,
+        "maxStepWallMs": 184.45487900000012,
+        "comfort": {
+          "rooms": {
+            "attic": {
+              "callingSeconds": 0,
+              "notCallingSeconds": 1200,
+              "poweredFanSeconds": 0,
+              "modulatedFanSeconds": 0,
+              "minPoweredFanFraction": null,
+              "maxPoweredFanFraction": 0,
+              "fanEnergyJ": 0,
+              "callTransitions": 0,
+              "circuitTransitions": 0
+            },
+            "first": {
+              "callingSeconds": 1200,
+              "notCallingSeconds": 0,
+              "poweredFanSeconds": 1200,
+              "modulatedFanSeconds": 1200,
+              "minPoweredFanFraction": 0.5819515838028053,
+              "maxPoweredFanFraction": 0.7839451344771575,
+              "fanEnergyJ": 8950.294625254503,
+              "callTransitions": 0,
+              "circuitTransitions": 1
+            },
+            "ground": {
+              "callingSeconds": 0,
+              "notCallingSeconds": 1200,
+              "poweredFanSeconds": 0,
+              "modulatedFanSeconds": 0,
+              "minPoweredFanFraction": null,
+              "maxPoweredFanFraction": 0,
+              "fanEnergyJ": 0,
+              "callTransitions": 0,
+              "circuitTransitions": 0
+            }
+          },
+          "transitions": [
+            {
+              "roomId": "first",
+              "simulatedSeconds": 0.25,
+              "requestedMode": "heating",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 0.624999999999936,
+              "temperatureBeforeC": 21.50000000000017,
+              "temperatureAfterC": 21.498499635090013,
+              "setpointC": 21.5
+            }
+          ],
+          "recordedTransitionLimit": 128,
+          "ordinaryNoCallSeconds": 0,
+          "ordinaryCompressorWithoutCallSeconds": 0
+        },
+        "internalSteps": {
+          "accepted": 4800,
+          "refinedPublicCalls": 0,
+          "maxPerPublicCall": 1,
+          "minDt": 0.25,
+          "maxDt": 0.25,
+          "maxClockErrorSeconds": 0
+        },
+        "openingEdges": {
+          "[\"ground\",\"first\"]": {
+            "stateSeconds": {
+              "stable": 1200
+            },
+            "maxAbsoluteHeatW": 74.87929208269688,
+            "maxEquivalentExchangeM3s": 0,
+            "maxEffectiveConductanceWK": 13.803680981595093
+          },
+          "[\"first\",\"attic\"]": {
+            "stateSeconds": {
+              "unstable": 1200
+            },
+            "maxAbsoluteHeatW": 437.19223601703726,
+            "maxEquivalentExchangeM3s": 0.10180182586078233,
+            "maxEffectiveConductanceWK": 136.69884516073154
+          }
+        },
+        "final": {
+          "rooms": [
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "attic",
+              "temperatureC": 18.583885635317245,
+              "relativeHumidity": 0.43266337962360524,
+              "humidityRatio": 0.005764413792330316,
+              "fabricTemperatureC": 18.31172797850991,
+              "metalTemperatureC": 18.408240967400534,
+              "setpointC": 21,
+              "active": false,
+              "thermostatCalling": false,
+              "fanSpeedFraction": 0,
+              "massFlowKgs": 0,
+              "signedRoomHeatW": -1.5893809569176354,
+              "sensibleRoomHeatW": -1.5893809569150588,
+              "fanPowerW": 0,
+              "airOutletC": null,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 404.3289431751512,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "first",
+              "temperatureC": 21.614801552569247,
+              "relativeHumidity": 0.4344936773962961,
+              "humidityRatio": 0.006997478113900766,
+              "fabricTemperatureC": 21.493377086169115,
+              "metalTemperatureC": 42.001486621346274,
+              "setpointC": 21.5,
+              "active": true,
+              "thermostatCalling": true,
+              "fanSpeedFraction": 0.5819515838028053,
+              "massFlowKgs": 0.003728578171206466,
+              "signedRoomHeatW": 1161.799302659591,
+              "sensibleRoomHeatW": 1161.7993026595843,
+              "fanPowerW": 4.927204322719963,
+              "airOutletC": 35.35545490576567,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": -479.20716551745426,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "ground",
+              "temperatureC": 16.190212837244985,
+              "relativeHumidity": 0.49430324484529137,
+              "humidityRatio": 0.005659740837424733,
+              "fabricTemperatureC": 17.905480707639136,
+              "metalTemperatureC": 17.160118784456778,
+              "setpointC": 17,
+              "active": false,
+              "thermostatCalling": false,
+              "fanSpeedFraction": 0,
+              "massFlowKgs": 0,
+              "signedRoomHeatW": 8.776148547806415,
+              "sensibleRoomHeatW": 8.776148547804612,
+              "fanPowerW": 0,
+              "airOutletC": null,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 74.87822234230303,
+              "internalGainW": 200
+            }
+          ],
+          "outdoor": {
+            "temperatureC": -0.47811571283055976,
+            "iceKg": 0,
+            "liquidKg": 0,
+            "thicknessM": 0,
+            "metalTemperatureC": -0.47811571283055976,
+            "filmEnthalpyJ": 0,
+            "filmMassKg": 0,
+            "airOutletC": 0.06028924191451779,
+            "fanPowerW": 85,
+            "depositionKgs": 0,
+            "drainageKgs": 0,
+            "meltPowerW": 0
+          },
+          "energy": {
+            "electricityJ": 534071.7719586903,
+            "signedRoomHeatJ": 1316775.037880697,
+            "usefulServiceHeatJ": 1316775.037880697,
+            "drainedWaterKg": 0,
+            "outdoorExchangeJ": -978554.182441194,
+            "drainageJ": 0,
+            "configurationEnergyJ": 0,
+            "boundaryEnergyJ": -1238056.4208474252,
+            "storedEnergyChangeJ": -1238056.420847267,
+            "residualJ": 1.5832483768463135e-7,
+            "waterResidualKg": -1.3322676295501878e-15
+          }
+        }
+      }
+    },
+    {
+      "id": "ui-owner-default1C-two-hour",
+      "outcome": "pass",
+      "exitCode": 0,
+      "signal": null,
+      "timedOut": false,
+      "wallSeconds": 590.828,
+      "result": {
+        "id": "ui-owner-default1C-two-hour",
+        "outcome": "pass",
+        "steps": 28800,
+        "updates": 0,
+        "simulatedSeconds": 7200,
+        "compressorTransitions": [
+          {
+            "atSeconds": 0.25,
+            "running": true,
+            "state": "running",
+            "effectiveMode": "heating",
+            "protection": null,
+            "calls": [
+              false,
+              true,
+              false
+            ],
+            "temperaturesC": [
+              18.30028508175576,
+              21.498499635090013,
+              17.998796910292526
+            ],
+            "speedRps": 8,
+            "inputW": 240.50231479135698,
+            "ordinaryStop": false
+          }
+        ],
+        "runningSeconds": 7200,
+        "ordinaryStopTransitions": 0,
+        "heatingReturnedAfterDefrost": false,
+        "maxIceKg": 0,
+        "averageElectricalW": 467.37742558966585,
+        "finalOutput": {
+          "provenance": "live-generic-unvalidated",
+          "simulatedSeconds": 7200,
+          "state": "running",
+          "requestedMode": "heating",
+          "effectiveMode": "heating",
+          "cycle": {
+            "mode": "heating",
+            "evaporatingC": -3.826621242726735,
+            "condensingC": 41.634310060582834,
+            "lowPressureBarAbs": 7.1797548541576415,
+            "highPressureBarAbs": 25.785820481187297,
+            "suction": {
+              "pPa": 717975.4854157642,
+              "pBarAbs": 7.1797548541576415,
+              "hJkg": 518098.4866832822,
+              "temperatureC": -0.826621202649676,
+              "entropyJkgK": 2181.5338106286395,
+              "densityKgm3": 19.127418566292043,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            "discharge": {
+              "pPa": 2578582.0481187296,
+              "pBarAbs": 25.785820481187297,
+              "hJkg": 594369.737759423,
+              "temperatureC": 98.97999387748553,
+              "entropyJkgK": 2244.6050510124387,
+              "densityKgm3": 51.0731630493378,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            "condenserOutlet": {
+              "pPa": 2578582.0481187296,
+              "pBarAbs": 25.785820481187297,
+              "hJkg": 276889.2041440663,
+              "temperatureC": 40.64010377390946,
+              "entropyJkgK": 1255.695091368765,
+              "densityKgm3": 890.4954732529945,
+              "qualityMass": null,
+              "phase": "liquid"
+            },
+            "expansionOutlet": {
+              "pPa": 717975.4854157642,
+              "pBarAbs": 7.1797548541576415,
+              "hJkg": 276889.2041440663,
+              "temperatureC": -3.8266212427266737,
+              "entropyJkgK": 1285.9945824946644,
+              "densityKgm3": 71.29947159321988,
+              "qualityMass": 0.26010236063529835,
+              "phase": "two-phase"
+            },
+            "totalMassFlowKgs": 0.0045848918775919295,
+            "branchMassFlowsKgs": [
+              0,
+              0.00351685086311324,
+              0.0010680410144786893
+            ],
+            "branchCoilHeatW": [
+              0,
+              1079.0678563216384,
+              376.54606354496184
+            ],
+            "outdoorCoilHeatW": -1105.9184803138276,
+            "branchInlets": [
+              {
+                "pPa": 2578582.0481187296,
+                "pBarAbs": 25.785820481187297,
+                "hJkg": 594369.737759423,
+                "temperatureC": 98.97999387748553,
+                "entropyJkgK": 2244.6050510124387,
+                "densityKgm3": 51.0731630493378,
+                "qualityMass": null,
+                "phase": "vapor"
+              },
+              {
+                "pPa": 2578582.0481187296,
+                "pBarAbs": 25.785820481187297,
+                "hJkg": 594369.737759423,
+                "temperatureC": 98.97999387748553,
+                "entropyJkgK": 2244.6050510124387,
+                "densityKgm3": 51.0731630493378,
+                "qualityMass": null,
+                "phase": "vapor"
+              },
+              {
+                "pPa": 2578582.0481187296,
+                "pBarAbs": 25.785820481187297,
+                "hJkg": 594369.737759423,
+                "temperatureC": 98.97999387748553,
+                "entropyJkgK": 2244.6050510124387,
+                "densityKgm3": 51.0731630493378,
+                "qualityMass": null,
+                "phase": "vapor"
+              }
+            ],
+            "branchOutlets": [
+              {
+                "pPa": 2578582.0481187296,
+                "pBarAbs": 25.785820481187297,
+                "hJkg": 276876.6246173313,
+                "temperatureC": 40.63431006058278,
+                "entropyJkgK": 1255.655002013759,
+                "densityKgm3": 890.5281037855392,
+                "qualityMass": null,
+                "phase": "liquid"
+              },
+              {
+                "pPa": 2578582.0481187296,
+                "pBarAbs": 25.785820481187297,
+                "hJkg": 287541.86864517524,
+                "temperatureC": 41.63431006058289,
+                "entropyJkgK": 1289.547142341826,
+                "densityKgm3": 639.898397227212,
+                "qualityMass": 0.03640885059949074,
+                "phase": "two-phase"
+              },
+              {
+                "pPa": 2578582.0481187296,
+                "pBarAbs": 25.785820481187297,
+                "hJkg": 241812.05650899466,
+                "temperatureC": 23.177443209949104,
+                "entropyJkgK": 1140.7539492792541,
+                "densityKgm3": 974.4606028971866,
+                "qualityMass": null,
+                "phase": "liquid"
+              }
+            ],
+            "condenserHeatW": 1455.6139198666,
+            "evaporatorHeatW": 1105.9184803138276,
+            "compressorWorkW": 349.6954395527726,
+            "compressorElectricalW": 376.0166016696479,
+            "driveLossW": 26.321162116875314,
+            "massResidualKgs": 0,
+            "closureResidualW": 0.057675769951270536,
+            "lineHeatToOutdoorW": 0,
+            "pressureDropsPa": [
+              0,
+              0,
+              0
+            ],
+            "transportMethod": "Distributed Darcy/HEOS homogeneous-equilibrium field lines; generic smooth copper, no slip/fittings/oil",
+            "iterations": 2,
+            "pressureJacobian": {
+              "mode": "heating",
+              "floatingCondenser": false,
+              "matrix": [
+                20.682936308080713,
+                -349.4502975408313,
+                5.85534641737078,
+                0
+              ]
+            },
+            "branchValveInlets": [
+              null,
+              {
+                "pPa": 2578582.0481187296,
+                "pBarAbs": 25.785820481187297,
+                "hJkg": 287541.86864517524,
+                "temperatureC": 41.63431006058289,
+                "entropyJkgK": 1289.547142341826,
+                "densityKgm3": 639.898397227212,
+                "qualityMass": 0.03640885059949074,
+                "phase": "two-phase"
+              },
+              {
+                "pPa": 2578582.0481187296,
+                "pBarAbs": 25.785820481187297,
+                "hJkg": 241812.05650899466,
+                "temperatureC": 23.177443209949104,
+                "entropyJkgK": 1140.7539492792541,
+                "densityKgm3": 974.4606028971866,
+                "qualityMass": null,
+                "phase": "liquid"
+              }
+            ],
+            "branchValveOutlets": [
+              null,
+              {
+                "pPa": 717975.4854157642,
+                "pBarAbs": 7.1797548541576415,
+                "hJkg": 287541.86864517524,
+                "temperatureC": -3.8266212427266737,
+                "entropyJkgK": 1325.5480165495283,
+                "densityKgm3": 63.716719688135825,
+                "qualityMass": 0.2932700708109185,
+                "phase": "two-phase"
+              },
+              {
+                "pPa": 717975.4854157642,
+                "pBarAbs": 7.1797548541576415,
+                "hJkg": 241812.05650899466,
+                "temperatureC": -3.8266212427266737,
+                "entropyJkgK": 1155.7528344632583,
+                "densityKgm3": 117.24335421235341,
+                "qualityMass": 0.1508875565431968,
+                "phase": "two-phase"
+              }
+            ]
+          },
+          "rooms": [
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "attic",
+              "temperatureC": 18.60367180425004,
+              "relativeHumidity": 0.24898906309281782,
+              "humidityRatio": 0.0033084225124604062,
+              "fabricTemperatureC": 18.397634026720304,
+              "metalTemperatureC": 18.591970758353888,
+              "setpointC": 21,
+              "active": false,
+              "thermostatCalling": false,
+              "fanSpeedFraction": 0,
+              "massFlowKgs": 0,
+              "signedRoomHeatW": -0.10567741353876499,
+              "sensibleRoomHeatW": -0.10567741353752823,
+              "fanPowerW": 0,
+              "airOutletC": null,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 378.5333240230983,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "first",
+              "temperatureC": 21.499533353319578,
+              "relativeHumidity": 0.24160568575535007,
+              "humidityRatio": 0.0038443023044628186,
+              "fabricTemperatureC": 21.497788884149386,
+              "metalTemperatureC": 39.251725013428654,
+              "setpointC": 21.5,
+              "active": true,
+              "thermostatCalling": true,
+              "fanSpeedFraction": 0.6251750119832096,
+              "massFlowKgs": 0.00351685086311324,
+              "signedRoomHeatW": 1085.3493473450021,
+              "sensibleRoomHeatW": 1085.3493473449955,
+              "fanPowerW": 6.108644365073086,
+              "airOutletC": 33.51907514316264,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": -440.6271434528579,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "ground",
+              "temperatureC": 17.001180836507842,
+              "relativeHumidity": 0.2716818916389804,
+              "humidityRatio": 0.00326293249193041,
+              "fabricTemperatureC": 17.578180469203158,
+              "metalTemperatureC": 23.177469216565125,
+              "setpointC": 17,
+              "active": true,
+              "thermostatCalling": true,
+              "fanSpeedFraction": 0.6245571064916788,
+              "massFlowKgs": 0.0010680410144786893,
+              "signedRoomHeatW": 380.9082969392669,
+              "sensibleRoomHeatW": 380.9082969392527,
+              "fanPowerW": 6.0905494218261875,
+              "airOutletC": 21.229422313665395,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 62.09381942975961,
+              "internalGainW": 200
+            }
+          ],
+          "interzoneTransfers": [
+            {
+              "roomA": "ground",
+              "roomB": "first",
+              "heatFromAToBW": -62.09382308482457,
+              "solidHeatFromAToBW": -62.09382308482457,
+              "backgroundHeatFromAToBW": 0,
+              "buoyancyHeatFromAToBW": 0,
+              "effectiveConductanceWK": 13.803680981595093,
+              "equivalentExchangeM3s": 0,
+              "buoyancyState": "stable"
+            },
+            {
+              "roomA": "first",
+              "roomB": "attic",
+              "heatFromAToBW": 378.5329915047751,
+              "solidHeatFromAToBW": 39.97354899022367,
+              "backgroundHeatFromAToBW": 0,
+              "buoyancyHeatFromAToBW": 338.55944251455145,
+              "effectiveConductanceWK": 130.71515508964882,
+              "equivalentExchangeM3s": 0.09684515747850705,
+              "buoyancyState": "unstable"
+            }
+          ],
+          "inventory": null,
+          "outdoor": {
+            "temperatureC": -0.8257741725450279,
+            "iceKg": 0,
+            "liquidKg": 0,
+            "thicknessM": 0,
+            "metalTemperatureC": -0.8257741725450279,
+            "filmEnthalpyJ": 0,
+            "filmMassKg": 0,
+            "airOutletC": -0.1838811498485029,
+            "fanPowerW": 85,
+            "depositionKgs": 0,
+            "drainageKgs": 0,
+            "meltPowerW": 0
+          },
+          "electrical": {
+            "compressorW": 376.0166016696479,
+            "indoorFansW": 12.199193786899274,
+            "outdoorFanW": 85,
+            "controlsW": 15,
+            "totalW": 488.2157954565472,
+            "driveLossW": 26.321162116875314
+          },
+          "signedRoomHeatW": 1466.1519668707301,
+          "heatingCOP": 3.003081793983502,
+          "coolingCOP": null,
+          "energy": {
+            "electricityJ": 3365117.464245594,
+            "signedRoomHeatJ": 9744661.731260287,
+            "usefulServiceHeatJ": 9744661.731260287,
+            "drainedWaterKg": 0,
+            "outdoorExchangeJ": -6607076.570043539,
+            "drainageJ": 0,
+            "configurationEnergyJ": 0,
+            "boundaryEnergyJ": -4898922.136890927,
+            "storedEnergyChangeJ": -4898922.136888206,
+            "residualJ": 0.0000027213245630264282,
+            "waterResidualKg": 1.9539925233402755e-14
+          },
+          "diagnostics": {
+            "warnings": [
+              "Generic component parameters and control assumptions; not manufacturer calibrated.",
+              "Outdoor metal and retained water/ice share one equilibrium temperature.",
+              "Ice sublimation is excluded; retained ice melts or receives deposition.",
+              "Dirt scales air flow and air-side conductance at fixed fan command. Generic inverter indoor fans command 25–100% airflow across the thermostat band, linear air-side conductance and cubic electric power; no measured fan map.",
+              "Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.",
+              "Idealized parallel indoor coils use generic demand-proportional flow for inverter operation, normalized 5% UA reserve for calling inverter branches and UA allocation for fixed-speed/defrost, and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.",
+              "Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states.",
+              "Interzone openings use a buoyancy-informed sensible equivalent with reference air density 1.2 kg/m³ and cp 1006 J/(kg K); no inter-room air/water transport or resolved stratification.",
+              "Internal gains are prescribed sensible heat supplied to room air, separate from HVAC output and COP."
+            ],
+            "fault": null,
+            "algebraicResidualW": 0.057675769951270536,
+            "speedRps": 13.61946565945954,
+            "demandSpeedRps": 13.61946565945954,
+            "rawDemandSpeedRps": 13.61946565945954,
+            "restartDelaySeconds": 0,
+            "envelopeProtection": null,
+            "filmEnergyRateW": 0,
+            "metalEnergyRateW": 1.3931605052305338
+          }
+        },
+        "wallSeconds": 590.705933675,
+        "maxEnergyResidualJ": 0.000002917833626270294,
+        "maxWaterResidualKg": 2.1094237467877974e-14,
+        "protectionCounts": {},
+        "states": {
+          "running": 28800
+        },
+        "stateEntries": {
+          "running": 1
+        },
+        "completedDefrosts": 0,
+        "maxStepWallMs": 312.49249500001315,
+        "comfort": {
+          "rooms": {
+            "attic": {
+              "callingSeconds": 0,
+              "notCallingSeconds": 7200,
+              "poweredFanSeconds": 0,
+              "modulatedFanSeconds": 0,
+              "minPoweredFanFraction": null,
+              "maxPoweredFanFraction": 0,
+              "fanEnergyJ": 0,
+              "callTransitions": 0,
+              "circuitTransitions": 0
+            },
+            "first": {
+              "callingSeconds": 7200,
+              "notCallingSeconds": 0,
+              "poweredFanSeconds": 7200,
+              "modulatedFanSeconds": 7200,
+              "minPoweredFanFraction": 0.5817138489709635,
+              "maxPoweredFanFraction": 0.783929741615367,
+              "fanEnergyJ": 44996.87653576649,
+              "callTransitions": 0,
+              "circuitTransitions": 1
+            },
+            "ground": {
+              "callingSeconds": 4809.25,
+              "notCallingSeconds": 2390.75,
+              "poweredFanSeconds": 4809.25,
+              "modulatedFanSeconds": 4809,
+              "minPoweredFanFraction": 0.540585008738617,
+              "maxPoweredFanFraction": 1,
+              "fanEnergyJ": 29849.735591999597,
+              "callTransitions": 1,
+              "circuitTransitions": 1
+            }
+          },
+          "transitions": [
+            {
+              "roomId": "first",
+              "simulatedSeconds": 0.25,
+              "requestedMode": "heating",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 0.624999999999936,
+              "temperatureBeforeC": 21.50000000000017,
+              "temperatureAfterC": 21.498499635090013,
+              "setpointC": 21.5
+            },
+            {
+              "roomId": "ground",
+              "simulatedSeconds": 2391,
+              "requestedMode": "heating",
+              "state": "running",
+              "calling": true,
+              "circuitActive": true,
+              "fanFraction": 1,
+              "temperatureBeforeC": 15.999996230131956,
+              "temperatureAfterC": 16.0001127066094,
+              "setpointC": 17
+            }
+          ],
+          "recordedTransitionLimit": 128,
+          "ordinaryNoCallSeconds": 0,
+          "ordinaryCompressorWithoutCallSeconds": 0
+        },
+        "internalSteps": {
+          "accepted": 28800,
+          "refinedPublicCalls": 0,
+          "maxPerPublicCall": 1,
+          "minDt": 0.25,
+          "maxDt": 0.25,
+          "maxClockErrorSeconds": 0
+        },
+        "openingEdges": {
+          "[\"ground\",\"first\"]": {
+            "stateSeconds": {
+              "stable": 7200
+            },
+            "maxAbsoluteHeatW": 76.42798437704595,
+            "maxEquivalentExchangeM3s": 0,
+            "maxEffectiveConductanceWK": 13.803680981595093
+          },
+          "[\"first\",\"attic\"]": {
+            "stateSeconds": {
+              "unstable": 7200
+            },
+            "maxAbsoluteHeatW": 437.19223601703726,
+            "maxEquivalentExchangeM3s": 0.10180182586078233,
+            "maxEffectiveConductanceWK": 136.69884516073154
+          }
+        },
+        "final": {
+          "rooms": [
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "attic",
+              "temperatureC": 18.60367180425004,
+              "relativeHumidity": 0.24898906309281782,
+              "humidityRatio": 0.0033084225124604062,
+              "fabricTemperatureC": 18.397634026720304,
+              "metalTemperatureC": 18.591970758353888,
+              "setpointC": 21,
+              "active": false,
+              "thermostatCalling": false,
+              "fanSpeedFraction": 0,
+              "massFlowKgs": 0,
+              "signedRoomHeatW": -0.10567741353876499,
+              "sensibleRoomHeatW": -0.10567741353752823,
+              "fanPowerW": 0,
+              "airOutletC": null,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 378.5333240230983,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "first",
+              "temperatureC": 21.499533353319578,
+              "relativeHumidity": 0.24160568575535007,
+              "humidityRatio": 0.0038443023044628186,
+              "fabricTemperatureC": 21.497788884149386,
+              "metalTemperatureC": 39.251725013428654,
+              "setpointC": 21.5,
+              "active": true,
+              "thermostatCalling": true,
+              "fanSpeedFraction": 0.6251750119832096,
+              "massFlowKgs": 0.00351685086311324,
+              "signedRoomHeatW": 1085.3493473450021,
+              "sensibleRoomHeatW": 1085.3493473449955,
+              "fanPowerW": 6.108644365073086,
+              "airOutletC": 33.51907514316264,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": -440.6271434528579,
+              "internalGainW": 0
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "ground",
+              "temperatureC": 17.001180836507842,
+              "relativeHumidity": 0.2716818916389804,
+              "humidityRatio": 0.00326293249193041,
+              "fabricTemperatureC": 17.578180469203158,
+              "metalTemperatureC": 23.177469216565125,
+              "setpointC": 17,
+              "active": true,
+              "thermostatCalling": true,
+              "fanSpeedFraction": 0.6245571064916788,
+              "massFlowKgs": 0.0010680410144786893,
+              "signedRoomHeatW": 380.9082969392669,
+              "sensibleRoomHeatW": 380.9082969392527,
+              "fanPowerW": 6.0905494218261875,
+              "airOutletC": 21.229422313665395,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 62.09381942975961,
+              "internalGainW": 200
+            }
+          ],
+          "outdoor": {
+            "temperatureC": -0.8257741725450279,
+            "iceKg": 0,
+            "liquidKg": 0,
+            "thicknessM": 0,
+            "metalTemperatureC": -0.8257741725450279,
+            "filmEnthalpyJ": 0,
+            "filmMassKg": 0,
+            "airOutletC": -0.1838811498485029,
+            "fanPowerW": 85,
+            "depositionKgs": 0,
+            "drainageKgs": 0,
+            "meltPowerW": 0
+          },
+          "energy": {
+            "electricityJ": 3365117.464245594,
+            "signedRoomHeatJ": 9744661.731260287,
+            "usefulServiceHeatJ": 9744661.731260287,
+            "drainedWaterKg": 0,
+            "outdoorExchangeJ": -6607076.570043539,
+            "drainageJ": 0,
+            "configurationEnergyJ": 0,
+            "boundaryEnergyJ": -4898922.136890927,
+            "storedEnergyChangeJ": -4898922.136888206,
+            "residualJ": 0.0000027213245630264282,
+            "waterResidualKg": 1.9539925233402755e-14
+          }
+        }
+      }
+    }
+  ],
+  "passed": 5,
+  "failed": 0,
+  "historicalMeasurements": "Only the Home Assistant calibration README was read. Purged historical mode/targets/fans and unknown outdoor RH were not invented; no raw exports used or changed, no measured-watt fitting.",
+  "limitation": "Unequal physical cooling remains explicit18rps. This campaign changes no production source or physical acceptance tolerance."
+}

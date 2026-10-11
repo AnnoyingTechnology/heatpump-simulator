@@ -82,14 +82,16 @@ class CatalogueAcceptance(unittest.TestCase):
         self.assertNotIn('electricalInputKw', module.generate())
 
     def test_daikin_colour_pairing_and_unpublished_airflow_are_explicit(self):
-        outdoors = [u for u in self.review['units'] if u['reference'].startswith('RXA')]
+        outdoors = [u for u in self.review['units']
+                    if Path(u['candidateFile']).name.startswith('daikin-rxa')]
         self.assertEqual({u['reference'] for u in outdoors}, {'RXA25A9', 'RXA35A9', 'RXA42B', 'RXA50B'})
         for outdoor in outdoors:
             self.assertEqual(outdoor['ports'], 1)
             self.assertEqual(len(outdoor['compatibleIndoorClasses']), 4)
             self.assertEqual({ref[-2:] for ref in outdoor['compatibleIndoorClasses']}, {'AW', 'BS', 'BT', 'BB'})
             self.assertTrue(outdoor['unpublishedOutdoorAirflow'])
-        self.assertFalse(any(u['reference'].startswith(('FTXA20', 'CTXA15')) for u in self.review['units']))
+        legacy = [u for u in self.review['units'] if Path(u['candidateFile']).name.startswith('daikin-ftxa')]
+        self.assertFalse(any(u['reference'].startswith(('FTXA20', 'CTXA15')) for u in legacy))
 
     def test_daikin_ururu_2026_pairs_and_bulb_conditions_are_preserved(self):
         accepted = [u for u in self.review['units'] if u['reference'].startswith(('FTXZ', 'RXZ'))]
@@ -370,6 +372,48 @@ class CatalogueAcceptance(unittest.TestCase):
             review_path.write_text(json.dumps({**self.review, 'units': [accepted]}))
             with self.assertRaisesRegex(ValueError, 'cooling fan-flow condition is absent'):
                 module.generate(root)
+
+    def test_current_stylish_full_references_have_eight_exact_monosplit_finish_pairs(self):
+        accepted = [entry for entry in self.review['units']
+                    if entry['candidateFile'].endswith('luna-reviewed-daikin-stylish-cd-2026.json')]
+        self.assertEqual(len(accepted), 45)
+        outdoors = [entry for entry in accepted if entry['reference'].startswith('RXA')]
+        self.assertEqual({entry['reference'] for entry in outdoors}, {
+            'RXA20A5V1B8', 'RXA25A5V1B8', 'RXA35A5V1B8', 'RXA42B5V1B8', 'RXA50B5V1B8'})
+        for outdoor in outdoors:
+            self.assertEqual(outdoor['ports'], 1)
+            self.assertTrue(outdoor['unpublishedOutdoorAirflow'])
+            self.assertNotIn('factoryCharge', outdoor['factKeys'])
+            self.assertNotIn('mass', outdoor['factKeys'])
+            self.assertEqual(len(outdoor['compatibleIndoorClasses']), 8)
+            self.assertEqual(set(outdoor['pairingEvidenceByIndoor']), set(outdoor['compatibleIndoorClasses']))
+            for indoor, evidence in outdoor['pairingEvidenceByIndoor'].items():
+                self.assertEqual(evidence['excerpt'], indoor + ' / ' + outdoor['reference'])
+        self.assertFalse(any(entry['reference'].startswith('CTXA15') for entry in accepted))
+
+    def test_current_stylish_physical_source_groups_and_leading_multi_column_are_preserved(self):
+        entry = next(entry for entry in self.review['units']
+                     if entry['candidateFile'].endswith('luna-reviewed-daikin-stylish-cd-2026.json'))
+        candidate = json.loads((ROOT / entry['candidateFile']).read_text())
+        flows = {'20': 660, '25': 690, '35': 714, '42': 786, '50': 810}
+        capacities = {'20': 2.0, '25': 2.5, '35': 3.4, '42': 4.2, '50': 5.0}
+        for unit in candidate['units']:
+            facts = {fact['key']: fact for fact in unit['facts']}
+            if unit['unitType'] == 'indoor':
+                ref = unit['modelReference']
+                source = 'catalogue-p315' if ref[6] == 'D' else 'catalogue-p317'
+                for key in ('height', 'width', 'depth', 'airflow'):
+                    self.assertEqual(facts[key]['evidence']['sourceId'], source)
+                self.assertEqual([facts[key]['value'] for key in ('height', 'width', 'depth')], [295, 798, 189])
+                self.assertEqual(facts['airflow']['value'], flows[ref[4:6]])
+                self.assertEqual(facts['capacityClass']['value'], capacities[ref[4:6]])
+            else:
+                source = 'rxa-a8-table' if unit['modelReference'][5] == 'A' else 'rxa-b8-table'
+                for key in ('height', 'width', 'depth', 'refrigerant', 'coolingOutdoorMinimum',
+                            'coolingOutdoorMaximum', 'heatingOutdoorMinimum', 'heatingOutdoorMaximum'):
+                    self.assertEqual(facts[key]['evidence']['sourceId'], source)
+                self.assertIn('dry-bulb', facts['coolingOutdoorMinimum']['condition'])
+                self.assertIn('wet-bulb', facts['heatingOutdoorMinimum']['condition'])
 
 
 if __name__ == '__main__':

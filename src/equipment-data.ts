@@ -1732,6 +1732,176 @@ export const CATALOGUE_OUTDOORS = [
         "condition": "outdoor wet-bulb"
       }
     }
+  },
+  {
+    "id": "RXA20A5V1B8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 840,
+      "d": 350
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FTXA20D2V1BG",
+      "FTXA20D2V1BP",
+      "FTXA20D2V1BL",
+      "FTXA20D2V1BC",
+      "FTXA20D2V1BY",
+      "FTXA20C2V1BW",
+      "FTXA20C2V1BS",
+      "FTXA20C2V1BB"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "Outdoor dry-bulb, °CBS operating range; not a rating condition."
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "Outdoor wet-bulb, °CBH operating range; not a rating condition."
+      }
+    }
+  },
+  {
+    "id": "RXA25A5V1B8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 840,
+      "d": 350
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FTXA25D2V1BG",
+      "FTXA25D2V1BP",
+      "FTXA25D2V1BL",
+      "FTXA25D2V1BC",
+      "FTXA25D2V1BY",
+      "FTXA25C2V1BW",
+      "FTXA25C2V1BS",
+      "FTXA25C2V1BB"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "Outdoor dry-bulb, °CBS operating range; not a rating condition."
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "Outdoor wet-bulb, °CBH operating range; not a rating condition."
+      }
+    }
+  },
+  {
+    "id": "RXA35A5V1B8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 840,
+      "d": 350
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FTXA35D2V1BG",
+      "FTXA35D2V1BP",
+      "FTXA35D2V1BL",
+      "FTXA35D2V1BC",
+      "FTXA35D2V1BY",
+      "FTXA35C2V1BW",
+      "FTXA35C2V1BS",
+      "FTXA35C2V1BB"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "Outdoor dry-bulb, °CBS operating range; not a rating condition."
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "Outdoor wet-bulb, °CBH operating range; not a rating condition."
+      }
+    }
+  },
+  {
+    "id": "RXA42B5V1B8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 954,
+      "d": 401
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FTXA42D2V1BG",
+      "FTXA42D2V1BP",
+      "FTXA42D2V1BL",
+      "FTXA42D2V1BC",
+      "FTXA42D2V1BY",
+      "FTXA42C2V1BW",
+      "FTXA42C2V1BS",
+      "FTXA42C2V1BB"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "Outdoor dry-bulb, °CBS operating range; not a rating condition."
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "Outdoor wet-bulb, °CBH operating range; not a rating condition."
+      }
+    }
+  },
+  {
+    "id": "RXA50B5V1B8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 954,
+      "d": 401
+    },
+    "coolingHighFanFlowM3h": null,
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FTXA50D2V1BG",
+      "FTXA50D2V1BP",
+      "FTXA50D2V1BL",
+      "FTXA50D2V1BC",
+      "FTXA50D2V1BY",
+      "FTXA50C2V1BW",
+      "FTXA50C2V1BS",
+      "FTXA50C2V1BB"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "Outdoor dry-bulb, °CBS operating range; not a rating condition."
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "Outdoor wet-bulb, °CBH operating range; not a rating condition."
+      }
+    }
   }
 ] as const;
 
@@ -3182,6 +3352,486 @@ export const CATALOGUE_INDOORS = [
     },
     "coolingHighFanFlowM3h": 1038,
     "nominalCoolingKw": 7.1
+  },
+  {
+    "id": "FTXA20D2V1BG",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 660,
+    "nominalCoolingKw": 2.0
+  },
+  {
+    "id": "FTXA25D2V1BG",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 690,
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "FTXA35D2V1BG",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 714,
+    "nominalCoolingKw": 3.4
+  },
+  {
+    "id": "FTXA42D2V1BG",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 786,
+    "nominalCoolingKw": 4.2
+  },
+  {
+    "id": "FTXA50D2V1BG",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 810,
+    "nominalCoolingKw": 5.0
+  },
+  {
+    "id": "FTXA20D2V1BP",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 660,
+    "nominalCoolingKw": 2.0
+  },
+  {
+    "id": "FTXA25D2V1BP",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 690,
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "FTXA35D2V1BP",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 714,
+    "nominalCoolingKw": 3.4
+  },
+  {
+    "id": "FTXA42D2V1BP",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 786,
+    "nominalCoolingKw": 4.2
+  },
+  {
+    "id": "FTXA50D2V1BP",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 810,
+    "nominalCoolingKw": 5.0
+  },
+  {
+    "id": "FTXA20D2V1BL",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 660,
+    "nominalCoolingKw": 2.0
+  },
+  {
+    "id": "FTXA25D2V1BL",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 690,
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "FTXA35D2V1BL",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 714,
+    "nominalCoolingKw": 3.4
+  },
+  {
+    "id": "FTXA42D2V1BL",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 786,
+    "nominalCoolingKw": 4.2
+  },
+  {
+    "id": "FTXA50D2V1BL",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 810,
+    "nominalCoolingKw": 5.0
+  },
+  {
+    "id": "FTXA20D2V1BC",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 660,
+    "nominalCoolingKw": 2.0
+  },
+  {
+    "id": "FTXA25D2V1BC",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 690,
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "FTXA35D2V1BC",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 714,
+    "nominalCoolingKw": 3.4
+  },
+  {
+    "id": "FTXA42D2V1BC",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 786,
+    "nominalCoolingKw": 4.2
+  },
+  {
+    "id": "FTXA50D2V1BC",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 810,
+    "nominalCoolingKw": 5.0
+  },
+  {
+    "id": "FTXA20D2V1BY",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 660,
+    "nominalCoolingKw": 2.0
+  },
+  {
+    "id": "FTXA25D2V1BY",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 690,
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "FTXA35D2V1BY",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 714,
+    "nominalCoolingKw": 3.4
+  },
+  {
+    "id": "FTXA42D2V1BY",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 786,
+    "nominalCoolingKw": 4.2
+  },
+  {
+    "id": "FTXA50D2V1BY",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 810,
+    "nominalCoolingKw": 5.0
+  },
+  {
+    "id": "FTXA20C2V1BW",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 660,
+    "nominalCoolingKw": 2.0
+  },
+  {
+    "id": "FTXA25C2V1BW",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 690,
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "FTXA35C2V1BW",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 714,
+    "nominalCoolingKw": 3.4
+  },
+  {
+    "id": "FTXA42C2V1BW",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 786,
+    "nominalCoolingKw": 4.2
+  },
+  {
+    "id": "FTXA50C2V1BW",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 810,
+    "nominalCoolingKw": 5.0
+  },
+  {
+    "id": "FTXA20C2V1BS",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 660,
+    "nominalCoolingKw": 2.0
+  },
+  {
+    "id": "FTXA25C2V1BS",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 690,
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "FTXA35C2V1BS",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 714,
+    "nominalCoolingKw": 3.4
+  },
+  {
+    "id": "FTXA42C2V1BS",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 786,
+    "nominalCoolingKw": 4.2
+  },
+  {
+    "id": "FTXA50C2V1BS",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 810,
+    "nominalCoolingKw": 5.0
+  },
+  {
+    "id": "FTXA20C2V1BB",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 660,
+    "nominalCoolingKw": 2.0
+  },
+  {
+    "id": "FTXA25C2V1BB",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 690,
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "FTXA35C2V1BB",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 714,
+    "nominalCoolingKw": 3.4
+  },
+  {
+    "id": "FTXA42C2V1BB",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 786,
+    "nominalCoolingKw": 4.2
+  },
+  {
+    "id": "FTXA50C2V1BB",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 810,
+    "nominalCoolingKw": 5.0
   }
 ] as const;
 

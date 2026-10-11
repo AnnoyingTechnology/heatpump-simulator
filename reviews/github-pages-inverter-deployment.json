@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-10-11T13:33:24.367Z",
+  "url": "https://annoyingtechnology.github.io/heatpump-simulator/",
+  "wasmUrl": "https://annoyingtechnology.github.io/heatpump-simulator/vendor/coolprop-safe/coolprop.wasm",
+  "wasmSha256": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+  "expectedBundles": [
+    "index-SHhEJm39.css",
+    "index-X12wkRQf.js",
+    "worker-qeGLgi2I.js"
+  ],
+  "bundleHashes": {
+    "index-SHhEJm39.css": "3619dab6058752198d6063c0a503b84cbb98c57059e474c2961399fce854f11b",
+    "index-X12wkRQf.js": "050154db5411fa2206a29629be93290ca4acb18afb450d24316fa0af84b5cab4",
+    "worker-qeGLgi2I.js": "388f31c88ab5172e69ae2da1310899636b6356076686ff51bba3e1af1134423a"
+  },
+  "checks": [
+    {
+      "name": "hosted site starts a real running worker with physical sensor readings",
+      "passed": true
+    },
+    {
+      "name": "hosted whole-house ruler keeps RT markers beside average U and estimated exposed area",
+      "passed": true
+    },
+    {
+      "name": "hosted zoom keeps the temperature scales at the bottom and headline trends use borderless separators",
+      "passed": true
+    },
+    {
+      "name": "hosted winter preset, room junctions, session COP and drained-water total are visible",
+      "passed": true
+    },
+    {
+      "name": "paused weather and individual indoor controls preserve the simulation clock",
+      "passed": true
+    },
+    {
+      "name": "requested acceleration resumes physical time without restarting",
+      "passed": true
+    },
+    {
+      "name": "hosted application and assets report no runtime or loading errors",
+      "passed": true
+    }
+  ],
+  "achievedRate": "46.9\u00d7",
+  "resumedOperatingState": "idle",
+  "desktop": {
+    "width": 1600,
+    "height": 1000
+  },
+  "releaseCommit": "6a594caa6c093f815947aa132e9eae99f50b5fc1",
+  "githubRun": 38142961236,
+  "githubConclusion": "success",
+  "ciChecks": {
+    "reference": 126,
+    "historyAndUrlParser": 5,
+    "catalogue": 21,
+    "robustnessSmoke": 25
+  }
+}
