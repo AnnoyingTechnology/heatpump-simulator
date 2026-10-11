@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "mitsubishi-electric",
+  "family": "MSZ-HR Mural Essentiel",
+  "market": "France",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "mitsubishi-fr-air-air-2026-2027",
+      "url": "https://confort.mitsubishielectric.fr/sites/default/files/2026-04/RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "title": "PAC Air/Air catalogue 2026-2027",
+      "edition": "RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "MUZ-HR35VF2",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.50 (printed p.49), page header 'MSZ-HR. Mural Essentiel' + 'INVERTER' + 'MUZ-HR 25/35 VF2'; UNITÉS EXTÉRIEURES table header, column 2 = MUZ-HR35VF2 (35-class)",
+        "excerpt": "MSZ-HR. Mural Essentiel INVERTER ; MUZ-HR 25/35 VF2 ; UNITÉS EXTÉRIEURES MUZ-HR25VF2 MUZ-HR35VF2 MUZ-HR42VF2 MUZ-HR50VF2 MUZ-HR60VF2 MUZ-HR71VF2"
+      },
+      "facts": [
+        {
+          "key": "controlStrategy",
+          "value": "inverter",
+          "unit": "none",
+          "condition": "explicit page-level 'INVERTER' label of the MSZ-HR/MUZ-HR family page",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), page header banner under 'MSZ-HR. Mural Essentiel R32'",
+            "excerpt": "INVERTER"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 3.4,
+          "unit": "kW",
+          "condition": "nominal cooling capacity of the 35-class split (MSZ-HR35VFK2 companion); published min / nominal / max 0.9 / 3.4 / 3.4 kW",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), cooling table row 'Puissance frigorifique min / nominale / max', Taille 35 column",
+            "excerpt": "Puissance frigorifique min / nominale / max kW 0.9 / 3.4 / 3.4"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1908,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed (GV); row 'Débit d'air en froid GV' value 1908 is a single cell under the MUZ-HR35VF2 column (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS EXTÉRIEURES row 'Débit d'air en froid GV', MUZ-HR35VF2 column",
+            "excerpt": "Débit d'air en froid GV m3/h 1908"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 50,
+          "unit": "dBA",
+          "condition": "cooling mode, high fan speed (GV), measured at 1 m; footnote (1): mesurée en chambre anéchoïque; row value '50' is a single cell visually spanning the MUZ-HR25VF2 and MUZ-HR35VF2 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS EXTÉRIEURES row 'Pression acoustique (1) en froid 1 m GV', merged MUZ-HR25VF2/MUZ-HR35VF2 columns + footnote (1)",
+            "excerpt": "Pression acoustique (1) en froid 1 m GV dB(A) 50"
+          }
+        },
+        {
+          "key": "soundPower",
+          "value": 64,
+          "unit": "dBA",
+          "condition": "cooling mode, high fan speed (GV); row value '64' is a single cell visually spanning the MUZ-HR35VF2..MUZ-HR50VF2 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS EXTÉRIEURES row 'Puissance acoustique en froid GV', merged MUZ-HR35VF2..MUZ-HR50VF2 columns",
+            "excerpt": "Puissance acoustique en froid GV dB(A) 64"
+          }
+        },
+        {
+          "key": "height",
+          "value": 538,
+          "unit": "mm",
+          "condition": "outdoor unit; row 'Hauteur x Largeur x Profondeur' publishes 538 x 699 x 249 merged across the MUZ-HR25VF2/MUZ-HR35VF2 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS EXTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged MUZ-HR25VF2/MUZ-HR35VF2 columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 538 x 699 x 249"
+          }
+        },
+        {
+          "key": "width",
+          "value": 699,
+          "unit": "mm",
+          "condition": "outdoor unit; merged MUZ-HR25VF2/MUZ-HR35VF2 columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS EXTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged MUZ-HR25VF2/MUZ-HR35VF2 columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 538 x 699 x 249"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 249,
+          "unit": "mm",
+          "condition": "outdoor unit; merged MUZ-HR25VF2/MUZ-HR35VF2 columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS EXTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged MUZ-HR25VF2/MUZ-HR35VF2 columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 538 x 699 x 249"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 22,
+          "unit": "kg",
+          "condition": "net weight, outdoor unit; 'Poids net' value 22 merged across the MUZ-HR25VF2/MUZ-HR35VF2 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS EXTÉRIEURES row 'Poids net', merged MUZ-HR25VF2/MUZ-HR35VF2 columns",
+            "excerpt": "Poids net kg 22"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "condition": "refrigerant circuit shared with MSZ-HR35VFK2 indoor unit; PRP (GWP) 675",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), DONNÉES FRIGORIFIQUES row 'Fluide / PRP (Pouvoir de Réchauffement Planétaire)', row merged across all size columns",
+            "excerpt": "Fluide / PRP (Pouvoir de Réchauffement Planétaire) -/- R32 / 675"
+          }
+        },
+        {
+          "key": "factoryCharge",
+          "value": 0.42,
+          "unit": "kg",
+          "condition": "factory charge of the outdoor-unit refrigerant circuit for the 35-class split; published row 'Lg préchargée / Précharge / Tonne équivalent CO2' = 7.0 m / 0.42 kg / 0.300 t CO2; charge belongs to the outdoor circuit, not separately charged indoor head",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), DONNÉES FRIGORIFIQUES row 'Lg préchargée / Précharge / Tonne équivalent CO2', MUZ-HR35VF2 column",
+            "excerpt": "Lg préchargée / Précharge / Tonne équivalent CO2 m / kg / t 7.0 / 0.42 / 0.300"
+          }
+        },
+        {
+          "key": "prechargedPipeLength",
+          "value": 7.0,
+          "unit": "m",
+          "condition": "precharged pipe length of the 35-class split circuit",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), DONNÉES FRIGORIFIQUES row 'Lg préchargée / Précharge / Tonne équivalent CO2', MUZ-HR35VF2 column",
+            "excerpt": "Lg préchargée / Précharge / Tonne équivalent CO2 m / kg / t 7.0 / 0.42 / 0.300"
+          }
+        },
+        {
+          "key": "additionalChargePerLength",
+          "value": 0.020,
+          "unit": "kg/m",
+          "condition": "additional refrigerant charge per metre beyond precharged length, 25/35/42/50 group; published row 'Charge supplémentaire / Qté réfrigérant additionnelle maxi' = 20 g/m / 0.26 kg max; exact conversion 20 g/m = 0.020 kg/m, original 20 g/m preserved in excerpt",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), DONNÉES FRIGORIFIQUES row 'Charge supplémentaire / Qté réfrigérant additionnelle maxi', merged MUZ-HR25VF2..MUZ-HR50VF2 columns",
+            "excerpt": "Charge supplémentaire / Qté réfrigérant additionnelle maxi g/m / kg 20 / 0.26"
+          }
+        },
+        {
+          "key": "maximumTotalPipeLength",
+          "value": 20,
+          "unit": "m",
+          "condition": "25/35/42/50 group; row 'Longueur maxi / Dénivelé maxi' = 20 m / 12 m",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), DONNÉES FRIGORIFIQUES row 'Longueur maxi / Dénivelé maxi', merged MUZ-HR25VF2..MUZ-HR50VF2 columns",
+            "excerpt": "Longueur maxi / Dénivelé maxi m 20 / 12"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 12,
+          "unit": "m",
+          "condition": "25/35/42/50 group; row 'Longueur maxi / Dénivelé maxi' = 20 m / 12 m",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), DONNÉES FRIGORIFIQUES row 'Longueur maxi / Dénivelé maxi', merged MUZ-HR25VF2..MUZ-HR50VF2 columns",
+            "excerpt": "Longueur maxi / Dénivelé maxi m 20 / 12"
+          }
+        },
+        {
+          "key": "liquidConnectionDiameter",
+          "value": 6.35,
+          "unit": "mm",
+          "condition": "flare connection; published '1/4 flare' pouce, exact inch-to-mm conversion 1/4 x 25.4 = 6.35 mm; row merged across all size columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), DONNÉES FRIGORIFIQUES row 'Diamètre liquide', row merged across all size columns",
+            "excerpt": "Diamètre liquide pouce 1/4 flare"
+          }
+        },
+        {
+          "key": "gasConnectionDiameter",
+          "value": 9.525,
+          "unit": "mm",
+          "condition": "flare connection; published '3/8 flare' pouce, exact inch-to-mm conversion 3/8 x 25.4 = 9.525 mm; row value merged across the MUZ-HR25VF2..MUZ-HR50VF2 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), DONNÉES FRIGORIFIQUES row 'Diamètre gaz', merged MUZ-HR25VF2..MUZ-HR50VF2 columns",
+            "excerpt": "Diamètre gaz pouce 3/8 flare"
+          }
+        },
+        {
+          "key": "supplyVoltage",
+          "value": 230,
+          "unit": "V",
+          "condition": "supply by outdoor unit ('Alimentation électrique par unité extérieure'), row header V~50Hz; footnote: Données électriques à valeurs indicatives, se rapporter à la norme NFC 15-100",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), DONNÉES ÉLECTRIQUES row 'Alimentation électrique par unité extérieure', row merged across all size columns",
+            "excerpt": "Alimentation électrique par unité extérieure V~50Hz 230 V (1P+N+T)"
+          }
+        },
+        {
+          "key": "supplyPhases",
+          "value": 1,
+          "unit": "none",
+          "condition": "outdoor supply '230 V (1P+N+T)' = single phase + neutral + earth",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), DONNÉES ÉLECTRIQUES row 'Alimentation électrique par unité extérieure', row merged across all size columns",
+            "excerpt": "Alimentation électrique par unité extérieure V~50Hz 230 V (1P+N+T)"
+          }
+        },
+        {
+          "key": "supplyFrequency",
+          "value": 50,
+          "unit": "Hz",
+          "condition": "row header unit 'V~50Hz' of the supply row",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), DONNÉES ÉLECTRIQUES row 'Alimentation électrique par unité extérieure', row header unit",
+            "excerpt": "Alimentation électrique par unité extérieure V~50Hz 230 V (1P+N+T)"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "cooling operating range (outdoor dry-bulb / dry-bulb), row merged across all size columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), cooling table row 'Plage de fonctionnement (T°ext. sèche/sèche)', merged all Taille columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "cooling operating range (outdoor dry-bulb / dry-bulb), row merged across all size columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), cooling table row 'Plage de fonctionnement (T°ext. sèche/sèche)', merged all Taille columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "heating operating range (outdoor wet-bulb / dry-bulb); page bullet: 'Chauffage garanti jusqu'à -10°C extérieur'",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), heating table row 'Plage de fonctionnement (T°ext. humide/sèche)', merged all Taille columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -10 / +24"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "condition": "heating operating range (outdoor wet-bulb / dry-bulb)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), heating table row 'Plage de fonctionnement (T°ext. humide/sèche)', merged all Taille columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -10 / +24"
+          }
+        }
+      ],
+      "ratings": [
+        {
+          "mode": "cooling",
+          "combination": "MSZ-HR35VFK2 + MUZ-HR35VF2 (35-class mono-split)",
+          "conditions": "published min / nominal / max table values; rated indoor/outdoor test conditions not published in this table (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.9, "nominal": 3.4, "maximum": 3.4 },
+          "electricalInputKw": { "minimum": null, "nominal": 1.210, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), cooling table rows 'Puissance frigorifique min / nominale / max' and 'Puissance absorbée totale nominale', Taille 35 column",
+            "excerpt": "Puissance frigorifique min / nominale / max kW 0.9 / 3.4 / 3.4 ; Puissance absorbée totale nominale kW 1.210"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-HR35VFK2 + MUZ-HR35VF2 (35-class mono-split)",
+          "conditions": "outdoor +7°C (published row 'à +7°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.9, "nominal": 3.6, "maximum": 3.7 },
+          "electricalInputKw": { "minimum": null, "nominal": 1.000, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), heating table rows 'Puissance calorifique min / nominale / max à +7°C' and 'Puissance absorbée totale nominale', Taille 35 column",
+            "excerpt": "Puissance calorifique min / nominale / max à +7°C kW 0.9 / 3.6 / 3.7 ; Puissance absorbée totale nominale kW 1.000"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-HR35VFK2 + MUZ-HR35VF2 (35-class mono-split)",
+          "conditions": "outdoor -7°C (published row 'à -7°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.6, "nominal": 2.4, "maximum": 2.5 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), heating table row 'Puissance calorifique min / nominale / max à -7°C', Taille 35 column; no separate -7°C electrical row is published",
+            "excerpt": "Puissance calorifique min / nominale / max à -7°C kW 0.6 / 2.4 / 2.5"
+          }
+        }
+      ],
+      "compatibility": [
+        {
+          "description": "mono-split pairing MUZ-HR35VF2 + MSZ-HR35VFK2 is evidenced by the shared 'Tailles 35' column of the page-49 spec table and the MUZ-HR 25/35 VF2 outdoor header; multi-split compatibility NOT established here (separate combination tables pending)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), page header 'MUZ-HR 25/35 VF2' + 'Tailles' column 35 spanning cooling/heating tables; UNITÉS INTÉRIEURES header MSZ-HR35VFK2 and UNITÉS EXTÉRIEURES header MUZ-HR35VF2",
+            "excerpt": "MUZ-HR 25/35 VF2 ; Tailles 25 35 42 50 60 71 ; UNITÉS EXTÉRIEURES MUZ-HR25VF2 MUZ-HR35VF2 ..."
+          }
+        }
+      ],
+      "unknowns": [
+        "outdoor fan motor output and electrical input: not published",
+        "outdoor sound pressure/power in heating mode: not published separately",
+        "outdoor airflow at speeds other than GV: not published",
+        "maximumBranchPipeLength: not published in this table",
+        "SEER/SCOP climate class and test conditions: not published in this table; these are system/combination ratings for MSZ-HR35VFK2 + MUZ-HR35VF2",
+        "electrical values are indicative per footnote ('Données électriques à valeurs indicatives, se rapporter à la norme NFC 15-100')",
+        "cable sizing and protection (3G 2.5 outdoor cable, 4G 1.5 inter-unit cable, 10 A protection) recorded as notes only, not schema fact keys"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    {
+      "modelReference": "MSZ-HR35VFK2",
+      "reason": "paired indoor unit of this split; its spec-table facts are captured in the separate indoor candidate file mitsubishi-msz-hr35-indoor.json"
+    },
+    {
+      "modelReference": "MUZ-HR multi-split eligibility",
+      "reason": "MUZ-HR is the mono-split companion shown on printed p.49; multi-split MSZ-HR compatibility is via MXZ-2HA40VF3/2HA50VF3/3HA50VF3 (catalogue pp.110-111), separate outdoor references; combination tables pending"
+    }
+  ]
+}

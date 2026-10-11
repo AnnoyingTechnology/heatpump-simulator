@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "mitsubishi-electric",
+  "family": "MSZ-HR Mural Essentiel",
+  "market": "France",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "mitsubishi-fr-air-air-2026-2027",
+      "url": "https://confort.mitsubishielectric.fr/sites/default/files/2026-04/RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "title": "PAC Air/Air catalogue 2026-2027",
+      "edition": "RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "MSZ-HR71VF2",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.50 (printed p.49), page header 'MSZ-HR. Mural Essentiel' + 'INVERTER'; UNITÉS INTÉRIEURES table header, column 6 = MSZ-HR71VF2 (71-class)",
+        "excerpt": "MSZ-HR. Mural Essentiel INVERTER ; UNITÉS INTÉRIEURES MSZ-HR25VFK2 MSZ-HR35VFK2 MSZ-HR42VFK2 MSZ-HR50VFK2 MSZ-HR60VF2 MSZ-HR71VF2"
+      },
+      "facts": [
+        {
+          "key": "controlStrategy",
+          "value": "inverter",
+          "unit": "none",
+          "condition": "explicit page-level 'INVERTER' label of the MSZ-HR family page",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), page header banner under 'MSZ-HR. Mural Essentiel R32'",
+            "excerpt": "INVERTER"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 7.1,
+          "unit": "kW",
+          "condition": "nominal cooling capacity of the 71-class split (MUZ-HR71VF2 companion); published min / nominal / max 1.8 / 7.1 / 7.3 kW",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), cooling table row 'Puissance frigorifique min / nominale / max', Taille 71 column",
+            "excerpt": "Puissance frigorifique min / nominale / max kW 1.8 / 7.1 / 7.3"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 624,
+          "unit": "m3/h",
+          "condition": "cooling mode, low fan speed (PV); row 'Débit d'air en froid -/PV/MV/GV/SGV' value '- / 624 / 756 / 924 / 1176' is a single cell visually spanning the MSZ-HR60VF2 and MSZ-HR71VF2 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS INTÉRIEURES row 'Débit d'air en froid -/PV/MV/GV/SGV', merged MSZ-HR60VF2/MSZ-HR71VF2 columns, PV value",
+            "excerpt": "Débit d'air en froid -/PV/MV/GV/SGV m3/h - / 624 / 756 / 924 / 1176"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 756,
+          "unit": "m3/h",
+          "condition": "cooling mode, medium fan speed (MV); merged MSZ-HR60VF2/MSZ-HR71VF2 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS INTÉRIEURES row 'Débit d'air en froid -/PV/MV/GV/SGV', merged MSZ-HR60VF2/MSZ-HR71VF2 columns, MV value",
+            "excerpt": "Débit d'air en froid -/PV/MV/GV/SGV m3/h - / 624 / 756 / 924 / 1176"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 924,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed (GV); merged MSZ-HR60VF2/MSZ-HR71VF2 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS INTÉRIEURES row 'Débit d'air en froid -/PV/MV/GV/SGV', merged MSZ-HR60VF2/MSZ-HR71VF2 columns, GV value",
+            "excerpt": "Débit d'air en froid -/PV/MV/GV/SGV m3/h - / 624 / 756 / 924 / 1176"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1176,
+          "unit": "m3/h",
+          "condition": "cooling mode, super-high fan speed (SGV); merged MSZ-HR60VF2/MSZ-HR71VF2 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS INTÉRIEURES row 'Débit d'air en froid -/PV/MV/GV/SGV', merged MSZ-HR60VF2/MSZ-HR71VF2 columns, SGV value",
+            "excerpt": "Débit d'air en froid -/PV/MV/GV/SGV m3/h - / 624 / 756 / 924 / 1176"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 33,
+          "unit": "dBA",
+          "condition": "cooling mode, low fan speed (PV), measured at 1 m; footnote (1): mesurée en chambre anéchoïque; row value '- / 33 / 38 / 44 / 50' is a single cell visually spanning the MSZ-HR60VF2 and MSZ-HR71VF2 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m -/PV/MV/GV/SGV', merged MSZ-HR60VF2/MSZ-HR71VF2 columns, PV value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m -/PV/MV/GV/SGV dB(A) - / 33 / 38 / 44 / 50"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 38,
+          "unit": "dBA",
+          "condition": "cooling mode, medium fan speed (MV), measured at 1 m; merged MSZ-HR60VF2/MSZ-HR71VF2 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m -/PV/MV/GV/SGV', merged MSZ-HR60VF2/MSZ-HR71VF2 columns, MV value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m -/PV/MV/GV/SGV dB(A) - / 33 / 38 / 44 / 50"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 44,
+          "unit": "dBA",
+          "condition": "cooling mode, high fan speed (GV), measured at 1 m; merged MSZ-HR60VF2/MSZ-HR71VF2 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m -/PV/MV/GV/SGV', merged MSZ-HR60VF2/MSZ-HR71VF2 columns, GV value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m -/PV/MV/GV/SGV dB(A) - / 33 / 38 / 44 / 50"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 50,
+          "unit": "dBA",
+          "condition": "cooling mode, super-high fan speed (SGV), measured at 1 m; merged MSZ-HR60VF2/MSZ-HR71VF2 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m -/PV/MV/GV/SGV', merged MSZ-HR60VF2/MSZ-HR71VF2 columns, SGV value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m -/PV/MV/GV/SGV dB(A) - / 33 / 38 / 44 / 50"
+          }
+        },
+        {
+          "key": "soundPower",
+          "value": 65,
+          "unit": "dBA",
+          "condition": "cooling mode at super-high fan speed (SGV); row value '65' is a single cell visually spanning the MSZ-HR60VF2 and MSZ-HR71VF2 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS INTÉRIEURES row 'Puissance acoustique en froid SGV', merged MSZ-HR60VF2/MSZ-HR71VF2 columns",
+            "excerpt": "Puissance acoustique en froid SGV dB(A) 65"
+          }
+        },
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "condition": "indoor unit; row 'Hauteur x Largeur x Profondeur' publishes 305 x 923 x 262 merged across the MSZ-HR60VF2/MSZ-HR71VF2 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS INTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged MSZ-HR60VF2/MSZ-HR71VF2 columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 305 x 923 x 262"
+          }
+        },
+        {
+          "key": "width",
+          "value": 923,
+          "unit": "mm",
+          "condition": "indoor unit; merged MSZ-HR60VF2/MSZ-HR71VF2 columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS INTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged MSZ-HR60VF2/MSZ-HR71VF2 columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 305 x 923 x 262"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 262,
+          "unit": "mm",
+          "condition": "indoor unit; merged MSZ-HR60VF2/MSZ-HR71VF2 columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS INTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged MSZ-HR60VF2/MSZ-HR71VF2 columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 305 x 923 x 262"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 13,
+          "unit": "kg",
+          "condition": "net weight, indoor unit; 'Poids net' value 13 merged across the MSZ-HR60VF2/MSZ-HR71VF2 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), UNITÉS INTÉRIEURES row 'Poids net', merged MSZ-HR60VF2/MSZ-HR71VF2 columns",
+            "excerpt": "Poids net kg 13"
+          }
+        }
+      ],
+      "ratings": [
+        {
+          "mode": "cooling",
+          "combination": "MSZ-HR71VF2 + MUZ-HR71VF2 (71-class mono-split)",
+          "conditions": "published min / nominal / max table values; rated indoor/outdoor test conditions not published in this table (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.8, "nominal": 7.1, "maximum": 7.3 },
+          "electricalInputKw": { "minimum": null, "nominal": 2.330, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), cooling table rows 'Puissance frigorifique min / nominale / max' and 'Puissance absorbée totale nominale', Taille 71 column",
+            "excerpt": "Puissance frigorifique min / nominale / max kW 1.8 / 7.1 / 7.3 ; Puissance absorbée totale nominale kW 2.330"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-HR71VF2 + MUZ-HR71VF2 (71-class mono-split)",
+          "conditions": "outdoor +7°C (published row 'à +7°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.5, "nominal": 8.1, "maximum": 9.0 },
+          "electricalInputKw": { "minimum": null, "nominal": 2.440, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), heating table rows 'Puissance calorifique min / nominale / max à +7°C' and 'Puissance absorbée totale nominale', Taille 71 column",
+            "excerpt": "Puissance calorifique min / nominale / max à +7°C kW 1.5 / 8.1 / 9.0 ; Puissance absorbée totale nominale kW 2.440"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-HR71VF2 + MUZ-HR71VF2 (71-class mono-split)",
+          "conditions": "outdoor -7°C (published row 'à -7°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.0, "nominal": 5.4, "maximum": 6.0 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), heating table row 'Puissance calorifique min / nominale / max à -7°C', Taille 71 column; no separate -7°C electrical row is published",
+            "excerpt": "Puissance calorifique min / nominale / max à -7°C kW 1.0 / 5.4 / 6.0"
+          }
+        }
+      ],
+      "compatibility": [
+        {
+          "description": "mono-split pairing MSZ-HR71VF2 + MUZ-HR71VF2 is evidenced by the shared 'Tailles 71' column of the page-49 spec table and the MUZ-HR 60/71 VF2 outdoor header; multi-split compatibility NOT established here (separate combination tables pending)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), page header 'MUZ-HR 60/71 VF2' + 'Tailles' column 71 spanning cooling/heating tables; UNITÉS INTÉRIEURES header MSZ-HR71VF2 and UNITÉS EXTÉRIEURES header MUZ-HR71VF2",
+            "excerpt": "MUZ-HR 60/71 VF2 ; Tailles 25 35 42 50 60 71 ; UNITÉS EXTÉRIEURES ... MUZ-HR60VF2 MUZ-HR71VF2"
+          }
+        }
+      ],
+      "unknowns": [
+        "indoor electrical supply / voltage: catalogue publishes 'Alimentation électrique par unité extérieure' only (230 V (1P+N+T) at MUZ-HR71VF2); indoor-only supply not stated",
+        "indoor fan motor output and electrical input: not published",
+        "indoor unit sound pressure and airflow in heating mode: not published separately",
+        "silent/night mode (-3dB(A)) airflow and sound pressure values: not published in this table",
+        "SEER/SCOP climate class and test conditions: not published in this table; these are system/combination ratings for MSZ-HR71VF2 + MUZ-HR71VF2",
+        "Wi-Fi: standard for sizes 25/35/42/50 per pp.47-48; for 60/71 not established in the page-49 table",
+        "drain connection: 'Ø des condensats / Pompe de relevage mm 16 / Non fournie' (pump not supplied) recorded only as note, not a schema fact key"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    {
+      "modelReference": "MUZ-HR71VF2",
+      "reason": "paired outdoor unit of this split; its spec-table facts are on the same table (PDF p.50 / printed p.49) but captured in the separate outdoor candidate file"
+    },
+    {
+      "modelReference": "MSZ-HR color/suffix variants",
+      "reason": "only VFK2 (25-50) and VF2 (60/71) indoor suffixes are printed; no other suffix is inferred"
+    }
+  ]
+}

@@ -5,41 +5,271 @@
   "edition": "PAC Air/Air catalogue 2026-2027 (RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf)",
   "status": "INCOMPLETE checkpoint index; per-family reference manifests are separate files",
   "families": [
-    { "name": "MSZ-HR Mural Essentiel", "pageLocator": "PDF pp.46-51 (printed pp.45-50)", "unitTypes": ["indoor", "outdoor"], "referencesFile": "mitsubishi-msz-hr.manifest.json", "status": "pending" },
-    { "name": "MSZ-AY Mural Compact", "pageLocator": "pp.52-57", "unitTypes": ["indoor", "outdoor"], "referencesFile": null, "status": "pending" },
-    { "name": "MSZ-AP Mural Grandes Pieces", "pageLocator": "pp.58-63", "unitTypes": ["indoor", "outdoor"], "referencesFile": null, "status": "pending" },
-    { "name": "MSZ-EF Mural Design", "pageLocator": "pp.60-67", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "MSZ-LN Mural Design Premium/Premium+", "pageLocator": "pp.64-65,72-75", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "MSZ-FT Mural Compact+", "pageLocator": "pp.68-71", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "MSZ-RW Mural Ultimate+", "pageLocator": "pp.76-79", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "MSZ-RZ Mural Ultimate+ (R290)", "pageLocator": "pp.80-89", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "MFZ-KT Console Design", "pageLocator": "pp.91-95", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "MFZ-KW Console Design+", "pageLocator": "pp.96-99", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "SFZ-M Console Non Carrossee", "pageLocator": "pp.100-103", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "MXZ Multi-Split (Essentiel/Standard/Hyper)", "pageLocator": "pp.104-119", "unitTypes": ["outdoor"], "referencesFile": null, "status": "pending" },
-    { "name": "SEZ-M Gainable Basse Pression", "pageLocator": "pp.146-152", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "PEAD-M Gainable Moyenne Pression", "pageLocator": "pp.153-158", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "PEA-M Gainable Haute Pression", "pageLocator": "pp.159-160", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "MLZ-KY/KP Cassette 1 Voie", "pageLocator": "pp.173-180", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "SLZ-M Cassette 4 Voies 600x600", "pageLocator": "pp.181-184", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "PLA-M Cassette 4 Voies 900x900", "pageLocator": "pp.185-191", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "PCA-M Plafonnier", "pageLocator": "pp.192-202", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "PKA-M Mural Tertiaire", "pageLocator": "pp.206-210", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "MSY-TP Mural IT", "pageLocator": "pp.210-212", "unitTypes": ["indoor", "outdoor"], "referencesFile": null, "status": "pending" },
-    { "name": "PSA-M Armoire", "pageLocator": "pp.212-216", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "S-MEXT-G00 Armoire IT", "pageLocator": "pp.216-219", "unitTypes": ["indoor"], "referencesFile": null, "status": "pending" },
-    { "name": "PUZ-M / PUZ-ZM Twin-Triple-Quadri outdoor groups", "pageLocator": "pp.220-227", "unitTypes": ["outdoor"], "referencesFile": null, "status": "pending" },
-    { "name": "SUZ-M Mono-Split Inverter outdoor groups", "pageLocator": "pp.29-30 index; spec tables pp.93-94,101,149-150,153-154,181-182,185-186,195-196", "unitTypes": ["outdoor"], "referencesFile": null, "status": "pending" }
+    {
+      "name": "MSZ-HR Mural Essentiel",
+      "pageLocator": "PDF pp.46-51 (printed pp.45-50)",
+      "unitTypes": [
+        "indoor",
+        "outdoor"
+      ],
+      "referencesFile": "mitsubishi-msz-hr.manifest.json",
+      "status": "candidate-drafted;12 unit candidates structure-validated; independent source acceptance pending"
+    },
+    {
+      "name": "MSZ-AY Mural Compact",
+      "pageLocator": "pp.52-57",
+      "unitTypes": [
+        "indoor",
+        "outdoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "MSZ-AP Mural Grandes Pieces",
+      "pageLocator": "pp.58-63",
+      "unitTypes": [
+        "indoor",
+        "outdoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "MSZ-EF Mural Design",
+      "pageLocator": "pp.60-67",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "MSZ-LN Mural Design Premium/Premium+",
+      "pageLocator": "pp.64-65,72-75",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "MSZ-FT Mural Compact+",
+      "pageLocator": "pp.68-71",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "MSZ-RW Mural Ultimate+",
+      "pageLocator": "pp.76-79",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "MSZ-RZ Mural Ultimate+ (R290)",
+      "pageLocator": "pp.80-89",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "MFZ-KT Console Design",
+      "pageLocator": "pp.91-95",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "MFZ-KW Console Design+",
+      "pageLocator": "pp.96-99",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "SFZ-M Console Non Carrossee",
+      "pageLocator": "pp.100-103",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "MXZ Multi-Split (Essentiel/Standard/Hyper)",
+      "pageLocator": "pp.104-119",
+      "unitTypes": [
+        "outdoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "SEZ-M Gainable Basse Pression",
+      "pageLocator": "pp.146-152",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "PEAD-M Gainable Moyenne Pression",
+      "pageLocator": "pp.153-158",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "PEA-M Gainable Haute Pression",
+      "pageLocator": "pp.159-160",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "MLZ-KY/KP Cassette 1 Voie",
+      "pageLocator": "pp.173-180",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "SLZ-M Cassette 4 Voies 600x600",
+      "pageLocator": "pp.181-184",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "PLA-M Cassette 4 Voies 900x900",
+      "pageLocator": "pp.185-191",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "PCA-M Plafonnier",
+      "pageLocator": "pp.192-202",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "PKA-M Mural Tertiaire",
+      "pageLocator": "pp.206-210",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "MSY-TP Mural IT",
+      "pageLocator": "pp.210-212",
+      "unitTypes": [
+        "indoor",
+        "outdoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "PSA-M Armoire",
+      "pageLocator": "pp.212-216",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "S-MEXT-G00 Armoire IT",
+      "pageLocator": "pp.216-219",
+      "unitTypes": [
+        "indoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "PUZ-M / PUZ-ZM Twin-Triple-Quadri outdoor groups",
+      "pageLocator": "pp.220-227",
+      "unitTypes": [
+        "outdoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    },
+    {
+      "name": "SUZ-M Mono-Split Inverter outdoor groups",
+      "pageLocator": "pp.29-30 index; spec tables pp.93-94,101,149-150,153-154,181-182,185-186,195-196",
+      "unitTypes": [
+        "outdoor"
+      ],
+      "referencesFile": null,
+      "status": "pending"
+    }
   ],
   "excludedFamilies": [
-    { "name": "PUMY mini-DRV Multi-Split", "pageLocator": "pp.120-128", "reason": "mini-DRV is a VRF/DRV refrigerant-distribution system; research contract excludes VRV/VRF from this pass; moved from in-scope families to exclusions on 2026-10-11 root review; page locators retained for traceability" },
-    { "name": "PXZ Multi-Split avec ECS", "pageLocator": "pp.129-145", "reason": "mixed equipment: air-to-air multi-split combined with ECS (domestic hot water) — water side conflicts with the air-to-air-only first-pass scope and contract hydronic exclusion; deferred mixed/ECS scope, must not be silently treated as air-to-air; page locators retained" },
-    { "name": "Lossnay (VL/LGH ventilation)", "reason": "ventilation-only, not air-to-air heatpump unit records" },
-    { "name": "PAC-IF013 / S-AIRME air-handling boxes", "reason": "air handling / CTA kits, not heatpump unit records" },
-    { "name": "Jet Towel / rideaux d'air accessories", "reason": "non-heatpump accessories" },
-    { "name": "Control, remote, filter, interface accessories", "reason": "accessories, not unit records" },
-    { "name": "MELZONE multizone kits", "reason": "kit assemblies referencing PEAD-M; reconcile separately" },
-    { "name": "Hydronic / Ecodan / VRF City Multi", "reason": "out of scope per research contract" }
+    {
+      "name": "PUMY mini-DRV Multi-Split",
+      "pageLocator": "pp.120-128",
+      "reason": "mini-DRV is a VRF/DRV refrigerant-distribution system; research contract excludes VRV/VRF from this pass; moved from in-scope families to exclusions on 2026-10-11 root review; page locators retained for traceability"
+    },
+    {
+      "name": "PXZ Multi-Split avec ECS",
+      "pageLocator": "pp.129-145",
+      "reason": "mixed equipment: air-to-air multi-split combined with ECS (domestic hot water) — water side conflicts with the air-to-air-only first-pass scope and contract hydronic exclusion; deferred mixed/ECS scope, must not be silently treated as air-to-air; page locators retained"
+    },
+    {
+      "name": "Lossnay (VL/LGH ventilation)",
+      "reason": "ventilation-only, not air-to-air heatpump unit records"
+    },
+    {
+      "name": "PAC-IF013 / S-AIRME air-handling boxes",
+      "reason": "air handling / CTA kits, not heatpump unit records"
+    },
+    {
+      "name": "Jet Towel / rideaux d'air accessories",
+      "reason": "non-heatpump accessories"
+    },
+    {
+      "name": "Control, remote, filter, interface accessories",
+      "reason": "accessories, not unit records"
+    },
+    {
+      "name": "MELZONE multizone kits",
+      "reason": "kit assemblies referencing PEAD-M; reconcile separately"
+    },
+    {
+      "name": "Hydronic / Ecodan / VRF City Multi",
+      "reason": "out of scope per research contract"
+    }
   ],
   "coverageNotes": "Index only. No family fully researched. PUMY mini-DRV (VRF/DRV) and PXZ avec ECS (mixed air+ECS) moved to excludedFamilies on 2026-10-11 root review; PUMY size-availability note (250/300 announced 2nd half 2026) is moot for this pass. Other unit families remain pending, index incomplete. Tables still needing reconciliation: MSZ-LN color-suffix identity, MSZ-RZ suffix, MXZ combination tables vs livret-combinaisons source, PXZ index tables (deferred mixed/ECS scope), SUZ-M/PUZ-ZM shared spec tables, twin/triple/quadri compatibility notes. Exact suffixes must come from printed tables, never inferred."
 }

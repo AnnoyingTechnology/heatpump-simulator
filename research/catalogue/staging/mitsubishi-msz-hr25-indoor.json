@@ -20,10 +20,21 @@
       "status": "current",
       "identityEvidence": {
         "sourceId": "mitsubishi-fr-air-air-2026-2027",
-        "locator": "PDF p.50 (printed p.49), UNITÉS INTÉRIEURES table header, column 1 = MSZ-HR25VFK2 (25-class)",
-        "excerpt": "UNITÉS INTÉRIEURES MSZ-HR25VFK2 MSZ-HR35VFK2 MSZ-HR42VFK2 MSZ-HR50VFK2 MSZ-HR60VF2 MSZ-HR71VF2"
+        "locator": "PDF p.50 (printed p.49), page header 'MSZ-HR. Mural Essentiel' + 'INVERTER'; UNITÉS INTÉRIEURES table header, column 1 = MSZ-HR25VFK2 (25-class)",
+        "excerpt": "MSZ-HR. Mural Essentiel INVERTER ; UNITÉS INTÉRIEURES MSZ-HR25VFK2 MSZ-HR35VFK2 MSZ-HR42VFK2 MSZ-HR50VFK2 MSZ-HR60VF2 MSZ-HR71VF2"
       },
       "facts": [
+        {
+          "key": "controlStrategy",
+          "value": "inverter",
+          "unit": "none",
+          "condition": "explicit page-level 'INVERTER' label of the MSZ-HR family page",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), page header banner under 'MSZ-HR. Mural Essentiel R32'",
+            "excerpt": "INVERTER"
+          }
+        },
         {
           "key": "capacityClass",
           "value": 2.5,
@@ -212,8 +223,57 @@
           }
         }
       ],
-      "ratings": [],
-      "compatibility": [],
+      "ratings": [
+        {
+          "mode": "cooling",
+          "combination": "MSZ-HR25VFK2 + MUZ-HR25VF2 (25-class mono-split)",
+          "conditions": "published min / nominal / max table values; rated indoor/outdoor test conditions not published in this table (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.5, "nominal": 2.5, "maximum": 2.9 },
+          "electricalInputKw": { "minimum": null, "nominal": 0.800, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), cooling table rows 'Puissance frigorifique min / nominale / max' and 'Puissance absorbée totale nominale', Taille 25 column",
+            "excerpt": "Puissance frigorifique min / nominale / max kW 0.5 / 2.5 / 2.9 ; Puissance absorbée totale nominale kW 0.800"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-HR25VFK2 + MUZ-HR25VF2 (25-class mono-split)",
+          "conditions": "outdoor +7°C (published row 'à +7°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.5, "nominal": 3.2, "maximum": 3.5 },
+          "electricalInputKw": { "minimum": null, "nominal": 0.850, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), heating table rows 'Puissance calorifique min / nominale / max à +7°C' and 'Puissance absorbée totale nominale', Taille 25 column",
+            "excerpt": "Puissance calorifique min / nominale / max à +7°C kW 0.5 / 3.2 / 3.5 ; Puissance absorbée totale nominale kW 0.850"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-HR25VFK2 + MUZ-HR25VF2 (25-class mono-split)",
+          "conditions": "outdoor -7°C (published row 'à -7°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.5, "nominal": 2.1, "maximum": 2.4 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), heating table row 'Puissance calorifique min / nominale / max à -7°C', Taille 25 column; no separate -7°C electrical row is published",
+            "excerpt": "Puissance calorifique min / nominale / max à -7°C kW 0.5 / 2.1 / 2.4"
+          }
+        }
+      ],
+      "compatibility": [
+        {
+          "description": "mono-split pairing MSZ-HR25VFK2 + MUZ-HR25VF2 is evidenced by the shared 'Tailles 25' column of the page-49 spec table and the MUZ-HR 25/35 VF2 outdoor header; multi-split compatibility NOT established here (separate combination tables pending)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.50 (printed p.49), page header 'MUZ-HR 25/35 VF2' + 'Tailles' column 25 spanning cooling/heating tables; UNITÉS INTÉRIEURES header MSZ-HR25VFK2 and UNITÉS EXTÉRIEURES header MUZ-HR25VF2",
+            "excerpt": "MUZ-HR 25/35 VF2 ; Tailles 25 35 42 50 60 71 ; UNITÉS EXTÉRIEURES MUZ-HR25VF2 MUZ-HR35VF2 ..."
+          }
+        }
+      ],
       "unknowns": [
         "indoor electrical supply / voltage: catalogue publishes 'Alimentation électrique par unité extérieure' only (230 V (1P+N+T) at MUZ-HR25VF2); indoor-only supply not stated",
         "indoor fan motor output and electrical input: not published",
