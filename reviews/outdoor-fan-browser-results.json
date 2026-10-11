@@ -1,0 +1,76 @@
+{
+  "checkedAt": "2026-10-11T12:21:03.599Z",
+  "sourceHashes": {
+    "src/geometry.ts": "d6a30bc1059d52a83391815a115023db9e3ae0275600ebfd67ed8e0dc0bc5541",
+    "src/scene.ts": "f987a14c205dfb3a10cbcf184ecd91309b9737ece4124d1664db9832a769fa6c"
+  },
+  "checks": [
+    {
+      "name": "fan spans fin height; outlet tube and materialized discharge sensor clear it",
+      "passed": true,
+      "geometry": {
+        "fan": {
+          "x": 80,
+          "w": 14,
+          "h": 203
+        },
+        "center": [
+          87,
+          117
+        ],
+        "probe": {
+          "at": [
+            112,
+            46
+          ],
+          "lead": [
+            156,
+            66
+          ],
+          "clamp": [
+            126,
+            136
+          ]
+        },
+        "route": [
+          [
+            176,
+            106
+          ],
+          [
+            166,
+            106
+          ],
+          [
+            166,
+            7
+          ],
+          [
+            60,
+            7
+          ],
+          [
+            60,
+            22
+          ]
+        ]
+      }
+    },
+    {
+      "name": "zoom keeps full tall fan and bottom legend visible",
+      "passed": true,
+      "box": {
+        "fan": {
+          "top": 309.62554931640625,
+          "bottom": 799.7691040039062
+        },
+        "stage": {
+          "top": 112.84375,
+          "bottom": 931.359375
+        },
+        "legendBottom": 1000,
+        "height": 1000
+      }
+    }
+  ]
+}

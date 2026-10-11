@@ -736,7 +736,9 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
         svg('rect', { class: 'fan-shroud', x: FAN_SIDE.x, y: fanTop, width: FAN_SIDE.w, height: FAN_SIDE.h, rx: 4 }),
         svg('path', { class: 'fan-blades', d: `M${fanX} ${fanTop + 5}V${fanBottom - 5}` }),
         svg('circle', { class: 'hub', cx: fanX, cy: A.fan[1], r: 3.2 }))));
-    overlay.push(txt(fanX + 7, fanTop - 5, 'Fan', 'dl lbl', 'middle'));
+    const fanLabel = txt(FAN_SIDE.x - 5, A.fan[1], 'Fan', 'dl lbl', 'middle');
+    fanLabel.setAttribute('transform', `rotate(-90 ${FAN_SIDE.x - 5} ${A.fan[1]})`);
+    overlay.push(fanLabel);
 
     // compressor
     og.append(sel('compressor', 'Compressor', { x: 94, y: 144, w: 40, h: 74, r: 14 },

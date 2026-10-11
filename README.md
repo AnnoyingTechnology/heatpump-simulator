@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-Open the Local URL printed by Vite. To check and build the static site:
+Open the Local URL printed by Vite. Automatic hot reload is disabled so source edits cannot erase an ongoing simulation. Refresh explicitly to load a new version. To check and build the static site:
 
 ```sh
 npm run build

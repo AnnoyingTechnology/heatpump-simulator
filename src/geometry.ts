@@ -125,15 +125,15 @@ export function roomBoxes(n: number): RoomBox[] {
 export const A = {
   compD: [114, 150], compS: [132, 198], accIn: [225, 142], accOut: [212, 198],
   valveO: [176, 106], valveI: [236, 106], valveD: [190, 122], valveS: [224, 122],
-  coilGas: [60, 22], coilLiq: [60, 198], svc: [250, 106], fan: [87, 58],
+  coilGas: [60, 22], coilLiq: [60, 198], svc: [250, 106], fan: [87, 117],
 } as const satisfies Record<string, Pt>;
 
 /**
- * Outdoor fan, drawn flat from the side: a narrow strip immediately right of the fin bank (x 66), beside the O-line riser at x 72, and
- * centred on `A.fan` (local). It ends at y 98, above the reverser O-line at y 106, and leaves the whole top of the casing free.
+ * Outdoor fan, drawn flat from the side immediately right of the fin bank.
+ * Its disc spans almost the entire fin height; the reverser-to-coil line passes above the disc.
  * A generic schematic element, not a manufacturer cutaway.
  */
-export const FAN_SIDE = { x: 80, w: 14, h: 80 } as const;
+export const FAN_SIDE = { x: 80, w: 14, h: 203 } as const;
 
 const COIL_ROWS = 12;
 const COIL_Y0 = 22;
@@ -174,7 +174,7 @@ export const PROBE_AT = {
    * the exhaust. Streams run above (y 86–95) and below (y 150–160) it; the caption sits on the pill's top edge.
    */
   airOut: { at: [COIL_MARGIN_X, 116] as Pt, lead: [COIL_MARGIN_X + PILL.w, 138] as Pt, bulb: [-30, 138] as Pt },
-  compD: { at: [82, 111] as Pt, lead: [126, 131] as Pt, clamp: [126, 136] as Pt },
+  compD: { at: [112, 46] as Pt, lead: [156, 66] as Pt, clamp: [126, 136] as Pt },
   compS: { at: [120, 171] as Pt, lead: [176, 191] as Pt, clamp: [176, 198] as Pt },
 } as const;
 
@@ -208,7 +208,7 @@ export function pipeSpecs(n: number): PipeSpec[] {
   add({ id: 'disc', cls: 'gas', title: 'Compressor discharge D → reverser D', pts: l([A.compD, [114, 136], [190, 136], A.valveD]) });
   add({ id: 'sAcc', cls: 'gas', title: 'Reverser S → accumulator', pts: l([A.valveS, A.accIn]) });
   add({ id: 'accOut', cls: 'gas', title: 'Accumulator → compressor suction S', pts: l([A.accOut, A.compS]) });
-  add({ id: 'revO', cls: 'gas', title: 'Reverser O ↔ outdoor-coil gas header', pts: l([A.valveO, [72, 106], [72, 22], A.coilGas]) });
+  add({ id: 'revO', cls: 'gas', title: 'Reverser O ↔ outdoor-coil gas header', pts: l([A.valveO, [166, 106], [166, 7], [60, 7], A.coilGas]) });
   add({ id: 'revI', cls: 'gas', title: 'Reverser I ↔ common gas node', pts: l([A.valveI, A.svc]) });
   add({ id: 'gasMan', cls: 'gas', title: 'Common gas manifold', pts: l([A.svc, [250, last]]) });
   add({ id: 'coilG', cls: 'coil', title: 'Outdoor coil · gas end', pts: l(cv.slice(0, 6)) });

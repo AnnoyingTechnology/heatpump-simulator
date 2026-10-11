@@ -1,0 +1,3212 @@
+{
+  "createdAt": "2026-10-11T11:50:39.570Z",
+  "preset": "quick",
+  "seed": 20261011,
+  "workers": 4,
+  "timeoutMs": 1200000,
+  "sourceHashes": {
+    "src/engine/air.ts": "6dfb70bd7b7c5b84501e0de1633cf8378ea0b2bd0eb903dafe09c31625745d15",
+    "src/engine/charge-output.ts": "ca0bed2dd4836af7e72dce71e28e5d0b11309358f4c3da0bb6365a9079142ff7",
+    "src/engine/charge.ts": "0c9dd8050fab6b3bd16bcb881f59fc00debc2f85c774c2a1c2216d45d289e168",
+    "src/engine/cycle.ts": "294d647a26f60d319641c9b7fe4645378472dd5c70a8e6c0ef6075168aaf29e4",
+    "src/engine/defaults.ts": "5ca7d8006c6990e4b6b99a6ef353ec075b720a07701dac39a23ca9fb4fec99f8",
+    "src/engine/demand.ts": "2723ec0b56398de36cace269a12f120622c1e0eef5caf2cfb6c4c61aaeba4301",
+    "src/engine/drive.ts": "d94247f20b359a61980e0d5af121d5299133f3b65a49358c4c40540a6655d0dd",
+    "src/engine/engine.ts": "92174a5beb3fbbefd9c9bfba64a3f0155261a11782c9420f4bdfe3d6ae887903",
+    "src/engine/envelope.ts": "eaab1d96df755b322050854fa8b7108e1f4918fbeb4dd1206d815ba9c74dc4e3",
+    "src/engine/film.ts": "3cfeda3465b8c5226e6ed82bada490abdc42577fdadd4a1d0a2e3fb682285dbb",
+    "src/engine/index.ts": "f8aba3f8724f99dcd1c17be93cfc3622a9fe276d968cc36f5bbf70e9c3773ebd",
+    "src/engine/interzone.ts": "20671a676f3174e1757f4368ef0b4f1046a07b4b35d8e5377aaf689c8a43ee2b",
+    "src/engine/properties.ts": "6fb2812381e471623e449a5b593cd4e1d9874f32e559b33bd05c2eac7b6ad36e",
+    "src/engine/thermostat.ts": "f09821cdd3853d7e6c18e27e85ce278a333414ccc2b0366b51b9fa2c62873db0",
+    "src/engine/transport.ts": "928ab51cd8ca1193e68ba0821ee88ae2966521314ad9b1fd1b9894f253e2ed31",
+    "src/engine/types.ts": "2ed28a4c5e7fbe4e698752f717b2289e250aae0cda29649aa96bd9189b8ee400",
+    "src/engine/ventilation.ts": "6aef508a062fca992c2b7a1961ae69c12ae5317c5824326ffe57a1a0a4ecd8d8",
+    "compiled/air.js": "ac8302044d196da0528b0ca99b76db9f550d26b57adc42c0de89a68ee9b5ed94",
+    "compiled/charge-output.js": "4ed7ae6f5cc6b6f0b52465b8cbba32f400f890e729ba71cd2db804a11c435fa0",
+    "compiled/charge.js": "716d6e0134395d6f67245751af1d915e179ab2c599b8a66950bbf8006fac9b1d",
+    "compiled/cycle.js": "e24ab41245578772ebd43bc2e5be4a58933410093ed2ee2475eb2021b67ef48c",
+    "compiled/defaults.js": "b1bcc26d4004cb951b5440c02becc157363373d64aef5f088b809c1bd20a2ed8",
+    "compiled/demand.js": "0ae77679b69e9caa1fc11107ea060f58b7e6493cafac3a3d6468c85786eb9b90",
+    "compiled/drive.js": "9795fb61cb25ffbd4fa0dfd41f926b4fa423d4dd6cb74f130f242562c326a0b9",
+    "compiled/engine.js": "0e260909652b838955b75baab0fa464bdce495467d16bd02a034919b3c30a90f",
+    "compiled/envelope.js": "500ad61198fd0a91fe0f5e741a08c8b1b5c965a88cb8eecbf1025c8a5413b924",
+    "compiled/film.js": "2af475cdfb6faa4512ac7a17c45393f3be33ab88e2cb5be334138956ecf33d51",
+    "compiled/index.js": "2a58c1821531507d4843729995d2ffc8bbf2176ace4cb1e0269090322f8488c3",
+    "compiled/interzone.js": "b902baf062859b3867b7496e92cd641ac9c033a710cae60ef4e715c5195887e9",
+    "compiled/properties.js": "42a1e8c94947bb4a8f967ba89b51c462d3a0af43d4eb22d4d3cd7daa089f4400",
+    "compiled/thermostat.js": "692434f3b605d64679f64c982dc414846e260a033422c73f3af4a013e7b39823",
+    "compiled/transport.js": "5bc7c0f1850837de00043e755290d8e3d131d4ee3adb27646557344409bc1dcf",
+    "compiled/types.js": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "compiled/ventilation.js": "337f30b24c963ac3f68d4b0d8f5b6942610e73ca3b6ae10f4d6aa5de6811e570",
+    "public/vendor/coolprop-safe/LICENSE-CoolProp": "9bf835333ef602af4cb19338b9f9d43671e174fa029b00280e9bdba6ea4719b2",
+    "public/vendor/coolprop-safe/adapter.js": "06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34",
+    "public/vendor/coolprop-safe/coolprop.js": "6fa2e627803e2453da12cb9fce160ca3326851cd179444edc5ab698e21524d6c",
+    "public/vendor/coolprop-safe/coolprop.wasm": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+    "public/vendor/coolprop-safe/licenses/Emscripten-LICENSE": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86",
+    "public/vendor/coolprop-safe/licenses/boost_headers-LICENSE": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "public/vendor/coolprop-safe/licenses/compiler-rt-LICENSE.TXT": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.APACHE": "03379001a7b12a2ec997a25554247d985270b353c10d5bafee9ac8d6519820b7",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.BSD": "51928dce36213c5333ba3172e847d735d4c6e9b7ff2722a326c49067155b82eb",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.MINPACK": "c87b7f8ee88f6195e91743820c00354833583aef091b72e2d4a49c8e28e798a0",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.MPL2": "66a3107d5ad6a058aab753eaac2047ccb2ed0e39465dd0fe5844da3e300d5172",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.README": "db640ff2bd90c6abd6a4d3fbb351e0ee4d555417cf840492054d1cbb2ea85644",
+    "public/vendor/coolprop-safe/licenses/eigen-LICENSE": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+    "public/vendor/coolprop-safe/licenses/fmt-LICENSE": "07580f2a3b35709ce703d523f447b242f6dfec7582a8c0df102c7fa2849375f8",
+    "public/vendor/coolprop-safe/licenses/if97-LICENSE": "e22c3d30ef8d88ab468d9ea20392ca1df22fa3fd0a92dc3e996d89cf3cfdbd03",
+    "public/vendor/coolprop-safe/licenses/libcxx-LICENSE.TXT": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+    "public/vendor/coolprop-safe/licenses/libcxxabi-LICENSE.TXT": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",
+    "public/vendor/coolprop-safe/licenses/miniz-header-notice.txt": "dfdeccf4fcb0cef3d71b31fa915e804f272fa57f00d4ff5076d2c8e8efc22057",
+    "public/vendor/coolprop-safe/licenses/msgpack-c-COPYING": "664550b43996452a5a2c7471bb0ff77185a58c69ccafa60f983dc4c162e1ee22",
+    "public/vendor/coolprop-safe/licenses/msgpack-c-LICENSE_1_0.txt": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "public/vendor/coolprop-safe/licenses/multicomplex-README.md": "d58933ccd086958d576969174c04af6506cc5586da9d2125ec644d534225c018",
+    "public/vendor/coolprop-safe/licenses/musl-COPYRIGHT": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af",
+    "public/vendor/coolprop-safe/licenses/nlohmann_json-LICENSE.MIT": "46a65cffd1ea955132d95a8dd921640714a8d6b537d2e4e482d31145ae95b603",
+    "public/vendor/coolprop-safe/licenses/refprop_headers-LICENSE": "f21f633c596509e89b2baedfd657c8f1b8018954b06576590971684b210e91f8",
+    "public/vendor/coolprop-safe/licenses/valijson-LICENSE": "61b5766db38eaa3f320c366357956d7743424bfbf90fd78f5943866ba237589e",
+    "public/vendor/coolprop-safe/provenance.json": "fffa34344622d1d2266c5d389552e3e672706422f317193ebf756bc0a157f697",
+    "tools/robustness-worker.mjs": "ddfa53783547044443e885ca6003644931b6d2dc6c4c24cf1fe8b9faf2116800",
+    "tools/robustness-campaign.mjs": "de0f752b4e8e09de7841e0f2ddd3b46e08448381a18aac36603931688ecb5a6c"
+  },
+  "nodeVersion": "v24.21.0",
+  "platform": "linux",
+  "architecture": "x64",
+  "extendedComponentAndLineBounds": false,
+  "segmentDurationCapSeconds": null,
+  "method": "Independent Node child processes; immutable TypeScript snapshot compiled once; production guarded HEOS; 0.25-second public requests with every accepted adaptive physics interval checked; full before-interval checkpoint persisted for native aborts.",
+  "limits": "Reference R32 engine only. Passing a finite campaign is not proof of correctness. Generic component parameters, not calibrated manufacturer maps. The screenshot scenario is reconstructed from visible controls, not a saved exact pre-crash state.",
+  "scenarios": [
+    {
+      "id": "opening-dual-endurance-hot-wet-cooling",
+      "requestedSeconds": 1800
+    },
+    {
+      "id": "opening-dual-endurance-humid-frost-defrost",
+      "requestedSeconds": 1800
+    },
+    {
+      "id": "opening-dual-reported-friend-cold-cooling",
+      "requestedSeconds": 1100
+    },
+    {
+      "id": "opening-eight-head-saturated-reversal-840",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "opening-isolated-vertical-stable-1200",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "opening-isolated-vertical-unstable-1200",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "opening-isolated-wall-height2-1200",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "opening-large-aperture-small-room-maxdt-0.025",
+      "requestedSeconds": 1
+    },
+    {
+      "id": "opening-large-aperture-small-room-maxdt-0.05",
+      "requestedSeconds": 1
+    },
+    {
+      "id": "opening-large-aperture-small-room-maxdt-0.25",
+      "requestedSeconds": 1
+    },
+    {
+      "id": "opening-owner-0C-ground17-1200",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "opening-owner-0C-up-alone-ground16-1200",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "opening-owner-1C-ground17-1200",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "opening-owner-1C-up-alone-ground16-1200",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "opening-owner-cool-to-heat-42C-1200",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "opening-owner-geometry-controls-edit-1200",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "opening-owner-heat-to-cool-42C-1200",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "opening-owner-minus4-ground16-1200",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "opening-refinement-one-m3-maxdt-0.025",
+      "requestedSeconds": 1
+    },
+    {
+      "id": "opening-refinement-one-m3-maxdt-0.05",
+      "requestedSeconds": 1
+    },
+    {
+      "id": "opening-refinement-one-m3-maxdt-0.1",
+      "requestedSeconds": 1
+    }
+  ],
+  "completed": 21,
+  "counts": {
+    "pass": 21
+  },
+  "results": [
+    {
+      "id": "opening-dual-reported-friend-cold-cooling",
+      "outcome": "pass",
+      "steps": 4400,
+      "updates": 0,
+      "simulatedSeconds": 1100,
+      "wallSeconds": 9.174650354999999,
+      "maxEnergyResidualJ": 5.383044481277466e-07,
+      "maxWaterResidualKg": 6.13398221105399e-15,
+      "protectionCounts": {},
+      "states": {
+        "idle": 4400
+      },
+      "stateEntries": {},
+      "completedDefrosts": 0,
+      "maxStepWallMs": 4.960152999999991,
+      "comfort": {
+        "rooms": {
+          "room-1": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1100,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "room-2": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1100,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "room-3": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1100,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          }
+        },
+        "transitions": [],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 1100,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 4400,
+        "refinedPublicCalls": 0,
+        "maxPerPublicCall": 1,
+        "minDt": 0.25,
+        "maxDt": 0.25,
+        "maxClockErrorSeconds": 0
+      },
+      "openingEdges": {
+        "[\"room-1\",\"room-2\"]": {
+          "stateSeconds": {
+            "unstable": 410.75,
+            "stable": 689.25
+          },
+          "maxAbsoluteHeatW": 37.95032724410312,
+          "maxEquivalentExchangeM3s": 0.043304635017027776,
+          "maxEffectiveConductanceWK": 66.08103637415103
+        },
+        "[\"room-2\",\"room-3\"]": {
+          "stateSeconds": {
+            "wall-exchange": 1100
+          },
+          "maxAbsoluteHeatW": 763.9614836055996,
+          "maxEquivalentExchangeM3s": 0.2976524188710208,
+          "maxEffectiveConductanceWK": 373.1296810426914
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-isolated-vertical-stable-1200",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 0,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 20.458390898,
+      "maxEnergyResidualJ": 2.9802322387695312e-08,
+      "maxWaterResidualKg": 0,
+      "protectionCounts": {},
+      "states": {
+        "idle": 4800
+      },
+      "stateEntries": {},
+      "completedDefrosts": 0,
+      "maxStepWallMs": 12.126255000000128,
+      "comfort": {
+        "rooms": {
+          "room-1": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "room-2": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          }
+        },
+        "transitions": [],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 1200,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 4800,
+        "refinedPublicCalls": 0,
+        "maxPerPublicCall": 1,
+        "minDt": 0.25,
+        "maxDt": 0.25,
+        "maxClockErrorSeconds": 0
+      },
+      "openingEdges": {
+        "[\"room-1\",\"room-2\"]": {
+          "stateSeconds": {
+            "stable": 1200
+          },
+          "maxAbsoluteHeatW": 110.37230100529692,
+          "maxEquivalentExchangeM3s": 0,
+          "maxEffectiveConductanceWK": 13.803680981595093
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-isolated-vertical-unstable-1200",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 0,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 20.904642886,
+      "maxEnergyResidualJ": 2.9802322387695312e-08,
+      "maxWaterResidualKg": 0,
+      "protectionCounts": {},
+      "states": {
+        "idle": 4800
+      },
+      "stateEntries": {},
+      "completedDefrosts": 0,
+      "maxStepWallMs": 15.578847000000678,
+      "comfort": {
+        "rooms": {
+          "room-1": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "room-2": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          }
+        },
+        "transitions": [],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 1200,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 4800,
+        "refinedPublicCalls": 0,
+        "maxPerPublicCall": 1,
+        "minDt": 0.25,
+        "maxDt": 0.25,
+        "maxClockErrorSeconds": 0
+      },
+      "openingEdges": {
+        "[\"room-1\",\"room-2\"]": {
+          "stateSeconds": {
+            "unstable": 1200
+          },
+          "maxAbsoluteHeatW": 1646.088998424409,
+          "maxEquivalentExchangeM3s": 0.1603509276524424,
+          "maxEffectiveConductanceWK": 207.3793208436236
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-isolated-wall-height2-1200",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 0,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 21.069220010000002,
+      "maxEnergyResidualJ": 2.9802322387695312e-08,
+      "maxWaterResidualKg": 0,
+      "protectionCounts": {},
+      "states": {
+        "idle": 4800
+      },
+      "stateEntries": {},
+      "completedDefrosts": 0,
+      "maxStepWallMs": 17.298218000000134,
+      "comfort": {
+        "rooms": {
+          "room-1": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "room-2": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          }
+        },
+        "transitions": [],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 1200,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 4800,
+        "refinedPublicCalls": 0,
+        "maxPerPublicCall": 1,
+        "minDt": 0.25,
+        "maxDt": 0.25,
+        "maxClockErrorSeconds": 0
+      },
+      "openingEdges": {
+        "[\"room-1\",\"room-2\"]": {
+          "stateSeconds": {
+            "wall-exchange": 1200
+          },
+          "maxAbsoluteHeatW": 5533.350000041298,
+          "maxEquivalentExchangeM3s": 0.5774238073121262,
+          "maxEffectiveConductanceWK": 710.8697011687939
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-large-aperture-small-room-maxdt-0.025",
+      "outcome": "pass",
+      "steps": 4,
+      "updates": 0,
+      "simulatedSeconds": 1.0000000000000004,
+      "wallSeconds": 2.2359313690000002,
+      "maxEnergyResidualJ": 2.9802322387695312e-08,
+      "maxWaterResidualKg": 0,
+      "protectionCounts": {},
+      "states": {
+        "idle": 42
+      },
+      "stateEntries": {},
+      "completedDefrosts": 0,
+      "maxStepWallMs": 90.161924,
+      "comfort": {
+        "rooms": {
+          "room-1": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1.0000000000000004,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "room-2": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1.0000000000000004,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "room-3": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1.0000000000000004,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          }
+        },
+        "transitions": [],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 1.0000000000000004,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 42,
+        "refinedPublicCalls": 4,
+        "maxPerPublicCall": 12,
+        "minDt": 0.00878333598608101,
+        "maxDt": 0.025,
+        "maxClockErrorSeconds": 2.220446049250313e-16
+      },
+      "openingEdges": {
+        "[\"room-1\",\"room-2\"]": {
+          "stateSeconds": {
+            "unstable": 1.0000000000000004
+          },
+          "maxAbsoluteHeatW": 19650.0288245319,
+          "maxEquivalentExchangeM3s": 1.1860183591816127,
+          "maxEffectiveConductanceWK": 1445.565044185638
+        },
+        "[\"room-2\",\"room-3\"]": {
+          "stateSeconds": {
+            "wall-exchange": 1.0000000000000004
+          },
+          "maxAbsoluteHeatW": 6745.508776543426,
+          "maxEquivalentExchangeM3s": 0.9375788829419232,
+          "maxEffectiveConductanceWK": 1331.8452274874896
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-large-aperture-small-room-maxdt-0.05",
+      "outcome": "pass",
+      "steps": 4,
+      "updates": 0,
+      "simulatedSeconds": 1.0000000000000002,
+      "wallSeconds": 2.173997923,
+      "maxEnergyResidualJ": 2.9802322387695312e-08,
+      "maxWaterResidualKg": 0,
+      "protectionCounts": {},
+      "states": {
+        "idle": 28
+      },
+      "stateEntries": {},
+      "completedDefrosts": 0,
+      "maxStepWallMs": 102.52124999999978,
+      "comfort": {
+        "rooms": {
+          "room-1": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1.0000000000000002,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "room-2": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1.0000000000000002,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "room-3": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1.0000000000000002,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          }
+        },
+        "transitions": [],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 1.0000000000000002,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 28,
+        "refinedPublicCalls": 4,
+        "maxPerPublicCall": 12,
+        "minDt": 0.006643298686058112,
+        "maxDt": 0.05,
+        "maxClockErrorSeconds": 2.220446049250313e-16
+      },
+      "openingEdges": {
+        "[\"room-1\",\"room-2\"]": {
+          "stateSeconds": {
+            "unstable": 1.0000000000000002
+          },
+          "maxAbsoluteHeatW": 19650.0288245319,
+          "maxEquivalentExchangeM3s": 1.1860183591816127,
+          "maxEffectiveConductanceWK": 1445.565044185638
+        },
+        "[\"room-2\",\"room-3\"]": {
+          "stateSeconds": {
+            "wall-exchange": 1.0000000000000002
+          },
+          "maxAbsoluteHeatW": 6745.508776543426,
+          "maxEquivalentExchangeM3s": 0.9375788829419232,
+          "maxEffectiveConductanceWK": 1331.8452274874896
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-large-aperture-small-room-maxdt-0.25",
+      "outcome": "pass",
+      "steps": 4,
+      "updates": 0,
+      "simulatedSeconds": 1,
+      "wallSeconds": 2.186748135,
+      "maxEnergyResidualJ": 2.9802322387695312e-08,
+      "maxWaterResidualKg": 0,
+      "protectionCounts": {},
+      "states": {
+        "idle": 27
+      },
+      "stateEntries": {},
+      "completedDefrosts": 0,
+      "maxStepWallMs": 104.94736499999999,
+      "comfort": {
+        "rooms": {
+          "room-1": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "room-2": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "room-3": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          }
+        },
+        "transitions": [],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 1,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 27,
+        "refinedPublicCalls": 4,
+        "maxPerPublicCall": 12,
+        "minDt": 7.972689474976258e-05,
+        "maxDt": 0.08504690036467166,
+        "maxClockErrorSeconds": 1.1102230246251565e-16
+      },
+      "openingEdges": {
+        "[\"room-1\",\"room-2\"]": {
+          "stateSeconds": {
+            "unstable": 1
+          },
+          "maxAbsoluteHeatW": 19650.0288245319,
+          "maxEquivalentExchangeM3s": 1.1860183591816127,
+          "maxEffectiveConductanceWK": 1445.565044185638
+        },
+        "[\"room-2\",\"room-3\"]": {
+          "stateSeconds": {
+            "wall-exchange": 1
+          },
+          "maxAbsoluteHeatW": 6745.508776543426,
+          "maxEquivalentExchangeM3s": 0.9375788829419232,
+          "maxEffectiveConductanceWK": 1331.8452274874896
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-dual-endurance-hot-wet-cooling",
+      "outcome": "pass",
+      "steps": 7200,
+      "updates": 0,
+      "simulatedSeconds": 1800,
+      "wallSeconds": 221.793361787,
+      "maxEnergyResidualJ": 8.270144462585449e-07,
+      "maxWaterResidualKg": 1.2212453270876722e-14,
+      "protectionCounts": {},
+      "states": {
+        "running": 7200
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 126.6088319999999,
+      "comfort": {
+        "rooms": {
+          "room-1": {
+            "callingSeconds": 1800,
+            "notCallingSeconds": 0,
+            "poweredFanSeconds": 1800,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 45000,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          },
+          "room-2": {
+            "callingSeconds": 1800,
+            "notCallingSeconds": 0,
+            "poweredFanSeconds": 1800,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 45000,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          },
+          "room-3": {
+            "callingSeconds": 1800,
+            "notCallingSeconds": 0,
+            "poweredFanSeconds": 1800,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 45000,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          }
+        },
+        "transitions": [
+          {
+            "roomId": "room-1",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "cooling",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 30.000000000000057,
+            "temperatureAfterC": 30.018832514325027,
+            "setpointC": 17
+          },
+          {
+            "roomId": "room-2",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "cooling",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 30.000000000000057,
+            "temperatureAfterC": 30.018832514325027,
+            "setpointC": 17
+          },
+          {
+            "roomId": "room-3",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "cooling",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 30.000000000000057,
+            "temperatureAfterC": 30.018832514325027,
+            "setpointC": 17
+          }
+        ],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 0,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 7200,
+        "refinedPublicCalls": 0,
+        "maxPerPublicCall": 1,
+        "minDt": 0.25,
+        "maxDt": 0.25,
+        "maxClockErrorSeconds": 0
+      },
+      "openingEdges": {
+        "[\"room-1\",\"room-2\"]": {
+          "stateSeconds": {
+            "neutral": 0.25,
+            "unstable": 1799.75
+          },
+          "maxAbsoluteHeatW": 66.92595432577251,
+          "maxEquivalentExchangeM3s": 0.05184043599852264,
+          "maxEffectiveConductanceWK": 76.38545531901161
+        },
+        "[\"room-2\",\"room-3\"]": {
+          "stateSeconds": {
+            "neutral": 0.25,
+            "wall-exchange": 1799.75
+          },
+          "maxAbsoluteHeatW": 2.7277188298504815,
+          "maxEquivalentExchangeM3s": 0.041665405067239175,
+          "maxEffectiveConductanceWK": 64.10215797876623
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-eight-head-saturated-reversal-840",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 1,
+      "simulatedSeconds": 840,
+      "wallSeconds": 221.798145643,
+      "maxEnergyResidualJ": 7.934868335723877e-07,
+      "maxWaterResidualKg": 1.3944401189291966e-13,
+      "protectionCounts": {
+        "discharge temperature": 437
+      },
+      "states": {
+        "running": 2507,
+        "reversing": 12,
+        "idle": 841
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1550.0842960000155,
+      "comfort": {
+        "rooms": {
+          "room-1": {
+            "callingSeconds": 614,
+            "notCallingSeconds": 226,
+            "poweredFanSeconds": 614,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 15350,
+            "callTransitions": 1,
+            "circuitTransitions": 2
+          },
+          "room-2": {
+            "callingSeconds": 360,
+            "notCallingSeconds": 480,
+            "poweredFanSeconds": 360,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 9000,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          },
+          "room-3": {
+            "callingSeconds": 360,
+            "notCallingSeconds": 480,
+            "poweredFanSeconds": 360,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 9000,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          },
+          "room-4": {
+            "callingSeconds": 626.75,
+            "notCallingSeconds": 213.25,
+            "poweredFanSeconds": 626.75,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 15668.75,
+            "callTransitions": 1,
+            "circuitTransitions": 2
+          },
+          "room-5": {
+            "callingSeconds": 360,
+            "notCallingSeconds": 480,
+            "poweredFanSeconds": 360,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 9000,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          },
+          "room-6": {
+            "callingSeconds": 360,
+            "notCallingSeconds": 480,
+            "poweredFanSeconds": 360,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 9000,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          },
+          "room-7": {
+            "callingSeconds": 360,
+            "notCallingSeconds": 480,
+            "poweredFanSeconds": 360,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 9000,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          },
+          "room-8": {
+            "callingSeconds": 360,
+            "notCallingSeconds": 480,
+            "poweredFanSeconds": 360,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 9000,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          }
+        },
+        "transitions": [
+          {
+            "roomId": "room-1",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "cooling",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 30.000000000000057,
+            "temperatureAfterC": 30.006606910708058,
+            "setpointC": 17
+          },
+          {
+            "roomId": "room-2",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "cooling",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 30.000000000000057,
+            "temperatureAfterC": 30.001732553499153,
+            "setpointC": 17
+          },
+          {
+            "roomId": "room-3",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "cooling",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 30.000000000000057,
+            "temperatureAfterC": 30.001199069206905,
+            "setpointC": 17
+          },
+          {
+            "roomId": "room-4",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "cooling",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 30.000000000000057,
+            "temperatureAfterC": 30.015090209189395,
+            "setpointC": 17
+          },
+          {
+            "roomId": "room-5",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "cooling",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 30.000000000000057,
+            "temperatureAfterC": 30.001943173501388,
+            "setpointC": 17
+          },
+          {
+            "roomId": "room-6",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "cooling",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 30.000000000000057,
+            "temperatureAfterC": 30.003707166137303,
+            "setpointC": 17
+          },
+          {
+            "roomId": "room-7",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "cooling",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 30.000000000000057,
+            "temperatureAfterC": 30.00096769377717,
+            "setpointC": 17
+          },
+          {
+            "roomId": "room-8",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "cooling",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 30.000000000000057,
+            "temperatureAfterC": 30.001908606631048,
+            "setpointC": 17
+          },
+          {
+            "roomId": "room-4",
+            "simulatedSeconds": 573.5,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 24.998557834028134,
+            "temperatureAfterC": 24.994808858148645,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-1",
+            "simulatedSeconds": 586.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 24.997853265291383,
+            "temperatureAfterC": 24.989036291560467,
+            "setpointC": 26
+          }
+        ],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 210.25,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 3360,
+        "refinedPublicCalls": 0,
+        "maxPerPublicCall": 1,
+        "minDt": 0.25,
+        "maxDt": 0.25,
+        "maxClockErrorSeconds": 0
+      },
+      "openingEdges": {
+        "[\"room-1\",\"room-2\"]": {
+          "stateSeconds": {
+            "unstable": 446.75,
+            "stable": 393.25
+          },
+          "maxAbsoluteHeatW": 573.3741825571593,
+          "maxEquivalentExchangeM3s": 0.1099931701331209,
+          "maxEffectiveConductanceWK": 146.58743596629864
+        },
+        "[\"room-2\",\"room-3\"]": {
+          "stateSeconds": {
+            "wall-exchange": 840
+          },
+          "maxAbsoluteHeatW": 348.65620231918734,
+          "maxEquivalentExchangeM3s": 0.22555592446225967,
+          "maxEffectiveConductanceWK": 286.094792992435
+        },
+        "[\"room-3\",\"room-4\"]": {
+          "stateSeconds": {
+            "stable": 405,
+            "unstable": 435
+          },
+          "maxAbsoluteHeatW": 992.4588776547091,
+          "maxEquivalentExchangeM3s": 0.1340585408607243,
+          "maxEffectiveConductanceWK": 175.63915150866148
+        },
+        "[\"room-4\",\"room-5\"]": {
+          "stateSeconds": {
+            "wall-exchange": 840
+          },
+          "maxAbsoluteHeatW": 2195.349500153932,
+          "maxEquivalentExchangeM3s": 0.41953747073622344,
+          "maxEffectiveConductanceWK": 520.269315654364
+        },
+        "[\"room-5\",\"room-6\"]": {
+          "stateSeconds": {
+            "stable": 392.5,
+            "unstable": 447.5
+          },
+          "maxAbsoluteHeatW": 254.82575957649055,
+          "maxEquivalentExchangeM3s": 0.08401844867539995,
+          "maxEffectiveConductanceWK": 115.23075222253792
+        },
+        "[\"room-6\",\"room-7\"]": {
+          "stateSeconds": {
+            "wall-exchange": 840
+          },
+          "maxAbsoluteHeatW": 3260.814557551051,
+          "maxEquivalentExchangeM3s": 0.4802296675783712,
+          "maxEffectiveConductanceWK": 593.5369356822049
+        },
+        "[\"room-7\",\"room-8\"]": {
+          "stateSeconds": {
+            "stable": 398.75,
+            "unstable": 441.25
+          },
+          "maxAbsoluteHeatW": 181.15735012275522,
+          "maxEquivalentExchangeM3s": 0.07420441303230677,
+          "maxEffectiveConductanceWK": 103.38324839419582
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-owner-0C-ground17-1200",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 0,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 154.191300138,
+      "maxEnergyResidualJ": 5.776528269052505e-07,
+      "maxWaterResidualKg": 6.106226635438361e-15,
+      "protectionCounts": {
+        "discharge temperature": 971
+      },
+      "states": {
+        "running": 4800
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 241.85635799999,
+      "comfort": {
+        "rooms": {
+          "attic": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "first": {
+            "callingSeconds": 1200,
+            "notCallingSeconds": 0,
+            "poweredFanSeconds": 1200,
+            "modulatedFanSeconds": 1200,
+            "minPoweredFanFraction": 0.48241863529330686,
+            "maxPoweredFanFraction": 0.7421626890080191,
+            "fanEnergyJ": 6134.548986125376,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          },
+          "ground": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          }
+        },
+        "transitions": [
+          {
+            "roomId": "first",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 0.624999999999936,
+            "temperatureBeforeC": 21.50000000000017,
+            "temperatureAfterC": 21.498457718213956,
+            "setpointC": 21.5
+          }
+        ],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 0,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 4800,
+        "refinedPublicCalls": 0,
+        "maxPerPublicCall": 1,
+        "minDt": 0.25,
+        "maxDt": 0.25,
+        "maxClockErrorSeconds": 0
+      },
+      "openingEdges": {
+        "[\"ground\",\"first\"]": {
+          "stateSeconds": {
+            "stable": 1200
+          },
+          "maxAbsoluteHeatW": 79.75065300469322,
+          "maxEquivalentExchangeM3s": 0,
+          "maxEffectiveConductanceWK": 13.803680981595093
+        },
+        "[\"first\",\"attic\"]": {
+          "stateSeconds": {
+            "unstable": 1200
+          },
+          "maxAbsoluteHeatW": 457.9918172817769,
+          "maxEquivalentExchangeM3s": 0.10340966711186132,
+          "maxEffectiveConductanceWK": 138.63983111903408
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-owner-0C-up-alone-ground16-1200",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 0,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 138.661228486,
+      "maxEnergyResidualJ": 5.776528269052505e-07,
+      "maxWaterResidualKg": 6.106226635438361e-15,
+      "protectionCounts": {
+        "discharge temperature": 971
+      },
+      "states": {
+        "running": 4800
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 248.08450900000025,
+      "comfort": {
+        "rooms": {
+          "attic": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "first": {
+            "callingSeconds": 1200,
+            "notCallingSeconds": 0,
+            "poweredFanSeconds": 1200,
+            "modulatedFanSeconds": 1200,
+            "minPoweredFanFraction": 0.48241863529330686,
+            "maxPoweredFanFraction": 0.7421626890080191,
+            "fanEnergyJ": 6134.548986125376,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          },
+          "ground": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          }
+        },
+        "transitions": [
+          {
+            "roomId": "first",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 0.624999999999936,
+            "temperatureBeforeC": 21.50000000000017,
+            "temperatureAfterC": 21.498457718213956,
+            "setpointC": 21.5
+          }
+        ],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 0,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 4800,
+        "refinedPublicCalls": 0,
+        "maxPerPublicCall": 1,
+        "minDt": 0.25,
+        "maxDt": 0.25,
+        "maxClockErrorSeconds": 0
+      },
+      "openingEdges": {
+        "[\"ground\",\"first\"]": {
+          "stateSeconds": {
+            "stable": 1200
+          },
+          "maxAbsoluteHeatW": 79.75065300469322,
+          "maxEquivalentExchangeM3s": 0,
+          "maxEffectiveConductanceWK": 13.803680981595093
+        },
+        "[\"first\",\"attic\"]": {
+          "stateSeconds": {
+            "unstable": 1200
+          },
+          "maxAbsoluteHeatW": 457.9918172817769,
+          "maxEquivalentExchangeM3s": 0.10340966711186132,
+          "maxEffectiveConductanceWK": 138.63983111903408
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-owner-1C-ground17-1200",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 0,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 151.07688054800002,
+      "maxEnergyResidualJ": 4.89293597638607e-07,
+      "maxWaterResidualKg": 5.065392549852277e-15,
+      "protectionCounts": {
+        "discharge temperature": 981
+      },
+      "states": {
+        "running": 4800
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 233.91543799999636,
+      "comfort": {
+        "rooms": {
+          "attic": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "first": {
+            "callingSeconds": 1200,
+            "notCallingSeconds": 0,
+            "poweredFanSeconds": 1200,
+            "modulatedFanSeconds": 1200,
+            "minPoweredFanFraction": 0.4666656631561139,
+            "maxPoweredFanFraction": 0.7334415840251367,
+            "fanEnergyJ": 5673.623595992396,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          },
+          "ground": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          }
+        },
+        "transitions": [
+          {
+            "roomId": "first",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 0.624999999999936,
+            "temperatureBeforeC": 21.50000000000017,
+            "temperatureAfterC": 21.498499635090013,
+            "setpointC": 21.5
+          }
+        ],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 0,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 4800,
+        "refinedPublicCalls": 0,
+        "maxPerPublicCall": 1,
+        "minDt": 0.25,
+        "maxDt": 0.25,
+        "maxClockErrorSeconds": 0
+      },
+      "openingEdges": {
+        "[\"ground\",\"first\"]": {
+          "stateSeconds": {
+            "stable": 1200
+          },
+          "maxAbsoluteHeatW": 77.9237306562422,
+          "maxEquivalentExchangeM3s": 0,
+          "maxEffectiveConductanceWK": 13.803680981595093
+        },
+        "[\"first\",\"attic\"]": {
+          "stateSeconds": {
+            "unstable": 1200
+          },
+          "maxAbsoluteHeatW": 456.56830609843615,
+          "maxEquivalentExchangeM3s": 0.10329404665238566,
+          "maxEffectiveConductanceWK": 138.50025410035505
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-owner-1C-up-alone-ground16-1200",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 0,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 153.39386439,
+      "maxEnergyResidualJ": 4.89293597638607e-07,
+      "maxWaterResidualKg": 5.065392549852277e-15,
+      "protectionCounts": {
+        "discharge temperature": 981
+      },
+      "states": {
+        "running": 4800
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 258.9522709999874,
+      "comfort": {
+        "rooms": {
+          "attic": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "first": {
+            "callingSeconds": 1200,
+            "notCallingSeconds": 0,
+            "poweredFanSeconds": 1200,
+            "modulatedFanSeconds": 1200,
+            "minPoweredFanFraction": 0.4666656631561139,
+            "maxPoweredFanFraction": 0.7334415840251367,
+            "fanEnergyJ": 5673.623595992396,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          },
+          "ground": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          }
+        },
+        "transitions": [
+          {
+            "roomId": "first",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 0.624999999999936,
+            "temperatureBeforeC": 21.50000000000017,
+            "temperatureAfterC": 21.498499635090013,
+            "setpointC": 21.5
+          }
+        ],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 0,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 4800,
+        "refinedPublicCalls": 0,
+        "maxPerPublicCall": 1,
+        "minDt": 0.25,
+        "maxDt": 0.25,
+        "maxClockErrorSeconds": 0
+      },
+      "openingEdges": {
+        "[\"ground\",\"first\"]": {
+          "stateSeconds": {
+            "stable": 1200
+          },
+          "maxAbsoluteHeatW": 77.9237306562422,
+          "maxEquivalentExchangeM3s": 0,
+          "maxEffectiveConductanceWK": 13.803680981595093
+        },
+        "[\"first\",\"attic\"]": {
+          "stateSeconds": {
+            "unstable": 1200
+          },
+          "maxAbsoluteHeatW": 456.56830609843615,
+          "maxEquivalentExchangeM3s": 0.10329404665238566,
+          "maxEffectiveConductanceWK": 138.50025410035505
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-owner-cool-to-heat-42C-1200",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 1,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 48.064380060000005,
+      "maxEnergyResidualJ": 4.824250936508179e-07,
+      "maxWaterResidualKg": 1.6819878823071122e-14,
+      "protectionCounts": {},
+      "states": {
+        "running": 1200,
+        "reversing": 12,
+        "idle": 3588
+      },
+      "stateEntries": {
+        "running": 1,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 73.82509500000015,
+      "comfort": {
+        "rooms": {
+          "attic": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "first": {
+            "callingSeconds": 300,
+            "notCallingSeconds": 900,
+            "poweredFanSeconds": 300,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 7500,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          },
+          "ground": {
+            "callingSeconds": 300,
+            "notCallingSeconds": 900,
+            "poweredFanSeconds": 300,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 7500,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          }
+        },
+        "transitions": [
+          {
+            "roomId": "first",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "cooling",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 30.000000000000057,
+            "temperatureAfterC": 30.00053268977706,
+            "setpointC": 17
+          },
+          {
+            "roomId": "ground",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "cooling",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 30.000000000000057,
+            "temperatureAfterC": 30.001712731630846,
+            "setpointC": 17
+          }
+        ],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 897,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 4800,
+        "refinedPublicCalls": 0,
+        "maxPerPublicCall": 1,
+        "minDt": 0.25,
+        "maxDt": 0.25,
+        "maxClockErrorSeconds": 0
+      },
+      "openingEdges": {
+        "[\"ground\",\"first\"]": {
+          "stateSeconds": {
+            "unstable": 413.25,
+            "stable": 786.75
+          },
+          "maxAbsoluteHeatW": 37.803614628777034,
+          "maxEquivalentExchangeM3s": 0.04266011638771434,
+          "maxEffectiveConductanceWK": 65.30297348484385
+        },
+        "[\"first\",\"attic\"]": {
+          "stateSeconds": {
+            "stable": 1200
+          },
+          "maxAbsoluteHeatW": 24.694417393679842,
+          "maxEquivalentExchangeM3s": 0,
+          "maxEffectiveConductanceWK": 13.803680981595093
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-owner-geometry-controls-edit-1200",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 3,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 119.710494982,
+      "maxEnergyResidualJ": 4.919711500406265e-07,
+      "maxWaterResidualKg": 5.856426454897701e-15,
+      "protectionCounts": {
+        "discharge temperature": 229
+      },
+      "states": {
+        "running": 4800
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 257.12208100000134,
+      "comfort": {
+        "rooms": {
+          "attic": {
+            "callingSeconds": 300,
+            "notCallingSeconds": 900,
+            "poweredFanSeconds": 300,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 7500,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          },
+          "first": {
+            "callingSeconds": 1200,
+            "notCallingSeconds": 0,
+            "poweredFanSeconds": 1200,
+            "modulatedFanSeconds": 1200,
+            "minPoweredFanFraction": 0.5496070777043229,
+            "maxPoweredFanFraction": 0.8696392066012919,
+            "fanEnergyJ": 11199.468351372576,
+            "callTransitions": 0,
+            "circuitTransitions": 4
+          },
+          "ground": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          }
+        },
+        "transitions": [
+          {
+            "roomId": "first",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 0.624999999999936,
+            "temperatureBeforeC": 21.50000000000017,
+            "temperatureAfterC": 21.498499635090013,
+            "setpointC": 21.5
+          },
+          {
+            "roomId": "first",
+            "simulatedSeconds": 300.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 0.6389800315314318,
+            "temperatureBeforeC": 21.462719915916182,
+            "temperatureAfterC": 21.462958374533287,
+            "setpointC": 21.5
+          },
+          {
+            "roomId": "attic",
+            "simulatedSeconds": 600.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 18.410330014220676,
+            "temperatureAfterC": 18.410406002120396,
+            "setpointC": 21
+          },
+          {
+            "roomId": "first",
+            "simulatedSeconds": 600.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 0.5496070777043229,
+            "temperatureBeforeC": 21.701047792788472,
+            "temperatureAfterC": 21.696774452592877,
+            "setpointC": 21.5
+          },
+          {
+            "roomId": "first",
+            "simulatedSeconds": 900.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 0.8553163060757356,
+            "temperatureBeforeC": 20.88582318379804,
+            "temperatureAfterC": 20.887451544878445,
+            "setpointC": 21.5
+          }
+        ],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 0,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 4800,
+        "refinedPublicCalls": 0,
+        "maxPerPublicCall": 1,
+        "minDt": 0.25,
+        "maxDt": 0.25,
+        "maxClockErrorSeconds": 0
+      },
+      "openingEdges": {
+        "[\"ground\",\"first\"]": {
+          "stateSeconds": {
+            "stable": 900,
+            "wall-exchange": 300
+          },
+          "maxAbsoluteHeatW": 3371.3105518295315,
+          "maxEquivalentExchangeM3s": 0.4895532723058071,
+          "maxEffectiveConductanceWK": 604.7923913091654
+        },
+        "[\"first\",\"attic\"]": {
+          "stateSeconds": {
+            "unstable": 1200
+          },
+          "maxAbsoluteHeatW": 455.534783401867,
+          "maxEquivalentExchangeM3s": 0.10323603231874208,
+          "maxEffectiveConductanceWK": 138.43021919678054
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-refinement-one-m3-maxdt-0.025",
+      "outcome": "pass",
+      "steps": 4,
+      "updates": 0,
+      "simulatedSeconds": 1.0000000000000004,
+      "wallSeconds": 1.895827425,
+      "maxEnergyResidualJ": 2.9802322387695312e-08,
+      "maxWaterResidualKg": 0,
+      "protectionCounts": {},
+      "states": {
+        "idle": 40
+      },
+      "stateEntries": {},
+      "completedDefrosts": 0,
+      "maxStepWallMs": 71.68135100000018,
+      "comfort": {
+        "rooms": {
+          "room-1": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1.0000000000000004,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "room-2": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1.0000000000000004,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          }
+        },
+        "transitions": [],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 1.0000000000000004,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 40,
+        "refinedPublicCalls": 4,
+        "maxPerPublicCall": 10,
+        "minDt": 0.025,
+        "maxDt": 0.025,
+        "maxClockErrorSeconds": 2.220446049250313e-16
+      },
+      "openingEdges": {
+        "[\"room-1\",\"room-2\"]": {
+          "stateSeconds": {
+            "unstable": 1.0000000000000004
+          },
+          "maxAbsoluteHeatW": 2975.6899479801596,
+          "maxEquivalentExchangeM3s": 0.19613363905470516,
+          "maxEffectiveConductanceWK": 250.57621004843514
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-refinement-one-m3-maxdt-0.05",
+      "outcome": "pass",
+      "steps": 4,
+      "updates": 0,
+      "simulatedSeconds": 1.0000000000000002,
+      "wallSeconds": 1.849798098,
+      "maxEnergyResidualJ": 2.9802322387695312e-08,
+      "maxWaterResidualKg": 0,
+      "protectionCounts": {},
+      "states": {
+        "idle": 20
+      },
+      "stateEntries": {},
+      "completedDefrosts": 0,
+      "maxStepWallMs": 37.85187199999996,
+      "comfort": {
+        "rooms": {
+          "room-1": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1.0000000000000002,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "room-2": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1.0000000000000002,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          }
+        },
+        "transitions": [],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 1.0000000000000002,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 20,
+        "refinedPublicCalls": 4,
+        "maxPerPublicCall": 5,
+        "minDt": 0.05,
+        "maxDt": 0.05,
+        "maxClockErrorSeconds": 1.6653345369377348e-16
+      },
+      "openingEdges": {
+        "[\"room-1\",\"room-2\"]": {
+          "stateSeconds": {
+            "unstable": 1.0000000000000002
+          },
+          "maxAbsoluteHeatW": 2929.8353631033865,
+          "maxEquivalentExchangeM3s": 0.19510230702062023,
+          "maxEffectiveConductanceWK": 249.33118601688784
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-refinement-one-m3-maxdt-0.1",
+      "outcome": "pass",
+      "steps": 4,
+      "updates": 0,
+      "simulatedSeconds": 1,
+      "wallSeconds": 1.780719181,
+      "maxEnergyResidualJ": 2.9802322387695312e-08,
+      "maxWaterResidualKg": 0,
+      "protectionCounts": {},
+      "states": {
+        "idle": 12
+      },
+      "stateEntries": {},
+      "completedDefrosts": 0,
+      "maxStepWallMs": 24.144588999999996,
+      "comfort": {
+        "rooms": {
+          "room-1": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "room-2": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          }
+        },
+        "transitions": [],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 1,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 12,
+        "refinedPublicCalls": 4,
+        "maxPerPublicCall": 3,
+        "minDt": 0.04999999999999999,
+        "maxDt": 0.1,
+        "maxClockErrorSeconds": 5.551115123125783e-17
+      },
+      "openingEdges": {
+        "[\"room-1\",\"room-2\"]": {
+          "stateSeconds": {
+            "unstable": 1
+          },
+          "maxAbsoluteHeatW": 2838.8271115693756,
+          "maxEquivalentExchangeM3s": 0.19302308432849571,
+          "maxEffectiveConductanceWK": 246.82114838295513
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-owner-minus4-ground16-1200",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 0,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 115.544118174,
+      "maxEnergyResidualJ": 4.810281097888947e-07,
+      "maxWaterResidualKg": 4.413136522884997e-15,
+      "protectionCounts": {
+        "discharge temperature": 474
+      },
+      "states": {
+        "running": 4800
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 233.9475240000029,
+      "comfort": {
+        "rooms": {
+          "attic": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "first": {
+            "callingSeconds": 1200,
+            "notCallingSeconds": 0,
+            "poweredFanSeconds": 1200,
+            "modulatedFanSeconds": 1200,
+            "minPoweredFanFraction": 0.547609931573227,
+            "maxPoweredFanFraction": 0.7828317779074041,
+            "fanEnergyJ": 8666.903764626266,
+            "callTransitions": 0,
+            "circuitTransitions": 1
+          },
+          "ground": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          }
+        },
+        "transitions": [
+          {
+            "roomId": "first",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 0.624999999999936,
+            "temperatureBeforeC": 21.50000000000017,
+            "temperatureAfterC": 21.498290075831562,
+            "setpointC": 21.5
+          }
+        ],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 0,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 4800,
+        "refinedPublicCalls": 0,
+        "maxPerPublicCall": 1,
+        "minDt": 0.25,
+        "maxDt": 0.25,
+        "maxClockErrorSeconds": 0
+      },
+      "openingEdges": {
+        "[\"ground\",\"first\"]": {
+          "stateSeconds": {
+            "stable": 1200
+          },
+          "maxAbsoluteHeatW": 84.47935652248282,
+          "maxEquivalentExchangeM3s": 0,
+          "maxEffectiveConductanceWK": 13.803680981595093
+        },
+        "[\"first\",\"attic\"]": {
+          "stateSeconds": {
+            "unstable": 1200
+          },
+          "maxAbsoluteHeatW": 462.97722930736757,
+          "maxEquivalentExchangeM3s": 0.10381617678549952,
+          "maxEffectiveConductanceWK": 139.1305695970501
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-owner-heat-to-cool-42C-1200",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 1,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 147.266613327,
+      "maxEnergyResidualJ": 4.270114004611969e-07,
+      "maxWaterResidualKg": 9.992007221626409e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 4680,
+        "reversing": 12,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 723.9407309999988,
+      "comfort": {
+        "rooms": {
+          "attic": {
+            "callingSeconds": 0,
+            "notCallingSeconds": 1200,
+            "poweredFanSeconds": 0,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": null,
+            "maxPoweredFanFraction": 0,
+            "fanEnergyJ": 0,
+            "callTransitions": 0,
+            "circuitTransitions": 0
+          },
+          "first": {
+            "callingSeconds": 1200,
+            "notCallingSeconds": 0,
+            "poweredFanSeconds": 1170,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 29250,
+            "callTransitions": 0,
+            "circuitTransitions": 2
+          },
+          "ground": {
+            "callingSeconds": 1200,
+            "notCallingSeconds": 0,
+            "poweredFanSeconds": 1170,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 29250,
+            "callTransitions": 0,
+            "circuitTransitions": 2
+          }
+        },
+        "transitions": [
+          {
+            "roomId": "first",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 21.50000000000017,
+            "temperatureAfterC": 21.49855999726907,
+            "setpointC": 26
+          },
+          {
+            "roomId": "ground",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 18,
+            "temperatureAfterC": 17.998877271841195,
+            "setpointC": 26
+          },
+          {
+            "roomId": "first",
+            "simulatedSeconds": 330.25,
+            "requestedMode": "cooling",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 22.174536338853102,
+            "temperatureAfterC": 22.177426766998735,
+            "setpointC": 17
+          },
+          {
+            "roomId": "ground",
+            "simulatedSeconds": 330.25,
+            "requestedMode": "cooling",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 20.358425819490208,
+            "temperatureAfterC": 20.36464329368397,
+            "setpointC": 17
+          }
+        ],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 0,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 4800,
+        "refinedPublicCalls": 0,
+        "maxPerPublicCall": 1,
+        "minDt": 0.25,
+        "maxDt": 0.25,
+        "maxClockErrorSeconds": 0
+      },
+      "openingEdges": {
+        "[\"ground\",\"first\"]": {
+          "stateSeconds": {
+            "stable": 1200
+          },
+          "maxAbsoluteHeatW": 48.30850387860563,
+          "maxEquivalentExchangeM3s": 0,
+          "maxEffectiveConductanceWK": 13.803680981595093
+        },
+        "[\"first\",\"attic\"]": {
+          "stateSeconds": {
+            "unstable": 928.5,
+            "stable": 271.5
+          },
+          "maxAbsoluteHeatW": 519.480147303718,
+          "maxEquivalentExchangeM3s": 0.10797820927959788,
+          "maxEffectiveConductanceWK": 144.15497522392565
+        }
+      },
+      "failureCategory": null
+    },
+    {
+      "id": "opening-dual-endurance-humid-frost-defrost",
+      "outcome": "pass",
+      "steps": 7200,
+      "updates": 0,
+      "simulatedSeconds": 1800,
+      "wallSeconds": 568.2531502859999,
+      "maxEnergyResidualJ": 5.597248673439026e-07,
+      "maxWaterResidualKg": 5.488665077990618e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 5668,
+        "reversing": 96,
+        "defrost": 1004,
+        "draining": 160,
+        "idle": 272
+      },
+      "stateEntries": {
+        "running": 5,
+        "reversing": 8,
+        "defrost": 4,
+        "draining": 4,
+        "idle": 4
+      },
+      "completedDefrosts": 4,
+      "maxStepWallMs": 932.8501969999634,
+      "comfort": {
+        "rooms": {
+          "room-1": {
+            "callingSeconds": 1800,
+            "notCallingSeconds": 0,
+            "poweredFanSeconds": 1417,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 35425,
+            "callTransitions": 0,
+            "circuitTransitions": 9
+          },
+          "room-2": {
+            "callingSeconds": 1800,
+            "notCallingSeconds": 0,
+            "poweredFanSeconds": 1417,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 35425,
+            "callTransitions": 0,
+            "circuitTransitions": 9
+          },
+          "room-3": {
+            "callingSeconds": 1800,
+            "notCallingSeconds": 0,
+            "poweredFanSeconds": 1417,
+            "modulatedFanSeconds": 0,
+            "minPoweredFanFraction": 1,
+            "maxPoweredFanFraction": 1,
+            "fanEnergyJ": 35425,
+            "callTransitions": 0,
+            "circuitTransitions": 9
+          }
+        },
+        "transitions": [
+          {
+            "roomId": "room-1",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 19.99999999999983,
+            "temperatureAfterC": 19.99718202241462,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-2",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 19.99999999999983,
+            "temperatureAfterC": 19.99718202241462,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-3",
+            "simulatedSeconds": 0.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 19.99999999999983,
+            "temperatureAfterC": 19.99718202241462,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-1",
+            "simulatedSeconds": 300.25,
+            "requestedMode": "heating",
+            "state": "reversing",
+            "calling": true,
+            "circuitActive": false,
+            "fanFraction": 0,
+            "temperatureBeforeC": 20.699480757591573,
+            "temperatureAfterC": 20.696399967566833,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-2",
+            "simulatedSeconds": 300.25,
+            "requestedMode": "heating",
+            "state": "reversing",
+            "calling": true,
+            "circuitActive": false,
+            "fanFraction": 0,
+            "temperatureBeforeC": 21.575777147823942,
+            "temperatureAfterC": 21.571868943888262,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-3",
+            "simulatedSeconds": 300.25,
+            "requestedMode": "heating",
+            "state": "reversing",
+            "calling": true,
+            "circuitActive": false,
+            "fanFraction": 0,
+            "temperatureBeforeC": 21.58712013561251,
+            "temperatureAfterC": 21.58323804891421,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-1",
+            "simulatedSeconds": 398.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 19.651557745816262,
+            "temperatureAfterC": 19.65151508289722,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-2",
+            "simulatedSeconds": 398.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 20.25939879277189,
+            "temperatureAfterC": 20.259827922570707,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-3",
+            "simulatedSeconds": 398.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 20.27639128877604,
+            "temperatureAfterC": 20.276817445510062,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-1",
+            "simulatedSeconds": 698.25,
+            "requestedMode": "heating",
+            "state": "reversing",
+            "calling": true,
+            "circuitActive": false,
+            "fanFraction": 0,
+            "temperatureBeforeC": 21.149702793517235,
+            "temperatureAfterC": 21.146203084899298,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-2",
+            "simulatedSeconds": 698.25,
+            "requestedMode": "heating",
+            "state": "reversing",
+            "calling": true,
+            "circuitActive": false,
+            "fanFraction": 0,
+            "temperatureBeforeC": 22.20960417565476,
+            "temperatureAfterC": 22.20506737453195,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-3",
+            "simulatedSeconds": 698.25,
+            "requestedMode": "heating",
+            "state": "reversing",
+            "calling": true,
+            "circuitActive": false,
+            "fanFraction": 0,
+            "temperatureBeforeC": 22.233101472508395,
+            "temperatureAfterC": 22.22858199430243,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-1",
+            "simulatedSeconds": 793.75,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 19.992968393686567,
+            "temperatureAfterC": 19.993013531285044,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-2",
+            "simulatedSeconds": 793.75,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 20.725684946242268,
+            "temperatureAfterC": 20.72587714244895,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-3",
+            "simulatedSeconds": 793.75,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 20.751620116717902,
+            "temperatureAfterC": 20.751800840964847,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-1",
+            "simulatedSeconds": 1093.75,
+            "requestedMode": "heating",
+            "state": "reversing",
+            "calling": true,
+            "circuitActive": false,
+            "fanFraction": 0,
+            "temperatureBeforeC": 21.375888133575927,
+            "temperatureAfterC": 21.37217299236022,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-2",
+            "simulatedSeconds": 1093.75,
+            "requestedMode": "heating",
+            "state": "reversing",
+            "calling": true,
+            "circuitActive": false,
+            "fanFraction": 0,
+            "temperatureBeforeC": 22.39948359227867,
+            "temperatureAfterC": 22.394780602500134,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-3",
+            "simulatedSeconds": 1093.75,
+            "requestedMode": "heating",
+            "state": "reversing",
+            "calling": true,
+            "circuitActive": false,
+            "fanFraction": 0,
+            "temperatureBeforeC": 22.42433625282598,
+            "temperatureAfterC": 22.41964730044708,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-1",
+            "simulatedSeconds": 1188.5,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 20.159887030996742,
+            "temperatureAfterC": 20.159895955845514,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-2",
+            "simulatedSeconds": 1188.5,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 20.873711691357755,
+            "temperatureAfterC": 20.873820471013687,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-3",
+            "simulatedSeconds": 1188.5,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 20.900181459696398,
+            "temperatureAfterC": 20.900277629769676,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-1",
+            "simulatedSeconds": 1488.5,
+            "requestedMode": "heating",
+            "state": "reversing",
+            "calling": true,
+            "circuitActive": false,
+            "fanFraction": 0,
+            "temperatureBeforeC": 21.468564061706388,
+            "temperatureAfterC": 21.46476762717873,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-2",
+            "simulatedSeconds": 1488.5,
+            "requestedMode": "heating",
+            "state": "reversing",
+            "calling": true,
+            "circuitActive": false,
+            "fanFraction": 0,
+            "temperatureBeforeC": 22.468860879773672,
+            "temperatureAfterC": 22.464115818321318,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-3",
+            "simulatedSeconds": 1488.5,
+            "requestedMode": "heating",
+            "state": "reversing",
+            "calling": true,
+            "circuitActive": false,
+            "fanFraction": 0,
+            "temperatureBeforeC": 22.493446137726323,
+            "temperatureAfterC": 22.48871491673077,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-1",
+            "simulatedSeconds": 1583.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 20.227129376993048,
+            "temperatureAfterC": 20.227104725437698,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-2",
+            "simulatedSeconds": 1583.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 20.92976905169604,
+            "temperatureAfterC": 20.9298389910349,
+            "setpointC": 26
+          },
+          {
+            "roomId": "room-3",
+            "simulatedSeconds": 1583.25,
+            "requestedMode": "heating",
+            "state": "running",
+            "calling": true,
+            "circuitActive": true,
+            "fanFraction": 1,
+            "temperatureBeforeC": 20.956010199657612,
+            "temperatureAfterC": 20.95606790360739,
+            "setpointC": 26
+          }
+        ],
+        "recordedTransitionLimit": 128,
+        "ordinaryNoCallSeconds": 0,
+        "ordinaryCompressorWithoutCallSeconds": 0
+      },
+      "internalSteps": {
+        "accepted": 7200,
+        "refinedPublicCalls": 0,
+        "maxPerPublicCall": 1,
+        "minDt": 0.25,
+        "maxDt": 0.25,
+        "maxClockErrorSeconds": 0
+      },
+      "openingEdges": {
+        "[\"room-1\",\"room-2\"]": {
+          "stateSeconds": {
+            "neutral": 0.25,
+            "stable": 1799.75
+          },
+          "maxAbsoluteHeatW": 14.63054055097811,
+          "maxEquivalentExchangeM3s": 0,
+          "maxEffectiveConductanceWK": 13.803680981595093
+        },
+        "[\"room-2\",\"room-3\"]": {
+          "stateSeconds": {
+            "neutral": 0.25,
+            "wall-exchange": 1799.75
+          },
+          "maxAbsoluteHeatW": 1.4502960268272143,
+          "maxEquivalentExchangeM3s": 0.033697378522433256,
+          "maxEffectiveConductanceWK": 54.48315633387652
+        }
+      },
+      "failureCategory": null
+    }
+  ],
+  "originalCampaignManifestMethod": "Independent Node child processes; immutable TypeScript snapshot compiled once; production guarded HEOS; fixed accepted 0.25-second steps; full before-step checkpoint persisted for native aborts.",
+  "methodCorrection": "The main immutable coordinator retained a stale fixed-step description. Its recorded worker actually observed and checked each adaptive accepted interval. The identical worker was checked by pilot4 and smoke25. Smoke25 captured a later cycle/type snapshot containing added accepted valve-face diagnostics; the source differences are recorded separately rather than presented as full21 coverage of the newer source.",
+  "artifactDirectory": "/tmp/heatpump-opening-exchange-final-21",
+  "scope": "New Candidate A opening-exchange geometry using production guarded native HEOS. Generic R32 reference circuit, actual owner room IDs/volumes/envelope/gains/dual ventilation/cleanliness, retained weather/mode/geometry edits, isolated sensible-opening networks and eight-head wet reversals. These are finite regression scenarios; no OEM map calibration or proof of universal stability.",
+  "aggregate": {
+    "outcomes": {
+      "pass": 21
+    },
+    "completed": 21,
+    "acceptedSeconds": 18746.0,
+    "publicRequests": 74984,
+    "acceptedInternalIntervals": 75129,
+    "retainedStateConfigEdits": 6,
+    "maxEnergyResidualJ": 8.270144462585449e-07,
+    "maxWaterResidualKg": 1.3944401189291966e-13,
+    "completedDefrostCycles": 4,
+    "refinedPublicRequests": 24,
+    "maxPublicClockSummationErrorSeconds": 2.220446049250313e-16
+  },
+  "harnessHashesAtCompletion": {
+    "tools/robustness-worker.mjs": "ddfa53783547044443e885ca6003644931b6d2dc6c4c24cf1fe8b9faf2116800",
+    "tools/robustness-campaign.mjs": "8a9032b3be59087f21a5b71b4cb7190575d98688ec6478e9fb8fa86d0acbc595",
+    "tools/robustness-opening-inputs.mjs": "32a384a8638004349e87704794e1594109729df98c8b3ce8ba905001fa806ede"
+  },
+  "auxiliaryAcceptance": {
+    "adaptivePilot4": {
+      "artifactDirectory": "/tmp/heatpump-opening-adaptive-pilot-4",
+      "createdAt": "2026-10-11T11:48:17.832Z",
+      "workers": 4,
+      "outcomes": {
+        "pass": 4
+      },
+      "completed": 4,
+      "acceptedSeconds": 62,
+      "publicRequests": 248,
+      "acceptedInternalIntervals": 279,
+      "retainedStateConfigEdits": 0,
+      "maxEnergyResidualJ": 1.4006218407303095e-07,
+      "maxWaterResidualKg": 1.3869114190434573e-15,
+      "sourceHashes": {
+        "src/engine/engine.ts": "92174a5beb3fbbefd9c9bfba64a3f0155261a11782c9420f4bdfe3d6ae887903",
+        "src/engine/interzone.ts": "20671a676f3174e1757f4368ef0b4f1046a07b4b35d8e5377aaf689c8a43ee2b",
+        "src/engine/types.ts": "2ed28a4c5e7fbe4e698752f717b2289e250aae0cda29649aa96bd9189b8ee400",
+        "src/engine/cycle.ts": "294d647a26f60d319641c9b7fe4645378472dd5c70a8e6c0ef6075168aaf29e4",
+        "tools/robustness-worker.mjs": "ddfa53783547044443e885ca6003644931b6d2dc6c4c24cf1fe8b9faf2116800",
+        "tools/robustness-campaign.mjs": "de0f752b4e8e09de7841e0f2ddd3b46e08448381a18aac36603931688ecb5a6c"
+      }
+    },
+    "originalSmoke25": {
+      "artifactDirectory": "/tmp/heatpump-opening-instrumented-smoke-25",
+      "createdAt": "2026-10-11T12:00:06.890Z",
+      "workers": 3,
+      "outcomes": {
+        "pass": 25
+      },
+      "completed": 25,
+      "acceptedSeconds": 102,
+      "publicRequests": 408,
+      "acceptedInternalIntervals": 408,
+      "retainedStateConfigEdits": 6,
+      "maxEnergyResidualJ": 4.636240191757679e-07,
+      "maxWaterResidualKg": 7.702172233337023e-15,
+      "sourceHashes": {
+        "src/engine/engine.ts": "92174a5beb3fbbefd9c9bfba64a3f0155261a11782c9420f4bdfe3d6ae887903",
+        "src/engine/interzone.ts": "20671a676f3174e1757f4368ef0b4f1046a07b4b35d8e5377aaf689c8a43ee2b",
+        "src/engine/types.ts": "04eb849dfb52d4cfef49205961b04d68647d00bc5b384eb60500201ed4083392",
+        "src/engine/cycle.ts": "bb917edb2c1dfee6d57280519b7e9baf33030f2d5124f577e96b8449b3cc7008",
+        "tools/robustness-worker.mjs": "ddfa53783547044443e885ca6003644931b6d2dc6c4c24cf1fe8b9faf2116800",
+        "tools/robustness-campaign.mjs": "8a9032b3be59087f21a5b71b4cb7190575d98688ec6478e9fb8fa86d0acbc595"
+      },
+      "sourceDifferencesFromPrimary": {
+        "src/engine/cycle.ts": {
+          "primary": "294d647a26f60d319641c9b7fe4645378472dd5c70a8e6c0ef6075168aaf29e4",
+          "smoke25": "bb917edb2c1dfee6d57280519b7e9baf33030f2d5124f577e96b8449b3cc7008"
+        },
+        "src/engine/types.ts": {
+          "primary": "2ed28a4c5e7fbe4e698752f717b2289e250aae0cda29649aa96bd9189b8ee400",
+          "smoke25": "04eb849dfb52d4cfef49205961b04d68647d00bc5b384eb60500201ed4083392"
+        },
+        "compiled/cycle.js": {
+          "primary": "e24ab41245578772ebd43bc2e5be4a58933410093ed2ee2475eb2021b67ef48c",
+          "smoke25": "f0ba8446bbc7711467fd9dd46ed028dca37d4469c75f475e5daea69ddc7c5952"
+        },
+        "tools/robustness-campaign.mjs": {
+          "primary": "de0f752b4e8e09de7841e0f2ddd3b46e08448381a18aac36603931688ecb5a6c",
+          "smoke25": "8a9032b3be59087f21a5b71b4cb7190575d98688ec6478e9fb8fa86d0acbc595"
+        }
+      }
+    }
+  },
+  "inputFixtures": {
+    "directory": "tests/engine/fixtures/opening-exchange-robustness",
+    "sha256": {
+      "opening-dual-endurance-hot-wet-cooling.json": "1cc2fbece64d2abe5e459601888d29b5cbec8c6398cd15ee2f033ab048018e86",
+      "opening-dual-endurance-humid-frost-defrost.json": "e971d5e960cc6e8cdc5bc255cc5fb6046d0cd78fefece86bbd4adb49fadd14c7",
+      "opening-dual-reported-friend-cold-cooling.json": "fb676e230e02036b2ddfa9e2a1501801e44456c9a7dae79e71ca6d7a197d2290",
+      "opening-eight-head-saturated-reversal-840.json": "1d3d68358e69b8eac71b44247f78afa4a1a6a962a8df7be3fe51014ffb7605d4",
+      "opening-isolated-vertical-stable-1200.json": "dcbbd21096e8f8e2bd6025c099c9f598d169f82d1ec557d087803a1c0958a347",
+      "opening-isolated-vertical-unstable-1200.json": "2c6c6a88f8096e9cac98cbb723533f27ce58db626c9a55b44cbd75b281ec850f",
+      "opening-isolated-wall-height2-1200.json": "fc87fe2c6961a10e113b737cd49d4dadca6e4129ca3126959c233c8612da07af",
+      "opening-large-aperture-small-room-maxdt-0.025.json": "b2f7263db1c04ffcba439cc4d44be8b377718419e452b2a91850f56402986973",
+      "opening-large-aperture-small-room-maxdt-0.05.json": "c07e8bdf605a8b9e60a8e265ccb26dbc9d075f0de2caf6b196c9bf83bc53536b",
+      "opening-large-aperture-small-room-maxdt-0.25.json": "417074c991c5fbc8084d3438982f922606b8e6641f22d6c30c9873ae3f5f7968",
+      "opening-owner-0C-ground17-1200.json": "59de39a3a5d2c3570efa636202f65158086c25a66f7af72a7d310d046370fa47",
+      "opening-owner-0C-up-alone-ground16-1200.json": "c540097039ff6f63c1b08981a248d0b0b5a714eab89929b7200414c33c3c49d1",
+      "opening-owner-1C-ground17-1200.json": "31219f04ebeb3cdde1a989224cafa3addba985e216f7e79e4cad4b28b66750f3",
+      "opening-owner-1C-up-alone-ground16-1200.json": "2da98230dd81ad80d9c2be1f4ba2e0dd94141a70f760c44eae2d7b31a7479d55",
+      "opening-owner-cool-to-heat-42C-1200.json": "a67593deb8830c9231fa42d3769857f474d18b8f4ea683ec6733a5b72db7ee45",
+      "opening-owner-geometry-controls-edit-1200.json": "6fdb521d597bf69ffdf851f9fe056db46f8e99a9610cfb7bf4bc84a6d8a9f4dd",
+      "opening-owner-heat-to-cool-42C-1200.json": "75ba53ca7b3886d14b0f5b3cf5618bfe3c7d747ea926a3dd0e4d9fa11d93f2c6",
+      "opening-owner-minus4-ground16-1200.json": "9c51b2b04ecce4d3f85968e4a546562a8e52d496cd8b229bf95145d4f13fc810",
+      "opening-refinement-one-m3-maxdt-0.025.json": "6e7dbcbeda9d299e828b29a4b14eb21d28937b1f15548e61ff6c85126082815b",
+      "opening-refinement-one-m3-maxdt-0.05.json": "ae1b86180a1b5a720c8ade708e2ad53d0a8d8b33908483419c70705cba0d72f3",
+      "opening-refinement-one-m3-maxdt-0.1.json": "83f751ed1bc67c1f0e8ae180cd52707141745594821cf10c6292ffba82ecd879"
+    },
+    "originalRecoveryInputs": "Preserved unchanged in tests/engine/fixtures/robustness-recovery-20261014; opening inputs record every configuration patch and preserve exact reconstructed/reversal/seeded source schedules."
+  },
+  "ownerTrajectoryObservations": {
+    "opening-owner-0C-ground17-1200": {
+      "simulatedSeconds": 1200,
+      "averageSystemInputW": 547.8142793799325,
+      "sessionCOP": 2.281509894123466,
+      "rooms": [
+        {
+          "id": "attic",
+          "temperatureC": 18.63512826401859,
+          "setpointC": 21,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        },
+        {
+          "id": "first",
+          "temperatureC": 21.741126827448966,
+          "setpointC": 21.5,
+          "thermostatCalling": true,
+          "fanSpeedFraction": 0.5345650901855947,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        },
+        {
+          "id": "ground",
+          "temperatureC": 16.048415280821644,
+          "setpointC": 17,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        }
+      ],
+      "drainedWaterKg": 0
+    },
+    "opening-owner-0C-up-alone-ground16-1200": {
+      "simulatedSeconds": 1200,
+      "averageSystemInputW": 547.8142793799325,
+      "sessionCOP": 2.281509894123466,
+      "rooms": [
+        {
+          "id": "attic",
+          "temperatureC": 18.63512826401859,
+          "setpointC": 21,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        },
+        {
+          "id": "first",
+          "temperatureC": 21.741126827448966,
+          "setpointC": 21.5,
+          "thermostatCalling": true,
+          "fanSpeedFraction": 0.5345650901855947,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        },
+        {
+          "id": "ground",
+          "temperatureC": 16.048415280821644,
+          "setpointC": 16,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        }
+      ],
+      "drainedWaterKg": 0
+    },
+    "opening-owner-1C-ground17-1200": {
+      "simulatedSeconds": 1200,
+      "averageSystemInputW": 554.2786407407965,
+      "sessionCOP": 2.23564928438847,
+      "rooms": [
+        {
+          "id": "attic",
+          "temperatureC": 18.69022086839152,
+          "setpointC": 21,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        },
+        {
+          "id": "first",
+          "temperatureC": 21.817465830648587,
+          "setpointC": 21.5,
+          "thermostatCalling": true,
+          "fanSpeedFraction": 0.5060093979002005,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        },
+        {
+          "id": "ground",
+          "temperatureC": 16.20155926515787,
+          "setpointC": 17,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        }
+      ],
+      "drainedWaterKg": 0
+    },
+    "opening-owner-1C-up-alone-ground16-1200": {
+      "simulatedSeconds": 1200,
+      "averageSystemInputW": 554.2786407407965,
+      "sessionCOP": 2.23564928438847,
+      "rooms": [
+        {
+          "id": "attic",
+          "temperatureC": 18.69022086839152,
+          "setpointC": 21,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        },
+        {
+          "id": "first",
+          "temperatureC": 21.817465830648587,
+          "setpointC": 21.5,
+          "thermostatCalling": true,
+          "fanSpeedFraction": 0.5060093979002005,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        },
+        {
+          "id": "ground",
+          "temperatureC": 16.20155926515787,
+          "setpointC": 16,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        }
+      ],
+      "drainedWaterKg": 0
+    },
+    "opening-owner-cool-to-heat-42C-1200": {
+      "simulatedSeconds": 1200,
+      "averageSystemInputW": 539.2184251825516,
+      "sessionCOP": 1.411141401552887,
+      "rooms": [
+        {
+          "id": "attic",
+          "temperatureC": 28.240615621583004,
+          "setpointC": 26,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        },
+        {
+          "id": "first",
+          "temperatureC": 27.057082416278377,
+          "setpointC": 26,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        },
+        {
+          "id": "ground",
+          "temperatureC": 26.073617075162986,
+          "setpointC": 26,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        }
+      ],
+      "drainedWaterKg": 0.1404360997825562
+    },
+    "opening-owner-geometry-controls-edit-1200": {
+      "simulatedSeconds": 1200,
+      "averageSystemInputW": 740.9018806951443,
+      "sessionCOP": 2.2772573613365825,
+      "rooms": [
+        {
+          "id": "attic",
+          "temperatureC": 18.79600144907124,
+          "setpointC": 21,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        },
+        {
+          "id": "first",
+          "temperatureC": 21.462787569314685,
+          "setpointC": 21.5,
+          "thermostatCalling": true,
+          "fanSpeedFraction": 0.6390620973640466,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        },
+        {
+          "id": "ground",
+          "temperatureC": 16.638347134552646,
+          "setpointC": 16,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        }
+      ],
+      "drainedWaterKg": 0
+    },
+    "opening-owner-minus4-ground16-1200": {
+      "simulatedSeconds": 1200,
+      "averageSystemInputW": 571.4659182077788,
+      "sessionCOP": 2.259381858109736,
+      "rooms": [
+        {
+          "id": "attic",
+          "temperatureC": 18.37150453070319,
+          "setpointC": 21,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        },
+        {
+          "id": "first",
+          "temperatureC": 21.518313537035795,
+          "setpointC": 21.5,
+          "thermostatCalling": true,
+          "fanSpeedFraction": 0.6181786448370801,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        },
+        {
+          "id": "ground",
+          "temperatureC": 15.432944540442918,
+          "setpointC": 16,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        }
+      ],
+      "drainedWaterKg": 0
+    },
+    "opening-owner-heat-to-cool-42C-1200": {
+      "simulatedSeconds": 1200,
+      "averageSystemInputW": 1766.443752130731,
+      "sessionCOP": 1.6985904758305885,
+      "rooms": [
+        {
+          "id": "attic",
+          "temperatureC": 19.942912133878963,
+          "setpointC": 17,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        },
+        {
+          "id": "first",
+          "temperatureC": 19.412179366626162,
+          "setpointC": 17,
+          "thermostatCalling": true,
+          "fanSpeedFraction": 1,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        },
+        {
+          "id": "ground",
+          "temperatureC": 18.8846621471111,
+          "setpointC": 17,
+          "thermostatCalling": true,
+          "fanSpeedFraction": 1,
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0
+        }
+      ],
+      "drainedWaterKg": 0.3122287902918707
+    }
+  },
+  "ownerInterpretation": "Twenty-minute trajectories, not steady-state estimates or measured-house fitting. Ground17 remained within its \u00b11 K call band in the 0/1\u00b0C cases, so enabled-ground and explicitly disabled-ground trajectories match for this duration. Average system input includes all electrical loads and startup/transients.",
+  "timestepRefinement": {
+    "oneM3": {
+      "runs": [
+        {
+          "maximumInternalDtSeconds": 0.1,
+          "finalRoomTemperaturesC": [
+            24.029622218661075,
+            15.892232894916674
+          ],
+          "internalSteps": {
+            "accepted": 12,
+            "refinedPublicCalls": 4,
+            "maxPerPublicCall": 3,
+            "minDt": 0.04999999999999999,
+            "maxDt": 0.1,
+            "maxClockErrorSeconds": 5.551115123125783e-17
+          }
+        },
+        {
+          "maximumInternalDtSeconds": 0.05,
+          "finalRoomTemperaturesC": [
+            24.04674039550872,
+            15.875794590732824
+          ],
+          "internalSteps": {
+            "accepted": 20,
+            "refinedPublicCalls": 4,
+            "maxPerPublicCall": 5,
+            "minDt": 0.05,
+            "maxDt": 0.05,
+            "maxClockErrorSeconds": 1.6653345369377348e-16
+          }
+        },
+        {
+          "maximumInternalDtSeconds": 0.025,
+          "finalRoomTemperaturesC": [
+            24.05712763619499,
+            15.865819885770236
+          ],
+          "internalSteps": {
+            "accepted": 40,
+            "refinedPublicCalls": 4,
+            "maxPerPublicCall": 10,
+            "minDt": 0.025,
+            "maxDt": 0.025,
+            "maxClockErrorSeconds": 2.220446049250313e-16
+          }
+        }
+      ],
+      "successiveMaxRoomDifferenceK": [
+        0.017118176847645827,
+        0.010387240686270616
+      ],
+      "successiveDifferencesDecrease": true,
+      "maxRoomDifferenceFromFinestK": [
+        0.027505417533916443,
+        0.010387240686270616,
+        0.0
+      ],
+      "interpretation": "One-m\u00b3 refinement has decreasing successive trajectory differences. Large-aperture runs use adaptive bounds, so nominal maximum-step ratios are not uniform actual-step refinement; all trajectories remain bounded and conservative."
+    },
+    "largeAperture": {
+      "runs": [
+        {
+          "maximumInternalDtSeconds": 0.25,
+          "finalRoomTemperaturesC": [
+            19.809470155821202,
+            19.761055079768425,
+            19.754483358314758
+          ],
+          "internalSteps": {
+            "accepted": 27,
+            "refinedPublicCalls": 4,
+            "maxPerPublicCall": 12,
+            "minDt": 7.972689474976258e-05,
+            "maxDt": 0.08504690036467166,
+            "maxClockErrorSeconds": 1.1102230246251565e-16
+          }
+        },
+        {
+          "maximumInternalDtSeconds": 0.05,
+          "finalRoomTemperaturesC": [
+            19.811679641857836,
+            19.760529586938674,
+            19.7528903072473
+          ],
+          "internalSteps": {
+            "accepted": 28,
+            "refinedPublicCalls": 4,
+            "maxPerPublicCall": 12,
+            "minDt": 0.006643298686058112,
+            "maxDt": 0.05,
+            "maxClockErrorSeconds": 2.220446049250313e-16
+          }
+        },
+        {
+          "maximumInternalDtSeconds": 0.025,
+          "finalRoomTemperaturesC": [
+            19.816208714240474,
+            19.75939479367571,
+            19.749684474206845
+          ],
+          "internalSteps": {
+            "accepted": 42,
+            "refinedPublicCalls": 4,
+            "maxPerPublicCall": 12,
+            "minDt": 0.00878333598608101,
+            "maxDt": 0.025,
+            "maxClockErrorSeconds": 2.220446049250313e-16
+          }
+        }
+      ],
+      "successiveMaxRoomDifferenceK": [
+        0.0022094860366337343,
+        0.004529072382638333
+      ],
+      "successiveDifferencesDecrease": false,
+      "maxRoomDifferenceFromFinestK": [
+        0.006738558419272067,
+        0.004529072382638333,
+        0.0
+      ],
+      "interpretation": "One-m\u00b3 refinement has decreasing successive trajectory differences. Large-aperture runs use adaptive bounds, so nominal maximum-step ratios are not uniform actual-step refinement; all trajectories remain bounded and conservative."
+    }
+  },
+  "isolatedOpeningChecks": "All stable/unstable floor, wall-height2, large-aperture and refinement scenarios passed initial-temperature convex bounds and per-room dry-air/vapour/liquid/ice total-water constancy. Openings represent sensible exchange only, not real moisture transport or resolved stratification. Published opening transfer diagnostics are post-interval powers, not the initial forcing.",
+  "faultCoverage": "No physical fault, invariant failure, uncaught exception, native process abort or timeout occurred in these runs. No rollback exercise was triggered here; fault rollback is asserted if a physical interval fails. The friend screenshot is a reconstruction, and its original native worker crash remains unreproduced.",
+  "legacyEvidence": "Previous 75-case pre-recovery, 20-case recovery and 21-case indoor-comfort receipts retain their original source hashes. They are not silently promoted to proof of this new geometry. Original smoke25 is rerun here on a later valve-diagnostics source snapshot and the identical final observer; it does not extend all21 long schedules to that newer snapshot."
+}
