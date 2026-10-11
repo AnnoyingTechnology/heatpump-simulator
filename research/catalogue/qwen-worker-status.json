@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-11T08:01:23.999129+00:00",
+  "checkedAt": "2026-10-11T09:19:53.788837+00:00",
   "host": "10.10.10.204",
   "observedHostname": "ai-multi-gpu",
   "model": "Qwen3.8-Flash-Next",
@@ -70,22 +70,33 @@
       "reasoningTokens": 0,
       "lengthStops": 0,
       "status": "completed"
+    },
+    {
+      "batch": "qwen-mitsubishi-ef-family",
+      "status": "completed",
+      "reasoningTokens": 0,
+      "lengthStops": 0
+    },
+    {
+      "batch": "qwen-mitsubishi-ln-family",
+      "status": "running",
+      "thinking": "off"
     }
   ],
   "staging": {
     "manifestReferences": 12,
-    "candidateUnits": 28,
-    "structuralValidation": "HR, AY and AP: all28 candidates passed together; no duplicate references",
-    "sourceAcceptance": "Qwen primary table/image provenance recorded; independent acceptance and integration pending",
+    "candidateUnits": 37,
+    "structuralValidation": "HR/AY/AP/EF: 37 candidates structure-validated; independent selected-field acceptance recorded in equipment-acceptance.json",
+    "sourceAcceptance": "18 outdoor and 26 compatible indoor profile objects accepted; interface integration under verification",
     "fullCoverage": false,
     "candidateFacts": 589,
-    "nextBatch": "MSZ-EF family and exact matched outdoor references, bounded fresh context, starting"
+    "nextBatch": "MSZ-LN family; fresh bounded context, running"
   },
   "notes": [
     "Initial oversized source scan compacted before saving an index.",
     "One large write hit the16384-token response limit. No file was created by that call.",
     "Subsequent bounded writes saved an incomplete family index, HR reference manifest and first candidate.",
     "Fresh contexts and small edits are required for subsequent family batches.",
-    "No catalogue data has been promoted or integrated into simulator physics."
+    "Only explicitly accepted topology/airflow/casing fields are mapped. Compressor performance remains generic; full manufacturer coverage is incomplete."
   ]
 }

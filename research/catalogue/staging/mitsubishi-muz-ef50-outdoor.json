@@ -1,0 +1,348 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "mitsubishi-electric",
+  "family": "MSZ-EF Mural Design",
+  "market": "France",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "mitsubishi-fr-air-air-2026-2027",
+      "url": "https://confort.mitsubishielectric.fr/sites/default/files/2026-04/RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "title": "PAC Air/Air catalogue 2026-2027",
+      "edition": "RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "MUZ-EF50VG2",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), photo caption 'MUZ-EF 50 VG2' + UNITÉS EXTÉRIEURES table header, column Taille 50 = MUZ-EF50VG2",
+        "excerpt": "MUZ-EF 50 VG2 ; UNITÉS EXTÉRIEURES MUZ-EF50VG2"
+      },
+      "facts": [
+        {
+          "key": "controlStrategy",
+          "value": "inverter",
+          "unit": "none",
+          "condition": "explicit page-level 'INVERTER' label of the MSZ-EF family page",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), page header banner under 'MSZ-EF. Mural Design R32'",
+            "excerpt": "INVERTER"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "condition": "outdoor refrigerant circuit; PRP (GWP) 675; row merged across size columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), DONNÉES FRIGORIFIQUES row 'Fluide / PRP (Pouvoir de Réchauffement Planétaire)', merged columns",
+            "excerpt": "Fluide / PRP (Pouvoir de Réchauffement Planétaire) R32 / 675"
+          }
+        },
+        {
+          "key": "factoryCharge",
+          "value": 1.05,
+          "unit": "kg",
+          "condition": "factory charge in the outdoor unit circuit, for 7.0 m precharged pipe length (row 'Lg préchargée / Précharge / Tonne équivalent CO2' = 7.0 / 1.05 / 0.709, separate cell under Taille 50)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), DONNÉES FRIGORIFIQUES row 'Lg préchargée / Précharge / Tonne équivalent CO2 m / kg / t', Taille 50 column",
+            "excerpt": "Lg préchargée / Précharge / Tonne équivalent CO2 m / kg / t 7.0 / 1.05 / 0.709"
+          }
+        },
+        {
+          "key": "prechargedPipeLength",
+          "value": 7.0,
+          "unit": "m",
+          "condition": "precharged pipe length of the 50-class split (Taille 50 cell)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), DONNÉES FRIGORIFIQUES row 'Lg préchargée / Précharge / Tonne équivalent CO2 m / kg / t', Taille 50 column",
+            "excerpt": "Lg préchargée / Précharge / Tonne équivalent CO2 m / kg / t 7.0 / 1.05 / 0.709"
+          }
+        },
+        {
+          "key": "additionalChargePerLength",
+          "value": 0.02,
+          "unit": "kg/m",
+          "condition": "additional refrigerant charge per metre; source prints 20 g/m (row 'Charge supplémentaire / Qté réfrigérant additionnelle maxi g/m / kg' = 20 / 0.46, separate cell under Taille 50); converted 20 g/m = 0.02 kg/m, original preserved in excerpt",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), DONNÉES FRIGORIFIQUES row 'Charge supplémentaire / Qté réfrigérant additionnelle maxi g/m / kg', Taille 50 column",
+            "excerpt": "Charge supplémentaire / Qté réfrigérant additionnelle maxi g/m / kg 20 / 0.46"
+          }
+        },
+        {
+          "key": "liquidConnectionDiameter",
+          "value": 6.35,
+          "unit": "mm",
+          "condition": "liquid line flare connection; source prints 1/4 inch flare ('pouce'); converted exactly 1/4 in x 25.4 = 6.35 mm, original inch value preserved in excerpt; row merged across 25-50 columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), DONNÉES FRIGORIFIQUES row 'Diamètre liquide pouce', merged columns",
+            "excerpt": "Diamètre liquide pouce 1/4 flare"
+          }
+        },
+        {
+          "key": "gasConnectionDiameter",
+          "value": 9.525,
+          "unit": "mm",
+          "condition": "gas line flare connection; source prints 3/8 inch flare ('pouce'); converted exactly 3/8 in x 25.4 = 9.525 mm, original inch value preserved in excerpt; row merged across 25-50 columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), DONNÉES FRIGORIFIQUES row 'Diamètre gaz pouce', merged columns",
+            "excerpt": "Diamètre gaz pouce 3/8 flare"
+          }
+        },
+        {
+          "key": "maximumTotalPipeLength",
+          "value": 30,
+          "unit": "m",
+          "condition": "row 'Longueur maxi / Dénivelé maxi' = 30 / 15, separate cell under Taille 50",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), DONNÉES FRIGORIFIQUES row 'Longueur maxi / Dénivelé maxi m', Taille 50 column",
+            "excerpt": "Longueur maxi / Dénivelé maxi m 30 / 15"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "row 'Longueur maxi / Dénivelé maxi' = 30 / 15, separate cell under Taille 50",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), DONNÉES FRIGORIFIQUES row 'Longueur maxi / Dénivelé maxi m', Taille 50 column",
+            "excerpt": "Longueur maxi / Dénivelé maxi m 30 / 15"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 2676,
+          "unit": "m3/h",
+          "condition": "cooling mode at high fan speed (GV), outdoor unit",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), UNITÉS EXTÉRIEURES row 'Débit d'air en froid GV', MUZ-EF50VG2 column",
+            "excerpt": "Débit d'air en froid GV m3/h 2676"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 52,
+          "unit": "dBA",
+          "condition": "cooling mode at high fan speed (GV), measured at 1 m; footnote (1): mesurée en chambre anéchoïque",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), UNITÉS EXTÉRIEURES row 'Pression acoustique (1) en froid 1 m GV', MUZ-EF50VG2 column + footnote (1)",
+            "excerpt": "Pression acoustique (1) en froid 1 m GV dB(A) 52"
+          }
+        },
+        {
+          "key": "soundPower",
+          "value": 65,
+          "unit": "dBA",
+          "condition": "cooling mode at high fan speed (GV), outdoor unit",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), UNITÉS EXTÉRIEURES row 'Puissance acoustique en froid GV', MUZ-EF50VG2 column",
+            "excerpt": "Puissance acoustique en froid GV dB(A) 65"
+          }
+        },
+        {
+          "key": "height",
+          "value": 714,
+          "unit": "mm",
+          "condition": "outdoor unit; row 'Hauteur x Largeur x Profondeur' publishes 714 x 800 x 285 as a separate cell under MUZ-EF50VG2 (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), UNITÉS EXTÉRIEURES row 'Hauteur x Largeur x Profondeur', MUZ-EF50VG2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 714 x 800 x 285"
+          }
+        },
+        {
+          "key": "width",
+          "value": 800,
+          "unit": "mm",
+          "condition": "outdoor unit; Taille 50 cell",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), UNITÉS EXTÉRIEURES row 'Hauteur x Largeur x Profondeur', MUZ-EF50VG2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 714 x 800 x 285"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 285,
+          "unit": "mm",
+          "condition": "outdoor unit; Taille 50 cell",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), UNITÉS EXTÉRIEURES row 'Hauteur x Largeur x Profondeur', MUZ-EF50VG2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 714 x 800 x 285"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 54,
+          "unit": "kg",
+          "condition": "net weight, outdoor unit; separate cell under MUZ-EF50VG2",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), UNITÉS EXTÉRIEURES row 'Poids net', MUZ-EF50VG2 column",
+            "excerpt": "Poids net kg 30 35 54"
+          }
+        },
+        {
+          "key": "supplyVoltage",
+          "value": 230,
+          "unit": "V",
+          "condition": "supply per outdoor unit, single phase (row 'Alimentation électrique par unité extérieure V~50Hz' = 230 V (1P+N+T), merged); footnote: Données électriques à valeurs indicatives, se rapporter à la norme NFC 15-100",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), DONNÉES ÉLECTRIQUES row 'Alimentation électrique par unité extérieure V~50Hz', merged columns + footnote",
+            "excerpt": "Alimentation électrique par unité extérieure V~50Hz 230 V (1P+N+T)"
+          }
+        },
+        {
+          "key": "supplyPhases",
+          "value": 1,
+          "unit": "none",
+          "condition": "single phase + neutral + earth (1P+N+T) per outdoor unit; merged row",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), DONNÉES ÉLECTRIQUES row 'Alimentation électrique par unité extérieure V~50Hz', merged columns",
+            "excerpt": "Alimentation électrique par unité extérieure V~50Hz 230 V (1P+N+T)"
+          }
+        },
+        {
+          "key": "supplyFrequency",
+          "value": 50,
+          "unit": "Hz",
+          "condition": "supply row header 'V~50Hz' per outdoor unit",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), DONNÉES ÉLECTRIQUES row header 'Alimentation électrique par unité extérieure V~50Hz'",
+            "excerpt": "Alimentation électrique par unité extérieure V~50Hz 230 V (1P+N+T)"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "cooling operation range (dry bulb outdoor / dry bulb), row 'Plage de fonctionnement (T°ext. sèche/sèche)' = -10 / +46, merged across sizes; condition-specific published limit, not a universal protection floor",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), cooling table row 'Plage de fonctionnement (T°ext. sèche/sèche) °C', merged columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "cooling operation range (dry bulb outdoor / dry bulb), row 'Plage de fonctionnement (T°ext. sèche/sèche)' = -10 / +46, merged across sizes",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), cooling table row 'Plage de fonctionnement (T°ext. sèche/sèche) °C', merged columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "heating operation range (wet bulb outdoor / dry bulb), row 'Plage de fonctionnement (T°ext. humide/sèche)' = -15 / +24, merged across sizes; page bullet 'Chauffage garanti jusqu'à -15°C extérieur'; condition-specific published limit, not a universal protection floor",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), heating table row 'Plage de fonctionnement (T°ext. humide/sèche) °C', merged columns + page bullet",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24 ; Chauffage garanti jusqu'à -15°C extérieur"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "condition": "heating operation range (wet bulb outdoor / dry bulb), row 'Plage de fonctionnement (T°ext. humide/sèche)' = -15 / +24, merged across sizes",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), heating table row 'Plage de fonctionnement (T°ext. humide/sèche) °C', merged columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          }
+        }
+      ],
+      "ratings": [
+        {
+          "mode": "cooling",
+          "combination": "MUZ-EF50VG2 + MSZ-EF50VGK2 (50-class split)",
+          "conditions": "published min / nominal / max table values; rated indoor/outdoor test conditions not published in this table (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.4, "nominal": 5.0, "maximum": 5.4 },
+          "electricalInputKw": { "minimum": null, "nominal": 1.540, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), cooling table rows 'Puissance frigorifique min / nominale / max' and 'Puissance absorbée totale nominale', Taille 50 column",
+            "excerpt": "Puissance frigorifique min / nominale / max kW 1,4 / 5,0 / 5,4 ; Puissance absorbée totale nominale kW 1.540"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MUZ-EF50VG2 + MSZ-EF50VGK2 (50-class split)",
+          "conditions": "outdoor +7°C (published row 'à +7°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.4, "nominal": 5.8, "maximum": 7.5 },
+          "electricalInputKw": { "minimum": null, "nominal": 1.560, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), heating table rows 'Puissance calorifique min / nominale / max à +7°C' and 'Puissance absorbée totale nominale', Taille 50 column",
+            "excerpt": "Puissance calorifique min / nominale / max à +7°C kW 1,4 / 5,8 / 7,5 ; Puissance absorbée totale nominale kW 1.560"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MUZ-EF50VG2 + MSZ-EF50VGK2 (50-class split)",
+          "conditions": "outdoor -7°C (published row 'à -7°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.9, "nominal": 3.9, "maximum": 5.0 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), heating table row 'Puissance calorifique min / nominale / max à -7°C', Taille 50 column; no separate -7°C electrical row is published",
+            "excerpt": "Puissance calorifique min / nominale / max à -7°C kW 0,9 / 3,9 / 5,0"
+          }
+        }
+      ],
+      "compatibility": [
+        {
+          "description": "pairing MUZ-EF50VG2 + MSZ-EF50VGK2 is evidenced by the shared 'Tailles 50' column and the MUZ-EF 50 VG2 photo caption; the performance columns also carry the note 'Compatible uniquement avec les multisplits' (compatible MXZ references pending, catalogue pp.104-119)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), 'Tailles 18 25 35 42 50' header; UNITÉS EXTÉRIEURES header MUZ-EF50VG2; photo caption 'MUZ-EF 50 VG2'; margin note 'Compatible uniquement avec les multisplits'",
+            "excerpt": "Tailles 18 25 35 42 50 ; UNITÉS EXTÉRIEURES MUZ-EF50VG2 ; Compatible uniquement avec les multisplits"
+          }
+        }
+      ],
+      "unknowns": [
+        "electrical boundary of 'Puissance absorbée totale nominale': row title says 'totale'; footnote marks electrical data as indicative (NFC 15-100); whether the total includes indoor fan motors is not stated; recorded as complete-system per 'totale' wording, boundary flagged",
+        "protection fuse rating: row 'Protection électrique A' prints 16 under Taille 50 (10 under merged 25/35/42); recorded as note (no schema fact key for fuse)",
+        "outdoor cable section '3G 2.5' and inter-unit cable '4G 1.5' published (merged); recorded as notes, not schema fact keys",
+        "outdoor sound pressure / power at fan speeds other than GV: not published",
+        "SEER/SCOP values are system/combination ratings (7,5/A++ and 4,5/A+ for the 50-class); climate/test conditions not published",
+        "maximum additional refrigerant quantity for this unit: row prints 0.46 kg under Taille 50; recorded as note (no schema fact key)"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    {
+      "modelReference": "MSZ-EF50VGK2",
+      "reason": "paired indoor unit of this split; its spec-table facts are captured in the separate indoor candidate file mitsubishi-msz-ef50-indoor.json"
+    }
+  ]
+}
