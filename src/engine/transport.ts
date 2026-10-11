@@ -15,7 +15,7 @@ export function transportPipe(properties: Properties, pPa: number, hJkg: number,
   const originalH = hJkg, originalP = pPa;
   let frictionPa = 0;
   const data = (p: number, h: number) => {
-    if (!(p > 50000 && p < 5e6)) throw new DomainError('Pipe pressure outside supported R32 domain');
+    properties.assertPressure(p);
     const temperatureC = properties.prop('T', 'P', p, 'H', h) - 273.15;
     const density = properties.prop('D', 'P', p, 'H', h), quality = properties.prop('Q', 'P', p, 'H', h);
     const latentH = properties.saturation(p).vaporH - properties.saturation(p).liquidH;

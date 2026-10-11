@@ -1,0 +1,317 @@
+{
+  "coolpropCommit": "ae81610e7d23efc57f9d051c8e70a4d66e87537f",
+  "wasmSHA256": "974919ded434bc66ccf92dc6b5ac997221ac6a1c0bb4eb7b40f592db1c8ed93e",
+  "checkedAt": "2026-10-11T15:09:58.020Z",
+  "browser": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+  "fluids": [
+    {
+      "id": "R32",
+      "pressure": 2478313.211938298,
+      "saturation": {
+        "temperatureC": 40,
+        "dewTemperatureC": 40,
+        "bubbleTemperatureC": 40,
+        "liquidH": 275611.43454854266,
+        "vaporH": 512705.7264963086
+      },
+      "middle": {
+        "pPa": 2478313.211938298,
+        "pBarAbs": 24.78313211938298,
+        "hJkg": 394158.5805224256,
+        "temperatureC": 40,
+        "entropyJkgK": 1630.5410261177522,
+        "densityKgm3": 135.42525795029275,
+        "qualityMass": 0.49999999999999983,
+        "phase": "two-phase"
+      },
+      "qualification": {
+        "reference": true,
+        "physicalLines": true,
+        "physicalLineModes": [
+          "heating",
+          "cooling"
+        ],
+        "inventory": true,
+        "limitation": null
+      },
+      "cycles": [
+        {
+          "mode": "heating",
+          "elapsedMs": 75.20000004768372,
+          "lowPressureBarAbs": 6.616919906758626,
+          "highPressureBarAbs": 20.917626901808102,
+          "compressorWorkW": 844.7335798204928,
+          "closureResidualW": 0.05329131306675161
+        },
+        {
+          "mode": "cooling",
+          "elapsedMs": 31.300000190734863,
+          "lowPressureBarAbs": 16.036491805734002,
+          "highPressureBarAbs": 28.285214999901875,
+          "compressorWorkW": 952.904103646631,
+          "closureResidualW": 0.002922395169061555
+        }
+      ]
+    },
+    {
+      "id": "R22",
+      "pressure": 1533579.7116030182,
+      "saturation": {
+        "temperatureC": 40.00000000000006,
+        "dewTemperatureC": 40.00000000000006,
+        "bubbleTemperatureC": 40.00000000000006,
+        "liquidH": 249646.55180672114,
+        "vaporH": 416246.2525127266
+      },
+      "middle": {
+        "pPa": 1533579.7116030182,
+        "pBarAbs": 15.335797116030182,
+        "hJkg": 332946.40215972386,
+        "temperatureC": 40.00000000000006,
+        "entropyJkgK": 1432.4609243113,
+        "densityKgm3": 125.05067632008776,
+        "qualityMass": 0.5,
+        "phase": "two-phase"
+      },
+      "qualification": {
+        "reference": true,
+        "physicalLines": false,
+        "physicalLineModes": [],
+        "inventory": false,
+        "limitation": "Conserved inventory and the complete physical field-line circuit, including reverse-cycle defrost, are qualified for R32 only."
+      },
+      "cycles": [
+        {
+          "mode": "heating",
+          "elapsedMs": 35.299999952316284,
+          "lowPressureBarAbs": 4.076889023006199,
+          "highPressureBarAbs": 12.587154258092497,
+          "compressorWorkW": 493.30667706797647,
+          "closureResidualW": 0.04167117153216636
+        },
+        {
+          "mode": "cooling",
+          "elapsedMs": 32.200000047683716,
+          "lowPressureBarAbs": 10.492722295849559,
+          "highPressureBarAbs": 16.59134987983041,
+          "compressorWorkW": 491.9897065455469,
+          "closureResidualW": 0.0153942326319369
+        }
+      ]
+    },
+    {
+      "id": "R290",
+      "pressure": 1369420.3848039038,
+      "saturation": {
+        "temperatureC": 39.99999999999994,
+        "dewTemperatureC": 39.99999999999994,
+        "bubbleTemperatureC": 39.99999999999994,
+        "liquidH": 307147.9995984616,
+        "vaporH": 614214.4295871659
+      },
+      "middle": {
+        "pPa": 1369420.3848039038,
+        "pBarAbs": 13.694203848039038,
+        "hJkg": 460681.21459281375,
+        "temperatureC": 39.99999999999994,
+        "entropyJkgK": 1849.6410941553856,
+        "densityKgm3": 56.672354866079736,
+        "qualityMass": 0.5,
+        "phase": "two-phase"
+      },
+      "qualification": {
+        "reference": true,
+        "physicalLines": false,
+        "physicalLineModes": [],
+        "inventory": false,
+        "limitation": "Conserved inventory and the complete physical field-line circuit, including reverse-cycle defrost, are qualified for R32 only."
+      },
+      "cycles": [
+        {
+          "mode": "heating",
+          "elapsedMs": 20.5,
+          "lowPressureBarAbs": 3.932906004154724,
+          "highPressureBarAbs": 11.308694231374552,
+          "compressorWorkW": 429.9373708437229,
+          "closureResidualW": 0.09492171179841809
+        },
+        {
+          "mode": "cooling",
+          "elapsedMs": 24.399999856948853,
+          "lowPressureBarAbs": 9.72420115013522,
+          "highPressureBarAbs": 14.532083726468857,
+          "compressorWorkW": 392.2816831077214,
+          "closureResidualW": 0.011780519302934746
+        }
+      ]
+    },
+    {
+      "id": "R134a",
+      "pressure": 1016593.02212064,
+      "saturation": {
+        "temperatureC": 40,
+        "dewTemperatureC": 40,
+        "bubbleTemperatureC": 40,
+        "liquidH": 256409.24455736837,
+        "vaporH": 419428.5242466988
+      },
+      "middle": {
+        "pPa": 1016593.02212064,
+        "pBarAbs": 10.1659302212064,
+        "hJkg": 337918.8844020336,
+        "temperatureC": 40,
+        "entropyJkgK": 1450.7661584880482,
+        "densityKgm3": 95.97810356619847,
+        "qualityMass": 0.5,
+        "phase": "two-phase"
+      },
+      "qualification": {
+        "reference": true,
+        "physicalLines": false,
+        "physicalLineModes": [],
+        "inventory": false,
+        "limitation": "Conserved inventory and the complete physical field-line circuit, including reverse-cycle defrost, are qualified for R32 only."
+      },
+      "cycles": [
+        {
+          "mode": "heating",
+          "elapsedMs": 38.5,
+          "lowPressureBarAbs": 2.3427779253963377,
+          "highPressureBarAbs": 8.009816043933396,
+          "compressorWorkW": 299.20007704166005,
+          "closureResidualW": 0.09641440272305371
+        },
+        {
+          "mode": "cooling",
+          "elapsedMs": 27.799999952316284,
+          "lowPressureBarAbs": 6.936486956775513,
+          "highPressureBarAbs": 10.696259316267597,
+          "compressorWorkW": 302.1098257748378,
+          "closureResidualW": 0.058633098593208074
+        }
+      ]
+    },
+    {
+      "id": "R1234yf",
+      "pressure": 1018472.8842761746,
+      "saturation": {
+        "temperatureC": 40.00000000000006,
+        "dewTemperatureC": 40.00000000000006,
+        "bubbleTemperatureC": 40.00000000000006,
+        "liquidH": 255048.17955905682,
+        "vaporH": 387484.1637971906
+      },
+      "middle": {
+        "pPa": 1018472.8842761746,
+        "pBarAbs": 10.184728842761746,
+        "hJkg": 321266.1716781237,
+        "temperatureC": 40.00000000000006,
+        "entropyJkgK": 1397.1143619269837,
+        "densityKgm3": 109.25182450054872,
+        "qualityMass": 0.4999999999999999,
+        "phase": "two-phase"
+      },
+      "qualification": {
+        "reference": true,
+        "physicalLines": false,
+        "physicalLineModes": [],
+        "inventory": false,
+        "limitation": "Conserved inventory and the complete physical field-line circuit, including reverse-cycle defrost, are qualified for R32 only."
+      },
+      "cycles": [
+        {
+          "mode": "heating",
+          "elapsedMs": 35,
+          "lowPressureBarAbs": 2.5639897981077917,
+          "highPressureBarAbs": 8.134910192252239,
+          "compressorWorkW": 299.71736539965815,
+          "closureResidualW": 0.07147102823341148
+        },
+        {
+          "mode": "cooling",
+          "elapsedMs": 27.200000047683716,
+          "lowPressureBarAbs": 7.1333074261238,
+          "highPressureBarAbs": 10.636660553921782,
+          "compressorWorkW": 283.2395481402261,
+          "closureResidualW": 0.06144365405675187
+        }
+      ]
+    },
+    {
+      "id": "R410A",
+      "pressure": 2425641.7955819825,
+      "saturation": {
+        "temperatureC": 40.11965460880384,
+        "dewTemperatureC": 40.11965460880384,
+        "bubbleTemperatureC": 40,
+        "liquidH": 266324.2966066247,
+        "vaporH": 425421.96241804
+      },
+      "middle": {
+        "pPa": 2425641.7955819825,
+        "pBarAbs": 24.256417955819824,
+        "hJkg": 345873.1295123324,
+        "temperatureC": 40.05982730440189,
+        "entropyJkgK": 1474.880156541134,
+        "densityKgm3": 187.3310476898353,
+        "qualityMass": 0.5000000000000001,
+        "phase": "two-phase"
+      },
+      "qualification": {
+        "reference": true,
+        "physicalLines": false,
+        "physicalLineModes": [],
+        "inventory": false,
+        "limitation": "Fixed-composition pseudo-pure EOS preserves small bubble/dew glide; phase compositions/fractionation and physical field lines are not qualified."
+      },
+      "cycles": [
+        {
+          "mode": "heating",
+          "elapsedMs": 130.20000004768372,
+          "lowPressureBarAbs": 6.544903917225993,
+          "highPressureBarAbs": 20.391028402565325,
+          "compressorWorkW": 787.8116234386424,
+          "closureResidualW": 0.030352506653104017
+        },
+        {
+          "mode": "cooling",
+          "elapsedMs": 136.10000014305115,
+          "lowPressureBarAbs": 15.892267022842914,
+          "highPressureBarAbs": 27.374159192660887,
+          "compressorWorkW": 879.0913594626498,
+          "closureResidualW": 0.04013756937619226
+        }
+      ]
+    },
+    {
+      "id": "R407C",
+      "pressure": 1749045.0605251945,
+      "saturation": {
+        "temperatureC": 44.89671021602845,
+        "dewTemperatureC": 44.89671021602845,
+        "bubbleTemperatureC": 39.99999999999966,
+        "liquidH": 261251.95549023457,
+        "vaporH": 426284.9990920194
+      },
+      "middle": {
+        "pPa": 1749045.0605251945,
+        "pBarAbs": 17.490450605251944,
+        "hJkg": 343768.47729112697,
+        "temperatureC": 42.419334167208035,
+        "entropyJkgK": 1566.014110373852,
+        "densityKgm3": 146.3817969916805,
+        "qualityMass": 0.4877733339476813,
+        "phase": "two-phase"
+      },
+      "qualification": {
+        "reference": false,
+        "physicalLines": false,
+        "physicalLineModes": [],
+        "inventory": false,
+        "limitation": "Resolved blend property states are available; coupled glide-aware coil/control and phase-composition transport qualification is pending."
+      },
+      "cycles": []
+    }
+  ],
+  "exceptions": []
+}

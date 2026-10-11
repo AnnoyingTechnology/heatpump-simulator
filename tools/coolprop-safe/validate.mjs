@@ -6,7 +6,7 @@ export async function validate(safeFactory, referenceFactory, options = {}) {
   const fails=(fn,label)=>{try{fn();}catch(e){assert(e instanceof Error,`${label}: not ordinary Error`);return;}throw new Error(`${label}: did not reject`);};
   assert(safe.guardedStateApi===true,'Missing guardedStateApi');
   fails(()=>safe.factory('REFPROP','R32'),'backend restriction');
-  fails(()=>safe.factory('HEOS','R410A'),'fluid restriction');
+  fails(()=>safe.factory('HEOS','R404A'),'fluid restriction');
   fails(()=>safe.factory(null,'R32'),'null factory');
   const state=safe.factory('HEOS','R32'), legacyState=reference.factory('HEOS','R32'), all=['T','p','hmass','smass','rhomass','Q','cpmass','viscosity','speed_sound'];
   for(const name of all)fails(()=>state[name](),`before update ${name}`);

@@ -1,0 +1,30 @@
+✔ phase-local exchanger inverse agrees with prior real-EOS bisection, including pressure perturbations (618.198486ms)
+✔ stale/singular continuation slopes fall back to freshly closed real-EOS pressure equations (1267.14724ms)
+✔ worker batching preserves every quarter-second thermal/control step and its conservation ledgers (2035.520104ms)
+✔ real R32 EOS shared-pressure cycle: one to five branches and both directions (464.467917ms)
+✔ heat exchanger pinches fail explicitly (1.186386ms)
+✔ phase-aware integral latent zone agrees with analytical UA requirement (0.337015ms)
+✔ real field lines close momentum/enthalpy in heating and cooling, including two-phase small pipe (2941.078135ms)
+✔ cold reverse-cycle defrost floats subcooling and retains physical heat signs (335.841387ms)
+✔ heterogeneous idealized cooling conserves mixed-return enthalpy/entropy and valve allocation (283.486627ms)
+✔ idealized warm/cold parallel condensers close the mixed header without equal branch subcooling (210.486913ms)
+✔ pressure/density storage coordinates preserve independent EOS states across phase and input switches (4483.759737ms)
+✔ rejected pressure/density flashes recover without native exceptions or fabricated storage states (3888.081681ms)
+✔ reusable HEOS state matches independent PropsSI across input switches and cache hits (49.14923ms)
+✔ repeated rejected flashes preserve real WASM refrigerant and humid-air service (1367.301967ms)
+✔ undefined two-phase sound speed cannot poison later same-input physical readings (4.584529ms)
+✔ reverse-order protections, unknown stopped sensor and mode exit preserve each release requirement (1.856689ms)
+✔ held-envelope estimate detects excessive discharge before an out-of-envelope PH flash (23.699921ms)
+✔ retained cold-start and hot dirty cooling failures close or protect throughout their original schedules (77175.933425ms)
+✔ declared low-efficiency cold-source demand holds discharge, retains stores and recovers on a warmed boundary (4611.744828ms)
+✔ Reference inverter preserves stores and closes freshly after warmed three-to-one branch change (19818.037556ms)
+✔ conserved density/internal-energy flash matches independent real R32 states across phases (67.544916ms)
+✔ invalid DU trials reject through safe computed-pressure boundary and valid flashes recover (123.71703ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 85973.701841

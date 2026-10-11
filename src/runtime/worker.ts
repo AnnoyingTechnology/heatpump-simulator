@@ -15,7 +15,7 @@ workerScope.onmessage = (event): void => {
     const started = performance.now();
     try {
       if (request.kind === 'initialize') {
-        engine = new HeatPumpEngine(await loadPropertyService(request.propertyModuleUrl), request.config);
+        engine = new HeatPumpEngine(await loadPropertyService(request.propertyModuleUrl, request.config.fluid), request.config);
       } else {
         if (!engine) throw new Error('Property backend has not initialized');
         if (request.kind === 'configure') engine.updateConfig(request.config);

@@ -1,7 +1,7 @@
 # Guarded exact HEOS backend
 
 This artifact is selected by the production Reference worker after property,
-engine, browser and independent-review acceptance. It implements CoolProp 8.0.0 HEOS R32 and humid air without approximation tables,
+engine, browser and independent-review acceptance. It implements the pinned CoolProp HEOS properties and humid air without approximation tables,
 fast-math, changes to EOS coefficients, or charge acceptance changes. The owner
 startup phase sensitivity proposal remains unexecuted; full frost melt/reversal
 and useful heating acceptance remain open.
@@ -9,10 +9,10 @@ and useful heating acceptance remain open.
 ## Native boundary and integration contract
 
 `public/vendor/coolprop-safe/adapter.js` exports an asynchronous module factory
-compatible with the engine's `factory('HEOS','R32')`, `input_pairs`, `PropsSI`
+compatible with the engine's selected-fluid `factory('HEOS',fluid)`, `input_pairs`, `PropsSI`
 and `HAPropsSI` calls. `guardedStateApi === true` identifies this contract. Its
 state supports `update`, `T`, `p`, `hmass`, `smass`, `rhomass`, `Q`, `cpmass`,
-`viscosity`, `speed_sound` and idempotent `delete`. Module `dispose` destroys
+`viscosity`, `speed_sound`, explicit `Qmass` and idempotent `delete`. Module `dispose` destroys
 remaining states and releases its error buffer; subsequent operations reject.
 
 The only property entry points exported from WASM are guarded C ABI operations:
@@ -24,7 +24,8 @@ JavaScript errors. Update checks finite positive computed T/p/density. Caller
 selected physical envelopes remain the property service's responsibility.
 
 Failed updates **and getters** invalidate native readouts and discard the affected
-EOS instance. The same handle recovers through a later valid update. JavaScript
+EOS instance. The same handle recovers through a later valid update with its original
+fluid and mass composition. JavaScript
 wrong numeric types force native invalidation before throwing, including Symbol
 and BigInt; string arguments are checked before `ccall`, with native null guards
 as well. Properties integration must clear its remembered `lastInput` on every
@@ -97,3 +98,15 @@ and `reviews/guarded-simulation-speed-browser-results.json`.
 Generated provenance is a build receipt. Its candidate status records the build
 stage; integration and model-release acceptance are recorded here and in
 `PROGRESS.md`. Rebuilding an artifact requires repeating its acceptance checks.
+
+## Additional refrigerants
+
+The strict native whitelist now includes R22, R32, propane, R134a, R1234yf, the
+documented R410A pseudo-pure identifier and explicit fixed-composition R407C/R410A
+mixture identifiers. Backend availability is separate from coupled release. The
+registry in `src/engine/refrigerants.ts` gates circuits;
+[qualification and limitations](../../research/refrigerant-qualification-2026.md)
+distinguish pure, pseudo-pure and equilibrium-mixture paths.
+
+After compiling the engine test modules, the existing QA browser can reproduce
+`tools/check-refrigerants-browser.mjs` against a static server on port 5188.

@@ -4,7 +4,7 @@ const pairs = Object.freeze(Object.fromEntries([
   'PT_INPUTS','HmassP_INPUTS','PSmass_INPUTS','PQ_INPUTS','QT_INPUTS',
   'DmassP_INPUTS','DmassUmass_INPUTS','DmassT_INPUTS',
 ].map((name, index) => [name, index])));
-const getters = ['T','p','hmass','smass','rhomass','Q','cpmass','viscosity','speed_sound'];
+const getters = ['T','p','hmass','smass','rhomass','Q','cpmass','viscosity','speed_sound','Qmass'];
 
 export default async function create(options = {}) {
   const native = await initialize(options);

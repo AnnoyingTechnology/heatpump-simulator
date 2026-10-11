@@ -12,7 +12,7 @@ const inputs={};
 for(const name of ['safe-interface.cpp','prepare.py','build.sh','container-build.sh','notices.py','dependency-pins.json']) {
   const bytes=await readFile(new URL(name,import.meta.url));inputs[name]=createHash('sha256').update(bytes).digest('hex');
 }
-const provenance={status:'experimental; not selected by the production loader',builtAt:new Date().toISOString(),
+const provenance={status:'guarded HEOS artifact selected by the production loader; coupled fluid qualification is declared in src/engine/refrigerants.ts',builtAt:new Date().toISOString(),
   CoolProp:{version:'8.0.0',commit:'ae81610e7d23efc57f9d051c8e70a4d66e87537f',license:'MIT',
     repository:'https://github.com/CoolProp/CoolProp'},
   toolchain:{image:'emscripten/emsdk@sha256:744fb6a68941970951bacf9d6632041a0398260492232691ef22bbf54b0585c6',

@@ -110,6 +110,8 @@ export class SimulationRuntime {
   }
 
   configure(config: EngineConfig): void {
+    // A different EOS starts a fresh circuit with the supplied house settings.
+    if (this.submittedConfig && config.fluid !== this.submittedConfig.fluid) { this.start(config); return; }
     // A dead worker cannot resume its physical stores. A settings edit must never silently create a new run.
     if (this.workerFailed && this.acceptedOutput) {
       this.submittedConfig = structuredClone(config);

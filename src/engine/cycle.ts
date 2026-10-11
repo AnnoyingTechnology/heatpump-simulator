@@ -19,8 +19,25 @@ export function conductanceIntegral(properties: Properties, pressurePa: number, 
   let integral = 0;
   for (let i = 1; i < knots.length; i++) {
     const a = knots[i - 1], b = knots[i];
-    if (a >= sat.liquidH && b <= sat.vaporH) integral += (b - a) / Math.abs(sat.temperatureC - metalC);
-    else {
+    if (a >= sat.liquidH && b <= sat.vaporH) {
+      if (properties.refrigerant.kind === 'pure') integral += (b - a) / Math.abs(sat.temperatureC - metalC);
+      else {
+        // Gliding-zone temperatures come from the selected EOS PH flash.
+        // R410A uses its documented fixed-composition pseudo-pure approximation;
+        // explicit blends retain their equilibrium phase compositions.
+        const panel = (lo: number, hi: number) => {
+          const mid = .5 * (lo + hi), half = .5 * (hi - lo);
+          return GAUSS4.reduce((sum, [node, weight]) => sum + half * weight / Math.abs(endpoint(mid + node * half) - metalC), 0);
+        };
+        const integrate = (lo: number, hi: number, whole: number, depth: number): number => {
+          const mid = .5 * (lo + hi), left = panel(lo, mid), right = panel(mid, hi), refined = left + right;
+          if (Math.abs(refined - whole) <= 1e-8 * Math.max(1, refined)) return refined;
+          if (depth >= 24) throw new DomainError('Blend glide quadrature did not converge');
+          return integrate(lo, mid, left, depth + 1) + integrate(mid, hi, right, depth + 1);
+        };
+        integral += integrate(a, b, panel(a, b), 0);
+      }
+    } else {
       // dh=cp dT; dh/|T−Tm| = cp d(log|T−Tm|). This resolves the logarithmic endpoint singularity.
       const z1 = Math.log(Math.abs(endpoint(a) - metalC)), z2 = Math.log(Math.abs(endpoint(b) - metalC));
       const zl = Math.min(z1, z2), zh = Math.max(z1, z2), intervals = Math.max(1, Math.ceil((zh - zl) / .5));
@@ -35,7 +52,8 @@ export function conductanceIntegral(properties: Properties, pressurePa: number, 
           const phaseKey = b <= sat.liquidH ? 'T|liquid' : 'T|gas';
           // Plain PT retains the reusable native state away from saturation.
           // The broad 0.01 K query-selection band changes no physical state.
-          const key = Math.abs(temperatureK-273.15-sat.temperatureC)<.01 ? phaseKey : 'T';
+          const boundaryC = b <= sat.liquidH ? sat.bubbleTemperatureC : sat.dewTemperatureC;
+          const key = Math.abs(temperatureK-273.15-boundaryC)<.01 ? phaseKey : 'T';
           integral += half * weight * properties.prop('C', 'P', pressurePa, key, temperatureK);
         }
       }
@@ -57,7 +75,7 @@ export function coilOutletH(properties: Properties, p: number, inletH: number, f
   if ((condensing ? 1 : -1) * (inletC - metalC) <= 0) throw new DomainError('Coil inlet cannot exchange heat in the intended direction');
   if (!(flow > 0 && ua > 0 && Number.isFinite(flow) && Number.isFinite(ua))) throw new DomainError('Invalid coil flow or conductance');
   const terminalC = metalC + (condensing ? 1e-5 : -1e-5);
-  const sensibleH = (tC: number) => properties.prop('H', 'P', p, Math.abs(tC-sat.temperatureC)<.01 ? (tC < sat.temperatureC ? 'T|liquid' : 'T|gas') : 'T', tC + 273.15);
+  const sensibleH = (tC: number) => properties.equilibriumH(p, tC);
   const terminal = sensibleH(terminalC);
   const direction = condensing ? -1 : 1;
   const low = Math.min(inletH, terminal), high = Math.max(inletH, terminal);
@@ -79,7 +97,7 @@ export function coilOutletH(properties: Properties, p: number, inletH: number, f
     const required = conductanceIntegral(properties, p, origin, end, metalC);
     if (target >= required) { target -= required; origin = end; if (end === ends[0]) ends.shift(); continue; }
     // The pure-fluid latent interval is linear in enthalpy and can be inverted exactly.
-    if (Math.min(origin,end) >= sat.liquidH && Math.max(origin,end) <= sat.vaporH)
+    if (properties.refrigerant.kind === 'pure' && Math.min(origin,end) >= sat.liquidH && Math.max(origin,end) <= sat.vaporH)
       return origin + direction * target * Math.abs(sat.temperatureC - metalC);
     // A sensible interval is monotone. Safeguarded Newton uses dI/dh=1/|T-Tmetal|;
     // no repeated integration over previously crossed phases is needed.
@@ -118,6 +136,10 @@ function acceptedValveStates(properties: Properties, valveFaces: (ValveFaces | n
 }
 /** Two shared saturation-pressure unknowns; branch flows are eliminated using coil UA closures. */
 export function solveCycle(properties: Properties, config: EngineConfig, input: CycleInput): CycleOutput {
+  if (config.fluid !== properties.fluid) throw new DomainError('Cycle configuration does not match the selected refrigerant EOS');
+  const qualification = properties.refrigerant.qualification;
+  if (!qualification.reference) throw new DomainError(`${properties.fluid}: ${qualification.limitation}`);
+  if (!qualification.physicalLineModes.includes(input.mode) && config.rooms.some(room => room.pipe.lengthM > 0 || room.pipe.elevationM !== 0)) throw new DomainError(`${properties.fluid} physical ${input.mode} field lines are not qualified`);
   const selected = selectCycle(properties, config, input);
   // Publication is outside every physical-regime fallback. A diagnostic flash
   // failure propagates unchanged; it cannot select another operating point.
@@ -145,26 +167,26 @@ function selectCycle(properties: Properties, config: EngineConfig, input: CycleI
 function solvePressureRegime(properties: Properties, config: EngineConfig, input: CycleInput, floatingCondenser: boolean): SelectedCycle {
   const activeIndices = input.active.flatMap((a, i) => a ? [i] : []);
   if (!activeIndices.length || !(input.speedRps > 0)) throw new DomainError('No active refrigerant circuit');
-  const compressor = config.compressor, heating = input.mode === 'heating';
+  const compressor = config.compressor, heating = input.mode === 'heating', domain = properties.refrigerant.domain;
   const idealizedBranches = activeIndices.every(i=>config.rooms[i].pipe.lengthM===0 && config.rooms[i].pipe.elevationM===0);
   const allocatedCooling = !heating && idealizedBranches, allocatedHeating = heating && idealizedBranches;
   const sourceMetal = heating ? [input.outdoorMetalC] : activeIndices.map(i => input.indoorMetalC[i]);
   const sinkMetal = heating ? activeIndices.map(i => input.indoorMetalC[i]) : [input.outdoorMetalC];
-  const lowMax = Math.min(45, Math.min(...sourceMetal) - (heating ? compressor.superheatK : 0) - 1e-5);
+  const lowMax = Math.min(domain.maxEvaporatingC, Math.min(...sourceMetal) - (heating ? compressor.superheatK : 0) - 1e-5);
   const floatSink=heating?Math.min(...sinkMetal):input.outdoorMetalC;
   // Allocated heating constrains the mixed liquid outlet, not each branch's
   // phase: its target must remain above the coldest sink. Physical field-line
   // heating still prescribes per-branch subcooling against the hottest sink.
-  const highMin = floatingCondenser ? floatSink + 1e-5 : Math.max(-5, (allocatedHeating ? Math.min(...sinkMetal) : Math.max(...sinkMetal)) + compressor.subcoolK + 1e-5);
-  if (lowMax <= -40 || highMin >= 65) throw new DomainError('Coil temperatures exceed selected subcritical R32 operating envelope');
+  const highMin = floatingCondenser ? floatSink + 1e-5 : Math.max(domain.minCondensingC, (allocatedHeating ? Math.min(...sinkMetal) : Math.max(...sinkMetal)) + compressor.subcoolK + 1e-5);
+  if (lowMax <= domain.minEvaporatingC || highMin >= domain.maxCondensingC) throw new DomainError(`${properties.fluid} coil temperatures exceed selected subcritical operating envelope`);
   const evaluate = (te: number, second: number): Trial => {
     // The alternate controller holds the declared positive saturation lift
     // (heating1K, cooling/defrost8K);
     // condenser outlet enthalpy and subcooling follow actual finite UA.
     const tc = floatingCondenser ? te + (heating?1:8) : second;
     const condenserOutletC = floatingCondenser ? second : tc - compressor.subcoolK;
-    if (!(te >= -40 && te <= lowMax && second >= highMin && tc <= 65 && (floatingCondenser || tc - te >= (heating ? 1 : 8)) && condenserOutletC < tc - .001 && (!floatingCondenser || condenserOutletC > floatSink))) throw new DomainError('Pressure-solve point outside coil/domain bounds');
-    const pL = properties.pressureAtSaturationC(te), pH = properties.pressureAtSaturationC(tc);
+    if (!(te >= domain.minEvaporatingC && te <= lowMax && second >= highMin && tc <= domain.maxCondensingC && (floatingCondenser || tc - te >= (heating ? 1 : 8)) && condenserOutletC < tc - .001 && (!floatingCondenser || condenserOutletC > floatSink))) throw new DomainError('Pressure-solve point outside coil/domain bounds');
+    const pL = properties.pressureAtSaturationC(te), pH = properties.pressureAtSaturationC(tc, 'bubble');
     let suction = properties.pt(pL, te + compressor.superheatK);
     const targetSuctionH = suction.hJkg, allocatedFlow = suction.densityKgm3 * compressor.displacementM3rev * input.speedRps * compressor.volumetricEfficiency;
     const weight=(i:number)=>input.allocationWeights?.[i]??config.rooms[i].refrigerantConductanceWK;
@@ -172,7 +194,7 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
     if(!(allocationWeight>0)||activeIndices.some(i=>!(weight(i)>0&&Number.isFinite(weight(i)))))throw new DomainError('Invalid generic branch allocation weight');
     const h2s = properties.prop('H', 'P', pH, 'S', suction.entropyJkgK);
     let discharge = properties.ph(pH, suction.hJkg + (h2s - suction.hJkg) / compressor.isentropicEfficiency);
-    if (discharge.temperatureC > compressor.maxDischargeC || pH / pL > compressor.maxPressureRatio) throw new DomainError('Generic compressor discharge/pressure-ratio envelope exceeded');
+    if (discharge.temperatureC > Math.min(compressor.maxDischargeC, domain.maxTemperatureC - .001) || pH / pL > compressor.maxPressureRatio) throw new DomainError('Generic compressor discharge/pressure-ratio envelope exceeded');
     let condenserOutlet = properties.pt(pH, condenserOutletC);
     const targetCondenserH = condenserOutlet.hJkg;
     let expansionOutlet = properties.ph(pL, condenserOutlet.hJkg);
@@ -278,7 +300,7 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
     [Math.min(lowMax - 15, highMin - 12), Math.max(highMin + 3, lowMax - 10)]].filter((s): s is number[] => !!s);
   let iterations = 0;
   for (const seed of seeds) {
-    let te = clamp(seed[0], -39.8, lowMax - .01), tc = clamp(seed[1], highMin + 1e-8, 64.8);
+    let te = clamp(seed[0], domain.minEvaporatingC + .2, lowMax - .01), tc = clamp(seed[1], highMin + 1e-8, domain.maxCondensingC - .2);
     let jacobian = seed === seeds[0] ? input.previous?.pressureJacobian : undefined;
     if (jacobian?.mode !== input.mode || jacobian.floatingCondenser !== floatingCondenser) jacobian = undefined;
     for (let k = 0; k < 35; k++) {
@@ -314,8 +336,8 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
         const stepT = (-e * current.residual[0] + b * current.residual[1]) / determinant;
         const stepC = (c * current.residual[0] - a * current.residual[1]) / determinant;
         for (let scale = 1; scale >= 1 / 128; scale /= 2) {
-          const candidateT = clamp(te + clamp(stepT, -12, 12) * scale, -39.9, lowMax - 1e-9);
-          const candidateC = clamp(tc + clamp(stepC, -12, 12) * scale, highMin + 1e-9, 64.9);
+          const candidateT = clamp(te + clamp(stepT, -12, 12) * scale, domain.minEvaporatingC + .1, lowMax - 1e-9);
+          const candidateC = clamp(tc + clamp(stepC, -12, 12) * scale, highMin + 1e-9, domain.maxCondensingC - .1);
           try { const candidate = evaluate(candidateT, candidateC); if (Math.hypot(...candidate.residual) < norm) { te = candidateT; tc = candidateC; accepted = true; break; } } catch { /* bounded line-search rejection */ }
         }
         if (accepted) break;

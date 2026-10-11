@@ -3,3 +3,6 @@ export { createPropertyService, loadPropertyService, Properties, DomainError } f
 export { defaultEngineConfig, defaultRoomConfig } from './defaults.ts';
 export { solveCycle, conductanceIntegral } from './cycle.ts';
 export type * from './types.ts';
+
+export { REFRIGERANTS, refrigerantDefinition } from './refrigerants.ts';
+export type { RefrigerantId, RefrigerantDefinition } from './refrigerants.ts';

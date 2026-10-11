@@ -146,7 +146,11 @@ export class HeatPumpEngine {
     const initialValve=config.inventory?.initialValveOpening;
     if(initialValve!==undefined&&(!Number.isFinite(initialValve)||initialValve<0||initialValve>1))throw new DomainError('Initial EEV opening must be finite in [0,1]');
     if (config.mode !== 'heating' && config.mode !== 'cooling') throw new DomainError('Unsupported operating mode');
-    if (config.fluid !== 'R32') throw new DomainError('Only R32 has implemented live model coverage');
+    if (config.fluid !== this.properties.fluid) throw new DomainError('Changing refrigerant requires a fresh property service and Restart');
+    const coverage = this.properties.refrigerant.qualification;
+    if (!coverage.reference) throw new DomainError(`${config.fluid}: ${coverage.limitation}`);
+    if (config.inventory && !coverage.inventory) throw new DomainError('Conserved inventory is qualified for R32 only');
+    if (!coverage.physicalLineModes.includes(config.mode) && config.rooms.some(room => room.pipe.lengthM > 0 || room.pipe.elevationM !== 0)) throw new DomainError(`${config.fluid} physical ${config.mode} field lines are not qualified`);
     if (!(Number.isFinite(config.indoorPortCapacity) && Number.isInteger(config.indoorPortCapacity) && config.indoorPortCapacity > 0)) throw new DomainError('Declared indoor port capacity must be a positive finite integer');
     if (config.rooms.length < 1 || config.rooms.length > config.indoorPortCapacity) throw new DomainError('Room count must be at least one and within declared indoor port capacity');
     if (new Set(config.rooms.map(r => r.id)).size !== config.rooms.length) throw new DomainError('Room IDs must be unique');
@@ -351,7 +355,7 @@ export class HeatPumpEngine {
         rawDemandSpeed=conventional?referenceMinimum:capacity>0?feedbackSpeed*request/capacity:config.compressor.speedMinRps;
         demandSpeed=conventional?referenceMinimum:bounded(rawDemandSpeed,config.compressor.speedMinRps,config.compressor.speedMaxRps);
       }
-      this.inventoryDrive = driveStep(this.inventoryDrive, dt, { thermalBoundaryAvailable:heldEnvelope?.available,coolingMode:config.mode==='cooling',coolingCoilC, dischargeEnvelopeExceeded:!!((holdNotRecovered||boundaryDenied)&&heldEnvelope?.dischargeExceeded),pressureRatioAvailable:!(holdNotRecovered||boundaryDenied)||heldEnvelope?.ratio!==null,predictedCondensingC:feedback?.condensingC??((holdNotRecovered||boundaryDenied)?heldEnvelope?.condensingC:null)??null,maximumCondensingC:65,demandRps: demandSpeed,
+      this.inventoryDrive = driveStep(this.inventoryDrive, dt, { thermalBoundaryAvailable:heldEnvelope?.available,coolingMode:config.mode==='cooling',coolingCoilC, dischargeEnvelopeExceeded:!!((holdNotRecovered||boundaryDenied)&&heldEnvelope?.dischargeExceeded),pressureRatioAvailable:!(holdNotRecovered||boundaryDenied)||heldEnvelope?.ratio!==null,predictedCondensingC:feedback?.condensingC??((holdNotRecovered||boundaryDenied)?heldEnvelope?.condensingC:null)??null,maximumCondensingC:this.properties.refrigerant.domain.maxCondensingC,demandRps: demandSpeed,
         minimumRps: referenceMinimum, maximumRps: config.compressor.speedMaxRps,
         inverterSlew:!conventional&&!defrost?{
           upRpsPerSecond:config.control.inverterRampUpRpsPerSecond??DEFAULT_INVERTER_SLEW.upRpsPerSecond,

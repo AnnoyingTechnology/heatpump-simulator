@@ -1,9 +1,11 @@
 import { defaultEngineConfig, defaultRoomConfig } from '../engine/defaults.ts';
+import type { RefrigerantId } from '../engine/refrigerants.ts';
 import type { EngineConfig } from '../engine/types.ts';
 import type { Config } from '../types.ts';
 import { outdoorPortCapacity, roomVolumeM3, roomEnvelopeConductanceWK, roomVentilation, engineInterzoneLink } from '../types.ts';
 
 export interface LiveParameters {
+  refrigerant: RefrigerantId;
   fieldLines: 'idealized' | 'physical';
   circuitModel: 'reference' | 'inventory';
   initialChargeKg: number;
@@ -39,7 +41,7 @@ export function pipeWallMmForOd(odMm: number, configuredMm: number): number {
 
 export function defaultLiveParameters(): LiveParameters {
   const c = defaultEngineConfig(1), r = c.rooms[0];
-  return { fieldLines: 'idealized', circuitModel: 'reference', initialChargeKg: 1.8, initialFluidTemperatureC: null,
+  return { refrigerant: 'R32', fieldLines: 'idealized', circuitModel: 'reference', initialChargeKg: 1.8, initialFluidTemperatureC: null,
     outdoorCoilVolumeL: Math.PI * .006 ** 2 * 40 / 4 * 1000,
     indoorCoilVolumeL: Math.PI * .006 ** 2 * 10 / 4 * 1000, accumulatorVolumeL: .6,
     outdoorAirConductanceWK: c.outdoor.airConductanceWK,
@@ -62,6 +64,7 @@ export function referenceMinimumSpeedRps(mode: Config['mode'], fieldLines: LiveP
 export function engineConfigFromUi(cfg: Config, live: LiveParameters, activeInitialization?: InventoryInitialization): EngineConfig {
   const c = defaultEngineConfig(cfg.unitCount);
   c.indoorPortCapacity = outdoorPortCapacity(cfg);
+  c.fluid = live.refrigerant ?? 'R32';
   c.mode = cfg.mode;
   c.outdoorTemperatureC = cfg.outdoorC;
   c.outdoorRelativeHumidity = cfg.outdoorRh / 100;

@@ -10,9 +10,22 @@
 #include <memory>
 #include <stdexcept>
 #include <string>
+#include <sstream>
+#include <iomanip>
 
 namespace {
-struct State { std::unique_ptr<CoolProp::AbstractState> eos; bool valid = false; };
+bool supported(const std::string& fluid) {
+    return fluid == "R32" || fluid == "R22" || fluid == "n-Propane" || fluid == "R134a" || fluid == "R1234yf" || fluid == "R407C-mix" || fluid == "R410A-mix" || fluid == "R410A";
+}
+std::unique_ptr<CoolProp::AbstractState> create(const std::string& fluid) {
+    if (!supported(fluid)) throw std::invalid_argument("Unsupported refrigerant identifier");
+    const bool blend = fluid == "R407C-mix" || fluid == "R410A-mix";
+    std::unique_ptr<CoolProp::AbstractState> result(CoolProp::AbstractState::factory("HEOS",
+      fluid == "R407C-mix" ? "R32&R125&R134a" : fluid == "R410A-mix" ? "R32&R125" : fluid));
+    if (blend) result->set_mass_fractions(fluid == "R407C-mix" ? std::vector<CoolPropDbl>{.23,.25,.52} : std::vector<CoolPropDbl>{.5,.5});
+    return result;
+}
+struct State { std::unique_ptr<CoolProp::AbstractState> eos; bool valid = false; std::string fluid; };
 std::map<unsigned, State> states;
 unsigned next_id = 1;
 constexpr double invalid = std::numeric_limits<double>::quiet_NaN();
@@ -51,9 +64,9 @@ EMSCRIPTEN_KEEPALIVE unsigned hp_create(const char* backend, const char* fluid, 
     message(error, size, "");
     try {
         if (!backend || !fluid) throw std::invalid_argument("Missing backend/fluid string");
-        if (std::string(backend) != "HEOS" || std::string(fluid) != "R32") throw std::invalid_argument("Only HEOS R32 is supported");
+        if (std::string(backend) != "HEOS" || !supported(fluid)) throw std::invalid_argument("Unsupported backend/refrigerant");
         if (next_id == 0) throw std::overflow_error("State handle space exhausted");
-        State fresh; fresh.eos.reset(CoolProp::AbstractState::factory("HEOS", "R32"));
+        State fresh; fresh.fluid = fluid; fresh.eos = create(fresh.fluid);
         unsigned id = next_id++; states.emplace(id, std::move(fresh)); return id;
     } catch (const std::exception& e) { message(error, size, e.what()); }
       catch (...) { message(error, size, "Unknown native create error"); }
@@ -71,7 +84,7 @@ EMSCRIPTEN_KEEPALIVE int hp_update(unsigned id, unsigned input, double a, double
     try {
         State& s = state(id); s.valid = false;
         check_finite(a); check_finite(b); auto inputs = pair(input);
-        if (!s.eos) s.eos.reset(CoolProp::AbstractState::factory("HEOS", "R32"));
+        if (!s.eos) s.eos = create(s.fluid);
         s.eos->update(inputs, a, b);
         check_finite(s.eos->T()); check_finite(s.eos->p()); check_finite(s.eos->rhomass());
         if (!(s.eos->T() > 0 && s.eos->p() > 0 && s.eos->rhomass() > 0))
@@ -97,6 +110,7 @@ EMSCRIPTEN_KEEPALIVE double hp_read(unsigned id, unsigned output, char* error, u
             case 6: value = s.eos->cpmass(); break;
             case 7: value = s.eos->viscosity(); break;
             case 8: value = s.eos->speed_sound(); break;
+            case 9: value = s.eos->Qmass(); break;
             default: throw std::invalid_argument("Unsupported getter");
         }
         check_finite(value); return value;
@@ -109,9 +123,19 @@ EMSCRIPTEN_KEEPALIVE double hp_props(const char* output, const char* key1, doubl
     message(error, size, "");
     try {
         if (!output || !key1 || !key2 || !fluid) throw std::invalid_argument("Missing PropsSI string");
-        if (std::string(fluid) != "R32") throw std::invalid_argument("Only R32 is supported");
+        if (!supported(fluid)) throw std::invalid_argument("Unsupported refrigerant identifier");
         check_finite(a); check_finite(b);
-        double value = CoolProp::PropsSI(output, key1, a, key2, b, fluid); check_finite(value); return value;
+        std::string name = fluid;
+        if (name == "R410A-mix" || name == "R407C-mix") {
+            auto mixture = create(name); const auto& fractions = mixture->get_mole_fractions();
+            const char* components[] = {"R32", "R125", "R134a"};
+            std::ostringstream encoded; encoded << std::setprecision(17) << "HEOS::";
+            for (unsigned i = 0; i < fractions.size(); ++i) {
+                if (i) encoded << '&'; encoded << components[i] << '[' << fractions[i] << ']';
+            }
+            name = encoded.str();
+        }
+        double value = CoolProp::PropsSI(output, key1, a, key2, b, name); check_finite(value); return value;
     } catch (const std::exception& e) { message(error, size, e.what()); }
       catch (...) { message(error, size, "Unknown native PropsSI error"); }
     return invalid;
