@@ -163,3 +163,12 @@ The independent `charge-axial.ts` experiment implements exact pressure/linear-en
 An adiabatic hot inlet into a flat wet tube decisively rejects its outlet transport: at1 second P1 predicts226441 J/kg versus FV3/6/12 approximately244164/242897/242814 J/kg, below the initial242151 J/kg. Refining P1 time steps0.05/0.025/0.0125 seconds gives226631/226441/226346 J/kg; the undershoot persists. Integrated outlet energy differs from FV12 by about99 J, or4.1%. Both directions show the same failure. Exact global M/U/W conservation is insufficient to establish admissible local phase/outlet behavior.
 
 The retained alternative is ordinary conservative finite volumes with optional MC internal-face reconstruction and exact mass-based elimination of redundant face unknowns. It retains actual coil endpoints and finite storage rather than adding fictitious separators or clamping profile moments. [Numerical/spatial receipt and remaining gates](../reviews/charge-fv-numerical-checkpoint.md) distinguish its qualified balances, incomplete spatial accuracy and unresolved owner startup/control/throughput.
+
+The rejected prototype is retained under `research/prototypes/charge-axial.ts`, outside production engine modules. Its independent rejection tests run separately:
+
+```sh
+npx tsc -p tests/research/tsconfig.json
+HEATPUMP_TEST_BACKEND=guarded node --test tests/research/charge-axial.test.mjs
+```
+
+The original source-pinned checkpoint records the former locations; this move changes neither equations nor the rejected transport result.

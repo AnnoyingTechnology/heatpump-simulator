@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import factory from './backend.mjs';
-import {Properties,DomainError} from './build/properties.js';
-import {AxialCoil,reconstructAxial,axialAdvectiveIntegral} from './build/charge-axial.js';
-import {finiteVolumeTube} from './charge-axial-fv-reference.mjs';
+import factory from '../engine/backend.mjs';
+import {Properties,DomainError} from './build/src/engine/properties.js';
+import {AxialCoil,reconstructAxial,axialAdvectiveIntegral} from './build/research/prototypes/charge-axial.js';
+import {finiteVolumeTube} from '../engine/charge-axial-fv-reference.mjs';
 
 const V=.001,p0=1e6,coordinates=(p,a,b)=>({pressurePa:p,leftEnthalpyJkg:a,rightEnthalpyJkg:b});
 const relative=(a,b,tolerance)=>assert.ok(Math.abs(a-b)<=tolerance*Math.max(1,Math.abs(a),Math.abs(b)),`${a} vs ${b}`);

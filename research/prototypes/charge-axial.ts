@@ -1,5 +1,5 @@
-import {DomainError, type Properties} from './properties.ts';
-import type {RefrigerantState} from './types.ts';
+import {DomainError, type Properties} from '../../src/engine/properties.ts';
+import type {RefrigerantState} from '../../src/engine/types.ts';
 
 /** Research-only, fixed-coordinate ordinary-tube profile. No phase-selective port. */
 export type AxialProperties=Pick<Properties,'ph'|'saturation'|'prop'>;
