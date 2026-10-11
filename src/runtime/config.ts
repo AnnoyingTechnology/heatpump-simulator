@@ -1,7 +1,7 @@
 import { defaultEngineConfig, defaultRoomConfig } from '../engine/defaults.ts';
 import type { EngineConfig } from '../engine/types.ts';
 import type { Config } from '../types.ts';
-import { outdoorPortCapacity, roomVolumeM3, interzoneConductance } from '../types.ts';
+import { outdoorPortCapacity, roomVolumeM3, roomEnvelopeConductanceWK, roomVentilation, interzoneConductance } from '../types.ts';
 
 export interface LiveParameters {
   fieldLines: 'idealized' | 'physical';
@@ -21,6 +21,7 @@ export interface LiveParameters {
   compressorDisplacementCm3: number;
   compressorMaxSpeedRps: number;
   cleanlinessPct: number;
+  /** Deprecated input, ignored: all coils permanently use cleanlinessPct. */
   outdoorCleanlinessOverridePct: number | null;
   pipeWallThicknessMm: number;
   pipeInsulationConductanceWmK: number;
@@ -46,11 +47,11 @@ export function defaultLiveParameters(): LiveParameters {
     outdoorAirMassFlowKgs: c.outdoor.airMassFlowKgs, depositionAreaM2: c.outdoor.depositionAreaM2,
     indoorAirConductanceWK: r.airConductanceWK, indoorRefrigerantConductanceWK: r.refrigerantConductanceWK,
     indoorAirMassFlowKgs: r.airMassFlowKgs, compressorDisplacementCm3: c.compressor.displacementM3rev * 1e6,
-    compressorMaxSpeedRps: c.compressor.speedMaxRps, cleanlinessPct: 100, outdoorCleanlinessOverridePct: null,
+    compressorMaxSpeedRps: c.compressor.speedMaxRps, cleanlinessPct: 95, outdoorCleanlinessOverridePct: null,
     pipeWallThicknessMm: .8, pipeInsulationConductanceWmK: .05 };
 }
 
-/** Manufacturer references select casings only. Every performance parameter below is a generic assumption. */
+/** Catalogue references supply reviewed volume flow and pairing; compressor/coil performance remains generic. */
 export type InventoryInitialization = Omit<NonNullable<EngineConfig['inventory']>, 'leak'>;
 export function engineConfigFromUi(cfg: Config, live: LiveParameters, activeInitialization?: InventoryInitialization): EngineConfig {
   const c = defaultEngineConfig(cfg.unitCount);
@@ -61,19 +62,26 @@ export function engineConfigFromUi(cfg: Config, live: LiveParameters, activeInit
   c.compressor.isentropicEfficiency = cfg.etaIsPct / 100;
   c.compressor.displacementM3rev = live.compressorDisplacementCm3 * 1e-6;
   c.compressor.speedMaxRps = live.compressorMaxSpeedRps;
+  // Inherited fixed/defrost commands respect the selected hardware speed ceiling.
+  c.control.defrostSpeedRps = Math.min(c.control.defrostSpeedRps, c.compressor.speedMaxRps);
+  if (c.control.fixedSpeedRps !== undefined) c.control.fixedSpeedRps = Math.min(c.control.fixedSpeedRps, c.compressor.speedMaxRps);
   c.outdoor.airConductanceWK = live.outdoorAirConductanceWK;
   c.outdoor.refrigerantConductanceWK = live.outdoorRefrigerantConductanceWK;
   c.outdoor.airMassFlowKgs = live.outdoorAirMassFlowKgs;
+  c.outdoor.volumetricAirFlowM3s = cfg.outdoorVolumetricAirFlowM3s;
   c.outdoor.depositionAreaM2 = live.depositionAreaM2;
-  c.outdoor.cleanFraction = (live.outdoorCleanlinessOverridePct ?? live.cleanlinessPct) / 100;
+  c.outdoor.cleanFraction = live.cleanlinessPct / 100;
   c.rooms = cfg.rooms.slice(0, cfg.unitCount).map((r, i) => {
     const room = defaultRoomConfig(i), p = cfg.pipes[i];
+    const ventilation = roomVentilation(r, cfg);
     return { ...room, id: r.id, enabled: r.enabled, volumeM3: roomVolumeM3(r), initialTemperatureC: r.airC,
-      setpointC: r.setpointC, envelopeWK: r.heatLossWPerK,
-      internalGainW: r.internalGainW ?? 0, ventilationACH: r.ventilationACH ?? room.ventilationACH,
+      setpointC: r.setpointC, envelopeWK: roomEnvelopeConductanceWK(r, cfg),
+      internalGainW: (r.internalGainW ?? 0) + (r.windowSolarGainW ?? 0), ventilationACH: ventilation.grossACH,
+      ventilationRecoveryEfficiency: ventilation.recoveryEfficiency,
       airConductanceWK: live.indoorAirConductanceWK, refrigerantConductanceWK: live.indoorRefrigerantConductanceWK,
       airMassFlowKgs: live.indoorAirMassFlowKgs,
-      cleanFraction: (r.cleanlinessOverridePct ?? live.cleanlinessPct) / 100,
+      volumetricAirFlowM3s: r.volumetricAirFlowM3s,
+      cleanFraction: live.cleanlinessPct / 100,
       pipe: { ...room.pipe,
         // The idealized reference is an explicit UI choice. It makes no prediction about installed field lines.
         lengthM: live.fieldLines === 'physical' ? p.lengthM : 0,

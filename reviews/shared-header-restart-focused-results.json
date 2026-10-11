@@ -1,0 +1,44 @@
+{
+  "createdAt": "2026-10-11T10:19:01.277093+00:00",
+  "status": "focused14/14 and all6complete-schedule replay pass; independent science acceptance and full native/broad/browser release gates owned by root",
+  "backend": "production guarded CoolProp HEOS R32",
+  "sourceHashes": {
+    "src/engine/cycle.ts": "294d647a26f60d319641c9b7fe4645378472dd5c70a8e6c0ef6075168aaf29e4",
+    "src/engine/engine.ts": "d19581635f7086e8e9d041bd7e1b3dc69fd1d7fe4b94a397cae7a54fb826d963",
+    "src/engine/envelope.ts": "eaab1d96df755b322050854fa8b7108e1f4918fbeb4dd1206d815ba9c74dc4e3",
+    "src/engine/drive.ts": "d94247f20b359a61980e0d5af121d5299133f3b65a49358c4c40540a6655d0dd",
+    "src/engine/types.ts": "2d37d59af8e071ac4ea8fb6edc85605f0ee63d3ce3900f8af8d6f62340470c24",
+    "tests/engine/eight-head-header.test.mjs": "2a4ece4c0a9882b2f1bf11f899050c19bee34de6f8edc75bfdd8532daff07acc",
+    "tests/engine/restart-preflight.test.mjs": "3e7f6ef2abb009e98eaab57d0a6088b922cb93e6fd037206bd21e95dc55f6b76",
+    "tests/engine/warm-heating-regime.test.mjs": "c04e550a1242edb0b7575ef53d248560218c66dece58db8945327628fda4fc1d",
+    "tests/engine/reference-envelope.test.mjs": "41773e577032167f6420b95743c7dc31e609aded0af183a1875d4f64ad9b50e8",
+    "tests/engine/coil-inverse.test.mjs": "769b4b4b11fbc1fabb78be421294f1f87978dc3435ca09417390bb27484b80db",
+    "tests/engine/fixtures/eight-head-shared-header.json": "264d66afb04a391f00d6c91e9d125f0e9e39627bdac06e582379a97c44f377d3"
+  },
+  "results": [
+    {
+      "command": "HEATPUMP_TEST_BACKEND=guarded node --test tests/engine/warm-heating-regime.test.mjs tests/engine/reference-envelope.test.mjs tests/engine/coil-inverse.test.mjs tests/engine/eight-head-header.test.mjs",
+      "passed": 10,
+      "failed": 0,
+      "durationMs": 74906.216335
+    },
+    {
+      "command": "HEATPUMP_TEST_BACKEND=guarded node --test tests/engine/restart-preflight.test.mjs",
+      "passed": 4,
+      "failed": 0,
+      "durationMs": 77825.651201
+    }
+  ],
+  "assertions": "Original 0.1 W pressure and scaled mass acceptance unchanged; exact heating/cooling and warm crossover reference tests unchanged; new saved fixture branch heat/entropy/mixed PH and independent-inversion checks; exact saved thermal-boundary fan/store evolution and fresh restart; unknown/Off/mode latch and independent discharge retention; exact saved warm crossover probes freshly close.",
+  "latestRetainedReplay": "/tmp/heatpump-six-counterexamples-in-domain-FD-replay",
+  "priorCandidateFourReplay": {
+    "path": "/tmp/heatpump-four-counterexamples-final-preflight-replay",
+    "passed": 4,
+    "failed": 0,
+    "secondsPerScenario": 840,
+    "cycleSha256": "c65212899f41677e6870d7f77bf9055b9bebad484c8a566f9f3b67b1e42cd6ad",
+    "scope": "Intermediate candidate only; does not certify current opposite-FD source."
+  },
+  "limits": "Finite-UA inversion check shares EOS quadrature. Boundary estimates are declared generic controller heuristics, not a proof of global compressor envelope monotonicity or manufacturer calibration. New complete original schedules remain a release gate.",
+  "retainedReplayReceipt": "reviews/shared-header-restart-six-replay-results.json"
+}

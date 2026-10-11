@@ -3,6 +3,15 @@
 Read-only science review, 2026-10-11. This note recommends implementation; it does not
 claim a measured fit or authorize manufacturer-performance or charge-model changes.
 
+## New evidence, 2026-10-11
+
+Current owner confirms roughly49 m² common footprint,4 m² open stairwell per
+interface and120 mm glass wool between floors. These supersede the assumed
+5/3 m² openings below when the simpler parallel-path editor is released.
+See [current geometry and heating observations](owner-heating-calibration-points.md)
+for the2024/2025 daily electrical means and thermostat-schedule distinctions.
+The earlier benchmark below remains evidence for its explicitly older preset.
+
 ## Evidence and previous preset mismatch
 
 - Current owner statement: ground-floor unit at **17 °C** as backup, upstairs unit

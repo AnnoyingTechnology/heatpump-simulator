@@ -11,6 +11,11 @@ export class SimulationRuntime {
   private submittedConfig: EngineConfig | null = null;
   private requestKind: Request['kind'] | null = null;
   private retainSnapshot = false;
+  private acceptedOutput: EngineOutput | null = null;
+  private initialConfig: EngineConfig | null = null;
+  private recentRequests: Array<{ kind: Request['kind']; revision: number; atAcceptedSeconds: number; config?: EngineConfig; seconds?: number }> = [];
+  private failureDetails: Record<string, unknown> | null = null;
+  private workerFailed = false;
   private listeners = new Set<() => void>();
   status: RuntimeStatus = { state: 'loading', output: null, error: null, calculationMs: 0 };
   /** Accepted stored inventory survives a rejected input; it never supplies active cycle readings. */
@@ -26,16 +31,31 @@ export class SimulationRuntime {
     this.initialized = false;
     this.submittedConfig = structuredClone(config);
     this.retainSnapshot = false;
+    this.acceptedOutput = null;
+    this.initialConfig = structuredClone(config);
+    this.recentRequests = [];
+    this.failureDetails = null;
+    this.workerFailed = false;
     this.inventory = null;
     this.status = { state: 'loading', output: null, error: null, calculationMs: 0 };
-    this.worker = new Worker(new URL('./worker.ts', import.meta.url), { type: 'module' });
+    const worker = this.worker = new Worker(new URL('./worker.ts', import.meta.url), { type: 'module' });
     this.worker.onmessage = (event: MessageEvent<Response>) => {
+      if (this.worker !== worker) return;
       this.busy = false;
       const finishedKind = this.requestKind;
       const response = event.data;
       if (response.kind === 'output') {
         this.initialized = true;
+        this.acceptedOutput = response.output;
         this.inventory = { outdoor: response.output.outdoor, simulatedSeconds: response.output.simulatedSeconds };
+        this.failureDetails = response.output.state === 'fault'
+          ? { category: 'engine-fault', message: response.output.diagnostics.fault, requestKind: finishedKind } : null;
+      } else {
+        if (response.acceptedOutput) {
+          this.acceptedOutput = response.acceptedOutput;
+          this.inventory = { outdoor: response.acceptedOutput.outdoor, simulatedSeconds: response.acceptedOutput.simulatedSeconds };
+        }
+        this.failureDetails = { category: 'request-error', message: response.message, ...response.details, requestKind: finishedKind };
       }
       if (response.revision === this.revision) {
         if (response.kind === 'output' && response.output.state !== 'fault' && finishedKind === 'configure' && this.retainSnapshot && this.status.output) {
@@ -46,7 +66,7 @@ export class SimulationRuntime {
           this.retainSnapshot = false;
           this.status = response.kind === 'output'
             ? { state: 'ready', output: response.output, error: null, calculationMs: response.calculationMs }
-            : { state: 'error', output: null, error: response.message, calculationMs: 0 };
+            : { state: 'error', output: this.acceptedOutput, error: response.message, calculationMs: 0 };
         }
         this.notify();
       } else if (this.retainSnapshot && (response.kind === 'error' || response.output.state === 'fault')) {
@@ -68,11 +88,20 @@ export class SimulationRuntime {
       }
     };
     this.worker.onerror = (event) => {
+      if (this.worker !== worker) return;
+      event.preventDefault();
       this.busy = false;
       this.pendingConfig = null;
       this.initialized = false;
       this.retainSnapshot = false;
-      this.status = { state: 'error', output: null, error: event.message || 'Simulation worker failed', calculationMs: 0 };
+      this.workerFailed = true;
+      worker.terminate();
+      const message = event.message || 'Worker terminated without an error message';
+      this.failureDetails = { category: 'worker-error', message, filename: event.filename,
+        line: event.lineno, column: event.colno, name: event.error?.name, stack: event.error?.stack,
+        requestKind: this.requestKind };
+      this.status = { state: 'error', output: this.acceptedOutput,
+        error: `${message}. Last accepted state is retained; use Reset to restart the worker.`, calculationMs: 0 };
       this.notify();
     };
     const propertyModuleUrl = new URL(`${import.meta.env.BASE_URL}vendor/coolprop-safe/adapter.js`, document.baseURI).href;
@@ -81,6 +110,12 @@ export class SimulationRuntime {
   }
 
   configure(config: EngineConfig): void {
+    // A dead worker cannot resume its physical stores. A settings edit must never silently create a new run.
+    if (this.workerFailed && this.acceptedOutput) {
+      this.submittedConfig = structuredClone(config);
+      this.notify();
+      return;
+    }
     if (!this.worker || (!this.initialized && this.status.state === 'error')) { this.start(config); return; }
     this.revision++;
     this.retainSnapshot = !!this.status.output && this.status.state !== 'error'
@@ -100,7 +135,24 @@ export class SimulationRuntime {
     return true;
   }
 
-  private post(request: Request): void { this.busy = true; this.requestKind = request.kind; this.worker!.postMessage(request); }
+  private post(request: Request): void {
+    this.recentRequests.push({ kind: request.kind, revision: request.revision,
+      atAcceptedSeconds: this.acceptedOutput?.simulatedSeconds ?? 0,
+      ...('config' in request ? { config: structuredClone(request.config) } : { seconds: request.seconds }) });
+    if (this.recentRequests.length > 24) this.recentRequests.shift();
+    this.busy = true;
+    this.requestKind = request.kind;
+    this.worker!.postMessage(request);
+  }
+  /** Local diagnostic artifact: accepted stores and bounded input history, without uploading anything. */
+  diagnosticReport(): Record<string, unknown> {
+    return structuredClone({ format: 'heatpump-diagnostic-v1', createdAt: new Date().toISOString(),
+      applicationAsset: document.querySelector<HTMLScriptElement>('script[type="module"][src]')?.src,
+      runtimeAsset: import.meta.url, browser: navigator.userAgent,
+      status: this.status.state, error: this.status.error ?? this.acceptedOutput?.diagnostics.fault,
+      failure: this.failureDetails, initialConfig: this.initialConfig, requestedConfig: this.submittedConfig,
+      acceptedOutput: this.acceptedOutput, recentRequests: this.recentRequests });
+  }
   stop(): void { this.worker?.terminate(); this.worker = null; this.busy = false; this.pendingConfig = null; }
 }
 

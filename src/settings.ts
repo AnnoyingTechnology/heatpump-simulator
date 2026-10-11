@@ -1,7 +1,9 @@
 import { createModelDiagnostics } from './chrome';
 import type { Field } from './controls';
 import { nextId, segmented, select, setHtml, slider } from './controls';
-import { clamp, fmt, html, setAttr, setText, toggleClass } from './dom';
+import { clamp, escapeHtml, fmt, html, setAttr, setText, toggleClass } from './dom';
+import { OUTDOOR_MODELS, indoorModelProfile, indoorOptionsForOutdoor, outdoorModelInfo } from './equipment';
+import type { OutdoorModelInfo } from './equipment';
 import { defaultEngineConfig } from './engine/defaults';
 import { fixtureFor } from './fixtures';
 import { inspectorHtml } from './inspector';
@@ -11,7 +13,11 @@ import { CHARGE_MODEL_AVAILABLE, PHYSICAL_FIELD_LINES_AVAILABLE, defaultLivePara
 import type { LiveParameters } from './runtime/config';
 import { activeRooms, currentReadings, indoorCleanliness, outdoorCleanliness, store } from './state';
 import type { AppState, Experience, ExampleState, IndoorClass, InterzoneLink, Mode, OutdoorKind, PipeConfig, RoomConfig } from './types';
-import { CLEANLINESS_MAX_PCT, CLEANLINESS_MIN_PCT, INDOOR_CLASSES, OWNER_PORTS, interzoneConductance, outdoorPortCapacity } from './types';
+import {
+  CLEANLINESS_MAX_PCT, CLEANLINESS_MIN_PCT, INDOOR_CLASSES, INTERZONE_FILM_RESISTANCE_M2KW, INTERZONE_GEOMETRY_DEFAULTS, INTERZONE_GLASS_WOOL_LAMBDA_WMK, OWNER_PORTS,
+  hasInterzoneGeometry, houseEnvelopeSummary, interzoneConductance, outdoorPortCapacity, roomAverageUValue, roomEnvelopeConductanceWK,
+  roomExposedEnvelopeAreaM2, roomVentilation,
+} from './types';
 
 /**
  * Object-scoped controls. Every editable property has exactly one bound control instance, owned by the object it belongs to:
@@ -70,6 +76,8 @@ export interface PairOpts {
   /** block: label and note, big value, range · line: label and value on one row, range below · inline: one row. */
   layout?: 'block' | 'line' | 'inline';
   title?: string;
+  /** Visible unit text when it differs from `unit` (the accessible name keeps `unit`); '' shows none. */
+  suffix?: string;
 }
 
 export interface PairField extends Field {
@@ -90,7 +98,8 @@ export function pairField(o: PairOpts): PairField {
   const range = html('input', { type: 'range', class: 'rp-range rp-ctl', min: o.min, max: o.max, step: o.step, 'aria-label': aria });
   const note = html('span', { class: 'rp-n' });
   const key = html('span', { class: 'rp-k' }, o.label);
-  const val = html('span', { class: 'rp-line' }, num, html('small', {}, o.unit));
+  const shown = o.suffix ?? o.unit;
+  const val = html('span', { class: 'rp-line' }, num, ...(shown ? [html('small', {}, shown)] : []));
   const root = layout === 'block'
     ? html('div', { class: 'pf block' }, html('div', { class: 'pf-head' }, key, note), val, range)
     : layout === 'line'
@@ -121,10 +130,65 @@ export function pairField(o: PairOpts): PairField {
   return { root, num, range, note, refresh };
 }
 
+// ---------- equipment model lists (native select, grouped by manufacturer) ----------
+type Maker = OutdoorModelInfo['manufacturer'];
+const MAKER_LABEL: Record<Maker, string> = { daikin: 'Daikin', 'mitsubishi-electric': 'Mitsubishi Electric', generic: 'Generic' };
+const MAKER_ORDER: readonly Maker[] = ['daikin', 'mitsubishi-electric', 'generic'];
+
+/** The group label states the brand, so the option drops its repeated prefix; the full text stays in the tooltip. */
+function withoutBrand(text: string, maker: Maker): string {
+  const brand = `${MAKER_LABEL[maker]} `;
+  if (!text.startsWith(brand)) return text;
+  const rest = text.slice(brand.length);
+  return rest.charAt(0).toUpperCase() + rest.slice(1);
+}
+
+/** Native `<optgroup>`s in a fixed brand order; a brand without a model gets no group, so nothing is invented. */
+function optgroups(items: ReadonlyArray<{ value: string; text: string; title: string; maker: Maker }>): HTMLElement[] {
+  return MAKER_ORDER.flatMap((maker) => {
+    const own = items.filter((o) => o.maker === maker);
+    return own.length
+      ? [html('optgroup', { label: MAKER_LABEL[maker] }, ...own.map((o) => html('option', { value: o.value, title: o.title }, withoutBrand(o.text, maker))))]
+      : [];
+  });
+}
+
+const indoorMaker = (value: IndoorClass): Maker => indoorModelProfile(value)?.manufacturer ?? (value.startsWith('FTXA') ? 'daikin' : 'generic');
+
+export interface IndoorModelControl {
+  root: HTMLSelectElement;
+  /** Rebuilds the grouped options only when the outdoor model changes; otherwise it only follows the room's class and name. */
+  sync(room: RoomConfig, outdoor: OutdoorKind): void;
+}
+
+/**
+ * The one visible control of a room's indoor model: a compact native select on the room's indoor-unit block, grouped by manufacturer
+ * and limited to the heads the selected outdoor unit accepts. Selection goes through the store, which applies the published profile.
+ */
+export function createIndoorModelSelect(index: number): IndoorModelControl {
+  const select = html('select', { class: 'eq-model rp-ctl' });
+  let builtFor = '';
+  select.addEventListener('change', () => store.setIndoorClass(index, select.value as IndoorClass));
+  isolate(select);
+  return {
+    root: select,
+    sync(room, outdoor): void {
+      if (builtFor !== outdoor) {
+        builtFor = outdoor;
+        select.replaceChildren(...optgroups(indoorOptionsForOutdoor(outdoor).map((o) => ({ value: o.value, text: o.text, title: o.text, maker: indoorMaker(o.value) }))));
+      }
+      if (select.value !== room.indoorClass) select.value = room.indoorClass;
+      const label = `Indoor model for ${room.name}`;
+      setAttr(select, 'aria-label', label);
+      setAttr(select, 'title', `${label}: ${select.selectedOptions[0]?.title ?? room.indoorClass}`);
+    },
+  };
+}
+
 // ---------- envelope heat-loss guide (local, non-modal help in the scene) ----------
 /** Reference bands supplied for this simulator. Their reference size, boundaries and air exchange are unspecified: never scaled or applied. */
 export interface HeatLossBand { era: string; note?: string; min: number; max: number }
-/** Single source of the supplied bands: the guide table shows the ranges, the scale under every Envelope loss slider shows their midpoints. */
+/** Single source of the supplied bands: the guide table shows the ranges, the house-loss ruler in the indoor header shows their midpoints. */
 export const HEAT_LOSS_BANDS: ReadonlyArray<HeatLossBand> = [
   { era: 'Pre-1974', note: 'very poorly insulated', min: 650, max: 850 },
   { era: 'RT1974', min: 400, max: 600 }, { era: 'RT1982', min: 350, max: 480 }, { era: 'RT1988', min: 300, max: 400 },
@@ -140,11 +204,14 @@ const HEAT_LOSS_SOURCES: ReadonlyArray<readonly [string, string]> = [
   ['FAQ RE2020 141', 'https://rt-re-batiment.developpement-durable.gouv.fr/faq-re2020-141-comment-calculer-la-surface-a811.html'],
 ];
 
-/** Envelope loss bounds [W/K] of the slider and its number field: 0–750 covers every supplied reference midpoint (Pre-1974 = 750, the right end). No normative default is implied. */
+/** Bounds [W/K] of the building reference ruler: 0–750 covers every supplied reference midpoint (Pre-1974 = 750, the right end). A larger house loss is shown as an overflow at the end, never clamped. No normative default is implied. */
 export const ENVELOPE_LOSS = { min: 0, max: 750, step: 1 } as const;
 
+/** Plot width of the single header ruler in scene units. */
+const RULER_PLOT_W = 560;
+
 /**
- * Scale metrics in px (the panel is 290 scene units wide; the plot is inset 8 by the native thumb travel). `charW` is a deliberately
+ * Scale metrics in px (the plot is inset 8 on each side). `charW` is a deliberately
  * conservative allowance per character for this bounded vocabulary at 650 10px system-ui: measured 42 px for the six-character
  * names and 51 px for Pre-1974 (7.0 and 6.4 per character), so 7.4 leaves about 5–8 % for font variation. Pads separate labels
  * and keep leaders clear of labels.
@@ -187,22 +254,23 @@ function placeMarks(plotW: number): LossMark[] {
 }
 
 /**
- * Static reference scale for the Envelope loss slider, built once per room: a numeric 0…750 W/K axis band aligned to the slider
- * track (inset by the thumb radius) and one midpoint marker per supplied band, labelled directly on the scale (no legend, no
- * range bars). Closely spaced low values are staggered above and below the band with leader lines from the exact midpoint.
- * The supplied ranges and notes stay in the help guide. These are building-reference examples of unspecified size: never scaled
- * by room size, never a default, no classification of the slider. Nothing here reacts to the slider or is rebuilt.
+ * Static reference scale, built once for the whole house in the indoor header: a numeric 0…750 W/K axis band and one midpoint
+ * marker per supplied band, labelled directly on the scale (no legend, no range bars). Closely spaced low values are staggered
+ * above and below the band with leader lines from the exact midpoint. The `.ls-needle` and `.ls-over` elements are placed by
+ * `createHouseLossRuler`; the scale itself never reacts or is rebuilt. The supplied ranges and notes stay in the help guide.
+ * These are building-reference examples of unspecified size: never scaled by room size, never a default, no classification.
  */
-export function createLossScale(): HTMLElement {
+export function createLossScale(plotW = RULER_PLOT_W): HTMLElement {
   const span = ENVELOPE_LOSS.max - ENVELOPE_LOSS.min;
   const at = (v: number): string => `${(((v - ENVELOPE_LOSS.min) / span) * 100).toFixed(3)}%`;
-  const marks = placeMarks(274);
+  const marks = placeMarks(plotW);
   const tiersAbove = Math.max(0, ...marks.filter((m) => m.above).map((m) => m.tier + 1));
   const tiersBelow = Math.max(0, ...marks.filter((m) => !m.above).map((m) => m.tier + 1));
   const bandTop = tiersAbove * LS.pitch + LS.gap;
   const bandBottom = bandTop + LS.band;
   const plot = html('div', { class: 'ls-plot' });
   plot.style.height = `${bandBottom + LS.gap + tiersBelow * LS.pitch}px`;
+  plot.style.width = `${plotW}px`;
   const band = html('div', { class: 'ls-band', 'aria-hidden': 'true' }, ...[0, 250, 500, ENVELOPE_LOSS.max].map((v) => {
     const e = html('span', { class: `ls-tick${v === ENVELOPE_LOSS.max ? ' end' : ''}`, 'data-value': v }, html('span', { class: 'ls-n' }, String(v)));
     e.style.left = at(v);
@@ -227,15 +295,154 @@ export function createLossScale(): HTMLElement {
     lab.style.top = `${m.above ? bandTop - reach - LS.pitch : bandBottom + reach}px`;
     plot.append(e);
   }
-  return html('div', { class: 'ls', role: 'group', 'aria-label': 'Building reference midpoints, W/K, from supplied examples' }, plot);
+  // The current house loss: a needle across the axis band, and an off-scale label when the value passes the end.
+  const needle = html('span', { class: 'ls-needle', 'aria-hidden': 'true' });
+  needle.style.top = `${bandTop - 3}px`;
+  needle.style.height = `${LS.band + 6}px`;
+  const over = html('span', { class: 'ls-over', hidden: true });
+  over.style.top = `${bandTop - 1}px`;
+  plot.append(needle, over);
+  return html('div', { class: 'ls', role: 'group', 'aria-label': 'Building reference midpoints, W/K, from illustrative examples' }, plot);
+}
+
+export interface HouseLossRuler {
+  root: HTMLElement;
+  /** Writes text and attributes only; the ruler is built once. */
+  sync(cfg: AppState['cfg']): void;
+}
+
+const RULER_NOTE = 'Illustrative building references, not an RT certification or a per-room rating; the air term is an estimate.';
+
+/**
+ * Owner assumptions shown while `cfg.ventilation` is absent: dual flow, 0.5 ACH gross, 75 % sensible recovery. They are declared
+ * assumptions, not measured unit specifications, and nothing is written to the configuration until the user edits a control.
+ */
+const VENT_DEFAULT: Ventilation = { mode: 'dual', grossACH: 0.5, sensibleEfficiencyPct: 75 };
+const VENT_RECOVERY = { min: 0, max: 95, step: 1 } as const;
+const VENT_ACH = { min: 0, max: 2, step: 0.05 } as const;
+type Ventilation = NonNullable<AppState['cfg']['ventilation']>;
+
+const ventilationOf = (cfg: AppState['cfg']): Ventilation => ({ ...VENT_DEFAULT, ...cfg.ventilation });
+
+/** Merges one field into the global ventilation object through the store, so engine stores, time and room targets are untouched. */
+function setVentilation(patch: Partial<Ventilation>): void {
+  store.update((s) => { s.cfg.ventilation = { ...VENT_DEFAULT, ...s.cfg.ventilation, ...patch }; });
+}
+
+/**
+ * The one calculated whole-house loss ruler of the indoor header: the sum of the active rooms' envelope conductances plus the
+ * sensible air term after heat recovery (`houseEnvelopeSummary`), shown as a needle on the eight building references and as
+ * "House loss ≈ N W/K" with its envelope / air split. Under the summary sit the global single / dual flow choice and, when dual, the
+ * sensible recovery. Off heads still count. Nothing is classified, converted or applied to a room; a value past the 750 W/K end
+ * keeps its real number and is marked off scale at the end instead of being clamped.
+ */
+export function createHouseLossRuler(guide: HeatLossGuide): HouseLossRuler {
+  const scale = createLossScale();
+  const needle = scale.querySelector<HTMLElement>('.ls-needle')!;
+  const over = scale.querySelector<HTMLElement>('.ls-over')!;
+  const total = html('b', { class: 'hl-total' });
+  const parts = html('span', { class: 'hl-parts' });
+  const modeTip = 'Ventilation type. Single flow: no heat recovery. Dual flow: the exhaust air preheats the supply air (sensible recovery).';
+  const mode = html('select', { class: 'hl-mode rp-ctl', 'aria-label': 'Ventilation type', title: modeTip },
+    html('option', { value: 'single' }, 'Single flow'), html('option', { value: 'dual' }, 'Dual flow'));
+  mode.addEventListener('change', () => setVentilation({ mode: mode.value === 'single' ? 'single' : 'dual' }));
+  const recovery = pairField({
+    label: 'Recovery', unit: '%', ...VENT_RECOVERY, digits: 0, layout: 'inline',
+    get: () => ventilationOf(store.state.cfg).sensibleEfficiencyPct, set: (v) => setVentilation({ sensibleEfficiencyPct: v }),
+    title: 'Sensible heat-recovery efficiency of the dual-flow unit (assumed 75 %, not a measured unit specification). Sensible only: outdoor humidity still enters. Frost protection, bypass and fan power are not modelled.',
+  });
+  const vent = html('div', { class: 'hl-vent' }, mode, recovery.root);
+  const sum = html('div', { class: 'hl-sum rp-ctl', title: RULER_NOTE },
+    html('div', { class: 'hl-line' }, 'House loss ≈ ', total, html('small', {}, 'W/K'), guide.button(0)), parts, vent);
+  const root = html('div', { class: 'rp env hl-ruler', 'data-block': 'house-loss', role: 'group' }, sum, scale);
+  let last = '';
+  isolate(sum, mode);
+  return {
+    root,
+    sync(cfg): void {
+      // Controls follow the configuration on every call (a focused input is never rewritten); the text below is diffed.
+      const v = ventilationOf(cfg);
+      if (mode.value !== v.mode) mode.value = v.mode;
+      recovery.root.hidden = v.mode !== 'dual';
+      recovery.refresh();
+      const h = houseEnvelopeSummary(cfg);
+      const key = `${h.envelopeWK}|${h.ventilationWK}|${v.mode}`;
+      if (key === last) return;
+      last = key;
+      const envelope = Math.round(h.envelopeWK);
+      const sumWK = Math.round(h.totalWK);
+      const air = sumWK - envelope;
+      const off = h.totalWK > ENVELOPE_LOSS.max;
+      setText(total, fmt(sumWK, 0));
+      setText(parts, `envelope ${fmt(envelope, 0)} + air ~${fmt(air, 0)}`);
+      needle.style.left = `${(clamp(h.totalWK / ENVELOPE_LOSS.max, 0, 1) * 100).toFixed(3)}%`;
+      toggleClass(needle, 'over', off);
+      over.hidden = !off;
+      setText(over, off ? `${fmt(sumWK, 0)} W/K` : '');
+      for (const [k, v] of [['data-total-wk', h.totalWK], ['data-envelope-wk', h.envelopeWK], ['data-ventilation-wk', h.ventilationWK]] as const) setAttr(root, k, String(v));
+      setAttr(root, 'data-off-scale', off ? '1' : '0');
+      const text = `House loss about ${fmt(sumWK, 0)} W/K: envelope ${fmt(envelope, 0)} plus air about ${fmt(air, 0)}${off ? ', beyond the 750 W/K end of the scale' : ''}. ${RULER_NOTE}`;
+      setAttr(root, 'aria-label', text);
+      setAttr(parts, 'title', `Envelope: sum of every active room's average U × exposed envelope area. Air: sensible loss of the gross ventilation rate, 0.34 × volume × ACH × (1 − sensible recovery); ${v.mode === 'dual' ? `dual flow recovers ${fmt(v.sensibleEfficiencyPct, 0)} % of the sensible heat` : 'single flow has no recovery'}. Outdoor humidity exchange is not reduced. ${RULER_NOTE}`);
+    },
+  };
+}
+
+/** Average U bounds [W/(m²·K)]: lower is better. */
+export const AVERAGE_U = { min: 0, max: 3, step: 0.01 } as const;
+
+export interface AverageUControl {
+  root: HTMLElement;
+  field: PairField;
+  /** Rebinds labels and the derived exposed area and whole-room W/K; never rewrites a focused input. */
+  sync(room: RoomConfig, cfg: AppState['cfg']): void;
+}
+
+const AVERAGE_U_TIP = 'Average U: effective envelope transmittance, W/(m²·K), lower is better. It includes windows and thermal bridges as an average. The exposed area is a square-box estimate from floor area and height, with surfaces shared through room links deducted; correct it in Thermal. Whole-room envelope loss = average U × exposed area. Ventilation and room links are separate.';
+
+/**
+ * A room's Average U: one effective transmittance for the whole exposed envelope, the primary envelope control. The exposed area is
+ * derived (square box, shared linked faces deducted) unless corrected in Thermal, so U stays fixed when size, height or links change
+ * and only the derived W/K follows. The stored value is never rounded by rendering. Built once per room index; edits go through
+ * `store.setRoomAverageU` by room id.
+ */
+export function createAverageUControl(index: number): AverageUControl {
+  const room = (): RoomConfig | undefined => store.state.cfg.rooms[index];
+  const field = pairField({
+    label: 'Average U', unit: 'W/(m²·K)', ...AVERAGE_U, digits: 2, layout: 'block',
+    get: () => { const r = room(); return r ? roomAverageUValue(r, store.state.cfg) : 0; },
+    set: (v) => { const r = room(); if (r) store.setRoomAverageU(r.id, v); },
+    title: AVERAGE_U_TIP,
+  });
+  const ends = html('div', { class: 'ie-ends', 'aria-hidden': 'true' }, html('span', {}, '0 · better'), html('span', {}, `poorer · ${AVERAGE_U.max}`));
+  const envelope = html('div', { class: 'env-heat', 'data-field': 'room-envelope-wk', title: AVERAGE_U_TIP });
+  const root = html('div', { class: 'ie' }, field.root, ends, envelope);
+  return {
+    root,
+    field,
+    sync(r, cfg): void {
+      field.refresh();
+      const u = roomAverageUValue(r, cfg);
+      const label = `Average U of ${r.name} (W/(m²·K), lower is better)`;
+      setAttr(field.num, 'aria-label', label);
+      setAttr(field.range, 'aria-label', label);
+      setAttr(field.range, 'aria-valuetext', `${fmt(u, 2)} W/(m²·K)`);
+      const area = roomExposedEnvelopeAreaM2(r, cfg);
+      const h = roomEnvelopeConductanceWK(r, cfg);
+      const set = r.envelopeAreaOverrideM2 != null;
+      setText(envelope, `${set ? '' : '≈ '}${fmt(area, 0)} m² exposed${set ? ' (set)' : ''} · ${fmt(h, 0)} W/K`);
+      setAttr(envelope, 'data-wk', String(h));
+      setAttr(envelope, 'data-area-m2', String(area));
+    },
+  };
 }
 
 export interface HeatLossGuide {
-  /** The panel; the scene mounts it once, above every room, and places it beside the room it is open for. */
+  /** The panel; the scene mounts it once and places it beside the house-loss ruler's help button. */
   root: HTMLElement;
-  /** Room index the guide is open for, or -1. */
+  /** Anchor index the guide is open for (0, the header ruler), or -1. */
   readonly open: number;
-  /** Help button of room `i`; one click toggles the guide for that room. */
+  /** Help button for anchor `i`; one click toggles the guide. The ruler uses anchor 0 only. */
   button(i: number): HTMLButtonElement;
   close(): void;
   /** Called after every open / close so the scene can place the panel. */
@@ -255,13 +462,13 @@ export function createHeatLossGuide(): HeatLossGuide {
     html('header', { class: 'hl-head' }, html('b', {}, 'Envelope heat loss (W/K)'), x),
     html('p', { class: 'hl-eq' }, 'Heat loss [W] ≈ H [W/K] × (T indoor − T outdoor) [K]'),
     html('p', {}, 'Example: H = 200 W/K with a 20 K difference loses about 4 kW.'),
-    html('p', {}, html('b', {}, 'This slider is envelope loss only'), ' (walls, glazing, roof, floor, thermal bridges). Ventilation and infiltration are modelled separately: do not add them here.'),
-    html('p', {}, 'Floor area and ceiling height give the volume, not H. H depends on which surfaces are exposed, their construction and the bridges between them.'),
+    html('p', {}, html('b', {}, 'Average U sets each room\'s envelope loss'), ': one effective W/(m²·K), lower is better. Envelope H = average U × exposed area. U averages walls, glazing, roof, floor and thermal bridges; it is not the thickness of a wool layer. The area is a square-box estimate from floor area and height minus the surfaces shared through room links; correct it in the room\'s Thermal settings when buried or roof geometry differs. U stays fixed when size or links change; H follows.'),
+    html('p', {}, html('b', {}, 'House loss'), ' on the ruler = every active room\'s envelope H + the sensible air term 0.34 × volume × gross ACH × (1 − sensible recovery). Single flow has no recovery. Recovery is sensible only: the outdoor humidity exchange remains. Exchanger frost protection, bypass and fan power are not modelled. Rooms count even when their unit is Off.'),
     html('table', { class: 'hl-tbl' },
-      html('caption', {}, 'Reference bands supplied for this simulator'),
+      html('caption', {}, 'Illustrative building references'),
       html('thead', {}, html('tr', {}, html('th', { scope: 'col' }, 'Construction era'), html('th', { scope: 'col' }, 'Indicative H (W/K)'))),
       html('tbody', {}, ...HEAT_LOSS_BANDS.map((b) => html('tr', {}, html('th', { scope: 'row' }, b.note ? `${b.era} (${b.note})` : b.era), html('td', {}, `${b.min}–${b.max}`))))),
-    html('p', { class: 'hl-note' }, 'Indicative only: the room size, exposed surfaces and air exchange behind these bands are unspecified. They are not RT/RE requirements and are never applied to a room automatically.'),
+    html('p', { class: 'hl-note' }, `${RULER_NOTE} The size, exposed surfaces and ventilation behind these bands are unspecified; they are not RT/RE requirements, are never applied or converted to a room, and the ruler marks them by band midpoint.`),
     sources);
   const guide: HeatLossGuide = {
     root,
@@ -269,7 +476,7 @@ export function createHeatLossGuide(): HeatLossGuide {
     button(i): HTMLButtonElement {
       let b = buttons[i];
       if (!b) {
-        b = html('button', { type: 'button', class: 'hl-btn rp-ctl', 'aria-haspopup': 'dialog', 'aria-expanded': 'false', 'aria-controls': id, 'aria-label': 'Envelope heat-loss guide', title: 'Envelope heat-loss guide: equation and reference bands' }, '?');
+        b = html('button', { type: 'button', class: 'hl-btn rp-ctl', 'aria-haspopup': 'dialog', 'aria-expanded': 'false', 'aria-controls': id, 'aria-label': 'Envelope heat-loss guide', title: 'Heat-loss guide: equation, average U, ventilation loss and the illustrative building references' }, '?');
         const btn = b;
         btn.addEventListener('click', () => { open = open === i ? -1 : i; apply(); });
         btn.addEventListener('keydown', esc);
@@ -300,40 +507,6 @@ export function createHeatLossGuide(): HeatLossGuide {
   return guide;
 }
 
-/**
- * "Follow the shared default" checkbox plus an override control. The override is stored as null while following.
- * Both inputs are built once; the override stays mounted (hidden) while following.
- */
-function cleanOverride(o: {
-  label: string;
-  make: (p: PairOpts) => Field;
-  global(): number;
-  get(): number | null;
-  set(v: number | null): void;
-  describe(follows: boolean, globalPct: number): string;
-}): Field {
-  const id = nextId('c');
-  const box = html('input', { type: 'checkbox', id, class: 'rp-ctl' });
-  const text = html('span', {});
-  const label = html('label', { class: 'check rp-ctl', for: id }, box, text);
-  const range = o.make({
-    label: o.label, unit: '% clear', min: CLEANLINESS_MIN_PCT, max: CLEANLINESS_MAX_PCT, step: 1, digits: 0, layout: 'line',
-    get: () => o.get() ?? o.global(), set: (v) => o.set(v),
-  });
-  box.addEventListener('change', () => o.set(box.checked ? null : o.global()));
-  isolate(box, label);
-  const root = html('div', { class: 'field clean-override' }, label, range.root);
-  return {
-    root,
-    refresh(): void {
-      const follows = o.get() === null;
-      box.checked = follows;
-      setText(text, o.describe(follows, o.global()));
-      range.root.hidden = follows;
-      range.refresh();
-    },
-  };
-}
 
 function relabel(f: Field, text: string, unit: string): void {
   const l = f.root.querySelector('label');
@@ -344,12 +517,6 @@ function relabel(f: Field, text: string, unit: string): void {
 function fold(title: string, open: boolean, ...kids: Node[]): HTMLDetailsElement {
   return html('details', { class: 'fold', open: open ? '' : undefined }, html('summary', {}, title), html('div', { class: 'fold-body' }, ...kids));
 }
-
-const classOptions = (): { value: IndoorClass; text: string; disabled?: boolean }[] =>
-  (Object.keys(INDOOR_CLASSES) as IndoorClass[]).map((k) => ({
-    value: k, text: INDOOR_CLASSES[k].label,
-    disabled: store.state.cfg.outdoorKind === 'owner' && INDOOR_CLASSES[k].generic,
-  }));
 
 // ---------- refrigerant charge (inventory model) ----------
 /** The active conserved-inventory circuit as reported by the engine; null in the reference model and whenever readings are withheld. */
@@ -484,22 +651,31 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
     get: () => cfg().mode,
     set: (m) => (store.state.ui.experience === 'live' ? store.setMode(m) : store.loadExample(m, store.state.cfg.example)),
   }));
-  const model = reg(segmented<OutdoorKind>({
-    label: 'Outdoor model', compact: true,
-    options: [
-      { value: 'owner', text: '3MXM52N8', title: `Daikin 3MXM52N8, owner preset (${OWNER_PORTS} ports)` },
-      { value: 'generic', text: 'Generic', title: 'Generic compatible multi-split outdoor with an assumed port capacity' },
-    ],
-    get: () => cfg().outdoorKind, set: (v) => store.setOutdoorKind(v),
-  }));
+  // The outdoor unit is a native select of the researched references, grouped by manufacturer (owner Daikin, catalogue Mitsubishi
+  // Electric units, the editable generic group). Options are static; selection goes through the store, which applies the published topology.
+  const modelSel = html('select', { class: 'ou-model-select rp-ctl', 'aria-label': 'Outdoor model' },
+    ...optgroups(OUTDOOR_MODELS.map((m) => ({
+      value: m.id, text: m.label, maker: m.manufacturer,
+      title: `${m.label} · ${m.ports === null ? 'user-declared ports' : `${m.ports} port${m.ports === 1 ? '' : 's'}`} · case ${m.caseMm.w} × ${m.caseMm.h} × ${m.caseMm.d} mm`,
+    }))));
+  modelSel.addEventListener('change', () => store.setOutdoorKind(modelSel.value as OutdoorKind));
+  const model: Field = {
+    root: modelSel,
+    refresh(): void {
+      const info = outdoorModelInfo(cfg());
+      if (modelSel.value !== info.id) modelSel.value = info.id;
+      modelSel.title = info.label;
+    },
+  };
+  fields.push(model);
 
   // Port capacity is an equipment specification, distinct from how many rooms are connected (rooms are added and removed in the
-  // indoor zone). Owner: fixed at the declared 3. Generic: a native integer field, no arbitrary upper limit, a scenario assumption.
+  // indoor zone). Published models: fixed. Generic: a native integer field, no arbitrary upper limit, a scenario assumption.
   const capInput = html('input', {
     type: 'number', class: 'rp-num rp-ctl ou-cap', min: 1, step: 1, inputmode: 'numeric',
     'aria-label': 'Generic outdoor port capacity (assumption)', title: 'Assumed number of refrigerant ports of the generic group. A scenario assumption, not manufacturer data.',
   });
-  const capFixed = html('span', { class: 'ou-fixed', title: 'Owner-declared port count of the 3MXM52N8; fixed. Choose Generic to explore more connections.' }, `${OWNER_PORTS} · declared`);
+  const capFixed = html('span', { class: 'ou-fixed' });
   const capNote = html('span', { class: 'rp-n ou-cap-note' });
   const commitCap = (strict: boolean): void => {
     const v = Number(capInput.value);
@@ -517,32 +693,23 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
   const portsField: Field = {
     root: html('span', { class: 'ou-ports' }, capInput, capFixed, capNote),
     refresh(): void {
-      const generic = cfg().outdoorKind === 'generic';
+      const info = outdoorModelInfo(cfg());
+      const generic = info.ports === null;
       capInput.hidden = !generic;
       capFixed.hidden = generic;
       if (document.activeElement !== capInput) capInput.value = String(cfg().genericPortCapacity);
+      setText(capFixed, `${info.ports ?? ''} · ${info.acceptance === 'owner-reference' ? 'declared' : 'published'}`);
+      capFixed.title = `${info.label}: ${info.ports} refrigerant port${info.ports === 1 ? '' : 's'}, fixed. Choose the generic editable outdoor to explore other connection counts.`;
       setText(capNote, generic ? 'assumed' : 'fixed');
     },
   };
   fields.push(portsField);
-  const eta = reg(pairField({
-    label: 'Compressor efficiency ηis', unit: '%', min: ETA.min, max: ETA.max, step: 1, digits: 0, layout: 'line',
-    get: () => cfg().etaIsPct, set: (v) => store.update((s) => { s.cfg.etaIsPct = v; }),
-    title: 'Ratio of ideal isentropic to actual compression work. Motor and drive losses are separate.',
-  }));
   const cleanGlobal = reg(pairField({
     label: 'Shared coil cleanliness', unit: '% clear', min: CLEANLINESS_MIN_PCT, max: CLEANLINESS_MAX_PCT, step: 1, digits: 0, layout: 'line',
     get: () => cfg().live.cleanlinessPct, set: (v) => store.update((s) => { s.cfg.live.cleanlinessPct = v; }),
-    title: 'Shared default for the outdoor coil and every indoor coil: 100 % clean, 10 % = 90 % of the clear air passage obstructed. Each coil can override it.',
+    title: 'All outdoor and indoor coils use this shared setting: 100 % clean, 10 % = 90 % of the clear air passage obstructed.',
   }));
-  const cleanOutdoor = reg(cleanOverride({
-    label: 'Outdoor coil override',
-    make: pairField,
-    global: () => cfg().live.cleanlinessPct,
-    get: () => cfg().live.outdoorCleanlinessOverridePct,
-    set: (v) => store.update((s) => { s.cfg.live.outdoorCleanlinessOverridePct = v; }),
-    describe: (follows, g) => (follows ? `Outdoor coil follows shared (${fmt(g, 0)} %)` : `Outdoor coil override (shared ${fmt(g, 0)} %)`),
-  }));
+
 
   const modelText = html('span', { class: 'ou-model' });
   const gear = html('button', { type: 'button', class: 'rp-btn rp-ctl', 'aria-haspopup': 'dialog', 'aria-label': 'Outdoor unit settings' }, 'Settings');
@@ -553,11 +720,11 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
   const charge = createChargeArea();
   const root = html('div', { class: 'rp ou' },
     html('div', { class: 'ou-head' }, html('span', { class: 'ou-title' }, 'OUTDOOR UNIT'), modelText, gear),
-    html('div', { class: 'ou-modes' }, mode.root, model.root),
+    html('div', { class: 'ou-modes' }, mode.root, modelSel),
     html('div', { class: 'ou-cols' },
       html('div', { class: 'ou-col' },
         html('div', { class: 'ou-row' }, html('span', { class: 'rp-k' }, 'Ports'), portsField.root),
-        eta.root, cleanGlobal.root, cleanOutdoor.root),
+        cleanGlobal.root),
       charge.root),
     slot);
   isolate(root);
@@ -570,9 +737,12 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
       const live = s.ui.experience === 'live';
       for (const f of fields) f.refresh();
       charge.sync(s, inv);
-      setText(modelText, c.outdoorKind === 'owner' ? `Daikin 3MXM52N8 · ${OWNER_PORTS} ports` : `Generic compatible · ${outdoorPortCapacity(c)} ports assumed`);
+      const info = outdoorModelInfo(c);
+      const caps = outdoorPortCapacity(c);
+      setText(modelText, `${caps} port${caps === 1 ? '' : 's'}${info.ports === null ? ' assumed' : ''}`);
+      const published = info.coolingHighFanFlowM3h !== undefined && c.outdoorVolumetricAirFlowM3s !== undefined;
       const scope = live
-        ? 'Generic R32 · uncalibrated. Efficiency and cleanliness drive the model.'
+        ? `${published ? 'Published airflow · generic cycle.' : 'Generic R32 · uncalibrated.'} Efficiency and cleanliness drive the model.`
         : `Examples: fixed readings. Efficiency and cleanliness edit configuration only (fixture ηis ${ETA_FIXTURE_PCT} %).`;
       const rd = live && inv ? currentReadings(s) : null;
       const protectedCompressor = rd?.usable && rd.engine && rd.engine.diagnostics.demandSpeedRps > 0 && !inv!.compressorAdmitted;
@@ -616,7 +786,12 @@ export function createOutdoorSettings(): PopContent {
     const digits = d >= 100 ? 0 : d >= 10 ? 1 : d >= 1 ? 2 : 3;
     return reg(slider({
       label, unit, min: Math.max(d * 0.2, floor), max: d * 5, step: 10 ** -digits, digits, hint,
-      get: () => cfg().live[key], set: (v) => store.update((s) => { s.cfg.live[key] = v; }),
+      get: () => cfg().live[key], set: (v) => store.update((s) => {
+        s.cfg.live[key] = v;
+        // A manual air mass flow replaces the selected published volume flow, so the edit is never quietly ignored.
+        if (key === 'outdoorAirMassFlowKgs') delete s.cfg.outdoorVolumetricAirFlowM3s;
+        if (key === 'indoorAirMassFlowKgs') for (const r of s.cfg.rooms) delete r.volumetricAirFlowM3s;
+      }),
     }));
   };
   const note = (): HTMLElement => html('p', { class: 'status' });
@@ -627,6 +802,22 @@ export function createOutdoorSettings(): PopContent {
   const cleanStatus = note();
   const cleanNote = html('p', { class: 'hint' });
   const etaStatus = note();
+  const outAir = liveField('outdoorAirMassFlowKgs', 'Outdoor air mass flow', 'kg/s');
+  const inAir = liveField('indoorAirMassFlowKgs', 'Indoor air mass flow (each unit)', 'kg/s');
+  const outAirNote = html('p', { class: 'hint' });
+  const inAirNote = html('p', { class: 'hint' });
+
+  // Published model profile: concise facts, one click away. Airflow is the only published input applied; the cycle stays generic.
+  const profileText = html('p', { class: 'hint' });
+  const profileFacts = html('ul', { class: 'taps-list' });
+  const reapply = html('button', { type: 'button', class: 'btn ghost small' }, 'Reapply published airflow');
+  reapply.addEventListener('click', () => {
+    const m = outdoorModelInfo(cfg());
+    store.update((s) => { if (m.coolingHighFanFlowM3h !== undefined) s.cfg.outdoorVolumetricAirFlowM3s = m.coolingHighFanFlowM3h / 3600; });
+    // Indoor profiles are applied by the store, never by assigning the class here.
+    cfg().rooms.slice(0, cfg().unitCount).forEach((r, i) => store.setIndoorClass(i, r.indoorClass));
+  });
+  const profile = keyed('profile', fold('Published model profile', false, profileText, profileFacts, reapply));
 
   const coil = keyed('coil', fold('Outdoor coil and air (generic assumptions)', true,
     html('p', { class: 'hint' }, 'Heat-engine assumptions, not measured values and not manufacturer data. Conductances are UA in W/K, not areas. Most numeric bounds are 0.2×–5× the engine default, with physical exceptions (for example the compressor speed floor); they are generic assumptions, not manufacturer limits.'),
@@ -634,21 +825,26 @@ export function createOutdoorSettings(): PopContent {
     coilStatus,
     liveField('outdoorAirConductanceWK', 'Outdoor coil air-side UA', 'W/K').root,
     liveField('outdoorRefrigerantConductanceWK', 'Outdoor coil refrigerant-side UA', 'W/K').root,
-    liveField('outdoorAirMassFlowKgs', 'Outdoor air mass flow', 'kg/s').root,
+    outAirNote, outAir.root,
     liveField('depositionAreaM2', 'Outdoor frost deposition area', 'm²', 'Generic assumption for the frost model; not the manufacturer finned area.').root));
+  const eta = reg(pairField({
+    label: 'Compressor efficiency ηis', unit: '%', min: ETA.min, max: ETA.max, step: 1, digits: 0, layout: 'line',
+    get: () => cfg().etaIsPct, set: (v) => store.update((s) => { s.cfg.etaIsPct = v; }),
+    title: 'Ratio of ideal isentropic to actual compression work. Motor and drive losses are separate.',
+  }));
   const comp = keyed('compressor', fold('Compressor assumptions', false,
-    html('p', { class: 'hint' }, 'Isentropic efficiency ηis is edited on the outdoor-unit card.'), etaStatus, compStatus,
+    eta.root, etaStatus, compStatus,
     liveField('compressorDisplacementCm3', 'Compressor displacement', 'cm³/rev').root,
     liveField('compressorMaxSpeedRps', 'Compressor maximum speed', 'rps', `Not below the engine minimum speed (${fmt(SPEED_MIN_RPS, 0)} rps).`, SPEED_MIN_RPS).root));
   const clean = keyed('clean', fold('Heat-exchanger cleanliness', false,
-    html('p', { class: 'hint' }, 'The shared default and the outdoor-coil override are on the outdoor-unit card; each indoor coil overrides it in its own room settings. 100 % = clean coil; 10 % = only 10 % of the clear air passage remains (90 % obstructed).'),
+    html('p', { class: 'hint' }, 'One shared cleanliness control on the outdoor-unit card applies to every indoor and outdoor coil. 100 % = clean coil; 10 % = only 10 % of the clear air passage remains (90 % obstructed).'),
     cleanStatus, cleanNote));
   const shared = keyed('shared', fold('Shared by all indoor units', false,
     html('p', { class: 'hint' }, 'One value applies to every indoor unit. These are not independent per-room physics, and model references never change them.'),
     sharedStatus,
     liveField('indoorAirConductanceWK', 'Indoor coil air-side UA (each unit)', 'W/K').root,
     liveField('indoorRefrigerantConductanceWK', 'Indoor coil refrigerant-side UA (each unit)', 'W/K').root,
-    liveField('indoorAirMassFlowKgs', 'Indoor air mass flow (each unit)', 'kg/s').root));
+    inAirNote, inAir.root));
 
   const pressure = reg(segmented({
     label: 'Pressure convention', compact: true,
@@ -709,11 +905,11 @@ export function createOutdoorSettings(): PopContent {
     html('p', { class: 'hint' }, 'Line volumes follow each branch\'s length and bores and are stored even though field transport is idealized. A start state that floods the circuit is rejected by the model.'),
     guidance));
 
-  const root = html('div', { class: 'pop-settings' }, outdoorNote, sourceSection, coil, charge, comp, clean, shared, display, refrigerant, pending, diagnostics.root);
+  const root = html('div', { class: 'pop-settings' }, outdoorNote, sourceSection, profile, coil, charge, comp, clean, shared, display, refrigerant, pending, diagnostics.root);
 
   return {
     root,
-    heading: (s) => ({ kicker: 'Outdoor unit settings', title: s.cfg.outdoorKind === 'owner' ? 'Daikin 3MXM52N8' : 'Generic compatible outdoor' }),
+    heading: (s) => ({ kicker: 'Outdoor unit settings', title: outdoorModelInfo(s.cfg).label }),
     reveal(key: string): void { const d = folds.get(key); if (d) d.open = true; },
     sync(s: AppState): void {
       const c = s.cfg;
@@ -742,9 +938,31 @@ export function createOutdoorSettings(): PopContent {
         setText(guidance, `Reference only, published N8 family guidance (verify the actual nameplate; not applied to the model): no additional charge up to 30 m, beyond that 20 g/m rounded to 0.1 kg, family maximum 2.2 kg. Total one-way length now ${fmt(total, 1)} m → ${fmt(extra, 1)} kg additional.`);
       } else setText(guidance, 'Generic group: no published charge guidance attached.');
       guidance.hidden = false;
-      setText(outdoorNote, c.outdoorKind === 'owner'
-        ? `Declared by owner; exact suffix and nameplate unknown. ${OWNER_PORTS} refrigerant ports (fixed), factory R32. Choose Generic on the outdoor unit to explore more connections.`
-        : `Illustrative generic compatible group. Its port capacity (${c.genericPortCapacity}) is a scenario assumption, not manufacturer data; rooms are added and removed in the indoor zone. Up to five ports it keeps the owner casing envelope; beyond that the casing is an assumed larger drawing, not a published dimension.`);
+      const info = outdoorModelInfo(c);
+      setText(outdoorNote, info.acceptance === 'owner-reference'
+        ? `Declared by owner; exact suffix and nameplate unknown. ${OWNER_PORTS} refrigerant ports (fixed), factory R32. Choose the generic editable outdoor to explore more connections.`
+        : info.ports === null
+          ? `Illustrative generic compatible group. Its port capacity (${c.genericPortCapacity}) is a scenario assumption, not manufacturer data; rooms are added and removed in the indoor zone. Up to five ports it keeps the owner casing envelope; beyond that the casing is an assumed larger drawing, not a published dimension.`
+          : `${info.label}: published ${info.ports}-port model. Its matched indoor units, ports and cooling high-fan airflow are applied; the cycle, compressor, coil conductance and fan watts remain generic assumptions, not an OEM performance map.`);
+      // Published model profile (facts, no performance claim) and the airflow provenance next to the two mass-flow fields.
+      setText(profileText, info.profileNote);
+      const flowText = info.coolingHighFanFlowM3h === undefined ? 'no published airflow'
+        : `${fmt(info.coolingHighFanFlowM3h, 0)} m³/h cooling high fan (reused in heating as an assumption)`;
+      const facts = [`Ports: ${info.ports ?? `${c.genericPortCapacity} (assumed)`}`, `Case: ${info.caseMm.w} × ${info.caseMm.h} × ${info.caseMm.d} mm (the drawing is a generic illustration)`, `Airflow: ${flowText}`];
+      const range = info.publishedOperatingRangesC;
+      if (range) facts.push(`Published operating range: cooling ${range.cooling.minimum}…${range.cooling.maximum} °C, heating ${range.heating.minimum}…${range.heating.maximum} °C (information only, not applied)`);
+      setHtml(profileFacts, facts.map((f) => `<li>${escapeHtml(f)}</li>`).join(''));
+      reapply.hidden = info.coolingHighFanFlowM3h === undefined;
+      const outProfile = c.outdoorVolumetricAirFlowM3s !== undefined;
+      setText(outAirNote, outProfile
+        ? `Published volume flow ${fmt(c.outdoorVolumetricAirFlowM3s! * 3600, 0)} m³/h is applied. The mass flow below is a fallback / manual override: editing it replaces the published flow (Reapply in Published model profile restores it).`
+        : 'Generic mass flow in use (manual or no published airflow for this model).');
+      relabel(outAir, outProfile ? 'Outdoor air mass flow (fallback / manual override)' : 'Outdoor air mass flow', 'kg/s');
+      const profiled = c.rooms.slice(0, c.unitCount).filter((r) => r.volumetricAirFlowM3s !== undefined);
+      setText(inAirNote, profiled.length
+        ? `Published volume flow applies to ${profiled.length} of ${c.unitCount} indoor units (${profiled.map((r) => `${r.name} ${fmt(r.volumetricAirFlowM3s! * 3600, 0)} m³/h`).join(', ')}). The mass flow below is a fallback / manual override; editing it clears every published indoor flow.`
+        : 'Generic mass flow in use for every indoor unit.');
+      relabel(inAir, profiled.length ? 'Indoor air mass flow (fallback / manual override)' : 'Indoor air mass flow (each unit)', 'kg/s');
       const driven = live ? 'Drives live model.' : 'Stored for Live; the Examples ignore these values.';
       for (const p of [coilStatus, compStatus, sharedStatus]) { setText(p, driven); toggleClass(p, 'diff', !live); }
       setText(etaStatus, live ? 'ηis drives live model.'
@@ -771,19 +989,9 @@ export function createRoomSettings(openShared: () => void): PopContent {
 
   const lead = html('p', { class: 'hint lead' });
   const offNote = html('p', { class: 'hint' });
-  const model = reg(select<IndoorClass>({
-    label: 'Model reference (casing and label only)', options: classOptions(),
-    get: () => room()?.indoorClass ?? 'FTXA25', set: (v) => edit((r) => { r.indoorClass = v; }),
-  }));
-  const modelHint = html('p', { class: 'hint' }, 'A model reference selects the drawn casing and its label only. It never changes live performance; capacity-class shares apply to the examples alone.');
-  const dirt = reg(cleanOverride({
-    label: 'Indoor coil override',
-    make: slider,
-    global: () => cfg().live.cleanlinessPct,
-    get: () => room()?.cleanlinessOverridePct ?? null,
-    set: (v) => edit((r) => { r.cleanlinessOverridePct = v; }),
-    describe: (follows, g) => (follows ? `Follows the shared default (${fmt(g, 0)} % clear)` : `Own override (shared default ${fmt(g, 0)} %)`),
-  }));
+  // The indoor model is chosen with the select on the room's unit block (one canonical control); here it is a read-only fact.
+  const modelFact = html('p', { class: 'hint' });
+  const modelHint = html('p', { class: 'hint' });
   const dirtStatus = html('p', { class: 'status' });
   const shareBtn = html('button', { type: 'button', class: 'btn ghost small' }, 'Open shared indoor assumptions');
   shareBtn.addEventListener('click', openShared);
@@ -792,8 +1000,8 @@ export function createRoomSettings(openShared: () => void): PopContent {
 
   const root = html('div', { class: 'pop-settings' },
     lead, offNote,
-    html('section', { class: 'sec' }, html('h3', {}, 'Indoor unit'), model.root, modelHint),
-    html('section', { class: 'sec' }, html('h3', {}, 'Heat-exchanger cleanliness'), dirt.root, dirtStatus,
+    html('section', { class: 'sec' }, html('h3', {}, 'Indoor unit'), modelFact, modelHint),
+    html('section', { class: 'sec' }, html('h3', {}, 'Heat-exchanger cleanliness'), dirtStatus,
       html('p', { class: 'hint' }, 'Indoor coil air-side UA, refrigerant-side UA and air flow are shared assumptions: one value applies to every unit.'), shareBtn),
     details);
 
@@ -808,10 +1016,18 @@ export function createRoomSettings(openShared: () => void): PopContent {
       const live = s.ui.experience === 'live';
       const r = s.cfg.rooms[i];
       for (const f of fields) f.refresh();
-      const opts = classOptions();
-      Array.from(model.sel.options).forEach((o, k) => { o.disabled = !!opts[k]?.disabled; });
+      const cls = r?.indoorClass;
+      const profile = cls ? indoorModelProfile(cls) : undefined;
+      const known = cls ? indoorOptionsForOutdoor(s.cfg.outdoorKind).find((o) => o.value === cls) : undefined;
+      setText(modelFact, `Model: ${known?.text ?? cls ?? '—'}. Change it with the model list on the room's unit block.`);
+      const nominal = cls ? (INDOOR_CLASSES[cls].nominalKw === null ? 'Capacity depends on the matched system; no individual output map is accepted.' : `Nominal ${INDOOR_CLASSES[cls].nominalKw} kW is a class label, not an output map.`) : '';
+      setText(modelHint, profile && r?.volumetricAirFlowM3s !== undefined
+        ? `Published airflow · generic cycle: ${fmt(r.volumetricAirFlowM3s * 3600, 0)} m³/h (cooling high fan; reused in heating as an assumption). Fan watts, coil UA and compressor stay generic. ${nominal}`
+        : profile
+          ? `Published model, but its airflow was replaced by a manual mass flow (shared indoor assumptions); select the model again or use Reapply to restore it. ${nominal}`
+          : `Generic mass flow (shared indoor assumptions). ${nominal}`);
       setText(lead, live
-        ? 'Target, floor area, ceiling height and envelope heat loss drive the live model and are on the room card. Initial room temperature, background gains, air exchange and links to other rooms are in the room\'s Thermal settings.'
+        ? 'Target, floor area, ceiling height and average U drive the live model and are on the room card. Initial room temperature, background gains, ventilation rate, exposed area and links to other rooms are in the room\'s Thermal settings.'
         : 'Configuration inputs. Fixture supply-air readings do not respond to them. Initial room temperature is in the room\'s Thermal settings.');
       offNote.hidden = !r || r.enabled;
       setText(offNote, live
@@ -827,14 +1043,18 @@ export function createRoomSettings(openShared: () => void): PopContent {
 
 // ---------- room thermal popover (advanced house parameters; one instance, rebinds to the opened room) ----------
 const GAIN = { min: 0, max: 1000, step: 10 } as const;
-const AIR_EXCHANGE = { min: 0, max: 2, step: 0.05 } as const;
-const LINK = { min: 0, max: 500, step: 5 } as const;
-/** Effective outdoor air exchange the engine assumes when a room carries no explicit value (generic engine default). */
-const ACH_DEFAULT = 0.25;
+/** Effective sensible heat admitted through glazing [W]; entered by hand, never derived from weather or sun position. */
+const WINDOW_SOLAR = { min: 0, max: 5000, step: 25 } as const;
+/** Direct whole-room envelope conductance [W/K]; the primary control is the Average U on the room card. */
+const ENVELOPE_H = { min: 0, max: 1500, step: 1 } as const;
+/** Exposed envelope area correction [m²]; absent follows the square-box estimate. */
+const ENVELOPE_AREA = { min: 1, max: 1500, step: 1 } as const;
 
 /**
  * House parameters of one room, deliberately separate from the indoor unit's settings: initial room temperature, sensible background
- * gains, effective outdoor air exchange and the symmetric effective sensible links to each OTHER active room. Links are addressed by
+ * gains, the ventilation rate (house-wide gross rate and this room's optional override), the exposed envelope area correction, the
+ * direct whole-room envelope conductance (advanced twin of the room card's Average U) and
+ * a read-only summary of the link to each OTHER active room (geometry is edited in the link editor). Links are addressed by
  * room id (never by index) and built once per topology signature, not on input; no field is rebuilt while it is being edited.
  * The owner-house defaults mix reported facts with provisional assumptions; the text says which is which.
  */
@@ -856,17 +1076,46 @@ export function createRoomThermal(openLink: (roomA: string, roomB: string) => vo
     get: () => room()?.internalGainW ?? 0, set: (v) => edit((r) => { r.internalGainW = v; }),
     title: 'Sensible heat from appliances and occupants in this room, separate from the indoor unit.',
   }));
-  const ach = reg(pairField({
-    label: 'Effective outdoor air exchange', unit: 'ACH', ...AIR_EXCHANGE, digits: 2, layout: 'line',
-    get: () => room()?.ventilationACH ?? ACH_DEFAULT, set: (v) => edit((r) => { r.ventilationACH = v; }),
-    title: 'Effective unrecovered outdoor-air exchange, not the gross flow rating of a balanced ventilation unit.',
+  const sun = reg(pairField({
+    label: 'Sun from windows', unit: 'W', ...WINDOW_SOLAR, digits: 0, layout: 'line',
+    get: () => room()?.windowSolarGainW ?? 0, set: (v) => { const r = room(); if (r) store.setRoomWindowSolarGain(r.id, v); },
+    title: 'Effective sensible heat admitted through the glazing of this room, in W. Not incident irradiance. Entered by hand: no sun position or weather is calculated, and the default 0 is uncalibrated.',
   }));
-  const linkValue = (a: string, b: string): number =>
-    cfg().interzoneLinks?.find((l) => (l.roomA === a && l.roomB === b) || (l.roomA === b && l.roomB === a))?.conductanceWK ?? 0;
+  const houseAch = reg(pairField({
+    label: 'House rate (all rooms)', unit: 'ACH', ...VENT_ACH, digits: 2, layout: 'line',
+    get: () => ventilationOf(cfg()).grossACH, set: (v) => setVentilation({ grossACH: v }),
+    title: 'Gross outdoor-air exchange of the whole house, in air changes per hour (assumed 0.5, not a measured unit specification). Rooms follow it unless they carry their own rate.',
+  }));
+  const ach = reg(pairField({
+    label: 'Ventilation rate', unit: 'ACH', ...VENT_ACH, digits: 2, layout: 'line',
+    get: () => { const r = room(); return r ? roomVentilation(r, cfg()).grossACH : 0; }, set: (v) => edit((r) => { r.ventilationACH = v; }),
+    title: 'Gross outdoor-air exchange of this room, in air changes per hour. Editing it gives the room its own rate; otherwise it follows the house rate.',
+  }));
+  const useHouse = html('button', { type: 'button', class: 'btn ghost small' }, 'Use house rate');
+  useHouse.addEventListener('click', () => edit((r) => { delete r.ventilationACH; }));
+  const achNote = html('p', { class: 'hint' });
+  const area = reg(pairField({
+    label: 'Exposed envelope area', unit: 'm²', ...ENVELOPE_AREA, digits: 0, layout: 'line',
+    get: () => { const r = room(); return r ? roomExposedEnvelopeAreaM2(r, cfg()) : 0; },
+    set: (v) => { const r = room(); if (r) store.setRoomEnvelopeAreaOverride(r.id, v); },
+    title: 'Envelope surface facing outdoors or unheated space. Estimated as a square box from floor area and height, with surfaces shared through room links deducted. Correct it for buried floors, roofs or party walls; average U stays fixed.',
+  }));
+  const useEstimate = html('button', { type: 'button', class: 'btn ghost small' }, 'Use estimated area');
+  useEstimate.addEventListener('click', () => { const r = room(); if (r) store.setRoomEnvelopeAreaOverride(r.id, null); });
+  isolate(useHouse, useEstimate);
+  const envelope = reg(pairField({
+    label: 'Whole-room envelope conductance', unit: 'W/K', ...ENVELOPE_H, digits: 0, layout: 'line',
+    get: () => { const r = room(); return r ? roomEnvelopeConductanceWK(r, cfg()) : 0; },
+    set: (v) => { const r = room(); if (r) store.setRoomEnvelopeConductance(r.id, v); },
+    title: 'Direct whole-room envelope H. Equivalent to the room card\'s average U × the exposed area; editing either changes the same envelope.',
+  }));
+  const envelopeNote = html('p', { class: 'hint' });
+  const findLink = (a: string, b: string): InterzoneLink | undefined =>
+    cfg().interzoneLinks?.find((l) => (l.roomA === a && l.roomB === b) || (l.roomA === b && l.roomB === a));
   const linkBox = html('div', { class: 'th-links' });
   let linkSig = '';
-  let links: Array<{ f: PairField; btn: HTMLButtonElement; other: string; self: string }> = [];
-  /** One slider per other active room, rebuilt only when the topology (this room or the room list) changes. */
+  let links: Array<{ value: HTMLElement; btn: HTMLButtonElement; other: string; self: string }> = [];
+  /** One summary row per other active room, rebuilt only when the topology (this room or the room list) changes. */
   function bindLinks(s: AppState, i: number): void {
     const self = s.cfg.rooms[i];
     if (!self) return;
@@ -875,32 +1124,29 @@ export function createRoomThermal(openLink: (roomA: string, roomB: string) => vo
     if (sig === linkSig) return;
     linkSig = sig;
     links = others.map((o) => {
-      const f = pairField({
-        label: `Link to ${o.name}`, unit: 'W/K', ...LINK, digits: 0, layout: 'line',
-        get: () => linkValue(self.id, o.id), set: (v) => store.setInterzoneConductance(self.id, o.id, v),
-        title: `Effective sensible heat transfer between ${self.name} and ${o.name}; 0 isolates them.`,
-      });
-      const name = `Effective sensible link between ${self.name} and ${o.name} [W/K]`;
-      for (const el of [f.num, f.range]) setAttr(el, 'aria-label', name);
-      // The same shared editor as the drawn link: type, direction, exchange area and coefficient live there, not here.
-      const btn = html('button', { type: 'button', class: 'btn ghost small', title: `Characterize the link between ${self.name} and ${o.name}: open passage or solid wall, direction, area` }, 'Edit link');
+      const value = html('output', { class: 'th-h', 'aria-label': `Link conductance between ${self.name} and ${o.name}` });
+      // The same shared editor as the drawn link: opening area, solid contact area, glass wool and direction live there, not here.
+      const btn = html('button', { type: 'button', class: 'btn ghost small', title: `Characterize the link between ${self.name} and ${o.name}: opening area, solid contact area, glass wool, direction` }, 'Edit link');
       btn.addEventListener('click', () => openLink(self.id, o.id));
-      return { f, btn, other: o.id, self: self.id };
+      return { value, btn, other: o.id, self: self.id };
     });
     linkBox.replaceChildren(...(links.length
-      ? links.map((l) => html('div', { class: 'th-link' }, l.f.root, l.btn))
+      ? links.map((l, k) => html('div', { class: 'th-link' }, html('span', { class: 'th-name' }, `Link to ${others[k]?.name ?? ''}`), l.value, l.btn))
       : [html('p', { class: 'hint' }, 'No other active room.')]));
   }
 
   const root = html('div', { class: 'pop-settings' },
-    html('p', { class: 'hint lead' }, 'Advanced house parameters of this room, separate from its indoor unit. In the owner-house defaults the unit targets, the attic being Off and the winter temperatures (about 18 °C ground, 17.5–19 °C attic at 1 °C outdoors) are owner-reported; the gains, air exchange and links below are provisional assumptions, not measurements.'),
+    html('p', { class: 'hint lead' }, 'Advanced house parameters of this room, separate from its indoor unit. In the owner-house defaults the unit targets, the attic being Off and the winter temperatures (about 18 °C ground, 17.5–19 °C attic at 1 °C outdoors) are owner-reported; the gains, ventilation, exposed areas and links below are provisional assumptions, not measurements.'),
     html('section', { class: 'sec' }, html('h3', {}, 'Initial state'), now, air.root),
-    html('section', { class: 'sec' }, html('h3', {}, 'Background gains'), gain.root,
-      html('p', { class: 'hint' }, 'Assumed allocation; the owner\'s notes give roughly 100–200 W of baseline and audio-video heat, here placed on the ground floor.')),
-    html('section', { class: 'sec' }, html('h3', {}, 'Outdoor air'), ach.root,
-      html('p', { class: 'hint' }, 'An equivalent unrecovered sensible exchange with outdoors (assumed). It is not the gross rating of a heat-recovery ventilation unit, and humidity recovery is not modelled.')),
+    html('section', { class: 'sec' }, html('h3', {}, 'Background and solar gains'), gain.root,
+      html('p', { class: 'hint' }, 'Assumed allocation; the owner\'s notes give roughly 100–200 W of baseline and audio-video heat, here placed on the ground floor.'),
+      sun.root,
+      html('p', { class: 'hint' }, 'Effective sensible heat admitted through the glazing, not incident irradiance. Set by hand: no sun or weather is calculated, it is not changed by the season preset, and the default 0 W is uncalibrated. It adds to the room\'s sensible gains and is excluded from HVAC output and COP.')),
+    html('section', { class: 'sec' }, html('h3', {}, 'Ventilation'), houseAch.root, ach.root, html('div', { class: 'th-reset' }, useHouse), achNote,
+      html('p', { class: 'hint' }, 'Gross rate; single or dual flow and the sensible recovery are set under the house-loss ruler. Recovery is sensible only: the outdoor humidity exchange remains. Frost protection, bypass and fan power are not modelled.')),
+    html('section', { class: 'sec' }, html('h3', {}, 'Envelope (advanced)'), area.root, html('div', { class: 'th-reset' }, useEstimate), envelope.root, envelopeNote),
     html('section', { class: 'sec' }, html('h3', {}, 'Links to other rooms'), linkBox,
-      html('p', { class: 'hint' }, 'Effective sensible heat transfer between rooms; this is not resolved airflow. Turning a unit off keeps these links active. The default floor links are assumed, not measured. The slider sets the total conductance H; type, direction and area are in the link editor (also on the drawn link).')));
+      html('p', { class: 'hint' }, 'Each link combines an open passage and an insulated solid contact, both acting at once: effective sensible heat transfer, not resolved airflow. Turning a unit off keeps links active. The default links are assumed, not measured. Edit areas and glass wool in the link editor (also on the drawn link).')));
 
   return {
     root,
@@ -911,8 +1157,25 @@ export function createRoomThermal(openLink: (roomA: string, roomB: string) => vo
       const live = s.ui.experience === 'live';
       for (const f of fields) f.refresh();
       for (const l of links) {
-        l.f.refresh();
-        setText(l.btn, (cfg().interzoneLinks ?? []).some((k) => (k.roomA === l.self && k.roomB === l.other) || (k.roomA === l.other && k.roomB === l.self)) ? 'Edit link' : 'Add link');
+        const link = findLink(l.self, l.other);
+        setText(l.value, link ? `${fmt(interzoneConductance(link), 0)} W/K` : 'no link');
+        setText(l.btn, link ? 'Edit link' : 'Add link');
+      }
+      const self = room();
+      if (self) {
+        const c = cfg();
+        const own = self.ventilationACH !== undefined;
+        const set = self.envelopeAreaOverrideM2 != null;
+        const estimate = roomExposedEnvelopeAreaM2({ ...self, envelopeAreaOverrideM2: null }, c);
+        useHouse.hidden = !own;
+        useEstimate.hidden = !set;
+        setText(useEstimate, `Use estimated area (${fmt(estimate, 0)} m²)`);
+        setText(achNote, own ? `Own rate; the house rate is ${fmt(ventilationOf(c).grossACH, 2)} ACH.` : 'Follows the house rate.');
+        for (const [f, text] of [[ach, `Ventilation rate of ${self.name} [ACH]`], [area, `Exposed envelope area of ${self.name} [m²]`], [envelope, `Whole-room envelope conductance of ${self.name} [W/K]`]] as const) {
+          setAttr(f.num, 'aria-label', text);
+          setAttr(f.range, 'aria-label', text);
+        }
+        setText(envelopeNote, `Average U ${fmt(roomAverageUValue(self, c), 2)} W/(m²·K) × ${fmt(roomExposedEnvelopeAreaM2(self, c), 0)} m² (${set ? 'set' : 'estimated'}). Ventilation is separate.`);
       }
       relabel(air, live ? 'Initial room temperature (on Reset)' : 'Room air temperature (input)', '°C');
       const eng = currentReadings(s).engine?.rooms[i];
@@ -923,10 +1186,23 @@ export function createRoomThermal(openLink: (roomA: string, roomB: string) => vo
 }
 
 // ---------- room link popover (one instance, rebinds to the opened link by room pair) ----------
-const LINK_AREA = { min: 0.1, max: 20, step: 0.1 } as const;
-const LINK_COEFF = { opening: { min: 0, max: 100, step: 1, def: 40 }, partition: { min: 0, max: 6, step: 0.1, def: 1.5 } } as const;
-const coeffOf = (l: InterzoneLink): number => l.transferWm2K ?? LINK_COEFF[l.kind ?? 'opening'].def;
-const areaOf = (l: InterzoneLink): number => l.areaM2 ?? l.conductanceWK / coeffOf(l);
+const LINK_OPENING = { min: 0, max: 20, step: 0.1 } as const;
+const LINK_CONTACT = { min: 0, max: 150, step: 1 } as const;
+const LINK_WOOL = { min: 45, max: 180, step: 5 } as const;
+const LINK_COEFF = { min: 0, max: 100, step: 1 } as const;
+
+interface LinkGeometry { opening: number; contact: number; mm: number; coeff: number }
+
+/** The four geometry values a link shows. A legacy single-path link maps onto the matching path; the first edit then converts it. */
+function geometryOf(l: InterzoneLink): LinkGeometry {
+  const d = INTERZONE_GEOMETRY_DEFAULTS;
+  if (hasInterzoneGeometry(l)) {
+    return { opening: l.openingAreaM2 ?? 0, contact: l.contactAreaM2 ?? 0, mm: l.insulationMm ?? d.insulationMm, coeff: l.openingTransferWm2K ?? d.openingTransferWm2K };
+  }
+  const partition = l.kind === 'partition';
+  const area = l.areaM2 ?? l.conductanceWK / (l.transferWm2K ?? (partition ? 1.5 : d.openingTransferWm2K));
+  return { opening: partition ? 0 : area, contact: partition ? area : 0, mm: d.insulationMm, coeff: partition ? d.openingTransferWm2K : l.transferWm2K ?? d.openingTransferWm2K };
+}
 
 /** Signed sensible heat [W] from room A to room B reported by the accepted live engine state; null in Examples, while readings are withheld, or when absent. */
 export function linkHeatW(s: AppState, roomA: string, roomB: string): number | null {
@@ -939,27 +1215,38 @@ export function linkHeatW(s: AppState, roomA: string, roomB: string): number | n
 }
 
 /**
- * The one editor of a drawn room link: type (open passage / solid wall or floor), connection direction, exchange area and, under
- * Advanced, the effective transfer coefficient; the derived total H = area × coefficient is always shown. Every control is built once
- * and edits through `store.setInterzoneLink`, which keeps the link object (no engine ledger involved). The popover is pinned to the
- * room pair by popovers.ts, so `idx` is rebound on every sync and the content closes with its link.
+ * The one editor of a drawn room link. An open passage and an insulated solid contact act at the same time: opening area,
+ * solid contact area (excluding the opening), glass-wool thickness and the connection direction, with the derived total H and the
+ * live heat. The opening coefficient is under Advanced. An explicit whole-link H override is shown, never silently ignored, and
+ * "Use geometry" clears it. Every control is built once and edits through `store.setInterzoneLink` (any geometry edit sends all four
+ * values, so the link never mixes a legacy path with defaults). Both areas at 0 keep an editable link at 0 W/K. The popover is pinned
+ * to the room pair by popovers.ts, so `idx` is rebound on every sync and the content closes with its link.
  */
 export function createLinkSettings(): PopContent {
   let idx = 0;
   const link = (): InterzoneLink | undefined => store.state.cfg.interzoneLinks?.[idx];
-  const edit = (patch: Partial<Pick<InterzoneLink, 'kind' | 'orientation' | 'areaM2' | 'transferWm2K'>>): void => {
+  const geometry = (change: Partial<LinkGeometry>): void => {
     const l = link();
-    if (l) store.setInterzoneLink(l.roomA, l.roomB, patch);
+    if (!l) return;
+    const g = { ...geometryOf(l), ...change };
+    store.setInterzoneLink(l.roomA, l.roomB, { openingAreaM2: g.opening, contactAreaM2: g.contact, insulationMm: g.mm, openingTransferWm2K: g.coeff });
   };
   const fields: Field[] = [];
   const reg = <T extends Field>(f: T): T => { fields.push(f); return f; };
-  const kind = reg(segmented<'opening' | 'partition'>({
-    label: 'Link type', compact: true,
-    options: [
-      { value: 'opening', text: 'Open passage', title: 'A stairwell or doorway: air mixing makes the effective transfer large' },
-      { value: 'partition', text: 'Solid wall or floor', title: 'A conducting partition: a much smaller effective transfer' },
-    ],
-    get: () => link()?.kind ?? 'opening', set: (v) => edit({ kind: v }),
+  const opening = reg(pairField({
+    label: 'Opening area', unit: 'm²', ...LINK_OPENING, digits: 1, layout: 'line',
+    get: () => { const l = link(); return l ? geometryOf(l).opening : INTERZONE_GEOMETRY_DEFAULTS.openingAreaM2; }, set: (v) => geometry({ opening: v }),
+    title: 'Assumed free area of the open passage (stairwell, doorway), not a measured geometry. Solid contact area excludes it.',
+  }));
+  const contact = reg(pairField({
+    label: 'Solid contact area', unit: 'm²', ...LINK_CONTACT, digits: 0, layout: 'line',
+    get: () => { const l = link(); return l ? geometryOf(l).contact : INTERZONE_GEOMETRY_DEFAULTS.contactAreaM2; }, set: (v) => geometry({ contact: v }),
+    title: 'Assumed insulated floor or wall area between the rooms, excluding the opening. Not a measured geometry.',
+  }));
+  const wool = reg(pairField({
+    label: 'Glass wool', unit: 'mm', ...LINK_WOOL, digits: 0, layout: 'line',
+    get: () => { const l = link(); return l ? geometryOf(l).mm : INTERZONE_GEOMETRY_DEFAULTS.insulationMm; }, set: (v) => geometry({ mm: v }),
+    title: 'Assumed glass-wool thickness in the solid contact. It has no effect while the solid contact area is 0; its value is kept.',
   }));
   const orientation = reg(segmented<'horizontal' | 'vertical'>({
     label: 'Connection direction', compact: true,
@@ -967,34 +1254,31 @@ export function createLinkSettings(): PopContent {
       { value: 'horizontal', text: 'Horizontal', title: 'Between rooms on the same level' },
       { value: 'vertical', text: 'Vertical', title: 'Between levels' },
     ],
-    get: () => link()?.orientation ?? 'vertical', set: (v) => edit({ orientation: v }),
+    get: () => link()?.orientation ?? 'vertical',
+    set: (v) => { const l = link(); if (l) store.setInterzoneLink(l.roomA, l.roomB, { orientation: v }); },
   }));
-  const area = reg(pairField({
-    label: 'Exchange area', unit: 'm²', ...LINK_AREA, digits: 1, layout: 'line',
-    get: () => { const l = link(); return l ? areaOf(l) : 2; }, set: (v) => edit({ areaM2: v }),
-    title: 'Assumed effective exchange area of the opening or partition, not a measured geometry.',
+  const coeff = reg(pairField({
+    label: 'Opening coefficient', unit: 'W/(m²·K)', ...LINK_COEFF, digits: 0, layout: 'line',
+    get: () => { const l = link(); return l ? geometryOf(l).coeff : INTERZONE_GEOMETRY_DEFAULTS.openingTransferWm2K; }, set: (v) => geometry({ coeff: v }),
+    title: 'Generic effective sensible heat-transfer coefficient of the opening per square metre, not resolved buoyancy flow.',
   }));
-  const coeff = (k: 'opening' | 'partition'): PairField => reg(pairField({
-    label: 'Effective transfer coefficient', unit: 'W/(m²·K)', ...LINK_COEFF[k], digits: k === 'opening' ? 0 : 1, layout: 'line',
-    get: () => { const l = link(); return l ? coeffOf(l) : LINK_COEFF[k].def; }, set: (v) => edit({ transferWm2K: v }),
-    title: 'Assumed effective sensible heat-transfer coefficient per square metre, not resolved buoyancy flow or a material certification.',
-  }));
-  const coeffOpening = coeff('opening');
-  const coeffPartition = coeff('partition');
-  const total = html('p', { class: 'status' });
+  const total = html('p', { class: 'status lk-total' });
   const now = html('p', { class: 'hint' });
+  const overrideNote = html('p', { class: 'status diff' });
+  const useGeometry = html('button', { type: 'button', class: 'btn ghost small' }, 'Use geometry');
+  useGeometry.addEventListener('click', () => geometry({}));
+  const overrideBox = html('section', { class: 'sec lk-override', hidden: true }, overrideNote, useGeometry);
   const remove = html('button', { type: 'button', class: 'btn ghost small' }, 'Remove link');
-  remove.addEventListener('click', () => { const l = link(); if (l) store.setInterzoneConductance(l.roomA, l.roomB, 0); });
+  remove.addEventListener('click', () => { const l = link(); if (l) store.removeInterzoneLink(l.roomA, l.roomB); });
   const field = (label: string, f: Field): HTMLElement => html('div', { class: 'field' }, html('div', { class: 'field-head' }, html('span', { class: 'lab' }, label)), f.root);
+  const geo = html('section', { class: 'sec lk-geo' }, opening.root, contact.root, wool.root, field('Direction', orientation), total, now);
 
   const root = html('div', { class: 'pop-settings' },
-    html('p', { class: 'hint lead' }, 'Effective sensible heat transfer between these two rooms; this is not resolved airflow or buoyancy. Area and coefficient are assumed values, not measured stairwell geometry or material data. Turning a unit off keeps the link active.'),
-    html('section', { class: 'sec' }, field('Link type', kind), field('Connection direction', orientation),
-      html('p', { class: 'hint' }, 'Direction describes the connection (Horizontal between rooms, Vertical between levels), not a surface orientation.')),
-    html('section', { class: 'sec' }, html('h3', {}, 'Exchange'), area.root, total, now),
-    html('section', { class: 'sec' }, html('details', { class: 'fold' }, html('summary', {}, 'Advanced: transfer coefficient'),
-      html('div', { class: 'fold-body' }, coeffOpening.root, coeffPartition.root,
-        html('p', { class: 'hint' }, 'Open passage 0–100 W/(m²·K) (default 40); solid partition 0–6 (default 1.5). Generic assumptions, not calibrated.')))),
+    html('p', { class: 'hint lead' }, 'An open passage and an insulated solid contact link these two rooms at the same time. Turning a unit off keeps the link active.'),
+    overrideBox, geo,
+    html('section', { class: 'sec' }, html('details', { class: 'fold' }, html('summary', {}, 'Advanced: model'),
+      html('div', { class: 'fold-body' }, coeff.root,
+        html('p', { class: 'hint' }, `Opening H = area × coefficient (0–100 W/(m²·K), default ${INTERZONE_GEOMETRY_DEFAULTS.openingTransferWm2K}). Solid H = area ÷ (${INTERZONE_FILM_RESISTANCE_M2KW} + thickness ÷ ${INTERZONE_GLASS_WOOL_LAMBDA_WMK.toFixed(3)}), with a representative glass-wool λ of ${INTERZONE_GLASS_WOOL_LAMBDA_WMK.toFixed(3)} W/(m·K) and a combined surface-film resistance of ${INTERZONE_FILM_RESISTANCE_M2KW} m²·K/W: stated assumptions. Effective sensible transfer only: no resolved buoyancy, joists or moisture.`)))),
     html('section', { class: 'sec' }, remove));
 
   return {
@@ -1009,10 +1293,21 @@ export function createLinkSettings(): PopContent {
       const l = s.cfg.interzoneLinks?.[i];
       if (!l) return;
       for (const f of fields) f.refresh();
-      const k = l.kind ?? 'opening';
-      coeffOpening.root.hidden = k !== 'opening';
-      coeffPartition.root.hidden = k !== 'partition';
-      setText(total, `Total conductance H = ${fmt(areaOf(l), 1)} m² × ${fmt(coeffOf(l), k === 'opening' ? 0 : 1)} W/(m²·K) = ${fmt(interzoneConductance(l), 0)} W/K`);
+      const g = geometryOf(l);
+      const overridden = l.conductanceOverrideWK !== undefined;
+      const plain = { ...l };
+      delete plain.conductanceOverrideWK;
+      const derived = interzoneConductance(plain);
+      overrideBox.hidden = !overridden;
+      toggleClass(geo, 'overridden', overridden);
+      setText(overrideNote, overridden
+        ? `Advanced override in use: H = ${fmt(l.conductanceOverrideWK!, 0)} W/K replaces the geometry below, which would give ${fmt(derived, 0)} W/K.`
+        : '');
+      // The thickness is dimmed, not reset, while there is no solid contact for it to act on.
+      toggleClass(wool.root, 'dim', g.contact === 0);
+      const solidWK = g.contact / (INTERZONE_FILM_RESISTANCE_M2KW + g.mm / 1000 / INTERZONE_GLASS_WOOL_LAMBDA_WMK);
+      setText(total, `Total H = ${fmt(interzoneConductance(l), 0)} W/K${overridden ? ' (override)'
+        : hasInterzoneGeometry(l) ? ` · opening ${fmt(g.opening * g.coeff, 0)} + solid ${fmt(solidWK, 1)}` : ' · legacy single-path link, any edit converts it'}`);
       const name = (id: string): string => s.cfg.rooms.find((r) => r.id === id)?.name ?? id;
       const q = linkHeatW(s, l.roomA, l.roomB);
       setText(now, q === null ? 'Now: — (live engine value unavailable)'

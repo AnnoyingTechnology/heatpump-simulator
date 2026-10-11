@@ -1,0 +1,691 @@
+{
+  "createdAt": "2026-10-11T09:29:21.775Z",
+  "preset": "smoke",
+  "seed": 20261011,
+  "workers": 8,
+  "timeoutMs": 240000,
+  "sourceHashes": {
+    "src/engine/air.ts": "6dfb70bd7b7c5b84501e0de1633cf8378ea0b2bd0eb903dafe09c31625745d15",
+    "src/engine/charge-output.ts": "ca0bed2dd4836af7e72dce71e28e5d0b11309358f4c3da0bb6365a9079142ff7",
+    "src/engine/charge.ts": "0c9dd8050fab6b3bd16bcb881f59fc00debc2f85c774c2a1c2216d45d289e168",
+    "src/engine/cycle.ts": "888c92ab17782c7eccd876a519bbce2fa1deb95d126c868779ffd41a2004cea0",
+    "src/engine/defaults.ts": "5ca7d8006c6990e4b6b99a6ef353ec075b720a07701dac39a23ca9fb4fec99f8",
+    "src/engine/demand.ts": "53e9c8bbc8e85e37f3cad9d842e22510ccf2404e04cc7bbe7755b14140d12197",
+    "src/engine/drive.ts": "2f1b5186584f2fb0d50ae5f10dcdb09a0b197422823a3e76d3f5f8d788309f4d",
+    "src/engine/engine.ts": "c09fdab2122657d8fcde7fc8374a7ce1fc73fb76aad0e169ff60d5921ebfaffa",
+    "src/engine/film.ts": "3cfeda3465b8c5226e6ed82bada490abdc42577fdadd4a1d0a2e3fb682285dbb",
+    "src/engine/index.ts": "f8aba3f8724f99dcd1c17be93cfc3622a9fe276d968cc36f5bbf70e9c3773ebd",
+    "src/engine/interzone.ts": "856dfe9535d53f52aa8aae8f0cc83167163b11bab8ca6bb9bb62ff9e600d8bed",
+    "src/engine/properties.ts": "7f4bb2f372a77f30e76844dd7ef9d7afa6d25f72079a09ce66586cdc134404d1",
+    "src/engine/thermostat.ts": "624305969795b54b99745ac84d1c966dbc0e66263ee8579111ea2054c971d5f5",
+    "src/engine/transport.ts": "928ab51cd8ca1193e68ba0821ee88ae2966521314ad9b1fd1b9894f253e2ed31",
+    "src/engine/types.ts": "7da718b766ed47970f705aeb84f2fb9743f35ce477d6abb98ca0dfe652a279fb",
+    "compiled/air.js": "ac8302044d196da0528b0ca99b76db9f550d26b57adc42c0de89a68ee9b5ed94",
+    "compiled/charge-output.js": "4ed7ae6f5cc6b6f0b52465b8cbba32f400f890e729ba71cd2db804a11c435fa0",
+    "compiled/charge.js": "716d6e0134395d6f67245751af1d915e179ab2c599b8a66950bbf8006fac9b1d",
+    "compiled/cycle.js": "4ecda465e8d4c8477ca559b826092abc399de442f938e0b4fc066c8ef1be3768",
+    "compiled/defaults.js": "b1bcc26d4004cb951b5440c02becc157363373d64aef5f088b809c1bd20a2ed8",
+    "compiled/demand.js": "a06da83a3ed88028b94b91f3ea9e21aeef15cadb8cc8baede54676ce8b900230",
+    "compiled/drive.js": "907e56e4c66d58143b6ddd929d126800e655ea5743d7ce0683a7613ec37d8459",
+    "compiled/engine.js": "acea664f246d98cb5e17b755c1f70e92fab5e668939276b8f2b83e84a811c59d",
+    "compiled/film.js": "2af475cdfb6faa4512ac7a17c45393f3be33ab88e2cb5be334138956ecf33d51",
+    "compiled/index.js": "2a58c1821531507d4843729995d2ffc8bbf2176ace4cb1e0269090322f8488c3",
+    "compiled/interzone.js": "677d003f3074e81bd06c7754444c0cdefd77fb56302e3db72536bfec8e602c60",
+    "compiled/properties.js": "765c01b7d61ee144821da2f9fd379469e8e34bbb44335616dd5afbca3b00c18a",
+    "compiled/thermostat.js": "4aa6dbf014fc983efb014e5a5fc0a45613a9c7d7bd42009b4f6108eeacf0398f",
+    "compiled/transport.js": "5bc7c0f1850837de00043e755290d8e3d131d4ee3adb27646557344409bc1dcf",
+    "compiled/types.js": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "public/vendor/coolprop-safe/LICENSE-CoolProp": "9bf835333ef602af4cb19338b9f9d43671e174fa029b00280e9bdba6ea4719b2",
+    "public/vendor/coolprop-safe/adapter.js": "06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34",
+    "public/vendor/coolprop-safe/coolprop.js": "6fa2e627803e2453da12cb9fce160ca3326851cd179444edc5ab698e21524d6c",
+    "public/vendor/coolprop-safe/coolprop.wasm": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+    "public/vendor/coolprop-safe/licenses/Emscripten-LICENSE": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86",
+    "public/vendor/coolprop-safe/licenses/boost_headers-LICENSE": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "public/vendor/coolprop-safe/licenses/compiler-rt-LICENSE.TXT": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.APACHE": "03379001a7b12a2ec997a25554247d985270b353c10d5bafee9ac8d6519820b7",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.BSD": "51928dce36213c5333ba3172e847d735d4c6e9b7ff2722a326c49067155b82eb",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.MINPACK": "c87b7f8ee88f6195e91743820c00354833583aef091b72e2d4a49c8e28e798a0",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.MPL2": "66a3107d5ad6a058aab753eaac2047ccb2ed0e39465dd0fe5844da3e300d5172",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.README": "db640ff2bd90c6abd6a4d3fbb351e0ee4d555417cf840492054d1cbb2ea85644",
+    "public/vendor/coolprop-safe/licenses/eigen-LICENSE": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+    "public/vendor/coolprop-safe/licenses/fmt-LICENSE": "07580f2a3b35709ce703d523f447b242f6dfec7582a8c0df102c7fa2849375f8",
+    "public/vendor/coolprop-safe/licenses/if97-LICENSE": "e22c3d30ef8d88ab468d9ea20392ca1df22fa3fd0a92dc3e996d89cf3cfdbd03",
+    "public/vendor/coolprop-safe/licenses/libcxx-LICENSE.TXT": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+    "public/vendor/coolprop-safe/licenses/libcxxabi-LICENSE.TXT": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",
+    "public/vendor/coolprop-safe/licenses/miniz-header-notice.txt": "dfdeccf4fcb0cef3d71b31fa915e804f272fa57f00d4ff5076d2c8e8efc22057",
+    "public/vendor/coolprop-safe/licenses/msgpack-c-COPYING": "664550b43996452a5a2c7471bb0ff77185a58c69ccafa60f983dc4c162e1ee22",
+    "public/vendor/coolprop-safe/licenses/msgpack-c-LICENSE_1_0.txt": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "public/vendor/coolprop-safe/licenses/multicomplex-README.md": "d58933ccd086958d576969174c04af6506cc5586da9d2125ec644d534225c018",
+    "public/vendor/coolprop-safe/licenses/musl-COPYRIGHT": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af",
+    "public/vendor/coolprop-safe/licenses/nlohmann_json-LICENSE.MIT": "46a65cffd1ea955132d95a8dd921640714a8d6b537d2e4e482d31145ae95b603",
+    "public/vendor/coolprop-safe/licenses/refprop_headers-LICENSE": "f21f633c596509e89b2baedfd657c8f1b8018954b06576590971684b210e91f8",
+    "public/vendor/coolprop-safe/licenses/valijson-LICENSE": "61b5766db38eaa3f320c366357956d7743424bfbf90fd78f5943866ba237589e",
+    "public/vendor/coolprop-safe/provenance.json": "fffa34344622d1d2266c5d389552e3e672706422f317193ebf756bc0a157f697",
+    "tools/robustness-worker.mjs": "3c8204068e77f67accfc3f422f2e1e3d339fedbf609264f72041a1b805f22f78",
+    "tools/robustness-campaign.mjs": "5092797f2c3582fab41796702e567538f6cc2167236d50d46770310494519e35"
+  },
+  "extendedComponentAndLineBounds": false,
+  "segmentDurationCapSeconds": null,
+  "method": "Independent Node child processes; immutable TypeScript snapshot compiled once; production guarded HEOS; fixed accepted 0.25-second steps; full before-step checkpoint persisted for native aborts.",
+  "limits": "Reference R32 engine only. Passing a finite campaign is not proof of correctness. Generic component parameters, not calibrated manufacturer maps. The screenshot scenario is reconstructed from visible controls, not a saved exact pre-crash state.",
+  "scenarios": [
+    {
+      "id": "reported-friend-cold-cooling",
+      "requestedSeconds": 30
+    },
+    {
+      "id": "reported-owner-reversal-winter-house",
+      "requestedSeconds": 10
+    },
+    {
+      "id": "reported-owner-reversal-old-generic",
+      "requestedSeconds": 10
+    },
+    {
+      "id": "grid-heating--25-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-heating--25-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-heating--5-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-heating--5-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-heating-5.5-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-heating-5.5-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-heating-25-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-heating-25-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-heating-45-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-heating-45-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-cooling--25-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-cooling--25-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-cooling--5-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-cooling--5-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-cooling-5.5-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-cooling-5.5-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-cooling-25-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-cooling-25-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-cooling-45-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "grid-cooling-45-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "sequence-0",
+      "requestedSeconds": 6
+    },
+    {
+      "id": "sequence-1",
+      "requestedSeconds": 6
+    }
+  ],
+  "completed": 25,
+  "counts": {
+    "pass": 25
+  },
+  "results": [
+    {
+      "id": "reported-friend-cold-cooling",
+      "outcome": "pass",
+      "steps": 120,
+      "updates": 0,
+      "simulatedSeconds": 30,
+      "wallSeconds": 2.1660661979999998,
+      "maxEnergyResidualJ": 7.214839570224285e-08,
+      "maxWaterResidualKg": 1.3812735677465326e-15,
+      "protectionCounts": {},
+      "states": {
+        "idle": 120
+      },
+      "stateEntries": {},
+      "completedDefrosts": 0,
+      "maxStepWallMs": 8.297331000000213,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating-5.5-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.400610328,
+      "maxEnergyResidualJ": 1.2052879583279719e-08,
+      "maxWaterResidualKg": 2.1195305439144357e-17,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 74.1390180000003,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating--25-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.496993888,
+      "maxEnergyResidualJ": 3.007007762789726e-07,
+      "maxWaterResidualKg": 1.1306602355765083e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 206.56418800000029,
+      "failureCategory": null
+    },
+    {
+      "id": "reported-owner-reversal-winter-house",
+      "outcome": "pass",
+      "steps": 40,
+      "updates": 1,
+      "simulatedSeconds": 10,
+      "wallSeconds": 2.758488626,
+      "maxEnergyResidualJ": 6.179652700666338e-08,
+      "maxWaterResidualKg": 1.0709749059811813e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 20,
+        "reversing": 12,
+        "idle": 8
+      },
+      "stateEntries": {
+        "running": 1,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 127.20811400000002,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating--25-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.799807285,
+      "maxEnergyResidualJ": 4.951289156451821e-08,
+      "maxWaterResidualKg": 9.569439424900184e-17,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 121.478564,
+      "failureCategory": null
+    },
+    {
+      "id": "reported-owner-reversal-old-generic",
+      "outcome": "pass",
+      "steps": 40,
+      "updates": 1,
+      "simulatedSeconds": 10,
+      "wallSeconds": 2.861977093,
+      "maxEnergyResidualJ": 9.728864824865013e-08,
+      "maxWaterResidualKg": 1.0904905450859204e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 20,
+        "reversing": 12,
+        "idle": 8
+      },
+      "stateEntries": {
+        "running": 1,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 84.85251500000004,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating--5-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 3.37719745,
+      "maxEnergyResidualJ": 1.0163057595491409e-07,
+      "maxWaterResidualKg": 2.806999424564971e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 198.75442500000008,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating-5.5-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.545842583,
+      "maxEnergyResidualJ": 1.3067619875073433e-07,
+      "maxWaterResidualKg": 3.978412109299778e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 92.3903069999999,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating-25-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.236596514,
+      "maxEnergyResidualJ": 1.926650838868227e-08,
+      "maxWaterResidualKg": 1.0088501214977619e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 104.0782979999999,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling--25-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.802050933,
+      "maxEnergyResidualJ": 9.651103027863428e-09,
+      "maxWaterResidualKg": 1.1401741096400686e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 648.3270399999999,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating-25-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 3.386298581,
+      "maxEnergyResidualJ": 3.8813595892861485e-08,
+      "maxWaterResidualKg": 9.569439424900184e-17,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 939.2169199999998,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating-45-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 3.025974222,
+      "maxEnergyResidualJ": 8.838833309710026e-08,
+      "maxWaterResidualKg": 5.917575457425883e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 634.962614,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating-45-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 3.265350725,
+      "maxEnergyResidualJ": 1.0266739991493523e-07,
+      "maxWaterResidualKg": 2.806999424564971e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 728.7277979999999,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling--25-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.810694245,
+      "maxEnergyResidualJ": 6.015761755406857e-08,
+      "maxWaterResidualKg": 4.727934623666163e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 628.987093,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating--5-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 6.734963017,
+      "maxEnergyResidualJ": 1.9534491002559662e-07,
+      "maxWaterResidualKg": 1.150094559518311e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 746.8171919999995,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling--5-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 3.245691746,
+      "maxEnergyResidualJ": 9.365339792566374e-08,
+      "maxWaterResidualKg": 4.121594558703645e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 706.396052,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling-5.5-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.615963219,
+      "maxEnergyResidualJ": 8.517963578924537e-08,
+      "maxWaterResidualKg": 4.121594558703645e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 356.75180699999987,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling-5.5-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.592569755,
+      "maxEnergyResidualJ": 8.521965355612338e-09,
+      "maxWaterResidualKg": 8.993965240535612e-17,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 388.59877500000016,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling--5-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 3.6483288939999996,
+      "maxEnergyResidualJ": 2.592714736238122e-07,
+      "maxWaterResidualKg": 4.212233860323433e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 823.864963,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling-45-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.3361773080000003,
+      "maxEnergyResidualJ": 7.84393705544062e-08,
+      "maxWaterResidualKg": 4.121594558703645e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 138.63390200000003,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling-25-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.9582844259999996,
+      "maxEnergyResidualJ": 3.404929884709418e-07,
+      "maxWaterResidualKg": 2.5793711784516393e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 623.0632069999999,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling-45-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.244320815,
+      "maxEnergyResidualJ": 5.698530003428459e-08,
+      "maxWaterResidualKg": 3.664603343001005e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 118.52154100000007,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling-25-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.972104948,
+      "maxEnergyResidualJ": 1.8487116903997958e-07,
+      "maxWaterResidualKg": 2.9936854861398188e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 568.2879190000001,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-0",
+      "outcome": "pass",
+      "steps": 24,
+      "updates": 2,
+      "simulatedSeconds": 6,
+      "wallSeconds": 1.8255615349999998,
+      "maxEnergyResidualJ": 1.1819065548479557e-07,
+      "maxWaterResidualKg": 1.2411946470614055e-15,
+      "protectionCounts": {},
+      "states": {
+        "idle": 8,
+        "reversing": 12,
+        "running": 4
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 42.24856900000009,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-1",
+      "outcome": "pass",
+      "steps": 24,
+      "updates": 2,
+      "simulatedSeconds": 6,
+      "wallSeconds": 1.92074171,
+      "maxEnergyResidualJ": 2.539600245654583e-07,
+      "maxWaterResidualKg": 7.702172233337023e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 8,
+        "reversing": 12,
+        "idle": 4
+      },
+      "stateEntries": {
+        "running": 1,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 80.12582199999997,
+      "failureCategory": null
+    }
+  ],
+  "artifactDirectory": "/tmp/heatpump-robustness-final-smoke",
+  "status": "Phase/antifreeze/warm-heating candidate before later cold-boundary and condensing-governor edits. All25 short CI-compatible smoke scenarios pass.",
+  "acceptedSimulatedSeconds": 102
+}

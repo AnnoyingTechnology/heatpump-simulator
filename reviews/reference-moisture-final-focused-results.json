@@ -1,0 +1,61 @@
+{
+  "status": "focused final-source acceptance; broad regression/campaign pending",
+  "backend": "public guarded exact HEOS",
+  "sourceSha256": {
+    "src/engine/air.ts": "6dfb70bd7b7c5b84501e0de1633cf8378ea0b2bd0eb903dafe09c31625745d15",
+    "src/engine/engine.ts": "ddcce40d6a88656b7410dfa0615ec962fca5f6b2a2f87d0b1f43193e12526553",
+    "src/engine/types.ts": "7da718b766ed47970f705aeb84f2fb9743f35ce477d6abb98ca0dfe652a279fb",
+    "src/engine/drive.ts": "0fb04506689d27ed4c11d89f22a30db504747e36362a850b49577a334e72ef6a",
+    "src/engine/cycle.ts": "888c92ab17782c7eccd876a519bbce2fa1deb95d126c868779ffd41a2004cea0",
+    "src/engine/envelope.ts": "feffb4700d52704aef95c7d2ff6dedd247274eeeb2a01c1662d1c6904b7aec50",
+    "tests/engine/airflow-profile.test.mjs": "16f2c1ff050db5d10b33bc9f6ecac50b9d8135f1259f629fc2d5c4c990c7ba62",
+    "tests/engine/indoor-moisture-protection.test.mjs": "ea86b234ef8672aac9ee9d16e506eec58054581ce3e78792ddb62b4ee567c877",
+    "tests/engine/warm-heating-regime.test.mjs": "c04e550a1242edb0b7575ef53d248560218c66dece58db8945327628fda4fc1d",
+    "tests/engine/reference-envelope.test.mjs": "41773e577032167f6420b95743c7dc31e609aded0af183a1875d4f64ad9b50e8"
+  },
+  "focused": {
+    "envelope": {
+      "pass": 3,
+      "fail": 0,
+      "durationSeconds": 40.1718
+    },
+    "moistureAirflowWarm": {
+      "pass": 7,
+      "fail": 0,
+      "durationSeconds": 20.4552
+    }
+  },
+  "refinement": {
+    "scenario": "disabled 24m3 room,750W/K,initialRH.99,zero ventilation,outdoor-20C,40s",
+    "timesteps": [
+      0.25,
+      0.125,
+      0.0625
+    ],
+    "temperatureC": [
+      7.424642985233719,
+      7.434467082957529,
+      7.4393592891510565
+    ],
+    "retainedWaterKg": [
+      0.23123207184141947,
+      0.23110882713851458,
+      0.231047425810104
+    ],
+    "airEnthalpyJ": [
+      674254.9763666189,
+      674852.8376503213,
+      675150.6276792753
+    ],
+    "allEnergyResidualBelowJ": 0.01,
+    "allWaterResidualBelowKg": 1e-10,
+    "temperatureDifferenceRatio": 0.498,
+    "interpretation": "observed first-order timestep convergence; no tolerance relaxation"
+  },
+  "limitations": [
+    "friend generic native worker fatal not reproduced",
+    "room condensate is lumped reservoir, not wall moisture/indoor coil ice model",
+    "held envelope is generic controller estimate, not full-domain thermodynamic lower-bound proof",
+    "charge model remains gated"
+  ]
+}

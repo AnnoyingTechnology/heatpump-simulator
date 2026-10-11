@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-10-11T10:51:05.354Z",
+  "checks": [
+    {
+      "name": "a rejected worker request retains accepted time and room stores, then recovers without resetting",
+      "passed": true
+    },
+    {
+      "name": "a terminated worker retains readings and diagnostic inputs until an explicit reset",
+      "passed": true
+    }
+  ],
+  "scope": "Real guarded worker request rejection and controlled QA termination; no reproduced native abort."
+}

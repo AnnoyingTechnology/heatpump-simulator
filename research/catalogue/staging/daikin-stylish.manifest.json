@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Stylish (C/FTXA-AW/BB/BT/BS + RXA-A9/B)",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "status": "candidate-corrected (NOT accepted): 11 candidate files drafted from p.42 then CORRECTED 2026-10-11 after source review rejected the airflow conversion; root performs independent source acceptance before integration",
+  "edition": "PRIMARY CACHED: 'Catalogue des produits pour installateurs 2022' ECPFR-FR22-000 (French, 64 pages), Stylish spec table PDF p.42 (printed 42). Printed page == PDF page. Current-generation Stylish (FTXA-B* + RXA-A9/B(9)) noted on daikin.eu but exact-suffix current availability NOT verified this batch; do not treat 2022 edition as 2026 verified availability.",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "publisher": "Daikin Europe N.V. (France edition)",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11",
+      "localCache": "research/catalogue/source-cache/daikin-fr-split-installer-2022.pdf",
+      "textCache": "research/catalogue/source-cache/daikin-fr-split-installer-2022.txt",
+      "pageImage": "research/catalogue/source-cache/daikin-fr-split-installer-2022-page-42.png",
+      "pages": 64,
+      "sha256": "814243080bf6b8795adccb3f8c670a87d0b692d7c1c09ec32c306f04add187ad",
+      "note": "PRIMARY EVIDENCE. Stylish spec table PDF p.42 == printed 42. Merged cells + suffixes visually verified via page-42 PNG."
+    }
+  ],
+  "references": {
+    "indoor": [
+      {"modelReference": "FTXA15AW/BS/BT/BB", "column": "Unité intérieure table col 'CTXA15AW/BS/BT/BB'", "colourSuffixes": ["AW","BS","BT","BB"], "matchedOutdoor": "unknown (p.42 table has no 15-class RXA outdoor column)", "status": "unknown"},
+      {"modelReference": "FTXA20AW/BS/BT/BB", "column": "20AW/BS/BT/BB", "colourSuffixes": ["AW","BS","BT","BB"], "matchedOutdoor": "RXA20A9 (shared efficiency column '20AW/BS/BT/BB + 20A9')", "status": "unknown"},
+      {"modelReference": "FTXA25AW/BS/BT/BB", "column": "25AW/BS/BT/BB", "colourSuffixes": ["AW","BS","BT","BB"], "matchedOutdoor": "RXA25A9 (shared '25AW/BS/BT/BB + 25A9')", "status": "unknown"},
+      {"modelReference": "FTXA35AW/BS/BT/BB", "column": "35AW/BS/BT/BB", "colourSuffixes": ["AW","BS","BT","BB"], "matchedOutdoor": "RXA35A9 (shared '35AW/BS/BT/BB + 35A9')", "status": "unknown"},
+      {"modelReference": "FTXA42AW/BS/BT/BB", "column": "42AW/BS/BT/BB", "colourSuffixes": ["AW","BS","BT","BB"], "matchedOutdoor": "RXA42B (shared '42AW/BS/BT/BB + 42B')", "status": "unknown"},
+      {"modelReference": "FTXA50AW/BS/BT/BB", "column": "50AW/BS/BT/BB", "colourSuffixes": ["AW","BS","BT","BB"], "matchedOutdoor": "RXA50B (shared '50AW/BS/BT/BB + 50B')", "status": "unknown"}
+    ],
+    "outdoor": [
+      {"modelReference": "RXA20A9", "column": "20A9", "generation": "A9", "matchedIndoor": "FTXA20AW/BS/BT/BB", "status": "unknown"},
+      {"modelReference": "RXA25A9", "column": "25A9", "generation": "A9", "matchedIndoor": "FTXA25AW/BS/BT/BB", "status": "unknown"},
+      {"modelReference": "RXA35A9", "column": "35A9", "generation": "A9", "matchedIndoor": "FTXA35AW/BS/BT/BB", "status": "unknown"},
+      {"modelReference": "RXA42B", "column": "42B", "generation": "B", "matchedIndoor": "FTXA42AW/BS/BT/BB", "status": "unknown"},
+      {"modelReference": "RXA50B", "column": "50B", "generation": "B", "matchedIndoor": "FTXA50AW/BS/BT/BB", "status": "unknown"}
+    ]
+  },
+  "colourSuffixesPublished": {
+    "note": "page title 'C/FTXA-AW/BB/BT/BS' + product photos label FTXA-AW (white), FTXA-BS (wood effect), FTXA-BT (silver), FTXA-BB (black). Colour words: 'couleur blanche, noire, argent ou effet bois'. Colour->suffix binding per photo captions; AW=white, BS=wood, BT=silver, BB=black. These are distinct references when named.",
+    "AW": "white / blanche (photo FTXA-AW)",
+    "BS": "wood effect / effet bois (photo FTXA-BS)",
+    "BT": "silver / argent (photo FTXA-BT)",
+    "BB": "black / noire (photo FTXA-BB)"
+  },
+  "pairingEvidence": "Monosplit pairing is evidenced by the shared efficiency-table column headers of the form 'FTXA + RXA': '20AW/BS/BT/BB + 20A9', '25AW/BS/BT/BB + 25A9', '35AW/BS/BT/BB + 35A9', '42AW/BS/BT/BB + 42B', '50AW/BS/BT/BB + 50B'. The 15-class indoor 'CTXA15AW/BS/BT/BB' has NO matching RXA outdoor column on p.42. A vertical merged band 'Possibilité de connexion uniquement aux unités extérieures multi' spans the efficiency table: a CAVEAT that connection is only to multi outdoor units, so monosplit RXA pairing per shared column is the table structure but the multi-only caveat must be flagged; never assume all R32 devices pair.",
+  "mergedCellFindings": [
+    "Indoor Dimensions 295x798x189 mm: single merged cell spanning ALL indoor columns (15..50)",
+    "Indoor Poids 11,5 kg: single merged cell spanning ALL indoor columns",
+    "Filtre à air 'Amovible/lavable': merged all indoor columns",
+    "Indoor sound power (Rafraîchissement): 57 dBA merged 15/20/25; 60 dBA merged 35/42/50",
+    "Outdoor Dimensions 550x840x350 mm: merged 20A9/25A9/35A9; 734x870x373 mm merged 42B/50B",
+    "Outdoor Poids: 32 kg merged 20A9/25A9/35A9; 50 kg under 50B ONLY -> 42B mass UNRESOLVED",
+    "Outdoor sound power 59,0 merged 20A9/25A9; 61,0 under 35A9; 62,0 merged 42B/50B",
+    "Outdoor sound pressure cooling 46,0 (20A9); 49,0 (25A9/35A9); 48,0 (42B/50B)",
+    "Refrigerant 'R-32/675,0': merged across all outdoor columns (refrigerant circuit belongs to outdoor unit)",
+    "Charge 0,76/0,52 kg/tCO2 merged 20A9/25A9/35A9; 1,10/0,75 merged 42B/50B",
+    "Raccords 6,35/9,50 merged 20A9/25A9/35A9; 6,35/12,7 merged 42B/50B",
+    "Longueur tuyauterie 20 m (20-35A9); 30 m (42B/50B); Charge suppl 0,02 kg/m (>10m) merged; Dénivelé 15,0 (20-35A9) / 20 (42B/50B)",
+    "Alimentation 1~/50/220-240 merged all outdoor; MFA 10 under 20A9; 13 merged 25A9/35A9/42B/50B"
+  ],
+  "airflowUnitNote": "p.42 publishes indoor 'Débit d'air' in m³/min (Silence/Bas/Moyen/Haut), NOT m³/h. Cooling and heating airflow are separate rows. CORRECTION 2026-10-11: conversion to schema m3/h is x60 (1 m³/min = 60 m³/h); the earlier x6 factor was WRONG and made every indoor airflow value 10x too small; all 6 indoor candidate files corrected; original published m³/min values/units retained in excerpts.",
+  "airflowCorrections2026-10-11": {
+    "reason": "Source review REJECTED the x6 airflow conversion; correct factor is x60 (1 m³/min = 60 m³/h). Example arithmetic only: 11,5 m³/min = 690 m³/h.",
+    "correctedFiles": [
+      "staging/daikin-ctxa15-indoor.json: cooling 276/366/492/660; heating 270/384/522/654",
+      "staging/daikin-ftxa20-indoor.json: cooling 276/366/516/690; heating 270/384/540/666 (heating Moyen/Haut excerpt also realigned from wrong 8,7/10,9 to published 9,0/11,1)",
+      "staging/daikin-ftxa25-indoor.json: cooling 276/366/516/690; heating 270/384/540/666",
+      "staging/daikin-ftxa35-indoor.json: cooling 276/366/516/714; heating 276/384/540/690 (prior values AND excerpts were misaligned with 42/50 columns; republished cells 4,6/6,1/8,6/11,9 cooling and 4,5/6,4/9,0/11,5 heating per page-42 image)",
+      "staging/daikin-ftxa42-indoor.json: cooling 276/432/588/786; heating 312/462/630/876",
+      "staging/daikin-ftxa50-indoor.json: cooling 312/456/624/810; heating 342/492/666/906"
+    ],
+    "recheckedUnchanged": "dimensions/mass/sound power+pressure/refrigerant/charge/piping/supply/MFA/operating ranges/ratings rechecked against page-42 text+image; merged-column spans and exact indoor suffix identities (CTXA15 vs FTXA20-50) confirmed unchanged",
+    "outdoorAirflowSearch": "No published cooling high-fan volumetric airflow found for RXA20A9/25A9/35A9/42B/50B exact suffixes: official daikin.eu RXA-A9 spec table (current refs RXA20/25/35A5V1B9) has NO airflow row; RXA-B spec table page renders empty; guessed installation-manual path 404s. Outdoor airflow remains explicit UNKNOWN; not inferred from capacity/casing/other generations."
+  },
+  "generationNote": "2022 FR catalogue mixes A9 (20/25/35) and B (42/50) outdoor generations. FTXA-BS product page marked 'Archived' (prior gen) on daikin.eu; current Stylish = FTXA-B* + RXA-A9/B(9) per flyer ECPEN23-051. Do NOT silently replace old suffixes; current-generation tables pending as separate source.",
+  "currentAvailabilityNote": "Exact-suffix 2026 availability UNVERIFIED this batch. Status recorded 'unknown' (not 'current') for all refs until a dated current primary table confirms. Newer current-generation primary tables to be distinguished, not substituted.",
+  "plannedCandidateFiles": [
+    "staging/daikin-ftxa25-indoor.json",
+    "staging/daikin-rxa25a9-outdoor.json",
+    "staging/daikin-ftxa35-indoor.json",
+    "staging/daikin-rxa35a9-outdoor.json",
+    "staging/daikin-ftxa20-indoor.json",
+    "staging/daikin-rxa20a9-outdoor.json",
+    "staging/daikin-ftxa42-indoor.json",
+    "staging/daikin-rxa42b-outdoor.json",
+    "staging/daikin-ftxa50-indoor.json",
+    "staging/daikin-rxa50b-outdoor.json",
+    "staging/daikin-ftxa15-indoor.json"
+  ],
+  "coverageNotes": "candidate-corrected (NOT accepted). 11 candidate files (6 indoor incl 15-class, 5 outdoor) from p.42. Airflow conversion corrected x6->x60 in all 6 indoor files (see airflowCorrections2026-10-11). Unresolved: 42B mass, CTXA15 outdoor pairing, CTXA vs FTXA 15-prefix naming, outdoor airflow (searched official daikin.eu tables 2026-10-11, none published), fan motor power, current 2026 availability (status unknown; 2022 catalogue is not automatically the 2026 range)."
+}

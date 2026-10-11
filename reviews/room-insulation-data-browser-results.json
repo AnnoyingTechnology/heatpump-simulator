@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-11T09:52:07.621Z",
+  "checks": [
+    {
+      "name": "owner defaults preserve room H and derive simultaneous stairwell/insulated-floor paths",
+      "passed": true
+    },
+    {
+      "name": "area/height edits scale H at constant quality; advanced H and primary insulation edits stay coherent",
+      "passed": true
+    },
+    {
+      "name": "parallel path edits are independent; zero areas retain links and geometry clears explicit H override",
+      "passed": true
+    },
+    {
+      "name": "legacy inputs remain readable and invalid thermal APIs cannot mutate valid configuration",
+      "passed": true
+    },
+    {
+      "name": "thermal input edits preserve accepted clock/storage and Off room links remain simulated",
+      "passed": true
+    }
+  ],
+  "scope": "Effective volumetric envelope quality, parallel geometry paths, state normalization and accepted guarded-worker continuity; no UI styling assertions"
+}

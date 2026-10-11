@@ -1,5 +1,6 @@
-import type { AppState, Config, Experience, ExampleState, Mode, PipeConfig, RoomConfig, InterzoneLink, UiState } from './types';
-import { DEFAULT_GENERIC_PORT_CAPACITY, OWNER_PORTS, outdoorPortCapacity } from './types';
+import type { AppState, Config, Experience, ExampleState, IndoorClass, Mode, OutdoorKind, PipeConfig, RoomConfig, InterzoneLink, UiState } from './types';
+import { applyIndoorProfile, outdoorModelInfo } from './equipment';
+import { DEFAULT_GENERIC_PORT_CAPACITY, OWNER_PORTS, outdoorPortCapacity, roomVolumeM3, roomExposedEnvelopeAreaM2, roomEnvelopeConductanceWK, interzoneConductance, hasInterzoneGeometry, INTERZONE_GEOMETRY_DEFAULTS } from './types';
 import type { Fixture } from './fixtures';
 import { fixtureFor } from './fixtures';
 import { defaultLiveParameters, CHARGE_MODEL_AVAILABLE } from './runtime/config';
@@ -15,9 +16,9 @@ import type { RoomOutput } from './engine/types';
  * See research/owner-house-calibration.md; refrigerant/OEM performance is never fitted to these observations.
  */
 const ROOMS: Omit<RoomConfig, 'cleanlinessOverridePct'>[] = [
-  { id: 'attic', name: 'Attic (L2)', surfaceM2: 26, ceilingHeightM: 84 / 26, heatLossWPerK: 15, setpointC: 21, airC: 18.3, enabled: false, internalGainW: 0, ventilationACH: .25, indoorClass: 'FTXA25' },
-  { id: 'first', name: 'Upstairs (L1)', surfaceM2: 54.5, ceilingHeightM: 155 / 54.5, heatLossWPerK: 25, setpointC: 21.5, airC: 21.5, enabled: true, internalGainW: 0, ventilationACH: .25, indoorClass: 'FTXA35' },
-  { id: 'ground', name: 'Ground (L0)', surfaceM2: 45.4, ceilingHeightM: 100 / 45.4, heatLossWPerK: 45, setpointC: 17, airC: 18, enabled: true, internalGainW: 200, ventilationACH: .25, indoorClass: 'FTXA25' },
+  { id: 'attic', name: 'Attic (L2)', surfaceM2: 26, ceilingHeightM: 84 / 26, heatLossWPerK: 15, setpointC: 21, airC: 18.3, enabled: false, internalGainW: 0, indoorClass: 'FTXA25' },
+  { id: 'first', name: 'Upstairs (L1)', surfaceM2: 54.5, ceilingHeightM: 155 / 54.5, heatLossWPerK: 25, setpointC: 21.5, airC: 21.5, enabled: true, internalGainW: 0, indoorClass: 'FTXA35' },
+  { id: 'ground', name: 'Ground (L0)', surfaceM2: 45.4, ceilingHeightM: 100 / 45.4, heatLossWPerK: 45, setpointC: 17, airC: 18, enabled: true, internalGainW: 200, indoorClass: 'FTXA25' },
   { id: 'zone4', name: 'Lower level 4', surfaceM2: 16, ceilingHeightM: 2.5, heatLossWPerK: 55, setpointC: 21, airC: 20, enabled: true, indoorClass: 'G25' },
   { id: 'zone5', name: 'Lower level 5', surfaceM2: 16, ceilingHeightM: 2.5, heatLossWPerK: 55, setpointC: 21, airC: 20, enabled: true, indoorClass: 'G25' },
 ];
@@ -31,7 +32,7 @@ const PIPES: PipeConfig[] = [
 ];
 
 export function defaultConfig(): Config {
-  return {
+  const cfg: Config = {
     mode: 'heating',
     example: 'normal',
     outdoorKind: 'owner',
@@ -40,14 +41,21 @@ export function defaultConfig(): Config {
     outdoorC: 1,
     outdoorRh: 35, // Benchmark humidity is unknown; this remains an explicit scenario assumption.
     etaIsPct: 70,
-    rooms: ROOMS.map((r) => ({ ...r, cleanlinessOverridePct: null })),
+    rooms: ROOMS.map((r) => ({ ...r, envelopeQualityWPerM3K: r.heatLossWPerK / roomVolumeM3(r), cleanlinessOverridePct: null })),
     pipes: PIPES.map((p) => ({ ...p })),
     interzoneLinks: [
-      { roomA: 'ground', roomB: 'first', conductanceWK: 200, kind: 'opening', orientation: 'vertical', areaM2: 5, transferWm2K: 40 },
-      { roomA: 'first', roomB: 'attic', conductanceWK: 120, kind: 'opening', orientation: 'vertical', areaM2: 3, transferWm2K: 40 },
+      { roomA: 'ground', roomB: 'first', ...INTERZONE_GEOMETRY_DEFAULTS, conductanceWK: interzoneConductance({ roomA: 'ground', roomB: 'first', conductanceWK: 0, ...INTERZONE_GEOMETRY_DEFAULTS }), orientation: 'vertical' },
+      { roomA: 'first', roomB: 'attic', ...INTERZONE_GEOMETRY_DEFAULTS, conductanceWK: interzoneConductance({ roomA: 'first', roomB: 'attic', conductanceWK: 0, ...INTERZONE_GEOMETRY_DEFAULTS }), orientation: 'vertical' },
     ],
+    ventilation: { mode: 'dual', grossACH: .5, sensibleEfficiencyPct: 75 },
     live: defaultLiveParameters(),
   };
+  // Calibrate effective U only after the complete shared-face geometry exists.
+  for (const room of cfg.rooms) {
+    room.envelopeAreaOverrideM2 = null;
+    room.averageUValueWm2K = room.heatLossWPerK / roomExposedEnvelopeAreaM2(room, cfg);
+  }
+  return cfg;
 }
 
 function defaultUi(): UiState {
@@ -116,7 +124,38 @@ class Store {
   update(fn: (s: AppState) => void): void {
     const oldModel = this.state.cfg.live.circuitModel;
     const oldTopology = this.state.cfg.rooms.slice(0,this.state.cfg.unitCount).map(room => room.id).join('|');
+    const priorRooms = new Map(this.state.cfg.rooms.map(room => [room.id, { heatLossWPerK: room.heatLossWPerK, quality: room.envelopeQualityWPerM3K, uValue: room.averageUValueWm2K }]));
+    const pairKey = (link: InterzoneLink) => JSON.stringify([link.roomA, link.roomB].sort());
+    const priorLinks = new Map((this.state.cfg.interzoneLinks ?? []).map(link => [pairKey(link), { ...link }]));
     fn(this.state);
+    // The sandbox exposes one permanently shared coil-cleanliness control.
+    this.state.cfg.live.outdoorCleanlinessOverridePct = null;
+    for (const room of this.state.cfg.rooms) room.cleanlinessOverridePct = null;
+    // U is primary. Geometry/link/area edits retain U; legacy explicit H or G
+    // edits rebase it against the newly estimated exposed area.
+    for (const room of this.state.cfg.rooms) {
+      const before = priorRooms.get(room.id), volume = roomVolumeM3(room), area = roomExposedEnvelopeAreaM2(room, this.state.cfg);
+      if (room.averageUValueWm2K !== undefined && room.averageUValueWm2K !== before?.uValue) {
+        room.heatLossWPerK = room.averageUValueWm2K * area;
+      } else if (room.heatLossWPerK !== before?.heatLossWPerK) {
+        room.averageUValueWm2K = room.heatLossWPerK / area;
+      } else if (room.envelopeQualityWPerM3K !== undefined && room.envelopeQualityWPerM3K !== before?.quality) {
+        room.heatLossWPerK = room.envelopeQualityWPerM3K * volume;
+        room.averageUValueWm2K = room.heatLossWPerK / area;
+      } else if (room.averageUValueWm2K === undefined) {
+        room.heatLossWPerK = roomEnvelopeConductanceWK(room);
+        room.averageUValueWm2K = room.heatLossWPerK / area;
+      } else room.heatLossWPerK = room.averageUValueWm2K * area;
+      room.envelopeQualityWPerM3K = room.heatLossWPerK / volume;
+    }
+    const thermalGeometry = ['openingAreaM2', 'contactAreaM2', 'insulationMm', 'openingTransferWm2K', 'kind', 'areaM2', 'transferWm2K'] as const;
+    for (const link of this.state.cfg.interzoneLinks ?? []) {
+      const before = priorLinks.get(pairKey(link));
+      const geometryChanged = before && thermalGeometry.some(key => link[key] !== before[key]);
+      if (geometryChanged) delete link.conductanceOverrideWK;
+      else if (before && link.conductanceWK !== before.conductanceWK && link.conductanceOverrideWK === before.conductanceOverrideWK) link.conductanceOverrideWK = link.conductanceWK;
+      link.conductanceWK = interzoneConductance(link);
+    }
     const newTopology = this.state.cfg.rooms.slice(0,this.state.cfg.unitCount).map(room => room.id).join('|');
     if (oldModel !== this.state.cfg.live.circuitModel || (this.state.cfg.live.circuitModel === 'inventory' && oldTopology !== newTopology)) {
       this.resetEpoch += 1;
@@ -165,6 +204,33 @@ class Store {
       if (mode === 'cooling' && (s.cfg.example === 'frost' || s.cfg.example === 'defrost')) s.cfg.example = 'normal';
       s.ui.notice = null;
     });
+  }
+
+  /** Quick operating conditions on the current house. Geometry, equipment,
+   * humidity, gains and all accepted physical stores remain intact. */
+  applyOwnerSeason(season: 'winter' | 'summer'): void {
+    this.update(s => {
+      s.cfg.mode = season === 'winter' ? 'heating' : 'cooling';
+      s.cfg.example = 'normal';
+      s.cfg.outdoorC = season === 'winter' ? 1 : 39;
+      for (const room of s.cfg.rooms.slice(0, s.cfg.unitCount)) {
+        if (season === 'summer') {
+          room.enabled = true;
+          room.setpointC = 24;
+        } else {
+          room.enabled = room.id !== 'attic';
+          room.setpointC = room.id === 'ground' ? 17 : room.id === 'first' ? 21.5 : 21;
+        }
+      }
+      s.ui.notice = null;
+    });
+  }
+
+  setRoomWindowSolarGain(roomId: string, watts: number): void {
+    if (!(Number.isFinite(watts) && watts >= 0)) throw new RangeError('Window solar gain must be finite and nonnegative');
+    const room = this.state.cfg.rooms.find(r => r.id === roomId);
+    if (!room) throw new RangeError('Unknown room');
+    this.update(() => { room.windowSolarGainW = watts; });
   }
 
   /** Switching experience never rewrites the configuration; examples show a mismatch notice instead. */
@@ -230,7 +296,7 @@ class Store {
       let ordinal = cfg.rooms.length + 1;
       while (cfg.rooms.some(r => r.id === `room-${ordinal}`)) ordinal += 1;
       cfg.rooms.push({ id: `room-${ordinal}`, name: `Room ${ordinal}`, enabled: true, surfaceM2: 20, ceilingHeightM: 2.5,
-        heatLossWPerK: 60, setpointC: 21, airC: 20, indoorClass: 'G25', cleanlinessOverridePct: null });
+        heatLossWPerK: 60, envelopeQualityWPerM3K: 1.2, setpointC: 21, airC: 20, indoorClass: 'G25', cleanlinessOverridePct: null });
       cfg.pipes.push({ lengthM: 10, liquidOdMm: 6.35, gasOdMm: 9.52, lengthSource: 'default' });
     }
   }
@@ -244,40 +310,100 @@ class Store {
     });
   }
 
-  /** General sensible connection; zero disconnects. Configuration uses stable room IDs, never indices. */
+  /** Legacy volumetric G input: rebases modern U against the current exposed-area estimate. */
+  setRoomInsulation(roomId: string, qualityWPerM3K: number): void {
+    const room = this.state.cfg.rooms.find(candidate => candidate.id === roomId);
+    if (!room || !Number.isFinite(qualityWPerM3K) || qualityWPerM3K < 0 || !Number.isFinite(qualityWPerM3K * roomVolumeM3(room))) return;
+    this.update(s => { s.cfg.rooms.find(candidate => candidate.id === roomId)!.envelopeQualityWPerM3K = qualityWPerM3K; });
+  }
+
+  /** Effective whole-room average U; no material/glazing decomposition. */
+  setRoomAverageU(roomId: string, uValueWm2K: number): void {
+    const room = this.state.cfg.rooms.find(candidate => candidate.id === roomId);
+    if (!room || !Number.isFinite(uValueWm2K) || uValueWm2K < 0 || !Number.isFinite(uValueWm2K * roomExposedEnvelopeAreaM2(room, this.state.cfg))) return;
+    this.update(() => { room.averageUValueWm2K = uValueWm2K; });
+  }
+
+  /** null restores the automatic square-box/shared-face estimate. */
+  setRoomEnvelopeAreaOverride(roomId: string, areaM2: number | null): void {
+    const room = this.state.cfg.rooms.find(candidate => candidate.id === roomId);
+    if (!room || (areaM2 !== null && !(Number.isFinite(areaM2) && areaM2 > 0))) return;
+    this.update(() => { room.envelopeAreaOverrideM2 = areaM2; });
+  }
+
+  setVentilation(patch: Partial<NonNullable<Config['ventilation']>>): void {
+    const ventilation = { mode: 'single' as const, grossACH: .25, sensibleEfficiencyPct: 0, ...this.state.cfg.ventilation, ...patch };
+    if (!['single', 'dual'].includes(ventilation.mode) || !(Number.isFinite(ventilation.grossACH) && ventilation.grossACH >= 0)
+      || !(Number.isFinite(ventilation.sensibleEfficiencyPct) && ventilation.sensibleEfficiencyPct >= 0 && ventilation.sensibleEfficiencyPct <= 100)) return;
+    this.update(s => { s.cfg.ventilation = ventilation; });
+  }
+
+  /** Advanced whole-room H input rebases effective U for future geometry edits. */
+  setRoomEnvelopeConductance(roomId: string, conductanceWK: number): void {
+    const room = this.state.cfg.rooms.find(candidate => candidate.id === roomId);
+    if (!room || !Number.isFinite(conductanceWK) || conductanceWK < 0 || !(roomVolumeM3(room) > 0) || !Number.isFinite(conductanceWK / roomVolumeM3(room))) return;
+    this.update(s => {
+      const edited = s.cfg.rooms.find(candidate => candidate.id === roomId)!;
+      edited.averageUValueWm2K = conductanceWK / roomExposedEnvelopeAreaM2(edited, s.cfg);
+      edited.heatLossWPerK = conductanceWK;
+    });
+  }
+
+  /** Explicit advanced H override; zero retains the editable connection. */
   setInterzoneConductance(roomA: string, roomB: string, conductanceWK: number): void {
     const ids = new Set(this.state.cfg.rooms.slice(0, this.state.cfg.unitCount).map(r => r.id));
     if (roomA === roomB || !ids.has(roomA) || !ids.has(roomB) || !Number.isFinite(conductanceWK) || conductanceWK < 0) return;
     this.update(s => {
       const links = s.cfg.interzoneLinks ??= [];
       const at = links.findIndex(l => (l.roomA === roomA && l.roomB === roomB) || (l.roomA === roomB && l.roomB === roomA));
-      if (conductanceWK === 0) { if (at >= 0) links.splice(at, 1); }
-      else if (at >= 0) {
-        links[at].conductanceWK = conductanceWK;
-        if (links[at].areaM2 !== undefined && links[at].transferWm2K !== undefined) links[at].transferWm2K = conductanceWK / links[at].areaM2!;
-      }
-      else links.push({ roomA, roomB, conductanceWK });
+      if (at >= 0) Object.assign(links[at], { conductanceWK, conductanceOverrideWK: conductanceWK });
+      else links.push({ roomA, roomB, ...INTERZONE_GEOMETRY_DEFAULTS, orientation: 'vertical', conductanceWK, conductanceOverrideWK: conductanceWK });
     });
   }
 
-  /** Create or characterize a visual connection; H = area × effective coefficient. */
-  setInterzoneLink(roomA: string, roomB: string, patch: Partial<Pick<InterzoneLink, 'kind' | 'orientation' | 'areaM2' | 'transferWm2K'>> = {}): void {
+  /** Opening and insulated solid contact are simultaneous parallel paths.
+   * Old exclusive kind/area/coefficient patches remain supported for legacy QA. */
+  setInterzoneLink(roomA: string, roomB: string, patch: Partial<Pick<InterzoneLink, 'openingAreaM2' | 'contactAreaM2' | 'insulationMm' | 'openingTransferWm2K' | 'kind' | 'orientation' | 'areaM2' | 'transferWm2K'>> = {}): void {
     const ids = new Set(this.state.cfg.rooms.slice(0, this.state.cfg.unitCount).map(r => r.id));
     if (roomA === roomB || !ids.has(roomA) || !ids.has(roomB)) return;
     const existing = this.state.cfg.interzoneLinks?.find(l => (l.roomA === roomA && l.roomB === roomB) || (l.roomA === roomB && l.roomB === roomA));
-    const kind = patch.kind ?? existing?.kind ?? 'opening';
     const orientation = patch.orientation ?? existing?.orientation ?? 'vertical';
-    const changedKind = patch.kind !== undefined && patch.kind !== existing?.kind;
-    const transferWm2K = patch.transferWm2K ?? (changedKind ? undefined : existing?.transferWm2K) ?? (kind === 'opening' ? 40 : 1.5);
-    const areaM2 = patch.areaM2 ?? existing?.areaM2 ?? (existing ? existing.conductanceWK / transferWm2K : 2);
-    if (!['opening', 'partition'].includes(kind) || !['horizontal', 'vertical'].includes(orientation) ||
-      !Number.isFinite(areaM2) || areaM2 <= 0 || !Number.isFinite(transferWm2K) || transferWm2K < 0 || !Number.isFinite(areaM2 * transferWm2K)) return;
-    const link: InterzoneLink = { roomA, roomB, kind, orientation, areaM2, transferWm2K, conductanceWK: areaM2 * transferWm2K };
+    if (!['horizontal', 'vertical'].includes(orientation)) return;
+    const modernKeys = ['openingAreaM2', 'contactAreaM2', 'insulationMm', 'openingTransferWm2K'] as const;
+    const modernEdit = modernKeys.some(key => patch[key] !== undefined);
+    const legacyEdit = patch.kind !== undefined || patch.areaM2 !== undefined || patch.transferWm2K !== undefined;
+    let link: InterzoneLink;
+    if (!modernEdit && (legacyEdit || (existing && !hasInterzoneGeometry(existing)))) {
+      const kind = patch.kind ?? existing?.kind ?? 'opening';
+      const changedKind = patch.kind !== undefined && patch.kind !== existing?.kind;
+      const transferWm2K = patch.transferWm2K ?? (changedKind ? undefined : existing?.transferWm2K) ?? (kind === 'opening' ? 40 : 1.5);
+      const areaM2 = patch.areaM2 ?? existing?.areaM2 ?? (existing && transferWm2K > 0 ? existing.conductanceWK / transferWm2K : 2);
+      if (!['opening', 'partition'].includes(kind) || !Number.isFinite(areaM2) || areaM2 < 0 || !Number.isFinite(transferWm2K) || transferWm2K < 0 || !Number.isFinite(areaM2 * transferWm2K)) return;
+      link = { roomA, roomB, kind, orientation, areaM2, transferWm2K, conductanceWK: areaM2 * transferWm2K };
+    } else {
+      link = { roomA, roomB, orientation, conductanceWK: 0,
+        openingAreaM2: patch.openingAreaM2 ?? existing?.openingAreaM2 ?? INTERZONE_GEOMETRY_DEFAULTS.openingAreaM2,
+        contactAreaM2: patch.contactAreaM2 ?? existing?.contactAreaM2 ?? INTERZONE_GEOMETRY_DEFAULTS.contactAreaM2,
+        insulationMm: patch.insulationMm ?? existing?.insulationMm ?? INTERZONE_GEOMETRY_DEFAULTS.insulationMm,
+        openingTransferWm2K: patch.openingTransferWm2K ?? existing?.openingTransferWm2K ?? INTERZONE_GEOMETRY_DEFAULTS.openingTransferWm2K,
+        ...(!modernEdit && existing?.conductanceOverrideWK !== undefined ? { conductanceOverrideWK: existing.conductanceOverrideWK } : {}) };
+      if (![link.openingAreaM2!, link.contactAreaM2!, link.openingTransferWm2K!].every(value => Number.isFinite(value) && value >= 0)
+        || !Number.isFinite(link.insulationMm!) || link.insulationMm! < 45 || link.insulationMm! > 180) return;
+      link.conductanceWK = interzoneConductance(link);
+      if (!Number.isFinite(link.conductanceWK)) return;
+    }
     this.update(s => {
       const links = s.cfg.interzoneLinks ??= [];
       const at = links.findIndex(l => (l.roomA === roomA && l.roomB === roomB) || (l.roomA === roomB && l.roomB === roomA));
       if (at >= 0) links[at] = link; else links.push(link);
     });
+  }
+
+  /** Geometry zeros do not erase a link; only this explicit action removes it. */
+  removeInterzoneLink(roomA: string, roomB: string): void {
+    const at = this.state.cfg.interzoneLinks?.findIndex(link => (link.roomA === roomA && link.roomB === roomB) || (link.roomA === roomB && link.roomB === roomA)) ?? -1;
+    if (at < 0) return;
+    this.update(s => { s.cfg.interzoneLinks!.splice(at, 1); });
   }
 
   addRoom(): void {
@@ -306,17 +432,31 @@ class Store {
     });
   }
 
-  setOutdoorKind(kind: 'owner' | 'generic'): void {
+  setOutdoorKind(kind: OutdoorKind): void {
+    if (kind === this.state.cfg.outdoorKind) return;
+    const model = outdoorModelInfo(kind);
     this.update((s) => {
       s.cfg.outdoorKind = kind;
-      if (kind === 'owner' && s.cfg.unitCount > OWNER_PORTS) {
-        s.cfg.unitCount = OWNER_PORTS;
-        s.ui.notice = `Owner preset limited to its ${OWNER_PORTS} ports; unit count reduced.`;
-      } else {
-        s.ui.notice = null;
+      const oldCount = s.cfg.unitCount;
+      s.cfg.unitCount = Math.min(oldCount, outdoorPortCapacity(s.cfg));
+      if (model.coolingHighFanFlowM3h !== undefined) s.cfg.outdoorVolumetricAirFlowM3s = model.coolingHighFanFlowM3h / 3600;
+      else delete s.cfg.outdoorVolumetricAirFlowM3s;
+      for (const room of s.cfg.rooms.slice(0, s.cfg.unitCount)) {
+        if (!model.compatibleIndoorClasses.includes(room.indoorClass)) {
+          applyIndoorProfile(room, model.compatibleIndoorClasses[0]);
+        }
       }
+      s.ui.notice = oldCount > s.cfg.unitCount
+        ? `${model.label} accepts ${outdoorPortCapacity(s.cfg)} indoor unit${outdoorPortCapacity(s.cfg) === 1 ? '' : 's'}. Other rooms and settings remain in the inactive room pool.`
+        : null;
       this.pruneSelection(s);
     });
+  }
+
+  setIndoorClass(index: number, indoor: IndoorClass): void {
+    const room = this.state.cfg.rooms[index];
+    if (!room || !outdoorModelInfo(this.state.cfg).compatibleIndoorClasses.includes(indoor)) return;
+    this.update(s => applyIndoorProfile(s.cfg.rooms[index], indoor));
   }
 }
 
@@ -328,16 +468,14 @@ export function activeRooms(cfg: Config): RoomConfig[] {
 
 export interface EffectiveCleanliness { pct: number; source: 'global' | 'override' }
 
-/** Outdoor coil: override when set, else the global value. */
+/** All coils permanently share the global clear-air-passage fraction. */
 export function outdoorCleanliness(cfg: Config): EffectiveCleanliness {
-  const o = cfg.live.outdoorCleanlinessOverridePct;
-  return o === null ? { pct: cfg.live.cleanlinessPct, source: 'global' } : { pct: o, source: 'override' };
+  return { pct: cfg.live.cleanlinessPct, source: 'global' };
 }
 
-/** Indoor coil of room `i`: its override when set, else the global value. */
-export function indoorCleanliness(cfg: Config, i: number): EffectiveCleanliness {
-  const o = cfg.rooms[i]?.cleanlinessOverridePct ?? null;
-  return o === null ? { pct: cfg.live.cleanlinessPct, source: 'global' } : { pct: o, source: 'override' };
+/** Room index is retained for API compatibility; it cannot unbind a coil. */
+export function indoorCleanliness(cfg: Config, _i: number): EffectiveCleanliness {
+  return { pct: cfg.live.cleanlinessPct, source: 'global' };
 }
 
 // ---------- reading source ----------
@@ -414,7 +552,7 @@ export function currentReadings(s: AppState): Current {
   }
   return {
     ...r, engine: null, usable: false, electricalKw: null, live, cycle: null, example: 'idle', mDotKgS: null,
-    retainedRooms: r.engine?.state === 'fault' ? r.engine.rooms : undefined,
+    retainedRooms: r.engine && (r.engine.state === 'fault' || live.kind === 'fault') ? r.engine.rooms : undefined,
     qCondKw: null, qEvapKw: null, pRefKw: null, driveLossKw: null, pElecKw: 0, roomKwTotal: null, cop: null,
     branchKw: null, branchOutC: null, branchFanKw: [], outdoorFanKw: 0, controlsKw: 0, outdoorOutletC: null,
     indoorFansOn: false, outdoorFanOn: false, frostRateKgH: null, meltRateKgH: null, ledger: [],

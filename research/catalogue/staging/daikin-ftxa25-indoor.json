@@ -1,0 +1,290 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Stylish (C/FTXA-AW/BB/BT/BS + RXA-A9/B)",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FTXA25AW/BS/BT/BB",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNITÉS INTÉRIEURES table header column '25AW/BS/BT/BB'",
+        "excerpt": "C/FTXA-AW/BB/BT/BS + RXA-A9/B ; Unité intérieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "condition": "indoor unit; row 'Dimensions Unité HxLxP' single merged cell spanning ALL indoor columns (15..50), visually verified on page image",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged all indoor columns",
+            "excerpt": "Dimensions Unité HxLxP mm 295x798x189"
+          }
+        },
+        {
+          "key": "width",
+          "value": 798,
+          "unit": "mm",
+          "condition": "indoor unit; merged all indoor columns (HxLxP 295x798x189)",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged all indoor columns",
+            "excerpt": "Dimensions Unité HxLxP mm 295x798x189"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 189,
+          "unit": "mm",
+          "condition": "indoor unit; merged all indoor columns (HxLxP 295x798x189)",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged all indoor columns",
+            "excerpt": "Dimensions Unité HxLxP mm 295x798x189"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 11.5,
+          "unit": "kg",
+          "condition": "indoor unit net weight; row 'Poids Unité' single merged cell spanning ALL indoor columns (visually verified)",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Poids Unité', merged all indoor columns",
+            "excerpt": "Poids Unité kg 11,5"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 276,
+          "unit": "m3/h",
+          "condition": "cooling mode, Silence fan speed; published 4,6 m³/min, exact conversion x60 = 276 m³/h (1 m³/min = 60 m³/h); original m³/min preserved in excerpt",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Ventilateur Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut', 25AW/BS/BT/BB column, Silence value",
+            "excerpt": "Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut m³/min 4,6/6,1/8,6/11,5"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 366,
+          "unit": "m3/h",
+          "condition": "cooling mode, Bas (low) fan speed; published 6,1 m³/min, exact conversion x60 = 366 m³/h",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut', 25AW column, Bas value",
+            "excerpt": "Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut m³/min 4,6/6,1/8,6/11,5"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 516,
+          "unit": "m3/h",
+          "condition": "cooling mode, Moyen (medium) fan speed; published 8,6 m³/min, exact conversion x60 = 516 m³/h",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut', 25AW column, Moyen value",
+            "excerpt": "Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut m³/min 4,6/6,1/8,6/11,5"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 690,
+          "unit": "m3/h",
+          "condition": "cooling mode, Haut (high) fan speed; published 11,5 m³/min, exact conversion x60 = 690 m³/h",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut', 25AW column, Haut value",
+            "excerpt": "Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut m³/min 4,6/6,1/8,6/11,5"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 270,
+          "unit": "m3/h",
+          "condition": "heating mode, Silence fan speed; published 4,5 m³/min, exact conversion x60 = 270 m³/h",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Débit d'air Chauffage Silence/Bas/Moyen/Haut', 25AW column, Silence value",
+            "excerpt": "Débit d'air Chauffage Silence/Bas/Moyen/Haut m³/min 4,5/6,4/9,0/11,1"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 384,
+          "unit": "m3/h",
+          "condition": "heating mode, Bas (low) fan speed; published 6,4 m³/min, exact conversion x60 = 384 m³/h",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Débit d'air Chauffage Silence/Bas/Moyen/Haut', 25AW column, Bas value",
+            "excerpt": "Débit d'air Chauffage Silence/Bas/Moyen/Haut m³/min 4,5/6,4/9,0/11,1"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 540,
+          "unit": "m3/h",
+          "condition": "heating mode, Moyen (medium) fan speed; published 9,0 m³/min, exact conversion x60 = 540 m³/h",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Débit d'air Chauffage Silence/Bas/Moyen/Haut', 25AW column, Moyen value",
+            "excerpt": "Débit d'air Chauffage Silence/Bas/Moyen/Haut m³/min 4,5/6,4/9,0/11,1"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 666,
+          "unit": "m3/h",
+          "condition": "heating mode, Haut (high) fan speed; published 11,1 m³/min, exact conversion x60 = 666 m³/h",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Débit d'air Chauffage Silence/Bas/Moyen/Haut', 25AW column, Haut value",
+            "excerpt": "Débit d'air Chauffage Silence/Bas/Moyen/Haut m³/min 4,5/6,4/9,0/11,1"
+          }
+        },
+        {
+          "key": "soundPower",
+          "value": 57,
+          "unit": "dBA",
+          "condition": "indoor sound power level, cooling (Rafraîchissement); row value '57' single merged cell spanning 15/20/25 indoor columns (visually verified); sound POWER not pressure",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Niveau de puissance sonore Rafraîchissement', merged 15/20/25 columns",
+            "excerpt": "Niveau de puissance sonore Rafraîchissement dBA 57"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 19,
+          "unit": "dBA",
+          "condition": "indoor sound pressure, cooling (Rafraîchissement), Silence speed; row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut'",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut', 25AW column, Silence value",
+            "excerpt": "Niveau de pression sonore Rafraîchissement Silence/Bas/Haut dBA 19/25/40"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 25,
+          "unit": "dBA",
+          "condition": "indoor sound pressure, cooling (Rafraîchissement), Bas speed",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut', 25AW column, Bas value",
+            "excerpt": "Niveau de pression sonore Rafraîchissement Silence/Bas/Haut dBA 19/25/40"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 40,
+          "unit": "dBA",
+          "condition": "indoor sound pressure, cooling (Rafraîchissement), Haut speed",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut', 25AW column, Haut value",
+            "excerpt": "Niveau de pression sonore Rafraîchissement Silence/Bas/Haut dBA 19/25/40"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 19,
+          "unit": "dBA",
+          "condition": "indoor sound pressure, heating (Chauffage), Silence speed",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Niveau de pression sonore Chauffage Silence/Bas/Haut', 25AW column, Silence value",
+            "excerpt": "Niveau de pression sonore Chauffage Silence/Bas/Haut dBA 19/25/40"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 25,
+          "unit": "dBA",
+          "condition": "indoor sound pressure, heating (Chauffage), Bas speed",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Niveau de pression sonore Chauffage Silence/Bas/Haut', 25AW column, Bas value",
+            "excerpt": "Niveau de pression sonore Chauffage Silence/Bas/Haut dBA 19/25/40"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 40,
+          "unit": "dBA",
+          "condition": "indoor sound pressure, heating (Chauffage), Haut speed",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS INTÉRIEURES row 'Niveau de pression sonore Chauffage Silence/Bas/Haut', 25AW column, Haut value",
+            "excerpt": "Niveau de pression sonore Chauffage Silence/Bas/Haut dBA 19/25/40"
+          }
+        }
+      ],
+      "ratings": [
+        {
+          "mode": "cooling",
+          "combination": "FTXA25AW/BS/BT/BB + RXA25A9 (25-class monosplit, shared efficiency column '25AW/BS/BT/BB + 25A9')",
+          "conditions": "nominal cooling per footnote: indoor 27 °CBS/19 °CBH, outdoor 35 °CBS, equiv pipe 5 m, height diff 0 m; published min/nominal/max thermal 1,30/2,50/3,20 kW",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.30, "nominal": 2.50, "maximum": 3.20 },
+          "electricalInputKw": { "minimum": 0.27, "nominal": 0.56, "maximum": 0.78 },
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), 'Données relatives à l'efficacité' rows 'Puissance frigorifique Mini./Nom./Maxi.' and 'Puissance absorbée Rafraîchissement Mini./Nom./Maxi.', column '25AW/BS/BT/BB + 25A9'",
+            "excerpt": "Puissance frigorifique Mini./Nom./Maxi. kW 1,30/2,50/3,20 ; Puissance absorbée Rafraîchissement Mini./Nom./Maxi. kW 0,27/0,56/0,78"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "FTXA25AW/BS/BT/BB + RXA25A9 (25-class monosplit)",
+          "conditions": "nominal heating per footnote: indoor 20 °CBS, outdoor 7 °CBS/6 °CBH, equiv pipe 5 m, height diff 0 m; published min/nominal/max thermal 1,30/2,80/4,70 kW",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.30, "nominal": 2.80, "maximum": 4.70 },
+          "electricalInputKw": { "minimum": 0.25, "nominal": 0.56, "maximum": 1.22 },
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), rows 'Puissance calorifique Mini./Nom./Maxi.' and 'Puissance absorbée Chauffage Mini./Nom./Maxi.', column '25AW/BS/BT/BB + 25A9'",
+            "excerpt": "Puissance calorifique Mini./Nom./Maxi. kW 1,30/2,80/4,70 ; Puissance absorbée Chauffage Mini./Nom./Maxi. kW 0,25/0,56/1,22"
+          }
+        }
+      ],
+      "compatibility": [
+        {
+          "description": "monosplit pairing FTXA25AW/BS/BT/BB + RXA25A9 evidenced by shared efficiency column header '25AW/BS/BT/BB + 25A9'. CAVEAT: a vertical merged band on p.42 reads 'Possibilité de connexion uniquement aux unités extérieures multi' spanning the efficiency table; this connection caveat must be checked against the separate combination scheme before asserting monosplit eligibility. Never assume all R32 devices pair.",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), 'Données relatives à l'efficacité' column header 'FTXA + RXA ... 25AW/BS/BT/BB + 25A9' + vertical merged caveat band 'Possibilité de connexion uniquement aux unités extérieures multi'",
+            "excerpt": "FTXA + RXA ... 25AW/BS/BT/BB + 25A9 ; Possibilité de connexion uniquement aux unités extérieures multi"
+          }
+        }
+      ],
+      "unknowns": [
+        "airflow unit: p.42 publishes indoor Débit d'air in m³/min; schema enum only allows m3/h; CORRECTED 2026-10-11: exact conversion is x60 (1 m³/min = 60 m³/h); prior x6 conversion was wrong (values 10x too small); original m³/min preserved in excerpts",
+        "indoor fan motor output (fanMotorOutput) and fan electrical input: not published",
+        "SEER/SCOP are system/combination ratings (SEER 8,74; SCOP/A 5,15) for FTXA25+RXA25A9, not indoor-unit facts; climate class A+++/A++ seasonal not stored as unit fact",
+        "capacityClass: p.42 does not publish a single capacity-class scalar per indoor column; nominal cooling 2,50 kW is a rating-table value, not a class label",
+        "colour suffix AW/BS/BT/BB are distinct references (white/wood/silver/black per page photos); individual colour reference FTXA25AW etc not split into separate files this batch",
+        "current 2026 availability of FTXA-BS family: daikin.eu FTXA-BS page marked 'Archived' (prior generation); status recorded unknown, not current",
+        "indoor electrical supply/voltage: not published for indoor unit (supply shown at outdoor unit)"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    { "modelReference": "RXA25A9", "reason": "paired outdoor unit of this split; captured in separate candidate file daikin-rxa25a9-outdoor.json" },
+    { "modelReference": "FTXA25AW / FTXA25BS / FTXA25BT / FTXA25BB", "reason": "colour-suffix variants named on p.42 (AW white, BS wood, BT silver, BB black); grouped as one 25AW/BS/BT/BB column, not split into separate files this batch" }
+  ]
+}

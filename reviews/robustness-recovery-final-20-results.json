@@ -1,0 +1,657 @@
+{
+  "createdAt": "2026-10-11T10:44:56.170Z",
+  "preset": "quick",
+  "seed": 20261011,
+  "workers": 8,
+  "timeoutMs": 1200000,
+  "sourceHashes": {
+    "src/engine/air.ts": "6dfb70bd7b7c5b84501e0de1633cf8378ea0b2bd0eb903dafe09c31625745d15",
+    "src/engine/charge-output.ts": "ca0bed2dd4836af7e72dce71e28e5d0b11309358f4c3da0bb6365a9079142ff7",
+    "src/engine/charge.ts": "0c9dd8050fab6b3bd16bcb881f59fc00debc2f85c774c2a1c2216d45d289e168",
+    "src/engine/cycle.ts": "294d647a26f60d319641c9b7fe4645378472dd5c70a8e6c0ef6075168aaf29e4",
+    "src/engine/defaults.ts": "5ca7d8006c6990e4b6b99a6ef353ec075b720a07701dac39a23ca9fb4fec99f8",
+    "src/engine/demand.ts": "83b3115c656098d0c8d57b97b0d0d5abf6b014c797324e7ff31756a7c28adf90",
+    "src/engine/drive.ts": "d94247f20b359a61980e0d5af121d5299133f3b65a49358c4c40540a6655d0dd",
+    "src/engine/engine.ts": "1476bef6b75e16cb72e9cdd1fcf7ee01d4a93e60c629e2848e5c2c14bb3bd05f",
+    "src/engine/envelope.ts": "eaab1d96df755b322050854fa8b7108e1f4918fbeb4dd1206d815ba9c74dc4e3",
+    "src/engine/film.ts": "3cfeda3465b8c5226e6ed82bada490abdc42577fdadd4a1d0a2e3fb682285dbb",
+    "src/engine/index.ts": "f8aba3f8724f99dcd1c17be93cfc3622a9fe276d968cc36f5bbf70e9c3773ebd",
+    "src/engine/interzone.ts": "856dfe9535d53f52aa8aae8f0cc83167163b11bab8ca6bb9bb62ff9e600d8bed",
+    "src/engine/properties.ts": "6fb2812381e471623e449a5b593cd4e1d9874f32e559b33bd05c2eac7b6ad36e",
+    "src/engine/thermostat.ts": "624305969795b54b99745ac84d1c966dbc0e66263ee8579111ea2054c971d5f5",
+    "src/engine/transport.ts": "928ab51cd8ca1193e68ba0821ee88ae2966521314ad9b1fd1b9894f253e2ed31",
+    "src/engine/types.ts": "872d14a3bbdc07a69883fdf3c393b9cc0ef9fbe9de72d33a983f699f2361a9b7",
+    "src/engine/ventilation.ts": "6aef508a062fca992c2b7a1961ae69c12ae5317c5824326ffe57a1a0a4ecd8d8",
+    "compiled/air.js": "ac8302044d196da0528b0ca99b76db9f550d26b57adc42c0de89a68ee9b5ed94",
+    "compiled/charge-output.js": "4ed7ae6f5cc6b6f0b52465b8cbba32f400f890e729ba71cd2db804a11c435fa0",
+    "compiled/charge.js": "716d6e0134395d6f67245751af1d915e179ab2c599b8a66950bbf8006fac9b1d",
+    "compiled/cycle.js": "e24ab41245578772ebd43bc2e5be4a58933410093ed2ee2475eb2021b67ef48c",
+    "compiled/defaults.js": "b1bcc26d4004cb951b5440c02becc157363373d64aef5f088b809c1bd20a2ed8",
+    "compiled/demand.js": "53f0dcc32749a5fa126375691bcc6867ef3dbf1df2c6895ae1ae36c19a78309d",
+    "compiled/drive.js": "9795fb61cb25ffbd4fa0dfd41f926b4fa423d4dd6cb74f130f242562c326a0b9",
+    "compiled/engine.js": "34d90d7007a7f55d8768d0cd13111130c2d646d2f3881ab0457790df386d9c0d",
+    "compiled/envelope.js": "500ad61198fd0a91fe0f5e741a08c8b1b5c965a88cb8eecbf1025c8a5413b924",
+    "compiled/film.js": "2af475cdfb6faa4512ac7a17c45393f3be33ab88e2cb5be334138956ecf33d51",
+    "compiled/index.js": "2a58c1821531507d4843729995d2ffc8bbf2176ace4cb1e0269090322f8488c3",
+    "compiled/interzone.js": "677d003f3074e81bd06c7754444c0cdefd77fb56302e3db72536bfec8e602c60",
+    "compiled/properties.js": "42a1e8c94947bb4a8f967ba89b51c462d3a0af43d4eb22d4d3cd7daa089f4400",
+    "compiled/thermostat.js": "4aa6dbf014fc983efb014e5a5fc0a45613a9c7d7bd42009b4f6108eeacf0398f",
+    "compiled/transport.js": "5bc7c0f1850837de00043e755290d8e3d131d4ee3adb27646557344409bc1dcf",
+    "compiled/types.js": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "compiled/ventilation.js": "337f30b24c963ac3f68d4b0d8f5b6942610e73ca3b6ae10f4d6aa5de6811e570",
+    "public/vendor/coolprop-safe/LICENSE-CoolProp": "9bf835333ef602af4cb19338b9f9d43671e174fa029b00280e9bdba6ea4719b2",
+    "public/vendor/coolprop-safe/adapter.js": "06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34",
+    "public/vendor/coolprop-safe/coolprop.js": "6fa2e627803e2453da12cb9fce160ca3326851cd179444edc5ab698e21524d6c",
+    "public/vendor/coolprop-safe/coolprop.wasm": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+    "public/vendor/coolprop-safe/licenses/Emscripten-LICENSE": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86",
+    "public/vendor/coolprop-safe/licenses/boost_headers-LICENSE": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "public/vendor/coolprop-safe/licenses/compiler-rt-LICENSE.TXT": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.APACHE": "03379001a7b12a2ec997a25554247d985270b353c10d5bafee9ac8d6519820b7",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.BSD": "51928dce36213c5333ba3172e847d735d4c6e9b7ff2722a326c49067155b82eb",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.MINPACK": "c87b7f8ee88f6195e91743820c00354833583aef091b72e2d4a49c8e28e798a0",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.MPL2": "66a3107d5ad6a058aab753eaac2047ccb2ed0e39465dd0fe5844da3e300d5172",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.README": "db640ff2bd90c6abd6a4d3fbb351e0ee4d555417cf840492054d1cbb2ea85644",
+    "public/vendor/coolprop-safe/licenses/eigen-LICENSE": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+    "public/vendor/coolprop-safe/licenses/fmt-LICENSE": "07580f2a3b35709ce703d523f447b242f6dfec7582a8c0df102c7fa2849375f8",
+    "public/vendor/coolprop-safe/licenses/if97-LICENSE": "e22c3d30ef8d88ab468d9ea20392ca1df22fa3fd0a92dc3e996d89cf3cfdbd03",
+    "public/vendor/coolprop-safe/licenses/libcxx-LICENSE.TXT": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+    "public/vendor/coolprop-safe/licenses/libcxxabi-LICENSE.TXT": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",
+    "public/vendor/coolprop-safe/licenses/miniz-header-notice.txt": "dfdeccf4fcb0cef3d71b31fa915e804f272fa57f00d4ff5076d2c8e8efc22057",
+    "public/vendor/coolprop-safe/licenses/msgpack-c-COPYING": "664550b43996452a5a2c7471bb0ff77185a58c69ccafa60f983dc4c162e1ee22",
+    "public/vendor/coolprop-safe/licenses/msgpack-c-LICENSE_1_0.txt": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "public/vendor/coolprop-safe/licenses/multicomplex-README.md": "d58933ccd086958d576969174c04af6506cc5586da9d2125ec644d534225c018",
+    "public/vendor/coolprop-safe/licenses/musl-COPYRIGHT": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af",
+    "public/vendor/coolprop-safe/licenses/nlohmann_json-LICENSE.MIT": "46a65cffd1ea955132d95a8dd921640714a8d6b537d2e4e482d31145ae95b603",
+    "public/vendor/coolprop-safe/licenses/refprop_headers-LICENSE": "f21f633c596509e89b2baedfd657c8f1b8018954b06576590971684b210e91f8",
+    "public/vendor/coolprop-safe/licenses/valijson-LICENSE": "61b5766db38eaa3f320c366357956d7743424bfbf90fd78f5943866ba237589e",
+    "public/vendor/coolprop-safe/provenance.json": "fffa34344622d1d2266c5d389552e3e672706422f317193ebf756bc0a157f697",
+    "tools/robustness-worker.mjs": "8cea3d25a28564f91b5e4b907b6af3e65d8823b185c7034c6bd62ac62f2695dd",
+    "tools/robustness-campaign.mjs": "de0f752b4e8e09de7841e0f2ddd3b46e08448381a18aac36603931688ecb5a6c"
+  },
+  "nodeVersion": "v24.21.0",
+  "platform": "linux",
+  "architecture": "x64",
+  "extendedComponentAndLineBounds": false,
+  "segmentDurationCapSeconds": null,
+  "method": "Independent Node child processes; immutable TypeScript snapshot compiled once; production guarded HEOS; fixed accepted 0.25-second steps; full before-step checkpoint persisted for native aborts.",
+  "limits": "Reference R32 engine only. Passing a finite campaign is not proof of correctness. Generic component parameters, not calibrated manufacturer maps. The screenshot scenario is reconstructed from visible controls, not a saved exact pre-crash state.",
+  "scenarios": [
+    {
+      "id": "actual-owner-default-dual-75pct-clean95",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "dual-endurance-hot-wet-cooling",
+      "requestedSeconds": 1800
+    },
+    {
+      "id": "dual-endurance-humid-frost-defrost",
+      "requestedSeconds": 1800
+    },
+    {
+      "id": "dual-owner-old-generic-cool-to-heat",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "dual-owner-old-generic-heat-to-cool",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "dual-owner-winter-house-cool-to-heat",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "dual-owner-winter-house-heat-to-cool",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "dual-reported-friend-cold-cooling",
+      "requestedSeconds": 1100
+    },
+    {
+      "id": "seeded-dual-1-heads-eta-0.8",
+      "requestedSeconds": 240
+    },
+    {
+      "id": "seeded-dual-1-heads-eta-0",
+      "requestedSeconds": 240
+    },
+    {
+      "id": "seeded-dual-1-heads-eta-1",
+      "requestedSeconds": 240
+    },
+    {
+      "id": "seeded-dual-3-heads-eta-0.8",
+      "requestedSeconds": 240
+    },
+    {
+      "id": "seeded-dual-3-heads-eta-0",
+      "requestedSeconds": 240
+    },
+    {
+      "id": "seeded-dual-3-heads-eta-1",
+      "requestedSeconds": 240
+    },
+    {
+      "id": "seeded-dual-5-heads-eta-0.8",
+      "requestedSeconds": 240
+    },
+    {
+      "id": "seeded-dual-5-heads-eta-0",
+      "requestedSeconds": 240
+    },
+    {
+      "id": "seeded-dual-5-heads-eta-1",
+      "requestedSeconds": 240
+    },
+    {
+      "id": "seeded-dual-8-heads-eta-0.8",
+      "requestedSeconds": 240
+    },
+    {
+      "id": "seeded-dual-8-heads-eta-0",
+      "requestedSeconds": 240
+    },
+    {
+      "id": "seeded-dual-8-heads-eta-1",
+      "requestedSeconds": 240
+    }
+  ],
+  "completed": 20,
+  "counts": {
+    "pass": 20
+  },
+  "results": [
+    {
+      "id": "dual-reported-friend-cold-cooling",
+      "outcome": "pass",
+      "steps": 4400,
+      "updates": 0,
+      "simulatedSeconds": 1100,
+      "wallSeconds": 9.686148027,
+      "maxEnergyResidualJ": 5.974434316158295e-07,
+      "maxWaterResidualKg": 6.13398221105399e-15,
+      "protectionCounts": {},
+      "states": {
+        "idle": 4400
+      },
+      "stateEntries": {},
+      "completedDefrosts": 0,
+      "maxStepWallMs": 9.973039999999855,
+      "failureCategory": null
+    },
+    {
+      "id": "seeded-dual-1-heads-eta-0.8",
+      "outcome": "pass",
+      "steps": 960,
+      "updates": 1,
+      "simulatedSeconds": 240,
+      "wallSeconds": 23.613572535,
+      "maxEnergyResidualJ": 1.3550743460655212e-07,
+      "maxWaterResidualKg": 1.635844237846129e-15,
+      "protectionCounts": {
+        "pressure ratio": 120
+      },
+      "states": {
+        "running": 600,
+        "reversing": 12,
+        "idle": 348
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 660.4590639999988,
+      "failureCategory": null
+    },
+    {
+      "id": "seeded-dual-1-heads-eta-0",
+      "outcome": "pass",
+      "steps": 960,
+      "updates": 1,
+      "simulatedSeconds": 240,
+      "wallSeconds": 20.617592163999998,
+      "maxEnergyResidualJ": 1.816079020500183e-07,
+      "maxWaterResidualKg": 4.170275236248244e-15,
+      "protectionCounts": {
+        "pressure ratio": 144
+      },
+      "states": {
+        "running": 600,
+        "reversing": 12,
+        "idle": 348
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 808.104523,
+      "failureCategory": null
+    },
+    {
+      "id": "dual-owner-winter-house-cool-to-heat",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 1,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 55.00695863199999,
+      "maxEnergyResidualJ": 4.7404319047927856e-07,
+      "maxWaterResidualKg": 7.549516567451064e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 1200,
+        "reversing": 12,
+        "idle": 3588
+      },
+      "stateEntries": {
+        "running": 1,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 136.67394700000023,
+      "failureCategory": null
+    },
+    {
+      "id": "seeded-dual-1-heads-eta-1",
+      "outcome": "pass",
+      "steps": 960,
+      "updates": 1,
+      "simulatedSeconds": 240,
+      "wallSeconds": 18.575895406,
+      "maxEnergyResidualJ": 1.7741695046424866e-07,
+      "maxWaterResidualKg": 2.886579864025407e-15,
+      "protectionCounts": {
+        "pressure ratio": 144
+      },
+      "states": {
+        "running": 600,
+        "reversing": 12,
+        "idle": 348
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 761.8744879999995,
+      "failureCategory": null
+    },
+    {
+      "id": "dual-owner-old-generic-heat-to-cool",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 1,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 77.17361969,
+      "maxEnergyResidualJ": 1.7159618437290192e-06,
+      "maxWaterResidualKg": 3.011479954295737e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 4680,
+        "reversing": 12,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 872.1182879999978,
+      "failureCategory": null
+    },
+    {
+      "id": "actual-owner-default-dual-75pct-clean95",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 0,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 94.69104181600001,
+      "maxEnergyResidualJ": 3.600143827497959e-07,
+      "maxWaterResidualKg": 5.065392549852277e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 4800
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 132.2263969999999,
+      "failureCategory": null
+    },
+    {
+      "id": "seeded-dual-3-heads-eta-0.8",
+      "outcome": "pass",
+      "steps": 960,
+      "updates": 1,
+      "simulatedSeconds": 240,
+      "wallSeconds": 47.06556941,
+      "maxEnergyResidualJ": 3.9226142689585686e-07,
+      "maxWaterResidualKg": 1.174060848541103e-14,
+      "protectionCounts": {},
+      "states": {
+        "running": 840,
+        "reversing": 12,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1739.8084230000022,
+      "failureCategory": null
+    },
+    {
+      "id": "dual-owner-old-generic-cool-to-heat",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 1,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 104.46080366000001,
+      "maxEnergyResidualJ": 9.94652509689331e-07,
+      "maxWaterResidualKg": 9.603429163007604e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 3358,
+        "reversing": 12,
+        "idle": 1430
+      },
+      "stateEntries": {
+        "running": 8,
+        "idle": 7
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 707.6274449999983,
+      "failureCategory": null
+    },
+    {
+      "id": "seeded-dual-3-heads-eta-1",
+      "outcome": "pass",
+      "steps": 960,
+      "updates": 1,
+      "simulatedSeconds": 240,
+      "wallSeconds": 45.489893738999996,
+      "maxEnergyResidualJ": 3.5064294934272766e-07,
+      "maxWaterResidualKg": 6.401129626354418e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 840,
+        "reversing": 12,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1275.6072820000009,
+      "failureCategory": null
+    },
+    {
+      "id": "seeded-dual-3-heads-eta-0",
+      "outcome": "pass",
+      "steps": 960,
+      "updates": 1,
+      "simulatedSeconds": 240,
+      "wallSeconds": 54.880220123,
+      "maxEnergyResidualJ": 2.3446045815944672e-07,
+      "maxWaterResidualKg": 6.217248937900877e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 840,
+        "reversing": 12,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1669.6436119999998,
+      "failureCategory": null
+    },
+    {
+      "id": "dual-endurance-hot-wet-cooling",
+      "outcome": "pass",
+      "steps": 7200,
+      "updates": 0,
+      "simulatedSeconds": 1800,
+      "wallSeconds": 128.543935689,
+      "maxEnergyResidualJ": 1.4062970876693726e-06,
+      "maxWaterResidualKg": 3.019806626980426e-14,
+      "protectionCounts": {},
+      "states": {
+        "running": 7200
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 136.65030300000035,
+      "failureCategory": null
+    },
+    {
+      "id": "seeded-dual-5-heads-eta-0.8",
+      "outcome": "pass",
+      "steps": 960,
+      "updates": 1,
+      "simulatedSeconds": 240,
+      "wallSeconds": 65.73920844999999,
+      "maxEnergyResidualJ": 2.1979212760925293e-07,
+      "maxWaterResidualKg": 7.771561172376096e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 840,
+        "reversing": 12,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1633.3028880000056,
+      "failureCategory": null
+    },
+    {
+      "id": "seeded-dual-5-heads-eta-1",
+      "outcome": "pass",
+      "steps": 960,
+      "updates": 1,
+      "simulatedSeconds": 240,
+      "wallSeconds": 60.549475301,
+      "maxEnergyResidualJ": 5.280598998069763e-07,
+      "maxWaterResidualKg": 1.2094492074510299e-14,
+      "protectionCounts": {},
+      "states": {
+        "running": 840,
+        "reversing": 12,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1765.1623009999967,
+      "failureCategory": null
+    },
+    {
+      "id": "seeded-dual-5-heads-eta-0",
+      "outcome": "pass",
+      "steps": 960,
+      "updates": 1,
+      "simulatedSeconds": 240,
+      "wallSeconds": 63.564685033,
+      "maxEnergyResidualJ": 5.383044481277466e-07,
+      "maxWaterResidualKg": 1.3905543383430086e-14,
+      "protectionCounts": {},
+      "states": {
+        "running": 840,
+        "reversing": 12,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1907.8886330000023,
+      "failureCategory": null
+    },
+    {
+      "id": "dual-owner-winter-house-heat-to-cool",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 1,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 167.537214377,
+      "maxEnergyResidualJ": 2.721790224313736e-07,
+      "maxWaterResidualKg": 6.2450045135165055e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 4680,
+        "reversing": 12,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1011.3592940000017,
+      "failureCategory": null
+    },
+    {
+      "id": "seeded-dual-8-heads-eta-0.8",
+      "outcome": "pass",
+      "steps": 960,
+      "updates": 1,
+      "simulatedSeconds": 240,
+      "wallSeconds": 92.07043179,
+      "maxEnergyResidualJ": 6.924383342266083e-07,
+      "maxWaterResidualKg": 3.730349362740526e-14,
+      "protectionCounts": {
+        "thermal boundary": 120
+      },
+      "states": {
+        "running": 840,
+        "reversing": 12,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 320.8876709999895,
+      "failureCategory": null
+    },
+    {
+      "id": "seeded-dual-8-heads-eta-1",
+      "outcome": "pass",
+      "steps": 960,
+      "updates": 1,
+      "simulatedSeconds": 240,
+      "wallSeconds": 118.670200284,
+      "maxEnergyResidualJ": 7.264316082000732e-07,
+      "maxWaterResidualKg": 3.68594044175552e-14,
+      "protectionCounts": {
+        "condensing temperature": 522
+      },
+      "states": {
+        "running": 929,
+        "reversing": 12,
+        "idle": 19
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 678.7134179999994,
+      "failureCategory": null
+    },
+    {
+      "id": "seeded-dual-8-heads-eta-0",
+      "outcome": "pass",
+      "steps": 960,
+      "updates": 1,
+      "simulatedSeconds": 240,
+      "wallSeconds": 139.02780222,
+      "maxEnergyResidualJ": 9.313225746154785e-07,
+      "maxWaterResidualKg": 4.884981308350689e-14,
+      "protectionCounts": {
+        "condensing temperature": 504
+      },
+      "states": {
+        "running": 948,
+        "reversing": 12
+      },
+      "stateEntries": {
+        "running": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 979.2815629999968,
+      "failureCategory": null
+    },
+    {
+      "id": "dual-endurance-humid-frost-defrost",
+      "outcome": "pass",
+      "steps": 7200,
+      "updates": 0,
+      "simulatedSeconds": 1800,
+      "wallSeconds": 302.380060355,
+      "maxEnergyResidualJ": 1.3182871043682098e-06,
+      "maxWaterResidualKg": 5.6066262743570405e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 5680,
+        "reversing": 96,
+        "defrost": 992,
+        "draining": 160,
+        "idle": 272
+      },
+      "stateEntries": {
+        "running": 5,
+        "reversing": 8,
+        "defrost": 4,
+        "draining": 4,
+        "idle": 4
+      },
+      "completedDefrosts": 4,
+      "maxStepWallMs": 504.6695120000004,
+      "failureCategory": null
+    }
+  ],
+  "artifactDirectory": "/tmp/heatpump-robustness-recovery-final-20",
+  "acceptedSimulatedSeconds": 13580,
+  "acceptedSteps": 54320,
+  "configurationUpdates": 16,
+  "inputHashes": {
+    "actual-owner-default-dual-75pct-clean95": "5b3aa44ac3af6cac7e838831dd0a45d10be7973a194e82d07a5509e42b71734b",
+    "dual-endurance-hot-wet-cooling": "0c65d155237c0369d390412106c90bbdacee7ea3d7ed61fa6d24927eecfcd65a",
+    "dual-endurance-humid-frost-defrost": "e48daae72d758b4c6cfebfb3c992be8adb9103b64bc6c0736fa81b17835dd150",
+    "dual-owner-old-generic-cool-to-heat": "e8a6047490df09f42455d8c0002e3f56f06130c8db55dae4f62eb0cea44863e2",
+    "dual-owner-old-generic-heat-to-cool": "5b9321866a659c77c37ed618eaeea06d74f468ea784aafdd86648d60370bf8b0",
+    "dual-owner-winter-house-cool-to-heat": "a331475c5af3517e8b74327b3a274d3d982ff2bcbdda3da104e57f70699fc10c",
+    "dual-owner-winter-house-heat-to-cool": "4979e1e59153b9a454db08d95d074c8f40d6a13771ee7f30c1f68c5556a36cdf",
+    "dual-reported-friend-cold-cooling": "186d892d7db34811c628a7081d37583981ce913567dac2f593f8e9cfaef83817",
+    "seeded-dual-1-heads-eta-0": "f7e31e9b3c97c9c536271d149f13d21b2397fe69f17eafadbc3b3fff9b8862b7",
+    "seeded-dual-1-heads-eta-0.8": "bfcfec5518ac7f223b02b1163daf375e38ad9a156cb5a24c7ae18f56b77caf73",
+    "seeded-dual-1-heads-eta-1": "6aab0e38ee411c8d2b9daa8f5752374463db8631a6693e82dbeba885a71a6d88",
+    "seeded-dual-3-heads-eta-0": "98e2a2ec4f1523ca4f9360ed0bc3735a5cdedc79369ebb35d4f1460259346ebc",
+    "seeded-dual-3-heads-eta-0.8": "1dccfdf84393c18a2cebd3be24877179869c598681fb9a8cd56d48f4b8fac837",
+    "seeded-dual-3-heads-eta-1": "28a507e6fbc59814f33529ced21f4a2f0a1cbb7d744725b47bfdb4050c07bbfe",
+    "seeded-dual-5-heads-eta-0": "94bdb0d9e7daa3ca40c7a9458b3f45f48b5b173b9e7a129e774e66bfd5a35bab",
+    "seeded-dual-5-heads-eta-0.8": "82dd524eeba873a9aad0b49a182dc9a412748ad620bc22dbceea8a95735c3c26",
+    "seeded-dual-5-heads-eta-1": "7decf29844aa022953c5a2e0ed8da9483ea4b658f955f8127bcacf2579fd8cce",
+    "seeded-dual-8-heads-eta-0": "186df3b46449f2e81c9285a313088667e2f6081583178ba421049ab99fe8788c",
+    "seeded-dual-8-heads-eta-0.8": "9d12cc0d2e6c6bc406fec8645c1d08ac19e1969c7720a06d9556d8d5012ad6c5",
+    "seeded-dual-8-heads-eta-1": "f191f3e04443c1ffe77799f8192cca4e41d9208d3f543e1ff264362ea2f671c4"
+  },
+  "coverageScope": "Updated sensible-recovery source:20 bounded exact-patched/seeded schedules. Recovery efficiency0/.75/.8/1 atgross.5ACH;no exchanger frost/condensation/bypass or ventilation fan model certified."
+}

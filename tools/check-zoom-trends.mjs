@@ -37,9 +37,9 @@ try {
   const styles=await run(()=>({gauges:[...document.querySelectorAll('.taps .g-val')].map(e=>getComputedStyle(e).opacity),cards:[...document.querySelectorAll('.hm')].map(e=>{const s=getComputedStyle(e),r=e.getBoundingClientRect();return {top:s.borderTopWidth,right:s.borderRightWidth,bottom:s.borderBottomWidth,left:s.borderLeftWidth,radius:s.borderRadius,height:r.height}})}));
   assert.ok(styles.gauges.length>=3&&styles.gauges.every(v=>v==='1'));
   assert.ok(styles.cards.every(c=>c.top==='0px'&&c.right==='0px'&&c.bottom==='0px'&&c.radius==='0px'&&c.height>=70));
-  assert.deepEqual(styles.cards.map(c=>c.left),['0px','1px','1px','1px']);
+  assert.deepEqual(styles.cards.map(c=>c.left),['0px','1px','1px','1px','1px']);
  });
- await check('compact outdoor card fits its controls, including the expanded cleanliness override',async()=>{
+ await check('compact outdoor card fits its controls, with permanently shared coil cleanliness',async()=>{
   for(const theme of ['light','dark'])for(const override of [null,80]){
    await page.evaluate(`(()=>{const e=document.querySelector('select[aria-label="Colour theme"]');e.value=${JSON.stringify(theme)};e.dispatchEvent(new Event('change',{bubbles:true}))})()`);
    await page.evaluate(`qa.store.update(s=>s.cfg.live.outdoorCleanlinessOverridePct=${override})`);await settle();

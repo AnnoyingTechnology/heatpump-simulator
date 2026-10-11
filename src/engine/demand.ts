@@ -14,7 +14,7 @@ export function roomDemand(config:EngineConfig,rooms:RoomState[],temperatures:nu
   }
   // 1006 J/kg/K is a control gain estimate, never the thermal-store heat capacity.
   const capacity=r.dryAirMassKg*1006,kp=capacity/300;
-  const loss=sign*((c.envelopeWK+r.dryAirMassKg*c.ventilationACH/3600*1006)*(c.setpointC-config.outdoorTemperatureC)+c.airFabricWK*(c.setpointC-r.fabricTemperatureC)+linkLosses[i]) - sign*(c.fanPowerW+(c.internalGainW??0));
+  const loss=sign*((c.envelopeWK+r.dryAirMassKg*c.ventilationACH/3600*1006*(1-(c.ventilationRecoveryEfficiency??0)))*(c.setpointC-config.outdoorTemperatureC)+c.airFabricWK*(c.setpointC-r.fabricTemperatureC)+linkLosses[i]) - sign*(c.fanPowerW+(c.internalGainW??0));
   let correction=integral[i]??0;
   if(!c.enabled)correction=0;
   else if(integrate&&(!saturated||error<0)&&(error>0||(previousActive[i]&&loss+kp*error+correction>0)))correction=Math.max(-4000,Math.min(4000,correction+kp*error*dt/600));

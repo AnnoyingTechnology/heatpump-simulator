@@ -33,7 +33,7 @@ export function fieldLinesNote(s: AppState): string {
     : 'Physical field lines (advanced, slower): uncalibrated homogeneous pipe-loss approximation with assumed bore, level elevation and outdoor-air exposure; not a prediction of installed line losses; some regimes may be unsupported and fail visibly (see Advanced pipe assumptions)';
 }
 
-const SPEED_HELP = 'Requested simulation speed. The small reading below shows actual completed physical time per wall second. High speeds are limited by calculation throughput; physical timesteps stay unchanged.';
+const SPEED_HELP = 'Requested simulation speed. The reading beside the status and clock shows actual completed physical time per wall second. High speeds are limited by calculation throughput; physical timesteps stay unchanged.';
 
 /** Compact native select for the header. Built once; refresh() never steals an open or focused control. */
 function pick<T extends string | number>(o: {
@@ -68,6 +68,7 @@ export function createHeader(): Header {
   const history = new TrendHistory();
   /** Independent bounded history of the since-restart COP (series index 0 of its own instance). */
   const sessionHistory = new TrendHistory();
+  const energyHistory = new TrendHistory();
   let historyEpoch = store.resetEpoch;
   const fields: Field[] = [];
   const speed = pick<SpeedFactor>({
@@ -81,7 +82,26 @@ export function createHeader(): Header {
   speed.sel.setAttribute('aria-describedby', 'speed-help');
   speed.sel.title = SPEED_HELP;
   const speedRate = html('output',{class:'hd-speed-rate','aria-label':'Actual simulation speed'},'…');
-  const speedControl = html('div',{class:'hd-speed'},speed.root,speedRate);
+  const speedControl = html('div',{class:'hd-speed'},speed.root);
+
+  // Action select: choosing an option applies it once and returns to the placeholder, so the control never claims a preset
+  // still matches after later manual edits. Only mode, outdoor temperature, room targets and enabled flags change.
+  type Season = 'winter' | 'summer';
+  const preset = pick<Season | ''>({
+    label: 'Quick preset',
+    options: [
+      { value: '', text: 'Quick preset' },
+      { value: 'winter', text: 'Owner\'s winter · 1 °C' },
+      { value: 'summer', text: 'Owner\'s summer · 39 °C' },
+    ],
+    get: () => '',
+    isDisabled: (v) => v === '',
+    set: (v) => { if (v) store.applyOwnerSeason(v); },
+  });
+  preset.sel.addEventListener('change', () => { preset.sel.value = ''; });
+  fields.push(preset);
+  preset.sel.classList.add('hd-preset');
+  preset.sel.title = 'Quick preset (applied once). Owner\'s winter: heating, 1 °C outdoors, ground 17 °C, upstairs 21.5 °C, attic off, extra rooms 21 °C. Owner\'s summer: cooling, 39 °C outdoors, all indoor units on, targets 24 °C. Kept: edited equipment, geometry, humidity, solar and background gains, and the clock, energy and accepted state; physical time is not reset.';
 
   const pause = html('button', { type: 'button', class: 'btn hd-pause' }, 'Pause');
   pause.addEventListener('click', () => store.update((s) => { s.ui.paused = !s.ui.paused; }));
@@ -93,7 +113,7 @@ export function createHeader(): Header {
   const time = html('output', { class: 'time', 'aria-label': 'Simulation time' }, '00:00.0');
 
   // Headline readings: value with its trend to the right, label below the value, fixed-width cells so the header does not reflow
-  // as numbers change. The plot is 44 px high and stretches to its cell width (non-uniform viewBox, non-scaling strokes); its
+  // as numbers change. The plot fills most of the header height and stretches to its cell width (non-uniform viewBox, non-scaling strokes); its
   // time ends are HTML laid over the empty strip under the baseline, so the text is never distorted.
   const metric = (unit: string | null, lineClass = 'trend-line') => {
     const k = html('span', { class: 'k' }, '');
@@ -112,12 +132,16 @@ export function createHeader(): Header {
   // three headline `.trend-line` series) keeps a constant series across mode changes and is cleared only by Restart.
   const mSession = metric(null, 'session-line');
   mSession.root.classList.add('hm-session-cop');
-  mSession.k.textContent = 'Since restart';
+  mSession.k.textContent = 'Since start';
   mSession.root.title = 'COP since restart: cumulative useful heating and cooling service divided by all HVAC electricity (compressor, fans, controls), including defrost and reversal penalties; excludes background gains and room-to-room links. Cleared only by Restart.';
   const mHeat = metric('kW');
   mHeat.root.classList.add('hm-heat');
   const mElec = metric('kW');
   mElec.root.classList.add('hm-elec');
+  const mEnergy = metric(null, 'energy-line');
+  mEnergy.root.classList.add('hm-energy');
+  mEnergy.k.textContent = 'Total · kWh';
+  mEnergy.root.title = 'Electrical energy since start: cumulative compressor, fan and control electricity from the engine ledger. Kept across settings and mode changes; cleared on Reset.';
   const icon = (): SVGSVGElement => svg('svg', { class: 'hm-icon', viewBox: '0 0 24 24', 'aria-hidden': 'true' });
   const plug = icon();
   plug.append(svg('path', { d: 'M8 3v5M16 3v5M6 8h12v3a6 6 0 0 1-6 6v4M12 17v-1' }));
@@ -129,19 +153,20 @@ export function createHeader(): Header {
   sun.classList.add('hm-sun'); snow.classList.add('hm-snow');
   mHeat.root.querySelector('.vl')!.prepend(sun, snow);
   mElec.k.textContent = 'Electrical input';
-  const metrics = html('div', { class: 'hd-metrics', role: 'group', 'aria-label': 'Headline readings' }, mCop.root, mSession.root, mHeat.root, mElec.root);
+  const metrics = html('div', { class: 'hd-metrics', role: 'group', 'aria-label': 'Headline readings' }, mCop.root, mSession.root, mHeat.root, mElec.root, mEnergy.root);
 
   // Status cell: persistent badge plus one ellipsised line; full detail on hover and in outdoor settings.
   const opState = html('output', { class: 'opstate', role: 'status', 'data-kind': 'loading' }, 'Loading');
   const exTag = html('span', { class: 'hd-ex' }, 'Examples · fixed');
   const note = html('span', { class: 'hd-note' }, '');
-  const status = html('div', { class: 'hd-status' }, html('div', { class: 'hd-badges' }, opState, exTag), note);
+  const status = html('div', { class: 'hd-status' }, html('div', { class: 'hd-badges' }, opState, exTag, speedRate), note);
+  const run = html('div', { class: 'hd-run' }, status, time);
 
   const root = html('header', { class: 'topbar' },
     html('div', { class: 'hd-id' },
       html('div', { class: 'brand', title: 'Heatpump Simulator 2026' }, html('span', { class: 'mark', 'aria-hidden': 'true' }), html('b', {}, 'Heatpump Simulator 2026')),
       createThemeControl()),
-    html('div', { class: 'hd-group' }, pause, reset, status, speedControl, time, speedHelp),
+    html('div', { class: 'hd-group' }, preset.root, speedControl, pause, reset, run, speedHelp),
     html('div', { class: 'spacer' }),
     metrics);
 
@@ -165,7 +190,7 @@ export function createHeader(): Header {
       note.hidden = live && s.ui.experience === 'live' && currentReadings(s).live?.usable === true && currentReadings(s).live?.kind !== 'updating';
       const rd = currentReadings(s);
       const cleared = historyEpoch !== store.resetEpoch;
-      if (cleared) { history.clear(); sessionHistory.clear(); historyEpoch = store.resetEpoch; }
+      if (cleared) { history.clear(); sessionHistory.clear(); energyHistory.clear(); historyEpoch = store.resetEpoch; }
       const output = simulation.status.output;
       // Since-restart COP from the engine's own cumulative ledger; never an average of instantaneous COP, never clipped (negative
       // defrost/reversal service stays), undefined without electricity. Mode edits do not touch it; only Restart clears it.
@@ -175,23 +200,28 @@ export function createHeader(): Header {
       const accepted = live && simulation.status.state === 'ready' && output && output.state !== 'fault';
       const changed = accepted ? history.accept(output.simulatedSeconds, [rd.cop, rd.roomKwTotal, rd.electricalKw], s.cfg.mode) : false;
       const sessionChanged = accepted ? sessionHistory.accept(output.simulatedSeconds, [sessionOf(output.energy), null, null], 'session') : false;
+      const electricityKwh = live && output && Number.isFinite(output.energy.electricityJ) ? output.energy.electricityJ / 3_600_000 : null;
+      const energyChanged = accepted ? energyHistory.accept(output.simulatedSeconds, [electricityKwh, null, null], 'electricity') : false;
       const plots: Array<[typeof mCop, TrendHistory, 0 | 1 | 2, boolean, string, string]> = [
         [mCop, history, 0, changed, rd.copLabel, 'COP'],
         [mHeat, history, 1, changed, rd.roomKwLabel, 'kW'],
         [mElec, history, 2, changed, 'Electrical input', 'kW'],
         [mSession, sessionHistory, 0, sessionChanged, 'COP since restart', 'COP'],
+        [mEnergy, energyHistory, 0, energyChanged, 'Electrical energy since start', 'kWh'],
       ];
       for (const [m, hist, series, fresh, label, unit] of plots) {
         if (cleared || fresh || !live || !m.trend.dataset.source || m.trend.dataset.source !== s.ui.experience) {
-          const plot = hist.plot(series);
+          const plot = hist.plot(series, unit === 'kWh' ? .001 : 1);
           setAttr(m.trendPath, 'd', live ? plot.path : '');
           setText(m.trendTitle, live
-            ? `${label}: last 2 hours of simulated time, latest reading in each 10-second bin. ${plot.count ? `Scale ${fmt(plot.minimum, 2)}…${fmt(plot.maximum, 2)} ${unit}.` : 'No accepted history yet.'} Missing readings are gaps.`
+            ? `${label}: last 2 hours of simulated time, latest reading in each 10-second bin. ${plot.count ? `Scale ${fmt(plot.minimum, unit === 'kWh' ? 4 : 2)}…${fmt(plot.maximum, unit === 'kWh' ? 4 : 2)} ${unit}.` : 'No accepted history yet.'} Missing readings are gaps.`
             : 'Illustrative snapshot; no simulated history.');
           m.trend.dataset.source = s.ui.experience;
         }
       }
       setText(mSession.v, sessionCop === null ? '—' : fmt(sessionCop, 2));
+      setText(mEnergy.v, electricityKwh === null ? '—' : fmt(electricityKwh, electricityKwh < 10 ? 3 : 2));
+      mEnergy.root.dataset.exactKwh = electricityKwh === null ? '' : String(electricityKwh);
       setText(mCop.k, rd.copLabel);
       setText(mHeat.k, rd.roomKwLabel);
       setText(mCop.v, rd.cop === null ? '—' : fmt(rd.cop, 2));
@@ -232,7 +262,8 @@ export function createHeader(): Header {
     setTime(sec: number): void { setText(time, fmtTime(sec)); },
     setSpeedRate(actual: number | null, paused: boolean, requested: number): void {
       const limited = !paused && actual !== null && actual < .9*requested;
-      setText(speedRate,paused ? 'Paused' : actual === null ? '…' : `${actual.toFixed(1)}× actual`);
+      setText(speedRate,paused ? 'Paused' : actual === null ? '…' : `${actual.toFixed(1)}×`);
+      speedRate.dataset.actualRate = actual === null ? '' : String(actual);
       speedRate.dataset.limited = String(limited);
       speedRate.title = paused ? 'Physical time is paused' : actual === null ? 'Measuring completed simulation time' :
         `${actual.toFixed(2)} simulated seconds per wall second${limited ? '; requested speed is limited by calculation throughput' : ''}`;
@@ -254,7 +285,25 @@ export function createOverlay(): Overlay {
   const iceNote = html('p', { class: 'ice-note' });
   const film = html('details', { class: 'coil-film rp-ctl' }, ice, iceNote);
   const mismatchText = html('span', { class: 'mm-text' });
-  const mismatch = html('div', { class: 'mismatch', role: 'status' }, mismatchText);
+  // Fault banner only: a local, self-contained JSON of the configuration, recent requests, last accepted output and error. Nothing is
+  // uploaded and nothing is claimed to be recovered; the retained state and offline readings stay as the banner states.
+  const download = html('button', { type: 'button', class: 'ov-more dl-diag', title: 'Save a diagnostic JSON file locally (no upload)' }, 'Download diagnostic');
+  download.hidden = true;
+  download.addEventListener('click', () => {
+    const report = (simulation as unknown as { diagnosticReport?: () => unknown }).diagnosticReport?.();
+    try {
+      const blob = new Blob([JSON.stringify(report ?? { unavailable: 'diagnostic report not available in this build' }, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = html('a', { href: url, download: `heatpump-diagnostic-${new Date().toISOString().slice(0, 10)}.json` });
+      document.body.append(a);
+      a.click();
+      a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 10_000);
+    } catch {
+      setText(download, 'Diagnostic unavailable');
+    }
+  });
+  const mismatch = html('div', { class: 'mismatch', role: 'status' }, mismatchText, download);
   const mismatchDetail = html('p', { class: 'mm-detail' });
   const moreBtn = html('button', { type: 'button', class: 'ov-more', 'aria-expanded': 'false', 'aria-controls': 'ov-detail' }, 'Details') as HTMLButtonElement;
   const detail = html('div', { class: 'ov-detail', id: 'ov-detail' }, mismatchDetail);
@@ -326,6 +375,7 @@ export function createOverlay(): Overlay {
       const fault = s.ui.experience === 'live' && liveStatus(s.cfg).kind === 'fault';
       top.hidden = s.ui.experience === 'live' && unzoom.hidden && !fault;
       mismatch.classList.toggle('fault', fault);
+      download.hidden = !fault || typeof (simulation as unknown as { diagnosticReport?: unknown }).diagnosticReport !== 'function';
       mismatch.setAttribute('role', fault ? 'alert' : 'status');
       root.dataset.zoom = s.ui.zoom;
       if (s.ui.experience === 'live') {

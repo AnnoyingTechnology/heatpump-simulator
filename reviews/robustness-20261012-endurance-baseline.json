@@ -1,0 +1,1652 @@
+{
+  "createdAt": "2026-10-11T09:08:54.253Z",
+  "preset": "endurance",
+  "seed": 20261012,
+  "workers": 12,
+  "timeoutMs": 1800000,
+  "sourceHashes": {
+    "src/engine/air.ts": "ac6f645fbacc073afdcb3abf214257d142358af0b1f58e87d61105f342f9cf6e",
+    "src/engine/charge-output.ts": "ca0bed2dd4836af7e72dce71e28e5d0b11309358f4c3da0bb6365a9079142ff7",
+    "src/engine/charge.ts": "0c9dd8050fab6b3bd16bcb881f59fc00debc2f85c774c2a1c2216d45d289e168",
+    "src/engine/cycle.ts": "159c03d3de5e22fb928e606e20a4d7b142c73778d7080a187fa42ccdf4af26ee",
+    "src/engine/defaults.ts": "5ca7d8006c6990e4b6b99a6ef353ec075b720a07701dac39a23ca9fb4fec99f8",
+    "src/engine/demand.ts": "53e9c8bbc8e85e37f3cad9d842e22510ccf2404e04cc7bbe7755b14140d12197",
+    "src/engine/drive.ts": "20eb503ff13439e2a7d22a5c5334c3fa232083a696543c92442cc1a1d3a7296c",
+    "src/engine/engine.ts": "31e80127989aa76c2b95770432be2e1867c3799a793cd7665af50c6dfd62e768",
+    "src/engine/film.ts": "3cfeda3465b8c5226e6ed82bada490abdc42577fdadd4a1d0a2e3fb682285dbb",
+    "src/engine/index.ts": "f8aba3f8724f99dcd1c17be93cfc3622a9fe276d968cc36f5bbf70e9c3773ebd",
+    "src/engine/interzone.ts": "856dfe9535d53f52aa8aae8f0cc83167163b11bab8ca6bb9bb62ff9e600d8bed",
+    "src/engine/properties.ts": "7f4bb2f372a77f30e76844dd7ef9d7afa6d25f72079a09ce66586cdc134404d1",
+    "src/engine/thermostat.ts": "624305969795b54b99745ac84d1c966dbc0e66263ee8579111ea2054c971d5f5",
+    "src/engine/transport.ts": "928ab51cd8ca1193e68ba0821ee88ae2966521314ad9b1fd1b9894f253e2ed31",
+    "src/engine/types.ts": "cd797078c182162bb394db3dfed1a16c66a8ca919fa1b052cc4bec21f8fda779",
+    "compiled/air.js": "412e11680a017b3f77b0986ea6bea1d9e7e9e170d6915e26f61e068172adfd5e",
+    "compiled/charge-output.js": "4ed7ae6f5cc6b6f0b52465b8cbba32f400f890e729ba71cd2db804a11c435fa0",
+    "compiled/charge.js": "716d6e0134395d6f67245751af1d915e179ab2c599b8a66950bbf8006fac9b1d",
+    "compiled/cycle.js": "75bce54543febe409c4758b30ce553b5e0c3df75e7ebdf0bab1a460dac4dc533",
+    "compiled/defaults.js": "b1bcc26d4004cb951b5440c02becc157363373d64aef5f088b809c1bd20a2ed8",
+    "compiled/demand.js": "a06da83a3ed88028b94b91f3ea9e21aeef15cadb8cc8baede54676ce8b900230",
+    "compiled/drive.js": "08b79261d3e7b37c35255d7ab3d58b6d7c66762c14b5b48cb82efb52002139df",
+    "compiled/engine.js": "81f9dc1304848252dd1992fcc4b54f22e83c205127ee2c0342a4312a22f288ff",
+    "compiled/film.js": "2af475cdfb6faa4512ac7a17c45393f3be33ab88e2cb5be334138956ecf33d51",
+    "compiled/index.js": "2a58c1821531507d4843729995d2ffc8bbf2176ace4cb1e0269090322f8488c3",
+    "compiled/interzone.js": "677d003f3074e81bd06c7754444c0cdefd77fb56302e3db72536bfec8e602c60",
+    "compiled/properties.js": "765c01b7d61ee144821da2f9fd379469e8e34bbb44335616dd5afbca3b00c18a",
+    "compiled/thermostat.js": "4aa6dbf014fc983efb014e5a5fc0a45613a9c7d7bd42009b4f6108eeacf0398f",
+    "compiled/transport.js": "5bc7c0f1850837de00043e755290d8e3d131d4ee3adb27646557344409bc1dcf",
+    "compiled/types.js": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "public/vendor/coolprop-safe/LICENSE-CoolProp": "9bf835333ef602af4cb19338b9f9d43671e174fa029b00280e9bdba6ea4719b2",
+    "public/vendor/coolprop-safe/adapter.js": "06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34",
+    "public/vendor/coolprop-safe/coolprop.js": "6fa2e627803e2453da12cb9fce160ca3326851cd179444edc5ab698e21524d6c",
+    "public/vendor/coolprop-safe/coolprop.wasm": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+    "public/vendor/coolprop-safe/licenses/Emscripten-LICENSE": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86",
+    "public/vendor/coolprop-safe/licenses/boost_headers-LICENSE": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "public/vendor/coolprop-safe/licenses/compiler-rt-LICENSE.TXT": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.APACHE": "03379001a7b12a2ec997a25554247d985270b353c10d5bafee9ac8d6519820b7",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.BSD": "51928dce36213c5333ba3172e847d735d4c6e9b7ff2722a326c49067155b82eb",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.MINPACK": "c87b7f8ee88f6195e91743820c00354833583aef091b72e2d4a49c8e28e798a0",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.MPL2": "66a3107d5ad6a058aab753eaac2047ccb2ed0e39465dd0fe5844da3e300d5172",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.README": "db640ff2bd90c6abd6a4d3fbb351e0ee4d555417cf840492054d1cbb2ea85644",
+    "public/vendor/coolprop-safe/licenses/eigen-LICENSE": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+    "public/vendor/coolprop-safe/licenses/fmt-LICENSE": "07580f2a3b35709ce703d523f447b242f6dfec7582a8c0df102c7fa2849375f8",
+    "public/vendor/coolprop-safe/licenses/if97-LICENSE": "e22c3d30ef8d88ab468d9ea20392ca1df22fa3fd0a92dc3e996d89cf3cfdbd03",
+    "public/vendor/coolprop-safe/licenses/libcxx-LICENSE.TXT": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+    "public/vendor/coolprop-safe/licenses/libcxxabi-LICENSE.TXT": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",
+    "public/vendor/coolprop-safe/licenses/miniz-header-notice.txt": "dfdeccf4fcb0cef3d71b31fa915e804f272fa57f00d4ff5076d2c8e8efc22057",
+    "public/vendor/coolprop-safe/licenses/msgpack-c-COPYING": "664550b43996452a5a2c7471bb0ff77185a58c69ccafa60f983dc4c162e1ee22",
+    "public/vendor/coolprop-safe/licenses/msgpack-c-LICENSE_1_0.txt": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "public/vendor/coolprop-safe/licenses/multicomplex-README.md": "d58933ccd086958d576969174c04af6506cc5586da9d2125ec644d534225c018",
+    "public/vendor/coolprop-safe/licenses/musl-COPYRIGHT": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af",
+    "public/vendor/coolprop-safe/licenses/nlohmann_json-LICENSE.MIT": "46a65cffd1ea955132d95a8dd921640714a8d6b537d2e4e482d31145ae95b603",
+    "public/vendor/coolprop-safe/licenses/refprop_headers-LICENSE": "f21f633c596509e89b2baedfd657c8f1b8018954b06576590971684b210e91f8",
+    "public/vendor/coolprop-safe/licenses/valijson-LICENSE": "61b5766db38eaa3f320c366357956d7743424bfbf90fd78f5943866ba237589e",
+    "public/vendor/coolprop-safe/provenance.json": "fffa34344622d1d2266c5d389552e3e672706422f317193ebf756bc0a157f697",
+    "tools/robustness-worker.mjs": "a41dce70bad5ad8ef6e8213aba681a75fae15b7db3bafeb48430ae26cb78f0e8"
+  },
+  "method": "Independent Node child processes; immutable TypeScript snapshot compiled once; production guarded HEOS; fixed accepted 0.25-second steps; full before-step checkpoint persisted for native aborts.",
+  "limits": "Reference R32 engine only. Passing a finite campaign is not proof of correctness. Generic component parameters, not calibrated manufacturer maps. The screenshot scenario is reconstructed from visible controls, not a saved exact pre-crash state.",
+  "scenarios": [
+    {
+      "id": "reported-friend-cold-cooling",
+      "requestedSeconds": 1100
+    },
+    {
+      "id": "reported-owner-reversal-winter-house",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "reported-owner-reversal-old-generic",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "grid-heating--25-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating--25-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating--5-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating--5-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating-5.5-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating-5.5-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating-25-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating-25-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating-45-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating-45-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling--25-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling--25-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling--5-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling--5-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling-5.5-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling-5.5-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling-25-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling-25-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling-45-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling-45-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "sequence-0",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-1",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-2",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-3",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-4",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-5",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-6",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-7",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-8",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-9",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-10",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-11",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-12",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-13",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-14",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-15",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-16",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-17",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-18",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-19",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-20",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-21",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-22",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-23",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-24",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-25",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-26",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-27",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-28",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-29",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-30",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-31",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "endurance-humid-frost-defrost",
+      "requestedSeconds": 7200
+    },
+    {
+      "id": "endurance-hot-wet-cooling",
+      "requestedSeconds": 3600
+    }
+  ],
+  "completed": 57,
+  "counts": {
+    "physical-fault": 40,
+    "pass": 17
+  },
+  "results": [
+    {
+      "id": "grid-heating-45-0",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 362.9 W at -16.468740,53.468740; equations -287.056,-222.009)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 362.9 W at -16.468740,53.468740; equations -287.056,-222.009)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 362.9 W at -16.468740,53.468740; equations -287.056,-222.009)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 362.9 W at -16.468740,53.468740; equations -287.056,-222.009)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:402:59)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1,
+      "updates": 0,
+      "simulatedSeconds": 0,
+      "wallSeconds": 2.918755991,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 0
+      },
+      "maxEnergyResidualJ": 0,
+      "maxWaterResidualKg": 0
+    },
+    {
+      "id": "grid-heating-25-1",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 53.0 W at 19.340158,20.346301; equations 25.907,-46.226)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 53.0 W at 19.340158,20.346301; equations 25.907,-46.226)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 53.0 W at 19.340158,20.346301; equations 25.907,-46.226)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 53.0 W at 19.340158,20.346301; equations 25.907,-46.226)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:402:59)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1,
+      "updates": 0,
+      "simulatedSeconds": 0,
+      "wallSeconds": 3.2206967,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 0
+      },
+      "maxEnergyResidualJ": 0,
+      "maxWaterResidualKg": 0
+    },
+    {
+      "id": "grid-heating-25-0",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 68.2 W at 18.017760,19.050041; equations -19.972,-65.174)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 68.2 W at 18.017760,19.050041; equations -19.972,-65.174)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 68.2 W at 18.017760,19.050041; equations -19.972,-65.174)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 68.2 W at 18.017760,19.050041; equations -19.972,-65.174)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:402:59)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1,
+      "updates": 0,
+      "simulatedSeconds": 0,
+      "wallSeconds": 3.7062216279999998,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 0
+      },
+      "maxEnergyResidualJ": 0,
+      "maxWaterResidualKg": 0
+    },
+    {
+      "id": "grid-heating-45-1",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 315.5 W at -19.218740,50.742354; equations -237.578,-207.607)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 315.5 W at -19.218740,50.742354; equations -237.578,-207.607)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 315.5 W at -19.218740,50.742354; equations -237.578,-207.607)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 315.5 W at -19.218740,50.742354; equations -237.578,-207.607)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:402:59)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1,
+      "updates": 0,
+      "simulatedSeconds": 0,
+      "wallSeconds": 2.824374795,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 0
+      },
+      "maxEnergyResidualJ": 0,
+      "maxWaterResidualKg": 0
+    },
+    {
+      "id": "reported-friend-cold-cooling",
+      "outcome": "pass",
+      "steps": 4400,
+      "updates": 0,
+      "simulatedSeconds": 1100,
+      "wallSeconds": 8.489690672,
+      "maxEnergyResidualJ": 5.112960934638977e-07,
+      "maxWaterResidualKg": 6.0923488476305465e-15,
+      "protectionCounts": {},
+      "states": {
+        "idle": 4400
+      }
+    },
+    {
+      "id": "grid-heating--25-1",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Humid air R(T,W) failed",
+        "stack": "Error: Humid air R(T,W) failed\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Humid air R(T,W) failed",
+        "stack": "DomainError: Humid air R(T,W) failed\n    at Properties.humid (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:157:19)\n    at Properties.airRH (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:170:35)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:468:136\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 119,
+      "updates": 0,
+      "simulatedSeconds": 29.5,
+      "wallSeconds": 8.865720343,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 118
+      },
+      "maxEnergyResidualJ": 1.5692785382270813e-07,
+      "maxWaterResidualKg": 1.2533377113932431e-15
+    },
+    {
+      "id": "grid-cooling--25-1",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Humid air R(T,W) failed",
+        "stack": "Error: Humid air R(T,W) failed\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Humid air R(T,W) failed",
+        "stack": "DomainError: Humid air R(T,W) failed\n    at Properties.humid (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:157:19)\n    at Properties.airRH (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:170:35)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:468:136\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 93,
+      "updates": 0,
+      "simulatedSeconds": 23,
+      "wallSeconds": 6.856525643,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 92
+      },
+      "maxEnergyResidualJ": 1.708976924419403e-07,
+      "maxWaterResidualKg": 2.854487479719836e-15
+    },
+    {
+      "id": "grid-heating--5-0",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Humid air R(T,W) failed",
+        "stack": "Error: Humid air R(T,W) failed\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Humid air R(T,W) failed",
+        "stack": "DomainError: Humid air R(T,W) failed\n    at Properties.humid (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:157:19)\n    at Properties.airRH (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:170:35)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:468:136\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 359,
+      "updates": 0,
+      "simulatedSeconds": 89.5,
+      "wallSeconds": 12.358161722,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 358
+      },
+      "maxEnergyResidualJ": 1.1071097105741501e-07,
+      "maxWaterResidualKg": 4.618701254788249e-16
+    },
+    {
+      "id": "grid-cooling--25-0",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Humid air R(T,W) failed",
+        "stack": "Error: Humid air R(T,W) failed\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Humid air R(T,W) failed",
+        "stack": "DomainError: Humid air R(T,W) failed\n    at Properties.humid (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:157:19)\n    at Properties.airRH (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:170:35)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:468:136\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 93,
+      "updates": 0,
+      "simulatedSeconds": 23,
+      "wallSeconds": 13.126978467999999,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 92
+      },
+      "maxEnergyResidualJ": 2.2561289370059967e-07,
+      "maxWaterResidualKg": 1.2790333028811496e-15
+    },
+    {
+      "id": "grid-heating--25-0",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 18.924171471,
+      "maxEnergyResidualJ": 1.7872662283480167e-07,
+      "maxWaterResidualKg": 1.4857906571741353e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      }
+    },
+    {
+      "id": "grid-cooling-5.5-0",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Humid air R(T,W) failed",
+        "stack": "Error: Humid air R(T,W) failed\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Humid air R(T,W) failed",
+        "stack": "DomainError: Humid air R(T,W) failed\n    at Properties.humid (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:157:19)\n    at Properties.airRH (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:170:35)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:468:136\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 282,
+      "updates": 0,
+      "simulatedSeconds": 70.25,
+      "wallSeconds": 12.665310124000001,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 281
+      },
+      "maxEnergyResidualJ": 4.1676685214042664e-07,
+      "maxWaterResidualKg": 2.6489227478165844e-15
+    },
+    {
+      "id": "grid-cooling--5-0",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 15.893379612999999,
+      "maxEnergyResidualJ": 1.485168468207121e-07,
+      "maxWaterResidualKg": 1.609823385706477e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      }
+    },
+    {
+      "id": "sequence-0",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 169.8 W at 24.806098,25.868621; equations -124.094,-115.917)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 169.8 W at 24.806098,25.868621; equations -124.094,-115.917)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 169.8 W at 24.806098,25.868621; equations -124.094,-115.917)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 169.8 W at 24.806098,25.868621; equations -124.094,-115.917)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:402:59)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1,
+      "updates": 0,
+      "simulatedSeconds": 0,
+      "wallSeconds": 3.761323685,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 0
+      },
+      "maxEnergyResidualJ": 0,
+      "maxWaterResidualKg": 0
+    },
+    {
+      "id": "grid-cooling-25-1",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 9.357094350999999,
+      "maxEnergyResidualJ": 1.362641341984272e-07,
+      "maxWaterResidualKg": 9.80118763926896e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      }
+    },
+    {
+      "id": "grid-cooling--5-1",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Humid air R(T,W) failed",
+        "stack": "Error: Humid air R(T,W) failed\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Humid air R(T,W) failed",
+        "stack": "DomainError: Humid air R(T,W) failed\n    at Properties.humid (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:157:19)\n    at Properties.airRH (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:170:35)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:468:136\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 163,
+      "updates": 0,
+      "simulatedSeconds": 40.5,
+      "wallSeconds": 22.936599142000002,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 162
+      },
+      "maxEnergyResidualJ": 3.604218363761902e-07,
+      "maxWaterResidualKg": 7.44890260584441e-15
+    },
+    {
+      "id": "grid-cooling-5.5-1",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Humid air R(T,W) failed",
+        "stack": "Error: Humid air R(T,W) failed\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Humid air R(T,W) failed",
+        "stack": "DomainError: Humid air R(T,W) failed\n    at Properties.humid (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:157:19)\n    at Properties.airRH (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:170:35)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:468:136\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 279,
+      "updates": 0,
+      "simulatedSeconds": 69.5,
+      "wallSeconds": 23.609091709,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 278
+      },
+      "maxEnergyResidualJ": 4.973262548446655e-07,
+      "maxWaterResidualKg": 9.738737594133795e-15
+    },
+    {
+      "id": "sequence-2",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "Error: Indoor coil icing is outside the supported domain\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "DomainError: Indoor coil icing is outside the supported domain\n    at airExchange (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/air.js:82:15)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:454:25\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 861,
+      "updates": 1,
+      "simulatedSeconds": 215,
+      "wallSeconds": 11.504166823,
+      "operation": {
+        "index": 2,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 380
+      },
+      "maxEnergyResidualJ": 1.9231811165809631e-07,
+      "maxWaterResidualKg": 2.6922908347160046e-14
+    },
+    {
+      "id": "grid-heating--5-1",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 38.125777139,
+      "maxEnergyResidualJ": 1.994776539504528e-07,
+      "maxWaterResidualKg": 1.6982942829812941e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      }
+    },
+    {
+      "id": "sequence-3",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 21.5 W at 7.077899,64.900000; equations 20.174,-7.371)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 21.5 W at 7.077899,64.900000; equations 20.174,-7.371)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 21.5 W at 7.077899,64.900000; equations 20.174,-7.371)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 21.5 W at 7.077899,64.900000; equations 20.174,-7.371)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:429:77)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 2277,
+      "updates": 4,
+      "simulatedSeconds": 569,
+      "wallSeconds": 10.327564059,
+      "operation": {
+        "index": 8,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 356
+      },
+      "maxEnergyResidualJ": 2.896413207054138e-07,
+      "maxWaterResidualKg": 1.5574347367319774e-14
+    },
+    {
+      "id": "sequence-4",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "Error: Indoor coil icing is outside the supported domain\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "DomainError: Indoor coil icing is outside the supported domain\n    at airExchange (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/air.js:82:15)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:454:25\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 813,
+      "updates": 1,
+      "simulatedSeconds": 203,
+      "wallSeconds": 13.825629811999999,
+      "operation": {
+        "index": 2,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 332
+      },
+      "maxEnergyResidualJ": 2.3120810510590672e-07,
+      "maxWaterResidualKg": 9.131584377541913e-15
+    },
+    {
+      "id": "sequence-6",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Indoor air outlet fog is outside the supported domain",
+        "stack": "Error: Indoor air outlet fog is outside the supported domain\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Indoor air outlet fog is outside the supported domain",
+        "stack": "DomainError: Indoor air outlet fog is outside the supported domain\n    at airExchange (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/air.js:78:15)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:454:25\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1862,
+      "updates": 3,
+      "simulatedSeconds": 465.25,
+      "wallSeconds": 12.300753314,
+      "operation": {
+        "index": 6,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 421
+      },
+      "maxEnergyResidualJ": 4.1350722312927246e-07,
+      "maxWaterResidualKg": 3.3306690738754696e-14
+    },
+    {
+      "id": "sequence-1",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 12.2 W at 17.912797,64.900000; equations 11.431,-4.256)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 12.2 W at 17.912797,64.900000; equations 11.431,-4.256)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 12.2 W at 17.912797,64.900000; equations 11.431,-4.256)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 12.2 W at 17.912797,64.900000; equations 11.431,-4.256)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:429:77)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 2220,
+      "updates": 4,
+      "simulatedSeconds": 554.75,
+      "wallSeconds": 26.29085181,
+      "operation": {
+        "index": 8,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 299
+      },
+      "maxEnergyResidualJ": 3.371387720108032e-07,
+      "maxWaterResidualKg": 3.6165515027164474e-14
+    },
+    {
+      "id": "grid-cooling-45-1",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 38.146422635,
+      "maxEnergyResidualJ": 4.246830940246582e-07,
+      "maxWaterResidualKg": 8.298917109073045e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      }
+    },
+    {
+      "id": "sequence-10",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 0.2 W at -28.451388,31.228870; equations -0.230,-0.000)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 0.2 W at -28.451388,31.228870; equations -0.230,-0.000)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 0.2 W at -28.451388,31.228870; equations -0.230,-0.000)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 0.2 W at -28.451388,31.228870; equations -0.230,-0.000)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:429:77)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 415,
+      "updates": 0,
+      "simulatedSeconds": 103.5,
+      "wallSeconds": 15.733405254,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 414
+      },
+      "maxEnergyResidualJ": 6.01867213845253e-08,
+      "maxWaterResidualKg": 8.368306048112117e-15
+    },
+    {
+      "id": "grid-cooling-45-0",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 26.0 W at 17.226968,64.900000; equations -1.267,-25.982); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)",
+        "stack": "Error: Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 26.0 W at 17.226968,64.900000; equations -1.267,-25.982); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 26.0 W at 17.226968,64.900000; equations -1.267,-25.982); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)",
+        "stack": "DomainError: Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 26.0 W at 17.226968,64.900000; equations -1.267,-25.982); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:123:15)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:429:77)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 401,
+      "updates": 0,
+      "simulatedSeconds": 100,
+      "wallSeconds": 52.086269785,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 400
+      },
+      "maxEnergyResidualJ": 4.174071364104748e-07,
+      "maxWaterResidualKg": 1.4009626791988694e-14
+    },
+    {
+      "id": "grid-heating-5.5-0",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 75.790811555,
+      "maxEnergyResidualJ": 4.364410415291786e-07,
+      "maxWaterResidualKg": 4.0783348920214735e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      }
+    },
+    {
+      "id": "grid-cooling-25-0",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 65.182780891,
+      "maxEnergyResidualJ": 5.627516657114029e-07,
+      "maxWaterResidualKg": 1.4148404670066839e-14,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      }
+    },
+    {
+      "id": "sequence-14",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 121.7 W at 28.672702,29.692936; equations -34.761,-116.659)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 121.7 W at 28.672702,29.692936; equations -34.761,-116.659)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 121.7 W at 28.672702,29.692936; equations -34.761,-116.659)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 121.7 W at 28.672702,29.692936; equations -34.761,-116.659)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:402:59)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1,
+      "updates": 0,
+      "simulatedSeconds": 0,
+      "wallSeconds": 2.650098689,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 0
+      },
+      "maxEnergyResidualJ": 0,
+      "maxWaterResidualKg": 0
+    },
+    {
+      "id": "reported-owner-reversal-old-generic",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 1,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 79.07163071900001,
+      "maxEnergyResidualJ": 9.71369445323944e-07,
+      "maxWaterResidualKg": 3.251739155718525e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 4680,
+        "reversing": 12,
+        "idle": 108
+      }
+    },
+    {
+      "id": "sequence-8",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Humid air R(T,W) failed",
+        "stack": "Error: Humid air R(T,W) failed\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Humid air R(T,W) failed",
+        "stack": "DomainError: Humid air R(T,W) failed\n    at Properties.humid (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:157:19)\n    at Properties.airRH (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:170:35)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:468:136\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1135,
+      "updates": 2,
+      "simulatedSeconds": 283.5,
+      "wallSeconds": 31.292034921,
+      "operation": {
+        "index": 4,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 174
+      },
+      "maxEnergyResidualJ": 2.1047890186309814e-07,
+      "maxWaterResidualKg": 2.6145752229922437e-14
+    },
+    {
+      "id": "sequence-13",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "Error: Indoor coil icing is outside the supported domain\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "DomainError: Indoor coil icing is outside the supported domain\n    at airExchange (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/air.js:82:15)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:454:25\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 854,
+      "updates": 1,
+      "simulatedSeconds": 213.25,
+      "wallSeconds": 9.443750221,
+      "operation": {
+        "index": 2,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 373
+      },
+      "maxEnergyResidualJ": 2.2310996428132057e-07,
+      "maxWaterResidualKg": 2.9004576518332215e-15
+    },
+    {
+      "id": "grid-heating-5.5-1",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 86.87174706699999,
+      "maxEnergyResidualJ": 3.628665581345558e-07,
+      "maxWaterResidualKg": 3.750472155061857e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      }
+    },
+    {
+      "id": "sequence-15",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 4.8 W at 21.642790,64.900000; equations 4.413,-1.946)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 4.8 W at 21.642790,64.900000; equations 4.413,-1.946)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 4.8 W at 21.642790,64.900000; equations 4.413,-1.946)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 4.8 W at 21.642790,64.900000; equations 4.413,-1.946)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:429:77)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 400,
+      "updates": 0,
+      "simulatedSeconds": 99.75,
+      "wallSeconds": 9.478657762000001,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 399
+      },
+      "maxEnergyResidualJ": 1.8137507140636444e-07,
+      "maxWaterResidualKg": 2.9282132274488504e-14
+    },
+    {
+      "id": "sequence-5",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "Error: Indoor coil icing is outside the supported domain\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "DomainError: Indoor coil icing is outside the supported domain\n    at airExchange (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/air.js:82:15)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:454:25\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1083,
+      "updates": 2,
+      "simulatedSeconds": 270.5,
+      "wallSeconds": 49.903210034000004,
+      "operation": {
+        "index": 4,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 122
+      },
+      "maxEnergyResidualJ": 2.614688128232956e-07,
+      "maxWaterResidualKg": 2.4424906541753444e-14
+    },
+    {
+      "id": "sequence-11",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 14.0 W at 26.433653,27.450295; equations -12.682,-5.869)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 14.0 W at 26.433653,27.450295; equations -12.682,-5.869)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 14.0 W at 26.433653,27.450295; equations -12.682,-5.869)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 14.0 W at 26.433653,27.450295; equations -12.682,-5.869)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:402:59)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 601,
+      "updates": 1,
+      "simulatedSeconds": 150,
+      "wallSeconds": 37.917478902,
+      "operation": {
+        "index": 2,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 120
+      },
+      "maxEnergyResidualJ": 4.414469003677368e-07,
+      "maxWaterResidualKg": 1.6042722705833512e-14
+    },
+    {
+      "id": "sequence-9",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "Error: Indoor coil icing is outside the supported domain\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "DomainError: Indoor coil icing is outside the supported domain\n    at airExchange (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/air.js:82:15)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:454:25\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1301,
+      "updates": 2,
+      "simulatedSeconds": 325,
+      "wallSeconds": 48.465327561,
+      "operation": {
+        "index": 4,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 340
+      },
+      "maxEnergyResidualJ": 4.87547367811203e-07,
+      "maxWaterResidualKg": 2.2648549702353193e-14
+    },
+    {
+      "id": "sequence-7",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Humid air R(T,W) failed",
+        "stack": "Error: Humid air R(T,W) failed\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Humid air R(T,W) failed",
+        "stack": "DomainError: Humid air R(T,W) failed\n    at Properties.humid (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:157:19)\n    at Properties.airRH (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:170:35)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:468:136\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 546,
+      "updates": 1,
+      "simulatedSeconds": 136.25,
+      "wallSeconds": 60.67950019799999,
+      "operation": {
+        "index": 2,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 65
+      },
+      "maxEnergyResidualJ": 5.252659320831299e-07,
+      "maxWaterResidualKg": 3.441691376337985e-14
+    },
+    {
+      "id": "sequence-21",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Humid air R(T,W) failed",
+        "stack": "Error: Humid air R(T,W) failed\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Humid air R(T,W) failed",
+        "stack": "DomainError: Humid air R(T,W) failed\n    at Properties.humid (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:157:19)\n    at Properties.airRH (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:170:35)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:468:136\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 606,
+      "updates": 1,
+      "simulatedSeconds": 151.25,
+      "wallSeconds": 23.774977063999998,
+      "operation": {
+        "index": 2,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 125
+      },
+      "maxEnergyResidualJ": 3.688037395477295e-07,
+      "maxWaterResidualKg": 2.7533531010703882e-14
+    },
+    {
+      "id": "sequence-19",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 35.177691689,
+      "maxEnergyResidualJ": 2.164742909371853e-07,
+      "maxWaterResidualKg": 4.2299497238218464e-14,
+      "protectionCounts": {},
+      "states": {
+        "idle": 2388,
+        "reversing": 12,
+        "running": 960
+      }
+    },
+    {
+      "id": "sequence-26",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "Error: Indoor coil icing is outside the supported domain\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "DomainError: Indoor coil icing is outside the supported domain\n    at airExchange (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/air.js:82:15)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:454:25\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 357,
+      "updates": 0,
+      "simulatedSeconds": 89,
+      "wallSeconds": 16.294474638,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 356
+      },
+      "maxEnergyResidualJ": 2.896413207054138e-07,
+      "maxWaterResidualKg": 2.5202062658991053e-14
+    },
+    {
+      "id": "sequence-23",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 31.182056193999998,
+      "maxEnergyResidualJ": 2.3329630494117737e-07,
+      "maxWaterResidualKg": 4.374278717023117e-14,
+      "protectionCounts": {
+        "discharge temperature": 251
+      },
+      "states": {
+        "idle": 2868,
+        "reversing": 12,
+        "running": 480
+      }
+    },
+    {
+      "id": "sequence-28",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (all starts rejected: R32 state outside selected \u221260\u2026160\u00b0C domain)",
+        "stack": "Error: No feasible shared-pressure operating point (all starts rejected: R32 state outside selected \u221260\u2026160\u00b0C domain)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (all starts rejected: R32 state outside selected \u221260\u2026160\u00b0C domain)",
+        "stack": "DomainError: No feasible shared-pressure operating point (all starts rejected: R32 state outside selected \u221260\u2026160\u00b0C domain)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:402:59)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1,
+      "updates": 0,
+      "simulatedSeconds": 0,
+      "wallSeconds": 2.155694276,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 0
+      },
+      "maxEnergyResidualJ": 0,
+      "maxWaterResidualKg": 0
+    },
+    {
+      "id": "sequence-18",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Humid air R(T,W) failed",
+        "stack": "Error: Humid air R(T,W) failed\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Humid air R(T,W) failed",
+        "stack": "DomainError: Humid air R(T,W) failed\n    at Properties.humid (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:157:19)\n    at Properties.airRH (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/properties.js:170:35)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:468:136\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 2102,
+      "updates": 4,
+      "simulatedSeconds": 525.25,
+      "wallSeconds": 61.446771488,
+      "operation": {
+        "index": 8,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 181
+      },
+      "maxEnergyResidualJ": 4.4889748096466064e-07,
+      "maxWaterResidualKg": 1.8984813721090177e-14
+    },
+    {
+      "id": "sequence-17",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 63.404279822999996,
+      "maxEnergyResidualJ": 2.668239176273346e-07,
+      "maxWaterResidualKg": 8.076872504148014e-15,
+      "protectionCounts": {
+        "discharge temperature": 1068
+      },
+      "states": {
+        "idle": 2388,
+        "reversing": 24,
+        "running": 948
+      }
+    },
+    {
+      "id": "sequence-16",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 11.0 W at 11.811864,64.900000; equations -0.363,-11.043); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)",
+        "stack": "Error: Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 11.0 W at 11.811864,64.900000; equations -0.363,-11.043); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 11.0 W at 11.811864,64.900000; equations -0.363,-11.043); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)",
+        "stack": "DomainError: Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 11.0 W at 11.811864,64.900000; equations -0.363,-11.043); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:123:15)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:429:77)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 394,
+      "updates": 0,
+      "simulatedSeconds": 98.25,
+      "wallSeconds": 65.728088848,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 393
+      },
+      "maxEnergyResidualJ": 5.103647708892822e-07,
+      "maxWaterResidualKg": 1.1546319456101628e-14
+    },
+    {
+      "id": "sequence-12",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "Error: Indoor coil icing is outside the supported domain\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "DomainError: Indoor coil icing is outside the supported domain\n    at airExchange (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/air.js:82:15)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:454:25\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1305,
+      "updates": 2,
+      "simulatedSeconds": 326,
+      "wallSeconds": 76.45766603999999,
+      "operation": {
+        "index": 4,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 344
+      },
+      "maxEnergyResidualJ": 4.484318196773529e-07,
+      "maxWaterResidualKg": 3.963496197911809e-14
+    },
+    {
+      "id": "sequence-24",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 455.4 W at 11.568596,25.568596; equations -258.377,-375.022)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 455.4 W at 11.568596,25.568596; equations -258.377,-375.022)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 455.4 W at 11.568596,25.568596; equations -258.377,-375.022)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 455.4 W at 11.568596,25.568596; equations -258.377,-375.022)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:402:59)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 601,
+      "updates": 1,
+      "simulatedSeconds": 150,
+      "wallSeconds": 56.630689609,
+      "operation": {
+        "index": 2,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 120
+      },
+      "maxEnergyResidualJ": 4.954636096954346e-07,
+      "maxWaterResidualKg": 2.2620794126737565e-14
+    },
+    {
+      "id": "sequence-27",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 87.9 W at 22.565056,23.589193; equations 6.292,-87.658)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 87.9 W at 22.565056,23.589193; equations 6.292,-87.658)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 87.9 W at 22.565056,23.589193; equations 6.292,-87.658)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 87.9 W at 22.565056,23.589193; equations 6.292,-87.658)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:402:59)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 601,
+      "updates": 1,
+      "simulatedSeconds": 150,
+      "wallSeconds": 42.685493945999994,
+      "operation": {
+        "index": 2,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 120
+      },
+      "maxEnergyResidualJ": 4.76837158203125e-07,
+      "maxWaterResidualKg": 4.4853010194856324e-14
+    },
+    {
+      "id": "sequence-30",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "Error: Indoor coil icing is outside the supported domain\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "DomainError: Indoor coil icing is outside the supported domain\n    at airExchange (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/air.js:82:15)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:454:25\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 2152,
+      "updates": 4,
+      "simulatedSeconds": 537.75,
+      "wallSeconds": 30.075102799,
+      "operation": {
+        "index": 8,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 231
+      },
+      "maxEnergyResidualJ": 8.717179298400879e-07,
+      "maxWaterResidualKg": 4.529709940470639e-14
+    },
+    {
+      "id": "sequence-22",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "Error: Indoor coil icing is outside the supported domain\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "DomainError: Indoor coil icing is outside the supported domain\n    at airExchange (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/air.js:82:15)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:454:25\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1299,
+      "updates": 2,
+      "simulatedSeconds": 324.5,
+      "wallSeconds": 82.278358955,
+      "operation": {
+        "index": 4,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 338
+      },
+      "maxEnergyResidualJ": 6.92903995513916e-07,
+      "maxWaterResidualKg": 3.774758283725532e-14
+    },
+    {
+      "id": "reported-owner-reversal-winter-house",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 1,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 172.11622858400003,
+      "maxEnergyResidualJ": 5.145557224750519e-07,
+      "maxWaterResidualKg": 8.971556136883052e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 4680,
+        "reversing": 12,
+        "idle": 108
+      }
+    },
+    {
+      "id": "sequence-31",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "Error: Indoor coil icing is outside the supported domain\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "DomainError: Indoor coil icing is outside the supported domain\n    at airExchange (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/air.js:82:15)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:454:25\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1006,
+      "updates": 2,
+      "simulatedSeconds": 251.25,
+      "wallSeconds": 36.68448219700001,
+      "operation": {
+        "index": 4,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 45
+      },
+      "maxEnergyResidualJ": 4.670582711696625e-07,
+      "maxWaterResidualKg": 2.930988785010413e-14
+    },
+    {
+      "id": "sequence-25",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 94.532455613,
+      "maxEnergyResidualJ": 3.296881914138794e-07,
+      "maxWaterResidualKg": 6.071532165918825e-15,
+      "protectionCounts": {
+        "discharge temperature": 598
+      },
+      "states": {
+        "idle": 1908,
+        "reversing": 24,
+        "running": 1428
+      }
+    },
+    {
+      "id": "sequence-20",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "Error: Indoor coil icing is outside the supported domain\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Indoor coil icing is outside the supported domain",
+        "stack": "DomainError: Indoor coil icing is outside the supported domain\n    at airExchange (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/air.js:82:15)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:454:25\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 2852,
+      "updates": 5,
+      "simulatedSeconds": 712.75,
+      "wallSeconds": 143.048434619,
+      "operation": {
+        "index": 10,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 451
+      },
+      "maxEnergyResidualJ": 8.344650268554688e-07,
+      "maxWaterResidualKg": 5.1736392947532295e-14
+    },
+    {
+      "id": "sequence-29",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 100.594599818,
+      "maxEnergyResidualJ": 1.62515789270401e-07,
+      "maxWaterResidualKg": 2.2426505097428162e-14,
+      "protectionCounts": {
+        "discharge temperature": 2165
+      },
+      "states": {
+        "running": 1908,
+        "idle": 1440,
+        "reversing": 12
+      }
+    },
+    {
+      "id": "endurance-hot-wet-cooling",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 0.2 W at 13.373814,64.900000; equations -0.008,-0.224); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)",
+        "stack": "Error: Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 0.2 W at 13.373814,64.900000; equations -0.008,-0.224); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 0.2 W at 13.373814,64.900000; equations -0.008,-0.224); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)",
+        "stack": "DomainError: Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 0.2 W at 13.373814,64.900000; equations -0.008,-0.224); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)\n    at solveCycle (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/cycle.js:123:15)\n    at proposal (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:429:77)\n    at engine.advance (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-endurance-20261012/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-endurance-20261012/snapshot/worker.mjs:47:66"
+      },
+      "steps": 6749,
+      "updates": 0,
+      "simulatedSeconds": 1687,
+      "wallSeconds": 94.289217214,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 3600,
+        "substep": 6748
+      },
+      "maxEnergyResidualJ": 8.549541234970093e-07,
+      "maxWaterResidualKg": 1.5432100042289676e-14
+    },
+    {
+      "id": "endurance-humid-frost-defrost",
+      "outcome": "pass",
+      "steps": 28800,
+      "updates": 0,
+      "simulatedSeconds": 7200,
+      "wallSeconds": 1071.484793934,
+      "maxEnergyResidualJ": 2.964399755001068e-06,
+      "maxWaterResidualKg": 1.1463052729254741e-14,
+      "protectionCounts": {},
+      "states": {
+        "running": 22006,
+        "reversing": 432,
+        "defrost": 4418,
+        "draining": 720,
+        "idle": 1224
+      }
+    }
+  ],
+  "artifactDirectory": "/tmp/heatpump-robustness-endurance-20261012",
+  "status": "Completed baseline before phase/antifreeze/header corrections; 40 faults are observations to fix or explicitly classify, not accepted stability.",
+  "acceptedSimulatedSeconds": 24897.0
+}

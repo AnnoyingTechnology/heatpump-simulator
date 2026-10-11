@@ -23,9 +23,10 @@ export class TrendHistory {
     return true;
   }
 
-  plot(index: 0 | 1 | 2): { path: string; minimum: number; maximum: number; count: number } {
+  plot(index: 0 | 1 | 2, minimumSpan = 1): { path: string; minimum: number; maximum: number; count: number } {
+    if (!(Number.isFinite(minimumSpan) && minimumSpan > 0)) throw new RangeError('Trend scale span must be positive and finite');
     const values = this.samples.map(s => s.values[index]).filter((v): v is number => v !== null);
-    const minimum = Math.min(0, ...values), maximum = Math.max(1, ...values);
+    const minimum = Math.min(0, ...values), maximum = Math.max(minimumSpan, ...values);
     let path = '', previous: Sample | null = null;
     for (const sample of this.samples) {
       const value = sample.values[index];

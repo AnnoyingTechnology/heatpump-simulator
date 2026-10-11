@@ -1,26 +1,26 @@
 {
-  "checkedAt": "2026-10-11T07:57:34.806Z",
+  "checkedAt": "2026-10-11T10:51:11.264Z",
   "checks": [
     {
-      "name": "each room shows eight labelled reference midpoints aligned to the slider, without a separate legend",
+      "name": "one whole-house RT ruler keeps eight direct midpoint labels and sums Off rooms",
       "passed": true
     },
     {
-      "name": "reference scales fit the room bounds in both themes at desktop sizes and 1/3/5/8 rooms",
+      "name": "reference labels and insulation controls fit 32 desktop/theme/topology layouts",
       "passed": true
     },
     {
-      "name": "loss edits retain focused controls, room zoom, reference elements and accepted physical state",
+      "name": "insulation retains focus; size edits derive H while conserving time and service history",
       "passed": true
     },
     {
-      "name": "numeric loss values above the cap clamp on commit without resetting accepted state",
+      "name": "advanced H retains values beyond the reference scale and marks overflow without physics clamping",
       "passed": true
     }
   ],
   "layoutCombinations": 32,
-  "representation": "labelled midpoints",
-  "domainWK": [
+  "representation": "one calculated whole-house RT ruler; per-room average U and automatic exposed area",
+  "referenceDomainWK": [
     0,
     750
   ]

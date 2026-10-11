@@ -246,7 +246,8 @@ export function branchReadings(fix: Fixture, rooms: RoomConfig[]): BranchReading
   const wSum = weights.reduce((a, b) => a + b, 0) || 1;
   return rooms.map((r, i) => {
     const share = (weights[i] ?? 0) / wSum;
-    const big = INDOOR_CLASSES[r.indoorClass].nominalKw >= 3;
+    const nominalKw = INDOOR_CLASSES[r.indoorClass].nominalKw;
+    const big = nominalKw !== null && nominalKw >= 3;
     return {
       roomKw: total * share,
       outletC: fix.branchOutC ? (fix.branchOutC[big ? 1 : 0] ?? null) : null,

@@ -26,41 +26,44 @@
       "status": "candidate-drafted;12 unit candidates structure-validated together 2026-10-11 (12/12 PASS); independent source acceptance pending"
     },
     {
-      "name": "MSZ-AP Mural Grandes Pieces",
-      "pageLocator": "pp.58-63",
+      "name": "MSZ-AP Mural Grandes Pièces",
+      "pageLocator": "PDF pp.59-60 (printed pp.58-59); index lead pp.58-63 shifted: PDF p.57 and PDF p.61 are blank navigation pages; full spec table PDF p.60 (printed p.59)",
       "unitTypes": [
         "indoor",
         "outdoor"
       ],
-      "referencesFile": null,
-      "status": "pending"
+      "referencesFile": "mitsubishi-msz-ap.manifest.json",
+      "status": "candidate-drafted;4 unit candidates structure-validated together 2026-10-11 (4/4 PASS); independent source acceptance pending"
     },
     {
       "name": "MSZ-EF Mural Design",
-      "pageLocator": "pp.60-67",
+      "pageLocator": "PDF pp.62-64 (printed pp.61-63); index lead pp.60-67 shifted: PDF p.62 divider, PDF p.63 marketing, PDF p.64 full spec table, PDF p.65 blank nav, PDF p.66 begins MSZ-LN",
       "unitTypes": [
-        "indoor"
+        "indoor",
+        "outdoor"
       ],
-      "referencesFile": null,
-      "status": "pending"
+      "referencesFile": "mitsubishi-msz-ef.manifest.json",
+      "status": "candidate-drafted;9 unit candidates structure-validated together 2026-10-11 (9/9 PASS); independent source acceptance pending"
     },
     {
       "name": "MSZ-LN Mural Design Premium/Premium+",
-      "pageLocator": "pp.64-65,72-75",
+      "pageLocator": "index lead pp.64-65,72-75 shifted; actual PDF pp.66-68 (printed pp.65-67): PDF p.66 divider, PDF p.67 marketing (colour suffixes VG3R/VG3B/VG3V/VG3W printed here), PDF p.68 full spec table (printed p.67, visually verified), PDF p.69 blank nav; PDF pp.70-73 are MSZ-FT",
       "unitTypes": [
-        "indoor"
+        "indoor",
+        "outdoor"
       ],
-      "referencesFile": null,
-      "status": "pending"
+      "referencesFile": "mitsubishi-msz-ln.manifest.json",
+      "status": "candidate-drafted;9 unit candidates structure-validated together 2026-10-11 (9/9 PASS); independent source acceptance pending"
     },
     {
-      "name": "MSZ-FT Mural Compact+",
-      "pageLocator": "pp.68-71",
+      "name": "MSZ-FT Mural Compact+ (Hyper Heating)",
+      "pageLocator": "index lead pp.68-71 shifted; actual PDF pp.70-72 (printed pp.69-71): PDF p.70 divider ('HYPER HEATING' band), PDF p.71 marketing (printed p.70, 'MSZ-FT 25/35/50 VGK2', 'MODE CHAUD -25/+24°C', 'MODE FROID -10/+46°C'), PDF p.72 full spec table (printed p.71, visually verified with page image), PDF p.73 begins MSZ-LN",
       "unitTypes": [
-        "indoor"
+        "indoor",
+        "outdoor"
       ],
-      "referencesFile": null,
-      "status": "pending"
+      "referencesFile": "mitsubishi-msz-ft.manifest.json",
+      "status": "candidate-drafted;6 unit candidates structure-validated together 2026-10-11 (6/6 PASS); independent source acceptance pending"
     },
     {
       "name": "MSZ-RW Mural Ultimate+",
@@ -271,5 +274,5 @@
       "reason": "out of scope per research contract"
     }
   ],
-  "coverageNotes": "Index only. No family fully researched. PUMY mini-DRV (VRF/DRV) and PXZ avec ECS (mixed air+ECS) moved to excludedFamilies on 2026-10-11 root review; PUMY size-availability note (250/300 announced 2nd half 2026) is moot for this pass. MSZ-HR and MSZ-AY families: per-family reference manifests exist and all unit candidates are structure-validated (candidate-drafted, not accepted). MSZ-AY printed locators corrected to PDF pp.52-56 (printed pp.51-55); spec tables PDF p.54 (Tailles 15/20) and PDF p.56 (Tailles 25/35/42/50). Other unit families remain pending, index incomplete. Tables still needing reconciliation: MSZ-LN color-suffix identity, MSZ-RZ suffix, MXZ combination tables vs livret-combinaisons source, PXZ index tables (deferred mixed/ECS scope), SUZ-M/PUZ-ZM shared spec tables, twin/triple/quadri compatibility notes. Exact suffixes must come from printed tables, never inferred."
+  "coverageNotes": "Index only. No family fully researched. PUMY mini-DRV (VRF/DRV) and PXZ avec ECS (mixed air+ECS) moved to excludedFamilies on 2026-10-11 root review; PUMY size-availability note (250/300 announced 2nd half 2026) is moot for this pass. MSZ-HR and MSZ-AY families: per-family reference manifests exist and all unit candidates are structure-validated (candidate-drafted, not accepted). MSZ-AY printed locators corrected to PDF pp.52-56 (printed pp.51-55); spec tables PDF p.54 (Tailles 15/20) and PDF p.56 (Tailles 25/35/42/50). MSZ-AP family: manifest mitsubishi-msz-ap.manifest.json, locators corrected to PDF pp.59-60 (printed pp.58-59), 4 unit candidates structure-validated together 2026-10-11 (4/4 PASS); only sizes 60/71 and suffixes MSZ-AP VG2 / MUZ-AP60VG2 / MUZ-AP71VG3 are printed. MSZ-EF family: manifest mitsubishi-msz-ef.manifest.json, locators corrected to PDF pp.62-64 (printed pp.61-63), spec table PDF p.64 visually verified with page image, 9 unit candidates (5 indoor MSZ-EF18/25/35/42/50VGK2 + 4 outdoor MUZ-EF25/35/42/50VG2) structure-validated together 2026-10-11 (9/9 PASS); colour suffixes VGK2B/W/S printed only on marketing page, not in spec table; no MUZ-EF printed for Taille 18; 'Compatible uniquement avec les multisplits' note pending MXZ combination tables. MSZ-LN family: manifest mitsubishi-msz-ln.manifest.json, locators corrected to PDF pp.66-68 (printed pp.65-67), spec table PDF p.68 visually verified with page image, 9 unit candidates (5 indoor MSZ-LN18/25/35/50/60VG3 + 4 outdoor MUZ-LN25/35/50/60VG3) structure-validated together 2026-10-11 (9/9 PASS); colour suffixes VG3R/VG3B/VG3V/VG3W printed only on marketing page PDF p.67, not in spec table; no MUZ-LN printed for Taille 18 (multisplit-only note); no LN Hyper Heating variant printed (Hyper Heating belongs to MSZ-FT). MSZ-FT family (Hyper Heating): manifest mitsubishi-msz-ft.manifest.json, locators corrected to PDF pp.70-72 (printed pp.69-71), spec table PDF p.72 visually verified with page image mitsubishi-air-air-2026-2027-page-72.png, 6 unit candidates (3 indoor MSZ-FT25/35/50VGK2 + 3 outdoor MUZ-FT25/35/50VGHZ2) structure-validated together 2026-10-11 (6/6 PASS); printed outdoor suffix is VGHZ2 (not inferred from family name); heating capacity rows published at +7/-7/-10/-15/-20/-25°C; single 'Puissance absorbée totale nominale' row in the heating block is not attributed to a specific temperature; no colour suffix printed for FT. Other unit families remain pending, index incomplete. Tables still needing reconciliation: MSZ-RZ suffix, MXZ combination tables vs livret-combinaisons source, PXZ index tables (deferred mixed/ECS scope), SUZ-M/PUZ-ZM shared spec tables, twin/triple/quadri compatibility notes. Exact suffixes must come from printed tables, never inferred."
 }

@@ -10,9 +10,11 @@ export interface RoomConfig {
   cleanFraction?: number; // Clear-passage surrogate, 0.10…1, default1.
   /** Prescribed sensible gains to room air; separate from HVAC output/electricity. Default zero. */
   internalGainW?: number;
+  /** Balanced ventilation sensible effectiveness, 0…1; no vapor recovery. Omitted means zero. */
+  ventilationRecoveryEfficiency?: number;
   id: string; enabled: boolean; volumeM3: number; initialTemperatureC: number; initialRelativeHumidity: number;
   setpointC: number; envelopeWK: number; fabricCapacityJK: number; airFabricWK: number; ventilationACH: number;
-  airMassFlowKgs: number; fanPowerW: number; airConductanceWK: number; refrigerantConductanceWK: number;
+  volumetricAirFlowM3s?: number; airMassFlowKgs: number; fanPowerW: number; airConductanceWK: number; refrigerantConductanceWK: number;
   naturalAirConductanceWK: number; metalCapacityJK: number;
   pipe: { lengthM: number; gasInsideDiameterM: number; liquidInsideDiameterM: number; elevationM: number; insulationConductanceWmK: number };
 }
@@ -34,14 +36,17 @@ export interface EngineConfig {
   /** Effective sensible conductances between air nodes, without air/moisture transport or resolved buoyancy. */
   interzoneLinks?: { roomA: string; roomB: string; conductanceWK: number }[];
   compressor: { displacementM3rev: number; speedMinRps: number; speedMaxRps: number; isentropicEfficiency: number; volumetricEfficiency: number; driveEfficiency: number; superheatK: number; subcoolK: number; maxDischargeC: number; maxPressureRatio: number };
-  outdoor: { cleanFraction?: number; airMassFlowKgs: number; fanPowerW: number; airConductanceWK: number; refrigerantConductanceWK: number; naturalAirConductanceWK: number; metalCapacityJK: number; depositionAreaM2: number; frostDensityKgm3: number; frostConductivityWmK: number; finGapM: number; drainageSeconds: number };
+  outdoor: { cleanFraction?: number; volumetricAirFlowM3s?: number; airMassFlowKgs: number; fanPowerW: number; airConductanceWK: number; refrigerantConductanceWK: number; naturalAirConductanceWK: number; metalCapacityJK: number; depositionAreaM2: number; frostDensityKgm3: number; frostConductivityWmK: number; finGapM: number; drainageSeconds: number };
   control: { strategy?: 'inverter' | 'on-off'; fixedSpeedRps?: number; controlsW: number; proportionalSpeedRpsK: number;
     /** Thermostat restart margin, or inverter overshoot margin for below-minimum cycling. */
     thermostatDeadbandK: number;
     minOnSeconds: number; minOffSeconds: number; reversalSeconds: number; defrostMinHeatingSeconds: number; defrostIceThresholdKg: number; defrostMaxSeconds: number; defrostTerminationMetalC: number; drainageDwellSeconds: number; defrostSpeedRps: number };
   numerics: { maxStepSeconds: number; pressureToleranceW: number };
 }
-export interface RoomState { dryAirMassKg: number; airEnthalpyJ: number; humidityRatio: number; fabricTemperatureC: number; metalTemperatureC: number }
+export interface RoomState {
+  /** Generic retained mist/condensate in thermal equilibrium with room gas; no wall model. */
+  retainedWaterKg?: number; retainedIceKg?: number;
+  dryAirMassKg: number; airEnthalpyJ: number; humidityRatio: number; fabricTemperatureC: number; metalTemperatureC: number }
 export interface FilmState { massKg: number; enthalpyJ: number }
 export interface FilmDerived { temperatureC: number; iceKg: number; liquidKg: number; thicknessM: number }
 export interface CycleOutput {
@@ -57,6 +62,7 @@ export interface CycleOutput {
   transportMethod: string;
 }
 export interface RoomOutput {
+  retainedWaterKg?: number; retainedIceKg?: number;
   /** Last accepted substep powers into room air; excluded from HVAC heat and COP. */
   interzoneHeatW?: number; internalGainW?: number;
   id: string; temperatureC: number; relativeHumidity: number; humidityRatio: number; fabricTemperatureC: number; metalTemperatureC: number;
@@ -99,5 +105,5 @@ export interface EngineOutput {
     drainedWaterKg: number;
     electricityJ: number; signedRoomHeatJ: number; outdoorExchangeJ: number; drainageJ: number; configurationEnergyJ: number; boundaryEnergyJ: number; storedEnergyChangeJ: number; residualJ: number; waterResidualKg: number;
   };
-  diagnostics: { warnings: string[]; fault: string | null; algebraicResidualW: number; speedRps: number; demandSpeedRps: number; restartDelaySeconds: number; envelopeProtection: 'pressure ratio'|'discharge temperature'|null; filmEnergyRateW: number; metalEnergyRateW: number };
+  diagnostics: { warnings: string[]; fault: string | null; algebraicResidualW: number; speedRps: number; demandSpeedRps: number; restartDelaySeconds: number; envelopeProtection: 'pressure ratio'|'discharge temperature'|'indoor antifreeze'|'condensing temperature'|'thermal boundary'|null; filmEnergyRateW: number; metalEnergyRateW: number };
 }

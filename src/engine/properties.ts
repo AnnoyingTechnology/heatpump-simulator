@@ -113,6 +113,8 @@ export class Properties {
     if (!Number.isFinite(value) || Math.abs(value) > 1e30) throw new DomainError(`Humid air ${output} outside domain`); return value;
   }
   airH(tC: number, w: number, p: number): number { return this.humid('H', 'T', tC + 273.15, 'W', w, p); }
+  /** Humid gas constant-pressure cp in J/kg dry air/K; excludes retained liquid/ice. */
+  airCp(tC: number, w: number, p: number): number { return this.humid('C', 'T', tC + 273.15, 'W', w, p); }
   airT(h: number, w: number, p: number): number { return this.humid('T', 'H', h, 'W', w, p) - 273.15; }
   airW(tC: number, rh: number, p: number): number {
     if (rh < 0 || rh > 1) throw new DomainError('Relative humidity must be a fraction within 0…1');

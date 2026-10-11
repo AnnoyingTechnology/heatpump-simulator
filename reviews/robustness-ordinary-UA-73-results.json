@@ -1,0 +1,3687 @@
+{
+  "createdAt": "2026-10-11T10:09:51.055Z",
+  "preset": "quick",
+  "seed": 20261011,
+  "workers": 8,
+  "timeoutMs": 1200000,
+  "sourceHashes": {
+    "src/engine/air.ts": "6dfb70bd7b7c5b84501e0de1633cf8378ea0b2bd0eb903dafe09c31625745d15",
+    "src/engine/charge-output.ts": "ca0bed2dd4836af7e72dce71e28e5d0b11309358f4c3da0bb6365a9079142ff7",
+    "src/engine/charge.ts": "0c9dd8050fab6b3bd16bcb881f59fc00debc2f85c774c2a1c2216d45d289e168",
+    "src/engine/cycle.ts": "c65212899f41677e6870d7f77bf9055b9bebad484c8a566f9f3b67b1e42cd6ad",
+    "src/engine/defaults.ts": "5ca7d8006c6990e4b6b99a6ef353ec075b720a07701dac39a23ca9fb4fec99f8",
+    "src/engine/demand.ts": "53e9c8bbc8e85e37f3cad9d842e22510ccf2404e04cc7bbe7755b14140d12197",
+    "src/engine/drive.ts": "d94247f20b359a61980e0d5af121d5299133f3b65a49358c4c40540a6655d0dd",
+    "src/engine/engine.ts": "d19581635f7086e8e9d041bd7e1b3dc69fd1d7fe4b94a397cae7a54fb826d963",
+    "src/engine/envelope.ts": "eaab1d96df755b322050854fa8b7108e1f4918fbeb4dd1206d815ba9c74dc4e3",
+    "src/engine/film.ts": "3cfeda3465b8c5226e6ed82bada490abdc42577fdadd4a1d0a2e3fb682285dbb",
+    "src/engine/index.ts": "f8aba3f8724f99dcd1c17be93cfc3622a9fe276d968cc36f5bbf70e9c3773ebd",
+    "src/engine/interzone.ts": "856dfe9535d53f52aa8aae8f0cc83167163b11bab8ca6bb9bb62ff9e600d8bed",
+    "src/engine/properties.ts": "7f4bb2f372a77f30e76844dd7ef9d7afa6d25f72079a09ce66586cdc134404d1",
+    "src/engine/thermostat.ts": "624305969795b54b99745ac84d1c966dbc0e66263ee8579111ea2054c971d5f5",
+    "src/engine/transport.ts": "928ab51cd8ca1193e68ba0821ee88ae2966521314ad9b1fd1b9894f253e2ed31",
+    "src/engine/types.ts": "2d37d59af8e071ac4ea8fb6edc85605f0ee63d3ce3900f8af8d6f62340470c24",
+    "compiled/air.js": "ac8302044d196da0528b0ca99b76db9f550d26b57adc42c0de89a68ee9b5ed94",
+    "compiled/charge-output.js": "4ed7ae6f5cc6b6f0b52465b8cbba32f400f890e729ba71cd2db804a11c435fa0",
+    "compiled/charge.js": "716d6e0134395d6f67245751af1d915e179ab2c599b8a66950bbf8006fac9b1d",
+    "compiled/cycle.js": "9086406ea7504d8ef2c0d030ee12686f8378e6463b77b1fdd06214298b2fa76d",
+    "compiled/defaults.js": "b1bcc26d4004cb951b5440c02becc157363373d64aef5f088b809c1bd20a2ed8",
+    "compiled/demand.js": "a06da83a3ed88028b94b91f3ea9e21aeef15cadb8cc8baede54676ce8b900230",
+    "compiled/drive.js": "9795fb61cb25ffbd4fa0dfd41f926b4fa423d4dd6cb74f130f242562c326a0b9",
+    "compiled/engine.js": "7f9faa0cb3525acb24e6a58c292870f55d0d7e92534bf2abd0dde76b77a64efe",
+    "compiled/envelope.js": "500ad61198fd0a91fe0f5e741a08c8b1b5c965a88cb8eecbf1025c8a5413b924",
+    "compiled/film.js": "2af475cdfb6faa4512ac7a17c45393f3be33ab88e2cb5be334138956ecf33d51",
+    "compiled/index.js": "2a58c1821531507d4843729995d2ffc8bbf2176ace4cb1e0269090322f8488c3",
+    "compiled/interzone.js": "677d003f3074e81bd06c7754444c0cdefd77fb56302e3db72536bfec8e602c60",
+    "compiled/properties.js": "765c01b7d61ee144821da2f9fd379469e8e34bbb44335616dd5afbca3b00c18a",
+    "compiled/thermostat.js": "4aa6dbf014fc983efb014e5a5fc0a45613a9c7d7bd42009b4f6108eeacf0398f",
+    "compiled/transport.js": "5bc7c0f1850837de00043e755290d8e3d131d4ee3adb27646557344409bc1dcf",
+    "compiled/types.js": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "public/vendor/coolprop-safe/LICENSE-CoolProp": "9bf835333ef602af4cb19338b9f9d43671e174fa029b00280e9bdba6ea4719b2",
+    "public/vendor/coolprop-safe/adapter.js": "06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34",
+    "public/vendor/coolprop-safe/coolprop.js": "6fa2e627803e2453da12cb9fce160ca3326851cd179444edc5ab698e21524d6c",
+    "public/vendor/coolprop-safe/coolprop.wasm": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+    "public/vendor/coolprop-safe/licenses/Emscripten-LICENSE": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86",
+    "public/vendor/coolprop-safe/licenses/boost_headers-LICENSE": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "public/vendor/coolprop-safe/licenses/compiler-rt-LICENSE.TXT": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.APACHE": "03379001a7b12a2ec997a25554247d985270b353c10d5bafee9ac8d6519820b7",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.BSD": "51928dce36213c5333ba3172e847d735d4c6e9b7ff2722a326c49067155b82eb",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.MINPACK": "c87b7f8ee88f6195e91743820c00354833583aef091b72e2d4a49c8e28e798a0",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.MPL2": "66a3107d5ad6a058aab753eaac2047ccb2ed0e39465dd0fe5844da3e300d5172",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.README": "db640ff2bd90c6abd6a4d3fbb351e0ee4d555417cf840492054d1cbb2ea85644",
+    "public/vendor/coolprop-safe/licenses/eigen-LICENSE": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+    "public/vendor/coolprop-safe/licenses/fmt-LICENSE": "07580f2a3b35709ce703d523f447b242f6dfec7582a8c0df102c7fa2849375f8",
+    "public/vendor/coolprop-safe/licenses/if97-LICENSE": "e22c3d30ef8d88ab468d9ea20392ca1df22fa3fd0a92dc3e996d89cf3cfdbd03",
+    "public/vendor/coolprop-safe/licenses/libcxx-LICENSE.TXT": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+    "public/vendor/coolprop-safe/licenses/libcxxabi-LICENSE.TXT": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",
+    "public/vendor/coolprop-safe/licenses/miniz-header-notice.txt": "dfdeccf4fcb0cef3d71b31fa915e804f272fa57f00d4ff5076d2c8e8efc22057",
+    "public/vendor/coolprop-safe/licenses/msgpack-c-COPYING": "664550b43996452a5a2c7471bb0ff77185a58c69ccafa60f983dc4c162e1ee22",
+    "public/vendor/coolprop-safe/licenses/msgpack-c-LICENSE_1_0.txt": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "public/vendor/coolprop-safe/licenses/multicomplex-README.md": "d58933ccd086958d576969174c04af6506cc5586da9d2125ec644d534225c018",
+    "public/vendor/coolprop-safe/licenses/musl-COPYRIGHT": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af",
+    "public/vendor/coolprop-safe/licenses/nlohmann_json-LICENSE.MIT": "46a65cffd1ea955132d95a8dd921640714a8d6b537d2e4e482d31145ae95b603",
+    "public/vendor/coolprop-safe/licenses/refprop_headers-LICENSE": "f21f633c596509e89b2baedfd657c8f1b8018954b06576590971684b210e91f8",
+    "public/vendor/coolprop-safe/licenses/valijson-LICENSE": "61b5766db38eaa3f320c366357956d7743424bfbf90fd78f5943866ba237589e",
+    "public/vendor/coolprop-safe/provenance.json": "fffa34344622d1d2266c5d389552e3e672706422f317193ebf756bc0a157f697",
+    "tools/robustness-worker.mjs": "8cea3d25a28564f91b5e4b907b6af3e65d8823b185c7034c6bd62ac62f2695dd",
+    "tools/robustness-campaign.mjs": "de0f752b4e8e09de7841e0f2ddd3b46e08448381a18aac36603931688ecb5a6c"
+  },
+  "nodeVersion": "v24.21.0",
+  "platform": "linux",
+  "architecture": "x64",
+  "extendedComponentAndLineBounds": false,
+  "segmentDurationCapSeconds": null,
+  "method": "Independent Node child processes; immutable TypeScript snapshot compiled once; production guarded HEOS; fixed accepted 0.25-second steps; full before-step checkpoint persisted for native aborts.",
+  "limits": "Reference R32 engine only. Passing a finite campaign is not proof of correctness. Generic component parameters, not calibrated manufacturer maps. The screenshot scenario is reconstructed from visible controls, not a saved exact pre-crash state.",
+  "scenarios": [
+    {
+      "id": "endurance-hot-wet-cooling",
+      "requestedSeconds": 1800
+    },
+    {
+      "id": "endurance-humid-frost-defrost",
+      "requestedSeconds": 1800
+    },
+    {
+      "id": "grid-cooling--25-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling--25-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling--5-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling--5-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling-25-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling-25-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling-45-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling-45-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling-5.5-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling-5.5-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating--25-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating--25-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating--5-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating--5-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating-25-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating-25-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating-45-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating-45-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating-5.5-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-heating-5.5-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "reported-friend-cold-cooling",
+      "requestedSeconds": 1100
+    },
+    {
+      "id": "reported-owner-reversal-old-generic",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "reported-owner-reversal-winter-house",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "sequence-0",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-1",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-10",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-11",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-12",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-13",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-14",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-15",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-16",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-17",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-18",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-19",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-2",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-20",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-21",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-22",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-23",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-24",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-25",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-26",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-27",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-28",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-29",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-3",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-30",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-31",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-4",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-5",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-6",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-7",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-8",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-9",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "grid-heating-25-0-replay-57",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-heating-45-0-replay-58",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-heating-45-1-replay-59",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "sequence-1-replay-60",
+      "requestedSeconds": 70
+    },
+    {
+      "id": "sequence-3-replay-61",
+      "requestedSeconds": 70
+    },
+    {
+      "id": "sequence-4-replay-62",
+      "requestedSeconds": 70
+    },
+    {
+      "id": "grid-cooling--25-1-replay-63",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "grid-cooling-45-0-replay-64",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "sequence-10-replay-65",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-16-replay-66",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-2-replay-67",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-22-replay-68",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-28-replay-69",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-4-replay-70",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-6-replay-71",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "sequence-7-replay-72",
+      "requestedSeconds": 840
+    }
+  ],
+  "completed": 73,
+  "counts": {
+    "pass": 71,
+    "physical-fault": 2
+  },
+  "results": [
+    {
+      "id": "grid-cooling-25-1",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 10.456263676,
+      "maxEnergyResidualJ": 8.061761036515236e-08,
+      "maxWaterResidualKg": 1.412064909445121e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 227.1536540000002,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling--5-0",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 17.284934673,
+      "maxEnergyResidualJ": 1.0542134987190366e-07,
+      "maxWaterResidualKg": 4.926614671774132e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1064.17319,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling--25-1",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 24.547175475,
+      "maxEnergyResidualJ": 3.259629011154175e-07,
+      "maxWaterResidualKg": 3.8719027983802334e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 866.815779,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling--5-1",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 42.840732228,
+      "maxEnergyResidualJ": 3.604218363761902e-07,
+      "maxWaterResidualKg": 9.818534874028728e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1481.647308,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling-5.5-0",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 18.881634506,
+      "maxEnergyResidualJ": 5.010515451431274e-07,
+      "maxWaterResidualKg": 4.166805789296291e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 420.0571009999999,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling--25-0",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 48.812670336000004,
+      "maxEnergyResidualJ": 7.385388016700745e-07,
+      "maxWaterResidualKg": 5.835609773185979e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1048.5036880000002,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling-45-1",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 40.0644019,
+      "maxEnergyResidualJ": 3.152526915073395e-07,
+      "maxWaterResidualKg": 8.548717289613705e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 155.25062100000014,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating--25-0",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 18.359259785000003,
+      "maxEnergyResidualJ": 2.874876372516155e-07,
+      "maxWaterResidualKg": 1.4857906571741353e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 189.50599599999987,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling-45-0",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 56.806147284,
+      "maxEnergyResidualJ": 5.066394805908203e-07,
+      "maxWaterResidualKg": 1.4148404670066839e-14,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 299.7162599999997,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling-25-0",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 70.28235798899999,
+      "maxEnergyResidualJ": 4.102475941181183e-07,
+      "maxWaterResidualKg": 1.4148404670066839e-14,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1071.5989869999994,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating--5-0",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 16.516491863,
+      "maxEnergyResidualJ": 1.3853423297405243e-07,
+      "maxWaterResidualKg": 4.822531263215524e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 113.07406500000025,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating-45-0",
+      "outcome": "physical-fault",
+      "faultRollbackVerified": true,
+      "error": {
+        "name": "Error",
+        "message": "Neither heating SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 30.5 W at 36.993356,37.984617; equations 30.238,3.958); alternate: No feasible shared-pressure operating point (best residual 73.0 W at 36.995491,37.995491; equations 72.767,5.238)",
+        "stack": "Error: Neither heating SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 30.5 W at 36.993356,37.984617; equations 30.238,3.958); alternate: No feasible shared-pressure operating point (best residual 73.0 W at 36.995491,37.995491; equations 72.767,5.238)\n    at file:///tmp/heatpump-robustness-final-ordinary-UA-73/snapshot/worker.mjs:54:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Neither heating SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 30.5 W at 36.993356,37.984617; equations 30.238,3.958); alternate: No feasible shared-pressure operating point (best residual 73.0 W at 36.995491,37.995491; equations 72.767,5.238)",
+        "stack": "DomainError: Neither heating SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 30.5 W at 36.993356,37.984617; equations 30.238,3.958); alternate: No feasible shared-pressure operating point (best residual 73.0 W at 36.995491,37.995491; equations 72.767,5.238)\n    at solveCycle (file:///tmp/heatpump-robustness-final-ordinary-UA-73/snapshot/build/cycle.js:140:19)\n    at proposal (file:///tmp/heatpump-robustness-final-ordinary-UA-73/snapshot/build/engine.js:420:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-final-ordinary-UA-73/snapshot/build/engine.js:471:77)\n    at engine.advance (file:///tmp/heatpump-robustness-final-ordinary-UA-73/snapshot/worker.mjs:29:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-final-ordinary-UA-73/snapshot/build/engine.js:142:22)\n    at file:///tmp/heatpump-robustness-final-ordinary-UA-73/snapshot/worker.mjs:48:103"
+      },
+      "steps": 58,
+      "updates": 0,
+      "simulatedSeconds": 14.25,
+      "wallSeconds": 4.443581824,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 57
+      },
+      "config": {
+        "fluid": "R32",
+        "mode": "heating",
+        "outdoorTemperatureC": 45,
+        "outdoorRelativeHumidity": 0,
+        "ambientPressurePa": 101325,
+        "indoorPortCapacity": 5,
+        "rooms": [
+          {
+            "id": "room-1",
+            "enabled": true,
+            "volumeM3": 60,
+            "initialTemperatureC": 17,
+            "initialRelativeHumidity": 0.5,
+            "setpointC": 26,
+            "envelopeWK": 0,
+            "fabricCapacityJK": 4000000,
+            "airFabricWK": 250,
+            "ventilationACH": 0.25,
+            "airMassFlowKgs": 0.15,
+            "fanPowerW": 25,
+            "airConductanceWK": 170,
+            "refrigerantConductanceWK": 350,
+            "naturalAirConductanceWK": 15,
+            "metalCapacityJK": 12000,
+            "pipe": {
+              "lengthM": 0,
+              "gasInsideDiameterM": 0.01,
+              "liquidInsideDiameterM": 0.0048,
+              "elevationM": 0,
+              "insulationConductanceWmK": 0.05
+            },
+            "cleanFraction": 1
+          }
+        ],
+        "compressor": {
+          "displacementM3rev": 2.2e-05,
+          "speedMinRps": 18,
+          "speedMaxRps": 75,
+          "isentropicEfficiency": 0.7,
+          "volumetricEfficiency": 0.8,
+          "driveEfficiency": 0.93,
+          "superheatK": 3,
+          "subcoolK": 1,
+          "maxDischargeC": 145,
+          "maxPressureRatio": 8
+        },
+        "outdoor": {
+          "airMassFlowKgs": 0.9,
+          "fanPowerW": 85,
+          "airConductanceWK": 1100,
+          "refrigerantConductanceWK": 1000,
+          "naturalAirConductanceWK": 35,
+          "metalCapacityJK": 28000,
+          "depositionAreaM2": 2,
+          "frostDensityKgm3": 200,
+          "frostConductivityWmK": 0.15,
+          "finGapM": 0.002,
+          "drainageSeconds": 30,
+          "cleanFraction": 0.1
+        },
+        "control": {
+          "strategy": "inverter",
+          "fixedSpeedRps": 40,
+          "controlsW": 15,
+          "proportionalSpeedRpsK": 20,
+          "thermostatDeadbandK": 1,
+          "minOnSeconds": 30,
+          "minOffSeconds": 30,
+          "reversalSeconds": 3,
+          "defrostMinHeatingSeconds": 300,
+          "defrostIceThresholdKg": 0.15,
+          "defrostMaxSeconds": 600,
+          "defrostTerminationMetalC": 5,
+          "drainageDwellSeconds": 10,
+          "defrostSpeedRps": 35
+        },
+        "numerics": {
+          "maxStepSeconds": 0.25,
+          "pressureToleranceW": 0.1
+        }
+      },
+      "acceptedCheckpoint": {
+        "rooms": [
+          {
+            "dryAirMassKg": 72.32604216583573,
+            "airEnthalpyJ": 2347049.063397101,
+            "humidityRatio": 0.0060252324629124325,
+            "fabricTemperatureC": 17.000033060795268,
+            "metalTemperatureC": 23.483673681381063,
+            "retainedWaterKg": 0,
+            "retainedIceKg": 0
+          }
+        ],
+        "outdoorEnergyJ": 1179054.1845047208,
+        "outdoorWaterKg": 0,
+        "time": 14.25,
+        "state": "running",
+        "stateTime": 14.25,
+        "heatingRuntime": 14.25,
+        "onTime": 14.25,
+        "offTime": 0,
+        "active": [
+          true
+        ],
+        "cycle": {
+          "mode": "heating",
+          "evaporatingC": 36.995490508303135,
+          "condensingC": 37.995490508303135,
+          "lowPressureBarAbs": 23.017298258011614,
+          "highPressureBarAbs": 23.59406197625697,
+          "suction": {
+            "pPa": 2301729.8258011616,
+            "pBarAbs": 23.017298258011614,
+            "hJkg": 519332.04933281976,
+            "temperatureC": 39.99549050830319,
+            "entropyJkgK": 2038.4466989453658,
+            "densityKgm3": 64.92699196906725,
+            "qualityMass": null,
+            "phase": "vapor"
+          },
+          "discharge": {
+            "pPa": 2359406.197625697,
+            "pBarAbs": 23.59406197625697,
+            "hJkg": 520587.45196163055,
+            "temperatureC": 41.85422756259112,
+            "entropyJkgK": 2039.6427105083255,
+            "densityKgm3": 66.19333356305128,
+            "qualityMass": null,
+            "phase": "vapor"
+          },
+          "condenserOutlet": {
+            "pPa": 2359406.197625697,
+            "pBarAbs": 23.59406197625697,
+            "hJkg": 271277.5828923758,
+            "temperatureC": 37.920624123647485,
+            "entropyJkgK": 1238.5161742254322,
+            "densityKgm3": 903.2589743469237,
+            "qualityMass": null,
+            "phase": "liquid"
+          },
+          "expansionOutlet": {
+            "pPa": 2301729.8258011616,
+            "pBarAbs": 23.017298258011614,
+            "hJkg": 271277.5828923758,
+            "temperatureC": 36.995490508303135,
+            "entropyJkgK": 1238.730389400074,
+            "densityKgm3": 827.0758986243764,
+            "qualityMass": 0.007780641471186558,
+            "phase": "two-phase"
+          },
+          "totalMassFlowKgs": 0.020568871055800506,
+          "branchMassFlowsKgs": [
+            0.020568871055800506
+          ],
+          "branchCoilHeatW": [
+            5128.022549824007
+          ],
+          "outdoorCoilHeatW": -5102.200335028885,
+          "branchInlets": [
+            {
+              "pPa": 2359406.197625697,
+              "pBarAbs": 23.59406197625697,
+              "hJkg": 520587.45196163055,
+              "temperatureC": 41.85422756259112,
+              "entropyJkgK": 2039.6427105083255,
+              "densityKgm3": 66.19333356305128,
+              "qualityMass": null,
+              "phase": "vapor"
+            }
+          ],
+          "branchOutlets": [
+            {
+              "pPa": 2359406.197625697,
+              "pBarAbs": 23.59406197625697,
+              "hJkg": 271277.5828923758,
+              "temperatureC": 37.920624123647485,
+              "entropyJkgK": 1238.5161742254322,
+              "densityKgm3": 903.2589743469237,
+              "qualityMass": null,
+              "phase": "liquid"
+            }
+          ],
+          "condenserHeatW": 5128.022549824007,
+          "evaporatorHeatW": 5102.200335028885,
+          "compressorWorkW": 25.822214795122026,
+          "compressorElectricalW": 27.765822360346263,
+          "driveLossW": 1.9436075652242373,
+          "massResidualKgs": 0,
+          "closureResidualW": 0.02326442213857491,
+          "lineHeatToOutdoorW": 0,
+          "pressureDropsPa": [
+            0
+          ],
+          "transportMethod": "Distributed Darcy/HEOS homogeneous-equilibrium field lines; generic smooth copper, no slip/fittings/oil",
+          "iterations": 3,
+          "pressureJacobian": {
+            "mode": "heating",
+            "floatingCondenser": true,
+            "matrix": [
+              -205.80112498228894,
+              -43.64772408276675,
+              625.9080850956692,
+              0
+            ]
+          }
+        },
+        "lastCycle": {
+          "evaporatingC": 36.995490508303135,
+          "condensingC": 37.995490508303135,
+          "condenserOutletC": 37.920624123647485,
+          "branchMassFlowsKgs": [
+            0.020568871055800506
+          ],
+          "pressureJacobian": {
+            "mode": "heating",
+            "floatingCondenser": true,
+            "matrix": [
+              -205.80112498228894,
+              -43.64772408276675,
+              625.9080850956692,
+              0
+            ]
+          }
+        },
+        "ledgers": {
+          "electricityJ": 2184.2273581014674,
+          "signedRoomHeatJ": 5212.1865691433095,
+          "usefulServiceHeatJ": 5212.1865691433095,
+          "drainedWaterKg": 0,
+          "outdoorExchangeJ": 113.77210766447159,
+          "drainageJ": 0,
+          "configurationEnergyJ": 0,
+          "boundaryEnergyJ": 2992.590893164586
+        },
+        "boundaryWater": -0.0004314590219260365,
+        "chargeCandidate": null,
+        "inventoryDrive": {
+          "speedRps": 18,
+          "startupSeconds": 14.25,
+          "offSeconds": 0,
+          "protection": null
+        },
+        "demandIntegralW": [
+          16.238864413422437
+        ],
+        "inverterCycling": false,
+        "lastOutput": {
+          "provenance": "live-generic-unvalidated",
+          "simulatedSeconds": 14.25,
+          "state": "running",
+          "requestedMode": "heating",
+          "effectiveMode": "heating",
+          "cycle": {
+            "mode": "heating",
+            "evaporatingC": 36.995490508303135,
+            "condensingC": 37.995490508303135,
+            "lowPressureBarAbs": 23.017298258011614,
+            "highPressureBarAbs": 23.59406197625697,
+            "suction": {
+              "pPa": 2301729.8258011616,
+              "pBarAbs": 23.017298258011614,
+              "hJkg": 519332.04933281976,
+              "temperatureC": 39.99549050830319,
+              "entropyJkgK": 2038.4466989453658,
+              "densityKgm3": 64.92699196906725,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            "discharge": {
+              "pPa": 2359406.197625697,
+              "pBarAbs": 23.59406197625697,
+              "hJkg": 520587.45196163055,
+              "temperatureC": 41.85422756259112,
+              "entropyJkgK": 2039.6427105083255,
+              "densityKgm3": 66.19333356305128,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            "condenserOutlet": {
+              "pPa": 2359406.197625697,
+              "pBarAbs": 23.59406197625697,
+              "hJkg": 271277.5828923758,
+              "temperatureC": 37.920624123647485,
+              "entropyJkgK": 1238.5161742254322,
+              "densityKgm3": 903.2589743469237,
+              "qualityMass": null,
+              "phase": "liquid"
+            },
+            "expansionOutlet": {
+              "pPa": 2301729.8258011616,
+              "pBarAbs": 23.017298258011614,
+              "hJkg": 271277.5828923758,
+              "temperatureC": 36.995490508303135,
+              "entropyJkgK": 1238.730389400074,
+              "densityKgm3": 827.0758986243764,
+              "qualityMass": 0.007780641471186558,
+              "phase": "two-phase"
+            },
+            "totalMassFlowKgs": 0.020568871055800506,
+            "branchMassFlowsKgs": [
+              0.020568871055800506
+            ],
+            "branchCoilHeatW": [
+              5128.022549824007
+            ],
+            "outdoorCoilHeatW": -5102.200335028885,
+            "branchInlets": [
+              {
+                "pPa": 2359406.197625697,
+                "pBarAbs": 23.59406197625697,
+                "hJkg": 520587.45196163055,
+                "temperatureC": 41.85422756259112,
+                "entropyJkgK": 2039.6427105083255,
+                "densityKgm3": 66.19333356305128,
+                "qualityMass": null,
+                "phase": "vapor"
+              }
+            ],
+            "branchOutlets": [
+              {
+                "pPa": 2359406.197625697,
+                "pBarAbs": 23.59406197625697,
+                "hJkg": 271277.5828923758,
+                "temperatureC": 37.920624123647485,
+                "entropyJkgK": 1238.5161742254322,
+                "densityKgm3": 903.2589743469237,
+                "qualityMass": null,
+                "phase": "liquid"
+              }
+            ],
+            "condenserHeatW": 5128.022549824007,
+            "evaporatorHeatW": 5102.200335028885,
+            "compressorWorkW": 25.822214795122026,
+            "compressorElectricalW": 27.765822360346263,
+            "driveLossW": 1.9436075652242373,
+            "massResidualKgs": 0,
+            "closureResidualW": 0.02326442213857491,
+            "lineHeatToOutdoorW": 0,
+            "pressureDropsPa": [
+              0
+            ],
+            "transportMethod": "Distributed Darcy/HEOS homogeneous-equilibrium field lines; generic smooth copper, no slip/fittings/oil",
+            "iterations": 3,
+            "pressureJacobian": {
+              "mode": "heating",
+              "floatingCondenser": true,
+              "matrix": [
+                -205.80112498228894,
+                -43.64772408276675,
+                625.9080850956692,
+                0
+              ]
+            }
+          },
+          "rooms": [
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "room-1",
+              "temperatureC": 17.096411506286017,
+              "relativeHumidity": 0.4964665547818887,
+              "humidityRatio": 0.0060252324629124325,
+              "fabricTemperatureC": 17.000033060795268,
+              "metalTemperatureC": 23.483673681381063,
+              "setpointC": 26,
+              "active": true,
+              "massFlowKgs": 0.020568871055800506,
+              "signedRoomHeatW": 670.536326057169,
+              "sensibleRoomHeatW": 670.5363260571995,
+              "fanPowerW": 25,
+              "airOutletC": 21.487387150102734,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 0,
+              "internalGainW": 0
+            }
+          ],
+          "interzoneTransfers": [],
+          "inventory": null,
+          "outdoor": {
+            "temperatureC": 42.10907801802574,
+            "iceKg": 0,
+            "liquidKg": 0,
+            "thicknessM": 0,
+            "metalTemperatureC": 42.10907801802574,
+            "filmEnthalpyJ": 0,
+            "filmMassKg": 0,
+            "airOutletC": 43.9368257993458,
+            "fanPowerW": 85,
+            "depositionKgs": 0,
+            "drainageKgs": 0,
+            "meltPowerW": 0
+          },
+          "electrical": {
+            "compressorW": 27.765822360346263,
+            "indoorFansW": 25,
+            "outdoorFanW": 85,
+            "controlsW": 15,
+            "totalW": 152.76582236034625,
+            "driveLossW": 1.9436075652242373
+          },
+          "signedRoomHeatW": 670.536326057169,
+          "heatingCOP": 4.389308522658283,
+          "coolingCOP": null,
+          "energy": {
+            "electricityJ": 2184.2273581014674,
+            "signedRoomHeatJ": 5212.1865691433095,
+            "usefulServiceHeatJ": 5212.1865691433095,
+            "drainedWaterKg": 0,
+            "outdoorExchangeJ": 113.77210766447159,
+            "drainageJ": 0,
+            "configurationEnergyJ": 0,
+            "boundaryEnergyJ": 2992.590893164586,
+            "storedEnergyChangeJ": 2992.5908931791782,
+            "residualJ": 1.4592387742595747e-08,
+            "waterResidualKg": -1.140038584368508e-16
+          },
+          "diagnostics": {
+            "warnings": [
+              "Generic component parameters and control assumptions; not manufacturer calibrated.",
+              "Outdoor metal and retained water/ice share one equilibrium temperature.",
+              "Ice sublimation is excluded; retained ice melts or receives deposition.",
+              "Dirt uses clear-passage scaling of air flow/air-side conductance; forced fan power is constant without a measured fan curve.",
+              "Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.",
+              "Idealized parallel indoor coils use generic demand-proportional flow for inverter operation, UA allocation for fixed-speed/defrost and retained minimum-on paths, and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.",
+              "Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states."
+            ],
+            "fault": null,
+            "algebraicResidualW": 0.02326442213857491,
+            "speedRps": 18,
+            "demandSpeedRps": 18,
+            "restartDelaySeconds": 0,
+            "envelopeProtection": null,
+            "filmEnergyRateW": 0,
+            "metalEnergyRateW": -438.34718712912854
+          }
+        }
+      },
+      "faultOutput": {
+        "provenance": "live-generic-unvalidated",
+        "simulatedSeconds": 14.25,
+        "state": "fault",
+        "requestedMode": "heating",
+        "effectiveMode": null,
+        "cycle": null,
+        "rooms": [
+          {
+            "retainedWaterKg": 0,
+            "retainedIceKg": 0,
+            "id": "room-1",
+            "temperatureC": 17.096411506286017,
+            "relativeHumidity": 0.4964665547818887,
+            "humidityRatio": 0.0060252324629124325,
+            "fabricTemperatureC": 17.000033060795268,
+            "metalTemperatureC": 23.483673681381063,
+            "setpointC": 26,
+            "active": false,
+            "massFlowKgs": 0,
+            "signedRoomHeatW": 0,
+            "sensibleRoomHeatW": 0,
+            "fanPowerW": 0,
+            "airOutletC": null,
+            "condensateKgs": 0,
+            "drainEnthalpyW": 0,
+            "interzoneHeatW": 0,
+            "internalGainW": 0
+          }
+        ],
+        "interzoneTransfers": [],
+        "inventory": null,
+        "outdoor": {
+          "temperatureC": 42.10907801802574,
+          "iceKg": 0,
+          "liquidKg": 0,
+          "thicknessM": 0,
+          "metalTemperatureC": 42.10907801802574,
+          "filmEnthalpyJ": 0,
+          "filmMassKg": 0,
+          "airOutletC": null,
+          "fanPowerW": 0,
+          "depositionKgs": 0,
+          "drainageKgs": 0,
+          "meltPowerW": 0
+        },
+        "electrical": {
+          "compressorW": 0,
+          "indoorFansW": 0,
+          "outdoorFanW": 0,
+          "controlsW": 15,
+          "totalW": 15,
+          "driveLossW": 0
+        },
+        "signedRoomHeatW": 0,
+        "heatingCOP": null,
+        "coolingCOP": null,
+        "energy": {
+          "electricityJ": 2184.2273581014674,
+          "signedRoomHeatJ": 5212.1865691433095,
+          "usefulServiceHeatJ": 5212.1865691433095,
+          "drainedWaterKg": 0,
+          "outdoorExchangeJ": 113.77210766447159,
+          "drainageJ": 0,
+          "configurationEnergyJ": 0,
+          "boundaryEnergyJ": 2992.590893164586,
+          "storedEnergyChangeJ": 2992.5908931791782,
+          "residualJ": 1.4592387742595747e-08,
+          "waterResidualKg": -1.140038584368508e-16
+        },
+        "diagnostics": {
+          "warnings": [
+            "Generic component parameters and control assumptions; not manufacturer calibrated.",
+            "Outdoor metal and retained water/ice share one equilibrium temperature.",
+            "Ice sublimation is excluded; retained ice melts or receives deposition.",
+            "Dirt uses clear-passage scaling of air flow/air-side conductance; forced fan power is constant without a measured fan curve.",
+            "Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.",
+            "Idealized parallel indoor coils use generic demand-proportional flow for inverter operation, UA allocation for fixed-speed/defrost and retained minimum-on paths, and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.",
+            "Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states."
+          ],
+          "fault": "Neither heating SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 30.5 W at 36.993356,37.984617; equations 30.238,3.958); alternate: No feasible shared-pressure operating point (best residual 73.0 W at 36.995491,37.995491; equations 72.767,5.238)",
+          "algebraicResidualW": 0,
+          "speedRps": 0,
+          "demandSpeedRps": 0,
+          "restartDelaySeconds": 0,
+          "envelopeProtection": null,
+          "filmEnergyRateW": 0,
+          "metalEnergyRateW": 0
+        }
+      },
+      "maxEnergyResidualJ": 3.8611005948041566e-08,
+      "maxWaterResidualKg": 1.140038584368508e-16,
+      "failureCategory": "pressure-solver-or-envelope"
+    },
+    {
+      "id": "grid-heating--25-1",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 33.514765835999995,
+      "maxEnergyResidualJ": 4.353933036327362e-07,
+      "maxWaterResidualKg": 2.707903345999796e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 516.3487430000005,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating-25-1",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 17.544203879,
+      "maxEnergyResidualJ": 2.143642632290721e-07,
+      "maxWaterResidualKg": 1.3600232051658168e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1146.518555,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling-5.5-1",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 49.548329881,
+      "maxEnergyResidualJ": 4.796311259269714e-07,
+      "maxWaterResidualKg": 1.6438239658356224e-14,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1068.6918229999974,
+      "failureCategory": null
+    },
+    {
+      "id": "reported-friend-cold-cooling",
+      "outcome": "pass",
+      "steps": 4400,
+      "updates": 0,
+      "simulatedSeconds": 1100,
+      "wallSeconds": 11.338139106,
+      "maxEnergyResidualJ": 5.00120222568512e-07,
+      "maxWaterResidualKg": 6.0923488476305465e-15,
+      "protectionCounts": {},
+      "states": {
+        "idle": 4400
+      },
+      "stateEntries": {},
+      "completedDefrosts": 0,
+      "maxStepWallMs": 9.25376899999992,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating-25-0",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 36.878916095,
+      "maxEnergyResidualJ": 5.324836820363998e-07,
+      "maxWaterResidualKg": 2.386112141206098e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 957.0737249999997,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating--5-1",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 44.362796067999994,
+      "maxEnergyResidualJ": 1.6088597476482391e-07,
+      "maxWaterResidualKg": 1.7590096046404824e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 188.45246800000314,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating-45-1",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 29.225572087,
+      "maxEnergyResidualJ": 6.165355443954468e-07,
+      "maxWaterResidualKg": 2.1649348980190553e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 879.0809870000003,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-1",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 36.581855655,
+      "maxEnergyResidualJ": 2.1792948246002197e-07,
+      "maxWaterResidualKg": 4.218847493575595e-14,
+      "protectionCounts": {
+        "condensing temperature": 966
+      },
+      "states": {
+        "running": 948,
+        "reversing": 24,
+        "idle": 2388
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 147.5250640000013,
+      "failureCategory": null
+    },
+    {
+      "id": "endurance-hot-wet-cooling",
+      "outcome": "pass",
+      "steps": 7200,
+      "updates": 0,
+      "simulatedSeconds": 1800,
+      "wallSeconds": 156.256357439,
+      "maxEnergyResidualJ": 1.0081566870212555e-06,
+      "maxWaterResidualKg": 7.993605777301127e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 7200
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 113.18469499999992,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating-5.5-0",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 97.216433503,
+      "maxEnergyResidualJ": 3.932509571313858e-07,
+      "maxWaterResidualKg": 4.0783348920214735e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 601.3691589999999,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating-5.5-1",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 107.38135706800001,
+      "maxEnergyResidualJ": 4.547182470560074e-07,
+      "maxWaterResidualKg": 3.915270885279654e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 525.5774000000001,
+      "failureCategory": null
+    },
+    {
+      "id": "reported-owner-reversal-old-generic",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 1,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 102.965892147,
+      "maxEnergyResidualJ": 1.1189840734004974e-06,
+      "maxWaterResidualKg": 3.2448002618146177e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 4680,
+        "reversing": 12,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1117.0067719999934,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-11",
+      "outcome": "physical-fault",
+      "faultRollbackVerified": true,
+      "error": {
+        "name": "Error",
+        "message": "Neither heating SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 15.7 W at 26.313715,27.295603; equations 15.177,3.834); alternate: No feasible shared-pressure operating point (best residual 38.5 W at 26.310794,27.329601; equations 38.281,4.539)",
+        "stack": "Error: Neither heating SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 15.7 W at 26.313715,27.295603; equations 15.177,3.834); alternate: No feasible shared-pressure operating point (best residual 38.5 W at 26.310794,27.329601; equations 38.281,4.539)\n    at file:///tmp/heatpump-robustness-final-ordinary-UA-73/snapshot/worker.mjs:54:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Neither heating SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 15.7 W at 26.313715,27.295603; equations 15.177,3.834); alternate: No feasible shared-pressure operating point (best residual 38.5 W at 26.310794,27.329601; equations 38.281,4.539)",
+        "stack": "DomainError: Neither heating SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 15.7 W at 26.313715,27.295603; equations 15.177,3.834); alternate: No feasible shared-pressure operating point (best residual 38.5 W at 26.310794,27.329601; equations 38.281,4.539)\n    at solveCycle (file:///tmp/heatpump-robustness-final-ordinary-UA-73/snapshot/build/cycle.js:140:19)\n    at proposal (file:///tmp/heatpump-robustness-final-ordinary-UA-73/snapshot/build/engine.js:420:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-final-ordinary-UA-73/snapshot/build/engine.js:471:77)\n    at engine.advance (file:///tmp/heatpump-robustness-final-ordinary-UA-73/snapshot/worker.mjs:29:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-final-ordinary-UA-73/snapshot/build/engine.js:142:22)\n    at file:///tmp/heatpump-robustness-final-ordinary-UA-73/snapshot/worker.mjs:48:103"
+      },
+      "steps": 603,
+      "updates": 1,
+      "simulatedSeconds": 150.5,
+      "wallSeconds": 51.351902845999994,
+      "operation": {
+        "index": 2,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 120,
+        "substep": 122
+      },
+      "config": {
+        "fluid": "R32",
+        "mode": "heating",
+        "outdoorTemperatureC": -23.68774344213307,
+        "outdoorRelativeHumidity": 0.1587246919516474,
+        "ambientPressurePa": 101325,
+        "indoorPortCapacity": 5,
+        "rooms": [
+          {
+            "id": "room-1",
+            "enabled": true,
+            "volumeM3": 271.4227414329307,
+            "initialTemperatureC": 26.86032319557853,
+            "initialRelativeHumidity": 0.5,
+            "setpointC": 25.181944508338347,
+            "envelopeWK": 451.02693390799686,
+            "fabricCapacityJK": 4000000,
+            "airFabricWK": 250,
+            "ventilationACH": 1.2307333224453032,
+            "airMassFlowKgs": 0.15,
+            "fanPowerW": 25,
+            "airConductanceWK": 170,
+            "refrigerantConductanceWK": 350,
+            "naturalAirConductanceWK": 15,
+            "metalCapacityJK": 12000,
+            "pipe": {
+              "lengthM": 0,
+              "gasInsideDiameterM": 0.01,
+              "liquidInsideDiameterM": 0.0048,
+              "elevationM": 0,
+              "insulationConductanceWmK": 0.05
+            },
+            "internalGainW": 680.4897792171687,
+            "cleanFraction": 0.8437996033579112
+          },
+          {
+            "id": "room-2",
+            "enabled": true,
+            "volumeM3": 633.8608865785793,
+            "initialTemperatureC": 18.788583720335737,
+            "initialRelativeHumidity": 0.5,
+            "setpointC": 20.881284652044997,
+            "envelopeWK": 357.5699397479184,
+            "fabricCapacityJK": 4000000,
+            "airFabricWK": 250,
+            "ventilationACH": 0.8685845760628581,
+            "airMassFlowKgs": 0.15,
+            "fanPowerW": 25,
+            "airConductanceWK": 170,
+            "refrigerantConductanceWK": 350,
+            "naturalAirConductanceWK": 15,
+            "metalCapacityJK": 12000,
+            "pipe": {
+              "lengthM": 0,
+              "gasInsideDiameterM": 0.01,
+              "liquidInsideDiameterM": 0.0048,
+              "elevationM": 0,
+              "insulationConductanceWmK": 0.05
+            },
+            "internalGainW": 529.9353897571564,
+            "cleanFraction": 0.4972729463828728
+          },
+          {
+            "id": "room-3",
+            "enabled": true,
+            "volumeM3": 359.4474280373156,
+            "initialTemperatureC": 29.105652566300705,
+            "initialRelativeHumidity": 0.5,
+            "setpointC": 18.72699965373613,
+            "envelopeWK": 121.09298387076706,
+            "fabricCapacityJK": 4000000,
+            "airFabricWK": 250,
+            "ventilationACH": 1.9776851199567318,
+            "airMassFlowKgs": 0.15,
+            "fanPowerW": 25,
+            "airConductanceWK": 170,
+            "refrigerantConductanceWK": 350,
+            "naturalAirConductanceWK": 15,
+            "metalCapacityJK": 12000,
+            "pipe": {
+              "lengthM": 0,
+              "gasInsideDiameterM": 0.01,
+              "liquidInsideDiameterM": 0.0048,
+              "elevationM": 0,
+              "insulationConductanceWmK": 0.05
+            },
+            "internalGainW": 303.14356298185885,
+            "cleanFraction": 0.37933476131875066
+          },
+          {
+            "id": "room-4",
+            "enabled": true,
+            "volumeM3": 439.3040613106391,
+            "initialTemperatureC": 21.124480803497136,
+            "initialRelativeHumidity": 0.5,
+            "setpointC": 22.537141718668863,
+            "envelopeWK": 331.38833299744874,
+            "fabricCapacityJK": 4000000,
+            "airFabricWK": 250,
+            "ventilationACH": 0.5576544632203877,
+            "airMassFlowKgs": 0.15,
+            "fanPowerW": 25,
+            "airConductanceWK": 170,
+            "refrigerantConductanceWK": 350,
+            "naturalAirConductanceWK": 15,
+            "metalCapacityJK": 12000,
+            "pipe": {
+              "lengthM": 0,
+              "gasInsideDiameterM": 0.01,
+              "liquidInsideDiameterM": 0.0048,
+              "elevationM": 0,
+              "insulationConductanceWmK": 0.05
+            },
+            "internalGainW": 834.346208255738,
+            "cleanFraction": 0.3132213525706902
+          },
+          {
+            "id": "room-5",
+            "enabled": true,
+            "volumeM3": 852.1280616050549,
+            "initialTemperatureC": 25.520217444049194,
+            "initialRelativeHumidity": 0.5,
+            "setpointC": 17.18763783131726,
+            "envelopeWK": 737.217228859663,
+            "fabricCapacityJK": 4000000,
+            "airFabricWK": 250,
+            "ventilationACH": 1.659175950102508,
+            "airMassFlowKgs": 0.15,
+            "fanPowerW": 25,
+            "airConductanceWK": 170,
+            "refrigerantConductanceWK": 350,
+            "naturalAirConductanceWK": 15,
+            "metalCapacityJK": 12000,
+            "pipe": {
+              "lengthM": 0,
+              "gasInsideDiameterM": 0.01,
+              "liquidInsideDiameterM": 0.0048,
+              "elevationM": 0,
+              "insulationConductanceWmK": 0.05
+            },
+            "internalGainW": 798.1776264496148,
+            "cleanFraction": 0.7189074358204379
+          }
+        ],
+        "compressor": {
+          "displacementM3rev": 2.2e-05,
+          "speedMinRps": 18,
+          "speedMaxRps": 75,
+          "isentropicEfficiency": 0.6365387213649228,
+          "volumetricEfficiency": 0.8,
+          "driveEfficiency": 0.93,
+          "superheatK": 3,
+          "subcoolK": 1,
+          "maxDischargeC": 145,
+          "maxPressureRatio": 8
+        },
+        "outdoor": {
+          "airMassFlowKgs": 0.9,
+          "fanPowerW": 85,
+          "airConductanceWK": 1100,
+          "refrigerantConductanceWK": 1000,
+          "naturalAirConductanceWK": 35,
+          "metalCapacityJK": 28000,
+          "depositionAreaM2": 2,
+          "frostDensityKgm3": 200,
+          "frostConductivityWmK": 0.15,
+          "finGapM": 0.002,
+          "drainageSeconds": 30,
+          "cleanFraction": 0.2352216566214338
+        },
+        "control": {
+          "strategy": "inverter",
+          "fixedSpeedRps": 40,
+          "controlsW": 15,
+          "proportionalSpeedRpsK": 20,
+          "thermostatDeadbandK": 1,
+          "minOnSeconds": 30,
+          "minOffSeconds": 30,
+          "reversalSeconds": 3,
+          "defrostMinHeatingSeconds": 300,
+          "defrostIceThresholdKg": 0.15,
+          "defrostMaxSeconds": 600,
+          "defrostTerminationMetalC": 5,
+          "drainageDwellSeconds": 10,
+          "defrostSpeedRps": 35
+        },
+        "numerics": {
+          "maxStepSeconds": 0.25,
+          "pressureToleranceW": 0.1
+        },
+        "interzoneLinks": [
+          {
+            "roomA": "room-1",
+            "roomB": "room-2",
+            "conductanceWK": 1830.6514802388847
+          },
+          {
+            "roomA": "room-2",
+            "roomB": "room-3",
+            "conductanceWK": 1548.5663344152272
+          },
+          {
+            "roomA": "room-4",
+            "roomB": "room-5",
+            "conductanceWK": 1269.9567414820194
+          }
+        ]
+      },
+      "acceptedCheckpoint": {
+        "rooms": [
+          {
+            "dryAirMassKg": 313.8714420228784,
+            "airEnthalpyJ": 14719492.88344041,
+            "humidityRatio": 0.010700828573910975,
+            "fabricTemperatureC": 26.826310618750796,
+            "metalTemperatureC": 18.78843390920138,
+            "retainedWaterKg": 0,
+            "retainedIceKg": 0
+          },
+          {
+            "dryAirMassKg": 758.5069114054897,
+            "airEnthalpyJ": 27986970.229256243,
+            "humidityRatio": 0.006627686234615013,
+            "fabricTemperatureC": 18.800707078393604,
+            "metalTemperatureC": 18.951719824798918,
+            "retainedWaterKg": 0,
+            "retainedIceKg": 0
+          },
+          {
+            "dryAirMassKg": 411.5394875455971,
+            "airEnthalpyJ": 22020190.604277734,
+            "humidityRatio": 0.01188919463094379,
+            "fabricTemperatureC": 29.07706945621361,
+            "metalTemperatureC": 9.869992135585745,
+            "retainedWaterKg": 0,
+            "retainedIceKg": 0
+          },
+          {
+            "dryAirMassKg": 520.6260783538943,
+            "airEnthalpyJ": 20761749.82424715,
+            "humidityRatio": 0.007715126308053191,
+            "fabricTemperatureC": 21.123814933545646,
+            "metalTemperatureC": 9.547998988760133,
+            "retainedWaterKg": 0,
+            "retainedIceKg": 0
+          },
+          {
+            "dryAirMassKg": 991.1701500676518,
+            "airEnthalpyJ": 46003533.400559396,
+            "humidityRatio": 0.009763661763076543,
+            "fabricTemperatureC": 25.50486407814657,
+            "metalTemperatureC": 25.40372711951591,
+            "retainedWaterKg": 0,
+            "retainedIceKg": 0
+          }
+        ],
+        "outdoorEnergyJ": 852616.0877544681,
+        "outdoorWaterKg": 0,
+        "time": 150.5,
+        "state": "running",
+        "stateTime": 0.5,
+        "heatingRuntime": 0.5,
+        "onTime": 0.5,
+        "offTime": 0,
+        "active": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "cycle": {
+          "mode": "heating",
+          "evaporatingC": 26.378745815824413,
+          "condensingC": 27.378745815824413,
+          "lowPressureBarAbs": 17.528713751123828,
+          "highPressureBarAbs": 17.998512152671175,
+          "suction": {
+            "pPa": 1752871.3751123827,
+            "pBarAbs": 17.528713751123828,
+            "hJkg": 521091.742015575,
+            "temperatureC": 29.37874581582446,
+            "entropyJkgK": 2076.059567182977,
+            "densityKgm3": 47.945275407490705,
+            "qualityMass": null,
+            "phase": "vapor"
+          },
+          "discharge": {
+            "pPa": 1799851.2152671176,
+            "pBarAbs": 17.998512152671175,
+            "hJkg": 522613.6785538262,
+            "temperatureC": 31.419701198023972,
+            "entropyJkgK": 2077.876859617791,
+            "densityKgm3": 48.892301998304156,
+            "qualityMass": null,
+            "phase": "vapor"
+          },
+          "condenserOutlet": {
+            "pPa": 1799851.2152671176,
+            "pBarAbs": 17.998512152671175,
+            "hJkg": 249370.8764756182,
+            "temperatureC": 26.95976509831604,
+            "entropyJkgK": 1168.8087451852366,
+            "densityKgm3": 952.8930279395427,
+            "qualityMass": null,
+            "phase": "liquid"
+          },
+          "expansionOutlet": {
+            "pPa": 1752871.3751123827,
+            "pBarAbs": 17.528713751123828,
+            "hJkg": 249370.8764756182,
+            "temperatureC": 26.378745815824345,
+            "entropyJkgK": 1168.9765912410583,
+            "densityKgm3": 887.3932257659488,
+            "qualityMass": 0.004158354641442573,
+            "phase": "two-phase"
+          },
+          "totalMassFlowKgs": 0.015189063249093053,
+          "branchMassFlowsKgs": [
+            0.005157622372774404,
+            0.0031213813976133046,
+            0.0004761735506356136,
+            0.0029756542658902325,
+            0.0034582316621794983
+          ],
+          "branchCoilHeatW": [
+            1490.06299312245,
+            900.7570475171026,
+            145.3190442699594,
+            909.8520633133227,
+            704.3110549024811
+          ],
+          "outdoorCoilHeatW": -4127.185412784714,
+          "branchInlets": [
+            {
+              "pPa": 1799851.2152671176,
+              "pBarAbs": 17.998512152671175,
+              "hJkg": 522613.6785538262,
+              "temperatureC": 31.419701198023972,
+              "entropyJkgK": 2077.876859617791,
+              "densityKgm3": 48.892301998304156,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            {
+              "pPa": 1799851.2152671176,
+              "pBarAbs": 17.998512152671175,
+              "hJkg": 522613.6785538262,
+              "temperatureC": 31.419701198023972,
+              "entropyJkgK": 2077.876859617791,
+              "densityKgm3": 48.892301998304156,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            {
+              "pPa": 1799851.2152671176,
+              "pBarAbs": 17.998512152671175,
+              "hJkg": 522613.6785538262,
+              "temperatureC": 31.419701198023972,
+              "entropyJkgK": 2077.876859617791,
+              "densityKgm3": 48.892301998304156,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            {
+              "pPa": 1799851.2152671176,
+              "pBarAbs": 17.998512152671175,
+              "hJkg": 522613.6785538262,
+              "temperatureC": 31.419701198023972,
+              "entropyJkgK": 2077.876859617791,
+              "densityKgm3": 48.892301998304156,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            {
+              "pPa": 1799851.2152671176,
+              "pBarAbs": 17.998512152671175,
+              "hJkg": 522613.6785538262,
+              "temperatureC": 31.419701198023972,
+              "entropyJkgK": 2077.876859617791,
+              "densityKgm3": 48.892301998304156,
+              "qualityMass": null,
+              "phase": "vapor"
+            }
+          ],
+          "branchOutlets": [
+            {
+              "pPa": 1799851.2152671176,
+              "pBarAbs": 17.998512152671175,
+              "hJkg": 233708.65887110156,
+              "temperatureC": 18.755768738210804,
+              "entropyJkgK": 1115.8997871213971,
+              "densityKgm3": 988.4114224446115,
+              "qualityMass": null,
+              "phase": "liquid"
+            },
+            {
+              "pPa": 1799851.2152671176,
+              "pBarAbs": 17.998512152671175,
+              "hJkg": 234037.26549329903,
+              "temperatureC": 18.931859976121814,
+              "entropyJkgK": 1117.025176088895,
+              "densityKgm3": 987.6863573381801,
+              "qualityMass": null,
+              "phase": "liquid"
+            },
+            {
+              "pPa": 1799851.2152671176,
+              "pBarAbs": 17.998512152671175,
+              "hJkg": 217432.838341298,
+              "temperatureC": 9.847705053629966,
+              "entropyJkgK": 1059.279995824734,
+              "densityKgm3": 1023.4006672278383,
+              "qualityMass": null,
+              "phase": "liquid"
+            },
+            {
+              "pPa": 1799851.2152671176,
+              "pBarAbs": 17.998512152671175,
+              "hJkg": 216848.29655266134,
+              "temperatureC": 9.521423006453574,
+              "entropyJkgK": 1057.2132689932607,
+              "densityKgm3": 1024.6261884367314,
+              "qualityMass": null,
+              "phase": "liquid"
+            },
+            {
+              "pPa": 1799851.2152671176,
+              "pBarAbs": 17.998512152671175,
+              "hJkg": 318951.4824652623,
+              "temperatureC": 27.378745815824345,
+              "entropyJkgK": 1400.3379416710166,
+              "densityKgm3": 170.25904106637245,
+              "qualityMass": 0.2584952910220971,
+              "phase": "two-phase"
+            }
+          ],
+          "condenserHeatW": 4150.302203125316,
+          "evaporatorHeatW": 4127.185412784714,
+          "compressorWorkW": 23.116790340602826,
+          "compressorElectricalW": 24.85676380709981,
+          "driveLossW": 1.7399734664969841,
+          "massResidualKgs": -1.734723475976807e-18,
+          "closureResidualW": 0.07259637506443693,
+          "lineHeatToOutdoorW": 0,
+          "pressureDropsPa": [
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "transportMethod": "Distributed Darcy/HEOS homogeneous-equilibrium field lines; generic smooth copper, no slip/fittings/oil",
+          "iterations": 5,
+          "pressureJacobian": {
+            "mode": "heating",
+            "floatingCondenser": true,
+            "matrix": [
+              -327.75467053132166,
+              -29.747297970411175,
+              507.1811928598879,
+              0
+            ]
+          }
+        },
+        "lastCycle": {
+          "evaporatingC": 26.378745815824413,
+          "condensingC": 27.378745815824413,
+          "condenserOutletC": 26.95976509831604,
+          "branchMassFlowsKgs": [
+            0.005157622372774404,
+            0.0031213813976133046,
+            0.0004761735506356136,
+            0.0029756542658902325,
+            0.0034582316621794983
+          ],
+          "pressureJacobian": {
+            "mode": "heating",
+            "floatingCondenser": true,
+            "matrix": [
+              -327.75467053132166,
+              -29.747297970411175,
+              507.1811928598879,
+              0
+            ]
+          }
+        },
+        "ledgers": {
+          "electricityJ": 120409.38324787698,
+          "signedRoomHeatJ": -195376.8091917468,
+          "usefulServiceHeatJ": 186602.66535895452,
+          "drainedWaterKg": 0.015408865391216973,
+          "outdoorExchangeJ": 208025.42487851213,
+          "drainageJ": 764.3188341632035,
+          "configurationEnergyJ": 0,
+          "boundaryEnergyJ": -11461485.038623726
+        },
+        "boundaryWater": -1.0853014392479652,
+        "chargeCandidate": null,
+        "inventoryDrive": {
+          "speedRps": 18,
+          "startupSeconds": 0.5,
+          "offSeconds": 0,
+          "protection": null
+        },
+        "demandIntegralW": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "inverterCycling": false,
+        "lastOutput": {
+          "provenance": "live-generic-unvalidated",
+          "simulatedSeconds": 150.5,
+          "state": "running",
+          "requestedMode": "heating",
+          "effectiveMode": "heating",
+          "cycle": {
+            "mode": "heating",
+            "evaporatingC": 26.378745815824413,
+            "condensingC": 27.378745815824413,
+            "lowPressureBarAbs": 17.528713751123828,
+            "highPressureBarAbs": 17.998512152671175,
+            "suction": {
+              "pPa": 1752871.3751123827,
+              "pBarAbs": 17.528713751123828,
+              "hJkg": 521091.742015575,
+              "temperatureC": 29.37874581582446,
+              "entropyJkgK": 2076.059567182977,
+              "densityKgm3": 47.945275407490705,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            "discharge": {
+              "pPa": 1799851.2152671176,
+              "pBarAbs": 17.998512152671175,
+              "hJkg": 522613.6785538262,
+              "temperatureC": 31.419701198023972,
+              "entropyJkgK": 2077.876859617791,
+              "densityKgm3": 48.892301998304156,
+              "qualityMass": null,
+              "phase": "vapor"
+            },
+            "condenserOutlet": {
+              "pPa": 1799851.2152671176,
+              "pBarAbs": 17.998512152671175,
+              "hJkg": 249370.8764756182,
+              "temperatureC": 26.95976509831604,
+              "entropyJkgK": 1168.8087451852366,
+              "densityKgm3": 952.8930279395427,
+              "qualityMass": null,
+              "phase": "liquid"
+            },
+            "expansionOutlet": {
+              "pPa": 1752871.3751123827,
+              "pBarAbs": 17.528713751123828,
+              "hJkg": 249370.8764756182,
+              "temperatureC": 26.378745815824345,
+              "entropyJkgK": 1168.9765912410583,
+              "densityKgm3": 887.3932257659488,
+              "qualityMass": 0.004158354641442573,
+              "phase": "two-phase"
+            },
+            "totalMassFlowKgs": 0.015189063249093053,
+            "branchMassFlowsKgs": [
+              0.005157622372774404,
+              0.0031213813976133046,
+              0.0004761735506356136,
+              0.0029756542658902325,
+              0.0034582316621794983
+            ],
+            "branchCoilHeatW": [
+              1490.06299312245,
+              900.7570475171026,
+              145.3190442699594,
+              909.8520633133227,
+              704.3110549024811
+            ],
+            "outdoorCoilHeatW": -4127.185412784714,
+            "branchInlets": [
+              {
+                "pPa": 1799851.2152671176,
+                "pBarAbs": 17.998512152671175,
+                "hJkg": 522613.6785538262,
+                "temperatureC": 31.419701198023972,
+                "entropyJkgK": 2077.876859617791,
+                "densityKgm3": 48.892301998304156,
+                "qualityMass": null,
+                "phase": "vapor"
+              },
+              {
+                "pPa": 1799851.2152671176,
+                "pBarAbs": 17.998512152671175,
+                "hJkg": 522613.6785538262,
+                "temperatureC": 31.419701198023972,
+                "entropyJkgK": 2077.876859617791,
+                "densityKgm3": 48.892301998304156,
+                "qualityMass": null,
+                "phase": "vapor"
+              },
+              {
+                "pPa": 1799851.2152671176,
+                "pBarAbs": 17.998512152671175,
+                "hJkg": 522613.6785538262,
+                "temperatureC": 31.419701198023972,
+                "entropyJkgK": 2077.876859617791,
+                "densityKgm3": 48.892301998304156,
+                "qualityMass": null,
+                "phase": "vapor"
+              },
+              {
+                "pPa": 1799851.2152671176,
+                "pBarAbs": 17.998512152671175,
+                "hJkg": 522613.6785538262,
+                "temperatureC": 31.419701198023972,
+                "entropyJkgK": 2077.876859617791,
+                "densityKgm3": 48.892301998304156,
+                "qualityMass": null,
+                "phase": "vapor"
+              },
+              {
+                "pPa": 1799851.2152671176,
+                "pBarAbs": 17.998512152671175,
+                "hJkg": 522613.6785538262,
+                "temperatureC": 31.419701198023972,
+                "entropyJkgK": 2077.876859617791,
+                "densityKgm3": 48.892301998304156,
+                "qualityMass": null,
+                "phase": "vapor"
+              }
+            ],
+            "branchOutlets": [
+              {
+                "pPa": 1799851.2152671176,
+                "pBarAbs": 17.998512152671175,
+                "hJkg": 233708.65887110156,
+                "temperatureC": 18.755768738210804,
+                "entropyJkgK": 1115.8997871213971,
+                "densityKgm3": 988.4114224446115,
+                "qualityMass": null,
+                "phase": "liquid"
+              },
+              {
+                "pPa": 1799851.2152671176,
+                "pBarAbs": 17.998512152671175,
+                "hJkg": 234037.26549329903,
+                "temperatureC": 18.931859976121814,
+                "entropyJkgK": 1117.025176088895,
+                "densityKgm3": 987.6863573381801,
+                "qualityMass": null,
+                "phase": "liquid"
+              },
+              {
+                "pPa": 1799851.2152671176,
+                "pBarAbs": 17.998512152671175,
+                "hJkg": 217432.838341298,
+                "temperatureC": 9.847705053629966,
+                "entropyJkgK": 1059.279995824734,
+                "densityKgm3": 1023.4006672278383,
+                "qualityMass": null,
+                "phase": "liquid"
+              },
+              {
+                "pPa": 1799851.2152671176,
+                "pBarAbs": 17.998512152671175,
+                "hJkg": 216848.29655266134,
+                "temperatureC": 9.521423006453574,
+                "entropyJkgK": 1057.2132689932607,
+                "densityKgm3": 1024.6261884367314,
+                "qualityMass": null,
+                "phase": "liquid"
+              },
+              {
+                "pPa": 1799851.2152671176,
+                "pBarAbs": 17.998512152671175,
+                "hJkg": 318951.4824652623,
+                "temperatureC": 27.378745815824345,
+                "entropyJkgK": 1400.3379416710166,
+                "densityKgm3": 170.25904106637245,
+                "qualityMass": 0.2584952910220971,
+                "phase": "two-phase"
+              }
+            ],
+            "condenserHeatW": 4150.302203125316,
+            "evaporatorHeatW": 4127.185412784714,
+            "compressorWorkW": 23.116790340602826,
+            "compressorElectricalW": 24.85676380709981,
+            "driveLossW": 1.7399734664969841,
+            "massResidualKgs": -1.734723475976807e-18,
+            "closureResidualW": 0.07259637506443693,
+            "lineHeatToOutdoorW": 0,
+            "pressureDropsPa": [
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "transportMethod": "Distributed Darcy/HEOS homogeneous-equilibrium field lines; generic smooth copper, no slip/fittings/oil",
+            "iterations": 5,
+            "pressureJacobian": {
+              "mode": "heating",
+              "floatingCondenser": true,
+              "matrix": [
+                -327.75467053132166,
+                -29.747297970411175,
+                507.1811928598879,
+                0
+              ]
+            }
+          },
+          "rooms": [
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "room-1",
+              "temperatureC": 19.641413264079688,
+              "relativeHumidity": 0.7460315250072802,
+              "humidityRatio": 0.010700828573910975,
+              "fabricTemperatureC": 26.826310618750796,
+              "metalTemperatureC": 18.78843390920138,
+              "setpointC": 25.181944508338347,
+              "active": true,
+              "massFlowKgs": 0.005157622372774404,
+              "signedRoomHeatW": -53.34521442615794,
+              "sensibleRoomHeatW": -53.34521443202418,
+              "fanPowerW": 25,
+              "airOutletC": 19.247233248693135,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 573.0027060340637,
+              "internalGainW": 680.4897792171687
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "room-2",
+              "temperatureC": 19.964723137537874,
+              "relativeHumidity": 0.4558201465951325,
+              "humidityRatio": 0.006627686234615013,
+              "fabricTemperatureC": 18.800707078393604,
+              "metalTemperatureC": 18.951719824798918,
+              "setpointC": 20.881284652044997,
+              "active": true,
+              "massFlowKgs": 0.0031213813976133046,
+              "signedRoomHeatW": -27.99568897202257,
+              "sensibleRoomHeatW": -27.995688972030166,
+              "fanPowerW": 25,
+              "airOutletC": 19.602425070569723,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": 4350.73781156042,
+              "internalGainW": 529.9353897571564
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "room-3",
+              "temperatureC": 23.138663124127334,
+              "relativeHumidity": 0.6676735627648501,
+              "humidityRatio": 0.01188919463094379,
+              "fabricTemperatureC": 29.07706945621361,
+              "metalTemperatureC": 9.869992135585745,
+              "setpointC": 18.72699965373613,
+              "active": true,
+              "massFlowKgs": 0.0004761735506356136,
+              "signedRoomHeatW": -906.6767166136091,
+              "sensibleRoomHeatW": -493.45187427258884,
+              "fanPowerW": 25,
+              "airOutletC": 14.721443832934028,
+              "condensateKgs": 0.0001636364511729299,
+              "drainEnthalpyW": 6.73582701998275,
+              "interzoneHeatW": -4923.740517594483,
+              "internalGainW": 303.14356298185885
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "room-4",
+              "temperatureC": 20.1828192512466,
+              "relativeHumidity": 0.5225867529763599,
+              "humidityRatio": 0.007715126308053191,
+              "fabricTemperatureC": 21.123814933545646,
+              "metalTemperatureC": 9.547998988760133,
+              "setpointC": 22.537141718668863,
+              "active": true,
+              "massFlowKgs": 0.0029756542658902325,
+              "signedRoomHeatW": -341.64870398035305,
+              "sensibleRoomHeatW": -317.9607135033604,
+              "fanPowerW": 25,
+              "airOutletC": 13.559237144316285,
+              "condensateKgs": 9.387468007189497e-06,
+              "drainEnthalpyW": 0.3736165927219327,
+              "interzoneHeatW": 1666.2148945744723,
+              "internalGainW": 834.346208255738
+            },
+            {
+              "retainedWaterKg": 0,
+              "retainedIceKg": 0,
+              "id": "room-5",
+              "temperatureC": 21.48901915818152,
+              "relativeHumidity": 0.6082657294851901,
+              "humidityRatio": 0.009763661763076543,
+              "fabricTemperatureC": 25.50486407814657,
+              "metalTemperatureC": 25.40372711951591,
+              "setpointC": 17.18763783131726,
+              "active": true,
+              "massFlowKgs": 0.0034582316621794983,
+              "signedRoomHeatW": 312.83050705729715,
+              "sensibleRoomHeatW": 312.83050705731205,
+              "fanPowerW": 25,
+              "airOutletC": 24.333470349066772,
+              "condensateKgs": 0,
+              "drainEnthalpyW": 0,
+              "interzoneHeatW": -1666.2148945744723,
+              "internalGainW": 798.1776264496148
+            }
+          ],
+          "interzoneTransfers": [
+            {
+              "roomA": "room-1",
+              "roomB": "room-2",
+              "heatFromAToBW": -591.8676984220745
+            },
+            {
+              "roomA": "room-2",
+              "roomB": "room-3",
+              "heatFromAToBW": -4915.0566106867545
+            },
+            {
+              "roomA": "room-4",
+              "roomB": "room-5",
+              "heatFromAToBW": -1658.8173775351897
+            }
+          ],
+          "inventory": null,
+          "outdoor": {
+            "temperatureC": 30.450574562659575,
+            "iceKg": 0,
+            "liquidKg": 0,
+            "thicknessM": 0,
+            "metalTemperatureC": 30.450574562659575,
+            "filmEnthalpyJ": 0,
+            "filmMassKg": 0,
+            "airOutletC": 14.875138068028946,
+            "fanPowerW": 85,
+            "depositionKgs": 0,
+            "drainageKgs": 0,
+            "meltPowerW": 0
+          },
+          "electrical": {
+            "compressorW": 24.85676380709981,
+            "indoorFansW": 125,
+            "outdoorFanW": 85,
+            "controlsW": 15,
+            "totalW": 249.8567638070998,
+            "driveLossW": 1.7399734664969841
+          },
+          "signedRoomHeatW": -1016.8358169348455,
+          "heatingCOP": null,
+          "coolingCOP": null,
+          "energy": {
+            "electricityJ": 120409.38324787698,
+            "signedRoomHeatJ": -195376.8091917468,
+            "usefulServiceHeatJ": 186602.66535895452,
+            "drainedWaterKg": 0.015408865391216973,
+            "outdoorExchangeJ": 208025.42487851213,
+            "drainageJ": 764.3188341632035,
+            "configurationEnergyJ": 0,
+            "boundaryEnergyJ": -11461485.038623726,
+            "storedEnergyChangeJ": -11461485.03862381,
+            "residualJ": -8.381903171539307e-08,
+            "waterResidualKg": 1.5543122344752192e-15
+          },
+          "diagnostics": {
+            "warnings": [
+              "Generic component parameters and control assumptions; not manufacturer calibrated.",
+              "Outdoor metal and retained water/ice share one equilibrium temperature.",
+              "Ice sublimation is excluded; retained ice melts or receives deposition.",
+              "Dirt uses clear-passage scaling of air flow/air-side conductance; forced fan power is constant without a measured fan curve.",
+              "Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.",
+              "Idealized parallel indoor coils use generic demand-proportional flow for inverter operation, UA allocation for fixed-speed/defrost and retained minimum-on paths, and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.",
+              "Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states.",
+              "Interzone links exchange sensible heat through prescribed conductance; they do not transport air/water or resolve buoyancy.",
+              "Internal gains are prescribed sensible heat supplied to room air, separate from HVAC output and COP."
+            ],
+            "fault": null,
+            "algebraicResidualW": 0.07259637506443693,
+            "speedRps": 18,
+            "demandSpeedRps": 75,
+            "restartDelaySeconds": 0,
+            "envelopeProtection": null,
+            "filmEnergyRateW": 0,
+            "metalEnergyRateW": -6968.1370382880505
+          }
+        }
+      },
+      "faultOutput": {
+        "provenance": "live-generic-unvalidated",
+        "simulatedSeconds": 150.5,
+        "state": "fault",
+        "requestedMode": "heating",
+        "effectiveMode": null,
+        "cycle": null,
+        "rooms": [
+          {
+            "retainedWaterKg": 0,
+            "retainedIceKg": 0,
+            "id": "room-1",
+            "temperatureC": 19.641413264079688,
+            "relativeHumidity": 0.7460315250072802,
+            "humidityRatio": 0.010700828573910975,
+            "fabricTemperatureC": 26.826310618750796,
+            "metalTemperatureC": 18.78843390920138,
+            "setpointC": 25.181944508338347,
+            "active": false,
+            "massFlowKgs": 0,
+            "signedRoomHeatW": 0,
+            "sensibleRoomHeatW": 0,
+            "fanPowerW": 0,
+            "airOutletC": null,
+            "condensateKgs": 0,
+            "drainEnthalpyW": 0,
+            "interzoneHeatW": 591.8676984220745,
+            "internalGainW": 680.4897792171687
+          },
+          {
+            "retainedWaterKg": 0,
+            "retainedIceKg": 0,
+            "id": "room-2",
+            "temperatureC": 19.964723137537874,
+            "relativeHumidity": 0.4558201465951325,
+            "humidityRatio": 0.006627686234615013,
+            "fabricTemperatureC": 18.800707078393604,
+            "metalTemperatureC": 18.951719824798918,
+            "setpointC": 20.881284652044997,
+            "active": false,
+            "massFlowKgs": 0,
+            "signedRoomHeatW": 0,
+            "sensibleRoomHeatW": 0,
+            "fanPowerW": 0,
+            "airOutletC": null,
+            "condensateKgs": 0,
+            "drainEnthalpyW": 0,
+            "interzoneHeatW": 4323.18891226468,
+            "internalGainW": 529.9353897571564
+          },
+          {
+            "retainedWaterKg": 0,
+            "retainedIceKg": 0,
+            "id": "room-3",
+            "temperatureC": 23.138663124127334,
+            "relativeHumidity": 0.6676735627648501,
+            "humidityRatio": 0.01188919463094379,
+            "fabricTemperatureC": 29.07706945621361,
+            "metalTemperatureC": 9.869992135585745,
+            "setpointC": 18.72699965373613,
+            "active": false,
+            "massFlowKgs": 0,
+            "signedRoomHeatW": 0,
+            "sensibleRoomHeatW": 0,
+            "fanPowerW": 0,
+            "airOutletC": null,
+            "condensateKgs": 0,
+            "drainEnthalpyW": 0,
+            "interzoneHeatW": -4915.0566106867545,
+            "internalGainW": 303.14356298185885
+          },
+          {
+            "retainedWaterKg": 0,
+            "retainedIceKg": 0,
+            "id": "room-4",
+            "temperatureC": 20.1828192512466,
+            "relativeHumidity": 0.5225867529763599,
+            "humidityRatio": 0.007715126308053191,
+            "fabricTemperatureC": 21.123814933545646,
+            "metalTemperatureC": 9.547998988760133,
+            "setpointC": 22.537141718668863,
+            "active": false,
+            "massFlowKgs": 0,
+            "signedRoomHeatW": 0,
+            "sensibleRoomHeatW": 0,
+            "fanPowerW": 0,
+            "airOutletC": null,
+            "condensateKgs": 0,
+            "drainEnthalpyW": 0,
+            "interzoneHeatW": 1658.8173775351897,
+            "internalGainW": 834.346208255738
+          },
+          {
+            "retainedWaterKg": 0,
+            "retainedIceKg": 0,
+            "id": "room-5",
+            "temperatureC": 21.48901915818152,
+            "relativeHumidity": 0.6082657294851901,
+            "humidityRatio": 0.009763661763076543,
+            "fabricTemperatureC": 25.50486407814657,
+            "metalTemperatureC": 25.40372711951591,
+            "setpointC": 17.18763783131726,
+            "active": false,
+            "massFlowKgs": 0,
+            "signedRoomHeatW": 0,
+            "sensibleRoomHeatW": 0,
+            "fanPowerW": 0,
+            "airOutletC": null,
+            "condensateKgs": 0,
+            "drainEnthalpyW": 0,
+            "interzoneHeatW": -1658.8173775351897,
+            "internalGainW": 798.1776264496148
+          }
+        ],
+        "interzoneTransfers": [
+          {
+            "roomA": "room-1",
+            "roomB": "room-2",
+            "heatFromAToBW": -591.8676984220745
+          },
+          {
+            "roomA": "room-2",
+            "roomB": "room-3",
+            "heatFromAToBW": -4915.0566106867545
+          },
+          {
+            "roomA": "room-4",
+            "roomB": "room-5",
+            "heatFromAToBW": -1658.8173775351897
+          }
+        ],
+        "inventory": null,
+        "outdoor": {
+          "temperatureC": 30.450574562659575,
+          "iceKg": 0,
+          "liquidKg": 0,
+          "thicknessM": 0,
+          "metalTemperatureC": 30.450574562659575,
+          "filmEnthalpyJ": 0,
+          "filmMassKg": 0,
+          "airOutletC": null,
+          "fanPowerW": 0,
+          "depositionKgs": 0,
+          "drainageKgs": 0,
+          "meltPowerW": 0
+        },
+        "electrical": {
+          "compressorW": 0,
+          "indoorFansW": 0,
+          "outdoorFanW": 0,
+          "controlsW": 15,
+          "totalW": 15,
+          "driveLossW": 0
+        },
+        "signedRoomHeatW": 0,
+        "heatingCOP": null,
+        "coolingCOP": null,
+        "energy": {
+          "electricityJ": 120409.38324787698,
+          "signedRoomHeatJ": -195376.8091917468,
+          "usefulServiceHeatJ": 186602.66535895452,
+          "drainedWaterKg": 0.015408865391216973,
+          "outdoorExchangeJ": 208025.42487851213,
+          "drainageJ": 764.3188341632035,
+          "configurationEnergyJ": 0,
+          "boundaryEnergyJ": -11461485.038623726,
+          "storedEnergyChangeJ": -11461485.03862381,
+          "residualJ": -8.381903171539307e-08,
+          "waterResidualKg": 1.5543122344752192e-15
+        },
+        "diagnostics": {
+          "warnings": [
+            "Generic component parameters and control assumptions; not manufacturer calibrated.",
+            "Outdoor metal and retained water/ice share one equilibrium temperature.",
+            "Ice sublimation is excluded; retained ice melts or receives deposition.",
+            "Dirt uses clear-passage scaling of air flow/air-side conductance; forced fan power is constant without a measured fan curve.",
+            "Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.",
+            "Idealized parallel indoor coils use generic demand-proportional flow for inverter operation, UA allocation for fixed-speed/defrost and retained minimum-on paths, and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.",
+            "Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states.",
+            "Interzone links exchange sensible heat through prescribed conductance; they do not transport air/water or resolve buoyancy.",
+            "Internal gains are prescribed sensible heat supplied to room air, separate from HVAC output and COP."
+          ],
+          "fault": "Neither heating SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 15.7 W at 26.313715,27.295603; equations 15.177,3.834); alternate: No feasible shared-pressure operating point (best residual 38.5 W at 26.310794,27.329601; equations 38.281,4.539)",
+          "algebraicResidualW": 0,
+          "speedRps": 0,
+          "demandSpeedRps": 0,
+          "restartDelaySeconds": 0,
+          "envelopeProtection": null,
+          "filmEnergyRateW": 0,
+          "metalEnergyRateW": 0
+        }
+      },
+      "maxEnergyResidualJ": 4.0512531995773315e-07,
+      "maxWaterResidualKg": 1.6042722705833512e-14,
+      "failureCategory": "pressure-solver-or-envelope"
+    },
+    {
+      "id": "sequence-10",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 94.049954765,
+      "maxEnergyResidualJ": 2.1560117602348328e-07,
+      "maxWaterResidualKg": 1.2545520178264269e-14,
+      "protectionCounts": {
+        "condensing temperature": 248
+      },
+      "states": {
+        "running": 1428,
+        "reversing": 24,
+        "idle": 1908
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 347.9892540000001,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-13",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 43.61596941999999,
+      "maxEnergyResidualJ": 3.986060619354248e-07,
+      "maxWaterResidualKg": 8.992806499463768e-15,
+      "protectionCounts": {
+        "indoor antifreeze": 533
+      },
+      "states": {
+        "idle": 1920,
+        "reversing": 24,
+        "running": 1416
+      },
+      "stateEntries": {
+        "running": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 622.1452209999989,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-17",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 29.4988246,
+      "maxEnergyResidualJ": 2.1513551473617554e-07,
+      "maxWaterResidualKg": 8.18789480661053e-15,
+      "protectionCounts": {
+        "discharge temperature": 1072
+      },
+      "states": {
+        "idle": 2388,
+        "reversing": 24,
+        "running": 948
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 134.4565989999992,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-0",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 182.14514192,
+      "maxEnergyResidualJ": 8.642673492431641e-07,
+      "maxWaterResidualKg": 5.1514348342607263e-14,
+      "protectionCounts": {
+        "discharge temperature": 120
+      },
+      "states": {
+        "running": 2272,
+        "reversing": 24,
+        "idle": 1064
+      },
+      "stateEntries": {
+        "running": 3,
+        "idle": 3
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1866.4455889999995,
+      "failureCategory": null
+    },
+    {
+      "id": "reported-owner-reversal-winter-house",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 1,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 225.91421363499998,
+      "maxEnergyResidualJ": 6.225891411304474e-07,
+      "maxWaterResidualKg": 8.848824450957693e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 4680,
+        "reversing": 12,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1145.943978999996,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-19",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 42.949663836,
+      "maxEnergyResidualJ": 2.1659070625901222e-07,
+      "maxWaterResidualKg": 4.2299497238218464e-14,
+      "protectionCounts": {},
+      "states": {
+        "idle": 2388,
+        "reversing": 12,
+        "running": 960
+      },
+      "stateEntries": {
+        "idle": 1,
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 192.6591879999978,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-14",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 134.495316199,
+      "maxEnergyResidualJ": 7.050111889839172e-07,
+      "maxWaterResidualKg": 4.063416270128073e-14,
+      "protectionCounts": {
+        "condensing temperature": 408
+      },
+      "states": {
+        "running": 2140,
+        "reversing": 24,
+        "idle": 1196
+      },
+      "stateEntries": {
+        "running": 3,
+        "idle": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1185.6591889999995,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-12",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 165.485106873,
+      "maxEnergyResidualJ": 8.67992639541626e-07,
+      "maxWaterResidualKg": 1.3566925360919413e-13,
+      "protectionCounts": {
+        "indoor antifreeze": 286
+      },
+      "states": {
+        "running": 1800,
+        "reversing": 24,
+        "idle": 1536
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 2471.3323139999993,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-18",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 84.087278846,
+      "maxEnergyResidualJ": 6.556510925292969e-07,
+      "maxWaterResidualKg": 2.0872192862952943e-14,
+      "protectionCounts": {},
+      "states": {
+        "idle": 1908,
+        "reversing": 24,
+        "running": 1428
+      },
+      "stateEntries": {
+        "running": 1,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 509.9585850000003,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-2",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 24.256414064,
+      "maxEnergyResidualJ": 7.897615432739258e-07,
+      "maxWaterResidualKg": 4.1550096696596484e-14,
+      "protectionCounts": {
+        "indoor antifreeze": 1091
+      },
+      "states": {
+        "idle": 1788,
+        "reversing": 24,
+        "running": 1548
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 402.696504,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-23",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 15.880759308,
+      "maxEnergyResidualJ": 2.3329630494117737e-07,
+      "maxWaterResidualKg": 4.374278717023117e-14,
+      "protectionCounts": {
+        "discharge temperature": 255
+      },
+      "states": {
+        "idle": 2868,
+        "reversing": 12,
+        "running": 480
+      },
+      "stateEntries": {
+        "idle": 1,
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 149.990643000001,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-15",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 170.23262881699998,
+      "maxEnergyResidualJ": 5.41098415851593e-07,
+      "maxWaterResidualKg": 6.428191312579656e-14,
+      "protectionCounts": {
+        "condensing temperature": 120,
+        "indoor antifreeze": 240
+      },
+      "states": {
+        "running": 3167,
+        "reversing": 24,
+        "idle": 169
+      },
+      "stateEntries": {
+        "running": 3,
+        "idle": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 938.1416639999952,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-25",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 53.575031902,
+      "maxEnergyResidualJ": 1.4156103134155273e-07,
+      "maxWaterResidualKg": 6.071532165918825e-15,
+      "protectionCounts": {
+        "discharge temperature": 598
+      },
+      "states": {
+        "idle": 1908,
+        "reversing": 24,
+        "running": 1428
+      },
+      "stateEntries": {
+        "idle": 1,
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 197.30998900000122,
+      "failureCategory": null
+    },
+    {
+      "id": "endurance-humid-frost-defrost",
+      "outcome": "pass",
+      "steps": 7200,
+      "updates": 0,
+      "simulatedSeconds": 1800,
+      "wallSeconds": 434.62146332599997,
+      "maxEnergyResidualJ": 1.5404075384140015e-06,
+      "maxWaterResidualKg": 3.5214886562329184e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 5676,
+        "reversing": 96,
+        "defrost": 996,
+        "draining": 160,
+        "idle": 272
+      },
+      "stateEntries": {
+        "running": 5,
+        "reversing": 8,
+        "defrost": 4,
+        "draining": 4,
+        "idle": 4
+      },
+      "completedDefrosts": 4,
+      "maxStepWallMs": 743.430514000007,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-26",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 122.428281349,
+      "maxEnergyResidualJ": 4.5821070671081543e-07,
+      "maxWaterResidualKg": 3.952393967665557e-14,
+      "protectionCounts": {
+        "indoor antifreeze": 120
+      },
+      "states": {
+        "running": 1800,
+        "reversing": 24,
+        "idle": 1536
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 959.589504,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-20",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 204.31455844799999,
+      "maxEnergyResidualJ": 8.121132850646973e-07,
+      "maxWaterResidualKg": 1.000310945187266e-13,
+      "protectionCounts": {
+        "indoor antifreeze": 120
+      },
+      "states": {
+        "running": 1908,
+        "reversing": 24,
+        "idle": 1428
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 2124.93497799999,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-29",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 51.050035063,
+      "maxEnergyResidualJ": 3.296881914138794e-07,
+      "maxWaterResidualKg": 2.2870594307278225e-14,
+      "protectionCounts": {
+        "discharge temperature": 2167
+      },
+      "states": {
+        "running": 1908,
+        "idle": 1440,
+        "reversing": 12
+      },
+      "stateEntries": {
+        "running": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 140.06844699999783,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-28",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 128.180901614,
+      "maxEnergyResidualJ": 2.444721758365631e-07,
+      "maxWaterResidualKg": 9.880984919163893e-15,
+      "protectionCounts": {
+        "discharge temperature": 1496
+      },
+      "states": {
+        "running": 2064,
+        "reversing": 24,
+        "idle": 1272
+      },
+      "stateEntries": {
+        "running": 3,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 569.2638400000001,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-3",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 32.481501841,
+      "maxEnergyResidualJ": 3.2782554626464844e-07,
+      "maxWaterResidualKg": 1.5574347367319774e-14,
+      "protectionCounts": {
+        "condensing temperature": 120
+      },
+      "states": {
+        "idle": 2388,
+        "reversing": 24,
+        "running": 948
+      },
+      "stateEntries": {
+        "idle": 1,
+        "running": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 126.8621639999983,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-27",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 151.456820443,
+      "maxEnergyResidualJ": 9.275972843170166e-07,
+      "maxWaterResidualKg": 1.4545309401370332e-13,
+      "protectionCounts": {},
+      "states": {
+        "running": 1800,
+        "reversing": 24,
+        "idle": 1536
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1608.0450640000017,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-21",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 237.608791252,
+      "maxEnergyResidualJ": 7.748603820800781e-07,
+      "maxWaterResidualKg": 2.842170943040401e-14,
+      "protectionCounts": {
+        "discharge temperature": 360
+      },
+      "states": {
+        "running": 2268,
+        "reversing": 24,
+        "idle": 1068
+      },
+      "stateEntries": {
+        "running": 3,
+        "idle": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1336.7865100000054,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-30",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 76.561304554,
+      "maxEnergyResidualJ": 1.107342541217804e-06,
+      "maxWaterResidualKg": 6.483702463810914e-14,
+      "protectionCounts": {
+        "indoor antifreeze": 407
+      },
+      "states": {
+        "running": 1503,
+        "reversing": 24,
+        "idle": 1833
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 728.9228590000002,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-22",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 303.31897384,
+      "maxEnergyResidualJ": 9.834766387939453e-07,
+      "maxWaterResidualKg": 7.815970093361102e-14,
+      "protectionCounts": {
+        "indoor antifreeze": 240,
+        "discharge temperature": 428
+      },
+      "states": {
+        "running": 3000,
+        "reversing": 24,
+        "idle": 336
+      },
+      "stateEntries": {
+        "running": 4,
+        "idle": 3
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 875.3034939999925,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-24",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 303.580710344,
+      "maxEnergyResidualJ": 1.0281801223754883e-06,
+      "maxWaterResidualKg": 4.618527782440651e-14,
+      "protectionCounts": {
+        "condensing temperature": 979
+      },
+      "states": {
+        "running": 2268,
+        "reversing": 24,
+        "idle": 1068
+      },
+      "stateEntries": {
+        "running": 3,
+        "idle": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1611.277070000011,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-16",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 425.591873347,
+      "maxEnergyResidualJ": 8.121132850646973e-07,
+      "maxWaterResidualKg": 3.113828639378369e-14,
+      "protectionCounts": {
+        "thermal boundary": 120,
+        "indoor antifreeze": 120
+      },
+      "states": {
+        "running": 2382,
+        "reversing": 24,
+        "idle": 954
+      },
+      "stateEntries": {
+        "running": 3,
+        "idle": 3
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 2482.145488000009,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating-25-0-replay-57",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 7.526530562,
+      "maxEnergyResidualJ": 8.803908713161945e-08,
+      "maxWaterResidualKg": 8.51098705401121e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 903.9239419999999,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating-45-0-replay-58",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 12.691550309,
+      "maxEnergyResidualJ": 1.4621764421463013e-07,
+      "maxWaterResidualKg": 1.3461454173580023e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 722.4905389999999,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-6",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 108.67436149099998,
+      "maxEnergyResidualJ": 5.21540641784668e-07,
+      "maxWaterResidualKg": 4.263256414560601e-14,
+      "protectionCounts": {},
+      "states": {
+        "idle": 1482,
+        "reversing": 24,
+        "running": 1854
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1088.9471869999998,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-4",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 121.32953286800002,
+      "maxEnergyResidualJ": 5.709007382392883e-07,
+      "maxWaterResidualKg": 1.9872992140790302e-14,
+      "protectionCounts": {
+        "indoor antifreeze": 423,
+        "discharge temperature": 120
+      },
+      "states": {
+        "running": 2913,
+        "idle": 423,
+        "reversing": 24
+      },
+      "stateEntries": {
+        "running": 3,
+        "idle": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 413.43474199999764,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-heating-45-1-replay-59",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 10.260361838000001,
+      "maxEnergyResidualJ": 2.6694033294916153e-07,
+      "maxWaterResidualKg": 1.033895191682177e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 716.722006,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-1-replay-60",
+      "outcome": "pass",
+      "steps": 280,
+      "updates": 6,
+      "simulatedSeconds": 70,
+      "wallSeconds": 7.504746657,
+      "maxEnergyResidualJ": 1.683947630226612e-07,
+      "maxWaterResidualKg": 5.1937620870745604e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 148,
+        "reversing": 24,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 248.94977199999994,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-3-replay-61",
+      "outcome": "pass",
+      "steps": 280,
+      "updates": 6,
+      "simulatedSeconds": 70,
+      "wallSeconds": 7.559595933,
+      "maxEnergyResidualJ": 1.6926787793636322e-07,
+      "maxWaterResidualKg": 6.314393452555578e-15,
+      "protectionCounts": {
+        "discharge temperature": 36
+      },
+      "states": {
+        "running": 148,
+        "reversing": 24,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 503.1121999999996,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-4-replay-62",
+      "outcome": "pass",
+      "steps": 280,
+      "updates": 6,
+      "simulatedSeconds": 70,
+      "wallSeconds": 5.027956256,
+      "maxEnergyResidualJ": 8.853385224938393e-08,
+      "maxWaterResidualKg": 2.095545958979983e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 108,
+        "reversing": 24,
+        "idle": 148
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 439.72638400000005,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-5",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 126.192398672,
+      "maxEnergyResidualJ": 4.33996319770813e-07,
+      "maxWaterResidualKg": 2.3578361485476762e-14,
+      "protectionCounts": {
+        "indoor antifreeze": 240
+      },
+      "states": {
+        "idle": 559,
+        "reversing": 24,
+        "running": 2777
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1150.49129,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-31",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 154.343108473,
+      "maxEnergyResidualJ": 1.1492520570755005e-06,
+      "maxWaterResidualKg": 6.350475700855895e-14,
+      "protectionCounts": {
+        "indoor antifreeze": 495,
+        "discharge temperature": 888
+      },
+      "states": {
+        "running": 2654,
+        "reversing": 24,
+        "idle": 682
+      },
+      "stateEntries": {
+        "running": 4,
+        "idle": 3
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 764.8554249999979,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-8",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 69.726842653,
+      "maxEnergyResidualJ": 7.433118298649788e-07,
+      "maxWaterResidualKg": 3.0309088572266774e-14,
+      "protectionCounts": {
+        "condensing temperature": 1165
+      },
+      "states": {
+        "running": 948,
+        "reversing": 24,
+        "idle": 2388
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 225.25740299999597,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling--25-1-replay-63",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 22.639128230999997,
+      "maxEnergyResidualJ": 3.259629011154175e-07,
+      "maxWaterResidualKg": 3.8719027983802334e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 749.02223,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-2-replay-67",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 18.986424039000003,
+      "maxEnergyResidualJ": 7.897615432739258e-07,
+      "maxWaterResidualKg": 4.1550096696596484e-14,
+      "protectionCounts": {
+        "indoor antifreeze": 1091
+      },
+      "states": {
+        "idle": 1788,
+        "reversing": 24,
+        "running": 1548
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 271.6388320000001,
+      "failureCategory": null
+    },
+    {
+      "id": "grid-cooling-45-0-replay-64",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 52.048054625000006,
+      "maxEnergyResidualJ": 5.066394805908203e-07,
+      "maxWaterResidualKg": 1.4148404670066839e-14,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 231.96341699999994,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-10-replay-65",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 67.28720810600001,
+      "maxEnergyResidualJ": 2.1560117602348328e-07,
+      "maxWaterResidualKg": 1.2545520178264269e-14,
+      "protectionCounts": {
+        "condensing temperature": 248
+      },
+      "states": {
+        "running": 1428,
+        "reversing": 24,
+        "idle": 1908
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 221.08304999999382,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-9",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 115.89858979099999,
+      "maxEnergyResidualJ": 6.034970283508301e-07,
+      "maxWaterResidualKg": 1.887379141862766e-14,
+      "protectionCounts": {
+        "indoor antifreeze": 247
+      },
+      "states": {
+        "running": 3120,
+        "reversing": 24,
+        "idle": 216
+      },
+      "stateEntries": {
+        "running": 3,
+        "idle": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1361.5117820000014,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-28-replay-69",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 105.08056622199999,
+      "maxEnergyResidualJ": 2.444721758365631e-07,
+      "maxWaterResidualKg": 9.880984919163893e-15,
+      "protectionCounts": {
+        "discharge temperature": 1496
+      },
+      "states": {
+        "running": 2064,
+        "reversing": 24,
+        "idle": 1272
+      },
+      "stateEntries": {
+        "running": 3,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 566.081647,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-6-replay-71",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 87.194052434,
+      "maxEnergyResidualJ": 5.21540641784668e-07,
+      "maxWaterResidualKg": 4.263256414560601e-14,
+      "protectionCounts": {},
+      "states": {
+        "idle": 1482,
+        "reversing": 24,
+        "running": 1854
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 947.9715610000003,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-4-replay-70",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 102.749905362,
+      "maxEnergyResidualJ": 5.709007382392883e-07,
+      "maxWaterResidualKg": 1.9872992140790302e-14,
+      "protectionCounts": {
+        "indoor antifreeze": 423,
+        "discharge temperature": 120
+      },
+      "states": {
+        "running": 2913,
+        "idle": 423,
+        "reversing": 24
+      },
+      "stateEntries": {
+        "running": 3,
+        "idle": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 340.4905010000002,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-22-replay-68",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 208.189509778,
+      "maxEnergyResidualJ": 9.834766387939453e-07,
+      "maxWaterResidualKg": 7.815970093361102e-14,
+      "protectionCounts": {
+        "indoor antifreeze": 240,
+        "discharge temperature": 428
+      },
+      "states": {
+        "running": 3000,
+        "reversing": 24,
+        "idle": 336
+      },
+      "stateEntries": {
+        "running": 4,
+        "idle": 3
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 734.1053059999999,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-7",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 302.282224331,
+      "maxEnergyResidualJ": 9.015202522277832e-07,
+      "maxWaterResidualKg": 4.618527782440651e-14,
+      "protectionCounts": {},
+      "states": {
+        "running": 3120,
+        "reversing": 24,
+        "idle": 216
+      },
+      "stateEntries": {
+        "running": 3,
+        "idle": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 2283.097024999999,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-16-replay-66",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 343.49416224399994,
+      "maxEnergyResidualJ": 8.121132850646973e-07,
+      "maxWaterResidualKg": 3.113828639378369e-14,
+      "protectionCounts": {
+        "thermal boundary": 120,
+        "indoor antifreeze": 120
+      },
+      "states": {
+        "running": 2382,
+        "reversing": 24,
+        "idle": 954
+      },
+      "stateEntries": {
+        "running": 3,
+        "idle": 3
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1715.0407969999942,
+      "failureCategory": null
+    },
+    {
+      "id": "sequence-7-replay-72",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 300.796272035,
+      "maxEnergyResidualJ": 9.015202522277832e-07,
+      "maxWaterResidualKg": 4.618527782440651e-14,
+      "protectionCounts": {},
+      "states": {
+        "running": 3120,
+        "reversing": 24,
+        "idle": 216
+      },
+      "stateEntries": {
+        "running": 3,
+        "idle": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1960.8303959999976,
+      "failureCategory": null
+    }
+  ],
+  "artifactDirectory": "/tmp/heatpump-robustness-final-ordinary-UA-73",
+  "acceptedSimulatedSeconds": 42814.75
+}

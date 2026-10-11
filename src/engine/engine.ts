@@ -1,4 +1,5 @@
 import { Properties, DomainError } from './properties.ts';
+import {estimateHeldEnvelope}from'./envelope.ts';
 import { solveCycle } from './cycle.ts';
 import { ChargeCircuit, type ChargeCandidate, type ChargeBoundary, type ChargeNumerics } from './charge.ts';
 import { driveStep, driveRatioThresholds, newDriveState, type DriveState } from './drive.ts';
@@ -6,8 +7,9 @@ import { thermostatDemand } from './thermostat.ts';
 import { inventoryCycle } from './charge-output.ts';
 import {roomDemand} from './demand.ts';
 import {interzoneHeatPowers, interzoneTransfers} from './interzone.ts';
-import { airExchange, equilibrateExhaust } from './air.ts';
-import { deriveOutdoorFilm, filmEnthalpy, FUSION_JKG, WATER_CP_JKGK } from './film.ts';
+import { ventilationExchange } from './ventilation.ts';
+import { airExchange, equilibrateExhaust, equilibrateRoomAir } from './air.ts';
+import { deriveOutdoorFilm, filmEnthalpy, FUSION_JKG, WATER_CP_JKGK, ICE_CP_JKGK } from './film.ts';
 import type { EngineConfig, EngineOutput, RoomState, RoomOutput, CycleOutput, OperatingState, Mode } from './types.ts';
 
 const sum = (values: number[]) => values.reduce((a, b) => a + b, 0);
@@ -73,9 +75,11 @@ export class HeatPumpEngine {
     this.rooms = config.rooms.map(room => {
       const previous = oldStates.get(room.id); if (!previous) return this.newRoom(room, config.ambientPressurePa);
       const state = { ...previous.state };
-      const currentC = this.properties.airT(state.airEnthalpyJ / state.dryAirMassKg, state.humidityRatio, old.ambientPressurePa);
+      const currentC = this.roomTemperature(state,old.ambientPressurePa);
       if (room.volumeM3 !== previous.config.volumeM3) state.dryAirMassKg = room.volumeM3 / this.properties.dryAirSpecificVolume(currentC, state.humidityRatio, config.ambientPressurePa);
-      state.airEnthalpyJ = state.dryAirMassKg * this.properties.airH(currentC, state.humidityRatio, config.ambientPressurePa);
+      state.airEnthalpyJ = state.dryAirMassKg * this.properties.airH(currentC, state.humidityRatio, config.ambientPressurePa)+this.retainedEnthalpy(state,currentC);
+      const phase=equilibrateRoomAir(this.properties,state.airEnthalpyJ/state.dryAirMassKg,state.humidityRatio+(state.retainedWaterKg??0)/state.dryAirMassKg,config.ambientPressurePa,currentC);
+      state.humidityRatio=phase.vaporWater;state.retainedWaterKg=phase.fogWater*state.dryAirMassKg;state.retainedIceKg=phase.fogIceWater*state.dryAirMassKg;
       return state;
     });
     this.outdoorEnergyJ += (config.outdoor.metalCapacityJK - old.outdoor.metalCapacityJK) * previousOutdoor.temperatureC;
@@ -142,6 +146,10 @@ export class HeatPumpEngine {
     if (config.ambientPressurePa < 70000 || config.ambientPressurePa > 110000) throw new DomainError('Ambient pressure outside supported psychrometric domain');
     if(config.control.strategy!==undefined&&! ['inverter','on-off'].includes(config.control.strategy))throw new DomainError('Unknown compressor control strategy');
     if((config.control.fixedSpeedRps!==undefined||config.control.strategy==='on-off')&&!((config.control.fixedSpeedRps??40)>=config.compressor.speedMinRps&&(config.control.fixedSpeedRps??40)<=config.compressor.speedMaxRps))throw new DomainError('Fixed compressor speed outside selected range');
+    for(const component of [config.outdoor,...config.rooms]){
+      const volumeFlow=component.volumetricAirFlowM3s;
+      if(volumeFlow!==undefined&&!(Number.isFinite(volumeFlow)&&volumeFlow>0))throw new DomainError('Volumetric airflow must be finite and positive');
+    }
     const c = config.compressor;
     for (const efficiency of [c.isentropicEfficiency, c.volumetricEfficiency, c.driveEfficiency]) if (!(efficiency > 0 && efficiency <= 1)) throw new DomainError('Efficiencies must be greater than zero and at most one');
     if (!(c.superheatK > 0 && c.subcoolK > 0 && c.displacementM3rev > 0 && c.speedMinRps > 0 && c.speedMaxRps >= c.speedMinRps)) throw new DomainError('Compressor/idealized control parameters outside domain');
@@ -154,6 +162,8 @@ export class HeatPumpEngine {
     if (o.fanPowerW < 0) throw new DomainError('Outdoor fan power must be nonnegative');
     if (!(o.metalCapacityJK > 0 && o.airMassFlowKgs > 0 && o.refrigerantConductanceWK > 0 && o.airConductanceWK >= 0 && o.naturalAirConductanceWK >= 0 && o.depositionAreaM2 > 0 && o.frostDensityKgm3 > 0 && o.frostDensityKgm3 < 917 && o.frostConductivityWmK > 0 && o.finGapM > 0 && o.drainageSeconds > 0)) throw new DomainError('Outdoor physical parameters outside domain');
     for (const room of config.rooms) {
+      const recovery = room.ventilationRecoveryEfficiency;
+      if (recovery !== undefined && !(Number.isFinite(recovery) && recovery >= 0 && recovery <= 1)) throw new DomainError(`Room ${room.id} ventilation recovery must be finite in 0…1`);
       if (room.internalGainW !== undefined && !(Number.isFinite(room.internalGainW) && room.internalGainW >= 0)) throw new DomainError(`Room ${room.id} internal gain must be finite and nonnegative`);
       if (!((room.cleanFraction ?? 1) >= .1 && (room.cleanFraction ?? 1) <= 1)) throw new DomainError('Indoor clear passage must be 0.1…1');
       if (!(room.pipe.lengthM >= 0 && room.pipe.lengthM <= 50 && Math.abs(room.pipe.elevationM) <= room.pipe.lengthM && room.pipe.insulationConductanceWmK >= 0)) throw new DomainError('Pipe parameters outside domain');
@@ -163,13 +173,26 @@ export class HeatPumpEngine {
     // Reject nonfinite configuration values recursively; JSON null/NaN cannot become plausible physics.
     const finite = (value: unknown): void => { if (typeof value === 'number' && !Number.isFinite(value)) throw new DomainError('Nonfinite scenario parameter'); if (value && typeof value === 'object') for (const v of Object.values(value)) finite(v); }; finite(config);
   }
+  private retainedEnthalpy(room:RoomState,t:number):number {
+    const water=room.retainedWaterKg??0,ice=room.retainedIceKg??0;
+    return (water-ice)*WATER_CP_JKGK*t+ice*(-FUSION_JKG+ICE_CP_JKGK*t);
+  }
+  private roomRH(t:number,w:number,p:number,retained=0):number {
+    // The phase solve/saturation input establishes this value; native inverse
+    // RH can reject its own exact saturation result by one rounding ulp.
+    return retained>0||w===this.properties.airW(t,1,p)?1:this.properties.airRH(t,w,p);
+  }
+  private roomTemperature(room:RoomState,p=this.config.ambientPressurePa):number {
+    if(!(room.retainedWaterKg??0))return this.properties.airT(room.airEnthalpyJ/room.dryAirMassKg,room.humidityRatio,p);
+    return equilibrateRoomAir(this.properties,room.airEnthalpyJ/room.dryAirMassKg,room.humidityRatio+(room.retainedWaterKg??0)/room.dryAirMassKg,p,room.fabricTemperatureC).temperatureC;
+  }
   private totalEnergy(): number { return (this.refrigerant?.snapshot().cells.reduce((total, cell) => total + cell.internalEnergyJ, 0) ?? 0) + this.outdoorEnergyJ + sum(this.rooms.map((room, i) => room.airEnthalpyJ + this.config.rooms[i].fabricCapacityJK * room.fabricTemperatureC + this.config.rooms[i].metalCapacityJK * room.metalTemperatureC)); }
-  private totalWater(): number { return this.outdoorWaterKg + sum(this.rooms.map(room => room.dryAirMassKg * room.humidityRatio)); }
+  private totalWater(): number { return this.outdoorWaterKg + sum(this.rooms.map(room => room.dryAirMassKg * room.humidityRatio+(room.retainedWaterKg??0))); }
   private passiveRoomOutputs(): RoomOutput[] {
-    const temperatures = this.rooms.map(room => this.properties.airT(room.airEnthalpyJ / room.dryAirMassKg, room.humidityRatio, this.config.ambientPressurePa));
+    const temperatures = this.rooms.map(room => this.roomTemperature(room));
     const linkHeat = interzoneHeatPowers(this.config, temperatures);
     return this.rooms.map((room, i) => { const c = this.config.rooms[i], t = temperatures[i];
-      return { id: c.id, temperatureC: t, relativeHumidity: this.properties.airRH(t, room.humidityRatio, this.config.ambientPressurePa), humidityRatio: room.humidityRatio, fabricTemperatureC: room.fabricTemperatureC, metalTemperatureC: room.metalTemperatureC,
+      return { retainedWaterKg:room.retainedWaterKg??0,retainedIceKg:room.retainedIceKg??0,id: c.id, temperatureC: t, relativeHumidity: this.roomRH(t,room.humidityRatio,this.config.ambientPressurePa,room.retainedWaterKg??0), humidityRatio: room.humidityRatio, fabricTemperatureC: room.fabricTemperatureC, metalTemperatureC: room.metalTemperatureC,
         setpointC: c.setpointC, active: false, massFlowKgs: 0, signedRoomHeatW: 0, sensibleRoomHeatW: 0, fanPowerW: 0, airOutletC: null, condensateKgs: 0, drainEnthalpyW: 0,
         interzoneHeatW: linkHeat[i], internalGainW: c.internalGainW ?? 0 }; });
   }
@@ -188,7 +211,7 @@ export class HeatPumpEngine {
     const config = this.config, outdoor = config.outdoor, p = config.ambientPressurePa;
     const previousDriveOffSeconds=this.inventoryDrive.offSeconds;
     const before = deriveOutdoorFilm(this.outdoorEnergyJ, this.outdoorWaterKg, outdoor);
-    const tRooms = this.rooms.map(r => this.properties.airT(r.airEnthalpyJ / r.dryAirMassKg, r.humidityRatio, p));
+    const tRooms = this.rooms.map(r => this.roomTemperature(r,p));
     const linkHeat = interzoneHeatPowers(config, tRooms);
     const previousActive = [...this.active];
     const errors = config.rooms.map((room, i) => config.mode === 'heating' ? room.setpointC - tRooms[i] : tRooms[i] - room.setpointC);
@@ -282,14 +305,32 @@ export class HeatPumpEngine {
       // the heating/cooling minimum-speed startup policy does not replace it.
       const conventional=config.control.strategy==='on-off';
       const referenceMinimum = defrost ? config.control.defrostSpeedRps : conventional ? config.control.fixedSpeedRps??40 : config.compressor.speedMinRps;
+      const allocationWeights=!conventional&&!defrost&&demand.heatW.some((q,i)=>this.active[i]&&q>0)?this.active.map((on,i)=>on?(demand.heatW[i]>0?demand.heatW[i]:config.rooms[i].refrigerantConductanceWK):0):undefined;
       const proposal = (rps: number) => solveCycle(this.properties, config, { mode: effectiveMode!,
         indoorMetalC: this.rooms.map(room => room.metalTemperatureC), outdoorMetalC: before.temperatureC,
-        active: this.active, allocationWeights: !conventional&&!defrost&&demand.heatW.some((q,i)=>this.active[i]&&q>0)?this.active.map((on,i)=>on?(demand.heatW[i]>0?demand.heatW[i]:config.rooms[i].refrigerantConductanceWK):0):undefined, speedRps: rps, defrost, previous: this.lastCycle });
+        active: this.active, allocationWeights, speedRps: rps, defrost, previous: this.lastCycle });
       // Reference pressures are quasi-steady, not stored stopped sensor states.
       // Predict a restart at minimum speed from the current thermal boundaries;
       // a stale hot discharge would otherwise keep its protection latched forever.
       const observed = effectiveMode && this.cycle?.mode === effectiveMode && this.active.every((enabled,i)=>enabled === (this.cycle!.branchMassFlowsKgs[i] > 0)) ? this.cycle : null;
-      const forecast = effectiveMode && !observed ? proposal(referenceMinimum) : null;
+      const enabledCoolingRooms=this.rooms.filter((_,i)=>config.rooms[i].enabled);
+      const coolingCoilC=config.mode==='cooling'?Math.min(...(enabledCoolingRooms.length?enabledCoolingRooms:this.rooms).map(room=>room.metalTemperatureC)):undefined;
+      const freezeHold=coolingCoilC!==undefined&&(coolingCoilC<=2||((this.inventoryDrive.antifreezeHold||this.inventoryDrive.protection==='indoor antifreeze')&&coolingCoilC<5));
+      // Preflight starts/restarts against the same declared boundary policy used
+      // during a hold. An explicit thermal-domain or compressor-limit prediction
+      // can stop the actuator before an infeasible full forecast is requested.
+      // This supplies no heat/work, and solver failures are still real faults.
+      const heldEnvelope=effectiveMode&&!observed
+        ?estimateHeldEnvelope(this.properties,config,effectiveMode,this.rooms.map(room=>room.metalTemperatureC),before.temperatureC,this.active,allocationWeights??config.rooms.map(room=>room.refrigerantConductanceWK)):null;
+      const boundaryDenied=heldEnvelope&&(!heldEnvelope.available||heldEnvelope.dischargeExceeded||
+        (heldEnvelope.dischargeC!==null&&heldEnvelope.dischargeC>=config.compressor.maxDischargeC-10)||
+        (heldEnvelope.ratio!==null&&heldEnvelope.ratio>=driveRatioThresholds(config.compressor.maxPressureRatio).stop)||
+        (heldEnvelope.condensingC!==null&&heldEnvelope.condensingC>=63));
+      const holdNotRecovered=heldEnvelope&&(!heldEnvelope.available||heldEnvelope.dischargeExceeded||
+        ((this.inventoryDrive.dischargeHold||this.inventoryDrive.protection==='discharge temperature')&&(heldEnvelope.dischargeC===null||heldEnvelope.dischargeC>config.compressor.maxDischargeC-40))||
+        ((this.inventoryDrive.pressureHold||this.inventoryDrive.protection==='pressure ratio')&&(heldEnvelope.ratio===null||heldEnvelope.ratio>driveRatioThresholds(config.compressor.maxPressureRatio).recovery))||
+        ((this.inventoryDrive.condensingHold||this.inventoryDrive.protection==='condensing temperature')&&(heldEnvelope.condensingC===null||heldEnvelope.condensingC>59)));
+      const forecast = effectiveMode && !observed&&!freezeHold&&!holdNotRecovered&&!boundaryDenied ? proposal(referenceMinimum) : null;
       const feedback = observed ?? forecast;
       if(running&&!defrost){
         const request=demand.heatW.reduce((sum,q,i)=>sum+(this.active[i]?q:0),0);
@@ -297,12 +338,12 @@ export class HeatPumpEngine {
         const feedbackSpeed=observed?this.inventoryDrive.speedRps:referenceMinimum;
         demandSpeed=conventional?referenceMinimum:capacity>0?bounded(feedbackSpeed*request/capacity,config.compressor.speedMinRps,config.compressor.speedMaxRps):config.compressor.speedMinRps;
       }
-      this.inventoryDrive = driveStep(this.inventoryDrive, dt, { demandRps: demandSpeed,
+      this.inventoryDrive = driveStep(this.inventoryDrive, dt, { thermalBoundaryAvailable:heldEnvelope?.available,coolingMode:config.mode==='cooling',coolingCoilC, dischargeEnvelopeExceeded:!!((holdNotRecovered||boundaryDenied)&&heldEnvelope?.dischargeExceeded),pressureRatioAvailable:!(holdNotRecovered||boundaryDenied)||heldEnvelope?.ratio!==null,predictedCondensingC:feedback?.condensingC??((holdNotRecovered||boundaryDenied)?heldEnvelope?.condensingC:null)??null,maximumCondensingC:65,demandRps: demandSpeed,
         minimumRps: referenceMinimum, maximumRps: config.compressor.speedMaxRps,
         maximumRatio: config.compressor.maxPressureRatio, maximumDischargeC: config.compressor.maxDischargeC,
         minimumOffSeconds: config.control.minOffSeconds,
-        pressureRatio: feedback ? feedback.highPressureBarAbs / feedback.lowPressureBarAbs : 1,
-        predictedDischargeC: feedback?.discharge.temperatureC ?? null, pickupAvailable: !!effectiveMode });
+        pressureRatio: feedback ? feedback.highPressureBarAbs / feedback.lowPressureBarAbs : (holdNotRecovered||boundaryDenied)?heldEnvelope?.ratio??1:1,
+        predictedDischargeC: feedback?.discharge.temperatureC ?? ((holdNotRecovered||boundaryDenied)?heldEnvelope?.dischargeC:null)??null, pickupAvailable: !!effectiveMode });
       speed = this.inventoryDrive.speedRps;
       if(conventional&&!defrost&&speed>0){
         if(speed<referenceMinimum){speed=0;this.inventoryDrive.speedRps=0;this.inventoryDrive.startupSeconds=0;}
@@ -313,31 +354,50 @@ export class HeatPumpEngine {
         // Only an independently closed, in-domain cycle is envelope evidence.
         // Solver failures propagate; no arbitrary lower-speed retry hides them.
         if (cycle.discharge.temperatureC >= config.compressor.maxDischargeC - 10 ||
-          cycle.highPressureBarAbs / cycle.lowPressureBarAbs >= driveRatioThresholds(config.compressor.maxPressureRatio).stop) {
-          this.inventoryDrive = { speedRps: 0, startupSeconds: 0, offSeconds: dt,
-            protection: cycle.discharge.temperatureC >= config.compressor.maxDischargeC - 10 ? 'discharge temperature' : 'pressure ratio' };
+          cycle.highPressureBarAbs / cycle.lowPressureBarAbs >= driveRatioThresholds(config.compressor.maxPressureRatio).stop||cycle.condensingC>=63) {
+          this.inventoryDrive = { ...this.inventoryDrive,speedRps: 0, startupSeconds: 0, offSeconds: dt,
+            dischargeHold:cycle.discharge.temperatureC>=config.compressor.maxDischargeC-10,pressureHold:cycle.highPressureBarAbs/cycle.lowPressureBarAbs>=driveRatioThresholds(config.compressor.maxPressureRatio).stop,condensingHold:cycle.condensingC>=63,
+            protection:cycle.discharge.temperatureC>=config.compressor.maxDischargeC-10?'discharge temperature':cycle.condensingC>=63?'condensing temperature':'pressure ratio' };
           speed = 0; cycle = null; this.lastCycle = undefined;
         } else this.lastCycle = { evaporatingC: cycle.evaporatingC, condensingC: cycle.condensingC,
           condenserOutletC: cycle.condenserOutlet.temperatureC, branchMassFlowsKgs: cycle.branchMassFlowsKgs,
           pressureJacobian: cycle.pressureJacobian };
       }
     }
+    // A prospective ordinary cooling interval may not cross the declared
+    // antifreeze boundary. Discard only the freshly closed algebraic cycle;
+    // Reference has no stored refrigerant to remap. Fan/metal evolution below
+    // is then recomputed with zero refrigerant work/heat.
+    if(!this.refrigerant&&running&&config.mode==='cooling'&&cycle){
+      const wouldFreeze=this.rooms.some((room,i)=>{
+        if(!this.active[i])return false;
+        const c=config.rooms[i],clear=c.cleanFraction??1;
+        const md=(c.volumetricAirFlowM3s===undefined?c.airMassFlowKgs:c.volumetricAirFlowM3s/this.properties.dryAirSpecificVolume(tRooms[i],room.humidityRatio,p))*clear;
+        const air=airExchange(this.properties,tRooms[i],room.humidityRatio,room.metalTemperatureC,md,c.airConductanceWK*clear,p,0,true,true);
+        return room.metalTemperatureC+dt*((cycle!.branchCoilHeatW[i]??0)+air.heatFromAirW-air.drainEnthalpyW)/c.metalCapacityJK<2;
+      });
+      if(wouldFreeze){this.inventoryDrive={...this.inventoryDrive,speedRps:0,startupSeconds:0,offSeconds:dt,protection:'indoor antifreeze',antifreezeHold:true};speed=0;cycle=null;this.lastCycle=undefined;}
+    }
     const outW = this.properties.airW(config.outdoorTemperatureC, config.outdoorRelativeHumidity, p), outH = this.properties.airH(config.outdoorTemperatureC, outW, p);
+    const outCp = config.rooms.some(room => (room.ventilationRecoveryEfficiency ?? 0) > 0 && room.ventilationACH > 0)
+      ? this.properties.airCp(config.outdoorTemperatureC, outW, p) : undefined;
     const outputs: RoomOutput[] = [];
     let roomPower = 0, indoorFans = 0, indoorDrain = 0, indoorCondensate = 0, ventilationEnergy = 0, envelopeEnergy = 0, internalGainPower = 0, roomWaterBoundary = 0, indoorMetalRate = 0;
     // Compute all candidate states transactionally before accepting the substep.
     const candidateRooms = this.rooms.map((room, i) => {
       const c = config.rooms[i], forced = running && this.active[i], fan = forced ? c.fanPowerW : 0;
       const clear = c.cleanFraction ?? 1;
-      const md = (forced ? c.airMassFlowKgs : Math.max(.005, c.naturalAirConductanceWK / 1006)) * clear;
+      const inletDryFlow=c.volumetricAirFlowM3s===undefined?c.airMassFlowKgs:c.volumetricAirFlowM3s/this.properties.dryAirSpecificVolume(tRooms[i],room.humidityRatio,p);
+      const md = (forced ? inletDryFlow : Math.max(.005, c.naturalAirConductanceWK / 1006)) * clear;
       const air = airExchange(this.properties, tRooms[i], room.humidityRatio, room.metalTemperatureC, md,
-        (forced ? c.airConductanceWK : c.naturalAirConductanceWK) * clear, p, 0, true);
+        (forced ? c.airConductanceWK : c.naturalAirConductanceWK) * clear, p, 0, true, true);
       const useful = air.signedHeatToAirW + fan, ventilation = room.dryAirMassKg * c.ventilationACH / 3600;
       const qFabric = c.airFabricWK * (room.fabricTemperatureC - tRooms[i]);
       // Simple envelope maps entirely to the air node; H is distinct from fabric coupling and ventilation.
       const qEnvelope = c.envelopeWK * (config.outdoorTemperatureC - tRooms[i]);
-      const qVent = ventilation * (outH - room.airEnthalpyJ / room.dryAirMassKg);
-      const waterVent = ventilation * (outW - room.humidityRatio);
+      const vent = ventilationExchange(this.properties, ventilation, tRooms[i], room.humidityRatio,
+        config.outdoorTemperatureC, outW, p, c.ventilationRecoveryEfficiency ?? 0, outH, outCp);
+      const qVent = vent.heatToRoomW, waterVent = vent.waterToRoomKgs;
       const qRef = charge ? -charge.integratedCoilHeatJ[c.id] / dt : cycle?.branchCoilHeatW[i] ?? 0;
       const metalRate = qRef + air.heatFromAirW - air.drainEnthalpyW;
       const internalGain = c.internalGainW ?? 0;
@@ -345,10 +405,13 @@ export class HeatPumpEngine {
         humidityRatio: room.humidityRatio + dt * (waterVent - air.waterToSurfaceKgs) / room.dryAirMassKg,
         fabricTemperatureC: room.fabricTemperatureC - dt * qFabric / c.fabricCapacityJK,
         metalTemperatureC: room.metalTemperatureC + dt * metalRate / c.metalCapacityJK };
-      const nextT = this.properties.airT(next.airEnthalpyJ / next.dryAirMassKg, next.humidityRatio, p), nextRH = this.properties.airRH(nextT, next.humidityRatio, p);
-      if (next.humidityRatio < 0 || nextRH > 1 + 1e-7) throw new DomainError(`Room ${c.id} supersaturation/negative water inventory outside model domain`);
-      const outlet = forced ? this.properties.airT(this.properties.airH(air.outletC, air.outletHumidityRatio, p) + fan / md, air.outletHumidityRatio, p) : null;
-      outputs.push({ id: c.id, temperatureC: nextT, relativeHumidity: nextRH, humidityRatio: next.humidityRatio, fabricTemperatureC: next.fabricTemperatureC, metalTemperatureC: next.metalTemperatureC,
+      const totalW=next.humidityRatio+(room.retainedWaterKg??0)/room.dryAirMassKg;
+      const phase=equilibrateRoomAir(this.properties,next.airEnthalpyJ/next.dryAirMassKg,totalW,p,tRooms[i]);
+      next.humidityRatio=phase.vaporWater;next.retainedWaterKg=phase.fogWater*next.dryAirMassKg;next.retainedIceKg=phase.fogIceWater*next.dryAirMassKg;
+      const nextT=phase.temperatureC,nextRH=this.roomRH(nextT,next.humidityRatio,p,phase.fogWater);
+      const fanH=air.totalOutletEnthalpyJkg+fan/md;
+      const outlet=forced ? air.fogWater>0 ? equilibrateExhaust(this.properties,fanH,air.totalOutletWater,p,tRooms[i]).temperatureC : this.properties.airT(fanH,air.totalOutletWater,p) : null;
+      outputs.push({ retainedWaterKg:next.retainedWaterKg,retainedIceKg:next.retainedIceKg,id: c.id, temperatureC: nextT, relativeHumidity: nextRH, humidityRatio: next.humidityRatio, fabricTemperatureC: next.fabricTemperatureC, metalTemperatureC: next.metalTemperatureC,
         setpointC: c.setpointC, active: running && this.active[i], massFlowKgs: cycle?.branchMassFlowsKgs[i] ?? 0, signedRoomHeatW: useful, sensibleRoomHeatW: air.sensibleToAirW + fan,
         fanPowerW: fan, airOutletC: outlet, condensateKgs: Math.max(0, air.waterToSurfaceKgs), drainEnthalpyW: air.drainEnthalpyW,
         interzoneHeatW: linkHeat[i], internalGainW: internalGain });
@@ -364,7 +427,8 @@ export class HeatPumpEngine {
     if (forcedOutside && clear === 0) throw new DomainError('Outdoor frost fully obstructs forced airflow; defrost control did not clear the passage');
     const resistance = before.thicknessM / (outdoor.frostConductivityWmK * outdoor.depositionAreaM2 * (outdoor.cleanFraction ?? 1));
     const uaAir = forcedOutside ? 1 / (1 / Math.max(outdoor.airConductanceWK * clear, 1e-12) + resistance) : outdoor.naturalAirConductanceWK * (outdoor.cleanFraction ?? 1);
-    const mdOut = forcedOutside ? outdoor.airMassFlowKgs * clear : Math.max(.005, outdoor.naturalAirConductanceWK / 1006) * (outdoor.cleanFraction ?? 1);
+    const outdoorDryFlow=outdoor.volumetricAirFlowM3s===undefined?outdoor.airMassFlowKgs:outdoor.volumetricAirFlowM3s/this.properties.dryAirSpecificVolume(config.outdoorTemperatureC,outW,p);
+    const mdOut = forcedOutside ? outdoorDryFlow * clear : Math.max(.005, outdoor.naturalAirConductanceWK / 1006) * (outdoor.cleanFraction ?? 1);
     const fanOutside = forcedOutside ? outdoor.fanPowerW : 0;
     const drain = Math.min(before.liquidKg / outdoor.drainageSeconds, before.liquidKg / dt);
     const evaporationAvailable = Math.max(0, before.liquidKg - drain * dt) / dt;

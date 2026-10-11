@@ -1,0 +1,1905 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-11",
+  "sourceFile": "research/catalogue/source-cache/mitsubishi-air-air-2026-2027.pdf",
+  "sourceSha256": "378dc9c5c50a6529e3e09e65d43d6a52ff02523a6c71de12700ef289c7bf6bd1",
+  "reviewMethod": "Review of cached official PDF table text and rendered primary pages 50, 54, 56, 60 and 64. Promotion limited to exact table/colour-variant identity, published matched monosplit pairing and its 1-port topology, casing dimensions, cooling high-fan volume flow and informational nominal cooling capacity. All other Qwen candidate facts remain unaccepted. EF18 is multisplit-only, excluded. Colour variants B/W/S explicitly share the EF family table; unknown compressor maps, UA, heat-exchanger surface, motor watts and heating fan flow remain generic/unknown. Cooling published high-fan flow reused in heating is an explicit scenario assumption. Published operating-range endpoints promoted as metadata with their original dry/wet-bulb table conditions; not an inferred dynamic protection envelope. Follow-up LN review: primary text and image PDF p.68; LN18 multisplit-only excluded. The explicit header lists colour variants VG3R/B/V/W above the shared family specification table: selected physical casing/airflow and informational capacities use that family table, not invented per-colour measurements. FT follow-up review: primary text and image PDF p.72 confirms exact VGK2 indoor / VGHZ2 outdoor monosplit pairings, cooling highest-fan airflow, casing and range endpoints. Hyper Heating cold-weather capacity rows remain informational candidate ratings, not an inferred compressor map. Daikin Stylish follow-up: independently read official cached2022 installer PDF page42 text/image. Promote only FTXA25/35/42/50 explicit AW/BS/BT/BB variants, respective RXA25A9/35A9/42B/50B matched monosplits, casing, cooling high-fan flow for indoor units, and outdoor operating ranges. Outdoor airflow is unpublished and remains generic/manual, explicitly labelled. FTXA20 rejected pending correction: the shared15/20 cooling high fan is11.0m\u00b3/min, not11.5. CTXA15 is multisplit-only, not promoted here. Current2026 availability unestablished.",
+  "units": [
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ap60-outdoor.json",
+      "candidateSha256": "e295cdfd9ded054e299836c012a2111dca1256bf75d7f797b30460602297e589",
+      "candidateReference": "MUZ-AP60VG2",
+      "reference": "MUZ-AP60VG2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-AP60VG2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.60 (printed p.59), 'Tailles 60 71' header spanning cooling/heating tables; UNIT\u00c9S EXT\u00c9RIEURES header MUZ-AP60VG2, UNIT\u00c9S INT\u00c9RIEURES header MSZ-AP60VG2, outdoor photo caption 'MUZ-AP60VG2'",
+        "excerpt": "Tailles 60 71 ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-AP60VG2 MUZ-AP71VG3 ; MUZ-AP60VG2"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); single cell under the MUZ-AP60VG2 column (visually verified)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ap71-outdoor.json",
+      "candidateSha256": "b8f2d754e4ed42ff10cbcffc1ec86422dce5f2b19f8203a7d192921b7ed5e5e7",
+      "candidateReference": "MUZ-AP71VG3",
+      "reference": "MUZ-AP71VG3",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-AP71VG2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.60 (printed p.59), 'Tailles 60 71' header spanning cooling/heating tables; UNIT\u00c9S EXT\u00c9RIEURES header MUZ-AP71VG3, UNIT\u00c9S INT\u00c9RIEURES header MSZ-AP71VG2, outdoor photo caption 'MUZ-AP71VG3'",
+        "excerpt": "Tailles 60 71 ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-AP60VG2 MUZ-AP71VG3 ; MUZ-AP71VG3"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); single cell under the MUZ-AP71VG3 column (visually verified)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ay15-outdoor.json",
+      "candidateSha256": "3eb0a1c6df8bc6bbb30f3d01d6d7cd7e77c8a877ec0c7aad3f8f0901708cafa6",
+      "candidateReference": "MUZ-AY15VG2",
+      "reference": "MUZ-AY15VG2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-AY15VGK2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.54 (printed p.53), page header 'MSZ-AY 15/20 VGK2' + outdoor photo labels 'MUZ-AY15VG2 MUZ-AY20VG2'; Tailles column 15; UNIT\u00c9S EXT\u00c9RIEURES header MUZ-AY15VG2",
+        "excerpt": "MSZ-AY 15/20 VGK2 ; MUZ-AY15VG2 MUZ-AY20VG2 ; Tailles 15 20 ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-AY15VG2 MUZ-AY20VG2"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); single cell under the MUZ-AY15VG2 column (visually verified on page image)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ay20-outdoor.json",
+      "candidateSha256": "d240e0eb8ff109332213e9c20e0e212835f69d9f96e63d7304b1f2aacf83dfd2",
+      "candidateReference": "MUZ-AY20VG2",
+      "reference": "MUZ-AY20VG2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-AY20VGK2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.54 (printed p.53), page header 'MSZ-AY 15/20 VGK2' + outdoor photo labels 'MUZ-AY15VG2 MUZ-AY20VG2'; Tailles column 20; UNIT\u00c9S EXT\u00c9RIEURES header MUZ-AY20VG2",
+        "excerpt": "MSZ-AY 15/20 VGK2 ; MUZ-AY15VG2 MUZ-AY20VG2 ; Tailles 15 20 ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-AY15VG2 MUZ-AY20VG2"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); single cell under the MUZ-AY20VG2 column (visually verified on page image)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ay25-outdoor.json",
+      "candidateSha256": "4ac7b4405fab3509e99f5945b27be73bc6b4189c271adee083e2fe2b6fb136b5",
+      "candidateReference": "MUZ-AY25VG2",
+      "reference": "MUZ-AY25VG2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-AY25VGK2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.56 (printed p.55), page header 'MSZ-AY 25/35/42/50 VGK2' + outdoor photo labels 'MUZ-AY 25/35/42 VG2 MUZ-AY 50 VG2'; Tailles column 25; UNIT\u00c9S EXT\u00c9RIEURES header MUZ-AY25VG2",
+        "excerpt": "MSZ-AY 25/35/42/50 VGK2 ; MUZ-AY 25/35/42 VG2 MUZ-AY 50 VG2 ; Tailles 25 35 42 50 ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-AY25VG2 MUZ-AY35VG2 MUZ-AY42VG2 MUZ-AY50VG2"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); row cell spans the MUZ-AY25VG2/MUZ-AY35VG2 columns (visually verified on page image)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ay35-outdoor.json",
+      "candidateSha256": "d1d198b778c161472f38a6369e1a588011ed64ae2a908fa064fcdff9b7149c11",
+      "candidateReference": "MUZ-AY35VG2",
+      "reference": "MUZ-AY35VG2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-AY35VGK2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.56 (printed p.55), page header 'MSZ-AY 25/35/42/50 VGK2' + outdoor photo labels 'MUZ-AY 25/35/42 VG2 MUZ-AY 50 VG2'; Tailles column 35; UNIT\u00c9S EXT\u00c9RIEURES header MUZ-AY35VG2",
+        "excerpt": "MSZ-AY 25/35/42/50 VGK2 ; MUZ-AY 25/35/42 VG2 MUZ-AY 50 VG2 ; Tailles 25 35 42 50 ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-AY25VG2 MUZ-AY35VG2 MUZ-AY42VG2 MUZ-AY50VG2"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); row cell spans the MUZ-AY25VG2/MUZ-AY35VG2 columns (visually verified on page image)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ay42-outdoor.json",
+      "candidateSha256": "545ae3096ae26b31120bc86d61f01c0c280862bb13a437c32599f51c95671eeb",
+      "candidateReference": "MUZ-AY42VG2",
+      "reference": "MUZ-AY42VG2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-AY42VGK2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.56 (printed p.55), page header 'MSZ-AY 25/35/42/50 VGK2' + outdoor photo labels 'MUZ-AY 25/35/42 VG2 MUZ-AY 50 VG2'; Tailles column 42; UNIT\u00c9S EXT\u00c9RIEURES header MUZ-AY42VG2",
+        "excerpt": "MSZ-AY 25/35/42/50 VGK2 ; MUZ-AY 25/35/42 VG2 MUZ-AY 50 VG2 ; Tailles 25 35 42 50 ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-AY25VG2 MUZ-AY35VG2 MUZ-AY42VG2 MUZ-AY50VG2"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); single cell under the MUZ-AY42VG2 column (visually verified on page image)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ay50-outdoor.json",
+      "candidateSha256": "75fede16a43fef0d72499533e4ec9c1ff9cbc6364c6330aafd9490dcfc02b948",
+      "candidateReference": "MUZ-AY50VG2",
+      "reference": "MUZ-AY50VG2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-AY50VGK2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.56 (printed p.55), page header 'MSZ-AY 25/35/42/50 VGK2' + outdoor photo labels 'MUZ-AY 25/35/42 VG2 MUZ-AY 50 VG2'; Tailles column 50; UNIT\u00c9S EXT\u00c9RIEURES header MUZ-AY50VG2",
+        "excerpt": "MSZ-AY 25/35/42/50 VGK2 ; MUZ-AY 25/35/42 VG2 MUZ-AY 50 VG2 ; Tailles 25 35 42 50 ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-AY25VG2 MUZ-AY35VG2 MUZ-AY42VG2 MUZ-AY50VG2"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); single cell under the MUZ-AY50VG2 column (visually verified on page image)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ef25-outdoor.json",
+      "candidateSha256": "937d199086aa46d447a0e9aec49f4f59d59be2683cce6c873cb7fb69d6eb3ac5",
+      "candidateReference": "MUZ-EF25VG2",
+      "reference": "MUZ-EF25VG2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-EF25VGK2B",
+        "MSZ-EF25VGK2W",
+        "MSZ-EF25VGK2S"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), aligned size columns 25/35/42/50; multisplit-only annotation belongs solely to size 18, verified in primary image",
+        "excerpt": "Tailles 25 35 42 50 ; UNIT\u00c9S INT\u00c9RIEURES MSZ-EF25VGK2 MSZ-EF35VGK2 MSZ-EF42VGK2 MSZ-EF50VGK2 ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-EF25VG2 MUZ-EF35VG2 MUZ-EF42VG2 MUZ-EF50VG2"
+      },
+      "coolingAirflowCondition": "cooling mode at high fan speed (GV), outdoor unit"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ef35-outdoor.json",
+      "candidateSha256": "55d73ce1ff77309309bb5c02ecac2d4c80e7e91a4ef0130de0790353d753b54c",
+      "candidateReference": "MUZ-EF35VG2",
+      "reference": "MUZ-EF35VG2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-EF35VGK2B",
+        "MSZ-EF35VGK2W",
+        "MSZ-EF35VGK2S"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), aligned size columns 25/35/42/50; multisplit-only annotation belongs solely to size 18, verified in primary image",
+        "excerpt": "Tailles 25 35 42 50 ; UNIT\u00c9S INT\u00c9RIEURES MSZ-EF25VGK2 MSZ-EF35VGK2 MSZ-EF42VGK2 MSZ-EF50VGK2 ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-EF25VG2 MUZ-EF35VG2 MUZ-EF42VG2 MUZ-EF50VG2"
+      },
+      "coolingAirflowCondition": "cooling mode at high fan speed (GV), outdoor unit"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ef42-outdoor.json",
+      "candidateSha256": "5da5005fe198e32d645f4bc52562a4a6f9f98ec598e419ac580aff0c1bf20079",
+      "candidateReference": "MUZ-EF42VG2",
+      "reference": "MUZ-EF42VG2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-EF42VGK2B",
+        "MSZ-EF42VGK2W",
+        "MSZ-EF42VGK2S"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), aligned size columns 25/35/42/50; multisplit-only annotation belongs solely to size 18, verified in primary image",
+        "excerpt": "Tailles 25 35 42 50 ; UNIT\u00c9S INT\u00c9RIEURES MSZ-EF25VGK2 MSZ-EF35VGK2 MSZ-EF42VGK2 MSZ-EF50VGK2 ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-EF25VG2 MUZ-EF35VG2 MUZ-EF42VG2 MUZ-EF50VG2"
+      },
+      "coolingAirflowCondition": "cooling mode at high fan speed (GV), outdoor unit"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ef50-outdoor.json",
+      "candidateSha256": "8fd71d1af710a178b4a7ffce6f01269ca334ab65c53f6bcdd4c699c5c1706309",
+      "candidateReference": "MUZ-EF50VG2",
+      "reference": "MUZ-EF50VG2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-EF50VGK2B",
+        "MSZ-EF50VGK2W",
+        "MSZ-EF50VGK2S"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), aligned size columns 25/35/42/50; multisplit-only annotation belongs solely to size 18, verified in primary image",
+        "excerpt": "Tailles 25 35 42 50 ; UNIT\u00c9S INT\u00c9RIEURES MSZ-EF25VGK2 MSZ-EF35VGK2 MSZ-EF42VGK2 MSZ-EF50VGK2 ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-EF25VG2 MUZ-EF35VG2 MUZ-EF42VG2 MUZ-EF50VG2"
+      },
+      "coolingAirflowCondition": "cooling mode at high fan speed (GV), outdoor unit"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-hr25-outdoor.json",
+      "candidateSha256": "8167724e71deca5f21f7bbb49bc492a4ea3d66b05159ef40bc2439f731dff74f",
+      "candidateReference": "MUZ-HR25VF2",
+      "reference": "MUZ-HR25VF2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-HR25VFK2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.50 (printed p.49), page header 'MUZ-HR 25/35 VF2' + 'Tailles' column 25 spanning cooling/heating tables; UNIT\u00c9S INT\u00c9RIEURES header MSZ-HR25VFK2 and UNIT\u00c9S EXT\u00c9RIEURES header MUZ-HR25VF2",
+        "excerpt": "MUZ-HR 25/35 VF2 ; Tailles 25 35 42 50 60 71 ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-HR25VF2 MUZ-HR35VF2 ..."
+      },
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); row 'D\u00e9bit d'air en froid GV' value 1818 is a single cell under the MUZ-HR25VF2 column (visually verified)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-hr35-outdoor.json",
+      "candidateSha256": "7654eb6c87f9c1aa852222cecb4feee88aa6d2a7c1fde2efa5be4b73ff04250f",
+      "candidateReference": "MUZ-HR35VF2",
+      "reference": "MUZ-HR35VF2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-HR35VFK2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.50 (printed p.49), page header 'MUZ-HR 25/35 VF2' + 'Tailles' column 35 spanning cooling/heating tables; UNIT\u00c9S INT\u00c9RIEURES header MSZ-HR35VFK2 and UNIT\u00c9S EXT\u00c9RIEURES header MUZ-HR35VF2",
+        "excerpt": "MUZ-HR 25/35 VF2 ; Tailles 25 35 42 50 60 71 ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-HR25VF2 MUZ-HR35VF2 ..."
+      },
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); row 'D\u00e9bit d'air en froid GV' value 1908 is a single cell under the MUZ-HR35VF2 column (visually verified)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-hr42-outdoor.json",
+      "candidateSha256": "bb14f3612e3850ec06f3a29bc465c2c752133d34321dc2ae448e6c8283bf03d7",
+      "candidateReference": "MUZ-HR42VF2",
+      "reference": "MUZ-HR42VF2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-HR42VFK2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.50 (printed p.49), page header 'MUZ-HR 42/50 VF2' + 'Tailles' column 42 spanning cooling/heating tables; UNIT\u00c9S INT\u00c9RIEURES header MSZ-HR42VFK2 and UNIT\u00c9S EXT\u00c9RIEURES header MUZ-HR42VF2",
+        "excerpt": "MUZ-HR 42/50 VF2 ; Tailles 25 35 42 50 60 71 ; UNIT\u00c9S EXT\u00c9RIEURES ... MUZ-HR42VF2 MUZ-HR50VF2 ..."
+      },
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); row 'D\u00e9bit d'air en froid GV' value 2058 is a single cell visually spanning the MUZ-HR42VF2 and MUZ-HR50VF2 columns (visually verified)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-hr50-outdoor.json",
+      "candidateSha256": "849b4850e00273e2e1311fdccc42649c67fe3fc1ec8c5877e3289f9e1480dd3b",
+      "candidateReference": "MUZ-HR50VF2",
+      "reference": "MUZ-HR50VF2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-HR50VFK2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.50 (printed p.49), page header 'MUZ-HR 42/50 VF2' + 'Tailles' column 50 spanning cooling/heating tables; UNIT\u00c9S INT\u00c9RIEURES header MSZ-HR50VFK2 and UNIT\u00c9S EXT\u00c9RIEURES header MUZ-HR50VF2",
+        "excerpt": "MUZ-HR 42/50 VF2 ; Tailles 25 35 42 50 60 71 ; UNIT\u00c9S EXT\u00c9RIEURES ... MUZ-HR42VF2 MUZ-HR50VF2 ..."
+      },
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); row 'D\u00e9bit d'air en froid GV' value 2058 is a single cell visually spanning the MUZ-HR42VF2 and MUZ-HR50VF2 columns (visually verified)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-hr60-outdoor.json",
+      "candidateSha256": "0e6ee7e6f5ae67fc349ac85ddc0b3a3d6292abccb0a37a56b7adbefa0b4e8d97",
+      "candidateReference": "MUZ-HR60VF2",
+      "reference": "MUZ-HR60VF2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-HR60VF2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.50 (printed p.49), page header 'MUZ-HR 60/71 VF2' + 'Tailles' column 60 spanning cooling/heating tables; UNIT\u00c9S INT\u00c9RIEURES header MSZ-HR60VF2 and UNIT\u00c9S EXT\u00c9RIEURES header MUZ-HR60VF2",
+        "excerpt": "MUZ-HR 60/71 VF2 ; Tailles 25 35 42 50 60 71 ; UNIT\u00c9S EXT\u00c9RIEURES ... MUZ-HR60VF2 MUZ-HR71VF2"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); row 'D\u00e9bit d'air en froid GV' value 2568 is a single cell visually spanning the MUZ-HR60VF2 and MUZ-HR71VF2 columns (visually verified)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-hr71-outdoor.json",
+      "candidateSha256": "08074b712374dd81a48ef9f3fd0fe15d4ec1dafa0b5d20be1ae92a016dff7ad3",
+      "candidateReference": "MUZ-HR71VF2",
+      "reference": "MUZ-HR71VF2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-HR71VF2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.50 (printed p.49), page header 'MUZ-HR 60/71 VF2' + 'Tailles' column 71 spanning cooling/heating tables; UNIT\u00c9S INT\u00c9RIEURES header MSZ-HR71VF2 and UNIT\u00c9S EXT\u00c9RIEURES header MUZ-HR71VF2",
+        "excerpt": "MUZ-HR 60/71 VF2 ; Tailles 25 35 42 50 60 71 ; UNIT\u00c9S EXT\u00c9RIEURES ... MUZ-HR60VF2 MUZ-HR71VF2"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); row 'D\u00e9bit d'air en froid GV' value 2568 is a single cell visually spanning the MUZ-HR60VF2 and MUZ-HR71VF2 columns (visually verified)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ap60-indoor.json",
+      "candidateSha256": "f282a41f89c6b90dc83e9bcf131e3518c92d00dad3a44e97d5ede47d1b07b179",
+      "candidateReference": "MSZ-AP60VG2",
+      "reference": "MSZ-AP60VG2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ap71-indoor.json",
+      "candidateSha256": "7ca2bb4e35cfe02915efd2661e0ef96196682455971f1db4226e068fb994aa73",
+      "candidateReference": "MSZ-AP71VG2",
+      "reference": "MSZ-AP71VG2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ay15-indoor.json",
+      "candidateSha256": "71bc5d19fdd0fbf44175f8dffc87eba080dd65a8b458c3a4218f145254c83ff2",
+      "candidateReference": "MSZ-AY15VGK2",
+      "reference": "MSZ-AY15VGK2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ay20-indoor.json",
+      "candidateSha256": "fd42533c788320f9a85ab4fa20fd01252fc4b0d3c4e7ac21801d8e2b30c570ce",
+      "candidateReference": "MSZ-AY20VGK2",
+      "reference": "MSZ-AY20VGK2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ay25-indoor.json",
+      "candidateSha256": "c160c3f1570d03b44db3636b0eb6b1fb7c02f27218a23d8c3ac23ef27f70906b",
+      "candidateReference": "MSZ-AY25VGK2",
+      "reference": "MSZ-AY25VGK2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ay35-indoor.json",
+      "candidateSha256": "9bd9fdb6a41dd9acd6608f4ba478ef38aefd08df546999b4a5189d0514910f18",
+      "candidateReference": "MSZ-AY35VGK2",
+      "reference": "MSZ-AY35VGK2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ay42-indoor.json",
+      "candidateSha256": "e266b1774e1753843780e3b9ccdcc7cb3a787da93810230665ffb5eac059b908",
+      "candidateReference": "MSZ-AY42VGK2",
+      "reference": "MSZ-AY42VGK2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ay50-indoor.json",
+      "candidateSha256": "bcba9f8abcf60368fa3e604eab87027d24ad484339b1e645f15a731301cbe2eb",
+      "candidateReference": "MSZ-AY50VGK2",
+      "reference": "MSZ-AY50VGK2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ef25-indoor.json",
+      "candidateSha256": "0339ead5ebe7afe1baf4ad40b544fa58fa01a29d985408fdd1c8d5b7cb249efd",
+      "candidateReference": "MSZ-EF25VGK2",
+      "reference": "MSZ-EF25VGK2B",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), explicit header MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S; size column 25",
+        "excerpt": "MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S"
+      },
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV); merged 18/25/35 columns"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ef25-indoor.json",
+      "candidateSha256": "0339ead5ebe7afe1baf4ad40b544fa58fa01a29d985408fdd1c8d5b7cb249efd",
+      "candidateReference": "MSZ-EF25VGK2",
+      "reference": "MSZ-EF25VGK2W",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), explicit header MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S; size column 25",
+        "excerpt": "MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S"
+      },
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV); merged 18/25/35 columns"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ef25-indoor.json",
+      "candidateSha256": "0339ead5ebe7afe1baf4ad40b544fa58fa01a29d985408fdd1c8d5b7cb249efd",
+      "candidateReference": "MSZ-EF25VGK2",
+      "reference": "MSZ-EF25VGK2S",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), explicit header MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S; size column 25",
+        "excerpt": "MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S"
+      },
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV); merged 18/25/35 columns"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ef35-indoor.json",
+      "candidateSha256": "16812d8dfadbfa7f38db4acfb939d936cb631e10aea25c9d34b28542ed77fb85",
+      "candidateReference": "MSZ-EF35VGK2",
+      "reference": "MSZ-EF35VGK2B",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), explicit header MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S; size column 35",
+        "excerpt": "MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S"
+      },
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV); merged 35/42 columns"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ef35-indoor.json",
+      "candidateSha256": "16812d8dfadbfa7f38db4acfb939d936cb631e10aea25c9d34b28542ed77fb85",
+      "candidateReference": "MSZ-EF35VGK2",
+      "reference": "MSZ-EF35VGK2W",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), explicit header MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S; size column 35",
+        "excerpt": "MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S"
+      },
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV); merged 35/42 columns"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ef35-indoor.json",
+      "candidateSha256": "16812d8dfadbfa7f38db4acfb939d936cb631e10aea25c9d34b28542ed77fb85",
+      "candidateReference": "MSZ-EF35VGK2",
+      "reference": "MSZ-EF35VGK2S",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), explicit header MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S; size column 35",
+        "excerpt": "MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S"
+      },
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV); merged 35/42 columns"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ef42-indoor.json",
+      "candidateSha256": "9481e7a733139108edd21dec21bffce5b5e1dcbada224595759341dc0faa5dbd",
+      "candidateReference": "MSZ-EF42VGK2",
+      "reference": "MSZ-EF42VGK2B",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), explicit header MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S; size column 42",
+        "excerpt": "MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S"
+      },
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV); merged 35/42 columns"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ef42-indoor.json",
+      "candidateSha256": "9481e7a733139108edd21dec21bffce5b5e1dcbada224595759341dc0faa5dbd",
+      "candidateReference": "MSZ-EF42VGK2",
+      "reference": "MSZ-EF42VGK2W",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), explicit header MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S; size column 42",
+        "excerpt": "MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S"
+      },
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV); merged 35/42 columns"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ef42-indoor.json",
+      "candidateSha256": "9481e7a733139108edd21dec21bffce5b5e1dcbada224595759341dc0faa5dbd",
+      "candidateReference": "MSZ-EF42VGK2",
+      "reference": "MSZ-EF42VGK2S",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), explicit header MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S; size column 42",
+        "excerpt": "MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S"
+      },
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV); merged 35/42 columns"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ef50-indoor.json",
+      "candidateSha256": "edac9dc81774f0d9642c450c89f13288566b29662d5a1936012d537a8cf2b8c9",
+      "candidateReference": "MSZ-EF50VGK2",
+      "reference": "MSZ-EF50VGK2B",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), explicit header MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S; size column 50",
+        "excerpt": "MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S"
+      },
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV); Taille 50 column"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ef50-indoor.json",
+      "candidateSha256": "edac9dc81774f0d9642c450c89f13288566b29662d5a1936012d537a8cf2b8c9",
+      "candidateReference": "MSZ-EF50VGK2",
+      "reference": "MSZ-EF50VGK2W",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), explicit header MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S; size column 50",
+        "excerpt": "MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S"
+      },
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV); Taille 50 column"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ef50-indoor.json",
+      "candidateSha256": "edac9dc81774f0d9642c450c89f13288566b29662d5a1936012d537a8cf2b8c9",
+      "candidateReference": "MSZ-EF50VGK2",
+      "reference": "MSZ-EF50VGK2S",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), explicit header MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S; size column 50",
+        "excerpt": "MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S"
+      },
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV); Taille 50 column"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-hr25-indoor.json",
+      "candidateSha256": "a7271f399224680571dda138fa268bcb9b0c6767404e4853e77c22422aeb6c53",
+      "candidateReference": "MSZ-HR25VFK2",
+      "reference": "MSZ-HR25VFK2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-hr35-indoor.json",
+      "candidateSha256": "978aa1971fd7b7975f78e25b99aa9484d69da784467ddcd36342814476e7ef88",
+      "candidateReference": "MSZ-HR35VFK2",
+      "reference": "MSZ-HR35VFK2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-hr42-indoor.json",
+      "candidateSha256": "19beebfba4cac64467536105649beb932aa387d983de4f56364c077752c0d034",
+      "candidateReference": "MSZ-HR42VFK2",
+      "reference": "MSZ-HR42VFK2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-hr50-indoor.json",
+      "candidateSha256": "49ead72ecc00de4f798d7f4c4fad24bef084a7184de0e26cb82ce84006c3cb08",
+      "candidateReference": "MSZ-HR50VFK2",
+      "reference": "MSZ-HR50VFK2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-hr60-indoor.json",
+      "candidateSha256": "4c18f54dc84ed3b3d29920641b96f2fb7d59c1057cfea90209d4880304851ecd",
+      "candidateReference": "MSZ-HR60VF2",
+      "reference": "MSZ-HR60VF2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV); merged MSZ-HR60VF2/MSZ-HR71VF2 columns (visually verified)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-hr71-indoor.json",
+      "candidateSha256": "2a8ce8932ed4538999928b427f8190eaefad3d3de7591f628a8a1c9c06fb9b03",
+      "candidateReference": "MSZ-HR71VF2",
+      "reference": "MSZ-HR71VF2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV); merged MSZ-HR60VF2/MSZ-HR71VF2 columns (visually verified)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ln25-indoor.json",
+      "candidateSha256": "80d7ae97440e171a5ddc4b71b34efcae98513d02f5c8d21c809eb80c19c3da2f",
+      "candidateReference": "MSZ-LN25VG3",
+      "reference": "MSZ-LN25VG3R",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, SGV fan speed",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), explicit colour-variant header MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W and common family table size 25",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ln25-indoor.json",
+      "candidateSha256": "80d7ae97440e171a5ddc4b71b34efcae98513d02f5c8d21c809eb80c19c3da2f",
+      "candidateReference": "MSZ-LN25VG3",
+      "reference": "MSZ-LN25VG3B",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, SGV fan speed",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), explicit colour-variant header MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W and common family table size 25",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ln25-indoor.json",
+      "candidateSha256": "80d7ae97440e171a5ddc4b71b34efcae98513d02f5c8d21c809eb80c19c3da2f",
+      "candidateReference": "MSZ-LN25VG3",
+      "reference": "MSZ-LN25VG3V",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, SGV fan speed",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), explicit colour-variant header MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W and common family table size 25",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ln25-indoor.json",
+      "candidateSha256": "80d7ae97440e171a5ddc4b71b34efcae98513d02f5c8d21c809eb80c19c3da2f",
+      "candidateReference": "MSZ-LN25VG3",
+      "reference": "MSZ-LN25VG3W",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, SGV fan speed",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), explicit colour-variant header MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W and common family table size 25",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ln35-indoor.json",
+      "candidateSha256": "bcbd9bfa932c7bb3d7a3e5a3f7e1b0a38af667d8df1dc2cc181996767ef21f14",
+      "candidateReference": "MSZ-LN35VG3",
+      "reference": "MSZ-LN35VG3R",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, SGV fan speed",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), explicit colour-variant header MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W and common family table size 35",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ln35-indoor.json",
+      "candidateSha256": "bcbd9bfa932c7bb3d7a3e5a3f7e1b0a38af667d8df1dc2cc181996767ef21f14",
+      "candidateReference": "MSZ-LN35VG3",
+      "reference": "MSZ-LN35VG3B",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, SGV fan speed",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), explicit colour-variant header MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W and common family table size 35",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ln35-indoor.json",
+      "candidateSha256": "bcbd9bfa932c7bb3d7a3e5a3f7e1b0a38af667d8df1dc2cc181996767ef21f14",
+      "candidateReference": "MSZ-LN35VG3",
+      "reference": "MSZ-LN35VG3V",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, SGV fan speed",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), explicit colour-variant header MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W and common family table size 35",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ln35-indoor.json",
+      "candidateSha256": "bcbd9bfa932c7bb3d7a3e5a3f7e1b0a38af667d8df1dc2cc181996767ef21f14",
+      "candidateReference": "MSZ-LN35VG3",
+      "reference": "MSZ-LN35VG3W",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, SGV fan speed",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), explicit colour-variant header MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W and common family table size 35",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ln50-indoor.json",
+      "candidateSha256": "873d574fbaee1ff11f3fff56af601a5d035550ca9a142e5236b2aaadca06d2f1",
+      "candidateReference": "MSZ-LN50VG3",
+      "reference": "MSZ-LN50VG3R",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, SGV fan speed",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), explicit colour-variant header MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W and common family table size 50",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ln50-indoor.json",
+      "candidateSha256": "873d574fbaee1ff11f3fff56af601a5d035550ca9a142e5236b2aaadca06d2f1",
+      "candidateReference": "MSZ-LN50VG3",
+      "reference": "MSZ-LN50VG3B",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, SGV fan speed",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), explicit colour-variant header MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W and common family table size 50",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ln50-indoor.json",
+      "candidateSha256": "873d574fbaee1ff11f3fff56af601a5d035550ca9a142e5236b2aaadca06d2f1",
+      "candidateReference": "MSZ-LN50VG3",
+      "reference": "MSZ-LN50VG3V",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, SGV fan speed",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), explicit colour-variant header MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W and common family table size 50",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ln50-indoor.json",
+      "candidateSha256": "873d574fbaee1ff11f3fff56af601a5d035550ca9a142e5236b2aaadca06d2f1",
+      "candidateReference": "MSZ-LN50VG3",
+      "reference": "MSZ-LN50VG3W",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, SGV fan speed",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), explicit colour-variant header MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W and common family table size 50",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ln60-indoor.json",
+      "candidateSha256": "8e32e5b81d042652e3e292b9dc4953c30eb6c44f241557ab56335eb4f5cecfcb",
+      "candidateReference": "MSZ-LN60VG3",
+      "reference": "MSZ-LN60VG3R",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, SGV fan speed",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), explicit colour-variant header MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W and common family table size 60",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ln60-indoor.json",
+      "candidateSha256": "8e32e5b81d042652e3e292b9dc4953c30eb6c44f241557ab56335eb4f5cecfcb",
+      "candidateReference": "MSZ-LN60VG3",
+      "reference": "MSZ-LN60VG3B",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, SGV fan speed",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), explicit colour-variant header MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W and common family table size 60",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ln60-indoor.json",
+      "candidateSha256": "8e32e5b81d042652e3e292b9dc4953c30eb6c44f241557ab56335eb4f5cecfcb",
+      "candidateReference": "MSZ-LN60VG3",
+      "reference": "MSZ-LN60VG3V",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, SGV fan speed",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), explicit colour-variant header MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W and common family table size 60",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ln60-indoor.json",
+      "candidateSha256": "8e32e5b81d042652e3e292b9dc4953c30eb6c44f241557ab56335eb4f5cecfcb",
+      "candidateReference": "MSZ-LN60VG3",
+      "reference": "MSZ-LN60VG3W",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, SGV fan speed",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), explicit colour-variant header MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W and common family table size 60",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ln25-outdoor.json",
+      "candidateSha256": "bb8673b0d53ab607c5337fb0d0a396e36bf155eb179367959e8978ee5e31a30b",
+      "candidateReference": "MUZ-LN25VG3",
+      "reference": "MUZ-LN25VG3",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); row value 1872 merged across MUZ-LN25VG3/MUZ-LN35VG3 columns (visually verified)",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-LN25VG3R",
+        "MSZ-LN25VG3B",
+        "MSZ-LN25VG3V",
+        "MSZ-LN25VG3W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), aligned size 25 indoor/outdoor columns and explicit indoor colour-variant header; multisplit-only annotation applies to size18, primary image reviewed",
+        "excerpt": "MUZ-LN25VG3 ; MSZ-LN25VG3 ; MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ln35-outdoor.json",
+      "candidateSha256": "550bbb1827674970dd9f8fc293ae08205cc173f05cb40d8bd1d13db387a7924c",
+      "candidateReference": "MUZ-LN35VG3",
+      "reference": "MUZ-LN35VG3",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); row value 1872 merged across MUZ-LN25VG3/MUZ-LN35VG3 columns (visually verified)",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-LN35VG3R",
+        "MSZ-LN35VG3B",
+        "MSZ-LN35VG3V",
+        "MSZ-LN35VG3W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), aligned size 35 indoor/outdoor columns and explicit indoor colour-variant header; multisplit-only annotation applies to size18, primary image reviewed",
+        "excerpt": "MUZ-LN35VG3 ; MSZ-LN35VG3 ; MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ln50-outdoor.json",
+      "candidateSha256": "247449ae464395afaf0a5c42ebe5e39e0e68c821436dd53749d6f7d5fac41ed3",
+      "candidateReference": "MUZ-LN50VG3",
+      "reference": "MUZ-LN50VG3",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); single cell under MUZ-LN50VG3 column (visually verified)",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-LN50VG3R",
+        "MSZ-LN50VG3B",
+        "MSZ-LN50VG3V",
+        "MSZ-LN50VG3W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), aligned size 50 indoor/outdoor columns and explicit indoor colour-variant header; multisplit-only annotation applies to size18, primary image reviewed",
+        "excerpt": "MUZ-LN50VG3 ; MSZ-LN50VG3 ; MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ln60-outdoor.json",
+      "candidateSha256": "050d5060c89d1ea0ee0a8b7dcf2ccffda1a87a969751b514f46265824cf12963",
+      "candidateReference": "MUZ-LN60VG3",
+      "reference": "MUZ-LN60VG3",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); single cell under MUZ-LN60VG3 column (visually verified)",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-LN60VG3R",
+        "MSZ-LN60VG3B",
+        "MSZ-LN60VG3V",
+        "MSZ-LN60VG3W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), aligned size 60 indoor/outdoor columns and explicit indoor colour-variant header; multisplit-only annotation applies to size18, primary image reviewed",
+        "excerpt": "MUZ-LN60VG3 ; MSZ-LN60VG3 ; MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ft25-indoor.json",
+      "candidateSha256": "8d4d49c806d0e71b4baab98def2a6ac07ef0491d7fe27e180fe3b511b551684c",
+      "candidateReference": "MSZ-FT25VGK2",
+      "reference": "MSZ-FT25VGK2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ft35-indoor.json",
+      "candidateSha256": "6662df2dcfd7a1c3a255225c8f2acd85ce2518a661fed337f2681005ee05ea8c",
+      "candidateReference": "MSZ-FT35VGK2",
+      "reference": "MSZ-FT35VGK2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-msz-ft50-indoor.json",
+      "candidateSha256": "cd57c60791f484ad7b2ba524a23767477ce2a2ea8d948dedf2b0d675e1056358",
+      "candidateReference": "MSZ-FT50VGK2",
+      "reference": "MSZ-FT50VGK2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass"
+      ],
+      "coolingAirflowCondition": "cooling mode, super-high fan speed (SGV)"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ft25-outdoor.json",
+      "candidateSha256": "f7dccc1addb9638395a856bd656cc97240386db375f6f6c6126ecb4e49942ba0",
+      "candidateReference": "MUZ-FT25VGHZ2",
+      "reference": "MUZ-FT25VGHZ2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); single cell under the MUZ-FT25VGHZ2 column (visually verified)",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-FT25VGK2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.72 (printed p.71), 'Tailles' header row 25 35 50 spanning cooling/heating tables; UNIT\u00c9S INT\u00c9RIEURES header MSZ-FT25VGK2 and UNIT\u00c9S EXT\u00c9RIEURES header MUZ-FT25VGHZ2",
+        "excerpt": "Tailles 25 35 50 ; UNIT\u00c9S INT\u00c9RIEURES MSZ-FT25VGK2 ... ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-FT25VGHZ2 MUZ-FT35VGHZ2 MUZ-FT50VGHZ2"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ft35-outdoor.json",
+      "candidateSha256": "a039f0983d0ed6c8ef76cb0e6e4a037e3e0b3fabc7e0b3609e86e1290fb6f462",
+      "candidateReference": "MUZ-FT35VGHZ2",
+      "reference": "MUZ-FT35VGHZ2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); row 'D\u00e9bit d'air en froid GV' value 2412 is a single merged cell spanning the MUZ-FT35VGHZ2 and MUZ-FT50VGHZ2 columns (visually verified)",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-FT35VGK2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.72 (printed p.71), 'Tailles' header row 25 35 50 spanning cooling/heating tables; UNIT\u00c9S INT\u00c9RIEURES header MSZ-FT35VGK2 and UNIT\u00c9S EXT\u00c9RIEURES header MUZ-FT35VGHZ2",
+        "excerpt": "Tailles 25 35 50 ; UNIT\u00c9S INT\u00c9RIEURES ... MSZ-FT35VGK2 ... ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-FT25VGHZ2 MUZ-FT35VGHZ2 MUZ-FT50VGHZ2"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/mitsubishi-muz-ft50-outdoor.json",
+      "candidateSha256": "94b3dae986541303fddc1c71b2a08efaae4d01131b37be910f1d47f890133bd6",
+      "candidateReference": "MUZ-FT50VGHZ2",
+      "reference": "MUZ-FT50VGHZ2",
+      "factKeys": [
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "capacityClass",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "coolingAirflowCondition": "cooling mode, high fan speed (GV); row 'D\u00e9bit d'air en froid GV' value 2412 is a single merged cell spanning the MUZ-FT35VGHZ2 and MUZ-FT50VGHZ2 columns (visually verified)",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-FT50VGK2"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.72 (printed p.71), 'Tailles' header row 25 35 50 spanning cooling/heating tables; UNIT\u00c9S INT\u00c9RIEURES header MSZ-FT50VGK2 and UNIT\u00c9S EXT\u00c9RIEURES header MUZ-FT50VGHZ2",
+        "excerpt": "Tailles 25 35 50 ; UNIT\u00c9S INT\u00c9RIEURES ... MSZ-FT50VGK2 ; UNIT\u00c9S EXT\u00c9RIEURES MUZ-FT25VGHZ2 MUZ-FT35VGHZ2 MUZ-FT50VGHZ2"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-ftxa25-indoor.json",
+      "candidateSha256": "45852274ce2d6b1a0d0e3dffc41f8c49a6592d1c903bbfdb7bd94fe039bb08ab",
+      "candidateReference": "FTXA25AW/BS/BT/BB",
+      "reference": "FTXA25AW",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "coolingAirflowCondition": "cooling mode, Haut (high) fan speed; published 11,5 m\u00b3/min, exact conversion x60 = 690 m\u00b3/h",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNIT\u00c9S INT\u00c9RIEURES table header column '25AW/BS/BT/BB'",
+        "excerpt": "C/FTXA-AW/BB/BT/BS + RXA-A9/B ; Unit\u00e9 int\u00e9rieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB; exact variant FTXA25AW is explicitly listed in the shared family column."
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-ftxa25-indoor.json",
+      "candidateSha256": "45852274ce2d6b1a0d0e3dffc41f8c49a6592d1c903bbfdb7bd94fe039bb08ab",
+      "candidateReference": "FTXA25AW/BS/BT/BB",
+      "reference": "FTXA25BS",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "coolingAirflowCondition": "cooling mode, Haut (high) fan speed; published 11,5 m\u00b3/min, exact conversion x60 = 690 m\u00b3/h",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNIT\u00c9S INT\u00c9RIEURES table header column '25AW/BS/BT/BB'",
+        "excerpt": "C/FTXA-AW/BB/BT/BS + RXA-A9/B ; Unit\u00e9 int\u00e9rieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB; exact variant FTXA25BS is explicitly listed in the shared family column."
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-ftxa25-indoor.json",
+      "candidateSha256": "45852274ce2d6b1a0d0e3dffc41f8c49a6592d1c903bbfdb7bd94fe039bb08ab",
+      "candidateReference": "FTXA25AW/BS/BT/BB",
+      "reference": "FTXA25BT",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "coolingAirflowCondition": "cooling mode, Haut (high) fan speed; published 11,5 m\u00b3/min, exact conversion x60 = 690 m\u00b3/h",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNIT\u00c9S INT\u00c9RIEURES table header column '25AW/BS/BT/BB'",
+        "excerpt": "C/FTXA-AW/BB/BT/BS + RXA-A9/B ; Unit\u00e9 int\u00e9rieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB; exact variant FTXA25BT is explicitly listed in the shared family column."
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-ftxa25-indoor.json",
+      "candidateSha256": "45852274ce2d6b1a0d0e3dffc41f8c49a6592d1c903bbfdb7bd94fe039bb08ab",
+      "candidateReference": "FTXA25AW/BS/BT/BB",
+      "reference": "FTXA25BB",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "coolingAirflowCondition": "cooling mode, Haut (high) fan speed; published 11,5 m\u00b3/min, exact conversion x60 = 690 m\u00b3/h",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNIT\u00c9S INT\u00c9RIEURES table header column '25AW/BS/BT/BB'",
+        "excerpt": "C/FTXA-AW/BB/BT/BS + RXA-A9/B ; Unit\u00e9 int\u00e9rieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB; exact variant FTXA25BB is explicitly listed in the shared family column."
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-rxa25a9-outdoor.json",
+      "candidateSha256": "781e031678d10c4e9ad4dd0bc8385a43c8ed6d84299fe2cfc3041f5296508de2",
+      "candidateReference": "RXA25A9",
+      "reference": "RXA25A9",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXA25AW",
+        "FTXA25BS",
+        "FTXA25BT",
+        "FTXA25BB"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "pairingEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42, efficiency table column 25AW/BS/BT/BB + 25A9; indoor/outdoor table headers",
+        "excerpt": "25AW/BS/BT/BB + 25A9"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-ftxa35-indoor.json",
+      "candidateSha256": "2cd69f18b6ae9bb94a8ac82e2c3de9c9f6eaf061fbddeda909454bc921fa30f2",
+      "candidateReference": "FTXA35AW/BS/BT/BB",
+      "reference": "FTXA35AW",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "coolingAirflowCondition": "cooling, Haut (high) speed; published 11,9 m\u00b3/min, converted x60 = 714 m\u00b3/h",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNIT\u00c9S INT\u00c9RIEURES header column '35AW/BS/BT/BB'",
+        "excerpt": "Unit\u00e9 int\u00e9rieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB; exact variant FTXA35AW is explicitly listed in the shared family column."
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-ftxa35-indoor.json",
+      "candidateSha256": "2cd69f18b6ae9bb94a8ac82e2c3de9c9f6eaf061fbddeda909454bc921fa30f2",
+      "candidateReference": "FTXA35AW/BS/BT/BB",
+      "reference": "FTXA35BS",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "coolingAirflowCondition": "cooling, Haut (high) speed; published 11,9 m\u00b3/min, converted x60 = 714 m\u00b3/h",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNIT\u00c9S INT\u00c9RIEURES header column '35AW/BS/BT/BB'",
+        "excerpt": "Unit\u00e9 int\u00e9rieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB; exact variant FTXA35BS is explicitly listed in the shared family column."
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-ftxa35-indoor.json",
+      "candidateSha256": "2cd69f18b6ae9bb94a8ac82e2c3de9c9f6eaf061fbddeda909454bc921fa30f2",
+      "candidateReference": "FTXA35AW/BS/BT/BB",
+      "reference": "FTXA35BT",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "coolingAirflowCondition": "cooling, Haut (high) speed; published 11,9 m\u00b3/min, converted x60 = 714 m\u00b3/h",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNIT\u00c9S INT\u00c9RIEURES header column '35AW/BS/BT/BB'",
+        "excerpt": "Unit\u00e9 int\u00e9rieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB; exact variant FTXA35BT is explicitly listed in the shared family column."
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-ftxa35-indoor.json",
+      "candidateSha256": "2cd69f18b6ae9bb94a8ac82e2c3de9c9f6eaf061fbddeda909454bc921fa30f2",
+      "candidateReference": "FTXA35AW/BS/BT/BB",
+      "reference": "FTXA35BB",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "coolingAirflowCondition": "cooling, Haut (high) speed; published 11,9 m\u00b3/min, converted x60 = 714 m\u00b3/h",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNIT\u00c9S INT\u00c9RIEURES header column '35AW/BS/BT/BB'",
+        "excerpt": "Unit\u00e9 int\u00e9rieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB; exact variant FTXA35BB is explicitly listed in the shared family column."
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-rxa35a9-outdoor.json",
+      "candidateSha256": "5c469c2455441812c0039d499e836b150f095db9e86bdcc72c375a8313a62414",
+      "candidateReference": "RXA35A9",
+      "reference": "RXA35A9",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXA35AW",
+        "FTXA35BS",
+        "FTXA35BT",
+        "FTXA35BB"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "pairingEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42, efficiency table column 35AW/BS/BT/BB + 35A9; indoor/outdoor table headers",
+        "excerpt": "35AW/BS/BT/BB + 35A9"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-ftxa42-indoor.json",
+      "candidateSha256": "2be06a0282ec83a5132805afaf9cc1b426df2edcef77cfeada44878a70d1d4b0",
+      "candidateReference": "FTXA42AW/BS/BT/BB",
+      "reference": "FTXA42AW",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "coolingAirflowCondition": "cooling, Haut (high) speed; published 13,1 m\u00b3/min, converted x60 = 786 m\u00b3/h",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNIT\u00c9S INT\u00c9RIEURES header column '42AW/BS/BT/BB'",
+        "excerpt": "Unit\u00e9 int\u00e9rieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB; exact variant FTXA42AW is explicitly listed in the shared family column."
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-ftxa42-indoor.json",
+      "candidateSha256": "2be06a0282ec83a5132805afaf9cc1b426df2edcef77cfeada44878a70d1d4b0",
+      "candidateReference": "FTXA42AW/BS/BT/BB",
+      "reference": "FTXA42BS",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "coolingAirflowCondition": "cooling, Haut (high) speed; published 13,1 m\u00b3/min, converted x60 = 786 m\u00b3/h",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNIT\u00c9S INT\u00c9RIEURES header column '42AW/BS/BT/BB'",
+        "excerpt": "Unit\u00e9 int\u00e9rieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB; exact variant FTXA42BS is explicitly listed in the shared family column."
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-ftxa42-indoor.json",
+      "candidateSha256": "2be06a0282ec83a5132805afaf9cc1b426df2edcef77cfeada44878a70d1d4b0",
+      "candidateReference": "FTXA42AW/BS/BT/BB",
+      "reference": "FTXA42BT",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "coolingAirflowCondition": "cooling, Haut (high) speed; published 13,1 m\u00b3/min, converted x60 = 786 m\u00b3/h",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNIT\u00c9S INT\u00c9RIEURES header column '42AW/BS/BT/BB'",
+        "excerpt": "Unit\u00e9 int\u00e9rieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB; exact variant FTXA42BT is explicitly listed in the shared family column."
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-ftxa42-indoor.json",
+      "candidateSha256": "2be06a0282ec83a5132805afaf9cc1b426df2edcef77cfeada44878a70d1d4b0",
+      "candidateReference": "FTXA42AW/BS/BT/BB",
+      "reference": "FTXA42BB",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "coolingAirflowCondition": "cooling, Haut (high) speed; published 13,1 m\u00b3/min, converted x60 = 786 m\u00b3/h",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNIT\u00c9S INT\u00c9RIEURES header column '42AW/BS/BT/BB'",
+        "excerpt": "Unit\u00e9 int\u00e9rieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB; exact variant FTXA42BB is explicitly listed in the shared family column."
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-rxa42b-outdoor.json",
+      "candidateSha256": "dec9fe0cf437a90bae0417f04a1196566eae2071e167b0b841ccaf7d7daeda14",
+      "candidateReference": "RXA42B",
+      "reference": "RXA42B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXA42AW",
+        "FTXA42BS",
+        "FTXA42BT",
+        "FTXA42BB"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "pairingEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42, efficiency table column 42AW/BS/BT/BB + 42B; indoor/outdoor table headers",
+        "excerpt": "42AW/BS/BT/BB + 42B"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-ftxa50-indoor.json",
+      "candidateSha256": "c1edf27c29704f333e69f5fcf00c1d544252e04d2da34a780ad9f1c9f3dbe6d8",
+      "candidateReference": "FTXA50AW/BS/BT/BB",
+      "reference": "FTXA50AW",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "coolingAirflowCondition": "cooling, Haut (high) speed; published 13,5 m\u00b3/min, converted x60 = 810 m\u00b3/h",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNIT\u00c9S INT\u00c9RIEURES header column '50AW/BS/BT/BB'",
+        "excerpt": "Unit\u00e9 int\u00e9rieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB; exact variant FTXA50AW is explicitly listed in the shared family column."
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-ftxa50-indoor.json",
+      "candidateSha256": "c1edf27c29704f333e69f5fcf00c1d544252e04d2da34a780ad9f1c9f3dbe6d8",
+      "candidateReference": "FTXA50AW/BS/BT/BB",
+      "reference": "FTXA50BS",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "coolingAirflowCondition": "cooling, Haut (high) speed; published 13,5 m\u00b3/min, converted x60 = 810 m\u00b3/h",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNIT\u00c9S INT\u00c9RIEURES header column '50AW/BS/BT/BB'",
+        "excerpt": "Unit\u00e9 int\u00e9rieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB; exact variant FTXA50BS is explicitly listed in the shared family column."
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-ftxa50-indoor.json",
+      "candidateSha256": "c1edf27c29704f333e69f5fcf00c1d544252e04d2da34a780ad9f1c9f3dbe6d8",
+      "candidateReference": "FTXA50AW/BS/BT/BB",
+      "reference": "FTXA50BT",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "coolingAirflowCondition": "cooling, Haut (high) speed; published 13,5 m\u00b3/min, converted x60 = 810 m\u00b3/h",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNIT\u00c9S INT\u00c9RIEURES header column '50AW/BS/BT/BB'",
+        "excerpt": "Unit\u00e9 int\u00e9rieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB; exact variant FTXA50BT is explicitly listed in the shared family column."
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-ftxa50-indoor.json",
+      "candidateSha256": "c1edf27c29704f333e69f5fcf00c1d544252e04d2da34a780ad9f1c9f3dbe6d8",
+      "candidateReference": "FTXA50AW/BS/BT/BB",
+      "reference": "FTXA50BB",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "coolingAirflowCondition": "cooling, Haut (high) speed; published 13,5 m\u00b3/min, converted x60 = 810 m\u00b3/h",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), page title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'; UNIT\u00c9S INT\u00c9RIEURES header column '50AW/BS/BT/BB'",
+        "excerpt": "Unit\u00e9 int\u00e9rieure FTXA CTXA15AW/BS/BT/BB 20AW/BS/BT/BB 25AW/BS/BT/BB 35AW/BS/BT/BB 42AW/BS/BT/BB 50AW/BS/BT/BB; exact variant FTXA50BB is explicitly listed in the shared family column."
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/daikin-rxa50b-outdoor.json",
+      "candidateSha256": "3d25696a8f635a9761d5d0e20fa458b449f475eaa77348f726972d8bb5a97561",
+      "candidateReference": "RXA50B",
+      "reference": "RXA50B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXA50AW",
+        "FTXA50BS",
+        "FTXA50BT",
+        "FTXA50BB"
+      ],
+      "unpublishedOutdoorAirflow": true,
+      "pairingEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42, efficiency table column 50AW/BS/BT/BB + 50B; indoor/outdoor table headers",
+        "excerpt": "50AW/BS/BT/BB + 50B"
+      }
+    }
+  ],
+  "additionalSourceSnapshots": [
+    {
+      "sourceFile": "research/catalogue/source-cache/daikin-fr-split-installer-2022.pdf",
+      "sourceSha256": "814243080bf6b8795adccb3f8c670a87d0b692d7c1c09ec32c306f04add187ad"
+    }
+  ]
+}

@@ -1,0 +1,236 @@
+{
+  "reviewedAt": "2026-10-11T10:17:02.556Z",
+  "snapshot": "/tmp/heatpump-six-counterexamples-in-domain-FD-replay/snapshot",
+  "method": "Reviewer-operated native solve of both exact retained eight-head checkpoints; independent raw guarded PropsSI composite Simpson integration in log-temperature (1024/2048 panels per sensible phase), exact latent segment, mass/PH/energy checks. Production conductanceIntegral is not used by independent integration. Near-terminal outlet heat is checked against raw metal-equilibrium enthalpy; PH inverse resolution makes implied-UA residual ill-conditioned near zero approach.",
+  "sourceHashes": {
+    "src/engine/cycle.ts": "294d647a26f60d319641c9b7fe4645378472dd5c70a8e6c0ef6075168aaf29e4",
+    "src/engine/engine.ts": "d19581635f7086e8e9d041bd7e1b3dc69fd1d7fe4b94a397cae7a54fb826d963",
+    "src/engine/envelope.ts": "eaab1d96df755b322050854fa8b7108e1f4918fbeb4dd1206d815ba9c74dc4e3",
+    "src/engine/drive.ts": "d94247f20b359a61980e0d5af121d5299133f3b65a49358c4c40540a6655d0dd",
+    "src/engine/types.ts": "2d37d59af8e071ac4ea8fb6edc85605f0ee63d3ce3900f8af8d6f62340470c24",
+    "src/engine/properties.ts": "7f4bb2f372a77f30e76844dd7ef9d7afa6d25f72079a09ce66586cdc134404d1",
+    "public/vendor/coolprop-safe/adapter.js": "06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34",
+    "public/vendor/coolprop-safe/coolprop.js": "6fa2e627803e2453da12cb9fce160ca3326851cd179444edc5ab698e21524d6c",
+    "public/vendor/coolprop-safe/coolprop.wasm": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+    "tests/engine/fixtures/eight-head-shared-header.json": "264d66afb04a391f00d6c91e9d125f0e9e39627bdac06e582379a97c44f377d3"
+  },
+  "cases": [
+    {
+      "label": "original target/on-off edit at 360 s",
+      "evaporatingC": 0.2600602150969512,
+      "condensingC": 37.58125574320874,
+      "closureResidualW": 0.03907979900899218,
+      "massResidualKgs": -1.734723475976807e-18,
+      "headerPhase": "liquid",
+      "heatResidualW": 4.547473508864641e-13,
+      "branches": [
+        {
+          "index": 0,
+          "phase": "liquid",
+          "metalC": 15.069313599407865,
+          "outletC": 15.069323599391737,
+          "heatW": 536.2931604605534,
+          "configuredUA": 350,
+          "simpsonUA1024": 54.92501775484007,
+          "simpsonUA2048": 54.925017753454334,
+          "terminal": true,
+          "limitingHeatGapW": 0.00002516812766164813
+        },
+        {
+          "index": 1,
+          "phase": "liquid",
+          "metalC": 35.89366456090803,
+          "outletC": 35.893674525841334,
+          "heatW": 524.2585994812795,
+          "configuredUA": 350,
+          "simpsonUA1024": 263.7594705755373,
+          "simpsonUA2048": 263.7594705755335,
+          "terminal": true,
+          "limitingHeatGapW": 0.0000313393367183535
+        },
+        {
+          "index": 2,
+          "phase": "liquid",
+          "metalC": 30.197079696439957,
+          "outletC": 30.19708969643989,
+          "heatW": 866.2807575547467,
+          "configuredUA": 350,
+          "simpsonUA1024": 152.7656744135126,
+          "simpsonUA2048": 152.76567441333117,
+          "terminal": true,
+          "limitingHeatGapW": 0.000047780606178183956
+        },
+        {
+          "index": 3,
+          "phase": "liquid",
+          "metalC": 21.992457707817543,
+          "outletC": 21.992467707813546,
+          "heatW": 0.29535689085150574,
+          "configuredUA": 350,
+          "simpsonUA1024": 0.035546899981202355,
+          "simpsonUA2048": 0.03554689998088537,
+          "terminal": true,
+          "limitingHeatGapW": 1.4820368974426657e-8
+        },
+        {
+          "index": 4,
+          "phase": "vapor",
+          "metalC": 38.64884303109981,
+          "outletC": 38.64885303109975,
+          "heatW": 45.588413795557436,
+          "configuredUA": 350,
+          "simpsonUA1024": 12.876020477651561,
+          "simpsonUA2048": 12.87602047763144,
+          "terminal": true,
+          "limitingHeatGapW": 0.000008556945108065326
+        },
+        {
+          "index": 7,
+          "phase": "liquid",
+          "metalC": 26.983835210054924,
+          "outletC": 26.98384521005437,
+          "heatW": 423.5072666594502,
+          "configuredUA": 350,
+          "simpsonUA1024": 61.41390238784749,
+          "simpsonUA2048": 61.41390238765777,
+          "terminal": true,
+          "limitingHeatGapW": 0.000022454659462046378
+        }
+      ]
+    },
+    {
+      "label": "retained candidate near-saturation PT failure at 374 s",
+      "evaporatingC": 0.18512010034869947,
+      "condensingC": 37.805390392146656,
+      "closureResidualW": 0.000546813810990383,
+      "massResidualKgs": 0,
+      "headerPhase": "liquid",
+      "heatResidualW": 2.2737367544323206e-13,
+      "branches": [
+        {
+          "index": 0,
+          "phase": "liquid",
+          "metalC": 16.365270033314257,
+          "outletC": 16.365280033299314,
+          "heatW": 962.9284380048632,
+          "configuredUA": 350,
+          "simpsonUA1024": 100.6174221481576,
+          "simpsonUA2048": 100.61742214589887,
+          "terminal": true,
+          "limitingHeatGapW": 0.00004562900149912199
+        },
+        {
+          "index": 1,
+          "phase": "liquid",
+          "metalC": 35.413468245856244,
+          "outletC": 35.41348697328954,
+          "heatW": 933.3010883530111,
+          "configuredUA": 350,
+          "simpsonUA1024": 350.0026708768176,
+          "simpsonUA2048": 350.0026708768039,
+          "terminal": true,
+          "limitingHeatGapW": 0.000103440268198508
+        },
+        {
+          "index": 2,
+          "phase": "liquid",
+          "metalC": 30.495187838021682,
+          "outletC": 30.495197838021625,
+          "heatW": 1535.261341564609,
+          "configuredUA": 350,
+          "simpsonUA1024": 271.9697465262641,
+          "simpsonUA2048": 271.9697465259535,
+          "terminal": true,
+          "limitingHeatGapW": 0.00008479771710016697
+        },
+        {
+          "index": 3,
+          "phase": "liquid",
+          "metalC": 22.075087277761604,
+          "outletC": 22.075097277757095,
+          "heatW": 6.379433077403178,
+          "configuredUA": 350,
+          "simpsonUA1024": 0.7640126554866026,
+          "simpsonUA2048": 0.7640126554794995,
+          "terminal": true,
+          "limitingHeatGapW": 3.196592049560117e-7
+        },
+        {
+          "index": 4,
+          "phase": "two-phase",
+          "metalC": 37.804498125112346,
+          "outletC": 37.80539039214665,
+          "heatW": 85.19361546642185,
+          "configuredUA": 350,
+          "simpsonUA1024": 349.9999999999623,
+          "simpsonUA2048": 349.9999999999544,
+          "terminal": false,
+          "limitingHeatGapW": null
+        },
+        {
+          "index": 7,
+          "phase": "liquid",
+          "metalC": 26.935671762341364,
+          "outletC": 26.93568176234055,
+          "heatW": 751.6401659799826,
+          "configuredUA": 350,
+          "simpsonUA1024": 107.49391905939584,
+          "simpsonUA2048": 107.49391905903131,
+          "terminal": true,
+          "limitingHeatGapW": 0.00003973610430821684
+        }
+      ]
+    }
+  ],
+  "restartMethod": "Reviewer replayed exact preceding accepted transactions from retained failures with original scenario ledger origin, checked source fan cooling, zero held compressor heat/work, unchanged energy/water/residual criteria and fresh cycle recovery; no test runner used.",
+  "restartCases": [
+    {
+      "id": "sequence-16",
+      "inputSha256": "8f5d4999bd3df07488d8fa061df4d639b5cba6e6915c95fd9ca858edb3fcd691",
+      "precedingTime": 150,
+      "first": {
+        "time": 150.25,
+        "protection": "thermal boundary",
+        "sourceMetalC": 57.496495696155144,
+        "indoorFansW": 75,
+        "outdoorFanW": 85
+      },
+      "thermalHoldSteps": 120,
+      "recovery": {
+        "time": 180.25,
+        "sourceMetalC": 41.93296314215049,
+        "closureResidualW": 0.06602845780018238,
+        "dischargeC": 41.4452482211758,
+        "protection": null
+      }
+    },
+    {
+      "id": "sequence-22",
+      "inputSha256": "96158e915014c3bff651a922c5f52ccf9a7fb9fd538eb1888a4e7d7c3cbd41bf",
+      "precedingTime": 510,
+      "first": {
+        "time": 510.25,
+        "protection": "discharge temperature",
+        "sourceMetalC": -11.459922003659667,
+        "indoorFansW": 125,
+        "outdoorFanW": 85
+      },
+      "thermalHoldSteps": 1,
+      "recovery": null
+    },
+    {
+      "id": "sequence-28",
+      "inputSha256": "a44d24ded49e7317faec6d033084224aff54b07ecba961495ac34ffb94b2cddf",
+      "precedingTime": 0,
+      "first": {
+        "time": 0.25,
+        "protection": "discharge temperature",
+        "sourceMetalC": -19.640271665994078,
+        "indoorFansW": 25,
+        "outdoorFanW": 85
+      },
+      "thermalHoldSteps": 1,
+      "recovery": null
+    }
+  ]
+}

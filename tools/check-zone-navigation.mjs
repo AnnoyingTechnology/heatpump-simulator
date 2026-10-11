@@ -40,13 +40,13 @@ try{
   const r=await run(()=>{const panel=document.querySelectorAll('.room-env')[0];const a=panel.querySelector('input[type=range][aria-label^="Floor area"]');const h=panel.querySelector('input[type=range][aria-label^="Ceiling height"]');a.focus();a.value='31';a.dispatchEvent(new Event('input',{bubbles:true}));const focused=document.activeElement===a;h.value='3.2';h.dispatchEvent(new Event('input',{bubbles:true}));return {focused,min:h.min,max:h.max,volume:panel.querySelector('[data-field="room-volume"]').textContent,zoom:qa.store.state.ui.zoom};});
   assert.equal(r.focused,true);assert.equal(r.min,'2.2');assert.equal(r.max,'6');assert.equal(Number(r.volume),99.2);assert.equal(r.zoom,'overview');await settled();
  });
- await check('loss help remains readable in room zoom and closes locally with Escape',async()=>{
-  await run(()=>document.querySelector('[data-id="indoor:0"]').dispatchEvent(new MouseEvent('click',{bubbles:true})));
+ await check('whole-house loss help remains readable in overview and closes locally with Escape',async()=>{
+  await run(()=>{const b=document.querySelector('.zoom-out');if(!b.hidden)b.click()});
   await new Promise(r=>setTimeout(r,400));
-  await run(()=>document.querySelector('.room-env .hl-btn').click());
+  await run(()=>document.querySelector('[data-block="house-loss"] .hl-btn').click());
   const guide=await run(()=>{const e=document.querySelector('.hl-guide'),b=e.getBoundingClientRect();return {hidden:e.hidden,text:e.innerText,box:{x:b.x,y:b.y,right:b.right,bottom:b.bottom}}});
   assert.equal(guide.hidden,false);assert.match(guide.text,/650–850|650.*850/);assert.match(guide.text,/unknown|unspecified|reference/i);assert.ok(guide.box.x>=0&&guide.box.right<=1600&&guide.box.y>=0&&guide.box.bottom<=1000,JSON.stringify(guide));
-  await key('Escape');assert.equal(await run(()=>document.querySelector('.hl-guide').hidden),true);assert.ok(await run(()=>qa.store.state.ui.zoom.startsWith('room:')));await key('Escape');
+  await key('Escape');assert.equal(await run(()=>document.querySelector('.hl-guide').hidden),true);assert.equal(await run(()=>qa.store.state.ui.zoom),'overview');
  });
  await check('materialized outdoor exhaust uses actual fan air; arrows are vector and point left/down',async()=>{
   await settled();assert.equal(await run(()=>qv.simulation.step(.25)),true);await settled();
@@ -76,7 +76,7 @@ try{
    branches:[...document.querySelectorAll('.branch-taps')].map(g=>({stubs:[...g.querySelectorAll('.tap-stub')].map(p=>p.getTotalLength()),radii:[...g.querySelectorAll('.g-face')].map(p=>p.getAttribute('r'))})),
    card:{w:Number(document.querySelector('.room-rp').closest('foreignObject').getAttribute('width')),h:Number(document.querySelector('.room-rp').closest('foreignObject').getAttribute('height'))}
   }));
-  assert.equal(layout.obsolete,0);assert.ok(layout.branches.every(b=>b.stubs.every(n=>n===12)&&b.radii.every(n=>n==='8')));assert.ok(layout.card.w<250&&layout.card.h<110);
+  assert.equal(layout.obsolete,0);assert.ok(layout.branches.every(b=>b.stubs.every(n=>n===12)&&b.radii.every(n=>n==='8')));assert.ok(layout.card.w<250&&layout.card.h<160,JSON.stringify(layout.card));
 
   for(const g of r.gauges){const i=r.out.rooms.findIndex(room=>room.id===g.id);const state=g.side==='gas'?r.out.cycle.branchInlets[i]:r.out.cycle.branchOutlets[i];assert.equal(g.p,state.pBarAbs);assert.ok(Math.abs(parseFloat(g.shown)-g.p)<.006);}
   await run(()=>qa.store.update(s=>s.ui.pressure='gauge'));

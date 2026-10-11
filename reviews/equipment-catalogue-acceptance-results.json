@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-10-11T10:02:57.230667+00:00",
+  "candidateRecords": 52,
+  "acceptedCandidateRecords": 50,
+  "excludedCandidates": [
+    "MSZ-EF18VGK2: multisplit-only; no accepted outdoor pairing",
+    "MSZ-LN18VG3: multisplit-only; no accepted outdoor pairing"
+  ],
+  "outdoorProfiles": 25,
+  "indoorProfiles": 45,
+  "totalOutdoorSelectorOptions": 27,
+  "sourcePages": [
+    50,
+    54,
+    56,
+    60,
+    64,
+    68,
+    72
+  ],
+  "tests": {
+    "sourceAcceptance": {
+      "passed": 6
+    },
+    "typeScript": "passed",
+    "browserIntegration": {
+      "status": "first 18-model batch passed four browser checks; expanded 25-model root verification pending",
+      "receipt": "reviews/equipment-catalogue-browser-results.json"
+    },
+    "productionBuild": "passed"
+  },
+  "sourceHashes": {
+    "src/equipment.ts": "d1c63d1d7f884921dc5875f541b9e152d3d13a7ab022d7748a4d1d67959bedfc",
+    "src/equipment-data.ts": "5a29a20f06c02fe20851be79d0012b05861e12128866db46a90a77f63d01af07",
+    "tools/import-equipment.py": "36efaf16e69688a186fb698f29b2fa1edabab57e8f6f5d5d515815fc6f946f95",
+    "research/catalogue/equipment-acceptance.json": "12ca3ec854b7704877e2ed1b70c7a02e6a661bd58b4e40cd01318a7c6bd4ba42",
+    "tests/catalogue.test.py": "4523fd2a219b392683fc7bfa30bdc1cf4fbf0ae033a21ce050aa6a0aa0cd07c7"
+  },
+  "sourcePDFSha256": "378dc9c5c50a6529e3e09e65d43d6a52ff02523a6c71de12700ef289c7bf6bd1",
+  "scope": "Reviewed identity/topology/casing/cooling-fan flow and operating-range metadata. Generic compressor/coil/fan-power assumptions remain; no OEM map. Daikin real candidate profiles pending Qwen research.",
+  "runtimeCompaction": {
+    "generatedSourceBytesBefore": 466239,
+    "generatedSourceBytesAfter": 33076,
+    "entryBundleBytesBefore": 555210,
+    "entryBundleBytesAfter": 220039,
+    "gzipEntryBundleBytesAfter": 70142,
+    "runtimeProfileCount": 70,
+    "fullProvenance": "Hash-pinned research candidates and equipment-acceptance.json; generated runtime retains applied/UI fields only."
+  }
+}

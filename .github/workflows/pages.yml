@@ -55,6 +55,17 @@ jobs:
           tests/engine/exhaust-fog.test.mjs
           tests/engine/port-capacity.test.mjs
           tests/engine/transport.test.mjs
+          tests/engine/airflow-profile.test.mjs
+          tests/engine/indoor-moisture-protection.test.mjs
+          tests/engine/warm-heating-regime.test.mjs
+          tests/engine/reference-envelope.test.mjs
+          tests/engine/eight-head-header.test.mjs
+          tests/engine/restart-preflight.test.mjs
+          tests/engine/ventilation-recovery.test.mjs
+      - name: Verify accepted equipment source boundary
+        run: python3 tests/catalogue.test.py
+      - name: Exercise deterministic operating transitions
+        run: node tools/robustness-campaign.mjs --preset smoke --workers 3 --timeout 240 --output "$RUNNER_TEMP/heatpump-robustness-smoke"
       - name: Configure Pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
       - name: Upload static site

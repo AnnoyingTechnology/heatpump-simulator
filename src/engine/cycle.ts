@@ -29,7 +29,14 @@ export function conductanceIntegral(properties: Properties, pressurePa: number, 
         const mid = .5 * (za + zb), half = .5 * (zb - za);
         for (const [node, weight] of GAUSS4) {
           const temperatureK = metalC + direction * Math.exp(mid + node * half) + 273.15;
-          integral += half * weight * properties.prop('C', 'P', pressurePa, 'T', temperatureK);
+          // This interval's phase is known from its enthalpy knots. Explicit
+          // phase selection avoids the native PT saturation ambiguity band
+          // without moving the quadrature temperature or changing the EOS.
+          const phaseKey = b <= sat.liquidH ? 'T|liquid' : 'T|gas';
+          // Plain PT retains the reusable native state away from saturation.
+          // The broad 0.01 K query-selection band changes no physical state.
+          const key = Math.abs(temperatureK-273.15-sat.temperatureC)<.01 ? phaseKey : 'T';
+          integral += half * weight * properties.prop('C', 'P', pressurePa, key, temperatureK);
         }
       }
     }
@@ -42,9 +49,16 @@ export function conductanceIntegral(properties: Properties, pressurePa: number, 
  * This is numerical resolution of finite-UA equilibrium, not a minimum artificial driving ΔT. */
 export function coilOutletH(properties: Properties, p: number, inletH: number, flow: number, ua: number, metalC: number, condensing: boolean): number {
   const sat = properties.saturation(p);
-  if (condensing ? metalC >= sat.temperatureC : metalC <= sat.temperatureC) throw new DomainError('Coil cannot change phase against incompatible metal');
+  // A parallel heating branch may only desuperheat when its metal is above
+  // saturation; colder branches can still close a liquid mixed header. The
+  // finite-UA integral determines crossed phases, rather than requiring every
+  // branch to change phase. Each branch must retain its intended heat direction.
+  const inletC = properties.prop('T', 'P', p, 'H', inletH) - 273.15;
+  if ((condensing ? 1 : -1) * (inletC - metalC) <= 0) throw new DomainError('Coil inlet cannot exchange heat in the intended direction');
   if (!(flow > 0 && ua > 0 && Number.isFinite(flow) && Number.isFinite(ua))) throw new DomainError('Invalid coil flow or conductance');
-  const terminal = properties.prop('H', 'P', p, 'T', metalC + 273.15 + (condensing ? 1e-5 : -1e-5));
+  const terminalC = metalC + (condensing ? 1e-5 : -1e-5);
+  const sensibleH = (tC: number) => properties.prop('H', 'P', p, Math.abs(tC-sat.temperatureC)<.01 ? (tC < sat.temperatureC ? 'T|liquid' : 'T|gas') : 'T', tC + 273.15);
+  const terminal = sensibleH(terminalC);
   const direction = condensing ? -1 : 1;
   const low = Math.min(inletH, terminal), high = Math.max(inletH, terminal);
   const phaseBoundaries = [sat.liquidH, sat.vaporH].filter(h => h > low && h < high).sort((a,b) => direction * (a-b));
@@ -60,7 +74,7 @@ export function coilOutletH(properties: Properties, p: number, inletH: number, f
     if (end === terminal) {
       const approach = Math.abs(properties.prop('T','P',p,'H',origin)-273.15-metalC);
       if (approach > 1e-5 * Math.exp(.5))
-        end = properties.prop('H','P',p,'T',metalC + 273.15 - direction * approach * Math.exp(-.5));
+        end = sensibleH(metalC - direction * approach * Math.exp(-.5));
     }
     const required = conductanceIntegral(properties, p, origin, end, metalC);
     if (target >= required) { target -= required; origin = end; if (end === ends[0]) ends.shift(); continue; }
@@ -93,7 +107,17 @@ export function condenserOutletH(properties: Properties, p: number, inletH: numb
 interface Trial { residual: [number, number]; output: Omit<CycleOutput, 'iterations'> }
 /** Two shared saturation-pressure unknowns; branch flows are eliminated using coil UA closures. */
 export function solveCycle(properties: Properties, config: EngineConfig, input: CycleInput): CycleOutput {
-  if (input.mode === 'heating') return solvePressureRegime(properties, config, input, false);
+  if(input.mode==='heating'){
+    // The idealized shared-header controller can release SC at its existing
+    // positive minimum lift. This is a declared alternate controller regime;
+    // both regimes must freshly close the same actual EOS/UA balances.
+    const idealized=input.active.every((on,i)=>!on||(config.rooms[i].pipe.lengthM===0&&config.rooms[i].pipe.elevationM===0));
+    if(!idealized)return solvePressureRegime(properties,config,input,false);
+    const floatingFirst=input.previous?.pressureJacobian?.floatingCondenser??false;
+    let first:unknown;
+    try{return solvePressureRegime(properties,config,input,floatingFirst);}catch(error){first=error;}
+    try{return solvePressureRegime(properties,config,input,!floatingFirst);}catch(error){throw new DomainError(`Neither heating SC-target nor minimum-lift controller closes: ${first instanceof Error?first.message:first}; alternate: ${error instanceof Error?error.message:error}`);}
+  }
   // Complementary controller regimes: SC target with >=8 K lift, or minimum lift with floating SC.
   // The second regime releases subcooling only when the fixed target has no feasible pressure closure.
   const floatingFirst = !!input.defrost || !!(input.previous && Math.abs(input.previous.condensingC-input.previous.evaporatingC-8)<.001);
@@ -110,14 +134,19 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
   const sourceMetal = heating ? [input.outdoorMetalC] : activeIndices.map(i => input.indoorMetalC[i]);
   const sinkMetal = heating ? activeIndices.map(i => input.indoorMetalC[i]) : [input.outdoorMetalC];
   const lowMax = Math.min(45, Math.min(...sourceMetal) - (allocatedCooling ? 0 : compressor.superheatK) - 1e-5);
-  const highMin = floatingCondenser ? input.outdoorMetalC + 1e-5 : Math.max(-5, Math.max(...sinkMetal) + (allocatedHeating ? 0 : compressor.subcoolK) + 1e-5);
+  const floatSink=heating?Math.min(...sinkMetal):input.outdoorMetalC;
+  // Allocated heating constrains the mixed liquid outlet, not each branch's
+  // phase: its target must remain above the coldest sink. Physical field-line
+  // heating still prescribes per-branch subcooling against the hottest sink.
+  const highMin = floatingCondenser ? floatSink + 1e-5 : Math.max(-5, (allocatedHeating ? Math.min(...sinkMetal) : Math.max(...sinkMetal)) + compressor.subcoolK + 1e-5);
   if (lowMax <= -40 || highMin >= 65) throw new DomainError('Coil temperatures exceed selected subcritical R32 operating envelope');
   const evaluate = (te: number, second: number): Trial => {
-    // The alternate startup/defrost controller holds an 8 K saturation lift;
+    // The alternate controller holds the declared positive saturation lift
+    // (heating1K, cooling/defrost8K);
     // condenser outlet enthalpy and subcooling follow actual finite UA.
-    const tc = floatingCondenser ? te + 8 : second;
+    const tc = floatingCondenser ? te + (heating?1:8) : second;
     const condenserOutletC = floatingCondenser ? second : tc - compressor.subcoolK;
-    if (!(te >= -40 && te <= lowMax && second >= highMin && tc <= 65 && (floatingCondenser || tc - te >= (heating ? 1 : 8)) && condenserOutletC < tc - .001 && (!floatingCondenser || condenserOutletC > input.outdoorMetalC))) throw new DomainError('Pressure-solve point outside coil/domain bounds');
+    if (!(te >= -40 && te <= lowMax && second >= highMin && tc <= 65 && (floatingCondenser || tc - te >= (heating ? 1 : 8)) && condenserOutletC < tc - .001 && (!floatingCondenser || condenserOutletC > floatSink))) throw new DomainError('Pressure-solve point outside coil/domain bounds');
     const pL = properties.pressureAtSaturationC(te), pH = properties.pressureAtSaturationC(tc);
     let suction = properties.pt(pL, te + compressor.superheatK);
     const targetSuctionH = suction.hJkg, allocatedFlow = suction.densityKgm3 * compressor.displacementM3rev * input.speedRps * compressor.volumetricEfficiency;
@@ -219,8 +248,8 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
   const rejections = new Set<string>();
   let lastRejection = '';
   let best: { te: number; tc: number; trial: Trial; norm: number } | null = null;
-  const seeds = floatingCondenser ? [input.previous?.condenserOutletC !== undefined ? [input.previous.evaporatingC, input.previous.condenserOutletC] : null, [Math.min(lowMax - 4, input.outdoorMetalC + 5), input.outdoorMetalC + .1], [Math.min(lowMax - 8, input.outdoorMetalC), input.outdoorMetalC + .01], [lowMax - 8, input.outdoorMetalC + 1]].filter((s): s is number[] => !!s) : [input.previous ? [input.previous.evaporatingC, input.previous.condensingC] : null,
-    [lowMax - 5, highMin + 8], [lowMax - 12, highMin + 5], [lowMax - 3, Math.max(highMin + 18, lowMax + 5)], [Math.min(lowMax - 5, highMin - 8), highMin + 6],
+  const seeds = floatingCondenser ? [input.previous?.condenserOutletC !== undefined ? [input.previous.evaporatingC, input.previous.condenserOutletC] : null, [heating?Math.min(lowMax-.1,Math.max(...sinkMetal)+2):Math.min(lowMax-4,input.outdoorMetalC+5),floatSink+.1], [heating?lowMax-.01:Math.min(lowMax-8,input.outdoorMetalC),floatSink+.01], [lowMax-(heating?1:8),floatSink+1]].filter((s): s is number[] => !!s) : [input.previous ? [input.previous.evaporatingC, input.previous.condensingC] : null,
+    [lowMax-.1,highMin+.1], [lowMax-.01,highMin+2], [lowMax - 5, highMin + 8], [lowMax - 12, highMin + 5], [lowMax - 3, Math.max(highMin + 18, lowMax + 5)], [Math.min(lowMax - 5, highMin - 8), highMin + 6],
     [Math.min(lowMax - 15, highMin - 12), Math.max(highMin + 3, lowMax - 10)]].filter((s): s is number[] => !!s);
   let iterations = 0;
   for (const seed of seeds) {
@@ -232,17 +261,28 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
       let current: Trial; try { current = evaluate(te, tc); } catch(error) { lastRejection = error instanceof Error ? error.message : String(error); rejections.add(lastRejection); break; }
       const norm = Math.hypot(...current.residual);
       if (!best || norm < best.norm) best = { te, tc, trial: current, norm };
-      if (Math.max(...current.residual.map(Math.abs)) <= config.numerics.pressureToleranceW && Math.abs(current.output.massResidualKgs)*250000 <= config.numerics.pressureToleranceW && current.output.suction.phase === 'vapor') return { ...current.output, iterations, pressureJacobian: jacobian };
-      const dt = Math.min(.025, Math.max(1e-9, .2 * (lowMax - te)));
-      const dc = floatingCondenser ? .025 : -Math.min(.025, Math.max(1e-9, .2 * (tc - highMin)));
+      if (Math.max(...current.residual.map(Math.abs)) <= config.numerics.pressureToleranceW && Math.abs(current.output.massResidualKgs)*250000 <= config.numerics.pressureToleranceW && current.output.suction.phase === 'vapor' && (!floatingCondenser||!heating||current.output.condenserOutlet.phase==='liquid') && current.output.compressorWorkW>0) return { ...current.output, iterations, pressureJacobian: jacobian };
+      // A lightly fed hot branch can finish condensation within millikelvins
+      // of its metal temperature. Keep pressure differences on the current
+      // side of each branch saturation boundary so the local slope resolves
+      // that transition instead of averaging it with sensible-only cooling.
+      const phaseDistance = allocatedHeating ? sinkMetal.map(t => floatingCondenser ? t-(te+1) : tc-t).filter(d => d > 0) : [];
+      const dt = Math.min(.025, Math.max(1e-9, .2 * Math.min(lowMax-te, ...(floatingCondenser ? phaseDistance : []))));
+      const dc = floatingCondenser ? .025 : -Math.min(.025, Math.max(1e-9, .2 * Math.min(tc-highMin, ...phaseDistance)));
       let accepted = false;
       // Continuation can reuse the previous local slope for its first correction.
       // Failed/invalid cached directions retry a fresh finite-difference Jacobian.
       for (const cached of k === 0 && jacobian ? [true,false] : [false]) {
         if (!cached) {
-          let tTrial: Trial, cTrial: Trial; try { tTrial = evaluate(te + dt, tc); cTrial = evaluate(te, tc + dc); } catch { break; }
-          jacobian = { mode: input.mode, floatingCondenser, matrix: [(tTrial.residual[0]-current.residual[0])/dt, (cTrial.residual[0]-current.residual[0])/dc,
-            (tTrial.residual[1]-current.residual[1])/dt, (cTrial.residual[1]-current.residual[1])/dc] };
+          let tTrial: Trial, cTrial: Trial, deltaT=dt, deltaC=dc;
+          // At the declared minimum lift, forward Te/backward Tc probes cross
+          // the feasible boundary. Try the opposite one-sided derivative before
+          // abandoning a valid seed; every probe still obeys evaluate's bounds.
+          try { try { tTrial=evaluate(te+dt,tc); } catch { deltaT=-dt;tTrial=evaluate(te-dt,tc); }
+            try { cTrial=evaluate(te,tc+dc); } catch { deltaC=-dc;cTrial=evaluate(te,tc-dc); }
+          } catch { break; }
+          jacobian = { mode: input.mode, floatingCondenser, matrix: [(tTrial.residual[0]-current.residual[0])/deltaT, (cTrial.residual[0]-current.residual[0])/deltaC,
+            (tTrial.residual[1]-current.residual[1])/deltaT, (cTrial.residual[1]-current.residual[1])/deltaC] };
         }
         const [a,b,c,e] = jacobian!.matrix;
         const determinant = a * e - b * c; if (!Number.isFinite(determinant) || Math.abs(determinant) < 1e-10) continue;

@@ -17,23 +17,27 @@ export const UNIT = { w: Math.round(INDOOR_CASE_MM.w * MM_PX), h: Math.round(IND
 
 /** Indoor coil spans the casing, leaving 5% on the right for connections. */
 export const INDOOR_COIL = { x: 10, y: 20, end: Math.round(UNIT.w * .95), h: 50 } as const;
-export const STACK_TOP = 36;
-const STACK_FIVE = 738;
+/** Room stack top. The 62 units below the 36-unit bar row hold the house-loss ruler and its ventilation controls (y 36–96) in the indoor header. */
+export const STACK_TOP = 98;
+/** Vertical budget shared by the rooms; 98 + 676 + 26 keeps one to three rooms inside the base 800-unit scene (225.3 per room at three). */
+const STACK_FIVE = 676;
 const RISER_PITCH = 14;
 /** Indoor zone width, constant for every n; the whole scene widens instead when the riser corridor grows. */
 export const ZONE_W = 939;
 /** Horizontal budget of one room row, from the wall: pipe corridor with probes, unit, equipment block, environment block. */
 export const ROOM_COLS = { corridor: 124, equip: { dx: 389, w: 242 }, env: { dx: 639, w: 290 } } as const;
 /**
- * Panel heights of one room row: equipment card, and the taller unboxed environment (name, floor area × height = volume, envelope loss
- * with its reference ruler and eight-band key). Rows are at least 220 units high for every room count, so 216 fits all of them.
+ * Panel heights of one room row: equipment card (head, permanent indoor-model select, target), and the unboxed environment (name,
+ * floor area × height = volume, Average U control with its better/poorer ends and the derived exposed area and whole-room envelope W/K;
+ * the building reference ruler lives once in the indoor header). Rows are at least 220 units high for every room count, so both fit; the equipment
+ * card ends at 10 + 136 = 146, which leaves the band above the next separator free for room-link chips.
  */
-export const ROOM_PANEL_H = { equip: 108, env: 216 } as const;
+export const ROOM_PANEL_H = { equip: 136, env: 168 } as const;
 /**
  * Outdoor connection corridor, right of the risers and left of the wall: one line-length block per branch under its line pair
  * (`lineCtl`) and, above the first room, the shared field-line model switch (`modelCtl`). Blocks sit clear of the pair's pipes.
  */
-export const LINE_CTL = { w: 160, gap: 12, offset: 10, h: 56, modelH: STACK_TOP } as const;
+export const LINE_CTL = { w: 160, gap: 12, offset: 10, h: 56, modelH: 36 } as const;
 
 /** Local (outdoor casing) → scene coordinates. */
 export const L = (x: number, y: number): Pt => [OUT.x + x, OUT.y + y];
@@ -121,8 +125,15 @@ export function roomBoxes(n: number): RoomBox[] {
 export const A = {
   compD: [114, 150], compS: [132, 198], accIn: [225, 142], accOut: [212, 198],
   valveO: [176, 106], valveI: [236, 106], valveD: [190, 122], valveS: [224, 122],
-  coilGas: [60, 22], coilLiq: [60, 198], svc: [250, 106], fan: [124, 58],
+  coilGas: [60, 22], coilLiq: [60, 198], svc: [250, 106], fan: [87, 58],
 } as const satisfies Record<string, Pt>;
+
+/**
+ * Outdoor fan, drawn flat from the side: a narrow strip immediately right of the fin bank (x 66), beside the O-line riser at x 72, and
+ * centred on `A.fan` (local). It ends at y 98, above the reverser O-line at y 106, and leaves the whole top of the casing free.
+ * A generic schematic element, not a manufacturer cutaway.
+ */
+export const FAN_SIDE = { x: 80, w: 14, h: 80 } as const;
 
 const COIL_ROWS = 12;
 const COIL_Y0 = 22;

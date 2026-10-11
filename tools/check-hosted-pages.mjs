@@ -42,19 +42,11 @@ try{
  await activateControl(page,'Pause');
  await new Promise(resolve=>setTimeout(resolve,1200));
  const paused=await run(()=>document.querySelector('.time').textContent);
- await check('every hosted room shows all eight labelled loss-reference midpoints without a separate legend',async()=>{
-  const scales=await run(()=>[...document.querySelectorAll('.room-env')].map(room=>({
-   markers:[...room.querySelectorAll('.ls-m')].map(m=>[m.querySelector('.ls-lab').textContent,Number(m.dataset.midpoint)]),
-   below:room.querySelector('.ls').getBoundingClientRect().top>=room.querySelector('input[aria-label^="Envelope heat-loss coefficient"][type="range"]').getBoundingClientRect().bottom,
-   ticks:[...room.querySelectorAll('.ls-tick')].map(t=>t.textContent),legends:room.querySelectorAll('.ls-key').length,
-   bounds:[...room.querySelectorAll('input[aria-label^="Envelope heat-loss coefficient"]')].map(i=>[i.min,i.max]),
-  })));
-  assert.equal(scales.length,3);
-  for(const scale of scales){
-   assert.deepEqual(scale.markers,[['RE2020',115],['RT2012',145],['RT2005',250],['RT2000',290],['RT1988',350],['RT1982',415],['RT1974',500],['Pre-1974',750]]);
-   assert.equal(scale.below,true);assert.equal(scale.legends,0);assert.deepEqual(scale.bounds,[['0','750'],['0','750']]);
-   assert.deepEqual(scale.ticks,['0','250','500','750']);
-  }
+ await check('hosted whole-house ruler keeps RT markers beside average U and estimated exposed area',async()=>{
+  const a=await run(()=>{const e=document.querySelector('[data-block="house-loss"]');return {count:document.querySelectorAll('.ls').length,markers:[...e.querySelectorAll('.ls-m')].map(m=>[m.querySelector('.ls-lab').textContent,Number(m.dataset.midpoint)]),ticks:[...e.querySelectorAll('.ls-tick')].map(t=>t.textContent),total:Number(e.dataset.totalWk),envelope:Number(e.dataset.envelopeWk),bounds:[...document.querySelectorAll('.room-env input[type="range"][aria-label^="Average U"]')].map(i=>[i.min,i.max])}});
+  assert.equal(a.count,1);assert.deepEqual(a.markers,[['RE2020',115],['RT2012',145],['RT2005',250],['RT2000',290],['RT1988',350],['RT1982',415],['RT1974',500],['Pre-1974',750]]);assert.deepEqual(a.ticks,['0','250','500','750']);assert.equal(a.envelope,85);assert.ok(Math.abs(a.total-99.4075)<1e-9);assert.deepEqual(a.bounds,[['0','3'],['0','3'],['0','3']]);
+  assert.ok(await run(()=>!!document.querySelector('select[aria-label="Quick preset"]')));
+  assert.ok(await run(()=>[...document.querySelectorAll('.room-panel select[aria-label^="Indoor model"]')].every(s=>s.querySelector('optgroup[label="Daikin"]'))));
  });
  await check('hosted zoom keeps the temperature scales at the bottom and headline trends use borderless separators',async()=>{
   for(const zoom of ['overview','outdoor','overview']) {
@@ -65,10 +57,10 @@ try{
    assert.ok(Math.abs(layout.bottom-layout.height)<1&&layout.visible,JSON.stringify(layout));
    assert.equal(await run(()=>document.querySelector('.time').textContent),paused);
   }
-  assert.equal(await run(()=>document.querySelectorAll('.hm-trend').length),4);
+  assert.equal(await run(()=>document.querySelectorAll('.hm-trend').length),5);
   assert.ok(await run(()=>[...document.querySelectorAll('.hm-trend .trend-line')].every(e=>e.getAttribute('d').includes('M'))));
   assert.ok(await run(()=>[...document.querySelectorAll('.hm')].every(e=>getComputedStyle(e).borderTopWidth==='0px'&&getComputedStyle(e).borderBottomWidth==='0px')));
-  assert.deepEqual(await run(()=>[...document.querySelectorAll('.hm')].map(e=>getComputedStyle(e).borderLeftWidth)),['0px','1px','1px','1px']);
+  assert.deepEqual(await run(()=>[...document.querySelectorAll('.hm')].map(e=>getComputedStyle(e).borderLeftWidth)),['0px','1px','1px','1px','1px']);
   assert.ok(await run(()=>[...document.querySelectorAll('.hm')].every(e=>{const v=e.querySelector('.vl').getBoundingClientRect(),g=e.querySelector('.hm-trend').getBoundingClientRect();return g.left>=v.right+4&&g.height>=40&&g.top<v.bottom&&g.bottom>v.top})), 'headline graphs sit beside their values');
   assert.ok(await run(()=>{const e=document.querySelector('.scene-scroll');return e.scrollHeight<=e.clientHeight+1}), 'default three-room overview fits without scrolling');
  });
@@ -97,7 +89,7 @@ try{
  await check('requested acceleration resumes physical time without restarting',async()=>{
   await run(()=>{const speed=document.querySelector('select[aria-label="Requested speed"]');speed.value='50';speed.dispatchEvent(new Event('change',{bubbles:true}))});
   await activateControl(page,'Resume');
-  await page.waitFor(`document.querySelector('[data-unit="off"]')&&document.querySelector('.hd-speed-rate').textContent.includes('× actual')`,30000);
+  await page.waitFor(`document.querySelector('[data-unit="off"]')&&document.querySelector('.hd-speed-rate').dataset.actualRate!==''`,30000);
   assert.notEqual(await run(()=>document.querySelector('.time').textContent),paused);
   // The winter preset can legitimately idle after its main upstairs head is switched off and outdoors is raised to 12.5°C.
   assert.ok(['running','idle'].includes(await run(()=>document.querySelector('.opstate').dataset.kind)));

@@ -1,0 +1,47 @@
+{
+  "checkedAtUTC": "2026-10-11 10:40:47 UTC",
+  "scope": "Optional sensible ventilation recovery and adjacent moisture/interzone/demand regressions on guarded production EOS. Older immutable broad75 source excludes this feature.",
+  "sourceAndTestSha256": {
+    "src/engine/engine.ts": "1476bef6b75e16cb72e9cdd1fcf7ee01d4a93e60c629e2848e5c2c14bb3bd05f",
+    "src/engine/types.ts": "872d14a3bbdc07a69883fdf3c393b9cc0ef9fbe9de72d33a983f699f2361a9b7",
+    "src/engine/properties.ts": "6fb2812381e471623e449a5b593cd4e1d9874f32e559b33bd05c2eac7b6ad36e",
+    "src/engine/demand.ts": "83b3115c656098d0c8d57b97b0d0d5abf6b014c797324e7ff31756a7c28adf90",
+    "src/engine/ventilation.ts": "6aef508a062fca992c2b7a1961ae69c12ae5317c5824326ffe57a1a0a4ecd8d8",
+    "src/engine/cycle.ts": "294d647a26f60d319641c9b7fe4645378472dd5c70a8e6c0ef6075168aaf29e4",
+    "src/engine/envelope.ts": "eaab1d96df755b322050854fa8b7108e1f4918fbeb4dd1206d815ba9c74dc4e3",
+    "src/engine/drive.ts": "d94247f20b359a61980e0d5af121d5299133f3b65a49358c4c40540a6655d0dd",
+    "tests/engine/ventilation-recovery.test.mjs": "f59229cfa36f9546e8eaa093c42009f2865a7082e3e371f9a24f2a0f075851f0",
+    "tests/engine/interzone.test.mjs": "b075dfc0439c8de7a6ded6623c7412db5836beb74c9c44a60c062a028233274d",
+    "tests/engine/inverter-demand.test.mjs": "8619668a954e845a2e72bfebd66f46b916f7c236d6edfd566c258d1bbc116982",
+    "tests/engine/indoor-moisture-protection.test.mjs": "ea86b234ef8672aac9ee9d16e506eec58054581ce3e78792ddb62b4ee567c877",
+    "research/reference-ventilation-recovery.md": "282e1ef6bdb2568eb48d8008b7761f78c98a5f98b0a398683253d86866da45ac",
+    "tests/engine/backend.mjs": "d77b3152456833cd96d358a71f32bfd2f64dd07d4755b4bce524a28cba9113d8"
+  },
+  "compile": {
+    "command": "npx tsc -p tests/engine/tsconfig.json",
+    "exitCode": 0
+  },
+  "focused": {
+    "command": "HEATPUMP_TEST_BACKEND=guarded node --test --test-concurrency=3 tests/engine/ventilation-recovery.test.mjs tests/engine/interzone.test.mjs tests/engine/inverter-demand.test.mjs tests/engine/indoor-moisture-protection.test.mjs",
+    "tests": 24,
+    "pass": 24,
+    "fail": 0,
+    "durationMs": 91121.378669
+  },
+  "newTestCases": 6,
+  "verified": {
+    "nativeCpBasis": "C agrees with central finite difference of dry-basis H to 0.01 J/(kg dry air K)",
+    "waterFlux": "same gross dry-air flow and vapor exchange at frozen state for eta 0/.8/1; equal-temperature unequal-humidity retains latent load",
+    "energy": "recovered sensible correction equals room storage/boundary increment to 1e-7 J; no HVAC/COP/electricity attribution",
+    "activeOperation": "3-room heating/cooling over 20 s each; original pressure/energy/water tolerances retained",
+    "saturatedIntake": "45 C /100% RH, eta .8 and1, saturated10 C room, 10 s each: conserved gross water, retained room condensate, zero artificial drainage",
+    "validation": "omitted and explicit0 equivalent; eta edits preserve inventories; negative, >1, NaN, Infinity, null and string rejected transactionally"
+  },
+  "releaseGates": "Independent science review, whole immutable Reference/native suite, browser proof and updated-source robustness are parent-owned subsequent gates.",
+  "modelLimitations": [
+    "Balanced dry-air supply/exhaust",
+    "Frozen inlet cp effectiveness approximation",
+    "No exchanger condensation/frost/drainage/latent transfer/bypass model",
+    "Ventilation fan electricity absent"
+  ]
+}

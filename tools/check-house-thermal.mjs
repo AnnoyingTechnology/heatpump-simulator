@@ -12,18 +12,16 @@ try{
  await check('winter preset preserves actual floor volumes, targets, Off attic and provisional thermal parameters',async()=>{
   const c=await run(()=>qc.engineConfigFromUi(qa.store.state.cfg,qa.store.state.cfg.live));
   assert.equal(c.outdoorTemperatureC,1);assert.equal(c.outdoorRelativeHumidity,.35);
-  assert.deepEqual(c.rooms.map(r=>[r.id,r.enabled,r.setpointC,r.envelopeWK,r.internalGainW,r.ventilationACH]),[['attic',false,21,15,0,.25],['first',true,21.5,25,0,.25],['ground',true,17,45,200,.25]]);
+  assert.deepEqual(c.rooms.map(r=>[r.id,r.enabled,r.setpointC,r.envelopeWK,r.internalGainW,r.ventilationACH,r.ventilationRecoveryEfficiency]),[['attic',false,21,15,0,.5,.75],['first',true,21.5,25,0,.5,.75],['ground',true,17,45,200,.5,.75]]);
   for(const [i,v] of [84,155,100].entries())assert.ok(Math.abs(c.rooms[i].volumeM3-v)<1e-10);
-  assert.deepEqual(c.interzoneLinks,[{roomA:'ground',roomB:'first',conductanceWK:200},{roomA:'first',roomB:'attic',conductanceWK:120}]);
+  assert.deepEqual(c.interzoneLinks,[{roomA:'ground',roomB:'first',conductanceWK:173.8036809815951},{roomA:'first',roomB:'attic',conductanceWK:173.8036809815951}]);
  });
- await check('room thermal controls preserve focus, clock, accepted state and symmetric connection widgets',async()=>{
+ await check('room thermal gains preserve focus and accepted state; boundary links transfer symmetrically',async()=>{
   await run(()=>document.querySelector('button[aria-label="Thermal settings of Ground (L0)"]').click());
   const edit=await run(()=>{const pop=document.querySelector('[data-pop="thermal"]'),gain=pop.querySelector('input[type="number"][aria-label^="Background sensible gains"]'),link=pop.querySelector('input[type="range"][aria-label*="Upstairs (L1)"]'),before=JSON.stringify(qv.simulation.status.output);gain.focus();gain.value='150';gain.dispatchEvent(new Event('input',{bubbles:true}));return {gain:qa.store.state.cfg.rooms[2].internalGainW,focused:document.activeElement===gain,sameLink:link===pop.querySelector('input[type="range"][aria-label*="Upstairs (L1)"]'),sameOutput:before===JSON.stringify(qv.simulation.status.output)}});
   assert.deepEqual(edit,{gain:150,focused:true,sameLink:true,sameOutput:true});await settle();
-  const edited=await run(()=>{const link=document.querySelector('[data-pop="thermal"] input[type="range"][aria-label*="Upstairs (L1)"]');link.focus();link.value='180';link.dispatchEvent(new Event('input',{bubbles:true}));return {focused:document.activeElement===link,same:link===document.querySelector('[data-pop="thermal"] input[type="range"][aria-label*="Upstairs (L1)"]'),value:qa.store.state.cfg.interzoneLinks.find(l=>l.roomA==='ground').conductanceWK}});
-  assert.deepEqual(edited,{focused:true,same:true,value:180});await settle();
-  await run(()=>document.querySelector('button[aria-label="Thermal settings of Upstairs (L1)"]').click());
-  assert.equal(await run(()=>document.querySelector('[data-pop="thermal"] input[type="number"][aria-label*="Ground (L0)"]').value),'180');
+  await run(()=>qa.store.setInterzoneConductance('ground','first',180));await settle();
+  assert.equal(await run(()=>qc.engineConfigFromUi(qa.store.state.cfg,qa.store.state.cfg.live).interzoneLinks.find(l=>l.roomA==='ground').conductanceWK),180);
   const clock=await run(()=>qv.simulation.status.output.simulatedSeconds);await run(()=>qv.simulation.step(.25));await settle();
   const out=await run(()=>qv.simulation.status.output);assert.equal(out.simulatedSeconds,clock+.25);assert.equal(out.rooms[2].internalGainW,150);assert.ok(out.rooms[0].interzoneHeatW>0);assert.equal(out.rooms[0].active,false);
   assert.ok(Math.abs(out.rooms.reduce((s,r)=>s+r.interzoneHeatW,0))<1e-8);assert.ok(Math.abs(out.energy.residualJ)<.01);

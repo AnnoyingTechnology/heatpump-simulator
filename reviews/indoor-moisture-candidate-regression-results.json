@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-10-11T09:28:54Z",
+  "exitCode": 0,
+  "wallSeconds": 334.15720772743225,
+  "backend": "guarded",
+  "testConcurrency": 3,
+  "files": [
+    "tests/engine/properties.test.mjs",
+    "tests/engine/properties-pd.test.mjs",
+    "tests/engine/storage-properties.test.mjs",
+    "tests/engine/coil-inverse.test.mjs",
+    "tests/engine/cycle.test.mjs",
+    "tests/engine/dynamics.test.mjs",
+    "tests/engine/drive.test.mjs",
+    "tests/engine/thermostat.test.mjs",
+    "tests/engine/inverter-demand.test.mjs",
+    "tests/engine/interzone.test.mjs",
+    "tests/engine/session-cop.test.mjs",
+    "tests/engine/drained-water.test.mjs",
+    "tests/engine/reference-protection.test.mjs",
+    "tests/engine/exhaust-fog.test.mjs",
+    "tests/engine/port-capacity.test.mjs",
+    "tests/engine/transport.test.mjs",
+    "tests/engine/airflow-profile.test.mjs",
+    "tests/engine/indoor-moisture-protection.test.mjs"
+  ],
+  "sourceHashes": {
+    "src/engine/properties.ts": "7f4bb2f372a77f30e76844dd7ef9d7afa6d25f72079a09ce66586cdc134404d1",
+    "src/engine/engine.ts": "85791e0c0d0e89e41427a1a8490076d90559680bd5e318eaf173f685eb2b25c8",
+    "src/engine/air.ts": "6dfb70bd7b7c5b84501e0de1633cf8378ea0b2bd0eb903dafe09c31625745d15",
+    "src/engine/thermostat.ts": "624305969795b54b99745ac84d1c966dbc0e66263ee8579111ea2054c971d5f5",
+    "src/engine/charge.ts": "0c9dd8050fab6b3bd16bcb881f59fc00debc2f85c774c2a1c2216d45d289e168",
+    "src/engine/drive.ts": "c790714c03eca4a8f84be084e66b44801eb1a78b2a5035bd3b088cd83a705c34",
+    "src/engine/demand.ts": "53e9c8bbc8e85e37f3cad9d842e22510ccf2404e04cc7bbe7755b14140d12197",
+    "src/engine/transport.ts": "928ab51cd8ca1193e68ba0821ee88ae2966521314ad9b1fd1b9894f253e2ed31",
+    "src/engine/interzone.ts": "856dfe9535d53f52aa8aae8f0cc83167163b11bab8ca6bb9bb62ff9e600d8bed",
+    "src/engine/types.ts": "2665655ac63739f46bdda1a48c6eb248d4ddca06cd29783ea496dd4ca132a0da",
+    "src/engine/defaults.ts": "5ca7d8006c6990e4b6b99a6ef353ec075b720a07701dac39a23ca9fb4fec99f8",
+    "src/engine/cycle.ts": "cfa1bb8245384dcb89f3006ab67c51593d9f2cdb0064d597586ce5c83528a372",
+    "src/engine/film.ts": "3cfeda3465b8c5226e6ed82bada490abdc42577fdadd4a1d0a2e3fb682285dbb",
+    "src/engine/charge-output.ts": "ca0bed2dd4836af7e72dce71e28e5d0b11309358f4c3da0bb6365a9079142ff7",
+    "src/engine/index.ts": "f8aba3f8724f99dcd1c17be93cfc3622a9fe276d968cc36f5bbf70e9c3773ebd"
+  },
+  "summary": {
+    "tests": 73.0,
+    "pass": 73.0,
+    "fail": 0.0,
+    "duration_ms": 334099.792235
+  },
+  "scope": "First frozen phase/antifreeze/warm-header candidate; subsequent cold-seed and compound-governor corrections require a separate final run."
+}

@@ -7,7 +7,7 @@ export type Request =
 
 export type Response =
   | { kind: 'output'; revision: number; output: EngineOutput; calculationMs: number }
-  | { kind: 'error'; revision: number; message: string };
+  | { kind: 'error'; revision: number; message: string; details?: { name: string; stack?: string }; acceptedOutput?: EngineOutput };
 
 export interface RuntimeStatus {
   state: 'loading' | 'updating' | 'ready' | 'error';

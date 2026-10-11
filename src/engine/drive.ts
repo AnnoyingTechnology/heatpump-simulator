@@ -1,13 +1,14 @@
 /** Generic inverter supervisor. These thresholds/timings are scenario
  * assumptions, not a Daikin map; thermodynamic hard limits remain in the core. */
 export interface DriveState {
+  antifreezeHold?: boolean; dischargeHold?:boolean; pressureHold?:boolean; condensingHold?:boolean; thermalBoundaryHold?:boolean;
   speedRps: number; startupSeconds: number; offSeconds: number;
-  protection: 'pressure ratio' | 'discharge temperature' | null;
+  protection: 'pressure ratio' | 'discharge temperature' | 'indoor antifreeze' | 'condensing temperature' | 'thermal boundary' | null;
 }
 export interface DriveInput {
   demandRps: number; minimumRps: number; maximumRps: number;
   maximumRatio: number; maximumDischargeC: number; minimumOffSeconds: number;
-  pressureRatio: number; predictedDischargeC: number | null; pickupAvailable: boolean;
+  thermalBoundaryAvailable?:boolean; pressureRatioAvailable?:boolean; dischargeEnvelopeExceeded?:boolean; coolingMode?:boolean; coolingCoilC?: number; predictedCondensingC?:number|null; maximumCondensingC?:number; pressureRatio: number; predictedDischargeC: number | null; pickupAvailable: boolean;
 }
 export const newDriveState = (): DriveState => ({speedRps:0,startupSeconds:0,offSeconds:Infinity,protection:null});
 export function driveRatioThresholds(hard: number) {
@@ -17,31 +18,46 @@ export function driveRatioThresholds(hard: number) {
 export function driveStep(previous: DriveState, dt: number, input: DriveInput): DriveState {
   const next={...previous};
   const thresholds=driveRatioThresholds(input.maximumRatio);
-  const hot=input.predictedDischargeC!==null&&input.predictedDischargeC>=input.maximumDischargeC-10;
+  const hot=!!input.dischargeEnvelopeExceeded||(input.predictedDischargeC!==null&&input.predictedDischargeC>=input.maximumDischargeC-10);
   const high=input.pressureRatio>=thresholds.stop;
-  if(input.demandRps>0&&(hot||high)) {
-    if(!next.protection)next.offSeconds=0;
-    next.protection=hot?'discharge temperature':'pressure ratio';
+  const cold=input.coolingCoilC!==undefined&&input.coolingCoilC<=2;
+  const condensingStop=(input.maximumCondensingC??65)-2;
+  const condensingSoft=condensingStop-3,condensingRecovery=condensingSoft-1;
+  const condenserHot=input.predictedCondensingC!==undefined&&input.predictedCondensingC!==null&&input.predictedCondensingC>=condensingStop;
+  // Preserve every release requirement; the display cause is not the latch.
+  if(previous.protection==='discharge temperature')next.dischargeHold=true;
+  if(previous.protection==='pressure ratio')next.pressureHold=true;
+  if(previous.protection==='condensing temperature')next.condensingHold=true;
+  if(previous.protection==='indoor antifreeze')next.antifreezeHold=true;
+  if(previous.protection==='thermal boundary')next.thermalBoundaryHold=true;
+  if(input.demandRps>0){
+    if(hot)next.dischargeHold=true;if(high)next.pressureHold=true;
+    if(cold)next.antifreezeHold=true;if(condenserHot)next.condensingHold=true;
+    if(input.thermalBoundaryAvailable===false)next.thermalBoundaryHold=true;
   }
-  if(next.protection) {
-    const temperatureRecovered=input.predictedDischargeC===null?next.protection!=='discharge temperature':
-      input.predictedDischargeC<=input.maximumDischargeC-40;
-    const recovered=input.pressureRatio<=thresholds.recovery&&temperatureRecovered;
-    if(!recovered||next.offSeconds<input.minimumOffSeconds) {
-      next.speedRps=0;next.startupSeconds=0;next.offSeconds+=dt;return next;
-    }
-    next.protection=null;
+  if(next.dischargeHold&&input.predictedDischargeC!==null&&input.predictedDischargeC<=input.maximumDischargeC-40)next.dischargeHold=false;
+  if(next.pressureHold&&input.pressureRatioAvailable!==false&&input.pressureRatio<=thresholds.recovery)next.pressureHold=false;
+  if(next.condensingHold&&input.predictedCondensingC!==undefined&&input.predictedCondensingC!==null&&input.predictedCondensingC<=condensingRecovery)next.condensingHold=false;
+  if(next.antifreezeHold&&(input.coolingMode===false||(input.coolingCoilC!==undefined&&input.coolingCoilC>=5)))next.antifreezeHold=false;
+  if(next.thermalBoundaryHold&&input.thermalBoundaryAvailable===true)next.thermalBoundaryHold=false;
+  const cause=next.dischargeHold?'discharge temperature':next.pressureHold?'pressure ratio':next.condensingHold?'condensing temperature':next.thermalBoundaryHold?'thermal boundary':next.antifreezeHold?'indoor antifreeze':null;
+  if(cause){
+    if(!previous.protection)next.offSeconds=0;
+    next.protection=cause;next.speedRps=0;next.startupSeconds=0;next.offSeconds+=dt;return next;
   }
+  if(previous.protection&&next.offSeconds<input.minimumOffSeconds){next.speedRps=0;next.startupSeconds=0;next.offSeconds+=dt;return next;}
+  next.protection=null;
   if(input.demandRps<=0) {
     next.speedRps=0;next.startupSeconds=0;next.offSeconds+=dt;return next;
   }
   const ratioMargin=(thresholds.stop-input.pressureRatio)/(thresholds.stop-thresholds.soft);
   const temperatureMargin=input.predictedDischargeC===null?1:
     (input.maximumDischargeC-10-input.predictedDischargeC)/20;
-  const limit=input.maximumRps*Math.max(0,Math.min(1,ratioMargin,temperatureMargin));
+  const condensingMargin=input.predictedCondensingC===undefined||input.predictedCondensingC===null?1:(condensingStop-input.predictedCondensingC)/(condensingStop-condensingSoft);
+  const limit=input.maximumRps*Math.max(0,Math.min(1,ratioMargin,temperatureMargin,condensingMargin));
   if(limit<input.minimumRps) {
     next.speedRps=0;next.startupSeconds=0;next.offSeconds=previous.offSeconds+dt;
-    next.protection=ratioMargin<temperatureMargin?'pressure ratio':'discharge temperature';return next;
+    next.protection=condensingMargin<Math.min(ratioMargin,temperatureMargin)?'condensing temperature':ratioMargin<temperatureMargin?'pressure ratio':'discharge temperature';return next;
   }
   if(next.speedRps===0&&next.offSeconds<input.minimumOffSeconds) {
     next.startupSeconds=0;next.offSeconds+=dt;return next;

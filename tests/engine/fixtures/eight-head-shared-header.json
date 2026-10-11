@@ -1,0 +1,428 @@
+{
+  "sourceFixture": "robustness-20261012/sequence-7.json",
+  "originalCycleSha256": "888c92ab17782c7eccd876a519bbce2fa1deb95d126c868779ffd41a2004cea0",
+  "config": {
+    "fluid": "R32",
+    "mode": "heating",
+    "outdoorTemperatureC": 8.191391844302416,
+    "outdoorRelativeHumidity": 0.44884390803053975,
+    "ambientPressurePa": 101325,
+    "indoorPortCapacity": 8,
+    "rooms": [
+      {
+        "id": "room-1",
+        "enabled": true,
+        "volumeM3": 1305.4641187494285,
+        "initialTemperatureC": 24.89244247926399,
+        "initialRelativeHumidity": 0.5,
+        "setpointC": 24.06266680220142,
+        "envelopeWK": 316.78068812470883,
+        "fabricCapacityJK": 4000000,
+        "airFabricWK": 250,
+        "ventilationACH": 1.139392805751413,
+        "airMassFlowKgs": 0.15,
+        "fanPowerW": 25,
+        "airConductanceWK": 170,
+        "refrigerantConductanceWK": 350,
+        "naturalAirConductanceWK": 15,
+        "metalCapacityJK": 12000,
+        "pipe": {
+          "lengthM": 0,
+          "gasInsideDiameterM": 0.01,
+          "liquidInsideDiameterM": 0.0048,
+          "elevationM": 0,
+          "insulationConductanceWmK": 0.05
+        },
+        "internalGainW": 565.5015241354704,
+        "cleanFraction": 0.37354332346003505
+      },
+      {
+        "id": "room-2",
+        "enabled": true,
+        "volumeM3": 47.10257951529001,
+        "initialTemperatureC": 29.48180851759389,
+        "initialRelativeHumidity": 0.5,
+        "setpointC": 24.376240633195266,
+        "envelopeWK": 705.2582188043743,
+        "fabricCapacityJK": 4000000,
+        "airFabricWK": 250,
+        "ventilationACH": 0.01458735391497612,
+        "airMassFlowKgs": 0.15,
+        "fanPowerW": 25,
+        "airConductanceWK": 170,
+        "refrigerantConductanceWK": 350,
+        "naturalAirConductanceWK": 15,
+        "metalCapacityJK": 12000,
+        "pipe": {
+          "lengthM": 0,
+          "gasInsideDiameterM": 0.01,
+          "liquidInsideDiameterM": 0.0048,
+          "elevationM": 0,
+          "insulationConductanceWmK": 0.05
+        },
+        "internalGainW": 27.009607292711735,
+        "cleanFraction": 0.6391257099574432
+      },
+      {
+        "id": "room-3",
+        "enabled": true,
+        "volumeM3": 496.5778510381296,
+        "initialTemperatureC": 19.88992189313285,
+        "initialRelativeHumidity": 0.5,
+        "setpointC": 24.93352150078863,
+        "envelopeWK": 317.75438954355195,
+        "fabricCapacityJK": 4000000,
+        "airFabricWK": 250,
+        "ventilationACH": 0.7160020736046135,
+        "airMassFlowKgs": 0.15,
+        "fanPowerW": 25,
+        "airConductanceWK": 170,
+        "refrigerantConductanceWK": 350,
+        "naturalAirConductanceWK": 15,
+        "metalCapacityJK": 12000,
+        "pipe": {
+          "lengthM": 0,
+          "gasInsideDiameterM": 0.01,
+          "liquidInsideDiameterM": 0.0048,
+          "elevationM": 0,
+          "insulationConductanceWmK": 0.05
+        },
+        "internalGainW": 206.11576223745942,
+        "cleanFraction": 0.8402220817748457
+      },
+      {
+        "id": "room-4",
+        "enabled": true,
+        "volumeM3": 440.2792947549022,
+        "initialTemperatureC": 26.355040318099782,
+        "initialRelativeHumidity": 0.5,
+        "setpointC": 20.963138429215178,
+        "envelopeWK": 297.6276522385888,
+        "fabricCapacityJK": 4000000,
+        "airFabricWK": 250,
+        "ventilationACH": 0.7405254980549216,
+        "airMassFlowKgs": 0.15,
+        "fanPowerW": 25,
+        "airConductanceWK": 170,
+        "refrigerantConductanceWK": 350,
+        "naturalAirConductanceWK": 15,
+        "metalCapacityJK": 12000,
+        "pipe": {
+          "lengthM": 0,
+          "gasInsideDiameterM": 0.01,
+          "liquidInsideDiameterM": 0.0048,
+          "elevationM": 0,
+          "insulationConductanceWmK": 0.05
+        },
+        "internalGainW": 574.9233877286315,
+        "cleanFraction": 0.8888419380877167
+      },
+      {
+        "id": "room-5",
+        "enabled": true,
+        "volumeM3": 312.03803006509247,
+        "initialTemperatureC": 19.873966234503314,
+        "initialRelativeHumidity": 0.5,
+        "setpointC": 20.969558958662674,
+        "envelopeWK": 172.79765411512926,
+        "fabricCapacityJK": 4000000,
+        "airFabricWK": 250,
+        "ventilationACH": 0.8593024178408086,
+        "airMassFlowKgs": 0.15,
+        "fanPowerW": 25,
+        "airConductanceWK": 170,
+        "refrigerantConductanceWK": 350,
+        "naturalAirConductanceWK": 15,
+        "metalCapacityJK": 12000,
+        "pipe": {
+          "lengthM": 0,
+          "gasInsideDiameterM": 0.01,
+          "liquidInsideDiameterM": 0.0048,
+          "elevationM": 0,
+          "insulationConductanceWmK": 0.05
+        },
+        "internalGainW": 606.0798894613981,
+        "cleanFraction": 0.4082400073297322
+      },
+      {
+        "id": "room-6",
+        "enabled": false,
+        "volumeM3": 253.91888213697774,
+        "initialTemperatureC": 28.70664162375033,
+        "initialRelativeHumidity": 0.5,
+        "setpointC": 22.706965927034616,
+        "envelopeWK": 636.6360142710619,
+        "fabricCapacityJK": 4000000,
+        "airFabricWK": 250,
+        "ventilationACH": 1.008737022522837,
+        "airMassFlowKgs": 0.15,
+        "fanPowerW": 25,
+        "airConductanceWK": 170,
+        "refrigerantConductanceWK": 350,
+        "naturalAirConductanceWK": 15,
+        "metalCapacityJK": 12000,
+        "pipe": {
+          "lengthM": 0,
+          "gasInsideDiameterM": 0.01,
+          "liquidInsideDiameterM": 0.0048,
+          "elevationM": 0,
+          "insulationConductanceWmK": 0.05
+        },
+        "internalGainW": 247.93032952584326,
+        "cleanFraction": 0.2919569537276402
+      },
+      {
+        "id": "room-7",
+        "enabled": false,
+        "volumeM3": 144.91942148678663,
+        "initialTemperatureC": 26.09301594668068,
+        "initialRelativeHumidity": 0.5,
+        "setpointC": 19.403946165926754,
+        "envelopeWK": 578.3229319495149,
+        "fabricCapacityJK": 4000000,
+        "airFabricWK": 250,
+        "ventilationACH": 0.768776027020067,
+        "airMassFlowKgs": 0.15,
+        "fanPowerW": 25,
+        "airConductanceWK": 170,
+        "refrigerantConductanceWK": 350,
+        "naturalAirConductanceWK": 15,
+        "metalCapacityJK": 12000,
+        "pipe": {
+          "lengthM": 0,
+          "gasInsideDiameterM": 0.01,
+          "liquidInsideDiameterM": 0.0048,
+          "elevationM": 0,
+          "insulationConductanceWmK": 0.05
+        },
+        "internalGainW": 161.29608429037035,
+        "cleanFraction": 0.40434768849518155
+      },
+      {
+        "id": "room-8",
+        "enabled": true,
+        "volumeM3": 176.8142176725188,
+        "initialTemperatureC": 22.901344536570832,
+        "initialRelativeHumidity": 0.5,
+        "setpointC": 25.62172400369309,
+        "envelopeWK": 506.06550002703443,
+        "fabricCapacityJK": 4000000,
+        "airFabricWK": 250,
+        "ventilationACH": 1.3997418587096035,
+        "airMassFlowKgs": 0.15,
+        "fanPowerW": 25,
+        "airConductanceWK": 170,
+        "refrigerantConductanceWK": 350,
+        "naturalAirConductanceWK": 15,
+        "metalCapacityJK": 12000,
+        "pipe": {
+          "lengthM": 0,
+          "gasInsideDiameterM": 0.01,
+          "liquidInsideDiameterM": 0.0048,
+          "elevationM": 0,
+          "insulationConductanceWmK": 0.05
+        },
+        "internalGainW": 887.5968167558312,
+        "cleanFraction": 0.652994487201795
+      }
+    ],
+    "compressor": {
+      "displacementM3rev": 2.2e-05,
+      "speedMinRps": 18,
+      "speedMaxRps": 75,
+      "isentropicEfficiency": 0.44636580555234107,
+      "volumetricEfficiency": 0.8,
+      "driveEfficiency": 0.93,
+      "superheatK": 3,
+      "subcoolK": 1,
+      "maxDischargeC": 145,
+      "maxPressureRatio": 8
+    },
+    "outdoor": {
+      "airMassFlowKgs": 0.9,
+      "fanPowerW": 85,
+      "airConductanceWK": 1100,
+      "refrigerantConductanceWK": 1000,
+      "naturalAirConductanceWK": 35,
+      "metalCapacityJK": 28000,
+      "depositionAreaM2": 2,
+      "frostDensityKgm3": 200,
+      "frostConductivityWmK": 0.15,
+      "finGapM": 0.002,
+      "drainageSeconds": 30,
+      "cleanFraction": 0.9536979500902817
+    },
+    "control": {
+      "strategy": "inverter",
+      "fixedSpeedRps": 40,
+      "controlsW": 15,
+      "proportionalSpeedRpsK": 20,
+      "thermostatDeadbandK": 1,
+      "minOnSeconds": 30,
+      "minOffSeconds": 30,
+      "reversalSeconds": 3,
+      "defrostMinHeatingSeconds": 300,
+      "defrostIceThresholdKg": 0.15,
+      "defrostMaxSeconds": 600,
+      "defrostTerminationMetalC": 5,
+      "drainageDwellSeconds": 10,
+      "defrostSpeedRps": 35
+    },
+    "numerics": {
+      "maxStepSeconds": 0.25,
+      "pressureToleranceW": 0.1
+    },
+    "interzoneLinks": [
+      {
+        "roomA": "room-1",
+        "roomB": "room-2",
+        "conductanceWK": 35.52910126745701
+      },
+      {
+        "roomA": "room-2",
+        "roomB": "room-3",
+        "conductanceWK": 1586.1330386251211
+      },
+      {
+        "roomA": "room-5",
+        "roomB": "room-6",
+        "conductanceWK": 596.5151526033878
+      },
+      {
+        "roomA": "room-7",
+        "roomB": "room-8",
+        "conductanceWK": 98.21782633662224
+      }
+    ]
+  },
+  "cases": [
+    {
+      "label": "original target/on-off edit at 360 s",
+      "input": {
+        "mode": "heating",
+        "indoorMetalC": [
+          15.069313599407865,
+          35.89366456090803,
+          30.197079696439957,
+          21.992457707817543,
+          38.64884303109981,
+          24.26325072532142,
+          25.296937266025683,
+          26.983835210054924
+        ],
+        "outdoorMetalC": 3.2600702160969512,
+        "active": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          true
+        ],
+        "allocationWeights": [
+          20803.210942076446,
+          22686.50540515332,
+          36281.8395242056,
+          11.848319645732317,
+          6908.701312591637,
+          0,
+          0,
+          17431.980200929684
+        ],
+        "speedRps": 18,
+        "defrost": false,
+        "previous": {
+          "evaporatingC": 0.25313122262798315,
+          "condensingC": 42.99732536903074,
+          "condenserOutletC": 41.99520481703183,
+          "branchMassFlowsKgs": [
+            0,
+            0.003371292777994751,
+            0,
+            0,
+            0.006221504418349792,
+            0,
+            0,
+            0
+          ],
+          "pressureJacobian": {
+            "mode": "heating",
+            "floatingCondenser": false,
+            "matrix": [
+              52.17534322422143,
+              -353.00090930282266,
+              12.29746199701909,
+              0
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "retained candidate near-saturation PT failure at 374 s",
+      "input": {
+        "mode": "heating",
+        "indoorMetalC": [
+          16.365270033314257,
+          35.413468245856244,
+          30.495187838021682,
+          22.075087277761604,
+          37.804498125112346,
+          24.243168474599095,
+          25.254648609443024,
+          26.935671762341364
+        ],
+        "outdoorMetalC": 3.360032158123169,
+        "active": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          true
+        ],
+        "allocationWeights": [
+          21291.452870138302,
+          22810.00051733802,
+          36482.347024303,
+          145.03453514084072,
+          7098.0793661838525,
+          0,
+          0,
+          17521.02163223779
+        ],
+        "speedRps": 32.15779308910817,
+        "defrost": false,
+        "previous": {
+          "evaporatingC": 0.1952287320271938,
+          "condensingC": 37.81013276972433,
+          "condenserOutletC": 36.81013281509041,
+          "branchMassFlowsKgs": [
+            0.002481350140603529,
+            0.0026591533333121366,
+            0.004253040832888714,
+            1.6631778811558017e-05,
+            0.0008271708072617335,
+            0,
+            0,
+            0.002042586559573066
+          ],
+          "pressureJacobian": {
+            "mode": "heating",
+            "floatingCondenser": false,
+            "matrix": [
+              5.6781746809852346e-05,
+              -27.3598606405521,
+              85.72847522560042,
+              0.11126120173074794
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

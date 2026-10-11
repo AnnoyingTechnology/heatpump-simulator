@@ -23,7 +23,10 @@ workerScope.onmessage = (event): void => {
       }
       workerScope.postMessage({ kind: 'output', revision: request.revision, output: engine!.snapshot(), calculationMs: performance.now() - started });
     } catch (error) {
-      workerScope.postMessage({ kind: 'error', revision: request.revision, message: error instanceof Error ? error.message : String(error) });
+      workerScope.postMessage({ kind: 'error', revision: request.revision,
+        message: error instanceof Error ? error.message : String(error),
+        details: error instanceof Error ? { name: error.name, stack: error.stack } : { name: 'Thrown value' },
+        acceptedOutput: engine?.snapshot() });
     }
   });
 };

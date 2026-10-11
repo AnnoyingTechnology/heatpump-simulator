@@ -1,0 +1,38 @@
+{
+  "checkedAt": "2026-10-11T10:44:05.529Z",
+  "checks": [
+    {
+      "name": "owner H is preserved with automatic exposed areas and assumed sensible-recovery ventilation",
+      "passed": true
+    },
+    {
+      "name": "shared faces cap deductions and overlapping same-face connections are never double-counted",
+      "passed": true
+    },
+    {
+      "name": "all coils share one cleanliness input and legacy overrides cannot unbind them",
+      "passed": true
+    },
+    {
+      "name": "dimensions/links retain U while advanced H, legacy G and exposed-area overrides stay coherent",
+      "passed": true
+    },
+    {
+      "name": "single/dual modes alter sensible recovery while gross air exchange remains independent",
+      "passed": true
+    },
+    {
+      "name": "zero geometry stays editable and direct link H remains an explicit overridable assumption",
+      "passed": true
+    },
+    {
+      "name": "legacy H inputs still work and invalid U/area/ventilation edits cannot mutate valid input",
+      "passed": true
+    },
+    {
+      "name": "U/area/recovery edits preserve accepted storage and Off-room heat transfer in the guarded worker",
+      "passed": true
+    }
+  ],
+  "scope": "Average U/automatic exposed-area estimate, parallel paths and gross ventilation/sensible recovery with guarded-worker continuity; no UI styling assertions"
+}

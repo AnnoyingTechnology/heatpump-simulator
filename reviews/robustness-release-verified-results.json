@@ -1,0 +1,1099 @@
+{
+  "createdAt": "2026-10-11T09:42:36.233Z",
+  "preset": "quick",
+  "seed": 20261011,
+  "workers": 12,
+  "timeoutMs": 900000,
+  "sourceHashes": {
+    "src/engine/air.ts": "6dfb70bd7b7c5b84501e0de1633cf8378ea0b2bd0eb903dafe09c31625745d15",
+    "src/engine/charge-output.ts": "ca0bed2dd4836af7e72dce71e28e5d0b11309358f4c3da0bb6365a9079142ff7",
+    "src/engine/charge.ts": "0c9dd8050fab6b3bd16bcb881f59fc00debc2f85c774c2a1c2216d45d289e168",
+    "src/engine/cycle.ts": "888c92ab17782c7eccd876a519bbce2fa1deb95d126c868779ffd41a2004cea0",
+    "src/engine/defaults.ts": "5ca7d8006c6990e4b6b99a6ef353ec075b720a07701dac39a23ca9fb4fec99f8",
+    "src/engine/demand.ts": "53e9c8bbc8e85e37f3cad9d842e22510ccf2404e04cc7bbe7755b14140d12197",
+    "src/engine/drive.ts": "0fb04506689d27ed4c11d89f22a30db504747e36362a850b49577a334e72ef6a",
+    "src/engine/engine.ts": "ddcce40d6a88656b7410dfa0615ec962fca5f6b2a2f87d0b1f43193e12526553",
+    "src/engine/envelope.ts": "feffb4700d52704aef95c7d2ff6dedd247274eeeb2a01c1662d1c6904b7aec50",
+    "src/engine/film.ts": "3cfeda3465b8c5226e6ed82bada490abdc42577fdadd4a1d0a2e3fb682285dbb",
+    "src/engine/index.ts": "f8aba3f8724f99dcd1c17be93cfc3622a9fe276d968cc36f5bbf70e9c3773ebd",
+    "src/engine/interzone.ts": "856dfe9535d53f52aa8aae8f0cc83167163b11bab8ca6bb9bb62ff9e600d8bed",
+    "src/engine/properties.ts": "7f4bb2f372a77f30e76844dd7ef9d7afa6d25f72079a09ce66586cdc134404d1",
+    "src/engine/thermostat.ts": "624305969795b54b99745ac84d1c966dbc0e66263ee8579111ea2054c971d5f5",
+    "src/engine/transport.ts": "928ab51cd8ca1193e68ba0821ee88ae2966521314ad9b1fd1b9894f253e2ed31",
+    "src/engine/types.ts": "7da718b766ed47970f705aeb84f2fb9743f35ce477d6abb98ca0dfe652a279fb",
+    "compiled/air.js": "ac8302044d196da0528b0ca99b76db9f550d26b57adc42c0de89a68ee9b5ed94",
+    "compiled/charge-output.js": "4ed7ae6f5cc6b6f0b52465b8cbba32f400f890e729ba71cd2db804a11c435fa0",
+    "compiled/charge.js": "716d6e0134395d6f67245751af1d915e179ab2c599b8a66950bbf8006fac9b1d",
+    "compiled/cycle.js": "4ecda465e8d4c8477ca559b826092abc399de442f938e0b4fc066c8ef1be3768",
+    "compiled/defaults.js": "b1bcc26d4004cb951b5440c02becc157363373d64aef5f088b809c1bd20a2ed8",
+    "compiled/demand.js": "a06da83a3ed88028b94b91f3ea9e21aeef15cadb8cc8baede54676ce8b900230",
+    "compiled/drive.js": "10afafee324f22805d8602a1f5b46099a1a3cb4d1433cb0ba8d128661c96cc9d",
+    "compiled/engine.js": "3f7cffde0de1a61f3c01a2a8ef62a10cd55fd7fc8c99ab709136b21495e0ca14",
+    "compiled/envelope.js": "cb8bdd66fd240a76942da8741b92ca2d77063784c769b7126c19abe348269d08",
+    "compiled/film.js": "2af475cdfb6faa4512ac7a17c45393f3be33ab88e2cb5be334138956ecf33d51",
+    "compiled/index.js": "2a58c1821531507d4843729995d2ffc8bbf2176ace4cb1e0269090322f8488c3",
+    "compiled/interzone.js": "677d003f3074e81bd06c7754444c0cdefd77fb56302e3db72536bfec8e602c60",
+    "compiled/properties.js": "765c01b7d61ee144821da2f9fd379469e8e34bbb44335616dd5afbca3b00c18a",
+    "compiled/thermostat.js": "4aa6dbf014fc983efb014e5a5fc0a45613a9c7d7bd42009b4f6108eeacf0398f",
+    "compiled/transport.js": "5bc7c0f1850837de00043e755290d8e3d131d4ee3adb27646557344409bc1dcf",
+    "compiled/types.js": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "public/vendor/coolprop-safe/LICENSE-CoolProp": "9bf835333ef602af4cb19338b9f9d43671e174fa029b00280e9bdba6ea4719b2",
+    "public/vendor/coolprop-safe/adapter.js": "06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34",
+    "public/vendor/coolprop-safe/coolprop.js": "6fa2e627803e2453da12cb9fce160ca3326851cd179444edc5ab698e21524d6c",
+    "public/vendor/coolprop-safe/coolprop.wasm": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+    "public/vendor/coolprop-safe/licenses/Emscripten-LICENSE": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86",
+    "public/vendor/coolprop-safe/licenses/boost_headers-LICENSE": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "public/vendor/coolprop-safe/licenses/compiler-rt-LICENSE.TXT": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.APACHE": "03379001a7b12a2ec997a25554247d985270b353c10d5bafee9ac8d6519820b7",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.BSD": "51928dce36213c5333ba3172e847d735d4c6e9b7ff2722a326c49067155b82eb",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.MINPACK": "c87b7f8ee88f6195e91743820c00354833583aef091b72e2d4a49c8e28e798a0",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.MPL2": "66a3107d5ad6a058aab753eaac2047ccb2ed0e39465dd0fe5844da3e300d5172",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.README": "db640ff2bd90c6abd6a4d3fbb351e0ee4d555417cf840492054d1cbb2ea85644",
+    "public/vendor/coolprop-safe/licenses/eigen-LICENSE": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+    "public/vendor/coolprop-safe/licenses/fmt-LICENSE": "07580f2a3b35709ce703d523f447b242f6dfec7582a8c0df102c7fa2849375f8",
+    "public/vendor/coolprop-safe/licenses/if97-LICENSE": "e22c3d30ef8d88ab468d9ea20392ca1df22fa3fd0a92dc3e996d89cf3cfdbd03",
+    "public/vendor/coolprop-safe/licenses/libcxx-LICENSE.TXT": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+    "public/vendor/coolprop-safe/licenses/libcxxabi-LICENSE.TXT": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",
+    "public/vendor/coolprop-safe/licenses/miniz-header-notice.txt": "dfdeccf4fcb0cef3d71b31fa915e804f272fa57f00d4ff5076d2c8e8efc22057",
+    "public/vendor/coolprop-safe/licenses/msgpack-c-COPYING": "664550b43996452a5a2c7471bb0ff77185a58c69ccafa60f983dc4c162e1ee22",
+    "public/vendor/coolprop-safe/licenses/msgpack-c-LICENSE_1_0.txt": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "public/vendor/coolprop-safe/licenses/multicomplex-README.md": "d58933ccd086958d576969174c04af6506cc5586da9d2125ec644d534225c018",
+    "public/vendor/coolprop-safe/licenses/musl-COPYRIGHT": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af",
+    "public/vendor/coolprop-safe/licenses/nlohmann_json-LICENSE.MIT": "46a65cffd1ea955132d95a8dd921640714a8d6b537d2e4e482d31145ae95b603",
+    "public/vendor/coolprop-safe/licenses/refprop_headers-LICENSE": "f21f633c596509e89b2baedfd657c8f1b8018954b06576590971684b210e91f8",
+    "public/vendor/coolprop-safe/licenses/valijson-LICENSE": "61b5766db38eaa3f320c366357956d7743424bfbf90fd78f5943866ba237589e",
+    "public/vendor/coolprop-safe/provenance.json": "fffa34344622d1d2266c5d389552e3e672706422f317193ebf756bc0a157f697",
+    "tools/robustness-worker.mjs": "42398ac258b4355e4e2d02314a75a4b9eeba3dda9d19db398f8337f9d9e39803",
+    "tools/robustness-campaign.mjs": "de0f752b4e8e09de7841e0f2ddd3b46e08448381a18aac36603931688ecb5a6c"
+  },
+  "nodeVersion": "v24.21.0",
+  "platform": "linux",
+  "architecture": "x64",
+  "extendedComponentAndLineBounds": false,
+  "segmentDurationCapSeconds": null,
+  "method": "Independent Node child processes; immutable TypeScript snapshot compiled once; production guarded HEOS; fixed accepted 0.25-second steps; full before-step checkpoint persisted for native aborts.",
+  "limits": "Reference R32 engine only. Passing a finite campaign is not proof of correctness. Generic component parameters, not calibrated manufacturer maps. The screenshot scenario is reconstructed from visible controls, not a saved exact pre-crash state.",
+  "scenarios": [
+    {
+      "id": "20261011-grid-heating-25-0",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "20261011-grid-heating-45-0",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "20261011-grid-heating-45-1",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "20261011-sequence-1",
+      "requestedSeconds": 70
+    },
+    {
+      "id": "20261011-sequence-3",
+      "requestedSeconds": 70
+    },
+    {
+      "id": "20261011-sequence-4",
+      "requestedSeconds": 70
+    },
+    {
+      "id": "20261012-grid-cooling--25-1",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "20261012-grid-cooling-45-0",
+      "requestedSeconds": 120
+    },
+    {
+      "id": "20261012-sequence-10",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "20261012-sequence-2",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "20261012-sequence-4",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "20261012-sequence-6",
+      "requestedSeconds": 840
+    },
+    {
+      "id": "frost-four-cycle-1800",
+      "requestedSeconds": 1800
+    },
+    {
+      "id": "long-reported-owner-reversal-old-generic",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "long-reported-owner-reversal-winter-house",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "smoke-grid-cooling--25-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-cooling--25-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-cooling--5-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-cooling--5-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-cooling-25-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-cooling-25-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-cooling-45-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-cooling-45-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-cooling-5.5-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-cooling-5.5-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-heating--25-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-heating--25-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-heating--5-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-heating--5-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-heating-25-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-heating-25-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-heating-45-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-heating-45-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-heating-5.5-0",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-grid-heating-5.5-1",
+      "requestedSeconds": 2
+    },
+    {
+      "id": "smoke-reported-friend-cold-cooling",
+      "requestedSeconds": 30
+    },
+    {
+      "id": "smoke-reported-owner-reversal-old-generic",
+      "requestedSeconds": 10
+    },
+    {
+      "id": "smoke-reported-owner-reversal-winter-house",
+      "requestedSeconds": 10
+    },
+    {
+      "id": "smoke-sequence-0",
+      "requestedSeconds": 6
+    },
+    {
+      "id": "smoke-sequence-1",
+      "requestedSeconds": 6
+    }
+  ],
+  "completed": 40,
+  "counts": {
+    "pass": 40
+  },
+  "results": [
+    {
+      "id": "20261011-sequence-4",
+      "outcome": "pass",
+      "steps": 280,
+      "updates": 6,
+      "simulatedSeconds": 70,
+      "wallSeconds": 5.953954765,
+      "maxEnergyResidualJ": 1.3856333680450916e-07,
+      "maxWaterResidualKg": 2.095545958979983e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 108,
+        "reversing": 24,
+        "idle": 148
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 570.1436909999998,
+      "failureCategory": null
+    },
+    {
+      "id": "20261011-grid-heating-25-0",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 8.657477356,
+      "maxEnergyResidualJ": 8.95524863153696e-08,
+      "maxWaterResidualKg": 8.51098705401121e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1324.4756670000002,
+      "failureCategory": null
+    },
+    {
+      "id": "20261011-sequence-1",
+      "outcome": "pass",
+      "steps": 280,
+      "updates": 6,
+      "simulatedSeconds": 70,
+      "wallSeconds": 9.341728685,
+      "maxEnergyResidualJ": 1.7660204321146011e-07,
+      "maxWaterResidualKg": 5.460909502374989e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 148,
+        "reversing": 24,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 283.12106100000074,
+      "failureCategory": null
+    },
+    {
+      "id": "20261011-sequence-3",
+      "outcome": "pass",
+      "steps": 280,
+      "updates": 6,
+      "simulatedSeconds": 70,
+      "wallSeconds": 11.642084989,
+      "maxEnergyResidualJ": 2.6263296604156494e-07,
+      "maxWaterResidualKg": 6.314393452555578e-15,
+      "protectionCounts": {
+        "discharge temperature": 36
+      },
+      "states": {
+        "running": 148,
+        "reversing": 24,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 249.2513399999998,
+      "failureCategory": null
+    },
+    {
+      "id": "20261011-grid-heating-45-1",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 11.802885760999999,
+      "maxEnergyResidualJ": 2.6763882488012314e-07,
+      "maxWaterResidualKg": 9.08995101411847e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1042.73808,
+      "failureCategory": null
+    },
+    {
+      "id": "20261011-grid-heating-45-0",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 15.063082123000001,
+      "maxEnergyResidualJ": 1.461885403841734e-07,
+      "maxWaterResidualKg": 1.3461454173580023e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1064.4650459999998,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-cooling--25-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 3.304773416,
+      "maxEnergyResidualJ": 6.015761755406857e-08,
+      "maxWaterResidualKg": 4.727934623666163e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 736.1619500000002,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-cooling--25-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 3.501454714,
+      "maxEnergyResidualJ": 9.651103027863428e-09,
+      "maxWaterResidualKg": 1.1401741096400686e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 821.3317549999997,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-cooling-25-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 3.834314389,
+      "maxEnergyResidualJ": 3.404929884709418e-07,
+      "maxWaterResidualKg": 2.5793711784516393e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 851.8200039999997,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-cooling--5-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 4.397604788000001,
+      "maxEnergyResidualJ": 9.365339792566374e-08,
+      "maxWaterResidualKg": 4.121594558703645e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1166.867069,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-cooling--5-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 4.904781937,
+      "maxEnergyResidualJ": 2.592714736238122e-07,
+      "maxWaterResidualKg": 4.212233860323433e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1366.129011,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-cooling-45-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.8758855260000002,
+      "maxEnergyResidualJ": 7.84393705544062e-08,
+      "maxWaterResidualKg": 4.121594558703645e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 163.588127,
+      "failureCategory": null
+    },
+    {
+      "id": "20261012-sequence-2",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 22.65094883,
+      "maxEnergyResidualJ": 4.0046870708465576e-07,
+      "maxWaterResidualKg": 5.1514348342607263e-14,
+      "protectionCounts": {
+        "indoor antifreeze": 1091
+      },
+      "states": {
+        "idle": 1788,
+        "reversing": 24,
+        "running": 1548
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 350.8780649999999,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-cooling-25-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 4.021696071,
+      "maxEnergyResidualJ": 1.8487116903997958e-07,
+      "maxWaterResidualKg": 2.9936854861398188e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 961.9851229999999,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-cooling-45-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 3.092348449,
+      "maxEnergyResidualJ": 5.698530003428459e-08,
+      "maxWaterResidualKg": 3.664603343001005e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 214.75087299999996,
+      "failureCategory": null
+    },
+    {
+      "id": "20261012-grid-cooling--25-1",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 24.859150225999997,
+      "maxEnergyResidualJ": 3.03611159324646e-07,
+      "maxWaterResidualKg": 3.1901564723213482e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 932.561518,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-cooling-5.5-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 3.168946597,
+      "maxEnergyResidualJ": 8.521965355612338e-09,
+      "maxWaterResidualKg": 8.993965240535612e-17,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 471.3275630000003,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-cooling-5.5-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 3.449133898,
+      "maxEnergyResidualJ": 8.517963578924537e-08,
+      "maxWaterResidualKg": 4.121594558703645e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 563.2887549999996,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-heating--25-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.855691483,
+      "maxEnergyResidualJ": 3.007007762789726e-07,
+      "maxWaterResidualKg": 1.1306602355765083e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 246.87838499999998,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-heating--25-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 3.3173615979999997,
+      "maxEnergyResidualJ": 4.951289156451821e-08,
+      "maxWaterResidualKg": 9.569439424900184e-17,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 141.47342100000014,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-heating--5-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 3.9774250190000005,
+      "maxEnergyResidualJ": 1.0163057595491409e-07,
+      "maxWaterResidualKg": 2.806999424564971e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 257.8236069999998,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-heating-25-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.758201129,
+      "maxEnergyResidualJ": 1.926650838868227e-08,
+      "maxWaterResidualKg": 1.0088501214977619e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 150.03356600000006,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-heating-25-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 4.170550818,
+      "maxEnergyResidualJ": 3.8813595892861485e-08,
+      "maxWaterResidualKg": 9.569439424900184e-17,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1261.5534270000003,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-heating-45-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 4.019110284,
+      "maxEnergyResidualJ": 1.0266739991493523e-07,
+      "maxWaterResidualKg": 2.806999424564971e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 924.9184580000001,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-heating-5.5-0",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 2.621443901,
+      "maxEnergyResidualJ": 1.2052879583279719e-08,
+      "maxWaterResidualKg": 2.1195305439144357e-17,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 89.416514,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-heating-45-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 3.697701641,
+      "maxEnergyResidualJ": 8.838833309710026e-08,
+      "maxWaterResidualKg": 5.917575457425883e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 829.6852509999999,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-heating-5.5-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 3.068583187,
+      "maxEnergyResidualJ": 1.3067619875073433e-07,
+      "maxWaterResidualKg": 3.978412109299778e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 150.26695500000005,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-reported-friend-cold-cooling",
+      "outcome": "pass",
+      "steps": 120,
+      "updates": 0,
+      "simulatedSeconds": 30,
+      "wallSeconds": 2.709505946,
+      "maxEnergyResidualJ": 7.214839570224285e-08,
+      "maxWaterResidualKg": 1.3812735677465326e-15,
+      "protectionCounts": {},
+      "states": {
+        "idle": 120
+      },
+      "stateEntries": {},
+      "completedDefrosts": 0,
+      "maxStepWallMs": 4.895830999999816,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-grid-heating--5-1",
+      "outcome": "pass",
+      "steps": 8,
+      "updates": 0,
+      "simulatedSeconds": 2,
+      "wallSeconds": 8.651443597,
+      "maxEnergyResidualJ": 1.9534491002559662e-07,
+      "maxWaterResidualKg": 1.150094559518311e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 8
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 921.2804939999996,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-reported-owner-reversal-old-generic",
+      "outcome": "pass",
+      "steps": 40,
+      "updates": 1,
+      "simulatedSeconds": 10,
+      "wallSeconds": 3.593702972,
+      "maxEnergyResidualJ": 9.728864824865013e-08,
+      "maxWaterResidualKg": 1.0904905450859204e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 20,
+        "reversing": 12,
+        "idle": 8
+      },
+      "stateEntries": {
+        "running": 1,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 91.85492199999999,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-reported-owner-reversal-winter-house",
+      "outcome": "pass",
+      "steps": 40,
+      "updates": 1,
+      "simulatedSeconds": 10,
+      "wallSeconds": 3.192730071,
+      "maxEnergyResidualJ": 6.179652700666338e-08,
+      "maxWaterResidualKg": 1.0709749059811813e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 20,
+        "reversing": 12,
+        "idle": 8
+      },
+      "stateEntries": {
+        "running": 1,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 146.940697,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-sequence-0",
+      "outcome": "pass",
+      "steps": 24,
+      "updates": 2,
+      "simulatedSeconds": 6,
+      "wallSeconds": 2.464559355,
+      "maxEnergyResidualJ": 1.1819065548479557e-07,
+      "maxWaterResidualKg": 1.2411946470614055e-15,
+      "protectionCounts": {},
+      "states": {
+        "idle": 8,
+        "reversing": 12,
+        "running": 4
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 64.71220600000015,
+      "failureCategory": null
+    },
+    {
+      "id": "smoke-sequence-1",
+      "outcome": "pass",
+      "steps": 24,
+      "updates": 2,
+      "simulatedSeconds": 6,
+      "wallSeconds": 2.956551386,
+      "maxEnergyResidualJ": 2.539600245654583e-07,
+      "maxWaterResidualKg": 7.702172233337023e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 8,
+        "reversing": 12,
+        "idle": 4
+      },
+      "stateEntries": {
+        "running": 1,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 139.76686100000006,
+      "failureCategory": null
+    },
+    {
+      "id": "20261012-grid-cooling-45-0",
+      "outcome": "pass",
+      "steps": 480,
+      "updates": 0,
+      "simulatedSeconds": 120,
+      "wallSeconds": 55.93748178,
+      "maxEnergyResidualJ": 5.154870450496674e-07,
+      "maxWaterResidualKg": 1.4148404670066839e-14,
+      "protectionCounts": {},
+      "states": {
+        "running": 480
+      },
+      "stateEntries": {
+        "running": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 342.24841000000015,
+      "failureCategory": null
+    },
+    {
+      "id": "20261012-sequence-10",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 75.798406203,
+      "maxEnergyResidualJ": 2.2188760340213776e-07,
+      "maxWaterResidualKg": 1.1962653090336062e-14,
+      "protectionCounts": {
+        "condensing temperature": 248
+      },
+      "states": {
+        "running": 1428,
+        "reversing": 24,
+        "idle": 1908
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 214.70345299999462,
+      "failureCategory": null
+    },
+    {
+      "id": "long-reported-owner-reversal-old-generic",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 1,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 75.89008814600001,
+      "maxEnergyResidualJ": 7.320195436477661e-07,
+      "maxWaterResidualKg": 3.427813588530171e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 4680,
+        "reversing": 12,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 769.0430310000011,
+      "failureCategory": null
+    },
+    {
+      "id": "20261012-sequence-6",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 101.061907924,
+      "maxEnergyResidualJ": 5.960464477539062e-07,
+      "maxWaterResidualKg": 9.14823772291129e-14,
+      "protectionCounts": {},
+      "states": {
+        "idle": 1482,
+        "reversing": 24,
+        "running": 1854
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 1340.309666000001,
+      "failureCategory": null
+    },
+    {
+      "id": "20261012-sequence-4",
+      "outcome": "pass",
+      "steps": 3360,
+      "updates": 6,
+      "simulatedSeconds": 840,
+      "wallSeconds": 106.96732039499999,
+      "maxEnergyResidualJ": 9.192153811454773e-07,
+      "maxWaterResidualKg": 1.687538997430238e-14,
+      "protectionCounts": {
+        "indoor antifreeze": 423,
+        "discharge temperature": 120
+      },
+      "states": {
+        "running": 2913,
+        "idle": 423,
+        "reversing": 24
+      },
+      "stateEntries": {
+        "running": 3,
+        "idle": 2
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 324.1264749999973,
+      "failureCategory": null
+    },
+    {
+      "id": "long-reported-owner-reversal-winter-house",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 1,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 165.95047502399999,
+      "maxEnergyResidualJ": 6.225891411304474e-07,
+      "maxWaterResidualKg": 5.3186621773448906e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 4680,
+        "reversing": 12,
+        "idle": 108
+      },
+      "stateEntries": {
+        "running": 2,
+        "idle": 1
+      },
+      "completedDefrosts": 0,
+      "maxStepWallMs": 954.2500310000032,
+      "failureCategory": null
+    },
+    {
+      "id": "frost-four-cycle-1800",
+      "outcome": "pass",
+      "steps": 7200,
+      "updates": 0,
+      "simulatedSeconds": 1800,
+      "wallSeconds": 345.413853442,
+      "maxEnergyResidualJ": 9.993091225624084e-07,
+      "maxWaterResidualKg": 3.913536161803677e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 5676,
+        "reversing": 96,
+        "defrost": 996,
+        "draining": 160,
+        "idle": 272
+      },
+      "stateEntries": {
+        "running": 5,
+        "reversing": 8,
+        "defrost": 4,
+        "draining": 4,
+        "idle": 4
+      },
+      "completedDefrosts": 4,
+      "maxStepWallMs": 565.4284679999982,
+      "failureCategory": null
+    }
+  ],
+  "artifactDirectory": "/tmp/heatpump-robustness-release-verified",
+  "acceptedSimulatedSeconds": 8172
+}

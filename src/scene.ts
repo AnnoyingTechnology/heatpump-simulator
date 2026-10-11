@@ -4,20 +4,21 @@ import type { CoilProbe } from './circuit';
 import { clamp, fmt, html, setAttr, setText, svg, toggleClass } from './dom';
 import { branchesFor, readingFlowMode, segmentFor, simulation } from './runtime/view';
 import {
-  A, L, LINE_CTL, INDOOR_COIL, OUT, PILL, PROBE_AT, ROOM_COLS, ROOM_PANEL_H, UNIT,
+  A, FAN_SIDE, L, LINE_CTL, INDOOR_COIL, OUT, PILL, PROBE_AT, ROOM_COLS, ROOM_PANEL_H, UNIT,
   indoorProbeAt, layoutFor, lineCtlBox, pipeSpecs, roomBoxes, ygOf, ylOf,
 } from './geometry';
 import type { Layout, RoomBox } from './geometry';
 import { CoilNote, Pipe, Probe } from './pipes';
 import type { Pt } from './pipes';
 import { pairKey } from './popovers';
-import { ENVELOPE_LOSS, createHeatLossGuide, createLossScale, linkHeatW, createLineLength, createLineModelSwitch, isolate, pairField, weatherScope } from './settings';
-import type { HeatLossGuide, LineLengthControl, OutdoorUnitCard, PairField } from './settings';
+import { createAverageUControl, createHeatLossGuide, createHouseLossRuler, createIndoorModelSelect, linkHeatW, createLineLength, createLineModelSwitch, isolate, pairField, weatherScope } from './settings';
+import type { AverageUControl, IndoorModelControl, LineLengthControl, OutdoorUnitCard, PairField } from './settings';
 import type { Clock } from './state';
 import { ICE_FULL_KG, ICE_START_KG, activeRooms, currentReadings, indoorCleanliness, liveStatus, outdoorCleanliness, store } from './state';
 import { fixtureFor } from './fixtures';
-import type { AppState, InterzoneLink, RoomConfig, ZoomPreset } from './types';
-import { INDOOR_CLASSES, OWNER_PORTS, interzoneConductance, outdoorPortCapacity, roomVolumeM3 } from './types';
+import { outdoorModelInfo, equipmentManufacturerLabel } from './equipment';
+import type { AppState, InterzoneLink, OutdoorKind, RoomConfig, ZoomPreset } from './types';
+import { INDOOR_CLASSES, OWNER_PORTS, hasInterzoneGeometry, interzoneConductance, outdoorPortCapacity, roomVolumeM3 } from './types';
 
 type G = SVGGElement;
 
@@ -57,7 +58,7 @@ function setDirt(g: G, pct: number, who: string, source: 'global' | 'override'):
 export interface SceneHooks {
   toggleRoom(i: number, anchor: HTMLElement): void;
   toggleLines(i: number, anchor: HTMLElement): void;
-  /** Advanced room thermal settings (initial temperature, gains, air exchange, links), separate from the indoor-unit settings. */
+  /** Advanced room thermal settings (initial temperature, gains, ventilation rate, exposed area, links), separate from the indoor-unit settings. */
   toggleThermal(i: number, anchor: HTMLElement): void;
   /** A drawn room link was activated: toggle its editor. */
   toggleLink(roomA: string, roomB: string): void;
@@ -166,14 +167,19 @@ function indoorAir(unitX: number, y0: number, len: number, inlet = false, width 
   return g;
 }
 
-/** Outdoor exhaust, local casing coordinates: four streams leaving the coil face to the left, two above and two below the AIR probe. */
+/**
+ * Outdoor exhaust, local casing coordinates: four straight, parallel streams leaving the coil face to the left, built like the indoor
+ * ones (a short stub at the coil, a gap, a short tail and a chevron head). Two run above and two below the AIR probe's text block
+ * (caption y 103–111, values to y 181, REF pill from y 188), so the exhaust temperature and coil heat digits stay clear.
+ */
 function exhaustAir(): G {
   const g = svg('g', { class: 'airflow exhaust' });
-  for (const y of [88, 96, 177, 184]) {
-    const end = y + (y < 120 ? -4 : 4);
+  const x0 = -24;
+  const x1 = -124;
+  for (const y of [88, 97, 214, 223]) {
     g.append(
-      svg('path', { class: 'stream', d: `M-24 ${y}C-52 ${y} -92 ${end} -124 ${end}` }),
-      streamHead(-126, end, [-1, 0]));
+      svg('path', { class: 'stream', d: `M${x0} ${y}H${x0 - 4}M${x1 + 8} ${y}H${x1}` }),
+      streamHead(x1 - 2, y, [-1, 0]));
   }
   return g;
 }
@@ -339,8 +345,8 @@ function weatherPanel(): WeatherPanel {
 }
 
 /**
- * One room, split by what it is. `env` is the ROOM environment (floor area, ceiling height, derived volume, measured air and humidity,
- * envelope loss, remove): unboxed, on the room zone. `equip` is the INDOOR UNIT (requested On/Off, supplied AIR, net room kW, target,
+ * One room, split by what it is. `env` is the ROOM environment (floor area, ceiling height, derived volume, Average U with its derived
+ * exposed area and whole-room envelope W/K, remove): unboxed, on the room zone. `equip` is the INDOOR UNIT (requested On/Off, supplied AIR, net room kW, target,
  * settings), a quiet card beside the unit.
  */
 interface RoomPanel {
@@ -353,13 +359,16 @@ interface RoomPanel {
   sup: ReturnType<typeof readCard>;
   heat: ReturnType<typeof readCard>;
   sp: PairField;
+  /** Permanent indoor-model select of this unit (grouped by manufacturer). */
+  model: IndoorModelControl;
   area: PairField;
   height: PairField;
   /** Derived volume readout: floor area × ceiling height. Not an input. */
   volume: HTMLElement;
   intake: HTMLElement;
   outlet: HTMLElement;
-  loss: PairField;
+  /** Primary envelope control: average U in W/(m²·K), lower is better, plus the derived exposed area and whole-room W/K. */
+  insulation: AverageUControl;
   /** Direct indoor-unit On/Off switch (configuration `enabled`). */
   sw: HTMLInputElement;
   swText: HTMLElement;
@@ -368,7 +377,7 @@ interface RoomPanel {
   thermal: HTMLButtonElement;
 }
 
-function roomPanel(i: number, hooks: SceneHooks, guide: HeatLossGuide): RoomPanel {
+function roomPanel(i: number, hooks: SceneHooks): RoomPanel {
   const edit = (fn: (r: RoomConfig) => void): void => store.update((s) => { const x = s.cfg.rooms[i]; if (x) fn(x); });
   const at = (): RoomConfig | undefined => store.state.cfg.rooms[i];
   const sp = pairField({
@@ -383,14 +392,8 @@ function roomPanel(i: number, hooks: SceneHooks, guide: HeatLossGuide): RoomPane
     label: 'Ceiling height', unit: 'm', ...HEIGHT, digits: 2, layout: 'block',
     get: () => at()?.ceilingHeightM ?? 2.5, set: (v) => edit((r) => { r.ceilingHeightM = v; }),
   });
-  const loss = pairField({
-    label: 'Envelope loss', unit: 'W/K', ...ENVELOPE_LOSS, digits: 0, layout: 'block',
-    get: () => at()?.heatLossWPerK ?? 60, set: (v) => edit((r) => { r.heatLossWPerK = v; }),
-    title: 'Envelope heat-loss coefficient. Ventilation is modelled separately.',
-  });
-  loss.root.querySelector('.pf-head')?.append(guide.button(i));
-  // The supplied reference examples are always visible under the slider; the guide button keeps the full explanation.
-  setText(loss.note, 'Building reference examples · W/K');
+  // The building reference ruler and its help button live once in the indoor header; the room carries only its own Average U.
+  const insulation = createAverageUControl(i);
   const volumeV = html('span', { class: 'rp-v', 'data-field': 'room-volume' });
   const volume = html('div', { class: 'env-vol', title: 'Derived volume: floor area × ceiling height. Not an input.' },
     html('span', { class: 'rp-k' }, 'Volume'), html('span', { class: 'rp-line' }, volumeV, html('small', {}, 'm³')));
@@ -416,20 +419,22 @@ function roomPanel(i: number, hooks: SceneHooks, guide: HeatLossGuide): RoomPane
   const remove = html('button', { type: 'button', class: 'rp-btn rp-ctl rp-remove' },
     svg('svg', { class: 'rp-x', viewBox: '0 0 12 12', 'aria-hidden': 'true' }, svg('path', { d: 'M2.5 2.5L9.5 9.5M9.5 2.5L2.5 9.5' })));
   remove.addEventListener('click', () => store.removeRoom(i));
-  const thermal = html('button', { type: 'button', class: 'rp-btn rp-ctl', 'aria-haspopup': 'dialog', title: 'Advanced room thermal settings: initial temperature, background gains, outdoor air exchange and links to other rooms' }, 'Thermal');
+  const thermal = html('button', { type: 'button', class: 'rp-btn rp-ctl', 'aria-haspopup': 'dialog', title: 'Advanced room thermal settings: initial temperature, background gains, ventilation rate, exposed envelope area and links to other rooms' }, 'Thermal');
   const tgt = html('div', { class: 'rp-card tgt' }, sp.root);
+  const model = createIndoorModelSelect(i);
   const equip = html('div', { class: 'rp eq room-rp', 'data-block': 'equipment' },
     html('div', { class: 'rp-head' }, html('span', { class: 'eq-tag' }, 'Unit'), swLabel, linesBtn, gearBtn),
+    model.root,
     html('div', { class: 'rp-cards' }, tgt));
   const env = html('div', { class: 'rp env room-env', 'data-block': 'environment' },
     html('div', { class: 'rp-head' }, name, thermal, remove),
     html('div', { class: 'env-geo' }, area.root, sep('×'), height.root, sep('='), volume),
-    html('div', { class: 'env-low' }, loss.root, createLossScale()));
+    html('div', { class: 'env-low' }, insulation.root));
   linesBtn.addEventListener('click', () => hooks.toggleLines(i, equip));
   gearBtn.addEventListener('click', () => hooks.toggleRoom(i, equip));
   thermal.addEventListener('click', () => hooks.toggleThermal(i, env));
   isolate(sw, swLabel, linesBtn, gearBtn, remove, thermal);
-  return { equip, env, intake: air.root, outlet, boundId: '', name, air, sup, heat, sp, area, height, volume: volumeV, loss, sw, swText, remove, thermal };
+  return { equip, env, intake: air.root, outlet, boundId: '', name, air, sup, heat, sp, model, area, height, volume: volumeV, insulation, sw, swText, remove, thermal };
 }
 
 /** Indoor-zone bar: room count against the outdoor group's port capacity, and the direct Add room action. */
@@ -497,12 +502,13 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
   // Drawn links (pure SVG in the indoor zone), rebuilt only when the set of linked pairs or the room order changes.
   let linkLayer: G = svg('g');
   let linkSig = '';
-  interface LinkView { g: G; arrow: SVGPathElement; ico: SVGTextElement; val: SVGTextElement; title: SVGTitleElement; ax: number; ay: number }
+  interface LinkView { g: G; arrow: SVGPathElement; ico: SVGTextElement; val: SVGTextElement; tag: SVGTextElement | null; title: SVGTitleElement; ax: number; ay: number }
   const linkViews = new Map<string, LinkView>();
-  // One heat-loss guide for every room, mounted above all rows and placed beside the room it is open for.
+  // One heat-loss guide and one house-loss ruler, both in the indoor header: the guide opens beside the ruler's help button.
   const guide = createHeatLossGuide();
+  const ruler = createHouseLossRuler(guide);
   const roomPanels: RoomPanel[] = [];
-  const panelFor = (i: number): RoomPanel => (roomPanels[i] ??= roomPanel(i, hooks, guide));
+  const panelFor = (i: number): RoomPanel => (roomPanels[i] ??= roomPanel(i, hooks));
   // Line-length controls (one per branch index) and the single field-line model switch live in the outdoor connection corridor.
   const lineCtls: LineLengthControl[] = [];
   const lineCtlFor = (i: number): LineLengthControl => (lineCtls[i] ??= createLineLength(i));
@@ -542,8 +548,8 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
   function placeGuide(): void {
     const i = guide.open;
     if (i < 0) return;
-    const button = roomPanels[i]?.loss.root.querySelector('button');
-    if (!button?.isConnected) { guide.close(); return; }
+    const button = guide.button(i);
+    if (!button.isConnected) { guide.close(); return; }
     const at = button.getBoundingClientRect();
     const h = Math.min(guide.root.scrollHeight, window.innerHeight - 32);
     guide.root.style.left = `${clamp(at.right - 380, 16, window.innerWidth - 396)}px`;
@@ -551,7 +557,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
   }
   guide.onChange = placeGuide;
 
-  function rebuild(n: number, kind: 'owner' | 'generic'): void {
+  function rebuild(n: number, kind: OutdoorKind): void {
     // A control the user is working in survives the rebuild: its element is re-attached, then focus is restored.
     const focused = document.activeElement instanceof HTMLElement && root.contains(document.activeElement) ? document.activeElement : null;
     root.replaceChildren(defs());
@@ -562,7 +568,10 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
     presets = presetsFor(layout);
     const lay = layout;
     const boxes = roomBoxes(n);
-    const owner = kind === 'owner';
+    // The casing drawing is one bounded generic illustration for every model (its internals are not OEM geometry); the selected
+    // model only changes its fill (published models light, generic grey), label, port caps and tooltip.
+    const info = outdoorModelInfo(kind);
+    const generic = kind === 'generic';
     const wall = lay.wall;
     const zoom = store.state.ui.zoom;
     cancelAnimationFrame(anim);
@@ -584,6 +593,8 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       svg('g', { 'data-zoom-target': 'outdoor', tabindex: 0, role: 'button', 'aria-label': 'Zoom to outdoor zone' }, txt(16, 26, 'OUTDOOR', 'zone-title')),
       svg('g', { 'data-zoom-target': 'rooms', tabindex: 0, role: 'button', 'aria-label': 'Zoom to indoor zone' }, txt(wall.x1 + 14, 26, 'INDOOR', 'zone-title')),
       overlayPanel(wall.x1 + 118, 6, 760, 26, bar.root),
+      // The single calculated whole-house ruler with its ventilation controls, in the 62 units between the bar row and the first room (see STACK_TOP).
+      overlayPanel(wall.x1 + 10, 36, 910, 60, ruler.root),
       // 10 units below the scene top so the switch is not glued to the edge; it still ends well above the first room's pipes.
       overlayPanel(lay.ctlX, 10, LINE_CTL.w, LINE_CTL.modelH, lineModel.root));
 
@@ -616,8 +627,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
         svg('path', { d: `M${INDOOR_COIL.x} 20L${INDOOR_COIL.end} 70M${INDOOR_COIL.end} 20L${INDOOR_COIL.x} 70`, class: 'fin-hint' }),
         dirt,
         fan, label,
-        svg('path', { d: `M${INDOOR_COIL.x} ${UNIT.h - 2}H${INDOOR_COIL.end}`, class: 'louvre' }),
-        svg('path', { d: `M${INDOOR_COIL.x + 6} ${UNIT.h - 2}L${INDOOR_COIL.end - 6} ${UNIT.h + 5}`, class: 'louvre-flap' }));
+        svg('path', { d: `M${INDOOR_COIL.x} ${UNIT.h - 2}H${INDOOR_COIL.end}`, class: 'louvre' }));
       view.append(bg, wash, sep, intake, supply, unit);
       const wrapper = sel(`indoor:${i}`, `Indoor unit ${i + 1}`, { x: wall.x1 + 1, y: b.top + 1, w: zoneW - 2, h: b.h - 2, r: 2 }, view);
       setAttr(wrapper, 'data-zoom-target', `room:${store.state.cfg.rooms[i]!.id}`);
@@ -669,7 +679,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
     const og = svg('g', { class: 'outdoor', 'data-zoom-target': 'outdoor', transform: `translate(${OUT.x} ${OUT.y})` });
     const w = OUT.w;
     const h = lay.outH;
-    const caseFill = owner ? 'url(#gCaseOwner)' : 'url(#gCaseGen)';
+    const caseFill = generic ? 'url(#gCaseGen)' : 'url(#gCaseOwner)';
     og.append(
       svg('rect', { x: 8, y: h - 2, width: 26, height: 5, fill: '#6f7479' }),
       svg('rect', { x: w - 34, y: h - 2, width: 26, height: 5, fill: '#6f7479' }),
@@ -677,8 +687,9 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       svg('rect', { class: 'casing-in', x: 5, y: 5, width: w - 10, height: h - 10, rx: 5 }),
       svg('rect', { x: 6, y: 8, width: 60, height: 219, fill: 'url(#pFins)' }),
     );
-    const casing = sel('outdoor', owner ? 'Outdoor unit, Daikin 3MXM52N8' : 'Generic compatible outdoor unit', { x: 0, y: 0, w, h, r: 8 });
+    const casing = sel('outdoor', `Outdoor unit, ${info.label}`, { x: 0, y: 0, w, h, r: 8 });
     casing.classList.add('casing-sel');
+    casing.append(svg('title', {}, `${info.label} · ${info.ports === null ? 'user-declared ports' : `${info.ports} port${info.ports === 1 ? '' : 's'}`} · published case ${info.caseMm.w} × ${info.caseMm.h} × ${info.caseMm.d} mm (the drawing is a generic illustration)`));
     og.append(casing);
     const overlay: Node[] = [];
     // frost / ice layers on the coil face
@@ -711,13 +722,21 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
     og.append(exhaust);
 
     // fan
-    // Static axial grille only: concentric guard rings and spokes. No blade geometry and no rotation is drawn or claimed.
-    og.append(sel('fan', 'Outdoor fan', { x: 82, y: 16, w: 84, h: 84, r: 42 },
-      svg('g', { transform: `translate(${A.fan[0]} ${A.fan[1]})` },
-        svg('circle', { r: 41, class: 'fan-guard' }), svg('circle', { r: 31, class: 'fan-guard' }), svg('circle', { r: 21, class: 'fan-guard' }),
-        svg('path', { d: 'M0 -41V41M-41 0H41M-29 -29L29 29M29 -29L-29 29', class: 'fan-guard' }),
-        svg('circle', { r: 5, class: 'hub' }))));
-    overlay.push(txt(124, 13, 'Fan', 'dl lbl', 'middle'));
+    // One flat axial fan seen from the side, a narrow strip immediately right of the fin bank: the shroud, the blade disc edge-on and the
+    // motor behind it on two struts. Static: no rotation, no blade geometry and no second front-facing fan. A generic schematic.
+    const fanX = A.fan[0];
+    const fanTop = A.fan[1] - FAN_SIDE.h / 2;
+    const fanBottom = A.fan[1] + FAN_SIDE.h / 2;
+    const shroudR = FAN_SIDE.x + FAN_SIDE.w;
+    og.append(sel('fan', 'Outdoor fan, side view', { x: FAN_SIDE.x - 2, y: fanTop - 2, w: FAN_SIDE.w + 22, h: FAN_SIDE.h + 4, r: 4 },
+      svg('title', {}, 'Outdoor fan, drawn flat from the side beside the coil. Static schematic of a generic axial fan, not a manufacturer cutaway; nothing rotates.'),
+      svg('g', { class: 'fan-side' },
+        svg('path', { class: 'fan-strut', d: `M${shroudR} ${fanTop + 8}L${shroudR + 8} ${A.fan[1] - 7}M${shroudR} ${fanBottom - 8}L${shroudR + 8} ${A.fan[1] + 7}` }),
+        svg('rect', { class: 'fan-motor', x: fanX, y: A.fan[1] - 7, width: 22, height: 14, rx: 3 }),
+        svg('rect', { class: 'fan-shroud', x: FAN_SIDE.x, y: fanTop, width: FAN_SIDE.w, height: FAN_SIDE.h, rx: 4 }),
+        svg('path', { class: 'fan-blades', d: `M${fanX} ${fanTop + 5}V${fanBottom - 5}` }),
+        svg('circle', { class: 'hub', cx: fanX, cy: A.fan[1], r: 3.2 }))));
+    overlay.push(txt(fanX + 7, fanTop - 5, 'Fan', 'dl lbl', 'middle'));
 
     // compressor
     og.append(sel('compressor', 'Compressor', { x: 94, y: 144, w: 40, h: 74, r: 14 },
@@ -767,15 +786,16 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
     root.append(inlet, txt(ambientX, OUT.y - 48, 'Outdoor air', 'outdoor-ambient-label', 'middle'), ambientAir);
 
     // unused owner ports
-    if (owner) {
-      for (let i = n; i < OWNER_PORTS; i++) {
+    if (info.ports !== null) {
+      const published = Math.min(info.ports, 5);
+      for (let i = n; i < published; i++) {
         og.append(
           svg('path', { class: 'cap-port', d: `M${w - 22} ${ygOf(i)}H${w}M${w - 22} ${ylOf(i)}H${w}` }),
           svg('rect', { class: 'cap', x: w - 4, y: ygOf(i) - 4, width: 5, height: 8, rx: 1 }),
           svg('rect', { class: 'cap', x: w - 4, y: ylOf(i) - 4, width: 5, height: 8, rx: 1 }),
         );
       }
-      if (n < OWNER_PORTS) overlay.push(txt(w - 6, h - 6, `${OWNER_PORTS - n} port(s) capped`, 'dl lbl', 'end'));
+      if (n < published) overlay.push(txt(w - 6, h - 6, `${published - n} port(s) capped`, 'dl lbl', 'end'));
     }
 
     // ---- pipes ----
@@ -892,10 +912,16 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
   }
 
   // ---- drawn room links ----
-  // Heat links sit in the free gutter just right of the indoor units: a thin vertical lane between the two rooms' units, with a small
-  // pill (direction, arrow, live kW) on a room separator. Lanes differ for overlapping links, so a non-adjacent link passes the
-  // rooms between without touching pipes, probes, air readings or the room panels. Built only when the link set changes.
-  const LINK_PILL = { w: 80, h: 15, lane: 3, stack: 17 } as const;
+  // A thermal connection belongs to the room boundary, so it is a chip on the shared room separator and nothing is drawn across the
+  // rooms: no connector, no lane, no endpoint dots. It sits at the right end of the equipment column, toward the room environment and
+  // away from the pipes, in the free band the equipment block leaves above each separator. A non-adjacent link is not drawn as
+  // adjacent: its chip is wider and carries a short reference of both endpoints (full names in the title and accessible name).
+  // Chips sharing a separator stack upward, then step left. Built only when the link set or the room order changes.
+  const LINK_PILL = { w: 84, farW: 140, h: 15, stack: 17, rows: 4, gap: 6 } as const;
+  const roomTag = (name: string): string => {
+    const t = (/\(([^)]+)\)/.exec(name)?.[1] ?? name).trim();
+    return t.length > 4 ? `${t.slice(0, 3)}…` : t;
+  };
 
   function buildLinks(links: InterzoneLink[], at: Map<string, number>): G[] {
     const boxes = roomBoxes(layout.n);
@@ -904,39 +930,30 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       const b = at.get(l.roomB) ?? 0;
       return { l, lo: Math.min(a, b), hi: Math.max(a, b) };
     }).sort((p, q) => p.lo - q.lo || p.hi - q.hi);
-    const laneEnd: number[] = [];
     const perSep = new Map<number, number>();
     const items = spans.map((x) => {
-      let lane = laneEnd.findIndex((end) => end <= x.lo);
-      if (lane < 0) { lane = laneEnd.length; laneEnd.push(0); }
-      laneEnd[lane] = x.hi;
       const sep = x.lo + 1 + Math.floor((x.hi - x.lo - 1) / 2);
       const k = perSep.get(sep) ?? 0;
       perSep.set(sep, k + 1);
-      return { ...x, lane, sep, k };
+      return { ...x, sep, k };
     });
-    return items.map(({ l, lo, hi, lane, sep, k }) => {
-      const top = boxes[lo];
-      const bottom = boxes[hi];
+    return items.map(({ l, lo, hi, sep, k }) => {
       const sepBox = boxes[sep];
-      if (!top || !bottom || !sepBox) return svg('g');
+      if (!sepBox) return svg('g');
       const key = pairKey(l.roomA, l.roomB);
-      const x = top.unitX + UNIT.w + 3.5 + LINK_PILL.lane * (lane % 3);
-      const y1 = top.unitY + UNIT.h / 2;
-      const y2 = bottom.unitY + UNIT.h / 2;
-      const cy = sepBox.top + (k - ((perSep.get(sep) ?? 1) - 1) / 2) * LINK_PILL.stack;
-      const px = x + 2 - LINK_PILL.w;
+      const far = hi - lo > 1;
+      const w = far ? LINK_PILL.farW : LINK_PILL.w;
+      const px = sepBox.x0 + ROOM_COLS.equip.dx + ROOM_COLS.equip.w - w - Math.floor(k / LINK_PILL.rows) * (LINK_PILL.farW + LINK_PILL.gap);
+      const cy = sepBox.top - (k % LINK_PILL.rows) * LINK_PILL.stack;
       const title = svg('title');
       const arrow = svg('path', { class: 'lk-arrow', d: 'M-3 -2.6H3L0 2.6z', visibility: 'hidden' });
       const ico = svg('text', { class: 'lk-ico', x: px + 5, y: cy + 3.8 });
-      const val = svg('text', { class: 'lk-val', x: px + 33, y: cy + 3.8 });
-      const g = svg('g', { class: 'room-link', 'data-link': key, 'data-room-a': l.roomA, 'data-room-b': l.roomB, tabindex: 0, role: 'button' },
+      const tag = far ? svg('text', { class: 'lk-tag', x: px + 33, y: cy + 3.6 }) : null;
+      const val = svg('text', { class: 'lk-val', x: px + w - 6, y: cy + 3.8, 'text-anchor': 'end' });
+      const g = svg('g', { class: 'room-link', 'data-link': key, 'data-room-a': l.roomA, 'data-room-b': l.roomB, 'data-span': far ? 'far' : 'adjacent', tabindex: 0, role: 'button' },
         title,
-        svg('rect', { class: 'lk-hit', x: x - 4, y: y1, width: 8, height: y2 - y1 }),
-        svg('path', { class: 'lk-line', d: `M${x} ${y1}V${y2}` }),
-        svg('circle', { class: 'lk-dot', cx: x, cy: y1, r: 2.4 }), svg('circle', { class: 'lk-dot', cx: x, cy: y2, r: 2.4 }),
-        svg('rect', { class: 'lk-pill', x: px, y: cy - LINK_PILL.h / 2, width: LINK_PILL.w, height: LINK_PILL.h, rx: 4 }),
-        arrow, ico, val);
+        svg('rect', { class: 'lk-pill', x: px, y: cy - LINK_PILL.h / 2, width: w, height: LINK_PILL.h, rx: 4 }),
+        arrow, ico, ...(tag ? [tag] : []), val);
       const open = (): void => { setLinking(false); hooks.toggleLink(l.roomA, l.roomB); };
       g.addEventListener('click', (e) => { e.stopPropagation(); open(); });
       g.addEventListener('keydown', (e) => {
@@ -945,7 +962,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
         e.stopPropagation();
         open();
       });
-      linkViews.set(key, { g, arrow, ico, val, title, ax: px + 25, ay: cy });
+      linkViews.set(key, { g, arrow, ico, val, tag, title, ax: px + 24, ay: cy });
       return g;
     });
   }
@@ -971,7 +988,8 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       const known = q !== null && Math.abs(q) >= 0.5;
       // Heat flows toward the lower index (up the stack) when q > 0 and B is above A, or q < 0 and A is above B.
       const up = q !== null && (q > 0) === (ib < ia);
-      const kind = l.kind ?? 'opening';
+      // Both paths act together: a geometry link is `combined`; only a legacy single-path link keeps its old kind.
+      const kind = hasInterzoneGeometry(l) ? 'combined' : l.kind ?? 'opening';
       const orientation = l.orientation ?? 'vertical';
       setText(v.val, q === null ? '— kW' : `${fmt(Math.abs(q) / 1000, 2)} kW`);
       setText(v.ico, orientation === 'vertical' ? '↕' : '↔');
@@ -985,7 +1003,9 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       toggleClass(v.g, 'held', held && q !== null);
       const a = names.get(l.roomA) ?? l.roomA;
       const b = names.get(l.roomB) ?? l.roomB;
-      const what = `${a} and ${b}: ${kind === 'opening' ? 'open passage' : 'solid wall or floor'}, ${orientation} connection, ${fmt(interzoneConductance(l), 0)} W/K`;
+      if (v.tag) setText(v.tag, ia <= ib ? `${roomTag(a)}–${roomTag(b)}` : `${roomTag(b)}–${roomTag(a)}`);
+      const path = kind === 'combined' ? 'open passage and solid contact' : kind === 'opening' ? 'open passage' : 'solid wall or floor';
+      const what = `${a} and ${b}: ${path}, ${orientation} connection, ${fmt(interzoneConductance(l), 0)} W/K`;
       const heat = q === null ? 'live heat unavailable' : `${fmt(Math.abs(q) / 1000, 2)} kW from ${q >= 0 ? a : b} to ${q >= 0 ? b : a}${held ? ' (last calculated step)' : ''}`;
       setAttr(v.g, 'aria-label', `Room link ${what}; ${heat}`);
       setText(v.title, `${what} · ${heat}. Click to edit.`);
@@ -1036,8 +1056,12 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
     const pair = valvePairs(inv ? inv.orientation : fm, inv?.orientation ?? cfg.mode);
     setText(valveLabel, fm === 'idle' ? `${pair.a} · ${pair.b} (idle)` : `${pair.a} · ${pair.b}`);
     const cap = outdoorPortCapacity(cfg);
-    setText(outLabel, cfg.outdoorKind === 'owner' ? 'Daikin 3MXM52N8' : 'Generic compatible outdoor');
-    setText(outSub, cfg.outdoorKind === 'owner' ? `${OWNER_PORTS} ports · R32 · suffix unknown` : `${n} of ${cap} ports used · assumed${layout.outH > 235 ? ' larger' : ''} casing`);
+    // The casing carries the exact reference (the brand goes on the second line for catalogue units, so the label stays short).
+    const model = outdoorModelInfo(cfg);
+    setText(outLabel, model.acceptance === 'reviewed-fields' ? model.id : cfg.outdoorKind === 'owner' ? model.label : 'Generic compatible outdoor');
+    setText(outSub, model.acceptance === 'owner-reference' ? `${OWNER_PORTS} ports · R32 · suffix unknown`
+      : model.ports === null ? `${n} of ${cap} ports used · assumed${layout.outH > 235 ? ' larger' : ''} casing`
+        : `${equipmentManufacturerLabel(model.manufacturer)} · ${model.ports} port${model.ports === 1 ? '' : 's'} · published`);
 
     // gauges
     const conv = (v: number | null): string => (v === null ? '—' : s.ui.pressure === 'abs' ? `${fmt(v, 2)} bar(a)` : `${fmt(v - 1.01325, 2)} bar(g)`);
@@ -1107,8 +1131,10 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       setText(p.air.n, live ? (eng ? `${Math.round(eng.relativeHumidity * 100)} % RH` : '—') : 'EXAMPLE input');
       toggleClass(p.air.n, 'held', !!rd.retainedRooms);
       p.air.root.title = rd.retainedRooms ? 'Last accepted room temperature and humidity; calculation stopped.' : 'Room air temperature and humidity';
-      // Target, floor area, ceiling height and envelope loss are editable; a focused field is never rewritten.
-      for (const f of [p.sp, p.area, p.height, p.loss]) f.refresh();
+      // Target, floor area, ceiling height and average U are editable; a focused field is never rewritten.
+      for (const f of [p.sp, p.area, p.height]) f.refresh();
+      p.insulation.sync(r, cfg);
+      p.model.sync(r, cfg.outdoorKind);
       const targetLabel = `Requested target temperature for ${r.name} (°C)`;
       setAttr(p.sp.num, 'aria-label', targetLabel);
       setAttr(p.sp.range, 'aria-label', targetLabel);
@@ -1116,15 +1142,13 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       // The volume is derived from the stored area and height on every update, so it follows both inputs as they are edited.
       const volume = roomVolumeM3(r);
       setText(p.volume, fmt(volume, volume >= 1000 ? 0 : 1));
-      for (const [f, text] of [[p.area, `Floor area of ${r.name} (m²)`], [p.height, `Ceiling height of ${r.name} (m)`], [p.loss, `Envelope heat-loss coefficient of ${r.name} (W/K)`]] as const) {
+      for (const [f, text] of [[p.area, `Floor area of ${r.name} (m²)`], [p.height, `Ceiling height of ${r.name} (m)`]] as const) {
         setAttr(f.num, 'aria-label', text);
         setAttr(f.range, 'aria-label', text);
       }
       setAttr(p.area.range, 'aria-valuetext', `${fmt(r.surfaceM2, 1)} m²`);
       setAttr(p.height.range, 'aria-valuetext', `${fmt(r.ceilingHeightM, 2)} m`);
-      setAttr(p.loss.range, 'aria-valuetext', `${fmt(r.heatLossWPerK, 0)} W/K`);
-      guide.button(i).setAttribute('aria-label', `Envelope heat-loss guide for ${r.name}`);
-      setText(v.unitLabel, r.indoorClass.startsWith('FTXA') ? r.indoorClass : `${info.label.replace('Generic wall head ', 'Generic ').replace(' class', '')}`);
+      setText(v.unitLabel, r.indoorClass.startsWith('FTXA') || r.indoorClass.startsWith('MSZ-') ? r.indoorClass : `${info.label.replace('Generic wall head ', 'Generic ').replace(' class', '')}`);
       // Each indoor fan follows its own reading; a closed branch neither spins nor blows.
       const fanOn = live ? (br[i]?.fanKw ?? 0) > 0 : rd.indoorFansOn;
       v.view.dataset.fan = fanOn ? '1' : '0';
@@ -1211,12 +1235,14 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
 
     // rooms bar: count against the outdoor group's capacity (owner: fixed; generic: a scenario assumption)
     const full = n >= cap;
-    setText(bar.count, `${n} of ${cap} ${cfg.outdoorKind === 'owner' ? 'ports' : 'assumed ports'}`);
+    const fixedPorts = model.ports !== null;
+    const portWord = `port${cap === 1 ? '' : 's'}`;
+    setText(bar.count, `${n} of ${cap} ${fixedPorts ? portWord : `assumed ${portWord}`}`);
     bar.add.disabled = full;
     setAttr(bar.add, 'title', full
-      ? (cfg.outdoorKind === 'owner' ? `The 3MXM52N8 has ${OWNER_PORTS} ports. Choose Generic on the outdoor unit to explore more.` : 'Generic port capacity (an assumption) is reached. Raise it on the outdoor unit.')
+      ? (fixedPorts ? `${model.label} has ${cap} ${portWord}. Choose another outdoor model, or the generic editable outdoor, to explore more.` : 'Generic port capacity (an assumption) is reached. Raise it on the outdoor unit.')
       : 'Add an indoor unit and its room on the next free port');
-    setText(bar.hint, full ? (cfg.outdoorKind === 'owner' ? `Owner unit full (${OWNER_PORTS} ports): choose Generic on the outdoor unit for more.` : 'Capacity reached: raise the assumed port capacity on the outdoor unit.') : '');
+    setText(bar.hint, full ? (fixedPorts ? `${model.label} full (${cap} ${portWord}): choose another outdoor model for more.` : 'Capacity reached: raise the assumed port capacity on the outdoor unit.') : '');
 
     // weather
     // The glyph is redrawn only when its category changes (sun / cloud / snow cloud), never per update.
@@ -1256,6 +1282,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       src, held, live ? (held ? 'last calculated step' : 'live engine') : 'illustrative fixture value', oc.heatW);
     setText(ambientAir, `${fmt(cfg.outdoorC, 1)} °C`);
 
+    ruler.sync(cfg);
     syncLinks(s, held);
     applyLinkMode();
 

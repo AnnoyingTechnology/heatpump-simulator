@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Stylish (C/FTXA-AW/BB/BT/BS + RXA-A9/B)",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "RXA35A9",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES header column '35A9' (family title 'C/FTXA-AW/BB/BT/BS + RXA-A9/B'); A9 generation",
+        "excerpt": "Unité extérieure RXA 20A9 25A9 35A9 42B 50B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 550,
+          "unit": "mm",
+          "condition": "outdoor unit; row 'Dimensions Unité HxLxP' single merged cell spanning 20A9/25A9/35A9 (visually verified)",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Dimensions Unité HxLxP', merged 20A9/25A9/35A9 columns",
+            "excerpt": "Dimensions Unité HxLxP mm 550x840x350"
+          }
+        },
+        {
+          "key": "width",
+          "value": 840,
+          "unit": "mm",
+          "condition": "outdoor unit; merged 20A9/25A9/35A9 (HxLxP 550x840x350)",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Dimensions Unité HxLxP', merged 20A9/25A9/35A9 columns",
+            "excerpt": "Dimensions Unité HxLxP mm 550x840x350"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 350,
+          "unit": "mm",
+          "condition": "outdoor unit; merged 20A9/25A9/35A9 (HxLxP 550x840x350)",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Dimensions Unité HxLxP', merged 20A9/25A9/35A9 columns",
+            "excerpt": "Dimensions Unité HxLxP mm 550x840x350"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 32,
+          "unit": "kg",
+          "condition": "outdoor unit net weight; row 'Poids Unité' single merged cell spanning 20A9/25A9/35A9 (visually verified)",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Poids Unité', merged 20A9/25A9/35A9 columns",
+            "excerpt": "Poids Unité kg 32"
+          }
+        },
+        {
+          "key": "soundPower",
+          "value": 61.0,
+          "unit": "dBA",
+          "condition": "outdoor sound power, cooling nominal (Rafraîchissement Nom.); 61,0 under 35A9 (single cell); sound POWER not pressure",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Niveau de puissance sonore Rafraîchissement Nom.', 35A9 column",
+            "excerpt": "Niveau de puissance sonore Rafraîchissement Nom. dBA 59,0 61,0 62,0"
+          }
+        },
+        {
+          "key": "soundPower",
+          "value": 61.0,
+          "unit": "dBA",
+          "condition": "outdoor sound power, heating nominal (Chauffage Nom.); 61,0 under 35A9",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Niveau de puissance sonore Chauffage Nom.', 35A9 column",
+            "excerpt": "Niveau de puissance sonore Chauffage Nom. dBA 59,0 61,0 62,0"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 49.0,
+          "unit": "dBA",
+          "condition": "outdoor sound pressure, cooling nominal (Rafraîchissement Nom.); 49,0 under 35A9",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Niveau de pression sonore Rafraîchissement Nom.', 35A9 column",
+            "excerpt": "Niveau de pression sonore Rafraîchissement Nom. dBA 46,0 49,0 48,0"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 49.0,
+          "unit": "dBA",
+          "condition": "outdoor sound pressure, heating nominal (Chauffage Nom.); 49,0 under 35A9",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Niveau de pression sonore Chauffage Nom.', 35A9 column",
+            "excerpt": "Niveau de pression sonore Chauffage Nom. dBA 47,0 49,0 48,0"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "condition": "refrigerant circuit belongs to outdoor unit; row 'Réfrigérant Type/PRP' merged across all outdoor columns; PRP/GWP 675,0",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Réfrigérant Type/PRP', merged all outdoor columns",
+            "excerpt": "Réfrigérant Type/PRP R-32/675,0"
+          }
+        },
+        {
+          "key": "factoryCharge",
+          "value": 0.76,
+          "unit": "kg",
+          "condition": "factory charge of outdoor refrigerant circuit; row 'Charge kg/Téq. CO₂' merged 20A9/25A9/35A9 = 0,76 kg / 0,52 tCO2; belongs to outdoor circuit not indoor head",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Réfrigérant Charge kg/Téq. CO₂', merged 20A9/25A9/35A9 columns",
+            "excerpt": "Charge kg/Téq. CO₂ 0,76/0,52"
+          }
+        },
+        {
+          "key": "liquidConnectionDiameter",
+          "value": 6.35,
+          "unit": "mm",
+          "condition": "flare liquid connection (DE); row 'Raccords de tuyauterie Liquide/Gaz DE' merged 20A9/25A9/35A9 = 6,35/9,50 mm",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Raccords de tuyauterie Liquide/Gaz DE mm', merged 20A9/25A9/35A9 columns",
+            "excerpt": "Raccords de tuyauterie Liquide/Gaz DE mm 6,35/9,50"
+          }
+        },
+        {
+          "key": "gasConnectionDiameter",
+          "value": 9.50,
+          "unit": "mm",
+          "condition": "flare gas connection (DE); merged 20A9/25A9/35A9 = 6,35/9,50 mm",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Raccords de tuyauterie Liquide/Gaz DE mm', merged 20A9/25A9/35A9 columns",
+            "excerpt": "Raccords de tuyauterie Liquide/Gaz DE mm 6,35/9,50"
+          }
+        },
+        {
+          "key": "maximumTotalPipeLength",
+          "value": 20,
+          "unit": "m",
+          "condition": "outdoor-indoor max pipe length; row 'Longueur de tuyauterie UE - UI Maxi.' merged 20A9/25A9/35A9 = 20 m (42B/50B = 30 m)",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Longueur de tuyauterie UE - UI Maxi. m', merged 20A9/25A9/35A9 columns",
+            "excerpt": "Longueur de tuyauterie UE - UI Maxi. m 20 30"
+          }
+        },
+        {
+          "key": "additionalChargePerLength",
+          "value": 0.02,
+          "unit": "kg/m",
+          "condition": "additional refrigerant charge per metre; row 'Charge supplémentaire de réfrigérant kg/m' merged all outdoor = 0,02 (for pipe length above 10 m)",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Charge supplémentaire de réfrigérant kg/m', merged all outdoor columns",
+            "excerpt": "Charge supplémentaire de réfrigérant kg/m 0,02 (pour longueur de tuyauterie supérieure à 10m)"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15.0,
+          "unit": "m",
+          "condition": "indoor-outdoor max height difference; row 'Dénivelé UI - UE Maxi.' merged 20A9/25A9/35A9 = 15,0 m (42B/50B = 20 m)",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Dénivelé UI - UE Maxi. m', merged 20A9/25A9/35A9 columns",
+            "excerpt": "Dénivelé UI - UE Maxi. m 15,0 20"
+          }
+        },
+        {
+          "key": "supplyVoltage",
+          "value": { "minimum": 220, "nominal": null, "maximum": 240 },
+          "unit": "V",
+          "condition": "row 'Alimentation électrique Phase/Fréquence/Tension Hz/V' merged all outdoor = 1~/50/220-240; range preserved, no midpoint",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Alimentation électrique Phase/Fréquence/Tension Hz/V', merged all outdoor columns",
+            "excerpt": "Alimentation électrique Phase/Fréquence/Tension Hz/V 1~/50 /220-240"
+          }
+        },
+        {
+          "key": "supplyPhases",
+          "value": 1,
+          "unit": "none",
+          "condition": "single phase (1~) per '1~/50/220-240' merged all outdoor",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Alimentation électrique Phase/Fréquence/Tension Hz/V', merged all outdoor columns",
+            "excerpt": "Alimentation électrique Phase/Fréquence/Tension Hz/V 1~/50 /220-240"
+          }
+        },
+        {
+          "key": "supplyFrequency",
+          "value": 50,
+          "unit": "Hz",
+          "condition": "frequency 50 Hz per '1~/50/220-240' merged all outdoor",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Alimentation électrique Phase/Fréquence/Tension Hz/V', merged all outdoor columns",
+            "excerpt": "Alimentation électrique Phase/Fréquence/Tension Hz/V 1~/50 /220-240"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "cooling operating range (Temp. ext. Mini.~Maxi. °CBS); row merged 20A9/25A9/35A9 = -10~46",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Plage de fonctionnement Rafraîchissement Temp. ext. Mini.~Maxi. °CBS', merged 20A9/25A9/35A9 columns",
+            "excerpt": "Plage de fonctionnement Rafraîchissement Temp. ext. Mini.~Maxi. °CBS -10~46"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "cooling operating range max; merged 20A9/25A9/35A9 = -10~46",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Plage de fonctionnement Rafraîchissement Temp. ext. Mini.~Maxi. °CBS', merged 20A9/25A9/35A9 columns",
+            "excerpt": "Plage de fonctionnement Rafraîchissement Temp. ext. Mini.~Maxi. °CBS -10~46"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "heating operating range (Temp. ext. Min. - Max. °CBS); row merged 20A9/25A9/35A9 = -15-24",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Plage de fonctionnement Chauffage Temp. ext. Min. - Max. °CBS', merged 20A9/25A9/35A9 columns",
+            "excerpt": "Plage de fonctionnement Chauffage Temp. ext. Min. - Max. °CBS -15-24"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "condition": "heating operating range max; merged 20A9/25A9/35A9 = -15-24",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), UNITÉS EXTÉRIEURES row 'Plage de fonctionnement Chauffage Temp. ext. Min. - Max. °CBS', merged 20A9/25A9/35A9 columns",
+            "excerpt": "Plage de fonctionnement Chauffage Temp. ext. Min. - Max. °CBS -15-24"
+          }
+        }
+      ],
+      "ratings": [
+        {
+          "mode": "cooling",
+          "combination": "RXA35A9 + FTXA35AW/BS/BT/BB (35-class monosplit, shared efficiency column '35AW/BS/BT/BB + 35A9')",
+          "conditions": "nominal cooling per footnote: indoor 27 °CBS/19 °CBH, outdoor 35 °CBS, equiv pipe 5 m, height diff 0 m; published min/nominal/max thermal 1,40/3,40/4,00 kW",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.40, "nominal": 3.40, "maximum": 4.00 },
+          "electricalInputKw": { "minimum": 0.31, "nominal": 0.78, "maximum": 1.04 },
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), 'Données relatives à l'efficacité' rows 'Puissance frigorifique Mini./Nom./Maxi.' and 'Puissance absorbée Rafraîchissement Mini./Nom./Maxi.', column '35AW/BS/BT/BB + 35A9'",
+            "excerpt": "Puissance frigorifique Mini./Nom./Maxi. kW 1,40/3,40/4,00 ; Puissance absorbée Rafraîchissement Mini./Nom./Maxi. kW 0,31/0,78/1,04"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "RXA35A9 + FTXA35AW/BS/BT/BB (35-class monosplit)",
+          "conditions": "nominal heating per footnote: indoor 20 °CBS, outdoor 7 °CBS/6 °CBH, equiv pipe 5 m, height diff 0 m; published min/nominal/max thermal 1,40/4,00/5,20 kW",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.40, "nominal": 4.00, "maximum": 5.20 },
+          "electricalInputKw": { "minimum": 0.26, "nominal": 0.99, "maximum": 1.67 },
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), rows 'Puissance calorifique Mini./Nom./Maxi.' and 'Puissance absorbée Chauffage Mini./Nom./Maxi.', column '35AW/BS/BT/BB + 35A9'",
+            "excerpt": "Puissance calorifique Mini./Nom./Maxi. kW 1,40/4,00/5,20 ; Puissance absorbée Chauffage Mini./Nom./Maxi. kW 0,26/0,99/1,67"
+          }
+        }
+      ],
+      "compatibility": [
+        {
+          "description": "monosplit pairing RXA35A9 + FTXA35AW/BS/BT/BB evidenced by shared efficiency column '35AW/BS/BT/BB + 35A9'. CAVEAT: vertical merged band on p.42 'Possibilité de connexion uniquement aux unités extérieures multi' spans the efficiency table; verify against separate combination scheme before asserting monosplit eligibility. Never assume all R32 devices pair.",
+          "evidence": {
+            "sourceId": "daikin-fr-split-installer-2022",
+            "locator": "PDF p.42 (printed 42), 'Données relatives à l'efficacité' column header '35AW/BS/BT/BB + 35A9' + vertical merged caveat band 'Possibilité de connexion uniquement aux unités extérieures multi'",
+            "excerpt": "35AW/BS/BT/BB + 35A9 ; Possibilité de connexion uniquement aux unités extérieures multi"
+          }
+        }
+      ],
+      "unknowns": [
+        "outdoor airflow (Débit d'air): not published on p.42; searched official daikin.eu 2026-10-11 — RXA-A9 spec table (current refs RXA20/25/35A5V1B9) has no airflow row and exact-suffix 'RXA35A9' page 404s; remains UNKNOWN, not inferred",
+        "outdoor fan motor output / electrical input: not published",
+        "SEER 8,73 / SCOP 5,15 / EER 4,37 / COP 4,04 and annual energy are system/combination seasonal+nominal ratings for FTXA35+RXA35A9, not standalone outdoor facts",
+        "capacityClass: no single capacity-class scalar per outdoor column; nominal 3,40 kW is a rating-table value not a class label",
+        "MFA (Intensité maximale de fusible): 13 merged 25A9/35A9/42B/50B; fuse rating not a schema fact key (no amperes unit), note only",
+        "current 2026 availability of RXA-A9: daikin.eu FTXA-BS page 'Archived' (prior generation); status unknown not current",
+        "prechargedPipeLength: not published on p.42 (only 'charge supplémentaire >10m' note)"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    { "modelReference": "FTXA35AW/BS/BT/BB", "reason": "paired indoor unit of this split; captured in separate candidate file daikin-ftxa35-indoor.json" }
+  ]
+}

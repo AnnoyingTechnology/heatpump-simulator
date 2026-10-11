@@ -58,7 +58,7 @@ try{
    records.push({requested:speed,wallSeconds,simulatedSeconds,actual:simulatedSeconds/wallSeconds,rateText,roomChangeC:after.rooms[0].temperatureC-before.rooms[0].temperatureC});
    assert.equal(after.diagnostics.fault,null);assert.ok(Math.abs(after.energy.residualJ)<.01);
    assert.ok(Math.abs(simulatedSeconds/.25-Math.round(simulatedSeconds/.25))<1e-8);
-   assert.match(rateText,/× actual$/);
+   assert.match(rateText,/×$/);
    const time=after.simulatedSeconds;await new Promise(r=>setTimeout(r,600));assert.equal(await run(()=>qv.simulation.status.output.simulatedSeconds),time);
   }
   assert.ok(records[0].actual>.8&&records[0].actual<1.2,JSON.stringify(records));

@@ -2,6 +2,14 @@ import { DomainError, Properties } from './properties.ts';
 import { FUSION_JKG, ICE_CP_JKGK, WATER_CP_JKGK } from './film.ts';
 export interface AirExchange { outletC: number; outletHumidityRatio: number; signedHeatToAirW: number; heatFromAirW: number; waterToSurfaceKgs: number; drainEnthalpyW: number; sensibleToAirW: number; evaporationLimited: boolean; totalOutletEnthalpyJkg: number; totalOutletWater: number; fogWater: number }
 export interface ExhaustEquilibrium { temperatureC: number; vaporWater: number; fogWater: number; fogIceWater: number; totalEnthalpyJkg: number; totalWater: number }
+/** Conserved lumped room gas plus retained condensate. The hypothetical gas
+ * inverse only classifies the all-gas fast path; supersaturated states are flashed. */
+export function equilibrateRoomAir(properties:Properties,h:number,w:number,p:number,referenceC:number):ExhaustEquilibrium {
+  if(!(Number.isFinite(h)&&Number.isFinite(w)&&w>=0))throw new DomainError('Invalid room energy/water');
+  const gasT=properties.airT(h,w,p),satW=properties.airW(gasT,1,p);
+  if(w<=satW)return {temperatureC:gasT,vaporWater:w,fogWater:0,fogIceWater:0,totalEnthalpyJkg:h,totalWater:w};
+  return equilibrateExhaust(properties,h,w,p,referenceC);
+}
 /** Outdoor entrained condensate exits with the air; no fictitious film deposition.
  * Humid-air enthalpy is per kg dry air; condensed water uses the film's 0 C liquid reference. */
 export function equilibrateExhaust(properties: Properties, h: number, w: number, p: number, referenceC: number): ExhaustEquilibrium {

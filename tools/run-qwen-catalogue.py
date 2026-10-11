@@ -42,7 +42,7 @@ config = {
         '*': 'deny', 'read': 'allow', 'glob': 'allow', 'grep': 'allow',
         'webfetch': 'allow', 'websearch': 'allow', 'todowrite': 'allow',
         'edit': {'*': 'deny', 'research/catalogue/staging/*': 'allow', str(ROOT / 'research/catalogue/staging/*'): 'allow'},
-        'bash': {'*': 'deny', 'python3 tools/catalogue-pages.py *': 'allow', 'python3 tools/catalogue-page-image.py *': 'allow', 'python3 tools/validate-catalogue.py *': 'allow'},
+        'bash': {'*': 'deny', 'python3 tools/catalogue-pages.py *': 'allow', 'python3 tools/catalogue-page-image.py *': 'allow', 'python3 tools/validate-catalogue.py *': 'allow', 'python3 tools/catalogue-source-cache.py *': 'allow'},
         'external_directory': 'deny',
     },
 }

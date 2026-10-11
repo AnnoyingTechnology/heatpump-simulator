@@ -1,0 +1,187 @@
+{
+  "checkedAt": "2026-10-11T10:45:33.384Z",
+  "snapshot": "/tmp/heatpump-reference-regression-8h6m5de3",
+  "method": "Independent reviewer direct native EOS forward enthalpy derivatives, scalar Cmin reconstruction, frozen-state total H/W accounting and saturated-intake room phase evolution. Shared EOS; no independent experimental calibration.",
+  "sourceHashes": {
+    "src/engine/engine.ts": "1476bef6b75e16cb72e9cdd1fcf7ee01d4a93e60c629e2848e5c2c14bb3bd05f",
+    "src/engine/types.ts": "872d14a3bbdc07a69883fdf3c393b9cc0ef9fbe9de72d33a983f699f2361a9b7",
+    "src/engine/properties.ts": "6fb2812381e471623e449a5b593cd4e1d9874f32e559b33bd05c2eac7b6ad36e",
+    "src/engine/demand.ts": "83b3115c656098d0c8d57b97b0d0d5abf6b014c797324e7ff31756a7c28adf90",
+    "src/engine/ventilation.ts": "6aef508a062fca992c2b7a1961ae69c12ae5317c5824326ffe57a1a0a4ecd8d8",
+    "src/engine/cycle.ts": "294d647a26f60d319641c9b7fe4645378472dd5c70a8e6c0ef6075168aaf29e4",
+    "src/engine/envelope.ts": "eaab1d96df755b322050854fa8b7108e1f4918fbeb4dd1206d815ba9c74dc4e3",
+    "src/engine/drive.ts": "d94247f20b359a61980e0d5af121d5299133f3b65a49358c4c40540a6655d0dd",
+    "public/vendor/coolprop-safe/adapter.js": "06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34",
+    "public/vendor/coolprop-safe/coolprop.js": "6fa2e627803e2453da12cb9fce160ca3326851cd179444edc5ab698e21524d6c",
+    "public/vendor/coolprop-safe/coolprop.wasm": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+    "src/types.ts": "ce1e1abb9641f06f489b4c6c6938cb736f5be7db1b3b3c91c0ede9e98d32b3f6",
+    "src/state.ts": "8509851dbc6705be1de2aea49ac3a185725bae6a28e1c71154a96020e457fc5b",
+    "src/runtime/config.ts": "e81786b88fdda6eb0f967ac57a736c395e82d6ce4f91425a9d0a9e58e58d48ad",
+    "research/room-insulation-and-links.md": "3a8946578b51d90a33df6d0aa258ff4308d9b46a5ade4cff525e1c7e83b01598"
+  },
+  "cases": [
+    {
+      "roomC": 22,
+      "outdoorC": 0,
+      "roomWater": 0.0065911315686371175,
+      "outdoorWater": 0.0018892608940164954,
+      "cpRoom": 1018.5832867731776,
+      "cpOutdoor": 1009.2038494056951,
+      "efficiencies": [
+        {
+          "eta": 0,
+          "heatToRoomW": -2732.3456536290173,
+          "waterToRoomKgs": -0.00037614965396964975
+        },
+        {
+          "eta": 0.75,
+          "heatToRoomW": -1400.1965724134998,
+          "waterToRoomKgs": -0.00037614965396964975
+        },
+        {
+          "eta": 1,
+          "heatToRoomW": -956.146878674994,
+          "waterToRoomKgs": -0.00037614965396964975
+        }
+      ]
+    },
+    {
+      "roomC": 22,
+      "outdoorC": 35,
+      "roomWater": 0.0065911315686371175,
+      "outdoorWater": 0.021546660809341207,
+      "cpRoom": 1018.5832867731776,
+      "cpOutdoor": 1047.5393764030703,
+      "efficiencies": [
+        {
+          "eta": 0,
+          "heatToRoomW": 4127.573417965639,
+          "waterToRoomKgs": 0.0011964423392563273
+        },
+        {
+          "eta": 0.75,
+          "heatToRoomW": 3333.078454282561,
+          "waterToRoomKgs": 0.0011964423392563273
+        },
+        {
+          "eta": 1,
+          "heatToRoomW": 3068.2467997215344,
+          "waterToRoomKgs": 0.0011964423392563273
+        }
+      ]
+    },
+    {
+      "roomC": 22,
+      "outdoorC": 22,
+      "roomWater": 0.004930286361450232,
+      "outdoorWater": 0.009939364113344167,
+      "cpRoom": 1015.4465427997402,
+      "cpOutdoor": 1024.9342059096982,
+      "efficiencies": [
+        {
+          "eta": 0,
+          "heatToRoomW": 1018.0036893712893,
+          "waterToRoomKgs": 0.0004007262201515148
+        },
+        {
+          "eta": 0.75,
+          "heatToRoomW": 1018.0036893712893,
+          "waterToRoomKgs": 0.0004007262201515148
+        },
+        {
+          "eta": 1,
+          "heatToRoomW": 1018.0036893712893,
+          "waterToRoomKgs": 0.0004007262201515148
+        }
+      ]
+    },
+    {
+      "roomC": 10,
+      "outdoorC": 45,
+      "roomWater": 0.007662649152912059,
+      "outdoorWater": 0.06541612017089567,
+      "cpRoom": 1020.307877264529,
+      "cpOutdoor": 1133.263637701369,
+      "efficiencies": [
+        {
+          "eta": 0,
+          "heatToRoomW": 14785.468953686757,
+          "waterToRoomKgs": 0.004620277681438688
+        },
+        {
+          "eta": 0.75,
+          "heatToRoomW": 12642.822411431247,
+          "waterToRoomKgs": 0.004620277681438688
+        },
+        {
+          "eta": 1,
+          "heatToRoomW": 11928.606897346075,
+          "waterToRoomKgs": 0.004620277681438688
+        }
+      ]
+    }
+  ],
+  "storage": [
+    {
+      "outdoorC": 0,
+      "firstRecoveryW": 164.28464554018473,
+      "firstRoomStorageDifferenceJ": 41.07116138515994,
+      "finalTimeS": 0.25,
+      "retainedRoomWaterKg": 0,
+      "energyResidualJ": 1.3901342299504904e-9,
+      "waterResidualKg": -3.6083603553033194e-17
+    },
+    {
+      "outdoorC": 35,
+      "firstRecoveryW": -97.9795169569465,
+      "firstRoomStorageDifferenceJ": -24.494879241567105,
+      "finalTimeS": 0.25,
+      "retainedRoomWaterKg": 0,
+      "energyResidualJ": -1.1859214055220946e-8,
+      "waterResidualKg": -2.2104171791548222e-17
+    },
+    {
+      "outdoorC": 45,
+      "firstRecoveryW": -275.0041737501678,
+      "firstRoomStorageDifferenceJ": -68.75104343751445,
+      "finalTimeS": 10,
+      "retainedRoomWaterKg": 0.0023251566552929025,
+      "energyResidualJ": 1.2842065189033747e-9,
+      "waterResidualKg": 6.331740687315346e-17
+    }
+  ],
+  "frontendDefaults": {
+    "method": "Reviewer independently recomputed square-box surfaces and capped stated49m2 shared interface deductions from final source defaults; reviewed Store/runtime mapping and data-agent8-group receipt.",
+    "rooms": [
+      {
+        "id": "attic",
+        "volumeM3": 84,
+        "exposedAreaM2": 91.89502140642983,
+        "effectiveAverageUValueWm2K": 0.16322973508715521,
+        "envelopeWK": 15
+      },
+      {
+        "id": "first",
+        "volumeM3": 155,
+        "exposedAreaM2": 94.98339722334595,
+        "effectiveAverageUValueWm2K": 0.26320389384698967,
+        "envelopeWK": 25
+      },
+      {
+        "id": "ground",
+        "volumeM3": 100,
+        "exposedAreaM2": 104.76521771955248,
+        "effectiveAverageUValueWm2K": 0.4295318711641601,
+        "envelopeWK": 45
+      }
+    ],
+    "ownerVentilation": {
+      "mode": "dual",
+      "grossACH": 0.5,
+      "sensibleRecoveryEfficiency": 0.75,
+      "nominalVentilationWK": 14.4075,
+      "totalEnvelopeAndNominalVentilationWK": 99.4075
+    },
+    "sharedCoilClearFraction": 0.95
+  }
+}

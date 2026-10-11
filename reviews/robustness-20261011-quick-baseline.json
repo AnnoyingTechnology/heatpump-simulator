@@ -1,0 +1,730 @@
+{
+  "createdAt": "2026-10-11T09:06:28.199Z",
+  "preset": "quick",
+  "seed": 20261011,
+  "workers": 12,
+  "timeoutMs": 360000,
+  "sourceHashes": {
+    "src/engine/air.ts": "ac6f645fbacc073afdcb3abf214257d142358af0b1f58e87d61105f342f9cf6e",
+    "src/engine/charge-output.ts": "ca0bed2dd4836af7e72dce71e28e5d0b11309358f4c3da0bb6365a9079142ff7",
+    "src/engine/charge.ts": "0c9dd8050fab6b3bd16bcb881f59fc00debc2f85c774c2a1c2216d45d289e168",
+    "src/engine/cycle.ts": "159c03d3de5e22fb928e606e20a4d7b142c73778d7080a187fa42ccdf4af26ee",
+    "src/engine/defaults.ts": "5ca7d8006c6990e4b6b99a6ef353ec075b720a07701dac39a23ca9fb4fec99f8",
+    "src/engine/demand.ts": "53e9c8bbc8e85e37f3cad9d842e22510ccf2404e04cc7bbe7755b14140d12197",
+    "src/engine/drive.ts": "20eb503ff13439e2a7d22a5c5334c3fa232083a696543c92442cc1a1d3a7296c",
+    "src/engine/engine.ts": "31e80127989aa76c2b95770432be2e1867c3799a793cd7665af50c6dfd62e768",
+    "src/engine/film.ts": "3cfeda3465b8c5226e6ed82bada490abdc42577fdadd4a1d0a2e3fb682285dbb",
+    "src/engine/index.ts": "f8aba3f8724f99dcd1c17be93cfc3622a9fe276d968cc36f5bbf70e9c3773ebd",
+    "src/engine/interzone.ts": "856dfe9535d53f52aa8aae8f0cc83167163b11bab8ca6bb9bb62ff9e600d8bed",
+    "src/engine/properties.ts": "7f4bb2f372a77f30e76844dd7ef9d7afa6d25f72079a09ce66586cdc134404d1",
+    "src/engine/thermostat.ts": "624305969795b54b99745ac84d1c966dbc0e66263ee8579111ea2054c971d5f5",
+    "src/engine/transport.ts": "928ab51cd8ca1193e68ba0821ee88ae2966521314ad9b1fd1b9894f253e2ed31",
+    "src/engine/types.ts": "cd797078c182162bb394db3dfed1a16c66a8ca919fa1b052cc4bec21f8fda779",
+    "compiled/air.js": "412e11680a017b3f77b0986ea6bea1d9e7e9e170d6915e26f61e068172adfd5e",
+    "compiled/charge-output.js": "4ed7ae6f5cc6b6f0b52465b8cbba32f400f890e729ba71cd2db804a11c435fa0",
+    "compiled/charge.js": "716d6e0134395d6f67245751af1d915e179ab2c599b8a66950bbf8006fac9b1d",
+    "compiled/cycle.js": "75bce54543febe409c4758b30ce553b5e0c3df75e7ebdf0bab1a460dac4dc533",
+    "compiled/defaults.js": "b1bcc26d4004cb951b5440c02becc157363373d64aef5f088b809c1bd20a2ed8",
+    "compiled/demand.js": "a06da83a3ed88028b94b91f3ea9e21aeef15cadb8cc8baede54676ce8b900230",
+    "compiled/drive.js": "08b79261d3e7b37c35255d7ab3d58b6d7c66762c14b5b48cb82efb52002139df",
+    "compiled/engine.js": "81f9dc1304848252dd1992fcc4b54f22e83c205127ee2c0342a4312a22f288ff",
+    "compiled/film.js": "2af475cdfb6faa4512ac7a17c45393f3be33ab88e2cb5be334138956ecf33d51",
+    "compiled/index.js": "2a58c1821531507d4843729995d2ffc8bbf2176ace4cb1e0269090322f8488c3",
+    "compiled/interzone.js": "677d003f3074e81bd06c7754444c0cdefd77fb56302e3db72536bfec8e602c60",
+    "compiled/properties.js": "765c01b7d61ee144821da2f9fd379469e8e34bbb44335616dd5afbca3b00c18a",
+    "compiled/thermostat.js": "4aa6dbf014fc983efb014e5a5fc0a45613a9c7d7bd42009b4f6108eeacf0398f",
+    "compiled/transport.js": "5bc7c0f1850837de00043e755290d8e3d131d4ee3adb27646557344409bc1dcf",
+    "compiled/types.js": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "public/vendor/coolprop-safe/LICENSE-CoolProp": "9bf835333ef602af4cb19338b9f9d43671e174fa029b00280e9bdba6ea4719b2",
+    "public/vendor/coolprop-safe/adapter.js": "06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34",
+    "public/vendor/coolprop-safe/coolprop.js": "6fa2e627803e2453da12cb9fce160ca3326851cd179444edc5ab698e21524d6c",
+    "public/vendor/coolprop-safe/coolprop.wasm": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+    "public/vendor/coolprop-safe/licenses/Emscripten-LICENSE": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86",
+    "public/vendor/coolprop-safe/licenses/boost_headers-LICENSE": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "public/vendor/coolprop-safe/licenses/compiler-rt-LICENSE.TXT": "1a8f1058753f1ba890de984e48f0242a3a5c29a6a8f2ed9fd813f36985387e8d",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.APACHE": "03379001a7b12a2ec997a25554247d985270b353c10d5bafee9ac8d6519820b7",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.BSD": "51928dce36213c5333ba3172e847d735d4c6e9b7ff2722a326c49067155b82eb",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.MINPACK": "c87b7f8ee88f6195e91743820c00354833583aef091b72e2d4a49c8e28e798a0",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.MPL2": "66a3107d5ad6a058aab753eaac2047ccb2ed0e39465dd0fe5844da3e300d5172",
+    "public/vendor/coolprop-safe/licenses/eigen-COPYING.README": "db640ff2bd90c6abd6a4d3fbb351e0ee4d555417cf840492054d1cbb2ea85644",
+    "public/vendor/coolprop-safe/licenses/eigen-LICENSE": "1f256ecad192880510e84ad60474eab7589218784b9a50bc7ceee34c2b91f1d5",
+    "public/vendor/coolprop-safe/licenses/fmt-LICENSE": "07580f2a3b35709ce703d523f447b242f6dfec7582a8c0df102c7fa2849375f8",
+    "public/vendor/coolprop-safe/licenses/if97-LICENSE": "e22c3d30ef8d88ab468d9ea20392ca1df22fa3fd0a92dc3e996d89cf3cfdbd03",
+    "public/vendor/coolprop-safe/licenses/libcxx-LICENSE.TXT": "539dd7aed86e8a4f12cbdd0e6c50c189c7d74847e4fecc64ce2c6ee3a01da38b",
+    "public/vendor/coolprop-safe/licenses/libcxxabi-LICENSE.TXT": "e2b35be49f7284a45b7baca8fc7b3ab7440e7902392b2528a457816b5bb2a15c",
+    "public/vendor/coolprop-safe/licenses/miniz-header-notice.txt": "dfdeccf4fcb0cef3d71b31fa915e804f272fa57f00d4ff5076d2c8e8efc22057",
+    "public/vendor/coolprop-safe/licenses/msgpack-c-COPYING": "664550b43996452a5a2c7471bb0ff77185a58c69ccafa60f983dc4c162e1ee22",
+    "public/vendor/coolprop-safe/licenses/msgpack-c-LICENSE_1_0.txt": "c9bff75738922193e67fa726fa225535870d2aa1059f91452c411736284ad566",
+    "public/vendor/coolprop-safe/licenses/multicomplex-README.md": "d58933ccd086958d576969174c04af6506cc5586da9d2125ec644d534225c018",
+    "public/vendor/coolprop-safe/licenses/musl-COPYRIGHT": "f9bc4423732350eb0b3f7ed7e91d530298476f8fec0c6c427a1c04ade22655af",
+    "public/vendor/coolprop-safe/licenses/nlohmann_json-LICENSE.MIT": "46a65cffd1ea955132d95a8dd921640714a8d6b537d2e4e482d31145ae95b603",
+    "public/vendor/coolprop-safe/licenses/refprop_headers-LICENSE": "f21f633c596509e89b2baedfd657c8f1b8018954b06576590971684b210e91f8",
+    "public/vendor/coolprop-safe/licenses/valijson-LICENSE": "61b5766db38eaa3f320c366357956d7743424bfbf90fd78f5943866ba237589e",
+    "public/vendor/coolprop-safe/provenance.json": "fffa34344622d1d2266c5d389552e3e672706422f317193ebf756bc0a157f697",
+    "tools/robustness-worker.mjs": "a41dce70bad5ad8ef6e8213aba681a75fae15b7db3bafeb48430ae26cb78f0e8"
+  },
+  "method": "Independent Node child processes; immutable TypeScript snapshot compiled once; production guarded HEOS; fixed accepted 0.25-second steps; full before-step checkpoint persisted for native aborts.",
+  "limits": "Reference R32 engine only. Passing a finite campaign is not proof of correctness. Generic component parameters, not calibrated manufacturer maps. The screenshot scenario is reconstructed from visible controls, not a saved exact pre-crash state.",
+  "scenarios": [
+    {
+      "id": "reported-friend-cold-cooling",
+      "requestedSeconds": 1100
+    },
+    {
+      "id": "reported-owner-reversal-winter-house",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "reported-owner-reversal-old-generic",
+      "requestedSeconds": 1200
+    },
+    {
+      "id": "grid-heating--25-0",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-heating--25-1",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-heating--5-0",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-heating--5-1",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-heating-5.5-0",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-heating-5.5-1",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-heating-25-0",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-heating-25-1",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-heating-45-0",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-heating-45-1",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-cooling--25-0",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-cooling--25-1",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-cooling--5-0",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-cooling--5-1",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-cooling-5.5-0",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-cooling-5.5-1",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-cooling-25-0",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-cooling-25-1",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-cooling-45-0",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "grid-cooling-45-1",
+      "requestedSeconds": 20
+    },
+    {
+      "id": "sequence-0",
+      "requestedSeconds": 70
+    },
+    {
+      "id": "sequence-1",
+      "requestedSeconds": 70
+    },
+    {
+      "id": "sequence-2",
+      "requestedSeconds": 70
+    },
+    {
+      "id": "sequence-3",
+      "requestedSeconds": 70
+    },
+    {
+      "id": "sequence-4",
+      "requestedSeconds": 70
+    },
+    {
+      "id": "sequence-5",
+      "requestedSeconds": 70
+    },
+    {
+      "id": "sequence-6",
+      "requestedSeconds": 70
+    },
+    {
+      "id": "sequence-7",
+      "requestedSeconds": 70
+    }
+  ],
+  "completed": 31,
+  "counts": {
+    "physical-fault": 6,
+    "pass": 25
+  },
+  "results": [
+    {
+      "id": "grid-heating-45-0",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 315.5 W at -19.218740,50.742354; equations -237.578,-207.607)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 315.5 W at -19.218740,50.742354; equations -237.578,-207.607)\n    at file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 315.5 W at -19.218740,50.742354; equations -237.578,-207.607)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 315.5 W at -19.218740,50.742354; equations -237.578,-207.607)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:402:59)\n    at engine.advance (file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1,
+      "updates": 0,
+      "simulatedSeconds": 0,
+      "wallSeconds": 3.119258894,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 20,
+        "substep": 0
+      },
+      "maxEnergyResidualJ": 0,
+      "maxWaterResidualKg": 0
+    },
+    {
+      "id": "grid-heating-25-0",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 46.6 W at 19.437015,20.446437; equations 13.105,-44.741)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 46.6 W at 19.437015,20.446437; equations 13.105,-44.741)\n    at file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 46.6 W at 19.437015,20.446437; equations 13.105,-44.741)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 46.6 W at 19.437015,20.446437; equations 13.105,-44.741)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:402:59)\n    at engine.advance (file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1,
+      "updates": 0,
+      "simulatedSeconds": 0,
+      "wallSeconds": 3.679329394,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 20,
+        "substep": 0
+      },
+      "maxEnergyResidualJ": 0,
+      "maxWaterResidualKg": 0
+    },
+    {
+      "id": "grid-heating-25-1",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 4.578648642,
+      "maxEnergyResidualJ": 4.674802767112851e-08,
+      "maxWaterResidualKg": 2.1597307275911248e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "grid-heating-5.5-0",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 5.280792156,
+      "maxEnergyResidualJ": 2.5380131773999892e-08,
+      "maxWaterResidualKg": 2.5608855314107615e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "grid-heating-45-1",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 315.5 W at -19.218740,50.742354; equations -237.578,-207.607)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 315.5 W at -19.218740,50.742354; equations -237.578,-207.607)\n    at file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 315.5 W at -19.218740,50.742354; equations -237.578,-207.607)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 315.5 W at -19.218740,50.742354; equations -237.578,-207.607)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:402:59)\n    at engine.advance (file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1,
+      "updates": 0,
+      "simulatedSeconds": 0,
+      "wallSeconds": 2.8917832669999997,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 20,
+        "substep": 0
+      },
+      "maxEnergyResidualJ": 0,
+      "maxWaterResidualKg": 0
+    },
+    {
+      "id": "reported-friend-cold-cooling",
+      "outcome": "pass",
+      "steps": 4400,
+      "updates": 0,
+      "simulatedSeconds": 1100,
+      "wallSeconds": 9.161097373999999,
+      "maxEnergyResidualJ": 5.112960934638977e-07,
+      "maxWaterResidualKg": 6.0923488476305465e-15,
+      "protectionCounts": {},
+      "states": {
+        "idle": 4400
+      }
+    },
+    {
+      "id": "grid-heating--25-1",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 9.395259347,
+      "maxEnergyResidualJ": 3.2145180739462376e-07,
+      "maxWaterResidualKg": 2.5804011705155006e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "grid-heating-5.5-1",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 9.897743363,
+      "maxEnergyResidualJ": 1.1714291758835316e-07,
+      "maxWaterResidualKg": 1.0971380596559721e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "grid-cooling--25-0",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 6.250318762,
+      "maxEnergyResidualJ": 3.182049113092944e-08,
+      "maxWaterResidualKg": 2.476317761956892e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "grid-cooling--25-1",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 6.3581050889999995,
+      "maxEnergyResidualJ": 9.068753570318222e-08,
+      "maxWaterResidualKg": 1.4038249729342311e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "grid-heating--5-0",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 11.827640774999999,
+      "maxEnergyResidualJ": 1.3640965335071087e-07,
+      "maxWaterResidualKg": 1.3461454173580023e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "grid-heating--25-0",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 12.138326155000001,
+      "maxEnergyResidualJ": 1.1373776942491531e-07,
+      "maxWaterResidualKg": 8.51098705401121e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "grid-cooling-5.5-1",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 5.727515642999999,
+      "maxEnergyResidualJ": 3.782770363613963e-08,
+      "maxWaterResidualKg": 1.8718750507962234e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "grid-cooling-5.5-0",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 7.356279951,
+      "maxEnergyResidualJ": 1.0669464245438576e-07,
+      "maxWaterResidualKg": 9.65156773946596e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "grid-cooling--5-0",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 11.420137930000001,
+      "maxEnergyResidualJ": 1.0502117220312357e-07,
+      "maxWaterResidualKg": 9.65156773946596e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "grid-cooling-45-0",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 6.906704015,
+      "maxEnergyResidualJ": 1.043517841026187e-07,
+      "maxWaterResidualKg": 9.65156773946596e-16,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "grid-cooling-25-0",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 8.443134926,
+      "maxEnergyResidualJ": 5.043693818151951e-07,
+      "maxWaterResidualKg": 3.99853761212654e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "grid-cooling-45-1",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 7.307471495,
+      "maxEnergyResidualJ": 9.592622518539429e-08,
+      "maxWaterResidualKg": 1.7121720707891086e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "sequence-1",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "Humid air R(T,W) failed",
+        "stack": "Error: Humid air R(T,W) failed\n    at file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "Humid air R(T,W) failed",
+        "stack": "DomainError: Humid air R(T,W) failed\n    at Properties.humid (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/properties.js:157:19)\n    at Properties.airRH (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/properties.js:170:35)\n    at file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:468:136\n    at Array.map (<anonymous>)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:450:43)\n    at engine.advance (file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:47:66"
+      },
+      "steps": 162,
+      "updates": 4,
+      "simulatedSeconds": 40.25,
+      "wallSeconds": 3.926440773,
+      "operation": {
+        "index": 8,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 10,
+        "substep": 1
+      },
+      "maxEnergyResidualJ": 1.938606146723032e-07,
+      "maxWaterResidualKg": 3.497202527569243e-15
+    },
+    {
+      "id": "sequence-0",
+      "outcome": "pass",
+      "steps": 280,
+      "updates": 6,
+      "simulatedSeconds": 70,
+      "wallSeconds": 7.990873592,
+      "maxEnergyResidualJ": 2.5168992578983307e-07,
+      "maxWaterResidualKg": 4.784367346744034e-15,
+      "protectionCounts": {},
+      "states": {
+        "idle": 148,
+        "reversing": 24,
+        "running": 108
+      }
+    },
+    {
+      "id": "sequence-4",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (best residual 74.4 W at 29.198237,30.218856; equations 41.691,-61.610)",
+        "stack": "Error: No feasible shared-pressure operating point (best residual 74.4 W at 29.198237,30.218856; equations 41.691,-61.610)\n    at file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (best residual 74.4 W at 29.198237,30.218856; equations 41.691,-61.610)",
+        "stack": "DomainError: No feasible shared-pressure operating point (best residual 74.4 W at 29.198237,30.218856; equations 41.691,-61.610)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:402:59)\n    at engine.advance (file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:47:66"
+      },
+      "steps": 1,
+      "updates": 0,
+      "simulatedSeconds": 0,
+      "wallSeconds": 2.556388696,
+      "operation": {
+        "index": 0,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 10,
+        "substep": 0
+      },
+      "maxEnergyResidualJ": 0,
+      "maxWaterResidualKg": 0
+    },
+    {
+      "id": "grid-cooling-25-1",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 11.746110454000002,
+      "maxEnergyResidualJ": 4.2177271097898483e-07,
+      "maxWaterResidualKg": 5.468715758016884e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "grid-cooling--5-1",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 15.92353177,
+      "maxEnergyResidualJ": 2.9883813112974167e-07,
+      "maxWaterResidualKg": 4.595282487862562e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "sequence-3",
+      "outcome": "physical-fault",
+      "error": {
+        "name": "Error",
+        "message": "No feasible shared-pressure operating point (all starts rejected: R32 H(P=1939247.00352813,T=303.38442688203696) failed; R32 state outside selected \u221260\u2026160\u00b0C domain; Generic compressor discharge/pressure-ratio envelope exceeded)",
+        "stack": "Error: No feasible shared-pressure operating point (all starts rejected: R32 H(P=1939247.00352813,T=303.38442688203696) failed; R32 state outside selected \u221260\u2026160\u00b0C domain; Generic compressor discharge/pressure-ratio envelope exceeded)\n    at file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:51:29"
+      },
+      "originalException": {
+        "name": "DomainError",
+        "message": "No feasible shared-pressure operating point (all starts rejected: R32 H(P=1939247.00352813,T=303.38442688203696) failed; R32 state outside selected \u221260\u2026160\u00b0C domain; Generic compressor discharge/pressure-ratio envelope exceeded)",
+        "stack": "DomainError: No feasible shared-pressure operating point (all starts rejected: R32 H(P=1939247.00352813,T=303.38442688203696) failed; R32 state outside selected \u221260\u2026160\u00b0C domain; Generic compressor discharge/pressure-ratio envelope exceeded)\n    at solvePressureRegime (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/cycle.js:340:11)\n    at solveCycle (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/cycle.js:108:16)\n    at proposal (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:395:39)\n    at HeatPumpEngine.advance (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:402:59)\n    at engine.advance (file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:28:41)\n    at HeatPumpEngine.step (file:///tmp/heatpump-robustness-quick-20261011/snapshot/build/engine.js:137:22)\n    at file:///tmp/heatpump-robustness-quick-20261011/snapshot/worker.mjs:47:66"
+      },
+      "steps": 241,
+      "updates": 6,
+      "simulatedSeconds": 60,
+      "wallSeconds": 6.197256964999999,
+      "operation": {
+        "index": 12,
+        "type": "step",
+        "dt": 0.25,
+        "requestedSegmentSeconds": 10,
+        "substep": 0
+      },
+      "maxEnergyResidualJ": 2.5797635316848755e-07,
+      "maxWaterResidualKg": 6.314393452555578e-15
+    },
+    {
+      "id": "sequence-7",
+      "outcome": "pass",
+      "steps": 280,
+      "updates": 6,
+      "simulatedSeconds": 70,
+      "wallSeconds": 6.424258577000001,
+      "maxEnergyResidualJ": 7.014023140072823e-08,
+      "maxWaterResidualKg": 2.7755575615628914e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 148,
+        "reversing": 24,
+        "idle": 108
+      }
+    },
+    {
+      "id": "grid-heating--5-1",
+      "outcome": "pass",
+      "steps": 80,
+      "updates": 0,
+      "simulatedSeconds": 20,
+      "wallSeconds": 26.068882002,
+      "maxEnergyResidualJ": 3.1881791073828936e-07,
+      "maxWaterResidualKg": 2.8898324705428635e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 80
+      }
+    },
+    {
+      "id": "sequence-6",
+      "outcome": "pass",
+      "steps": 280,
+      "updates": 6,
+      "simulatedSeconds": 70,
+      "wallSeconds": 6.941890429999999,
+      "maxEnergyResidualJ": 2.016313374042511e-07,
+      "maxWaterResidualKg": 4.551914400963142e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 148,
+        "reversing": 24,
+        "idle": 108
+      }
+    },
+    {
+      "id": "sequence-5",
+      "outcome": "pass",
+      "steps": 280,
+      "updates": 6,
+      "simulatedSeconds": 70,
+      "wallSeconds": 8.360260809000001,
+      "maxEnergyResidualJ": 2.123415470123291e-07,
+      "maxWaterResidualKg": 7.93809462606987e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 148,
+        "reversing": 24,
+        "idle": 108
+      }
+    },
+    {
+      "id": "sequence-2",
+      "outcome": "pass",
+      "steps": 280,
+      "updates": 6,
+      "simulatedSeconds": 70,
+      "wallSeconds": 14.585421846,
+      "maxEnergyResidualJ": 6.94766640663147e-07,
+      "maxWaterResidualKg": 2.8199664825478976e-14,
+      "protectionCounts": {},
+      "states": {
+        "running": 148,
+        "reversing": 24,
+        "idle": 108
+      }
+    },
+    {
+      "id": "reported-owner-reversal-old-generic",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 1,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 58.451769151,
+      "maxEnergyResidualJ": 9.71369445323944e-07,
+      "maxWaterResidualKg": 3.251739155718525e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 4680,
+        "reversing": 12,
+        "idle": 108
+      }
+    },
+    {
+      "id": "reported-owner-reversal-winter-house",
+      "outcome": "pass",
+      "steps": 4800,
+      "updates": 1,
+      "simulatedSeconds": 1200,
+      "wallSeconds": 121.729689736,
+      "maxEnergyResidualJ": 5.145557224750519e-07,
+      "maxWaterResidualKg": 8.971556136883052e-15,
+      "protectionCounts": {},
+      "states": {
+        "running": 4680,
+        "reversing": 12,
+        "idle": 108
+      }
+    }
+  ],
+  "artifactDirectory": "/tmp/heatpump-robustness-quick-20261011",
+  "reproducerDirectory": "tests/engine/fixtures/robustness-20261011",
+  "status": "Baseline before pending scientific fixes; failures are not accepted behavior."
+}

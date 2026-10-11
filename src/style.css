@@ -153,6 +153,8 @@
   --guide-line: #b6c6d1;
   --ls-track: rgba(93, 127, 147, 0.14);
   --ls-mark: #46687d;
+  --ls-needle: #14202b;
+  --ls-needle-halo: rgba(255, 255, 255, 0.9);
 }
 
 :root[data-theme="dark"] {
@@ -293,6 +295,8 @@
   --guide-line: #3f5465;
   --ls-track: rgba(143, 179, 201, 0.14);
   --ls-mark: #9cc0d6;
+  --ls-needle: #eef3f6;
+  --ls-needle-halo: rgba(20, 28, 35, 0.9);
 }
 
 * { box-sizing: border-box; }
@@ -310,7 +314,7 @@ h2, h3, h4, h5, p, ul, dl { margin: 0; }
 
 /* ---------- top bar ---------- */
 /* One light header: brand and theme chooser, playback/status group, headline readings. */
-.topbar { position: relative; z-index: 20; display: flex; align-items: center; gap: 12px; padding: 0 14px; min-width: 0; background: var(--panel); color: var(--ink); border-bottom: 1px solid var(--line); box-shadow: var(--hd-shadow); }
+.topbar { position: relative; z-index: 20; display: flex; align-items: center; gap: 10px; padding: 0 12px; min-width: 0; background: var(--panel); color: var(--ink); border-bottom: 1px solid var(--line); box-shadow: var(--hd-shadow); }
 .hd-id { display: flex; align-items: center; gap: 6px; flex: 0 1 auto; min-width: 66px; }
 .brand { display: flex; align-items: center; gap: 8px; flex: 0 1 auto; min-width: 30px; }
 .brand b { font-size: 13px; letter-spacing: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -319,6 +323,8 @@ h2, h3, h4, h5, p, ul, dl { margin: 0; }
 /* Below 1420 px the header budget goes to the controls: the mark stays, the name stays available to hover and screen readers. */
 @media (max-width: 1419px) {
   .brand b { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .brand .mark { display: none; }
+  .hd-id { min-width: 30px; }
 }
 .spacer { flex: 1; }
 
@@ -341,11 +347,16 @@ h2, h3, h4, h5, p, ul, dl { margin: 0; }
   .th-select { position: static; width: auto; padding: 4px 8px; color: ButtonText; }
 }
 
-.hd-group { display: flex; align-items: center; gap: 8px; flex: none; }
-.time { font: 600 14px var(--mono); font-variant-numeric: tabular-nums; letter-spacing: 0.02em; min-width: 66px; text-align: right; }
+.hd-group { display: flex; align-items: center; gap: 6px; flex: none; }
+/* Status, achieved speed and clock read as one unit after the controls. The clock keeps tenths and room for three-digit minutes. */
+.hd-run { display: flex; align-items: center; gap: 8px; flex: none; }
+.time { font: 650 19px/1 var(--mono); font-variant-numeric: tabular-nums; letter-spacing: 0; min-width: 8ch; text-align: right; white-space: nowrap; }
+/* Action select: shows its placeholder at rest; the longer option texts only appear in the open list. */
+.hd-select.hd-preset { width: 104px; padding-right: 20px; text-overflow: ellipsis; }
 .hd-select { width: auto; padding: 5px 24px 5px 9px; border-radius: 8px; font-weight: 600; font-size: 12px; cursor: pointer; color: var(--ink-2); }
 .hd-select option:disabled { color: var(--disabled); }
-.hd-speed { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 70px; }
+.hd-speed { display: flex; align-items: center; flex: none; width: 70px; }
+.hd-speed .hd-select { width: 100%; }
 .hd-speed-rate { font: 10px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
 .hd-speed-rate[data-limited="true"] { color: var(--ink-2); }
 .topbar .btn { padding: 6px 13px; }
@@ -356,27 +367,31 @@ h2, h3, h4, h5, p, ul, dl { margin: 0; }
 /* Headline readings: three fixed cells, separated by full-height hairlines (no card borders, no radius). In each cell the
    value sits at the left with its label below it, and the two-hour trend fills the space to the right of both. */
 .hd-metrics { display: flex; align-self: stretch; flex: none; }
-.hm { display: grid; grid-template-columns: 104px minmax(36px, 1fr); grid-template-rows: auto auto; align-content: center; align-items: center; column-gap: 6px; row-gap: 2px; width: clamp(172px, 12vw, 224px); padding: 8px; min-width: 0; }
+.hm { display: grid; grid-template-columns: 88px minmax(36px, 1fr); grid-template-rows: auto auto; align-content: center; align-items: center; column-gap: 6px; row-gap: 2px; width: clamp(146px, 10.5vw, 208px); padding: 5px 8px; min-width: 0; }
 /* The since-restart COP is a narrower secondary cell right of the instantaneous COP: smaller value, own plot. */
-.hm-session-cop { grid-template-columns: 76px minmax(36px, 1fr); width: clamp(138px, 9.5vw, 170px); }
+.hm-session-cop { grid-template-columns: 46px minmax(36px, 1fr); width: clamp(104px, 8vw, 160px); }
+.hm-energy { grid-template-columns: 70px minmax(36px, 1fr); width: clamp(128px, 9vw, 176px); }
+.hm-energy .v { font-size: 21px; }
 .hm-session-cop .v { font-size: 21px; font-weight: 750; }
+.hm-session-cop .k { font-size: 9px; }
 .hm + .hm { border-left: 1px solid var(--line); }
 .hm .vl { display: flex; grid-column: 1; grid-row: 1; justify-content: center; align-items: baseline; gap: 4px; white-space: nowrap; }
-.hm .v { font: 750 23px/1.15 var(--font); font-variant-numeric: tabular-nums; }
+.hm .v { font: 750 21px/1.15 var(--font); font-variant-numeric: tabular-nums; }
 .hm i { font-size: 12px; }
-.hm-cop .v { font-size: 27px; font-weight: 850; }
+.hm-cop .v { font-size: 24px; font-weight: 850; }
 .hm-cop i { font-size: 14px; font-weight: 750; color: var(--ink); }
 .hm .k { grid-column: 1; grid-row: 2; text-align: center; max-width: 100%; font-size: 10px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.hm-icon { align-self: center; flex: none; width: 21px; height: 21px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; color: var(--icon); }
+.hm-icon { align-self: center; flex: none; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; color: var(--icon); }
 .hm-sun { color: var(--c-heat); }
 .hm-snow { color: var(--c-cool); }
 /* Held = previous calculated step shown while new inputs wait for the next step. */
 .hd-metrics[data-held="1"] .v { color: var(--muted); }
 .hm-plot { position: relative; display: block; grid-column: 2; grid-row: 1 / 3; min-width: 0; }
-.hm-trend { display: block; width: 100%; height: 44px; overflow: visible; }
+.hm-trend { display: block; width: 100%; height: 60px; overflow: visible; }
 .hm-trend path { vector-effect: non-scaling-stroke; }
 .hm-trend .trend-baseline { fill: none; stroke: var(--line); stroke-width: 1; }
-.hm-trend .trend-line, .hm-trend .session-line { fill: none; stroke: var(--tr-cop); stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
+.hm-trend .trend-line, .hm-trend .session-line, .hm-trend .energy-line { fill: none; stroke: var(--tr-cop); stroke-width: 1.4; stroke-linejoin: round; stroke-linecap: round; }
+.hm-energy .energy-line { stroke: var(--tr-elec); }
 .hm-heat .trend-line { stroke: var(--tr-heat); }
 .hd-metrics[data-mode="cooling"] .hm-heat .trend-line { stroke: var(--tr-cool); }
 .hm-elec .trend-line { stroke: var(--tr-elec); }
@@ -384,8 +399,16 @@ h2, h3, h4, h5, p, ul, dl { margin: 0; }
 /* Time ends lie over the empty strip under the baseline; real text, so the stretched plot never distorts it. */
 .hm-ends { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; font: 8px/1 var(--font); color: var(--muted); pointer-events: none; }
 
-.hd-status { flex: none; width: 156px; display: flex; flex-direction: column; gap: 4px; }
-.hd-badges { display: flex; min-width: 0; }
+.hd-status { flex: none; width: 104px; display: flex; flex-direction: column; gap: 4px; }
+@media (max-width: 1419px) {
+  .hd-status { width: 100px; }
+  .hd-select.hd-preset { width: 96px; }
+  .hd-pause { min-width: 70px; }
+  .topbar .btn { padding-inline: 9px; }
+}
+.hd-badges { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.hd-badges .opstate, .hd-badges .hd-ex { min-width: 0; }
+.hd-badges .hd-speed-rate { flex: none; font-size: 10px; }
 .hd-badges > * { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .opstate { display: inline-block; font-weight: 700; font-size: 12px; }
 .opstate::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 6px; border-radius: 50%; background: var(--muted); }
@@ -472,21 +495,21 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .zoom-out { flex: none; border: 1px solid var(--guide-line); border-radius: 6px; padding: 4px 11px; background: var(--surface); color: var(--accent-ink); font-weight: 650; cursor: pointer; }
 .zoom-out:hover { background: var(--hover); }
 .coil-film { position: relative; width: 100%; height: 20px; font: 600 12px/1.3 var(--font); }
-.coil-film .chip-ice { display: block; padding: 1px 7px; border-color: var(--ice-line); list-style: none; cursor: help; }
+.coil-film .chip-ice { display: block; padding: 1px 0; list-style: none; cursor: help; }
 .coil-film summary::marker { content: ''; }
 .coil-film summary::after { content: ' ⓘ'; color: var(--ice-i); }
 .coil-film .ice-note { position: absolute; z-index: 5; top: 23px; left: 0; width: 320px; padding: 9px 11px; border: 1px solid var(--ice-line); border-radius: 7px; background: var(--panel); box-shadow: var(--shadow-soft); font: 500 12px/1.4 var(--font); color: var(--ink-2); }
 .mismatch { flex: 0 1 auto; min-width: 0; background: var(--glass); border: 1px solid var(--line); border-left: 3px solid var(--ok); padding: 3px 9px; border-radius: 6px; font-size: 11px; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mismatch.diff { border-left-color: var(--warn); }
 .mismatch.fault { border-left-color: var(--bad); color: var(--bad); white-space: normal; overflow-wrap: anywhere; }
-.chip-ice { flex: 0 1 auto; min-width: 0; background: var(--glass); border: 1px solid var(--line); border-radius: 6px; padding: 3px 9px; font-size: 11px; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-variant-numeric: tabular-nums; }
+.chip-ice { flex: 0 1 auto; min-width: 0; background: none; border: 0; border-radius: 0; padding: 3px 9px; font-size: 11px; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-variant-numeric: tabular-nums; }
 .ice-head { font-weight: 600; }
 .ov-more { flex: none; font: inherit; font-size: 11px; padding: 2px 9px; border: 1px solid var(--line); border-radius: 5px; background: var(--surface); color: var(--ink-2); cursor: pointer; pointer-events: auto; }
 .ov-more[aria-expanded="true"] { background: var(--panel-2); }
 .ov-detail { position: absolute; top: calc(100% - 2px); left: 12px; max-width: 560px; display: grid; gap: 6px; padding: 8px 11px; background: var(--panel); border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow-detail); font-size: 11.5px; line-height: 1.4; pointer-events: auto; }
 .ice-note { color: var(--warn); }
 /* held = last accepted film inventory while the current input is pending or rejected: dashed edge, not a live reading */
-.chip-ice[data-held='1'] { border-style: dashed; }
+
 .rp-n.held { color: var(--warn); font-weight: 600; }
 .scene[data-ice='held'] .ice-group { opacity: 0.85; }
 .legend { background: var(--glass-strong); border-top: 1px solid var(--line); padding: 5px 12px 4px; }
@@ -550,8 +573,17 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .pop-settings .clean-override { margin-bottom: 4px; }
 /* Room thermal popover: one native number + range per link, stacked; the sections reuse the room settings rhythm. */
 .th-links { display: grid; gap: 8px; margin-bottom: 6px; }
-.th-link { display: grid; gap: 3px; justify-items: start; }
-.th-link .pf { justify-self: stretch; }
+.th-link { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 8px; }
+.th-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; font-weight: 650; }
+.th-h { font: 700 12.5px var(--font); font-variant-numeric: tabular-nums; }
+/* Reset buttons under an override field (ventilation rate, exposed area); hidden while the room follows the default. */
+.th-reset { margin: 2px 0 6px; }
+.th-reset:has(> [hidden]) { display: none; }
+/* Link editor: a thickness with no solid contact to act on is dimmed (its value is kept); an explicit H override dims the geometry it replaces. */
+.pop-settings .pf.dim { opacity: 0.5; }
+.pop-settings .lk-geo.overridden .pf, .pop-settings .lk-geo.overridden .field { opacity: 0.55; }
+.pop-settings .lk-override { display: grid; gap: 6px; justify-items: start; }
+.pop-settings .lk-override .status { margin-bottom: 0; }
 .pop[data-pop="thermal"] { width: 380px; }
 .pop-settings .pf.line .rp-k { color: var(--ink-2); }
 .pop-settings .pf.line .rp-num { color: var(--ink); }
@@ -687,10 +719,10 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .env-vol { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .env-low { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 3px; }
 .room-env .pf-head .rp-n { font-size: 10px; }
-/* Reference scale under Envelope loss (settings.ts createLossScale, all positions inline in px / %): a 0–750 W/K axis band aligned to
-   the slider track (the plot is inset 8 px, the native thumb travel) with one midpoint marker per supplied band. Each marker is a
-   leader from the exact midpoint to its era label; crowded low values are staggered above and below the band. Neutral steel tokens
-   only: insulation never borrows the refrigerant temperature colours. */
+/* Building reference ruler, once in the indoor header (settings.ts createLossScale, all positions inline in px / %): a 0–750 W/K axis
+   band with one midpoint marker per illustrative reference. Each marker is a leader from the exact midpoint to its era label; crowded
+   low values are staggered above and below the band. The current house loss is a needle across the band; past the end it stays at the
+   end with an off-scale label. Neutral steel tokens only: insulation never borrows the refrigerant temperature colours. */
 .ls { min-width: 0; font: 650 10px/11px var(--font); color: var(--rp-ink); pointer-events: none; }
 .ls-plot { position: relative; margin: 0 8px; }
 .ls-band { position: absolute; left: 0; right: 0; border-radius: 2px; background: var(--ls-track); }
@@ -704,8 +736,34 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .ls-m.up .ls-stem::after { bottom: -2px; }
 .ls-m.down .ls-stem::after { top: -2px; }
 .ls-lab { position: absolute; left: 0; transform: translateX(-50%); white-space: nowrap; color: var(--rp-ink); }
-.env-low .rp-num { width: 2.85em; }
-.env-low .rp-range { height: 16px; }
+.ls-needle { position: absolute; width: 3px; margin-left: -1.5px; border-radius: 1px; background: var(--ls-needle); box-shadow: 0 0 0 1px var(--ls-needle-halo); }
+.ls-needle.over::after { content: ""; position: absolute; left: 4px; top: 50%; margin-top: -4px; border: 4px solid transparent; border-right: 0; border-left-color: var(--ls-needle); }
+.ls-over { position: absolute; left: 100%; margin-left: 12px; white-space: nowrap; font: 700 10px/11px var(--font); color: var(--ls-needle); }
+/* Indoor-header ruler: the calculated house-loss summary and the ventilation controls at the left, the scale at the right. Unboxed (`.rp.env`).
+   Budget in the 60-unit panel: summary line 22 + split 13 + ventilation row 20 + 2 gaps. */
+.rp.env.hl-ruler { flex-direction: row; align-items: center; justify-content: flex-start; gap: 14px; padding: 0 6px; }
+.hl-sum { flex: none; width: 306px; display: flex; flex-direction: column; gap: 1px; cursor: help; }
+/* Single / dual flow (native select) and, when dual, the sensible recovery as an inline number + range. */
+.hl-vent { display: flex; align-items: center; gap: 8px; min-height: 20px; cursor: auto; }
+.hl-mode { flex: none; width: 92px; padding: 1px 4px; border-radius: 6px; font: 600 11px/1.3 var(--font); color: var(--ink-2); }
+.hl-mode option { background: var(--panel); color: var(--ink); }
+.hl-vent .pf.inline { flex: 1 1 auto; min-width: 0; gap: 6px; }
+.hl-vent .pf.inline .rp-k { width: auto; font-size: 11px; }
+.hl-vent .pf.inline .rp-num { font-size: 13px; width: 2.2em; }
+.hl-vent .pf.inline .rp-line small { font-size: 11px; }
+.hl-vent .rp-range { height: 14px; }
+.hl-line { display: flex; align-items: center; gap: 4px; font: 650 13px/1.2 var(--font); color: var(--rp-ink); white-space: nowrap; }
+.hl-total { font: 750 18px/1.1 var(--font); color: var(--rp-v); font-variant-numeric: tabular-nums; }
+.hl-line small { font-size: 11px; font-weight: 600; color: var(--rp-n2); }
+.hl-line .hl-btn { margin-left: 4px; cursor: pointer; }
+.hl-parts { font-size: 11px; color: var(--rp-n2); white-space: nowrap; }
+.hl-ruler .ls { flex: none; }
+/* Room Average U: the primary envelope control (settings.ts createAverageUControl), better/poorer ends and the derived exposed area and W/K. */
+.ie { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.ie .rp-num { width: 2.85em; }
+.ie .rp-range { height: 16px; }
+.ie-ends { display: flex; justify-content: space-between; font: 600 9.5px/11px var(--font); color: var(--rp-n); pointer-events: none; }
+.env-heat { font: 650 11px/1.3 var(--font); color: var(--rp-n2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .hl-btn { border: 1px solid var(--hl-btn-line); border-radius: 50%; width: 16px; height: 16px; padding: 0; font: 700 11px/14px var(--font); color: var(--hl-btn-ink); background: var(--hl-btn-bg); }
 .hl-guide { position: fixed; z-index: 20; width: 380px; max-height: calc(100vh - 32px); overflow: auto; padding: 13px 15px; display: grid; gap: 9px; border: 1px solid var(--guide-line); border-radius: 9px; background: var(--panel); box-shadow: var(--shadow-pop); color: var(--ink-2); font: 500 12px/1.4 var(--font); cursor: auto; }
 .hl-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
@@ -768,7 +826,13 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
    column gap; do not grow the card or the gaps without re-measuring. */
 .rp.ou { pointer-events: auto; justify-content: flex-start; gap: 3px; padding: 6px 12px 7px; }
 .ou-head { display: flex; align-items: center; gap: 8px; min-height: 20px; }
-.ou-modes { display: grid; grid-template-columns: 1.15fr 1fr; column-gap: 16px; margin-bottom: 2px; }
+.ou-modes { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 10px; align-items: center; margin-bottom: 2px; }
+/* The outdoor model is a native select of the researched references; the exact reference is clipped by the control, never wrapped. */
+.ou-model-select { width: 100%; min-width: 0; padding: 3px 6px; border-radius: 7px; font: 600 11.5px var(--font); color: var(--ink-2); text-overflow: ellipsis; }
+/* Indoor model: a compact native select permanently on each indoor-unit block. */
+.eq-model { display: block; flex: none; width: 100%; min-width: 0; padding: 2px 6px; border-radius: 6px; font: 600 11px/1.3 var(--font); color: var(--ink-2); text-overflow: ellipsis; }
+.ou-model-select :is(option, optgroup), .eq-model :is(option, optgroup) { background: var(--panel); color: var(--ink); }
+.dl-diag { margin-left: 8px; white-space: nowrap; vertical-align: baseline; }
 .ou-modes .seg { display: flex; }
 .ou-modes .seg-btn { flex: 1; }
 .ou-title { flex: none; font: 800 12px var(--font); letter-spacing: 0.14em; color: var(--eq-tag); }
@@ -830,7 +894,6 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .fan-well { fill: #e5eaee; stroke: #b0bac2; }
 .slat { fill: none; stroke: #98a4af; stroke-width: 2; stroke-linecap: round; }
 .louvre { stroke: #9ba7b2; stroke-width: 2; stroke-linecap: round; }
-.louvre-flap { stroke: #c4ccd3; stroke-width: 2.4; stroke-linecap: round; }
 /* Rooms are quiet fills with a light horizontal separator: no bordered room boxes, no building architecture. */
 .room-bg { fill: var(--room-a); stroke: none; }
 .room-bg.alt { fill: var(--room-b); }
@@ -840,7 +903,11 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .zone-in { fill: var(--zone-in); }
 .zone-edge { fill: var(--zone-edge); }
 .sleeve { fill: var(--sleeve); }
-.fan-guard { fill: none; stroke: #8f9ba7; stroke-width: 0.9; }
+/* Outdoor fan, flat from the side (static; hardware, so literal colours in both themes). */
+.fan-shroud { fill: url(#gSteel); stroke: #6d7882; stroke-width: 1.2; }
+.fan-blades { fill: none; stroke: #4b5661; stroke-width: 2.4; stroke-linecap: round; }
+.fan-motor { fill: #cfd6dc; stroke: #6d7882; stroke-width: 1; }
+.fan-strut { fill: none; stroke: #8f9ba7; stroke-width: 1.1; stroke-linecap: round; }
 .hub { fill: #4b5661; }
 .valve-body { fill: #e9edf0; stroke: #4a5864; stroke-width: 1.5; }
 .scroll { fill: none; stroke: #59636c; stroke-width: 1.1; }
@@ -926,10 +993,10 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .air-probe .a-cap { font: 650 11px var(--font); fill: var(--d-soft); }
 .air-probe.na .s-val, .air-probe.held .s-val { fill: var(--pill-na); }
 /* fans and air */
-/* No part of any fan rotates: the outdoor grille and the indoor outlet slot are static; only air cues move. */
+/* No part of any fan rotates: the outdoor side-view fan and the indoor outlet slot are static; only air cues move. */
 .in-fan { transition: opacity 0.4s; }
 .room[data-fan="0"] .in-fan { opacity: 0.55; }
-.scene[data-fans-on="0"] .fan-guard { opacity: 0.55; }
+.scene[data-fans-on="0"] .fan-side { opacity: 0.55; }
 .airflow { opacity: 0; pointer-events: none; transition: opacity .25s; color: var(--air-neutral); }
 .airflow path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
 .airflow .stream { stroke-dasharray: 12 8; }
@@ -993,13 +1060,11 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .room-rp.rp.eq { padding: 6px 8px; }
 .room-rp .eq-tag { letter-spacing: .08em; }
 
-/* Room links: a thin lane in the gutter right of the indoor units with a small pill (connection direction, flow arrow, live kW).
-   Open passages are dashed, solid partitions solid. Neutral steel, never the refrigerant colours. */
+/* Room links: one chip on the shared room separator (connection direction, flow arrow, live kW; a non-adjacent link adds a short
+   endpoint reference). No connector line and no kind-specific icon, so a future combined link fits the same chip. Neutral steel,
+   never the refrigerant colours. */
 .room-link { cursor: pointer; outline: none; }
-.lk-hit { fill: transparent; }
-.lk-line { fill: none; stroke: var(--lk-line); stroke-width: 1.6; stroke-linecap: round; }
-.room-link[data-kind="opening"] .lk-line { stroke-dasharray: 4 3; }
-.lk-dot { fill: var(--lk-line); }
+.lk-tag { font: 700 9.5px var(--font); fill: var(--pill-sub); }
 .lk-pill { fill: var(--pill-bg); stroke: var(--lk-line); stroke-width: 1; }
 .lk-arrow { fill: var(--lk-line); }
 .lk-ico { font: 700 11px var(--font); fill: var(--pill-sub); }

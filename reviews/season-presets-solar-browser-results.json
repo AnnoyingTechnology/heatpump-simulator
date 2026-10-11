@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-10-11T10:48:03.916Z",
+  "checks": [
+    {
+      "name": "summer and winter action presets apply exact conditions without resetting edited house or service history",
+      "passed": true
+    },
+    {
+      "name": "room solar control stays focused, maps separately from appliances, and supplies only prescribed sensible gain",
+      "passed": true
+    },
+    {
+      "name": "default solar is zero, negative/nonfinite values cannot mutate valid configuration, and later calibration is unclaimed",
+      "passed": true
+    }
+  ],
+  "scope": "Actual native preset actions, stable room solar binding and guarded worker gain/energy mapping"
+}
