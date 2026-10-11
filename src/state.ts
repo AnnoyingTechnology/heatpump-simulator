@@ -7,6 +7,7 @@ import { defaultLiveParameters, CHARGE_MODEL_AVAILABLE } from './runtime/config'
 import { readingsFor, simulation } from './runtime/view';
 import type { Readings } from './runtime/view';
 import type { RoomOutput } from './engine/types';
+import { refrigerantDefinition, type RefrigerantId } from './engine/refrigerants';
 
 /**
  * Owner preset: Daikin 3MXM52N8 + FTXA25 / FTXA35 / FTXA25. Stack order is top → bottom.
@@ -123,6 +124,7 @@ class Store {
   /** Mutates in place via `fn`, then notifies. Subscribers must diff and never rebuild focused inputs. */
   update(fn: (s: AppState) => void): void {
     const oldModel = this.state.cfg.live.circuitModel;
+    const oldFluid = this.state.cfg.live.refrigerant;
     const oldTopology = this.state.cfg.rooms.slice(0,this.state.cfg.unitCount).map(room => room.id).join('|');
     const priorRooms = new Map(this.state.cfg.rooms.map(room => [room.id, { heatLossWPerK: room.heatLossWPerK, quality: room.envelopeQualityWPerM3K, uValue: room.averageUValueWm2K }]));
     const pairKey = (link: InterzoneLink) => JSON.stringify([link.roomA, link.roomB].sort());
@@ -158,7 +160,7 @@ class Store {
       link.conductanceWK = interzoneConductance(link);
     }
     const newTopology = this.state.cfg.rooms.slice(0,this.state.cfg.unitCount).map(room => room.id).join('|');
-    if (oldModel !== this.state.cfg.live.circuitModel || (this.state.cfg.live.circuitModel === 'inventory' && oldTopology !== newTopology)) {
+    if (oldFluid !== this.state.cfg.live.refrigerant || oldModel !== this.state.cfg.live.circuitModel || (this.state.cfg.live.circuitModel === 'inventory' && oldTopology !== newTopology)) {
       this.resetEpoch += 1;
       this.state.ui.notice = 'Started a new refrigerant circuit from the current initialization inputs.';
     }
@@ -196,6 +198,16 @@ class Store {
       s.cfg.live.circuitModel = model;
       if (model === 'inventory') s.cfg.live.fieldLines = 'idealized';
     });
+  }
+
+  /** A different working fluid starts a new scenario; never reinterpret stored energy with another EOS. */
+  setRefrigerant(fluid: RefrigerantId): void {
+    const cfg = this.state.cfg;
+    const coverage = refrigerantDefinition(fluid).qualification;
+    if (fluid === cfg.live.refrigerant || cfg.outdoorKind !== 'generic' || !coverage.reference ||
+        (cfg.live.fieldLines === 'physical' && !coverage.physicalLines) ||
+        (cfg.live.circuitModel === 'inventory' && !coverage.inventory)) return;
+    this.update(s => { s.cfg.live.refrigerant = fluid; });
   }
 
   /** Live Heating/Cooling edits the mode only: no fixture conditions, outdoor air or rooms are touched. */
@@ -448,6 +460,7 @@ class Store {
     const model = outdoorModelInfo(kind);
     this.update((s) => {
       s.cfg.outdoorKind = kind;
+      if (kind !== 'generic') s.cfg.live.refrigerant = 'R32';
       const oldCount = s.cfg.unitCount;
       s.cfg.unitCount = Math.min(oldCount, outdoorPortCapacity(s.cfg));
       if (model.coolingHighFanFlowM3h !== undefined) s.cfg.outdoorVolumetricAirFlowM3s = model.coolingHighFanFlowM3h / 3600;

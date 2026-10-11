@@ -50,3 +50,7 @@ Treat observed facts, historical evidence, model assumptions and unknowns separa
 All maintained project artifacts belong in this directory. Respect the parent AGENTS.md. Do not access directories named Intime. Do not change personal skills, global client configuration or memory stores. Do not create GitHub repositories, push, publish, or send messages during this milestone. Keep browser access read-only apart from opening the local preview. No external runtime assets or fonts are required.
 
 The owner requested a local Git repository and regular commits on 2026-10-10. This project has its own local `main` repository; commit verified milestones and keep it separate from the parent agent workspace. No remote is configured.
+
+## Deferred mixed hydronic systems
+
+Owner clarification2026-10-11: future support should include rooms served by water-circulated floor heating and domestic hot-water tanks in mixed systems. Document this scope only; do not implement it during the current air-air pass. A later design must represent the water loop, circulation, emitters, controls and tank thermal storage, rather than treating them as air-air indoor heads.

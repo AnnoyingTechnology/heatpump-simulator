@@ -30,7 +30,7 @@ export const OUTDOOR_MODELS: readonly OutdoorModelInfo[] = [
     acceptance: 'owner-reference', profileNote: 'Owner-declared 3MXM52N8 with FTXA25/35 heads (indoor suffix unknown). Generic R32 performance assumptions; no OEM performance map.' },
   { id: 'generic', label: 'Generic editable outdoor', manufacturer: 'generic', ports: null,
     compatibleIndoorClasses: [...baseIndoor, ...CATALOGUE_INDOORS.map(m => m.id)], caseMm: { h: 734, w: 958, d: 340 },
-    acceptance: 'generic-assumption', profileNote: 'User-defined port capacity and generic R32 equipment assumptions. Manufacturer pairing is not asserted.' },
+    acceptance: 'generic-assumption', profileNote: 'User-defined port capacity and generic compatible equipment assumptions. Manufacturer pairing is not asserted.' },
   ...CATALOGUE_OUTDOORS.map(profile => ({
     id: profile.id, label: `${equipmentManufacturerLabel(profile.manufacturer)} ${profile.id}`, manufacturer: profile.manufacturer,
     ports: profile.ports, compatibleIndoorClasses: profile.compatibleIndoorClasses,

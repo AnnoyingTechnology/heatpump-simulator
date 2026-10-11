@@ -1111,7 +1111,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
     const model = outdoorModelInfo(cfg);
     setText(outLabel, model.acceptance === 'reviewed-fields' ? model.id : cfg.outdoorKind === 'owner' ? model.label : 'Generic compatible outdoor');
     setText(outSub, model.acceptance === 'owner-reference' ? `${OWNER_PORTS} ports · R32 · suffix unknown`
-      : model.ports === null ? `${n} of ${cap} ports used · assumed${layout.outH > 235 ? ' larger' : ''} casing`
+      : model.ports === null ? `${live ? cfg.live.refrigerant : 'R32'} · ${n} of ${cap} ports used · assumed${layout.outH > 235 ? ' larger' : ''} casing`
         : `${equipmentManufacturerLabel(model.manufacturer)} · ${model.ports} port${model.ports === 1 ? '' : 's'} · published`);
 
     // gauges

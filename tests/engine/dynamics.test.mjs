@@ -109,7 +109,8 @@ test('all Off aborts defrost/reversal without erasing storage; passive time and 
   const c=defaultEngineConfig(3);c.outdoorTemperatureC=-3;c.outdoorRelativeHumidity=.99;
   c.control.defrostIceThresholdKg=1e-6;c.control.defrostMinHeatingSeconds=0;c.control.reversalSeconds=.5;c.control.minOffSeconds=.75;
   const e=new HeatPumpEngine(p,c);let o;
-  for(let i=0;i<16;i++){o=e.step(.25);assertLedger(o);if(o.state==='defrost'&&o.cycle)break;}
+  // Actual startup throughput now ramps from rest, so frost is an event rather than a fixed4s precondition.
+  for(let i=0;i<400;i++){o=e.step(.25);assertLedger(o);if(o.state==='defrost'&&o.cycle)break;}
   assert.equal(o.state,'defrost');assert.ok(o.outdoor.iceKg>0);assert.ok(o.cycle);
   const offAt=before=>{
     c.rooms.forEach(r=>r.enabled=false);const stopped=e.updateConfig(c);

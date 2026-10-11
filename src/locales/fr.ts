@@ -1,6 +1,20 @@
 /** Presentation catalogue. Manufacturer references, user labels and model data are
  * intentionally not translated. Dynamic placeholders retain their supplied values. */
 const BASE: Readonly<Record<string, string>> = {
+"Examples use fixed R32 snapshots; fluid selection applies to Live only.":"Exemples : valeurs R32 figées ; choix du fluide réservé à la simulation.",
+
+ "Refrigerant qualification":"Qualification du frigorigène",
+ "Qualified Reference refrigerant":"Frigorigène qualifié pour le modèle de référence",
+ "Property research only; coupled simulation is not qualified.":"Propriétés seules en recherche ; simulation couplée non qualifiée.",
+ "Changing refrigerant starts a new scenario. Other fluids need idealized field lines; original room and equipment inputs are retained.":"Changer de frigorigène démarre un nouveau scénario. Les autres fluides exigent des liaisons idéalisées ; réglages des pièces et équipements conservés.",
+ "Factory R32. Choose Generic outdoor to compare other qualified fluids; this is a compatible-circuit comparison, not an appliance retrofit.":"R32 d’usine. Choisir l’extérieur générique pour comparer les autres fluides qualifiés : comparaison de circuits compatibles, sans conversion d’appareil.",
+ "Select the working fluid on the outdoor-unit card. Alternate fluids compare generic compatible circuits; published R32 equipment remains R32. Changing fluid starts a new physical scenario.":"Choisir le fluide sur l’unité extérieure. Les autres fluides comparent des circuits génériques compatibles ; les appareils R32 restent en R32. Changer de fluide démarre un nouveau scénario physique.",
+ "Qualified Reference cycle and physical field lines. Charge release remains separately gated.":"Cycle de référence et liaisons physiques qualifiés. La charge reste soumise à sa validation séparée.",
+ "Conserved inventory and the complete physical field-line circuit, including reverse-cycle defrost, are qualified for R32 only.":"Inventaire conservé et circuit complet de liaisons physiques, dégivrage compris, qualifiés seulement en R32.",
+ "Fixed-composition pseudo-pure EOS preserves small bubble/dew glide; phase compositions/fractionation and physical field lines are not qualified.":"L’équation d’état pseudo-pure à composition fixe conserve le faible glissement bulle/rosée ; compositions des phases, fractionnement et liaisons physiques non qualifiés.",
+ "Physical field lines are qualified for R32 only; use idealized lines for this refrigerant.":"Liaisons physiques qualifiées seulement en R32 ; utiliser les liaisons idéalisées pour ce frigorigène.",
+ "Started a new refrigerant circuit from the current initialization inputs.":"Nouveau circuit frigorigène démarré à partir des valeurs initiales actuelles.",
+
  "Example: H = 200 W/K with a 20 K difference loses about 4 kW.":"Exemple : H = 200 W/K et un écart de 20 K donnent environ 4 kW de pertes.",
  "Heat loss [W] ≈ H [W/K] × (T indoor − T outdoor) [K]":"Pertes [W] ≈ H [W/K] × (T intérieure − T extérieure) [K]",
  " — explanatory, at compressor suction. Not a manufacturer service port.":" — illustrative, à l’aspiration du compresseur. Sans prise de service constructeur.",
@@ -215,6 +229,12 @@ const BASE: Readonly<Record<string, string>> = {
  'Ice exhausted: melt and drips stopped. Snapshot readings do not change; this is not a predicted defrost duration.':'Givre épuisé : fonte et gouttes arrêtées. Valeurs de l’exemple inchangées ; aucune durée de dégivrage prédite.',
 };
 export const FR_PATTERNS: readonly (readonly [string, string])[] = [
+ ["Generic minimum command: {minimum} rps. Reference inverter slew: 2 rps/s upward, 4 rps/s downward, from rest for idealized lines; from the admitted minimum for physical lines. These are model assumptions, not measured OEM frequencies. Physical cooling retains 18 rps because its multi-branch low-flow closure is not yet qualified; inventory retains its separate legacy command.", "Commande minimale générique : {minimum} tr/s. Rampe de référence : 2 tr/s² en montée, 4 tr/s² en descente, depuis l’arrêt en liaisons idéalisées et depuis le minimum admis en liaisons physiques. Hypothèses du modèle, sans mesure constructeur. Le froid en liaisons physiques reste à 18 tr/s faute de qualification à faible débit ; l’inventaire conserve sa commande distincte."],
+ ["{fluid} · {n} of {capacity} ports used · assumed{extra} casing", "{fluid} · {n} sur {capacity} ports utilisés · boîtier supposé{extra}"],
+
+ ['Generic {fluid} · uncalibrated. Efficiency and cleanliness drive the model.','{fluid} générique · non étalonné. Rendement et propreté agissent sur le moteur.'],
+ ['Generic {fluid} model using real refrigerant and humid-air properties; manufacturer performance is not calibrated.','Modèle générique {fluid} utilisant les propriétés réelles du frigorigène et de l’air humide ; performances constructeur non étalonnées.'],
+ ['Refrigerant {fluid}: {detail}','Frigorigène {fluid} : {detail}'],
  ['{label}: last 2 hours of simulated time, latest reading in each 10-second bin. {scale} Missing readings are gaps.','{label} : 2 dernières heures simulées, dernière valeur par intervalle de 10 s. {scale} Les données manquantes restent des interruptions.'],
  ['Scale {range}.','Échelle {range}.'],
  ['Examples · {label}','Exemples · {label}'],

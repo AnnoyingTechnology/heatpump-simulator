@@ -64,6 +64,8 @@ jobs:
           tests/engine/reference-envelope.test.mjs
           tests/engine/eight-head-header.test.mjs
           tests/engine/restart-preflight.test.mjs
+          tests/engine/refrigerants.test.mjs
+          tests/engine/reference-startup.test.mjs
           tests/engine/ventilation-recovery.test.mjs
       - name: Verify accepted equipment source boundary
         run: python3 tests/catalogue.test.py

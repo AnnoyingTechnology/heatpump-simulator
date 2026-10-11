@@ -1,0 +1,9 @@
+# Startup regression corrections
+
+The initial combined six-fluid/zero-startup regression passed148 of151 checks. The original failures are preserved in `refrigerant-startup-reference-initial-rejections.log`.
+
+A genuine R32 cooling start failed with a warm outdoor coil and unequal indoor coils. All legacy floating-controller seeds violated their coupled coordinates: Tc = Te + declared lift, with condenser outlet temperature strictly between sink metal and Tc. An additional seed samples that feasible intersection. Equations, saturation lift, safety limits, numerical acceptance and physical properties are unchanged. The original generic input/checkpoint is retained in `reference-startup-cooling-seed-rejection.json`; replay its `c` configuration from a fresh engine and step0.25s. JSON maps the initial infinite off timer to null; the configuration, not that serialized timer, is the replay input. The existing20s linked-room heat/cool test now passes without altered inputs. Independent equation review confirms the seed geometry; evaluate still rejects out-of-domain trials. Legacy seed clamps can exclude exceptionally narrow intervals; this is a remaining numerical coverage limit, not a weakened acceptance criterion.
+
+The frost/Off test assumed actual reverse-cycle defrost after4s. Zero-to-minimum startup changes deposition timing; it now waits for the same genuine frost/defrost event within100s, retaining all storage, active-branch and restart assertions. Invalid port count/ID declarations now reject before inspecting the selected property service, preserving the existing no-property-query boundary.
+
+The corrected combined regression passes151/151. These are bounded qualification cases, not universal proof of every manually configured operating point. Physical-line starts remain at their admitted minimum; rotor inertia and transient pressure equalization are not resolved.

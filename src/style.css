@@ -1115,3 +1115,7 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .language-select { flex: none; align-self: center; width: 47px; height: 28px; padding: 2px 3px; font: 650 11px var(--font); color: var(--ink); border: 1px solid var(--line); border-radius: 5px; background: var(--surface); cursor: pointer; }
 :lang(fr) .topbar .btn { font-size: 12px; }
 :lang(fr) .env-geo .rp-k { font-size: 10px; }
+
+.ou-fluid > .rp-k { width: auto; }
+.ou-fluid-select { min-width: 0; padding: 2px 6px; font: 600 12px var(--font); color: var(--rp-ink); border-radius: 6px; }
+.ou-fluid-select option { background: var(--panel); color: var(--ink); }

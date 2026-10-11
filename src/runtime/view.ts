@@ -32,7 +32,7 @@ export function readingsFor(s: AppState, source: Experience): Readings {
   const fault = simulation.status.error ?? output?.diagnostics.fault;
   return {
     id: 'live', source, fieldLines: s.cfg.live.fieldLines, engine: output, title: `Live · ${output?.state ?? simulation.status.state}`,
-    summary: fault ?? 'Generic R32 model using real refrigerant and humid-air properties; manufacturer performance is not calibrated.',
+    summary: fault ?? `Generic ${s.cfg.live.refrigerant} model using real refrigerant and humid-air properties; manufacturer performance is not calibrated.`,
     mode, example,
     conditions: { outdoorC: s.cfg.outdoorC, outdoorRh: s.cfg.outdoorRh, roomC: rooms[0]?.temperatureC ?? s.cfg.rooms[0].airC, roomRh: (rooms[0]?.relativeHumidity ?? .5) * 100, setpointC: s.cfg.rooms[0].setpointC },
     cycle: cycle ? { pLowBarA: cycle.lowPressureBarAbs, pHighBarA: cycle.highPressureBarAbs,

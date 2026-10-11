@@ -6,6 +6,7 @@ import { clamp, escapeHtml, fmt, html, setAttr, setText, toggleClass } from './d
 import { OUTDOOR_MODELS, indoorModelProfile, indoorOptionsForOutdoor, outdoorModelInfo } from './equipment';
 import type { OutdoorModelInfo } from './equipment';
 import { defaultEngineConfig } from './engine/defaults';
+import { REFRIGERANTS, refrigerantDefinition, type RefrigerantId } from './engine/refrigerants';
 import { fixtureFor } from './fixtures';
 import { inspectorHtml } from './inspector';
 import type { PopContent } from './popovers';
@@ -29,17 +30,6 @@ import {
 
 const LIQUID_OD = [6.35, 9.52];
 const GAS_OD = [9.52, 12.7, 15.88];
-
-const FLUIDS: ReadonlyArray<{ name: string; note: string; selected?: boolean }> = [
-  { name: 'R32', note: 'Selected · pure fluid · real property backend (Live) · pinned EOS probe (Examples)', selected: true },
-  { name: 'R410A', note: 'Research only · blend, glide ≈ 0 · validation pending' },
-  { name: 'R454B', note: 'Research only · blend with glide · validation pending' },
-  { name: 'R290', note: 'Research only · propane, flammable · validation pending' },
-  { name: 'R1234yf', note: 'Research only · validation pending' },
-  { name: 'R134a', note: 'Research only · validation pending' },
-  { name: 'R407C', note: 'Research only · zeotropic blend · validation pending' },
-  { name: 'R22', note: 'Research only · legacy · validation pending' },
-];
 
 /** References only; none of these is modelled or editable yet. Charge lives in the inventory model. */
 const PENDING: ReadonlyArray<{ name: string; note: string }> = [
@@ -645,6 +635,23 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
     },
   };
   fields.push(model);
+  const fluidSel = html('select', { class: 'ou-fluid-select rp-ctl', 'aria-label': 'Refrigerant' },
+    ...Object.values(REFRIGERANTS).map(f => html('option', { value: f.id }, f.id)));
+  fluidSel.addEventListener('change', () => store.setRefrigerant(fluidSel.value as RefrigerantId));
+  fields.push({ root: fluidSel, refresh(): void {
+    const c = cfg(), generic = c.outdoorKind === 'generic';
+    const examples = store.state.ui.experience === 'examples';
+    fluidSel.value = examples ? 'R32' : c.live.refrigerant;
+    fluidSel.disabled = !generic || examples;
+    for (const option of fluidSel.options) {
+      const q = refrigerantDefinition(option.value as RefrigerantId).qualification;
+      option.disabled = !q.reference || (c.live.fieldLines === 'physical' && !q.physicalLines) || (c.live.circuitModel === 'inventory' && !q.inventory);
+      setAttr(option, 'title', q.reference ? q.limitation ?? 'Qualified Reference refrigerant' : 'Property research only; coupled simulation is not qualified.');
+    }
+    setAttr(fluidSel, 'title', examples ? 'Examples use fixed R32 snapshots; fluid selection applies to Live only.' : generic
+      ? 'Changing refrigerant starts a new scenario. Other fluids need idealized field lines; original room and equipment inputs are retained.'
+      : 'Factory R32. Choose Generic outdoor to compare other qualified fluids; this is a compatible-circuit comparison, not an appliance retrofit.');
+  }});
 
   // Port capacity is an equipment specification, distinct from how many rooms are connected (rooms are added and removed in the
   // indoor zone). Published models: fixed. Generic: a native integer field, no arbitrary upper limit, a scenario assumption.
@@ -701,6 +708,7 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
     html('div', { class: 'ou-cols' },
       html('div', { class: 'ou-col' },
         html('div', { class: 'ou-row' }, html('span', { class: 'rp-k' }, 'Ports'), portsField.root),
+        html('div', { class: 'ou-row ou-fluid' }, html('span', { class: 'rp-k' }, 'Refrigerant'), fluidSel),
         cleanGlobal.root),
       charge.root),
     slot);
@@ -719,7 +727,7 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
       setText(modelText, `${caps} port${caps === 1 ? '' : 's'}${info.ports === null ? ' assumed' : ''}`);
       const published = info.coolingHighFanFlowM3h !== undefined && c.outdoorVolumetricAirFlowM3s !== undefined;
       const scope = live
-        ? `${published ? 'Published airflow · generic cycle.' : 'Generic R32 · uncalibrated.'} Efficiency and cleanliness drive the model.`
+        ? `${published ? 'Published airflow · generic cycle.' : `Generic ${c.live.refrigerant} · uncalibrated.`} Efficiency and cleanliness drive the model.`
         : `Examples: fixed readings. Efficiency and cleanliness edit configuration only (fixture ηis ${ETA_FIXTURE_PCT} %).`;
       const rd = live && inv ? currentReadings(s) : null;
       const protectedCompressor = rd?.usable && rd.engine && rd.engine.diagnostics.demandSpeedRps > 0 && !inv!.compressorAdmitted;
@@ -805,7 +813,7 @@ export function createOutdoorSettings(): PopContent {
 
   const coil = keyed('coil', fold('Outdoor coil and air (generic assumptions)', true,
     html('p', { class: 'hint' }, 'Heat-engine assumptions, not measured values and not manufacturer data. Conductances are UA in W/K, not areas. Most numeric bounds are 0.2×–5× the engine default, with physical exceptions (for example the compressor speed floor); they are generic assumptions, not manufacturer limits.'),
-    html('p', { class: 'hint' }, 'Bounded generic coverage: outdoor air −25…45 °C (the weather inputs\' range). Inside it the subcritical R32 cycle needs evaporating ≥ −40 °C and condensing ≤ 65 °C, within generic discharge-temperature and pressure-ratio caps; outside them the run fails visibly instead of extrapolating. The diagram\'s temperature colours (−40…145 °C refrigerant, −30…50 °C air) are display ranges, not operating limits, and 105 °C and above is hot discharge vapour, not a liquid temperature.'),
+    html('p', { class: 'hint' }, 'Bounded generic coverage: outdoor air −25…45 °C (the weather inputs\' range). Inside it the selected subcritical refrigerant cycle needs evaporating ≥ −40 °C and condensing ≤ 65 °C, within generic discharge-temperature and pressure-ratio caps; outside them the run fails visibly instead of extrapolating. The diagram\'s temperature colours (−40…145 °C refrigerant, −30…50 °C air) are display ranges, not operating limits, and 105 °C and above is hot discharge vapour, not a liquid temperature.'),
     coilStatus,
     liveField('outdoorAirConductanceWK', 'Outdoor coil air-side UA', 'W/K').root,
     liveField('outdoorRefrigerantConductanceWK', 'Outdoor coil refrigerant-side UA', 'W/K').root,
@@ -853,7 +861,9 @@ export function createOutdoorSettings(): PopContent {
     html('ul', { class: 'fluids' }, ...items.map((f) =>
       html('li', { class: `${f.selected ? 'on' : 'off'}${pending ? ' pending' : ''}`, 'aria-disabled': f.selected ? undefined : 'true' },
         html('span', { class: 'fl-name' }, f.name), html('span', { class: 'fl-note' }, f.note))));
-  const refrigerant = keyed('refrigerant', fold('Refrigerant (research gating)', false, list(FLUIDS, false)));
+  const fluidCoverage = html('p', { class: 'hint' });
+  const refrigerant = keyed('refrigerant', fold('Refrigerant qualification', false,
+    html('p', { class: 'hint' }, 'Select the working fluid on the outdoor-unit card. Alternate fluids compare generic compatible circuits; published R32 equipment remains R32. Changing fluid starts a new physical scenario.'), fluidCoverage));
   const pending = keyed('pending', fold('Oil and other (pending)', false, list(PENDING, true)));
 
   // Refrigerant charge model. Initial charge is edited on the outdoor-unit card; line length and bores on the line sets.
@@ -950,8 +960,10 @@ export function createOutdoorSettings(): PopContent {
       relabel(inAir, profiled.length ? 'Indoor air mass flow (fallback / manual override)' : 'Indoor air mass flow (each unit)', 'kg/s');
       const driven = live ? 'Drives live model.' : 'Stored for Live; the Examples ignore these values.';
       for (const p of [coilStatus, compStatus, sharedStatus]) { setText(p, driven); toggleClass(p, 'diff', !live); }
+      const fluid = refrigerantDefinition(c.live.refrigerant);
+      setText(fluidCoverage, `Refrigerant ${fluid.id}: ${fluid.qualification.limitation ?? 'Qualified Reference cycle and physical field lines. Charge release remains separately gated.'}`);
       const minimum = c.live.circuitModel === 'inventory' ? 18 : referenceMinimumSpeedRps(c.mode, c.live.fieldLines);
-      setText(compressorPolicy, `Generic minimum command: ${minimum} rps. Reference inverter slew: 2 rps/s upward, 4 rps/s downward, from the first admissible operating point. These are model assumptions, not measured OEM frequencies. Physical cooling retains 18 rps because its multi-branch low-flow closure is not yet qualified; inventory retains its separate legacy command.`);
+      setText(compressorPolicy, `Generic minimum command: ${minimum} rps. Reference inverter slew: 2 rps/s upward, 4 rps/s downward, from rest for idealized lines; from the admitted minimum for physical lines. These are model assumptions, not measured OEM frequencies. Physical cooling retains 18 rps because its multi-branch low-flow closure is not yet qualified; inventory retains its separate legacy command.`);
       setText(etaStatus, live ? 'ηis drives live model.'
         : c.etaIsPct === ETA_FIXTURE_PCT ? `Matches the fixture value (${ETA_FIXTURE_PCT} %).` : `Differs from the fixture's ${ETA_FIXTURE_PCT} %. Edits configuration only; readings do not respond.`);
       toggleClass(etaStatus, 'diff', !live && c.etaIsPct !== ETA_FIXTURE_PCT);
@@ -1456,7 +1468,7 @@ export function createLineModelSwitch(): Field {
       { value: 'physical', text: 'Physical', title: PHYSICAL_TITLE, disabled: !PHYSICAL_FIELD_LINES_AVAILABLE },
     ],
     // Physical transport exists in the reference model only; the inventory circuit stores line volume with idealized transport.
-    isDisabled: (v) => v === 'physical' && store.state.cfg.live.circuitModel === 'inventory',
+    isDisabled: (v) => v === 'physical' && (store.state.cfg.live.circuitModel === 'inventory' || !refrigerantDefinition(store.state.cfg.live.refrigerant).qualification.physicalLines),
     get: () => store.state.cfg.live.fieldLines, set: (v) => store.update((s) => { s.cfg.live.fieldLines = v; }),
   });
   for (const b of seg.buttons) b.classList.add('rp-ctl');
@@ -1469,7 +1481,7 @@ export function createLineModelSwitch(): Field {
       seg.refresh();
       const inventory = store.state.cfg.live.circuitModel === 'inventory';
       setText(key, inventory ? 'Field lines · ideal only' : 'Field-line model');
-      setAttr(seg.buttons[1] as HTMLElement, 'title', inventory ? 'Physical field transport is available in the reference model only. Inventory stores line volume with idealized transport.' : PHYSICAL_TITLE);
+      setAttr(seg.buttons[1] as HTMLElement, 'title', inventory ? 'Physical field transport is available in the reference model only. Inventory stores line volume with idealized transport.' : !refrigerantDefinition(store.state.cfg.live.refrigerant).qualification.physicalLines ? 'Physical field lines are qualified for R32 only; use idealized lines for this refrigerant.' : PHYSICAL_TITLE);
     },
   };
 }

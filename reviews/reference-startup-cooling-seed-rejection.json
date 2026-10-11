@@ -1,0 +1,521 @@
+{
+  "c": {
+    "fluid": "R32",
+    "mode": "cooling",
+    "outdoorTemperatureC": 30,
+    "outdoorRelativeHumidity": 0.35,
+    "ambientPressurePa": 101325,
+    "indoorPortCapacity": 5,
+    "rooms": [
+      {
+        "id": "room-1",
+        "enabled": false,
+        "volumeM3": 60,
+        "initialTemperatureC": 25,
+        "initialRelativeHumidity": 0.3,
+        "setpointC": 24,
+        "envelopeWK": 45,
+        "fabricCapacityJK": 4000000,
+        "airFabricWK": 250,
+        "ventilationACH": 0.25,
+        "airMassFlowKgs": 0.15,
+        "fanPowerW": 25,
+        "airConductanceWK": 170,
+        "refrigerantConductanceWK": 350,
+        "naturalAirConductanceWK": 15,
+        "metalCapacityJK": 12000,
+        "pipe": {
+          "lengthM": 0,
+          "gasInsideDiameterM": 0.01,
+          "liquidInsideDiameterM": 0.0048,
+          "elevationM": 0,
+          "insulationConductanceWmK": 0.05
+        },
+        "internalGainW": 300
+      },
+      {
+        "id": "room-2",
+        "enabled": true,
+        "volumeM3": 60,
+        "initialTemperatureC": 27,
+        "initialRelativeHumidity": 0.3,
+        "setpointC": 24,
+        "envelopeWK": 45,
+        "fabricCapacityJK": 4000000,
+        "airFabricWK": 250,
+        "ventilationACH": 0.25,
+        "airMassFlowKgs": 0.15,
+        "fanPowerW": 25,
+        "airConductanceWK": 170,
+        "refrigerantConductanceWK": 350,
+        "naturalAirConductanceWK": 15,
+        "metalCapacityJK": 12000,
+        "pipe": {
+          "lengthM": 0,
+          "gasInsideDiameterM": 0.01,
+          "liquidInsideDiameterM": 0.0048,
+          "elevationM": 0,
+          "insulationConductanceWmK": 0.05
+        },
+        "internalGainW": 100
+      },
+      {
+        "id": "room-3",
+        "enabled": true,
+        "volumeM3": 60,
+        "initialTemperatureC": 24,
+        "initialRelativeHumidity": 0.3,
+        "setpointC": 24,
+        "envelopeWK": 45,
+        "fabricCapacityJK": 4000000,
+        "airFabricWK": 250,
+        "ventilationACH": 0.25,
+        "airMassFlowKgs": 0.15,
+        "fanPowerW": 25,
+        "airConductanceWK": 170,
+        "refrigerantConductanceWK": 350,
+        "naturalAirConductanceWK": 15,
+        "metalCapacityJK": 12000,
+        "pipe": {
+          "lengthM": 0,
+          "gasInsideDiameterM": 0.01,
+          "liquidInsideDiameterM": 0.0048,
+          "elevationM": 0,
+          "insulationConductanceWmK": 0.05
+        },
+        "internalGainW": 50
+      }
+    ],
+    "compressor": {
+      "displacementM3rev": 0.000022,
+      "speedMinRps": 18,
+      "speedMaxRps": 75,
+      "isentropicEfficiency": 0.7,
+      "volumetricEfficiency": 0.8,
+      "driveEfficiency": 0.93,
+      "superheatK": 3,
+      "subcoolK": 1,
+      "maxDischargeC": 145,
+      "maxPressureRatio": 8
+    },
+    "outdoor": {
+      "airMassFlowKgs": 0.9,
+      "fanPowerW": 85,
+      "airConductanceWK": 1100,
+      "refrigerantConductanceWK": 1000,
+      "naturalAirConductanceWK": 35,
+      "metalCapacityJK": 28000,
+      "depositionAreaM2": 2,
+      "frostDensityKgm3": 200,
+      "frostConductivityWmK": 0.15,
+      "finGapM": 0.002,
+      "drainageSeconds": 30
+    },
+    "control": {
+      "strategy": "inverter",
+      "fixedSpeedRps": 40,
+      "controlsW": 15,
+      "proportionalSpeedRpsK": 20,
+      "thermostatDeadbandK": 1,
+      "minOnSeconds": 30,
+      "minOffSeconds": 30,
+      "inverterRampUpRpsPerSecond": 2,
+      "inverterRampDownRpsPerSecond": 4,
+      "reversalSeconds": 3,
+      "defrostMinHeatingSeconds": 300,
+      "defrostIceThresholdKg": 0.15,
+      "defrostMaxSeconds": 600,
+      "defrostTerminationMetalC": 5,
+      "drainageDwellSeconds": 10,
+      "defrostSpeedRps": 35
+    },
+    "numerics": {
+      "maxStepSeconds": 0.25,
+      "pressureToleranceW": 0.1
+    },
+    "interzoneLinks": [
+      {
+        "roomA": "room-1",
+        "roomB": "room-2",
+        "conductanceWK": 80
+      },
+      {
+        "roomA": "room-2",
+        "roomB": "room-3",
+        "conductanceWK": 50
+      }
+    ]
+  },
+  "before": {
+    "rooms": [
+      {
+        "dryAirMassKg": 70.39250777511732,
+        "airEnthalpyJ": 2831105.9586022315,
+        "humidityRatio": 0.005917667104905882,
+        "fabricTemperatureC": 25,
+        "metalTemperatureC": 25
+      },
+      {
+        "dryAirMassKg": 69.83878956703164,
+        "airEnthalpyJ": 3084810.0945931273,
+        "humidityRatio": 0.006669310956358775,
+        "fabricTemperatureC": 27,
+        "metalTemperatureC": 27
+      },
+      {
+        "dryAirMassKg": 70.66900832089107,
+        "airEnthalpyJ": 2707943.6137905046,
+        "humidityRatio": 0.005570721639377732,
+        "fabricTemperatureC": 24,
+        "metalTemperatureC": 24
+      }
+    ],
+    "outdoorEnergyJ": 840000,
+    "outdoorWaterKg": 0,
+    "time": 0,
+    "state": "idle",
+    "stateTime": 0,
+    "heatingRuntime": 0,
+    "onTime": 0,
+    "offTime": null,
+    "active": [
+      false,
+      false,
+      false
+    ],
+    "thermostatCalls": [
+      false,
+      true,
+      true
+    ],
+    "cycle": null,
+    "ledgers": {
+      "electricityJ": 0,
+      "signedRoomHeatJ": 0,
+      "usefulServiceHeatJ": 0,
+      "drainedWaterKg": 0,
+      "outdoorExchangeJ": 0,
+      "drainageJ": 0,
+      "configurationEnergyJ": 0,
+      "boundaryEnergyJ": 0
+    },
+    "boundaryWater": 0,
+    "chargeCandidate": null,
+    "inventoryDrive": {
+      "speedRps": 0,
+      "startupSeconds": 0,
+      "offSeconds": null,
+      "protection": null
+    },
+    "demandIntegralW": [
+      0,
+      0,
+      0
+    ],
+    "inverterCycling": false,
+    "lastOutput": {
+      "provenance": "live-generic-unvalidated",
+      "simulatedSeconds": 0,
+      "state": "idle",
+      "requestedMode": "cooling",
+      "effectiveMode": null,
+      "cycle": null,
+      "rooms": [
+        {
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0,
+          "id": "room-1",
+          "temperatureC": 25.00000000000017,
+          "relativeHumidity": 0.29999999999999777,
+          "humidityRatio": 0.005917667104905882,
+          "fabricTemperatureC": 25,
+          "metalTemperatureC": 25,
+          "setpointC": 24,
+          "active": false,
+          "thermostatCalling": false,
+          "fanSpeedFraction": 0,
+          "massFlowKgs": 0,
+          "signedRoomHeatW": 0,
+          "sensibleRoomHeatW": 0,
+          "fanPowerW": 0,
+          "airOutletC": null,
+          "condensateKgs": 0,
+          "drainEnthalpyW": 0,
+          "interzoneHeatW": 160.00000000002274,
+          "internalGainW": 300
+        },
+        {
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0,
+          "id": "room-2",
+          "temperatureC": 27.000000000000455,
+          "relativeHumidity": 0.29999999999999144,
+          "humidityRatio": 0.006669310956358775,
+          "fabricTemperatureC": 27,
+          "metalTemperatureC": 27,
+          "setpointC": 24,
+          "active": false,
+          "thermostatCalling": true,
+          "fanSpeedFraction": 0,
+          "massFlowKgs": 0,
+          "signedRoomHeatW": 0,
+          "sensibleRoomHeatW": 0,
+          "fanPowerW": 0,
+          "airOutletC": null,
+          "condensateKgs": 0,
+          "drainEnthalpyW": 0,
+          "interzoneHeatW": -310.00000000003695,
+          "internalGainW": 100
+        },
+        {
+          "retainedWaterKg": 0,
+          "retainedIceKg": 0,
+          "id": "room-3",
+          "temperatureC": 24.00000000000017,
+          "relativeHumidity": 0.29999999999999627,
+          "humidityRatio": 0.005570721639377732,
+          "fabricTemperatureC": 24,
+          "metalTemperatureC": 24,
+          "setpointC": 24,
+          "active": false,
+          "thermostatCalling": true,
+          "fanSpeedFraction": 0,
+          "massFlowKgs": 0,
+          "signedRoomHeatW": 0,
+          "sensibleRoomHeatW": 0,
+          "fanPowerW": 0,
+          "airOutletC": null,
+          "condensateKgs": 0,
+          "drainEnthalpyW": 0,
+          "interzoneHeatW": 150.0000000000142,
+          "internalGainW": 50
+        }
+      ],
+      "interzoneTransfers": [
+        {
+          "roomA": "room-1",
+          "roomB": "room-2",
+          "heatFromAToBW": -160.00000000002274
+        },
+        {
+          "roomA": "room-2",
+          "roomB": "room-3",
+          "heatFromAToBW": 150.0000000000142
+        }
+      ],
+      "inventory": null,
+      "outdoor": {
+        "temperatureC": 30,
+        "iceKg": 0,
+        "liquidKg": 0,
+        "thicknessM": 0,
+        "metalTemperatureC": 30,
+        "filmEnthalpyJ": 0,
+        "filmMassKg": 0,
+        "airOutletC": null,
+        "fanPowerW": 0,
+        "depositionKgs": 0,
+        "drainageKgs": 0,
+        "meltPowerW": 0
+      },
+      "electrical": {
+        "compressorW": 0,
+        "indoorFansW": 0,
+        "outdoorFanW": 0,
+        "controlsW": 15,
+        "totalW": 15,
+        "driveLossW": 0
+      },
+      "signedRoomHeatW": 0,
+      "heatingCOP": null,
+      "coolingCOP": null,
+      "energy": {
+        "electricityJ": 0,
+        "signedRoomHeatJ": 0,
+        "usefulServiceHeatJ": 0,
+        "drainedWaterKg": 0,
+        "outdoorExchangeJ": 0,
+        "drainageJ": 0,
+        "configurationEnergyJ": 0,
+        "boundaryEnergyJ": 0,
+        "storedEnergyChangeJ": 0,
+        "residualJ": 0,
+        "waterResidualKg": 0
+      },
+      "diagnostics": {
+        "warnings": [
+          "Generic component parameters and control assumptions; not manufacturer calibrated.",
+          "Outdoor metal and retained water/ice share one equilibrium temperature.",
+          "Ice sublimation is excluded; retained ice melts or receives deposition.",
+          "Dirt scales air flow and air-side conductance at fixed fan command. Generic inverter indoor fans command 25–100% airflow across the thermostat band, linear air-side conductance and cubic electric power; no measured fan map.",
+          "Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.",
+          "Idealized parallel indoor coils use generic demand-proportional flow for inverter operation, normalized 5% UA reserve for calling inverter branches and UA allocation for fixed-speed/defrost, and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.",
+          "Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states.",
+          "Interzone links exchange sensible heat through prescribed conductance; they do not transport air/water or resolve buoyancy.",
+          "Internal gains are prescribed sensible heat supplied to room air, separate from HVAC output and COP."
+        ],
+        "fault": null,
+        "algebraicResidualW": 0,
+        "speedRps": 0,
+        "demandSpeedRps": 0,
+        "rawDemandSpeedRps": 0,
+        "restartDelaySeconds": 0,
+        "envelopeProtection": null,
+        "filmEnergyRateW": 0,
+        "metalEnergyRateW": 0
+      }
+    }
+  },
+  "out": {
+    "provenance": "live-generic-unvalidated",
+    "simulatedSeconds": 0,
+    "state": "fault",
+    "requestedMode": "cooling",
+    "effectiveMode": null,
+    "cycle": null,
+    "rooms": [
+      {
+        "retainedWaterKg": 0,
+        "retainedIceKg": 0,
+        "id": "room-1",
+        "temperatureC": 25.00000000000017,
+        "relativeHumidity": 0.29999999999999777,
+        "humidityRatio": 0.005917667104905882,
+        "fabricTemperatureC": 25,
+        "metalTemperatureC": 25,
+        "setpointC": 24,
+        "active": false,
+        "thermostatCalling": false,
+        "fanSpeedFraction": 0,
+        "massFlowKgs": 0,
+        "signedRoomHeatW": 0,
+        "sensibleRoomHeatW": 0,
+        "fanPowerW": 0,
+        "airOutletC": null,
+        "condensateKgs": 0,
+        "drainEnthalpyW": 0,
+        "interzoneHeatW": 160.00000000002274,
+        "internalGainW": 300
+      },
+      {
+        "retainedWaterKg": 0,
+        "retainedIceKg": 0,
+        "id": "room-2",
+        "temperatureC": 27.000000000000455,
+        "relativeHumidity": 0.29999999999999144,
+        "humidityRatio": 0.006669310956358775,
+        "fabricTemperatureC": 27,
+        "metalTemperatureC": 27,
+        "setpointC": 24,
+        "active": false,
+        "thermostatCalling": true,
+        "fanSpeedFraction": 0,
+        "massFlowKgs": 0,
+        "signedRoomHeatW": 0,
+        "sensibleRoomHeatW": 0,
+        "fanPowerW": 0,
+        "airOutletC": null,
+        "condensateKgs": 0,
+        "drainEnthalpyW": 0,
+        "interzoneHeatW": -310.00000000003695,
+        "internalGainW": 100
+      },
+      {
+        "retainedWaterKg": 0,
+        "retainedIceKg": 0,
+        "id": "room-3",
+        "temperatureC": 24.00000000000017,
+        "relativeHumidity": 0.29999999999999627,
+        "humidityRatio": 0.005570721639377732,
+        "fabricTemperatureC": 24,
+        "metalTemperatureC": 24,
+        "setpointC": 24,
+        "active": false,
+        "thermostatCalling": true,
+        "fanSpeedFraction": 0,
+        "massFlowKgs": 0,
+        "signedRoomHeatW": 0,
+        "sensibleRoomHeatW": 0,
+        "fanPowerW": 0,
+        "airOutletC": null,
+        "condensateKgs": 0,
+        "drainEnthalpyW": 0,
+        "interzoneHeatW": 150.0000000000142,
+        "internalGainW": 50
+      }
+    ],
+    "interzoneTransfers": [
+      {
+        "roomA": "room-1",
+        "roomB": "room-2",
+        "heatFromAToBW": -160.00000000002274
+      },
+      {
+        "roomA": "room-2",
+        "roomB": "room-3",
+        "heatFromAToBW": 150.0000000000142
+      }
+    ],
+    "inventory": null,
+    "outdoor": {
+      "temperatureC": 30,
+      "iceKg": 0,
+      "liquidKg": 0,
+      "thicknessM": 0,
+      "metalTemperatureC": 30,
+      "filmEnthalpyJ": 0,
+      "filmMassKg": 0,
+      "airOutletC": null,
+      "fanPowerW": 0,
+      "depositionKgs": 0,
+      "drainageKgs": 0,
+      "meltPowerW": 0
+    },
+    "electrical": {
+      "compressorW": 0,
+      "indoorFansW": 0,
+      "outdoorFanW": 0,
+      "controlsW": 15,
+      "totalW": 15,
+      "driveLossW": 0
+    },
+    "signedRoomHeatW": 0,
+    "heatingCOP": null,
+    "coolingCOP": null,
+    "energy": {
+      "electricityJ": 0,
+      "signedRoomHeatJ": 0,
+      "usefulServiceHeatJ": 0,
+      "drainedWaterKg": 0,
+      "outdoorExchangeJ": 0,
+      "drainageJ": 0,
+      "configurationEnergyJ": 0,
+      "boundaryEnergyJ": 0,
+      "storedEnergyChangeJ": 0,
+      "residualJ": 0,
+      "waterResidualKg": 0
+    },
+    "diagnostics": {
+      "warnings": [
+        "Generic component parameters and control assumptions; not manufacturer calibrated.",
+        "Outdoor metal and retained water/ice share one equilibrium temperature.",
+        "Ice sublimation is excluded; retained ice melts or receives deposition.",
+        "Dirt scales air flow and air-side conductance at fixed fan command. Generic inverter indoor fans command 25–100% airflow across the thermostat band, linear air-side conductance and cubic electric power; no measured fan map.",
+        "Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.",
+        "Idealized parallel indoor coils use generic demand-proportional flow for inverter operation, normalized 5% UA reserve for calling inverter branches and UA allocation for fixed-speed/defrost, and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.",
+        "Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states.",
+        "Interzone links exchange sensible heat through prescribed conductance; they do not transport air/water or resolve buoyancy.",
+        "Internal gains are prescribed sensible heat supplied to room air, separate from HVAC output and COP."
+      ],
+      "fault": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 0.2 W at 23.056205,31.056635; equations 0.154,0.043); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)",
+      "algebraicResidualW": 0,
+      "speedRps": 0,
+      "demandSpeedRps": 0,
+      "rawDemandSpeedRps": 0,
+      "restartDelaySeconds": 0,
+      "envelopeProtection": null,
+      "filmEnergyRateW": 0,
+      "metalEnergyRateW": 0
+    }
+  }
+}

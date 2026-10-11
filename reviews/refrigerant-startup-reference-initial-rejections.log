@@ -1,0 +1,242 @@
+✔ volumetric profile converts at actual inlet humid-air specific volume (173.934465ms)
+✔ phase-local exchanger inverse agrees with prior real-EOS bisection, including pressure perturbations (330.802009ms)
+✔ stale/singular continuation slopes fall back to freshly closed real-EOS pressure equations (622.42415ms)
+✔ worker batching preserves every quarter-second thermal/control step and its conservation ledgers (922.732198ms)
+✔ real R32 EOS shared-pressure cycle: one to five branches and both directions (215.706814ms)
+✔ heat exchanger pinches fail explicitly (0.608337ms)
+✔ phase-aware integral latent zone agrees with analytical UA requirement (0.139673ms)
+✔ real field lines close momentum/enthalpy in heating and cooling, including two-phase small pipe (1406.408328ms)
+✔ cold reverse-cycle defrost floats subcooling and retains physical heat signs (155.842592ms)
+✔ heterogeneous idealized cooling conserves mixed-return enthalpy/entropy and valve allocation (140.459048ms)
+✔ idealized warm/cold parallel condensers close the mixed header without equal branch subcooling (93.709167ms)
+✔ cooling cumulative drain matches actual condensate flow and room water-inventory loss (3046.695482ms)
+✔ dry Off operation produces no cumulative drainage and mode/settings edits preserve water history (2863.059628ms)
+✔ failed native candidates cannot add water drainage or remove retained room water (2919.749555ms)
+✔ startup bounds demand, preserves actuator state across branch demand changes, and waits after Off (1.577486ms)
+✔ safety overrides minimum speed, pickup arming and startup hold until pressure and dwell recover (0.246475ms)
+✔ ratio thresholds stay strictly ordered for all supported positive lifts (0.151797ms)
+✔ temperature protection cannot recover from an unavailable discharge prediction (0.097804ms)
+✔ Reference inverter starts at its admitted minimum and immediately follows bounded up/down slew (0.335303ms)
+✔ inventory startup ramps real displacement from rest consistently with timestep and retains restart guards (4.396956ms)
+✔ real dynamic 1–5 branches conserve full stored energy/water and heating/cooling signs (7257.953037ms)
+✔ early-trigger automatic defrost melts and drains finite inventories (34896.609491ms)
+✔ film phase map requires latent melt energy; exhausted film evaporates with exact bounded mass (0.938039ms)
+✔ wet cooling removes water; timestep halving converges thermal/electrical totals (15879.451006ms)
+✔ configuration edits retain room/ice inventories; all comfort calls off stops despite minimum-on (59.264759ms)
+✔ mode reversal conserves cold metal then establishes live cooling instead of imposing subcooling (9975.190054ms)
+✔ unmodified three-branch defaults sustain heating through a natural frost/defrost event (49354.587192ms)
+✔ cleanliness changes only air-side transfer/flow; constant fan and weather response remain physical (3169.087404ms)
+✔ defrost timeout retains physical ice and closes the ledger instead of resetting it (4370.947833ms)
+✔ owner-layout cooling accepts newly added warm rooms without resetting old coil/film inventories (21025.768604ms)
+✔ owner-layout natural frost reverses with hot stored indoor metal and conserves melt energy (80376.333367ms)
+✔ unavailable property backend returns a conserved fault snapshot without throwing again (26.963768ms)
+✖ all Off aborts defrost/reversal without erasing storage; passive time and reenable remain conservative (166.457633ms)
+✔ Off of the last active room enters idle and respects minimum-off before another room demands (43.201239ms)
+✔ saved eight-head edits close finite-UA branches and a liquid mixed header, including sensible-only hot branches (880.640052ms)
+✔ known-phase EOS integration resolves both sides of a condenser saturation pinch without moving temperatures (27.35535ms)
+✔ outdoor exhaust equilibrium closes vapor/ice/liquid and fusion enthalpy without depositing mist (15.195217ms)
+✔ supersaturated contact exhaust preserves original contact water/heat and indoor fog stays explicit (2.639651ms)
+✔ dry/unsaturated exhaust and saturation onset retain total H/W; fan heat evaporates fog (9.604159ms)
+✔ outdoor fan phase-flash backend failure rolls back thermal stores, clock and drive (74.252379ms)
+✔ room equilibrium preserves gas and retained liquid/ice energy and total water (12.38729ms)
+✔ passive room condensation freezes and re-evaporates with conserved stores and volume edits (3143.567271ms)
+✔ dirty indoor cooling stops above freezing, warms with fan heat and restarts without remapping (11051.098781ms)
+✔ simultaneous discharge protection does not erase antifreeze recovery hysteresis (0.279828ms)
+✔ interzone heat warms an Off room and conserves total energy and water in both directions/modes (35.834588ms)
+✔ multiple links use one pre-step state and remain independent of room/link ordering (10.067073ms)
+✔ transfer diagnostics retain canonical H until configuration acceptance and snapshots are independent (7.750072ms)
+✔ prescribed gains supply external heat without inflating HVAC power, electricity or COP (6.798747ms)
+✖ running heating/cooling with linked Off rooms and gains conserves the combined refrigerant/air boundary (2560.666249ms)
+✔ inverter target feedforward uses actual Off-neighbour temperature and treats gains in each mode (2.007848ms)
+✔ link/gain edits preserve inventories and time; invalid topology/gains leave the accepted engine untouched (15.225355ms)
+✔ failed candidate with heat links/gains rolls back all physical storage and boundary ledgers (13.762946ms)
+✔ sensible-link dynamics converge under timestep refinement while conserving energy (1303.14771ms)
+✔ calling branches retain a dimensionless normalized UA reserve when sensible demand crosses zero (9.08494ms)
+✔ room demand balances target load and applies directional antiwindup independently (1.36221ms)
+✔ exact published owner house maintains native continuous inverter service for 1200 seconds (63882.98801ms)
+✔ native cold startup and retained-hot-coil restart use actual thermodynamic startup ramps (22654.211644ms)
+✔ Reference slew configuration rejects nonfinite/nonpositive rates before state mutation (1.973904ms)
+✔ inverter modulates continuously near target when load exceeds minimum capacity (28105.791603ms)
+✔ below-minimum load cycles with dwell, while conventional operation uses a fixed speed (13530.064437ms)
+✔ controller history rolls back on native failure and clears on strategy change (1827.210853ms)
+✔ live minimum-speed edits cannot publish a running command outside the selected range (0.155894ms)
+✔ stable floor stratification suppresses buoyancy but retains bidirectional solid/background heat (0.914856ms)
+✔ unstable floor exchange follows the square-aperture reference law and reverses under fixed elevation (0.162287ms)
+✔ wall counterflow allows either thermal sign and uses aperture height independently of area (0.146787ms)
+✔ zero opening area keeps solid conduction and separately declared background in either direction (0.132911ms)
+✔ A/B naming and room/link order cannot change physical orientation or conserved edge powers (40.38866ms)
+✔ nonlinear feedforward substitutes own target, actual Off-neighbour and fixed lower node in both modes (3.280509ms)
+✔ Off rooms exchange sensible energy in heating/cooling without changing humidity, external ledger or COP (45.659163ms)
+✔ opening links conserve the coupled operating HVAC boundary in both service modes (2225.692671ms)
+✔ shared adaptive timestep prevents large-aperture/small-room network overshoot without clipping heat (84.611553ms)
+✔ opening trajectories converge under timestep refinement without breaking conservation (280.145144ms)
+✔ invalid opening configurations reject atomically; accepted geometry edits retain storage/time/service history (10.326853ms)
+✔ failed opening candidate rolls back all accepted room storage, clocks and ledgers (10.22929ms)
+✔ legacy constant-H output and timestep remain unchanged without the optional opening mode (14.767491ms)
+✔ physical cooling8rps at 35°C preserves local pinch despite warmer common suction (191.903113ms)
+✔ physical cooling8rps at 39°C preserves local pinch despite warmer common suction (145.70822ms)
+✔ unequal physical coils retain supported18rps closure with an inactive branch (818.878901ms)
+✔ unqualified unequal physical cooling8rps remains a real fault and rolls back the engine transaction (4027.264907ms)
+✔ a lower pressure-search bound cannot bypass physical domain, hard ratio or line authority (211.947047ms)
+{"mode":"heating","simulatedSeconds":0.25,"pLowBarA":8.104996609890266,"pHighBarA":15.199985036063607,"energyResidualJ":-5.3255689635989256e-8,"waterResidualKg":5.630465169624566e-16}
+{"mode":"heating","simulatedSeconds":1,"pLowBarA":8.127658312238752,"pHighBarA":15.158770191576567,"energyResidualJ":7.87313183536753e-8,"waterResidualKg":3.667313848432219e-17}
+{"mode":"cooling","simulatedSeconds":0.25,"pLowBarA":16.449307400340004,"pHighBarA":20.818634482449397,"energyResidualJ":3.370382728462573e-8,"waterResidualKg":-6.053575067437034e-16}
+{"mode":"cooling","simulatedSeconds":1,"pLowBarA":16.449307400340004,"pHighBarA":20.82169149087817,"energyResidualJ":1.1469137461972423e-7,"waterResidualKg":-6.838334152409198e-16}
+✖ connection count follows explicit port capacity and invalid declarations reject before property queries (1.841494ms)
+✔ six idealized branches use real R32 heating/cooling states and conservative dynamics (351.431544ms)
+✔ removing a sixth room retains remaining inventories/time and exports its declared storage boundary (30.898124ms)
+✔ pressure/density storage coordinates preserve independent EOS states across phase and input switches (2018.893369ms)
+✔ rejected pressure/density flashes recover without native exceptions or fabricated storage states (2110.777848ms)
+✔ reusable HEOS state matches independent PropsSI across input switches and cache hits (28.064137ms)
+✔ repeated rejected flashes preserve real WASM refrigerant and humid-air service (697.827005ms)
+✔ undefined two-phase sound speed cannot poison later same-input physical readings (2.461113ms)
+✔ reverse-order protections, unknown stopped sensor and mode exit preserve each release requirement (0.945664ms)
+✔ held-envelope estimate detects excessive discharge before an out-of-envelope PH flash (12.013876ms)
+✔ retained cold-start and hot dirty cooling failures close or protect throughout their original schedules (36541.347102ms)
+✔ declared low-efficiency cold-source demand holds discharge, retains stores and recovers on a warmed boundary (1830.350639ms)
+✔ Reference inverter preserves stores and closes freshly after warmed three-to-one branch change (10536.786034ms)
+✔ R22 heating starts with actual conserved subminimum throughput and reaches8rps (2668.225548ms)
+✔ R22 cooling starts with actual conserved subminimum throughput and reaches8rps (2701.297797ms)
+✔ R410A heating starts with actual conserved subminimum throughput and reaches8rps (1752.998712ms)
+✔ R410A cooling starts with actual conserved subminimum throughput and reaches8rps (4616.990444ms)
+✔ R32 heating starts with actual conserved subminimum throughput and reaches8rps (514.037321ms)
+✔ R32 cooling starts with actual conserved subminimum throughput and reaches8rps (2383.695534ms)
+✔ R290 heating starts with actual conserved subminimum throughput and reaches8rps (484.779762ms)
+✔ R290 cooling starts with actual conserved subminimum throughput and reaches8rps (1507.832666ms)
+✔ R134a heating starts with actual conserved subminimum throughput and reaches8rps (527.543811ms)
+✔ R134a cooling starts with actual conserved subminimum throughput and reaches8rps (1071.288164ms)
+✔ R1234yf heating starts with actual conserved subminimum throughput and reaches8rps (418.542858ms)
+✔ R1234yf cooling starts with actual conserved subminimum throughput and reaches8rps (798.353582ms)
+✔ R32 retained warm coils restart through solved low speeds after Off and the full dwell (14475.414785ms)
+✔ natural R32 frost keeps the dedicated defrost command then ramps actual heating return (69322.472548ms)
+✔ fixed-speed Reference keeps its explicit18rps starting command (25.250296ms)
+✔ qualified fluids use their own EOS and recover their identity after native rejection (3596.388477ms)
+✔ qualified fluids conserve real EOS heating/cooling and reverse defrost cycles with one, three and five branches (2349.428604ms)
+✔ qualified R32 physical field-line modes conserve cycles (1296.485099ms)
+✔ coupled moisture, frost/reversal, inverter and Off transitions conserve energy and water for released fluids (109038.673169ms)
+✔ unknown fluids, inventory changes and unresolved blend circuits fail closed (18.43095ms)
+✔ released alternate fluids reject physical field lines and preserve their configured hardware (2.298737ms)
+✔ R410A retains its documented pseudo-pure glide in coil pinches and equilibrium temperature inverses (8.059173ms)
+✔ R407C fixed mass composition resolves nonlinear phase equilibrium and explicit mass quality without releasing its circuit (762.377327ms)
+✔ released idealized refrigerants close direct zero-to-minimum startup points at unchanged tolerances (672.171801ms)
+✔ thermal-boundary hold survives unknown and Off intervals and releases only on an available current-mode boundary (0.784901ms)
+✔ saved satisfied hot-source checkpoint stops; a renewed-call extension holds and freshly resumes (33957.898183ms)
+✔ saved cold-source starts explicitly hold discharge before requesting an unsolved cycle (30.597142ms)
+✔ saved warm-source crossover seeds close with in-domain one-sided derivatives at the minimum lift (976.892639ms)
+✔ session service heat counts heating/cooling HVAC service using the requested-mode sign (1932.023972ms)
+✔ Off control electricity contributes to the session denominator; internal gains earn no HVAC service (9.190759ms)
+✔ changing requested mode preserves prior service/electricity history and penalizes retained heat during reversal (2608.707646ms)
+✔ heating defrost with actual negative room heat subtracts from session useful service (885.087711ms)
+✔ a failed native candidate cannot add session useful heat or electricity (289.361785ms)
+✔ conserved density/internal-energy flash matches independent real R32 states across phases (33.765079ms)
+✔ invalid DU trials reject through safe computed-pressure boundary and valid flashes recover (54.781538ms)
+✔ thermostat call persists between inclusive symmetric one-degree thresholds in both modes (7.412474ms)
+✔ inverter fan stays on and varies continuously inside a retained call (1.175277ms)
+✔ new and explicitly enabled thermostats seed history at target, then retain the full restart band (11.817133ms)
+✔ both modes retain independent inverter branches, modulate fans and stop when the final call stops (630.162529ms)
+✔ actual heating and cooling restart only beyond the one-degree margin and minimum-off dwell (3346.178623ms)
+✔ distributed pipe forward/inverse closes gravity and heat for liquid, vapor and two-phase states (54.01906ms)
+✔ diameter changes Darcy friction and unsupported velocity cannot produce fake pipe states (4.550875ms)
+✔ idealized heating valve faces preserve individual branch enthalpy and mix only downstream (79.046263ms)
+✔ physical heating valve inlet is the transported returning liquid endpoint, not indoor coil outlet (252.930104ms)
+✔ idealized cooling and reverse-cycle defrost expose actual condenser-to-branch valve faces without forcing flash phase (58.7215ms)
+✔ physical cooling valve outlet precedes the small field line at its actual solved start pressure/enthalpy (536.465144ms)
+✔ inactive branches have null valve faces while active arrays retain indices in every mode/topology (776.574989ms)
+✔ mixed-phase heating branches retain EOS classification and extra valve flashes occur only once at accepted output (196.76236ms)
+✔ accepted diagnostic PH failure propagates unchanged without selecting another physical regime (43.927039ms)
+✔ valve-port diagnostics survive snapshot/configuration preservation and cannot mutate retained engine state (40.010291ms)
+✔ native humid-gas cp uses the same dry-air basis as the room enthalpy derivative (6.165992ms)
+✔ sensible recovery reduces winter and summer thermal exchange while retaining gross vapor exchange and latent-only loads (1.59557ms)
+✔ frozen-state recovery enters only the ventilation energy boundary and leaves total exchanged water unchanged (15.366289ms)
+✔ recovery feeds the sensible demand estimate and remains conservative during active heating and cooling (4551.18604ms)
+✔ omitted recovery equals single-flow and recovery edits preserve accepted stores while rejecting invalid effectiveness (16.977459ms)
+✔ hot saturated intake with high sensible effectiveness keeps gross water and phase storage without a virtual supply flash (161.003369ms)
+✔ warm-source heating closes a real mixed liquid header at positive minimum lift (906.617494ms)
+✔ SC-target and released-SC heating regimes remain freshly closed through warm-source crossover (229.856392ms)
+ℹ tests 151
+ℹ suites 0
+ℹ pass 148
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 230632.941774
+
+✖ failing tests:
+
+test at tests/engine/dynamics.test.mjs:108:1
+✖ all Off aborts defrost/reversal without erasing storage; passive time and reenable remain conservative (166.457633ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'running'
+  - 'defrost'
+  
+      at TestContext.<anonymous> (file:///home/julien/Documents/Scripts/Agent/heatpump-simulator/tests/engine/dynamics.test.mjs:113:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'running',
+    expected: 'defrost',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/engine/interzone.test.mjs:90:1
+✖ running heating/cooling with linked Off rooms and gains conserves the combined refrigerant/air boundary (2560.666249ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 0.2 W at 23.056205,31.056635; equations 0.154,0.043); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)'
+  - null
+  
+      at conservative (file:///home/julien/Documents/Scripts/Agent/heatpump-simulator/tests/engine/interzone.test.mjs:16:10)
+      at TestContext.<anonymous> (file:///home/julien/Documents/Scripts/Agent/heatpump-simulator/tests/engine/interzone.test.mjs:101:27)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 0.2 W at 23.056205,31.056635; equations 0.154,0.043); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)',
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/engine/port-capacity.test.mjs:13:1
+✖ connection count follows explicit port capacity and invalid declarations reject before property queries (1.841494ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /capacity must be a positive finite integer/. Input:
+  
+  'DomainError: Changing refrigerant requires a fresh property service and Restart'
+  
+      at rejected (file:///home/julien/Documents/Scripts/Agent/heatpump-simulator/tests/engine/port-capacity.test.mjs:16:50)
+      at TestContext.<anonymous> (file:///home/julien/Documents/Scripts/Agent/heatpump-simulator/tests/engine/port-capacity.test.mjs:19:82)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: DomainError: Changing refrigerant requires a fresh property service and Restart
+        at HeatPumpEngine.validateConfig (file:///home/julien/Documents/Scripts/Agent/heatpump-simulator/tests/engine/build/engine.js:203:19)
+        at HeatPumpEngine.reset (file:///home/julien/Documents/Scripts/Agent/heatpump-simulator/tests/engine/build/engine.js:53:14)
+        at new HeatPumpEngine (file:///home/julien/Documents/Scripts/Agent/heatpump-simulator/tests/engine/build/engine.js:49:14)
+        at file:///home/julien/Documents/Scripts/Agent/heatpump-simulator/tests/engine/port-capacity.test.mjs:16:63
+        at getActual (node:assert:611:5)
+        at strict.throws (node:assert:759:24)
+        at rejected (file:///home/julien/Documents/Scripts/Agent/heatpump-simulator/tests/engine/port-capacity.test.mjs:16:50)
+        at TestContext.<anonymous> (file:///home/julien/Documents/Scripts/Agent/heatpump-simulator/tests/engine/port-capacity.test.mjs:19:82)
+        at Test.runInAsyncScope (node:async_hooks:227:14)
+        at Test.run (node:internal/test_runner/test:1402:25),
+    expected: /capacity must be a positive finite integer/,
+    operator: 'throws',
+    diff: 'simple'
+  }

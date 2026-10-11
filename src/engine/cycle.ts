@@ -298,6 +298,17 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
   const seeds = floatingCondenser ? [input.previous?.condenserOutletC !== undefined ? [input.previous.evaporatingC, input.previous.condenserOutletC] : null, [heating?Math.min(lowMax-.1,Math.max(...sinkMetal)+2):Math.min(lowMax-4,input.outdoorMetalC+5),floatSink+.1], [heating?lowMax-.01:Math.min(lowMax-8,input.outdoorMetalC),floatSink+.01], [lowMax-(heating?1:8),floatSink+1]].filter((s): s is number[] => !!s) : [input.previous ? [input.previous.evaporatingC, input.previous.condensingC] : null,
     [lowMax-.1,highMin+.1], [lowMax-.01,highMin+2], [lowMax - 5, highMin + 8], [lowMax - 12, highMin + 5], [lowMax - 3, Math.max(highMin + 18, lowMax + 5)], [Math.min(lowMax - 5, highMin - 8), highMin + 6],
     [Math.min(lowMax - 15, highMin - 12), Math.max(highMin + 3, lowMax - 10)]].filter((s): s is number[] => !!s);
+  if (floatingCondenser) {
+    // Seed the feasible intersection itself. Independent Te/outlet guesses can
+    // all violate Tc=Te+lift above a warm condenser at subminimum throughput.
+    const lift = heating ? 1 : 8;
+    const lower = Math.max(domain.minEvaporatingC + .002, highMin + .002 - lift);
+    const upper = Math.min(lowMax - .002, domain.maxCondensingC - .002 - lift);
+    if (lower < upper) {
+      const te = (lower + upper) / 2;
+      seeds.push([te, (highMin + te + lift - .001) / 2]);
+    }
+  }
   let iterations = 0;
   for (const seed of seeds) {
     let te = clamp(seed[0], domain.minEvaporatingC + .2, lowMax - .01), tc = clamp(seed[1], highMin + 1e-8, domain.maxCondensingC - .2);
