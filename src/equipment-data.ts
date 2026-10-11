@@ -3767,6 +3767,299 @@ export const CATALOGUE_OUTDOORS = [
         "condition": "Outdoor ambient heating range, minimum, wet-bulb (°CWB)."
       }
     }
+  },
+  {
+    "id": "ARXM25A5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 610,
+      "w": 923,
+      "d": 367
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "ATXM25A2V1B",
+      "ATXM25A5V1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 50,
+        "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)"
+      },
+      "heating": {
+        "minimum": -21,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      }
+    }
+  },
+  {
+    "id": "ARXM35A5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 610,
+      "w": 923,
+      "d": 367
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "ATXM35A2V1B",
+      "ATXM35A5V1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 50,
+        "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)"
+      },
+      "heating": {
+        "minimum": -21,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      }
+    }
+  },
+  {
+    "id": "ARXM50A5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 954,
+      "d": 401
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "ATXM50A2V1B",
+      "ATXM50A5V1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": null,
+        "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)"
+      },
+      "heating": {
+        "minimum": null,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      }
+    }
+  },
+  {
+    "id": "ARXF20F5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 556,
+      "w": 740,
+      "d": 343
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "ATXF20F5V1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 48,
+        "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      }
+    }
+  },
+  {
+    "id": "ARXF25F5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 556,
+      "w": 740,
+      "d": 343
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "ATXF25F5V1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 48,
+        "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      }
+    }
+  },
+  {
+    "id": "ARXF35F5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 556,
+      "w": 740,
+      "d": 343
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "ATXF35F5V1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 48,
+        "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      }
+    }
+  },
+  {
+    "id": "ARXF42F5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 556,
+      "w": 740,
+      "d": 343
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "ATXF42F5V1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 48,
+        "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      }
+    }
+  },
+  {
+    "id": "ARXF50F5V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 610,
+      "w": 923,
+      "d": 367
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "ATXF50F5V1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 48,
+        "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      }
+    }
+  },
+  {
+    "id": "ARXF60A5V1B9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 870,
+      "d": 373
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "ATXF60F2V1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      }
+    }
+  },
+  {
+    "id": "ARXF71A5V1B9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 870,
+      "d": 373
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France technical table; current availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "ATXF71F2V1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      }
+    }
   }
 ] as const;
 

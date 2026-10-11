@@ -1,0 +1,1948 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Siesta ATXM-A / ARXM-A and ATXF-F / ARXF-F, bounded exact monosplit pairs; 2026 class context",
+  "market": "Daikin France and Europe technical tables; current France retail availability unverified",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "siesta-arxm-a",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/ARXM-A.html",
+      "title": "Daikin France ARXM-A technical specifications table",
+      "edition": "Official Daikin source snapshot SHA-256 1b11f1d9772dd40b4b30ddaeb63e48924554e8440a4c04577609cb5b620b0411",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "siesta-arxf-a9",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/ARXF-A9.html",
+      "title": "Daikin France ARXF-A9 technical specifications table",
+      "edition": "Official Daikin source snapshot SHA-256 802928482e987af5e8041c7ab550dab64c4fac283655c36eb50a3a5322718053",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "siesta-arxf-f",
+      "url": "https://www.daikin.eu/en_us/products/product.table.html/ARXF-F.html",
+      "title": "Daikin Europe ARXF-F technical specifications table",
+      "edition": "Official Daikin source snapshot SHA-256 b7406b3fb322097599531b5582eb4e3517cf7eb0bcb9d6574c1e2b002d5fc538",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "siesta-atxm-arxm-pair",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/ATXM-A---ARXM-A.html",
+      "title": "Daikin France ATXM-A / ARXM-A exact pair and product data table",
+      "edition": "Official Daikin source snapshot SHA-256 9ac548e61ee1ff177f8b42d03248b0fb7d600e4227bd39ba05aaf18b53f735cb",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "siesta-atxf-arxf-a9-pair",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/ATXF-F---ARXF-A9.html",
+      "title": "Daikin France ATXF-F / ARXF-A9 exact pair and product data table",
+      "edition": "Official Daikin source snapshot SHA-256 a9560779cf1c27f41d9d823e87fbc023d4a27ba887322141c6d5d7860e674162",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "siesta-atxf-arxf-f-pair",
+      "url": "https://www.daikin.eu/en_us/products/product.table.html/ATXF-F---ARXF-F.html",
+      "title": "Daikin Europe ATXF-F / ARXF-F exact pair and product data table",
+      "edition": "Official Daikin source snapshot SHA-256 1d409ed9525fc68c5e71fe9e1ba209d7f81a660fc086e17d867df3238f762e12",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "siesta-atxm-indoor",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/ATXM-A.html",
+      "title": "Daikin France ATXM-A technical specifications table",
+      "edition": "Official Daikin source snapshot SHA-256 893727172a0efd7f97ece3aed89a049aa64b19f1502b41f7367b63891d77e88d",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "siesta-atxf-indoor",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/ATXF-F.html",
+      "title": "Daikin France ATXF-F technical specifications table",
+      "edition": "Official Daikin source snapshot SHA-256 3e49ed4b1e1044825cc19b0713434436a2c90f31b89e0e2eca91f57eb79669ea",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "catalogue-p335",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/335/",
+      "title": "Daikin Europe General Catalogue 2026 Split, printed p.335 (class context only)",
+      "edition": "ECPEN26-500, 02/2026; class-only contextual source; snapshot SHA-256 025e4e58f1feb7541cd8765b56c21641f0d081758f864f9a7b44f65153c4a905",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "catalogue-p337",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/337/",
+      "title": "Daikin Europe General Catalogue 2026 Split, printed p.337 (class context only)",
+      "edition": "ECPEN26-500, 02/2026; class-only contextual source; snapshot SHA-256 e9e7148ea453a0465e5cd65527942759d56799aa3c2bbae035988da239a41b70",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "ATXM20A2V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-atxm-indoor",
+        "locator": "Exact full model-reference table column header for ATXM20A2V1B",
+        "excerpt": "ATXM20A2V1B"
+      },
+      "facts": [
+        {
+          "key": "airflow",
+          "value": 714.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxm-indoor",
+            "locator": "Exact full-reference column ATXM20A2V1B; Fan / Air flow rate / Cooling / High",
+            "excerpt": "ATXM20A2V1B | Cooling | High | 11.9 m³/min"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 684.0,
+          "unit": "m3/h",
+          "condition": "heating high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxm-indoor",
+            "locator": "Exact full-reference column ATXM20A2V1B; Fan / Air flow rate / Heating / High",
+            "excerpt": "ATXM20A2V1B | Heating | High | 11.4 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "The source table publishes the exact indoor model reference; current retail availability is not established.",
+        "The official pairing table inspected for this bounded batch does not publish an exact monosplit outdoor partner for this model; do not infer one from model digits."
+      ]
+    },
+    {
+      "modelReference": "ATXM20A5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-atxm-indoor",
+        "locator": "Exact full model-reference table column header for ATXM20A5V1B",
+        "excerpt": "ATXM20A5V1B"
+      },
+      "facts": [
+        {
+          "key": "airflow",
+          "value": 714.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxm-indoor",
+            "locator": "Exact full-reference column ATXM20A5V1B; Fan / Air flow rate / Cooling / High",
+            "excerpt": "ATXM20A5V1B | Cooling | High | 11.9 m³/min"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 684.0,
+          "unit": "m3/h",
+          "condition": "heating high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxm-indoor",
+            "locator": "Exact full-reference column ATXM20A5V1B; Fan / Air flow rate / Heating / High",
+            "excerpt": "ATXM20A5V1B | Heating | High | 11.4 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "The source table publishes the exact indoor model reference; current retail availability is not established.",
+        "The official pairing table inspected for this bounded batch does not publish an exact monosplit outdoor partner for this model; do not infer one from model digits."
+      ]
+    },
+    {
+      "modelReference": "ATXM25A2V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-atxm-indoor",
+        "locator": "Exact full model-reference table column header for ATXM25A2V1B",
+        "excerpt": "ATXM25A2V1B"
+      },
+      "facts": [
+        {
+          "key": "airflow",
+          "value": 714.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxm-indoor",
+            "locator": "Exact full-reference column ATXM25A2V1B; Fan / Air flow rate / Cooling / High",
+            "excerpt": "ATXM25A2V1B | Cooling | High | 11.9 m³/min"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 684.0,
+          "unit": "m3/h",
+          "condition": "heating high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxm-indoor",
+            "locator": "Exact full-reference column ATXM25A2V1B; Fan / Air flow rate / Heating / High",
+            "excerpt": "ATXM25A2V1B | Heating | High | 11.4 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXM25A2V1B / ARXM25A5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxm-arxm-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXM25A2V1B / ARXM25A5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The source table publishes the exact indoor model reference; current retail availability is not established."
+      ]
+    },
+    {
+      "modelReference": "ATXM25A5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-atxm-indoor",
+        "locator": "Exact full model-reference table column header for ATXM25A5V1B",
+        "excerpt": "ATXM25A5V1B"
+      },
+      "facts": [
+        {
+          "key": "airflow",
+          "value": 714.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxm-indoor",
+            "locator": "Exact full-reference column ATXM25A5V1B; Fan / Air flow rate / Cooling / High",
+            "excerpt": "ATXM25A5V1B | Cooling | High | 11.9 m³/min"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 684.0,
+          "unit": "m3/h",
+          "condition": "heating high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxm-indoor",
+            "locator": "Exact full-reference column ATXM25A5V1B; Fan / Air flow rate / Heating / High",
+            "excerpt": "ATXM25A5V1B | Heating | High | 11.4 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXM25A5V1B / ARXM25A5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxm-arxm-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXM25A5V1B / ARXM25A5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The source table publishes the exact indoor model reference; current retail availability is not established."
+      ]
+    },
+    {
+      "modelReference": "ATXM35A2V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-atxm-indoor",
+        "locator": "Exact full model-reference table column header for ATXM35A2V1B",
+        "excerpt": "ATXM35A2V1B"
+      },
+      "facts": [
+        {
+          "key": "airflow",
+          "value": 792.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxm-indoor",
+            "locator": "Exact full-reference column ATXM35A2V1B; Fan / Air flow rate / Cooling / High",
+            "excerpt": "ATXM35A2V1B | Cooling | High | 13.2 m³/min"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 666.0,
+          "unit": "m3/h",
+          "condition": "heating high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxm-indoor",
+            "locator": "Exact full-reference column ATXM35A2V1B; Fan / Air flow rate / Heating / High",
+            "excerpt": "ATXM35A2V1B | Heating | High | 11.1 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXM35A2V1B / ARXM35A5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxm-arxm-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXM35A2V1B / ARXM35A5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The source table publishes the exact indoor model reference; current retail availability is not established."
+      ]
+    },
+    {
+      "modelReference": "ATXM35A5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-atxm-indoor",
+        "locator": "Exact full model-reference table column header for ATXM35A5V1B",
+        "excerpt": "ATXM35A5V1B"
+      },
+      "facts": [
+        {
+          "key": "airflow",
+          "value": 792.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxm-indoor",
+            "locator": "Exact full-reference column ATXM35A5V1B; Fan / Air flow rate / Cooling / High",
+            "excerpt": "ATXM35A5V1B | Cooling | High | 13.2 m³/min"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 666.0,
+          "unit": "m3/h",
+          "condition": "heating high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxm-indoor",
+            "locator": "Exact full-reference column ATXM35A5V1B; Fan / Air flow rate / Heating / High",
+            "excerpt": "ATXM35A5V1B | Heating | High | 11.1 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXM35A5V1B / ARXM35A5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxm-arxm-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXM35A5V1B / ARXM35A5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The source table publishes the exact indoor model reference; current retail availability is not established."
+      ]
+    },
+    {
+      "modelReference": "ATXM50A2V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-atxm-indoor",
+        "locator": "Exact full model-reference table column header for ATXM50A2V1B",
+        "excerpt": "ATXM50A2V1B"
+      },
+      "facts": [
+        {
+          "key": "airflow",
+          "value": 762.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxm-indoor",
+            "locator": "Exact full-reference column ATXM50A2V1B; Fan / Air flow rate / Cooling / High",
+            "excerpt": "ATXM50A2V1B | Cooling | High | 12.7 m³/min"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 870.0,
+          "unit": "m3/h",
+          "condition": "heating high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxm-indoor",
+            "locator": "Exact full-reference column ATXM50A2V1B; Fan / Air flow rate / Heating / High",
+            "excerpt": "ATXM50A2V1B | Heating | High | 14.5 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXM50A2V1B / ARXM50A5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxm-arxm-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXM50A2V1B / ARXM50A5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The source table publishes the exact indoor model reference; current retail availability is not established."
+      ]
+    },
+    {
+      "modelReference": "ATXM50A5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-atxm-indoor",
+        "locator": "Exact full model-reference table column header for ATXM50A5V1B",
+        "excerpt": "ATXM50A5V1B"
+      },
+      "facts": [
+        {
+          "key": "airflow",
+          "value": 762.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxm-indoor",
+            "locator": "Exact full-reference column ATXM50A5V1B; Fan / Air flow rate / Cooling / High",
+            "excerpt": "ATXM50A5V1B | Cooling | High | 12.7 m³/min"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 870.0,
+          "unit": "m3/h",
+          "condition": "heating high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxm-indoor",
+            "locator": "Exact full-reference column ATXM50A5V1B; Fan / Air flow rate / Heating / High",
+            "excerpt": "ATXM50A5V1B | Heating | High | 14.5 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXM50A5V1B / ARXM50A5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxm-arxm-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXM50A5V1B / ARXM50A5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The source table publishes the exact indoor model reference; current retail availability is not established."
+      ]
+    },
+    {
+      "modelReference": "ATXF20F5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-atxf-indoor",
+        "locator": "Exact full model-reference table column header for ATXF20F5V1B",
+        "excerpt": "ATXF20F5V1B"
+      },
+      "facts": [
+        {
+          "key": "airflow",
+          "value": 588.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxf-indoor",
+            "locator": "Exact full-reference column ATXF20F5V1B; Fan / Air flow rate / Cooling / High",
+            "excerpt": "ATXF20F5V1B | Cooling | High | 9.8 m³/min"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 624.0,
+          "unit": "m3/h",
+          "condition": "heating high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxf-indoor",
+            "locator": "Exact full-reference column ATXF20F5V1B; Fan / Air flow rate / Heating / High",
+            "excerpt": "ATXF20F5V1B | Heating | High | 10.4 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXF20F5V1B / ARXF20F5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxf-arxf-f-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXF20F5V1B / ARXF20F5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The source table publishes the exact indoor model reference; current retail availability is not established."
+      ]
+    },
+    {
+      "modelReference": "ATXF25F5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-atxf-indoor",
+        "locator": "Exact full model-reference table column header for ATXF25F5V1B",
+        "excerpt": "ATXF25F5V1B"
+      },
+      "facts": [
+        {
+          "key": "airflow",
+          "value": 600.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxf-indoor",
+            "locator": "Exact full-reference column ATXF25F5V1B; Fan / Air flow rate / Cooling / High",
+            "excerpt": "ATXF25F5V1B | Cooling | High | 10 m³/min"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 624.0,
+          "unit": "m3/h",
+          "condition": "heating high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxf-indoor",
+            "locator": "Exact full-reference column ATXF25F5V1B; Fan / Air flow rate / Heating / High",
+            "excerpt": "ATXF25F5V1B | Heating | High | 10.4 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXF25F5V1B / ARXF25F5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxf-arxf-f-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXF25F5V1B / ARXF25F5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The source table publishes the exact indoor model reference; current retail availability is not established."
+      ]
+    },
+    {
+      "modelReference": "ATXF35F5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-atxf-indoor",
+        "locator": "Exact full model-reference table column header for ATXF35F5V1B",
+        "excerpt": "ATXF35F5V1B"
+      },
+      "facts": [
+        {
+          "key": "airflow",
+          "value": 690.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxf-indoor",
+            "locator": "Exact full-reference column ATXF35F5V1B; Fan / Air flow rate / Cooling / High",
+            "excerpt": "ATXF35F5V1B | Cooling | High | 11.5 m³/min"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 714.0,
+          "unit": "m3/h",
+          "condition": "heating high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxf-indoor",
+            "locator": "Exact full-reference column ATXF35F5V1B; Fan / Air flow rate / Heating / High",
+            "excerpt": "ATXF35F5V1B | Heating | High | 11.9 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXF35F5V1B / ARXF35F5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxf-arxf-f-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXF35F5V1B / ARXF35F5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The source table publishes the exact indoor model reference; current retail availability is not established."
+      ]
+    },
+    {
+      "modelReference": "ATXF42F5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-atxf-indoor",
+        "locator": "Exact full model-reference table column header for ATXF42F5V1B",
+        "excerpt": "ATXF42F5V1B"
+      },
+      "facts": [
+        {
+          "key": "airflow",
+          "value": 756.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxf-indoor",
+            "locator": "Exact full-reference column ATXF42F5V1B; Fan / Air flow rate / Cooling / High",
+            "excerpt": "ATXF42F5V1B | Cooling | High | 12.6 m³/min"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 768.0,
+          "unit": "m3/h",
+          "condition": "heating high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxf-indoor",
+            "locator": "Exact full-reference column ATXF42F5V1B; Fan / Air flow rate / Heating / High",
+            "excerpt": "ATXF42F5V1B | Heating | High | 12.8 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXF42F5V1B / ARXF42F5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxf-arxf-f-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXF42F5V1B / ARXF42F5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The source table publishes the exact indoor model reference; current retail availability is not established."
+      ]
+    },
+    {
+      "modelReference": "ATXF50F5V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-atxf-indoor",
+        "locator": "Exact full model-reference table column header for ATXF50F5V1B",
+        "excerpt": "ATXF50F5V1B"
+      },
+      "facts": [
+        {
+          "key": "airflow",
+          "value": 756.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxf-indoor",
+            "locator": "Exact full-reference column ATXF50F5V1B; Fan / Air flow rate / Cooling / High",
+            "excerpt": "ATXF50F5V1B | Cooling | High | 12.6 m³/min"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 768.0,
+          "unit": "m3/h",
+          "condition": "heating high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxf-indoor",
+            "locator": "Exact full-reference column ATXF50F5V1B; Fan / Air flow rate / Heating / High",
+            "excerpt": "ATXF50F5V1B | Heating | High | 12.8 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXF50F5V1B / ARXF50F5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxf-arxf-f-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXF50F5V1B / ARXF50F5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The source table publishes the exact indoor model reference; current retail availability is not established."
+      ]
+    },
+    {
+      "modelReference": "ATXF60F2V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-atxf-indoor",
+        "locator": "Exact full model-reference table column header for ATXF60F2V1B",
+        "excerpt": "ATXF60F2V1B"
+      },
+      "facts": [
+        {
+          "key": "airflow",
+          "value": 1038.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxf-indoor",
+            "locator": "Exact full-reference column ATXF60F2V1B; Fan / Air flow rate / Cooling / High",
+            "excerpt": "ATXF60F2V1B | Cooling | High | 17.3 m³/min"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1074.0,
+          "unit": "m3/h",
+          "condition": "heating high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxf-indoor",
+            "locator": "Exact full-reference column ATXF60F2V1B; Fan / Air flow rate / Heating / High",
+            "excerpt": "ATXF60F2V1B | Heating | High | 17.9 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXF60F2V1B / ARXF60A5V1B9.",
+          "evidence": {
+            "sourceId": "siesta-atxf-arxf-a9-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXF60F2V1B / ARXF60A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "The source table publishes the exact indoor model reference; current retail availability is not established."
+      ]
+    },
+    {
+      "modelReference": "ATXF71F2V1B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-atxf-indoor",
+        "locator": "Exact full model-reference table column header for ATXF71F2V1B",
+        "excerpt": "ATXF71F2V1B"
+      },
+      "facts": [
+        {
+          "key": "airflow",
+          "value": 1038.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxf-indoor",
+            "locator": "Exact full-reference column ATXF71F2V1B; Fan / Air flow rate / Cooling / High",
+            "excerpt": "ATXF71F2V1B | Cooling | High | 17.3 m³/min"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1074.0,
+          "unit": "m3/h",
+          "condition": "heating high fan; source unit m³/min, converted to m³/h by ×60",
+          "evidence": {
+            "sourceId": "siesta-atxf-indoor",
+            "locator": "Exact full-reference column ATXF71F2V1B; Fan / Air flow rate / Heating / High",
+            "excerpt": "ATXF71F2V1B | Heating | High | 17.9 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXF71F2V1B / ARXF71A5V1B9.",
+          "evidence": {
+            "sourceId": "siesta-atxf-arxf-a9-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXF71F2V1B / ARXF71A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "The source table publishes the exact indoor model reference; current retail availability is not established."
+      ]
+    },
+    {
+      "modelReference": "ARXM25A5V1B",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-arxm-a",
+        "locator": "Exact full model-reference table column header for ARXM25A5V1B",
+        "excerpt": "ARXM25A5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 610,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM25A5V1B; Dimensions / Unit / Height",
+            "excerpt": "ARXM25A5V1B | Height | 610 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 923,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM25A5V1B; Dimensions / Unit / Width",
+            "excerpt": "ARXM25A5V1B | Width | 923 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 367,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM25A5V1B; Dimensions / Unit / Depth",
+            "excerpt": "ARXM25A5V1B | Depth | 367 mm"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM25A5V1B; Refrigerant / Type",
+            "excerpt": "ARXM25A5V1B | Refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM25A5V1B; Operation range / Cooling / Ambient / Min. / °CBS",
+            "excerpt": "ARXM25A5V1B | Cooling | Min. -10 °CBS"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM25A5V1B; Operation range / Cooling / Ambient / Max. / °CBS",
+            "excerpt": "ARXM25A5V1B | Cooling | Max. 50 °CBS"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM25A5V1B; Operation range / Heating / Ambient / Min. / °CBH",
+            "excerpt": "ARXM25A5V1B | Heating | Min. -21 °CBH"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM25A5V1B; Operation range / Heating / Ambient / Max. / °CBH",
+            "excerpt": "ARXM25A5V1B | Heating | Max. 18 °CBH"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXM25A2V1B / ARXM25A5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxm-arxm-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXM25A2V1B / ARXM25A5V1B"
+          }
+        },
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXM25A5V1B / ARXM25A5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxm-arxm-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXM25A5V1B / ARXM25A5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The technical table publishes this exact model reference, but current France retail availability is not established.",
+        "No outdoor volumetric airflow is published in the cited specification table.",
+        "No capacity, efficiency, charge, compressor map, cycle UA, or performance curve is imported or inferred from model digits."
+      ]
+    },
+    {
+      "modelReference": "ARXM35A5V1B",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-arxm-a",
+        "locator": "Exact full model-reference table column header for ARXM35A5V1B",
+        "excerpt": "ARXM35A5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 610,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM35A5V1B; Dimensions / Unit / Height",
+            "excerpt": "ARXM35A5V1B | Height | 610 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 923,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM35A5V1B; Dimensions / Unit / Width",
+            "excerpt": "ARXM35A5V1B | Width | 923 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 367,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM35A5V1B; Dimensions / Unit / Depth",
+            "excerpt": "ARXM35A5V1B | Depth | 367 mm"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM35A5V1B; Refrigerant / Type",
+            "excerpt": "ARXM35A5V1B | Refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM35A5V1B; Operation range / Cooling / Ambient / Min. / °CBS",
+            "excerpt": "ARXM35A5V1B | Cooling | Min. -10 °CBS"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM35A5V1B; Operation range / Cooling / Ambient / Max. / °CBS",
+            "excerpt": "ARXM35A5V1B | Cooling | Max. 50 °CBS"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM35A5V1B; Operation range / Heating / Ambient / Min. / °CBH",
+            "excerpt": "ARXM35A5V1B | Heating | Min. -21 °CBH"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM35A5V1B; Operation range / Heating / Ambient / Max. / °CBH",
+            "excerpt": "ARXM35A5V1B | Heating | Max. 18 °CBH"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXM35A2V1B / ARXM35A5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxm-arxm-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXM35A2V1B / ARXM35A5V1B"
+          }
+        },
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXM35A5V1B / ARXM35A5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxm-arxm-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXM35A5V1B / ARXM35A5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The technical table publishes this exact model reference, but current France retail availability is not established.",
+        "No outdoor volumetric airflow is published in the cited specification table.",
+        "No capacity, efficiency, charge, compressor map, cycle UA, or performance curve is imported or inferred from model digits."
+      ]
+    },
+    {
+      "modelReference": "ARXM50A5V1B",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-arxm-a",
+        "locator": "Exact full model-reference table column header for ARXM50A5V1B",
+        "excerpt": "ARXM50A5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM50A5V1B; Dimensions / Unit / Height",
+            "excerpt": "ARXM50A5V1B | Height | 734 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 954,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM50A5V1B; Dimensions / Unit / Width",
+            "excerpt": "ARXM50A5V1B | Width | 954 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 401,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM50A5V1B; Dimensions / Unit / Depth",
+            "excerpt": "ARXM50A5V1B | Depth | 401 mm"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM50A5V1B; Refrigerant / Type",
+            "excerpt": "ARXM50A5V1B | Refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM50A5V1B; Operation range / Cooling / Ambient / Min. / °CBS",
+            "excerpt": "ARXM50A5V1B | Cooling | Min. -10 °CBS"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxm-a",
+            "locator": "Exact full-reference column ARXM50A5V1B; Operation range / Heating / Ambient / Max. / °CBH",
+            "excerpt": "ARXM50A5V1B | Heating | Max. 18 °CBH"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXM50A2V1B / ARXM50A5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxm-arxm-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXM50A2V1B / ARXM50A5V1B"
+          }
+        },
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXM50A5V1B / ARXM50A5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxm-arxm-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXM50A5V1B / ARXM50A5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The technical table publishes this exact model reference, but current France retail availability is not established.",
+        "No outdoor volumetric airflow is published in the cited specification table.",
+        "No capacity, efficiency, charge, compressor map, cycle UA, or performance curve is imported or inferred from model digits.",
+        "The source row prints cooling maximum as “50 (1), 46 (1)” and heating minimum as “-21 (1), -15 (1)”; footnote (1) directs to a separate operating-range drawing not included in this evidence. Both respective limits therefore remain unresolved; neither alternative has been selected."
+      ]
+    },
+    {
+      "modelReference": "ARXF20F5V1B",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-arxf-f",
+        "locator": "Exact full model-reference table column header for ARXF20F5V1B",
+        "excerpt": "ARXF20F5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 556,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF20F5V1B; Dimensions / Unit / Height",
+            "excerpt": "ARXF20F5V1B | Height | 556 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 740,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF20F5V1B; Dimensions / Unit / Width",
+            "excerpt": "ARXF20F5V1B | Width | 740 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 343,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF20F5V1B; Dimensions / Unit / Depth",
+            "excerpt": "ARXF20F5V1B | Depth | 343 mm"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF20F5V1B; Refrigerant / Type",
+            "excerpt": "ARXF20F5V1B | Refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF20F5V1B; Operation range / Cooling / Ambient / Min. / °CDB",
+            "excerpt": "ARXF20F5V1B | Cooling | Min. -10 °CDB"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF20F5V1B; Operation range / Cooling / Ambient / Max. / °CDB",
+            "excerpt": "ARXF20F5V1B | Cooling | Max. 48 °CDB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF20F5V1B; Operation range / Heating / Ambient / Min. / °CWB",
+            "excerpt": "ARXF20F5V1B | Heating | Min. -15 °CWB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF20F5V1B; Operation range / Heating / Ambient / Max. / °CWB",
+            "excerpt": "ARXF20F5V1B | Heating | Max. 18 °CWB"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXF20F5V1B / ARXF20F5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxf-arxf-f-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXF20F5V1B / ARXF20F5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The technical table publishes this exact model reference, but current France retail availability is not established.",
+        "No outdoor volumetric airflow is published in the cited specification table.",
+        "No capacity, efficiency, charge, compressor map, cycle UA, or performance curve is imported or inferred from model digits."
+      ]
+    },
+    {
+      "modelReference": "ARXF25F5V1B",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-arxf-f",
+        "locator": "Exact full model-reference table column header for ARXF25F5V1B",
+        "excerpt": "ARXF25F5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 556,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF25F5V1B; Dimensions / Unit / Height",
+            "excerpt": "ARXF25F5V1B | Height | 556 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 740,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF25F5V1B; Dimensions / Unit / Width",
+            "excerpt": "ARXF25F5V1B | Width | 740 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 343,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF25F5V1B; Dimensions / Unit / Depth",
+            "excerpt": "ARXF25F5V1B | Depth | 343 mm"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF25F5V1B; Refrigerant / Type",
+            "excerpt": "ARXF25F5V1B | Refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF25F5V1B; Operation range / Cooling / Ambient / Min. / °CDB",
+            "excerpt": "ARXF25F5V1B | Cooling | Min. -10 °CDB"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF25F5V1B; Operation range / Cooling / Ambient / Max. / °CDB",
+            "excerpt": "ARXF25F5V1B | Cooling | Max. 48 °CDB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF25F5V1B; Operation range / Heating / Ambient / Min. / °CWB",
+            "excerpt": "ARXF25F5V1B | Heating | Min. -15 °CWB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF25F5V1B; Operation range / Heating / Ambient / Max. / °CWB",
+            "excerpt": "ARXF25F5V1B | Heating | Max. 18 °CWB"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXF25F5V1B / ARXF25F5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxf-arxf-f-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXF25F5V1B / ARXF25F5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The technical table publishes this exact model reference, but current France retail availability is not established.",
+        "No outdoor volumetric airflow is published in the cited specification table.",
+        "No capacity, efficiency, charge, compressor map, cycle UA, or performance curve is imported or inferred from model digits."
+      ]
+    },
+    {
+      "modelReference": "ARXF35F5V1B",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-arxf-f",
+        "locator": "Exact full model-reference table column header for ARXF35F5V1B",
+        "excerpt": "ARXF35F5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 556,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF35F5V1B; Dimensions / Unit / Height",
+            "excerpt": "ARXF35F5V1B | Height | 556 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 740,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF35F5V1B; Dimensions / Unit / Width",
+            "excerpt": "ARXF35F5V1B | Width | 740 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 343,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF35F5V1B; Dimensions / Unit / Depth",
+            "excerpt": "ARXF35F5V1B | Depth | 343 mm"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF35F5V1B; Refrigerant / Type",
+            "excerpt": "ARXF35F5V1B | Refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF35F5V1B; Operation range / Cooling / Ambient / Min. / °CDB",
+            "excerpt": "ARXF35F5V1B | Cooling | Min. -10 °CDB"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF35F5V1B; Operation range / Cooling / Ambient / Max. / °CDB",
+            "excerpt": "ARXF35F5V1B | Cooling | Max. 48 °CDB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF35F5V1B; Operation range / Heating / Ambient / Min. / °CWB",
+            "excerpt": "ARXF35F5V1B | Heating | Min. -15 °CWB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF35F5V1B; Operation range / Heating / Ambient / Max. / °CWB",
+            "excerpt": "ARXF35F5V1B | Heating | Max. 18 °CWB"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXF35F5V1B / ARXF35F5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxf-arxf-f-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXF35F5V1B / ARXF35F5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The technical table publishes this exact model reference, but current France retail availability is not established.",
+        "No outdoor volumetric airflow is published in the cited specification table.",
+        "No capacity, efficiency, charge, compressor map, cycle UA, or performance curve is imported or inferred from model digits."
+      ]
+    },
+    {
+      "modelReference": "ARXF42F5V1B",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-arxf-f",
+        "locator": "Exact full model-reference table column header for ARXF42F5V1B",
+        "excerpt": "ARXF42F5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 556,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF42F5V1B; Dimensions / Unit / Height",
+            "excerpt": "ARXF42F5V1B | Height | 556 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 740,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF42F5V1B; Dimensions / Unit / Width",
+            "excerpt": "ARXF42F5V1B | Width | 740 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 343,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF42F5V1B; Dimensions / Unit / Depth",
+            "excerpt": "ARXF42F5V1B | Depth | 343 mm"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF42F5V1B; Refrigerant / Type",
+            "excerpt": "ARXF42F5V1B | Refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF42F5V1B; Operation range / Cooling / Ambient / Min. / °CDB",
+            "excerpt": "ARXF42F5V1B | Cooling | Min. -10 °CDB"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF42F5V1B; Operation range / Cooling / Ambient / Max. / °CDB",
+            "excerpt": "ARXF42F5V1B | Cooling | Max. 48 °CDB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF42F5V1B; Operation range / Heating / Ambient / Min. / °CWB",
+            "excerpt": "ARXF42F5V1B | Heating | Min. -15 °CWB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF42F5V1B; Operation range / Heating / Ambient / Max. / °CWB",
+            "excerpt": "ARXF42F5V1B | Heating | Max. 18 °CWB"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXF42F5V1B / ARXF42F5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxf-arxf-f-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXF42F5V1B / ARXF42F5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The technical table publishes this exact model reference, but current France retail availability is not established.",
+        "No outdoor volumetric airflow is published in the cited specification table.",
+        "No capacity, efficiency, charge, compressor map, cycle UA, or performance curve is imported or inferred from model digits."
+      ]
+    },
+    {
+      "modelReference": "ARXF50F5V1B",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-arxf-f",
+        "locator": "Exact full model-reference table column header for ARXF50F5V1B",
+        "excerpt": "ARXF50F5V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 610,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF50F5V1B; Dimensions / Unit / Height",
+            "excerpt": "ARXF50F5V1B | Height | 610 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 923,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF50F5V1B; Dimensions / Unit / Width",
+            "excerpt": "ARXF50F5V1B | Width | 923 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 367,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF50F5V1B; Dimensions / Unit / Depth",
+            "excerpt": "ARXF50F5V1B | Depth | 367 mm"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF50F5V1B; Refrigerant / Type",
+            "excerpt": "ARXF50F5V1B | Refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF50F5V1B; Operation range / Cooling / Ambient / Min. / °CDB",
+            "excerpt": "ARXF50F5V1B | Cooling | Min. -10 °CDB"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF50F5V1B; Operation range / Cooling / Ambient / Max. / °CDB",
+            "excerpt": "ARXF50F5V1B | Cooling | Max. 48 °CDB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF50F5V1B; Operation range / Heating / Ambient / Min. / °CWB",
+            "excerpt": "ARXF50F5V1B | Heating | Min. -15 °CWB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-f",
+            "locator": "Exact full-reference column ARXF50F5V1B; Operation range / Heating / Ambient / Max. / °CWB",
+            "excerpt": "ARXF50F5V1B | Heating | Max. 18 °CWB"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXF50F5V1B / ARXF50F5V1B.",
+          "evidence": {
+            "sourceId": "siesta-atxf-arxf-f-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXF50F5V1B / ARXF50F5V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "The technical table publishes this exact model reference, but current France retail availability is not established.",
+        "No outdoor volumetric airflow is published in the cited specification table.",
+        "No capacity, efficiency, charge, compressor map, cycle UA, or performance curve is imported or inferred from model digits."
+      ]
+    },
+    {
+      "modelReference": "ARXF60A5V1B9",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-arxf-a9",
+        "locator": "Exact full model-reference table column header for ARXF60A5V1B9",
+        "excerpt": "ARXF60A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-a9",
+            "locator": "Exact full-reference column ARXF60A5V1B9; Dimensions / Unit / Height",
+            "excerpt": "ARXF60A5V1B9 | Height | 734 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 870,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-a9",
+            "locator": "Exact full-reference column ARXF60A5V1B9; Dimensions / Unit / Width",
+            "excerpt": "ARXF60A5V1B9 | Width | 870 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 373,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-a9",
+            "locator": "Exact full-reference column ARXF60A5V1B9; Dimensions / Unit / Depth",
+            "excerpt": "ARXF60A5V1B9 | Depth | 373 mm"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "siesta-arxf-a9",
+            "locator": "Exact full-reference column ARXF60A5V1B9; Refrigerant / Type",
+            "excerpt": "ARXF60A5V1B9 | Refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-a9",
+            "locator": "Exact full-reference column ARXF60A5V1B9; Operation range / Cooling / Ambient / Min. / °CBS",
+            "excerpt": "ARXF60A5V1B9 | Cooling | Min. -10 °CBS"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-a9",
+            "locator": "Exact full-reference column ARXF60A5V1B9; Operation range / Cooling / Ambient / Max. / °CBS",
+            "excerpt": "ARXF60A5V1B9 | Cooling | Max. 46 °CBS"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-a9",
+            "locator": "Exact full-reference column ARXF60A5V1B9; Operation range / Heating / Ambient / Min. / °CBH",
+            "excerpt": "ARXF60A5V1B9 | Heating | Min. -15 °CBH"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-a9",
+            "locator": "Exact full-reference column ARXF60A5V1B9; Operation range / Heating / Ambient / Max. / °CBH",
+            "excerpt": "ARXF60A5V1B9 | Heating | Max. 18 °CBH"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXF60F2V1B / ARXF60A5V1B9.",
+          "evidence": {
+            "sourceId": "siesta-atxf-arxf-a9-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXF60F2V1B / ARXF60A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "The technical table publishes this exact model reference, but current France retail availability is not established.",
+        "No outdoor volumetric airflow is published in the cited specification table.",
+        "No capacity, efficiency, charge, compressor map, cycle UA, or performance curve is imported or inferred from model digits."
+      ]
+    },
+    {
+      "modelReference": "ARXF71A5V1B9",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "siesta-arxf-a9",
+        "locator": "Exact full model-reference table column header for ARXF71A5V1B9",
+        "excerpt": "ARXF71A5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-a9",
+            "locator": "Exact full-reference column ARXF71A5V1B9; Dimensions / Unit / Height",
+            "excerpt": "ARXF71A5V1B9 | Height | 734 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 870,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-a9",
+            "locator": "Exact full-reference column ARXF71A5V1B9; Dimensions / Unit / Width",
+            "excerpt": "ARXF71A5V1B9 | Width | 870 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 373,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "siesta-arxf-a9",
+            "locator": "Exact full-reference column ARXF71A5V1B9; Dimensions / Unit / Depth",
+            "excerpt": "ARXF71A5V1B9 | Depth | 373 mm"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "siesta-arxf-a9",
+            "locator": "Exact full-reference column ARXF71A5V1B9; Refrigerant / Type",
+            "excerpt": "ARXF71A5V1B9 | Refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-a9",
+            "locator": "Exact full-reference column ARXF71A5V1B9; Operation range / Cooling / Ambient / Min. / °CBS",
+            "excerpt": "ARXF71A5V1B9 | Cooling | Min. -10 °CBS"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-a9",
+            "locator": "Exact full-reference column ARXF71A5V1B9; Operation range / Cooling / Ambient / Max. / °CBS",
+            "excerpt": "ARXF71A5V1B9 | Cooling | Max. 46 °CBS"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-a9",
+            "locator": "Exact full-reference column ARXF71A5V1B9; Operation range / Heating / Ambient / Min. / °CBH",
+            "excerpt": "ARXF71A5V1B9 | Heating | Min. -15 °CBH"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+          "evidence": {
+            "sourceId": "siesta-arxf-a9",
+            "locator": "Exact full-reference column ARXF71A5V1B9; Operation range / Heating / Ambient / Max. / °CBH",
+            "excerpt": "ARXF71A5V1B9 | Heating | Max. 18 °CBH"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact full-reference monosplit pairing published by Daikin: ATXF71F2V1B / ARXF71A5V1B9.",
+          "evidence": {
+            "sourceId": "siesta-atxf-arxf-a9-pair",
+            "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+            "excerpt": "ATXF71F2V1B / ARXF71A5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "The technical table publishes this exact model reference, but current France retail availability is not established.",
+        "No outdoor volumetric airflow is published in the cited specification table.",
+        "No capacity, efficiency, charge, compressor map, cycle UA, or performance curve is imported or inferred from model digits."
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    {
+      "modelReference": "ATXM20A2V1B",
+      "reason": "The official ATXM-A / ARXM-A exact monosplit pair table has no ATXM20 column or exact outdoor partner. Do not infer ARXM20 or borrow a partner from another class."
+    },
+    {
+      "modelReference": "ATXM20A5V1B",
+      "reason": "The official ATXM-A / ARXM-A exact monosplit pair table has no ATXM20 column or exact outdoor partner. Do not infer ARXM20 or borrow a partner from another class."
+    }
+  ]
+}

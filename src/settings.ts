@@ -626,7 +626,7 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
   // Electric units, the editable generic group). Options are static; selection goes through the store, which applies the published topology.
   const modelSel = html('select', { class: 'ou-model-select rp-ctl', 'aria-label': 'Outdoor model' },
     ...optgroups(OUTDOOR_MODELS.map((m) => ({
-      value: m.id, text: m.label + (m.sourceStatus === 'legacy' ? ' · legacy' : m.marketScope ? ' · EU listed' : '') + (m.installation ? ' · combination unverified' : ''), maker: m.manufacturer,
+      value: m.id, text: m.label + (m.sourceStatus === 'legacy' ? ' · legacy' : m.marketScope?.startsWith('France') ? ' · France table' : m.marketScope ? ' · EU listed' : '') + (m.installation ? ' · combination unverified' : ''), maker: m.manufacturer,
       title: `${m.label} · ${m.ports === null ? 'user-declared ports' : `${m.ports} port${m.ports === 1 ? '' : 's'}`} · case ${m.caseMm.w} × ${m.caseMm.h} × ${m.caseMm.d} mm`,
     }))));
   modelSel.addEventListener('change', () => store.setOutdoorKind(modelSel.value as OutdoorKind));
@@ -957,7 +957,7 @@ export function createOutdoorSettings(): PopContent {
             : info.identityKind === 'published-class'
               ? `${info.label}: published catalogue class pairing. Factory suffix and exact OEM combination are unknown. Outdoor airflow remains generic/manual; no OEM performance map.`
             : info.marketScope
-              ? `${info.label}: exact published one-to-one Europe pairing. France availability and current sales status are unknown. Outdoor airflow uses the generic/manual setting; the cycle has no OEM performance map.`
+              ? `${info.label}: exact published one-to-one pairing. France availability and current sales status are unknown. Outdoor airflow uses the generic/manual setting; the cycle has no OEM performance map.`
               : `${info.label}: published ${info.ports}-port model. Its matched indoor units, ports and cooling high-fan airflow are applied; the cycle, compressor, coil conductance and fan watts remain generic assumptions, not an OEM performance map.`);
       // Published model profile (facts, no performance claim) and the airflow provenance next to the two mass-flow fields.
       setText(profileText, info.profileNote);

@@ -1,0 +1,449 @@
+{
+  "scope": "Independent cached official HTML full-column and colspan review; field conditions and exact pairing columns only, no current sales claim",
+  "sources": [
+    {
+      "path": "research/sources/luna-siesta-ARXM-A.html",
+      "sha256": "1b11f1d9772dd40b4b30ddaeb63e48924554e8440a4c04577609cb5b620b0411"
+    },
+    {
+      "path": "research/sources/luna-siesta-ARXF-A9.html",
+      "sha256": "802928482e987af5e8041c7ab550dab64c4fac283655c36eb50a3a5322718053"
+    },
+    {
+      "path": "research/sources/luna-siesta-ARXF-F.html",
+      "sha256": "b7406b3fb322097599531b5582eb4e3517cf7eb0bcb9d6574c1e2b002d5fc538"
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXM-A---ARXM-A.html",
+      "sha256": "9ac548e61ee1ff177f8b42d03248b0fb7d600e4227bd39ba05aaf18b53f735cb"
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXF-F---ARXF-A9.html",
+      "sha256": "a9560779cf1c27f41d9d823e87fbc023d4a27ba887322141c6d5d7860e674162"
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXF-F---ARXF-F.html",
+      "sha256": "1d409ed9525fc68c5e71fe9e1ba209d7f81a660fc086e17d867df3238f762e12"
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXM-A.html",
+      "sha256": "893727172a0efd7f97ece3aed89a049aa64b19f1502b41f7367b63891d77e88d"
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXF-F.html",
+      "sha256": "3e49ed4b1e1044825cc19b0713434436a2c90f31b89e0e2eca91f57eb79669ea"
+    }
+  ],
+  "outdoorReadbacks": [
+    {
+      "reference": "ARXM25A5V1B",
+      "source": "ARXM-A",
+      "headerIndex": 0,
+      "primaryFieldCells": {
+        "height": "610",
+        "width": "923",
+        "depth": "367",
+        "coolingOutdoorMinimum": "-10",
+        "coolingOutdoorMaximum": "50",
+        "heatingOutdoorMinimum": "-21",
+        "heatingOutdoorMaximum": "18",
+        "refrigerant": "R-32"
+      },
+      "exactPairs": [
+        "ATXM25A2V1B",
+        "ATXM25A5V1B"
+      ],
+      "rangeUnits": [
+        "°CBS",
+        "°CBS",
+        "°CBH",
+        "°CBH"
+      ],
+      "unresolvedOperatingEndpoints": []
+    },
+    {
+      "reference": "ARXM35A5V1B",
+      "source": "ARXM-A",
+      "headerIndex": 1,
+      "primaryFieldCells": {
+        "height": "610",
+        "width": "923",
+        "depth": "367",
+        "coolingOutdoorMinimum": "-10",
+        "coolingOutdoorMaximum": "50",
+        "heatingOutdoorMinimum": "-21",
+        "heatingOutdoorMaximum": "18",
+        "refrigerant": "R-32"
+      },
+      "exactPairs": [
+        "ATXM35A2V1B",
+        "ATXM35A5V1B"
+      ],
+      "rangeUnits": [
+        "°CBS",
+        "°CBS",
+        "°CBH",
+        "°CBH"
+      ],
+      "unresolvedOperatingEndpoints": []
+    },
+    {
+      "reference": "ARXM50A5V1B",
+      "source": "ARXM-A",
+      "headerIndex": 2,
+      "primaryFieldCells": {
+        "height": "734",
+        "width": "954",
+        "depth": "401",
+        "coolingOutdoorMinimum": "-10",
+        "coolingOutdoorMaximum": "50 (1), 46 (1)",
+        "heatingOutdoorMinimum": "-21 (1), -15 (1)",
+        "heatingOutdoorMaximum": "18",
+        "refrigerant": "R-32"
+      },
+      "exactPairs": [
+        "ATXM50A2V1B",
+        "ATXM50A5V1B"
+      ],
+      "rangeUnits": [
+        "°CBS",
+        "°CBS",
+        "°CBH",
+        "°CBH"
+      ],
+      "unresolvedOperatingEndpoints": [
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum"
+      ]
+    },
+    {
+      "reference": "ARXF20F5V1B",
+      "source": "ARXF-F",
+      "headerIndex": 0,
+      "primaryFieldCells": {
+        "height": "556",
+        "width": "740",
+        "depth": "343",
+        "coolingOutdoorMinimum": "-10",
+        "coolingOutdoorMaximum": "48",
+        "heatingOutdoorMinimum": "-15",
+        "heatingOutdoorMaximum": "18",
+        "refrigerant": "R-32"
+      },
+      "exactPairs": [
+        "ATXF20F5V1B"
+      ],
+      "rangeUnits": [
+        "°CDB",
+        "°CDB",
+        "°CWB",
+        "°CWB"
+      ],
+      "unresolvedOperatingEndpoints": []
+    },
+    {
+      "reference": "ARXF25F5V1B",
+      "source": "ARXF-F",
+      "headerIndex": 1,
+      "primaryFieldCells": {
+        "height": "556",
+        "width": "740",
+        "depth": "343",
+        "coolingOutdoorMinimum": "-10",
+        "coolingOutdoorMaximum": "48",
+        "heatingOutdoorMinimum": "-15",
+        "heatingOutdoorMaximum": "18",
+        "refrigerant": "R-32"
+      },
+      "exactPairs": [
+        "ATXF25F5V1B"
+      ],
+      "rangeUnits": [
+        "°CDB",
+        "°CDB",
+        "°CWB",
+        "°CWB"
+      ],
+      "unresolvedOperatingEndpoints": []
+    },
+    {
+      "reference": "ARXF35F5V1B",
+      "source": "ARXF-F",
+      "headerIndex": 2,
+      "primaryFieldCells": {
+        "height": "556",
+        "width": "740",
+        "depth": "343",
+        "coolingOutdoorMinimum": "-10",
+        "coolingOutdoorMaximum": "48",
+        "heatingOutdoorMinimum": "-15",
+        "heatingOutdoorMaximum": "18",
+        "refrigerant": "R-32"
+      },
+      "exactPairs": [
+        "ATXF35F5V1B"
+      ],
+      "rangeUnits": [
+        "°CDB",
+        "°CDB",
+        "°CWB",
+        "°CWB"
+      ],
+      "unresolvedOperatingEndpoints": []
+    },
+    {
+      "reference": "ARXF42F5V1B",
+      "source": "ARXF-F",
+      "headerIndex": 3,
+      "primaryFieldCells": {
+        "height": "556",
+        "width": "740",
+        "depth": "343",
+        "coolingOutdoorMinimum": "-10",
+        "coolingOutdoorMaximum": "48",
+        "heatingOutdoorMinimum": "-15",
+        "heatingOutdoorMaximum": "18",
+        "refrigerant": "R-32"
+      },
+      "exactPairs": [
+        "ATXF42F5V1B"
+      ],
+      "rangeUnits": [
+        "°CDB",
+        "°CDB",
+        "°CWB",
+        "°CWB"
+      ],
+      "unresolvedOperatingEndpoints": []
+    },
+    {
+      "reference": "ARXF50F5V1B",
+      "source": "ARXF-F",
+      "headerIndex": 4,
+      "primaryFieldCells": {
+        "height": "610",
+        "width": "923",
+        "depth": "367",
+        "coolingOutdoorMinimum": "-10",
+        "coolingOutdoorMaximum": "48",
+        "heatingOutdoorMinimum": "-15",
+        "heatingOutdoorMaximum": "18",
+        "refrigerant": "R-32"
+      },
+      "exactPairs": [
+        "ATXF50F5V1B"
+      ],
+      "rangeUnits": [
+        "°CDB",
+        "°CDB",
+        "°CWB",
+        "°CWB"
+      ],
+      "unresolvedOperatingEndpoints": []
+    },
+    {
+      "reference": "ARXF60A5V1B9",
+      "source": "ARXF-A9",
+      "headerIndex": 0,
+      "primaryFieldCells": {
+        "height": "734",
+        "width": "870",
+        "depth": "373",
+        "coolingOutdoorMinimum": "-10",
+        "coolingOutdoorMaximum": "46",
+        "heatingOutdoorMinimum": "-15",
+        "heatingOutdoorMaximum": "18",
+        "refrigerant": "R-32"
+      },
+      "exactPairs": [
+        "ATXF60F2V1B"
+      ],
+      "rangeUnits": [
+        "°CBS",
+        "°CBS",
+        "°CBH",
+        "°CBH"
+      ],
+      "unresolvedOperatingEndpoints": []
+    },
+    {
+      "reference": "ARXF71A5V1B9",
+      "source": "ARXF-A9",
+      "headerIndex": 1,
+      "primaryFieldCells": {
+        "height": "734",
+        "width": "870",
+        "depth": "373",
+        "coolingOutdoorMinimum": "-10",
+        "coolingOutdoorMaximum": "46",
+        "heatingOutdoorMinimum": "-15",
+        "heatingOutdoorMaximum": "18",
+        "refrigerant": "R-32"
+      },
+      "exactPairs": [
+        "ATXF71F2V1B"
+      ],
+      "rangeUnits": [
+        "°CBS",
+        "°CBS",
+        "°CBH",
+        "°CBH"
+      ],
+      "unresolvedOperatingEndpoints": []
+    }
+  ],
+  "indoorAirflowReadbacks": [
+    {
+      "reference": "ATXM20A2V1B",
+      "headerIndex": 0,
+      "coolingHighM3h": 714.0,
+      "heatingHighM3h": 684.0,
+      "exactPartners": []
+    },
+    {
+      "reference": "ATXM20A5V1B",
+      "headerIndex": 1,
+      "coolingHighM3h": 714.0,
+      "heatingHighM3h": 684.0,
+      "exactPartners": []
+    },
+    {
+      "reference": "ATXM25A2V1B",
+      "headerIndex": 2,
+      "coolingHighM3h": 714.0,
+      "heatingHighM3h": 684.0,
+      "exactPartners": [
+        "ATXM25A2V1B / ARXM25A5V1B"
+      ]
+    },
+    {
+      "reference": "ATXM25A5V1B",
+      "headerIndex": 3,
+      "coolingHighM3h": 714.0,
+      "heatingHighM3h": 684.0,
+      "exactPartners": [
+        "ATXM25A5V1B / ARXM25A5V1B"
+      ]
+    },
+    {
+      "reference": "ATXM35A2V1B",
+      "headerIndex": 4,
+      "coolingHighM3h": 792.0,
+      "heatingHighM3h": 666.0,
+      "exactPartners": [
+        "ATXM35A2V1B / ARXM35A5V1B"
+      ]
+    },
+    {
+      "reference": "ATXM35A5V1B",
+      "headerIndex": 5,
+      "coolingHighM3h": 792.0,
+      "heatingHighM3h": 666.0,
+      "exactPartners": [
+        "ATXM35A5V1B / ARXM35A5V1B"
+      ]
+    },
+    {
+      "reference": "ATXM50A2V1B",
+      "headerIndex": 6,
+      "coolingHighM3h": 762.0,
+      "heatingHighM3h": 870.0,
+      "exactPartners": [
+        "ATXM50A2V1B / ARXM50A5V1B"
+      ]
+    },
+    {
+      "reference": "ATXM50A5V1B",
+      "headerIndex": 7,
+      "coolingHighM3h": 762.0,
+      "heatingHighM3h": 870.0,
+      "exactPartners": [
+        "ATXM50A5V1B / ARXM50A5V1B"
+      ]
+    },
+    {
+      "reference": "ATXF20F5V1B",
+      "headerIndex": 1,
+      "coolingHighM3h": 588.0,
+      "heatingHighM3h": 624.0,
+      "exactPartners": [
+        "ATXF20F5V1B / ARXF20F5V1B"
+      ]
+    },
+    {
+      "reference": "ATXF25F5V1B",
+      "headerIndex": 2,
+      "coolingHighM3h": 600.0,
+      "heatingHighM3h": 624.0,
+      "exactPartners": [
+        "ATXF25F5V1B / ARXF25F5V1B"
+      ]
+    },
+    {
+      "reference": "ATXF35F5V1B",
+      "headerIndex": 3,
+      "coolingHighM3h": 690.0,
+      "heatingHighM3h": 714.0,
+      "exactPartners": [
+        "ATXF35F5V1B / ARXF35F5V1B"
+      ]
+    },
+    {
+      "reference": "ATXF42F5V1B",
+      "headerIndex": 5,
+      "coolingHighM3h": 756.0,
+      "heatingHighM3h": 768.0,
+      "exactPartners": [
+        "ATXF42F5V1B / ARXF42F5V1B"
+      ]
+    },
+    {
+      "reference": "ATXF50F5V1B",
+      "headerIndex": 4,
+      "coolingHighM3h": 756.0,
+      "heatingHighM3h": 768.0,
+      "exactPartners": [
+        "ATXF50F5V1B / ARXF50F5V1B"
+      ]
+    },
+    {
+      "reference": "ATXF60F2V1B",
+      "headerIndex": 6,
+      "coolingHighM3h": 1038.0,
+      "heatingHighM3h": 1074.0,
+      "exactPartners": [
+        "ATXF60F2V1B / ARXF60A5V1B9"
+      ]
+    },
+    {
+      "reference": "ATXF71F2V1B",
+      "headerIndex": 0,
+      "coolingHighM3h": 1038.0,
+      "heatingHighM3h": 1074.0,
+      "exactPartners": [
+        "ATXF71F2V1B / ARXF71A5V1B9"
+      ]
+    }
+  ],
+  "exactPairColumns": {
+    "ATXM-A---ARXM-A": [
+      "ATXM25A2V1B / ARXM25A5V1B",
+      "ATXM25A5V1B / ARXM25A5V1B",
+      "ATXM35A2V1B / ARXM35A5V1B",
+      "ATXM35A5V1B / ARXM35A5V1B",
+      "ATXM50A2V1B / ARXM50A5V1B",
+      "ATXM50A5V1B / ARXM50A5V1B"
+    ],
+    "ATXF-F---ARXF-A9": [
+      "ATXF60F2V1B / ARXF60A5V1B9",
+      "ATXF71F2V1B / ARXF71A5V1B9"
+    ],
+    "ATXF-F---ARXF-F": [
+      "ATXF20F5V1B / ARXF20F5V1B",
+      "ATXF25F5V1B / ARXF25F5V1B",
+      "ATXF35F5V1B / ARXF35F5V1B",
+      "ATXF42F5V1B / ARXF42F5V1B",
+      "ATXF50F5V1B / ARXF50F5V1B"
+    ]
+  }
+}

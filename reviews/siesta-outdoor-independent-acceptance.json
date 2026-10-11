@@ -1,0 +1,604 @@
+{
+  "scope": "Independent exact Siesta outdoor field/pair-column review; no ARX/RX aliases or current-France-stock claim",
+  "candidate": {
+    "path": "research/catalogue/staging/luna-siesta-outdoor-exact-pairs-2026.json",
+    "sha256": "5520c7c2f3a91a3ddc3c989a37664e9a79e511b830ba8e834004b288f2556eb6"
+  },
+  "sourcePins": [
+    {
+      "path": "research/sources/luna-siesta-ARXM-A.html",
+      "sha256": "1b11f1d9772dd40b4b30ddaeb63e48924554e8440a4c04577609cb5b620b0411"
+    },
+    {
+      "path": "research/sources/luna-siesta-ARXF-A9.html",
+      "sha256": "802928482e987af5e8041c7ab550dab64c4fac283655c36eb50a3a5322718053"
+    },
+    {
+      "path": "research/sources/luna-siesta-ARXF-F.html",
+      "sha256": "b7406b3fb322097599531b5582eb4e3517cf7eb0bcb9d6574c1e2b002d5fc538"
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXM-A---ARXM-A.html",
+      "sha256": "9ac548e61ee1ff177f8b42d03248b0fb7d600e4227bd39ba05aaf18b53f735cb"
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXF-F---ARXF-A9.html",
+      "sha256": "a9560779cf1c27f41d9d823e87fbc023d4a27ba887322141c6d5d7860e674162"
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXF-F---ARXF-F.html",
+      "sha256": "1d409ed9525fc68c5e71fe9e1ba209d7f81a660fc086e17d867df3238f762e12"
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXM-A.html",
+      "sha256": "893727172a0efd7f97ece3aed89a049aa64b19f1502b41f7367b63891d77e88d"
+    },
+    {
+      "path": "research/sources/luna-siesta-ATXF-F.html",
+      "sha256": "3e49ed4b1e1044825cc19b0713434436a2c90f31b89e0e2eca91f57eb79669ea"
+    }
+  ],
+  "primaryTableReadback": {
+    "path": "reviews/siesta-outdoor-primary-readback-2026.json",
+    "sha256": "895a84907816a0ea07570e5758bfc74d99941db0ce0f8b8f06b729909eac648c"
+  },
+  "reviewedUnits": [
+    {
+      "reference": "ARXM25A5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 610,
+        "width": 923,
+        "depth": 367,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -21,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "height": "outdoor casing",
+        "width": "outdoor casing",
+        "depth": "outdoor casing",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "heatingOutdoorMinimum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+        "heatingOutdoorMaximum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXM25A2V1B",
+        "ATXM25A5V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxm-arxm-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXM25A2V1B / ARXM25A5V1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXM25A2V1B": {
+          "sourceId": "siesta-atxm-arxm-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXM25A2V1B / ARXM25A5V1B"
+        },
+        "ATXM25A5V1B": {
+          "sourceId": "siesta-atxm-arxm-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXM25A5V1B / ARXM25A5V1B"
+        }
+      }
+    },
+    {
+      "reference": "ARXM35A5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 610,
+        "width": 923,
+        "depth": 367,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -21,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "height": "outdoor casing",
+        "width": "outdoor casing",
+        "depth": "outdoor casing",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "heatingOutdoorMinimum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+        "heatingOutdoorMaximum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXM35A2V1B",
+        "ATXM35A5V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxm-arxm-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXM35A2V1B / ARXM35A5V1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXM35A2V1B": {
+          "sourceId": "siesta-atxm-arxm-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXM35A2V1B / ARXM35A5V1B"
+        },
+        "ATXM35A5V1B": {
+          "sourceId": "siesta-atxm-arxm-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXM35A5V1B / ARXM35A5V1B"
+        }
+      }
+    },
+    {
+      "reference": "ARXM50A5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 734,
+        "width": 954,
+        "depth": 401,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "height": "outdoor casing",
+        "width": "outdoor casing",
+        "depth": "outdoor casing",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "heatingOutdoorMaximum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXM50A2V1B",
+        "ATXM50A5V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxm-arxm-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXM50A2V1B / ARXM50A5V1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXM50A2V1B": {
+          "sourceId": "siesta-atxm-arxm-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXM50A2V1B / ARXM50A5V1B"
+        },
+        "ATXM50A5V1B": {
+          "sourceId": "siesta-atxm-arxm-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXM50A5V1B / ARXM50A5V1B"
+        }
+      },
+      "unresolvedOperatingEndpoints": {
+        "coolingOutdoorMaximum": {
+          "sourceCell": "50 (1), 46 (1)",
+          "unknownBoundary": "The source row prints cooling maximum as “50 (1), 46 (1)” and heating minimum as “-21 (1), -15 (1)”; footnote (1) directs to a separate operating-range drawing not included in this evidence. Both respective limits therefore remain unresolved; neither alternative has been selected."
+        },
+        "heatingOutdoorMinimum": {
+          "sourceCell": "-21 (1), -15 (1)",
+          "unknownBoundary": "The source row prints cooling maximum as “50 (1), 46 (1)” and heating minimum as “-21 (1), -15 (1)”; footnote (1) directs to a separate operating-range drawing not included in this evidence. Both respective limits therefore remain unresolved; neither alternative has been selected."
+        }
+      },
+      "operatingRangeConditions": {
+        "cooling": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "heating": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      }
+    },
+    {
+      "reference": "ARXF20F5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 556,
+        "width": 740,
+        "depth": 343,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 48,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "height": "outdoor casing",
+        "width": "outdoor casing",
+        "depth": "outdoor casing",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "heatingOutdoorMinimum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+        "heatingOutdoorMaximum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXF20F5V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxf-arxf-f-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXF20F5V1B / ARXF20F5V1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXF20F5V1B": {
+          "sourceId": "siesta-atxf-arxf-f-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXF20F5V1B / ARXF20F5V1B"
+        }
+      }
+    },
+    {
+      "reference": "ARXF25F5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 556,
+        "width": 740,
+        "depth": 343,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 48,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "height": "outdoor casing",
+        "width": "outdoor casing",
+        "depth": "outdoor casing",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "heatingOutdoorMinimum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+        "heatingOutdoorMaximum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXF25F5V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxf-arxf-f-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXF25F5V1B / ARXF25F5V1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXF25F5V1B": {
+          "sourceId": "siesta-atxf-arxf-f-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXF25F5V1B / ARXF25F5V1B"
+        }
+      }
+    },
+    {
+      "reference": "ARXF35F5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 556,
+        "width": 740,
+        "depth": 343,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 48,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "height": "outdoor casing",
+        "width": "outdoor casing",
+        "depth": "outdoor casing",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "heatingOutdoorMinimum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+        "heatingOutdoorMaximum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXF35F5V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxf-arxf-f-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXF35F5V1B / ARXF35F5V1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXF35F5V1B": {
+          "sourceId": "siesta-atxf-arxf-f-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXF35F5V1B / ARXF35F5V1B"
+        }
+      }
+    },
+    {
+      "reference": "ARXF42F5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 556,
+        "width": 740,
+        "depth": 343,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 48,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "height": "outdoor casing",
+        "width": "outdoor casing",
+        "depth": "outdoor casing",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "heatingOutdoorMinimum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+        "heatingOutdoorMaximum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXF42F5V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxf-arxf-f-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXF42F5V1B / ARXF42F5V1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXF42F5V1B": {
+          "sourceId": "siesta-atxf-arxf-f-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXF42F5V1B / ARXF42F5V1B"
+        }
+      }
+    },
+    {
+      "reference": "ARXF50F5V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 610,
+        "width": 923,
+        "depth": 367,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 48,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "height": "outdoor casing",
+        "width": "outdoor casing",
+        "depth": "outdoor casing",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "heatingOutdoorMinimum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+        "heatingOutdoorMaximum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXF50F5V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxf-arxf-f-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXF50F5V1B / ARXF50F5V1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXF50F5V1B": {
+          "sourceId": "siesta-atxf-arxf-f-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXF50F5V1B / ARXF50F5V1B"
+        }
+      }
+    },
+    {
+      "reference": "ARXF60A5V1B9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 734,
+        "width": 870,
+        "depth": 373,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "height": "outdoor casing",
+        "width": "outdoor casing",
+        "depth": "outdoor casing",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "heatingOutdoorMinimum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+        "heatingOutdoorMaximum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXF60F2V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxf-arxf-a9-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXF60F2V1B / ARXF60A5V1B9"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXF60F2V1B": {
+          "sourceId": "siesta-atxf-arxf-a9-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXF60F2V1B / ARXF60A5V1B9"
+        }
+      }
+    },
+    {
+      "reference": "ARXF71A5V1B9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 734,
+        "width": 870,
+        "depth": 373,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "height": "outdoor casing",
+        "width": "outdoor casing",
+        "depth": "outdoor casing",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CBS in France source; °CDB in Europe source)",
+        "heatingOutdoorMinimum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)",
+        "heatingOutdoorMaximum": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France technical table; current availability unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXF71F2V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxf-arxf-a9-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXF71F2V1B / ARXF71A5V1B9"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXF71F2V1B": {
+          "sourceId": "siesta-atxf-arxf-a9-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXF71F2V1B / ARXF71A5V1B9"
+        }
+      }
+    }
+  ],
+  "indoorDisposition": "All15 candidate indoor airflow-only units already have accepted casing/cooling flow profiles. Their cooling/heating high-fan values match independently reviewed tables; existing runtime records remain unchanged."
+}

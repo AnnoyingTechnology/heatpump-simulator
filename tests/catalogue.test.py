@@ -674,5 +674,64 @@ class CatalogueAcceptance(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'visual layout review'): module.source_review_metadata(unit, accepted, isolated)
 
 
+    def test_siesta_outdoor_exact_pair_columns_are_not_arx_rx_aliases(self):
+        accepted = [u for u in self.review['units'] if u['candidateFile'].endswith('luna-siesta-outdoor-exact-pairs-2026.json')]
+        self.assertEqual(len(accepted), 10)
+        self.assertEqual(sum(len(u['compatibleIndoorClasses']) for u in accepted), 13)
+        all_refs = {u['reference'] for u in self.review['units']}
+        self.assertNotIn('ARXM20A5V1B', all_refs)
+        for row in accepted:
+            self.assertEqual(row['ports'], 1)
+            self.assertEqual(row['sourceStatus'], 'availability-unknown')
+            self.assertNotIn('airflow', row['factKeys'])
+            self.assertEqual(set(row['pairingEvidenceByIndoor']), set(row['compatibleIndoorClasses']))
+            for indoor, evidence in row['pairingEvidenceByIndoor'].items():
+                self.assertEqual(evidence['excerpt'], indoor + ' / ' + row['reference'])
+                self.assertTrue(indoor.startswith('ATX'))
+                self.assertNotIn('ATXM20', indoor)
+        profiles = {p['id']: p for p in json.loads(re.search(r'export const CATALOGUE_OUTDOORS = (.*?) as const;', module.generate(), re.S).group(1))}
+        self.assertEqual(profiles['ARXM25A5V1B']['compatibleIndoorClasses'], ['ATXM25A2V1B', 'ATXM25A5V1B'])
+        self.assertEqual(profiles['RXM25A5V1B9']['compatibleIndoorClasses'], ['FTXM25A2V1B', 'FTXM25A5V1B', 'FVXM25B2V1B'])
+        self.assertEqual(profiles['ARXF60A5V1B9']['compatibleIndoorClasses'], ['ATXF60F2V1B'])
+        self.assertEqual(profiles['RXF60D5V1B9']['compatibleIndoorClasses'], ['FTXF60F2V1B'])
+
+    def test_arxm50_individual_source_alternatives_stay_null_with_known_bounds_and_conditions(self):
+        profiles = {p['id']: p for p in json.loads(re.search(r'export const CATALOGUE_OUTDOORS = (.*?) as const;', module.generate(), re.S).group(1))}
+        p = profiles['ARXM50A5V1B']; ranges = p['publishedOperatingRangesC']
+        self.assertEqual(p['caseMm'], {'h': 734, 'w': 954, 'd': 401})
+        self.assertIsNone(p['coolingHighFanFlowM3h'])
+        self.assertEqual(ranges['cooling']['minimum'], -10)
+        self.assertIsNone(ranges['cooling']['maximum'])
+        self.assertIsNone(ranges['heating']['minimum'])
+        self.assertEqual(ranges['heating']['maximum'], 18)
+        self.assertIn('dry-bulb', ranges['cooling']['condition'])
+        self.assertIn('wet-bulb', ranges['heating']['condition'])
+        for key in ('nominalCoolingKw', 'factoryCharge', 'electricalInputKw'):
+            self.assertNotIn(key, p)
+        self.assertEqual(profiles['ARXF42F5V1B']['caseMm'], {'h': 556, 'w': 740, 'd': 343})
+        self.assertEqual(profiles['ARXF50F5V1B']['caseMm'], {'h': 610, 'w': 923, 'd': 367})
+
+    def test_partial_range_requires_reviewed_unknowns_and_rejects_numeric_alternative_substitution(self):
+        accepted = next(u for u in self.review['units'] if u['reference'] == 'ARXM50A5V1B')
+        doc = json.loads((ROOT / accepted['candidateFile']).read_text()); unit = next(u for u in doc['units'] if u['modelReference'] == accepted['reference'])
+        module.source_review_metadata(unit, accepted, ROOT)
+        changed = dict(accepted); changed.pop('unresolvedOperatingEndpoints')
+        with self.assertRaisesRegex(ValueError, 'Unresolved operating endpoints'): module.source_review_metadata(unit, changed, ROOT)
+        for key, values in [('coolingOutdoorMaximum', [50, 46]), ('heatingOutdoorMinimum', [-21, -15])]:
+            for value in values:
+                changed = json.loads(json.dumps(unit)); changed['facts'].append({'key': key, 'value': value})
+                with self.assertRaisesRegex(ValueError, 'alternative cannot be substituted'): module.source_review_metadata(changed, accepted, ROOT)
+        changed = json.loads(json.dumps(unit)); changed['unknowns'] = []
+        with self.assertRaisesRegex(ValueError, 'unknown boundary'): module.source_review_metadata(changed, accepted, ROOT)
+
+    def test_every_siesta_exact_colour_suffix_pair_is_receipt_bound(self):
+        accepted = next(u for u in self.review['units'] if u['reference'] == 'ARXM25A5V1B')
+        doc = json.loads((ROOT / accepted['candidateFile']).read_text()); unit = next(u for u in doc['units'] if u['modelReference'] == accepted['reference'])
+        changed = json.loads(json.dumps(accepted)); changed['pairingEvidenceByIndoor']['ATXM25A5V1B']['excerpt'] = 'FTXM25A5V1B / RXM25A5V1B9'
+        with self.assertRaisesRegex(ValueError, 'per-indoor pairing evidence'): module.source_review_metadata(unit, changed, ROOT)
+        changed = json.loads(json.dumps(unit)); changed['compatibility'] = changed['compatibility'][:1]
+        with self.assertRaisesRegex(ValueError, 'exact pair column is absent'): module.source_review_metadata(changed, accepted, ROOT)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -132,6 +132,12 @@ def source_review_metadata(unit, accepted, root):
     if unit['unitType'] == 'outdoor':
         if accepted['ports'] != row['ports'] or accepted['compatibleIndoorClasses'] != row['compatibleIndoorClasses'] or accepted['pairingEvidence'] != row['pairingEvidence']:
             raise ValueError('Source-reviewed exact pairing or topology changed')
+        if 'pairingEvidenceByIndoor' in row and accepted.get('pairingEvidenceByIndoor') != row['pairingEvidenceByIndoor']:
+            raise ValueError('Source-reviewed per-indoor pairing evidence changed')
+        if 'pairingEvidenceByIndoor' in row:
+            candidate_evidence = [c['evidence'] for c in unit['compatibility']]
+            if any(e not in candidate_evidence for e in row['pairingEvidenceByIndoor'].values()):
+                raise ValueError('Source-reviewed exact pair column is absent from candidate')
     elif any(key in accepted for key in ('ports', 'compatibleIndoorClasses', 'pairingEvidence')):
         raise ValueError('Indoor physical-field review cannot certify an outdoor pairing')
     metadata = row['runtimeMetadata']
@@ -151,6 +157,24 @@ def source_review_metadata(unit, accepted, root):
         path = root / layout.get('path', '')
         if not path.is_file() or sha(path) != layout.get('sha256'):
             raise ValueError('Published class visual layout review is missing or changed')
+    unresolved = row.get('unresolvedOperatingEndpoints', {})
+    declared = accepted.get('unresolvedOperatingEndpoints', [])
+    endpoints = {mode + 'Outdoor' + side for mode in ('cooling', 'heating') for side in ('Minimum', 'Maximum')}
+    if set(declared) != set(unresolved) or len(declared) != len(set(declared)):
+        raise ValueError('Unresolved operating endpoints differ from independent source readback')
+    if unresolved:
+        if unit['unitType'] != 'outdoor' or not set(unresolved).issubset(endpoints):
+            raise ValueError('Unreviewed unresolved operating endpoint')
+        for key, reason in unresolved.items():
+            if key in accepted['factKeys'] or any(f['key'] == key for f in unit['facts']):
+                raise ValueError('An unresolved source alternative cannot be substituted as a numeric bound')
+            if reason.get('unknownBoundary') not in unit.get('unknowns', []) or not reason.get('sourceCell'):
+                raise ValueError('Unresolved source alternatives require an explicit candidate unknown boundary')
+        conditions = row.get('operatingRangeConditions', {})
+        for mode in ('cooling', 'heating'):
+            known = [f for f in unit['facts'] if f['key'] in {mode + 'OutdoorMinimum', mode + 'OutdoorMaximum'}]
+            if not known or not conditions.get(mode) or any(f.get('condition') != conditions[mode] for f in known):
+                raise ValueError('Partial operating range requires explicit source-bound per-mode conditions')
     return metadata
 
 
@@ -177,6 +201,8 @@ def generate(root=ROOT):
             raise ValueError('Unreviewed equipment identity kind')
         if accepted.get('identityKind') == 'published-class' and 'sourceReview' not in accepted:
             raise ValueError('Published class requires independent source review')
+        if accepted.get('unresolvedOperatingEndpoints') and 'sourceReview' not in accepted:
+            raise ValueError('Unresolved operating endpoints require independent source review')
         selected = []
         for fact_key in accepted['factKeys']:
             facts = [f for f in unit['facts'] if f['key'] == fact_key]
@@ -259,10 +285,18 @@ def generate(root=ROOT):
                            'condition': readback['operatingConditions'][mode]}
                     for mode in ('cooling', 'heating')}
             else:
+                unresolved = accepted.get('unresolvedOperatingEndpoints', [])
+                for mode in ('cooling', 'heating'):
+                    for side in ('Minimum', 'Maximum'):
+                        key = mode + 'Outdoor' + side
+                        if key not in by_key and key not in unresolved:
+                            raise ValueError('Missing operating endpoint has not been independently declared unresolved')
                 profile['publishedOperatingRangesC'] = {
-                    mode: {'minimum': by_key[mode + 'OutdoorMinimum'][0]['value'],
-                           'maximum': by_key[mode + 'OutdoorMaximum'][0]['value'],
-                           'condition': by_key[mode + 'OutdoorMinimum'][0]['condition']}
+                    mode: {'minimum': by_key[mode + 'OutdoorMinimum'][0]['value'] if mode + 'OutdoorMinimum' in by_key else None,
+                           'maximum': by_key[mode + 'OutdoorMaximum'][0]['value'] if mode + 'OutdoorMaximum' in by_key else None,
+                           # The surviving bound retains this mode's DB/WB condition;
+                           # the independent receipt explicitly checks partial ranges.
+                           'condition': (by_key.get(mode + 'OutdoorMinimum') or by_key[mode + 'OutdoorMaximum'])[0]['condition']}
                     for mode in ('cooling', 'heating')}
         profiles.append(profile)
     refs = [p['id'] for p in profiles]

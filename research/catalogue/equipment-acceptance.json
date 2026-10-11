@@ -6680,6 +6680,416 @@
         "path": "reviews/perfera-published-class-independent-acceptance.json",
         "sha256": "21d3d9339cec53ce708f2b3ffa58bb3283c9d234efb57823418ba2db306871cc"
       }
+    },
+    {
+      "reference": "ARXM25A5V1B",
+      "candidateFile": "research/catalogue/staging/luna-siesta-outdoor-exact-pairs-2026.json",
+      "candidateSha256": "5520c7c2f3a91a3ddc3c989a37664e9a79e511b830ba8e834004b288f2556eb6",
+      "candidateReference": "ARXM25A5V1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "France technical table; current availability unverified",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXM25A2V1B",
+        "ATXM25A5V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxm-arxm-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXM25A2V1B / ARXM25A5V1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXM25A2V1B": {
+          "sourceId": "siesta-atxm-arxm-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXM25A2V1B / ARXM25A5V1B"
+        },
+        "ATXM25A5V1B": {
+          "sourceId": "siesta-atxm-arxm-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXM25A5V1B / ARXM25A5V1B"
+        }
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceReview": {
+        "path": "reviews/siesta-outdoor-independent-acceptance.json",
+        "sha256": "20f3516708e1940ac68701e8a8de79784a4073b924a7ad0a284af02da9a4e175"
+      }
+    },
+    {
+      "reference": "ARXM35A5V1B",
+      "candidateFile": "research/catalogue/staging/luna-siesta-outdoor-exact-pairs-2026.json",
+      "candidateSha256": "5520c7c2f3a91a3ddc3c989a37664e9a79e511b830ba8e834004b288f2556eb6",
+      "candidateReference": "ARXM35A5V1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "France technical table; current availability unverified",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXM35A2V1B",
+        "ATXM35A5V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxm-arxm-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXM35A2V1B / ARXM35A5V1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXM35A2V1B": {
+          "sourceId": "siesta-atxm-arxm-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXM35A2V1B / ARXM35A5V1B"
+        },
+        "ATXM35A5V1B": {
+          "sourceId": "siesta-atxm-arxm-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXM35A5V1B / ARXM35A5V1B"
+        }
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceReview": {
+        "path": "reviews/siesta-outdoor-independent-acceptance.json",
+        "sha256": "20f3516708e1940ac68701e8a8de79784a4073b924a7ad0a284af02da9a4e175"
+      }
+    },
+    {
+      "reference": "ARXM50A5V1B",
+      "candidateFile": "research/catalogue/staging/luna-siesta-outdoor-exact-pairs-2026.json",
+      "candidateSha256": "5520c7c2f3a91a3ddc3c989a37664e9a79e511b830ba8e834004b288f2556eb6",
+      "candidateReference": "ARXM50A5V1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "France technical table; current availability unverified",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXM50A2V1B",
+        "ATXM50A5V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxm-arxm-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXM50A2V1B / ARXM50A5V1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXM50A2V1B": {
+          "sourceId": "siesta-atxm-arxm-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXM50A2V1B / ARXM50A5V1B"
+        },
+        "ATXM50A5V1B": {
+          "sourceId": "siesta-atxm-arxm-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXM50A5V1B / ARXM50A5V1B"
+        }
+      },
+      "unpublishedOutdoorAirflow": true,
+      "unresolvedOperatingEndpoints": [
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum"
+      ],
+      "sourceReview": {
+        "path": "reviews/siesta-outdoor-independent-acceptance.json",
+        "sha256": "20f3516708e1940ac68701e8a8de79784a4073b924a7ad0a284af02da9a4e175"
+      }
+    },
+    {
+      "reference": "ARXF20F5V1B",
+      "candidateFile": "research/catalogue/staging/luna-siesta-outdoor-exact-pairs-2026.json",
+      "candidateSha256": "5520c7c2f3a91a3ddc3c989a37664e9a79e511b830ba8e834004b288f2556eb6",
+      "candidateReference": "ARXF20F5V1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXF20F5V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxf-arxf-f-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXF20F5V1B / ARXF20F5V1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXF20F5V1B": {
+          "sourceId": "siesta-atxf-arxf-f-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXF20F5V1B / ARXF20F5V1B"
+        }
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceReview": {
+        "path": "reviews/siesta-outdoor-independent-acceptance.json",
+        "sha256": "20f3516708e1940ac68701e8a8de79784a4073b924a7ad0a284af02da9a4e175"
+      }
+    },
+    {
+      "reference": "ARXF25F5V1B",
+      "candidateFile": "research/catalogue/staging/luna-siesta-outdoor-exact-pairs-2026.json",
+      "candidateSha256": "5520c7c2f3a91a3ddc3c989a37664e9a79e511b830ba8e834004b288f2556eb6",
+      "candidateReference": "ARXF25F5V1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXF25F5V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxf-arxf-f-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXF25F5V1B / ARXF25F5V1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXF25F5V1B": {
+          "sourceId": "siesta-atxf-arxf-f-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXF25F5V1B / ARXF25F5V1B"
+        }
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceReview": {
+        "path": "reviews/siesta-outdoor-independent-acceptance.json",
+        "sha256": "20f3516708e1940ac68701e8a8de79784a4073b924a7ad0a284af02da9a4e175"
+      }
+    },
+    {
+      "reference": "ARXF35F5V1B",
+      "candidateFile": "research/catalogue/staging/luna-siesta-outdoor-exact-pairs-2026.json",
+      "candidateSha256": "5520c7c2f3a91a3ddc3c989a37664e9a79e511b830ba8e834004b288f2556eb6",
+      "candidateReference": "ARXF35F5V1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXF35F5V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxf-arxf-f-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXF35F5V1B / ARXF35F5V1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXF35F5V1B": {
+          "sourceId": "siesta-atxf-arxf-f-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXF35F5V1B / ARXF35F5V1B"
+        }
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceReview": {
+        "path": "reviews/siesta-outdoor-independent-acceptance.json",
+        "sha256": "20f3516708e1940ac68701e8a8de79784a4073b924a7ad0a284af02da9a4e175"
+      }
+    },
+    {
+      "reference": "ARXF42F5V1B",
+      "candidateFile": "research/catalogue/staging/luna-siesta-outdoor-exact-pairs-2026.json",
+      "candidateSha256": "5520c7c2f3a91a3ddc3c989a37664e9a79e511b830ba8e834004b288f2556eb6",
+      "candidateReference": "ARXF42F5V1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXF42F5V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxf-arxf-f-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXF42F5V1B / ARXF42F5V1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXF42F5V1B": {
+          "sourceId": "siesta-atxf-arxf-f-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXF42F5V1B / ARXF42F5V1B"
+        }
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceReview": {
+        "path": "reviews/siesta-outdoor-independent-acceptance.json",
+        "sha256": "20f3516708e1940ac68701e8a8de79784a4073b924a7ad0a284af02da9a4e175"
+      }
+    },
+    {
+      "reference": "ARXF50F5V1B",
+      "candidateFile": "research/catalogue/staging/luna-siesta-outdoor-exact-pairs-2026.json",
+      "candidateSha256": "5520c7c2f3a91a3ddc3c989a37664e9a79e511b830ba8e834004b288f2556eb6",
+      "candidateReference": "ARXF50F5V1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXF50F5V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxf-arxf-f-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXF50F5V1B / ARXF50F5V1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXF50F5V1B": {
+          "sourceId": "siesta-atxf-arxf-f-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXF50F5V1B / ARXF50F5V1B"
+        }
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceReview": {
+        "path": "reviews/siesta-outdoor-independent-acceptance.json",
+        "sha256": "20f3516708e1940ac68701e8a8de79784a4073b924a7ad0a284af02da9a4e175"
+      }
+    },
+    {
+      "reference": "ARXF60A5V1B9",
+      "candidateFile": "research/catalogue/staging/luna-siesta-outdoor-exact-pairs-2026.json",
+      "candidateSha256": "5520c7c2f3a91a3ddc3c989a37664e9a79e511b830ba8e834004b288f2556eb6",
+      "candidateReference": "ARXF60A5V1B9",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "France technical table; current availability unverified",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXF60F2V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxf-arxf-a9-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXF60F2V1B / ARXF60A5V1B9"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXF60F2V1B": {
+          "sourceId": "siesta-atxf-arxf-a9-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXF60F2V1B / ARXF60A5V1B9"
+        }
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceReview": {
+        "path": "reviews/siesta-outdoor-independent-acceptance.json",
+        "sha256": "20f3516708e1940ac68701e8a8de79784a4073b924a7ad0a284af02da9a4e175"
+      }
+    },
+    {
+      "reference": "ARXF71A5V1B9",
+      "candidateFile": "research/catalogue/staging/luna-siesta-outdoor-exact-pairs-2026.json",
+      "candidateSha256": "5520c7c2f3a91a3ddc3c989a37664e9a79e511b830ba8e834004b288f2556eb6",
+      "candidateReference": "ARXF71A5V1B9",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "France technical table; current availability unverified",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXF71F2V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-atxf-arxf-a9-pair",
+        "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+        "excerpt": "ATXF71F2V1B / ARXF71A5V1B9"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXF71F2V1B": {
+          "sourceId": "siesta-atxf-arxf-a9-pair",
+          "locator": "Exact full-reference indoor/outdoor model pair in the official Daikin monosplit pairing table",
+          "excerpt": "ATXF71F2V1B / ARXF71A5V1B9"
+        }
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceReview": {
+        "path": "reviews/siesta-outdoor-independent-acceptance.json",
+        "sha256": "20f3516708e1940ac68701e8a8de79784a4073b924a7ad0a284af02da9a4e175"
+      }
     }
   ],
   "additionalSourceSnapshots": [
