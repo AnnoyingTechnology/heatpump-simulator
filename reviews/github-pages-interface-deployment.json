@@ -1,0 +1,59 @@
+{
+  "checkedAt": "2026-10-11T06:32:47.123212+00:00",
+  "applicationCommit": "0e7bc1589fa54e2cd504c14d44f04a1bdf2996d5",
+  "url": "https://annoyingtechnology.github.io/heatpump-simulator/",
+  "workflow": {
+    "runId": 38117990981,
+    "url": "https://github.com/AnnoyingTechnology/heatpump-simulator/actions/runs/38117990981",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "build",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-10-11T06:25:11Z",
+        "completedAt": "2026-10-11T06:31:36Z"
+      },
+      {
+        "name": "deploy",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-10-11T06:31:40Z",
+        "completedAt": "2026-10-11T06:31:50Z"
+      }
+    ]
+  },
+  "checks": {
+    "referenceAndProperties": {
+      "tests": 52,
+      "pass": 52,
+      "fail": 0,
+      "duration_ms": 363335.802018
+    },
+    "rollingHistory": {
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "duration_ms": 305.637768
+    },
+    "hostedBrowser": {
+      "tests": 6,
+      "pass": 6,
+      "receipt": "reviews/github-pages-browser-results.json"
+    },
+    "lossScale": {
+      "tests": 3,
+      "pass": 3,
+      "layoutCombinations": 32,
+      "receipt": "reviews/loss-scale-browser-results.json"
+    }
+  },
+  "assetSha256": {
+    "index-Bk7RZAhJ.css": "b3ef5d610e535df95011823ea8bb45686caaed55116d8081ea4dca4890d8b47c",
+    "index-Bl5Uh__3.js": "8ab06deab44e4c6459f80a48229ada56f35dd5447efef0df26ffedb1f782e1dd",
+    "worker-Bt2PmKhk.js": "62f0f5269a7a4aaaf72cfce9cc49feafcc786311b2397a1ff70be64b21bba4d9"
+  },
+  "wasmSha256": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+  "scope": "Reference R32 inverter, Sonnet themes and permanent supplied loss-reference scale. Generic model remains uncalibrated to manufacturer electrical performance; experimental charge gate remains closed."
+}

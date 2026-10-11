@@ -15,7 +15,7 @@ const wasmHash=digest(new Uint8Array(await response.arrayBuffer()));
 assert.equal(wasmHash,digest(await readFile('public/vendor/coolprop-safe/coolprop.wasm')),'deployed backend matches verified local artifact');
 
 const page=await openPage(url),checks=[];
-const expectedBundles=(await readdir('dist/assets')).filter(name=>name.endsWith('.js'));
+const expectedBundles=(await readdir('dist/assets')).filter(name=>name.endsWith('.js')||name.endsWith('.css'));
 const bundleHashes={};
 const run=fn=>page.evaluate(`(${fn.toString()})()`);
 const check=async(name,fn)=>{await fn();checks.push({name,passed:true});console.log(`PASS ${name}`)};
@@ -35,7 +35,7 @@ try{
     assert.equal(asset.status,200,`current production bundle ${name}`);
     bundleHashes[name]=digest(new Uint8Array(await asset.arrayBuffer()));
     assert.equal(bundleHashes[name],digest(await readFile(`dist/assets/${name}`)),`deployed bundle content ${name}`);
-    // Worker network events belong to its own CDP target. The main entry must be observed in this tab.
+    // Worker network events belong to its own CDP target. Main scripts and styles must be observed in this tab.
     if(name.startsWith('index-')) assert.ok(loaded.has(name),`browser entry ${name}`);
   }
  });

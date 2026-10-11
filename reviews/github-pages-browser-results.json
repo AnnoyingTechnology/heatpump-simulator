@@ -1,19 +1,25 @@
 {
-  "checkedAt": "2026-10-11T05:39:45.778Z",
+  "checkedAt": "2026-10-11T06:32:10.054Z",
   "url": "https://annoyingtechnology.github.io/heatpump-simulator/",
   "wasmUrl": "https://annoyingtechnology.github.io/heatpump-simulator/vendor/coolprop-safe/coolprop.wasm",
   "wasmSha256": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
   "expectedBundles": [
-    "index-sFQujA9O.js",
-    "worker-DI-4LoFT.js"
+    "index-Bk7RZAhJ.css",
+    "index-Bl5Uh__3.js",
+    "worker-Bt2PmKhk.js"
   ],
   "bundleHashes": {
-    "index-sFQujA9O.js": "82da483982fb8fe858af9221f5c42cf33cfb61e790249571dcda496f4922c2d5",
-    "worker-DI-4LoFT.js": "f534e6c84631c5be35eb740aa9bef4ed94af793cecf08257ce681e1534d63b5f"
+    "index-Bk7RZAhJ.css": "b3ef5d610e535df95011823ea8bb45686caaed55116d8081ea4dca4890d8b47c",
+    "index-Bl5Uh__3.js": "8ab06deab44e4c6459f80a48229ada56f35dd5447efef0df26ffedb1f782e1dd",
+    "worker-Bt2PmKhk.js": "62f0f5269a7a4aaaf72cfce9cc49feafcc786311b2397a1ff70be64b21bba4d9"
   },
   "checks": [
     {
       "name": "hosted site starts a real running worker with physical sensor readings",
+      "passed": true
+    },
+    {
+      "name": "every hosted room shows all eight loss-reference bands directly beneath its slider",
       "passed": true
     },
     {
@@ -33,7 +39,7 @@
       "passed": true
     }
   ],
-  "achievedRate": "6.9× actual",
+  "achievedRate": "12.1× actual",
   "desktop": {
     "width": 1600,
     "height": 1000
