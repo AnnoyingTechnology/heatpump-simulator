@@ -24,6 +24,8 @@ Weather, mode, per-room targets, On/Off and observed air temperatures can initia
 
 ## GitHub Pages
 
+Shared vector thermometer/flame/snowflake symbols are deployed at `2956702`. GitHub passed126Reference,5history/URL,23catalogue and25smoke checks; seven matching-asset hosted checks, production URL initialization and two focused symbol checks pass. Receipt: `reviews/github-pages-measurement-symbols-deployment.json`.
+
 Current catalogue release `0fcd2d9` is deployed with41Daikin outdoor/119indoor and25Mitsubishi outdoor/45indoor profiles; coverage remains partial. GitHub passed126Reference,5history/URL,23catalogue and25smoke checks, followed by seven checks against the exact hosted bundles and production URL initialization. Receipt: `reviews/github-pages-current-stylish-deployment.json`.
 
 Repository: https://github.com/AnnoyingTechnology/heatpump-simulator
