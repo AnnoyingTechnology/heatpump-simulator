@@ -1,3 +1,4 @@
+import {eevPiStep,type EevPiControl} from './charge-valve.ts';
 import {isentropicR32Density} from './charge-isentrope.ts';
 import { Properties, DomainError } from './properties.ts';
 import type { RefrigerantState } from './types.ts';
@@ -18,6 +19,7 @@ export interface ChargeGeometry {
   dischargeCoefficient: number; superheatTargetK: number;
   maximumDischargeC: number; maximumPressureRatio: number;
   valvePassageLengthM?: number; accumulatorInletPassageLengthM?: number;
+  eevController?:EevPiControl;
 }
 export interface ChargeNumerics { pressureDerivativeRelativeStep?: number; analyticStorageJacobian?:boolean;
   pressureDifferenceCoordinates?:boolean; pressureDifferenceStepPa?:number;
@@ -56,6 +58,7 @@ export interface ChargeSnapshot {
   leakedMassKg: number; leakedEnthalpyJ: number; compressorWorkJ: number;
   coilHeatJ: number; cells: ChargeCell[];
   compressorAdmission: boolean;
+  valveIntegralBias?:number[];
 }
 export interface ChargeCandidate {
   acceptedSeconds: number;
@@ -130,6 +133,7 @@ export class ChargeCircuit {
     if(numerics.eliminateInternalFlows!==undefined&&typeof numerics.eliminateInternalFlows!=='boolean')throw new DomainError('Flow elimination option must be boolean');
     if(numerics.polynomialThroatSearch!==undefined&&typeof numerics.polynomialThroatSearch!=='boolean')throw new DomainError('Polynomial throat option must be boolean');
     if(numerics.coilReconstruction!==undefined&&!['constant','mc'].includes(numerics.coilReconstruction))throw new DomainError('Unknown coil reconstruction');
+    if(g.eevController&&![g.eevController.proportionalOpeningPerK,g.eevController.integralOpeningPerKs,g.eevController.slewOpeningPerSecond].every(v=>Number.isFinite(v)&&v>0))throw new DomainError('Invalid generic EEV PI coefficients');
     if(initial.valveOpening!==undefined&&(!Number.isFinite(initial.valveOpening)||initial.valveOpening<0||initial.valveOpening>1))
       throw new DomainError('Initial EEV opening must be finite in [0,1]');
     for (let j=0;j<this.coilCellCount;j++) {
@@ -158,6 +162,13 @@ export class ChargeCircuit {
     const cells=this.states(variables);
     this.current={timeSeconds:0,orientation:initial.orientation??'heating',variables,openings:g.rooms.map(()=>initial.valveOpening??.65),compressorAdmission:this.vaporFraction(cells[this.accumulatorIndex].state)>=.04,initialMassKg:cells.reduce((s,c)=>s+c.massKg,0),
       initialEnergyJ:cells.reduce((s,c)=>s+c.internalEnergyJ,0),leakedMassKg:0,leakedEnthalpyJ:0,compressorWorkJ:0,coilHeatJ:0,cells};
+    if(g.eevController){
+      this.current.valveIntegralBias=this.roomIndices.map((indices,i)=>{
+        const sensor=cells[initial.orientation==='cooling'?indices[1]:this.outdoorIndices[0]].state;
+        const sh=sensor.phase==='vapor'?Math.max(0,sensor.temperatureC-properties.saturation(sensor.pPa).temperatureC):0;
+        return this.current.openings[i]-g.eevController!.proportionalOpeningPerK*(sh-g.superheatTargetK);
+      });
+    }
   }
 
   snapshot(): ChargeSnapshot { const copy=deepFreeze(structuredClone(this.current));this.snapshots.add(copy);return copy; }
@@ -609,7 +620,19 @@ export class ChargeCircuit {
       (boundary.ambientPressurePa!==undefined&&(!Number.isFinite(boundary.ambientPressurePa)||boundary.ambientPressurePa<70000||boundary.ambientPressurePa>110000)) ||
       boundary.enabledRoomIds.some(id=>!this.geometry.rooms.some(r=>r.id===id)) ||
       (boundary.leak && (!Number.isFinite(boundary.leak.rateKgs)||boundary.leak.rateKgs<0)))throw new DomainError('Invalid charge step boundary');
+    const integralBias=previous.valveIntegralBias?[...previous.valveIntegralBias]:undefined;
+    if(this.geometry.eevController&&(!integralBias||integralBias.length!==this.geometry.rooms.length))
+      throw new DomainError('PI charge controller requires retained per-branch integral state');
     const openings=this.geometry.rooms.map((r,i)=>{
+      if(this.geometry.eevController){
+        const sensor=previous.cells[boundary.orientation==='heating'?this.outdoorIndices[0]:this.roomIndices[i][1]].state;
+        const sh=sensor.phase==='vapor'?Math.max(0,sensor.temperatureC-this.properties.saturation(sensor.pPa).temperatureC):0;
+        const error=sh-(boundary.operating?.superheatTargetK??this.geometry.superheatTargetK);
+        const next=eevPiStep({opening:previous.openings[i],integralBias:integralBias![i]},error,dt,this.geometry.eevController,
+          !boundary.enabledRoomIds.includes(r.id)||!previous.compressorAdmission||boundary.compressorSpeedRps===0,
+          boundary.orientation!==previous.orientation);
+        integralBias![i]=next.integralBias;return next.opening;
+      }
       if(!boundary.enabledRoomIds.includes(r.id))return 0;
       // Generic carryover safety closes the liquid-feed actuator while the
       // actual pickup latch is held. This precedes positive-command preposition;
@@ -856,7 +879,8 @@ export class ChargeCircuit {
     const leakH=leakMass*(leakCell?.state.hJkg??0),work=r.work*dt,heatJ=Object.values(coilHeat).reduce((a,b)=>a+b,0);
     const snapshot:ChargeSnapshot={...previous,timeSeconds:previous.timeSeconds+dt,orientation:boundary.orientation,variables:cur.z,openings,
       leakedMassKg:previous.leakedMassKg+leakMass,leakedEnthalpyJ:previous.leakedEnthalpyJ+leakH,
-      compressorWorkJ:previous.compressorWorkJ+work,coilHeatJ:previous.coilHeatJ+heatJ,cells:r.cells};
+      compressorWorkJ:previous.compressorWorkJ+work,coilHeatJ:previous.coilHeatJ+heatJ,cells:r.cells,
+      ...(integralBias?{valveIntegralBias:integralBias}:{})};
     const outGas=r.cells[this.outdoorIndices[0]].state,outSmall=r.cells[this.outdoorIndices.at(-1)!].state;
     const outGasFlow=boundary.orientation==='heating'?-r.accumulatorFeedKgs:r.mc;
     const outSmallFlow=r.valves.reduce((a,b)=>a+b,0);
