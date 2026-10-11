@@ -1,6 +1,8 @@
 # Heatpump Simulator 2026 — scientific reference
 
-Research date: 2026-10-10. Author: dedicated thermodynamics research agent. This is a **planned model**, not evidence of an implemented or validated simulation. The current product milestone is research and an interface mockup. Numerical mockup readings are illustrative. The implementation contract is [model-specification.md](model-specification.md); acceptance work is [research/model-validation-plan.md](research/model-validation-plan.md). Equipment evidence is maintained separately in [research/primary-source-register.md](research/primary-source-register.md).
+Research date: 2026-10-10. Author: dedicated thermodynamics research agent. This document records the scientific design basis; its planned statements are not validation evidence. Current implementation and release receipts are tracked in [PROGRESS.md](PROGRESS.md). Numerical mockup readings are illustrative. The implementation contract is [model-specification.md](model-specification.md); acceptance work is [research/model-validation-plan.md](research/model-validation-plan.md). Equipment evidence is maintained separately in [research/primary-source-register.md](research/primary-source-register.md).
+
+Implementation checkpoint, 2026-10-11: seven fluids pass the coupled Reference qualification described in [refrigerant qualification](research/refrigerant-qualification-2026.md). R407C and R410A use explicitly documented fixed-composition pseudo-pure comparators, rather than resolved phase composition/fractionation. The R407C interior mass quality is unavailable; its native glide approximation and sampled full-mixture deviations are documented in [the comparator review](research/r407c-reference-comparator.md). Physical field lines remain R32-only; charge response remains gated. Water-circulated floor heating and hot-water tanks are deferred documentation only.
 
 ## 1. What can be claimed
 

@@ -1,0 +1,81 @@
+{
+  "checkedAt": "2026-10-11T16:26:48.437Z",
+  "checks": [
+    {
+      "name": "published factory selector stays R32 and generic equipment enables the qualified fluids",
+      "passed": true
+    },
+    {
+      "name": "published fluid changes reset accepted time and each selected worker produces physical readings",
+      "passed": true
+    }
+  ],
+  "readings": [
+    {
+      "fluid": "R22",
+      "time": "00:00:02",
+      "state": "running",
+      "dischargeC": 47.28201461273488,
+      "suctionC": 0.9822991807408812,
+      "energyKwh": 7.114091475970555e-05,
+      "temp": "18.3"
+    },
+    {
+      "fluid": "R290",
+      "time": "00:00:02",
+      "state": "running",
+      "dischargeC": 35.90581212398405,
+      "suctionC": 0.9832668016959474,
+      "energyKwh": 6.966006100996561e-05,
+      "temp": "18.3"
+    },
+    {
+      "fluid": "R134a",
+      "time": "00:00:02",
+      "state": "running",
+      "dischargeC": 36.20180415457514,
+      "suctionC": 0.9850900274281003,
+      "energyKwh": 6.66959951672751e-05,
+      "temp": "18.3"
+    },
+    {
+      "fluid": "R1234yf",
+      "time": "00:00:02",
+      "state": "running",
+      "dischargeC": 29.62453204094345,
+      "suctionC": 0.98518557964303,
+      "energyKwh": 6.66918538256394e-05,
+      "temp": "18.3"
+    },
+    {
+      "fluid": "R410A",
+      "time": "00:00:02",
+      "state": "running",
+      "dischargeC": 44.33423815638491,
+      "suctionC": 0.9883916881097434,
+      "energyKwh": 7.803552874537246e-05,
+      "temp": "18.3"
+    },
+    {
+      "fluid": "R407C",
+      "time": "00:00:02",
+      "state": "running",
+      "dischargeC": 49.616994855756786,
+      "suctionC": 0.9829285190621704,
+      "energyKwh": 7.326878425106931e-05,
+      "temp": "18.3"
+    },
+    {
+      "fluid": "R32",
+      "time": "00:00:02",
+      "state": "running",
+      "dischargeC": 56.29224394902485,
+      "suctionC": 0.9876528149238197,
+      "energyKwh": 7.900032868879154e-05,
+      "temp": "18.3"
+    }
+  ],
+  "scope": "Visible production controls, fresh workers and materialized sensors; no state injection",
+  "releaseCommit": "518a9b0d356601005e7109ecb6ea0ffaf8408604",
+  "githubRun": "38154744758"
+}
