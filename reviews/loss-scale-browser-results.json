@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-11T06:45:54.735Z",
+  "checkedAt": "2026-10-11T07:16:34.351Z",
   "checks": [
     {
       "name": "each room shows eight labelled reference midpoints aligned to the slider, without a separate legend",
@@ -12,8 +12,16 @@
     {
       "name": "loss edits retain focused controls, room zoom, reference elements and accepted physical state",
       "passed": true
+    },
+    {
+      "name": "numeric loss values above the cap clamp on commit without resetting accepted state",
+      "passed": true
     }
   ],
   "layoutCombinations": 32,
-  "representation": "labelled midpoints"
+  "representation": "labelled midpoints",
+  "domainWK": [
+    0,
+    750
+  ]
 }

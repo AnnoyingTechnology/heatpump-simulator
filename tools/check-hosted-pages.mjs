@@ -47,12 +47,13 @@ try{
    markers:[...room.querySelectorAll('.ls-m')].map(m=>[m.querySelector('.ls-lab').textContent,Number(m.dataset.midpoint)]),
    below:room.querySelector('.ls').getBoundingClientRect().top>=room.querySelector('input[aria-label^="Envelope heat-loss coefficient"][type="range"]').getBoundingClientRect().bottom,
    ticks:[...room.querySelectorAll('.ls-tick')].map(t=>t.textContent),legends:room.querySelectorAll('.ls-key').length,
+   bounds:[...room.querySelectorAll('input[aria-label^="Envelope heat-loss coefficient"]')].map(i=>[i.min,i.max]),
   })));
   assert.equal(scales.length,3);
   for(const scale of scales){
    assert.deepEqual(scale.markers,[['RE2020',115],['RT2012',145],['RT2005',250],['RT2000',290],['RT1988',350],['RT1982',415],['RT1974',500],['Pre-1974',750]]);
-   assert.equal(scale.below,true);assert.equal(scale.legends,0);
-   assert.deepEqual(scale.ticks,['0','250','500','750','1000']);
+   assert.equal(scale.below,true);assert.equal(scale.legends,0);assert.deepEqual(scale.bounds,[['0','750'],['0','750']]);
+   assert.deepEqual(scale.ticks,['0','250','500','750']);
   }
  });
  await check('hosted zoom keeps the temperature scales at the bottom and headline trends use borderless separators',async()=>{

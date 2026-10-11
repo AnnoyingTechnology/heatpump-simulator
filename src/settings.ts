@@ -140,8 +140,8 @@ const HEAT_LOSS_SOURCES: ReadonlyArray<readonly [string, string]> = [
   ['FAQ RE2020 141', 'https://rt-re-batiment.developpement-durable.gouv.fr/faq-re2020-141-comment-calculer-la-surface-a811.html'],
 ];
 
-/** Envelope loss bounds [W/K]: wide enough for raw illustrative scenarios; no normative default is implied. */
-export const ENVELOPE_LOSS = { min: 0, max: 1000, step: 1 } as const;
+/** Envelope loss bounds [W/K] of the slider and its number field: 0–750 covers every supplied reference midpoint (Pre-1974 = 750, the right end). No normative default is implied. */
+export const ENVELOPE_LOSS = { min: 0, max: 750, step: 1 } as const;
 
 /**
  * Scale metrics in px (the panel is 290 scene units wide; the plot is inset 8 by the native thumb travel). `charW` is a deliberately
@@ -151,11 +151,12 @@ export const ENVELOPE_LOSS = { min: 0, max: 1000, step: 1 } as const;
  */
 const LS = { band: 11, pitch: 11, gap: 2, charW: 7.4, labelPad: 4, stemPad: 2 } as const;
 
-interface LossMark { band: HeatLossBand; mid: number; x: number; w: number; above: boolean; tier: number }
+/** `x` is the exact midpoint; the label spans [la, lb], centred on `x` unless clamped to stay inside the plot (the leader never moves). */
+interface LossMark { band: HeatLossBand; mid: number; x: number; la: number; lb: number; above: boolean; tier: number }
 
 /**
  * Places each midpoint label on the side (above or below the axis band) and tier where neither it nor its leader collides with
- * another label or leader. Labels are centred on the exact midpoint; a leader runs from the axis band to its label and may
+ * another label or leader. Labels are centred on the exact midpoint (shifted inside the plot only at the ends); a leader runs from the axis band to its label and may
  * not cross a nearer label on the same side. Markers go left to right; sides alternate in the order A0, B0, A1, B1, …
  */
 function placeMarks(plotW: number): LossMark[] {
@@ -163,19 +164,21 @@ function placeMarks(plotW: number): LossMark[] {
   const placed: LossMark[] = [];
   const marks = HEAT_LOSS_BANDS.map((band) => {
     const mid = midpoint(band);
-    return { band, mid, x: ((mid - ENVELOPE_LOSS.min) / span) * plotW, w: band.era.length * LS.charW };
+    const x = ((mid - ENVELOPE_LOSS.min) / span) * plotW;
+    const w = band.era.length * LS.charW;
+    // A label that would leave the plot (Pre-1974 at the right end) is shifted inside it; its collision bounds are the shifted ones.
+    const la = Math.min(Math.max(x - w / 2, 0), plotW - w);
+    return { band, mid, x, la, lb: la + w };
   }).sort((a, b) => a.x - b.x);
   for (const m of marks) {
-    const [a, b] = [m.x - m.w / 2, m.x + m.w / 2];
     for (let slot = 0; ; slot++) {
       const above = slot % 2 === 0;
       const tier = slot >> 1;
       const clash = placed.some((p) => {
         if (p.above !== above) return false;
-        const [pa, pb] = [p.x - p.w / 2, p.x + p.w / 2];
-        if (p.tier === tier) return a < pb + LS.labelPad && pa < b + LS.labelPad;
+        if (p.tier === tier) return m.la < p.lb + LS.labelPad && p.la < m.lb + LS.labelPad;
         // The farther leader must clear the nearer label.
-        return p.tier < tier ? m.x >= pa - LS.stemPad && m.x <= pb + LS.stemPad : p.x >= a - LS.stemPad && p.x <= b + LS.stemPad;
+        return p.tier < tier ? m.x >= p.la - LS.stemPad && m.x <= p.lb + LS.stemPad : p.x >= m.la - LS.stemPad && p.x <= m.lb + LS.stemPad;
       });
       if (!clash) { placed.push({ ...m, above, tier }); break; }
     }
@@ -184,7 +187,7 @@ function placeMarks(plotW: number): LossMark[] {
 }
 
 /**
- * Static reference scale for the Envelope loss slider, built once per room: a numeric 0…1000 W/K axis band aligned to the slider
+ * Static reference scale for the Envelope loss slider, built once per room: a numeric 0…750 W/K axis band aligned to the slider
  * track (inset by the thumb radius) and one midpoint marker per supplied band, labelled directly on the scale (no legend, no
  * range bars). Closely spaced low values are staggered above and below the band with leader lines from the exact midpoint.
  * The supplied ranges and notes stay in the help guide. These are building-reference examples of unspecified size: never scaled
@@ -200,7 +203,7 @@ export function createLossScale(): HTMLElement {
   const bandBottom = bandTop + LS.band;
   const plot = html('div', { class: 'ls-plot' });
   plot.style.height = `${bandBottom + LS.gap + tiersBelow * LS.pitch}px`;
-  const band = html('div', { class: 'ls-band', 'aria-hidden': 'true' }, ...[0, 250, 500, 750, 1000].map((v) => {
+  const band = html('div', { class: 'ls-band', 'aria-hidden': 'true' }, ...[0, 250, 500, ENVELOPE_LOSS.max].map((v) => {
     const e = html('span', { class: `ls-tick${v === ENVELOPE_LOSS.max ? ' end' : ''}`, 'data-value': v }, html('span', { class: 'ls-n' }, String(v)));
     e.style.left = at(v);
     return e;
@@ -219,6 +222,8 @@ export function createLossScale(): HTMLElement {
     const lab = e.lastElementChild as HTMLElement;
     stem.style.top = `${m.above ? bandTop - reach : bandBottom}px`;
     stem.style.height = `${reach}px`;
+    // Centred on the leader, or shifted by the clamp computed in placeMarks.
+    lab.style.transform = `translateX(calc(-50% + ${((m.la + m.lb) / 2 - m.x).toFixed(2)}px))`;
     lab.style.top = `${m.above ? bandTop - reach - LS.pitch : bandBottom + reach}px`;
     plot.append(e);
   }

@@ -15,11 +15,12 @@ try{
    ticks:[...e.querySelectorAll('.ls-tick')].map(t=>t.textContent),
    below:e.querySelector('.ls').getBoundingClientRect().top>=e.querySelector('input[aria-label^="Envelope heat-loss coefficient"][type="range"]').getBoundingClientRect().bottom,
    legends:e.querySelectorAll('.ls-key').length,
+   bounds:[...e.querySelectorAll('input[aria-label^="Envelope heat-loss coefficient"]')].map(i=>[i.min,i.max]),
   })));
   for(const room of scales){
    assert.deepEqual(room.marks.map(m=>[m.era,m.value]),[['RE2020',115],['RT2012',145],['RT2005',250],['RT2000',290],['RT1988',350],['RT1982',415],['RT1974',500],['Pre-1974',750]]);
-   for(const mark of room.marks){assert.equal(mark.label,mark.era);assert.ok(Math.abs(mark.left-mark.value/10)<.001)}
-   assert.deepEqual(room.ticks,['0','250','500','750','1000']);assert.equal(room.below,true);assert.equal(room.legends,0);
+   for(const mark of room.marks){assert.equal(mark.label,mark.era);assert.ok(Math.abs(mark.left-mark.value/750*100)<.001)}
+   assert.deepEqual(room.ticks,['0','250','500','750']);assert.equal(room.below,true);assert.equal(room.legends,0);assert.deepEqual(room.bounds,[['0','750'],['0','750']]);
   }
  });
  await check('reference scales fit the room bounds in both themes at desktop sizes and 1/3/5/8 rooms',async()=>{
@@ -52,6 +53,10 @@ try{
   const result=await run(()=>{const range=document.querySelector('.room-env input[aria-label^="Envelope heat-loss coefficient"][type="range"]'),scale=document.querySelector('.room-env .ls'),before=JSON.stringify(qv.simulation.status.output),zoom=qa.store.state.ui.zoom;range.focus();range.value='650';range.dispatchEvent(new Event('input',{bubbles:true}));return {focused:document.activeElement===range,same:document.querySelector('.room-env .ls')===scale,zoom:qa.store.state.ui.zoom===zoom,physical:JSON.stringify(qv.simulation.status.output)===before,value:qa.store.state.cfg.rooms[0].heatLossWPerK}});
   assert.deepEqual(result,{focused:true,same:true,zoom:true,physical:true,value:650});
  });
+ await check('numeric loss values above the cap clamp on commit without resetting accepted state',async()=>{
+  const result=await run(()=>{const num=document.querySelector('.room-env input[aria-label^="Envelope heat-loss coefficient"][type="number"]'),scale=document.querySelector('.room-env .ls'),before=JSON.stringify(qv.simulation.status.output),zoom=qa.store.state.ui.zoom;num.focus();num.value='1000';num.dispatchEvent(new Event('input',{bubbles:true}));const whileTyping=qa.store.state.cfg.rooms[0].heatLossWPerK;num.dispatchEvent(new Event('change',{bubbles:true}));return {whileTyping,value:qa.store.state.cfg.rooms[0].heatLossWPerK,display:num.value,focused:document.activeElement===num,same:document.querySelector('.room-env .ls')===scale,zoom:qa.store.state.ui.zoom===zoom,physical:JSON.stringify(qv.simulation.status.output)===before}});
+  assert.deepEqual(result,{whileTyping:650,value:750,display:'750',focused:true,same:true,zoom:true,physical:true});
+ });
  assert.deepEqual(page.events.filter(e=>e.method==='Runtime.exceptionThrown'),[]);
- await writeFile('reviews/loss-scale-browser-results.json',JSON.stringify({checkedAt:new Date().toISOString(),checks,layoutCombinations:32,representation:'labelled midpoints'},null,2)+'\n');
+ await writeFile('reviews/loss-scale-browser-results.json',JSON.stringify({checkedAt:new Date().toISOString(),checks,layoutCombinations:32,representation:'labelled midpoints',domainWK:[0,750]},null,2)+'\n');
 }finally{await page.close();await isolated.close()}

@@ -667,7 +667,7 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .env-vol { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .env-low { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 3px; }
 .room-env .pf-head .rp-n { font-size: 10px; }
-/* Reference scale under Envelope loss (settings.ts createLossScale, all positions inline in px / %): a 0–1000 W/K axis band aligned to
+/* Reference scale under Envelope loss (settings.ts createLossScale, all positions inline in px / %): a 0–750 W/K axis band aligned to
    the slider track (the plot is inset 8 px, the native thumb travel) with one midpoint marker per supplied band. Each marker is a
    leader from the exact midpoint to its era label; crowded low values are staggered above and below the band. Neutral steel tokens
    only: insulation never borrows the refrigerant temperature colours. */
