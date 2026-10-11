@@ -1,3 +1,4 @@
+import { createLanguageControl } from './language';
 import { powerSymbol } from './measurement-symbols';
 import { AIR_RAMP_MAX, AIR_RAMP_MIN, TEMP_RAMP_MAX, TEMP_RAMP_MIN, TEMP_RAMP_TICKS, airRampCss, flowMode, tempRampCss } from './circuit';
 import { setHtml } from './controls';
@@ -84,7 +85,7 @@ export function createHeader(): Header {
   fields.push(speed);
   const speedHelp = html('span', { class: 'sr-only', id: 'speed-help' }, SPEED_HELP);
   speed.sel.setAttribute('aria-describedby', 'speed-help');
-  speed.sel.title = SPEED_HELP;
+  setAttr(speed.sel, 'title', SPEED_HELP);
   const speedRate = html('output',{class:'hd-speed-rate','aria-label':'Actual simulation speed'},'…');
   const speedControl = html('div',{class:'hd-speed'},speed.root);
 
@@ -105,7 +106,7 @@ export function createHeader(): Header {
   preset.sel.addEventListener('change', () => { preset.sel.value = ''; });
   fields.push(preset);
   preset.sel.classList.add('hd-preset');
-  preset.sel.title = 'Quick preset (applied once). Owner\'s winter: heating, 1 °C outdoors, ground 17 °C, upstairs 21.5 °C, attic off, extra rooms 21 °C. Owner\'s summer: cooling, 39 °C outdoors, all indoor units on, targets 24 °C. Kept: edited equipment, geometry, humidity, solar and background gains, and the clock, energy and accepted state; physical time is not reset.';
+  setAttr(preset.sel, 'title', 'Quick preset (applied once). Owner\'s winter: heating, 1 °C outdoors, ground 17 °C, upstairs 21.5 °C, attic off, extra rooms 21 °C. Owner\'s summer: cooling, 39 °C outdoors, all indoor units on, targets 24 °C. Kept: edited equipment, geometry, humidity, solar and background gains, and the clock, energy and accepted state; physical time is not reset.');
 
   const pause = html('button', { type: 'button', class: 'btn hd-pause' }, 'Pause');
   pause.addEventListener('click', () => store.update((s) => { s.ui.paused = !s.ui.paused; }));
@@ -136,16 +137,16 @@ export function createHeader(): Header {
   // three headline `.trend-line` series) keeps a constant series across mode changes and is cleared only by Restart.
   const mSession = metric(null, 'session-line');
   mSession.root.classList.add('hm-session-cop');
-  mSession.k.textContent = 'Since start';
-  mSession.root.title = 'COP since restart: cumulative useful heating and cooling service divided by all HVAC electricity (compressor, fans, controls), including defrost and reversal penalties; excludes background gains and room-to-room links. Cleared only by Restart.';
+  setText(mSession.k, 'Since start');
+  setAttr(mSession.root, 'title', 'COP since restart: cumulative useful heating and cooling service divided by all HVAC electricity (compressor, fans, controls), including defrost and reversal penalties; excludes background gains and room-to-room links. Cleared only by Restart.');
   const mHeat = metric('kW');
   mHeat.root.classList.add('hm-heat');
   const mElec = metric('kW');
   mElec.root.classList.add('hm-elec');
   const mEnergy = metric('kWh', 'energy-line');
   mEnergy.root.classList.add('hm-energy');
-  mEnergy.k.textContent = 'Since start';
-  mEnergy.root.title = 'Electrical energy since start: cumulative compressor, fan and control electricity from the engine ledger. Kept across settings and mode changes; cleared on Reset.';
+  setText(mEnergy.k, 'Since start');
+  setAttr(mEnergy.root, 'title', 'Electrical energy since start: cumulative compressor, fan and control electricity from the engine ledger. Kept across settings and mode changes; cleared on Reset.');
   const icon = (): SVGSVGElement => svg('svg', { class: 'hm-icon', viewBox: '0 0 24 24', 'aria-hidden': 'true' });
   const plug = icon();
   plug.append(svg('path', { d: 'M8 3v5M16 3v5M6 8h12v3a6 6 0 0 1-6 6v4M12 17v-1' }));
@@ -153,7 +154,7 @@ export function createHeader(): Header {
   const thermal = powerSymbol();
   thermal.root.classList.add('hm-icon');
   mHeat.root.querySelector('.vl')!.prepend(thermal.root);
-  mElec.k.textContent = 'Electrical input';
+  setText(mElec.k, 'Electrical input');
   const metrics = html('div', { class: 'hd-metrics', role: 'group', 'aria-label': 'Headline readings' }, mCop.root, mSession.root, mHeat.root, mElec.root, mEnergy.root);
 
   // Status cell: persistent badge plus one ellipsised line; full detail on hover and in outdoor settings.
@@ -184,8 +185,8 @@ export function createHeader(): Header {
       exTag.hidden = live;
       const scenario = fixtureFor(s.cfg.mode, s.cfg.example).title;
       setText(exTag, scenario ? `Examples · ${scenario}` : 'Examples');
-      time.title = live ? 'Simulation time' : 'Preview time';
-      time.setAttribute('aria-label', live ? 'Simulation time' : 'Preview time');
+      setAttr(time, 'title', live ? 'Simulation time' : 'Preview time');
+      setAttr(time, 'aria-label', live ? 'Simulation time' : 'Preview time');
 
       metrics.dataset.mode = s.cfg.mode;
       note.hidden = live && s.ui.experience === 'live' && currentReadings(s).live?.usable === true && currentReadings(s).live?.kind !== 'updating';
@@ -229,16 +230,16 @@ export function createHeader(): Header {
       setText(mCop.v, rd.cop === null ? '—' : fmt(rd.cop, 2));
       setText(mHeat.v, rd.roomKwTotal === null ? '—' : fmt(rd.roomKwTotal, 2));
       setText(mElec.v, rd.electricalKw === null ? '—' : fmt(rd.electricalKw, 2));
-      mCop.root.title = rd.copLabel;
-      mHeat.root.title = rd.roomKwLabel;
-      mElec.root.title = 'Electrical input';
+      setAttr(mCop.root, 'title', rd.copLabel);
+      setAttr(mHeat.root, 'title', rd.roomKwLabel);
+      setAttr(mElec.root, 'title', 'Electrical input');
 
       if (!live) {
         metrics.dataset.held = '0';
         pause.classList.remove('attn');
         note.dataset.tone = 'warn';
         setText(note, 'Fixed illustrative readings');
-        status.title = PREVIEW_BANNER;
+        setAttr(status, 'title', PREVIEW_BANNER);
         return;
       }
       const st = rd.live!;
@@ -250,15 +251,15 @@ export function createHeader(): Header {
       if (!st.usable) {
         note.dataset.tone = 'bad';
         setText(note, st.kind === 'fault' ? 'Stopped · state retained' : 'Readings withheld');
-        status.title = `${st.label}: ${st.detail ?? ''} Readings withheld.`;
+        setAttr(status, 'title', `${st.label}: ${st.detail ?? ''} Readings withheld.`);
       } else if (held) {
         note.dataset.tone = 'info';
         setText(note, s.ui.paused ? 'Resume to recalculate' : 'Awaiting calculation');
-        status.title = `${st.detail ?? ''}\n${LIVE_BASIS}`;
+        setAttr(status, 'title', `${st.detail ?? ''}\n${LIVE_BASIS}`);
       } else {
         note.dataset.tone = 'warn';
         setText(note, '');
-        status.title = `${st.detail ? `${st.detail}\n` : ''}${LIVE_BASIS}\n${fieldLinesNote(s)}`;
+        setAttr(status, 'title', `${st.detail ? `${st.detail}\n` : ''}${LIVE_BASIS}\n${fieldLinesNote(s)}`);
       }
     },
     setTime(sec: number): void { setText(time, fmtTime(sec)); },
@@ -267,8 +268,8 @@ export function createHeader(): Header {
       setText(speedRate,paused ? 'Paused' : actual === null ? '…' : `${actual.toFixed(1)}×`);
       speedRate.dataset.actualRate = actual === null ? '' : String(actual);
       speedRate.dataset.limited = String(limited);
-      speedRate.title = paused ? 'Physical time is paused' : actual === null ? 'Measuring completed simulation time' :
-        `${actual.toFixed(2)} simulated seconds per wall second${limited ? '; requested speed is limited by calculation throughput' : ''}`;
+      setAttr(speedRate, 'title', paused ? 'Physical time is paused' : actual === null ? 'Measuring completed simulation time' :
+        `${actual.toFixed(2)} simulated seconds per wall second${limited ? '; requested speed is limited by calculation throughput' : ''}`);
     },
   };
 }
@@ -364,7 +365,7 @@ export function createOverlay(): Overlay {
           html('ul', {}, neutral('unknown', 'unknown'), neutral('idle', 'no flow'))),
         html('div', { class: 'lg-stack' }, html('span', { class: 'lg-h' }, 'Air °C (room fills)'),
           html('span', { class: 'lg-ramp' }, html('span', {}, String(AIR_RAMP_MIN).replace('-', '−')), airRamp, html('span', {}, String(AIR_RAMP_MAX))))),
-      detailsBtn),
+      detailsBtn, createLanguageControl()),
     html('p', { class: 'lg-sentence' }, `Pipe colour and probe swatches use this fixed scale and saturate beyond ${String(TEMP_RAMP_MIN).replace('-', '−')} / ${TEMP_RAMP_MAX} °C; probe numbers stay exact. 105 °C and above is hot discharge vapour, not a liquid temperature. Heat can be absorbed at constant temperature during evaporation (ΔT = 0 is valid).`),
     legendNote);
   const top = html('div', { class: 'ov-top' }, mismatch, moreBtn, html('span', { class: 'spacer' }), unzoom, detail);

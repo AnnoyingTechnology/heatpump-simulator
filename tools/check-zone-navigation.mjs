@@ -51,21 +51,21 @@ try{
  await check('materialized outdoor exhaust uses actual fan air; arrows are vector and point left/down',async()=>{
   await settled();assert.equal(await run(()=>qv.simulation.step(.25)),true);await settled();
   const r=await run(()=>({actual:qv.simulation.status.output.outdoor.airOutletC,probe:[...document.querySelectorAll('[data-probe]')].filter(e=>e.dataset.probe.includes('air')).map(e=>({id:e.dataset.probe,exact:e.dataset.exact,text:e.textContent})),plumes:document.querySelectorAll('.plume').length,streams:document.querySelectorAll('.air-stream').length,air:[...document.querySelectorAll('.supply path,.exhaust path')].map(e=>e.getAttribute('d')),ice:document.querySelectorAll('.coil-film').length}));
-  assert.ok(r.probe.length===1,JSON.stringify(r));assert.equal(Number(r.probe[0].exact),r.actual);assert.equal(r.plumes,0);assert.equal(r.ice,1);assert.equal(await run(()=>document.querySelectorAll('.air-probe rect,.air-probe .a-pill').length),0);assert.ok(r.air.length>0);
+  assert.ok(r.probe.length===1,JSON.stringify(r));assert.equal(Number(r.probe[0].exact),r.actual);assert.equal(r.plumes,0);assert.equal(r.ice,1);assert.equal(await run(()=>document.querySelectorAll('.air-probe > rect,.air-probe .a-pill').length),0);assert.ok(r.air.length>0);
   await run(()=>qa.store.update(s=>s.cfg.rooms.forEach(r=>r.enabled=false)));await settled();await run(()=>qv.simulation.step(.25));await settled();
   assert.equal(await run(()=>qv.simulation.status.output.outdoor.airOutletC),null);assert.match(await run(()=>document.querySelector('[data-probe="outdoor-exhaust-air"]').textContent),/—/);
  });
  await check('indoor coil, inlet/outlet flow readings and header symbols are spatial and match engine values',async()=>{
-  await run(()=>qa.store.update(s=>s.cfg.rooms.forEach(r=>r.enabled=true)));await settled();await run(()=>qv.simulation.step(.25));await settled();
+  await run(()=>qa.store.update(s=>s.cfg.rooms.forEach(r=>{r.enabled=true;r.setpointC=24})));await settled();await run(()=>qv.simulation.step(.25));await settled();
   const r=await run(()=>{const room=document.querySelector('.room'),unit=room.querySelector('.unit-shell'),coil=room.querySelector('.coil-bay');return {
    width:Number(unit.getAttribute('width')),end:Number(coil.getAttribute('x'))+Number(coil.getAttribute('width')),
    intake:room.querySelectorAll('.intake .stream').length,supply:room.querySelectorAll('.supply .stream').length,
    directions:[...room.querySelectorAll('.intake .stream,.supply .stream')].map(e=>{const a=e.getPointAtLength(0),b=e.getPointAtLength(e.getTotalLength());return b.y>a.y}),
    inlet:Number(document.querySelector('.flow-in .rp-v').textContent),outlet:Number(document.querySelector('.flow-out .rp-v').textContent),actual:qv.simulation.status.output.rooms[0],
    duplicated:document.querySelector('.room-rp').innerText.includes('Supply air'),cop:document.querySelector('.hm-cop').innerText,bold:Number(getComputedStyle(document.querySelector('.hm-cop .v')).fontWeight),
-   plug:document.querySelectorAll('.hm-icon').length,sun:getComputedStyle(document.querySelector('.hm-sun')).display,snow:getComputedStyle(document.querySelector('.hm-snow')).display};});
-  assert.ok(Math.abs(r.end/r.width-.95)<.005);assert.equal(r.intake,9);assert.equal(r.supply,9);assert.ok(r.directions.every(Boolean));assert.ok(Math.abs(r.inlet-r.actual.temperatureC)<.051);assert.ok(Math.abs(r.outlet-r.actual.airOutletC)<.051);assert.equal(r.duplicated,false);assert.match(r.cop,/COP/);assert.ok(r.bold>=800);assert.equal(r.plug,3);assert.notEqual(r.sun,'none');assert.equal(r.snow,'none');
-  await run(()=>qa.store.setMode('cooling'));assert.equal(await run(()=>getComputedStyle(document.querySelector('.hm-sun')).display),'none');assert.notEqual(await run(()=>getComputedStyle(document.querySelector('.hm-snow')).display),'none');await settled();
+   plug:document.querySelectorAll('.hm-icon').length,sun:getComputedStyle(document.querySelector('.hm-heat .symbol-flame')).display,snow:getComputedStyle(document.querySelector('.hm-heat .symbol-snow')).display};});
+  assert.ok(Math.abs(r.end/r.width-.95)<.005);assert.equal(r.intake,9);assert.equal(r.supply,9);assert.ok(r.directions.every(Boolean));assert.ok(Math.abs(r.inlet-r.actual.temperatureC)<.051);assert.ok(Math.abs(r.outlet-r.actual.airOutletC)<.051);assert.equal(r.duplicated,false);assert.match(r.cop,/COP/);assert.ok(r.bold>=800);assert.equal(r.plug,2);assert.notEqual(r.sun,'none');assert.equal(r.snow,'none');
+  await run(()=>{qa.store.setMode('cooling');qa.store.update(s=>{s.cfg.outdoorC=32;s.cfg.rooms.forEach(r=>r.setpointC=17)})});await settled();await run(()=>qv.simulation.step(5));await settled();assert.equal(await run(()=>getComputedStyle(document.querySelector('.hm-heat .symbol-flame')).display),'none');assert.notEqual(await run(()=>getComputedStyle(document.querySelector('.hm-heat .symbol-snow')).display),'none');
  });
  await check('shared manometers connect directly to branch tubes and show actual endpoint pressures',async()=>{
   await run(()=>{qa.store.reset();qa.store.update(s=>{s.ui.paused=true;s.cfg.rooms.forEach(r=>{r.enabled=true;r.setpointC=24})});});await settled();await run(()=>qv.simulation.step(.25));await settled();

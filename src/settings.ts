@@ -108,7 +108,7 @@ export function pairField(o: PairOpts): PairField {
     : layout === 'line'
       ? html('div', { class: 'pf line' }, html('div', { class: 'pf-head' }, key, val), range)
       : html('div', { class: 'pf inline' }, key, val, range);
-  if (o.title) { root.title = o.title; num.title = o.title; range.title = o.title; }
+  if (o.title) { setAttr(root, 'title', o.title); setAttr(num, 'title', o.title); setAttr(range, 'title', o.title); }
   const round = (v: number): number => Math.round(v * 10 ** o.digits) / 10 ** o.digits;
   range.addEventListener('input', () => { const v = Number(range.value); if (Number.isFinite(v)) o.set(v); });
   num.addEventListener('input', () => {
@@ -514,8 +514,8 @@ export function createHeatLossGuide(): HeatLossGuide {
 
 function relabel(f: Field, text: string, unit: string): void {
   const l = f.root.querySelector('label');
-  if (l && l.textContent !== text) l.textContent = text;
-  f.root.querySelector('input.num')?.setAttribute('aria-label', `${text} [${unit}]`);
+  if (l) setText(l, text);
+  const num = f.root.querySelector('input.num'); if (num) setAttr(num, 'aria-label', `${text} [${unit}]`);
 }
 
 function fold(title: string, open: boolean, ...kids: Node[]): HTMLDetailsElement {
@@ -599,7 +599,7 @@ function createChargeArea(): ChargeArea {
       toggleClass(restart, 'pending', drafts.length > 0);
       const rtext = !inventory ? 'start values apply with the inventory model' : drafts.length ? `pending: ${drafts.join(', ')}` : inv ? 'start values in use' : '';
       setText(restartNote, rtext);
-      restartNote.title = rtext;
+      setAttr(restartNote, 'title', rtext);
       setAttr(restart, 'title', 'Start a new circuit from the current start values (charge, start temperature, line length, bores, volumes). Resets simulated time.');
 
     },
@@ -641,7 +641,7 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
     refresh(): void {
       const info = outdoorModelInfo(cfg());
       if (modelSel.value !== info.id) modelSel.value = info.id;
-      modelSel.title = info.label;
+      setAttr(modelSel, 'title', info.label);
     },
   };
   fields.push(model);
@@ -676,7 +676,7 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
       capFixed.hidden = generic;
       if (document.activeElement !== capInput) capInput.value = String(cfg().genericPortCapacity);
       setText(capFixed, `${info.ports ?? ''} · ${info.acceptance === 'owner-reference' ? 'declared' : 'published'}`);
-      capFixed.title = `${info.label}: ${info.ports} refrigerant port${info.ports === 1 ? '' : 's'}, fixed. Choose the generic editable outdoor to explore other connection counts.`;
+      setAttr(capFixed, 'title', `${info.label}: ${info.ports} refrigerant port${info.ports === 1 ? '' : 's'}, fixed. Choose the generic editable outdoor to explore other connection counts.`);
       setText(capNote, generic ? 'assumed' : 'fixed');
     },
   };
@@ -727,7 +727,7 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
       const restartDelay=rd?.usable?rd.engine?.diagnostics.restartDelaySeconds??0:0;
       const text = envelopeHold ? `Compressor stopped · ${envelopeHold} protection` : protectedCompressor ? 'Compressor stopped · liquid carryover protection' : restartDelay>0?`Compressor waiting · restart in ${fmt(restartDelay,0)} s`:s.ui.notice ?? scope;
       setText(slot, text);
-      slot.title = text;
+      setAttr(slot, 'title', text);
       slot.dataset.kind = envelopeHold || protectedCompressor || restartDelay>0 || s.ui.notice ? 'notice' : 'scope';
     },
   };
@@ -1437,7 +1437,7 @@ export function createLineLength(i: number): LineLengthControl {
         : stored ? `Inventory model: the length sets the line volume that holds refrigerant. It is a start value${pending ? `; the running circuit uses ${fmt(active, 1)} m until Restart` : ''}. Transport stays idealized.`
         : physical ? 'Physical field lines: this length is passed to the finite-pipe model.'
           : 'Idealized field lines: the engine receives zero-length lines, so this length does not change results. Choose Physical to apply it.';
-      root.title = `${room.name} one-way length, ${source}. ${effect}${outside ? ` Outside the ${GUIDE.min}–${GUIDE.max} m family guidance (2019, N2 variant).` : ''}`;
+      setAttr(root, 'title', `${room.name} one-way length, ${source}. ${effect}${outside ? ` Outside the ${GUIDE.min}–${GUIDE.max} m family guidance (2019, N2 variant).` : ''}`);
       root.dataset.source = p.lengthSource;
       toggleClass(root, 'warn', outside);
       toggleClass(root, 'ideal', live && !physical && !stored);

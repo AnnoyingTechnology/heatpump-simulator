@@ -1,7 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES2022", "module": "ESNext", "moduleResolution": "Bundler",
-    "strict": true, "skipLibCheck": true, "outDir": "build", "rootDir": "../../src"
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "build",
+    "rootDir": "../../src",
+    "rewriteRelativeImportExtensions": true
   },
-  "include": ["../../src/trends.ts", "../../src/preconfiguration.ts"]
+  "include": [
+    "../../src/trends.ts",
+    "../../src/preconfiguration.ts",
+    "../../src/i18n.ts"
+  ]
 }

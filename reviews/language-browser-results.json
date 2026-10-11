@@ -1,0 +1,36 @@
+{
+  "checkedAt": "2026-10-11T15:26:22.221Z",
+  "checks": [
+    {
+      "name": "French switch translates readings, controls and accessible labels without changing the physical session or focused input",
+      "passed": true
+    },
+    {
+      "name": "French settings and trusted HTML diagnostics localize in place and manufacturer IDs stay intact",
+      "passed": true
+    },
+    {
+      "name": "French desktop layout keeps legend, charts and controls within their zones in both themes",
+      "passed": true
+    },
+    {
+      "name": "language preference persists across reload and English restores source messages",
+      "passed": true
+    }
+  ],
+  "desktopWidths": [
+    1280,
+    1440,
+    1600,
+    1920
+  ],
+  "languages": [
+    "en",
+    "fr"
+  ],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "physicalConfigurationChanged": false
+}

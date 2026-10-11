@@ -108,7 +108,7 @@ const reduceMotion = (): boolean => window.matchMedia('(prefers-reduced-motion: 
 
 function txt(x: number, y: number, s: string, cls = 'lbl', anchor: 'start' | 'middle' | 'end' = 'start'): SVGTextElement {
   const t = svg('text', { x, y, class: cls, 'text-anchor': anchor });
-  t.textContent = s;
+  setText(t, s);
   return t;
 }
 
@@ -436,7 +436,7 @@ function roomPanel(i: number, hooks: SceneHooks): RoomPanel {
     html('span', { class: 'rp-k' }, 'Volume'), html('span', { class: 'rp-line' }, volumeV, html('small', {}, 'm³')));
   const sep = (glyph: string): HTMLElement => html('span', { class: 'env-op', 'aria-hidden': 'true' }, glyph);
   // The card is narrow: the "requested" qualifier lives in the tooltip and the accessible name, not in a clipped note.
-  sp.root.title = 'Inverter modulates to maintain target; below-minimum loads may cycle. Compressor protection and restart dwell still apply.';
+  setAttr(sp.root, 'title', 'Inverter modulates to maintain target; below-minimum loads may cycle. Compressor protection and restart dwell still apply.');
   const air = readCard('Room air', '°C');
   air.root.className = 'env-read flow-in';
   const sup = readCard('Supply air', '°C');
@@ -1191,7 +1191,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       p.air.thermometer?.update(live ? eng?.temperatureC ?? null : r.airC);
       setText(p.air.n, live ? (eng ? `${Math.round(eng.relativeHumidity * 100)} % RH` : '—') : 'EXAMPLE input');
       toggleClass(p.air.n, 'held', !!rd.retainedRooms);
-      p.air.root.title = rd.retainedRooms ? 'Last accepted room temperature and humidity; calculation stopped.' : 'Room air temperature and humidity';
+      setAttr(p.air.root, 'title', rd.retainedRooms ? 'Last accepted room temperature and humidity; calculation stopped.' : 'Room air temperature and humidity');
       // Target, floor area, ceiling height and average U are editable; a focused field is never rewritten.
       for (const f of [p.sp, p.area, p.height]) f.refresh();
       p.insulation.sync(r, cfg);
@@ -1332,7 +1332,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
     setText(weather.h.note, cfg.outdoorC < 0 ? 'over ice' : 'over liquid');
     const scope = weatherScope(s);
     setText(weather.status, scope.text);
-    weather.status.title = scope.text;
+    setAttr(weather.status, 'title', scope.text);
     toggleClass(weather.status, 'diff', scope.diff);
     weather.match.hidden = live || scope.same;
 

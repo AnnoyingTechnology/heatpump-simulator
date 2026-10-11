@@ -1,4 +1,5 @@
 import { readPreconfiguration } from './preconfiguration';
+import { onLanguageChange } from './i18n';
 import { createHeader, createOverlay } from './chrome';
 import { html } from './dom';
 import { fixtureFor } from './fixtures';
@@ -157,6 +158,7 @@ function synchronizeRuntime(): void {
 }
 store.subscribe(() => { synchronizeRuntime(); render(); });
 simulation.subscribe(render);
+onLanguageChange(render);
 synchronizeRuntime();
 render();
 scene.zoomTo('overview', true);

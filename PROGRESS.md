@@ -13,13 +13,15 @@ Audited 2026-10-11 against the deployed source, release receipts and current res
 - **Additional refrigerants:** science research covers the requested families; the running validated engine is R32-only. Other fluids need thermodynamic, moisture/frost, controller and browser qualification before selection.
 - **Compressor startup fidelity:** ordinary Reference operation now begins at the admitted minimum and ramps commands; the physical rotor transient from zero to that minimum remains outside the quasi-steady approximation. Physical cooling retains18rps because unequal-branch8rps operation is not qualified.
 - **Owner measurement comparison:** initial read-only comparison is complete without fitting: all15 export checksums,8 aggregate/counter comparisons,84 native refrigerant points and24 ventilation sensitivity cases pass. Historical settings/outdoor RH and delivered heat remain unknown, so electricity overlap does not validate installed COP or identify solar gains. See `research/owner-reference-comparison.md`; future controlled-input/holdout validation remains open.
-- **French and room charts:** now requested for this pass. Room charts pass5 browser groups and6 history/URL tests using accepted physical time and persistent room IDs; French localization is next.
+- **French and room charts:** now requested for this pass. Room charts pass5 browser groups and6 history/URL tests using accepted physical time and persistent room IDs; French now passes4 real-browser groups and7 frontend checks: controls, accessible names, authored help/diagnostics, decimal display, persistent EN/FR choice, focused inputs, accepted state/history and four desktop widths in both themes. Native EOS error payloads and proper manufacturer references retain their source wording.
 
 ### Explicitly deferred
 
 Save/export of full scenarios; opt-in compressor/fan audio; oil transport; mixed domestic-hot-water systems and heat-recovery VRF; the Flight Simulator-style presentation/poster. Opus review follows completion of this implementation pass. URL initialization and the Haiku vector header logo are already delivered, but do not complete save/export or the presentation project. Ongoing leaks and visible exchanger surface in m² were removed from scope.
 
 ## Active release verification
+
+French presentation increment is ready locally. The EN/FR chooser sits beside the existing legend; English is the initial default. Explicit weak presentation bindings update existing text/attributes in place, including trusted inspector fragments, without rebuilding controls or touching worker configuration. Native input values, identifiers and diagnostic data retain machine formatting. The earlier navigation check is updated for shared thermometer/flame/snowflake symbols and now passes10/10; header5/5 and measurement-symbol5/5 regression checks pass. The production build and exact hosted-bundle verification are next.
 
 Room-history increment passes accepted-temperature/disabled-head provenance, paused controls, room-ID rebinding, Examples/reset isolation and four desktop widths. Header5/5 remains green. Inventory-only displacement startup now ramps from rest at2rps/s (down4rps/s), with timestep/refined restart/protection tests6/6; the gated inventory solver still requires its separate scientific/throughput release checks. Public Reference startup is unchanged. HA comparison is complete without fitting, as recorded above. Room-history release `66ca8be` is deployed through successful GitHub run38149952094 (127Reference +6history/URL +23catalogue +25smoke). Seven matching-bundle hosted checks, production URL initialization and2focused published room-chart checks pass. Receipt: `reviews/github-pages-room-history-deployment.json`.
 
@@ -128,7 +130,7 @@ Qwen has saved52Mitsubishi base candidates;25outdoor/45indoor profiles are accep
 
 Preserve distinct inverter and conventional fixed-speed control strategies for future catalogue entries. Luna completed the exact N8 source check in `research/daikin-3mxm52n8-specifications.md`. Julien reports approximately200W heating/130W cooling at low load and confirms2350W as an upper value. Published combination-table minima are condition-specific ratings, not universal operating floors.
 
-Validated additional refrigerants, saved scenarios/export, French, optional outdoor sound, mixed water systems, heat-recovery VRF and branding. The owner will trigger the proposed Opus review.
+This historical deferred list is superseded by the Current backlog above: additional refrigerants and French are now part of the active implementation pass. Saving/export, oil, audio, mixed water systems, heat-recovery VRF and branding remain deferred. Opus review follows the requested implementation.
 
 ## Maintenance
 

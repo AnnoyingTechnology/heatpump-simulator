@@ -1,5 +1,6 @@
 import { temperatureSymbol } from './measurement-symbols';
 import { html } from './dom';
+import { bindFragment } from './i18n';
 
 export interface Field {
   root: HTMLElement;
@@ -117,4 +118,5 @@ export function setHtml(el: HTMLElement, markup: string): void {
   if (el.dataset.markup === markup) return;
   el.dataset.markup = markup;
   el.innerHTML = markup;
+  bindFragment(el);
 }

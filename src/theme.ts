@@ -1,4 +1,4 @@
-import { html, svg } from './dom';
+import { html, svg, setAttr } from './dom';
 
 /**
  * Colour theme: System (default, follows the OS), Light or Dark. Presentation only: nothing here reads or writes the simulation
@@ -98,7 +98,7 @@ export function createThemeControl(): HTMLElement {
   const sync: Listener = (c, resolved) => {
     if (sel.value !== c) sel.value = c;
     const text = OPTIONS.find((o) => o.value === c)?.text ?? c;
-    root.title = c === 'system' ? `Colour theme: ${text} (following the OS, currently ${resolved})` : `Colour theme: ${text}`;
+    setAttr(root, 'title', c === 'system' ? `Colour theme: ${text} (following the OS, currently ${resolved})` : `Colour theme: ${text}`);
   };
   listeners.add(sync);
   sync(choice, resolve());

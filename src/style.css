@@ -1110,3 +1110,8 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .room-chart-actual { stroke: var(--accent); stroke-width: 1.7; }
 .room-chart-target { stroke: var(--rp-ink); stroke-width: 1; stroke-dasharray: 3 3; opacity: .65; }
 .room-chart-base { stroke: var(--rp-ink); stroke-width: .5; opacity: .15; }
+
+/* Language is a quiet presentation choice beside the legend, without adding a toolbar row. */
+.language-select { flex: none; align-self: center; width: 47px; height: 28px; padding: 2px 3px; font: 650 11px var(--font); color: var(--ink); border: 1px solid var(--line); border-radius: 5px; background: var(--surface); cursor: pointer; }
+:lang(fr) .topbar .btn { font-size: 12px; }
+:lang(fr) .env-geo .rp-k { font-size: 10px; }
