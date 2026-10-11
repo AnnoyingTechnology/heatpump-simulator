@@ -40,3 +40,27 @@ test('rejected coupled candidate rolls back refrigerant, thermal stores, timers 
   assert.equal(o.energy.electricityJ,0);assert.equal(o.energy.boundaryEnergyJ,0);assert.equal(o.energy.residualJ,0);
   p.dispose();
 });
+
+test('static inventory ports select actual physical terminal cells for every refined coil',async()=>{
+  const props=new Properties(await factory());
+  try{
+    for(const N of [3,6,12]){
+      const c=configured();c.rooms[0].enabled=false;
+      const engine=new HeatPumpEngine(props,c,{coilCells:N,storageCoordinates:'density',analyticFluxJacobian:true,eliminateInternalFlows:true,polynomialThroatSearch:true});
+      const initial=engine.snapshot().inventory;
+      assert.deepEqual(initial.coilPorts.outdoor.smallCellState,initial.cells.find(c=>c.id===`outdoor:${N-1}`).state);
+      assert.deepEqual(initial.coilPorts['room-1'].smallCellState,initial.cells.find(c=>c.id===`room-1:coil:${N-1}`).state);
+      for(let j=0;j<8;j++)assert.notEqual(engine.step(.25).state,'fault');
+      // Exercise only the no-candidate output representation of accepted,
+      // nonuniform M/U. No physical store, controller or ledger is altered.
+      const before=engine.refrigerant.snapshot();engine.chargeCandidate=undefined;
+      const out=engine.inventoryOutput();
+      assert.deepEqual(engine.refrigerant.snapshot(),before);
+      for(const [id,prefix] of [['outdoor','outdoor:'],['room-1','room-1:coil:']]){
+        const cells=out.cells.filter(c=>c.id.startsWith(prefix));
+        assert.deepEqual(out.coilPorts[id].gasCellState,cells[0].state);
+        assert.deepEqual(out.coilPorts[id].smallCellState,cells.at(-1).state);
+      }
+    }
+  }finally{props.dispose();}
+});
