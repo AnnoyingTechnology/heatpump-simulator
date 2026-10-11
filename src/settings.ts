@@ -123,10 +123,15 @@ export function pairField(o: PairOpts): PairField {
 
 // ---------- envelope heat-loss guide (local, non-modal help in the scene) ----------
 /** Reference bands supplied for this simulator. Their reference size, boundaries and air exchange are unspecified: never scaled or applied. */
-const HEAT_LOSS_BANDS: ReadonlyArray<readonly [string, string]> = [
-  ['Before 1974', '650–850'], ['RT 1974', '400–600'], ['RT 1982', '350–480'], ['RT 1988', '300–400'],
-  ['RT 2000', '240–340'], ['RT 2005', '200–300'], ['RT 2012', '110–180'], ['RE 2020 (from 2022)', '80–150'],
+export interface HeatLossBand { era: string; note?: string; min: number; max: number }
+/** Single source of the bands: the guide table and the scale under every Envelope loss slider both render from it. */
+export const HEAT_LOSS_BANDS: ReadonlyArray<HeatLossBand> = [
+  { era: 'Pre-1974', note: 'very poorly insulated', min: 650, max: 850 },
+  { era: 'RT 1974', min: 400, max: 600 }, { era: 'RT 1982', min: 350, max: 480 }, { era: 'RT 1988', min: 300, max: 400 },
+  { era: 'RT 2000', min: 240, max: 340 }, { era: 'RT 2005', min: 200, max: 300 },
+  { era: 'RT 2012', min: 110, max: 180 }, { era: 'RE 2020 (from 2022)', min: 80, max: 150 },
 ];
+const bandText = (b: HeatLossBand): string => `${b.min}–${b.max}`;
 
 const HEAT_LOSS_SOURCES: ReadonlyArray<readonly [string, string]> = [
   ['Th-Bat general rules', 'https://rt-re-batiment.developpement-durable.gouv.fr/IMG/pdf/1-fascicule_generalites.pdf'],
@@ -136,6 +141,35 @@ const HEAT_LOSS_SOURCES: ReadonlyArray<readonly [string, string]> = [
 
 /** Envelope loss bounds [W/K]: wide enough for raw illustrative scenarios; no normative default is implied. */
 export const ENVELOPE_LOSS = { min: 0, max: 1000, step: 1 } as const;
+
+/**
+ * Static reference scale for the Envelope loss slider, built once per room: a numeric 0…W/K ruler aligned to the slider track
+ * (inset by the thumb radius) with the eight bands stacked translucently on it, and a key that names every band and range.
+ * The bands overlap, so they are a key, not disjoint slider zones. They are supplied building-reference examples of unspecified
+ * size: never scaled by room size, never a default, no legal performance implied. Nothing here reacts to the slider.
+ */
+export function createLossScale(): HTMLElement {
+  const span = ENVELOPE_LOSS.max - ENVELOPE_LOSS.min;
+  const at = (v: number): string => `${(((v - ENVELOPE_LOSS.min) / span) * 100).toFixed(2)}%`;
+  const ruler = html('div', { class: 'ls-ruler', 'aria-hidden': 'true' },
+    html('div', { class: 'ls-track' }, ...HEAT_LOSS_BANDS.map((b) => {
+      const e = html('i', { class: 'ls-band' });
+      e.style.left = at(b.min);
+      e.style.width = `${(((b.max - b.min) / span) * 100).toFixed(2)}%`;
+      return e;
+    })),
+    html('div', { class: 'ls-ticks' }, ...[0, 250, 500, 750, 1000].map((v) => {
+      const e = html('span', { class: 'ls-tick' }, String(v));
+      e.style.left = at(v);
+      return e;
+    })));
+  const key = html('ul', { class: 'ls-key' }, ...HEAT_LOSS_BANDS.map((b, k) => html('li', { class: k === 0 || k === HEAT_LOSS_BANDS.length - 1 ? 'wide' : '' },
+    html('span', { class: 'ls-era' }, b.era), ...(b.note ? [html('span', { class: 'ls-note' }, `(${b.note})`)] : []), html('b', { class: 'ls-r' }, bandText(b)))));
+  return html('div', {
+    class: 'ls', role: 'group', 'aria-label': 'Building reference examples, W/K',
+    title: 'Supplied building-reference examples for an unspecified reference building. Not scaled by room size, not statutory, never applied automatically.',
+  }, ruler, key);
+}
 
 export interface HeatLossGuide {
   /** The panel; the scene mounts it once, above every room, and places it beside the room it is open for. */
@@ -167,7 +201,7 @@ export function createHeatLossGuide(): HeatLossGuide {
     html('table', { class: 'hl-tbl' },
       html('caption', {}, 'Reference bands supplied for this simulator'),
       html('thead', {}, html('tr', {}, html('th', { scope: 'col' }, 'Construction era'), html('th', { scope: 'col' }, 'Indicative H (W/K)'))),
-      html('tbody', {}, ...HEAT_LOSS_BANDS.map(([era, band]) => html('tr', {}, html('th', { scope: 'row' }, era), html('td', {}, band))))),
+      html('tbody', {}, ...HEAT_LOSS_BANDS.map((b) => html('tr', {}, html('th', { scope: 'row' }, b.note ? `${b.era} (${b.note})` : b.era), html('td', {}, bandText(b)))))),
     html('p', { class: 'hl-note' }, 'Indicative only: the room size, exposed surfaces and air exchange behind these bands are unspecified. They are not RT/RE requirements and are never applied to a room automatically.'),
     sources);
   const guide: HeatLossGuide = {

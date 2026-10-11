@@ -10,7 +10,7 @@ import {
 import type { Layout, RoomBox } from './geometry';
 import { CoilNote, Pipe, Probe } from './pipes';
 import type { Pt } from './pipes';
-import { ENVELOPE_LOSS, createHeatLossGuide, createLineLength, createLineModelSwitch, isolate, pairField, weatherScope } from './settings';
+import { ENVELOPE_LOSS, createHeatLossGuide, createLossScale, createLineLength, createLineModelSwitch, isolate, pairField, weatherScope } from './settings';
 import type { HeatLossGuide, LineLengthControl, OutdoorUnitCard, PairField } from './settings';
 import type { Clock } from './state';
 import { ICE_FULL_KG, ICE_START_KG, activeRooms, currentReadings, indoorCleanliness, liveStatus, outdoorCleanliness, store } from './state';
@@ -370,12 +370,14 @@ function roomPanel(i: number, hooks: SceneHooks, guide: HeatLossGuide): RoomPane
     title: 'Envelope heat-loss coefficient. Ventilation is modelled separately.',
   });
   loss.root.querySelector('.pf-head')?.append(guide.button(i));
+  // The supplied reference examples are always visible under the slider; the guide button keeps the full explanation.
+  setText(loss.note, 'Building reference examples · W/K');
   const volumeV = html('span', { class: 'rp-v', 'data-field': 'room-volume' });
   const volume = html('div', { class: 'env-vol', title: 'Derived volume: floor area × ceiling height. Not an input.' },
     html('span', { class: 'rp-k' }, 'Volume'), html('span', { class: 'rp-line' }, volumeV, html('small', {}, 'm³')));
   const sep = (glyph: string): HTMLElement => html('span', { class: 'env-op', 'aria-hidden': 'true' }, glyph);
   // The card is narrow: the "requested" qualifier lives in the tooltip and the accessible name, not in a clipped note.
-  sp.root.title = 'Stops at the requested target; heating restarts 1 °C below it, cooling 1 °C above it. Minimum run/restart times and compressor protection still apply.';
+  sp.root.title = 'Inverter modulates to maintain target; below-minimum loads may cycle. Compressor protection and restart dwell still apply.';
   const air = readCard('Room air', '°C');
   air.root.className = 'env-read flow-in';
   const sup = readCard('Supply air', '°C');
@@ -400,7 +402,7 @@ function roomPanel(i: number, hooks: SceneHooks, guide: HeatLossGuide): RoomPane
   const env = html('div', { class: 'rp env room-env', 'data-block': 'environment' },
     html('div', { class: 'rp-head' }, html('span', { class: 'env-tag' }, 'Room'), name, remove),
     html('div', { class: 'env-geo' }, area.root, sep('×'), height.root, sep('='), volume),
-    html('div', { class: 'env-low' }, loss.root));
+    html('div', { class: 'env-low' }, loss.root, createLossScale()));
   linesBtn.addEventListener('click', () => hooks.toggleLines(i, equip));
   gearBtn.addEventListener('click', () => hooks.toggleRoom(i, equip));
   isolate(sw, swLabel, linesBtn, gearBtn, remove);

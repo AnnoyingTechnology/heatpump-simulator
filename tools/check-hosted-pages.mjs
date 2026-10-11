@@ -42,6 +42,19 @@ try{
  await activateControl(page,'Pause');
  await new Promise(resolve=>setTimeout(resolve,1200));
  const paused=await run(()=>document.querySelector('.time').textContent);
+ await check('every hosted room shows all eight loss-reference bands directly beneath its slider',async()=>{
+  const scales=await run(()=>[...document.querySelectorAll('.room-env')].map(room=>({
+   bands:[...room.querySelectorAll('.ls-key li')].map(li=>[li.querySelector('.ls-era').textContent,li.querySelector('.ls-r').textContent]),
+   below:room.querySelector('.ls').getBoundingClientRect().top>=room.querySelector('input[aria-label^="Envelope heat-loss coefficient"][type="range"]').getBoundingClientRect().bottom,
+   ticks:[...room.querySelectorAll('.ls-tick')].map(t=>t.textContent),
+  })));
+  assert.equal(scales.length,3);
+  for(const scale of scales){
+   assert.deepEqual(scale.bands,[['Pre-1974','650–850'],['RT 1974','400–600'],['RT 1982','350–480'],['RT 1988','300–400'],['RT 2000','240–340'],['RT 2005','200–300'],['RT 2012','110–180'],['RE 2020 (from 2022)','80–150']]);
+   assert.equal(scale.below,true);
+   assert.deepEqual(scale.ticks,['0','250','500','750','1000']);
+  }
+ });
  await check('hosted zoom keeps the temperature scales at the bottom and headline trends use borderless separators',async()=>{
   for(const zoom of ['overview','outdoor','overview']) {
    if(zoom==='outdoor') await run(()=>document.querySelector('.zone-out').dispatchEvent(new MouseEvent('click',{bubbles:true})));

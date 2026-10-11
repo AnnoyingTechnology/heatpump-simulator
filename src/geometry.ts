@@ -24,8 +24,11 @@ const RISER_PITCH = 14;
 export const ZONE_W = 939;
 /** Horizontal budget of one room row, from the wall: pipe corridor with probes, unit, equipment block, environment block. */
 export const ROOM_COLS = { corridor: 124, equip: { dx: 389, w: 242 }, env: { dx: 639, w: 290 } } as const;
-/** Panel heights of one room row: equipment card, and the taller unboxed environment (floor area, ceiling height, volume, air, envelope loss). Both fit the five-room row. */
-export const ROOM_PANEL_H = { equip: 108, env: 144 } as const;
+/**
+ * Panel heights of one room row: equipment card, and the taller unboxed environment (name, floor area × height = volume, envelope loss
+ * with its reference ruler and eight-band key). Rows are at least 220 units high for every room count, so 216 fits all of them.
+ */
+export const ROOM_PANEL_H = { equip: 108, env: 216 } as const;
 /**
  * Outdoor connection corridor, right of the risers and left of the wall: one line-length block per branch under its line pair
  * (`lineCtl`) and, above the first room, the shared field-line model switch (`modelCtl`). Blocks sit clear of the pair's pipes.

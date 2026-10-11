@@ -149,6 +149,8 @@
   --hl-line: #e0e4e5;
   --hl-note: #68716e;
   --guide-line: #b6c6d1;
+  --ls-track: rgba(93, 127, 147, 0.14);
+  --ls-band: rgba(70, 104, 125, 0.3);
 }
 
 :root[data-theme="dark"] {
@@ -285,6 +287,8 @@
   --hl-line: #2d3a44;
   --hl-note: #93a4af;
   --guide-line: #3f5465;
+  --ls-track: rgba(143, 179, 201, 0.14);
+  --ls-band: rgba(143, 179, 201, 0.3);
 }
 
 * { box-sizing: border-box; }
@@ -661,7 +665,28 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .env-geo .rp-range { height: 16px; }
 .env-op { align-self: center; color: var(--env-op); font-size: 13px; }
 .env-vol { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
-.env-low { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 10px; }
+.env-low { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; gap: 3px; }
+.room-env .pf-head .rp-n { font-size: 10px; }
+/* Reference scale under Envelope loss: ruler aligned to the slider track (8 px = thumb radius inset), bands stacked translucently,
+   then a two-column key. Neutral steel tokens only: insulation never borrows the refrigerant temperature colours. */
+.ls { min-width: 0; display: flex; flex-direction: column; gap: 2px; font: 500 10px/11px var(--font); color: var(--rp-ink); pointer-events: none; }
+.ls-ruler { padding: 0 8px; }
+.ls-track { position: relative; height: 5px; border-radius: 2px; background: var(--ls-track); }
+.ls-band { position: absolute; top: 0; bottom: 0; background: var(--ls-band); }
+.ls-ticks { position: relative; height: 10px; }
+.ls-tick { position: absolute; top: 0; transform: translateX(-50%); font: 600 9px/10px var(--font); color: var(--rp-n); font-variant-numeric: tabular-nums; }
+.ls-tick::before { content: ""; position: absolute; left: 50%; top: -3px; width: 1px; height: 3px; background: var(--rp-num-line); }
+/* The end labels hang inside the ruler (start- and end-anchored) so they never leave the panel; their tick marks stay on 0 and 1000. */
+.ls-tick:first-child { transform: none; }
+.ls-tick:first-child::before { left: 0; }
+.ls-tick:last-child { transform: translateX(-100%); }
+.ls-tick:last-child::before { left: 100%; }
+.ls-key { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; }
+.ls-key li { display: flex; align-items: baseline; gap: 4px; white-space: nowrap; min-width: 0; }
+.ls-key li.wide { grid-column: 1 / -1; }
+.ls-era { font-weight: 650; color: var(--rp-ink); }
+.ls-note { color: var(--rp-n); }
+.ls-r { margin-left: auto; font-weight: 700; color: var(--rp-v); font-variant-numeric: tabular-nums; }
 .env-low .rp-num { width: 2.85em; }
 .env-low .rp-range { height: 16px; }
 .hl-btn { border: 1px solid var(--hl-btn-line); border-radius: 50%; width: 16px; height: 16px; padding: 0; font: 700 11px/14px var(--font); color: var(--hl-btn-ink); background: var(--hl-btn-bg); }
