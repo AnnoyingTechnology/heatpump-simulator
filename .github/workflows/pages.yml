@@ -69,6 +69,8 @@ jobs:
           tests/engine/ventilation-recovery.test.mjs
       - name: Verify accepted equipment source boundary
         run: python3 tests/catalogue.test.py
+      - name: Verify multisplit installation constraints
+        run: npx tsc -p tests/catalogue/tsconfig.json && node --test tests/catalogue/topology.test.mjs
       - name: Exercise deterministic operating transitions
         run: node tools/robustness-campaign.mjs --preset smoke --workers 3 --timeout 240 --output "$RUNNER_TEMP/heatpump-robustness-smoke"
       - name: Configure Pages

@@ -1,0 +1,35 @@
+{
+  "checkedAt": "2026-10-11T16:19:49.812Z",
+  "checks": [
+    {
+      "name": "factory R32 remains fixed and choosing generic equipment retains the current house and accepted history",
+      "passed": true
+    },
+    {
+      "name": "each qualified fluid starts a fresh real worker and room history without replacing house inputs",
+      "passed": true
+    },
+    {
+      "name": "unqualified physical-line combinations cannot be selected or silently substituted",
+      "passed": true
+    },
+    {
+      "name": "fixed Examples stay R32 while preserving the selected Live fluid and accepted session",
+      "passed": true
+    },
+    {
+      "name": "French fluid controls fit the outdoor card in both themes and factory selection restores R32 explicitly",
+      "passed": true
+    }
+  ],
+  "fluids": [
+    "R32",
+    "R22",
+    "R290",
+    "R134a",
+    "R1234yf",
+    "R410A",
+    "R407C"
+  ],
+  "chargeRelease": false
+}

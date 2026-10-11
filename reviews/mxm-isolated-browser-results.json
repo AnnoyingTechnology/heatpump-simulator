@@ -1,6 +1,6 @@
 {
-  "checkedAt": "2026-10-11T16:16:49.057Z",
-  "origin": "http://127.0.0.1:5194",
+  "checkedAt": "2026-10-11T16:21:03.272Z",
+  "origin": "http://127.0.0.1:5216/",
   "checks": [
     "native outdoor select applies exact MXM reference",
     "all room identities, temperatures, targets, enabled states and settings preserved",
@@ -29,7 +29,23 @@
     "persistent installation status switches to French",
     "native outdoor model accessibility label switches to French",
     "parent generic-fluid control retained",
-    "published equipment preserves parent R32 qualification and deliberate fluid-change reset"
+    "published equipment preserves parent R32 qualification and deliberate fluid-change reset",
+    "MXM layout 1280x720 en light",
+    "MXM layout 1280x720 en dark",
+    "MXM layout 1280x720 fr light",
+    "MXM layout 1280x720 fr dark",
+    "MXM layout 1366x768 en light",
+    "MXM layout 1366x768 en dark",
+    "MXM layout 1366x768 fr light",
+    "MXM layout 1366x768 fr dark",
+    "MXM layout 1600x1000 en light",
+    "MXM layout 1600x1000 en dark",
+    "MXM layout 1600x1000 fr light",
+    "MXM layout 1600x1000 fr dark",
+    "MXM layout 1920x1080 en light",
+    "MXM layout 1920x1080 en dark",
+    "MXM layout 1920x1080 fr light",
+    "MXM layout 1920x1080 fr dark"
   ],
   "exceptions": [],
   "scope": "isolated store/native controls; generic physics; no OEM combination claim"

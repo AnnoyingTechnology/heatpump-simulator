@@ -1,7 +1,9 @@
 // Scoped native browser QA against an isolated development origin; never mutates application sources.
 import { writeFile } from 'node:fs/promises';
 import { openPage } from './browser-session.mjs';
-const origin=process.env.HEATPUMP_CATALOGUE_ORIGIN ?? 'http://127.0.0.1:5194';
+import { startIsolatedDev } from './isolated-dev.mjs';
+const dev=process.env.HEATPUMP_CATALOGUE_ORIGIN ? null : await startIsolatedDev(5216);
+const origin=process.env.HEATPUMP_CATALOGUE_ORIGIN ?? dev.url;
 const page=await openPage(origin,1600,1000);
 try {
  await page.waitFor(`document.querySelector('select[aria-label="Outdoor model"]')`);
@@ -55,8 +57,15 @@ try {
  await page.evaluate(`(()=>{const {store,checks}=catalogueQA;const expect=(condition,name)=>{if(!condition)throw Error(name);checks.push(name)};catalogueQA.i18n.setLanguage('en');  store.setOutdoorKind('generic');store.setRefrigerant('R290');expect(store.state.cfg.live.refrigerant==='R290','parent generic-fluid control retained');
   const fluidEpoch=store.resetEpoch;store.setOutdoorKind('2MXM40A2V1B9');expect(store.state.cfg.live.refrigerant==='R32'&&store.resetEpoch===fluidEpoch+1,'published equipment preserves parent R32 qualification and deliberate fluid-change reset');
 return checks;})()`);
+ for(const [width,height] of [[1280,720],[1366,768],[1600,1000],[1920,1080]]) {
+  await page.send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:false});
+  for(const language of ['en','fr']) for(const theme of ['light','dark']) {
+   await page.evaluate(`(()=>{catalogueQA.i18n.setLanguage(${JSON.stringify(language)});const e=document.querySelector('.th-select');e.value=${JSON.stringify(theme)};e.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+   await page.evaluate(`(()=>{const card=document.querySelector('.ou'),scene=document.querySelector('.scene-scroll');if(card.scrollHeight>card.clientHeight+1||scene.scrollHeight>scene.clientHeight+1)throw Error('MXM card/scene overflow');catalogueQA.checks.push('MXM layout ${width}x${height} ${language} ${theme}');})()`);
+  }
+ }
  const exceptions=page.events.filter(e=>e.method==='Runtime.exceptionThrown').map(e=>e.params);
  if(exceptions.length)throw Error('Unexpected browser exceptions: '+JSON.stringify(exceptions));
  const result={checkedAt:new Date().toISOString(),origin,checks:await page.evaluate('catalogueQA.checks'),exceptions,scope:'isolated store/native controls; generic physics; no OEM combination claim'};
  await writeFile(new URL('../reviews/mxm-isolated-browser-results.json',import.meta.url),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({checksPassed:await page.evaluate('catalogueQA.checks.length'),exceptions:exceptions.length}));
-}finally{await page.close()}
+}finally{await page.close();await dev?.close()}

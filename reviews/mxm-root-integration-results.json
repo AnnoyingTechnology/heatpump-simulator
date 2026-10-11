@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-11T16:23:14.053793+00:00",
+  "scope": "Nine current MXM profiles, typed necessary connection rules and preserved state; exact OEM combinations and performance remain unknown",
+  "sourceCommit": "1bacefc",
+  "checks": {
+    "catalogueAcceptance": 27,
+    "typedTopology": 6,
+    "frontend": 7,
+    "rootSnapshotBrowser": 44,
+    "sevenFluidSelectionGroups": 5
+  },
+  "browserReceipts": [
+    "reviews/mxm-isolated-browser-results.json",
+    "reviews/mxm-seven-fluid-browser-results.json"
+  ],
+  "sourceHashes": {
+    "src/state.ts": "bc6ad0317f78799ae6d4f76d46dd97fe151727d7d71b715b4e250af0bd9c9bfc",
+    "src/settings.ts": "b203d86e9181db0b0e88d4348d9e22ded8f4b460a293afb08179db61db23d61f",
+    "src/equipment.ts": "9c1617d201d6cbc2a96fcfbb7840dade3e36ce88142204c7946ebbe3a43fc469",
+    "src/equipment-topology.ts": "23eff85d78a3323621229cb501b3c02aa7d013eb44e69091f4fad74b2add3123",
+    "src/equipment-data.ts": "3d0b67b33b8f47df4889efc91561fdffbee1e6af288a3ccfebcf4fe55c2593ad",
+    "src/locales/fr.ts": "566f76ed249197d2957fea298669c476cc942ea40732b5223c4e9b416b7222c4",
+    "src/locales/equipment-fr.ts": "69dc74f87188d49b2645df0aa98c7f4c3a02b9173de831e6144985be28987f98",
+    "tools/check-mxm-browser.mjs": "c21ea756f7b99c728884c32fc2ce752454c21b40956ce9deeed9fbb5266db5e8"
+  }
+}
