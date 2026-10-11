@@ -1,0 +1,364 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "mitsubishi-electric",
+  "family": "MSZ-AP Mural Grandes Pièces",
+  "market": "France",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "mitsubishi-fr-air-air-2026-2027",
+      "url": "https://confort.mitsubishielectric.fr/sites/default/files/2026-04/RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "title": "PAC Air/Air catalogue 2026-2027",
+      "edition": "RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "MUZ-AP71VG3",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.60 (printed p.59), page header 'MSZ-AP. Mural Grandes Pièces R32' + 'INVERTER' + outdoor photo caption 'MUZ-AP71VG3'; UNITÉS EXTÉRIEURES table header, column 2 = MUZ-AP71VG3 (71-class); note outdoor 71 suffix VG3 differs from indoor 71 suffix VG2 as printed",
+        "excerpt": "MSZ-AP. Mural Grandes Pièces R32 INVERTER ; MUZ-AP71VG3 ; UNITÉS EXTÉRIEURES MUZ-AP60VG2 MUZ-AP71VG3"
+      },
+      "facts": [
+        {
+          "key": "controlStrategy",
+          "value": "inverter",
+          "unit": "none",
+          "condition": "explicit page-level 'INVERTER' label of the MSZ-AP family page",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), page header banner under 'MSZ-AP. Mural Grandes Pièces R32'",
+            "excerpt": "INVERTER"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 7.1,
+          "unit": "kW",
+          "condition": "nominal cooling capacity of the 71-class split (MSZ-AP71VG2 companion); published min / nominal / max 2.0 / 7.1 / 8.7 kW",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), cooling table row 'Puissance frigorifique min / nominale / max', Taille 71 column",
+            "excerpt": "Puissance frigorifique min / nominale / max kW 2.0 / 7.1 / 8.7"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 3246,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed (GV); single cell under the MUZ-AP71VG3 column (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS EXTÉRIEURES row 'Débit d'air en froid GV', MUZ-AP71VG3 column",
+            "excerpt": "Débit d'air en froid GV m3/h 3246"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 56,
+          "unit": "dBA",
+          "condition": "cooling mode, high fan speed (GV), measured at 1 m; footnote (1): mesurée en chambre anéchoïque; row value 56 is a single merged cell spanning MUZ-AP60VG2 and MUZ-AP71VG3 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS EXTÉRIEURES row 'Pression acoustique (1) en froid 1 m GV', merged MUZ-AP60VG2/MUZ-AP71VG3 columns + footnote (1)",
+            "excerpt": "Pression acoustique (1) en froid 1 m GV dB(A) 56"
+          }
+        },
+        {
+          "key": "soundPower",
+          "value": 69,
+          "unit": "dBA",
+          "condition": "cooling mode, high fan speed (GV); row value 69 is a single merged cell spanning MUZ-AP60VG2 and MUZ-AP71VG3 columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS EXTÉRIEURES row 'Puissance acoustique en froid GV', merged MUZ-AP60VG2/MUZ-AP71VG3 columns",
+            "excerpt": "Puissance acoustique en froid GV dB(A) 69"
+          }
+        },
+        {
+          "key": "height",
+          "value": 880,
+          "unit": "mm",
+          "condition": "outdoor unit; row 'Hauteur x Largeur x Profondeur' publishes 880 x 840 x 330 under the MUZ-AP71VG3 column (60 column separately shows 714 x 800 x 285)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS EXTÉRIEURES row 'Hauteur x Largeur x Profondeur', MUZ-AP71VG3 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 714 x 800 x 285 880 x 840 x 330"
+          }
+        },
+        {
+          "key": "width",
+          "value": 840,
+          "unit": "mm",
+          "condition": "outdoor unit; MUZ-AP71VG3 column",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS EXTÉRIEURES row 'Hauteur x Largeur x Profondeur', MUZ-AP71VG3 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 714 x 800 x 285 880 x 840 x 330"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 330,
+          "unit": "mm",
+          "condition": "outdoor unit; MUZ-AP71VG3 column",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS EXTÉRIEURES row 'Hauteur x Largeur x Profondeur', MUZ-AP71VG3 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 714 x 800 x 285 880 x 840 x 330"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 53,
+          "unit": "kg",
+          "condition": "net weight, outdoor unit; 'Poids net' value 53 under the MUZ-AP71VG3 column (60 column separately shows 40)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS EXTÉRIEURES row 'Poids net', MUZ-AP71VG3 column",
+            "excerpt": "Poids net kg 40 53"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "condition": "refrigerant circuit shared with MSZ-AP71VG2 indoor unit; PRP (GWP) 675; row merged across both size columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), DONNÉES FRIGORIFIQUES row 'Fluide / PRP (Pouvoir de Réchauffement Planétaire)', row merged across 60/71 columns",
+            "excerpt": "Fluide / PRP (Pouvoir de Réchauffement Planétaire) -/- R32 / 675"
+          }
+        },
+        {
+          "key": "factoryCharge",
+          "value": 1.50,
+          "unit": "kg",
+          "condition": "factory charge of the outdoor-unit refrigerant circuit for the 71-class split; published row 'Lg préchargée / Précharge / Tonne équivalent CO2' = 15.0 m / 1.50 kg / 1.013 t CO2; charge belongs to the outdoor circuit, not separately charged indoor head",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), DONNÉES FRIGORIFIQUES row 'Lg préchargée / Précharge / Tonne équivalent CO2', MUZ-AP71VG3 column",
+            "excerpt": "Lg préchargée / Précharge / Tonne équivalent CO2 m / kg / t 15.0 / 1.50 / 1.013"
+          }
+        },
+        {
+          "key": "prechargedPipeLength",
+          "value": 15.0,
+          "unit": "m",
+          "condition": "precharged pipe length of the 71-class split circuit",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), DONNÉES FRIGORIFIQUES row 'Lg préchargée / Précharge / Tonne équivalent CO2', MUZ-AP71VG3 column",
+            "excerpt": "Lg préchargée / Précharge / Tonne équivalent CO2 m / kg / t 15.0 / 1.50 / 1.013"
+          }
+        },
+        {
+          "key": "additionalChargePerLength",
+          "value": 0.020,
+          "unit": "kg/m",
+          "condition": "additional refrigerant charge per metre beyond precharged length, 60/71 group; published row 'Charge supplémentaire / Qté réfrigérant additionnelle maxi' = 20 g/m / 0.30 kg max; exact conversion 20 g/m = 0.020 kg/m, original 20 g/m preserved in excerpt; row merged across both size columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), DONNÉES FRIGORIFIQUES row 'Charge supplémentaire / Qté réfrigérant additionnelle maxi', merged 60/71 columns",
+            "excerpt": "Charge supplémentaire / Qté réfrigérant additionnelle maxi g/m / kg 20 / 0.30"
+          }
+        },
+        {
+          "key": "maximumTotalPipeLength",
+          "value": 30,
+          "unit": "m",
+          "condition": "60/71 group; row 'Longueur maxi / Dénivelé maxi' = 30 m / 15 m, merged across both size columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), DONNÉES FRIGORIFIQUES row 'Longueur maxi / Dénivelé maxi', merged 60/71 columns",
+            "excerpt": "Longueur maxi / Dénivelé maxi m 30 / 15"
+          }
+        },
+        {
+          "key": "maximumHeightDifference",
+          "value": 15,
+          "unit": "m",
+          "condition": "60/71 group; row 'Longueur maxi / Dénivelé maxi' = 30 m / 15 m, merged across both size columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), DONNÉES FRIGORIFIQUES row 'Longueur maxi / Dénivelé maxi', merged 60/71 columns",
+            "excerpt": "Longueur maxi / Dénivelé maxi m 30 / 15"
+          }
+        },
+        {
+          "key": "liquidConnectionDiameter",
+          "value": 6.35,
+          "unit": "mm",
+          "condition": "flare connection; published '1/4 flare' pouce, exact inch-to-mm conversion 1/4 x 25.4 = 6.35 mm; row merged across both size columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), DONNÉES FRIGORIFIQUES row 'Diamètre liquide', row merged across 60/71 columns",
+            "excerpt": "Diamètre liquide pouce 1/4 flare"
+          }
+        },
+        {
+          "key": "gasConnectionDiameter",
+          "value": 12.7,
+          "unit": "mm",
+          "condition": "flare connection; published '1/2 flare' pouce, exact inch-to-mm conversion 1/2 x 25.4 = 12.7 mm; row merged across both size columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), DONNÉES FRIGORIFIQUES row 'Diamètre gaz', row merged across 60/71 columns",
+            "excerpt": "Diamètre gaz pouce 1/2 flare"
+          }
+        },
+        {
+          "key": "supplyVoltage",
+          "value": 230,
+          "unit": "V",
+          "condition": "supply by outdoor unit ('Alimentation électrique par unité extérieure'), row header V~50Hz; footnote: Données électriques à valeurs indicatives, se rapporter à la norme NFC 15-100; row merged across both size columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), DONNÉES ÉLECTRIQUES row 'Alimentation électrique par unité extérieure', row merged across 60/71 columns",
+            "excerpt": "Alimentation électrique par unité extérieure V~50Hz 230 V (1P+N+T)"
+          }
+        },
+        {
+          "key": "supplyPhases",
+          "value": 1,
+          "unit": "none",
+          "condition": "outdoor supply '230 V (1P+N+T)' = single phase + neutral + earth",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), DONNÉES ÉLECTRIQUES row 'Alimentation électrique par unité extérieure', row merged across 60/71 columns",
+            "excerpt": "Alimentation électrique par unité extérieure V~50Hz 230 V (1P+N+T)"
+          }
+        },
+        {
+          "key": "supplyFrequency",
+          "value": 50,
+          "unit": "Hz",
+          "condition": "row header unit 'V~50Hz' of the supply row",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), DONNÉES ÉLECTRIQUES row 'Alimentation électrique par unité extérieure', row header unit",
+            "excerpt": "Alimentation électrique par unité extérieure V~50Hz 230 V (1P+N+T)"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "cooling operating range (outdoor dry-bulb / dry-bulb), row merged across both size columns; marketing page printed p.58 also states 'MODE FROID -10/+46°C'",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), cooling table row 'Plage de fonctionnement (T°ext. sèche/sèche)', merged 60/71 columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "cooling operating range (outdoor dry-bulb / dry-bulb), row merged across both size columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), cooling table row 'Plage de fonctionnement (T°ext. sèche/sèche)', merged 60/71 columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "heating operating range (outdoor wet-bulb / dry-bulb), row merged across both size columns; page bullet: 'Chauffage garanti jusqu'à -15°C extérieur'; marketing page printed p.58 also states 'MODE CHAUD -15/+24°C'",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), heating table row 'Plage de fonctionnement (T°ext. humide/sèche)', merged 60/71 columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "condition": "heating operating range (outdoor wet-bulb / dry-bulb), row merged across both size columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), heating table row 'Plage de fonctionnement (T°ext. humide/sèche)', merged 60/71 columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          }
+        }
+      ],
+      "ratings": [
+        {
+          "mode": "cooling",
+          "combination": "MSZ-AP71VG2 + MUZ-AP71VG3 (71-class mono-split)",
+          "conditions": "published min / nominal / max table values; rated indoor/outdoor test conditions not published in this table (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 2.0, "nominal": 7.1, "maximum": 8.7 },
+          "electricalInputKw": { "minimum": null, "nominal": 2.010, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), cooling table rows 'Puissance frigorifique min / nominale / max' and 'Puissance absorbée totale nominale', Taille 71 column",
+            "excerpt": "Puissance frigorifique min / nominale / max kW 2.0 / 7.1 / 8.7 ; Puissance absorbée totale nominale kW 2.010"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-AP71VG2 + MUZ-AP71VG3 (71-class mono-split)",
+          "conditions": "outdoor +7°C (published row 'à +7°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 2.2, "nominal": 8.1, "maximum": 10.3 },
+          "electricalInputKw": { "minimum": null, "nominal": 2.120, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), heating table rows 'Puissance calorifique min / nominale / max à +7°C' and 'Puissance absorbée totale nominale', Taille 71 column",
+            "excerpt": "Puissance calorifique min / nominale / max à +7°C kW 2.2 / 8.1 / 10.3 ; Puissance absorbée totale nominale kW 2.120"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-AP71VG2 + MUZ-AP71VG3 (71-class mono-split)",
+          "conditions": "outdoor -7°C (published row 'à -7°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.4, "nominal": 5.4, "maximum": 7.2 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), heating table row 'Puissance calorifique min / nominale / max à -7°C', Taille 71 column; no separate -7°C electrical row is published",
+            "excerpt": "Puissance calorifique min / nominale / max à -7°C kW 1.4 / 5.4 / 7.2"
+          }
+        }
+      ],
+      "compatibility": [
+        {
+          "description": "mono-split pairing MUZ-AP71VG3 + MSZ-AP71VG2 is evidenced by the shared 'Tailles 71' column and the MUZ-AP71VG3 photo/table header on the same page (outdoor suffix VG3, indoor suffix VG2 as printed); multi-split compatibility NOT established here (separate combination tables pending)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), 'Tailles 60 71' header spanning cooling/heating tables; UNITÉS EXTÉRIEURES header MUZ-AP71VG3, UNITÉS INTÉRIEURES header MSZ-AP71VG2, outdoor photo caption 'MUZ-AP71VG3'",
+            "excerpt": "Tailles 60 71 ; UNITÉS EXTÉRIEURES MUZ-AP60VG2 MUZ-AP71VG3 ; MUZ-AP71VG3"
+          }
+        }
+      ],
+      "unknowns": [
+        "outdoor fan motor output and electrical input: not published",
+        "outdoor sound pressure/power in heating mode: not published separately",
+        "outdoor airflow at speeds other than GV: not published",
+        "maximumBranchPipeLength: not published in this table",
+        "SEER/SCOP climate class and test conditions: not published in this table; these are system/combination ratings for MSZ-AP71VG2 + MUZ-AP71VG3",
+        "electrical values are indicative per footnote ('Données électriques à valeurs indicatives, se rapporter à la norme NFC 15-100')",
+        "cable sizing and protection (3G 4 outdoor cable, 4G 1.5 inter-unit cable, 20 A protection) recorded as notes only, not schema fact keys"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    {
+      "modelReference": "MSZ-AP71VG2",
+      "reason": "paired indoor unit of this split; its spec-table facts are captured in the separate indoor candidate file mitsubishi-msz-ap71-indoor.json"
+    },
+    {
+      "modelReference": "MUZ-AP multi-split eligibility",
+      "reason": "MUZ-AP is the mono-split companion shown on printed p.59; multi-split MSZ-AP compatibility would be via MXZ outdoor references (catalogue pp.104-119), separate references; combination tables pending"
+    }
+  ]
+}

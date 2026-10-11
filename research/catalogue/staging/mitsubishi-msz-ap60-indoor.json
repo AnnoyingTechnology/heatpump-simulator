@@ -1,0 +1,321 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "mitsubishi-electric",
+  "family": "MSZ-AP Mural Grandes Pièces",
+  "market": "France",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "mitsubishi-fr-air-air-2026-2027",
+      "url": "https://confort.mitsubishielectric.fr/sites/default/files/2026-04/RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "title": "PAC Air/Air catalogue 2026-2027",
+      "edition": "RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "MSZ-AP60VG2",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.60 (printed p.59), page header 'MSZ-AP. Mural Grandes Pièces R32' + 'INVERTER'; UNITÉS INTÉRIEURES table header, column 1 = MSZ-AP60VG2 (60-class)",
+        "excerpt": "MSZ-AP. Mural Grandes Pièces R32 INVERTER ; UNITÉS INTÉRIEURES MSZ-AP60VG2 MSZ-AP71VG2"
+      },
+      "facts": [
+        {
+          "key": "controlStrategy",
+          "value": "inverter",
+          "unit": "none",
+          "condition": "explicit page-level 'INVERTER' label of the MSZ-AP family page",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), page header banner under 'MSZ-AP. Mural Grandes Pièces R32'",
+            "excerpt": "INVERTER"
+          }
+        },
+        {
+          "key": "capacityClass",
+          "value": 6.1,
+          "unit": "kW",
+          "condition": "nominal cooling capacity of the 60-class split (MUZ-AP60VG2 companion); published min / nominal / max 1.4 / 6.1 / 7.3 kW",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), cooling table row 'Puissance frigorifique min / nominale / max', Taille 60 column",
+            "excerpt": "Puissance frigorifique min / nominale / max kW 1.4 / 6.1 / 7.3"
+          }
+        },
+        {
+          "key": "SEER",
+          "value": 7.4,
+          "unit": "none",
+          "condition": "system/combination seasonal rating for the MSZ-AP60VG2 + MUZ-AP60VG2 split, not an intrinsic indoor-only performance; seasonal class A++; climate/test conditions not published in this table (unknown)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), cooling table row 'SEER / Classe énergétique saisonnière (D à A+++)', Taille 60 column",
+            "excerpt": "SEER / Classe énergétique saisonnière (D à A+++) - 7.4 / A++"
+          }
+        },
+        {
+          "key": "SCOP",
+          "value": 4.6,
+          "unit": "none",
+          "condition": "system/combination seasonal rating for the MSZ-AP60VG2 + MUZ-AP60VG2 split, not an intrinsic indoor-only performance; seasonal class A++; climate/test conditions not published in this table (unknown)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), heating table row 'SCOP / Classe énergétique saisonnière (D à A+++)', Taille 60 column",
+            "excerpt": "SCOP / Classe énergétique saisonnière (D à A+++) - 4.6 / A++"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "condition": "refrigerant circuit shared with MUZ-AP60VG2 outdoor unit; PRP (GWP) 675; row merged across both size columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), DONNÉES FRIGORIFIQUES row 'Fluide / PRP (Pouvoir de Réchauffement Planétaire)', row merged across 60/71 columns",
+            "excerpt": "Fluide / PRP (Pouvoir de Réchauffement Planétaire) -/- R32 / 675"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 564,
+          "unit": "m3/h",
+          "condition": "cooling mode, silence fan speed (row header 'Silence/PV/MV/GV/SGV')",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-AP60VG2 column, Silence value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 564 / 660 / 792 / 960 / 1134"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 660,
+          "unit": "m3/h",
+          "condition": "cooling mode, low fan speed (PV)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-AP60VG2 column, PV value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 564 / 660 / 792 / 960 / 1134"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 792,
+          "unit": "m3/h",
+          "condition": "cooling mode, medium fan speed (MV)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-AP60VG2 column, MV value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 564 / 660 / 792 / 960 / 1134"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 960,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed (GV)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-AP60VG2 column, GV value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 564 / 660 / 792 / 960 / 1134"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1134,
+          "unit": "m3/h",
+          "condition": "cooling mode, super-high fan speed (SGV)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS INTÉRIEURES row 'Débit d'air en froid Silence/PV/MV/GV/SGV', MSZ-AP60VG2 column, SGV value",
+            "excerpt": "Débit d'air en froid Silence/PV/MV/GV/SGV m3/h 564 / 660 / 792 / 960 / 1134"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 29,
+          "unit": "dBA",
+          "condition": "cooling mode, silence fan speed, measured at 1 m; footnote (1): mesurée en chambre anéchoïque; page bullet: 'Mode nuit (-3dB(A)) disponible' (no silent-mode numeric values published)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', MSZ-AP60VG2 column, Silence value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 29 / 37 / 41 / 45 / 48"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 37,
+          "unit": "dBA",
+          "condition": "cooling mode, low fan speed (PV), measured at 1 m; footnote (1): mesurée en chambre anéchoïque",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', MSZ-AP60VG2 column, PV value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 29 / 37 / 41 / 45 / 48"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 41,
+          "unit": "dBA",
+          "condition": "cooling mode, medium fan speed (MV), measured at 1 m; footnote (1): mesurée en chambre anéchoïque",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', MSZ-AP60VG2 column, MV value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 29 / 37 / 41 / 45 / 48"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 45,
+          "unit": "dBA",
+          "condition": "cooling mode, high fan speed (GV), measured at 1 m; footnote (1): mesurée en chambre anéchoïque",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', MSZ-AP60VG2 column, GV value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 29 / 37 / 41 / 45 / 48"
+          }
+        },
+        {
+          "key": "soundPressure",
+          "value": 48,
+          "unit": "dBA",
+          "condition": "cooling mode, super-high fan speed (SGV), measured at 1 m; footnote (1): mesurée en chambre anéchoïque",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS INTÉRIEURES row 'Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV', MSZ-AP60VG2 column, SGV value + footnote (1)",
+            "excerpt": "Pression acoustique en froid (1) 1 m Silence/PV/MV/GV/SGV dB(A) 29 / 37 / 41 / 45 / 48"
+          }
+        },
+        {
+          "key": "soundPower",
+          "value": 65,
+          "unit": "dBA",
+          "condition": "cooling mode at super-high fan speed (SGV); row value 65 is a single merged cell spanning both MSZ-AP60VG2 and MSZ-AP71VG2 columns (visually verified on page image)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS INTÉRIEURES row 'Puissance acoustique en froid SGV', merged MSZ-AP60VG2/MSZ-AP71VG2 columns",
+            "excerpt": "Puissance acoustique en froid SGV dB(A) 65"
+          }
+        },
+        {
+          "key": "height",
+          "value": 325,
+          "unit": "mm",
+          "condition": "indoor unit; row 'Hauteur x Largeur x Profondeur' publishes 325 x 1100 x 257 as a single merged cell across both size columns (visually verified)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS INTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged 60/71 columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 325 x 1100 x 257"
+          }
+        },
+        {
+          "key": "width",
+          "value": 1100,
+          "unit": "mm",
+          "condition": "indoor unit; merged 60/71 columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS INTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged 60/71 columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 325 x 1100 x 257"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 257,
+          "unit": "mm",
+          "condition": "indoor unit; merged 60/71 columns",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS INTÉRIEURES row 'Hauteur x Largeur x Profondeur', merged 60/71 columns",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 325 x 1100 x 257"
+          }
+        },
+        {
+          "key": "mass",
+          "value": 16,
+          "unit": "kg",
+          "condition": "net weight, indoor unit; 'Poids net' value 16 under the MSZ-AP60VG2 column (71 column separately shows 17)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), UNITÉS INTÉRIEURES row 'Poids net', MSZ-AP60VG2 column",
+            "excerpt": "Poids net kg 16 17"
+          }
+        }
+      ],
+      "ratings": [
+        {
+          "mode": "cooling",
+          "combination": "MSZ-AP60VG2 + MUZ-AP60VG2 (60-class mono-split)",
+          "conditions": "published min / nominal / max table values; rated indoor/outdoor test conditions not published in this table (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.4, "nominal": 6.1, "maximum": 7.3 },
+          "electricalInputKw": { "minimum": null, "nominal": 1.590, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), cooling table rows 'Puissance frigorifique min / nominale / max' and 'Puissance absorbée totale nominale', Taille 60 column",
+            "excerpt": "Puissance frigorifique min / nominale / max kW 1.4 / 6.1 / 7.3 ; Puissance absorbée totale nominale kW 1.590"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-AP60VG2 + MUZ-AP60VG2 (60-class mono-split)",
+          "conditions": "outdoor +7°C (published row 'à +7°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 2.0, "nominal": 6.8, "maximum": 8.6 },
+          "electricalInputKw": { "minimum": null, "nominal": 1.670, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), heating table rows 'Puissance calorifique min / nominale / max à +7°C' and 'Puissance absorbée totale nominale', Taille 60 column",
+            "excerpt": "Puissance calorifique min / nominale / max à +7°C kW 2.0 / 6.8 / 8.6 ; Puissance absorbée totale nominale kW 1.670"
+          }
+        },
+        {
+          "mode": "heating",
+          "combination": "MSZ-AP60VG2 + MUZ-AP60VG2 (60-class mono-split)",
+          "conditions": "outdoor -7°C (published row 'à -7°C'); min / nominal / max; other test conditions not published (unknown)",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.3, "nominal": 4.6, "maximum": 5.8 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), heating table row 'Puissance calorifique min / nominale / max à -7°C', Taille 60 column; no separate -7°C electrical row is published",
+            "excerpt": "Puissance calorifique min / nominale / max à -7°C kW 1.3 / 4.6 / 5.8"
+          }
+        }
+      ],
+      "compatibility": [
+        {
+          "description": "mono-split pairing MSZ-AP60VG2 + MUZ-AP60VG2 is evidenced by the shared 'Tailles 60' column and the MUZ-AP60VG2 photo/table header on the same page; multi-split compatibility NOT established here (separate combination tables pending)",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.60 (printed p.59), 'Tailles 60 71' header spanning cooling/heating tables; UNITÉS INTÉRIEURES header MSZ-AP60VG2, UNITÉS EXTÉRIEURES header MUZ-AP60VG2, outdoor photo caption 'MUZ-AP60VG2'",
+            "excerpt": "Tailles 60 71 ; UNITÉS EXTÉRIEURES MUZ-AP60VG2 MUZ-AP71VG3 ; MUZ-AP60VG2"
+          }
+        }
+      ],
+      "unknowns": [
+        "indoor electrical supply / voltage: catalogue publishes 'Alimentation électrique par unité extérieure' only (230 V (1P+N+T) at the outdoor unit); indoor-only supply not stated",
+        "indoor fan motor output and electrical input: not published",
+        "indoor unit sound pressure in heating mode: not published separately",
+        "indoor unit airflow in heating mode: not published separately",
+        "silent/night mode (-3dB(A)) adjustment values: bullet 'Mode nuit (-3dB(A)) disponible' published without numeric silent-mode airflow/sound values",
+        "SEER/SCOP climate class and test conditions: not published in this table; these are system/combination ratings for MSZ-AP60VG2 + MUZ-AP60VG2",
+        "drain connection: 'Ø des condensats / Pompe de relevage mm 16 / Non fournie' (pump not supplied) recorded only as note, not a schema fact key",
+        "Wi-Fi: 'Wi-Fi compatible' and 'Désérié de série' per printed p.58 marketing page (accessory/interface detail, not a unit fact)"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    {
+      "modelReference": "MUZ-AP60VG2",
+      "reason": "paired outdoor unit of this split; its spec-table facts are captured in the separate outdoor candidate file mitsubishi-muz-ap60-outdoor.json"
+    },
+    {
+      "modelReference": "MSZ-AP color/suffix variants",
+      "reason": "only VG2 indoor suffixes (60/71) are printed; no colour or alternate suffix is published in this catalogue edition; not inferred"
+    }
+  ]
+}

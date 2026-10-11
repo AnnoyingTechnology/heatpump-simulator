@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "family": "MSZ-AP Mural Grandes Pièces",
+  "sourceId": "mitsubishi-fr-air-air-2026-2027",
+  "edition": "PAC Air/Air catalogue 2026-2027 (RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf)",
+  "market": "France",
+  "status": "reference manifest only; no numerical performance assertions, not overall catalogue coverage",
+  "references": [
+    { "modelReference": "MSZ-AP60VG2", "unitType": "indoor", "pageLocators": ["PDF p.60 (printed p.59) overview+spec table; PDF p.59 (printed p.58) marketing page 'MSZ-AP 60/71 VG2'"], "status": "candidate drafted (mitsubishi-msz-ap60-indoor.json, staging only, not accepted)" },
+    { "modelReference": "MSZ-AP71VG2", "unitType": "indoor", "pageLocators": ["PDF p.60 (printed p.59) overview+spec table; PDF p.59 (printed p.58) marketing page 'MSZ-AP 60/71 VG2'"], "status": "candidate drafted (mitsubishi-msz-ap71-indoor.json, staging only, not accepted)" },
+    { "modelReference": "MUZ-AP60VG2", "unitType": "outdoor", "pageLocators": ["PDF p.60 (printed p.59) photo caption 'MUZ-AP60VG2' + UNITÉS EXTÉRIEURES table header"], "status": "candidate drafted (mitsubishi-muz-ap60-outdoor.json, staging only, not accepted)" },
+    { "modelReference": "MUZ-AP71VG3", "unitType": "outdoor", "pageLocators": ["PDF p.60 (printed p.59) photo caption 'MUZ-AP71VG3' + UNITÉS EXTÉRIEURES table header"], "status": "candidate drafted (mitsubishi-muz-ap71-outdoor.json, staging only, not accepted)" }
+  ],
+  "unresolvedReferences": [
+    { "modelReference": "MSZ-AP / MUZ-AP color or other suffix variants", "reason": "the printed family page publishes only MSZ-AP60VG2, MSZ-AP71VG2, MUZ-AP60VG2, MUZ-AP71VG3; no colour suffix or alternate suffix is printed anywhere in pp.59-60; do not infer; PDF p.61 (printed p.60) is a blank navigation page" },
+    { "modelReference": "MSZ-AP sizes other than 60/71", "reason": "the printed spec table publishes only Tailles 60 and 71; no 25/35/50 AP sizes appear in this catalogue edition; do not infer other sizes" },
+    { "modelReference": "MSZ-AP multi-split eligibility", "reason": "mono-split pairings are evidenced by the shared table columns; multi-split MSZ-AP compatibility would be via MXZ outdoor references (catalogue pp.104-119), separate references, combination tables pending" }
+  ],
+  "coverageNotes": "Index lead pp.58-63 was shifted: PDF p.57 and PDF p.61 are blank navigation pages; the AP family is PDF p.59 (printed p.58, marketing/features page, no spec table) and PDF p.60 (printed p.59, single full spec table page, visually verified with page image). Family page header 'MSZ-AP. Mural Grandes Pièces R32' + 'INVERTER' label; page bullets: chauffage garanti jusqu'a -15 degC exterieur, consommation electrique maitrisee, mode nuit (-3dB(A)) disponible. Indoor photo caption 'MSZ-AP 60/71 VG2'; outdoor photo captions MUZ-AP60VG2 and MUZ-AP71VG3 (note: outdoor 71 suffix is VG3, indoor 71 is VG2; distinct published references, not a typo to normalize). Merged-cell visual verification: indoor sound power 65 merged 60/71; indoor dims 325x1100x257 merged; condensats 16/Non fournie merged; outdoor sound pressure 56 and sound power 69 merged 60/71; pipe diameters 1/4 and 1/2 flare merged; longueur/denivele 30/15 merged; fluide R32/675 merged; extra charge 20 g/m / 0.30 kg merged; supply 230 V (1P+N+T) merged; inter-unit cable 4G 1.5 merged. Non-merged: cooling power/input/EER/SEER/annual kWh, heating powers at +7 and -7, heating input/COP/SCOP/annual kWh, indoor airflow and sound pressure per speed, indoor mass 16/17, outdoor airflow, outdoor dims, outdoor mass 40/53, precharge 1.05/1.50 kg at 15.0 m, outdoor cable 3G 2.5 / 3G 4, protection 16/20 A. 4 unit candidate files total (2 indoor, 2 outdoor)."
+}
