@@ -22,5 +22,13 @@
     "src/style.css": "e44590a66a88bb417e4d6008dd2bae6988f41d6c99ffb672fcfc5b50e7ae227d"
   },
   "thermostatPolicy": "Stop at target; restart heating at target minus 1 K, cooling at target plus 1 K. Minimum-on/off and protection unchanged. Explicit Off overrides demand.",
-  "historyPolicy": "Two hours of accepted physical time, latest sample per ten-second bin, no invented example history; zero-inclusive automatic vertical scale, reset clears history."
+  "historyPolicy": "Two hours of accepted physical time, latest sample per ten-second bin, no invented example history; zero-inclusive automatic vertical scale, reset clears history.",
+  "githubRelease": {
+    "commit": "da2bf3c99cb9c9af4a60f9711584e7d4501df544",
+    "runId": 38115146723,
+    "referencePassed": 47,
+    "historyPassed": 2,
+    "hostedBrowserPassed": 5,
+    "receipt": "reviews/github-pages-zoom-deployment.json"
+  }
 }

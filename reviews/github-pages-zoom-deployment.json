@@ -1,0 +1,52 @@
+{
+  "checkedAt": "2026-10-11T05:40:11.039937+00:00",
+  "applicationCommit": "da2bf3c99cb9c9af4a60f9711584e7d4501df544",
+  "url": "https://annoyingtechnology.github.io/heatpump-simulator/",
+  "workflow": {
+    "runId": 38115146723,
+    "url": "https://github.com/AnnoyingTechnology/heatpump-simulator/actions/runs/38115146723",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "build",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-10-11T05:33:10Z",
+        "completedAt": "2026-10-11T05:39:09Z"
+      },
+      {
+        "name": "deploy",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-10-11T05:39:13Z",
+        "completedAt": "2026-10-11T05:39:22Z"
+      }
+    ]
+  },
+  "checks": {
+    "referenceAndProperties": {
+      "tests": 47,
+      "pass": 47,
+      "fail": 0,
+      "durationMs": 338301.27528
+    },
+    "rollingHistory": {
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "durationMs": 342.094075
+    },
+    "hostedBrowser": {
+      "tests": 5,
+      "pass": 5,
+      "receipt": "reviews/github-pages-browser-results.json"
+    }
+  },
+  "applicationBundleSha256": {
+    "index-sFQujA9O.js": "82da483982fb8fe858af9221f5c42cf33cfb61e790249571dcda496f4922c2d5",
+    "worker-DI-4LoFT.js": "f534e6c84631c5be35eb740aa9bef4ed94af793cecf08257ce681e1534d63b5f"
+  },
+  "wasmSha256": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+  "scope": "Reference R32 model with requested thermostat restart margin; experimental charge gate remains closed."
+}

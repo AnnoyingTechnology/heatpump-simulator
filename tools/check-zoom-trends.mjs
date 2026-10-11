@@ -48,8 +48,9 @@ try {
   await page.send('Emulation.setDeviceMetricsOverride',{width:1600,height:1000,deviceScaleFactor:1,mobile:false});
   await page.send('Page.bringToFront');
   await new Promise(r=>setTimeout(r,650));
-  assert.ok(await run(()=>{const r=document.querySelector('.lg-scale .ramp').getBoundingClientRect();return document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.closest('.legend')!==null}));
-  await page.screenshot('design/interface-trends.png');
+  assert.ok(await run(()=>{const r=document.querySelector('.lg-scale .ramp').getBoundingClientRect();return !!document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.closest('.legend')}));
+  const shot=await page.send('Page.captureScreenshot',{format:'png',fromSurface:false,captureBeyondViewport:false});
+  await writeFile('design/interface-trends.png',Buffer.from(shot.data,'base64'));
  });
  await check('reset clears previous trends; illustrative examples have no fabricated time history',async()=>{
   await run(()=>qa.store.restartSimulation());await settle();
