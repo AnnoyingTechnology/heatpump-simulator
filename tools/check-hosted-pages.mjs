@@ -99,9 +99,11 @@ try{
   await activateControl(page,'Resume');
   await page.waitFor(`document.querySelector('[data-unit="off"]')&&document.querySelector('.hd-speed-rate').textContent.includes('× actual')`,30000);
   assert.notEqual(await run(()=>document.querySelector('.time').textContent),paused);
-  assert.equal(await run(()=>document.querySelector('.opstate').dataset.kind),'running');
+  // The winter preset can legitimately idle after its main upstairs head is switched off and outdoors is raised to 12.5°C.
+  assert.ok(['running','idle'].includes(await run(()=>document.querySelector('.opstate').dataset.kind)));
  });
  const achievedRate=await run(()=>document.querySelector('.hd-speed-rate').textContent);
+ const resumedOperatingState=await run(()=>document.querySelector('.opstate').dataset.kind);
  await activateControl(page,'Pause');
  await new Promise(resolve=>setTimeout(resolve,1000));
  await check('hosted application and assets report no runtime or loading errors',async()=>{
@@ -110,7 +112,7 @@ try{
    e.method==='Network.responseReceived'&&e.params.response.status>=400&&!e.params.response.url.endsWith('/favicon.ico'));
   assert.deepEqual(failed,[]);
  });
- const result={checkedAt:new Date().toISOString(),url,wasmUrl:wasmUrl.href,wasmSha256:wasmHash,expectedBundles,bundleHashes,checks,achievedRate,desktop:{width:1600,height:1000}};
+ const result={checkedAt:new Date().toISOString(),url,wasmUrl:wasmUrl.href,wasmSha256:wasmHash,expectedBundles,bundleHashes,checks,achievedRate,resumedOperatingState,desktop:{width:1600,height:1000}};
  await writeFile('reviews/github-pages-browser-results.json',JSON.stringify(result,null,2)+'\n');
  console.log(JSON.stringify(result,null,2));
 }finally{await page.close()}

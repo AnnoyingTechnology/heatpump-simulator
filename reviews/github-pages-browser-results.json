@@ -1,17 +1,17 @@
 {
-  "checkedAt": "2026-10-11T07:23:19.319Z",
+  "checkedAt": "2026-10-11T08:08:31.078Z",
   "url": "https://annoyingtechnology.github.io/heatpump-simulator/",
   "wasmUrl": "https://annoyingtechnology.github.io/heatpump-simulator/vendor/coolprop-safe/coolprop.wasm",
   "wasmSha256": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
   "expectedBundles": [
-    "index-CDcui9zN.css",
-    "index-xx84d2m0.js",
-    "worker-Bt2PmKhk.js"
+    "index-CuXg6wDQ.js",
+    "index-qld-Gakt.css",
+    "worker-BqcHrAZh.js"
   ],
   "bundleHashes": {
-    "index-CDcui9zN.css": "9ffa1ed7922d7e34289b9fc7c0671a5172022b027832ed154fa83122c7e5e831",
-    "index-xx84d2m0.js": "ba8159a74f4d8cfb67b7fb8f852c36ffa1242c0e0f7fc33f1d83a0bc1bb2081b",
-    "worker-Bt2PmKhk.js": "62f0f5269a7a4aaaf72cfce9cc49feafcc786311b2397a1ff70be64b21bba4d9"
+    "index-CuXg6wDQ.js": "d40dcedf2631329aa31ddee0c3879835103bf450e6aaf1ff2466027baa3ee46b",
+    "index-qld-Gakt.css": "3b2fb7e1e5fd468487bd16f70c7f81d8b5d32bcfd5e0bbd5411064ab78c67618",
+    "worker-BqcHrAZh.js": "1a0c9e27e37b7d25d65d0cb74b7ee7e49ed9df603eab10e908d485a138da8337"
   },
   "checks": [
     {
@@ -27,6 +27,10 @@
       "passed": true
     },
     {
+      "name": "hosted winter preset, room junctions, session COP and drained-water total are visible",
+      "passed": true
+    },
+    {
       "name": "paused weather and individual indoor controls preserve the simulation clock",
       "passed": true
     },
@@ -39,7 +43,8 @@
       "passed": true
     }
   ],
-  "achievedRate": "11.4× actual",
+  "achievedRate": "42.7× actual",
+  "resumedOperatingState": "idle",
   "desktop": {
     "width": 1600,
     "height": 1000

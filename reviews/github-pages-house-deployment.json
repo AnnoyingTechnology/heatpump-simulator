@@ -1,0 +1,84 @@
+{
+  "checkedAt": "2026-10-11T08:09:12.705159+00:00",
+  "applicationCommit": "732bc55017be9a610487c0b422fa39ea569a98fd",
+  "url": "https://annoyingtechnology.github.io/heatpump-simulator/",
+  "workflow": {
+    "runId": 38123325775,
+    "url": "https://github.com/AnnoyingTechnology/heatpump-simulator/actions/runs/38123325775",
+    "status": "completed",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "build",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-10-11T08:00:58Z",
+        "completedAt": "2026-10-11T08:06:26Z"
+      },
+      {
+        "name": "deploy",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-10-11T08:06:31Z",
+        "completedAt": "2026-10-11T08:06:42Z"
+      }
+    ]
+  },
+  "checks": {
+    "referenceAndProperties": {
+      "tests": 69,
+      "pass": 69,
+      "fail": 0,
+      "duration_ms": 312311.174843
+    },
+    "rollingHistory": {
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "duration_ms": 241.111439
+    },
+    "hostedBrowser": {
+      "tests": 7,
+      "pass": 7,
+      "receipt": "reviews/github-pages-browser-results.json"
+    },
+    "localBrowser": {
+      "lossScale": {
+        "tests": 4,
+        "pass": 4,
+        "receipt": "reviews/loss-scale-browser-results.json"
+      },
+      "zoneNavigation": {
+        "tests": 10,
+        "pass": 10,
+        "receipt": "reviews/zone-navigation-browser-results.json"
+      },
+      "zoomTrends": {
+        "tests": 5,
+        "pass": 5,
+        "receipt": "reviews/zoom-trends-browser-results.json"
+      },
+      "houseThermal": {
+        "tests": 3,
+        "pass": 3,
+        "receipt": "reviews/house-thermal-browser-results.json"
+      },
+      "linksSessionWater": {
+        "tests": 6,
+        "pass": 6,
+        "receipt": "reviews/links-session-water-browser-results.json"
+      }
+    }
+  },
+  "assetSha256": {
+    "index-CuXg6wDQ.js": "d40dcedf2631329aa31ddee0c3879835103bf450e6aaf1ff2466027baa3ee46b",
+    "index-qld-Gakt.css": "3b2fb7e1e5fd468487bd16f70c7f81d8b5d32bcfd5e0bbd5411064ab78c67618",
+    "worker-BqcHrAZh.js": "1a0c9e27e37b7d25d65d0cb74b7ee7e49ed9df603eab10e908d485a138da8337"
+  },
+  "wasmSha256": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+  "scope": "Conserved effective room links, provisional winter house preset, cumulative service COP with its own graph, actual cumulative whole-system drainage, outdoor baseline removal and field-line control margin. Generic equipment physics retained; charge gate remains closed.",
+  "notes": [
+    "Hosted resume accepts running or idle: disabling the main upstairs head after raising outdoors to12.5\u00b0C can leave the winter preset without heat demand. Clock progress and runtime/fault checks still apply.",
+    "The20-minute warm-start owner benchmark approximates room temperatures at649W, is not a whole-house equilibrium or an OEM performance fit."
+  ]
+}
