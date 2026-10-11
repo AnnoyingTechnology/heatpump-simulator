@@ -18,7 +18,7 @@ import { ICE_FULL_KG, ICE_START_KG, activeRooms, currentReadings, indoorCleanlin
 import { fixtureFor } from './fixtures';
 import { outdoorModelInfo, equipmentManufacturerLabel } from './equipment';
 import type { AppState, InterzoneLink, OutdoorKind, RoomConfig, ZoomPreset } from './types';
-import { INDOOR_CLASSES, OWNER_PORTS, hasInterzoneGeometry, interzoneConductance, outdoorPortCapacity, roomVolumeM3 } from './types';
+import { INDOOR_CLASSES, OWNER_PORTS, hasInterzoneGeometry, interzoneConductance, usesBuoyancyOpening, outdoorPortCapacity, roomVolumeM3 } from './types';
 
 type G = SVGGElement;
 
@@ -998,14 +998,17 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       setAttr(v.g, 'data-kind', kind);
       setAttr(v.g, 'data-orientation', orientation);
       setAttr(v.g, 'data-heat-w', q === null ? 'unknown' : String(q));
-      setAttr(v.g, 'data-conductance', String(interzoneConductance(l)));
+      const transfer = currentReadings(s).engine?.interzoneTransfers?.find(t => t.roomA === l.roomA && t.roomB === l.roomB || t.roomA === l.roomB && t.roomB === l.roomA);
+      const effectiveH = usesBuoyancyOpening(l) ? transfer?.effectiveConductanceWK : interzoneConductance(l);
+      setAttr(v.g, 'data-conductance', effectiveH === undefined ? 'unknown' : String(effectiveH));
+      setAttr(v.g, 'data-buoyancy-state', usesBuoyancyOpening(l) ? transfer?.buoyancyState ?? 'pending' : 'prescribed');
       toggleClass(v.g, 'na', q === null);
       toggleClass(v.g, 'held', held && q !== null);
       const a = names.get(l.roomA) ?? l.roomA;
       const b = names.get(l.roomB) ?? l.roomB;
       if (v.tag) setText(v.tag, ia <= ib ? `${roomTag(a)}–${roomTag(b)}` : `${roomTag(b)}–${roomTag(a)}`);
       const path = kind === 'combined' ? 'open passage and solid contact' : kind === 'opening' ? 'open passage' : 'solid wall or floor';
-      const what = `${a} and ${b}: ${path}, ${orientation} connection, ${fmt(interzoneConductance(l), 0)} W/K`;
+      const what = `${a} and ${b}: ${path}, ${orientation} connection, ${effectiveH === undefined ? 'buoyancy value pending' : `${fmt(effectiveH, 0)} W/K${usesBuoyancyOpening(l) ? ' now' : ''}`}`;
       const heat = q === null ? 'live heat unavailable' : `${fmt(Math.abs(q) / 1000, 2)} kW from ${q >= 0 ? a : b} to ${q >= 0 ? b : a}${held ? ' (last calculated step)' : ''}`;
       setAttr(v.g, 'aria-label', `Room link ${what}; ${heat}`);
       setText(v.title, `${what} · ${heat}. Click to edit.`);

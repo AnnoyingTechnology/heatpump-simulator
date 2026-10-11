@@ -1,0 +1,61 @@
+{
+  "checkedAt": "2026-10-11T11:38:13.900Z",
+  "url": "https://annoyingtechnology.github.io/heatpump-simulator/",
+  "wasmUrl": "https://annoyingtechnology.github.io/heatpump-simulator/vendor/coolprop-safe/coolprop.wasm",
+  "wasmSha256": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+  "expectedBundles": [
+    "index-BCCfOSNW.js",
+    "index-zOai9EJ_.css",
+    "worker-Ik7XGwYD.js"
+  ],
+  "bundleHashes": {
+    "index-BCCfOSNW.js": "6ec792ebb216b1fbfb28abfed8ccc24807118ca9d4dbb0bf06beb044550df4fa",
+    "index-zOai9EJ_.css": "cc011b0c0226460af87bd233175437906abcbb6efa80a296c9421f9e6a7c4e5d",
+    "worker-Ik7XGwYD.js": "2c14dcf0a25e148ae3469c39131264dca43f7d2658d399727317e1060b7f0ae9"
+  },
+  "checks": [
+    {
+      "name": "hosted site starts a real running worker with physical sensor readings",
+      "passed": true
+    },
+    {
+      "name": "hosted whole-house ruler keeps RT markers beside average U and estimated exposed area",
+      "passed": true
+    },
+    {
+      "name": "hosted zoom keeps the temperature scales at the bottom and headline trends use borderless separators",
+      "passed": true
+    },
+    {
+      "name": "hosted winter preset, room junctions, session COP and drained-water total are visible",
+      "passed": true
+    },
+    {
+      "name": "paused weather and individual indoor controls preserve the simulation clock",
+      "passed": true
+    },
+    {
+      "name": "requested acceleration resumes physical time without restarting",
+      "passed": true
+    },
+    {
+      "name": "hosted application and assets report no runtime or loading errors",
+      "passed": true
+    }
+  ],
+  "achievedRate": "41.1\u00d7",
+  "resumedOperatingState": "idle",
+  "desktop": {
+    "width": 1600,
+    "height": 1000
+  },
+  "applicationCommit": "008f5d815ce11811cd1cb76e6f317c39b0c85c10",
+  "runId": 38135844909,
+  "runUrl": "https://github.com/AnnoyingTechnology/heatpump-simulator/actions/runs/38135844909",
+  "buildConclusion": "success",
+  "deployConclusion": "success",
+  "referenceTests": 96,
+  "historyTests": 2,
+  "catalogueTests": 7,
+  "smokeSchedules": 25
+}

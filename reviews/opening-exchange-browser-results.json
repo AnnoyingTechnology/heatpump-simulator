@@ -1,0 +1,60 @@
+{
+  "checkedAt": "2026-10-11T11:45:12.278Z",
+  "sourceHashes": {
+    "src/engine/interzone.ts": "20671a676f3174e1757f4368ef0b4f1046a07b4b35d8e5377aaf689c8a43ee2b",
+    "src/engine/engine.ts": "92174a5beb3fbbefd9c9bfba64a3f0155261a11782c9420f4bdfe3d6ae887903",
+    "src/engine/types.ts": "2ed28a4c5e7fbe4e698752f717b2289e250aae0cda29649aa96bd9189b8ee400",
+    "src/types.ts": "678598880494a05fcfe48d135a5507633a8658eb84b3cb29870065a279461e9b",
+    "src/state.ts": "66f03aba92d30dcabba20870f9a62b818a24d4122ef4fb78e0391d545679565b",
+    "src/settings.ts": "370d284bda37bae6be339162ffceb76a1c943f7d83d68d9e4a4e405dab20c102",
+    "src/scene.ts": "16cb5eb6560f190f040aec0b1b43745fa5544a050839cb1ce6473064b576aad7",
+    "src/runtime/config.ts": "b5b16659135246f17688d3d3d20d59ce9ef79ea3a370d259acd02d46e99fa748"
+  },
+  "checks": [
+    {
+      "name": "owner floor opening strongly favours L1→L2, while L1→L0 retains solid conduction",
+      "passed": true
+    },
+    {
+      "name": "boundary chip and local editor show accepted dynamic conductance and stability",
+      "passed": true
+    },
+    {
+      "name": "wall orientation exposes assumed opening height and conserves accepted time/stores",
+      "passed": true
+    },
+    {
+      "name": "closed aperture disables background mixing; reopening retains explicit background input",
+      "passed": true
+    },
+    {
+      "name": "lower-room identity survives room reorder; explicit H override remains legacy and geometry clears it",
+      "passed": true
+    }
+  ],
+  "initialTransfers": [
+    {
+      "roomA": "ground",
+      "roomB": "first",
+      "heatFromAToBW": -75.91341330024203,
+      "solidHeatFromAToBW": -75.91341330024203,
+      "backgroundHeatFromAToBW": 0,
+      "buoyancyHeatFromAToBW": 0,
+      "effectiveConductanceWK": 13.803680981595093,
+      "equivalentExchangeM3s": 0,
+      "buoyancyState": "stable"
+    },
+    {
+      "roomA": "first",
+      "roomB": "attic",
+      "heatFromAToBW": 398.10672910605246,
+      "solidHeatFromAToBW": 41.38797900069613,
+      "backgroundHeatFromAToBW": 0,
+      "buoyancyHeatFromAToBW": 356.7187501053564,
+      "effectiveConductanceWK": 132.77619294031769,
+      "equivalentExchangeM3s": 0.09855244529383914,
+      "buoyancyState": "unstable"
+    }
+  ],
+  "scope": "Actual guarded browser worker; declared owner geometry and equal/opposite sensible-only transfers; controls preserve accepted stores/time and lower-room identity; not a whole-house calibration"
+}

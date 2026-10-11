@@ -1,0 +1,395 @@
+{
+  "checkedAt": "2026-10-11T11:46:43.197Z",
+  "snapshot": "/tmp/heatpump-opening-science-snapshot-9ggrrx_t",
+  "method": "Reviewer independent reduced-gravity scalar reconstruction, Bernoulli wall half-aperture quadrature, fixed-state feedforward/conservation, native total-H/W phase storage and small-room nonlinear-network boundedness. Shared native EOS; no measured owner/OEM calibration.",
+  "sourceHashes": {
+    "src/engine/interzone.ts": "20671a676f3174e1757f4368ef0b4f1046a07b4b35d8e5377aaf689c8a43ee2b",
+    "src/engine/engine.ts": "92174a5beb3fbbefd9c9bfba64a3f0155261a11782c9420f4bdfe3d6ae887903",
+    "src/engine/types.ts": "2ed28a4c5e7fbe4e698752f717b2289e250aae0cda29649aa96bd9189b8ee400",
+    "src/engine/demand.ts": "2723ec0b56398de36cace269a12f120622c1e0eef5caf2cfb6c4c61aaeba4301",
+    "src/engine/cycle.ts": "294d647a26f60d319641c9b7fe4645378472dd5c70a8e6c0ef6075168aaf29e4",
+    "src/engine/drive.ts": "d94247f20b359a61980e0d5af121d5299133f3b65a49358c4c40540a6655d0dd",
+    "src/engine/envelope.ts": "eaab1d96df755b322050854fa8b7108e1f4918fbeb4dd1206d815ba9c74dc4e3",
+    "src/engine/air.ts": "6dfb70bd7b7c5b84501e0de1633cf8378ea0b2bd0eb903dafe09c31625745d15",
+    "src/engine/properties.ts": "6fb2812381e471623e449a5b593cd4e1d9874f32e559b33bd05c2eac7b6ad36e",
+    "public/vendor/coolprop-safe/adapter.js": "06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34",
+    "public/vendor/coolprop-safe/coolprop.js": "6fa2e627803e2453da12cb9fce160ca3326851cd179444edc5ab698e21524d6c",
+    "public/vendor/coolprop-safe/coolprop.wasm": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+    "src/types.ts": "678598880494a05fcfe48d135a5507633a8658eb84b3cb29870065a279461e9b",
+    "src/state.ts": "66f03aba92d30dcabba20870f9a62b818a24d4122ef4fb78e0391d545679565b",
+    "src/runtime/config.ts": "b5b16659135246f17688d3d3d20d59ce9ef79ea3a370d259acd02d46e99fa748",
+    "src/settings.ts": "370d284bda37bae6be339162ffceb76a1c943f7d83d68d9e4a4e405dab20c102",
+    "src/scene.ts": "16cb5eb6560f190f040aec0b1b43745fa5544a050839cb1ce6473064b576aad7",
+    "research/vertical-room-opening-model.md": "55bd20d46b57ced6d4e164a57052c339c9d620dfb3009ee2221fa697394644a9",
+    "tests/engine/opening-exchange.test.mjs": "9c1901922a9c1fcfe9aa8785a379990252aaec13d820f80843a2e517c6703376"
+  },
+  "scalar": [
+    {
+      "lowC": 16,
+      "highC": 21.5,
+      "oneWayEquivalentM3s": 0,
+      "heatFromLowerToUpperW": -75.920245398773,
+      "state": "stable"
+    },
+    {
+      "lowC": 21.5,
+      "highC": 18.5,
+      "oneWayEquivalentM3s": 0.09857978359472844,
+      "heatFromLowerToUpperW": 398.4275872114538,
+      "state": "unstable"
+    },
+    {
+      "lowC": 18.5,
+      "highC": 21.5,
+      "oneWayEquivalentM3s": 0,
+      "heatFromLowerToUpperW": -41.41104294478528,
+      "state": "stable"
+    },
+    {
+      "lowC": 21.5,
+      "highC": 21.5,
+      "oneWayEquivalentM3s": 0,
+      "heatFromLowerToUpperW": 0,
+      "state": "neutral"
+    },
+    {
+      "lowC": 40,
+      "highC": -10,
+      "oneWayEquivalentM3s": 0.40592693777713024,
+      "heatFromLowerToUpperW": 25191.93401330734,
+      "state": "unstable"
+    }
+  ],
+  "wallChecks": [
+    {
+      "areaM2": 4,
+      "heightM": 2,
+      "cd": 0.6,
+      "aC": 25,
+      "bC": 15,
+      "integratedOneWayM3s": 0.6544772365893258,
+      "implementedOneWayM3s": 0.6544772265310361,
+      "relativeDifference": 1.5368433129984774e-8
+    },
+    {
+      "areaM2": 2,
+      "heightM": 1.7,
+      "cd": 0.45,
+      "aC": 15,
+      "bC": 23,
+      "integratedOneWayM3s": 0.2027319855886895,
+      "implementedOneWayM3s": 0.202731982473017,
+      "relativeDifference": 1.536843083113122e-8
+    }
+  ],
+  "control": {
+    "actualTemperaturesC": [
+      16,
+      21.5,
+      18.5
+    ],
+    "roomPowersW": [
+      75.920245398773,
+      -474.34783261022676,
+      398.4275872114538
+    ],
+    "ownTarget23LossW": 813.7862011919375,
+    "offTargetsIgnored": true
+  },
+  "phase": {
+    "oneIntervalHeatW": 2310.770306453685,
+    "retainedHotRoomWaterKg": 0.00017607443827607743,
+    "energyResidualJ": 0,
+    "waterResidualKg": 0,
+    "eachRoomTotalWaterConserved": true
+  },
+  "numerical": {
+    "acceptedSubsteps": 18,
+    "firstStepS": 0.01050871374496942,
+    "acceptedTotalS": 0.39999999999999997,
+    "finalTemperaturesC": [
+      15.949020831731332,
+      15.451015554256287,
+      15.379758990233768
+    ],
+    "maxEnergyResidualJ": 2.9802322387695312e-8,
+    "maxWaterResidualKg": 0,
+    "noOvershoot": true
+  },
+  "capacitySampling": {
+    "minCpJkgDryK": 1004.7454387324032,
+    "samples": [
+      {
+        "tC": -25,
+        "pressurePa": 70000,
+        "rh": 0,
+        "cpJkgDryK": 1004.7454387324032
+      },
+      {
+        "tC": -25,
+        "pressurePa": 70000,
+        "rh": 0.5,
+        "cpJkgDryK": 1005.2713327797311
+      },
+      {
+        "tC": -25,
+        "pressurePa": 70000,
+        "rh": 1,
+        "cpJkgDryK": 1005.7985915997336
+      },
+      {
+        "tC": -25,
+        "pressurePa": 101325,
+        "rh": 0,
+        "cpJkgDryK": 1005.5299682938361
+      },
+      {
+        "tC": -25,
+        "pressurePa": 101325,
+        "rh": 0.5,
+        "cpJkgDryK": 1005.894377432904
+      },
+      {
+        "tC": -25,
+        "pressurePa": 101325,
+        "rh": 1,
+        "cpJkgDryK": 1006.2596335123347
+      },
+      {
+        "tC": -25,
+        "pressurePa": 110000,
+        "rh": 0,
+        "cpJkgDryK": 1005.7474238465069
+      },
+      {
+        "tC": -25,
+        "pressurePa": 110000,
+        "rh": 0.5,
+        "cpJkgDryK": 1006.0833797855543
+      },
+      {
+        "tC": -25,
+        "pressurePa": 110000,
+        "rh": 1,
+        "cpJkgDryK": 1006.4201008068225
+      },
+      {
+        "tC": 0,
+        "pressurePa": 70000,
+        "rh": 0,
+        "cpJkgDryK": 1005.0461224840467
+      },
+      {
+        "tC": 0,
+        "pressurePa": 70000,
+        "rh": 0.5,
+        "cpJkgDryK": 1010.162321911557
+      },
+      {
+        "tC": 0,
+        "pressurePa": 70000,
+        "rh": 1,
+        "cpJkgDryK": 1015.3579775319733
+      },
+      {
+        "tC": 0,
+        "pressurePa": 101325,
+        "rh": 0,
+        "cpJkgDryK": 1005.6656329089008
+      },
+      {
+        "tC": 0,
+        "pressurePa": 101325,
+        "rh": 0.5,
+        "cpJkgDryK": 1009.2038494061871
+      },
+      {
+        "tC": 0,
+        "pressurePa": 101325,
+        "rh": 1,
+        "cpJkgDryK": 1012.7873890322599
+      },
+      {
+        "tC": 0,
+        "pressurePa": 110000,
+        "rh": 0,
+        "cpJkgDryK": 1005.8372801733558
+      },
+      {
+        "tC": 0,
+        "pressurePa": 110000,
+        "rh": 0.5,
+        "cpJkgDryK": 1009.0978534809311
+      },
+      {
+        "tC": 0,
+        "pressurePa": 110000,
+        "rh": 1,
+        "cpJkgDryK": 1012.3986447350726
+      },
+      {
+        "tC": 20,
+        "pressurePa": 70000,
+        "rh": 0,
+        "cpJkgDryK": 1005.6030155585909
+      },
+      {
+        "tC": 20,
+        "pressurePa": 70000,
+        "rh": 0.5,
+        "cpJkgDryK": 1025.538279436937
+      },
+      {
+        "tC": 20,
+        "pressurePa": 70000,
+        "rh": 1,
+        "cpJkgDryK": 1046.4418008459995
+      },
+      {
+        "tC": 20,
+        "pressurePa": 101325,
+        "rh": 0,
+        "cpJkgDryK": 1006.1252635529249
+      },
+      {
+        "tC": 20,
+        "pressurePa": 101325,
+        "rh": 0.5,
+        "cpJkgDryK": 1019.8524499481626
+      },
+      {
+        "tC": 20,
+        "pressurePa": 101325,
+        "rh": 1,
+        "cpJkgDryK": 1034.0956710776184
+      },
+      {
+        "tC": 20,
+        "pressurePa": 110000,
+        "rh": 0,
+        "cpJkgDryK": 1006.2699294965988
+      },
+      {
+        "tC": 20,
+        "pressurePa": 110000,
+        "rh": 0.5,
+        "cpJkgDryK": 1018.909778867404
+      },
+      {
+        "tC": 20,
+        "pressurePa": 110000,
+        "rh": 1,
+        "cpJkgDryK": 1032.000705208719
+      },
+      {
+        "tC": 45,
+        "pressurePa": 70000,
+        "rh": 0,
+        "cpJkgDryK": 1006.7169315107267
+      },
+      {
+        "tC": 45,
+        "pressurePa": 70000,
+        "rh": 0.5,
+        "cpJkgDryK": 1094.0219299021048
+      },
+      {
+        "tC": 45,
+        "pressurePa": 70000,
+        "rh": 1,
+        "cpJkgDryK": 1197.9226462975314
+      },
+      {
+        "tC": 45,
+        "pressurePa": 101325,
+        "rh": 0,
+        "cpJkgDryK": 1007.1465742245164
+      },
+      {
+        "tC": 45,
+        "pressurePa": 101325,
+        "rh": 0.5,
+        "cpJkgDryK": 1066.2181801602223
+      },
+      {
+        "tC": 45,
+        "pressurePa": 101325,
+        "rh": 1,
+        "cpJkgDryK": 1133.263637701369
+      },
+      {
+        "tC": 45,
+        "pressurePa": 110000,
+        "rh": 0,
+        "cpJkgDryK": 1007.265563301587
+      },
+      {
+        "tC": 45,
+        "pressurePa": 110000,
+        "rh": 0.5,
+        "cpJkgDryK": 1061.4907916118416
+      },
+      {
+        "tC": 45,
+        "pressurePa": 110000,
+        "rh": 1,
+        "cpJkgDryK": 1122.538408123725
+      },
+      {
+        "tC": 80,
+        "pressurePa": 70000,
+        "rh": 0,
+        "cpJkgDryK": 1009.1042907708722
+      },
+      {
+        "tC": 80,
+        "pressurePa": 70000,
+        "rh": 0.5,
+        "cpJkgDryK": 1630.6983539673927
+      },
+      {
+        "tC": 80,
+        "pressurePa": 70000,
+        "rh": 1,
+        "cpJkgDryK": 3652.4163863612157
+      },
+      {
+        "tC": 80,
+        "pressurePa": 101325,
+        "rh": 0,
+        "cpJkgDryK": 1009.4403143911644
+      },
+      {
+        "tC": 80,
+        "pressurePa": 101325,
+        "rh": 0.5,
+        "cpJkgDryK": 1381.363068250987
+      },
+      {
+        "tC": 80,
+        "pressurePa": 101325,
+        "rh": 1,
+        "cpJkgDryK": 2118.20775333727
+      },
+      {
+        "tC": 80,
+        "pressurePa": 110000,
+        "rh": 0,
+        "cpJkgDryK": 1009.5333577620503
+      },
+      {
+        "tC": 80,
+        "pressurePa": 110000,
+        "rh": 0.5,
+        "cpJkgDryK": 1344.2812189333074
+      },
+      {
+        "tC": 80,
+        "pressurePa": 110000,
+        "rh": 1,
+        "cpJkgDryK": 1964.9520085798786
+      }
+    ],
+    "limitation": "Finite native samples, not a global proof for arbitrary property states or coupled external/HVAC loads."
+  }
+}

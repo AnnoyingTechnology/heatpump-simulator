@@ -18,6 +18,25 @@ export interface RoomConfig {
   naturalAirConductanceWK: number; metalCapacityJK: number;
   pipe: { lengthM: number; gasInsideDiameterM: number; liquidInsideDiameterM: number; elevationM: number; insulationConductanceWmK: number };
 }
+/** Sensible-only equivalent of opening counterflow; no air/water transport. */
+export interface OpeningExchange {
+  /** Room-connection direction: vertical passes through a horizontal floor aperture. */
+  orientation: 'vertical' | 'horizontal';
+  areaM2: number;
+  /** Required for vertical links; physical elevation identity survives A/B renaming. */
+  lowerRoomId?: string;
+  /** Required positive wall-aperture height for horizontal links, not room height. */
+  heightM?: number;
+  backgroundConductanceWK?: number;
+  floorCoefficient?: number;
+  wallDischargeCoefficient?: number;
+}
+export interface EngineInterzoneLink {
+  roomA: string; roomB: string;
+  /** Total prescribed H for legacy links; solid-path H when openingExchange is present. */
+  conductanceWK: number;
+  openingExchange?: OpeningExchange;
+}
 export interface EngineConfig {
   fluid: 'R32'; mode: Mode; outdoorTemperatureC: number; outdoorRelativeHumidity: number; ambientPressurePa: number;
   /** Declared outdoor connection count; not a thermal-capacity or calibrated performance claim. */
@@ -33,8 +52,9 @@ export interface EngineConfig {
     leak?: { physicalCellId: string; rateKgs: number };
   };
   rooms: RoomConfig[];
-  /** Effective sensible conductances between air nodes, without air/moisture transport or resolved buoyancy. */
-  interzoneLinks?: { roomA: string; roomB: string; conductanceWK: number }[];
+  /** Conserved sensible links, optionally with buoyancy-informed opening exchange.
+   * Neither mode transports air/water or resolves spatial stratification. */
+  interzoneLinks?: EngineInterzoneLink[];
   compressor: { displacementM3rev: number; speedMinRps: number; speedMaxRps: number; isentropicEfficiency: number; volumetricEfficiency: number; driveEfficiency: number; superheatK: number; subcoolK: number; maxDischargeC: number; maxPressureRatio: number };
   outdoor: { cleanFraction?: number; volumetricAirFlowM3s?: number; airMassFlowKgs: number; fanPowerW: number; airConductanceWK: number; refrigerantConductanceWK: number; naturalAirConductanceWK: number; metalCapacityJK: number; depositionAreaM2: number; frostDensityKgm3: number; frostConductivityWmK: number; finGapM: number; drainageSeconds: number };
   control: { strategy?: 'inverter' | 'on-off'; fixedSpeedRps?: number; controlsW: number; proportionalSpeedRpsK: number;
@@ -77,6 +97,14 @@ export interface InterzoneTransfer {
   roomA: string; roomB: string;
   /** Instantaneous sensible heat at accepted temperatures/canonical conductance; positive A → B. */
   heatFromAToBW: number;
+  /** Opening-mode diagnostics only; legacy output shape is unchanged. */
+  solidHeatFromAToBW?: number;
+  backgroundHeatFromAToBW?: number;
+  buoyancyHeatFromAToBW?: number;
+  effectiveConductanceWK?: number;
+  /** Sensible-equivalent one-direction flow, not actual modeled mass transport. */
+  equivalentExchangeM3s?: number;
+  buoyancyState?: 'stable' | 'unstable' | 'neutral' | 'wall-exchange';
 }
 export interface EngineOutput {
   provenance: 'live-generic-unvalidated'; simulatedSeconds: number; state: OperatingState; requestedMode: Mode; effectiveMode: Mode | null;

@@ -1,7 +1,7 @@
 import { defaultEngineConfig, defaultRoomConfig } from '../engine/defaults.ts';
 import type { EngineConfig } from '../engine/types.ts';
 import type { Config } from '../types.ts';
-import { outdoorPortCapacity, roomVolumeM3, roomEnvelopeConductanceWK, roomVentilation, interzoneConductance } from '../types.ts';
+import { outdoorPortCapacity, roomVolumeM3, roomEnvelopeConductanceWK, roomVentilation, engineInterzoneLink } from '../types.ts';
 
 export interface LiveParameters {
   fieldLines: 'idealized' | 'physical';
@@ -90,7 +90,7 @@ export function engineConfigFromUi(cfg: Config, live: LiveParameters, activeInit
         insulationConductanceWmK: live.pipeInsulationConductanceWmK } };
   });
   const activeIds = new Set(c.rooms.map(r => r.id));
-  c.interzoneLinks = (cfg.interzoneLinks ?? []).filter(link => activeIds.has(link.roomA) && activeIds.has(link.roomB)).map(link => ({ roomA: link.roomA, roomB: link.roomB, conductanceWK: interzoneConductance(link) }));
+  c.interzoneLinks = (cfg.interzoneLinks ?? []).filter(link => activeIds.has(link.roomA) && activeIds.has(link.roomB)).map(link => engineInterzoneLink(link, cfg.rooms.map(room => room.id)));
   if (live.circuitModel === 'inventory') {
     c.inventory = { ...(activeInitialization ?? {
       initialMassKg: live.initialChargeKg, initialFluidTemperatureC: live.initialFluidTemperatureC ?? cfg.outdoorC,

@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-11T11:40:21.546550+00:00",
+  "backend": "guarded",
+  "passed": true,
+  "tests": 41,
+  "openingTests": 13,
+  "adjacentTests": 28,
+  "command": "HEATPUMP_TEST_BACKEND=guarded node --test tests/engine/opening-exchange.test.mjs tests/engine/interzone.test.mjs tests/engine/ventilation-recovery.test.mjs tests/engine/thermostat.test.mjs tests/engine/session-cop.test.mjs tests/engine/drained-water.test.mjs",
+  "typecheckPassed": true,
+  "sourceSha256": {
+    "src/engine/interzone.ts": "20671a676f3174e1757f4368ef0b4f1046a07b4b35d8e5377aaf689c8a43ee2b",
+    "src/engine/types.ts": "2ed28a4c5e7fbe4e698752f717b2289e250aae0cda29649aa96bd9189b8ee400",
+    "src/engine/engine.ts": "92174a5beb3fbbefd9c9bfba64a3f0155261a11782c9420f4bdfe3d6ae887903",
+    "tests/engine/opening-exchange.test.mjs": "9c1901922a9c1fcfe9aa8785a379990252aaec13d820f80843a2e517c6703376",
+    "research/vertical-room-opening-model.md": "55bd20d46b57ced6d4e164a57052c339c9d620dfb3009ee2221fa697394644a9"
+  },
+  "legacyParityReceipt": "reviews/opening-legacy-parity-results.json",
+  "constants": {
+    "densityKgm3": 1.2,
+    "specificHeatJkgK": 1006,
+    "floorCoefficient": 0.055,
+    "wallDischargeCoefficient": 0.6
+  },
+  "scope": "Sensible-equivalent opening counterflow; no inter-room mass/humidity transport, spatial stratification or manufacturer calibration",
+  "numerics": "Opening-mode configurations bound shared dt by .25*dryAirMassKg*1000/incidentEffectiveH; legacy-only dt unchanged; powers and areas never clipped"
+}

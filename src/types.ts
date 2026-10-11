@@ -1,3 +1,4 @@
+import type { EngineInterzoneLink } from './engine/types';
 import type { LiveParameters } from './runtime/config';
 import { CATALOGUE_INDOORS, CATALOGUE_OUTDOORS } from './equipment-data';
 import { outdoorModelInfo, equipmentManufacturerLabel } from './equipment';
@@ -78,9 +79,11 @@ export function roomExposedEnvelopeAreaM2(room: EnvelopeRoom, cfg?: EnvelopeGeom
     const neighbourAt = rooms.findIndex(candidate => candidate.id === neighbour);
     if (neighbourAt < 0 || neighbourAt === at) continue;
     const area = hasInterzoneGeometry(link) ? (link.openingAreaM2 ?? 0) + (link.contactAreaM2 ?? 0) : link.areaM2 ?? 0;
-    // Top-to-bottom stack determines vertical neighbours; left/right for a
-    // horizontal link is inferred from that same order, not surveyed layout.
-    const face = link.orientation === 'horizontal' ? (neighbourAt < at ? 'left' : 'right') : (neighbourAt < at ? 'ceiling' : 'floor');
+    // Persisted floor elevation identity also determines shared envelope faces.
+    // Legacy links and same-level left/right inference retain stack ordering.
+    const lower = link.lowerRoomId === link.roomA || link.lowerRoomId === link.roomB ? link.lowerRoomId : null;
+    const face = link.orientation === 'horizontal' ? (neighbourAt < at ? 'left' : 'right')
+      : lower ? (room.id === lower ? 'ceiling' : 'floor') : (neighbourAt < at ? 'ceiling' : 'floor');
     deductions[face] = Math.max(deductions[face], Math.min(area, face === 'floor' || face === 'ceiling' ? floor : wall));
   }
   return 2 * floor + 4 * wall - deductions.floor - deductions.ceiling - deductions.left - deductions.right;
@@ -137,6 +140,13 @@ export interface InterzoneLink {
   insulationMm?: number;
   /** Generic effective sensible coefficient for the opening, not an airflow/buoyancy solution. */
   openingTransferWm2K?: number;
+  /** Geometry opening law; prescribed keeps legacy constant-H scenarios explicit. */
+  openingModel?: 'buoyancy' | 'prescribed';
+  backgroundConductanceWK?: number;
+  openingHeightM?: number;
+  lowerRoomId?: string;
+  floorCoefficient?: number;
+  wallDischargeCoefficient?: number;
   /** Explicit advanced whole-link H override; any thermal-geometry edit clears it. */
   conductanceOverrideWK?: number;
   /** Legacy exclusive-path inputs; modern links use both geometry paths above. */
@@ -146,7 +156,7 @@ export interface InterzoneLink {
   transferWm2K?: number;
 }
 
-export const INTERZONE_GEOMETRY_DEFAULTS = { openingAreaM2: 4, contactAreaM2: 45, insulationMm: 120, openingTransferWm2K: 40 } as const;
+export const INTERZONE_GEOMETRY_DEFAULTS = { openingAreaM2: 4, contactAreaM2: 45, insulationMm: 120, openingTransferWm2K: 40, openingModel: 'buoyancy', backgroundConductanceWK: 0, openingHeightM: 2, floorCoefficient: .055, wallDischargeCoefficient: .6 } as const;
 /** Declared representative glass-wool conductivity and combined surface-film resistance, not measured layers. */
 export const INTERZONE_GLASS_WOOL_LAMBDA_WMK = .040;
 export const INTERZONE_FILM_RESISTANCE_M2KW = .26;
@@ -155,12 +165,36 @@ export function hasInterzoneGeometry(link: InterzoneLink): boolean {
   return link.openingAreaM2 !== undefined || link.contactAreaM2 !== undefined || link.insulationMm !== undefined || link.openingTransferWm2K !== undefined;
 }
 
+/** Solid conduction remains bidirectional regardless of gravitational stability. */
+export function interzoneSolidConductance(link: InterzoneLink): number {
+  return (link.contactAreaM2 ?? 0) / (INTERZONE_FILM_RESISTANCE_M2KW + (link.insulationMm ?? INTERZONE_GEOMETRY_DEFAULTS.insulationMm) / 1000 / INTERZONE_GLASS_WOOL_LAMBDA_WMK);
+}
+
+export function usesBuoyancyOpening(link: InterzoneLink): boolean {
+  return hasInterzoneGeometry(link) && link.openingModel !== 'prescribed' && link.conductanceOverrideWK === undefined;
+}
+
+/** Prescribed total H, or base H before temperature-dependent buoyancy. Never a frozen buoyancy estimate. */
 export function interzoneConductance(link: InterzoneLink): number {
   if (link.conductanceOverrideWK !== undefined) return link.conductanceOverrideWK;
-  if (hasInterzoneGeometry(link)) return (link.openingAreaM2 ?? 0) * (link.openingTransferWm2K ?? INTERZONE_GEOMETRY_DEFAULTS.openingTransferWm2K)
-    + (link.contactAreaM2 ?? 0) / (INTERZONE_FILM_RESISTANCE_M2KW + (link.insulationMm ?? INTERZONE_GEOMETRY_DEFAULTS.insulationMm) / 1000 / INTERZONE_GLASS_WOOL_LAMBDA_WMK);
+  if (hasInterzoneGeometry(link)) return interzoneSolidConductance(link) + (link.openingModel === 'prescribed'
+    ? (link.openingAreaM2 ?? 0) * (link.openingTransferWm2K ?? INTERZONE_GEOMETRY_DEFAULTS.openingTransferWm2K)
+    : (link.openingAreaM2 ?? 0) > 0 ? link.backgroundConductanceWK ?? 0 : 0);
   return link.areaM2 !== undefined && link.transferWm2K !== undefined
     ? link.areaM2 * link.transferWm2K : link.conductanceWK;
+}
+
+/** Frontend geometry maps to solid H plus an optional physical opening law. */
+export function engineInterzoneLink(link: InterzoneLink, roomOrder: readonly string[]): EngineInterzoneLink {
+  if (!usesBuoyancyOpening(link)) return { roomA: link.roomA, roomB: link.roomB, conductanceWK: interzoneConductance(link) };
+  return { roomA: link.roomA, roomB: link.roomB, conductanceWK: interzoneSolidConductance(link), openingExchange: {
+    orientation: link.orientation ?? 'vertical', areaM2: link.openingAreaM2 ?? 0,
+    lowerRoomId: link.lowerRoomId ?? (roomOrder.indexOf(link.roomA) > roomOrder.indexOf(link.roomB) ? link.roomA : link.roomB),
+    heightM: link.openingHeightM ?? INTERZONE_GEOMETRY_DEFAULTS.openingHeightM,
+    backgroundConductanceWK: (link.openingAreaM2 ?? 0) > 0 ? link.backgroundConductanceWK ?? 0 : 0,
+    floorCoefficient: link.floorCoefficient ?? INTERZONE_GEOMETRY_DEFAULTS.floorCoefficient,
+    wallDischargeCoefficient: link.wallDischargeCoefficient ?? INTERZONE_GEOMETRY_DEFAULTS.wallDischargeCoefficient,
+  } };
 }
 
 export interface Config {

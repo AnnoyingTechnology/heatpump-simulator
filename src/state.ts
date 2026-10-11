@@ -44,8 +44,8 @@ export function defaultConfig(): Config {
     rooms: ROOMS.map((r) => ({ ...r, envelopeQualityWPerM3K: r.heatLossWPerK / roomVolumeM3(r), cleanlinessOverridePct: null })),
     pipes: PIPES.map((p) => ({ ...p })),
     interzoneLinks: [
-      { roomA: 'ground', roomB: 'first', ...INTERZONE_GEOMETRY_DEFAULTS, conductanceWK: interzoneConductance({ roomA: 'ground', roomB: 'first', conductanceWK: 0, ...INTERZONE_GEOMETRY_DEFAULTS }), orientation: 'vertical' },
-      { roomA: 'first', roomB: 'attic', ...INTERZONE_GEOMETRY_DEFAULTS, conductanceWK: interzoneConductance({ roomA: 'first', roomB: 'attic', conductanceWK: 0, ...INTERZONE_GEOMETRY_DEFAULTS }), orientation: 'vertical' },
+      { roomA: 'ground', roomB: 'first', lowerRoomId: 'ground', ...INTERZONE_GEOMETRY_DEFAULTS, conductanceWK: interzoneConductance({ roomA: 'ground', roomB: 'first', conductanceWK: 0, ...INTERZONE_GEOMETRY_DEFAULTS }), orientation: 'vertical' },
+      { roomA: 'first', roomB: 'attic', lowerRoomId: 'first', ...INTERZONE_GEOMETRY_DEFAULTS, conductanceWK: interzoneConductance({ roomA: 'first', roomB: 'attic', conductanceWK: 0, ...INTERZONE_GEOMETRY_DEFAULTS }), orientation: 'vertical' },
     ],
     ventilation: { mode: 'dual', grossACH: .5, sensibleEfficiencyPct: 75 },
     live: defaultLiveParameters(),
@@ -148,8 +148,9 @@ class Store {
       } else room.heatLossWPerK = room.averageUValueWm2K * area;
       room.envelopeQualityWPerM3K = room.heatLossWPerK / volume;
     }
-    const thermalGeometry = ['openingAreaM2', 'contactAreaM2', 'insulationMm', 'openingTransferWm2K', 'kind', 'areaM2', 'transferWm2K'] as const;
+    const thermalGeometry = ['openingAreaM2', 'contactAreaM2', 'insulationMm', 'openingTransferWm2K', 'openingModel', 'backgroundConductanceWK', 'openingHeightM', 'lowerRoomId', 'floorCoefficient', 'wallDischargeCoefficient', 'orientation', 'kind', 'areaM2', 'transferWm2K'] as const;
     for (const link of this.state.cfg.interzoneLinks ?? []) {
+      if (hasInterzoneGeometry(link) && link.lowerRoomId === undefined) link.lowerRoomId = this.state.cfg.rooms.findIndex(r => r.id === link.roomA) > this.state.cfg.rooms.findIndex(r => r.id === link.roomB) ? link.roomA : link.roomB;
       const before = priorLinks.get(pairKey(link));
       const geometryChanged = before && thermalGeometry.some(key => link[key] !== before[key]);
       if (geometryChanged) delete link.conductanceOverrideWK;
@@ -363,17 +364,18 @@ class Store {
 
   /** Opening and insulated solid contact are simultaneous parallel paths.
    * Old exclusive kind/area/coefficient patches remain supported for legacy QA. */
-  setInterzoneLink(roomA: string, roomB: string, patch: Partial<Pick<InterzoneLink, 'openingAreaM2' | 'contactAreaM2' | 'insulationMm' | 'openingTransferWm2K' | 'kind' | 'orientation' | 'areaM2' | 'transferWm2K'>> = {}): void {
+  setInterzoneLink(roomA: string, roomB: string, patch: Partial<Pick<InterzoneLink, 'openingAreaM2' | 'contactAreaM2' | 'insulationMm' | 'openingTransferWm2K' | 'openingModel' | 'backgroundConductanceWK' | 'openingHeightM' | 'lowerRoomId' | 'floorCoefficient' | 'wallDischargeCoefficient' | 'kind' | 'orientation' | 'areaM2' | 'transferWm2K'>> = {}): void {
     const ids = new Set(this.state.cfg.rooms.slice(0, this.state.cfg.unitCount).map(r => r.id));
     if (roomA === roomB || !ids.has(roomA) || !ids.has(roomB)) return;
     const existing = this.state.cfg.interzoneLinks?.find(l => (l.roomA === roomA && l.roomB === roomB) || (l.roomA === roomB && l.roomB === roomA));
     const orientation = patch.orientation ?? existing?.orientation ?? 'vertical';
     if (!['horizontal', 'vertical'].includes(orientation)) return;
-    const modernKeys = ['openingAreaM2', 'contactAreaM2', 'insulationMm', 'openingTransferWm2K'] as const;
+    const modernKeys = ['openingAreaM2', 'contactAreaM2', 'insulationMm', 'openingTransferWm2K', 'openingModel', 'backgroundConductanceWK', 'openingHeightM', 'lowerRoomId', 'floorCoefficient', 'wallDischargeCoefficient', 'orientation'] as const;
     const modernEdit = modernKeys.some(key => patch[key] !== undefined);
+    const modernShapeEdit = modernKeys.filter(key => key !== 'orientation').some(key => patch[key] !== undefined);
     const legacyEdit = patch.kind !== undefined || patch.areaM2 !== undefined || patch.transferWm2K !== undefined;
     let link: InterzoneLink;
-    if (!modernEdit && (legacyEdit || (existing && !hasInterzoneGeometry(existing)))) {
+    if (!modernShapeEdit && (legacyEdit || (existing && !hasInterzoneGeometry(existing)))) {
       const kind = patch.kind ?? existing?.kind ?? 'opening';
       const changedKind = patch.kind !== undefined && patch.kind !== existing?.kind;
       const transferWm2K = patch.transferWm2K ?? (changedKind ? undefined : existing?.transferWm2K) ?? (kind === 'opening' ? 40 : 1.5);
@@ -382,6 +384,12 @@ class Store {
       link = { roomA, roomB, kind, orientation, areaM2, transferWm2K, conductanceWK: areaM2 * transferWm2K };
     } else {
       link = { roomA, roomB, orientation, conductanceWK: 0,
+        openingModel: patch.openingModel ?? (patch.openingTransferWm2K !== undefined ? 'prescribed' : existing?.openingModel ?? 'buoyancy'),
+        backgroundConductanceWK: patch.backgroundConductanceWK ?? existing?.backgroundConductanceWK ?? 0,
+        openingHeightM: patch.openingHeightM ?? existing?.openingHeightM ?? 2,
+        lowerRoomId: patch.lowerRoomId ?? existing?.lowerRoomId ?? (this.state.cfg.rooms.findIndex(r => r.id === roomA) > this.state.cfg.rooms.findIndex(r => r.id === roomB) ? roomA : roomB),
+        floorCoefficient: patch.floorCoefficient ?? existing?.floorCoefficient ?? .055,
+        wallDischargeCoefficient: patch.wallDischargeCoefficient ?? existing?.wallDischargeCoefficient ?? .6,
         openingAreaM2: patch.openingAreaM2 ?? existing?.openingAreaM2 ?? INTERZONE_GEOMETRY_DEFAULTS.openingAreaM2,
         contactAreaM2: patch.contactAreaM2 ?? existing?.contactAreaM2 ?? INTERZONE_GEOMETRY_DEFAULTS.contactAreaM2,
         insulationMm: patch.insulationMm ?? existing?.insulationMm ?? INTERZONE_GEOMETRY_DEFAULTS.insulationMm,
@@ -389,6 +397,9 @@ class Store {
         ...(!modernEdit && existing?.conductanceOverrideWK !== undefined ? { conductanceOverrideWK: existing.conductanceOverrideWK } : {}) };
       if (![link.openingAreaM2!, link.contactAreaM2!, link.openingTransferWm2K!].every(value => Number.isFinite(value) && value >= 0)
         || !Number.isFinite(link.insulationMm!) || link.insulationMm! < 45 || link.insulationMm! > 180) return;
+      if (!['buoyancy', 'prescribed'].includes(link.openingModel!) || ![roomA, roomB].includes(link.lowerRoomId!)
+        || ![link.backgroundConductanceWK!, link.floorCoefficient!, link.wallDischargeCoefficient!].every(v => Number.isFinite(v) && v >= 0)
+        || !Number.isFinite(link.openingHeightM!) || link.openingHeightM! <= 0) return;
       link.conductanceWK = interzoneConductance(link);
       if (!Number.isFinite(link.conductanceWK)) return;
     }

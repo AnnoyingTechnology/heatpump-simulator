@@ -14,7 +14,7 @@ try{
   assert.equal(c.outdoorTemperatureC,1);assert.equal(c.outdoorRelativeHumidity,.35);
   assert.deepEqual(c.rooms.map(r=>[r.id,r.enabled,r.setpointC,r.envelopeWK,r.internalGainW,r.ventilationACH,r.ventilationRecoveryEfficiency]),[['attic',false,21,15,0,.5,.75],['first',true,21.5,25,0,.5,.75],['ground',true,17,45,200,.5,.75]]);
   for(const [i,v] of [84,155,100].entries())assert.ok(Math.abs(c.rooms[i].volumeM3-v)<1e-10);
-  assert.deepEqual(c.interzoneLinks,[{roomA:'ground',roomB:'first',conductanceWK:173.8036809815951},{roomA:'first',roomB:'attic',conductanceWK:173.8036809815951}]);
+  assert.deepEqual(c.interzoneLinks.map(l=>[l.roomA,l.roomB,l.conductanceWK,l.openingExchange.orientation,l.openingExchange.areaM2,l.openingExchange.lowerRoomId,l.openingExchange.backgroundConductanceWK]),[['ground','first',45/3.26,'vertical',4,'ground',0],['first','attic',45/3.26,'vertical',4,'first',0]]);
  });
  await check('room thermal gains preserve focus and accepted state; boundary links transfer symmetrically',async()=>{
   await run(()=>document.querySelector('button[aria-label="Thermal settings of Ground (L0)"]').click());

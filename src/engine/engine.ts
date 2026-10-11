@@ -6,7 +6,7 @@ import { driveStep, driveRatioThresholds, newDriveState, type DriveState } from 
 import { initialThermostatDemand } from './thermostat.ts';
 import { inventoryCycle } from './charge-output.ts';
 import {roomDemand,inverterAllocationWeights} from './demand.ts';
-import {interzoneHeatPowers, interzoneTransfers} from './interzone.ts';
+import {interzoneHeatPowers, interzoneTransfers, validateOpeningExchange, openingExchangeMaxStepSeconds} from './interzone.ts';
 import { ventilationExchange } from './ventilation.ts';
 import { airExchange, equilibrateExhaust, equilibrateRoomAir } from './air.ts';
 import { deriveOutdoorFilm, filmEnthalpy, FUSION_JKG, WATER_CP_JKGK, ICE_CP_JKGK } from './film.ts';
@@ -106,9 +106,17 @@ export class HeatPumpEngine {
     if (!(Number.isFinite(simulatedSeconds) && simulatedSeconds >= 0 && simulatedSeconds <= 60)) throw new DomainError('step requires finite 0…60 simulated seconds; caller supplies bounded time accumulator');
     let remaining = simulatedSeconds;
     while (remaining > 1e-10 && this.state !== 'fault') {
-      const dt = Math.min(remaining, this.config.numerics.maxStepSeconds, this.refrigerant ? .25 : .5);
+      let dt = Math.min(remaining, this.config.numerics.maxStepSeconds, this.refrigerant ? .25 : .5);
       const checkpoint = this.checkpoint();
-      try { this.advance(dt); } catch (error) { this.restoreCheckpoint(checkpoint); this.fault = error instanceof Error ? error.message : 'Physics failed'; this.state = 'fault'; this.cycle = null;
+      try {
+        if (this.config.interzoneLinks?.some(link => link.openingExchange !== undefined)) {
+          const temperatures = this.rooms.map(room => this.roomTemperature(room));
+          // 1000 J/kg/K is a conservative dry-air lower estimate, solely for
+          // substep selection; native moist-air enthalpy still stores all heat.
+          dt = Math.min(dt, openingExchangeMaxStepSeconds(this.config, temperatures, this.rooms.map(room => room.dryAirMassKg * 1000)));
+        }
+        this.advance(dt);
+      } catch (error) { this.restoreCheckpoint(checkpoint); this.fault = error instanceof Error ? error.message : 'Physics failed'; this.state = 'fault'; this.cycle = null;
         let stopped: RoomOutput[];
         try { stopped = this.passiveRoomOutputs(); }
         catch { stopped = this.lastOutput.rooms.map((room,i) => ({ ...room, active: false, thermostatCalling: this.thermostatCalls[i], fanSpeedFraction: 0, massFlowKgs: 0, signedRoomHeatW: 0, sensibleRoomHeatW: 0, fanPowerW: 0, airOutletC: null, condensateKgs: 0, drainEnthalpyW: 0 })); }
@@ -147,6 +155,7 @@ export class HeatPumpEngine {
     for (const link of config.interzoneLinks ?? []) {
       if (!link || !roomIds.has(link.roomA) || !roomIds.has(link.roomB) || link.roomA === link.roomB) throw new DomainError('Interzone links must join distinct existing room IDs');
       if (!(Number.isFinite(link.conductanceWK) && link.conductanceWK >= 0)) throw new DomainError('Interzone conductance must be finite and nonnegative');
+      validateOpeningExchange(link);
       const key = JSON.stringify([link.roomA, link.roomB].sort());
       if (linkedPairs.has(key)) throw new DomainError('Interzone room pairs must be unique');
       linkedPairs.add(key);
@@ -524,7 +533,9 @@ export class HeatPumpEngine {
       energy: { ...this.ledgers, storedEnergyChangeJ: this.totalEnergy() - this.initialEnergy, residualJ: this.totalEnergy() - this.initialEnergy - this.ledgers.boundaryEnergyJ,
         waterResidualKg: this.totalWater() - this.initialWater - this.boundaryWater },
       diagnostics: { warnings: [...new Set([...this.warnings,
-        ...(this.config.interzoneLinks?.length ? ['Interzone links exchange sensible heat through prescribed conductance; they do not transport air/water or resolve buoyancy.'] : []),
+        ...(this.config.interzoneLinks?.length ? [this.config.interzoneLinks.some(link => link.openingExchange)
+          ? 'Interzone openings use a buoyancy-informed sensible equivalent with reference air density 1.2 kg/m³ and cp 1006 J/(kg K); no inter-room air/water transport or resolved stratification.'
+          : 'Interzone links exchange sensible heat through prescribed conductance; they do not transport air/water or resolve buoyancy.'] : []),
         ...(this.config.rooms.some(room => (room.internalGainW ?? 0) > 0) ? ['Internal gains are prescribed sensible heat supplied to room air, separate from HVAC output and COP.'] : []),
         ...(this.chargeCandidate?.diagnostics ?? []), ...(this.inventoryDrive.protection&&demandSpeedRps>0?[`Generic compressor protection hold: ${this.inventoryDrive.protection}.`]:[]), ...(this.refrigerant && !cycle && speedRps > 0 ? ['No complete forward circulation summary: inspect physical face flows and stored refrigerant energy.'] : [])])], fault: this.fault, algebraicResidualW: cycle?.closureResidualW ?? 0, speedRps, demandSpeedRps,
         restartDelaySeconds:demandSpeedRps>0&&speedRps===0?Math.max(0,this.config.control.minOffSeconds-this.inventoryDrive.offSeconds):0,

@@ -36,7 +36,7 @@ try {
     assert.equal(data.summary.envelopeWK, 85); near(data.summary.ventilationWK, 14.4075); near(data.summary.totalWK, 99.4075);
     assert.equal(data.cfg.live.cleanlinessPct, 95); assert.equal(data.mapped.outdoor.cleanFraction, .95);
     assert.deepEqual(data.mapped.rooms.map(room => room.cleanFraction), [.95, .95, .95]);
-    for (const link of data.mapped.interzoneLinks) near(link.conductanceWK, 160 + 45 / 3.26);
+    for (const link of data.mapped.interzoneLinks) near(link.conductanceWK, 45 / 3.26);
   });
   await check('shared faces cap deductions and overlapping same-face connections are never double-counted', async () => {
     const result = await run(() => {
@@ -118,7 +118,7 @@ try {
       qa.store.setInterzoneLink('ground', 'first', { insulationMm: 45 }); save(); return snapshots;
     });
     near(stages[0].conductanceWK, 45 / 3.26); assert.equal(stages[1].conductanceWK, 0);
-    assert.equal(stages[2].conductanceOverrideWK, 90); assert.equal(stages[3].conductanceOverrideWK, 90);
+    assert.equal(stages[2].conductanceOverrideWK, 90); assert.equal(stages[3].conductanceOverrideWK, undefined); assert.equal(stages[3].conductanceWK, 0);
     assert.equal(stages[4].conductanceOverrideWK, undefined); assert.equal(stages[4].conductanceWK, 0); await settle();
     await run(() => qa.store.removeInterzoneLink('first', 'ground')); await settle(); assert.equal(await run(() => qa.store.state.cfg.interzoneLinks.length), 1);
   });
@@ -147,7 +147,9 @@ try {
     assert.ok(Math.abs(output.rooms[0].temperatureC - before.output.rooms[0].temperatureC) < .1);
     assert.ok(Math.abs(output.energy.residualJ) < .01); assert.ok(Math.abs(output.energy.waterResidualKg) < 1e-10);
     const link = output.interzoneTransfers.find(value => value.roomA === 'first' && value.roomB === 'attic');
-    near(link.heatFromAToBW, (160 + 45 / 3.26) * (output.rooms[1].temperatureC - output.rooms[0].temperatureC));
+    assert.equal(link.buoyancyState, 'unstable'); assert.ok(link.equivalentExchangeM3s > 0);
+    near(link.heatFromAToBW, link.effectiveConductanceWK * (output.rooms[1].temperatureC - output.rooms[0].temperatureC));
+    near(link.heatFromAToBW, link.solidHeatFromAToBW + link.backgroundHeatFromAToBW + link.buoyancyHeatFromAToBW);
   });
   assert.deepEqual(page.events.filter(event => event.method === 'Runtime.exceptionThrown'), []);
   await writeFile('reviews/u-envelope-data-browser-results.json', JSON.stringify({ checkedAt: new Date().toISOString(), checks,

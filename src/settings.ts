@@ -15,7 +15,7 @@ import { activeRooms, currentReadings, indoorCleanliness, outdoorCleanliness, st
 import type { AppState, Experience, ExampleState, IndoorClass, InterzoneLink, Mode, OutdoorKind, PipeConfig, RoomConfig } from './types';
 import {
   CLEANLINESS_MAX_PCT, CLEANLINESS_MIN_PCT, INDOOR_CLASSES, INTERZONE_FILM_RESISTANCE_M2KW, INTERZONE_GEOMETRY_DEFAULTS, INTERZONE_GLASS_WOOL_LAMBDA_WMK, OWNER_PORTS,
-  hasInterzoneGeometry, houseEnvelopeSummary, interzoneConductance, outdoorPortCapacity, roomAverageUValue, roomEnvelopeConductanceWK,
+  hasInterzoneGeometry, houseEnvelopeSummary, interzoneConductance, usesBuoyancyOpening, outdoorPortCapacity, roomAverageUValue, roomEnvelopeConductanceWK,
   roomExposedEnvelopeAreaM2, roomVentilation,
 } from './types';
 
@@ -1158,7 +1158,8 @@ export function createRoomThermal(openLink: (roomA: string, roomB: string) => vo
       for (const f of fields) f.refresh();
       for (const l of links) {
         const link = findLink(l.self, l.other);
-        setText(l.value, link ? `${fmt(interzoneConductance(link), 0)} W/K` : 'no link');
+        const t = currentReadings(s).engine?.interzoneTransfers?.find(t => t.roomA === l.self && t.roomB === l.other || t.roomA === l.other && t.roomB === l.self);
+        setText(l.value, link ? usesBuoyancyOpening(link) ? t?.effectiveConductanceWK !== undefined ? `${fmt(t.effectiveConductanceWK, 0)} W/K now` : 'buoyancy link' : `${fmt(interzoneConductance(link), 0)} W/K` : 'no link');
         setText(l.btn, link ? 'Edit link' : 'Add link');
       }
       const self = room();
@@ -1214,104 +1215,90 @@ export function linkHeatW(s: AppState, roomA: string, roomB: string): number | n
   return null;
 }
 
-/**
- * The one editor of a drawn room link. An open passage and an insulated solid contact act at the same time: opening area,
- * solid contact area (excluding the opening), glass-wool thickness and the connection direction, with the derived total H and the
- * live heat. The opening coefficient is under Advanced. An explicit whole-link H override is shown, never silently ignored, and
- * "Use geometry" clears it. Every control is built once and edits through `store.setInterzoneLink` (any geometry edit sends all four
- * values, so the link never mixes a legacy path with defaults). Both areas at 0 keep an editable link at 0 W/K. The popover is pinned
- * to the room pair by popovers.ts, so `idx` is rebound on every sync and the content closes with its link.
- */
+/** The room boundary owns geometry; the accepted engine owns dynamic heat/flow diagnostics. */
 export function createLinkSettings(): PopContent {
-  let idx = 0;
+  let idx = 0, lowerOptions = '';
   const link = (): InterzoneLink | undefined => store.state.cfg.interzoneLinks?.[idx];
+  const edit = (patch: Parameters<typeof store.setInterzoneLink>[2]): void => {
+    const l = link(); if (l) store.setInterzoneLink(l.roomA, l.roomB, patch);
+  };
   const geometry = (change: Partial<LinkGeometry>): void => {
-    const l = link();
-    if (!l) return;
+    const l = link(); if (!l) return;
     const g = { ...geometryOf(l), ...change };
-    store.setInterzoneLink(l.roomA, l.roomB, { openingAreaM2: g.opening, contactAreaM2: g.contact, insulationMm: g.mm, openingTransferWm2K: g.coeff });
+    edit({ openingAreaM2: g.opening, contactAreaM2: g.contact, insulationMm: g.mm });
   };
   const fields: Field[] = [];
   const reg = <T extends Field>(f: T): T => { fields.push(f); return f; };
-  const opening = reg(pairField({
-    label: 'Opening area', unit: 'm²', ...LINK_OPENING, digits: 1, layout: 'line',
-    get: () => { const l = link(); return l ? geometryOf(l).opening : INTERZONE_GEOMETRY_DEFAULTS.openingAreaM2; }, set: (v) => geometry({ opening: v }),
-    title: 'Assumed free area of the open passage (stairwell, doorway), not a measured geometry. Solid contact area excludes it.',
-  }));
-  const contact = reg(pairField({
-    label: 'Solid contact area', unit: 'm²', ...LINK_CONTACT, digits: 0, layout: 'line',
-    get: () => { const l = link(); return l ? geometryOf(l).contact : INTERZONE_GEOMETRY_DEFAULTS.contactAreaM2; }, set: (v) => geometry({ contact: v }),
-    title: 'Assumed insulated floor or wall area between the rooms, excluding the opening. Not a measured geometry.',
-  }));
-  const wool = reg(pairField({
-    label: 'Glass wool', unit: 'mm', ...LINK_WOOL, digits: 0, layout: 'line',
-    get: () => { const l = link(); return l ? geometryOf(l).mm : INTERZONE_GEOMETRY_DEFAULTS.insulationMm; }, set: (v) => geometry({ mm: v }),
-    title: 'Assumed glass-wool thickness in the solid contact. It has no effect while the solid contact area is 0; its value is kept.',
-  }));
-  const orientation = reg(segmented<'horizontal' | 'vertical'>({
-    label: 'Connection direction', compact: true,
-    options: [
-      { value: 'horizontal', text: 'Horizontal', title: 'Between rooms on the same level' },
-      { value: 'vertical', text: 'Vertical', title: 'Between levels' },
-    ],
-    get: () => link()?.orientation ?? 'vertical',
-    set: (v) => { const l = link(); if (l) store.setInterzoneLink(l.roomA, l.roomB, { orientation: v }); },
-  }));
-  const coeff = reg(pairField({
-    label: 'Opening coefficient', unit: 'W/(m²·K)', ...LINK_COEFF, digits: 0, layout: 'line',
-    get: () => { const l = link(); return l ? geometryOf(l).coeff : INTERZONE_GEOMETRY_DEFAULTS.openingTransferWm2K; }, set: (v) => geometry({ coeff: v }),
-    title: 'Generic effective sensible heat-transfer coefficient of the opening per square metre, not resolved buoyancy flow.',
-  }));
-  const total = html('p', { class: 'status lk-total' });
-  const now = html('p', { class: 'hint' });
+  const opening = reg(pairField({ label: 'Opening area', unit: 'm²', ...LINK_OPENING, digits: 1, layout: 'line',
+    get: () => link() ? geometryOf(link()!).opening : 4, set: v => geometry({ opening: v }),
+    title: 'Free area of the stairwell or doorway, excluded from solid contact area.' }));
+  const contact = reg(pairField({ label: 'Solid contact area', unit: 'm²', ...LINK_CONTACT, digits: 0, layout: 'line',
+    get: () => link() ? geometryOf(link()!).contact : 45, set: v => geometry({ contact: v }),
+    title: 'Insulated floor or wall area between rooms, excluding the opening.' }));
+  const wool = reg(pairField({ label: 'Glass wool', unit: 'mm', ...LINK_WOOL, digits: 0, layout: 'line',
+    get: () => link() ? geometryOf(link()!).mm : 120, set: v => geometry({ mm: v }) }));
+  const orientation = reg(segmented<'horizontal' | 'vertical'>({ label: 'Connection direction', compact: true,
+    options: [{ value: 'horizontal', text: 'Horizontal', title: 'Doorway in a wall, between rooms on one level' },
+      { value: 'vertical', text: 'Vertical', title: 'Opening in a floor, between levels' }],
+    get: () => link()?.orientation ?? 'vertical', set: v => edit({ orientation: v }) }));
+  const height = reg(pairField({ label: 'Opening height', unit: 'm', min: .1, max: 6, step: .1, digits: 1, layout: 'line',
+    get: () => link()?.openingHeightM ?? 2, set: v => edit({ openingHeightM: v }),
+    title: 'Vertical height of the wall opening. Default 2 m is an editable assumption, independent of room ceiling height.' }));
+  const lower = reg(select<string>({ label: 'Lower room', options: [],
+    get: () => link()?.lowerRoomId ?? link()?.roomA ?? '', set: v => edit({ lowerRoomId: v }) }));
+  const model = reg(segmented<'buoyancy' | 'prescribed'>({ label: 'Opening model', compact: true,
+    options: [{ value: 'buoyancy', text: 'Buoyancy' }, { value: 'prescribed', text: 'Constant H' }],
+    get: () => link()?.openingModel ?? 'buoyancy', set: v => edit({ openingModel: v }) }));
+  const coeff = reg(pairField({ label: 'Opening coefficient', unit: 'W/(m²·K)', ...LINK_COEFF, digits: 0, layout: 'line',
+    get: () => link() ? geometryOf(link()!).coeff : 40, set: v => edit({ openingTransferWm2K: v, openingModel: 'prescribed' }) }));
+  const background = reg(pairField({ label: 'Background mixing', unit: 'W/K', min: 0, max: 200, step: 1, digits: 0, layout: 'line',
+    get: () => link()?.backgroundConductanceWK ?? 0, set: v => edit({ backgroundConductanceWK: v }),
+    title: 'Optional extra sensible mixing through an open passage. Zero by default; no forced mixing inferred from unit fan flow. Inactive when opening area is zero.' }));
+  const floor = reg(pairField({ label: 'Floor opening coefficient', unit: '', min: 0, max: .1, step: .001, digits: 3, layout: 'line',
+    get: () => link()?.floorCoefficient ?? .055, set: v => edit({ floorCoefficient: v }),
+    title: 'Dimensionless coefficient 0.055 for a zero-pressure square opening; actual stairwell geometry may differ.' }));
+  const wall = reg(pairField({ label: 'Wall discharge coefficient', unit: '', min: 0, max: 1, step: .01, digits: 2, layout: 'line',
+    get: () => link()?.wallDischargeCoefficient ?? .6, set: v => edit({ wallDischargeCoefficient: v }),
+    title: 'Generic doorway discharge coefficient, default 0.60, not measured.' }));
+  const total = html('p', { class: 'status lk-total' }), now = html('p', { class: 'hint' }), stability = html('p', { class: 'hint' });
   const overrideNote = html('p', { class: 'status diff' });
   const useGeometry = html('button', { type: 'button', class: 'btn ghost small' }, 'Use geometry');
   useGeometry.addEventListener('click', () => geometry({}));
   const overrideBox = html('section', { class: 'sec lk-override', hidden: true }, overrideNote, useGeometry);
   const remove = html('button', { type: 'button', class: 'btn ghost small' }, 'Remove link');
   remove.addEventListener('click', () => { const l = link(); if (l) store.removeInterzoneLink(l.roomA, l.roomB); });
-  const field = (label: string, f: Field): HTMLElement => html('div', { class: 'field' }, html('div', { class: 'field-head' }, html('span', { class: 'lab' }, label)), f.root);
-  const geo = html('section', { class: 'sec lk-geo' }, opening.root, contact.root, wool.root, field('Direction', orientation), total, now);
-
+  const geo = html('section', { class: 'sec lk-geo' }, opening.root, contact.root, wool.root, orientation.root, height.root, total, now, stability);
   const root = html('div', { class: 'pop-settings' },
-    html('p', { class: 'hint lead' }, 'An open passage and an insulated solid contact link these two rooms at the same time. Turning a unit off keeps the link active.'),
+    html('p', { class: 'hint lead' }, 'Opening and insulated contact act together. A warm lower room drives rising-air exchange; warm air above cooler air is stable. Heat still conducts through the solid contact in either direction.'),
     overrideBox, geo,
     html('section', { class: 'sec' }, html('details', { class: 'fold' }, html('summary', {}, 'Advanced: model'),
-      html('div', { class: 'fold-body' }, coeff.root,
-        html('p', { class: 'hint' }, `Opening H = area × coefficient (0–100 W/(m²·K), default ${INTERZONE_GEOMETRY_DEFAULTS.openingTransferWm2K}). Solid H = area ÷ (${INTERZONE_FILM_RESISTANCE_M2KW} + thickness ÷ ${INTERZONE_GLASS_WOOL_LAMBDA_WMK.toFixed(3)}), with a representative glass-wool λ of ${INTERZONE_GLASS_WOOL_LAMBDA_WMK.toFixed(3)} W/(m·K) and a combined surface-film resistance of ${INTERZONE_FILM_RESISTANCE_M2KW} m²·K/W: stated assumptions. Effective sensible transfer only: no resolved buoyancy, joists or moisture.`)))),
+      html('div', { class: 'fold-body' }, model.root, lower.root, background.root, floor.root, wall.root, coeff.root,
+        html('p', { class: 'hint' }, 'Buoyancy is a sensible-heat equivalent of counterflow, not simulated air or humidity transport. Floor openings use a temperature-only, square-aperture, zero-pressure approximation; stair angle and forced airflow are unresolved. Background mixing defaults to zero.'),
+        html('p', { class: 'hint' }, `Solid H = area ÷ (${INTERZONE_FILM_RESISTANCE_M2KW} + thickness ÷ ${INTERZONE_GLASS_WOOL_LAMBDA_WMK.toFixed(3)}), with thickness in metres and glass-wool λ in W/(m·K). Constant-H opening mode retains explicit legacy scenarios.`)))),
     html('section', { class: 'sec' }, remove));
-
-  return {
-    root,
-    heading: (s, i) => {
-      const l = s.cfg.interzoneLinks?.[i];
-      const name = (id: string): string => s.cfg.rooms.find((r) => r.id === id)?.name ?? id;
-      return { kicker: 'Room link', title: l ? `${name(l.roomA)} ↔ ${name(l.roomB)}` : 'Room link' };
-    },
+  return { root,
+    heading: (s, i) => { const l = s.cfg.interzoneLinks?.[i], name = (id: string): string => s.cfg.rooms.find(r => r.id === id)?.name ?? id;
+      return { kicker: 'Room link', title: l ? `${name(l.roomA)} ↔ ${name(l.roomB)}` : 'Room link' }; },
     sync(s: AppState, i: number): void {
-      idx = i;
-      const l = s.cfg.interzoneLinks?.[i];
-      if (!l) return;
+      idx = i; const l = s.cfg.interzoneLinks?.[i]; if (!l) return;
+      const name = (id: string): string => s.cfg.rooms.find(r => r.id === id)?.name ?? id;
+      const signature = `${l.roomA}:${name(l.roomA)}|${l.roomB}:${name(l.roomB)}`;
+      if (signature !== lowerOptions) { lowerOptions = signature; lower.sel.replaceChildren(...[l.roomA, l.roomB].map(id => html('option', { value: id }, name(id)))); }
       for (const f of fields) f.refresh();
-      const g = geometryOf(l);
-      const overridden = l.conductanceOverrideWK !== undefined;
-      const plain = { ...l };
-      delete plain.conductanceOverrideWK;
-      const derived = interzoneConductance(plain);
-      overrideBox.hidden = !overridden;
-      toggleClass(geo, 'overridden', overridden);
-      setText(overrideNote, overridden
-        ? `Advanced override in use: H = ${fmt(l.conductanceOverrideWK!, 0)} W/K replaces the geometry below, which would give ${fmt(derived, 0)} W/K.`
-        : '');
-      // The thickness is dimmed, not reset, while there is no solid contact for it to act on.
+      const g = geometryOf(l), overridden = l.conductanceOverrideWK !== undefined, buoyant = usesBuoyancyOpening(l), vertical = (l.orientation ?? 'vertical') === 'vertical';
+      const t = currentReadings(s).engine?.interzoneTransfers?.find(t => t.roomA === l.roomA && t.roomB === l.roomB || t.roomA === l.roomB && t.roomB === l.roomA);
+      overrideBox.hidden = !overridden; toggleClass(geo, 'overridden', overridden);
+      setText(overrideNote, overridden ? `Fixed-H override: ${fmt(l.conductanceOverrideWK!, 0)} W/K. Use geometry to restore the opening model.` : '');
       toggleClass(wool.root, 'dim', g.contact === 0);
-      const solidWK = g.contact / (INTERZONE_FILM_RESISTANCE_M2KW + g.mm / 1000 / INTERZONE_GLASS_WOOL_LAMBDA_WMK);
-      setText(total, `Total H = ${fmt(interzoneConductance(l), 0)} W/K${overridden ? ' (override)'
-        : hasInterzoneGeometry(l) ? ` · opening ${fmt(g.opening * g.coeff, 0)} + solid ${fmt(solidWK, 1)}` : ' · legacy single-path link, any edit converts it'}`);
-      const name = (id: string): string => s.cfg.rooms.find((r) => r.id === id)?.name ?? id;
+      height.root.hidden = !buoyant || vertical; lower.root.hidden = !buoyant || !vertical;
+      floor.root.hidden = !buoyant || !vertical; wall.root.hidden = !buoyant || vertical;
+      background.root.hidden = !buoyant; coeff.root.hidden = l.openingModel !== 'prescribed';
+      const effectiveH = buoyant ? t?.effectiveConductanceWK : interzoneConductance(l);
+      setText(total, effectiveH === undefined ? `Base H: ${fmt(interzoneConductance(l), 1)} W/K + buoyancy (live value pending)`
+        : `H now: ${fmt(effectiveH, 1)} W/K${overridden ? ' · fixed override' : buoyant ? ' · varies with temperatures' : ' · prescribed'}`);
       const q = linkHeatW(s, l.roomA, l.roomB);
-      setText(now, q === null ? 'Now: — (live engine value unavailable)'
-        : `Now: ${fmt(Math.abs(q) / 1000, 2)} kW from ${name(q >= 0 ? l.roomA : l.roomB)} to ${name(q >= 0 ? l.roomB : l.roomA)}`);
+      setText(now, q === null ? 'Heat: — (live engine value unavailable)' : `${fmt(Math.abs(q) / 1000, 2)} kW from ${name(q >= 0 ? l.roomA : l.roomB)} to ${name(q >= 0 ? l.roomB : l.roomA)}`);
+      setText(stability, buoyant && t?.buoyancyState ? `${t.buoyancyState === 'stable' ? 'Stable: warm air above cooler air' : t.buoyancyState === 'unstable' ? 'Rising-air exchange: warm air below' : t.buoyancyState === 'neutral' ? 'No temperature difference' : 'Doorway counterflow'} · solid ${fmt(Math.abs(t.solidHeatFromAToBW ?? 0), 0)} W · opening ${fmt(Math.abs((t.buoyancyHeatFromAToBW ?? 0) + (t.backgroundHeatFromAToBW ?? 0)), 0)} W` : buoyant && vertical ? `Lower room: ${name(l.lowerRoomId ?? l.roomA)}` : '');
     },
   };
 }
