@@ -62,3 +62,15 @@ Required implementation contract:
 - Pickup protection takes precedence over re-arm/preposition. Explicit Off/reversal/recovery policies freeze or track integral memory and re-arm without changing M/U or jumping the actuator. Continuous ordinary steps must not erase integral memory by repeatedly reinitializing I from the current opening.
 
 Acceptance remains contingent on sustained heating/cooling, sensor and phase/charge sensitivity, naturally complete frost/return, gain/time sensitivity and temporal/spatial refinement. A successful changed-control trace is new scenario evidence; preserve the original control counterexample and unchanged physical caps.
+
+### Independent implementation checks and corrected findings
+
+The subsequent static-port fallback selects the first/last physical coil IDs rather than index 2; the inspected source corrects the previously reported resolution-dependent endpoint defect.
+
+The reviewer compiled a separate source/vendor snapshot at `/tmp/heatpump-review-pi-rtje4n8n`, without touching the implementer's build or duplicating its long simulation. The original antiwindup checked the pre-integration command and could integrate across a newly reached bound: opening .99, error 110 K, signed bias −2.31 and dt .25 produced raw 1.0175. The implementer corrected this by admitting only the part of integral action feasible within the current position/slew interval, while allowing an existing infeasible signed bias to move toward feasibility.
+
+The corrected helper and candidate memory are accepted for this scoped implementation review. Independent copied tests passed 5/5 in 3.241 s against the guarded backend. Additional reviewer checks passed 5,000 randomized integral/position/slew/inactive cases. A real six-cell parent On→Off edit left inventory unchanged at edit time; its next accepted .25 s interval closed the valve .64925→.62425 with zero compressor power, mass residual 1.11e−16 kg and total-energy residual 1.21e−8 J. An actual subsequent bad-room humid-air thermal rejection restored fluid/bias/opening, rooms/outdoor, clock/timers, drive and ledgers exactly. All checks used unchanged physical acceptance limits.
+
+Randomized MC face checks separately passed 4,464 local-bound assertions and 38,000 active-derivative comparisons, maximum derivative difference 9.50e−8. They establish helper arithmetic, not implicit PDE boundedness or coupled coil accuracy.
+
+Pinned receipt: [charge-pi-independent-results.json](charge-pi-independent-results.json). Charge source SHA256 `bf3889391cdc99cb6e4d4d3521be4aede47c31d07790b39e22345d63f26af330`; corrected PI helper `360d75254a51387a9ad5e28c01d8896cbf08b9711c0d839d3bc487e0e666e7b4`; parent engine `222be1955b0fefc3b83433ea0af2a16448ccfacd5114d5e3f585a0855223e954`; matched guarded WASM as above. Subsequent source changes require new attribution. Sustained trajectories produced before this antiwindup correction remain evidence for their exact older controller; they are not final-source acceptance. Full heating/cooling/charge/frost/refinement/throughput release gates remain open.

@@ -1,0 +1,60 @@
+{
+  "sourceHashes": {
+    "src/engine/charge.ts": "bf3889391cdc99cb6e4d4d3521be4aede47c31d07790b39e22345d63f26af330",
+    "src/engine/charge-valve.ts": "360d75254a51387a9ad5e28c01d8896cbf08b9711c0d839d3bc487e0e666e7b4",
+    "src/engine/charge-faces.ts": "8df1ed35ee5eb671e2a47b6a4c208ee267d6dacd16b0e1a12447bf20c44f4bf6",
+    "src/engine/charge-isentrope.ts": "22671d4807a8cd9429469c35ab7bc7afa4fefe5a44ffcf4d01c8b3ff977adfb4",
+    "src/engine/engine.ts": "222be1955b0fefc3b83433ea0af2a16448ccfacd5114d5e3f585a0855223e954",
+    "public/vendor/coolprop-safe/coolprop.wasm": "55d4d93788e146f773ba7dbbd14ad47a3e24fc0a273eaad910879f5404bbe0d0"
+  },
+  "randomControllerCases": 5000,
+  "actualOff": {
+    "time": 0.5,
+    "beforeOpening": [
+      0.64925
+    ],
+    "afterOpening": [
+      0.62425
+    ],
+    "massResidualKg": 1.1102230246251565e-16,
+    "systemEnergyResidualJ": 1.2071893706888659e-08
+  },
+  "actualThermalRollback": {
+    "fault": "Humid air T(H,W) failed",
+    "unchangedFields": [
+      "rooms",
+      "outdoorEnergyJ",
+      "outdoorWaterKg",
+      "time",
+      "stateTime",
+      "heatingRuntime",
+      "onTime",
+      "offTime",
+      "active",
+      "thermostatCalls",
+      "ledgers",
+      "boundaryWater",
+      "inventoryDrive",
+      "demandIntegralW",
+      "inverterCycling",
+      "fluid"
+    ]
+  },
+  "status": "PASS scoped independent fixed-PI controller/Off/coupled rollback checks",
+  "independentCopiedFocusedSuite": {
+    "passed": 5,
+    "failed": 0,
+    "durationMs": 3241.056854,
+    "backend": "guarded",
+    "snapshotDirectory": "/tmp/heatpump-review-pi-rtje4n8n",
+    "command": "HEATPUMP_TEST_BACKEND=guarded node --test tests/engine/charge-valve.test.mjs"
+  },
+  "mcHelper": {
+    "bounds": 4464,
+    "derivatives": 38000,
+    "maxDerivativeError": 9.499490261077881e-08,
+    "scope": "Face bounds and active derivatives only; no PDE or coupled accuracy claim"
+  },
+  "independentScript": "/tmp/heatpump-review-pi-rtje4n8n/review-independent-pi.mjs",
+  "scope": "Short independently compiled snapshot checks; no sustained/charge/frost/cooling/performance acceptance."
+}
