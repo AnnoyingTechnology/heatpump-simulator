@@ -11,7 +11,7 @@ export const MM_PX = 0.32;
 export const BASE_H = 800;
 
 /** x = 140 leaves a 134-unit margin left of the casing for the coil probe pills and the REF note (see PROBE_AT). */
-export const OUT = { x: 140, y: 606, w: Math.round(OUTDOOR_CASE_MM.w * MM_PX) } as const;
+export const OUT = { x: 140, y: 520, w: Math.round(OUTDOOR_CASE_MM.w * MM_PX) } as const;
 const OUT_BASE_H = Math.round(OUTDOOR_CASE_MM.h * MM_PX);
 export const UNIT = { w: Math.round(INDOOR_CASE_MM.w * MM_PX), h: Math.round(INDOOR_CASE_MM.h * MM_PX), dx: 16, dy: 46 } as const;
 

@@ -55,6 +55,8 @@ try{
   assert.ok(await run(()=>[...document.querySelectorAll('.hm-trend .trend-line')].every(e=>e.getAttribute('d').includes('M'))));
   assert.ok(await run(()=>[...document.querySelectorAll('.hm')].every(e=>getComputedStyle(e).borderTopWidth==='0px'&&getComputedStyle(e).borderBottomWidth==='0px')));
   assert.deepEqual(await run(()=>[...document.querySelectorAll('.hm')].map(e=>getComputedStyle(e).borderLeftWidth)),['0px','1px','1px']);
+  assert.ok(await run(()=>[...document.querySelectorAll('.hm')].every(e=>{const v=e.querySelector('.vl').getBoundingClientRect(),g=e.querySelector('.hm-trend').getBoundingClientRect();return g.left>=v.right+4&&g.height>=40&&g.top<v.bottom&&g.bottom>v.top})), 'headline graphs sit beside their values');
+  assert.ok(await run(()=>{const e=document.querySelector('.scene-scroll');return e.scrollHeight<=e.clientHeight+1}), 'default three-room overview fits without scrolling');
  });
  await check('paused weather and individual indoor controls preserve the simulation clock',async()=>{
   await run(()=>{

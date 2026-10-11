@@ -24,6 +24,8 @@ try {
      assert.ok(box.ramp.height>=10&&box.ramp.width>300&&box.air.height>0);
      assert.ok(box.page<=height,JSON.stringify({width,height,count,zoom,box}));
      assert.ok(box.header.every(b=>b.left>=0&&b.right<=width&&b.bottom<=72),JSON.stringify({width,count,box}));
+     if(count<=3&&zoom==='overview') assert.ok(await run(()=>{const e=document.querySelector('.scene-scroll');return e.scrollHeight<=e.clientHeight+1}),`unnecessary scroll at ${width}x${height}, ${count} rooms`);
+     assert.ok(await run(()=>[...document.querySelectorAll('.hm')].every(e=>{const v=e.querySelector('.vl').getBoundingClientRect(),g=e.querySelector('.hm-trend').getBoundingClientRect();return g.left>=v.right+4&&g.height>=40&&g.top<v.bottom&&g.bottom>v.top})),`side-by-side graphs at ${width}`);
      await run(()=>{const e=document.querySelector('.scene-scroll');e.scrollTop=e.scrollHeight});
      assert.ok(Math.abs(await run(()=>document.querySelector('.legend').getBoundingClientRect().bottom)-height)<1);
     }
@@ -36,6 +38,16 @@ try {
   assert.ok(styles.gauges.length>=3&&styles.gauges.every(v=>v==='1'));
   assert.ok(styles.cards.every(c=>c.top==='0px'&&c.right==='0px'&&c.bottom==='0px'&&c.radius==='0px'&&c.height>=70));
   assert.deepEqual(styles.cards.map(c=>c.left),['0px','1px','1px']);
+ });
+ await check('compact outdoor card fits its controls, including the expanded cleanliness override',async()=>{
+  for(const theme of ['light','dark'])for(const override of [null,80]){
+   await page.evaluate(`(()=>{const e=document.querySelector('select[aria-label="Colour theme"]');e.value=${JSON.stringify(theme)};e.dispatchEvent(new Event('change',{bubbles:true}))})()`);
+   await page.evaluate(`qa.store.update(s=>s.cfg.live.outdoorCleanlinessOverridePct=${override})`);await settle();
+   const layout=await run(()=>{const root=document.querySelector('.ou'),r=root.getBoundingClientRect(),fo=root.closest('foreignObject');return {height:Number(fo.getAttribute('height')),controls:[...root.querySelectorAll('input,select,button')].filter(e=>e.getClientRects().length).map(e=>{const b=e.getBoundingClientRect();return {left:b.left-r.left,right:b.right-r.left,top:b.top-r.top,bottom:b.bottom-r.top}}),width:r.width,pixels:r.height,last:root.querySelector('.ou-col').lastElementChild.getBoundingClientRect().bottom,footer:root.querySelector('.ou-slot').getBoundingClientRect().top}});
+   assert.ok(layout.height<=300);assert.ok(layout.controls.every(b=>b.left>=0&&b.right<=layout.width+.1&&b.top>=0&&b.bottom<=layout.pixels+.1),JSON.stringify(layout));assert.ok(layout.last<=layout.footer+.1,JSON.stringify(layout));
+  }
+  await run(()=>{const e=document.querySelector('select[aria-label="Colour theme"]');e.value='system';e.dispatchEvent(new Event('change',{bubbles:true}))});
+  await run(()=>qa.store.update(s=>s.cfg.live.outdoorCleanlinessOverridePct=null));await settle();
  });
  await check('three vector plots consume actual worker readings; pause and settings do not add or reset history',async()=>{
   await run(()=>qv.simulation.step(5));await settle();

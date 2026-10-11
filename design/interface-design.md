@@ -262,3 +262,33 @@ Supersedes the matching numbers above (outdoor casing x, scene width, indoor col
 - Scale: confirm the 10 % loss from the wider corridor is acceptable at 1440 × 900 (labels 11 units ≈ 8.9 px there, 22-unit values ≈ 17.8 px). If not, the cheapest recovery is narrowing `LINE_CTL.w` or the environment block, not shrinking text.
 - Check the compressor suction pill against the HP-tap gauge value text (taps on) and the accumulator edge; the discharge pill against the O-pipe at y 106.
 - Check the 8-room scroll: the block height (56) against the 147.6 room row and the 20-unit gas pill against the row top.
+
+## Theme, header and outdoor-card refinement (current; written without a build or browser run)
+
+Files: `index.html`, `src/theme.ts` (new), `chrome.ts`, `style.css`, `scene.ts` (one class). No engine, runtime, state or store change; a theme change never touches configuration, reset or pause.
+
+### Theme (System / Light / Dark)
+- **Model.** `<html data-theme="light|dark">` is the resolved theme the stylesheet keys on; `<html data-theme-choice="system|light|dark">` is the choice. System is the default and follows `prefers-color-scheme` live. An inline script in `<head>` (before the stylesheet) sets both attributes and `<meta name="color-scheme">` before first paint, so there is no flash. `theme.ts` applies the same rules at startup and owns changes.
+- **Storage.** Key `heatpump-simulator.theme`, value `light` or `dark`; System removes the key. Every storage call is in try/catch: if storage is denied the choice still applies for the page and the next load starts at System. A `storage` event keeps other tabs in step; the OS listener acts only while System is selected.
+- **Control.** One native `<select aria-label="Colour theme">` (System, Light, Dark) in `.hd-id`, directly right of the brand, inside the existing single header row. Closed, it is a 30 px icon button (half-filled circle, sun, moon: pure vector, per choice) over a transparent select, so the browser supplies the menu, arrow/type-ahead/Enter keys, outside-click dismissal and the accessible name and value. The tooltip states the choice and, for System, the current resolved theme. While the native list is open the browser consumes Escape, so the window Escape (zoom out / close popover) only runs when the list is closed. In forced-colors mode the icon is dropped and the select shows its text.
+- **Brand.** Below 1420 px viewport width the product name is visually hidden (still in the accessible name and tooltip) so the controls keep their room; the mark stays.
+- **Tokens.** `style.css` defines one custom-property set per theme: chrome, controls, status surfaces, zones and room fills, diagram text on the zone background, probe pills, object panels, legend and help. Dark is a cool slate with a steel-blue accent and a warm-neutral indoor zone; light is unchanged from before. `color-scheme` follows the theme so native controls, scrollbars and the select list match.
+- **Theme-independent on purpose.** The refrigerant and air colour scales (`circuit.ts`, legend ramps, probe swatches, room wash fill, tube interiors); physical hardware: white casings, unit shells, gauge faces, copper, steel, ice, fins, dust, and the lettering printed on them (`.lbl`, `.out-label`, `.unit-label`, `.g-val`/`.g-tag` of the outdoor gauges, stop and EEV labels). No CSS filter, no blanket SVG text recolour.
+- **Theme-aware diagram text.** Everything on the zone background: zone titles, outdoor ambient value, exhaust-air probe and coil heat, REF notes, indoor notes, branch-gauge readouts (`.branch-taps`, now outside the white casing), the `Outdoor coil` label (`.lbl-ext`), room readouts and all panels. Probe pills follow the theme (dark pill, light value in dark mode) with brighter chip hues; the clamp ring stays white and the leader is a mid tone that reads on both the zone background and the casing. Air-temperature room washes keep their exact fill and use opacity 0.2 (light) / 0.3 (dark) so the tint reads equally on a dark field.
+- **Popovers and help.** Popovers, the heat-loss guide, the legend, chips, tags, folds, tables and the ice note all use the tokens; shadows are deeper in dark.
+- **Also added.** `.opstate` had no rule: it now has a status dot (running green, fault red, updating blue, defrost/reversing/draining amber, otherwise neutral), no pill.
+
+### Header metrics
+- Each cell: value left, label below it, trend to the right of both. Separators are 1 px, full header height, only between cells (the first has no left border; no card borders, no radius).
+- The trend is a 44 px high vector plot that fills its column (`preserveAspectRatio="none"`, `vector-effect: non-scaling-stroke`, 1.4 px line). `−2h` and `now` are real 8 px HTML text over the empty strip under the baseline, so stretching never distorts text (the old SVG text rendered at about 4 px). Paths from `trends.ts` are unchanged (viewBox `0 0 112 44`).
+- At 1280 the plot is about 68 px wide; at 1920 it is 112 px.
+
+### Outdoor card (422 × 300 at y 142, unchanged size)
+- Mode and manufacturer class span the width above the two columns; weather stays unboxed above it; OUT.y stays 520. The column gap stays 4 px (6 px collided by 2 px at 1920 × 1080 with the cleanliness override expanded).
+- Budget reclaimed without growing the card or the gaps: padding 7/7 → 6/7, head 22 → 20, modes margin 3 → 2, charge card padding 4 → 3 and its value 26 → 24 px, button margin 3 → 2: about 7 px of headroom for the longer column. Not measured here.
+
+### For root's checks
+- Both themes at 1280 × 720, 1440 × 900, 1920 × 1080 with 1, 3, 5 rooms and each zoom; header controls inside the viewport at 1280 (theme control adds 36 px; the name is hidden there); `.hm-trend` height ≥ 40 and left of the value; outdoor card with the override expanded in both themes.
+- Dark theme: probe leaders over the white casing (contrast about 3.3:1), chip text on the brighter chips, gauge readout beside the branch gauges, hot-vapour bracket text, room washes at 0.3, dust/ice on the white fins.
+- Playwright cannot see the native select list; test with `selectOption`, keyboard arrows and a reload (stored choice, pre-paint attribute). Verify in a real browser that Escape with the list open does not zoom out.
+- Storage denied: emulate by overriding `localStorage` to throw; the control must still switch and the page must not error.

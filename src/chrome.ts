@@ -6,6 +6,7 @@ import { TrendHistory } from './trends';
 import { PREVIEW_BANNER, fixtureFor } from './fixtures';
 import { simulation } from './runtime/view';
 import { ICE_START_KG, currentReadings, liveStatus, store } from './state';
+import { createThemeControl } from './theme';
 import { INDOOR_CLASSES } from './types';
 import type { AppState, SpeedFactor } from './types';
 
@@ -89,16 +90,18 @@ export function createHeader(): Header {
   reset.addEventListener('click', () => store.restartSimulation());
   const time = html('output', { class: 'time', 'aria-label': 'Simulation time' }, '00:00.0');
 
-  // Headline readings: label below value, fixed-width cells so the header does not reflow as numbers change.
+  // Headline readings: value with its trend to the right, label below the value, fixed-width cells so the header does not reflow
+  // as numbers change. The plot is 44 px high and stretches to its cell width (non-uniform viewBox, non-scaling strokes); its
+  // time ends are HTML laid over the empty strip under the baseline, so the text is never distorted.
   const metric = (unit: string | null) => {
     const k = html('span', { class: 'k' }, '');
     const v = html('b', { class: 'v' }, '—');
     const trendTitle = svg('title', {}, 'Last 2 hours of simulated time; latest reading in each 10-second bin; no history yet');
     const trendPath = svg('path', { class: 'trend-line', d: '' });
-    const trend = svg('svg', { class: 'hm-trend', viewBox: '0 0 112 22', role: 'img', 'aria-label': 'Last 2 hours of simulated time' },
-      trendTitle, svg('path', { class: 'trend-baseline', d: 'M1 15H111' }), trendPath,
-      svg('text', { x: 1, y: 21, class: 'trend-time' }, '−2h'), svg('text', { x: 111, y: 21, 'text-anchor': 'end', class: 'trend-time' }, 'now'));
-    const root = html('div', { class: 'hm' }, k, html('span', { class: 'vl' }, v, ...(unit ? [html('i', {}, unit)] : [])), trend);
+    const trend = svg('svg', { class: 'hm-trend', viewBox: '0 0 112 44', preserveAspectRatio: 'none', role: 'img', 'aria-label': 'Last 2 hours of simulated time' },
+      trendTitle, svg('path', { class: 'trend-baseline', d: 'M1 34H111' }), trendPath);
+    const plot = html('span', { class: 'hm-plot' }, trend, html('span', { class: 'hm-ends', 'aria-hidden': 'true' }, html('span', {}, '−2h'), html('span', {}, 'now')));
+    const root = html('div', { class: 'hm' }, k, html('span', { class: 'vl' }, v, ...(unit ? [html('i', {}, unit)] : [])), plot);
     return { root, k, v, trend, trendTitle, trendPath };
   };
   const mCop = metric('COP');
@@ -125,7 +128,9 @@ export function createHeader(): Header {
   const status = html('div', { class: 'hd-status' }, html('div', { class: 'hd-badges' }, opState, exTag), note);
 
   const root = html('header', { class: 'topbar' },
-    html('div', { class: 'brand' }, html('span', { class: 'mark', 'aria-hidden': 'true' }), html('b', {}, 'Heatpump Simulator 2026')),
+    html('div', { class: 'hd-id' },
+      html('div', { class: 'brand', title: 'Heatpump Simulator 2026' }, html('span', { class: 'mark', 'aria-hidden': 'true' }), html('b', {}, 'Heatpump Simulator 2026')),
+      createThemeControl()),
     html('div', { class: 'hd-group' }, pause, reset, status, speedControl, time, speedHelp),
     html('div', { class: 'spacer' }),
     metrics);

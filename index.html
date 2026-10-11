@@ -3,7 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      /* Resolve the theme before first paint (no flash). Same key and rules as src/theme.ts: an explicit light/dark choice wins,
+         otherwise the OS preference. Storage may be denied; the default is then System. */
+      (function () {
+        var d = document.documentElement, choice = '';
+        try { choice = window.localStorage.getItem('heatpump-simulator.theme') || ''; } catch (e) {}
+        if (choice !== 'light' && choice !== 'dark') choice = 'system';
+        var dark = choice === 'dark' || (choice === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        d.setAttribute('data-theme', dark ? 'dark' : 'light');
+        d.setAttribute('data-theme-choice', choice);
+        var meta = document.querySelector('meta[name="color-scheme"]');
+        if (meta) meta.setAttribute('content', dark ? 'dark' : 'light');
+      })();
+    </script>
     <link rel="icon" href="data:," />
     <title>Heatpump Simulator 2026 · interface preview</title>
     <link rel="stylesheet" href="/src/style.css" />

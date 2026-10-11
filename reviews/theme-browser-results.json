@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-11T06:04:33.821Z",
+  "checks": [
+    {
+      "name": "System is the default and follows operating-system light/dark changes",
+      "passed": true
+    },
+    {
+      "name": "explicit choices override system preference and are stored locally",
+      "passed": true
+    },
+    {
+      "name": "themes preserve the accepted physical state and fixed temperature colours",
+      "passed": true
+    },
+    {
+      "name": "explicit preference survives reload and System removes the override",
+      "passed": true
+    },
+    {
+      "name": "unavailable local storage keeps the interface usable with system default and page-local overrides",
+      "passed": true
+    }
+  ]
+}

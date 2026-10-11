@@ -31,7 +31,7 @@ export class TrendHistory {
       const value = sample.values[index];
       if (value === null) { previous = null; continue; }
       const x = 1 + 110 * (sample.seconds - (this.latest - this.windowSeconds)) / this.windowSeconds;
-      const y = 14 - 12 * (value - minimum) / (maximum - minimum);
+      const y = 32 - 28 * (value - minimum) / (maximum - minimum);
       // A missing bin or different operating mode has no fabricated connecting segment.
       const connected = previous && previous.series === sample.series && sample.seconds - previous.seconds <= 2 * this.sampleSeconds;
       const position = `${x.toFixed(2)} ${y.toFixed(2)}`;

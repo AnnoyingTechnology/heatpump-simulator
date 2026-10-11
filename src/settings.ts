@@ -460,9 +460,9 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
   const charge = createChargeArea();
   const root = html('div', { class: 'rp ou' },
     html('div', { class: 'ou-head' }, html('span', { class: 'ou-title' }, 'OUTDOOR UNIT'), modelText, gear),
+    html('div', { class: 'ou-modes' }, mode.root, model.root),
     html('div', { class: 'ou-cols' },
       html('div', { class: 'ou-col' },
-        mode.root, model.root,
         html('div', { class: 'ou-row' }, html('span', { class: 'rp-k' }, 'Ports'), portsField.root),
         eta.root, cleanGlobal.root, cleanOutdoor.root),
       charge.root),
