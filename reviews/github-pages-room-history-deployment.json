@@ -1,0 +1,66 @@
+{
+  "checkedAt": "2026-10-11T15:18:28.077Z",
+  "url": "https://annoyingtechnology.github.io/heatpump-simulator/",
+  "wasmUrl": "https://annoyingtechnology.github.io/heatpump-simulator/vendor/coolprop-safe/coolprop.wasm",
+  "wasmSha256": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c",
+  "expectedBundles": [
+    "index-CfI503US.js",
+    "index-DBx_OU2u.css",
+    "worker-CFGs30as.js"
+  ],
+  "bundleHashes": {
+    "index-CfI503US.js": "455da431c0b0ffe9a05249ece8258d7a7f210dfe95a5fbf510b6129cf895ac68",
+    "index-DBx_OU2u.css": "33fedf2119b3d4b65a7333cb638d4863c8371a84774fefa931f93912d0e7155a",
+    "worker-CFGs30as.js": "99d0964580611ca2f2cb8f1803abde9e102cb6c3b2ad7210bae51d5f2474de34"
+  },
+  "checks": [
+    {
+      "name": "hosted site starts a real running worker with physical sensor readings",
+      "passed": true
+    },
+    {
+      "name": "hosted whole-house ruler keeps RT markers beside average U and estimated exposed area",
+      "passed": true
+    },
+    {
+      "name": "hosted zoom keeps the temperature scales at the bottom and headline trends use borderless separators",
+      "passed": true
+    },
+    {
+      "name": "hosted winter preset, room junctions, session COP and drained-water total are visible",
+      "passed": true
+    },
+    {
+      "name": "paused weather and individual indoor controls preserve the simulation clock",
+      "passed": true
+    },
+    {
+      "name": "requested acceleration resumes physical time without restarting",
+      "passed": true
+    },
+    {
+      "name": "hosted application and assets report no runtime or loading errors",
+      "passed": true
+    }
+  ],
+  "achievedRate": "39.0\u00d7",
+  "resumedOperatingState": "idle",
+  "desktop": {
+    "width": 1600,
+    "height": 1000
+  },
+  "releaseCommit": "66ca8be81076b16fcc2b193a7bf219a153d9aab8",
+  "workflowRun": 38149952094,
+  "workflowConclusion": "success",
+  "ciChecks": {
+    "reference": 127,
+    "historyAndUrl": 6,
+    "catalogue": 23,
+    "smoke": 25
+  },
+  "productionRoomChecks": {
+    "receipt": "reviews/hosted-room-history-results.json",
+    "passed": 2
+  },
+  "productionUrlCheck": "reviews/hosted-url-preconfiguration-results.json"
+}
