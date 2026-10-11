@@ -31,6 +31,7 @@ config = {
         'models': {'Qwen3.8-Flash-Next': {
             'name': 'Qwen3.8-Flash-Next · 10.10.10.204 · thinking off',
             'limit': {'context': 253952, 'output': 16384},
+            'modalities': {'input': ['text', 'image'], 'output': ['text']},
             'options': {'reasoningEffort': 'none', 'temperature': 0.7, 'top_p': 0.8},
             'variants': {'off': {'reasoningEffort': 'none'}},
         }},
@@ -41,7 +42,7 @@ config = {
         '*': 'deny', 'read': 'allow', 'glob': 'allow', 'grep': 'allow',
         'webfetch': 'allow', 'websearch': 'allow', 'todowrite': 'allow',
         'edit': {'*': 'deny', 'research/catalogue/staging/*': 'allow', str(ROOT / 'research/catalogue/staging/*'): 'allow'},
-        'bash': {'*': 'deny', 'python3 tools/catalogue-pages.py *': 'allow', 'python3 tools/validate-catalogue.py *': 'allow'},
+        'bash': {'*': 'deny', 'python3 tools/catalogue-pages.py *': 'allow', 'python3 tools/catalogue-page-image.py *': 'allow', 'python3 tools/validate-catalogue.py *': 'allow'},
         'external_directory': 'deny',
     },
 }

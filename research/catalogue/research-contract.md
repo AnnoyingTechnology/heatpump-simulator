@@ -18,6 +18,10 @@ Use manufacturer technical pages, installation manuals, data books and combinati
 
 Read the entire relevant row, units, column headings and footnotes. Check PDF diagrams/tables visually when text extraction loses alignment. A family title is not proof that every suffix has the same specs. Do not substitute N, N8 or N9 models, indoor/outdoor refs, Mitsubishi Electric/Heavy Industries, or a different market variant. Identical physical specifications may share source references but retain distinct product identities.
 
+## Batch output and checkpoints
+
+Use small per-family reference files linked from an explicitly incomplete family index. Save each result before reading the next family or before context compaction. Keep individual write/edit payloads below6000 characters; append facts in small edits instead of constructing one giant tool call. The first large manifest hit the observed16384-token response limit. Fresh per-family contexts avoid rereading the full catalogue. All published fan speeds are separate numeric facts with distinct conditions; never use slash-separated strings. Preserve exact source-language excerpts, including accents; distinguish PDF page numbers from printed page numbers. The page-image helper provides primary table images for alignment checks.
+
 ## Data rules
 
 Produce UTF-8 JSON per family under `research/catalogue/staging/`. Use the format in `catalogue.schema.json`. Use `null` or omit an unavailable optional fact; record missing facts in `unknowns`. Never infer finned exchanger area, compressor displacement, internal refrigerant volume, efficiencies, RPS/Hz limits or valve topology from nominal kW or casing size.

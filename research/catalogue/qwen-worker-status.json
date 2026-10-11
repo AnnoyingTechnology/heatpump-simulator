@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-10-11T07:08:46.326013+00:00",
+  "host": "10.10.10.204",
+  "observedHostname": "ai-multi-gpu",
+  "model": "Qwen3.8-Flash-Next",
+  "remoteAPI": "http://127.0.0.1:19623/v1 on 10.10.10.204",
+  "transport": "process-scoped SSH forward via ai@10.10.10.204, local19624",
+  "thinking": "off; reasoningEffort=none",
+  "observedReasoningTokens": 0,
+  "batches": [
+    {
+      "batch": "qwen-mitsubishi-checkpoint",
+      "sessionIds": [
+        "ses_ed65082cdffewgU0LfwcTj8SpG"
+      ],
+      "completedSteps": 1,
+      "reasoningTokens": 0,
+      "lengthStops": 1
+    },
+    {
+      "batch": "qwen-mitsubishi-hr25-source-review",
+      "sessionIds": [
+        "ses_ed63b697cffef7zCCQm4Hn6SGs"
+      ],
+      "completedSteps": 16,
+      "reasoningTokens": 0,
+      "lengthStops": 0
+    },
+    {
+      "batch": "qwen-mitsubishi-small-checkpoint",
+      "sessionIds": [
+        "ses_ed65082cdffewgU0LfwcTj8SpG"
+      ],
+      "completedSteps": 16,
+      "reasoningTokens": 0,
+      "lengthStops": 0
+    },
+    {
+      "batch": "qwen-mitsubishi-manifest",
+      "sessionIds": [
+        "ses_ed65082cdffewgU0LfwcTj8SpG"
+      ],
+      "completedSteps": 124,
+      "reasoningTokens": 0,
+      "lengthStops": 0
+    }
+  ],
+  "staging": {
+    "manifestReferences": 12,
+    "candidateUnits": 1,
+    "structuralValidation": "passed after Qwen scalar-value corrections",
+    "sourceAcceptance": "first indoor candidate corrected against its primary table, including vision; catalogue import acceptance remains pending",
+    "fullCoverage": false,
+    "candidateFacts": 17,
+    "nextBatch": "remaining12-reference MSZ-HR/MUZ-HR family, fresh context, running thinking off"
+  },
+  "notes": [
+    "Initial oversized source scan compacted before saving an index.",
+    "One large write hit the16384-token response limit. No file was created by that call.",
+    "Subsequent bounded writes saved an incomplete family index, HR reference manifest and first candidate.",
+    "Fresh contexts and small edits are required for subsequent family batches.",
+    "No catalogue data has been promoted or integrated into simulator physics."
+  ]
+}

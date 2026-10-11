@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "family": "MSZ-HR Mural Essentiel",
+  "sourceId": "mitsubishi-fr-air-air-2026-2027",
+  "edition": "PAC Air/Air catalogue 2026-2027 (RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf)",
+  "market": "France",
+  "status": "reference manifest only; no numerical performance assertions, not overall catalogue coverage",
+  "references": [
+    { "modelReference": "MSZ-HR25VFK2", "unitType": "indoor", "pageLocators": ["PDF pp.48-50 (printed pp.47-49)"], "status": "candidate drafted (mitsubishi-msz-hr25-indoor.json, structural validator PASS, root source-review corrections applied 2026-10-11; staging only, not accepted/promoted)" },
+    { "modelReference": "MSZ-HR35VFK2", "unitType": "indoor", "pageLocators": ["PDF pp.48-50 (printed pp.47-49)"], "status": "pending" },
+    { "modelReference": "MSZ-HR42VFK2", "unitType": "indoor", "pageLocators": ["PDF pp.48-50 (printed pp.47-49)"], "status": "pending" },
+    { "modelReference": "MSZ-HR50VFK2", "unitType": "indoor", "pageLocators": ["PDF pp.48-50 (printed pp.47-49)"], "status": "pending" },
+    { "modelReference": "MSZ-HR60VF2", "unitType": "indoor", "pageLocators": ["PDF pp.48-50 (printed pp.47-49)"], "status": "pending" },
+    { "modelReference": "MSZ-HR71VF2", "unitType": "indoor", "pageLocators": ["PDF pp.48-50 (printed pp.47-49)"], "status": "pending" },
+    { "modelReference": "MUZ-HR25VF2", "unitType": "outdoor", "pageLocators": ["PDF p.50 (printed p.49)"], "status": "pending" },
+    { "modelReference": "MUZ-HR35VF2", "unitType": "outdoor", "pageLocators": ["PDF p.50 (printed p.49)"], "status": "pending" },
+    { "modelReference": "MUZ-HR42VF2", "unitType": "outdoor", "pageLocators": ["PDF p.50 (printed p.49)"], "status": "pending" },
+    { "modelReference": "MUZ-HR50VF2", "unitType": "outdoor", "pageLocators": ["PDF p.50 (printed p.49)"], "status": "pending" },
+    { "modelReference": "MUZ-HR60VF2", "unitType": "outdoor", "pageLocators": ["PDF p.50 (printed p.49)"], "status": "pending" },
+    { "modelReference": "MUZ-HR71VF2", "unitType": "outdoor", "pageLocators": ["PDF p.50 (printed p.49)"], "status": "pending" }
+  ],
+  "unresolvedReferences": [
+    { "modelReference": "MSZ-HR color/suffix variants", "reason": "catalogue printed tables show only VFK2 (25-50) and VF2 (60/71) indoor suffixes; no other suffix is printed, do not infer" },
+    { "modelReference": "MUZ-HR multi-split eligibility", "reason": "MUZ-HR is the mono-split companion shown on p.49; multi-split MSZ-HR compatibility is via MXZ-2HA40VF3/2HA50VF3/3HA50VF3 (p.110-111), which are separate outdoor references" }
+  ],
+  "coverageNotes": "References and locators use explicit PDF page numbers with printed page in parentheses: overview PDF p.48 (printed p.47), features PDF p.49 (printed p.48), full spec table PDF p.50 (printed p.49). Sizes 25/35/42/50 use VFK2 indoor suffix; 60/71 use VF2. Outdoor MUZ-HR VF2 shown for 25/35, 42/50, 60/71 columns. MSZ-HR25VFK2 indoor candidate drafted: structural validator PASS and root source-review corrections applied (exact French excerpts, PDF/printed locators, four separate PV/MV/GV/SGV airflow and sound-pressure facts, SCOP/SEER marked as system/combination ratings); remains staging only, not accepted. MUZ-HR25VF2 outdoor facts available on same table PDF p.50 (printed p.49) but not yet drafted. This manifest does not validate combination rules; combination tables (livret combinaisons, separate source) still pending."
+}
