@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-11T12:31:08.878Z",
+  "checkedAt": "2026-10-11T13:16:47.421Z",
   "checks": [
     {
       "name": "query/fragment observations initialize actual worker without resets",
@@ -100,7 +100,7 @@
         ],
         "compressor": {
           "displacementM3rev": 0.000022,
-          "speedMinRps": 18,
+          "speedMinRps": 8,
           "speedMaxRps": 75,
           "isentropicEfficiency": 0.7,
           "volumetricEfficiency": 0.8,
@@ -132,6 +132,8 @@
           "thermostatDeadbandK": 1,
           "minOnSeconds": 30,
           "minOffSeconds": 30,
+          "inverterRampUpRpsPerSecond": 2,
+          "inverterRampDownRpsPerSecond": 4,
           "reversalSeconds": 3,
           "defrostMinHeatingSeconds": 300,
           "defrostIceThresholdKg": 0.15,
@@ -275,7 +277,7 @@
         ],
         "compressor": {
           "displacementM3rev": 0.000022,
-          "speedMinRps": 18,
+          "speedMinRps": 8,
           "speedMaxRps": 75,
           "isentropicEfficiency": 0.7,
           "volumetricEfficiency": 0.8,
@@ -307,6 +309,8 @@
           "thermostatDeadbandK": 1,
           "minOnSeconds": 30,
           "minOffSeconds": 30,
+          "inverterRampUpRpsPerSecond": 2,
+          "inverterRampDownRpsPerSecond": 4,
           "reversalSeconds": 3,
           "defrostMinHeatingSeconds": 300,
           "defrostIceThresholdKg": 0.15,
@@ -450,7 +454,7 @@
         ],
         "compressor": {
           "displacementM3rev": 0.000022,
-          "speedMinRps": 18,
+          "speedMinRps": 8,
           "speedMaxRps": 75,
           "isentropicEfficiency": 0.7,
           "volumetricEfficiency": 0.8,
@@ -482,6 +486,8 @@
           "thermostatDeadbandK": 1,
           "minOnSeconds": 30,
           "minOffSeconds": 30,
+          "inverterRampUpRpsPerSecond": 2,
+          "inverterRampDownRpsPerSecond": 4,
           "reversalSeconds": 3,
           "defrostMinHeatingSeconds": 300,
           "defrostIceThresholdKg": 0.15,

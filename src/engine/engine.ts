@@ -2,7 +2,7 @@ import { Properties, DomainError } from './properties.ts';
 import {estimateHeldEnvelope}from'./envelope.ts';
 import { solveCycle } from './cycle.ts';
 import { ChargeCircuit, type ChargeCandidate, type ChargeBoundary, type ChargeNumerics } from './charge.ts';
-import { driveStep, driveRatioThresholds, newDriveState, type DriveState } from './drive.ts';
+import { driveStep, driveRatioThresholds, newDriveState, DEFAULT_INVERTER_SLEW, type DriveState } from './drive.ts';
 import { initialThermostatDemand } from './thermostat.ts';
 import { inventoryCycle } from './charge-output.ts';
 import {roomDemand,inverterAllocationWeights} from './demand.ts';
@@ -173,6 +173,10 @@ export class HeatPumpEngine {
     if (!(c.superheatK > 0 && c.subcoolK > 0 && c.displacementM3rev > 0 && c.speedMinRps > 0 && c.speedMaxRps >= c.speedMinRps)) throw new DomainError('Compressor/idealized control parameters outside domain');
     if (!(config.numerics.maxStepSeconds > 0 && config.numerics.maxStepSeconds <= .5)) throw new DomainError('Maximum physics step must be in (0,.5] seconds');
     const ctl = config.control;
+    for(const rate of [ctl.inverterRampUpRpsPerSecond??DEFAULT_INVERTER_SLEW.upRpsPerSecond,
+      ctl.inverterRampDownRpsPerSecond??DEFAULT_INVERTER_SLEW.downRpsPerSecond]) {
+      if(!(Number.isFinite(rate)&&rate>0))throw new DomainError('Inverter slew rates must be finite and positive');
+    }
     if (!(ctl.controlsW >= 0 && ctl.proportionalSpeedRpsK >= 0 && ctl.thermostatDeadbandK >= 0 && ctl.defrostSpeedRps > 0 && ctl.defrostSpeedRps <= c.speedMaxRps && ctl.defrostIceThresholdKg > 0 && ctl.defrostMaxSeconds > 0 && ctl.defrostTerminationMetalC >= 0 && config.numerics.pressureToleranceW > 0 && config.numerics.pressureToleranceW <= 1 && c.maxPressureRatio > 1 && c.maxDischargeC > 0 && c.maxDischargeC <= 160)) throw new DomainError('Control powers/thresholds outside domain');
     for (const duration of [ctl.minOnSeconds, ctl.minOffSeconds, ctl.reversalSeconds, ctl.defrostMinHeatingSeconds, ctl.drainageDwellSeconds]) if (duration < 0) throw new DomainError('Control times must be nonnegative');
     const o = config.outdoor;
@@ -232,8 +236,7 @@ export class HeatPumpEngine {
     const tRooms = this.rooms.map(r => this.roomTemperature(r,p));
     const linkHeat = interzoneHeatPowers(config, tRooms);
     const errors = config.rooms.map((room, i) => config.mode === 'heating' ? room.setpointC - tRooms[i] : tRooms[i] - room.setpointC);
-    const demand=roomDemand(config,this.rooms,tRooms,this.thermostatCalls,this.demandIntegralW,dt,false,
-      this.inventoryDrive.speedRps>=config.compressor.speedMaxRps-.01||!!this.inventoryDrive.protection);
+    const demand=roomDemand(config,this.rooms,tRooms,this.thermostatCalls,this.demandIntegralW,dt,false);
     this.thermostatCalls = demand.active;
     this.active = [...this.thermostatCalls];
     if (!config.rooms.some(room => room.enabled)) this.abortUnavailableCircuit();
@@ -258,6 +261,7 @@ export class HeatPumpEngine {
     const effectiveMode: Mode | null = running ? config.mode : defrost ? 'cooling' : null;
     const activeErrors = errors.filter((_, i) => this.active[i]);
     let demandSpeed = defrost ? config.control.defrostSpeedRps : running ? bounded(config.compressor.speedMinRps + config.control.proportionalSpeedRpsK * Math.max(0, ...activeErrors), config.compressor.speedMinRps, config.compressor.speedMaxRps) : 0;
+    let rawDemandSpeed = demandSpeed;
     let speed=demandSpeed;
     let cycle: CycleOutput | null = null;
     let charge: ChargeCandidate | null = null;
@@ -343,10 +347,14 @@ export class HeatPumpEngine {
         const request=demand.heatW.reduce((sum,q,i)=>sum+(this.active[i]?q:0),0);
         const capacity=feedback?(config.mode==='heating'?feedback.condenserHeatW:feedback.evaporatorHeatW):0;
         const feedbackSpeed=observed?this.inventoryDrive.speedRps:referenceMinimum;
-        demandSpeed=conventional?referenceMinimum:capacity>0?bounded(feedbackSpeed*request/capacity,config.compressor.speedMinRps,config.compressor.speedMaxRps):config.compressor.speedMinRps;
+        rawDemandSpeed=conventional?referenceMinimum:capacity>0?feedbackSpeed*request/capacity:config.compressor.speedMinRps;
+        demandSpeed=conventional?referenceMinimum:bounded(rawDemandSpeed,config.compressor.speedMinRps,config.compressor.speedMaxRps);
       }
       this.inventoryDrive = driveStep(this.inventoryDrive, dt, { thermalBoundaryAvailable:heldEnvelope?.available,coolingMode:config.mode==='cooling',coolingCoilC, dischargeEnvelopeExceeded:!!((holdNotRecovered||boundaryDenied)&&heldEnvelope?.dischargeExceeded),pressureRatioAvailable:!(holdNotRecovered||boundaryDenied)||heldEnvelope?.ratio!==null,predictedCondensingC:feedback?.condensingC??((holdNotRecovered||boundaryDenied)?heldEnvelope?.condensingC:null)??null,maximumCondensingC:65,demandRps: demandSpeed,
         minimumRps: referenceMinimum, maximumRps: config.compressor.speedMaxRps,
+        inverterSlew:!conventional&&!defrost?{
+          upRpsPerSecond:config.control.inverterRampUpRpsPerSecond??DEFAULT_INVERTER_SLEW.upRpsPerSecond,
+          downRpsPerSecond:config.control.inverterRampDownRpsPerSecond??DEFAULT_INVERTER_SLEW.downRpsPerSecond}:undefined,
         maximumRatio: config.compressor.maxPressureRatio, maximumDischargeC: config.compressor.maxDischargeC,
         minimumOffSeconds: config.control.minOffSeconds,
         pressureRatio: feedback ? feedback.highPressureBarAbs / feedback.lowPressureBarAbs : (holdNotRecovered||boundaryDenied)?heldEnvelope?.ratio??1:1,
@@ -463,9 +471,12 @@ export class HeatPumpEngine {
       : equilibrateExhaust(this.properties,fanOutletH,outdoorAir.totalOutletWater,p,Math.max(config.outdoorTemperatureC,before.temperatureC)).temperatureC : null;
     // Accept the fluid only after every air/metal/film candidate has passed its domain checks.
     if (charge) { this.refrigerant!.commit(charge); this.chargeCandidate = charge; }
-    if(!this.refrigerant&&running&&cycle&&speed>0&&!this.inventoryDrive.protection&&this.inventoryDrive.startupSeconds>=10){
-      const saturated=speed<demandSpeed-.01||speed>=config.compressor.speedMaxRps-.01;
-      this.demandIntegralW=roomDemand(config,this.rooms,tRooms,this.thermostatCalls,this.demandIntegralW,dt,true,saturated).integralW;
+    if(!this.refrigerant&&running&&config.control.strategy!=='on-off'&&cycle&&speed>0&&!this.inventoryDrive.protection){
+      // Preserve the raw request: clipping first would conceal the minimum's
+      // inability to reduce output. Slew/protection likewise limit actual authority.
+      const saturation=speed<rawDemandSpeed-.01?'upper':speed>rawDemandSpeed+.01?'lower':
+        speed>=config.compressor.speedMaxRps-.01?'upper':speed<=config.compressor.speedMinRps+.01?'lower':null;
+      this.demandIntegralW=roomDemand(config,this.rooms,tRooms,this.thermostatCalls,this.demandIntegralW,dt,true,saturation).integralW;
     }
     this.rooms = candidateRooms; this.outdoorWaterKg = candidateMass; this.outdoorEnergyJ = candidateEnergy; this.cycle = cycle;
     this.time += dt; this.stateTime += dt;
@@ -494,7 +505,7 @@ export class HeatPumpEngine {
     this.ledgers.boundaryEnergyJ += dt * (electric - outward - indoorDrain - drainEnergy + ventilationEnergy + envelopeEnergy + internalGainPower) - (charge?.leakEnthalpyJ ?? 0);
     this.boundaryWater += dt * (roomWaterBoundary + outdoorAir.waterToSurfaceKgs - drain);
     this.lastOutput = this.makeOutput(outputs, cycle, indoorFans, fanOutside, roomPower, outdoorOutlet,
-      outdoorAir.waterToSurfaceKgs, drain, meltedKg * FUSION_JKG / dt, speed, filmRate, indoorMetalRate + outMetalRate, charge ? work : undefined, demandSpeed);
+      outdoorAir.waterToSurfaceKgs, drain, meltedKg * FUSION_JKG / dt, speed, filmRate, indoorMetalRate + outMetalRate, charge ? work : undefined, demandSpeed, rawDemandSpeed);
   }
   private inventoryOutput(): EngineOutput['inventory'] {
     if (!this.refrigerant) return null;
@@ -517,7 +528,7 @@ export class HeatPumpEngine {
       compressorDischarge: this.chargeCandidate?.compressorDischarge ?? null };
   }
   private makeOutput(rooms: RoomOutput[], cycle: CycleOutput | null, indoorFansW: number, outdoorFanW: number, roomHeatW: number, outdoorOutlet: number | null,
-    depositionKgs: number, drainageKgs: number, meltPowerW = 0, speedRps = 0, filmEnergyRateW = 0, metalEnergyRateW = 0, compressorWorkW?: number, demandSpeedRps=speedRps): EngineOutput {
+    depositionKgs: number, drainageKgs: number, meltPowerW = 0, speedRps = 0, filmEnergyRateW = 0, metalEnergyRateW = 0, compressorWorkW?: number, demandSpeedRps=speedRps, rawDemandSpeedRps=demandSpeedRps): EngineOutput {
     const film = deriveOutdoorFilm(this.outdoorEnergyJ, this.outdoorWaterKg, this.config.outdoor), comp = compressorWorkW === undefined ? cycle?.compressorElectricalW ?? 0 : compressorWorkW / this.config.compressor.driveEfficiency;
     const inventory = this.inventoryOutput();
     const effectiveMode = inventory && (this.state === 'running' || this.state === 'defrost') ? inventory.orientation : cycle?.mode ?? null;
@@ -537,7 +548,7 @@ export class HeatPumpEngine {
           ? 'Interzone openings use a buoyancy-informed sensible equivalent with reference air density 1.2 kg/m³ and cp 1006 J/(kg K); no inter-room air/water transport or resolved stratification.'
           : 'Interzone links exchange sensible heat through prescribed conductance; they do not transport air/water or resolve buoyancy.'] : []),
         ...(this.config.rooms.some(room => (room.internalGainW ?? 0) > 0) ? ['Internal gains are prescribed sensible heat supplied to room air, separate from HVAC output and COP.'] : []),
-        ...(this.chargeCandidate?.diagnostics ?? []), ...(this.inventoryDrive.protection&&demandSpeedRps>0?[`Generic compressor protection hold: ${this.inventoryDrive.protection}.`]:[]), ...(this.refrigerant && !cycle && speedRps > 0 ? ['No complete forward circulation summary: inspect physical face flows and stored refrigerant energy.'] : [])])], fault: this.fault, algebraicResidualW: cycle?.closureResidualW ?? 0, speedRps, demandSpeedRps,
+        ...(this.chargeCandidate?.diagnostics ?? []), ...(this.inventoryDrive.protection&&demandSpeedRps>0?[`Generic compressor protection hold: ${this.inventoryDrive.protection}.`]:[]), ...(this.refrigerant && !cycle && speedRps > 0 ? ['No complete forward circulation summary: inspect physical face flows and stored refrigerant energy.'] : [])])], fault: this.fault, algebraicResidualW: cycle?.closureResidualW ?? 0, speedRps, demandSpeedRps, rawDemandSpeedRps,
         restartDelaySeconds:demandSpeedRps>0&&speedRps===0?Math.max(0,this.config.control.minOffSeconds-this.inventoryDrive.offSeconds):0,
         envelopeProtection:this.inventoryDrive.protection, filmEnergyRateW, metalEnergyRateW } };
   }

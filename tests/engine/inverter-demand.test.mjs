@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
 import Module from './backend.mjs';
 import {Properties,HeatPumpEngine,defaultEngineConfig} from './build/index.js';
 import {roomDemand,inverterAllocationWeights} from './build/demand.js';
@@ -18,17 +19,90 @@ test('calling branches retain a dimensionless normalized UA reserve when sensibl
   assert.equal(d.active[0],true,'zero/nonzero PI request cannot toggle the call');assert.ok(d.fanFraction[0]>0);
  }
 });
-function check(o,c){assert.equal(o.diagnostics.fault,null);assert.ok(Math.abs(o.energy.residualJ)<.01);assert.ok(Math.abs(o.energy.waterResidualKg)<1e-10);if(o.cycle)assert.ok(o.cycle.closureResidualW<=c.numerics.pressureToleranceW);else assert.equal(o.electrical.compressorW,0);}
+function check(o,c){
+ assert.equal(o.diagnostics.fault,null);assert.ok(Math.abs(o.energy.residualJ)<.01);assert.ok(Math.abs(o.energy.waterResidualKg)<1e-10);
+ if(o.cycle){
+  assert.ok(o.cycle.closureResidualW<=c.numerics.pressureToleranceW);
+  assert.ok(o.cycle.discharge.temperatureC<=c.compressor.maxDischargeC);
+  assert.ok(o.cycle.highPressureBarAbs/o.cycle.lowPressureBarAbs<=c.compressor.maxPressureRatio);
+  assert.ok(o.cycle.totalMassFlowKgs>0);
+  assert.ok(Math.abs(o.cycle.branchMassFlowsKgs.reduce((a,b)=>a+b,0)-o.cycle.totalMassFlowKgs)<1e-9);
+ }else assert.equal(o.electrical.compressorW,0);
+}
 test('room demand balances target load and applies directional antiwindup independently',()=>{
  const c=defaultEngineConfig(2);const e=new HeatPumpEngine(p,c);const rooms=e.checkpoint().rooms;
  const t=c.rooms.map(r=>r.setpointC);const base=roomDemand(c,rooms,t,[true,true],[0,0],.25,false);
  assert.ok(base.heatW.every(q=>q>0));assert.ok(base.active.every(Boolean));
- const saturated=roomDemand(c,rooms,[t[0]-1,t[1]+.5],[true,true],[0,0],1,true,true);
- const lower=roomDemand(c,rooms,[t[0]+100,t[1]],[false,true],[0,0],1,true,false);
+ const saturated=roomDemand(c,rooms,[t[0]-1,t[1]+.5],[true,true],[0,0],1,true,'upper');
+ const lower=roomDemand(c,rooms,[t[0]+100,t[1]],[false,true],[0,0],1,true);
  assert.equal(lower.integralW[0],0);
  assert.equal(saturated.integralW[0],0);assert.ok(saturated.integralW[1]<0);
+ const minimum=roomDemand(c,rooms,[t[0]-1,t[1]+.5],[true,true],[0,0],1,true,'lower');
+ assert.ok(minimum.integralW[0]>0,'positive error may recover from a minimum-speed limit');
+ assert.equal(minimum.integralW[1],0,'negative error cannot wind down below the physical speed floor');
  const approaching=roomDemand(c,rooms,[t[0]-2,t[1]-2],[true,true],[0,0],1,false);
  assert.ok(approaching.heatW[0]>base.heatW[0]);
+});
+
+function ownerDefaultConfig(){
+ const fixture=JSON.parse(readFileSync(new URL('./fixtures/published-owner-startup-146/published-owner-1C-ground17-600.json',import.meta.url)));
+ const c=structuredClone(fixture.config),generic=defaultEngineConfig(3);
+ // Explicit qualified interactive idealized-Reference setting; not an OEM map.
+ // General/native/inventory defaults retain18; physical cooling still requires18.
+ // Published house/pipe/weather inputs stay exact.
+ c.compressor.speedMinRps=8;
+ c.control.inverterRampUpRpsPerSecond=generic.control.inverterRampUpRpsPerSecond;
+ c.control.inverterRampDownRpsPerSecond=generic.control.inverterRampDownRpsPerSecond;
+ return c;
+}
+function checkActualRamp(before,output,c){
+ check(output,c);assert.equal(output.diagnostics.envelopeProtection,null);assert.ok(output.cycle);
+ const dt=output.simulatedSeconds-before.simulatedSeconds;
+ if(before.diagnostics.speedRps===0)assert.equal(output.diagnostics.speedRps,c.compressor.speedMinRps);
+ else{
+  const difference=output.diagnostics.speedRps-before.diagnostics.speedRps;
+  assert.ok(difference<=c.control.inverterRampUpRpsPerSecond*dt+1e-9);
+  assert.ok(difference>=-c.control.inverterRampDownRpsPerSecond*dt-1e-9);
+ }
+ assert.ok(Math.abs(output.electrical.compressorW-output.cycle.compressorWorkW/c.compressor.driveEfficiency)<1e-8);
+ assert.ok(Math.abs(output.energy.electricityJ-before.energy.electricityJ-output.electrical.totalW*dt)<1e-7,'actual accepted watts supply the energy ledger');
+}
+test('exact published owner house maintains native continuous inverter service for 1200 seconds',()=>{
+ const c=ownerDefaultConfig(),e=new HeatPumpEngine(p,c);let previous=e.snapshot(),modulatedBelow18=false,crossedTarget=false;
+ for(let i=0;i<4800;i++){
+  const output=e.step(.25);checkActualRamp(previous,output,c);
+  assert.equal(output.rooms[1].thermostatCalling,true,'upstairs call must survive modulation across target');
+  modulatedBelow18 ||= output.diagnostics.speedRps<18;
+  crossedTarget ||= i>400&&previous.rooms[1].temperatureC<c.rooms[1].setpointC&&output.rooms[1].temperatureC>=c.rooms[1].setpointC;
+  previous=output;
+ }
+ assert.equal(previous.simulatedSeconds,1200);assert.ok(modulatedBelow18);assert.ok(crossedTarget);
+ assert.ok(Math.abs(previous.rooms[1].temperatureC-c.rooms[1].setpointC)<.3);
+ assert.ok(previous.diagnostics.rawDemandSpeedRps>c.compressor.speedMinRps&&previous.diagnostics.rawDemandSpeedRps<18);
+ c.rooms.forEach(room=>room.enabled=false);e.updateConfig(c);
+ const stopped=e.step(.25);check(stopped,c);assert.equal(stopped.electrical.compressorW,0);assert.ok(stopped.rooms.every(room=>room.thermostatCalling===false));
+});
+test('native cold startup and retained-hot-coil restart use admitted speed and actual energy ramp',()=>{
+ const c=ownerDefaultConfig(),e=new HeatPumpEngine(p,c);let previous=e.snapshot();
+ for(let i=0;i<32;i++){const output=e.step(.25);checkActualRamp(previous,output,c);previous=output;}
+ assert.ok(previous.diagnostics.speedRps>c.compressor.speedMinRps,'cold startup accelerates within eight seconds');
+ // Warm the actual coil through conserved running heat before an explicit Off/restart.
+ for(let i=0;i<1168;i++){const output=e.step(.25);checkActualRamp(previous,output,c);previous=output;}
+ assert.ok(previous.rooms[1].metalTemperatureC>30);
+ c.rooms[1].enabled=false;e.updateConfig(c);
+ for(let i=0;i<Math.ceil(c.control.minOffSeconds/.25);i++){previous=e.step(.25);check(previous,c);assert.equal(previous.electrical.compressorW,0);}
+ assert.ok(previous.rooms[1].metalTemperatureC>c.rooms[1].initialTemperatureC,'restart retains actual warm metal storage');
+ c.rooms[1].enabled=true;e.updateConfig(c);previous=e.snapshot();
+ let increased=false;
+ for(let i=0;i<32;i++){const output=e.step(.25);checkActualRamp(previous,output,c);increased ||= previous.diagnostics.speedRps>0&&output.diagnostics.speedRps>previous.diagnostics.speedRps;previous=output;}
+ assert.ok(increased,'hot restart accelerates during the first eight seconds');
+});
+test('Reference slew configuration rejects nonfinite/nonpositive rates before state mutation',()=>{
+ const c=defaultEngineConfig(1),e=new HeatPumpEngine(p,c),before=e.checkpoint();
+ for(const field of ['inverterRampUpRpsPerSecond','inverterRampDownRpsPerSecond'])for(const value of [0,-1,NaN,Infinity]){
+  const invalid=structuredClone(c);invalid.control[field]=value;
+  assert.throws(()=>e.updateConfig(invalid),/Inverter slew/);assert.deepEqual(e.checkpoint(),before);
+ }
 });
 test('inverter modulates continuously near target when load exceeds minimum capacity',()=>{
  const c=defaultEngineConfig(1);c.rooms[0].initialTemperatureC=21;c.rooms[0].envelopeWK=150;c.control.thermostatDeadbandK=.15;

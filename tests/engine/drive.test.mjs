@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {driveStep,driveRatioThresholds,newDriveState} from './build/drive.js';
+import {driveStep,driveRatioThresholds,newDriveState,DEFAULT_INVERTER_SLEW} from './build/drive.js';
 const input={demandRps:75,minimumRps:18,maximumRps:75,maximumRatio:8,maximumDischargeC:145,
   minimumOffSeconds:30,pressureRatio:3,predictedDischargeC:80,pickupAvailable:true};
 test('startup bounds demand, preserves actuator state across branch demand changes, and waits after Off',()=>{
@@ -33,4 +33,23 @@ test('temperature protection cannot recover from an unavailable discharge predic
   assert.equal(state.protection,'discharge temperature');assert.equal(state.speedRps,0);
   state=driveStep(state,.25,{...input,predictedDischargeC:100});
   assert.equal(state.protection,null);assert.equal(state.speedRps,18);
+});
+test('Reference inverter starts at its admitted minimum and immediately follows bounded up/down slew',()=>{
+  const request={...input,minimumRps:8,demandRps:20,inverterSlew:DEFAULT_INVERTER_SLEW};
+  let state=driveStep(newDriveState(),.25,request);assert.equal(state.speedRps,8);
+  const start=state;
+  state=driveStep(state,.25,request);assert.equal(state.speedRps,8.5,'no legacy ten-second plateau');
+  state=driveStep(state,.25,{...request,demandRps:8});assert.equal(state.speedRps,8,'downward target cannot undershoot the minimum');
+  for(const dt of [.25,.1,.025]){
+    let refined={...start};
+    for(let i=0;i<Math.round(3/dt);i++)refined=driveStep(refined,dt,request);
+    assert.ok(Math.abs(refined.speedRps-14)<1e-10,'accepted speed follows the same three-second ramp');
+  }
+  state={...state,speedRps:40};
+  state=driveStep(state,.25,{...request,demandRps:8});assert.equal(state.speedRps,39);
+  const stopped=driveStep(state,.25,{...request,demandRps:0});assert.equal(stopped.speedRps,0,'explicit Off overrides slew');
+  const hot=driveStep(state,.25,{...request,predictedDischargeC:140});assert.equal(hot.speedRps,0);assert.equal(hot.protection,'discharge temperature');
+  const derated=driveStep(state,.25,{...request,predictedDischargeC:130});
+  assert.ok(derated.speedRps<39,'envelope derating overrides ordinary downward slew');
+  assert.ok(derated.speedRps>=request.minimumRps);
 });

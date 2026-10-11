@@ -150,7 +150,7 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
   const allocatedCooling = !heating && idealizedBranches, allocatedHeating = heating && idealizedBranches;
   const sourceMetal = heating ? [input.outdoorMetalC] : activeIndices.map(i => input.indoorMetalC[i]);
   const sinkMetal = heating ? activeIndices.map(i => input.indoorMetalC[i]) : [input.outdoorMetalC];
-  const lowMax = Math.min(45, Math.min(...sourceMetal) - (allocatedCooling ? 0 : compressor.superheatK) - 1e-5);
+  const lowMax = Math.min(45, Math.min(...sourceMetal) - (heating ? compressor.superheatK : 0) - 1e-5);
   const floatSink=heating?Math.min(...sinkMetal):input.outdoorMetalC;
   // Allocated heating constrains the mixed liquid outlet, not each branch's
   // phase: its target must remain above the coldest sink. Physical field-line
@@ -199,7 +199,7 @@ function solvePressureRegime(properties: Properties, config: EngineConfig, input
         valveFaces[i] = { inlet: { pPa: condenserOutlet.pPa, hJkg: condenserOutlet.hJkg, existing: condenserOutlet },
           outlet: { pPa: inlet.pPa, hJkg: inlet.hJkg, existing: inlet } };
       } else if (input.active[i]) {
-        let flow = input.previous?.branchMassFlowsKgs?.[i] || room.refrigerantConductanceWK / conductanceIntegral(properties, heating ? pH : pL, inlet.hJkg, outlet.hJkg, input.indoorMetalC[i]);
+        let flow = input.previous?.branchMassFlowsKgs?.[i] || (heating ? room.refrigerantConductanceWK / conductanceIntegral(properties, pH, inlet.hJkg, outlet.hJkg, input.indoorMetalC[i]) : allocatedFlow * weight(i) / allocationWeight);
         let returnH = outlet.hJkg, heat = 0, drop = 0, converged = false;
         for (let k = 0; k < 16; k++) {
           if (heating) {

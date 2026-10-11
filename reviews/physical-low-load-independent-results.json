@@ -1,0 +1,105 @@
+{
+  "recordedAt": "2026-10-11T13:13:03.534195+00:00",
+  "status": "PASS",
+  "scope": "Reviewer permanent native regression on frozen compiled controller and cycle; this is not universal physical-cooling8 qualification. No EOS/tolerance/cap/line-authority change.",
+  "command": "HEATPUMP_TEST_BACKEND=guarded node --test physical-low-load.test.mjs",
+  "directory": "/tmp/heatpump-inverter-control-final-tests",
+  "sourceHashes": {
+    "src/engine/envelope.ts": "eaab1d96df755b322050854fa8b7108e1f4918fbeb4dd1206d815ba9c74dc4e3",
+    "src/engine/properties.ts": "6fb2812381e471623e449a5b593cd4e1d9874f32e559b33bd05c2eac7b6ad36e",
+    "src/engine/engine.ts": "075c4d973b00d54424286a39be42c05692c258520e31cb8c66d6d49e1c04f051",
+    "src/engine/air.ts": "6dfb70bd7b7c5b84501e0de1633cf8378ea0b2bd0eb903dafe09c31625745d15",
+    "src/engine/thermostat.ts": "f09821cdd3853d7e6c18e27e85ce278a333414ccc2b0366b51b9fa2c62873db0",
+    "src/engine/charge.ts": "0c9dd8050fab6b3bd16bcb881f59fc00debc2f85c774c2a1c2216d45d289e168",
+    "src/engine/drive.ts": "2949522b6555d0c0a333df8c8a8d51b91b1f99dc0474d4555c3112937a7b8cc9",
+    "src/engine/demand.ts": "8caaf0dfd771521ab38bea1005febb63b7d187be8f77e598b9e48b6810234abf",
+    "src/engine/transport.ts": "928ab51cd8ca1193e68ba0821ee88ae2966521314ad9b1fd1b9894f253e2ed31",
+    "src/engine/ventilation.ts": "6aef508a062fca992c2b7a1961ae69c12ae5317c5824326ffe57a1a0a4ecd8d8",
+    "src/engine/interzone.ts": "20671a676f3174e1757f4368ef0b4f1046a07b4b35d8e5377aaf689c8a43ee2b",
+    "src/engine/types.ts": "3e6bf8635fc92e066f842f4651045feda443155c222899dd6768caff5ce60f34",
+    "src/engine/defaults.ts": "0ea966a23c72ce8b4173fc5a5e11e3b317a8a4819ef3ca23916e24f0f8dde7fb",
+    "src/engine/cycle.ts": "bc2071f37492b2484cef9778ef924f48dabfa7a2b2be17bc835052c9d2ec6f1b",
+    "src/engine/film.ts": "3cfeda3465b8c5226e6ed82bada490abdc42577fdadd4a1d0a2e3fb682285dbb",
+    "src/engine/charge-output.ts": "ca0bed2dd4836af7e72dce71e28e5d0b11309358f4c3da0bb6365a9079142ff7",
+    "src/engine/index.ts": "f8aba3f8724f99dcd1c17be93cfc3622a9fe276d968cc36f5bbf70e9c3773ebd",
+    "tests/engine/drive.test.mjs": "218a695e9320536a0e56bcd6d2f6d4c155ab3bd96f0660aa495de043c2ab85e9",
+    "tests/engine/inverter-demand.test.mjs": "9acc1deef03aecaac661a375ad1d35610f56045fe232bae41ec9d4bf60944332",
+    "compiled/engine.js": "11744870c6e9152c2db7156d4362be9ee0bd82c76cd05e8e586a335629656b99",
+    "compiled/cycle.js": "a50087b8ccad76a75d491c1f00b20329d35ccf3613a799f0dec1ff0fe8d72d59",
+    "compiled/charge.js": "716d6e0134395d6f67245751af1d915e179ab2c599b8a66950bbf8006fac9b1d",
+    "compiled/air.js": "ac8302044d196da0528b0ca99b76db9f550d26b57adc42c0de89a68ee9b5ed94",
+    "compiled/demand.js": "f99ef79a17914088230c186eb07894615b90a324fa113d5a88d9ba2a2d3047c5",
+    "compiled/drive.js": "75b8e133089ff1346f87af2f38114e9a619f10ed7acf3b631c16399d83cb6d1f",
+    "compiled/index.js": "2a58c1821531507d4843729995d2ffc8bbf2176ace4cb1e0269090322f8488c3",
+    "compiled/interzone.js": "b902baf062859b3867b7496e92cd641ac9c033a710cae60ef4e715c5195887e9",
+    "compiled/properties.js": "42a1e8c94947bb4a8f967ba89b51c462d3a0af43d4eb22d4d3cd7daa089f4400",
+    "compiled/charge-output.js": "4ed7ae6f5cc6b6f0b52465b8cbba32f400f890e729ba71cd2db804a11c435fa0",
+    "compiled/envelope.js": "500ad61198fd0a91fe0f5e741a08c8b1b5c965a88cb8eecbf1025c8a5413b924",
+    "compiled/film.js": "2af475cdfb6faa4512ac7a17c45393f3be33ab88e2cb5be334138956ecf33d51",
+    "compiled/transport.js": "5bc7c0f1850837de00043e755290d8e3d131d4ee3adb27646557344409bc1dcf",
+    "compiled/ventilation.js": "337f30b24c963ac3f68d4b0d8f5b6942610e73ca3b6ae10f4d6aa5de6811e570",
+    "compiled/defaults.js": "7ca8c9a833b6e837d0e8fbc51f12d657efa8ff9cacd1b99cb4379c933c275a65",
+    "compiled/thermostat.js": "692434f3b605d64679f64c982dc414846e260a033422c73f3af4a013e7b39823",
+    "compiled/types.js": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
+    "public/vendor/coolprop-safe/adapter.js": "06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34",
+    "public/vendor/coolprop-safe/coolprop.js": "6fa2e627803e2453da12cb9fce160ca3326851cd179444edc5ab698e21524d6c",
+    "public/vendor/coolprop-safe/coolprop.wasm": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c"
+  },
+  "testSha256": "7c281afe098feb63ab30c57dba906d8e1708491b72dbcf99af5b87e81eeb0dc2",
+  "runtimeConfigSha256": "84f2044eb1cbae4512aea4fe0a42a63465379463e7d0491f8d1759185ff6e452",
+  "exitCode": 0,
+  "passed": 5,
+  "failed": 0,
+  "durationMs": 7565.910842,
+  "tests": [
+    {
+      "name": "physical cooling8rps at 35\u00b0C preserves local pinch despite warmer common suction",
+      "durationMs": 165.081601,
+      "pass": true
+    },
+    {
+      "name": "physical cooling8rps at 39\u00b0C preserves local pinch despite warmer common suction",
+      "durationMs": 137.959289,
+      "pass": true
+    },
+    {
+      "name": "unequal physical coils retain supported18rps closure with an inactive branch",
+      "durationMs": 843.651458,
+      "pass": true
+    },
+    {
+      "name": "unqualified unequal physical cooling8rps remains a real fault and rolls back the engine transaction",
+      "durationMs": 4501.140923,
+      "pass": true
+    },
+    {
+      "name": "a lower pressure-search bound cannot bypass physical domain, hard ratio or line authority",
+      "durationMs": 240.307912,
+      "pass": true
+    }
+  ],
+  "knownTwoBranchLimitation": {
+    "outdoorMetalC": 35,
+    "indoorMetalC": [
+      10,
+      10,
+      11
+    ],
+    "active": [
+      true,
+      false,
+      true
+    ],
+    "fieldLineLengthsM": [
+      3.5,
+      0,
+      6.5
+    ],
+    "supportedSpeedRps": 18,
+    "rejectedSpeedRps": 8,
+    "best8ResidualW": 331.9,
+    "toleranceW": 0.1,
+    "rejectionIsExplicitFault": true,
+    "engineTransactionRestored": true
+  }
+}

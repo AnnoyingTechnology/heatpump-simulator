@@ -1,0 +1,22 @@
+{
+  "root": "/tmp/heatpump-low-load-cooling-review-rv_flpa2",
+  "variants": {
+    "bound-only": {
+      "root": "/tmp/heatpump-low-load-cooling-review-rv_flpa2/bound-only",
+      "cycleSha256": "ee20bfac0cc46e1695697fb6d08d62ebaffcbb865e04daee432f23fdbebbce95"
+    },
+    "seed-only": {
+      "root": "/tmp/heatpump-low-load-cooling-review-rv_flpa2/seed-only",
+      "cycleSha256": "30fa6ab213c3a5581756e91e434eab470b95afacc186533e0ff9de79229cb8c6"
+    },
+    "both": {
+      "root": "/tmp/heatpump-low-load-cooling-review-rv_flpa2/both",
+      "cycleSha256": "bc2071f37492b2484cef9778ef924f48dabfa7a2b2be17bc835052c9d2ec6f1b"
+    }
+  },
+  "oldBound": "const lowMax = Math.min(45, Math.min(...sourceMetal) - (allocatedCooling ? 0 : compressor.superheatK) - 1e-5);",
+  "newBound": "const lowMax = Math.min(45, Math.min(...sourceMetal) - (heating ? compressor.superheatK : 0) - 1e-5);",
+  "oldSeed": "let flow = input.previous?.branchMassFlowsKgs?.[i] || room.refrigerantConductanceWK / conductanceIntegral(properties, heating ? pH : pL, inlet.hJkg, outlet.hJkg, input.indoorMetalC[i]);",
+  "newSeed": "let flow = input.previous?.branchMassFlowsKgs?.[i] || (heating ? room.refrigerantConductanceWK / conductanceIntegral(properties, pH, inlet.hJkg, outlet.hJkg, input.indoorMetalC[i]) : allocatedFlow * weight(i) / allocationWeight);",
+  "baselineCycleSha256": "8d47208fd11a57d3cd1ea57d2e843237a767ce05a840bda955b454195dd63c40"
+}

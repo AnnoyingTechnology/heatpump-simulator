@@ -1,13 +1,13 @@
 {
-  "checkedAt": "2026-10-11T12:44:27.964Z",
+  "checkedAt": "2026-10-11T13:16:49.892Z",
   "scope": "Actual initialized browser worker outputs; no injected cycles or altered thermodynamic states",
   "sourceHashes": {
     "src/main.ts": "5a77d1f6bed6c0fb67d156558ded8f04aee537a1a8268ea926625a343736c39a",
     "src/runtime/view.ts": "ffb6f27ac117229f08fe0dc36369234e8c935d655e2a4b6613a84b4dbb48ed04",
-    "src/geometry.ts": "87a2d3e7ce568a0e7e9948413213ed8165734491fac5ee56b12f45aa695ff786",
+    "src/geometry.ts": "524ed9a2b8f71d899428712f7d110bdd6ace1e691c80b51332500109f4b063ea",
     "src/inspector.ts": "9baef35d3d32864ad129c34a9659329ca9e5dc15acc9f557b25965444a9ce1bf",
-    "src/engine/cycle.ts": "8d47208fd11a57d3cd1ea57d2e843237a767ce05a840bda955b454195dd63c40",
-    "src/engine/types.ts": "04eb849dfb52d4cfef49205961b04d68647d00bc5b384eb60500201ed4083392"
+    "src/engine/cycle.ts": "bc2071f37492b2484cef9778ef924f48dabfa7a2b2be17bc835052c9d2ec6f1b",
+    "src/engine/types.ts": "3e6bf8635fc92e066f842f4651045feda443155c222899dd6768caff5ce60f34"
   },
   "checks": [
     {
@@ -70,20 +70,20 @@
           "id": "fieldStub:1",
           "expectedPhase": "liquid",
           "phase": "liquid",
-          "expectedT": "25.7",
-          "t": "25.7",
-          "expectedStroke": "rgb(231, 217, 178)",
-          "stroke": "rgb(231, 217, 178)",
+          "expectedT": "22.8",
+          "t": "22.8",
+          "expectedStroke": "rgb(229, 223, 192)",
+          "stroke": "rgb(229, 223, 192)",
           "dir": -1
         },
         {
           "id": "liqField:1",
           "expectedPhase": "liquid",
           "phase": "liquid",
-          "expectedT": "25.7",
-          "t": "25.7",
-          "expectedStroke": "rgb(231, 217, 178)",
-          "stroke": "rgb(231, 217, 178)",
+          "expectedT": "22.8",
+          "t": "22.8",
+          "expectedStroke": "rgb(229, 223, 192)",
+          "stroke": "rgb(229, 223, 192)",
           "dir": -1
         },
         {
@@ -140,15 +140,15 @@
           "rows": {
             "Location": "Outdoor casing, in the branch liquid line",
             "Flow direction": "Field side → header side",
-            "Upstream": "Field-side line: Liquid · 25.7 °C · 17.70 bar(a)",
+            "Upstream": "Field-side line: Liquid · 22.8 °C · 16.37 bar(a)",
             "Downstream": "Header-side line: Two-phase · −2.0 °C · 7.62 bar(a)",
-            "Branch refrigerant flow": "0.0064 kg/s",
+            "Branch refrigerant flow": "0.0029 kg/s",
             "Opening": "— (no calibration map)",
-            "Outlet T / quality": "−2.0 °C · 0.159"
+            "Outlet T / quality": "−2.0 °C · 0.141"
           },
-          "expectedIn": "Liquid · 25.7 °C · 17.70 bar(a)",
+          "expectedIn": "Liquid · 22.8 °C · 16.37 bar(a)",
           "expectedOut": "Two-phase · -2.0 °C · 7.62 bar(a)",
-          "text": "Expansion valveLocationOutdoor casing, in the branch liquid lineFlow directionField side → header sideUpstreamField-side line: Liquid · 25.7 °C · 17.70 bar(a)DownstreamHeader-side line: Two-phase · −2.0 °C · 7.62 bar(a)Branch refrigerant flow0.0064 kg/sOpening— (no calibration map)Outlet T / quality−2.0 °C · 0.159The expansion valve lowers pressure at essentially constant refrigerant enthalpy. The temperature can fall sharply here, before the coil. Phase follows the actual branch state; it need not always be a liquid/vapor mixture."
+          "text": "Expansion valveLocationOutdoor casing, in the branch liquid lineFlow directionField side → header sideUpstreamField-side line: Liquid · 22.8 °C · 16.37 bar(a)DownstreamHeader-side line: Two-phase · −2.0 °C · 7.62 bar(a)Branch refrigerant flow0.0029 kg/sOpening— (no calibration map)Outlet T / quality−2.0 °C · 0.141The expansion valve lowers pressure at essentially constant refrigerant enthalpy. The temperature can fall sharply here, before the coil. Phase follows the actual branch state; it need not always be a liquid/vapor mixture."
         },
         {
           "i": 2,
@@ -179,10 +179,10 @@
           "id": "liqHdr",
           "expectedPhase": "liquid",
           "phase": "liquid",
-          "expectedT": "41.4",
-          "t": "41.4",
-          "expectedStroke": "rgb(243, 185, 107)",
-          "stroke": "rgb(243, 185, 107)",
+          "expectedT": "39.6",
+          "t": "39.6",
+          "expectedStroke": "rgb(244, 191, 112)",
+          "stroke": "rgb(244, 191, 112)",
           "dir": 1
         },
         {
@@ -219,60 +219,60 @@
           "id": "hdrStub:1",
           "expectedPhase": "liquid",
           "phase": "liquid",
-          "expectedT": "41.4",
-          "t": "41.4",
-          "expectedStroke": "rgb(243, 185, 107)",
-          "stroke": "rgb(243, 185, 107)",
+          "expectedT": "39.6",
+          "t": "39.6",
+          "expectedStroke": "rgb(244, 191, 112)",
+          "stroke": "rgb(244, 191, 112)",
           "dir": 1
         },
         {
           "id": "fieldStub:1",
           "expectedPhase": "two",
           "phase": "two",
-          "expectedT": "23.1",
-          "t": "23.1",
-          "expectedStroke": "rgb(229, 222, 190)",
-          "stroke": "rgb(229, 222, 190)",
+          "expectedT": "25.0",
+          "t": "25.0",
+          "expectedStroke": "rgb(230, 219, 181)",
+          "stroke": "rgb(230, 219, 181)",
           "dir": 1
         },
         {
           "id": "liqField:1",
           "expectedPhase": "two",
           "phase": "two",
-          "expectedT": "23.1",
-          "t": "23.1",
-          "expectedStroke": "rgb(229, 222, 190)",
-          "stroke": "rgb(229, 222, 190)",
+          "expectedT": "25.0",
+          "t": "25.0",
+          "expectedStroke": "rgb(230, 219, 181)",
+          "stroke": "rgb(230, 219, 181)",
           "dir": 1
         },
         {
           "id": "hdrStub:2",
           "expectedPhase": "liquid",
           "phase": "liquid",
-          "expectedT": "41.4",
-          "t": "41.4",
-          "expectedStroke": "rgb(243, 185, 107)",
-          "stroke": "rgb(243, 185, 107)",
+          "expectedT": "39.6",
+          "t": "39.6",
+          "expectedStroke": "rgb(244, 191, 112)",
+          "stroke": "rgb(244, 191, 112)",
           "dir": 1
         },
         {
           "id": "fieldStub:2",
           "expectedPhase": "two",
           "phase": "two",
-          "expectedT": "23.1",
-          "t": "23.1",
-          "expectedStroke": "rgb(229, 222, 190)",
-          "stroke": "rgb(229, 222, 190)",
+          "expectedT": "25.0",
+          "t": "25.0",
+          "expectedStroke": "rgb(230, 219, 181)",
+          "stroke": "rgb(230, 219, 181)",
           "dir": 1
         },
         {
           "id": "liqField:2",
           "expectedPhase": "two",
           "phase": "two",
-          "expectedT": "23.1",
-          "t": "23.1",
-          "expectedStroke": "rgb(229, 222, 190)",
-          "stroke": "rgb(229, 222, 190)",
+          "expectedT": "25.0",
+          "t": "25.0",
+          "expectedStroke": "rgb(230, 219, 181)",
+          "stroke": "rgb(230, 219, 181)",
           "dir": 1
         }
       ],
@@ -299,15 +299,15 @@
           "rows": {
             "Location": "Outdoor casing, in the branch liquid line",
             "Flow direction": "Header side → field side",
-            "Upstream": "Header-side line: Liquid · 41.4 °C · 26.26 bar(a)",
-            "Downstream": "Field-side line: Two-phase · 23.1 °C · 16.07 bar(a)",
-            "Branch refrigerant flow": "0.0068 kg/s",
+            "Upstream": "Header-side line: Liquid · 39.6 °C · 25.15 bar(a)",
+            "Downstream": "Field-side line: Two-phase · 25.0 °C · 16.90 bar(a)",
+            "Branch refrigerant flow": "0.0032 kg/s",
             "Opening": "— (no calibration map)",
-            "Outlet T / quality": "23.1 °C · 0.133"
+            "Outlet T / quality": "25.0 °C · 0.107"
           },
-          "expectedIn": "Liquid · 41.4 °C · 26.26 bar(a)",
-          "expectedOut": "Two-phase · 23.1 °C · 16.07 bar(a)",
-          "text": "Expansion valveLocationOutdoor casing, in the branch liquid lineFlow directionHeader side → field sideUpstreamHeader-side line: Liquid · 41.4 °C · 26.26 bar(a)DownstreamField-side line: Two-phase · 23.1 °C · 16.07 bar(a)Branch refrigerant flow0.0068 kg/sOpening— (no calibration map)Outlet T / quality23.1 °C · 0.133The expansion valve lowers pressure at essentially constant refrigerant enthalpy. The temperature can fall sharply here, before the coil. Phase follows the actual branch state; it need not always be a liquid/vapor mixture."
+          "expectedIn": "Liquid · 39.6 °C · 25.15 bar(a)",
+          "expectedOut": "Two-phase · 25.0 °C · 16.90 bar(a)",
+          "text": "Expansion valveLocationOutdoor casing, in the branch liquid lineFlow directionHeader side → field sideUpstreamHeader-side line: Liquid · 39.6 °C · 25.15 bar(a)DownstreamField-side line: Two-phase · 25.0 °C · 16.90 bar(a)Branch refrigerant flow0.0032 kg/sOpening— (no calibration map)Outlet T / quality25.0 °C · 0.107The expansion valve lowers pressure at essentially constant refrigerant enthalpy. The temperature can fall sharply here, before the coil. Phase follows the actual branch state; it need not always be a liquid/vapor mixture."
         },
         {
           "i": 2,
@@ -315,15 +315,15 @@
           "rows": {
             "Location": "Outdoor casing, in the branch liquid line",
             "Flow direction": "Header side → field side",
-            "Upstream": "Header-side line: Liquid · 41.4 °C · 26.26 bar(a)",
-            "Downstream": "Field-side line: Two-phase · 23.1 °C · 16.07 bar(a)",
-            "Branch refrigerant flow": "0.0070 kg/s",
+            "Upstream": "Header-side line: Liquid · 39.6 °C · 25.15 bar(a)",
+            "Downstream": "Field-side line: Two-phase · 25.0 °C · 16.90 bar(a)",
+            "Branch refrigerant flow": "0.0033 kg/s",
             "Opening": "— (no calibration map)",
-            "Outlet T / quality": "23.1 °C · 0.133"
+            "Outlet T / quality": "25.0 °C · 0.107"
           },
-          "expectedIn": "Liquid · 41.4 °C · 26.26 bar(a)",
-          "expectedOut": "Two-phase · 23.1 °C · 16.07 bar(a)",
-          "text": "Expansion valveLocationOutdoor casing, in the branch liquid lineFlow directionHeader side → field sideUpstreamHeader-side line: Liquid · 41.4 °C · 26.26 bar(a)DownstreamField-side line: Two-phase · 23.1 °C · 16.07 bar(a)Branch refrigerant flow0.0070 kg/sOpening— (no calibration map)Outlet T / quality23.1 °C · 0.133The expansion valve lowers pressure at essentially constant refrigerant enthalpy. The temperature can fall sharply here, before the coil. Phase follows the actual branch state; it need not always be a liquid/vapor mixture."
+          "expectedIn": "Liquid · 39.6 °C · 25.15 bar(a)",
+          "expectedOut": "Two-phase · 25.0 °C · 16.90 bar(a)",
+          "text": "Expansion valveLocationOutdoor casing, in the branch liquid lineFlow directionHeader side → field sideUpstreamHeader-side line: Liquid · 39.6 °C · 25.15 bar(a)DownstreamField-side line: Two-phase · 25.0 °C · 16.90 bar(a)Branch refrigerant flow0.0033 kg/sOpening— (no calibration map)Outlet T / quality25.0 °C · 0.107The expansion valve lowers pressure at essentially constant refrigerant enthalpy. The temperature can fall sharply here, before the coil. Phase follows the actual branch state; it need not always be a liquid/vapor mixture."
         }
       ],
       "error": null

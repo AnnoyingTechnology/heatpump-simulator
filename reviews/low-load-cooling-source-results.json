@@ -1,0 +1,319 @@
+{
+  "status": "PASS",
+  "scope": "Two-line isolated experimental source correction only. Original branch-loop, pressure cap, iterations, tolerance, shared suction SH3 and all EOS/transport/pinch/authority equations retained. No production change or global8rps envelope acceptance.",
+  "experimentSource": {
+    "root": "/tmp/heatpump-low-load-cooling-review-rv_flpa2",
+    "variants": {
+      "bound-only": {
+        "root": "/tmp/heatpump-low-load-cooling-review-rv_flpa2/bound-only",
+        "cycleSha256": "ee20bfac0cc46e1695697fb6d08d62ebaffcbb865e04daee432f23fdbebbce95"
+      },
+      "seed-only": {
+        "root": "/tmp/heatpump-low-load-cooling-review-rv_flpa2/seed-only",
+        "cycleSha256": "30fa6ab213c3a5581756e91e434eab470b95afacc186533e0ff9de79229cb8c6"
+      },
+      "both": {
+        "root": "/tmp/heatpump-low-load-cooling-review-rv_flpa2/both",
+        "cycleSha256": "bc2071f37492b2484cef9778ef924f48dabfa7a2b2be17bc835052c9d2ec6f1b"
+      }
+    },
+    "oldBound": "const lowMax = Math.min(45, Math.min(...sourceMetal) - (allocatedCooling ? 0 : compressor.superheatK) - 1e-5);",
+    "newBound": "const lowMax = Math.min(45, Math.min(...sourceMetal) - (heating ? compressor.superheatK : 0) - 1e-5);",
+    "oldSeed": "let flow = input.previous?.branchMassFlowsKgs?.[i] || room.refrigerantConductanceWK / conductanceIntegral(properties, heating ? pH : pL, inlet.hJkg, outlet.hJkg, input.indoorMetalC[i]);",
+    "newSeed": "let flow = input.previous?.branchMassFlowsKgs?.[i] || (heating ? room.refrigerantConductanceWK / conductanceIntegral(properties, pH, inlet.hJkg, outlet.hJkg, input.indoorMetalC[i]) : allocatedFlow * weight(i) / allocationWeight);",
+    "baselineCycleSha256": "8d47208fd11a57d3cd1ea57d2e843237a767ce05a840bda955b454195dd63c40"
+  },
+  "rows": [
+    {
+      "variant": "original",
+      "outside": 35,
+      "speed": 18,
+      "closed": true,
+      "residualW": 0.08221653543360286,
+      "massResidualKgs": 4.40034640669662e-12,
+      "iterations": 6,
+      "evaporatingC": 4.316463365752791,
+      "condensingC": 37.021208843730555,
+      "suctionC": 7.3164633657527816,
+      "localOutletC": 6.435784518310356,
+      "localOutletPhase": "vapor",
+      "localSuperheatK": 2.066497141411446,
+      "capacityW": 1965.6613550797738,
+      "compressorElectricalW": 441.30036635326996,
+      "lineHeatToOutdoorW": -18.954752711923327,
+      "energyClosureW": 1.1368683772161603e-13
+    },
+    {
+      "variant": "original",
+      "outside": 35,
+      "speed": 8,
+      "closed": false,
+      "error": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 90.0 W at 6.999990,36.060552; equations 89.949,-2.655); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)"
+    },
+    {
+      "variant": "original",
+      "outside": 35,
+      "speed": 6,
+      "closed": false,
+      "error": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 327.3 W at 6.999990,36.054956; equations 327.215,-5.285); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)"
+    },
+    {
+      "variant": "original",
+      "outside": 35,
+      "speed": 4,
+      "closed": false,
+      "error": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 564.6 W at 6.999990,36.052049; equations 564.502,-7.412); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)"
+    },
+    {
+      "variant": "original",
+      "outside": 39,
+      "speed": 18,
+      "closed": true,
+      "residualW": 0.09427906932818544,
+      "massResidualKgs": 7.500229604051611e-12,
+      "iterations": 6,
+      "evaporatingC": 4.478893549032503,
+      "condensingC": 40.95976853715589,
+      "suctionC": 7.478893549032591,
+      "localOutletC": 6.4774772426062555,
+      "localOutletPhase": "vapor",
+      "localSuperheatK": 1.945754524422,
+      "capacityW": 1909.2673075545492,
+      "compressorElectricalW": 491.8084260847671,
+      "lineHeatToOutdoorW": -21.454957920399195,
+      "energyClosureW": 1.7053025658242404e-13
+    },
+    {
+      "variant": "original",
+      "outside": 39,
+      "speed": 8,
+      "closed": false,
+      "error": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 127.6 W at 6.999990,40.056970; equations 127.552,-3.773); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)"
+    },
+    {
+      "variant": "original",
+      "outside": 39,
+      "speed": 6,
+      "closed": false,
+      "error": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 364.9 W at 6.999990,40.053572; equations 364.832,-5.528); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)"
+    },
+    {
+      "variant": "original",
+      "outside": 39,
+      "speed": 4,
+      "closed": false,
+      "error": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 602.2 W at 6.999990,40.051408; equations 602.124,-6.997); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)"
+    },
+    {
+      "variant": "bound-only",
+      "outside": 35,
+      "speed": 8,
+      "closed": false,
+      "error": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 103.7 W at 6.998411,37.553107; equations 102.825,13.581); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)"
+    },
+    {
+      "variant": "bound-only",
+      "outside": 39,
+      "speed": 8,
+      "closed": false,
+      "error": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 145.9 W at 6.999559,41.931371; equations 144.793,18.198); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)"
+    },
+    {
+      "variant": "seed-only",
+      "outside": 35,
+      "speed": 8,
+      "closed": false,
+      "error": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 90.0 W at 6.999990,36.061501; equations 89.957,-2.343); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)"
+    },
+    {
+      "variant": "seed-only",
+      "outside": 39,
+      "speed": 8,
+      "closed": false,
+      "error": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (best residual 127.6 W at 6.999990,40.058627; equations 127.566,-3.109); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)"
+    },
+    {
+      "variant": "both",
+      "outside": 35,
+      "speed": 18,
+      "closed": true,
+      "residualW": 0.048726901658354776,
+      "massResidualKgs": 0,
+      "iterations": 12,
+      "evaporatingC": 4.316470440855229,
+      "condensingC": 37.02127552261361,
+      "suctionC": 7.316470615140929,
+      "localOutletC": 6.43579209504702,
+      "localOutletPhase": "vapor",
+      "localSuperheatK": 2.0664976421804226,
+      "capacityW": 1965.6607376405836,
+      "compressorElectricalW": 441.3012128035883,
+      "lineHeatToOutdoorW": -18.954747794421905,
+      "energyClosureW": 0
+    },
+    {
+      "variant": "both",
+      "outside": 35,
+      "speed": 8,
+      "closed": true,
+      "residualW": 0.04171552661343201,
+      "massResidualKgs": 1.6686210645372804e-7,
+      "iterations": 7,
+      "evaporatingC": 7.242562167669249,
+      "condensingC": 36.00542772604886,
+      "suctionC": 10.242562167669178,
+      "localOutletC": 8.572333106000144,
+      "localOutletPhase": "vapor",
+      "localSuperheatK": 1.3173403349401838,
+      "capacityW": 958.3541214747344,
+      "compressorElectricalW": 185.39745938042108,
+      "lineHeatToOutdoorW": -17.301408943787777,
+      "energyClosureW": 0
+    },
+    {
+      "variant": "both",
+      "outside": 35,
+      "speed": 6,
+      "closed": true,
+      "residualW": 0.00360302852755901,
+      "massResidualKgs": 1.375269039058033e-8,
+      "iterations": 6,
+      "evaporatingC": 7.903779477889488,
+      "condensingC": 36.000605060227784,
+      "suctionC": 10.903779477889373,
+      "localOutletC": 8.769991179950125,
+      "localOutletPhase": "vapor",
+      "localSuperheatK": 0.8587460141921497,
+      "capacityW": 730.1021020528065,
+      "compressorElectricalW": 137.98857473494243,
+      "lineHeatToOutdoorW": -16.96000504723101,
+      "energyClosureW": 2.842170943040401e-14
+    },
+    {
+      "variant": "both",
+      "outside": 35,
+      "speed": 4,
+      "closed": true,
+      "residualW": 0.004979093163685161,
+      "massResidualKgs": 1.9577406568278832e-8,
+      "iterations": 6,
+      "evaporatingC": 8.590183456098975,
+      "condensingC": 36.00121777960492,
+      "suctionC": 11.590183456098998,
+      "localOutletC": 8.593834952787688,
+      "localOutletPhase": "two-phase",
+      "localSuperheatK": 0,
+      "capacityW": 492.15795579841495,
+      "compressorElectricalW": 91.22599621016273,
+      "lineHeatToOutdoorW": -16.67008343972946,
+      "energyClosureW": -4.263256414560601e-14
+    },
+    {
+      "variant": "both",
+      "outside": 39,
+      "speed": 18,
+      "closed": true,
+      "residualW": 0.03932897159225179,
+      "massResidualKgs": 0,
+      "iterations": 12,
+      "evaporatingC": 4.478894202899886,
+      "condensingC": 40.95988075193838,
+      "suctionC": 7.4788942028998235,
+      "localOutletC": 6.477477944510895,
+      "localOutletPhase": "vapor",
+      "localSuperheatK": 1.9457545724413876,
+      "capacityW": 1909.2654922618058,
+      "compressorElectricalW": 491.809869477934,
+      "lineHeatToOutdoorW": -21.454957092820138,
+      "energyClosureW": 2.2737367544323206e-13
+    },
+    {
+      "variant": "both",
+      "outside": 39,
+      "speed": 8,
+      "closed": true,
+      "residualW": 0.0029415691338904176,
+      "massResidualKgs": 1.176627653556167e-8,
+      "iterations": 6,
+      "evaporatingC": 7.334375078394408,
+      "condensingC": 40.00037317304409,
+      "suctionC": 10.33437507839443,
+      "localOutletC": 8.409277854598201,
+      "localOutletPhase": "vapor",
+      "localSuperheatK": 1.0624799339739184,
+      "capacityW": 927.1287012032874,
+      "compressorElectricalW": 209.95907924397977,
+      "lineHeatToOutdoorW": -19.879639587804384,
+      "energyClosureW": 0
+    },
+    {
+      "variant": "both",
+      "outside": 39,
+      "speed": 6,
+      "closed": true,
+      "residualW": 0.005168363321438458,
+      "massResidualKgs": 2.0635056418357584e-8,
+      "iterations": 6,
+      "evaporatingC": 7.976930540059487,
+      "condensingC": 40.000833583933115,
+      "suctionC": 10.97693054005947,
+      "localOutletC": 8.507704352347446,
+      "localOutletPhase": "vapor",
+      "localSuperheatK": 0.5233145949675304,
+      "capacityW": 705.140419559661,
+      "compressorElectricalW": 156.76206921108349,
+      "lineHeatToOutdoorW": -19.564747071624332,
+      "energyClosureW": 5.684341886080802e-14
+    },
+    {
+      "variant": "both",
+      "outside": 39,
+      "speed": 4,
+      "closed": true,
+      "residualW": 0.006582021224387467,
+      "massResidualKgs": 2.632808489754987e-8,
+      "iterations": 6,
+      "evaporatingC": 8.642105655454726,
+      "condensingC": 40.00151690743575,
+      "suctionC": 11.642105655454827,
+      "localOutletC": 8.645752520170163,
+      "localOutletPhase": "two-phase",
+      "localSuperheatK": 0,
+      "capacityW": 473.9869073391703,
+      "compressorElectricalW": 103.97174452438108,
+      "lineHeatToOutdoorW": -19.288947616988022,
+      "energyClosureW": 2.842170943040401e-14
+    }
+  ],
+  "unchangedParity": [
+    {
+      "mode": "heating",
+      "topology": "idealized",
+      "exactParity": true
+    },
+    {
+      "mode": "cooling",
+      "topology": "idealized",
+      "exactParity": true
+    },
+    {
+      "mode": "heating",
+      "topology": "physical",
+      "exactParity": true
+    }
+  ],
+  "negativeChecks": [
+    {
+      "name": "hard-pressure-ratio",
+      "error": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (all starts rejected: Generic compressor discharge/pressure-ratio envelope exceeded); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)"
+    },
+    {
+      "name": "cold-outside-domain",
+      "error": "Neither SC-target nor minimum-lift controller closes: Coil temperatures exceed selected subcritical R32 operating envelope; alternate: Coil temperatures exceed selected subcritical R32 operating envelope"
+    },
+    {
+      "name": "long-pipe-authority",
+      "error": "Neither SC-target nor minimum-lift controller closes: No feasible shared-pressure operating point (all starts rejected: Pipe friction exceeds 20% of local pressure; homogeneous low-loss model unsupported; Pipe kinetic energy exceeds 0.5% of latent enthalpy; static-enthalpy transport coverage exhausted; Pipe pressure outside supported R32 domain); alternate: No feasible shared-pressure operating point (all starts rejected: Pressure-solve point outside coil/domain bounds)"
+    }
+  ]
+}

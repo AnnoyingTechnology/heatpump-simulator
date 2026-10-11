@@ -53,6 +53,12 @@ export function defaultLiveParameters(): LiveParameters {
 
 /** Catalogue references supply reviewed volume flow and pairing; compressor/coil performance remains generic. */
 export type InventoryInitialization = Omit<NonNullable<EngineConfig['inventory']>, 'leak'>;
+/** Qualified generic component commands, not measured compressor frequencies.
+ * Multi-branch physical cooling retains its previously qualified lower command;
+ * its fixed shared-superheat/line closure is not yet qualified at lower flow. */
+export function referenceMinimumSpeedRps(mode: Config['mode'], fieldLines: LiveParameters['fieldLines']): number {
+  return mode === 'cooling' && fieldLines === 'physical' ? 18 : 8;
+}
 export function engineConfigFromUi(cfg: Config, live: LiveParameters, activeInitialization?: InventoryInitialization): EngineConfig {
   const c = defaultEngineConfig(cfg.unitCount);
   c.indoorPortCapacity = outdoorPortCapacity(cfg);
@@ -62,6 +68,9 @@ export function engineConfigFromUi(cfg: Config, live: LiveParameters, activeInit
   c.compressor.isentropicEfficiency = cfg.etaIsPct / 100;
   c.compressor.displacementM3rev = live.compressorDisplacementCm3 * 1e-6;
   c.compressor.speedMaxRps = live.compressorMaxSpeedRps;
+  // The gated inventory circuit has separate startup qualification. Retain its
+  // legacy lower command until charge-model transients are independently released.
+  c.compressor.speedMinRps = live.circuitModel === 'inventory' ? 18 : referenceMinimumSpeedRps(cfg.mode, live.fieldLines);
   // Inherited fixed/defrost commands respect the selected hardware speed ceiling.
   c.control.defrostSpeedRps = Math.min(c.control.defrostSpeedRps, c.compressor.speedMaxRps);
   if (c.control.fixedSpeedRps !== undefined) c.control.fixedSpeedRps = Math.min(c.control.fixedSpeedRps, c.compressor.speedMaxRps);

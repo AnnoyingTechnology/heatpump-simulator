@@ -1,4 +1,5 @@
 import type { EngineConfig, RoomConfig } from './types.ts';
+import { DEFAULT_INVERTER_SLEW } from './drive.ts';
 /** All internal numbers are generic modeling assumptions, never Daikin calibration. */
 export function defaultRoomConfig(index = 0): RoomConfig {
   return { id: `room-${index + 1}`, enabled: true, volumeM3: 60, initialTemperatureC: 20, initialRelativeHumidity: .5,
@@ -16,6 +17,7 @@ export function defaultEngineConfig(roomCount = 3): EngineConfig {
       naturalAirConductanceWK: 35, metalCapacityJK: 28000, depositionAreaM2: 2, frostDensityKgm3: 200,
       frostConductivityWmK: .15, finGapM: .002, drainageSeconds: 30 },
     control: { strategy: 'inverter', fixedSpeedRps: 40, controlsW: 15, proportionalSpeedRpsK: 20, thermostatDeadbandK: 1, minOnSeconds: 30, minOffSeconds: 30,
+      inverterRampUpRpsPerSecond: DEFAULT_INVERTER_SLEW.upRpsPerSecond, inverterRampDownRpsPerSecond: DEFAULT_INVERTER_SLEW.downRpsPerSecond,
       reversalSeconds: 3, defrostMinHeatingSeconds: 300, defrostIceThresholdKg: .15, defrostMaxSeconds: 600,
       defrostTerminationMetalC: 5, drainageDwellSeconds: 10, defrostSpeedRps: 35 },
     numerics: { maxStepSeconds: .25, pressureToleranceW: .1 } };

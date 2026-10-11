@@ -7,9 +7,12 @@ export interface DriveState {
 }
 export interface DriveInput {
   demandRps: number; minimumRps: number; maximumRps: number;
+  /** Ordinary Reference inverter policy. Omitted preserves inventory/fixed/defrost startup. */
+  inverterSlew?: { upRpsPerSecond: number; downRpsPerSecond: number };
   maximumRatio: number; maximumDischargeC: number; minimumOffSeconds: number;
   thermalBoundaryAvailable?:boolean; pressureRatioAvailable?:boolean; dischargeEnvelopeExceeded?:boolean; coolingMode?:boolean; coolingCoilC?: number; predictedCondensingC?:number|null; maximumCondensingC?:number; pressureRatio: number; predictedDischargeC: number | null; pickupAvailable: boolean;
 }
+export const DEFAULT_INVERTER_SLEW = { upRpsPerSecond: 2, downRpsPerSecond: 4 } as const;
 export const newDriveState = (): DriveState => ({speedRps:0,startupSeconds:0,offSeconds:Infinity,protection:null});
 export function driveRatioThresholds(hard: number) {
   const lift=hard-1;
@@ -69,6 +72,8 @@ export function driveStep(previous: DriveState, dt: number, input: DriveInput): 
   }
   const target=Math.min(input.demandRps,limit);
   if(next.speedRps===0)next.speedRps=input.minimumRps;
+  else if(input.inverterSlew)next.speedRps+=Math.max(-input.inverterSlew.downRpsPerSecond*dt,
+    Math.min(input.inverterSlew.upRpsPerSecond*dt,target-next.speedRps));
   else if(next.startupSeconds>=10)next.speedRps+=Math.max(-dt,Math.min(.5*dt,target-next.speedRps));
   // An envelope limit takes precedence over the ordinary actuator slew/hold.
   next.speedRps=Math.max(input.minimumRps,Math.min(next.speedRps,limit));

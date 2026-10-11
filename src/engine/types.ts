@@ -58,6 +58,8 @@ export interface EngineConfig {
   compressor: { displacementM3rev: number; speedMinRps: number; speedMaxRps: number; isentropicEfficiency: number; volumetricEfficiency: number; driveEfficiency: number; superheatK: number; subcoolK: number; maxDischargeC: number; maxPressureRatio: number };
   outdoor: { cleanFraction?: number; volumetricAirFlowM3s?: number; airMassFlowKgs: number; fanPowerW: number; airConductanceWK: number; refrigerantConductanceWK: number; naturalAirConductanceWK: number; metalCapacityJK: number; depositionAreaM2: number; frostDensityKgm3: number; frostConductivityWmK: number; finGapM: number; drainageSeconds: number };
   control: { strategy?: 'inverter' | 'on-off'; fixedSpeedRps?: number; controlsW: number; proportionalSpeedRpsK: number;
+    /** Generic ordinary Reference inverter slew; defaults2/4. Inventory/fixed/defrost retain their separate policy. */
+    inverterRampUpRpsPerSecond?: number; inverterRampDownRpsPerSecond?: number;
     /** Symmetric per-room thermostat call/stop margin in either mode. */
     thermostatDeadbandK: number;
     minOnSeconds: number; minOffSeconds: number; reversalSeconds: number; defrostMinHeatingSeconds: number; defrostIceThresholdKg: number; defrostMaxSeconds: number; defrostTerminationMetalC: number; drainageDwellSeconds: number; defrostSpeedRps: number };
@@ -142,5 +144,8 @@ export interface EngineOutput {
     drainedWaterKg: number;
     electricityJ: number; signedRoomHeatJ: number; outdoorExchangeJ: number; drainageJ: number; configurationEnergyJ: number; boundaryEnergyJ: number; storedEnergyChangeJ: number; residualJ: number; waterResidualKg: number;
   };
-  diagnostics: { warnings: string[]; fault: string | null; algebraicResidualW: number; speedRps: number; demandSpeedRps: number; restartDelaySeconds: number; envelopeProtection: 'pressure ratio'|'discharge temperature'|'indoor antifreeze'|'condensing temperature'|'thermal boundary'|null; filmEnergyRateW: number; metalEnergyRateW: number };
+  diagnostics: { warnings: string[]; fault: string | null; algebraicResidualW: number; speedRps: number; demandSpeedRps: number;
+    /** Capacity-to-speed request before actuator min/max clipping, not an accepted compressor speed. */
+    rawDemandSpeedRps: number;
+    restartDelaySeconds: number; envelopeProtection: 'pressure ratio'|'discharge temperature'|'indoor antifreeze'|'condensing temperature'|'thermal boundary'|null; filmEnergyRateW: number; metalEnergyRateW: number };
 }

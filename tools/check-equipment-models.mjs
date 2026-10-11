@@ -69,7 +69,7 @@ try{
    const high=qc.engineConfigFromUi(qa.store.state.cfg,qa.store.state.cfg.live);
    return {low:[low.compressor.speedMinRps,low.compressor.speedMaxRps,low.control.fixedSpeedRps,low.control.defrostSpeedRps],high:[high.control.fixedSpeedRps,high.control.defrostSpeedRps]};
   });
-  assert.deepEqual(r,{low:[18,18,18,18],high:[40,35]});
+  assert.deepEqual(r,{low:[8,18,18,18],high:[40,35]});
   // The actual worker construction must accept the mapped lower bound, too.
   await run(()=>{qa.store.update(s=>{s.ui.paused=true;s.cfg.live.compressorMaxSpeedRps=18});qa.store.setExperience('live')});
   await page.waitFor('!globalThis.qv?.simulation?.isBusy',30000);
@@ -79,6 +79,18 @@ try{
   });
   await page.waitFor('!qv.simulation.isBusy && qv.simulation.status.output',30000);
   assert.notEqual((await run(()=>qv.simulation.status)).state,'error');
+ });
+ await check('running minimum follows the qualified mode and transport policy without an OEM speed claim',async()=>{
+  const rows=await run(()=>{
+   qa.store.reset();qa.store.update(s=>s.ui.paused=true);
+   const cfg=qa.store.state.cfg;
+   return ['heating','cooling'].flatMap(mode=>['idealized','physical'].map(fieldLines=>{
+    const c=qc.engineConfigFromUi({...cfg,mode},{...cfg.live,fieldLines});
+    return {mode,fieldLines,min:c.compressor.speedMinRps,up:c.control.inverterRampUpRpsPerSecond,down:c.control.inverterRampDownRpsPerSecond};
+   })).concat([{mode:'heating',fieldLines:'inventory',min:qc.engineConfigFromUi(cfg,{...cfg.live,circuitModel:'inventory'}).compressor.speedMinRps}]);
+  });
+  assert.deepEqual(rows.map(r=>r.min),[8,8,8,18,18]);
+  for(const r of rows.slice(0,4)){assert.equal(r.up,2);assert.equal(r.down,4)}
  });
  assert.deepEqual(page.events.filter(e=>e.method==='Runtime.exceptionThrown'),[]);
  await writeFile('reviews/equipment-catalogue-browser-results.json',JSON.stringify({checkedAt:new Date().toISOString(),checks,outdoorProfiles:{mitsubishi:25,daikin:36},indoorProfiles:{mitsubishi:45,daikin:79},scope:'Reviewed topology/flow profiles; generic compressor/coil performance retained.'},null,2)+'\n');

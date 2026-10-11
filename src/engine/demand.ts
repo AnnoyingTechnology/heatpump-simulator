@@ -2,6 +2,8 @@ import type {EngineConfig,RoomState} from './types.ts';
 import {thermostatDemand,thermostatFanFraction} from './thermostat.ts';
 import {interzoneTargetLosses} from './interzone.ts';
 export interface DemandResult {active:boolean[];heatW:number[];integralW:number[];fanFraction:number[]}
+/** Direction of the shared actuator's inability to follow the unclamped request. */
+export type DemandSaturation = 'lower' | 'upper' | null;
 /** Dimensionless generic branch command: 95% positive sensible-demand share,
  * 5% UA share reserved for calling branches. The reserve is an arbitrary control
  * assumption, not a measured valve map. With no positive request use UA shares.
@@ -14,7 +16,7 @@ export function inverterAllocationWeights(config:EngineConfig,calling:boolean[],
 }
 /** Generic comfort controller, not an OEM map. Estimated sensible losses only;
  * all delivered heat still comes from the freshly closed refrigerant/air equations. */
-export function roomDemand(config:EngineConfig,rooms:RoomState[],temperatures:number[],previousActive:boolean[],integral:number[],dt:number,integrate:boolean,saturated=false):DemandResult {
+export function roomDemand(config:EngineConfig,rooms:RoomState[],temperatures:number[],previousActive:boolean[],integral:number[],dt:number,integrate:boolean,saturation:DemandSaturation=null):DemandResult {
  const sign=config.mode==='heating'?1:-1, active:boolean[]=[],heatW:number[]=[],integralW:number[]=[],fanFraction:number[]=[];
  const linkLosses=interzoneTargetLosses(config,temperatures);
  for(let i=0;i<rooms.length;i++){
@@ -30,7 +32,8 @@ export function roomDemand(config:EngineConfig,rooms:RoomState[],temperatures:nu
   const loss=sign*((c.envelopeWK+r.dryAirMassKg*c.ventilationACH/3600*1006*(1-(c.ventilationRecoveryEfficiency??0)))*(c.setpointC-config.outdoorTemperatureC)+c.airFabricWK*(c.setpointC-r.fabricTemperatureC)+linkLosses[i]) - sign*(c.fanPowerW*fanFraction[i]**3+(c.internalGainW??0));
   let correction=integral[i]??0;
   if(!c.enabled)correction=0;
-  else if(integrate&&calling&&(!saturated||error<0)&&(error>0||loss+kp*error+correction>0))correction=Math.max(-4000,Math.min(4000,correction+kp*error*dt/600));
+  else if(integrate&&calling&&(saturation!=='upper'||error<0)&&(saturation!=='lower'||error>0)&&
+    (error>0||loss+kp*error+correction>0))correction=Math.max(-4000,Math.min(4000,correction+kp*error*dt/600));
   const request=Math.max(0,loss+kp*error+correction);
   heatW.push(calling?request:0);integralW.push(correction);
  }

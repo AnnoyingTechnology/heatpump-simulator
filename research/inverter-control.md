@@ -11,7 +11,7 @@ plus proportional error and a slow bounded integral. Generic proportional and
 integral times are 300 s and 600 s; integral correction is bounded to ±4000 W.
 The 1006 J/kg/K estimate sets controller gains only; native humid-air energy and
 water stores remain authoritative. Latent load is not explicitly forecast.
-Integral updates require an actual accepted running interval after startup;
+Integral updates require an actual accepted ordinary running interval;
 upper and lower saturation block integration in the direction of further
 saturation independently for each room. Configuration mode/strategy changes
 clear the integral; room-ID matching preserves it across ordinary edits.
@@ -64,8 +64,7 @@ controller history participates in whole-step rollback; no stored heat is reset.
 supports adjusting compressor operation with demand, but specifies no PI law.
 The [official exact N8 product table](https://www.daikin.fr/fr_fr/products/product.table.html/3mxm-n8.html)
 identifies the 3MXM52N2V1B8 and 1.8 kg R32 charge, but does not establish the
-owner-declared 130–2350 W electrical operating range. Primary-source conditions
-are pending independent catalogue research; the range is not imposed on the generic model. Electrical power continues to emerge from the cycle.
+owner observations (approximately200W heating and130W cooling low-load input,2350W upper value). Exact combination rating conditions are recorded separately; these observations are not imposed on the generic model. Electrical power continues to emerge from the cycle.
 The [Danfoss VZN application guide](https://assets.danfoss.com/documents/latest/580994/AB478735922007en-010201.pdf)
 separates minimum speed, timing and operating-envelope control; its compressor
 specific values are not transplanted to this domestic generic model.
@@ -77,3 +76,11 @@ checks under `reviews/indoor-comfort-*`. No new charge-model acceptance is impli
 Exact manufacturer combination research is recorded separately in
 `daikin-3mxm52n8-specifications.md`. Its tabulated electrical ranges depend on
 indoor combinations and rating conditions; no compressor-speed map is inferred.
+
+## Qualified low-load and startup policy, 2026-10-11
+
+The interactive Reference configuration selects a generic8rps lower command for idealized heating/cooling and physical heating. Physical cooling retains its declared18rps command: a single branch at8rps now closes after correcting the shared-suction search bound and initial flow estimate, but an unequal two-branch low-flow case remains unsupported by its branch/line control model. There is no solver retry at higher speed and no claim that18rps is an OEM minimum. Library defaults and the gated inventory model retain their separately qualified18rps command. This restriction is shown in Outdoor Settings.
+
+Ordinary Reference inverter operation starts at the first admissible minimum-speed cycle, then slews toward demand at configured2rps/s upward and4rps/s downward. The former10s plateau is removed for this policy. The quasi-steady refrigerant model does not resolve rotor acceleration from zero; the initial admissible-minimum step is retained rather than interpolating displayed watts. Fixed-speed, dedicated defrost and inventory actuator policies stay separate.
+
+The controller retains the unclamped thermal-capacity-to-speed request. Lower saturation blocks further negative integral movement while allowing positive recovery; upper saturation does the converse. Slew and envelope limiting count as directional saturation. Fresh EOS heat/work at the actual admitted speed drives the unchanged thermal and electrical ledgers. The owner house losses, ventilation, gains and links are not fitted to force500W. Native and actual-worker acceptance receipts are recorded separately from earlier controller releases.

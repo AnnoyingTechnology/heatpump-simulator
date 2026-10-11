@@ -9,7 +9,7 @@ import { fixtureFor } from './fixtures';
 import { inspectorHtml } from './inspector';
 import type { PopContent } from './popovers';
 import type { EngineOutput } from './engine/types';
-import { CHARGE_MODEL_AVAILABLE, PHYSICAL_FIELD_LINES_AVAILABLE, defaultLiveParameters, pipeWallMmForOd } from './runtime/config';
+import { CHARGE_MODEL_AVAILABLE, PHYSICAL_FIELD_LINES_AVAILABLE, defaultLiveParameters, pipeWallMmForOd, referenceMinimumSpeedRps } from './runtime/config';
 import type { LiveParameters } from './runtime/config';
 import { activeRooms, currentReadings, indoorCleanliness, outdoorCleanliness, store } from './state';
 import type { AppState, Experience, ExampleState, IndoorClass, InterzoneLink, Mode, OutdoorKind, PipeConfig, RoomConfig } from './types';
@@ -812,10 +812,11 @@ export function createOutdoorSettings(): PopContent {
     get: () => cfg().etaIsPct, set: (v) => store.update((s) => { s.cfg.etaIsPct = v; }),
     title: 'Ratio of ideal isentropic to actual compression work. Motor and drive losses are separate.',
   }));
+  const compressorPolicy = html('p', { class: 'hint' });
   const comp = keyed('compressor', fold('Compressor assumptions', false,
-    eta.root, etaStatus, compStatus,
+    eta.root, etaStatus, compStatus, compressorPolicy,
     liveField('compressorDisplacementCm3', 'Compressor displacement', 'cm³/rev').root,
-    liveField('compressorMaxSpeedRps', 'Compressor maximum speed', 'rps', `Not below the engine minimum speed (${fmt(SPEED_MIN_RPS, 0)} rps).`, SPEED_MIN_RPS).root));
+    liveField('compressorMaxSpeedRps', 'Compressor maximum speed', 'rps', `Qualified upper-speed setting starts at ${fmt(SPEED_MIN_RPS, 0)} rps; the ordinary running minimum is described above.`, SPEED_MIN_RPS).root));
   const clean = keyed('clean', fold('Heat-exchanger cleanliness', false,
     html('p', { class: 'hint' }, 'One shared cleanliness control on the outdoor-unit card applies to every indoor and outdoor coil. 100 % = clean coil; 10 % = only 10 % of the clear air passage remains (90 % obstructed).'),
     cleanStatus, cleanNote));
@@ -945,6 +946,8 @@ export function createOutdoorSettings(): PopContent {
       relabel(inAir, profiled.length ? 'Indoor air mass flow (fallback / manual override)' : 'Indoor air mass flow (each unit)', 'kg/s');
       const driven = live ? 'Drives live model.' : 'Stored for Live; the Examples ignore these values.';
       for (const p of [coilStatus, compStatus, sharedStatus]) { setText(p, driven); toggleClass(p, 'diff', !live); }
+      const minimum = c.live.circuitModel === 'inventory' ? 18 : referenceMinimumSpeedRps(c.mode, c.live.fieldLines);
+      setText(compressorPolicy, `Generic minimum command: ${minimum} rps. Reference inverter slew: 2 rps/s upward, 4 rps/s downward, from the first admissible operating point. These are model assumptions, not measured OEM frequencies. Physical cooling retains 18 rps because its multi-branch low-flow closure is not yet qualified; inventory retains its separate legacy command.`);
       setText(etaStatus, live ? 'ηis drives live model.'
         : c.etaIsPct === ETA_FIXTURE_PCT ? `Matches the fixture value (${ETA_FIXTURE_PCT} %).` : `Differs from the fixture's ${ETA_FIXTURE_PCT} %. Edits configuration only; readings do not respond.`);
       toggleClass(etaStatus, 'diff', !live && c.etaIsPct !== ETA_FIXTURE_PCT);
