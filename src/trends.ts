@@ -7,6 +7,7 @@ export class TrendHistory {
   readonly sampleSeconds = 10;
   private samples: Sample[] = [];
   private latest = -Infinity;
+  get latestSeconds(): number | null { return Number.isFinite(this.latest) ? this.latest : null; }
 
   clear(): void { this.samples = []; this.latest = -Infinity; }
 

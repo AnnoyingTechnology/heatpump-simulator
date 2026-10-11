@@ -4,16 +4,20 @@ import { TrendHistory } from './frontend/build/trends.js';
 
 test('two-hour history follows accepted simulation time, bounds storage, and clears on a new run', () => {
   const h = new TrendHistory();
+  assert.equal(h.latestSeconds, null);
   for (let t = 0; t <= 20000; t += .25) h.accept(t, [3, 5, 1], 'heating');
   const p = h.plot(0);
   assert.ok(p.count >= 720 && p.count <= 721);
   assert.equal(h.accept(20000, [99, 99, 99], 'heating'), false, 'paused/duplicate time adds no samples');
   assert.equal(h.accept(10, [99, 99, 99], 'heating'), false, 'stale output adds no samples');
   assert.equal(h.plot(0).maximum, 3);
+  assert.equal(h.latestSeconds, 20000, 'stale or duplicate output cannot rewind retained time');
   const coords = [...p.path.matchAll(/[ML]([\d.]+) ([\d.]+)/g)].map(m => Number(m[1]));
   assert.ok(coords.every(x => x >= 1 && x <= 111)); assert.equal(coords.at(-1), 111);
   h.clear(); assert.equal(h.plot(0).count, 0); assert.equal(h.plot(0).path, '');
+  assert.equal(h.latestSeconds, null);
   assert.equal(h.accept(0, [null, 0, .015], 'heating'), true);
+  assert.equal(h.latestSeconds, 0);
 });
 
 test('COP gaps, mode changes, negative defrost heat and unavailable numbers remain honest', () => {

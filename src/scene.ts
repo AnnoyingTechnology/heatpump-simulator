@@ -342,13 +342,13 @@ function roomChart() {
   const range = html('span', { class: 'room-chart-range' });
   const root = html('div', { class: 'room-chart' },
     html('div', { class: 'room-chart-caption' }, html('span', {}, 'Temperature · 2 h'), range), graph);
-  function update(history: TrendHistory, name: string, seconds: number): void {
+  function update(history: TrendHistory, name: string): void {
     const bounds = history.extent([0, 1], 1, false);
     const plot = history.plot(0, 1, bounds);
     setAttr(actual, 'd', plot.path);
     setAttr(target, 'd', history.plot(1, 1, bounds, true).path);
     setAttr(root, 'data-count', plot.count);
-    setAttr(root, 'data-seconds', seconds);
+    setAttr(root, 'data-seconds', history.latestSeconds ?? 0);
     setText(range, plot.count ? `${fmt(bounds.minimum, 1)}–${fmt(bounds.maximum, 1)} °C` : '—');
     setText(title, `${name}: room air (solid), requested target (dashed). Last 2 hours of accepted simulated time; latest value per 10-second bin. ${plot.count ? `Scale ${fmt(bounds.minimum, 1)}–${fmt(bounds.maximum, 1)} °C.` : 'No accepted history yet.'} Missing readings are gaps.`);
   }
@@ -1171,7 +1171,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       if (live && rd.usable && rd.engine && eng) history.accept(rd.engine.simulatedSeconds, [eng.temperatureC, r.setpointC, null], r.id);
       p.chart.root.hidden = !live;
       setAttr(p.chart.root, 'data-room-id', r.id);
-      p.chart.update(history, r.name, rd.engine?.simulatedSeconds ?? 0);
+      p.chart.update(history, r.name);
       // An index rebound to another room (after a removal) must not keep a stale focused value.
       const lineCtl = lineCtlFor(i);
       if (p.boundId !== r.id) {
