@@ -1,0 +1,72 @@
+{
+  "recordedUtc": "2026-10-11T15:35:48Z",
+  "status": "research-checkpoint-not-public-charge-validation",
+  "baseCommit": "8a3203c",
+  "startupRampParent": "b594c4b",
+  "backend": "guarded exact HEOS R32",
+  "tests": {
+    "pass": 36,
+    "fail": 0,
+    "durationMs": 59039.303623
+  },
+  "sha256": {
+    "src/engine/charge.ts": "709f1ee13653d1fe158b466d44b6939c9858f7b95b6b3071a2efa112b88de3bd",
+    "src/engine/charge-derivatives.ts": "521db0e8b2368e76397c02f0304b7ed33df151561d6a54d365ce692b4a84cef7",
+    "public/vendor/coolprop-safe/adapter.js": "06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34",
+    "public/vendor/coolprop-safe/coolprop.wasm": "7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c"
+  },
+  "savedBalanceTimings": [
+    {
+      "savedSeconds": 11,
+      "orientation": "heating",
+      "dt": 0.25,
+      "iterations": 4,
+      "wallMs": 249.19171800000004,
+      "massResidualKg": 1.3476042504123598e-10,
+      "energyResidualJ": 3.645817923825234e-05
+    },
+    {
+      "savedSeconds": 11,
+      "orientation": "cooling",
+      "dt": 0.003,
+      "iterations": 7,
+      "wallMs": 305.71823399999994,
+      "massResidualKg": 1.3476042504123598e-10,
+      "energyResidualJ": 2.800645052047912e-05
+    },
+    {
+      "savedSeconds": 48.5,
+      "orientation": "heating",
+      "dt": 0.25,
+      "iterations": 3,
+      "wallMs": 381.0574340000003,
+      "massResidualKg": 1.0370504455181617e-10,
+      "energyResidualJ": 7.181799446698278e-05
+    },
+    {
+      "savedSeconds": 48.5,
+      "orientation": "cooling",
+      "dt": 0.003,
+      "iterations": 9,
+      "wallMs": 3423.774653,
+      "massResidualKg": 1.0370504455181617e-10,
+      "energyResidualJ": 7.185182494140463e-05
+    }
+  ],
+  "derivativeComparison": [
+    {
+      "orientation": "heating",
+      "maximumScaledDerivativeDifference": 0.1646957662567536
+    },
+    {
+      "orientation": "cooling",
+      "maximumScaledDerivativeDifference": 0.1646957662567536
+    }
+  ],
+  "openGates": [
+    "sustained owner3heads heating/cooling",
+    "complete natural frost/defrost/thaw/drain/useful heating recovery with time refinement",
+    "complete saved late-reversal outer step",
+    "practical browser throughput"
+  ]
+}

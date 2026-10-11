@@ -74,13 +74,13 @@ test('PS outage during saved-state quadrature rejects the candidate and preserve
   }finally{props.dispose();}
 });
 
-test('unresolved PS density noise stops bounded quadrature without committing a partial fluid step',async()=>{
+test('unresolved single-phase EOS density noise stops bounded quadrature without committing a partial fluid step',async()=>{
   const props=new Properties(await factory()),c=circuit(props),before=c.snapshot(),original=props.prop.bind(props);
   let noisyCalls=0;
   try{
     props.prop=(output,a,x,b,y)=>{
       const value=original(output,a,x,b,y);
-      if(output==='D'&&a==='P'&&b==='S'&&x<1e6){
+      if(output==='D'&&a==='P'&&b==='T'&&x<1e6){
         noisyCalls++;return value*(1+.1*Math.sin(1000*x));
       }
       return value;

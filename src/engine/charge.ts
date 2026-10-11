@@ -1,5 +1,6 @@
 import { Properties, DomainError } from './properties.ts';
 import type { RefrigerantState } from './types.ts';
+import {constant,coordinate,add,subtract,multiply,divide,scale as differentialScale,compose,type Differential} from './charge-derivatives.ts';
 
 /** Generic R32 inventory foundation. Idealized hydraulic/adiabatic field lines;
  * their real physical volume remains. Geometry/charge edits require a new circuit. */
@@ -18,6 +19,9 @@ export interface ChargeGeometry {
 }
 export interface ChargeNumerics { pressureDerivativeRelativeStep?: number; analyticStorageJacobian?:boolean;
   pressureDifferenceCoordinates?:boolean; pressureDifferenceStepPa?:number;
+  storageCoordinates?:'enthalpy'|'density';
+  analyticFluxJacobian?:boolean;
+  predictTurnover?:boolean;
   maximumSubsteps?:number; maximumAttempts?:number }
 export class ChargeWorkBudgetError extends DomainError {
   constructor(readonly requestedSeconds:number,readonly provisionalSeconds:number,readonly attempts:number,
@@ -87,6 +91,7 @@ export class ChargeCircuit {
   private candidates = new WeakMap<ChargeCandidate, number>();
   private snapshots = new WeakSet<ChargeSnapshot>();
   private nozzleFluxCache = new Map<string,{flux:number;throatPa:number;flowKgs:number}>();
+  private solverLinearization?:{key:string;matrix:number[][]};
 
   constructor(private readonly properties: Properties, geometry: ChargeGeometry,
     initial: { massKg: number; fluidTemperatureC: number; orientation?:'heating'|'cooling'; valveOpening?:number },private readonly numerics:ChargeNumerics={}) {
@@ -108,6 +113,9 @@ export class ChargeCircuit {
       throw new DomainError('Pressure-drop derivative interval must be finite and positive');
     if(numerics.pressureDifferenceCoordinates!==undefined&&typeof numerics.pressureDifferenceCoordinates!=='boolean')
       throw new DomainError('Pressure-drop coordinate option must be boolean');
+    if(numerics.storageCoordinates!==undefined&&!['enthalpy','density'].includes(numerics.storageCoordinates))throw new DomainError('Unknown charge storage coordinate');
+    if(numerics.analyticFluxJacobian!==undefined&&typeof numerics.analyticFluxJacobian!=='boolean')throw new DomainError('Flux Jacobian option must be boolean');
+    if(numerics.predictTurnover!==undefined&&typeof numerics.predictTurnover!=='boolean')throw new DomainError('Turnover predictor option must be boolean');
     if(initial.valveOpening!==undefined&&(!Number.isFinite(initial.valveOpening)||initial.valveOpening<0||initial.valveOpening>1))
       throw new DomainError('Initial EEV opening must be finite in [0,1]');
     for (let j=0;j<3;j++) {
@@ -141,7 +149,7 @@ export class ChargeCircuit {
   snapshot(): ChargeSnapshot { const copy=deepFreeze(structuredClone(this.current));this.snapshots.add(copy);return copy; }
   restore(snapshot: ChargeSnapshot): void {
     if(!this.snapshots.has(snapshot))throw new DomainError('Restore requires an unchanged snapshot issued by this circuit');
-    this.current=structuredClone(snapshot);this.revision++;
+    this.current=structuredClone(snapshot);this.revision++;this.solverLinearization=undefined;
   }
   private states(z:number[]):ChargeCell[] {
     return this.definitions.map((c,j)=>{
@@ -183,6 +191,14 @@ export class ChargeCircuit {
     return {massP:cell.volumeM3*rhoP,massH:cell.volumeM3*rhoH,
       energyP:cell.volumeM3*(h*rhoP-1),energyH:cell.volumeM3*(rho+h*rhoH),temperatureP,temperatureH};
   }
+  private coordinateStorageDerivatives(cell:ChargeCell,homogeneousEndpoint=false){
+    const ph=this.storageDerivatives(cell,homogeneousEndpoint);
+    if(this.numerics.storageCoordinates!=='density')return ph;
+    const V=cell.volumeM3,rho=cell.state.densityKgm3,rhoH=ph.massH/V,rhoP=ph.massP/V;
+    if(!(Number.isFinite(rhoH)&&rhoH!==0))throw new DomainError('Singular density storage coordinate');
+    return {massP:0,massH:V,energyP:V*(-rho*rhoP/rhoH-1),energyH:V*(cell.state.hJkg+rho/rhoH),
+      temperatureP:ph.temperatureP-ph.temperatureH*rhoP/rhoH,temperatureH:ph.temperatureH/rhoH};
+  }
   /** Homogeneous-equilibrium isentropic throat with downstream dissipation. */
   private nozzle(up:RefrigerantState,downPa:number,area:number,coefficient=this.geometry.dischargeCoefficient,passageLengthM=this.geometry.valvePassageLengthM??.005):number {
     if(area===0 || downPa>=up.pPa)return 0;
@@ -221,11 +237,42 @@ export class ChargeCircuit {
     let densityCalls=0;
     const density=(pressure:number)=>{
       if(++densityCalls>65536)throw new DomainError('Isentropic nozzle density work budget exceeded');
-      const value=this.properties.prop('D','P',pressure,'S',up.entropyJkgK);
+      // Keep the public PS preflight/error boundary. Pure-fluid coexistence
+      // also permits a direct entropy lever rule, which avoids inversion noise
+      // at the dew endpoint. Outside coexistence refine the public PS temperature
+      // by ds/dT|p=cp/T; this changes no EOS or thermodynamic state specification.
+      let value=this.properties.prop('D','P',pressure,'S',up.entropyJkgK);
+      const sl=this.properties.prop('S','P',pressure,'Q',0),sv=this.properties.prop('S','P',pressure,'Q',1);
+      if(up.entropyJkgK>=sl&&up.entropyJkgK<=sv){
+        const quality=(up.entropyJkgK-sl)/(sv-sl);
+        value=1/((1-quality)/this.properties.prop('D','P',pressure,'Q',0)+quality/this.properties.prop('D','P',pressure,'Q',1));
+      }else{
+        let temperature=this.properties.prop('T','P',pressure,'S',up.entropyJkgK);
+        const saturation=this.properties.prop('T','P',pressure,'Q',0);
+        {
+          // The entropy comparison establishes the single-phase side. Impose
+          // that side only near saturation, where an otherwise valid PT query
+          // is ambiguous under the backend's pressure proximity guard.
+          const pressureInput=Math.abs(temperature-saturation)<1e-4?(up.entropyJkgK>sv?'P|gas':'P|liquid'):'P';
+          for(let i=0;i<4;i++){
+            const residual=this.properties.prop('S',pressureInput,pressure,'T',temperature)-up.entropyJkgK;
+            if(Math.abs(residual)<1e-11)break;
+            const cp=this.properties.prop('C',pressureInput,pressure,'T',temperature);
+            const next=temperature-residual*temperature/cp;
+            if(next===temperature)break;temperature=next;
+          }
+          value=this.properties.prop('D',pressureInput,pressure,'T',temperature);
+        }
+      }
       if(!(Number.isFinite(value)&&value>0))throw new DomainError('Invalid isentropic nozzle density');
       return value;
     };
     const maximum=(flowBudget:number,refinements:number)=>{
+      // Reuse one phase-partitioned EOS antiderivative for this isentrope.
+      // Throat search changes only the integration limit, not entropy. Repeating
+      // a fresh quadrature at every limit wastes flashes and exposes each search
+      // to a different accumulation of backend roundoff.
+      const volume=isentropicVolumePrimitive(downPa,up.pPa,knots,density,flowBudget===4e-11?1e-12:1e-13);
       const flux=(pressure:number)=>{
         if(pressure===up.pPa)return 0;
         if(!(pressure>=downPa&&pressure<up.pPa))throw new DomainError('Nozzle throat pressure outside bracket');
@@ -238,7 +285,8 @@ export class ChargeCircuit {
             throw new DomainError('Invalid isentropic integral error budget');
           return limit;
         };
-        const integral=isentropicVolumeIntegral(pressure,up.pPa,knots,density,budget);
+        const integral=volume(pressure);
+        if(volume.error(pressure)>budget(integral))throw new DomainError('Isentropic primitive unresolved integral error');
         return rho*Math.sqrt(2*integral);
       };
       // Assign exact bracket endpoints: exponentiation can overshoot by one ULP.
@@ -343,6 +391,130 @@ export class ChargeCircuit {
       accumulatorInletOutflowState:inletState,indoorGasHeader:incomingM>1e-12?header:null,lowLiftTransfer:mc>0&&pD<S.pPa};
   }
 
+  private fluxDerivatives(z:number[],boundary:ChargeBoundary,openings:number[],admitted:boolean,r:Evaluation,scales:number[]) {
+    const size=z.length,C=(v:number)=>constant(v,size),operation={...this.geometry,...boundary.operating};
+    const heating=boundary.orientation==='heating',sourcePressure=heating?0:1;
+    const densityCoordinates=this.numerics.storageCoordinates==='density';
+    const pressures=z.slice(0,3).map((v,i)=>coordinate(v,size,i,scales[i]));
+    if(this.numerics.pressureDifferenceCoordinates??true)pressures[2].gradient[sourcePressure]+=scales[sourcePressure];
+    const enthalpies:Differential[]=[],temperatures:Differential[]=[],masses:Differential[]=[],energies:Differential[]=[];
+    for(let j=0;j<r.cells.length;j++){
+      const cell=r.cells[j],p=pressures[this.definitions[j].pressureIndex],state=cell.state;
+      const ph=this.storageDerivatives(cell),storage=this.coordinateStorageDerivatives(cell);
+      const fluid=coordinate(densityCoordinates?state.densityKgm3:state.hJkg,size,3+j,scales[3+j]);
+      enthalpies.push(densityCoordinates?compose(state.hJkg,[-ph.massP/ph.massH,cell.volumeM3/ph.massH],[p,fluid]):fluid);
+      temperatures.push(compose(state.temperatureC,[storage.temperatureP,storage.temperatureH],[p,fluid]));
+      masses.push(compose(cell.massKg,[storage.massP,storage.massH],[p,fluid]));
+      energies.push(compose(cell.internalEnergyJ,[storage.energyP,storage.energyH],[p,fluid]));
+    }
+    const restriction=(state:RefrigerantState,p:Differential,h:Differential,down:Differential,area:number,length:number)=>{
+      if(area===0)return C(0);
+      const base=this.nozzle(state,down.value,area,operation.dischargeCoefficient,length);
+      if(down.value===state.pPa){
+        const x=state.qualityMass,mu=x===null?this.properties.prop('V','P',state.pPa,'H',state.hJkg):
+          (1-x)*this.properties.prop('V','P',state.pPa,'Q',0)+x*this.properties.prop('V','P',state.pPa,'Q',1);
+        const resistance=8*Math.PI*mu*length/(state.densityKgm3*area**2);
+        if(!(resistance>0))throw new DomainError('Zero-lift restriction derivative needs finite viscous passage');
+        return compose(base,[1/resistance,0,-1/resistance],[p,h,down]);
+      }
+      if(down.value>=state.pPa)return C(base);
+      const gap=state.pPa-down.value,dp=Math.min(.2*gap,Math.max(1e-4,1e-7*state.pPa));
+      const saturation=this.properties.saturation(state.pPa),dl=state.hJkg-saturation.liquidH,dv=state.hJkg-saturation.vaporH;
+      const near=Math.abs(dl)<Math.abs(dv)?dl:dv,dh=(near<0?-1:1)*Math.min(.1,Math.max(1e-5,.2*Math.abs(near)));
+      const upP=this.properties.ph(state.pPa+dp,state.hJkg),upH=this.properties.ph(state.pPa,state.hJkg+dh);
+      const key=`${state.pPa}:${state.hJkg}:${state.entropyJkgK}:${state.densityKgm3}:${down.value}:${area}:${operation.dischargeCoefficient}:${length}`;
+      const throat=this.nozzleFluxCache.get(key)?.throatPa;
+      const derivatives=[
+        // Differentiate common pressure and local drop independently. Near an
+        // open cavity's tiny pressure drop, two large opposite absolute-P
+        // partials otherwise lose the physically small common-P derivative.
+        (this.nozzle(upP,down.value+dp,area,operation.dischargeCoefficient,length)-base)/dp,
+        (this.nozzle(upH,down.value,area,operation.dischargeCoefficient,length)-base)/dh,
+        // Downstream pressure cannot move a resolved interior throat. Avoid
+        // differentiating the golden search's last-bit plateau variation.
+        throat!==undefined&&throat>down.value+dp?0:(this.nozzle(state,down.value+dp,area,operation.dischargeCoefficient,length)-base)/dp,
+      ];
+      if(derivatives.some(v=>!Number.isFinite(v)))throw new DomainError('Nonfinite restriction derivative');
+      return compose(base,derivatives,[p,h,subtract(down,p)]);
+    };
+    const nozzleBetween=(a:number,b:number,area:number,length:number)=>{
+      const pa=pressures[this.definitions[a].pressureIndex],pb=pressures[this.definitions[b].pressureIndex];
+      return pa.value>=pb.value?restriction(r.cells[a].state,pa,enthalpies[a],pb,area,length):
+        differentialScale(restriction(r.cells[b].state,pb,enthalpies[b],pa,area,length),-1);
+    };
+    const accumulator=this.accumulatorIndex,acc=r.cells[accumulator].state,pS=pressures[2],pD=pressures[heating?1:0];
+    let hS=enthalpies[accumulator],rhoS:Differential;
+    if(admitted&&boundary.compressorSpeedRps>0&&acc.qualityMass!==null){
+      hS=compose(r.suction.hJkg,[this.properties.prop('d(Hmass)/d(P)|sigma','P',pS.value,'Q',1)],[pS]);
+      rhoS=compose(r.suction.densityKgm3,[this.properties.prop('d(Dmass)/d(P)|sigma','P',pS.value,'Q',1)],[pS]);
+    }else{
+      const ph=this.storageDerivatives(r.cells[accumulator]);
+      rhoS=compose(acc.densityKgm3,[ph.massP/r.cells[accumulator].volumeM3,ph.massH/r.cells[accumulator].volumeM3],[pS,hS]);
+    }
+    let mc=C(0),hD=hS,work=C(0);
+    if(admitted&&boundary.compressorSpeedRps>0){
+      mc=differentialScale(rhoS,operation.displacementM3rev*boundary.compressorSpeedRps*operation.volumetricEfficiency);
+      if(pD.value>=pS.value){
+        const suction=r.suction,T=suction.temperatureC+273.15;
+        const entropy=compose(suction.entropyJkgK,[-1/(suction.densityKgm3*T),1/T],[pS,hS]);
+        const his=this.properties.prop('H','P',pD.value,'S',suction.entropyJkgK);
+        const ris=this.properties.prop('D','P',pD.value,'S',suction.entropyJkgK),tis=this.properties.prop('T','P',pD.value,'S',suction.entropyJkgK);
+        const isentropic=compose(his,[1/ris,tis],[pD,entropy]);
+        hD=add(hS,differentialScale(subtract(isentropic,hS),1/operation.isentropicEfficiency));
+      }
+      hD.value=r.discharge?.hJkg??hS.value;
+      work=multiply(mc,subtract(hD,hS));
+    }
+    const dm=r.cells.map(()=>C(0)),dU=r.cells.map(()=>C(0)),heat:Record<string,Differential>={};
+    const face=(a:number,b:number,m:Differential,hPositive=enthalpies[a],hNegative=enthalpies[b])=>{
+      const flux=multiply(m,m.value>=0?hPositive:hNegative);
+      dm[a]=subtract(dm[a],m);dm[b]=add(dm[b],m);dU[a]=subtract(dU[a],flux);dU[b]=add(dU[b],flux);
+    };
+    const flow=(index:number)=>coordinate(z[index],size,index,scales[index]);
+    face(this.outdoorIndices[0],this.outdoorIndices[1],flow(this.flowOffset));
+    face(this.outdoorIndices[1],this.outdoorIndices[2],flow(this.flowOffset+1));
+    const branches=this.roomIndices.map((indices,i)=>({indices,f:Array.from({length:5},(_,j)=>flow(this.flowOffset+2+5*i+j))}));
+    let incomingM=heating?mc:C(0),incomingH=heating?multiply(mc,hD):C(0),feed=C(0);
+    for(const branch of branches)if(branch.f[0].value<0){
+      incomingM=subtract(incomingM,branch.f[0]);incomingH=subtract(incomingH,multiply(branch.f[0],enthalpies[branch.indices[0]]));
+    }
+    if(!heating&&z[2]>z[1]){
+      feed=differentialScale(restriction(acc,pS,enthalpies[accumulator],pressures[1],this.geometry.accumulatorInletAreaM2,operation.accumulatorInletPassageLengthM??.1),-1);
+      incomingM=subtract(incomingM,feed);incomingH=subtract(incomingH,multiply(feed,enthalpies[accumulator]));
+    }
+    const headerH=incomingM.value>1e-16?divide(incomingH,incomingM):differentialScale(branches.reduce((sum,b)=>add(sum,enthalpies[b.indices[0]]),C(0)),1/branches.length);
+    if(heating){
+      feed=nozzleBetween(this.outdoorIndices[0],accumulator,this.geometry.accumulatorInletAreaM2,operation.accumulatorInletPassageLengthM??.1);
+      face(this.outdoorIndices[0],accumulator,feed);
+    }else{
+      if(z[1]>=z[2])feed=restriction(this.properties.ph(z[1],headerH.value),pressures[1],headerH,pS,this.geometry.accumulatorInletAreaM2,operation.accumulatorInletPassageLengthM??.1);
+      dm[accumulator]=add(dm[accumulator],feed);dU[accumulator]=add(dU[accumulator],multiply(feed,feed.value>=0?headerH:enthalpies[accumulator]));
+    }
+    dm[accumulator]=subtract(dm[accumulator],mc);dU[accumulator]=subtract(dU[accumulator],multiply(mc,hS));
+    if(!heating){dm[this.outdoorIndices[0]]=add(dm[this.outdoorIndices[0]],mc);dU[this.outdoorIndices[0]]=add(dU[this.outdoorIndices[0]],multiply(mc,hD));}
+    let headerMass=heating?mc:differentialScale(feed,-1);
+    for(let i=0;i<branches.length;i++){
+      const b=branches[i];headerMass=subtract(headerMass,b.f[0]);
+      dm[b.indices[0]]=add(dm[b.indices[0]],b.f[0]);dU[b.indices[0]]=add(dU[b.indices[0]],multiply(b.f[0],b.f[0].value>=0?headerH:enthalpies[b.indices[0]]));
+      for(let j=1;j<5;j++)face(b.indices[j-1],b.indices[j],b.f[j]);
+      face(b.indices[4],this.outdoorIndices[2],nozzleBetween(b.indices[4],this.outdoorIndices[2],this.geometry.rooms[i].maximumValveAreaM2*openings[i],operation.valvePassageLengthM??.005));
+    }
+    for(let j=0;j<r.cells.length;j++){
+      const definition=this.definitions[j];if(!definition.coil)continue;
+      const metal=definition.coil==='outdoor'?boundary.outdoorMetalC:boundary.indoorMetalCById[definition.coil];
+      const ua=definition.coil==='outdoor'?operation.outdoorConductanceWK/3:(operation.indoorConductanceWKById?.[definition.coil]??this.geometry.rooms.find(room=>room.id===definition.coil)!.refrigerantConductanceWK)/3;
+      const q=differentialScale(subtract(C(metal),temperatures[j]),ua);dU[j]=add(dU[j],q);heat[definition.coil]=add(heat[definition.coil]??C(0),q);
+    }
+    let leakH=C(0);
+    if(boundary.leak&&boundary.leak.rateKgs>0){const j=r.cells.findIndex(c=>c.id===boundary.leak!.physicalCellId);
+      dm[j]=subtract(dm[j],C(boundary.leak.rateKgs));leakH=differentialScale(enthalpies[j],boundary.leak.rateKgs);dU[j]=subtract(dU[j],leakH);
+    }
+    // Scalar agreement is independently enforced before using any derivative.
+    const check=(actual:number,expected:number)=>{if(Math.abs(actual-expected)>1e-10+1e-12*Math.max(Math.abs(actual),Math.abs(expected)))throw new DomainError('Flux derivative scalar law disagreement');};
+    dm.forEach((v,j)=>check(v.value,r.dm[j]));dU.forEach((v,j)=>check(v.value,r.dU[j]));check(work.value,r.work);check(headerMass.value,r.headerMass);
+    return {dm,dU,heat,work,headerMass,masses,energies,leakH};
+  }
+
   prepareStep(dt:number,boundary:ChargeBoundary):ChargeCandidate {
     if(!(dt>0&&dt<=.25))throw new DomainError('Charge outer step must be within 0…0.25s');
     const original=this.current,heat:Record<string,number>={},reasons=new Set<string>();let remaining=dt,step=dt,iterations=0,count=0;
@@ -358,6 +530,22 @@ export class ChargeCircuit {
           'Generic accumulator protection restores vapor admission at alpha >= 0.04 (event tolerance 1e-7)':
           'Generic accumulator protection holds compressor at alpha <= 0.02 (event tolerance 1e-7)');
         this.current={...this.current,compressorAdmission:admitted};
+        // A topology switch can reconnect a high-pressure branch to a low-side
+        // finite cavity. Start Newton inside the local inventory turnover time
+        // rather than repeatedly attempting a distant quarter-second root.
+        // This is a trial-step predictor only: backward-Euler local/global
+        // balances, phase events and rollback retain their original budgets.
+        if(this.numerics.predictTurnover){
+          const initialRates=this.evaluation(this.current.variables,boundary,this.current.openings,admitted);
+          const maximumTransport=Math.max(Math.abs(initialRates.accumulatorFeedKgs),initialRates.mc,...initialRates.valves.map(Math.abs),
+            ...this.current.variables.slice(this.flowOffset).map(Math.abs));
+          for(let j=0;j<initialRates.cells.length;j++){
+            const rate=Math.abs(initialRates.dm[j]);
+            if(rate>0)step=Math.min(step,.2*initialRates.cells[j].massKg/rate);
+            if(maximumTransport>0)step=Math.min(step,.2*initialRates.cells[j].massKg/maximumTransport);
+        }
+        step=Math.max(1e-8,step);
+        }
         let candidate:ChargeCandidate;
         attempts++;
         try {candidate=this.prepareSingle(Math.min(step,remaining),boundary);}
@@ -416,14 +604,23 @@ export class ChargeCircuit {
       return Math.max(0,Math.min(1,previous.openings[i]+change));
     });
     const pressureDifference=this.numerics.pressureDifferenceCoordinates??true;
+    const densityCoordinates=this.numerics.storageCoordinates==='density';
     const sourcePressure=boundary.orientation==='heating'?0:1;
-    const size=previous.variables.length,scale=previous.variables.map((_,i)=>i===2&&pressureDifference?1:i<3?1e6:i<this.flowOffset?5e5:.01);
+    const size=previous.variables.length,scale=previous.variables.map((_,i)=>i===2&&pressureDifference?1:i<3?1e6:i<this.flowOffset?(densityCoordinates?500:5e5):.01);
     const residual=(x:number[])=>{
       const z=x.map((v,i)=>v*scale[i]);
       // Solver coordinates may use the accumulator drop, while all physical
       // states and public snapshots keep their fixed absolute pressures.
       if(pressureDifference)z[2]+=z[sourcePressure];
-      const r=this.evaluation(z,boundary,openings,previous.compressorAdmission),f:number[]=[];
+      let prepared:ChargeCell[]|undefined;
+      if(densityCoordinates)prepared=this.definitions.map((definition,j)=>{
+        const state=this.properties.pd(z[definition.pressureIndex],z[3+j]);
+        const mass=definition.volume*state.densityKgm3;
+        z[3+j]=state.hJkg;
+        return {id:definition.id,volumeM3:definition.volume,group:(['outdoor','indoor','accumulator'] as const)[definition.pressureIndex],
+          massKg:mass,internalEnergyJ:mass*state.hJkg-state.pPa*definition.volume,state};
+      });
+      const r=this.evaluation(z,boundary,openings,previous.compressorAdmission,prepared),f:number[]=[];
       for(let j=0;j<r.cells.length;j++)f.push((r.cells[j].massKg-previous.cells[j].massKg-dt*r.dm[j])/.1);
       for(let j=0;j<r.cells.length;j++)f.push((r.cells[j].internalEnergyJ-previous.cells[j].internalEnergyJ-dt*r.dU[j])/50000);
       f.push(dt*r.headerMass/.1);
@@ -442,8 +639,24 @@ export class ChargeCircuit {
       f[r.cells.length+this.accumulatorIndex]=aggregateEnergy/50000;
       return {z,r,f,local,aggregateMass,aggregateEnergy};
     };
-    let x=previous.variables.map((v,i)=>v/scale[i]);
+    let x=previous.variables.map((v,i)=>(densityCoordinates&&i>=3&&i<this.flowOffset?previous.cells[i-3].massKg/this.definitions[i-3].volume:v)/scale[i]);
     if(pressureDifference)x[2]-=previous.variables[sourcePressure]/scale[2];
+    if(boundary.orientation!==previous.orientation){
+      const rates=this.evaluation(previous.variables,boundary,openings,previous.compressorAdmission);
+      // Algebraic face flows have no stored inertia in this pressure-region
+      // reduction. A new valve topology needs a continuity-consistent Newton
+      // guess, rather than the opposite topology's stale face directions.
+      // Volume weights affect this guess only; solved branches retain every
+      // original local mass/energy balance and their actual EOS inventories.
+      const required=boundary.orientation==='heating'?rates.mc:-rates.accumulatorFeedKgs;
+      const totalGasVolume=this.roomIndices.reduce((sum,indices)=>sum+this.definitions[indices[0]].volume,0);
+      for(let i=0;i<this.roomIndices.length;i++){
+        const flow=required*this.definitions[this.roomIndices[i][0]].volume/totalGasVolume;
+        for(let j=0;j<5;j++)x[this.flowOffset+2+5*i+j]=flow/scale[this.flowOffset+2+5*i+j];
+      }
+      const outdoorFlow=boundary.orientation==='heating'?-rates.accumulatorFeedKgs:rates.mc;
+      x[this.flowOffset]=outdoorFlow/scale[this.flowOffset];x[this.flowOffset+1]=outdoorFlow/scale[this.flowOffset+1];
+    }
     // A zero-lift equilibrium is a nonsmooth nozzle point. This is only a Newton
     // initial guess; all balances still use the unaltered previous physical M/U.
     let cur=residual(x),iterations=0;
@@ -477,9 +690,28 @@ export class ChargeCircuit {
       const label=worst<nCells?`mass ${previous.cells[worst].id}`:worst<2*nCells?`energy ${previous.cells[worst-nCells].id}`:'header mass';
       return `${label} residual ${physicalResidual(f,worst)} ${worst<nCells||worst===2*nCells?'kg':'J'}, tolerance ${limits[worst]}, normalized ${balanceNorm(trial)}`;
     };
+    const linearizationKey=JSON.stringify([dt,boundary.orientation,previous.compressorAdmission,boundary.operating]);
+    let J=this.solverLinearization?.key===linearizationKey?this.solverLinearization.matrix.map(row=>[...row]):undefined,jacobianAge=J?1:0;
     for(;iterations<20&&acceptanceNorm(cur)>1;iterations++) {
-      const J=Array.from({length:size},()=>Array<number>(size));
-      const storage=(this.numerics.analyticStorageJacobian??true)?cur.r.cells.map(c=>this.storageDerivatives(c)):undefined;
+      if(!J||jacobianAge>=6){
+      J=Array.from({length:size},()=>Array<number>(size));jacobianAge=0;
+      if(this.numerics.analyticFluxJacobian){
+        const derivatives=this.fluxDerivatives(cur.z,boundary,openings,previous.compressorAdmission,cur.r,scale);
+        for(let j=0;j<size;j++){
+          let aggregateMass=0,aggregateEnergy=0,coilHeat=0;
+          for(let k=0;k<nCells;k++){
+            const mass=derivatives.masses[k].gradient[j],energy=derivatives.energies[k].gradient[j];
+            J[k][j]=(mass-dt*derivatives.dm[k].gradient[j])/.1;
+            J[nCells+k][j]=(energy-dt*derivatives.dU[k].gradient[j])/50000;
+            aggregateMass+=mass;aggregateEnergy+=energy;
+          }
+          for(const q of Object.values(derivatives.heat))coilHeat+=q.gradient[j];
+          J[2*nCells][j]=dt*derivatives.headerMass.gradient[j]/.1;
+          J[this.accumulatorIndex][j]=aggregateMass/.1;
+          J[nCells+this.accumulatorIndex][j]=(aggregateEnergy-dt*(derivatives.work.gradient[j]+coilHeat-derivatives.leakH.gradient[j]))/50000;
+        }
+      }else{
+      const storage=(this.numerics.analyticStorageJacobian??true)?cur.r.cells.map(c=>this.coordinateStorageDerivatives(c)):undefined;
       for(let j=0;j<size;j++){
         const z=[...x];let eps=(j<3?(this.numerics.pressureDerivativeRelativeStep??1e-9):1e-6)*Math.max(1,Math.abs(x[j]));
         if(pressureDifference&&j===2){
@@ -505,9 +737,10 @@ export class ChargeCircuit {
           // a local Jacobian trial in the current regime rather than averaging
           // liquid compressibility with the two-phase density slope.
           const state=cur.r.cells[j-3].state,sat=this.properties.saturation(state.pPa);
-          const dl=state.hJkg-sat.liquidH,dv=state.hJkg-sat.vaporH;
+          const dl=densityCoordinates?state.densityKgm3-this.properties.prop('D','P',state.pPa,'Q',0):state.hJkg-sat.liquidH;
+          const dv=densityCoordinates?state.densityKgm3-this.properties.prop('D','P',state.pPa,'Q',1):state.hJkg-sat.vaporH;
           const near=Math.abs(dl)<Math.abs(dv)?dl:dv;
-          const sizeH=Math.min(eps*scale[j],Math.max(5e-6,.2*Math.abs(near)));
+          const sizeH=Math.min(eps*scale[j],Math.max(densityCoordinates?5e-10:5e-6,.2*Math.abs(near)));
           eps=(near<0?-1:1)*sizeH/scale[j];
         }
         z[j]+=eps;
@@ -524,7 +757,7 @@ export class ChargeCircuit {
             // derivative of the actual finite-difference trial, for pressure
             // as well as enthalpy columns. Physical state remains unchanged.
             const derivative=applies&&(quality===0||quality===1)&&trial.r.cells[k].state.qualityMass===null?
-              this.storageDerivatives(cur.r.cells[k],true):storage[k];
+              this.coordinateStorageDerivatives(cur.r.cells[k],true):storage[k];
             const exactM=applies?(j<3?derivative.massP:derivative.massH)*scale[j]:0;
             const exactU=applies?(j<3?derivative.energyP:derivative.energyH)*scale[j]:0;
             const correctionM=exactM-(trial.r.cells[k].massKg-cur.r.cells[k].massKg)/delta;
@@ -548,13 +781,29 @@ export class ChargeCircuit {
           J[nCells+this.accumulatorIndex][j]+=aggregateEnergyCorrection/50000;
         }
       }
-      const d=solveLinear(J,cur.f.map(v=>-v));let accepted=false;
+      }
+      }
+      const activeJ=J,d=solveLinear(activeJ,cur.f.map(v=>-v));let accepted=false;
       let lastTrialError='';
       for(let a=1;a>=1/4096;a/=2){try{const z=x.map((v,i)=>v+a*d[i]),next=residual(z);
-        if(merit(next.f)<merit(cur.f)){x=z;cur=next;accepted=true;break;}}catch(error){lastTrialError=String(error);}}
-      if(!accepted)throw new DomainError(`Charge DAE Newton line search failed at iteration ${iterations}, residual ${norm(cur.f)}, ${failureDetail(cur)}, aggregate M ${cur.aggregateMass} kg/U ${cur.aggregateEnergy} J, pressures ${cur.z.slice(0,3).join(',')}, last rejected trial ${lastTrialError||'did not decrease residual'}`);
+        if(merit(next.f)<merit(cur.f)){
+          // Broyden's secant update reuses a local linearization. Every candidate
+          // still evaluates the complete physical residual; failed progress
+          // refreshes the EOS/transport Jacobian, never relaxes acceptance.
+          const step=z.map((value,i)=>value-x[i]),square=step.reduce((sum,v)=>sum+v*v,0);
+          if(square>1e-24){for(let i=0;i<size;i++){
+            const defect=next.f[i]-cur.f[i]-activeJ[i].reduce((sum,v,j)=>sum+v*step[j],0);
+            for(let j=0;j<size;j++)activeJ[i][j]+=defect*step[j]/square;
+          }jacobianAge++;}else J=undefined;
+          x=z;cur=next;accepted=true;break;
+        }}catch(error){lastTrialError=String(error);}}
+      if(!accepted){
+        if(jacobianAge>0){J=undefined;continue;}
+        throw new DomainError(`Charge DAE Newton line search failed at iteration ${iterations}, residual ${norm(cur.f)}, ${failureDetail(cur)}, aggregate M ${cur.aggregateMass} kg/U ${cur.aggregateEnergy} J, pressures ${cur.z.slice(0,3).join(',')}, last rejected trial ${lastTrialError||'did not decrease residual'}`);
+      }
     }
     if(acceptanceNorm(cur)>1)throw new DomainError(`Charge DAE residual ${norm(cur.f)}, ${failureDetail(cur)}, aggregate M ${cur.aggregateMass} kg/U ${cur.aggregateEnergy} J`);
+    if(J)this.solverLinearization={key:linearizationKey,matrix:J.map(row=>[...row])};
     const r=cur.r,coilHeat=Object.fromEntries(Object.entries(r.heat).map(([k,q])=>[k,q*dt]));
     const leakMass=(boundary.leak?.rateKgs??0)*dt;
     const leakCell=boundary.leak?r.cells.find(c=>c.id===boundary.leak!.physicalCellId):undefined;
@@ -604,45 +853,68 @@ export class ChargeCircuit {
   }
 }
 
-const GAUSS_VOLUME_RULES=[
-  {nodes:[-.8611363115940526,-.3399810435848563,.3399810435848563,.8611363115940526],
-    weights:[.3478548451374538,.6521451548625461,.6521451548625461,.3478548451374538]},
-  {nodes:[-.9602898564975363,-.7966664774136267,-.525532409916329,-.1834346424956498,
-    .1834346424956498,.525532409916329,.7966664774136267,.9602898564975363],
-    weights:[.1012285362903763,.2223810344533745,.3137066458778873,.362683783378362,
-      .362683783378362,.3137066458778873,.2223810344533745,.1012285362903763]},
-];
-
-/** Bounded adaptive integral of real-EOS specific volume, with phase knots.
- * Order differences estimate quadrature error; they are not interval bounds. */
-function isentropicVolumeIntegral(low:number,high:number,knots:number[],density:(p:number)=>number,
-  budget:(integral:number)=>number):number {
-  let calls=0;
-  const integrate=(a:number,b:number,order:number)=>{
-    const mid=(a+b)/2,half=(b-a)/2,rule=GAUSS_VOLUME_RULES[order];
-    return half*rule.nodes.reduce((sum,node,i)=>{
-      if(++calls>8192)throw new DomainError('Isentropic integral density work budget exceeded');
-      return sum+rule.weights[i]/density(mid+half*node);
-    },0);
+/** Adaptive Chebyshev representation of v(p)|s. Pure-fluid phase boundaries
+ * are explicit panel boundaries; no interpolation spans a phase kink. Order
+ * differences and independent interior samples estimate error, as in the prior
+ * adaptive quadrature. This is numerical EOS interpolation, not a fluid table
+ * with fitted thermodynamics or a changed storage flash. */
+function isentropicVolumePrimitive(low:number,high:number,knots:number[],density:(p:number)=>number,relative:number) {
+  interface Panel {a:number;b:number;power:number[];coarsePower:number[];total:number}
+  const panels:Panel[]=[];let calls=0;
+  const value=(p:number)=>{if(++calls>8192)throw new DomainError('Isentropic integral density work budget exceeded');return 1/density(p);};
+  const coefficients=(samples:number[])=>{
+    const n=samples.length-1;
+    return samples.map((_,k)=>2/n*samples.reduce((sum,v,j)=>sum+(j===0||j===n?.5:1)*v*Math.cos(Math.PI*k*j/n),0)*(k===0||k===n?.5:1));
   };
-  const panel=(a:number,b:number,depth:number)=>({a,b,depth,coarse:integrate(a,b,0),fine:integrate(a,b,1)});
+  const evaluate=(c:number[],t:number)=>{let next=0,next2=0;for(let k=c.length-1;k>=1;k--){const b=2*t*next-next2+c[k];next2=next;next=b;}return t*next-next2+c[0];};
+  const powers=(c:number[])=>{
+    const power=Array(c.length).fill(0);let prior=[1],current=[0,1];
+    for(let k=0;k<c.length;k++){
+      const polynomial=k===0?prior:current;for(let j=0;j<polynomial.length;j++)power[j]+=c[k]*polynomial[j];
+      if(k>=1){const next=Array(k+2).fill(0);for(let j=0;j<current.length;j++)next[j+1]+=2*current[j];for(let j=0;j<prior.length;j++)next[j]-=prior[j];prior=current;current=next;}
+    }return power;
+  };
+  // Factor 1-t explicitly: even a one-ULP pressure drop must have a positive
+  // integral, without subtracting almost equal antiderivative values.
+  const tail=(power:number[],t:number,half:number)=>{
+    let geometric=1,tk=1,sum=0;
+    for(let k=0;k<power.length;k++){if(k>0){tk*=t;geometric+=tk;}sum+=power[k]*geometric/(k+1);}
+    return half*(1-t)*sum;
+  };
+  const fit=(a:number,b:number,depth:number)=>{
+    const mid=(a+b)/2,half=(b-a)/2;
+    const samples=Array.from({length:17},(_,j)=>value(j===0?b:j===16?a:mid+half*Math.cos(Math.PI*j/16)));
+    const fine=coefficients(samples),coarse=coefficients(samples.filter((_,j)=>j%2===0));
+    let error=0,scale=Math.max(...samples);
+    for(let j=0;j<32;j++){
+      const t=Math.cos(Math.PI*(j+.5)/32),truth=value(mid+half*t);
+      error=Math.max(error,Math.abs(evaluate(fine,t)-truth),Math.abs(evaluate(fine,t)-evaluate(coarse,t)));
+      scale=Math.max(scale,truth);
+    }
+    const power=powers(fine),coarsePower=powers(coarse),total=tail(power,-1,half);
+    let integralError=0;
+    for(let j=0;j<=16;j++){const t=-1+j/8;integralError=Math.max(integralError,Math.abs(tail(power,t,half)-tail(coarsePower,t,half)));}
+    if(error>1e-8*scale||integralError>1e-10+relative*Math.abs(total)){
+      if(depth>=16||!(mid>a&&mid<b))throw new DomainError(`Isentropic integral unresolved quadrature error: ${a}…${b}, relative ${error/scale}`);
+      fit(a,mid,depth+1);fit(mid,b,depth+1);return;
+    }
+    panels.push({a,b,power,coarsePower,total});
+  };
   const points=[low,...knots.filter(p=>p>low&&p<high),high];
-  const panels=points.slice(0,-1).map((a,i)=>panel(a,points[i+1],0));
-  let value=panels.reduce((sum,p)=>sum+p.fine,0);
-  let error=panels.reduce((sum,p)=>sum+Math.abs(p.coarse-p.fine),0);
-  while(error>budget(value)){
-    let index=0;for(let i=1;i<panels.length;i++)
-      if(Math.abs(panels[i].coarse-panels[i].fine)>Math.abs(panels[index].coarse-panels[index].fine))index=i;
-    const prior=panels[index],mid=(prior.a+prior.b)/2;
-    if(prior.depth>=16)throw new DomainError('Isentropic integral unresolved quadrature error');
-    if(!(mid>prior.a&&mid<prior.b))throw new DomainError('Isentropic integral exhausted pressure precision');
-    const left=panel(prior.a,mid,prior.depth+1),right=panel(mid,prior.b,prior.depth+1);
-    panels.splice(index,1,left,right);
-    value+=left.fine+right.fine-prior.fine;
-    error=panels.reduce((sum,p)=>sum+Math.abs(p.coarse-p.fine),0);
-  }
-  if(!(Number.isFinite(value)&&value>0))throw new DomainError('Invalid isentropic volume integral');
-  return value;
+  for(let i=0;i<points.length-1;i++)fit(points[i],points[i+1],0);
+  const integrate=(p:number)=>{
+    let result=0;
+    for(const panel of panels){if(p>=panel.b)continue;if(p<=panel.a){result+=panel.total;continue;}
+      const t=2*(p-panel.a)/(panel.b-panel.a)-1;result+=tail(panel.power,t,(panel.b-panel.a)/2);
+    }
+    if(!(Number.isFinite(result)&&result>0))throw new DomainError('Invalid isentropic volume integral');return result;
+  };
+  integrate.error=(p:number)=>panels.reduce((sum,panel)=>{
+    if(p>=panel.b)return sum;
+    const t=p<=panel.a?-1:2*(p-panel.a)/(panel.b-panel.a)-1,half=(panel.b-panel.a)/2;
+    return sum+4*Math.abs(tail(panel.power,t,half)-tail(panel.coarsePower,t,half));
+  },0);
+  return integrate;
 }
 
 function deepFreeze<T>(value:T):T {
