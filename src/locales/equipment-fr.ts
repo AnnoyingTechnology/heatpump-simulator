@@ -1,5 +1,6 @@
 /** MXM installation presentation only; references and source-defined reducer IDs stay unchanged. */
 export const EQUIPMENT_FR: Readonly<Record<string, string>> = {
+  'France technical table; current availability unverified': 'Table technique française ; disponibilité actuelle non vérifiée',
   'Europe; France availability unverified': 'Europe ; disponibilité en France non vérifiée',
   'Installation declarations': 'Déclarations de raccordement',
   'Installed refrigerant port': 'Port frigorifique raccordé',
@@ -26,7 +27,7 @@ export const EQUIPMENT_FR: Readonly<Record<string, string>> = {
 };
 export const EQUIPMENT_FR_PATTERNS: readonly (readonly [string, string])[] = [
   ['{model} (availability unverified)', '{model} (disponibilité non vérifiée)'],
-  ["Model: {model}. Change it with the model list on the room's unit block. Listed in a France technical table; current retail availability is unverified. Outdoor pairing requires its own source evidence.", 'Modèle : {model}. Modifier avec la liste du bloc intérieur. Référence dans une table technique française ; disponibilité commerciale actuelle non vérifiée. L’association extérieure exige sa propre preuve documentaire.'],
+  ["Model: {label}. Change it with the model list on the room's unit block. Source scope: {basis}. Current retail availability is unverified. Outdoor pairing requires its own source evidence.", 'Modèle : {label}. Modifier avec la liste du bloc intérieur. Portée de la source : {basis}. Disponibilité commerciale actuelle non vérifiée. L’association extérieure exige sa propre preuve documentaire.'],
   ['{model} · EU listed', '{model} · référencé UE'],
   ['Source region: {basis}. Current sales status unknown; technical-table presence does not establish France availability.', 'Région de la source : {basis}. Commercialisation actuelle inconnue ; la présence dans une table technique ne prouve pas la disponibilité en France.'],
   ['{model}: exact published one-to-one Europe pairing. France availability and current sales status are unknown. Outdoor airflow uses the generic/manual setting; the cycle has no OEM performance map.', '{model} : association individuelle exacte publiée en Europe. Disponibilité en France et commercialisation actuelle inconnues. Débit extérieur générique/manuel ; le cycle n’a pas de carte de performances constructeur.'],

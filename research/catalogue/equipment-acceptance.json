@@ -5947,6 +5947,354 @@
       },
       "sourceStatus": "availability-unknown",
       "marketScope": "France technical table; current availability unverified"
+    },
+    {
+      "reference": "ATXC20EV1B",
+      "candidateFile": "research/catalogue/staging/reviewed-luna-siesta-atxc-e-exact-pairs-2026.json",
+      "candidateSha256": "56a1b987a691b8ef48658125b004232b566e08fc7fb09917ac0a3e6c7ed7086a",
+      "candidateReference": "ATXC20EV1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceReview": {
+        "path": "reviews/siesta-atxc-e-independent-acceptance.json",
+        "sha256": "0c8d7a1480c570267f99e65668a43c3f87a51d01608b61bb39e7432b2b4e6a7b"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "coolingAirflowCondition": "cooling high fan"
+    },
+    {
+      "reference": "ARXC20EV1B",
+      "candidateFile": "research/catalogue/staging/reviewed-luna-siesta-atxc-e-exact-pairs-2026.json",
+      "candidateSha256": "56a1b987a691b8ef48658125b004232b566e08fc7fb09917ac0a3e6c7ed7086a",
+      "candidateReference": "ARXC20EV1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "refrigerant"
+      ],
+      "sourceReview": {
+        "path": "reviews/siesta-atxc-e-independent-acceptance.json",
+        "sha256": "0c8d7a1480c570267f99e65668a43c3f87a51d01608b61bb39e7432b2b4e6a7b"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "unpublishedOutdoorAirflow": true,
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXC20EV1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-pair-e",
+        "locator": "Exact full indoor/outdoor reference column header in official Europe pair table",
+        "excerpt": "ATXC20EV1B / ARXC20EV1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXC20EV1B": {
+          "sourceId": "siesta-pair-e",
+          "locator": "Exact full indoor/outdoor reference column header in official Europe pair table",
+          "excerpt": "ATXC20EV1B / ARXC20EV1B"
+        }
+      }
+    },
+    {
+      "reference": "ATXC25EV1B",
+      "candidateFile": "research/catalogue/staging/reviewed-luna-siesta-atxc-e-exact-pairs-2026.json",
+      "candidateSha256": "56a1b987a691b8ef48658125b004232b566e08fc7fb09917ac0a3e6c7ed7086a",
+      "candidateReference": "ATXC25EV1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceReview": {
+        "path": "reviews/siesta-atxc-e-independent-acceptance.json",
+        "sha256": "0c8d7a1480c570267f99e65668a43c3f87a51d01608b61bb39e7432b2b4e6a7b"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "coolingAirflowCondition": "cooling high fan"
+    },
+    {
+      "reference": "ARXC25EV1B",
+      "candidateFile": "research/catalogue/staging/reviewed-luna-siesta-atxc-e-exact-pairs-2026.json",
+      "candidateSha256": "56a1b987a691b8ef48658125b004232b566e08fc7fb09917ac0a3e6c7ed7086a",
+      "candidateReference": "ARXC25EV1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "refrigerant"
+      ],
+      "sourceReview": {
+        "path": "reviews/siesta-atxc-e-independent-acceptance.json",
+        "sha256": "0c8d7a1480c570267f99e65668a43c3f87a51d01608b61bb39e7432b2b4e6a7b"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "unpublishedOutdoorAirflow": true,
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXC25EV1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-pair-e",
+        "locator": "Exact full indoor/outdoor reference column header in official Europe pair table",
+        "excerpt": "ATXC25EV1B / ARXC25EV1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXC25EV1B": {
+          "sourceId": "siesta-pair-e",
+          "locator": "Exact full indoor/outdoor reference column header in official Europe pair table",
+          "excerpt": "ATXC25EV1B / ARXC25EV1B"
+        }
+      }
+    },
+    {
+      "reference": "ATXC35EV1B",
+      "candidateFile": "research/catalogue/staging/reviewed-luna-siesta-atxc-e-exact-pairs-2026.json",
+      "candidateSha256": "56a1b987a691b8ef48658125b004232b566e08fc7fb09917ac0a3e6c7ed7086a",
+      "candidateReference": "ATXC35EV1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceReview": {
+        "path": "reviews/siesta-atxc-e-independent-acceptance.json",
+        "sha256": "0c8d7a1480c570267f99e65668a43c3f87a51d01608b61bb39e7432b2b4e6a7b"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "coolingAirflowCondition": "cooling high fan"
+    },
+    {
+      "reference": "ARXC35EV1B",
+      "candidateFile": "research/catalogue/staging/reviewed-luna-siesta-atxc-e-exact-pairs-2026.json",
+      "candidateSha256": "56a1b987a691b8ef48658125b004232b566e08fc7fb09917ac0a3e6c7ed7086a",
+      "candidateReference": "ARXC35EV1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "refrigerant"
+      ],
+      "sourceReview": {
+        "path": "reviews/siesta-atxc-e-independent-acceptance.json",
+        "sha256": "0c8d7a1480c570267f99e65668a43c3f87a51d01608b61bb39e7432b2b4e6a7b"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "unpublishedOutdoorAirflow": true,
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXC35EV1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-pair-e",
+        "locator": "Exact full indoor/outdoor reference column header in official Europe pair table",
+        "excerpt": "ATXC35EV1B / ARXC35EV1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXC35EV1B": {
+          "sourceId": "siesta-pair-e",
+          "locator": "Exact full indoor/outdoor reference column header in official Europe pair table",
+          "excerpt": "ATXC35EV1B / ARXC35EV1B"
+        }
+      }
+    },
+    {
+      "reference": "ATXC50EV1B",
+      "candidateFile": "research/catalogue/staging/reviewed-luna-siesta-atxc-e-exact-pairs-2026.json",
+      "candidateSha256": "56a1b987a691b8ef48658125b004232b566e08fc7fb09917ac0a3e6c7ed7086a",
+      "candidateReference": "ATXC50EV1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceReview": {
+        "path": "reviews/siesta-atxc-e-independent-acceptance.json",
+        "sha256": "0c8d7a1480c570267f99e65668a43c3f87a51d01608b61bb39e7432b2b4e6a7b"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "coolingAirflowCondition": "cooling high fan"
+    },
+    {
+      "reference": "ARXC50EV1B",
+      "candidateFile": "research/catalogue/staging/reviewed-luna-siesta-atxc-e-exact-pairs-2026.json",
+      "candidateSha256": "56a1b987a691b8ef48658125b004232b566e08fc7fb09917ac0a3e6c7ed7086a",
+      "candidateReference": "ARXC50EV1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "refrigerant"
+      ],
+      "sourceReview": {
+        "path": "reviews/siesta-atxc-e-independent-acceptance.json",
+        "sha256": "0c8d7a1480c570267f99e65668a43c3f87a51d01608b61bb39e7432b2b4e6a7b"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "unpublishedOutdoorAirflow": true,
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXC50EV1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-pair-e",
+        "locator": "Exact full indoor/outdoor reference column header in official Europe pair table",
+        "excerpt": "ATXC50EV1B / ARXC50EV1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXC50EV1B": {
+          "sourceId": "siesta-pair-e",
+          "locator": "Exact full indoor/outdoor reference column header in official Europe pair table",
+          "excerpt": "ATXC50EV1B / ARXC50EV1B"
+        }
+      }
+    },
+    {
+      "reference": "ATXC60EV1B",
+      "candidateFile": "research/catalogue/staging/reviewed-luna-siesta-atxc-e-exact-pairs-2026.json",
+      "candidateSha256": "56a1b987a691b8ef48658125b004232b566e08fc7fb09917ac0a3e6c7ed7086a",
+      "candidateReference": "ATXC60EV1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceReview": {
+        "path": "reviews/siesta-atxc-e-independent-acceptance.json",
+        "sha256": "0c8d7a1480c570267f99e65668a43c3f87a51d01608b61bb39e7432b2b4e6a7b"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "coolingAirflowCondition": "cooling high fan"
+    },
+    {
+      "reference": "ARXC60EV1B",
+      "candidateFile": "research/catalogue/staging/reviewed-luna-siesta-atxc-e-exact-pairs-2026.json",
+      "candidateSha256": "56a1b987a691b8ef48658125b004232b566e08fc7fb09917ac0a3e6c7ed7086a",
+      "candidateReference": "ARXC60EV1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "refrigerant"
+      ],
+      "sourceReview": {
+        "path": "reviews/siesta-atxc-e-independent-acceptance.json",
+        "sha256": "0c8d7a1480c570267f99e65668a43c3f87a51d01608b61bb39e7432b2b4e6a7b"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "unpublishedOutdoorAirflow": true,
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXC60EV1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-pair-e",
+        "locator": "Exact full indoor/outdoor reference column header in official Europe pair table",
+        "excerpt": "ATXC60EV1B / ARXC60EV1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXC60EV1B": {
+          "sourceId": "siesta-pair-e",
+          "locator": "Exact full indoor/outdoor reference column header in official Europe pair table",
+          "excerpt": "ATXC60EV1B / ARXC60EV1B"
+        }
+      }
+    },
+    {
+      "reference": "ATXC71EV1B",
+      "candidateFile": "research/catalogue/staging/reviewed-luna-siesta-atxc-e-exact-pairs-2026.json",
+      "candidateSha256": "56a1b987a691b8ef48658125b004232b566e08fc7fb09917ac0a3e6c7ed7086a",
+      "candidateReference": "ATXC71EV1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceReview": {
+        "path": "reviews/siesta-atxc-e-independent-acceptance.json",
+        "sha256": "0c8d7a1480c570267f99e65668a43c3f87a51d01608b61bb39e7432b2b4e6a7b"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "coolingAirflowCondition": "cooling high fan"
+    },
+    {
+      "reference": "ARXC71EV1B",
+      "candidateFile": "research/catalogue/staging/reviewed-luna-siesta-atxc-e-exact-pairs-2026.json",
+      "candidateSha256": "56a1b987a691b8ef48658125b004232b566e08fc7fb09917ac0a3e6c7ed7086a",
+      "candidateReference": "ARXC71EV1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "refrigerant"
+      ],
+      "sourceReview": {
+        "path": "reviews/siesta-atxc-e-independent-acceptance.json",
+        "sha256": "0c8d7a1480c570267f99e65668a43c3f87a51d01608b61bb39e7432b2b4e6a7b"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "unpublishedOutdoorAirflow": true,
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "ATXC71EV1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "siesta-pair-e",
+        "locator": "Exact full indoor/outdoor reference column header in official Europe pair table",
+        "excerpt": "ATXC71EV1B / ARXC71EV1B"
+      },
+      "pairingEvidenceByIndoor": {
+        "ATXC71EV1B": {
+          "sourceId": "siesta-pair-e",
+          "locator": "Exact full indoor/outdoor reference column header in official Europe pair table",
+          "excerpt": "ATXC71EV1B / ARXC71EV1B"
+        }
+      }
     }
   ],
   "additionalSourceSnapshots": [
@@ -6333,6 +6681,22 @@
     {
       "sourceFile": "research/sources/luna-siesta-ATXF-F---ARXF-A9.html",
       "sourceSha256": "a9560779cf1c27f41d9d823e87fbc023d4a27ba887322141c6d5d7860e674162"
+    },
+    {
+      "sourceFile": "research/sources/luna-next-daikin-2026-catalogue-p338.html",
+      "sourceSha256": "dc659f625d295b0e3f319fe785a73028530d77655338036978cf5a4a8a8f08e2"
+    },
+    {
+      "sourceFile": "research/sources/luna-siesta-ATXC-E.html",
+      "sourceSha256": "23ff06c323a65f1ef749ed20b50729a7defc7792536ee1b80bf7455cc4a2ab95"
+    },
+    {
+      "sourceFile": "research/sources/luna-siesta-ARXC-E.html",
+      "sourceSha256": "29108057dbf03cb9b213303ce60aa1f201a3748c0f3cc3aa51bae0b273eaa5a9"
+    },
+    {
+      "sourceFile": "research/sources/luna-siesta-ATXC-E---ARXC-E.html",
+      "sourceSha256": "93e3d4657cd670d865d7290b920d988cc0bd19045515259df0bac706aa0a8d62"
     }
   ]
 }

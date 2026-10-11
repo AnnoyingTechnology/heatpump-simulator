@@ -612,6 +612,21 @@ class CatalogueAcceptance(unittest.TestCase):
             (isolated / receipt['primaryTableReadback']['path']).write_text('{}')
             with self.assertRaisesRegex(ValueError, 'primary readback'): module.source_review_metadata(unit, accepted, isolated)
 
+    def test_atxc_e_exact_pairing_uses_ev1b_headers_and_keeps_positive_cooling_minimum(self):
+        profiles = json.loads(re.search(r'export const CATALOGUE_OUTDOORS = (.*?) as const;', module.generate(), re.S).group(1))
+        for size in (20, 25, 35, 50, 60, 71):
+            p = next(p for p in profiles if p['id'] == f'ARXC{size}EV1B')
+            self.assertEqual(p['compatibleIndoorClasses'], [f'ATXC{size}EV1B'])
+            self.assertEqual(p['ports'], 1)
+            self.assertIsNone(p['coolingHighFanFlowM3h'])
+            self.assertEqual(p['marketScope'], 'Europe; France availability unverified')
+            self.assertEqual(p['publishedOperatingRangesC']['cooling']['minimum'], 10 if size < 50 else -10)
+            self.assertEqual(p['publishedOperatingRangesC']['cooling']['condition'], 'outdoor dry-bulb')
+            self.assertEqual(p['publishedOperatingRangesC']['heating'], {'minimum': -15.0, 'maximum': 18.0, 'condition': 'outdoor wet-bulb'})
+            entry = next(e for e in self.review['units'] if e['reference'] == p['id'])
+            self.assertEqual(entry['pairingEvidence']['sourceId'], 'siesta-pair-e')
+            self.assertEqual(entry['pairingEvidence']['excerpt'], f'ATXC{size}EV1B / ARXC{size}EV1B')
+
 
 if __name__ == '__main__':
     unittest.main()

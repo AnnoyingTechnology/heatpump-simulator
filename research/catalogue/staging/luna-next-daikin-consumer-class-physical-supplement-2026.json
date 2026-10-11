@@ -1,0 +1,1252 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Bounded 2026 Perfera wall classes and Siesta ATXC-E / ARXC-E physical supplement",
+  "market": "Daikin Europe residential air-to-air catalogue/table scope. Does not establish current France retail availability.",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "catalogue-p320",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/320/",
+      "title": "Daikin Europe General Catalogue 2026 Split, printed p.320",
+      "edition": "ECPEN26-500, 02/2026",
+      "retrievedAt": "2026-10-11",
+      "pinnedPath": "research/sources/luna-next-daikin-2026-catalogue-p320.html",
+      "sha256": "2becf651c2619e2ced56510cb32ae4a2cc8eabec377eed75e6c716444676f918"
+    },
+    {
+      "id": "catalogue-p338",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/338/",
+      "title": "Daikin Europe General Catalogue 2026 Split, printed p.338",
+      "edition": "ECPEN26-500, 02/2026",
+      "retrievedAt": "2026-10-11",
+      "pinnedPath": "research/sources/luna-next-daikin-2026-catalogue-p338.html",
+      "sha256": "dc659f625d295b0e3f319fe785a73028530d77655338036978cf5a4a8a8f08e2"
+    },
+    {
+      "id": "siesta-atxc-e",
+      "url": "https://www.daikin.eu/en_us/products/product.html/ATXC-E.html",
+      "title": "Daikin Europe ATXC-E specifications table",
+      "edition": "Official online product table; retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11",
+      "pinnedPath": "research/sources/luna-siesta-ATXC-E.html",
+      "sha256": "23ff06c323a65f1ef749ed20b50729a7defc7792536ee1b80bf7455cc4a2ab95"
+    },
+    {
+      "id": "siesta-arxc-e",
+      "url": "https://www.daikin.eu/en_us/products/product.html/ARXC-E.html",
+      "title": "Daikin Europe ARXC-E specifications table",
+      "edition": "Official online product table; retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11",
+      "pinnedPath": "research/sources/luna-siesta-ARXC-E.html",
+      "sha256": "29108057dbf03cb9b213303ce60aa1f201a3748c0f3cc3aa51bae0b273eaa5a9"
+    },
+    {
+      "id": "siesta-pair-e",
+      "url": "https://www.daikin.eu/en_us/products/product.html/ATXC-E---ARXC-E.html",
+      "title": "Daikin Europe ATXC-E / ARXC-E specifications and pairing table",
+      "edition": "Official online product table; retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11",
+      "pinnedPath": "research/sources/luna-siesta-ATXC-E---ARXC-E.html",
+      "sha256": "93e3d4657cd670d865d7290b920d988cc0bd19045515259df0bac706aa0a8d62"
+    }
+  ],
+  "perferaPublishedClasses": [
+    {
+      "indoorClass": "FTXM20A",
+      "outdoorClass": "RXM20A",
+      "identityKind": "published-class",
+      "fullSuffixStatus": "unpublished-in-p320",
+      "classPairEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency data table, FTXM + RXM class columns",
+        "excerpt": "FTXM + RXM | 20A + 20A"
+      },
+      "physicalDataStatus": "withheld-until-merged-cells-visually-column-bound",
+      "unknowns": [
+        "Exact current full factory SKU suffix is not published in this catalogue table. Do not alias historical A2/A5 full-reference rows to this class.",
+        "France current sales availability is not established by this Europe catalogue.",
+        "This pinned HTML snapshot flattens the catalogue table; current physical cell-to-class associations require the original page layout."
+      ]
+    },
+    {
+      "indoorClass": "FTXM25A",
+      "outdoorClass": "RXM25A9",
+      "identityKind": "published-class",
+      "fullSuffixStatus": "unpublished-in-p320",
+      "classPairEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency data table, FTXM + RXM class columns",
+        "excerpt": "FTXM + RXM | 25A + 25A9"
+      },
+      "physicalDataStatus": "withheld-until-merged-cells-visually-column-bound",
+      "unknowns": [
+        "Exact current full factory SKU suffix is not published in this catalogue table. Do not alias historical A2/A5 full-reference rows to this class.",
+        "France current sales availability is not established by this Europe catalogue.",
+        "This pinned HTML snapshot flattens the catalogue table; current physical cell-to-class associations require the original page layout."
+      ]
+    },
+    {
+      "indoorClass": "FTXM35A",
+      "outdoorClass": "RXM35A9",
+      "identityKind": "published-class",
+      "fullSuffixStatus": "unpublished-in-p320",
+      "classPairEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency data table, FTXM + RXM class columns",
+        "excerpt": "FTXM + RXM | 35A + 35A9"
+      },
+      "physicalDataStatus": "withheld-until-merged-cells-visually-column-bound",
+      "unknowns": [
+        "Exact current full factory SKU suffix is not published in this catalogue table. Do not alias historical A2/A5 full-reference rows to this class.",
+        "France current sales availability is not established by this Europe catalogue.",
+        "This pinned HTML snapshot flattens the catalogue table; current physical cell-to-class associations require the original page layout."
+      ]
+    },
+    {
+      "indoorClass": "FTXM42A",
+      "outdoorClass": "RXM42A",
+      "identityKind": "published-class",
+      "fullSuffixStatus": "unpublished-in-p320",
+      "classPairEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency data table, FTXM + RXM class columns",
+        "excerpt": "FTXM + RXM | 42A + 42A"
+      },
+      "physicalDataStatus": "withheld-until-merged-cells-visually-column-bound",
+      "unknowns": [
+        "Exact current full factory SKU suffix is not published in this catalogue table. Do not alias historical A2/A5 full-reference rows to this class.",
+        "France current sales availability is not established by this Europe catalogue.",
+        "This pinned HTML snapshot flattens the catalogue table; current physical cell-to-class associations require the original page layout."
+      ]
+    },
+    {
+      "indoorClass": "FTXM50A",
+      "outdoorClass": "RXM50A8",
+      "identityKind": "published-class",
+      "fullSuffixStatus": "unpublished-in-p320",
+      "classPairEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency data table, FTXM + RXM class columns",
+        "excerpt": "FTXM + RXM | 50A + 50A8"
+      },
+      "physicalDataStatus": "withheld-until-merged-cells-visually-column-bound",
+      "unknowns": [
+        "Exact current full factory SKU suffix is not published in this catalogue table. Do not alias historical A2/A5 full-reference rows to this class.",
+        "France current sales availability is not established by this Europe catalogue.",
+        "This pinned HTML snapshot flattens the catalogue table; current physical cell-to-class associations require the original page layout."
+      ]
+    },
+    {
+      "indoorClass": "FTXM60A",
+      "outdoorClass": "RXM60A",
+      "identityKind": "published-class",
+      "fullSuffixStatus": "unpublished-in-p320",
+      "classPairEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency data table, FTXM + RXM class columns",
+        "excerpt": "FTXM + RXM | 60A + 60A"
+      },
+      "physicalDataStatus": "withheld-until-merged-cells-visually-column-bound",
+      "unknowns": [
+        "Exact current full factory SKU suffix is not published in this catalogue table. Do not alias historical A2/A5 full-reference rows to this class.",
+        "France current sales availability is not established by this Europe catalogue.",
+        "This pinned HTML snapshot flattens the catalogue table; current physical cell-to-class associations require the original page layout."
+      ]
+    },
+    {
+      "indoorClass": "FTXM71A",
+      "outdoorClass": "RXM71A",
+      "identityKind": "published-class",
+      "fullSuffixStatus": "unpublished-in-p320",
+      "classPairEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, efficiency data table, FTXM + RXM class columns",
+        "excerpt": "FTXM + RXM | 71A + 71A"
+      },
+      "physicalDataStatus": "withheld-until-merged-cells-visually-column-bound",
+      "unknowns": [
+        "Exact current full factory SKU suffix is not published in this catalogue table. Do not alias historical A2/A5 full-reference rows to this class.",
+        "France current sales availability is not established by this Europe catalogue.",
+        "This pinned HTML snapshot flattens the catalogue table; current physical cell-to-class associations require the original page layout."
+      ]
+    }
+  ],
+  "siestaPairs": [
+    {
+      "class": "20",
+      "identityKind": "published-full-SKU",
+      "fullSuffixStatus": "published",
+      "indoor": {
+        "modelReference": "ATXC20EV1B",
+        "unitType": "indoor",
+        "status": "unknown",
+        "identityEvidence": {
+          "sourceId": "siesta-atxc-e",
+          "locator": "Exact full model-reference table column header",
+          "excerpt": "ATXC20EV1B"
+        },
+        "facts": [
+          {
+            "key": "height",
+            "value": 288,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC20EV1B; Dimensions / Unit / Height",
+              "excerpt": "ATXC20EV1B | Dimensions | Height | 288 mm"
+            }
+          },
+          {
+            "key": "width",
+            "value": 770,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC20EV1B; Dimensions / Unit / Width",
+              "excerpt": "ATXC20EV1B | Dimensions | Width | 770 mm"
+            }
+          },
+          {
+            "key": "depth",
+            "value": 234,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC20EV1B; Dimensions / Unit / Depth",
+              "excerpt": "ATXC20EV1B | Dimensions | Depth | 234 mm"
+            }
+          },
+          {
+            "key": "airflowCoolingHigh",
+            "value": 648,
+            "unit": "m3/h",
+            "condition": "Indoor fan cooling mode, High setting; source publishes m3/min; converted by ×60.",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC20EV1B; Fan / Air flow rate / Cooling / High",
+              "excerpt": "ATXC20EV1B | Cooling | High | 10.8 m3/min"
+            }
+          }
+        ],
+        "ratings": [],
+        "compatibility": [],
+        "unknowns": [
+          "Daikin Europe table publishes the exact reference; current France retail availability is not established.",
+          "Outdoor airflow and heating fan airflow are not published in these source rows."
+        ]
+      },
+      "outdoor": {
+        "modelReference": "ARXC20EV1B",
+        "unitType": "outdoor",
+        "status": "unknown",
+        "identityEvidence": {
+          "sourceId": "siesta-arxc-e",
+          "locator": "Exact full model-reference table column header",
+          "excerpt": "ARXC20EV1B"
+        },
+        "facts": [
+          {
+            "key": "height",
+            "value": 550,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC20EV1B; Dimensions / Unit / Height",
+              "excerpt": "ARXC20EV1B | Dimensions | Height | 550 mm"
+            }
+          },
+          {
+            "key": "width",
+            "value": 658,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC20EV1B; Dimensions / Unit / Width",
+              "excerpt": "ARXC20EV1B | Dimensions | Width | 658 mm"
+            }
+          },
+          {
+            "key": "depth",
+            "value": 273,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC20EV1B; Dimensions / Unit / Depth",
+              "excerpt": "ARXC20EV1B | Dimensions | Depth | 273 mm"
+            }
+          },
+          {
+            "key": "refrigerant",
+            "value": "R-32",
+            "unit": "none",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC20EV1B; Refrigerant / Type",
+              "excerpt": "ARXC20EV1B | Refrigerant | Type | R-32"
+            }
+          },
+          {
+            "key": "coolingOutdoorMinimum",
+            "value": 10,
+            "unit": "degC",
+            "condition": "Outdoor ambient dry bulb (°CDB), cooling operating range minimum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC20EV1B; Operation range / Cooling / Ambient / Min. / °CDB",
+              "excerpt": "ARXC20EV1B | Cooling | Min. 10 °CDB"
+            }
+          },
+          {
+            "key": "coolingOutdoorMaximum",
+            "value": 46,
+            "unit": "degC",
+            "condition": "Outdoor ambient dry bulb (°CDB), cooling operating range maximum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC20EV1B; Operation range / Cooling / Ambient / Max. / °CDB",
+              "excerpt": "ARXC20EV1B | Cooling | Max. 46 °CDB"
+            }
+          },
+          {
+            "key": "heatingOutdoorMinimum",
+            "value": -15,
+            "unit": "degC",
+            "condition": "Outdoor ambient wet bulb (°CWB), heating operating range minimum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC20EV1B; Operation range / Heating / Ambient / Min. / °CWB",
+              "excerpt": "ARXC20EV1B | Heating | Min. -15 °CWB"
+            }
+          },
+          {
+            "key": "heatingOutdoorMaximum",
+            "value": 18,
+            "unit": "degC",
+            "condition": "Outdoor ambient wet bulb (°CWB), heating operating range maximum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC20EV1B; Operation range / Heating / Ambient / Max. / °CWB",
+              "excerpt": "ARXC20EV1B | Heating | Max. 18 °CWB"
+            }
+          }
+        ],
+        "ratings": [],
+        "compatibility": [],
+        "unknowns": [
+          "Daikin Europe table publishes the exact reference; current France retail availability is not established.",
+          "Outdoor volumetric airflow is not published in these source rows."
+        ]
+      },
+      "compatibility": {
+        "indoor": "ATXC20EV1B",
+        "outdoor": "ARXC20EV1B",
+        "evidence": {
+          "sourceId": "catalogue-p338",
+          "locator": "Printed p.338, efficiency data table; exact short class pair column, corroborated by exact SKU headers in Daikin Europe pair table",
+          "excerpt": "ATXC + ARXC | 20E + 20E; ATXC20EV1B / ARXC20EV1B"
+        }
+      }
+    },
+    {
+      "class": "25",
+      "identityKind": "published-full-SKU",
+      "fullSuffixStatus": "published",
+      "indoor": {
+        "modelReference": "ATXC25EV1B",
+        "unitType": "indoor",
+        "status": "unknown",
+        "identityEvidence": {
+          "sourceId": "siesta-atxc-e",
+          "locator": "Exact full model-reference table column header",
+          "excerpt": "ATXC25EV1B"
+        },
+        "facts": [
+          {
+            "key": "height",
+            "value": 288,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC25EV1B; Dimensions / Unit / Height",
+              "excerpt": "ATXC25EV1B | Dimensions | Height | 288 mm"
+            }
+          },
+          {
+            "key": "width",
+            "value": 770,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC25EV1B; Dimensions / Unit / Width",
+              "excerpt": "ATXC25EV1B | Dimensions | Width | 770 mm"
+            }
+          },
+          {
+            "key": "depth",
+            "value": 234,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC25EV1B; Dimensions / Unit / Depth",
+              "excerpt": "ATXC25EV1B | Dimensions | Depth | 234 mm"
+            }
+          },
+          {
+            "key": "airflowCoolingHigh",
+            "value": 648,
+            "unit": "m3/h",
+            "condition": "Indoor fan cooling mode, High setting; source publishes m3/min; converted by ×60.",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC25EV1B; Fan / Air flow rate / Cooling / High",
+              "excerpt": "ATXC25EV1B | Cooling | High | 10.8 m3/min"
+            }
+          }
+        ],
+        "ratings": [],
+        "compatibility": [],
+        "unknowns": [
+          "Daikin Europe table publishes the exact reference; current France retail availability is not established.",
+          "Outdoor airflow and heating fan airflow are not published in these source rows."
+        ]
+      },
+      "outdoor": {
+        "modelReference": "ARXC25EV1B",
+        "unitType": "outdoor",
+        "status": "unknown",
+        "identityEvidence": {
+          "sourceId": "siesta-arxc-e",
+          "locator": "Exact full model-reference table column header",
+          "excerpt": "ARXC25EV1B"
+        },
+        "facts": [
+          {
+            "key": "height",
+            "value": 550,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC25EV1B; Dimensions / Unit / Height",
+              "excerpt": "ARXC25EV1B | Dimensions | Height | 550 mm"
+            }
+          },
+          {
+            "key": "width",
+            "value": 658,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC25EV1B; Dimensions / Unit / Width",
+              "excerpt": "ARXC25EV1B | Dimensions | Width | 658 mm"
+            }
+          },
+          {
+            "key": "depth",
+            "value": 273,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC25EV1B; Dimensions / Unit / Depth",
+              "excerpt": "ARXC25EV1B | Dimensions | Depth | 273 mm"
+            }
+          },
+          {
+            "key": "refrigerant",
+            "value": "R-32",
+            "unit": "none",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC25EV1B; Refrigerant / Type",
+              "excerpt": "ARXC25EV1B | Refrigerant | Type | R-32"
+            }
+          },
+          {
+            "key": "coolingOutdoorMinimum",
+            "value": 10,
+            "unit": "degC",
+            "condition": "Outdoor ambient dry bulb (°CDB), cooling operating range minimum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC25EV1B; Operation range / Cooling / Ambient / Min. / °CDB",
+              "excerpt": "ARXC25EV1B | Cooling | Min. 10 °CDB"
+            }
+          },
+          {
+            "key": "coolingOutdoorMaximum",
+            "value": 46,
+            "unit": "degC",
+            "condition": "Outdoor ambient dry bulb (°CDB), cooling operating range maximum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC25EV1B; Operation range / Cooling / Ambient / Max. / °CDB",
+              "excerpt": "ARXC25EV1B | Cooling | Max. 46 °CDB"
+            }
+          },
+          {
+            "key": "heatingOutdoorMinimum",
+            "value": -15,
+            "unit": "degC",
+            "condition": "Outdoor ambient wet bulb (°CWB), heating operating range minimum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC25EV1B; Operation range / Heating / Ambient / Min. / °CWB",
+              "excerpt": "ARXC25EV1B | Heating | Min. -15 °CWB"
+            }
+          },
+          {
+            "key": "heatingOutdoorMaximum",
+            "value": 18,
+            "unit": "degC",
+            "condition": "Outdoor ambient wet bulb (°CWB), heating operating range maximum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC25EV1B; Operation range / Heating / Ambient / Max. / °CWB",
+              "excerpt": "ARXC25EV1B | Heating | Max. 18 °CWB"
+            }
+          }
+        ],
+        "ratings": [],
+        "compatibility": [],
+        "unknowns": [
+          "Daikin Europe table publishes the exact reference; current France retail availability is not established.",
+          "Outdoor volumetric airflow is not published in these source rows."
+        ]
+      },
+      "compatibility": {
+        "indoor": "ATXC25EV1B",
+        "outdoor": "ARXC25EV1B",
+        "evidence": {
+          "sourceId": "catalogue-p338",
+          "locator": "Printed p.338, efficiency data table; exact short class pair column, corroborated by exact SKU headers in Daikin Europe pair table",
+          "excerpt": "ATXC + ARXC | 25E + 25E; ATXC25EV1B / ARXC25EV1B"
+        }
+      }
+    },
+    {
+      "class": "35",
+      "identityKind": "published-full-SKU",
+      "fullSuffixStatus": "published",
+      "indoor": {
+        "modelReference": "ATXC35EV1B",
+        "unitType": "indoor",
+        "status": "unknown",
+        "identityEvidence": {
+          "sourceId": "siesta-atxc-e",
+          "locator": "Exact full model-reference table column header",
+          "excerpt": "ATXC35EV1B"
+        },
+        "facts": [
+          {
+            "key": "height",
+            "value": 288,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC35EV1B; Dimensions / Unit / Height",
+              "excerpt": "ATXC35EV1B | Dimensions | Height | 288 mm"
+            }
+          },
+          {
+            "key": "width",
+            "value": 770,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC35EV1B; Dimensions / Unit / Width",
+              "excerpt": "ATXC35EV1B | Dimensions | Width | 770 mm"
+            }
+          },
+          {
+            "key": "depth",
+            "value": 234,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC35EV1B; Dimensions / Unit / Depth",
+              "excerpt": "ATXC35EV1B | Dimensions | Depth | 234 mm"
+            }
+          },
+          {
+            "key": "airflowCoolingHigh",
+            "value": 666,
+            "unit": "m3/h",
+            "condition": "Indoor fan cooling mode, High setting; source publishes m3/min; converted by ×60.",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC35EV1B; Fan / Air flow rate / Cooling / High",
+              "excerpt": "ATXC35EV1B | Cooling | High | 11.1 m3/min"
+            }
+          }
+        ],
+        "ratings": [],
+        "compatibility": [],
+        "unknowns": [
+          "Daikin Europe table publishes the exact reference; current France retail availability is not established.",
+          "Outdoor airflow and heating fan airflow are not published in these source rows."
+        ]
+      },
+      "outdoor": {
+        "modelReference": "ARXC35EV1B",
+        "unitType": "outdoor",
+        "status": "unknown",
+        "identityEvidence": {
+          "sourceId": "siesta-arxc-e",
+          "locator": "Exact full model-reference table column header",
+          "excerpt": "ARXC35EV1B"
+        },
+        "facts": [
+          {
+            "key": "height",
+            "value": 550,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC35EV1B; Dimensions / Unit / Height",
+              "excerpt": "ARXC35EV1B | Dimensions | Height | 550 mm"
+            }
+          },
+          {
+            "key": "width",
+            "value": 658,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC35EV1B; Dimensions / Unit / Width",
+              "excerpt": "ARXC35EV1B | Dimensions | Width | 658 mm"
+            }
+          },
+          {
+            "key": "depth",
+            "value": 273,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC35EV1B; Dimensions / Unit / Depth",
+              "excerpt": "ARXC35EV1B | Dimensions | Depth | 273 mm"
+            }
+          },
+          {
+            "key": "refrigerant",
+            "value": "R-32",
+            "unit": "none",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC35EV1B; Refrigerant / Type",
+              "excerpt": "ARXC35EV1B | Refrigerant | Type | R-32"
+            }
+          },
+          {
+            "key": "coolingOutdoorMinimum",
+            "value": 10,
+            "unit": "degC",
+            "condition": "Outdoor ambient dry bulb (°CDB), cooling operating range minimum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC35EV1B; Operation range / Cooling / Ambient / Min. / °CDB",
+              "excerpt": "ARXC35EV1B | Cooling | Min. 10 °CDB"
+            }
+          },
+          {
+            "key": "coolingOutdoorMaximum",
+            "value": 46,
+            "unit": "degC",
+            "condition": "Outdoor ambient dry bulb (°CDB), cooling operating range maximum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC35EV1B; Operation range / Cooling / Ambient / Max. / °CDB",
+              "excerpt": "ARXC35EV1B | Cooling | Max. 46 °CDB"
+            }
+          },
+          {
+            "key": "heatingOutdoorMinimum",
+            "value": -15,
+            "unit": "degC",
+            "condition": "Outdoor ambient wet bulb (°CWB), heating operating range minimum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC35EV1B; Operation range / Heating / Ambient / Min. / °CWB",
+              "excerpt": "ARXC35EV1B | Heating | Min. -15 °CWB"
+            }
+          },
+          {
+            "key": "heatingOutdoorMaximum",
+            "value": 18,
+            "unit": "degC",
+            "condition": "Outdoor ambient wet bulb (°CWB), heating operating range maximum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC35EV1B; Operation range / Heating / Ambient / Max. / °CWB",
+              "excerpt": "ARXC35EV1B | Heating | Max. 18 °CWB"
+            }
+          }
+        ],
+        "ratings": [],
+        "compatibility": [],
+        "unknowns": [
+          "Daikin Europe table publishes the exact reference; current France retail availability is not established.",
+          "Outdoor volumetric airflow is not published in these source rows."
+        ]
+      },
+      "compatibility": {
+        "indoor": "ATXC35EV1B",
+        "outdoor": "ARXC35EV1B",
+        "evidence": {
+          "sourceId": "catalogue-p338",
+          "locator": "Printed p.338, efficiency data table; exact short class pair column, corroborated by exact SKU headers in Daikin Europe pair table",
+          "excerpt": "ATXC + ARXC | 35E + 35E; ATXC35EV1B / ARXC35EV1B"
+        }
+      }
+    },
+    {
+      "class": "50",
+      "identityKind": "published-full-SKU",
+      "fullSuffixStatus": "published",
+      "indoor": {
+        "modelReference": "ATXC50EV1B",
+        "unitType": "indoor",
+        "status": "unknown",
+        "identityEvidence": {
+          "sourceId": "siesta-atxc-e",
+          "locator": "Exact full model-reference table column header",
+          "excerpt": "ATXC50EV1B"
+        },
+        "facts": [
+          {
+            "key": "height",
+            "value": 288,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC50EV1B; Dimensions / Unit / Height",
+              "excerpt": "ATXC50EV1B | Dimensions | Height | 288 mm"
+            }
+          },
+          {
+            "key": "width",
+            "value": 770,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC50EV1B; Dimensions / Unit / Width",
+              "excerpt": "ATXC50EV1B | Dimensions | Width | 770 mm"
+            }
+          },
+          {
+            "key": "depth",
+            "value": 234,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC50EV1B; Dimensions / Unit / Depth",
+              "excerpt": "ATXC50EV1B | Dimensions | Depth | 234 mm"
+            }
+          },
+          {
+            "key": "airflowCoolingHigh",
+            "value": 750,
+            "unit": "m3/h",
+            "condition": "Indoor fan cooling mode, High setting; source publishes m3/min; converted by ×60.",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC50EV1B; Fan / Air flow rate / Cooling / High",
+              "excerpt": "ATXC50EV1B | Cooling | High | 12.5 m3/min"
+            }
+          }
+        ],
+        "ratings": [],
+        "compatibility": [],
+        "unknowns": [
+          "Daikin Europe table publishes the exact reference; current France retail availability is not established.",
+          "Outdoor airflow and heating fan airflow are not published in these source rows."
+        ]
+      },
+      "outdoor": {
+        "modelReference": "ARXC50EV1B",
+        "unitType": "outdoor",
+        "status": "unknown",
+        "identityEvidence": {
+          "sourceId": "siesta-arxc-e",
+          "locator": "Exact full model-reference table column header",
+          "excerpt": "ARXC50EV1B"
+        },
+        "facts": [
+          {
+            "key": "height",
+            "value": 615,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC50EV1B; Dimensions / Unit / Height",
+              "excerpt": "ARXC50EV1B | Dimensions | Height | 615 mm"
+            }
+          },
+          {
+            "key": "width",
+            "value": 845,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC50EV1B; Dimensions / Unit / Width",
+              "excerpt": "ARXC50EV1B | Dimensions | Width | 845 mm"
+            }
+          },
+          {
+            "key": "depth",
+            "value": 300,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC50EV1B; Dimensions / Unit / Depth",
+              "excerpt": "ARXC50EV1B | Dimensions | Depth | 300 mm"
+            }
+          },
+          {
+            "key": "refrigerant",
+            "value": "R-32",
+            "unit": "none",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC50EV1B; Refrigerant / Type",
+              "excerpt": "ARXC50EV1B | Refrigerant | Type | R-32"
+            }
+          },
+          {
+            "key": "coolingOutdoorMinimum",
+            "value": -10,
+            "unit": "degC",
+            "condition": "Outdoor ambient dry bulb (°CDB), cooling operating range minimum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC50EV1B; Operation range / Cooling / Ambient / Min. / °CDB",
+              "excerpt": "ARXC50EV1B | Cooling | Min. -10 °CDB"
+            }
+          },
+          {
+            "key": "coolingOutdoorMaximum",
+            "value": 46,
+            "unit": "degC",
+            "condition": "Outdoor ambient dry bulb (°CDB), cooling operating range maximum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC50EV1B; Operation range / Cooling / Ambient / Max. / °CDB",
+              "excerpt": "ARXC50EV1B | Cooling | Max. 46 °CDB"
+            }
+          },
+          {
+            "key": "heatingOutdoorMinimum",
+            "value": -15,
+            "unit": "degC",
+            "condition": "Outdoor ambient wet bulb (°CWB), heating operating range minimum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC50EV1B; Operation range / Heating / Ambient / Min. / °CWB",
+              "excerpt": "ARXC50EV1B | Heating | Min. -15 °CWB"
+            }
+          },
+          {
+            "key": "heatingOutdoorMaximum",
+            "value": 18,
+            "unit": "degC",
+            "condition": "Outdoor ambient wet bulb (°CWB), heating operating range maximum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC50EV1B; Operation range / Heating / Ambient / Max. / °CWB",
+              "excerpt": "ARXC50EV1B | Heating | Max. 18 °CWB"
+            }
+          }
+        ],
+        "ratings": [],
+        "compatibility": [],
+        "unknowns": [
+          "Daikin Europe table publishes the exact reference; current France retail availability is not established.",
+          "Outdoor volumetric airflow is not published in these source rows."
+        ]
+      },
+      "compatibility": {
+        "indoor": "ATXC50EV1B",
+        "outdoor": "ARXC50EV1B",
+        "evidence": {
+          "sourceId": "catalogue-p338",
+          "locator": "Printed p.338, efficiency data table; exact short class pair column, corroborated by exact SKU headers in Daikin Europe pair table",
+          "excerpt": "ATXC + ARXC | 50E + 50E; ATXC50EV1B / ARXC50EV1B"
+        }
+      }
+    },
+    {
+      "class": "60",
+      "identityKind": "published-full-SKU",
+      "fullSuffixStatus": "published",
+      "indoor": {
+        "modelReference": "ATXC60EV1B",
+        "unitType": "indoor",
+        "status": "unknown",
+        "identityEvidence": {
+          "sourceId": "siesta-atxc-e",
+          "locator": "Exact full model-reference table column header",
+          "excerpt": "ATXC60EV1B"
+        },
+        "facts": [
+          {
+            "key": "height",
+            "value": 297,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC60EV1B; Dimensions / Unit / Height",
+              "excerpt": "ATXC60EV1B | Dimensions | Height | 297 mm"
+            }
+          },
+          {
+            "key": "width",
+            "value": 990,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC60EV1B; Dimensions / Unit / Width",
+              "excerpt": "ATXC60EV1B | Dimensions | Width | 990 mm"
+            }
+          },
+          {
+            "key": "depth",
+            "value": 273,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC60EV1B; Dimensions / Unit / Depth",
+              "excerpt": "ATXC60EV1B | Dimensions | Depth | 273 mm"
+            }
+          },
+          {
+            "key": "airflowCoolingHigh",
+            "value": 1224,
+            "unit": "m3/h",
+            "condition": "Indoor fan cooling mode, High setting; source publishes m3/min; converted by ×60.",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC60EV1B; Fan / Air flow rate / Cooling / High",
+              "excerpt": "ATXC60EV1B | Cooling | High | 20.4 m3/min"
+            }
+          }
+        ],
+        "ratings": [],
+        "compatibility": [],
+        "unknowns": [
+          "Daikin Europe table publishes the exact reference; current France retail availability is not established.",
+          "Outdoor airflow and heating fan airflow are not published in these source rows."
+        ]
+      },
+      "outdoor": {
+        "modelReference": "ARXC60EV1B",
+        "unitType": "outdoor",
+        "status": "unknown",
+        "identityEvidence": {
+          "sourceId": "siesta-arxc-e",
+          "locator": "Exact full model-reference table column header",
+          "excerpt": "ARXC60EV1B"
+        },
+        "facts": [
+          {
+            "key": "height",
+            "value": 615,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC60EV1B; Dimensions / Unit / Height",
+              "excerpt": "ARXC60EV1B | Dimensions | Height | 615 mm"
+            }
+          },
+          {
+            "key": "width",
+            "value": 845,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC60EV1B; Dimensions / Unit / Width",
+              "excerpt": "ARXC60EV1B | Dimensions | Width | 845 mm"
+            }
+          },
+          {
+            "key": "depth",
+            "value": 300,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC60EV1B; Dimensions / Unit / Depth",
+              "excerpt": "ARXC60EV1B | Dimensions | Depth | 300 mm"
+            }
+          },
+          {
+            "key": "refrigerant",
+            "value": "R-32",
+            "unit": "none",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC60EV1B; Refrigerant / Type",
+              "excerpt": "ARXC60EV1B | Refrigerant | Type | R-32"
+            }
+          },
+          {
+            "key": "coolingOutdoorMinimum",
+            "value": -10,
+            "unit": "degC",
+            "condition": "Outdoor ambient dry bulb (°CDB), cooling operating range minimum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC60EV1B; Operation range / Cooling / Ambient / Min. / °CDB",
+              "excerpt": "ARXC60EV1B | Cooling | Min. -10 °CDB"
+            }
+          },
+          {
+            "key": "coolingOutdoorMaximum",
+            "value": 46,
+            "unit": "degC",
+            "condition": "Outdoor ambient dry bulb (°CDB), cooling operating range maximum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC60EV1B; Operation range / Cooling / Ambient / Max. / °CDB",
+              "excerpt": "ARXC60EV1B | Cooling | Max. 46 °CDB"
+            }
+          },
+          {
+            "key": "heatingOutdoorMinimum",
+            "value": -15,
+            "unit": "degC",
+            "condition": "Outdoor ambient wet bulb (°CWB), heating operating range minimum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC60EV1B; Operation range / Heating / Ambient / Min. / °CWB",
+              "excerpt": "ARXC60EV1B | Heating | Min. -15 °CWB"
+            }
+          },
+          {
+            "key": "heatingOutdoorMaximum",
+            "value": 18,
+            "unit": "degC",
+            "condition": "Outdoor ambient wet bulb (°CWB), heating operating range maximum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC60EV1B; Operation range / Heating / Ambient / Max. / °CWB",
+              "excerpt": "ARXC60EV1B | Heating | Max. 18 °CWB"
+            }
+          }
+        ],
+        "ratings": [],
+        "compatibility": [],
+        "unknowns": [
+          "Daikin Europe table publishes the exact reference; current France retail availability is not established.",
+          "Outdoor volumetric airflow is not published in these source rows."
+        ]
+      },
+      "compatibility": {
+        "indoor": "ATXC60EV1B",
+        "outdoor": "ARXC60EV1B",
+        "evidence": {
+          "sourceId": "catalogue-p338",
+          "locator": "Printed p.338, efficiency data table; exact short class pair column, corroborated by exact SKU headers in Daikin Europe pair table",
+          "excerpt": "ATXC + ARXC | 60E + 60E; ATXC60EV1B / ARXC60EV1B"
+        }
+      }
+    },
+    {
+      "class": "71",
+      "identityKind": "published-full-SKU",
+      "fullSuffixStatus": "published",
+      "indoor": {
+        "modelReference": "ATXC71EV1B",
+        "unitType": "indoor",
+        "status": "unknown",
+        "identityEvidence": {
+          "sourceId": "siesta-atxc-e",
+          "locator": "Exact full model-reference table column header",
+          "excerpt": "ATXC71EV1B"
+        },
+        "facts": [
+          {
+            "key": "height",
+            "value": 297,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC71EV1B; Dimensions / Unit / Height",
+              "excerpt": "ATXC71EV1B | Dimensions | Height | 297 mm"
+            }
+          },
+          {
+            "key": "width",
+            "value": 990,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC71EV1B; Dimensions / Unit / Width",
+              "excerpt": "ATXC71EV1B | Dimensions | Width | 990 mm"
+            }
+          },
+          {
+            "key": "depth",
+            "value": 273,
+            "unit": "mm",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC71EV1B; Dimensions / Unit / Depth",
+              "excerpt": "ATXC71EV1B | Dimensions | Depth | 273 mm"
+            }
+          },
+          {
+            "key": "airflowCoolingHigh",
+            "value": 1224,
+            "unit": "m3/h",
+            "condition": "Indoor fan cooling mode, High setting; source publishes m3/min; converted by ×60.",
+            "evidence": {
+              "sourceId": "siesta-atxc-e",
+              "locator": "Exact full-reference column ATXC71EV1B; Fan / Air flow rate / Cooling / High",
+              "excerpt": "ATXC71EV1B | Cooling | High | 20.4 m3/min"
+            }
+          }
+        ],
+        "ratings": [],
+        "compatibility": [],
+        "unknowns": [
+          "Daikin Europe table publishes the exact reference; current France retail availability is not established.",
+          "Outdoor airflow and heating fan airflow are not published in these source rows."
+        ]
+      },
+      "outdoor": {
+        "modelReference": "ARXC71EV1B",
+        "unitType": "outdoor",
+        "status": "unknown",
+        "identityEvidence": {
+          "sourceId": "siesta-arxc-e",
+          "locator": "Exact full model-reference table column header",
+          "excerpt": "ARXC71EV1B"
+        },
+        "facts": [
+          {
+            "key": "height",
+            "value": 695,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC71EV1B; Dimensions / Unit / Height",
+              "excerpt": "ARXC71EV1B | Dimensions | Height | 695 mm"
+            }
+          },
+          {
+            "key": "width",
+            "value": 930,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC71EV1B; Dimensions / Unit / Width",
+              "excerpt": "ARXC71EV1B | Dimensions | Width | 930 mm"
+            }
+          },
+          {
+            "key": "depth",
+            "value": 350,
+            "unit": "mm",
+            "condition": "Outdoor casing",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC71EV1B; Dimensions / Unit / Depth",
+              "excerpt": "ARXC71EV1B | Dimensions | Depth | 350 mm"
+            }
+          },
+          {
+            "key": "refrigerant",
+            "value": "R-32",
+            "unit": "none",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC71EV1B; Refrigerant / Type",
+              "excerpt": "ARXC71EV1B | Refrigerant | Type | R-32"
+            }
+          },
+          {
+            "key": "coolingOutdoorMinimum",
+            "value": -10,
+            "unit": "degC",
+            "condition": "Outdoor ambient dry bulb (°CDB), cooling operating range minimum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC71EV1B; Operation range / Cooling / Ambient / Min. / °CDB",
+              "excerpt": "ARXC71EV1B | Cooling | Min. -10 °CDB"
+            }
+          },
+          {
+            "key": "coolingOutdoorMaximum",
+            "value": 46,
+            "unit": "degC",
+            "condition": "Outdoor ambient dry bulb (°CDB), cooling operating range maximum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC71EV1B; Operation range / Cooling / Ambient / Max. / °CDB",
+              "excerpt": "ARXC71EV1B | Cooling | Max. 46 °CDB"
+            }
+          },
+          {
+            "key": "heatingOutdoorMinimum",
+            "value": -15,
+            "unit": "degC",
+            "condition": "Outdoor ambient wet bulb (°CWB), heating operating range minimum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC71EV1B; Operation range / Heating / Ambient / Min. / °CWB",
+              "excerpt": "ARXC71EV1B | Heating | Min. -15 °CWB"
+            }
+          },
+          {
+            "key": "heatingOutdoorMaximum",
+            "value": 18,
+            "unit": "degC",
+            "condition": "Outdoor ambient wet bulb (°CWB), heating operating range maximum.",
+            "evidence": {
+              "sourceId": "siesta-arxc-e",
+              "locator": "Exact full-reference column ARXC71EV1B; Operation range / Heating / Ambient / Max. / °CWB",
+              "excerpt": "ARXC71EV1B | Heating | Max. 18 °CWB"
+            }
+          }
+        ],
+        "ratings": [],
+        "compatibility": [],
+        "unknowns": [
+          "Daikin Europe table publishes the exact reference; current France retail availability is not established.",
+          "Outdoor volumetric airflow is not published in these source rows."
+        ]
+      },
+      "compatibility": {
+        "indoor": "ATXC71EV1B",
+        "outdoor": "ARXC71EV1B",
+        "evidence": {
+          "sourceId": "catalogue-p338",
+          "locator": "Printed p.338, efficiency data table; exact short class pair column, corroborated by exact SKU headers in Daikin Europe pair table",
+          "excerpt": "ATXC + ARXC | 71E + 71E; ATXC71EV1B / ARXC71EV1B"
+        }
+      }
+    }
+  ],
+  "scopeNotes": [
+    "Bounded extraction only; this is not a complete Daikin consumer range.",
+    "The existing Perfera staging candidate is preserved unchanged. This supplement records class identity only because the pinned catalogue HTML flattens merged physical table cells and no page image has been pinned for visual column review.",
+    "Siesta exact ATXC-E and ARXC-E full references, physical rows and class pairing are published in current Daikin Europe sources; sales availability in France remains unknown.",
+    "No nominal capacity, power input, refrigerant charge, capacity class, or inferred UA data included.",
+    "Heating fan airflow remains separate from cooling airflow and is omitted here; the source table documents cooling high airflow only."
+  ]
+}

@@ -20,9 +20,9 @@ try {
    expect(room.surfaceM2===43&&room.setpointC===21.5&&store.state.cfg.rooms.length===before.pool&&store.resetEpoch===before.epoch&&JSON.stringify(store.state.cfg.live)===before.live,'room/pool/history/manual cycle retained '+option.value);
   }
   [...document.querySelectorAll('.room-rp button')].find(b=>b.textContent==='Settings').click();
-  expect(document.querySelector('[data-pop="room"]:not([hidden])').textContent.includes('current retail availability is unverified'),'France-source availability boundary visible in indoor Settings');
+  expect(document.querySelector('[data-pop="room"]:not([hidden])').textContent.includes('Current retail availability is unverified'),'France-source availability boundary visible in indoor Settings');
   i18n.setLanguage('fr');
-  expect(document.querySelector('[data-pop="room"]').textContent.includes('disponibilité commerciale actuelle non vérifiée'),'France-source availability note translates to French');
+  expect(document.querySelector('[data-pop="room"]').textContent.includes('Disponibilité commerciale actuelle non vérifiée'),'France-source availability note translates to French');
   expect(document.querySelector('.eq-model').selectedOptions[0].textContent.includes('disponibilité non vérifiée'),'availability marker translated in permanent native model control');
   i18n.setLanguage('en');
   store.setOutdoorKind('RXF60D5V1B9');

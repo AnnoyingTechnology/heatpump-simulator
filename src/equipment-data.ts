@@ -3376,6 +3376,180 @@ export const CATALOGUE_OUTDOORS = [
         "condition": "outdoor wet-bulb"
       }
     }
+  },
+  {
+    "id": "ARXC20EV1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 658,
+      "d": 273
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "ATXC20EV1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": 10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb"
+      }
+    }
+  },
+  {
+    "id": "ARXC25EV1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 658,
+      "d": 273
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "ATXC25EV1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": 10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb"
+      }
+    }
+  },
+  {
+    "id": "ARXC35EV1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 658,
+      "d": 273
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "ATXC35EV1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": 10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb"
+      }
+    }
+  },
+  {
+    "id": "ARXC50EV1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 615,
+      "w": 845,
+      "d": 300
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "ATXC50EV1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb"
+      }
+    }
+  },
+  {
+    "id": "ARXC60EV1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 615,
+      "w": 845,
+      "d": 300
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "ATXC60EV1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb"
+      }
+    }
+  },
+  {
+    "id": "ARXC71EV1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 695,
+      "w": 930,
+      "d": 350
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "ATXC71EV1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb"
+      }
+    }
   }
 ] as const;
 
@@ -5540,6 +5714,84 @@ export const CATALOGUE_INDOORS = [
     "coolingHighFanFlowM3h": 1038.0,
     "sourceStatus": "availability-unknown",
     "marketScope": "France technical table; current availability unverified"
+  },
+  {
+    "id": "ATXC20EV1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 288,
+      "w": 770,
+      "d": 234
+    },
+    "coolingHighFanFlowM3h": 648,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified"
+  },
+  {
+    "id": "ATXC25EV1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 288,
+      "w": 770,
+      "d": 234
+    },
+    "coolingHighFanFlowM3h": 648,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified"
+  },
+  {
+    "id": "ATXC35EV1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 288,
+      "w": 770,
+      "d": 234
+    },
+    "coolingHighFanFlowM3h": 666,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified"
+  },
+  {
+    "id": "ATXC50EV1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 288,
+      "w": 770,
+      "d": 234
+    },
+    "coolingHighFanFlowM3h": 750,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified"
+  },
+  {
+    "id": "ATXC60EV1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 297,
+      "w": 990,
+      "d": 273
+    },
+    "coolingHighFanFlowM3h": 1224,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified"
+  },
+  {
+    "id": "ATXC71EV1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 297,
+      "w": 990,
+      "d": 273
+    },
+    "coolingHighFanFlowM3h": 1224,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified"
   }
 ] as const;
 
