@@ -1,3 +1,4 @@
+import { powerSymbol } from './measurement-symbols';
 import { AIR_RAMP_MAX, AIR_RAMP_MIN, TEMP_RAMP_MAX, TEMP_RAMP_MIN, TEMP_RAMP_TICKS, airRampCss, flowMode, tempRampCss } from './circuit';
 import { setHtml } from './controls';
 import type { Field } from './controls';
@@ -149,12 +150,9 @@ export function createHeader(): Header {
   const plug = icon();
   plug.append(svg('path', { d: 'M8 3v5M16 3v5M6 8h12v3a6 6 0 0 1-6 6v4M12 17v-1' }));
   mElec.root.querySelector('.vl')!.prepend(plug);
-  const sun = icon();
-  sun.append(svg('circle', { cx: 12, cy: 12, r: 4 }), svg('path', { d: 'M12 1v3M12 20v3M1 12h3M20 12h3M4 4l2 2M18 18l2 2M4 20l2-2M18 6l2-2' }));
-  const snow = icon();
-  snow.append(svg('path', { d: 'M12 2v20M3.34 7l17.32 10M3.34 17L20.66 7M9 4l3 3 3-3M9 20l3-3 3 3M4 10l4-1-1-4M20 14l-4 1 1 4M7 19l1-4-4-1M17 5l-1 4 4 1' }));
-  sun.classList.add('hm-sun'); snow.classList.add('hm-snow');
-  mHeat.root.querySelector('.vl')!.prepend(sun, snow);
+  const thermal = powerSymbol();
+  thermal.root.classList.add('hm-icon');
+  mHeat.root.querySelector('.vl')!.prepend(thermal.root);
   mElec.k.textContent = 'Electrical input';
   const metrics = html('div', { class: 'hd-metrics', role: 'group', 'aria-label': 'Headline readings' }, mCop.root, mSession.root, mHeat.root, mElec.root, mEnergy.root);
 
@@ -189,11 +187,10 @@ export function createHeader(): Header {
       time.title = live ? 'Simulation time' : 'Preview time';
       time.setAttribute('aria-label', live ? 'Simulation time' : 'Preview time');
 
-      sun.style.display = s.cfg.mode === 'heating' ? '' : 'none';
-      snow.style.display = s.cfg.mode === 'cooling' ? '' : 'none';
       metrics.dataset.mode = s.cfg.mode;
       note.hidden = live && s.ui.experience === 'live' && currentReadings(s).live?.usable === true && currentReadings(s).live?.kind !== 'updating';
       const rd = currentReadings(s);
+      thermal.update(rd.roomKwTotal === null ? null : rd.roomKwTotal < 0 ? 'cooling' : s.cfg.mode);
       const cleared = historyEpoch !== store.resetEpoch;
       if (cleared) { history.clear(); sessionHistory.clear(); energyHistory.clear(); historyEpoch = store.resetEpoch; }
       const output = simulation.status.output;

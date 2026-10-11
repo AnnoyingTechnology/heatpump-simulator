@@ -1,0 +1,25 @@
+# Independent review of frozen inverter UI-domain qualification
+
+Reviewed 2026-10-11. **Accept these scoped native qualification receipts.** Reviewer inspected both replay coordinators and the worker, verified frozen source/compiled/backend/harness/input hashes, compared the stored per-case results with their receipt payloads, and independently compared every qualified input with its stated original. No native trajectory was rerun for this review; the native execution is attributed to the implementing agent.
+
+The sustained receipt SHA256 is `54747ef8d7e09a1de6dab9d27fc6cab07ea82a581d6c84a856c968d321b166be`. The minimum-policy smoke receipt SHA256 is `63c24b2f1b7d0e2d6ee25ce57e7a5c5af3f0348214f60de412b41e081b749191`. The engine/native hashes match the [accepted source review](low-load-inverter-science-review.md), including cycle `bc2071f37492b2484cef9778ef924f48dabfa7a2b2be17bc835052c9d2ec6f1b`, engine `075c4d973b00d54424286a39be42c05692c258520e31cb8c66d6d49e1c04f051`, guarded adapter `06c177c9281052d81ec3a607059c02413c336837d9bd01e0f3f5b49298072e34` and WASM `7c6160bf570e2a33ca09e9e1de288266c09052b9e38c45885dd09848e9d3a89c`. Full checked fingerprints and scope are retained in [the independent receipt](inverter-ui-domain-independent-review-results.json).
+
+## Evidence accepted
+
+All five sustained cases completed with process exit0 and no native fault: owner−4°C/ground16°C1200s, natural humid defrost1800s, heating300s then42°C idealized cooling900s, physical owner-line heating1200s, and the unchanged captured owner1°C configuration7200s. Together these contain50,400 accepted quarter-second physics intervals. The observer wrapper captures accepted engine output and forwards failures; it changes no physical values or solver decisions. Closure, exact branch-header mass sum, compressor mass residual, hard discharge/ratio limits, paired link heat, energy/water accounting and accepted clocks are checked against the original tolerances.
+
+The unchanged owner case has7200s measured compressor-running time,28,800 running-state samples, zero ordinary stops and no protection counts. It finishes at488.215795W and13.6195rps, with upstairs21.499533°C and ground17.001181°C. Its ground comfort call joins naturally. The467.377426W two-hour average and final input are outcomes of the conserved native model; neither is an imposed electrical target or manufacturer fit. Air approaching target does not prove all fabric stores have reached equilibrium.
+
+The physical-heating case changes only the recorded owner line lengths to14/6.5/7.5m, retaining the captured gas/liquid IDs7.92/4.75mm. Advanced physical cooling remains outside the lower8rps scope. In the separate25-case smoke receipt, independent deep comparison confirms only initial/updated compressor minima change. Every original operation and remaining house/physics input is retained; all25 inputs exercise idealized Reference behavior and complete successfully.
+
+The frost case crosses its natural ice threshold, completes four defrosts, and returns to useful heating. The transition log includes the legitimate reversing/draining stops and dedicated35rps admitted defrost starts. Its555 thermal-boundary samples are an **aggregate cause count**; this receipt does not retain a cause-by-state cross-tabulation proving every sample's exact state. The chronology supports retained defrost supervision and recovery, and the review does not describe this case as protection-free.
+
+## Limits and minor harness recommendations
+
+No fault occurred: the harness rollback assertion was armed but unexercised. All five cases report zero ordinary all-calls-Off time, so that conditional invariant was also unexercised here. Separate accepted native/controller tests supply deliberate fault rollback and Off coverage.
+
+The compressor transition log observes accepted physics intervals. `updateConfig` publishes a stopped output without advancing time; the heating→cooling administrative stop therefore is not logged as an accepted stop event. Zero ordinary stops in that case means no unexpected stop among accepted physics intervals, not uninterrupted operation through the mode edit.
+
+For future harness maintenance, continuous-service expectations could additionally assert required running duration, and protection telemetry could count causes by state. Neither omission blocks these actual receipts: full running duration is present and verified for the7200s case, while the frost count is explicitly qualified above.
+
+This acceptance applies to the exact captured `diagnostic.initialConfig` and listed edits. A later frontend equipment/profile/input change is a separate integration scope even when engine hashes stay unchanged. These native results do not establish current Home Assistant controls, an OEM operating map, universal low-flow physical cooling, inventory transient acceptance, or a fresh hosted-browser check. Missing historical targets/modes/fans and outdoor RH are not inferred; no historical private measurement window supplies a fit.

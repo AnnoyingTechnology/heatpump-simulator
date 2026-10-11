@@ -1,3 +1,4 @@
+import { temperatureSymbol } from './measurement-symbols';
 import { html } from './dom';
 
 export interface Field {
@@ -15,6 +16,7 @@ interface SliderOpts {
   get(): number;
   set(v: number): void;
   hint?: string;
+  temperatureScale?: 'air' | 'refrigerant';
 }
 
 let uid = 0;
@@ -28,9 +30,10 @@ export function slider(o: SliderOpts): Field {
   const id = nextId('f');
   const range = html('input', { type: 'range', id, min: o.min, max: o.max, step: o.step });
   const num = html('input', { type: 'number', min: o.min, max: o.max, step: o.step, class: 'num', 'aria-label': `${o.label} [${o.unit}]` });
+  const thermometer = o.unit === '°C' ? temperatureSymbol(o.temperatureScale) : null;
   const unit = html('span', { class: 'unit' }, o.unit);
   const root = html('div', { class: 'field' },
-    html('div', { class: 'field-head' }, html('label', { for: id }, o.label), html('span', { class: 'num-wrap' }, num, unit)),
+    html('div', { class: 'field-head' }, html('label', { for: id }, o.label), html('span', { class: 'num-wrap' }, ...(thermometer ? [thermometer.root] : []), num, unit)),
     range);
   if (o.hint) root.append(html('p', { class: 'hint' }, o.hint));
   const commit = (raw: string): void => {
@@ -43,6 +46,7 @@ export function slider(o: SliderOpts): Field {
   num.addEventListener('blur', () => { num.value = o.get().toFixed(o.digits); });
   const refresh = (): void => {
     const v = o.get();
+    thermometer?.update(v);
     if (document.activeElement !== range) range.value = String(v);
     if (document.activeElement !== num) num.value = v.toFixed(o.digits);
   };

@@ -12,7 +12,7 @@ const probe=async(id,role,value)=>{
   const p=await page.evaluate(`(()=>{const e=document.querySelector('[data-probe="${id}"]');return {role:e.dataset.role,exact:e.dataset.exact,temp:e.dataset.temp,visible:e.getClientRects().length>0,text:e.querySelector('.s-val').textContent}})()`);
   assert.equal(p.visible,true);assert.equal(p.role,role);
   if(value===null){assert.equal(p.temp,'unknown');assert.equal(p.text,'—')}
-  else{assert.ok(Math.abs(Number(p.exact)-value)<1e-10);assert.ok(Math.abs(Number(p.text.replace('−','-'))-value)<=.050001)}
+  else{assert.ok(Math.abs(Number(p.exact)-value)<1e-10,`${id}: exact=${p.exact}, expected=${value}`);assert.ok(Math.abs(Number(p.text.replace('−','-'))-value)<=.050001)}
 };
 try{
   await page.waitFor('!!document.querySelector(".scene")');
@@ -20,7 +20,7 @@ try{
     const m=await fetch('/src/main.ts').then(r=>r.text());
     globalThis.qa=await import(m.match(/from "([^"]*\/state\.ts[^"]*)"/)[1]);
     globalThis.qv=await import(m.match(/from "([^"]*\/runtime\/view\.ts[^"]*)"/)[1]);
-    qa.store.update(s=>{s.ui.paused=true});
+    qa.store.update(s=>{s.ui.paused=true;s.cfg.rooms.forEach(r=>{r.enabled=true;r.setpointC=24})});
   });
   const out=await step(),c=out.cycle;assert.ok(c);
   await check('permanent heating probes match actual outdoor/compressor and per-branch EOS endpoints',async()=>{

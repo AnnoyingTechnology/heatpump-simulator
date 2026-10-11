@@ -24,6 +24,8 @@ Weather, mode, per-room targets, On/Off and observed air temperatures can initia
 
 ## GitHub Pages
 
+Current catalogue release `0fcd2d9` is deployed with41Daikin outdoor/119indoor and25Mitsubishi outdoor/45indoor profiles; coverage remains partial. GitHub passed126Reference,5history/URL,23catalogue and25smoke checks, followed by seven checks against the exact hosted bundles and production URL initialization. Receipt: `reviews/github-pages-current-stylish-deployment.json`.
+
 Repository: https://github.com/AnnoyingTechnology/heatpump-simulator
 
 Site: https://annoyingtechnology.github.io/heatpump-simulator/
@@ -74,7 +76,7 @@ The outdoor ice/film strip includes **Water total**: cumulative water actually d
 
 In Examples, readings come from explicitly constructed R32 fixtures. Changing configuration does not recalculate heat, COP, pressures or outlet temperatures. Only the illustrative preview clock and ice→retained-liquid ledger advance.
 
-Dragging weather/room-target controls or requesting indoor On/Off keeps the last completed physical readings visible, explicitly labelled until the next simulation step. Paused edits wait for Resume without advancing simulation time. Mode and structural changes withhold incompatible readings. Pipe interiors encode temperature across their width; separate monochrome marks show vapor, liquid or two-phase fluid. Materialized refrigerant probes display actual inlet/outlet temperatures on exchangers and compressor suction/discharge, including truthful zero temperature change during evaporation. The permanent refrigerant legend spans −40…145°C; air fills use a separate −30…50°C scale. Casing dimension annotations are omitted while equipment proportions remain consistent.
+Dragging weather/room-target controls or requesting indoor On/Off keeps the last completed physical readings visible, explicitly labelled until the next simulation step. Paused edits wait for Resume without advancing simulation time. Mode and structural changes withhold incompatible readings. Pipe interiors encode temperature across their width; separate monochrome marks show vapor, liquid or two-phase fluid. Materialized refrigerant probes display actual inlet/outlet temperatures on exchangers and compressor suction/discharge, including truthful zero temperature change during evaporation. The permanent refrigerant legend spans −40…145°C; air fills use a separate −30…50°C scale. Shared vector thermometers precede temperature readings and controls, with their columns following those fixed scales. Missing readings leave the thermometer empty. Thermal power uses a flame for heating or a snowflake for cooling; signed defrost values and refrigerant absorption/release retain their meanings. Casing dimension annotations are omitted while equipment proportions remain consistent.
 
 A calculation fault displays its reason and retains accepted room temperatures, time and outdoor ice/water; operating flux readings are withheld. A rejected request can recover in the existing worker. A terminated worker requires an explicit Reset, and a settings edit cannot silently start a new session. The fault banner offers a local diagnostic JSON download containing asset identity, accepted state, inputs and bounded request history, without an upload.
 

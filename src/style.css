@@ -1040,7 +1040,7 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .flow-in, .flow-out { font: 500 11px/1.2 var(--font); color: var(--rp-ink); pointer-events: none; }
 .flow-in { display: flex; flex-direction: column; align-items: center; position: relative; gap: 1px; text-align: center; }
 .flow-in .rp-line, .flow-out .rp-line { justify-content: center; }
-.flow-in .rp-n { position: absolute; right: 0; top: 18px; font-size: 10px; white-space: nowrap; }
+.flow-in .rp-n { position: absolute; right: 0; top: 0; font-size: 10px; white-space: nowrap; }
 .flow-out { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; text-align: center; }
 .flow-reading { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .flow-reading .rp-k { white-space: nowrap; }
@@ -1053,7 +1053,8 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .outdoor-ambient-label { font: 650 11px var(--font); fill: var(--d-soft); }
 .scene[data-fans-on="1"] .outdoor-intake { opacity: .7; }
 .scene[data-fans-on="1"] .outdoor-intake .stream { animation: air 1.8s linear infinite; }
-.outdoor-probes [data-readout="outdoor-coil"] text:nth-child(2) { display: none; }
+.outdoor-probes [data-readout="outdoor-coil"] .s-note-heat,
+.outdoor-probes [data-readout="outdoor-coil"] .thermal-symbol { display: none; }
 .coil-film .ice-note { top: auto; bottom: 22px; }
 
 /* Identical manometers use short fittings on the two branch pipes. */
@@ -1082,3 +1083,20 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .in-link-hint { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; color: var(--accent-ink); }
 .scene[data-linking="source"] [data-zoom-target], .scene[data-linking="target"] [data-zoom-target] { cursor: crosshair; }
 .room[data-link="source"] .room-bg { stroke: var(--sel); stroke-width: 2; }
+
+/* One vector symbol family for temperatures and thermal service. Numeric nodes stay unchanged. */
+.measurement-symbol {
+  display: inline-block;
+  flex: 0 0 auto;
+  align-self: center;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: var(--d-strong, currentColor);
+  overflow: visible;
+  pointer-events: none;
+}
+.rp-line > .measurement-symbol { color: inherit; margin-right: 3px; }
+.measurement-symbol.hm-icon { width: 18px; height: 18px; color: var(--icon); }

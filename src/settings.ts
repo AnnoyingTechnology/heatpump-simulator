@@ -1,3 +1,4 @@
+import { temperatureSymbol } from './measurement-symbols';
 import { createModelDiagnostics } from './chrome';
 import type { Field } from './controls';
 import { nextId, segmented, select, setHtml, slider } from './controls';
@@ -78,6 +79,7 @@ export interface PairOpts {
   title?: string;
   /** Visible unit text when it differs from `unit` (the accessible name keeps `unit`); '' shows none. */
   suffix?: string;
+  temperatureScale?: 'air' | 'refrigerant';
 }
 
 export interface PairField extends Field {
@@ -99,7 +101,8 @@ export function pairField(o: PairOpts): PairField {
   const note = html('span', { class: 'rp-n' });
   const key = html('span', { class: 'rp-k' }, o.label);
   const shown = o.suffix ?? o.unit;
-  const val = html('span', { class: 'rp-line' }, num, ...(shown ? [html('small', {}, shown)] : []));
+  const thermometer = o.unit === '°C' ? temperatureSymbol(o.temperatureScale) : null;
+  const val = html('span', { class: 'rp-line' }, ...(thermometer ? [thermometer.root] : []), num, ...(shown ? [html('small', {}, shown)] : []));
   const root = layout === 'block'
     ? html('div', { class: 'pf block' }, html('div', { class: 'pf-head' }, key, note), val, range)
     : layout === 'line'
@@ -122,6 +125,7 @@ export function pairField(o: PairOpts): PairField {
   isolate(num, range);
   const refresh = (): void => {
     const v = o.get();
+    thermometer?.update(v);
     const t = v.toFixed(o.digits);
     if (document.activeElement !== num && num.value !== t) num.value = t;
     if (document.activeElement !== range && Number(range.value) !== v) range.value = String(v);
@@ -866,7 +870,7 @@ export function createOutdoorSettings(): PopContent {
   const fluidAuto = html('input', { type: 'checkbox', id: 'opt-fluid-auto', class: 'rp-ctl' });
   const fluidAutoLabel = html('label', { class: 'check', for: 'opt-fluid-auto' }, fluidAuto, 'Start at outdoor air temperature');
   const fluidT = reg(slider({
-    label: 'Initial fluid temperature', unit: '°C', min: -30, max: 60, step: 0.5, digits: 1,
+    label: 'Initial fluid temperature', unit: '°C', temperatureScale: 'refrigerant', min: -30, max: 60, step: 0.5, digits: 1,
     get: () => cfg().live.initialFluidTemperatureC ?? cfg().outdoorC,
     set: (v) => store.update((s) => { s.cfg.live.initialFluidTemperatureC = v; }),
   }));

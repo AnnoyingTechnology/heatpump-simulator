@@ -1,3 +1,4 @@
+import { temperatureSymbol, powerSymbol } from './measurement-symbols';
 import { clamp, fmt, polyPath, setAttr, setText, svg, toggleClass } from './dom';
 import { phaseLabel, tempColor } from './circuit';
 import type { SegState } from './circuit';
@@ -114,6 +115,7 @@ export interface ProbeSpec {
  */
 export class Probe {
   readonly g: SVGGElement;
+  private readonly thermometer = temperatureSymbol('refrigerant');
   private readonly chip: SVGTextElement;
   private readonly val: SVGTextElement;
   private readonly swatch: SVGRectElement;
@@ -122,6 +124,10 @@ export class Probe {
 
   constructor(readonly spec: ProbeSpec) {
     const [x, y] = spec.at;
+    setAttr(this.thermometer.root, 'x', -13);
+    setAttr(this.thermometer.root, 'y', 0);
+    setAttr(this.thermometer.root, 'width', 12);
+    setAttr(this.thermometer.root, 'height', PROBE.h);
     this.chip = svg('text', { x: PROBE.chip / 2, y: 13.4, class: 's-tag', 'text-anchor': 'middle' });
     this.val = svg('text', { x: PROBE.w - 17, y: 14.8, class: 's-val', 'text-anchor': 'end' });
     this.swatch = svg('rect', { class: 's-swatch', x: PROBE.chip, y: PROBE.h - 3, width: PROBE.w - PROBE.chip - 1, height: 2, rx: 1 });
@@ -136,7 +142,7 @@ export class Probe {
       svg('g', { class: 's-pill-g', transform: `translate(${x} ${y})` },
         svg('rect', { class: 's-pill', width: PROBE.w, height: PROBE.h, rx: 3.4 }),
         svg('path', { class: 's-chip', d: `M3.4 0H${PROBE.chip}V${PROBE.h}H3.4A3.4 3.4 0 0 1 0 ${PROBE.h - 3.4}V3.4A3.4 3.4 0 0 1 3.4 0z` }),
-        this.chip, this.val, unit, this.swatch));
+        this.thermometer.root, this.chip, this.val, unit, this.swatch));
   }
 
   /** `role` is the chip text; `tempC` null shows a dimmed dash, never a zero. */
@@ -145,6 +151,7 @@ export class Probe {
     if (key === this.lastKey) return;
     this.lastKey = key;
     const text = tempC === null ? '—' : fmt(tempC, 1);
+    this.thermometer.update(tempC);
     setText(this.chip, role);
     setText(this.val, text);
     toggleClass(this.g, 'na', tempC === null);
@@ -170,17 +177,22 @@ export function signed(v: number, digits: number): string {
  */
 export class CoilNote {
   readonly g: SVGGElement;
+  private readonly thermal = powerSymbol();
   private readonly l1: SVGTextElement;
   private readonly l2: SVGTextElement;
   private readonly l3: SVGTextElement;
   private lastKey = '';
 
-  constructor(readonly id: string, at: Pt, anchor: 'start' | 'end' = 'start', lineGap = 11.5) {
+  constructor(readonly id: string, private readonly at: Pt, private readonly anchor: 'start' | 'end' = 'start', lineGap = 11.5) {
     const mk = (cls: string, k: number): SVGTextElement => svg('text', { x: at[0], y: at[1] + k * lineGap, class: cls, 'text-anchor': anchor });
     this.l1 = mk('s-note', 0);
-    this.l2 = mk('s-note', 1);
+    this.l2 = mk('s-note s-note-heat', 1);
     this.l3 = mk('s-note s-ill', 2);
-    this.g = svg('g', { class: 'coil-note', 'data-readout': id }, this.l1, this.l2, this.l3);
+    setAttr(this.thermal.root, 'x', at[0] - 14);
+    setAttr(this.thermal.root, 'y', at[1] + lineGap - 10);
+    setAttr(this.thermal.root, 'width', 11);
+    setAttr(this.thermal.root, 'height', 12);
+    this.g = svg('g', { class: 'coil-note', 'data-readout': id }, this.l1, this.thermal.root, this.l2, this.l3);
   }
 
   /** `illustrativeLine` adds the Examples tag as its own visible line (indoor notes reuse line 2 instead). */
@@ -193,6 +205,8 @@ export class CoilNote {
     let heat = heatW === null ? 'coil heat —' : heatW === 0 ? '0.00 kW' : `${heatW < 0 ? 'absorbs' : 'releases'} ${fmt(Math.abs(heatW) / 1000, 2)} kW`;
     if (ex && mode === 'line2-illustrative') heat = heatW === null ? 'illustrative' : `${heat} · illustr.`;
     setText(this.l2, heat);
+    this.thermal.update(heatW === null || heatW === 0 ? null : heatW < 0 ? 'cooling' : 'heating');
+    if (this.anchor === 'end') setAttr(this.thermal.root, 'x', this.at[0] - this.l2.getComputedTextLength() - 14);
     setText(this.l3, ex && mode === 'line3-illustrative' ? 'illustrative' : '');
     setAttr(this.g, 'data-delta-k', deltaK === null ? 'unknown' : String(deltaK));
     setAttr(this.g, 'data-heat-w', heatW === null ? 'unknown' : String(heatW));

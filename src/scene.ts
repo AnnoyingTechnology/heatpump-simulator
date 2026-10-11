@@ -1,3 +1,4 @@
+import { temperatureSymbol, powerSymbol } from './measurement-symbols';
 import { HUMIDITY_CONVENTION } from './chrome';
 import { airColor, indoorCoilProbeExample, indoorCoilProbeLive, inventoryCoilProbe, outdoorCoilProbe, segKind, valvePairs } from './circuit';
 import type { CoilProbe } from './circuit';
@@ -196,10 +197,16 @@ class AirProbe {
   private readonly title: SVGTitleElement;
   private readonly power: SVGTextElement;
   private readonly powerLabel: SVGTextElement;
+  private readonly thermometer = temperatureSymbol();
+  private readonly thermal = powerSymbol();
   private lastKey = '';
 
   constructor(at: Pt, lead: Pt, bulb: Pt) {
-    const x = at[0] + PILL.w / 2;
+    const x = at[0] + PILL.w / 2 + 32;
+    for (const [icon, y] of [[this.thermometer.root, at[1] - 1], [this.thermal.root, at[1] + 40]] as const) {
+      setAttr(icon, 'x', x - 76); setAttr(icon, 'y', y);
+      setAttr(icon, 'width', 20); setAttr(icon, 'height', 22);
+    }
     this.val = svg('text', { x, y: at[1] + 19, class: 's-val a-value', 'text-anchor': 'middle' });
     this.cap = svg('text', { x, y: at[1] - 5, class: 'a-cap', 'text-anchor': 'middle' });
     this.title = svg('title');
@@ -207,7 +214,7 @@ class AirProbe {
     this.powerLabel = svg('text', { x, y: at[1] + 37, class: 'a-cap', 'text-anchor': 'middle' });
     this.g = svg('g', { class: 'air-probe', 'data-probe': 'outdoor-exhaust-air', role: 'img', 'aria-label': 'Outdoor exhaust air temperature and refrigerant coil heat' },
       this.title, svg('path', { class: 'a-rod', d: `M${lead[0]} ${lead[1]}H${bulb[0] - 3.4}` }),
-      svg('circle', { class: 'a-bulb', cx: bulb[0], cy: bulb[1], r: 3.4 }), this.cap, this.val, this.powerLabel, this.power);
+      svg('circle', { class: 'a-bulb', cx: bulb[0], cy: bulb[1], r: 3.4 }), this.cap, this.thermometer.root, this.val, this.powerLabel, this.thermal.root, this.power);
   }
 
   /** `tempC` null shows a dimmed dash; `caption` states why (fan off, unavailable) or what the number is. */
@@ -218,6 +225,8 @@ class AirProbe {
     const text = tempC === null ? '—' : fmt(tempC, 1);
     setText(this.val, `${text} °C`);
     setText(this.cap, caption);
+    this.thermometer.update(tempC);
+    this.thermal.update(heatW === null ? null : heatW < 0 ? 'cooling' : 'heating');
     setText(this.powerLabel, heatW === null ? 'Coil heat' : heatW < 0 ? 'REF absorbed' : 'REF released');
     setText(this.power, heatW === null ? '— kW' : `${fmt(Math.abs(heatW)/1000, 2)} kW`);
     toggleClass(this.g, 'na', tempC === null);
@@ -297,12 +306,15 @@ function overlayPanel(x: number, y: number, w: number, h: number, el: HTMLElemen
 }
 
 /** One labelled numeric readout: label, large value with a separate unit suffix, and a one-line note. */
-function readCard(label: string, unit: string): { root: HTMLElement; k: HTMLElement; v: HTMLElement; u: HTMLElement; n: HTMLElement } {
+function readCard(label: string, unit: string): { root: HTMLElement; k: HTMLElement; v: HTMLElement; u: HTMLElement; n: HTMLElement; thermometer: ReturnType<typeof temperatureSymbol> | null; thermal: ReturnType<typeof powerSymbol> | null } {
   const k = html('span', { class: 'rp-k' }, label);
   const v = html('span', { class: 'rp-v' });
   const u = html('small', {}, unit);
   const n = html('span', { class: 'rp-n' });
-  return { root: html('div', { class: 'rp-card' }, k, html('span', { class: 'rp-line' }, v, u), n), k, v, u, n };
+  const thermometer = unit === '°C' ? temperatureSymbol() : null;
+  const thermal = unit === 'kW' ? powerSymbol() : null;
+  const icon = thermometer ?? thermal;
+  return { root: html('div', { class: 'rp-card' }, k, html('span', { class: 'rp-line' }, ...(icon ? [icon.root] : []), v, u), n), k, v, u, n, thermometer, thermal };
 }
 
 /** Value text with the unavailable state kept visible as a dimmed dash, never as a zero. */
@@ -531,6 +543,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
   let coilNote: CoilNote | null = null;
   let airProbe: AirProbe | null = null;
   let ambientAir = txt(0, 0, '');
+  let ambientThermometer = temperatureSymbol();
   let exhaust: G = svg('g');
   let lastIce = -1;
   let lastWater = -1;
@@ -783,9 +796,14 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
     root.append(overlayPanel(40, OUT.y + lay.outH + 4, OUT.x + OUT.w - 40, 20, film));
     const ambientX = OUT.x + OUT.w / 2;
     ambientAir = txt(ambientX, OUT.y - 25, '', 'outdoor-ambient-value', 'middle');
+    ambientThermometer = temperatureSymbol();
+    setAttr(ambientThermometer.root, 'x', ambientX - 76);
+    setAttr(ambientThermometer.root, 'y', OUT.y - 45);
+    setAttr(ambientThermometer.root, 'width', 20);
+    setAttr(ambientThermometer.root, 'height', 22);
     const inlet = indoorAir(OUT.x, OUT.y - 58, 52, true, OUT.w);
     inlet.classList.add('outdoor-intake');
-    root.append(inlet, txt(ambientX, OUT.y - 48, 'Outdoor air', 'outdoor-ambient-label', 'middle'), ambientAir);
+    root.append(inlet, txt(ambientX, OUT.y - 48, 'Outdoor air', 'outdoor-ambient-label', 'middle'), ambientThermometer.root, ambientAir);
 
     // unused owner ports
     if (info.ports !== null) {
@@ -862,8 +880,8 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
 
     // ---- refrigerant probes: materialised on the pipes, always visible, drawn last and click-through ----
     const P = PROBE_AT;
-    coilGasProbe = new Probe({ id: 'outdoor-coil-gas', label: 'Outdoor coil gas-end refrigerant', ...P.coilGas });
-    coilLiqProbe = new Probe({ id: 'outdoor-coil-liquid', label: 'Outdoor coil liquid-end refrigerant', ...P.coilLiq });
+    coilGasProbe = new Probe({ id: 'outdoor-coil-gas', label: 'Outdoor coil gas-end refrigerant', ...P.coilGas, at: [P.coilGas.at[0] + 14, P.coilGas.at[1]] });
+    coilLiqProbe = new Probe({ id: 'outdoor-coil-liquid', label: 'Outdoor coil liquid-end refrigerant', ...P.coilLiq, at: [P.coilLiq.at[0] + 14, P.coilLiq.at[1]] });
     compDProbe = new Probe({ id: 'compressor-discharge', label: 'Compressor discharge D refrigerant', ...P.compD });
     compSProbe = new Probe({ id: 'compressor-suction', label: 'Compressor suction S refrigerant', ...P.compS });
     coilNote = new CoilNote('outdoor-coil', P.coilNote, 'start', 14.5);
@@ -1133,6 +1151,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       setAttr(p.remove, 'title', n <= 1 ? 'At least one room is required' : `Remove ${r.name} and its refrigerant line set. Its inputs are kept for re-adding.`);
       // Measured air: live engine room temperature, or the configured example input; never the live value in Examples nor the reverse.
       setReading(p.air.v, live ? fmt(eng?.temperatureC, 1) : fmt(r.airC, 1));
+      p.air.thermometer?.update(live ? eng?.temperatureC ?? null : r.airC);
       setText(p.air.n, live ? (eng ? `${Math.round(eng.relativeHumidity * 100)} % RH` : '—') : 'EXAMPLE input');
       toggleClass(p.air.n, 'held', !!rd.retainedRooms);
       p.air.root.title = rd.retainedRooms ? 'Last accepted room temperature and humidity; calculation stopped.' : 'Room air temperature and humidity';
@@ -1187,8 +1206,10 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
         setReading(p.sup.v, '—');
         setText(p.sup.n, !rd.usable ? 'unavailable' : !fanOn ? (unitState === 'off' ? 'unit off' : 'fan off') : '');
       }
+      p.sup.thermometer?.update(fanOn && rd.usable ? o : null);
       // Branch heat: heating output and cooling removal are positive; defrost is signed (negative = extracted).
       const kw = !rd.usable ? null : live ? rd.branchKw?.[i] ?? null : br[i]?.roomKw ?? null;
+      p.heat.thermal?.update(kw === null ? null : fm === 'defrost' ? (kw < 0 ? 'cooling' : 'heating') : cfg.mode);
       setText(p.heat.k, fm === 'defrost' ? 'Signed kW' : cfg.mode === 'cooling' ? 'Net cooling' : 'Net heating');
       if (kw === null) {
         setReading(p.heat.v, '—');
@@ -1291,6 +1312,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       !rd.usable ? 'Exhaust · unavailable' : exhaustC === null ? 'Exhaust · fan off' : 'Exhaust air',
       src, held, live ? (held ? 'last calculated step' : 'live engine') : 'illustrative fixture value', oc.heatW);
     setText(ambientAir, `${fmt(cfg.outdoorC, 1)} °C`);
+    ambientThermometer.update(cfg.outdoorC);
 
     ruler.sync(cfg);
     syncLinks(s, held);

@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-10-11T14:00:07.688Z",
+  "checks": [
+    {
+      "name": "thermometer fills follow fixed air/refrigerant scales, bounds and missing values without numeric text",
+      "passed": true
+    },
+    {
+      "name": "materialized thermometers show their actual worker sensor values; inactive sensors stay empty",
+      "passed": true
+    },
+    {
+      "name": "temperature editing updates the fill without losing input focus, sensor DOM or the accepted clock",
+      "passed": true
+    },
+    {
+      "name": "heating, cooling and illustrative defrost use shared flame/snowflake paths with signed service preserved",
+      "passed": true
+    },
+    {
+      "name": "symbols and numbers remain separate, readable and within the diagram at four desktop widths in both themes",
+      "passed": true
+    }
+  ],
+  "desktopWidths": [
+    1280,
+    1440,
+    1600,
+    1920
+  ],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "scales": {
+    "air": [
+      -30,
+      50
+    ],
+    "refrigerant": [
+      -40,
+      145
+    ]
+  }
+}
