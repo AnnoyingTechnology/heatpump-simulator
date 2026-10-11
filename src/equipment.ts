@@ -19,7 +19,9 @@ export interface OutdoorModelInfo {
   /** Published cooling high-fan airflow; heating reuse is an explicit assumption. */
   coolingHighFanFlowM3h?: number;
   acceptance: 'owner-reference' | 'generic-assumption' | 'reviewed-fields';
-  sourceStatus?: 'legacy';
+  sourceStatus?: 'legacy' | 'availability-unknown';
+  /** Region where the exact source applies, without claiming local retail availability. */
+  marketScope?: string;
   publishedOperatingRangesC?: { cooling: { minimum: number | null; maximum: number | null; condition: string }; heating: { minimum: number | null; maximum: number | null; condition: string } };
   /** Necessary installation rules; exact full-SKU eligibility remains unknown. */
   installation?: MultisplitInstallation;
@@ -41,6 +43,7 @@ export const OUTDOOR_MODELS: readonly OutdoorModelInfo[] = [
     caseMm: profile.caseMm, coolingHighFanFlowM3h: profile.coolingHighFanFlowM3h ?? undefined,
     installation: 'installation' in profile ? profile.installation : undefined,
     sourceStatus: 'sourceStatus' in profile ? profile.sourceStatus : undefined,
+    marketScope: 'marketScope' in profile ? profile.marketScope : undefined,
     acceptance: profile.acceptance, profileNote: 'installation' in profile
       ? profile.installation.ports === null
       ? 'Published legacy reference, casing, R32 and maximum connected head count. Minimum count, named ports, class/reducer rules and exact indoor eligibility remain unknown. Outdoor high-fan airflow and the cycle use editable generic assumptions; no OEM charge or performance map is applied.'

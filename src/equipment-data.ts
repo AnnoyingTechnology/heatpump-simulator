@@ -3318,6 +3318,64 @@ export const CATALOGUE_OUTDOORS = [
         "condition": "unpublished"
       }
     }
+  },
+  {
+    "id": "RXF60D5V1B9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 870,
+      "d": 373
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FTXF60F2V1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 48,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb"
+      }
+    }
+  },
+  {
+    "id": "RXF71D5V1B9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 870,
+      "d": 373
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FTXF71F2V1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 48,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb"
+      }
+    }
   }
 ] as const;
 

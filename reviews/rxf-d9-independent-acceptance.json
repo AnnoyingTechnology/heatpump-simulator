@@ -1,0 +1,112 @@
+{
+  "scope": "Independent exact-column primary review; manufacturer full monosplit pairing and physical metadata only",
+  "candidate": {
+    "path": "research/catalogue/staging/luna-daikin-rxf-d9-followup-reviewed-2026.json",
+    "sha256": "4f3f19b2dcb2657a616dec57f930bb9ae73897566c36a36cbfefdc2376b84658"
+  },
+  "sourcePins": [
+    {
+      "path": "research/sources/luna-daikin-ftxf-f-rxf-d9-eu.html",
+      "sha256": "1ea6710c3a7837c421a3c6d788b6df871afa8a15043f0566c5dda9343039f773"
+    },
+    {
+      "path": "research/sources/luna-daikin-rxf-d9-eu.html",
+      "sha256": "95b43cc93b792a704c2b1af53fd47c5f77e571dec737011a97563f00dd27cb87"
+    }
+  ],
+  "reviewedUnits": [
+    {
+      "reference": "RXF60D5V1B9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 734,
+        "width": 870,
+        "depth": 373,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 48,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 18
+      },
+      "compatibleIndoorClasses": [
+        "FTXF60F2V1B"
+      ],
+      "ports": 1,
+      "pairingEvidence": {
+        "sourceId": "daikin-eu-ftxf-f-rxf-d9",
+        "locator": "Exact full indoor/outdoor pairing column header",
+        "excerpt": "FTXF60F2V1B / RXF60D5V1B9"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified"
+      },
+      "factConditions": {
+        "coolingOutdoorMinimum": "outdoor dry-bulb",
+        "coolingOutdoorMaximum": "outdoor dry-bulb",
+        "heatingOutdoorMinimum": "outdoor wet-bulb",
+        "heatingOutdoorMaximum": "outdoor wet-bulb"
+      }
+    },
+    {
+      "reference": "RXF71D5V1B9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 734,
+        "width": 870,
+        "depth": 373,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 48,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 18
+      },
+      "compatibleIndoorClasses": [
+        "FTXF71F2V1B"
+      ],
+      "ports": 1,
+      "pairingEvidence": {
+        "sourceId": "daikin-eu-ftxf-f-rxf-d9",
+        "locator": "Exact full indoor/outdoor pairing column header",
+        "excerpt": "FTXF71F2V1B / RXF71D5V1B9"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified"
+      },
+      "factConditions": {
+        "coolingOutdoorMinimum": "outdoor dry-bulb",
+        "coolingOutdoorMaximum": "outdoor dry-bulb",
+        "heatingOutdoorMinimum": "outdoor wet-bulb",
+        "heatingOutdoorMaximum": "outdoor wet-bulb"
+      }
+    }
+  ],
+  "findings": [
+    "Exact Europe outdoor headers and one-to-one system headers independently read. Each numeric cell is explicit for both full references; no copied suffix or merged-unknown inference.",
+    "R32 is explicit; cooling -10…48 Celsius dry-bulb, heating -15…18 Celsius wet-bulb.",
+    "Outdoor airflow is unpublished and remains generic/manual; no compressor curve, UA, fan watts or OEM charge inferred.",
+    "These online technical tables contain no archived marker, but do not establish current sales status or France availability.",
+    "Existing France FTXF60F2V1B archived status and FTXF71F2V1B listed state are separate from Europe pairing evidence; no existing head status is relabelled."
+  ]
+}

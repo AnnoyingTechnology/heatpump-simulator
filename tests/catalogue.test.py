@@ -509,6 +509,48 @@ class CatalogueAcceptance(unittest.TestCase):
                 self.assertIn('dry-bulb', facts['coolingOutdoorMinimum']['condition'])
                 self.assertIn('wet-bulb', facts['heatingOutdoorMinimum']['condition'])
 
+    def test_reviewed_rxf_d9_is_exact_europe_pairing_with_unknown_sales_status(self):
+        profiles = json.loads(re.search(r'export const CATALOGUE_OUTDOORS = (.*?) as const;', module.generate(), re.S).group(1))
+        for size in (60, 71):
+            ref = f'RXF{size}D5V1B9'
+            p = next(p for p in profiles if p['id'] == ref)
+            self.assertEqual(p['compatibleIndoorClasses'], [f'FTXF{size}F2V1B'])
+            self.assertEqual(p['ports'], 1)
+            self.assertEqual(p['caseMm'], {'h': 734, 'w': 870, 'd': 373})
+            self.assertIsNone(p['coolingHighFanFlowM3h'])
+            self.assertEqual(p['sourceStatus'], 'availability-unknown')
+            self.assertEqual(p['marketScope'], 'Europe; France availability unverified')
+            self.assertEqual(p['publishedOperatingRangesC'], {
+                'cooling': {'minimum': -10.0, 'maximum': 48.0, 'condition': 'outdoor dry-bulb'},
+                'heating': {'minimum': -15.0, 'maximum': 18.0, 'condition': 'outdoor wet-bulb'}})
+
+    def test_source_review_blocks_pairing_status_and_condition_changes(self):
+        import copy
+        accepted = copy.deepcopy(next(e for e in self.review['units'] if e['reference'] == 'RXF60D5V1B9'))
+        doc = json.loads((ROOT / accepted['candidateFile']).read_text())
+        unit = next(u for u in doc['units'] if u['modelReference'] == accepted['candidateReference'])
+        self.assertEqual(module.source_review_metadata(unit, accepted, ROOT)['sourceStatus'], 'availability-unknown')
+        for field, value in [('compatibleIndoorClasses', ['FTXF71F2V1B']), ('ports', 2),
+                             ('marketScope', 'France current'), ('factKeys', ['height'])]:
+            changed = copy.deepcopy(accepted); changed[field] = value
+            with self.assertRaises(ValueError): module.source_review_metadata(unit, changed, ROOT)
+        changed = copy.deepcopy(unit); changed['status'] = 'current'
+        with self.assertRaisesRegex(ValueError, 'status'): module.source_review_metadata(changed, accepted, ROOT)
+        changed = copy.deepcopy(unit)
+        next(f for f in changed['facts'] if f['key'] == 'heatingOutdoorMinimum')['condition'] = 'outdoor dry-bulb'
+        with self.assertRaisesRegex(ValueError, 'condition'): module.source_review_metadata(changed, accepted, ROOT)
+
+    def test_reviewed_rxf_requires_primary_snapshot_bytes(self):
+        import shutil
+        accepted = next(e for e in self.review['units'] if e['reference'] == 'RXF60D5V1B9')
+        doc = json.loads((ROOT / accepted['candidateFile']).read_text())
+        unit = next(u for u in doc['units'] if u['modelReference'] == accepted['candidateReference'])
+        with tempfile.TemporaryDirectory() as directory:
+            isolated = Path(directory)
+            path = isolated / accepted['sourceReview']['path']; path.parent.mkdir(parents=True)
+            shutil.copyfile(ROOT / accepted['sourceReview']['path'], path)
+            with self.assertRaisesRegex(ValueError, 'primary snapshot'): module.source_review_metadata(unit, accepted, isolated)
+
 
 if __name__ == '__main__':
     unittest.main()

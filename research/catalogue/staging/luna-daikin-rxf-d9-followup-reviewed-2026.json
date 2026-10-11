@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Sensira FTXF-F + RXF-D9 (exact Europe pair columns; market status unresolved)",
+  "market": "Daikin Europe technical catalogue; exact country availability/status not established",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-eu-ftxf-f-rxf-d9",
+      "url": "https://www.daikin.eu/en_us/products/product.table.html/FTXF-F---RXF-D9.html",
+      "title": "Daikin Europe FTXF-F / RXF-D9 system technical table",
+      "edition": "Daikin Europe product database, checked 2026-10-11; exact 60/71 full SKU pair columns",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-eu-rxf-d9",
+      "url": "https://www.daikin.eu/en_us/products/product.table.html/RXF-D9.html",
+      "title": "Daikin Europe RXF-D9 outdoor technical table",
+      "edition": "Daikin Europe product database, checked 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "RXF60D5V1B9",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-rxf-d9",
+        "locator": "Exact full outdoor model column header",
+        "excerpt": "RXF60D5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-rxf-d9",
+            "locator": "Exact RXF60D5V1B9 column, Dimensions/Unit/Height",
+            "excerpt": "RXF60D5V1B9 | Dimensions | Unit | Height | mm | 734"
+          }
+        },
+        {
+          "key": "width",
+          "value": 870,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-rxf-d9",
+            "locator": "Exact RXF60D5V1B9 column, Dimensions/Unit/Width",
+            "excerpt": "RXF60D5V1B9 | Dimensions | Unit | Width | mm | 870"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 373,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-rxf-d9",
+            "locator": "Exact RXF60D5V1B9 column, Dimensions/Unit/Depth",
+            "excerpt": "RXF60D5V1B9 | Dimensions | Unit | Depth | mm | 373"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-eu-rxf-d9",
+            "locator": "Exact RXF60D5V1B9 column, Refrigerant/Type",
+            "excerpt": "RXF60D5V1B9 | Refrigerant | Type | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-eu-rxf-d9",
+            "locator": "Exact RXF60D5V1B9 column, Operation range/Cooling/Ambient/Min.",
+            "excerpt": "RXF60D5V1B9 | Cooling | Ambient | Min. | °CDB | -10"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-eu-rxf-d9",
+            "locator": "Exact RXF60D5V1B9 column, Operation range/Cooling/Ambient/Max.",
+            "excerpt": "RXF60D5V1B9 | Cooling | Ambient | Max. | °CDB | 48"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-eu-rxf-d9",
+            "locator": "Exact RXF60D5V1B9 column, Operation range/Heating/Ambient/Min.",
+            "excerpt": "RXF60D5V1B9 | Heating | Ambient | Min. | °CWB | -15"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-eu-rxf-d9",
+            "locator": "Exact RXF60D5V1B9 column, Operation range/Heating/Ambient/Max.",
+            "excerpt": "RXF60D5V1B9 | Heating | Ambient | Max. | °CWB | 18"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented one-to-one monosplit pairing with FTXF60F2V1B.",
+          "evidence": {
+            "sourceId": "daikin-eu-ftxf-f-rxf-d9",
+            "locator": "Exact full indoor/outdoor pairing column header",
+            "excerpt": "FTXF60F2V1B / RXF60D5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact full-SKU pairing is documented in the Europe table, retrieved 2026-10-11; France retail availability and current sales status are not established by catalogue hosting.",
+        "Outdoor airflow is unpublished in reviewed table."
+      ]
+    },
+    {
+      "modelReference": "RXF71D5V1B9",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-rxf-d9",
+        "locator": "Exact full outdoor model column header",
+        "excerpt": "RXF71D5V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-rxf-d9",
+            "locator": "Exact RXF71D5V1B9 column, Dimensions/Unit/Height",
+            "excerpt": "RXF71D5V1B9 | Dimensions | Unit | Height | mm | 734"
+          }
+        },
+        {
+          "key": "width",
+          "value": 870,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-rxf-d9",
+            "locator": "Exact RXF71D5V1B9 column, Dimensions/Unit/Width",
+            "excerpt": "RXF71D5V1B9 | Dimensions | Unit | Width | mm | 870"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 373,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-rxf-d9",
+            "locator": "Exact RXF71D5V1B9 column, Dimensions/Unit/Depth",
+            "excerpt": "RXF71D5V1B9 | Dimensions | Unit | Depth | mm | 373"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "daikin-eu-rxf-d9",
+            "locator": "Exact RXF71D5V1B9 column, Refrigerant/Type",
+            "excerpt": "RXF71D5V1B9 | Refrigerant | Type | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-eu-rxf-d9",
+            "locator": "Exact RXF71D5V1B9 column, Operation range/Cooling/Ambient/Min.",
+            "excerpt": "RXF71D5V1B9 | Cooling | Ambient | Min. | °CDB | -10"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 48,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "daikin-eu-rxf-d9",
+            "locator": "Exact RXF71D5V1B9 column, Operation range/Cooling/Ambient/Max.",
+            "excerpt": "RXF71D5V1B9 | Cooling | Ambient | Max. | °CDB | 48"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-eu-rxf-d9",
+            "locator": "Exact RXF71D5V1B9 column, Operation range/Heating/Ambient/Min.",
+            "excerpt": "RXF71D5V1B9 | Heating | Ambient | Min. | °CWB | -15"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "daikin-eu-rxf-d9",
+            "locator": "Exact RXF71D5V1B9 column, Operation range/Heating/Ambient/Max.",
+            "excerpt": "RXF71D5V1B9 | Heating | Ambient | Max. | °CWB | 18"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented one-to-one monosplit pairing with FTXF71F2V1B.",
+          "evidence": {
+            "sourceId": "daikin-eu-ftxf-f-rxf-d9",
+            "locator": "Exact full indoor/outdoor pairing column header",
+            "excerpt": "FTXF71F2V1B / RXF71D5V1B9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact full-SKU pairing is documented in the Europe table, retrieved 2026-10-11; France retail availability and current sales status are not established by catalogue hosting.",
+        "Outdoor airflow is unpublished in reviewed table."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

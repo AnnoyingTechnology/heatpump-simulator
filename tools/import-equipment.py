@@ -98,6 +98,36 @@ def multisplit_installation(unit, accepted, root):
             'publishedMaximumTotalChargeKg': cap}
 
 
+def source_review_metadata(unit, accepted, root):
+    """Bind new source-qualified profiles and market claims to an independent receipt."""
+    receipt = accepted['sourceReview']
+    path = root / receipt['path']
+    if not path.exists() or sha(path) != receipt['sha256']:
+        raise ValueError('Independent source review receipt is missing or changed')
+    reviewed = json.loads(path.read_text())
+    if reviewed['candidate'] != {'path': accepted['candidateFile'], 'sha256': accepted['candidateSha256']}:
+        raise ValueError('Independent source review does not bind the accepted candidate')
+    for source in reviewed['sourcePins']:
+        path = root / source['path']
+        if not path.exists() or sha(path) != source['sha256']:
+            raise ValueError('Required source-qualified primary snapshot is missing or changed')
+    row = next(r for r in reviewed['reviewedUnits'] if r['reference'] == unit['modelReference'])
+    if unit['status'] != row['candidateStatus'] or set(accepted['factKeys']) != set(row['factKeys']):
+        raise ValueError('Source-reviewed status or applied field set changed')
+    for fact in unit['facts']:
+        if fact['key'] in row['factValues']:
+            if fact['value'] != row['factValues'][fact['key']] or fact.get('condition') != row.get('factConditions', {}).get(fact['key']):
+                raise ValueError('Source-qualified fact or condition differs from independent readback')
+    if accepted['ports'] != row['ports'] or accepted['compatibleIndoorClasses'] != row['compatibleIndoorClasses'] or accepted['pairingEvidence'] != row['pairingEvidence']:
+        raise ValueError('Source-reviewed exact pairing or topology changed')
+    metadata = row['runtimeMetadata']
+    if any(accepted.get(k) != value for k, value in metadata.items()):
+        raise ValueError('Region or availability claim differs from independent source review')
+    if set(metadata) != {'sourceStatus', 'marketScope'} or metadata['sourceStatus'] != 'availability-unknown':
+        raise ValueError('Unreviewed source-status metadata contract')
+    return metadata
+
+
 def generate(root=ROOT):
     review = json.loads((root / 'research/catalogue/equipment-acceptance.json').read_text())
     # The original PDF is a research cache, not a runtime dependency.
@@ -171,6 +201,8 @@ def generate(root=ROOT):
             'caseMm': {'h': dimensions['height'], 'w': dimensions['width'], 'd': dimensions['depth']},
             'coolingHighFanFlowM3h': airflow['value'] if airflow else None,
         }
+        if 'sourceReview' in accepted:
+            profile.update(source_review_metadata(unit, accepted, root))
         capacity = by_key.get('capacityClass')
         if capacity:
             profile['nominalCoolingKw'] = capacity[0]['value']

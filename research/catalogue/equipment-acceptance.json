@@ -5525,6 +5525,86 @@
         "sha256": "995766abfd78692a3d2123d8e48579021ee9b93b945a496bbd8f72a542d80843"
       },
       "reviewNote": "Exact legacy source identity/casing/R32/maximum connected head count only. Unpublished limits/connection matrices remain unknown; no A-generation rules, OEM charge calibration or performance maps. Super-low airflow not promoted to high-fan."
+    },
+    {
+      "reference": "RXF60D5V1B9",
+      "candidateReference": "RXF60D5V1B9",
+      "candidateFile": "research/catalogue/staging/luna-daikin-rxf-d9-followup-reviewed-2026.json",
+      "candidateSha256": "4f3f19b2dcb2657a616dec57f930bb9ae73897566c36a36cbfefdc2376b84658",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXF60F2V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "daikin-eu-ftxf-f-rxf-d9",
+        "locator": "Exact full indoor/outdoor pairing column header",
+        "excerpt": "FTXF60F2V1B / RXF60D5V1B9"
+      },
+      "pairingEvidenceByIndoor": {
+        "FTXF60F2V1B": {
+          "sourceId": "daikin-eu-ftxf-f-rxf-d9",
+          "locator": "Exact full indoor/outdoor pairing column header",
+          "excerpt": "FTXF60F2V1B / RXF60D5V1B9"
+        }
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "sourceReview": {
+        "path": "reviews/rxf-d9-independent-acceptance.json",
+        "sha256": "754d417083cf12aa36caf52029f22c7ac61cbcfc24a6a4dddd263772065b0652"
+      },
+      "reviewNote": "Exact Europe full-reference mono pair and casing/R32/DB-WB source endpoints; France availability/current sales unknown, generic mass flow and cycle. No OEM maps or charge calibration."
+    },
+    {
+      "reference": "RXF71D5V1B9",
+      "candidateReference": "RXF71D5V1B9",
+      "candidateFile": "research/catalogue/staging/luna-daikin-rxf-d9-followup-reviewed-2026.json",
+      "candidateSha256": "4f3f19b2dcb2657a616dec57f930bb9ae73897566c36a36cbfefdc2376b84658",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXF71F2V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "daikin-eu-ftxf-f-rxf-d9",
+        "locator": "Exact full indoor/outdoor pairing column header",
+        "excerpt": "FTXF71F2V1B / RXF71D5V1B9"
+      },
+      "pairingEvidenceByIndoor": {
+        "FTXF71F2V1B": {
+          "sourceId": "daikin-eu-ftxf-f-rxf-d9",
+          "locator": "Exact full indoor/outdoor pairing column header",
+          "excerpt": "FTXF71F2V1B / RXF71D5V1B9"
+        }
+      },
+      "unpublishedOutdoorAirflow": true,
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "sourceReview": {
+        "path": "reviews/rxf-d9-independent-acceptance.json",
+        "sha256": "754d417083cf12aa36caf52029f22c7ac61cbcfc24a6a4dddd263772065b0652"
+      },
+      "reviewNote": "Exact Europe full-reference mono pair and casing/R32/DB-WB source endpoints; France availability/current sales unknown, generic mass flow and cycle. No OEM maps or charge calibration."
     }
   ],
   "additionalSourceSnapshots": [
@@ -5883,6 +5963,14 @@
     {
       "sourceFile": "research/sources/luna-owner-generation/daikin-5mxm-n9-table-2026.html",
       "sourceSha256": "99453fb8fdcb0c876fc4e3612ba0f9205545f2da5ce609c28ad06b8ce187b323"
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-ftxf-f-rxf-d9-eu.html",
+      "sourceSha256": "1ea6710c3a7837c421a3c6d788b6df871afa8a15043f0566c5dda9343039f773"
+    },
+    {
+      "sourceFile": "research/sources/luna-daikin-rxf-d9-eu.html",
+      "sourceSha256": "95b43cc93b792a704c2b1af53fd47c5f77e571dec737011a97563f00dd27cb87"
     }
   ]
 }
