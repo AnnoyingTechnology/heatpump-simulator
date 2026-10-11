@@ -24,27 +24,17 @@ Weather, mode, per-room targets, On/Off and observed air temperatures can initia
 
 ## GitHub Pages
 
-Shared vector thermometer/flame/snowflake symbols are deployed at `2956702`. GitHub passed126Reference,5history/URL,23catalogue and25smoke checks; seven matching-asset hosted checks, production URL initialization and two focused symbol checks pass. Receipt: `reviews/github-pages-measurement-symbols-deployment.json`.
-
-Current catalogue release `0fcd2d9` is deployed with41Daikin outdoor/119indoor and25Mitsubishi outdoor/45indoor profiles; coverage remains partial. GitHub passed126Reference,5history/URL,23catalogue and25smoke checks, followed by seven checks against the exact hosted bundles and production URL initialization. Receipt: `reviews/github-pages-current-stylish-deployment.json`.
-
 Repository: https://github.com/AnnoyingTechnology/heatpump-simulator
 
 Site: https://annoyingtechnology.github.io/heatpump-simulator/
 
-`.github/workflows/pages.yml` installs locked dependencies, checks types, builds and verifies the released Reference model with the guarded property backend, then publishes `dist/`. Pushes to `main` deploy automatically; the workflow also supports manual runs. GitHub Pages uses the GitHub Actions publishing source. The existing relative asset base keeps the worker and self-hosted WASM inside the project URL.
+The verified seven-fluid Reference release `518a9b0` passed 156 thermodynamic checks, 7 frontend checks, 23 catalogue checks and 25 operating-transition schedules on GitHub. Hosted checks verify the exact application/worker/WASM assets, URL initialization and fresh physical workers for all selectable fluids. French presentation, room-temperature charts, vector measurement symbols and actual idealized compressor startup are delivered. Receipts and subsequent catalogue releases are recorded in [PROGRESS.md](PROGRESS.md).
 
-The first deployment passed 35 checks on GitHub and four hosted checks. The expanded stability release passed all **45 checks**, followed by four hosted checks and **600.7 simulated seconds at requested 5×** with the attic off, outdoor −0.5°C, ground target 17.5°C and upstairs target 22.5°C. The owner test uses 35% RH; the original failure's humidity remains unknown. Inverter protection, unequal-temperature indoor condensers and conservative outdoor fog retain the original physical limits. Stability evidence is in `reviews/github-pages-stability-deployment.json`. The subsequent zoom/thermostat/trend release passed **47 Reference/property checks and 2 history checks** on GitHub, followed by **5 hosted-browser checks**, including scales after zoom and borderless metric plots. Its matching deployed artifacts and successful run `38115146723` are recorded in `reviews/github-pages-zoom-deployment.json`.
+The accepted source catalogue now contains 59 Daikin outdoor / 119 indoor and 25 Mitsubishi outdoor / 45 indoor references, including nine current MXM A8/A9 and nine legacy N/N8/N9 multisplits. Deployment of the current increment is in progress; the legacy successor is being verified locally. Full manufacturer coverage remains open. Casing and necessary installation rules do not establish exact OEM indoor combinations or performance maps; unpublished legacy bounds stay unknown.
 
-The preceding 0–750 W/K loss-scale release (`368f6b0`) passed **52 Reference/property checks and 2 history checks** on GitHub, followed by **6 hosted-browser checks**. All eight midpoint markers remain directly labelled beneath each room slider. Four focused local checks verify alignment, 32 desktop layouts and above-cap commits without resetting state. Deployed scripts, styles and WASM match the build; receipt: `reviews/github-pages-loss-cap-deployment.json`.
+`.github/workflows/pages.yml` installs locked dependencies, checks types, builds and verifies the released Reference model with the guarded property backend, validates catalogue sources and installation constraints, then publishes `dist/`. Pushes to `main` deploy automatically; manual runs are supported. All worker and self-hosted WASM URLs remain inside the project subdirectory.
 
-The preceding room-link/session/water release (`732bc55`) passed **69 Reference/property checks and 2 history checks** on GitHub, followed by **7 hosted-browser checks**. Its 28 local browser checks include actual cooling condensate accounting, visual room-link placement, focused editing and desktop layouts. The deployed scripts, styles and WASM match the tested build; receipt: `reviews/github-pages-house-deployment.json`.
-
-The house/energy stability release (`86dbc4d`) passed **91 Reference/property checks, 2 history checks, 7 catalogue checks and 25 robustness smoke schedules** on GitHub run `38133655370`. Seven hosted checks verified matching application, worker and WASM assets, the actual worker, house defaults, energy history, zoom and edits that retain the clock. Receipt: `reviews/github-pages-house-energy-deployment.json`.
-
-The header refinement (`9e6558a`) passed the same91+2+7 checks and25smoke schedules, plus seven hosted checks with matching bundles. Units are the same size as values and the clock reads HH:MM:SS. Receipt: `reviews/github-pages-header-deployment.json`.
-
-The hosted application, worker and WASM match the verified build. Paused weather and individual-unit edits preserve the clock. Recheck with `node tools/check-hosted-pages.mjs` and `node tools/check-hosted-stability.mjs`, using the project's isolated QA Chromium. The first deployment evidence remains in `reviews/github-pages-deployment.json`; current browser checks are in `reviews/github-pages-browser-results.json`.
+Verify the deployed build using `node tools/check-hosted-pages.mjs` and the focused hosted checks. Use a frozen build/source snapshot when newer work is already present locally. Historical release evidence remains in `reviews/` and [PROGRESS.md](PROGRESS.md).
 
 ## Current interface
 

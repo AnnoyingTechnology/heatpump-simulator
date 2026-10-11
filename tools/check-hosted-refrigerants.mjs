@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {writeFile} from 'node:fs/promises';
 import {openPage} from './browser-session.mjs';
-const fluids=(process.env.HEATPUMP_HOSTED_FLUIDS??'R22,R290,R134a,R1234yf,R410A,R32').split(',');
+const fluids=(process.env.HEATPUMP_HOSTED_FLUIDS??'R22,R290,R134a,R1234yf,R410A,R407C,R32').split(',');
 const page=await openPage('https://annoyingtechnology.github.io/heatpump-simulator/'),checks=[],readings=[];
 const run=fn=>page.evaluate(`(${fn.toString()})()`);
 const check=async(name,fn)=>{await fn();checks.push({name,passed:true});console.log('PASS '+name)};

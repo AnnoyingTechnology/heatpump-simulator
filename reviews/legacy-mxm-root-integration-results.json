@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-11T16:36:49.629749+00:00",
+  "scope": "Nine legacy Daikin N/N8/N9 exact-reference profiles with nullable unpublished constraints; no installed suffix or OEM performance claim",
+  "sourceCommit": "3170638",
+  "checks": {
+    "catalogueAcceptance": 29,
+    "typedTopology": 7,
+    "frontend": 7,
+    "currentMxmRootBrowser": 44,
+    "legacyMxmRootBrowser": 16
+  },
+  "sourceHashes": {
+    "src/state.ts": "3d8621b2082c1c42e439b644afab8e0a2489b56b5f27cbd9f776ebc671ea1948",
+    "src/settings.ts": "6cfc26d8de9db37ff0c53b4743461f4e64c266ef36f6a6c609668cbe004512b0",
+    "src/equipment.ts": "0e18921dd9a08f84c35b051447fe62554bc1e80b763a167d27ba48c1431aa674",
+    "src/equipment-topology.ts": "6f7788efd5abfb7065726bb4649bcbec1052522f0f126635c3979123596df804",
+    "src/equipment-data.ts": "571c5dd77c872bf2684496c6865d163258db0b596b564aea0e58fb4900e14fbf",
+    "src/locales/equipment-fr.ts": "b05c0508749093a703b87d7d76072e5b2ffc7fb2118d79f8d302cf139fa23daa",
+    "tools/check-mxm-browser.mjs": "11a84a4d92a7d2f55683453caf5f50b6b794eff635bf73995567f23267abd2dd",
+    "tools/check-legacy-mxm-browser.mjs": "2b2c28a12730c7e85ce7c457019765680dc6083b802b00080309e2680cd2e25a"
+  },
+  "initialHarnessRejection": {
+    "case": "current MXM browser tool expected English aria label after its previous run persisted French",
+    "correction": "Wait for locale-independent model class; explicitly select English before named-control checks. Application state/locale persistence unchanged."
+  }
+}

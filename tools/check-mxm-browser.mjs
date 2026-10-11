@@ -6,7 +6,8 @@ const dev=process.env.HEATPUMP_CATALOGUE_ORIGIN ? null : await startIsolatedDev(
 const origin=process.env.HEATPUMP_CATALOGUE_ORIGIN ?? dev.url;
 const page=await openPage(origin,1600,1000);
 try {
- await page.waitFor(`document.querySelector('select[aria-label="Outdoor model"]')`);
+ await page.waitFor(`document.querySelector('.ou-model-select')`);
+ await page.evaluate(`(async()=>{const i18n=await import('/src/i18n.ts');i18n.setLanguage('en');})()`);
  await page.evaluate(`(async()=>{const [{store},{simulation},equipment,{engineConfigFromUi},i18n]=await Promise.all([import('/src/state.ts'),import('/src/runtime/view.ts'),import('/src/equipment.ts'),import('/src/runtime/config.ts'),import('/src/i18n.ts')]);globalThis.catalogueQA={store,simulation,equipment,engineConfigFromUi,i18n,checks:[]};store.update(s=>{s.cfg.live.outdoorAirMassFlowKgs=.73;s.cfg.live.indoorAirMassFlowKgs=.16;});})()`);
  await page.waitFor(`catalogueQA.simulation.status.output?.simulatedSeconds>2`,40000);
  const checks=await page.evaluate(`(()=>{
