@@ -193,8 +193,6 @@ export function inspectorHtml(id: string | null, s: AppState): string {
         roleRow,
         ...refRows,
         cleanRow(outdoorCleanliness(cfg), false),
-        ['Air-side finned surface', '— <i>m²</i> <span class="tag">not yet estimated</span>'],
-        ['UA', '— <i>W/K</i> (separate quantity)'],
         ['Qevap / Qcond (fixture)', fm === 'heating' ? kw(rd.qEvapKw) : kw(rd.qCondKw)],
         ['Ice deposition', rd.frostRateKgH === null ? '—' : `${fmt(rd.frostRateKgH, 2)} <i>kg/h</i>`],
         ['Melt rate', rd.meltRateKgH === null ? '—' : `${fmt(rd.meltRateKgH, 2)} <i>kg/h</i>`],

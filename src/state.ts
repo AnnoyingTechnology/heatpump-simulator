@@ -1,5 +1,5 @@
 import type { AppState, Config, Experience, ExampleState, IndoorClass, Mode, OutdoorKind, PipeConfig, RoomConfig, InterzoneLink, UiState } from './types';
-import { applyIndoorProfile, indoorOptionsForOutdoor, outdoorModelInfo } from './equipment';
+import { applyIndoorProfile, indoorOptionsForOutdoor, outdoorModelInfo, selectableIndoorClasses } from './equipment';
 import { CONNECTION_CLASSES, type HeadInstallation } from './equipment-topology';
 import { DEFAULT_GENERIC_PORT_CAPACITY, OWNER_PORTS, outdoorPortCapacity, roomVolumeM3, roomExposedEnvelopeAreaM2, roomEnvelopeConductanceWK, interzoneConductance, hasInterzoneGeometry, INTERZONE_GEOMETRY_DEFAULTS } from './types';
 import type { Fixture } from './fixtures';
@@ -486,8 +486,9 @@ class Store {
       if (model.coolingHighFanFlowM3h !== undefined) s.cfg.outdoorVolumetricAirFlowM3s = model.coolingHighFanFlowM3h / 3600;
       else delete s.cfg.outdoorVolumetricAirFlowM3s;
       for (const room of s.cfg.rooms.slice(0, s.cfg.unitCount)) {
-        if (!model.installation && !model.compatibleIndoorClasses.includes(room.indoorClass)) {
-          applyIndoorProfile(room, model.compatibleIndoorClasses[0]);
+        const selectable = selectableIndoorClasses(kind);
+        if (!selectable.includes(room.indoorClass)) {
+          applyIndoorProfile(room, selectable[0]);
         }
       }
       s.ui.notice = oldCount > s.cfg.unitCount

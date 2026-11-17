@@ -533,6 +533,9 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
   let outSub: SVGTextElement = txt(0, 0, '');
   let valveLabel: SVGTextElement = txt(0, 0, '');
   let svcRole: SVGTextElement = txt(0, 0, '');
+  let indoorTitle: SVGTextElement = txt(0, 0, '');
+  let barPanel: SVGForeignObjectElement = svg('foreignObject');
+  let barSpan = { x: 0, right: 0 };
   // Panels are created once per index and re-attached by every rebuild, so controls keep their DOM identity and value.
   const weather = weatherPanel();
   const bar = roomsBar(() => setLinking(!linkMode));
@@ -626,14 +629,15 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
       svg('rect', { class: 'zone-in', 'data-zoom-target': 'rooms', tabindex: 0, role: 'button', 'aria-label': 'Zoom to indoor zone', x: wall.x1, y: 0, width: lay.vbW - wall.x1, height: lay.vbH }),
       svg('rect', { class: 'zone-edge', x: wall.x0, y: 0, width: wall.x1 - wall.x0, height: lay.vbH }),
     );
+    barSpan = { x: wall.x1 + 118, right: wall.x1 + 878 };
     weatherG = svg('g', { class: 'weather', transform: `translate(${OP.x - 24} ${OP.y - 12})` });
     weatherKind = '';
     root.append(
       weatherG, overlayPanel(OP.x, OP.y, OP.w, OP.h, weather.root),
       overlayPanel(UP.x, UP.y, UP.w, UP.h, unitCard.root),
       svg('g', { 'data-zoom-target': 'outdoor', tabindex: 0, role: 'button', 'aria-label': 'Zoom to outdoor zone' }, txt(16, 26, 'OUTDOOR', 'zone-title')),
-      svg('g', { 'data-zoom-target': 'rooms', tabindex: 0, role: 'button', 'aria-label': 'Zoom to indoor zone' }, txt(wall.x1 + 14, 26, 'INDOOR', 'zone-title')),
-      overlayPanel(wall.x1 + 118, 6, 760, 26, bar.root),
+      svg('g', { 'data-zoom-target': 'rooms', tabindex: 0, role: 'button', 'aria-label': 'Zoom to indoor zone' }, indoorTitle = txt(wall.x1 + 14, 26, 'INDOOR', 'zone-title')),
+      barPanel = overlayPanel(wall.x1 + 118, 6, 760, 26, bar.root),
       // The single calculated whole-house ruler with its ventilation controls, in the 62 units between the bar row and the first room (see STACK_TOP).
       overlayPanel(wall.x1 + 10, 36, 910, 60, ruler.root),
       // 10 units below the scene top so the switch is not glued to the edge; it still ends well above the first room's pipes.
@@ -1311,7 +1315,12 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
     setAttr(bar.add, 'title', full
       ? (fixedPorts ? `${model.label} has ${cap} ${portWord}. Choose another outdoor model, or the generic editable outdoor, to explore more.` : 'Generic port capacity (an assumption) is reached. Raise it on the outdoor unit.')
       : 'Add an indoor unit and its room on the next free port');
-    setText(bar.hint, full ? (fixedPorts ? `${model.label} full (${cap} ${portWord}): choose another outdoor model for more.` : 'Capacity reached: raise the assumed port capacity on the outdoor unit.') : '');
+    // The bar starts after the localized, letter-spaced INDOOR title, whose width differs per language.
+    const title = indoorTitle.getBBox();
+    const barX = Math.max(barSpan.x, Math.ceil(title.x + title.width + 10));
+    setAttr(barPanel, 'x', String(barX));
+    setAttr(barPanel, 'width', String(barSpan.right - barX));
+    setText(bar.hint, full ? (fixedPorts ? `${model.label} full (${cap} ${portWord}): choose another outdoor model.` : 'Capacity reached: raise the assumed port capacity on the outdoor unit.') : '');
 
     // weather
     // The glyph is redrawn only when its category changes (sun / cloud / snow cloud), never per update.
@@ -1329,7 +1338,7 @@ export function createScene(hooks: SceneHooks, unitCard: OutdoorUnitCard, film: 
     // Weather: ambient inputs only (configured values, meaningful while the engine loads). Machine readings live on the outdoor-unit card.
     weather.t.refresh();
     weather.h.refresh();
-    setText(weather.t.note, live ? 'live input' : 'configured');
+    setText(weather.t.note, live ? '' : 'configured');
     setText(weather.h.note, cfg.outdoorC < 0 ? 'over ice' : 'over liquid');
     const scope = weatherScope(s);
     setText(weather.status, scope.text);

@@ -73,11 +73,19 @@ export function indoorModelProfile(indoor: IndoorClass) {
   return CATALOGUE_INDOORS.find(model => model.id === indoor);
 }
 
+const OWNER_HEADS: readonly IndoorClass[] = ['FTXA25', 'FTXA35'];
+const DAIKIN_HEADS: readonly IndoorClass[] = [...OWNER_HEADS, ...CATALOGUE_INDOORS.filter(m => m.manufacturer === 'daikin').map(m => m.id)];
+
+/** Daikin multisplits, including the owner 3MXM52N8, may be explored with any catalogued Daikin head;
+ * only the owner's declared FTXA25/35 pairing is presented without an unverified-combination mark. */
+export function selectableIndoorClasses(outdoor: OutdoorKind): readonly IndoorClass[] {
+  const model = outdoorModelInfo(outdoor);
+  return model.installation || model.id === 'owner' ? DAIKIN_HEADS : model.compatibleIndoorClasses;
+}
+
 export function indoorOptionsForOutdoor(outdoor: OutdoorKind): { value: IndoorClass; text: string; manufacturer: EquipmentManufacturer }[] {
   const model = outdoorModelInfo(outdoor);
-  const candidates: readonly IndoorClass[] = model.installation
-    ? ['FTXA25', 'FTXA35', ...CATALOGUE_INDOORS.filter(m => m.manufacturer === 'daikin').map(m => m.id)]
-    : model.compatibleIndoorClasses;
+  const candidates = selectableIndoorClasses(outdoor);
   return candidates.map(value => {
     const profile = indoorModelProfile(value);
     const ownerHead = value === 'FTXA25' || value === 'FTXA35';
@@ -85,7 +93,8 @@ export function indoorOptionsForOutdoor(outdoor: OutdoorKind): { value: IndoorCl
     return { value, manufacturer,
       text: (profile ? `${equipmentManufacturerLabel(manufacturer)} ${value}${profile.acceptance === 'reviewed-class-fields' ? ' (class; suffix unpublished)' : ''}${'marketScope' in profile ? ' (availability unverified)' : ''}${profile.coolingHighFanFlowM3h === null ? ' (airflow unpublished; generic/manual)' : ''}`
         : ownerHead ? `Daikin ${value} (suffix unknown)`
-        : `Generic wall head ${value === 'G25' ? '2.5' : value === 'G35' ? '3.5' : '5.0'} kW class`) + (model.installation ? ' — combination unverified' : '') };
+        : `Generic wall head ${value === 'G25' ? '2.5' : value === 'G35' ? '3.5' : '5.0'} kW class`)
+        + (model.installation || (model.id === 'owner' && !ownerHead) ? ' — combination unverified' : '') };
   });
 }
 
