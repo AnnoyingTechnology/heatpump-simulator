@@ -40,6 +40,14 @@ export class HeatPumpEngine {
   private chargeSpec: ChargeBalanceSpec | null = null;
   private chargeNominal: { key: string; kg: number; heatingKg: number; coolingKg: number } | null = null;
   private chargeProtectionNote: string | null = null;
+  /** Generic supervisor stop when the specified charge has no operating point. Flooding latches
+   * the condensing hold (released by a successful forecast); a shortage stop simply waits. Both
+   * restart the minimum off time, after which the start is attempted again. */
+  private stopForCharge(dt: number, error: ChargeProtectionError): void {
+    this.inventoryDrive = { ...this.inventoryDrive, speedRps: 0, startupSeconds: 0, offSeconds: dt,
+      ...(error.protection === 'refrigerant shortage' ? { protection: 'refrigerant shortage' as const } : { condensingHold: true, protection: 'condensing temperature' as const }) };
+    this.lastCycle = undefined; this.chargeProtectionNote = error.message;
+  }
   private fault: string | null = null;
   private initialEnergy = 0;
   private initialWater = 0;
@@ -119,8 +127,10 @@ export class HeatPumpEngine {
     const key = JSON.stringify({ fluid: config.fluid, geometry: setting.geometry, compressor: config.compressor, outdoorUA: config.outdoor.refrigerantConductanceWK,
       rooms: config.rooms.map(room => room.refrigerantConductanceWK) });
     if (this.chargeNominal?.key !== key) this.chargeNominal = { key, ...nominalChargeKg(this.properties, config, setting.geometry) };
-    const { percentOfNominal, ...rest } = setting;
+    const { percentOfNominal, ...rest } = setting, previousKg = this.chargeSpec?.massKg;
     this.chargeSpec = { ...rest, massKg: this.chargeNominal.kg * percentOfNominal / 100 };
+    // A changed charge is a new condition: a pending charge-protection stop is retried at once.
+    if (previousKg !== this.chargeSpec.massKg) this.chargeProtectionNote = null;
   }
   step(simulatedSeconds: number): EngineOutput {
     if (!(Number.isFinite(simulatedSeconds) && simulatedSeconds >= 0 && simulatedSeconds <= 60)) throw new DomainError('step requires finite 0…60 simulated seconds; caller supplies bounded time accumulator');
@@ -362,7 +372,7 @@ export class HeatPumpEngine {
           active: this.active, allocationWeights, speedRps: rps, defrost, previous: this.lastCycle }); }
         catch (error) { if (error instanceof ChargeProtectionError) { chargeProtection = error; return null; } throw error; }
       };
-      const chargeNote = () => chargeProtection ? (chargeProtection as ChargeProtectionError).message : null;
+      const chargeStop = () => chargeProtection as ChargeProtectionError | null;
       // Reference pressures are quasi-steady, not stored stopped sensor states.
       // Predict a restart at minimum speed from the current thermal boundaries;
       // a stale hot discharge would otherwise keep its protection latched forever.
@@ -384,7 +394,13 @@ export class HeatPumpEngine {
         ((this.inventoryDrive.dischargeHold||this.inventoryDrive.protection==='discharge temperature')&&(heldEnvelope.dischargeC===null||heldEnvelope.dischargeC>config.compressor.maxDischargeC-40))||
         ((this.inventoryDrive.pressureHold||this.inventoryDrive.protection==='pressure ratio')&&(heldEnvelope.ratio===null||heldEnvelope.ratio>driveRatioThresholds(config.compressor.maxPressureRatio).recovery))||
         ((this.inventoryDrive.condensingHold||this.inventoryDrive.protection==='condensing temperature')&&(heldEnvelope.condensingC===null||heldEnvelope.condensingC>59)));
-      const forecast = effectiveMode && !observed&&!freezeHold&&!holdNotRecovered&&!boundaryDenied ? proposal(referenceMinimum) : null;
+      // A charge-protection stop (flooding or shortage) is retried on the minimum off time, like a
+      // supervisor's restart attempt; the stopped circuit is not re-solved between attempts.
+      const chargeRetryDue = this.chargeProtectionNote === null || this.inventoryDrive.offSeconds >= config.control.minOffSeconds;
+      const forecast = effectiveMode && !observed&&!freezeHold&&!holdNotRecovered&&!boundaryDenied&&chargeRetryDue ? proposal(referenceMinimum) : null;
+      // A start from rest whose preflight finds no charge-balanced operating point is denied as a
+      // new stop. A running compressor is judged at its actual speed below, not at the minimum.
+      const denied = this.inventoryDrive.speedRps === 0 ? chargeStop() : null;
       const feedback = observed ?? forecast;
       if(running&&!defrost){
         const request=demand.heatW.reduce((sum,q,i)=>sum+(this.active[i]?q:0),0);
@@ -393,7 +409,8 @@ export class HeatPumpEngine {
         rawDemandSpeed=conventional?referenceMinimum:capacity>0?feedbackSpeed*request/capacity:config.compressor.speedMinRps;
         demandSpeed=conventional?referenceMinimum:bounded(rawDemandSpeed,config.compressor.speedMinRps,config.compressor.speedMaxRps);
       }
-      this.inventoryDrive = driveStep(this.inventoryDrive, dt, { thermalBoundaryAvailable:heldEnvelope?.available,coolingMode:config.mode==='cooling',coolingCoilC, dischargeEnvelopeExceeded:!!((holdNotRecovered||boundaryDenied)&&heldEnvelope?.dischargeExceeded),pressureRatioAvailable:!(holdNotRecovered||boundaryDenied)||heldEnvelope?.ratio!==null,predictedCondensingC:feedback?.condensingC??((holdNotRecovered||boundaryDenied)?heldEnvelope?.condensingC:null)??null,maximumCondensingC:this.properties.refrigerant.domain.maxCondensingC,demandRps: demandSpeed,
+      if (denied) this.stopForCharge(dt, denied);
+      else this.inventoryDrive = driveStep(this.inventoryDrive, dt, { thermalBoundaryAvailable:heldEnvelope?.available,coolingMode:config.mode==='cooling',coolingCoilC, dischargeEnvelopeExceeded:!!((holdNotRecovered||boundaryDenied)&&heldEnvelope?.dischargeExceeded),pressureRatioAvailable:!(holdNotRecovered||boundaryDenied)||heldEnvelope?.ratio!==null,predictedCondensingC:feedback?.condensingC??((holdNotRecovered||boundaryDenied)?heldEnvelope?.condensingC:null)??null,maximumCondensingC:this.properties.refrigerant.domain.maxCondensingC,demandRps: demandSpeed,
         minimumRps: referenceMinimum, maximumRps: config.compressor.speedMaxRps,
         startupFromRest:!conventional&&!defrost&&config.rooms.every(room=>room.pipe.lengthM===0&&room.pipe.elevationM===0),
         inverterSlew:!conventional&&!defrost?{
@@ -410,13 +427,7 @@ export class HeatPumpEngine {
       }
       if (effectiveMode && speed > 0) {
         cycle = forecast && speed === referenceMinimum ? forecast : proposal(speed);
-        if (!cycle) {
-          // Flooding latches the condensing hold; a shortage stop retries after the minimum off time.
-          const shortage = (chargeProtection as ChargeProtectionError | null)?.protection === 'refrigerant shortage';
-          this.inventoryDrive = { ...this.inventoryDrive, speedRps: 0, startupSeconds: 0, offSeconds: dt,
-            ...(shortage ? { protection: 'refrigerant shortage' as const } : { condensingHold: true, protection: 'condensing temperature' as const }) };
-          speed = 0; this.lastCycle = undefined; this.chargeProtectionNote = chargeNote();
-        }
+        if (!cycle) { this.stopForCharge(dt, chargeStop()!); speed = 0; }
         // Only an independently closed, in-domain cycle is envelope evidence.
         // Solver failures propagate; no arbitrary lower-speed retry hides them.
         else if (cycle.discharge.temperatureC >= config.compressor.maxDischargeC - 10 ||

@@ -183,3 +183,28 @@ test('engine validates and runs the charge-balanced closure with closed energy l
   assert.ok(after.cycle.charge.distribution.outdoorCoilKg > out.cycle.charge.distribution.outdoorCoilKg + .05);
   assert.ok(Math.abs(after.chargeBalance.specifiedKg - 1.1 * after.chargeBalance.nominalKg) < 1e-12);
 });
+
+test('a flooded start is a held protection retried on the minimum off time; lowering the charge restarts at once', () => {
+  const config = defaultEngineConfig(3); config.mode = 'heating'; config.outdoorTemperatureC = 1;
+  config.rooms.forEach((r, i) => { r.initialTemperatureC = 19; r.setpointC = 21.5; r.enabled = i === 1; });
+  config.chargeBalance = { percentOfNominal: 180, geometry: geometryFor(3), ...VALVE };
+  const engine = new HeatPumpEngine(properties, config);
+  // Count steps that re-solve the circuit (thousands of EOS calls) against passive steps (tens).
+  let calls = 0, solves = 0; const evaluate = properties.prop;
+  properties.prop = (...args) => { calls++; return evaluate.apply(properties, args); };
+  try { for (let k = 0; k < 240; k++) { calls = 0; engine.step(.25); if (calls > 1000) solves++; } }
+  finally { properties.prop = evaluate; }
+  const held = engine.snapshot();
+  assert.equal(held.diagnostics.fault ?? null, null);
+  assert.equal(held.diagnostics.speedRps, 0);
+  assert.equal(held.diagnostics.envelopeProtection, 'condensing temperature');
+  assert.ok(held.diagnostics.warnings.some(w => /condensing ceiling with a full accumulator/.test(w)), held.diagnostics.warnings.join(' | '));
+  // 60 s of hold with a 30 s minimum off time: the stopped circuit is re-solved only on retries.
+  assert.ok(solves >= 1 && solves <= 3, `${solves} re-solving steps in 240`);
+  config.chargeBalance = { ...config.chargeBalance, percentOfNominal: 100 };
+  engine.updateConfig(config);
+  for (let k = 0; k < 8; k++) engine.step(.25);
+  const restarted = engine.snapshot();
+  assert.equal(restarted.diagnostics.envelopeProtection ?? null, null);
+  assert.ok(restarted.diagnostics.speedRps > 0 && restarted.cycle?.charge, 'compressor restarts on the lowered charge');
+});

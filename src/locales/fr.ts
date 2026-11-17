@@ -243,8 +243,6 @@ export const FR_PATTERNS: readonly (readonly [string, string])[] = [
  // Charge-balanced circuit model; before generic ' · ' patterns.
  ['{value} K subcooled','{value} K de sous-refroidissement'],
  ['quality {value}','titre {value}'],
- ['{a} kg of {b} kg nominal · {detail}','{a} kg sur {b} kg nominal · {detail}'],
- ['{a} kg of {b} kg nominal','{a} kg sur {b} kg nominal'],
  ['high-pressure limit · {value} g in accumulator','limite haute pression · {value} g dans l’accumulateur'],
  ['{label} · SH held','{label} · surchauffe tenue'],
  ['{label} · EEV full open, SH {value} K','{label} · détendeur grand ouvert, surchauffe {value} K'],
@@ -258,6 +256,7 @@ export const FR_PATTERNS: readonly (readonly [string, string])[] = [
  ['Generic nominal: heating rating {a} kg, cooling rating {b} kg (larger governs). Not the factory charge: compressor shell, oil and outdoor-unit piping are not modelled.','Nominal générique : {a} kg au point nominal de chauffage, {b} kg au point nominal de froid (le plus grand s’applique). Pas la charge d’usine : carter du compresseur, huile et tuyauteries internes de l’unité extérieure non modélisés.'],
  ['Charge model active: {value} % of the generic nominal charge sets condensing pressure, subcooling and the EEV regime. The volumes below and each line\'s length and bores apply live; the nominal is recomputed for the installation.','Modèle de charge actif : {value} % de la charge nominale générique fixent la pression de condensation, le sous-refroidissement et le régime du détendeur. Les volumes ci-dessous ainsi que la longueur et les diamètres de chaque liaison s’appliquent en direct ; le nominal est recalculé pour l’installation.'],
  ['Compressor stopped · {what} protection','Compresseur arrêté · protection {what}'],
+ ['Stopped · {what} protection','Arrêt · protection {what}'],
  ['active {value} m · Restart','actif {value} m · Relancer'],
  ['pending: {list}','en attente : {list}'],
  ["Generic minimum command: {minimum} rps. Reference inverter slew: 2 rps/s upward, 4 rps/s downward, from rest for idealized lines; from the admitted minimum for physical lines. These are model assumptions, not measured OEM frequencies. Physical cooling retains 18 rps because its multi-branch low-flow closure is not yet qualified; inventory retains its separate legacy command.", "Commande minimale générique : {minimum} tr/s. Rampe de référence : 2 tr/s² en montée, 4 tr/s² en descente, depuis l’arrêt en liaisons idéalisées et depuis le minimum admis en liaisons physiques. Hypothèses du modèle, sans mesure constructeur. Le froid en liaisons physiques reste à 18 tr/s faute de qualification à faible débit ; l’inventaire conserve sa commande distincte."],

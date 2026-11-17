@@ -68,17 +68,22 @@ A solved regime is rejected when a released quantity crosses its bound, and the 
 
 ## Protections
 
-- **High-side flooding.** The charge exceeds what the circuit can hold below the 63 °C trip, even with the accumulator at its limit. The compressor pauses under the condensing-temperature protection and retries after the restart dwell.
-- **Refrigerant shortage.** The charge is below the inventory at the onset of condensation (condenser outlet at quality 0.999 with superheat held, or with the EEV fully open if it saturates first). No liquid reaches the EEVs, so a generic low-charge supervisor stops the compressor and retries after the minimum off time.
+- **High-side flooding.** The charge exceeds what the circuit can hold below the 63 °C trip, even with the accumulator at its limit. The compressor pauses under the condensing-temperature protection.
+  - On a cold start the decision is one bound: the most charge any controlled regime can hold, with condensing at the 58 °C ceiling, saturated suction and a full accumulator.
+  - A successful retry at the ceiling releases the latch, because 58 °C sits 1 K below the drive's 59 °C release threshold.
+- **Refrigerant shortage.** The charge is below the inventory at the onset of condensation (condenser outlet at quality 0.999 with superheat held, or with the EEV fully open if it saturates first). No liquid reaches the EEVs, so a generic low-charge supervisor stops the compressor.
+- **Retries.** Both stops are retried on the minimum off time, as a supervisor's restart attempt; the stopped circuit is not re-solved between attempts. Editing the charge retries at once.
 
 ## Numerics
 
 - **Newton.** Damped finite-difference Newton on scaled residuals, where 1 mg of inventory is comparable to 0.1 W of coil heat.
+  - Steps that exceed a per-unknown limit are scaled uniformly. Clamping components separately would change the step direction, which then need not descend at any length.
   - If a full step overshoots, a Newton step is tried from the overshoot point with that side's Jacobian before step halving. This handles the inventory slope kink where a coil outlet crosses saturation, because Zivi holdup falls steeply just inside the dome.
   - Four consecutive gains below 10 % count as stagnation.
-- **Nested fallback.** It solves the mass equation by Illinois bracketing on one pressure unknown, with the other equations solved by Newton at each trial. It is used only in the thorough pass.
+- **Nested solve.** It solves the mass equation by Illinois bracketing on one unknown, with the other equations solved by Newton at each trial. It is the first method for `condensing-limit`: with Tc held, the evaporator closure is a 1-D problem in Te that pinches sharply near the outdoor metal temperature, and mass is nearly linear in the EEV variable. Elsewhere it is a fallback in the thorough pass.
 - **Regime walk.** Pass 1 uses warm and neighbour seeds ordered by initial residual, with plain Newton. Pass 2 adds generic seeds and the nested fallback.
-- **Cold start.** Superheat inventory at the 58 °C ceiling is checked first. If it is below the charge, the solve goes straight to `condensing-limit`.
+- **Cold start.** Superheat inventory at the 58 °C ceiling is checked first. If it is below the charge, the solve goes straight to `condensing-limit`, seeded with the missing mass as parked liquid.
+- **Cost (2026-11-17, one desktop core, guarded backend).** Warm steps take tens to ~150 ms. Cold starts take 50–160 ms at the condensing limit, and a flooded start is decided in ~50 ms. A three-room cold start in heating near the superheat pinch (Te ≲ outdoor metal − SH) remains ~0.5–1.4 s.
 
 ## Qualification and limits
 

@@ -865,7 +865,7 @@ select { width: 100%; padding: 6px 8px; border: 1px solid var(--line); border-ra
 .ou-ch-title { font: 800 10.5px var(--font); letter-spacing: 0.12em; color: var(--env-tag); }
 .ou-charge > .seg.compact { align-self: stretch; }
 .ou-charge > .seg.compact .seg-btn { flex: 1 1 0; }
-.ou-charge-readout { font-variant-numeric: tabular-nums; }
+.ou-charge-readout { flex: none; font-variant-numeric: tabular-nums; }
 .ou-charge [hidden] { display: none; }
 .ou-restart-row { display: flex; align-items: center; gap: 8px; min-width: 0; }
 .ou-restart-row .rp-btn.pending { border-color: var(--warn); color: var(--warn); background: var(--notice-bg); }

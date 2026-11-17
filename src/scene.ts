@@ -299,7 +299,7 @@ const HEIGHT = { min: 2.2, max: 6, step: 0.01 } as const;
 /** Weather (unboxed, floats in the OUTDOOR zone) above the outdoor-unit card, both left of the riser corridor. */
 const OP = { x: 16, y: 34, w: 322, h: 100 } as const;
 /** The unit card is wider than the weather: the casing and its risers start at x 140 / 459, so the card has free room up to x 440. */
-const UP = { x: 16, y: 142, w: 422, h: 210 } as const;
+const UP = { x: 16, y: 142, w: 422, h: 236 } as const;
 
 /** Native HTML in a click-through foreignObject; only elements marked `.rp-ctl` (or an opted-in card) take pointer events. */
 function overlayPanel(x: number, y: number, w: number, h: number, el: HTMLElement): SVGForeignObjectElement {

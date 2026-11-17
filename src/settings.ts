@@ -587,6 +587,7 @@ function createChargeArea(): ChargeArea {
     title: 'Percentage of the generic nominal charge derived for this installation (coil and accumulator volumes, line lengths and bores). Applies live.',
   });
   const readout = html('span', { class: 'ou-rnote ou-charge-readout' });
+  const state = html('span', { class: 'ou-rnote ou-charge-readout' });
   const initial = pairField({
     label: 'Initial charge', unit: 'kg', min: 0.2, max: 3, step: 0.01, digits: 2, layout: 'line',
     get: () => live().initialChargeKg, set: (v) => store.update((s) => { s.cfg.live.initialChargeKg = v; }),
@@ -600,7 +601,7 @@ function createChargeArea(): ChargeArea {
 
   const root = html('section', { class: 'ou-charge', 'aria-label': 'Refrigerant charge' },
     html('div', { class: 'ou-ch-title' }, 'CHARGE'), model.root,
-    percent.root, readout, initial.root, restartRow);
+    percent.root, readout, state, initial.root, restartRow);
 
   return {
     root,
@@ -617,9 +618,13 @@ function createChargeArea(): ChargeArea {
       const engine = rd?.usable ? rd.engine : null, balance = engine?.chargeBalance, charge = engine?.cycle?.charge;
       const text = s.ui.experience !== 'live' ? 'Examples: charge not applied.'
         : !balanced ? (chargeBalanceQualified(cfg.live.refrigerant) ? 'Fixed 1 K subcooling ignores charge.' : `${cfg.live.refrigerant}: charge balance qualified for pure fluids only.`)
-        : balance ? `${fmt(balance.specifiedKg, 3)} kg of ${fmt(balance.nominalKg, 3)} kg nominal${charge ? ` · ${chargeRegimeText(charge)}` : ''}`
+        : balance ? `${fmt(balance.specifiedKg, 3)} kg · nominal ${fmt(balance.nominalKg, 3)} kg`
         : 'Nominal charge is computed on the next step.';
       setText(readout, text);
+      const protection = engine?.diagnostics.envelopeProtection;
+      const stateText = charge ? chargeRegimeText(charge) : balance && protection ? `Stopped · ${protection} protection` : '';
+      state.hidden = inventory || !stateText;
+      setText(state, stateText); setAttr(state, 'title', stateText);
       setAttr(readout, 'title', balance ? `Generic nominal: heating rating ${fmt(balance.heatingRatingKg, 3)} kg, cooling rating ${fmt(balance.coolingRatingKg, 3)} kg (larger governs). Not the factory charge: compressor shell, oil and outdoor-unit piping are not modelled.` : text);
       if (inventory) {
         const drafts = inv ? pendingStartValues(cfg, inv) : [];

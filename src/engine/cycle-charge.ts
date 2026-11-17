@@ -130,8 +130,9 @@ const LIQUID_PER_K = .02;
 /** Regime unknowns map to a cycle point; extra residuals encode the held controller quantity.
  * The discharge-limit EEV variable s is superheat for s>0 and parked accumulator liquid for s<0,
  * so one continuous controller opening first wets the suction, then fills the accumulator. */
-/** massUnknown: the pressure unknown whose increase stores more refrigerant (nested fallback). */
-interface RegimeDefinition { point: (x: number[]) => Point; start: (seed: Point) => number[]; steps: number[]; limits: number[]; extra: ((trial: Trial) => number) | null; massUnknown: number }
+/** massUnknown: the unknown the nested solve brackets for the mass equation. nestedFirst: the
+ * other equations do not depend on it, so the nested solve is the natural first method. */
+interface RegimeDefinition { point: (x: number[]) => Point; start: (seed: Point) => number[]; steps: number[]; limits: number[]; extra: ((trial: Trial) => number) | null; massUnknown: number; nestedFirst?: boolean }
 function regimeDefinition(regime: ChargeRegime, mode: Mode, target: number, dischargeCeilingC: number, condensingCeilingC: number): RegimeDefinition {
   const lift = MINIMUM_LIFT[mode], ceiling = (trial: Trial) => (trial.output.discharge.temperatureC - dischargeCeilingC) * DISCHARGE_SCALE;
   switch (regime) {
@@ -141,7 +142,11 @@ function regimeDefinition(regime: ChargeRegime, mode: Mode, target: number, disc
     case 'minimum-lift': return { point: ([te, sh]) => ({ te, tc: te + lift, superheatK: sh, liquidKg: 0 }), start: s => [s.te, Math.max(s.superheatK, target)], steps: [.01, .01], limits: [8, 8], extra: null, massUnknown: 0 };
     case 'condensing-limit': return {
       point: ([te, v]) => ({ te, tc: condensingCeilingC, superheatK: Math.max(v, 0), liquidKg: Math.max(-v, 0) * LIQUID_PER_K }),
-      start: s => [s.te, s.liquidKg > 0 ? -s.liquidKg / LIQUID_PER_K : Math.min(s.superheatK, target)], steps: [.01, -.01], limits: [8, 4], extra: null, massUnknown: 1 };
+      start: s => [s.te, s.liquidKg > 0 ? -s.liquidKg / LIQUID_PER_K : Math.min(s.superheatK, target)], steps: [.01, -.01], limits: [8, 4], extra: null, massUnknown: 1,
+      // With condensing held, the evaporator closure is a 1-D problem in te (independent of
+      // parked liquid), and pinches sharply near the outdoor metal temperature; coupled Newton
+      // misjudges that step. Mass is nearly linear in the EEV variable, so bracketing closes it.
+      nestedFirst: true };
     case 'discharge-limit': case 'accumulator': return {
       point: ([te, tc, v]) => ({ te, tc, superheatK: Math.max(v, 0), liquidKg: Math.max(-v, 0) * LIQUID_PER_K }),
       start: s => [s.te, s.tc, s.liquidKg > 0 ? -s.liquidKg / LIQUID_PER_K : Math.min(s.superheatK, target)], steps: [.01, .01, -.01], limits: [8, 8, 4], extra: ceiling, massUnknown: 1 };
@@ -165,6 +170,12 @@ function solveLinear(a: number[][], b: number[]): number[] | null {
  * the clamped step down to 1/256 and accepts only a decrease of the residual norm. */
 interface NewtonProblem<T> { evaluate: (x: number[]) => T; residual: (value: T) => number[]; steps: number[]; limits: number[]; tolerance: number }
 type NewtonResult<T> = { value: T; x: number[]; iterations: number } | { error: string; iterations: number; best: { value: T; x: number[] } | null };
+/** Scale a Newton step uniformly so no component exceeds its limit. Clamping components
+ * separately would change the step direction, which then need not descend at any length. */
+function limitedStep(delta: number[], limits: number[]): number[] {
+  const factor = Math.min(1, ...delta.map((d, j) => Math.abs(d) > limits[j] ? limits[j] / Math.abs(d) : 1));
+  return delta.map(d => d * factor);
+}
 /** Forward-difference Jacobian; a probe leaving the feasible domain takes the opposite side. */
 function finiteJacobian<T>(problem: NewtonProblem<T>, x: number[], r: number[]): number[][] | null {
   const jacobian: number[][] = r.map(() => Array(x.length).fill(0));
@@ -196,7 +207,7 @@ function newton<T>(problem: NewtonProblem<T>, start: number[], initial?: T): New
     if (!jacobian) return { error: 'finite-difference probe rejected on both sides', iterations, best };
     const delta = solveLinear(jacobian, r.map(v => -v));
     if (!delta) return { error: 'singular charge-balance Jacobian', iterations, best };
-    const along = (scale: number) => x.map((v, j) => v + Math.max(-problem.limits[j], Math.min(problem.limits[j], delta[j])) * scale);
+    const step = limitedStep(delta, problem.limits), along = (scale: number) => x.map((v, j) => v + step[j] * scale);
     let accepted = false, overshoot: { x: number[]; r: number[] } | null = null;
     try {
       const y = along(1), candidate = problem.evaluate(y), ry = problem.residual(candidate);
@@ -210,7 +221,7 @@ function newton<T>(problem: NewtonProblem<T>, start: number[], initial?: T): New
       const side = finiteJacobian(problem, overshoot.x, overshoot.r), ys = overshoot.x;
       const correction = side && solveLinear(side, overshoot.r.map(v => -v));
       if (correction) {
-        const y = ys.map((v, j) => v + Math.max(-problem.limits[j], Math.min(problem.limits[j], correction[j])));
+        const limited = limitedStep(correction, problem.limits), y = ys.map((v, j) => v + limited[j]);
         try { const candidate = problem.evaluate(y); if (Math.hypot(...problem.residual(candidate)) < norm) { x = y; current = candidate; accepted = true; } }
         catch (error) { lastError = error instanceof Error ? error.message : String(error); }
       }
@@ -289,6 +300,12 @@ function solveRegime(properties: Properties, config: EngineConfig, spec: ChargeB
     catch (error) { lastError = error instanceof Error ? error.message : String(error); return null; }
   }).filter((s): s is { x: number[]; value: Trial; norm: number } => s !== null).sort((a, b) => a.norm - b.norm);
   for (const start of starts) {
+    if (definition.nestedFirst) {
+      const nested = solveNested(problem, definition.massUnknown, start.x);
+      iterations += nested.iterations;
+      if (!('error' in nested)) return { trial: nested.value, iterations };
+      lastError = nested.error;
+    }
     const result = newton(problem, start.x, start.value);
     iterations += result.iterations;
     if (!('error' in result)) return { trial: result.value, iterations };
@@ -304,8 +321,10 @@ function solveRegime(properties: Properties, config: EngineConfig, spec: ChargeB
   return { error: lastError, iterations, best: best?.value ?? null };
 }
 
-/** The EEV condensing ceiling, kept inside the fluid's qualified condensing domain. */
-function condensingCeiling(properties: Properties): number { return Math.min(CONDENSING_CONTROL_C, properties.refrigerant.domain.maxCondensingC - 5.5); }
+/** The EEV condensing ceiling, kept inside the fluid's qualified condensing domain and 1 K below
+ * the drive's condensing-hold release (domain maximum − 6 K, drive.ts), so an operating point at
+ * the ceiling always releases a latched hold. */
+function condensingCeiling(properties: Properties): number { return Math.min(CONDENSING_CONTROL_C, properties.refrigerant.domain.maxCondensingC - 7); }
 /** Complementarity: each released controller quantity must stay on its feasible side.
  * A rejection names the neighbouring regime whose held quantity was violated. */
 function rejection(regime: ChargeRegime, trial: Trial, mode: Mode, target: number, dischargeCeilingC: number, condensingCeilingC: number): { reason: string; next: ChargeRegime | null } | null {
@@ -333,9 +352,20 @@ function rejection(regime: ChargeRegime, trial: Trial, mode: Mode, target: numbe
  * closure solved in te). Inventory rises with condensing temperature as liquid fills the
  * condenser, so comparing it with the specified charge locates the superheat-regime root on
  * either side of tcC without solving it. Null when the held state cannot be closed. */
-function superheatInventoryAt(properties: Properties, config: EngineConfig, spec: ChargeBalanceSpec, input: CycleInput, tcC: number, te0: number): number | null {
+function superheatInventoryAt(properties: Properties, config: EngineConfig, spec: ChargeBalanceSpec, input: CycleInput, tcC: number, te0: number): { kg: number; te: number } | null {
   const held = newton<Trial>({ evaluate: ([te]) => evaluateBalanced(properties, config, spec, input, { te, tc: tcC, superheatK: config.compressor.superheatK, liquidKg: 0 }),
     residual: trial => [trial.residual[0]], steps: [-.01], limits: [4], tolerance: config.numerics.pressureToleranceW }, [Math.min(te0, tcC - MINIMUM_LIFT[input.mode] - .5)]);
+  return 'error' in held ? null : { kg: held.value.inventory.totalKg, te: held.value.point.te };
+}
+
+/** The most refrigerant any controlled regime can hold: condensing at the EEV ceiling,
+ * saturated suction and the accumulator at its liquid limit (evaporator closure solved in te).
+ * Inventory rises with condensing temperature and parked liquid and falls with superheat, so a
+ * charge above this has no operating point in any regime. Null when it cannot be closed. */
+function maximumHeldKg(properties: Properties, config: EngineConfig, spec: ChargeBalanceSpec, input: CycleInput, ceilingC: number, te0: number): number | null {
+  const capacityKg = (te: number) => ACCUMULATOR_LIQUID_LIMIT * spec.geometry.accumulatorVolumeM3 * properties.prop('D', 'P', properties.pressureAtSaturationC(te), 'Q', 0);
+  const held = newton<Trial>({ evaluate: ([te]) => evaluateBalanced(properties, config, spec, input, { te, tc: ceilingC, superheatK: 0, liquidKg: capacityKg(te) }),
+    residual: trial => [trial.residual[0]], steps: [-.01], limits: [4], tolerance: config.numerics.pressureToleranceW }, [Math.min(te0, ceilingC - MINIMUM_LIFT[input.mode] - .5)]);
   return 'error' in held ? null : held.value.inventory.totalKg;
 }
 
@@ -355,6 +385,12 @@ export function solveChargeBalancedCycle(properties: Properties, config: EngineC
   const fallback: ChargeRegime[] = input.defrost ? ['minimum-lift', 'superheat', 'discharge-limit', 'condensing-limit', 'valve-limit'] : ['superheat', 'discharge-limit', 'condensing-limit', 'valve-limit', 'minimum-lift'];
   const canonical = (regime: ChargeRegime): ChargeRegime => regime === 'accumulator' ? 'discharge-limit' : regime;
   let notes: string[] = [], neighbour: Point | null = null, iterations = 0, floodedKg: number | null = null, bestSuperheat: Trial | null = null;
+  // Cold start: a flooded circuit is decided by one bound instead of a failed regime walk.
+  if (!previous) {
+    const ceilingC = condensingCeiling(properties), maximumKg = maximumHeldKg(properties, config, spec, input, ceilingC, source - target - 3);
+    if (maximumKg !== null && spec.massKg > maximumKg)
+      throw new ChargeProtectionError('high-side flooding', `Charge ${spec.massKg.toFixed(3)} kg exceeds the ${maximumKg.toFixed(3)} kg the circuit holds at the ${ceilingC.toFixed(0)} °C condensing ceiling with a full accumulator`);
+  }
   // Pass 1 walks the regimes with nearby seeds and plain Newton only, so a regime change costs a
   // few evaluations. Pass 2 (only if pass 1 found nothing) adds generic seeds and the nested
   // kink-robust fallback to every regime.
@@ -370,7 +406,12 @@ export function solveChargeBalancedCycle(properties: Properties, config: EngineC
       // the EEV ceiling, the superheat root lies above it; go straight to the condensing limit.
       if (regime === 'superheat' && !nearby.length && !tried.has('condensing-limit')) {
         const ceilingC = condensingCeiling(properties), held = superheatInventoryAt(properties, config, spec, input, ceilingC, source - target - 3);
-        if (held !== null && held < spec.massKg) { notes.push(`superheat: holds ${held.toFixed(3)} kg at the ${ceilingC.toFixed(0)} °C ceiling`); next = 'condensing-limit'; continue; }
+        if (held !== null && held.kg < spec.massKg) {
+          notes.push(`superheat: holds ${held.kg.toFixed(3)} kg at the ${ceilingC.toFixed(0)} °C ceiling`);
+          // The held state seeds the condensing limit: the missing mass parks as liquid.
+          neighbour = { te: held.te, tc: ceilingC, superheatK: 0, liquidKg: spec.massKg - held.kg };
+          next = 'condensing-limit'; continue;
+        }
       }
       const result = solveRegime(properties, config, spec, input, regime, nearby.length ? nearby : genericSeeds, dischargeCeilingC, thorough);
       const retry: RegimeResult | null = thorough && 'error' in result && nearby.length ? solveRegime(properties, config, spec, input, regime, genericSeeds, dischargeCeilingC, true) : null;
@@ -412,7 +453,7 @@ export function solveChargeBalancedCycle(properties: Properties, config: EngineC
   if (floodedKg !== null) throw new ChargeProtectionError('high-side flooding', `Charge ${spec.massKg.toFixed(3)} kg floods the circuit: ${floodedKg.toFixed(3)} kg would park in the accumulator`);
   const capC = Math.min(CONDENSING_PROTECTION_C, properties.refrigerant.domain.maxCondensingC - .5);
   const atCap = superheatInventoryAt(properties, config, spec, input, capC, bestSuperheat?.point.te ?? source - target - 3);
-  if (atCap !== null && atCap < spec.massKg)
+  if (atCap !== null && atCap.kg < spec.massKg)
     throw new ChargeProtectionError('high-side flooding', `Charge ${spec.massKg.toFixed(3)} kg exceeds what the circuit holds below ${capC.toFixed(0)} °C condensing`);
   throw new DomainError(`No charge-balanced operating point for ${spec.massKg.toFixed(3)} kg (${notes.join('; ')})`);
 }
