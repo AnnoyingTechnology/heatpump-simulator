@@ -1,8 +1,12 @@
 import { DomainError, Properties } from './properties.ts';
 import { transportPipe } from './transport.ts';
-import type { CycleOutput, EngineConfig, Mode, RefrigerantState } from './types.ts';
+import type { ChargeRegime, CycleOutput, EngineConfig, Mode, RefrigerantState } from './types.ts';
+import { solveChargeBalancedCycle, type ChargeBalanceSpec } from './cycle-charge.ts';
 
-export interface CycleInput { mode: Mode; indoorMetalC: number[]; outdoorMetalC: number; active: boolean[]; allocationWeights?: number[]; speedRps: number; defrost?: boolean; previous?: { evaporatingC: number; condensingC: number; condenserOutletC?: number; branchMassFlowsKgs?: number[]; pressureJacobian?: CycleOutput['pressureJacobian'] } }
+export interface CycleInput {
+  /** Resolved charge-balanced closure; omitted for the fixed-subcooling Reference. */
+  charge?: ChargeBalanceSpec;
+  mode: Mode; indoorMetalC: number[]; outdoorMetalC: number; active: boolean[]; allocationWeights?: number[]; speedRps: number; defrost?: boolean; previous?: { evaporatingC: number; condensingC: number; condenserOutletC?: number; branchMassFlowsKgs?: number[]; pressureJacobian?: CycleOutput['pressureJacobian']; superheatK?: number; chargeRegime?: ChargeRegime; accumulatorLiquidKg?: number } }
 const clamp = (x: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, x));
 const GAUSS4 = [[-.8611363115940526,.3478548451374538],[-.3399810435848563,.6521451548625461],
   [.3399810435848563,.6521451548625461],[.8611363115940526,.3478548451374538]];
@@ -149,6 +153,7 @@ export function solveCycle(properties: Properties, config: EngineConfig, input: 
   const qualification = properties.refrigerant.qualification;
   if (!qualification.reference) throw new DomainError(`${properties.fluid}: ${qualification.limitation}`);
   if (!qualification.physicalLineModes.includes(input.mode) && config.rooms.some(room => room.pipe.lengthM > 0 || room.pipe.elevationM !== 0)) throw new DomainError(`${properties.fluid} physical ${input.mode} field lines are not qualified`);
+  if (input.charge) return solveChargeBalancedCycle(properties, config, input.charge, input);
   const selected = selectCycle(properties, config, input);
   // Publication is outside every physical-regime fallback. A diagnostic flash
   // failure propagates unchanged; it cannot select another operating point.

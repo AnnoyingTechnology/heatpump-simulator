@@ -1,5 +1,6 @@
 import type { RefrigerantId } from './refrigerants.ts';
 import type { ChargeCell, ChargeGeometry, ChargeCandidate } from './charge.ts';
+import type { ChargeBalanceSetting } from './cycle-charge.ts';
 /** SI internally; C/bar/kW fields are explicit presentation conversions. No manufacturer calibration. */
 export type Mode = 'heating' | 'cooling';
 export type OperatingState = 'running' | 'idle' | 'reversing' | 'defrost' | 'draining' | 'fault';
@@ -66,6 +67,15 @@ export interface EngineConfig {
     thermostatDeadbandK: number;
     minOnSeconds: number; minOffSeconds: number; reversalSeconds: number; defrostMinHeatingSeconds: number; defrostIceThresholdKg: number; defrostMaxSeconds: number; defrostTerminationMetalC: number; drainageDwellSeconds: number; defrostSpeedRps: number };
   numerics: { maxStepSeconds: number; pressureToleranceW: number };
+  /** Optional quasi-steady charge-balanced Reference closure; replaces the fixed subcooling target.
+   * The charge is a percentage of the generic nominal inventory the engine derives for this installation. */
+  chargeBalance?: ChargeBalanceSetting;
+}
+export type ChargeRegime = 'superheat' | 'valve-limit' | 'minimum-lift' | 'discharge-limit' | 'accumulator';
+export interface ChargeBalanceDiagnostics {
+  regime: ChargeRegime; specifiedKg: number; inventoryKg: number; superheatK: number;
+  condenserSubcoolK: number; condenserOutletQuality: number | null; valveOpenings: number[]; accumulatorLiquidKg: number;
+  distribution: { outdoorCoilKg: number; accumulatorKg: number; indoorCoilsKg: number; fieldLinesKg: number };
 }
 export interface RoomState {
   /** Generic retained mist/condensate in thermal equilibrium with room gas; no wall model. */
@@ -89,6 +99,8 @@ export interface CycleOutput {
   massResidualKgs: number; closureResidualW: number; iterations: number; lineHeatToOutdoorW: number;
   pressureDropsPa: number[]; // Sum of Darcy friction contributions, excluding gravity/acceleration.
   transportMethod: string;
+  /** Present only for the charge-balanced closure. */
+  charge?: ChargeBalanceDiagnostics;
 }
 export interface RoomOutput {
   retainedWaterKg?: number; retainedIceKg?: number;
@@ -119,6 +131,8 @@ export interface EngineOutput {
   provenance: 'live-generic-unvalidated'; simulatedSeconds: number; state: OperatingState; requestedMode: Mode; effectiveMode: Mode | null;
   cycle: CycleOutput | null; rooms: RoomOutput[];
   interzoneTransfers?: InterzoneTransfer[];
+  /** Charge-balanced Reference: specified charge and the derived generic nominal for this installation. */
+  chargeBalance?: { percentOfNominal: number; specifiedKg: number; nominalKg: number; heatingRatingKg: number; coolingRatingKg: number } | null;
   inventory: {
     massKg: number; initialMassKg: number; storedInternalEnergyJ: number;
     lowLiftTransfer: boolean; compressorAdmitted: boolean; compressorMassFlowKgs: number; orientation: Mode; coilHeatW: Record<string,number>;
@@ -149,5 +163,5 @@ export interface EngineOutput {
   diagnostics: { warnings: string[]; fault: string | null; algebraicResidualW: number; speedRps: number; demandSpeedRps: number;
     /** Capacity-to-speed request before actuator min/max clipping, not an accepted compressor speed. */
     rawDemandSpeedRps: number;
-    restartDelaySeconds: number; envelopeProtection: 'pressure ratio'|'discharge temperature'|'indoor antifreeze'|'condensing temperature'|'thermal boundary'|null; filmEnergyRateW: number; metalEnergyRateW: number };
+    restartDelaySeconds: number; envelopeProtection: 'pressure ratio'|'discharge temperature'|'indoor antifreeze'|'condensing temperature'|'thermal boundary'|'refrigerant shortage'|null; filmEnergyRateW: number; metalEnergyRateW: number };
 }

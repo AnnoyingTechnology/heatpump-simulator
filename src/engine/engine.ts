@@ -1,6 +1,7 @@
 import { Properties, DomainError } from './properties.ts';
 import {estimateHeldEnvelope}from'./envelope.ts';
 import { solveCycle } from './cycle.ts';
+import { ChargeProtectionError, nominalChargeKg, type ChargeBalanceSpec } from './cycle-charge.ts';
 import { ChargeCircuit, type ChargeCandidate, type ChargeBoundary, type ChargeNumerics } from './charge.ts';
 import { driveStep, driveRatioThresholds, newDriveState, DEFAULT_INVERTER_SLEW, type DriveState } from './drive.ts';
 import { initialThermostatDemand } from './thermostat.ts';
@@ -10,7 +11,7 @@ import {interzoneHeatPowers, interzoneTransfers, validateOpeningExchange, openin
 import { ventilationExchange } from './ventilation.ts';
 import { airExchange, equilibrateExhaust, equilibrateRoomAir } from './air.ts';
 import { deriveOutdoorFilm, filmEnthalpy, FUSION_JKG, WATER_CP_JKGK, ICE_CP_JKGK } from './film.ts';
-import type { EngineConfig, EngineOutput, RoomState, RoomOutput, CycleOutput, OperatingState, Mode } from './types.ts';
+import type { EngineConfig, EngineOutput, RoomState, RoomOutput, CycleOutput, OperatingState, Mode, ChargeRegime } from './types.ts';
 
 const sum = (values: number[]) => values.reduce((a, b) => a + b, 0);
 const bounded = (x: number, low: number, high: number) => Math.max(low, Math.min(high, x));
@@ -34,7 +35,11 @@ export class HeatPumpEngine {
   private inventoryDrive: DriveState = newDriveState();
   private demandIntegralW:number[]=[];
   private inverterCycling=false;
-  private lastCycle: { evaporatingC: number; condensingC: number; condenserOutletC: number; branchMassFlowsKgs: number[]; pressureJacobian?: CycleOutput['pressureJacobian'] } | undefined;
+  private lastCycle: { evaporatingC: number; condensingC: number; condenserOutletC: number; branchMassFlowsKgs: number[]; pressureJacobian?: CycleOutput['pressureJacobian']; superheatK?: number; chargeRegime?: ChargeRegime; accumulatorLiquidKg?: number } | undefined;
+  /** Resolved charge-balanced closure and its nominal, keyed by the installation that defines it. */
+  private chargeSpec: ChargeBalanceSpec | null = null;
+  private chargeNominal: { key: string; kg: number; heatingKg: number; coolingKg: number } | null = null;
+  private chargeProtectionNote: string | null = null;
   private fault: string | null = null;
   private initialEnergy = 0;
   private initialWater = 0;
@@ -48,7 +53,7 @@ export class HeatPumpEngine {
   }
   getConfig(): EngineConfig { return structuredClone(this.config); }
   reset(config: EngineConfig = this.config): EngineOutput {
-    this.validateConfig(config); this.config = structuredClone(config);
+    this.validateConfig(config); this.resolveCharge(config); this.config = structuredClone(config);
     this.rooms = config.rooms.map(room => this.newRoom(room));
     this.outdoorWaterKg = 0; this.outdoorEnergyJ = config.outdoor.metalCapacityJK * config.outdoorTemperatureC;
     this.time = 0; this.state = 'idle'; this.stateTime = 0; this.heatingRuntime = 0; this.onTime = 0; this.offTime = Infinity;
@@ -60,7 +65,9 @@ export class HeatPumpEngine {
     this.chargeCandidate = null;
     this.inverterCycling=false;this.inventoryDrive = newDriveState();this.demandIntegralW=config.rooms.map(()=>0);
     this.boundaryWater = 0; this.initialEnergy = this.totalEnergy(); this.initialWater = this.totalWater();
-    this.warnings = ['Generic component parameters and control assumptions; not manufacturer calibrated.', 'Outdoor metal and retained water/ice share one equilibrium temperature.', 'Ice sublimation is excluded; retained ice melts or receives deposition.', 'Dirt scales air flow and air-side conductance at fixed fan command. Generic inverter indoor fans command 25–100% airflow across the thermostat band, linear air-side conductance and cubic electric power; no measured fan map.', ...(this.refrigerant ? ['Conserved R32 charge uses finite-volume refrigerant cells per coil, shared outdoor/indoor pressures and a finite accumulator restriction; internal geometry and EEV/compressor maps are generic assumptions.', 'Field lines store actual refrigerant volume but are hydraulically idealized and adiabatic; friction, ambient line heat, elevation, slip and oil are excluded in this formulation.', 'Superheat is controlled by finite EEV movement; subcooling and exchanged heat emerge from the stored charge, rather than fixed charge multipliers.', 'Generic inventory inverter displacement ramps from rest at 2 rps/s and reduces at 4 rps/s; rotor inertia and motor losses are excluded. Fixed-speed and dedicated defrost retain their separate startup policy. Pressure/temperature supervision and restart dwell override demand. Stopped discharge predictions are control estimates, not sensor states.'] : ['Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.', 'Idealized parallel indoor coils use generic demand-proportional flow for inverter operation, normalized 5% UA reserve for calling inverter branches and UA allocation for fixed-speed/defrost, and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.', 'Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states.'])];
+    this.warnings = ['Generic component parameters and control assumptions; not manufacturer calibrated.', 'Outdoor metal and retained water/ice share one equilibrium temperature.', 'Ice sublimation is excluded; retained ice melts or receives deposition.', 'Dirt scales air flow and air-side conductance at fixed fan command. Generic inverter indoor fans command 25–100% airflow across the thermostat band, linear air-side conductance and cubic electric power; no measured fan map.', ...(this.refrigerant ? ['Conserved R32 charge uses finite-volume refrigerant cells per coil, shared outdoor/indoor pressures and a finite accumulator restriction; internal geometry and EEV/compressor maps are generic assumptions.', 'Field lines store actual refrigerant volume but are hydraulically idealized and adiabatic; friction, ambient line heat, elevation, slip and oil are excluded in this formulation.', 'Superheat is controlled by finite EEV movement; subcooling and exchanged heat emerge from the stored charge, rather than fixed charge multipliers.', 'Generic inventory inverter displacement ramps from rest at 2 rps/s and reduces at 4 rps/s; rotor inertia and motor losses are excluded. Fixed-speed and dedicated defrost retain their separate startup policy. Pressure/temperature supervision and restart dwell override demand. Stopped discharge predictions are control estimates, not sensor states.'] : ['Pipe model assumes smooth copper, homogeneous two-phase flow and outdoor ambient along the whole field line; slip, fittings and oil are excluded.', 'Idealized parallel indoor coils use generic demand-proportional flow for inverter operation, normalized 5% UA reserve for calling inverter branches and UA allocation for fixed-speed/defrost, and actual branch outlets; the mixed header meets the shared outlet target. Physical field-line heating retains per-branch subcooling control.', 'Generic inverter startup, ramp, envelope supervision and restart dwell override demand; stopped forecasts are control estimates, not sensor states.']),
+      ...(config.chargeBalance ? ['Charge-balanced Reference: the specified charge, not a fixed subcooling target, sets condensing pressure; finite-UA coils, Zivi slip and physical line volumes locate it quasi-steadily. Charge moves instantly between steps: no refrigerant migration transient, oil solubility or compressor-shell holdup.',
+        'Generic EEV control holds suction superheat, opens fully when charge-starved, opens further to hold a discharge ceiling 20 K below the trip (parking excess liquid in the accumulator), and keeps the minimum-lift hold. Nominal charge is the larger generic heating/cooling rating-point inventory of this installation, not a manufacturer charge.'] : [])];
     this.lastOutput = this.makeOutput(this.passiveRoomOutputs(), null, 0, 0, 0, null, 0, 0); return this.snapshot();
   }
   /** Preserve local temperatures/RH and outdoor ice through structural edits, account inventory impulses explicitly.
@@ -68,6 +75,9 @@ export class HeatPumpEngine {
   updateConfig(config: EngineConfig): EngineOutput {
     this.validateConfig(config);
     if (JSON.stringify(config.inventory && { ...config.inventory, leak: undefined }) !== JSON.stringify(this.config.inventory && { ...this.config.inventory, leak: undefined })) throw new DomainError('Charge initialization/geometry changes require Restart');
+    // The charge-balanced closure stores no refrigerant state: a new charge or installation
+    // applies to the next quasi-steady solve, like an instantaneous recharge.
+    this.resolveCharge(config);
     const beforeEnergy = this.totalEnergy(), beforeWater = this.totalWater(), old = this.config;
     const oldIntegral=new Map(old.rooms.map((r,i)=>[r.id,this.demandIntegralW[i]??0]));
     this.demandIntegralW=config.rooms.map(r=>config.mode===old.mode&&config.control.strategy===old.control.strategy?(oldIntegral.get(r.id)??0):0);
@@ -102,6 +112,16 @@ export class HeatPumpEngine {
     this.lastOutput = this.makeOutput(this.passiveRoomOutputs(), null, 0, 0, 0, null, 0, 0); return this.snapshot();
   }
   snapshot(): EngineOutput { return structuredClone(this.lastOutput); }
+  private resolveCharge(config: EngineConfig): void {
+    const setting = config.chargeBalance;
+    if (!setting) { this.chargeSpec = null; return; }
+    // Nominal depends on the installation and component parameters, never on the requested charge or mode.
+    const key = JSON.stringify({ fluid: config.fluid, geometry: setting.geometry, compressor: config.compressor, outdoorUA: config.outdoor.refrigerantConductanceWK,
+      rooms: config.rooms.map(room => room.refrigerantConductanceWK) });
+    if (this.chargeNominal?.key !== key) this.chargeNominal = { key, ...nominalChargeKg(this.properties, config, setting.geometry) };
+    const { percentOfNominal, ...rest } = setting;
+    this.chargeSpec = { ...rest, massKg: this.chargeNominal.kg * percentOfNominal / 100 };
+  }
   step(simulatedSeconds: number): EngineOutput {
     if (!(Number.isFinite(simulatedSeconds) && simulatedSeconds >= 0 && simulatedSeconds <= 60)) throw new DomainError('step requires finite 0…60 simulated seconds; caller supplies bounded time accumulator');
     let remaining = simulatedSeconds;
@@ -153,6 +173,17 @@ export class HeatPumpEngine {
     const coverage = this.properties.refrigerant.qualification;
     if (!coverage.reference) throw new DomainError(`${config.fluid}: ${coverage.limitation}`);
     if (config.inventory && !coverage.inventory) throw new DomainError('Conserved inventory is qualified for R32 only');
+    const balance = config.chargeBalance;
+    if (balance) {
+      if (config.inventory) throw new DomainError('Charge-balanced Reference and conserved inventory are exclusive circuit models');
+      if (this.properties.refrigerant.kind !== 'pure') throw new DomainError('Charge-balanced closure is qualified for pure refrigerants only');
+      if (!(Number.isFinite(balance.percentOfNominal) && balance.percentOfNominal >= 10 && balance.percentOfNominal <= 300)) throw new DomainError('Charge must be 10–300% of nominal');
+      if (balance.geometry.rooms.length !== config.rooms.length) throw new DomainError('Charge geometry and room topology must agree');
+      const volumes = [balance.geometry.outdoorCoilVolumeM3, balance.geometry.accumulatorVolumeM3, ...balance.geometry.rooms.flatMap(r => [r.coilVolumeM3, r.gasLineVolumeM3, r.smallLineVolumeM3])];
+      if (volumes.some(v => !(Number.isFinite(v) && v >= 0)) || !(balance.geometry.outdoorCoilVolumeM3 > 0 && balance.geometry.accumulatorVolumeM3 > 0 && balance.geometry.rooms.every(r => r.coilVolumeM3 > 0))) throw new DomainError('Charge geometry volumes must be finite; coils and accumulator positive');
+      if (!(balance.valveMaxAreaM2 > 0 && balance.valveDischargeCoefficient > 0 && balance.valveDischargeCoefficient <= 1)) throw new DomainError('Generic EEV area/coefficient outside domain');
+      if (config.rooms.some(room => room.pipe.lengthM !== 0 || room.pipe.elevationM !== 0)) throw new DomainError('Charge-balanced closure stores physical line volume but requires idealized field-line transport');
+    }
     if (!coverage.physicalLineModes.includes(config.mode) && config.rooms.some(room => room.pipe.lengthM > 0 || room.pipe.elevationM !== 0)) throw new DomainError(`${config.fluid} physical ${config.mode} field lines are not qualified`);
     const roomIds = new Set(config.rooms.map(room => room.id)), linkedPairs = new Set<string>();
     if (config.interzoneLinks !== undefined && !Array.isArray(config.interzoneLinks)) throw new DomainError('Interzone links must be an array');
@@ -322,9 +353,16 @@ export class HeatPumpEngine {
       const conventional=config.control.strategy==='on-off';
       const referenceMinimum = defrost ? config.control.defrostSpeedRps : conventional ? config.control.fixedSpeedRps??40 : config.compressor.speedMinRps;
       const allocationWeights=!conventional&&!defrost?inverterAllocationWeights(config,this.active,demand.heatW):undefined;
-      const proposal = (rps: number) => solveCycle(this.properties, config, { mode: effectiveMode!,
-        indoorMetalC: this.rooms.map(room => room.metalTemperatureC), outdoorMetalC: before.temperatureC,
-        active: this.active, allocationWeights, speedRps: rps, defrost, previous: this.lastCycle });
+      // Charge-balanced protection is a generic supervisor stop, not a solver fault: the
+      // specified charge has no operating point inside the condensing/accumulator limits.
+      let chargeProtection: ChargeProtectionError | null = null;
+      const proposal = (rps: number): CycleOutput | null => {
+        try { return solveCycle(this.properties, config, { mode: effectiveMode!, charge: this.chargeSpec ?? undefined,
+          indoorMetalC: this.rooms.map(room => room.metalTemperatureC), outdoorMetalC: before.temperatureC,
+          active: this.active, allocationWeights, speedRps: rps, defrost, previous: this.lastCycle }); }
+        catch (error) { if (error instanceof ChargeProtectionError) { chargeProtection = error; return null; } throw error; }
+      };
+      const chargeNote = () => chargeProtection ? (chargeProtection as ChargeProtectionError).message : null;
       // Reference pressures are quasi-steady, not stored stopped sensor states.
       // Predict a restart at minimum speed from the current thermal boundaries;
       // a stale hot discharge would otherwise keep its protection latched forever.
@@ -372,17 +410,25 @@ export class HeatPumpEngine {
       }
       if (effectiveMode && speed > 0) {
         cycle = forecast && speed === referenceMinimum ? forecast : proposal(speed);
+        if (!cycle) {
+          // Flooding latches the condensing hold; a shortage stop retries after the minimum off time.
+          const shortage = (chargeProtection as ChargeProtectionError | null)?.protection === 'refrigerant shortage';
+          this.inventoryDrive = { ...this.inventoryDrive, speedRps: 0, startupSeconds: 0, offSeconds: dt,
+            ...(shortage ? { protection: 'refrigerant shortage' as const } : { condensingHold: true, protection: 'condensing temperature' as const }) };
+          speed = 0; this.lastCycle = undefined; this.chargeProtectionNote = chargeNote();
+        }
         // Only an independently closed, in-domain cycle is envelope evidence.
         // Solver failures propagate; no arbitrary lower-speed retry hides them.
-        if (cycle.discharge.temperatureC >= config.compressor.maxDischargeC - 10 ||
+        else if (cycle.discharge.temperatureC >= config.compressor.maxDischargeC - 10 ||
           cycle.highPressureBarAbs / cycle.lowPressureBarAbs >= driveRatioThresholds(config.compressor.maxPressureRatio).stop||cycle.condensingC>=63) {
           this.inventoryDrive = { ...this.inventoryDrive,speedRps: 0, startupSeconds: 0, offSeconds: dt,
             dischargeHold:cycle.discharge.temperatureC>=config.compressor.maxDischargeC-10,pressureHold:cycle.highPressureBarAbs/cycle.lowPressureBarAbs>=driveRatioThresholds(config.compressor.maxPressureRatio).stop,condensingHold:cycle.condensingC>=63,
             protection:cycle.discharge.temperatureC>=config.compressor.maxDischargeC-10?'discharge temperature':cycle.condensingC>=63?'condensing temperature':'pressure ratio' };
           speed = 0; cycle = null; this.lastCycle = undefined;
-        } else this.lastCycle = { evaporatingC: cycle.evaporatingC, condensingC: cycle.condensingC,
+        } else { this.chargeProtectionNote = null; this.lastCycle = { evaporatingC: cycle.evaporatingC, condensingC: cycle.condensingC,
           condenserOutletC: cycle.condenserOutlet.temperatureC, branchMassFlowsKgs: cycle.branchMassFlowsKgs,
-          pressureJacobian: cycle.pressureJacobian };
+          pressureJacobian: cycle.pressureJacobian, superheatK: cycle.charge?.superheatK, chargeRegime: cycle.charge?.regime,
+          accumulatorLiquidKg: cycle.charge?.accumulatorLiquidKg }; }
       }
     }
     // A prospective ordinary cooling interval may not cross the declared
@@ -542,6 +588,8 @@ export class HeatPumpEngine {
     const electrical = { compressorW: comp, indoorFansW, outdoorFanW, controlsW: this.config.control.controlsW, totalW: comp + indoorFansW + outdoorFanW + this.config.control.controlsW, driveLossW: compressorWorkW === undefined ? cycle?.driveLossW ?? 0 : comp - compressorWorkW };
     return { provenance: 'live-generic-unvalidated', simulatedSeconds: this.time, state: this.state, requestedMode: this.config.mode, effectiveMode, cycle, rooms,
       interzoneTransfers: interzoneTransfers(this.config, rooms.map(room => room.temperatureC)),
+      chargeBalance: this.chargeSpec && this.chargeNominal && this.config.chargeBalance ? { percentOfNominal: this.config.chargeBalance.percentOfNominal, specifiedKg: this.chargeSpec.massKg,
+        nominalKg: this.chargeNominal.kg, heatingRatingKg: this.chargeNominal.heatingKg, coolingRatingKg: this.chargeNominal.coolingKg } : null,
       inventory,
       outdoor: { ...film, metalTemperatureC: film.temperatureC, filmEnthalpyJ: filmEnthalpy(this.outdoorEnergyJ, film.temperatureC, this.config.outdoor.metalCapacityJK), filmMassKg: this.outdoorWaterKg,
         airOutletC: outdoorOutlet, fanPowerW: outdoorFanW, depositionKgs, drainageKgs, meltPowerW }, electrical,
@@ -555,7 +603,7 @@ export class HeatPumpEngine {
           ? 'Interzone openings use a buoyancy-informed sensible equivalent with reference air density 1.2 kg/m³ and cp 1006 J/(kg K); no inter-room air/water transport or resolved stratification.'
           : 'Interzone links exchange sensible heat through prescribed conductance; they do not transport air/water or resolve buoyancy.'] : []),
         ...(this.config.rooms.some(room => (room.internalGainW ?? 0) > 0) ? ['Internal gains are prescribed sensible heat supplied to room air, separate from HVAC output and COP.'] : []),
-        ...(this.chargeCandidate?.diagnostics ?? []), ...(this.inventoryDrive.protection&&demandSpeedRps>0?[`Generic compressor protection hold: ${this.inventoryDrive.protection}.`]:[]), ...(this.refrigerant && !cycle && speedRps > 0 ? ['No complete forward circulation summary: inspect physical face flows and stored refrigerant energy.'] : [])])], fault: this.fault, algebraicResidualW: cycle?.closureResidualW ?? 0, speedRps, demandSpeedRps, rawDemandSpeedRps,
+        ...(this.chargeCandidate?.diagnostics ?? []), ...(this.inventoryDrive.protection&&demandSpeedRps>0?[`Generic compressor protection hold: ${this.inventoryDrive.protection}.`]:[]), ...(this.inventoryDrive.protection&&this.chargeProtectionNote?[this.chargeProtectionNote]:[]), ...(this.refrigerant && !cycle && speedRps > 0 ? ['No complete forward circulation summary: inspect physical face flows and stored refrigerant energy.'] : [])])], fault: this.fault, algebraicResidualW: cycle?.closureResidualW ?? 0, speedRps, demandSpeedRps, rawDemandSpeedRps,
         restartDelaySeconds:demandSpeedRps>0&&speedRps===0?Math.max(0,this.config.control.minOffSeconds-this.inventoryDrive.offSeconds):0,
         envelopeProtection:this.inventoryDrive.protection, filmEnergyRateW, metalEnergyRateW } };
   }

@@ -3,7 +3,7 @@
 export interface DriveState {
   antifreezeHold?: boolean; dischargeHold?:boolean; pressureHold?:boolean; condensingHold?:boolean; thermalBoundaryHold?:boolean;
   speedRps: number; startupSeconds: number; offSeconds: number;
-  protection: 'pressure ratio' | 'discharge temperature' | 'indoor antifreeze' | 'condensing temperature' | 'thermal boundary' | null;
+  protection: 'pressure ratio' | 'discharge temperature' | 'indoor antifreeze' | 'condensing temperature' | 'thermal boundary' | 'refrigerant shortage' | null;
 }
 export interface DriveInput {
   demandRps: number; minimumRps: number; maximumRps: number;

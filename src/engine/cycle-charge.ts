@@ -1,0 +1,344 @@
+import { DomainError, Properties } from './properties.ts';
+import { coilOutletH, solveCycle } from './cycle.ts';
+import type { CycleInput } from './cycle.ts';
+import { circuitInventory, type BalanceGeometry, type InventoryBreakdown } from './charge-balance.ts';
+import type { ChargeBalanceDiagnostics, ChargeRegime, CycleOutput, EngineConfig, Mode, RefrigerantState } from './types.ts';
+
+/** Quasi-steady charge-balanced closure for idealized (allocated) branches.
+ *
+ * The specified refrigerant mass replaces the fixed condenser-subcooling target:
+ * subcooling, condensing pressure and the EEV inlet phase follow from where the
+ * charge resides. A generic EEV controller selects one regime by complementarity:
+ *  - superheat: suction superheat on target (normal charge);
+ *  - valve-limit: a branch EEV fully open, superheat above target (charge-starved);
+ *  - minimum-lift: the existing positive lift hold (heating 1 K, cooling/defrost 8 K);
+ *  - discharge-limit: the EEV opens to hold a discharge-temperature ceiling, lowering superheat;
+ *  - accumulator: at zero superheat, excess liquid parks in the suction accumulator.
+ * Refrigerant transients, oil solubility and the compressor shell are not modelled. */
+export interface ChargeBalanceSetting {
+  /** Specified charge as a percentage of the derived generic nominal inventory. */
+  percentOfNominal: number;
+  geometry: BalanceGeometry;
+  /** Generic per-branch EEV full-open area and orifice coefficient, not OEM data. */
+  valveMaxAreaM2: number;
+  valveDischargeCoefficient: number;
+}
+/** A setting resolved to an absolute refrigerant mass for one solve. */
+export interface ChargeBalanceSpec extends Omit<ChargeBalanceSetting, 'percentOfNominal'> { massKg: number }
+const MINIMUM_LIFT: Record<Mode, number> = { heating: 1, cooling: 8 };
+/** Declared generic EEV discharge-temperature override, below the 10 K protection band. */
+export const DISCHARGE_CONTROL_MARGIN_K = 20;
+/** The accumulator stops accepting parked liquid before its outlet would pick up liquid. */
+export const ACCUMULATOR_LIQUID_LIMIT = .9;
+/** Engine condensing-temperature protection threshold (engine.ts trips at 63 °C). */
+export const CONDENSING_PROTECTION_C = 63;
+/** Residual scales so every equation's tolerance is comparable to 0.1 W of coil heat:
+ * 1 mg of inventory, 1e-6 of valve opening, 1 mK of discharge temperature. */
+const MASS_SCALE = 1e5, VALVE_SCALE = 1e5, DISCHARGE_SCALE = 100;
+
+export class ChargeProtectionError extends DomainError {
+  constructor(readonly protection: 'high-side flooding' | 'refrigerant shortage', message: string) { super(message); this.name = 'ChargeProtectionError'; }
+}
+
+interface Point { te: number; tc: number; superheatK: number; liquidKg: number }
+interface Trial { residual: number[]; output: CycleOutput; inventory: InventoryBreakdown; openings: number[]; point: Point }
+
+/** Single-phase orifice law applied with the homogeneous EEV inlet density.
+ * Declared generic capacity: no metastable flashing or choking correlation. */
+export function valveCapacityKgs(inlet: RefrigerantState, downstreamPa: number, area: number, coefficient: number): number {
+  const drop = inlet.pPa - downstreamPa;
+  if (!(drop > 0)) throw new DomainError('EEV has no positive pressure drop');
+  return coefficient * area * Math.sqrt(2 * inlet.densityKgm3 * drop);
+}
+
+export function evaluateBalanced(properties: Properties, config: EngineConfig, spec: ChargeBalanceSpec, input: CycleInput, point: Point): Trial {
+  const { te, tc, superheatK, liquidKg } = point;
+  const heating = input.mode === 'heating', compressor = config.compressor, domain = properties.refrigerant.domain;
+  const active = input.active.flatMap((on, i) => on ? [i] : []);
+  if (!(te > domain.minEvaporatingC && te < domain.maxEvaporatingC && tc < domain.maxCondensingC && tc > domain.minCondensingC && tc > te && superheatK >= 0 && liquidKg >= 0)) throw new DomainError('Charge-balanced trial outside saturation domain');
+  const pL = properties.pressureAtSaturationC(te), pH = properties.pressureAtSaturationC(tc, 'bubble');
+  // Zero superheat is the saturated-vapour accumulator outlet, not an extrapolated PT state.
+  const suction = properties.ph(pL, superheatK === 0 ? properties.saturation(pL).vaporH : properties.equilibriumH(pL, te + superheatK));
+  const flow = suction.densityKgm3 * compressor.displacementM3rev * input.speedRps * compressor.volumetricEfficiency;
+  const isentropic = properties.prop('H', 'P', pH, 'S', suction.entropyJkgK);
+  const discharge = properties.ph(pH, suction.hJkg + (isentropic - suction.hJkg) / compressor.isentropicEfficiency);
+  const weight = (i: number) => input.allocationWeights?.[i] ?? config.rooms[i].refrigerantConductanceWK;
+  const totalWeight = active.reduce((sum, i) => sum + weight(i), 0);
+  if (!(totalWeight > 0) || active.some(i => !(weight(i) > 0 && Number.isFinite(weight(i))))) throw new DomainError('Invalid generic branch allocation weight');
+  const flows = config.rooms.map((_, i) => input.active[i] ? flow * weight(i) / totalWeight : 0);
+  const inlets: RefrigerantState[] = [], outlets: RefrigerantState[] = [], heat = config.rooms.map(() => 0);
+  const valveInlets: (RefrigerantState | null)[] = config.rooms.map(() => null), valveOutlets: (RefrigerantState | null)[] = config.rooms.map(() => null);
+  let condenserOutlet: RefrigerantState, expansionOutlet: RefrigerantState, evaporatorOutletH: number, mixedH = 0;
+  if (heating) {
+    for (let i = 0; i < config.rooms.length; i++) {
+      if (!input.active[i]) { inlets.push(discharge); outlets.push(discharge); continue; }
+      const outlet = properties.ph(pH, coilOutletH(properties, pH, discharge.hJkg, flows[i], config.rooms[i].refrigerantConductanceWK, input.indoorMetalC[i], true));
+      inlets.push(discharge); outlets.push(outlet); heat[i] = flows[i] * (discharge.hJkg - outlet.hJkg); mixedH += flows[i] * outlet.hJkg;
+      valveInlets[i] = outlet; valveOutlets[i] = properties.ph(pL, outlet.hJkg);
+    }
+    mixedH /= flow;
+    condenserOutlet = properties.ph(pH, mixedH);
+    if (condenserOutlet.phase === 'vapor') throw new DomainError('Charge-balanced heating header is not condensed');
+    expansionOutlet = properties.ph(pL, mixedH);
+    evaporatorOutletH = coilOutletH(properties, pL, mixedH, flow, config.outdoor.refrigerantConductanceWK, input.outdoorMetalC, false);
+  } else {
+    condenserOutlet = properties.ph(pH, coilOutletH(properties, pH, discharge.hJkg, flow, config.outdoor.refrigerantConductanceWK, input.outdoorMetalC, true));
+    if (condenserOutlet.phase === 'vapor') throw new DomainError('Charge-balanced outdoor condenser outlet is not condensed');
+    expansionOutlet = properties.ph(pL, condenserOutlet.hJkg);
+    for (let i = 0; i < config.rooms.length; i++) {
+      if (!input.active[i]) { inlets.push(expansionOutlet); outlets.push(suction); continue; }
+      const outlet = properties.ph(pL, coilOutletH(properties, pL, expansionOutlet.hJkg, flows[i], config.rooms[i].refrigerantConductanceWK, input.indoorMetalC[i], false));
+      inlets.push(expansionOutlet); outlets.push(outlet); heat[i] = flows[i] * (expansionOutlet.hJkg - outlet.hJkg); mixedH += flows[i] * outlet.hJkg;
+      valveInlets[i] = condenserOutlet; valveOutlets[i] = expansionOutlet;
+    }
+    evaporatorOutletH = mixedH / flow;
+  }
+  // Publish the actual mixed evaporator stream at the compressor (as the fixed-SC Reference
+  // does), so condenser, evaporator and compressor energies close algebraically at any trial.
+  let compressorInlet = suction, compressorOutlet = discharge;
+  if (!heating) {
+    compressorInlet = properties.ph(pL, evaporatorOutletH);
+    if (compressorInlet.phase === 'liquid') throw new DomainError('Charge-balanced cooling return is liquid');
+    compressorOutlet = properties.ph(pH, compressorInlet.hJkg + (properties.prop('H', 'P', pH, 'S', compressorInlet.entropyJkgK) - compressorInlet.hJkg) / compressor.isentropicEfficiency);
+  }
+  const openings = config.rooms.map((_, i) => input.active[i] ? flows[i] / valveCapacityKgs(valveInlets[i]!, pL, spec.valveMaxAreaM2, spec.valveDischargeCoefficient) : 0);
+  const outdoorIn = heating ? expansionOutlet : compressorOutlet, outdoorOut = heating ? suction : condenserOutlet;
+  const outdoorHeat = flow * (outdoorIn.hJkg - outdoorOut.hJkg), work = flow * (compressorOutlet.hJkg - compressorInlet.hJkg), electric = work / compressor.driveEfficiency;
+  const roomHeat = heat.reduce((a, b) => a + b, 0);
+  const output: CycleOutput = { mode: input.mode, evaporatingC: te, condensingC: tc, lowPressureBarAbs: pL / 1e5, highPressureBarAbs: pH / 1e5,
+    suction: compressorInlet, discharge: compressorOutlet, condenserOutlet, expansionOutlet, totalMassFlowKgs: flow, branchMassFlowsKgs: flows, branchCoilHeatW: heat,
+    outdoorCoilHeatW: outdoorHeat, branchInlets: inlets, branchOutlets: outlets, branchValveInlets: valveInlets, branchValveOutlets: valveOutlets,
+    condenserHeatW: heating ? roomHeat : outdoorHeat, evaporatorHeatW: heating ? -outdoorHeat : -roomHeat,
+    compressorWorkW: work, compressorElectricalW: electric, driveLossW: electric - work, massResidualKgs: 0, closureResidualW: 0, iterations: 0,
+    lineHeatToOutdoorW: 0, pressureDropsPa: config.rooms.map(() => 0),
+    transportMethod: 'Idealized field transport; physical line volumes hold refrigerant (charge-balanced closure)' };
+  const inventory = circuitInventory(properties, config, spec.geometry, output, { active: input.active, indoorMetalC: input.indoorMetalC, outdoorMetalC: input.outdoorMetalC }, liquidKg,
+    heating ? { inletH: expansionOutlet.hJkg, outletH: evaporatorOutletH } : { inletH: discharge.hJkg, outletH: condenserOutlet.hJkg });
+  // Steady evaporator: its outlet stream is the compressor suction stream; parked
+  // accumulator liquid exchanges no flow, so a saturated outlet must also be dry.
+  const residual = [flow * (evaporatorOutletH - suction.hJkg), (inventory.totalKg - spec.massKg) * MASS_SCALE];
+  return { residual, output, inventory, openings, point };
+}
+
+/** Parked liquid per kelvin of the continued EEV variable below zero superheat. */
+const LIQUID_PER_K = .02;
+/** Regime unknowns map to a cycle point; extra residuals encode the held controller quantity.
+ * The discharge-limit EEV variable s is superheat for s>0 and parked accumulator liquid for s<0,
+ * so one continuous controller opening first wets the suction, then fills the accumulator. */
+interface RegimeDefinition { point: (x: number[]) => Point; start: (seed: Point) => number[]; steps: number[]; limits: number[]; extra: ((trial: Trial) => number) | null }
+function regimeDefinition(regime: ChargeRegime, mode: Mode, target: number, dischargeCeilingC: number): RegimeDefinition {
+  const lift = MINIMUM_LIFT[mode], ceiling = (trial: Trial) => (trial.output.discharge.temperatureC - dischargeCeilingC) * DISCHARGE_SCALE;
+  switch (regime) {
+    case 'superheat': return { point: ([te, tc]) => ({ te, tc, superheatK: target, liquidKg: 0 }), start: s => [s.te, s.tc], steps: [.01, .01], limits: [8, 8], extra: null };
+    case 'valve-limit': return { point: ([te, tc, sh]) => ({ te, tc, superheatK: sh, liquidKg: 0 }), start: s => [s.te, s.tc, Math.max(s.superheatK, target)], steps: [.01, .01, .01], limits: [8, 8, 8],
+      extra: trial => (Math.max(...trial.openings) - 1) * VALVE_SCALE };
+    case 'minimum-lift': return { point: ([te, sh]) => ({ te, tc: te + lift, superheatK: sh, liquidKg: 0 }), start: s => [s.te, Math.max(s.superheatK, target)], steps: [.01, .01], limits: [8, 8], extra: null };
+    case 'discharge-limit': case 'accumulator': return {
+      point: ([te, tc, v]) => ({ te, tc, superheatK: Math.max(v, 0), liquidKg: Math.max(-v, 0) * LIQUID_PER_K }),
+      start: s => [s.te, s.tc, s.liquidKg > 0 ? -s.liquidKg / LIQUID_PER_K : Math.min(s.superheatK, target)], steps: [.01, .01, -.01], limits: [8, 8, 4], extra: ceiling };
+  }
+}
+function solveLinear(a: number[][], b: number[]): number[] | null {
+  const n = b.length, m = a.map((row, i) => [...row, b[i]]);
+  for (let c = 0; c < n; c++) {
+    let pivot = c; for (let r = c + 1; r < n; r++) if (Math.abs(m[r][c]) > Math.abs(m[pivot][c])) pivot = r;
+    if (!(Math.abs(m[pivot][c]) > 1e-12)) return null;
+    [m[c], m[pivot]] = [m[pivot], m[c]];
+    for (let r = c + 1; r < n; r++) { const f = m[r][c] / m[c][c]; for (let k = c; k <= n; k++) m[r][k] -= f * m[c][k]; }
+  }
+  const x = Array(n).fill(0);
+  for (let r = n - 1; r >= 0; r--) { let s = m[r][n]; for (let k = r + 1; k < n; k++) s -= m[r][k] * x[k]; x[r] = s / m[r][r]; }
+  return x.every(Number.isFinite) ? x : null;
+}
+
+/** Damped finite-difference Newton on scaled residuals (every |r_i| <= tolerance at a root).
+ * Probes take the opposite side when one leaves the feasible domain; the line search halves
+ * the clamped step down to 1/256 and accepts only a decrease of the residual norm. */
+interface NewtonProblem<T> { evaluate: (x: number[]) => T; residual: (value: T) => number[]; steps: number[]; limits: number[]; tolerance: number }
+type NewtonResult<T> = { value: T; iterations: number } | { error: string; iterations: number; best: T | null };
+function newton<T>(problem: NewtonProblem<T>, start: number[]): NewtonResult<T> {
+  let x = start, current: T, iterations = 0, best: { value: T; norm: number } | null = null, lastError = '';
+  try { current = problem.evaluate(x); } catch (error) { return { error: error instanceof Error ? error.message : String(error), iterations, best: null }; }
+  for (let k = 0; k < 40; k++) {
+    iterations++;
+    const r = problem.residual(current), norm = Math.hypot(...r);
+    if (!best || norm < best.norm) best = { value: current, norm };
+    if (r.every(v => Math.abs(v) <= problem.tolerance)) return { value: current, iterations };
+    const jacobian: number[][] = r.map(() => Array(x.length).fill(0));
+    for (let j = 0; j < x.length; j++) {
+      let probe: number[] | null = null, step = problem.steps[j];
+      for (const sign of [1, -1]) {
+        const y = [...x]; y[j] += sign * problem.steps[j];
+        try { probe = problem.residual(problem.evaluate(y)); step = sign * problem.steps[j]; break; } catch { probe = null; }
+      }
+      if (!probe) return { error: 'finite-difference probe rejected on both sides', iterations, best: best.value };
+      for (let i = 0; i < r.length; i++) jacobian[i][j] = (probe[i] - r[i]) / step;
+    }
+    const delta = solveLinear(jacobian, r.map(v => -v));
+    if (!delta) return { error: 'singular charge-balance Jacobian', iterations, best: best.value };
+    let accepted = false;
+    for (let scale = 1; scale >= 1 / 256; scale /= 2) {
+      const y = x.map((v, j) => v + Math.max(-problem.limits[j], Math.min(problem.limits[j], delta[j])) * scale);
+      try { const candidate = problem.evaluate(y); if (Math.hypot(...problem.residual(candidate)) < norm) { x = y; current = candidate; accepted = true; break; } }
+      catch (error) { lastError = error instanceof Error ? error.message : String(error); }
+    }
+    if (!accepted) return { error: `line search stalled at residual ${norm.toFixed(3)}${lastError ? ` (${lastError})` : ''}`, iterations, best: best.value };
+  }
+  return { error: 'iteration limit', iterations, best: best?.value ?? null };
+}
+
+type RegimeResult = { trial: Trial; iterations: number } | { error: string; iterations: number; best: Trial | null };
+function solveRegime(properties: Properties, config: EngineConfig, spec: ChargeBalanceSpec, input: CycleInput, regime: ChargeRegime, seeds: Point[], dischargeCeilingC: number): RegimeResult {
+  const definition = regimeDefinition(regime, input.mode, config.compressor.superheatK, dischargeCeilingC);
+  const problem: NewtonProblem<Trial> = { evaluate: x => evaluateBalanced(properties, config, spec, input, definition.point(x)),
+    residual: trial => definition.extra ? [...trial.residual, definition.extra(trial)] : trial.residual,
+    steps: definition.steps, limits: definition.limits, tolerance: config.numerics.pressureToleranceW };
+  let iterations = 0, lastError = 'no seed evaluated', best: Trial | null = null, bestNorm = Infinity;
+  for (const seed of seeds) {
+    const result = newton(problem, definition.start(seed));
+    iterations += result.iterations;
+    if (!('error' in result)) return { trial: result.value, iterations };
+    lastError = result.error;
+    if (result.best) { const norm = Math.hypot(...problem.residual(result.best)); if (norm < bestNorm) { best = result.best; bestNorm = norm; } }
+  }
+  return { error: lastError, iterations, best };
+}
+
+/** Complementarity: each released controller quantity must stay on its feasible side.
+ * A rejection names the neighbouring regime whose held quantity was violated. */
+function rejection(regime: ChargeRegime, trial: Trial, mode: Mode, target: number, dischargeCeilingC: number): { reason: string; next: ChargeRegime | null } | null {
+  const opening = Math.max(...trial.openings), { superheatK, liquidKg, te, tc } = trial.point, tol = 1e-6;
+  const suction = trial.output.suction, held = regime === 'discharge-limit' || regime === 'accumulator';
+  // At zero superheat the published cooling return is the actual mixed stream, which matches
+  // the saturated target only within the 0.1 W evaporator tolerance (quality within ~1e-4).
+  if (!(suction.phase === 'vapor' || (held && (suction.qualityMass ?? 0) >= 1 - 1e-3)) || !(trial.output.compressorWorkW > 0)) return { reason: 'suction not dry vapour', next: null };
+  if (regime !== 'valve-limit' && opening > 1 + tol) return { reason: `EEV demand ${(opening * 100).toFixed(1)}% exceeds full opening`, next: 'valve-limit' };
+  if (regime !== 'minimum-lift' && tc - te < MINIMUM_LIFT[mode] - tol) return { reason: `lift ${(tc - te).toFixed(3)} K below minimum`, next: 'minimum-lift' };
+  // A fully open EEV can no longer lower discharge temperature: in valve-limit it is free and
+  // only the compressor's own discharge protection (engine) applies.
+  if (!held && regime !== 'valve-limit' && trial.output.discharge.temperatureC > dischargeCeilingC + 1e-3) return { reason: `discharge ${trial.output.discharge.temperatureC.toFixed(2)} °C above EEV ceiling`, next: 'discharge-limit' };
+  if ((regime === 'valve-limit' || regime === 'minimum-lift') && superheatK < target - tol) return { reason: `superheat ${superheatK.toFixed(3)} K below target`, next: 'superheat' };
+  if (held && liquidKg === 0 && superheatK > target + tol) return { reason: `superheat ${superheatK.toFixed(3)} K above target`, next: 'superheat' };
+  return null;
+}
+
+/** High-side flooding test: at the condensing protection threshold with the superheat
+ * target held, the circuit still stores less than the specified charge. Inventory rises
+ * with condensing temperature as liquid fills the condenser, so the actual state lies
+ * beyond the threshold and the generic high-pressure protection must stop the compressor. */
+function floodsHighSide(properties: Properties, config: EngineConfig, spec: ChargeBalanceSpec, input: CycleInput, capC: number, te0: number): boolean {
+  let te = te0, last = NaN;
+  for (let k = 0; k < 30; k++) {
+    let trial: Trial, probe: Trial;
+    try { trial = evaluateBalanced(properties, config, spec, input, { te, tc: capC, superheatK: config.compressor.superheatK, liquidKg: 0 });
+      probe = evaluateBalanced(properties, config, spec, input, { te: te - .01, tc: capC, superheatK: config.compressor.superheatK, liquidKg: 0 }); }
+    catch { return false; }
+    const r = trial.residual[0];
+    if (Math.abs(r) <= config.numerics.pressureToleranceW) return trial.inventory.totalKg < spec.massKg;
+    const slope = (r - probe.residual[0]) / .01; if (!(Math.abs(slope) > 0)) return false;
+    last = te; te -= Math.max(-4, Math.min(4, r / slope));
+    if (Math.abs(te - last) < 1e-9) return false;
+  }
+  return false;
+}
+
+export function solveChargeBalancedCycle(properties: Properties, config: EngineConfig, spec: ChargeBalanceSpec, input: CycleInput): CycleOutput {
+  if (properties.refrigerant.kind !== 'pure') throw new DomainError('Charge-balanced closure is qualified for pure refrigerants only');
+  if (input.active.some((on, i) => on && (config.rooms[i].pipe.lengthM !== 0 || config.rooms[i].pipe.elevationM !== 0))) throw new DomainError('Charge-balanced closure currently requires idealized field-line transport');
+  if (!input.active.some(Boolean) || !(input.speedRps > 0)) throw new DomainError('No active refrigerant circuit');
+  if (!(spec.massKg > 0 && Number.isFinite(spec.massKg))) throw new DomainError('Specified refrigerant charge must be positive');
+  const heating = input.mode === 'heating', target = config.compressor.superheatK, lift = MINIMUM_LIFT[input.mode];
+  const dischargeCeilingC = config.compressor.maxDischargeC - DISCHARGE_CONTROL_MARGIN_K;
+  const activeMetals = input.indoorMetalC.filter((_, i) => input.active[i]);
+  const source = heating ? input.outdoorMetalC : Math.max(...activeMetals), sink = heating ? Math.min(...activeMetals) : input.outdoorMetalC;
+  const previous = input.previous;
+  const generic = (depth: number, rise: number): Point => ({ te: source - target - depth, tc: Math.max(sink + rise, source - target - depth + lift + .5), superheatK: target, liquidKg: 0 });
+  const genericSeeds: Point[] = [generic(3, 6), generic(8, 12), generic(1, 2), generic(15, 20)];
+  const warm: Point | null = previous ? { te: previous.evaporatingC, tc: previous.condensingC, superheatK: previous.superheatK ?? target, liquidKg: previous.accumulatorLiquidKg ?? 0 } : null;
+  const fallback: ChargeRegime[] = input.defrost ? ['minimum-lift', 'superheat', 'discharge-limit', 'valve-limit'] : ['superheat', 'discharge-limit', 'valve-limit', 'minimum-lift'];
+  const canonical = (regime: ChargeRegime): ChargeRegime => regime === 'accumulator' ? 'discharge-limit' : regime;
+  const tried = new Set<ChargeRegime>(), notes: string[] = [];
+  let next: ChargeRegime | null = previous?.chargeRegime ? canonical(previous.chargeRegime) : fallback[0];
+  let neighbour: Point | null = null, iterations = 0, floodedKg: number | null = null, bestSuperheat: Trial | null = null;
+  while (next) {
+    const regime: ChargeRegime = next; tried.add(regime);
+    // Warm and neighbour seeds first; generic seeds only when no nearby state exists.
+    const nearby: Point[] = [neighbour, warm].filter((s): s is Point => !!s);
+    const result = solveRegime(properties, config, spec, input, regime, nearby.length ? nearby : genericSeeds, dischargeCeilingC);
+    const retry: RegimeResult | null = 'error' in result && nearby.length ? solveRegime(properties, config, spec, input, regime, genericSeeds, dischargeCeilingC) : null;
+    const final: RegimeResult = retry && !('error' in retry) ? retry : result;
+    iterations += result.iterations + (retry?.iterations ?? 0);
+    let hint: ChargeRegime | null = null;
+    if ('error' in final) {
+      notes.push(`${regime}: ${final.error}`);
+      if (regime === 'superheat') bestSuperheat = final.best;
+    } else {
+      const verdict = rejection(regime, final.trial, input.mode, target, dischargeCeilingC);
+      const { output, inventory, openings, point }: Trial = final.trial;
+      const capacityKg = ACCUMULATOR_LIQUID_LIMIT * spec.geometry.accumulatorVolumeM3 * properties.prop('D', 'P', output.lowPressureBarAbs * 1e5, 'Q', 0);
+      if (!verdict && point.liquidKg > capacityKg) { floodedKg = point.liquidKg; notes.push(`${regime}: ${point.liquidKg.toFixed(3)} kg parked liquid exceeds ${capacityKg.toFixed(3)} kg`); }
+      else if (!verdict) {
+        const saturationC = properties.saturation(output.highPressureBarAbs * 1e5).temperatureC;
+        const reported: ChargeRegime = regime === 'discharge-limit' && point.liquidKg > 0 ? 'accumulator' : regime;
+        const diagnostics: ChargeBalanceDiagnostics = { regime: reported, specifiedKg: spec.massKg, inventoryKg: inventory.totalKg, superheatK: point.superheatK,
+          condenserSubcoolK: output.condenserOutlet.phase === 'liquid' ? saturationC - output.condenserOutlet.temperatureC : 0,
+          condenserOutletQuality: output.condenserOutlet.qualityMass, valveOpenings: openings, accumulatorLiquidKg: point.liquidKg,
+          distribution: { outdoorCoilKg: inventory.outdoorCoilKg, accumulatorKg: inventory.accumulatorKg,
+            indoorCoilsKg: inventory.rooms.reduce((s, r) => s + r.coilKg, 0), fieldLinesKg: inventory.rooms.reduce((s, r) => s + r.gasLineKg + r.smallLineKg, 0) } };
+        return { ...output, iterations, closureResidualW: Math.max(...final.trial.residual.map(Math.abs)), charge: diagnostics };
+      } else { notes.push(`${regime}: ${verdict.reason}`); hint = verdict.next; neighbour = point; }
+      if (regime === 'superheat') bestSuperheat = final.trial;
+    }
+    next = hint && !tried.has(hint) ? hint : fallback.find(r => !tried.has(r)) ?? null;
+  }
+  if (floodedKg === null) {
+    const onsetKg = condensationOnsetKg(properties, config, spec, input, bestSuperheat?.point ?? genericSeeds[0]);
+    if (onsetKg !== null && spec.massKg < onsetKg)
+      throw new ChargeProtectionError('refrigerant shortage', `Charge ${spec.massKg.toFixed(3)} kg is below the ${onsetKg.toFixed(3)} kg needed to condense any liquid at these conditions`);
+  }
+  if (floodedKg !== null) throw new ChargeProtectionError('high-side flooding', `Charge ${spec.massKg.toFixed(3)} kg floods the circuit: ${floodedKg.toFixed(3)} kg would park in the accumulator`);
+  const capC = Math.min(CONDENSING_PROTECTION_C, properties.refrigerant.domain.maxCondensingC - .5);
+  if (floodsHighSide(properties, config, spec, input, capC, bestSuperheat?.point.te ?? source - target - 3))
+    throw new ChargeProtectionError('high-side flooding', `Charge ${spec.massKg.toFixed(3)} kg exceeds what the circuit holds below ${capC.toFixed(0)} °C condensing`);
+  throw new DomainError(`No charge-balanced operating point for ${spec.massKg.toFixed(3)} kg (${notes.join('; ')})`);
+}
+
+/** Refrigerant-shortage test. With the superheat target held, the circuit inventory at the
+ * onset of condensation (condenser/header outlet just reaching saturated vapour) is the least
+ * charge that still delivers any liquid to the EEVs. Below it no condensing operating point
+ * exists, and a generic gas-shortage supervisor (low-charge detection) stops the compressor.
+ * Returns null when the onset point itself cannot be located, so the failure stays a fault. */
+const ONSET_QUALITY = .999, QUALITY_SCALE = 1e4;
+function condensationOnsetKg(properties: Properties, config: EngineConfig, spec: ChargeBalanceSpec, input: CycleInput, seed: Point): number | null {
+  const target = config.compressor.superheatK, tolerance = config.numerics.pressureToleranceW;
+  const quality = (trial: Trial) => { const outlet = trial.output.condenserOutlet; return outlet.qualityMass ?? (outlet.phase === 'liquid' ? 0 : 1); };
+  const onset = (trial: Trial) => [trial.residual[0], (quality(trial) - ONSET_QUALITY) * QUALITY_SCALE];
+  const evaluate = (te: number, tc: number, superheatK: number) => evaluateBalanced(properties, config, spec, input, { te, tc, superheatK, liquidKg: 0 });
+  const held = newton({ evaluate: ([te, tc]) => evaluate(te, tc, target), residual: onset, steps: [.01, .01], limits: [4, 4], tolerance }, [seed.te, seed.tc]);
+  if ('error' in held) return null;
+  if (Math.max(...held.value.openings) <= 1) return held.value.inventory.totalKg;
+  // The EEV saturates before onset: superheat is released with the valve fully open.
+  const open = newton({ evaluate: ([te, tc, sh]) => evaluate(te, tc, sh), residual: trial => [...onset(trial), (Math.max(...trial.openings) - 1) * VALVE_SCALE],
+    steps: [.01, .01, .01], limits: [4, 4, 4], tolerance }, [held.value.point.te, held.value.point.tc, target]);
+  return 'error' in open || open.value.point.superheatK < target ? null : open.value.inventory.totalKg;
+}
+
+/** Declared rating points defining the generic nominal charge: all branches on,
+ * midpoint compressor speed, fixed coil-metal temperatures. Nominal is the larger
+ * of the heating and cooling fixed-subcooling inventories, so neither mode starts
+ * undercharged; the other mode holds the excess as subcooling or accumulator liquid. */
+export const NOMINAL_RATING_POINTS = {
+  heating: { indoorMetalC: 35, outdoorMetalC: 0 },
+  cooling: { indoorMetalC: 12, outdoorMetalC: 42 },
+} as const;
+export function nominalChargeKg(properties: Properties, config: EngineConfig, geometry: BalanceGeometry): { kg: number; heatingKg: number; coolingKg: number } {
+  const reference: EngineConfig = { ...config, rooms: config.rooms.map(room => ({ ...room, pipe: { ...room.pipe, lengthM: 0, elevationM: 0 } })) };
+  const speedRps = .5 * (config.compressor.speedMinRps + config.compressor.speedMaxRps), n = config.rooms.length;
+  const kg = (mode: Mode) => {
+    const point = NOMINAL_RATING_POINTS[mode], active = Array(n).fill(true), indoorMetalC = Array(n).fill(point.indoorMetalC);
+    const cycle = solveCycle(properties, { ...reference, mode }, { mode, indoorMetalC, outdoorMetalC: point.outdoorMetalC, active, speedRps });
+    return circuitInventory(properties, reference, geometry, cycle, { active, indoorMetalC, outdoorMetalC: point.outdoorMetalC }).totalKg;
+  };
+  const heatingKg = kg('heating'), coolingKg = kg('cooling');
+  return { kg: Math.max(heatingKg, coolingKg), heatingKg, coolingKg };
+}
