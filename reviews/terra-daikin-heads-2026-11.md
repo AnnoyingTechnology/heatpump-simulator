@@ -10,3 +10,7 @@ Snapshots, retrieved 2026-11-18:
 | `research/sources/terra-daikin-fna-a9-table.html` | https://www.daikin.eu/en_us/products/product.table.html/fna-A9.html | `4125f3b75faee791d2b877f10bfdc1d987fbc26fb9485fd3348fa86aa6c2c286` |
 
 The existing p.329 snapshot is pinned in `provenance/daikin-luna-acceptance-receipt.md`. No runtime fields or pairings were promoted in this checkpoint.
+
+## FFA/FNA physical-field follow-up
+
+The FNA table's height row reads `620, 720 (1)` in all four columns, and its Notes row defines `(1) - Including installation legs`. The 620 mm casing is therefore used without installation legs; 720 mm includes the legs. FFA's separate panel is not included. The eight exact indoor references and these physical fields are now imported, without outdoor pair claims. The p.329 HTML snapshot flattens matrix cells. The presumed pinned 2026 PDF is absent from the workspace; no cell positions can be established from the HTML alone. Exact full-SKU eligibility also remains unknown. Runtime counts after this physical-field batch: Daikin 90 outdoor / 171 indoor, Mitsubishi Electric 25 outdoor / 45 indoor.

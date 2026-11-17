@@ -7046,6 +7046,110 @@ export const CATALOGUE_INDOORS = [
     "compatibleOutdoorClasses": [
       "RXTA30C2V1B"
     ]
+  },
+  {
+    "id": "FFA25A2VEB9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 260,
+      "w": 575,
+      "d": 575
+    },
+    "coolingHighFanFlowM3h": 540,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FFA35A2VEB9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 260,
+      "w": 575,
+      "d": 575
+    },
+    "coolingHighFanFlowM3h": 600,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FFA50A2VEB9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 260,
+      "w": 575,
+      "d": 575
+    },
+    "coolingHighFanFlowM3h": 762.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FFA60A2VEB9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 260,
+      "w": 575,
+      "d": 575
+    },
+    "coolingHighFanFlowM3h": 870.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FNA25A2VEB9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 620,
+      "w": 790,
+      "d": 200
+    },
+    "coolingHighFanFlowM3h": 522.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FNA35A2VEB9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 620,
+      "w": 790,
+      "d": 200
+    },
+    "coolingHighFanFlowM3h": 522.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FNA50A2VEB9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 620,
+      "w": 1190,
+      "d": 200
+    },
+    "coolingHighFanFlowM3h": 960,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FNA60A2VEB9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 620,
+      "w": 1190,
+      "d": 200
+    },
+    "coolingHighFanFlowM3h": 960,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
   }
 ] as const;
 

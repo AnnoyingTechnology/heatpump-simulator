@@ -47,3 +47,5 @@ Review remaining RXM class pair-column coverage, locate the ARXM50 operating-ran
 Current Stylish evidence: [independent acceptance](stylish-current-independent-acceptance.json), [scope and exact-reference conflicts](stylish-current-independent-review.md). Exact full-SKU France outdoor casing/range rows differ from Europe abbreviated-class metadata and remain explicitly distinguished. Outdoor airflow and performance maps remain generic/unknown.
 
 Terra checkpoint 2026-11-18: FFA-A9 and FNA-A9 exact product-table columns are staged for independent review in `terra-daikin-heads-2026-11.md`; p.329 matrix cells and exact eligibility still require reconciliation. FBA, FCAG and FHA remain unresolved. Runtime remains 90 outdoor / 163 indoor.
+
+Terra FFA/FNA physical-field follow-up: eight Europe exact indoor SKUs accepted with source-table dimensions and cooling-high airflow; 620 mm FNA height excludes installation legs, while 720 mm includes them. No outdoor compatibility is inferred. Daikin runtime 90 outdoor / 171 indoor. The p.329 matrix needs a position-preserving source; the pinned HTML alone flattens its cells. FBA, FCAG and FHA remain open.

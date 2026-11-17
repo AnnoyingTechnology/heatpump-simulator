@@ -872,7 +872,7 @@ class CatalogueAcceptance(unittest.TestCase):
 
 
 class TerraHeadCandidateSourceChecks(unittest.TestCase):
-    def test_ffa_fna_candidates_are_column_pinned_and_unaccepted(self):
+    def test_ffa_fna_candidates_are_column_pinned_and_accepted_without_pairs(self):
         import hashlib
         for family, digest, flows in (
             ('ffa', 'afdbce9eeede3cffbd66457c25b1197ab4343aba1a429247de871ee95e2958c8', [540, 600, 762, 870]),
@@ -884,6 +884,20 @@ class TerraHeadCandidateSourceChecks(unittest.TestCase):
             self.assertEqual([u['modelReference'] for u in candidate['units']], [f'{family.upper()}{n}A2VEB9' for n in (25, 35, 50, 60)])
             self.assertEqual([next(f['value'] for f in u['facts'] if f['key'] == 'airflow') for u in candidate['units']], flows)
             self.assertTrue(all(not u['compatibility'] for u in candidate['units']))
+
+    def test_terra_fna_height_footnote_and_unpaired_physical_profiles(self):
+        html = (ROOT / 'research/sources/terra-daikin-fna-a9-table.html').read_text()
+        self.assertIn('620, 720 (1)', html)
+        self.assertIn('(1) - Including installation legs', html)
+        generated = module.generate()
+        profiles = {p['id']: p for p in json.loads(re.search(
+            r'export const CATALOGUE_INDOORS = (.*?) as const;', generated, re.S).group(1))}
+        for family in ('FFA', 'FNA'):
+            for size in (25, 35, 50, 60):
+                profile = profiles[f'{family}{size}A2VEB9']
+                self.assertNotIn('compatibleOutdoorClasses', profile)
+                self.assertNotIn('compatibleOutdoorReferences', profile)
+                self.assertEqual(profile['caseMm']['h'], 620 if family == 'FNA' else 260)
 
 if __name__ == '__main__':
     unittest.main()

@@ -42,3 +42,5 @@ The 2026/27 France residential range snapshot is pinned in `provenance/luna-mits
 Commercial/product-professional PEA/PKA/PCA/PLA/PSA/PSA and Mini-DRV product lines are outside this consumer air-to-air catalogue scope; the category listing is not used as evidence to import them.
 
 Terra Daikin head source checkpoint 2026-11-18: no Mitsubishi change; runtime remains 25 outdoor / 45 indoor. The current range and MXZ reconciliation remain open.
+
+Terra FFA/FNA physical-field follow-up: Mitsubishi remains 25 outdoor / 45 indoor; range and MXZ reconciliation remain open. Daikin now has 90 outdoor / 171 indoor.
