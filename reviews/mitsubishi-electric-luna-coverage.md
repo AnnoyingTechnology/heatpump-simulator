@@ -40,3 +40,5 @@ The 2026/27 France residential range snapshot is pinned in `provenance/luna-mits
 - Multisplit: MXZ-H VF2/VF3, MXZ-F VF2/VF3/VF4/VF5/VFHZ2/VFHZ3, plus PXZ-F VG2. The 2026/27 combination booklet enumerates exact current 2–4-post model references and states that 5/6-post tables are digital-only; that digital-only table has not been acquired. Current family and exact partner completeness therefore remain open.
 
 Commercial/product-professional PEA/PKA/PCA/PLA/PSA/PSA and Mini-DRV product lines are outside this consumer air-to-air catalogue scope; the category listing is not used as evidence to import them.
+
+Terra Daikin head source checkpoint 2026-11-18: no Mitsubishi change; runtime remains 25 outdoor / 45 indoor. The current range and MXZ reconciliation remain open.

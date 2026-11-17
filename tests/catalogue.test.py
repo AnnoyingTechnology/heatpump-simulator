@@ -870,5 +870,20 @@ class CatalogueAcceptance(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'exact pair column is absent'): module.source_review_metadata(changed, accepted, ROOT)
 
 
+
+class TerraHeadCandidateSourceChecks(unittest.TestCase):
+    def test_ffa_fna_candidates_are_column_pinned_and_unaccepted(self):
+        import hashlib
+        for family, digest, flows in (
+            ('ffa', 'afdbce9eeede3cffbd66457c25b1197ab4343aba1a429247de871ee95e2958c8', [540, 600, 762, 870]),
+            ('fna', '4125f3b75faee791d2b877f10bfdc1d987fbc26fb9485fd3348fa86aa6c2c286', [522, 522, 960, 960]),
+        ):
+            source = ROOT / f'research/sources/terra-daikin-{family}-a9-table.html'
+            self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(), digest)
+            candidate = json.loads((ROOT / f'research/catalogue/staging/terra-daikin-{family}-a9.json').read_text())
+            self.assertEqual([u['modelReference'] for u in candidate['units']], [f'{family.upper()}{n}A2VEB9' for n in (25, 35, 50, 60)])
+            self.assertEqual([next(f['value'] for f in u['facts'] if f['key'] == 'airflow') for u in candidate['units']], flows)
+            self.assertTrue(all(not u['compatibility'] for u in candidate['units']))
+
 if __name__ == '__main__':
     unittest.main()
