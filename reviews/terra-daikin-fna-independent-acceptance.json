@@ -1,0 +1,111 @@
+{
+  "scope": "Exact indoor physical fields only; full-SKU outdoor eligibility and France availability unknown.",
+  "candidate": {
+    "path": "research/catalogue/staging/terra-daikin-fna-a9.json",
+    "sha256": "3c40370e3d6fcd769a0d2a8b54a7c0b7b00ccd5a9573520c0100b4645cf4f0f8"
+  },
+  "sourcePins": [
+    {
+      "path": "research/sources/terra-daikin-fna-a9-table.html",
+      "sha256": "4125f3b75faee791d2b877f10bfdc1d987fbc26fb9485fd3348fa86aa6c2c286"
+    }
+  ],
+  "reviewedUnits": [
+    {
+      "reference": "FNA25A2VEB9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 620,
+        "width": 790,
+        "depth": 200,
+        "airflow": 522.0
+      },
+      "factConditions": {
+        "height": "unit without installation legs",
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe manufacturer table; France availability unverified"
+      }
+    },
+    {
+      "reference": "FNA35A2VEB9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 620,
+        "width": 790,
+        "depth": 200,
+        "airflow": 522.0
+      },
+      "factConditions": {
+        "height": "unit without installation legs",
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe manufacturer table; France availability unverified"
+      }
+    },
+    {
+      "reference": "FNA50A2VEB9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 620,
+        "width": 1190,
+        "depth": 200,
+        "airflow": 960
+      },
+      "factConditions": {
+        "height": "unit without installation legs",
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe manufacturer table; France availability unverified"
+      }
+    },
+    {
+      "reference": "FNA60A2VEB9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 620,
+        "width": 1190,
+        "depth": 200,
+        "airflow": 960
+      },
+      "factConditions": {
+        "height": "unit without installation legs",
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe manufacturer table; France availability unverified"
+      }
+    }
+  ]
+}

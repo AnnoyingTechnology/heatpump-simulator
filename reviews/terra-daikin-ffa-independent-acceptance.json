@@ -1,0 +1,107 @@
+{
+  "scope": "Exact indoor physical fields only; full-SKU outdoor eligibility and France availability unknown.",
+  "candidate": {
+    "path": "research/catalogue/staging/terra-daikin-ffa-a9.json",
+    "sha256": "cdbc73606142c5410f4b1d5a1719c45dfb06730615d4d565e027c751141fb292"
+  },
+  "sourcePins": [
+    {
+      "path": "research/sources/terra-daikin-ffa-a9-table.html",
+      "sha256": "afdbce9eeede3cffbd66457c25b1197ab4343aba1a429247de871ee95e2958c8"
+    }
+  ],
+  "reviewedUnits": [
+    {
+      "reference": "FFA25A2VEB9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 260,
+        "width": 575,
+        "depth": 575,
+        "airflow": 540
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe manufacturer table; France availability unverified"
+      }
+    },
+    {
+      "reference": "FFA35A2VEB9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 260,
+        "width": 575,
+        "depth": 575,
+        "airflow": 600
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe manufacturer table; France availability unverified"
+      }
+    },
+    {
+      "reference": "FFA50A2VEB9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 260,
+        "width": 575,
+        "depth": 575,
+        "airflow": 762.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe manufacturer table; France availability unverified"
+      }
+    },
+    {
+      "reference": "FFA60A2VEB9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 260,
+        "width": 575,
+        "depth": 575,
+        "airflow": 870.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe manufacturer table; France availability unverified"
+      }
+    }
+  ]
+}
