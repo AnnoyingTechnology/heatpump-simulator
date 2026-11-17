@@ -71,7 +71,7 @@ export interface EngineConfig {
    * The charge is a percentage of the generic nominal inventory the engine derives for this installation. */
   chargeBalance?: ChargeBalanceSetting;
 }
-export type ChargeRegime = 'superheat' | 'valve-limit' | 'minimum-lift' | 'discharge-limit' | 'accumulator';
+export type ChargeRegime = 'superheat' | 'valve-limit' | 'minimum-lift' | 'discharge-limit' | 'accumulator' | 'condensing-limit';
 export interface ChargeBalanceDiagnostics {
   regime: ChargeRegime; specifiedKg: number; inventoryKg: number; superheatK: number;
   condenserSubcoolK: number; condenserOutletQuality: number | null; valveOpenings: number[]; accumulatorLiquidKg: number;

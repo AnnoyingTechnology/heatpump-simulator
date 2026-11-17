@@ -4,7 +4,7 @@ import { CONNECTION_CLASSES, type HeadInstallation } from './equipment-topology'
 import { DEFAULT_GENERIC_PORT_CAPACITY, OWNER_PORTS, outdoorPortCapacity, roomVolumeM3, roomExposedEnvelopeAreaM2, roomEnvelopeConductanceWK, interzoneConductance, hasInterzoneGeometry, INTERZONE_GEOMETRY_DEFAULTS } from './types';
 import type { Fixture } from './fixtures';
 import { fixtureFor } from './fixtures';
-import { defaultLiveParameters, CHARGE_MODEL_AVAILABLE } from './runtime/config';
+import { defaultLiveParameters, CHARGE_MODEL_AVAILABLE, chargeBalanceQualified, type LiveParameters } from './runtime/config';
 import { readingsFor, simulation } from './runtime/view';
 import type { Readings } from './runtime/view';
 import type { RoomOutput } from './engine/types';
@@ -193,11 +193,13 @@ class Store {
     this.emit();
   }
 
-  setCircuitModel(model: 'reference' | 'inventory'): void {
+  setCircuitModel(model: LiveParameters['circuitModel']): void {
     if (model === 'inventory' && !CHARGE_MODEL_AVAILABLE) return;
+    if (model === 'charge-balanced' && !chargeBalanceQualified(this.state.cfg.live.refrigerant)) return;
     this.update(s => {
       s.cfg.live.circuitModel = model;
-      if (model === 'inventory') s.cfg.live.fieldLines = 'idealized';
+      // Both charge models store physical line volume with idealized field transport.
+      if (model !== 'reference') s.cfg.live.fieldLines = 'idealized';
     });
   }
 
@@ -207,7 +209,8 @@ class Store {
     const coverage = refrigerantDefinition(fluid).qualification;
     if (fluid === cfg.live.refrigerant || cfg.outdoorKind !== 'generic' || !coverage.reference ||
         (cfg.live.fieldLines === 'physical' && !coverage.physicalLines) ||
-        (cfg.live.circuitModel === 'inventory' && !coverage.inventory)) return;
+        (cfg.live.circuitModel === 'inventory' && !coverage.inventory) ||
+        (cfg.live.circuitModel === 'charge-balanced' && !chargeBalanceQualified(fluid))) return;
     this.update(s => { s.cfg.live.refrigerant = fluid; });
   }
 

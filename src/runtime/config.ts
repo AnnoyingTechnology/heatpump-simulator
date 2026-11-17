@@ -1,5 +1,5 @@
 import { defaultEngineConfig, defaultRoomConfig } from '../engine/defaults.ts';
-import type { RefrigerantId } from '../engine/refrigerants.ts';
+import { refrigerantDefinition, type RefrigerantId } from '../engine/refrigerants.ts';
 import type { EngineConfig } from '../engine/types.ts';
 import type { Config } from '../types.ts';
 import { outdoorPortCapacity, roomVolumeM3, roomEnvelopeConductanceWK, roomVentilation, engineInterzoneLink } from '../types.ts';
@@ -7,8 +7,12 @@ import { outdoorPortCapacity, roomVolumeM3, roomEnvelopeConductanceWK, roomVenti
 export interface LiveParameters {
   refrigerant: RefrigerantId;
   fieldLines: 'idealized' | 'physical';
-  circuitModel: 'reference' | 'inventory';
+  /** reference: fixed 1 K subcooling; charge-balanced: quasi-steady specified charge;
+   * inventory: gated conserved-mass transient circuit. */
+  circuitModel: 'reference' | 'charge-balanced' | 'inventory';
   initialChargeKg: number;
+  /** Charge-balanced setting, % of the derived generic nominal charge for this installation. */
+  chargePercent: number;
   initialFluidTemperatureC: number | null;
   outdoorCoilVolumeL: number;
   indoorCoilVolumeL: number;
@@ -33,6 +37,14 @@ export interface LiveParameters {
 export const PHYSICAL_FIELD_LINES_AVAILABLE = true;
 /** Promoted only after coupled transient acceptance. */
 export const CHARGE_MODEL_AVAILABLE = false;
+/** Charge-balanced bounds (% of nominal) and the generic per-branch EEV it assumes (not OEM data). */
+export const CHARGE_PERCENT = { min: 20, max: 200 } as const;
+export const GENERIC_EEV = { maxAreaM2: 1.5e-6, dischargeCoefficient: .65 } as const;
+/** The quasi-steady charge balance is qualified for pure fluids with the Reference cycle. */
+export function chargeBalanceQualified(fluid: RefrigerantId): boolean {
+  const definition = refrigerantDefinition(fluid);
+  return definition.kind === 'pure' && definition.qualification.reference;
+}
 
 /** Family minimum, not a measurement of installed copper. 15.88 mm tubing has a 1 mm minimum in the cited guide. */
 export function pipeWallMmForOd(odMm: number, configuredMm: number): number {
@@ -41,7 +53,7 @@ export function pipeWallMmForOd(odMm: number, configuredMm: number): number {
 
 export function defaultLiveParameters(): LiveParameters {
   const c = defaultEngineConfig(1), r = c.rooms[0];
-  return { refrigerant: 'R32', fieldLines: 'idealized', circuitModel: 'reference', initialChargeKg: 1.8, initialFluidTemperatureC: null,
+  return { refrigerant: 'R32', fieldLines: 'idealized', circuitModel: 'reference', initialChargeKg: 1.8, chargePercent: 100, initialFluidTemperatureC: null,
     outdoorCoilVolumeL: Math.PI * .006 ** 2 * 40 / 4 * 1000,
     indoorCoilVolumeL: Math.PI * .006 ** 2 * 10 / 4 * 1000, accumulatorVolumeL: .6,
     outdoorAirConductanceWK: c.outdoor.airConductanceWK,
@@ -103,6 +115,15 @@ export function engineConfigFromUi(cfg: Config, live: LiveParameters, activeInit
   });
   const activeIds = new Set(c.rooms.map(r => r.id));
   c.interzoneLinks = (cfg.interzoneLinks ?? []).filter(link => activeIds.has(link.roomA) && activeIds.has(link.roomB)).map(link => engineInterzoneLink(link, cfg.rooms.map(room => room.id)));
+  if (live.circuitModel === 'charge-balanced') {
+    if (live.fieldLines === 'physical') throw new Error('The charge-balanced circuit stores each line\'s physical volume but requires idealized field transport.');
+    const lineVolume = (diameterM: number, lengthM: number) => Math.PI * diameterM ** 2 / 4 * lengthM;
+    c.chargeBalance = { percentOfNominal: live.chargePercent, valveMaxAreaM2: GENERIC_EEV.maxAreaM2, valveDischargeCoefficient: GENERIC_EEV.dischargeCoefficient,
+      geometry: { outdoorCoilVolumeM3: live.outdoorCoilVolumeL / 1000, accumulatorVolumeM3: live.accumulatorVolumeL / 1000,
+        rooms: c.rooms.map((room, i) => ({ coilVolumeM3: live.indoorCoilVolumeL / 1000,
+          gasLineVolumeM3: lineVolume(room.pipe.gasInsideDiameterM, cfg.pipes[i].lengthM),
+          smallLineVolumeM3: lineVolume(room.pipe.liquidInsideDiameterM, cfg.pipes[i].lengthM) })) } };
+  }
   if (live.circuitModel === 'inventory') {
     c.inventory = { ...(activeInitialization ?? {
       initialMassKg: live.initialChargeKg, initialFluidTemperatureC: live.initialFluidTemperatureC ?? cfg.outdoorC,

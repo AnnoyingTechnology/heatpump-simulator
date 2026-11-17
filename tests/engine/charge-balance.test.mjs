@@ -7,7 +7,8 @@ import { solveCycle } from './build/cycle.js';
 import { HeatPumpEngine } from './build/engine.js';
 import { coilInventoryKg, storedDensity, circuitInventory } from './build/charge-balance.js';
 import { ChargeProtectionError, NOMINAL_RATING_POINTS, nominalChargeKg } from './build/cycle-charge.js';
-const properties = createPropertyService(await Module());
+const module = await Module();
+const properties = createPropertyService(module);
 
 // Generic declared geometry: 40 m / 10 m of 6 mm ID coil tube, 0.6 L accumulator, 7 m lines.
 const LINE_M = 7;
@@ -100,15 +101,35 @@ test('regimes: valve limit when undercharged, accumulator at the discharge ceili
 
   const parked = balanced(1, 'heating', 170, 35, 0, 40);
   assertClosed(parked, 'one-room overcharge');
-  assert.ok(['accumulator', 'discharge-limit'].includes(parked.charge.regime), parked.charge.regime);
-  if (parked.charge.regime === 'accumulator') assert.ok(parked.charge.accumulatorLiquidKg > 0 && parked.charge.superheatK === 0);
-  const config = defaultEngineConfig(1);
-  assert.ok(Math.abs(parked.discharge.temperatureC - (config.compressor.maxDischargeC - 20)) < .01);
+  // Excess charge reaches the condensing ceiling first; the EEV parks it in the accumulator.
+  assert.equal(parked.charge.regime, 'condensing-limit');
+  assert.ok(Math.abs(parked.condensingC - 58) < 1e-9 && parked.charge.accumulatorLiquidKg > 0 && parked.charge.superheatK === 0);
 
   const defrost = balanced(3, 'heating', 100, 18, 0, 35, { mode: 'cooling', defrost: true });
   assertClosed(defrost, 'defrost');
   assert.equal(defrost.charge.regime, 'minimum-lift');
   assert.ok(defrost.outdoorCoilHeatW > 0 && defrost.condensingC - defrost.evaporatingC > 7.99);
+});
+
+test('a multi-split charge with most branches stopped is held by the EEV ceilings', () => {
+  const n = 3, config = defaultEngineConfig(n); config.mode = 'heating';
+  const cycle = solveCycle(properties, config, { mode: 'heating', indoorMetalC: [18, 21, 18], outdoorMetalC: 1, active: [false, true, false], speedRps: 18,
+    charge: { massKg: nominalFor(n).kg, geometry: geometryFor(n), ...VALVE } });
+  assertClosed(cycle, 'one of three branches');
+  // Condensing would exceed the ceiling, but discharge temperature binds first: the EEV opens
+  // further than the condensing limit needs, which also holds condensing below 58 °C.
+  assert.equal(cycle.charge.regime, 'discharge-limit');
+  assert.ok(cycle.condensingC <= 58 && Math.abs(cycle.discharge.temperatureC - (config.compressor.maxDischargeC - 20)) < .01);
+});
+
+test('operating points on the saturated-liquid kink converge (nested bracketing fallback)', () => {
+  // A nominal R134a state whose condenser outlet sits at x≈0.001, where Zivi holdup changes slope.
+  const fluid = createPropertyService(module, 'R134a'), n = 2, config = defaultEngineConfig(n); config.fluid = 'R134a'; config.mode = 'heating';
+  const geometry = geometryFor(n), nom = nominalChargeKg(fluid, config, geometry).kg;
+  const cycle = solveCycle(fluid, config, { mode: 'heating', indoorMetalC: [18.41, 18.41], outdoorMetalC: 1.03, active: [true, true], speedRps: 56.5,
+    charge: { massKg: nom, geometry, ...VALVE } });
+  assertClosed(cycle, 'R134a kink');
+  assert.ok(cycle.charge.condenserSubcoolK < 1 && (cycle.charge.condenserOutletQuality ?? 0) < .01);
 });
 
 test('charge outside the operable band is a supervisor protection, not a numerical failure', () => {

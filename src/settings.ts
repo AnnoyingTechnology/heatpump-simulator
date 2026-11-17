@@ -11,8 +11,8 @@ import { REFRIGERANTS, refrigerantDefinition, type RefrigerantId } from './engin
 import { fixtureFor } from './fixtures';
 import { inspectorHtml } from './inspector';
 import type { PopContent } from './popovers';
-import type { EngineOutput } from './engine/types';
-import { CHARGE_MODEL_AVAILABLE, PHYSICAL_FIELD_LINES_AVAILABLE, defaultLiveParameters, pipeWallMmForOd, referenceMinimumSpeedRps } from './runtime/config';
+import type { ChargeBalanceDiagnostics, EngineOutput } from './engine/types';
+import { CHARGE_MODEL_AVAILABLE, CHARGE_PERCENT, PHYSICAL_FIELD_LINES_AVAILABLE, chargeBalanceQualified, defaultLiveParameters, pipeWallMmForOd, referenceMinimumSpeedRps } from './runtime/config';
 import type { LiveParameters } from './runtime/config';
 import { activeRooms, currentReadings, indoorCleanliness, outdoorCleanliness, store } from './state';
 import type { AppState, Experience, ExampleState, IndoorClass, InterzoneLink, Mode, OutdoorKind, PipeConfig, RoomConfig } from './types';
@@ -566,9 +566,27 @@ interface ChargeArea {
   sync(s: AppState, inv: Inventory | null): void;
 }
 
-/** Charge is a start value for the next scenario, applied explicitly on Restart. */
+/** Charge column of the outdoor card. Fixed subcooling ignores charge; the charge-balanced
+ * circuit applies the percentage live; the gated inventory circuit applies kg on Restart. */
 function createChargeArea(): ChargeArea {
   const live = (): LiveParameters => store.state.cfg.live;
+  const model = segmented<'reference' | 'charge-balanced'>({
+    label: 'Charge model', compact: true,
+    options: [
+      { value: 'reference', text: 'Fixed', title: 'Reference cycle with a fixed 1 K condenser subcooling: charge has no effect' },
+      { value: 'charge-balanced', text: 'Charge', title: 'The specified charge sets condensing pressure, subcooling and EEV regime (quasi-steady)' },
+    ],
+    isDisabled: (v) => v === 'charge-balanced' && !chargeBalanceQualified(live().refrigerant),
+    get: () => live().circuitModel === 'charge-balanced' ? 'charge-balanced' : 'reference',
+    set: (v) => store.setCircuitModel(v),
+  });
+  isolate(...model.buttons);
+  const percent = pairField({
+    label: 'Charge', unit: '% of nominal', suffix: '%', min: CHARGE_PERCENT.min, max: CHARGE_PERCENT.max, step: 1, digits: 0, layout: 'line',
+    get: () => live().chargePercent, set: (v) => store.update((s) => { s.cfg.live.chargePercent = v; }),
+    title: 'Percentage of the generic nominal charge derived for this installation (coil and accumulator volumes, line lengths and bores). Applies live.',
+  });
+  const readout = html('span', { class: 'ou-rnote ou-charge-readout' });
   const initial = pairField({
     label: 'Initial charge', unit: 'kg', min: 0.2, max: 3, step: 0.01, digits: 2, layout: 'line',
     get: () => live().initialChargeKg, set: (v) => store.update((s) => { s.cfg.live.initialChargeKg = v; }),
@@ -578,30 +596,54 @@ function createChargeArea(): ChargeArea {
   restart.addEventListener('click', () => store.restartSimulation());
   const restartNote = html('span', { class: 'ou-rnote' });
   isolate(restart);
+  const restartRow = html('div', { class: 'ou-restart-row' }, restart, restartNote);
 
   const root = html('section', { class: 'ou-charge', 'aria-label': 'Refrigerant charge' },
-    html('div', { class: 'ou-ch-title' }, 'CHARGE'),
-    initial.root,
-    html('div', { class: 'ou-restart-row' }, restart, restartNote));
+    html('div', { class: 'ou-ch-title' }, 'CHARGE'), model.root,
+    percent.root, readout, initial.root, restartRow);
 
   return {
     root,
     sync(s, inv): void {
       trackAppliedStart();
-      const cfg = s.cfg;
-      const model = cfg.live.circuitModel;
-      const inventory = model === 'inventory';
-      initial.refresh();
-      const drafts = inv ? pendingStartValues(cfg, inv) : [];
-      restart.disabled = !inventory;
-      toggleClass(restart, 'pending', drafts.length > 0);
-      const rtext = !inventory ? 'start values apply with the inventory model' : drafts.length ? `pending: ${drafts.join(', ')}` : inv ? 'start values in use' : '';
-      setText(restartNote, rtext);
-      setAttr(restartNote, 'title', rtext);
-      setAttr(restart, 'title', 'Start a new circuit from the current start values (charge, start temperature, line length, bores, volumes). Resets simulated time.');
-
+      const cfg = s.cfg, circuit = cfg.live.circuitModel, inventory = circuit === 'inventory', balanced = circuit === 'charge-balanced';
+      model.refresh(); percent.refresh(); initial.refresh();
+      model.root.hidden = inventory;
+      percent.root.hidden = inventory;
+      initial.root.hidden = restartRow.hidden = !inventory;
+      readout.hidden = inventory;
+      percent.num.disabled = percent.range.disabled = !balanced;
+      const rd = balanced && s.ui.experience === 'live' ? currentReadings(s) : null;
+      const engine = rd?.usable ? rd.engine : null, balance = engine?.chargeBalance, charge = engine?.cycle?.charge;
+      const text = s.ui.experience !== 'live' ? 'Examples: charge not applied.'
+        : !balanced ? (chargeBalanceQualified(cfg.live.refrigerant) ? 'Fixed 1 K subcooling ignores charge.' : `${cfg.live.refrigerant}: charge balance qualified for pure fluids only.`)
+        : balance ? `${fmt(balance.specifiedKg, 3)} kg of ${fmt(balance.nominalKg, 3)} kg nominal${charge ? ` · ${chargeRegimeText(charge)}` : ''}`
+        : 'Nominal charge is computed on the next step.';
+      setText(readout, text);
+      setAttr(readout, 'title', balance ? `Generic nominal: heating rating ${fmt(balance.heatingRatingKg, 3)} kg, cooling rating ${fmt(balance.coolingRatingKg, 3)} kg (larger governs). Not the factory charge: compressor shell, oil and outdoor-unit piping are not modelled.` : text);
+      if (inventory) {
+        const drafts = inv ? pendingStartValues(cfg, inv) : [];
+        toggleClass(restart, 'pending', drafts.length > 0);
+        const rtext = drafts.length ? `pending: ${drafts.join(', ')}` : inv ? 'start values in use' : '';
+        setText(restartNote, rtext);
+        setAttr(restartNote, 'title', rtext);
+        setAttr(restart, 'title', 'Start a new circuit from the current start values (charge, start temperature, line length, bores, volumes). Resets simulated time.');
+      }
     },
   };
+}
+
+/** Short regime readout: what the EEV holds and where the charge shows. */
+export function chargeRegimeText(charge: ChargeBalanceDiagnostics): string {
+  const inlet = charge.condenserSubcoolK > 0 ? `SC ${fmt(charge.condenserSubcoolK, 1)} K` : `flash gas x ${fmt(charge.condenserOutletQuality ?? 0, 2)}`;
+  switch (charge.regime) {
+    case 'superheat': return `${inlet} · SH held`;
+    case 'valve-limit': return `${inlet} · EEV full open, SH ${fmt(charge.superheatK, 1)} K`;
+    case 'minimum-lift': return `${inlet} · minimum lift`;
+    case 'discharge-limit': return `${inlet} · discharge limit, SH ${fmt(charge.superheatK, 1)} K`;
+    case 'accumulator': return `${inlet} · ${fmt(charge.accumulatorLiquidKg * 1000, 0)} g liquid in accumulator`;
+    case 'condensing-limit': return charge.accumulatorLiquidKg > 0 ? `high-pressure limit · ${fmt(charge.accumulatorLiquidKg * 1000, 0)} g in accumulator` : `${inlet} · high-pressure limit, SH ${fmt(charge.superheatK, 1)} K`;
+  }
 }
 
 // ---------- outdoor unit card (scene, beside the outdoor drawing) ----------
@@ -653,7 +695,8 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
     fluidSel.disabled = !generic || examples;
     for (const option of fluidSel.options) {
       const q = refrigerantDefinition(option.value as RefrigerantId).qualification;
-      option.disabled = !q.reference || (c.live.fieldLines === 'physical' && !q.physicalLines) || (c.live.circuitModel === 'inventory' && !q.inventory);
+      option.disabled = !q.reference || (c.live.fieldLines === 'physical' && !q.physicalLines) || (c.live.circuitModel === 'inventory' && !q.inventory)
+        || (c.live.circuitModel === 'charge-balanced' && !chargeBalanceQualified(option.value as RefrigerantId));
       setAttr(option, 'title', q.reference ? q.limitation ?? 'Qualified Reference refrigerant' : 'Property research only; coupled simulation is not qualified.');
     }
     setAttr(fluidSel, 'title', examples ? 'Examples use fixed R32 snapshots; fluid selection applies to Live only.' : generic
@@ -886,9 +929,11 @@ export function createOutdoorSettings(): PopContent {
   const circuit = reg(segmented<LiveParameters['circuitModel']>({
     label: 'Refrigerant circuit model', compact: true,
     options: [
-      { value: 'reference', text: 'Reference', title: 'Quasi-steady cycle without refrigerant inventory' },
+      { value: 'reference', text: 'Fixed SC', title: 'Quasi-steady Reference cycle with a fixed 1 K condenser subcooling: no refrigerant inventory' },
+      { value: 'charge-balanced', text: 'Charge', title: 'Quasi-steady Reference cycle whose condensing pressure, subcooling and EEV regime follow the specified charge' },
       { value: 'inventory', text: 'Inventory', title: 'Conserved-mass circuit with charge and idealized field transport', disabled: !CHARGE_MODEL_AVAILABLE },
     ],
+    isDisabled: (v) => v === 'charge-balanced' && !chargeBalanceQualified(cfg().live.refrigerant),
     get: () => cfg().live.circuitModel, set: (v) => store.setCircuitModel(v),
   }));
   const modelStatus = note();
@@ -936,9 +981,10 @@ export function createOutdoorSettings(): PopContent {
       const inv = rd?.usable ? rd.engine?.inventory ?? null : null;
       const drafts = inv ? pendingStartValues(c, inv) : [];
       setText(modelStatus, model === 'inventory' ? 'Inventory model active.'
-        : CHARGE_MODEL_AVAILABLE ? 'Reference model active: no refrigerant inventory.'
-          : 'Reference model active. The Inventory model is gated until its science review passes.');
-      setText(draftStatus, model !== 'inventory' ? 'Stored for the Inventory model.'
+        : model === 'charge-balanced' ? `Charge model active: ${fmt(c.live.chargePercent, 0)} % of the generic nominal charge sets condensing pressure, subcooling and the EEV regime. The volumes below and each line's length and bores apply live; the nominal is recomputed for the installation.`
+        : `Fixed-subcooling Reference active: no refrigerant inventory.${CHARGE_MODEL_AVAILABLE ? '' : ' The transient Inventory model is gated until its science review passes.'}`);
+      setText(draftStatus, model === 'charge-balanced' ? 'Volumes apply live to the Charge model; start temperature is unused (quasi-steady).'
+        : model !== 'inventory' ? 'Stored for the charge models.'
         : drafts.length ? `Pending, applied on Restart: ${drafts.join(', ')}.` : 'No pending start values.');
       toggleClass(draftStatus, 'diff', drafts.length > 0);
       fluidAuto.checked = c.live.initialFluidTemperatureC === null;
@@ -1441,13 +1487,15 @@ export function createLinesSettings(): PopContent {
         setText(chip, owner ? 'owner-reported · historical' : p.lengthSource === 'edited' ? 'edited by you' : 'default · no source');
         chip.className = `chip ${owner ? 'src' : p.lengthSource === 'edited' ? 'edit' : 'def'}`;
       }
-      setText(lead, live && c.live.circuitModel === 'inventory'
+      setText(lead, live && c.live.circuitModel === 'charge-balanced'
+        ? 'Charge model: length and bores set the line volume that holds refrigerant, and the nominal charge derived for this installation. They apply live. Field transport stays idealized: no line pressure drop, heat exchange or elevation.'
+        : live && c.live.circuitModel === 'inventory'
         ? 'Inventory model: length and bores set the line volume that holds refrigerant. They are start values and apply on Restart. Field transport itself stays idealized: no line pressure drop, heat exchange or elevation.'
         : live && c.live.fieldLines === 'idealized'
         ? 'In this reference mode, line length and outside diameter configure the illustration and the installation-guidance check only; they do not change engine results. Owner-preset defaults are the historical blog values 7.5 / 6.5 / 14 m (ground / first / attic); the as-built survey is unknown.'
         : 'Physical line length is separate from the drawn route. Stored defaults for the owner preset are the historical blog values 7.5 / 6.5 / 14 m (ground / first / attic); the as-built survey and diameters are unknown. Diameter changes redraw tube width only.');
-      setText(modeNote, c.live.circuitModel === 'inventory'
-        ? 'Physical field transport is available in the reference model only. The Inventory model stores each line\'s real volume and idealizes its transport.'
+      setText(modeNote, c.live.circuitModel !== 'reference'
+        ? 'Physical field transport is available with fixed subcooling only. The charge models store each line\'s real volume and idealize its transport.'
         : c.live.fieldLines === 'idealized'
         ? 'Idealized field lines: the engine receives zero-length lines, so pipe effects (line pressure drop, heat exchange, elevation) are explicitly excluded. This is the default reference; Physical is an optional, slower finite-pipe model.'
         : 'Physical field lines (advanced, slower): finite pipes with an uncalibrated homogeneous loss approximation, assumed bore, level elevation and outdoor-air exposure. Not a prediction of the installed line losses; some unequal-coil or high-loss cases may be unsupported and fail visibly. Details under Advanced pipe assumptions.');
@@ -1512,7 +1560,7 @@ export function createLineLength(i: number): LineLengthControl {
       const c = s.cfg;
       const live = s.ui.experience === 'live';
       const p = c.pipes[i];
-      const stored = live && c.live.circuitModel === 'inventory';
+      const stored = live && c.live.circuitModel === 'inventory', balanced = live && c.live.circuitModel === 'charge-balanced';
       len.refresh();
       setText(name, room.name);
       const label = `One-way line length of ${room.name} (m)`;
@@ -1523,18 +1571,19 @@ export function createLineLength(i: number): LineLengthControl {
       // Inventory: the length sets the stored line volume. It is a start value, so an edited length differs from the active one until Restart.
       const active = stored ? inv?.geometry.rooms.find((g) => g.id === room.id)?.lineLengthM : undefined;
       const pending = active !== undefined && !near(active, p.lengthM);
-      setText(note, !live ? 'Examples: not applied' : stored ? (pending ? `active ${fmt(active, 1)} m · Restart` : 'line volume stored') : physical ? 'physical transport' : 'transport idealized');
+      setText(note, !live ? 'Examples: not applied' : stored ? (pending ? `active ${fmt(active, 1)} m · Restart` : 'line volume stored') : balanced ? 'holds charge' : physical ? 'physical transport' : 'transport idealized');
       toggleClass(root, 'pending', pending);
       const source = p.lengthSource === 'owner-reported' ? 'owner-reported, historical' : p.lengthSource === 'edited' ? 'edited by you' : 'default, no source';
       const outside = c.outdoorKind === 'owner' && (p.lengthM < GUIDE.min || p.lengthM > GUIDE.max);
       const effect = !live ? 'Examples show fixed readings: length is stored for Live only.'
         : stored ? `Inventory model: the length sets the line volume that holds refrigerant. It is a start value${pending ? `; the running circuit uses ${fmt(active, 1)} m until Restart` : ''}. Transport stays idealized.`
+        : balanced ? 'Charge model: the length sets the line volume that holds refrigerant and the derived nominal charge; it applies live. Transport stays idealized.'
         : physical ? 'Physical field lines: this length is passed to the finite-pipe model.'
           : 'Idealized field lines: the engine receives zero-length lines, so this length does not change results. Choose Physical to apply it.';
       setAttr(root, 'title', `${room.name} one-way length, ${source}. ${effect}${outside ? ` Outside the ${GUIDE.min}–${GUIDE.max} m family guidance (2019, N2 variant).` : ''}`);
       root.dataset.source = p.lengthSource;
       toggleClass(root, 'warn', outside);
-      toggleClass(root, 'ideal', live && !physical && !stored);
+      toggleClass(root, 'ideal', live && !physical && !stored && !balanced);
     },
   };
 }
@@ -1550,7 +1599,7 @@ export function createLineModelSwitch(): Field {
       { value: 'physical', text: 'Physical', title: PHYSICAL_TITLE, disabled: !PHYSICAL_FIELD_LINES_AVAILABLE },
     ],
     // Physical transport exists in the reference model only; the inventory circuit stores line volume with idealized transport.
-    isDisabled: (v) => v === 'physical' && (store.state.cfg.live.circuitModel === 'inventory' || !refrigerantDefinition(store.state.cfg.live.refrigerant).qualification.physicalLines),
+    isDisabled: (v) => v === 'physical' && (store.state.cfg.live.circuitModel !== 'reference' || !refrigerantDefinition(store.state.cfg.live.refrigerant).qualification.physicalLines),
     get: () => store.state.cfg.live.fieldLines, set: (v) => store.update((s) => { s.cfg.live.fieldLines = v; }),
   });
   for (const b of seg.buttons) b.classList.add('rp-ctl');
@@ -1561,9 +1610,9 @@ export function createLineModelSwitch(): Field {
     root,
     refresh(): void {
       seg.refresh();
-      const inventory = store.state.cfg.live.circuitModel === 'inventory';
+      const inventory = store.state.cfg.live.circuitModel !== 'reference';
       setText(key, inventory ? 'Field lines · ideal only' : 'Field-line model');
-      setAttr(seg.buttons[1] as HTMLElement, 'title', inventory ? 'Physical field transport is available in the reference model only. Inventory stores line volume with idealized transport.' : !refrigerantDefinition(store.state.cfg.live.refrigerant).qualification.physicalLines ? 'Physical field lines are qualified for R32 only; use idealized lines for this refrigerant.' : PHYSICAL_TITLE);
+      setAttr(seg.buttons[1] as HTMLElement, 'title', inventory ? 'Physical field transport is available with fixed subcooling only. The charge models store line volume with idealized transport.' : !refrigerantDefinition(store.state.cfg.live.refrigerant).qualification.physicalLines ? 'Physical field lines are qualified for R32 only; use idealized lines for this refrigerant.' : PHYSICAL_TITLE);
     },
   };
 }

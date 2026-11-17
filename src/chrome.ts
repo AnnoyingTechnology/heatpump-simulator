@@ -12,6 +12,7 @@ import { createThemeControl } from './theme';
 import brandSvg from './brand.svg?raw';
 import { INDOOR_CLASSES } from './types';
 import type { AppState, SpeedFactor } from './types';
+import type { ChargeRegime } from './engine/types';
 
 export interface Header {
   root: HTMLElement;
@@ -458,6 +459,10 @@ export function createOverlay(): Overlay {
   };
 }
 
+const CHARGE_REGIME_LABEL: Record<ChargeRegime, string> = {
+  'superheat': 'Superheat held by EEV', 'valve-limit': 'EEV fully open', 'minimum-lift': 'Minimum lift',
+  'discharge-limit': 'Discharge-temperature limit', 'accumulator': 'Liquid parked in accumulator', 'condensing-limit': 'High-pressure limit',
+};
 /** Only measurements without a permanent diagram counterpart, inside outdoor settings. */
 export function createModelDiagnostics(): { root: HTMLDetailsElement; sync(s: AppState): void } {
   const body = html('div', { class: 'fold-body' });
@@ -481,6 +486,19 @@ export function createModelDiagnostics(): { root: HTMLDetailsElement; sync(s: Ap
         ['Controller speed request', `${fmt(e.diagnostics.speedRps, 1)} rps`]);
       if (e.cycle) rows.push(['Cycle closure residual', `${fmt(e.cycle.closureResidualW, 3)} W`],
         ['Mass flow residual', `${fmt(e.cycle.massResidualKgs, 8)} kg/s`], ['Solver iterations', String(e.cycle.iterations)]);
+      const charge = e.cycle?.charge, balance = e.chargeBalance;
+      if (charge) {
+        const kg = (v: number): string => `${fmt(v, 3)} kg`;
+        rows.push(['Charge regime', CHARGE_REGIME_LABEL[charge.regime]],
+          ['Specified / balanced inventory', `${kg(charge.specifiedKg)} / ${kg(charge.inventoryKg)}`]);
+        if (balance) rows.push(['Generic nominal charge', kg(balance.nominalKg)]);
+        rows.push(['Condenser outlet', charge.condenserSubcoolK > 0 ? `${fmt(charge.condenserSubcoolK, 2)} K subcooled` : `quality ${fmt(charge.condenserOutletQuality ?? 0, 3)}`],
+          ['Suction superheat', `${fmt(charge.superheatK, 2)} K`],
+          ['EEV openings', charge.valveOpenings.map(v => `${fmt(v * 100, 0)} %`).join(' · ')],
+          ['Accumulator parked liquid', `${fmt(charge.accumulatorLiquidKg * 1000, 0)} g`],
+          ['Outdoor coil holds', kg(charge.distribution.outdoorCoilKg)], ['Accumulator holds', kg(charge.distribution.accumulatorKg)],
+          ['Indoor coils hold', kg(charge.distribution.indoorCoilsKg)], ['Field lines hold', kg(charge.distribution.fieldLinesKg)]);
+      }
       if (e.inventory) rows.push(['Compressor admission latch', e.inventory.compressorAdmitted ? 'Armed' : 'Liquid carryover protection']);
     }
     if (st?.calculationMs !== null && st?.calculationMs !== undefined) rows.push(['Last step CPU', `${fmt(st.calculationMs, 2)} ms`]);
