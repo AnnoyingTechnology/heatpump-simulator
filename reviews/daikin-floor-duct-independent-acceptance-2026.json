@@ -1,0 +1,291 @@
+{
+  "scope": "Independent review of seven indoor published class rows and their one-to-one RXM class columns on Daikin Europe ECPEN26-500 pp.326–327.",
+  "candidate": {
+    "path": "research/catalogue/staging/luna-daikin-floor-duct-indoor-classes-2026.json",
+    "sha256": "0cbfc4af2ffeb2545aeee16033a2d8336b004ab6cd6a45619a4711cf9027a3a1"
+  },
+  "sourcePins": [
+    {
+      "path": "research/sources/luna-next-daikin-2026-catalogue-p326.html",
+      "sha256": "15eb5a7333dcf031c931bb6ae31a0bc4bd5f2db530c75093318790c15eb7c846"
+    },
+    {
+      "path": "research/sources/luna-daikin-2026-p326-layout.svg",
+      "sha256": "1e411db6a52ab41f02c76a35e9eb514b0e0671831e2b633f176e6dcee092922b"
+    },
+    {
+      "path": "research/sources/luna-daikin-2026-p326-background.webp",
+      "sha256": "8e79c8e08bd2bf11812d17c8cedb46f41d29f8ed5dde8b1aa03d5ce5fda25e6d"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-2026-catalogue-p327.html",
+      "sha256": "8cde915bfffbf9a83c63eaa4b030f0848fc5c82c5e67ddc6e2855353c7b38be0"
+    },
+    {
+      "path": "research/sources/luna-daikin-2026-p327-layout.svg",
+      "sha256": "f600cdf6d0e2f610bd319e7675d8b3c44179d50dceb8d6121a73b3fb3914fe77"
+    },
+    {
+      "path": "research/sources/luna-daikin-2026-p327-background.webp",
+      "sha256": "c759ec6a887b220f0006554a463d4ec9d3364dc18bb978f0669ade14b079ce5c"
+    }
+  ],
+  "layoutReview": {
+    "path": "research/sources/luna-daikin-2026-p326-layout.svg",
+    "sha256": "1e411db6a52ab41f02c76a35e9eb514b0e0671831e2b633f176e6dcee092922b"
+  },
+  "reviewedUnits": [
+    {
+      "reference": "FVXM25B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 600,
+        "width": 750,
+        "depth": 238,
+        "airflow": 522.0
+      },
+      "factConditions": {
+        "height": "indoor casing",
+        "width": "indoor casing",
+        "depth": "indoor casing",
+        "airflow": "cooling mode, high fan; source label m³/min"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.326"
+      },
+      "compatibleOutdoorClasses": [
+        "RXM25A9"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "catalogue-p326",
+        "locator": "Printed p.326, Efficiency data table, exact class pair column",
+        "excerpt": "25B + 25A9"
+      }
+    },
+    {
+      "reference": "FVXM35B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 600,
+        "width": 750,
+        "depth": 238,
+        "airflow": 552.0
+      },
+      "factConditions": {
+        "height": "indoor casing",
+        "width": "indoor casing",
+        "depth": "indoor casing",
+        "airflow": "cooling mode, high fan; source label m³/min"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.326"
+      },
+      "compatibleOutdoorClasses": [
+        "RXM35A9"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "catalogue-p326",
+        "locator": "Printed p.326, Efficiency data table, exact class pair column",
+        "excerpt": "35B + 35A9"
+      }
+    },
+    {
+      "reference": "FVXM50B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 600,
+        "width": 750,
+        "depth": 238,
+        "airflow": 696.0
+      },
+      "factConditions": {
+        "height": "indoor casing",
+        "width": "indoor casing",
+        "depth": "indoor casing",
+        "airflow": "cooling mode, high fan; source label m³/min"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.326"
+      },
+      "compatibleOutdoorClasses": [
+        "RXM50A8"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "catalogue-p326",
+        "locator": "Printed p.326, Efficiency data table, exact class pair column",
+        "excerpt": "50B + 50A8"
+      }
+    },
+    {
+      "reference": "FDXM25F9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 200,
+        "width": 750,
+        "depth": 620,
+        "airflow": 522.0
+      },
+      "factConditions": {
+        "height": "indoor casing",
+        "width": "indoor casing",
+        "depth": "indoor casing",
+        "airflow": "cooling mode, high fan; source label m³/min"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.327"
+      },
+      "compatibleOutdoorClasses": [
+        "RXM25A9"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "catalogue-p327",
+        "locator": "Printed p.327, Efficiency data table, exact class pair column",
+        "excerpt": "25F9 + 25A9"
+      }
+    },
+    {
+      "reference": "FDXM35F9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 200,
+        "width": 750,
+        "depth": 620,
+        "airflow": 522.0
+      },
+      "factConditions": {
+        "height": "indoor casing",
+        "width": "indoor casing",
+        "depth": "indoor casing",
+        "airflow": "cooling mode, high fan; source label m³/min"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.327"
+      },
+      "compatibleOutdoorClasses": [
+        "RXM35A9"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "catalogue-p327",
+        "locator": "Printed p.327, Efficiency data table, exact class pair column",
+        "excerpt": "35F9 + 35A9"
+      }
+    },
+    {
+      "reference": "FDXM50F9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 200,
+        "width": 1150,
+        "depth": 620,
+        "airflow": 948.0
+      },
+      "factConditions": {
+        "height": "indoor casing",
+        "width": "indoor casing",
+        "depth": "indoor casing",
+        "airflow": "cooling mode, high fan; source label m³/min"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.327"
+      },
+      "compatibleOutdoorClasses": [
+        "RXM50A8"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "catalogue-p327",
+        "locator": "Printed p.327, Efficiency data table, exact class pair column",
+        "excerpt": "50F9 + 50A8"
+      }
+    },
+    {
+      "reference": "FDXM60F9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 200,
+        "width": 1150,
+        "depth": 620,
+        "airflow": 960.0
+      },
+      "factConditions": {
+        "height": "indoor casing",
+        "width": "indoor casing",
+        "depth": "indoor casing",
+        "airflow": "cooling mode, high fan; source label m³/min"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.327"
+      },
+      "compatibleOutdoorClasses": [
+        "RXM60A"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "catalogue-p327",
+        "locator": "Printed p.327, Efficiency data table, exact class pair column",
+        "excerpt": "60F9 + 60A"
+      }
+    }
+  ]
+}

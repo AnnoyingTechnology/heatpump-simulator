@@ -80,7 +80,14 @@ const DAIKIN_HEADS: readonly IndoorClass[] = [...OWNER_HEADS, ...CATALOGUE_INDOO
  * only the owner's declared FTXA25/35 pairing is presented without an unverified-combination mark. */
 export function selectableIndoorClasses(outdoor: OutdoorKind): readonly IndoorClass[] {
   const model = outdoorModelInfo(outdoor);
-  return model.installation || model.id === 'owner' ? DAIKIN_HEADS : model.compatibleIndoorClasses;
+  if (model.installation || model.id === 'owner') return DAIKIN_HEADS;
+  const additionalClassPairs = CATALOGUE_INDOORS
+    .filter(profile => 'compatibleOutdoorClasses' in profile && profile.compatibleOutdoorClasses.some(id => id === model.id))
+    .map(profile => profile.id);
+  const exactPairs = CATALOGUE_INDOORS
+    .filter(profile => 'compatibleOutdoorReferences' in profile && profile.compatibleOutdoorReferences.some((id: string) => id === model.id))
+    .map(profile => profile.id);
+  return [...new Set([...model.compatibleIndoorClasses, ...additionalClassPairs, ...exactPairs])];
 }
 
 export function indoorOptionsForOutdoor(outdoor: OutdoorKind): { value: IndoorClass; text: string; manufacturer: EquipmentManufacturer }[] {
@@ -100,8 +107,20 @@ export function indoorOptionsForOutdoor(outdoor: OutdoorKind): { value: IndoorCl
 
 export function currentInstallationValidation(cfg: Config): InstallationValidation | undefined {
   const model = outdoorModelInfo(cfg);
+  const exactHead = indoorModelProfile(cfg.rooms[0].indoorClass);
+  if (!model.installation && exactHead && 'compatibleOutdoorReferences' in exactHead) {
+    const paired = cfg.unitCount === 1 && exactHead.compatibleOutdoorReferences.some((id: string) => id === model.id);
+    const topologyStatus = cfg.unitCount !== 1 ? 'invalid' : paired ? 'valid' : 'unknown';
+    return { status: topologyStatus, topologyStatus, eligibilityStatus: paired ? 'valid' : 'unknown',
+      findings: [paired
+        ? { status: 'unknown', code: 'source-exact-pair', message: 'This exact head/outdoor pair is listed in the reviewed manufacturer table.' }
+        : { status: 'unknown', code: 'exact-pair-unverified', message: 'The reviewed exact head reference is not listed for this outdoor model.' },
+        ...(cfg.unitCount !== 1 ? [{ status: 'invalid' as const, code: 'connected-count', message: 'This exact monosplit pair has one connected head.' }] : [])] };
+  }
   if (model.identityKind === 'published-class') {
-    const paired = cfg.unitCount === 1 && model.compatibleIndoorClasses.includes(cfg.rooms[0].indoorClass);
+    const indoor = indoorModelProfile(cfg.rooms[0].indoorClass);
+    const pairedByPublishedClass = indoor && 'compatibleOutdoorClasses' in indoor && indoor.compatibleOutdoorClasses.some(id => id === model.id);
+    const paired = cfg.unitCount === 1 && (model.compatibleIndoorClasses.includes(cfg.rooms[0].indoorClass) || pairedByPublishedClass);
     const topologyStatus = cfg.unitCount !== 1 ? 'invalid' : paired ? 'valid' : 'unknown';
     return { status: topologyStatus === 'invalid' ? 'invalid' : 'unknown', topologyStatus, eligibilityStatus: 'unknown',
       findings: [{ status: 'unknown', code: 'class-suffix-unpublished', message: 'Published catalogue class pairing; factory suffix and exact full-SKU eligibility remain unknown.' },

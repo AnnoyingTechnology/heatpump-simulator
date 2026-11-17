@@ -132,6 +132,8 @@ def source_review_metadata(unit, accepted, root):
     if unit['unitType'] == 'outdoor':
         if accepted['ports'] != row['ports'] or accepted['compatibleIndoorClasses'] != row['compatibleIndoorClasses'] or accepted['pairingEvidence'] != row['pairingEvidence']:
             raise ValueError('Source-reviewed exact pairing or topology changed')
+        if 'installation' in accepted and accepted['installation'] != row.get('installation'):
+            raise ValueError('Source-reviewed typed installation constraints changed')
         if 'pairingEvidenceByIndoor' in row and accepted.get('pairingEvidenceByIndoor') != row['pairingEvidenceByIndoor']:
             raise ValueError('Source-reviewed per-indoor pairing evidence changed')
         if 'pairingEvidenceByIndoor' in row:
@@ -140,6 +142,29 @@ def source_review_metadata(unit, accepted, root):
                 raise ValueError('Source-reviewed exact pair column is absent from candidate')
     elif any(key in accepted for key in ('ports', 'compatibleIndoorClasses', 'pairingEvidence')):
         raise ValueError('Indoor physical-field review cannot certify an outdoor pairing')
+    elif 'compatibleOutdoorClasses' in accepted:
+        if accepted.get('compatibleOutdoorClasses') != row.get('compatibleOutdoorClasses'):
+            raise ValueError('Source-reviewed class pairing differs from the independent readback')
+        pair_evidence = row.get('classPairingEvidence')
+        if not pair_evidence or accepted.get('classPairingEvidence') != pair_evidence:
+            raise ValueError('Source-reviewed class pair evidence is missing or changed')
+        if pair_evidence not in [c['evidence'] for c in unit['compatibility']]:
+            raise ValueError('Source-reviewed class pair column is absent from candidate')
+    elif 'compatibleOutdoorReferences' in accepted:
+        pairing_review = accepted['pairingReview']
+        pairing_path = root / pairing_review['path']
+        if not pairing_path.is_file() or sha(pairing_path) != pairing_review['sha256']:
+            raise ValueError('Exact indoor/outdoor pairing review receipt is missing or changed')
+        pairing = json.loads(pairing_path.read_text())
+        if pairing['candidate'] != {'path': accepted['candidateFile'], 'sha256': accepted['candidateSha256']}:
+            raise ValueError('Exact pairing review does not bind the accepted physical candidate')
+        for source in pairing['sourcePins']:
+            snapshot = root / source['path']
+            if not snapshot.is_file() or sha(snapshot) != source['sha256']:
+                raise ValueError('Required exact pairing primary source is missing or changed')
+        paired = next((r for r in pairing['reviewedPairs'] if r['indoorReference'] == unit['modelReference']), None)
+        if not paired or paired['outdoorReferences'] != accepted['compatibleOutdoorReferences'] or not paired['evidence']:
+            raise ValueError('Exact indoor/outdoor pairing differs from independent source review')
     metadata = row['runtimeMetadata']
     if any(accepted.get(k) != value for k, value in metadata.items()):
         raise ValueError('Region or availability claim differs from independent source review')
@@ -259,6 +284,10 @@ def generate(root=ROOT):
         }
         if 'sourceReview' in accepted:
             profile.update(source_review_metadata(unit, accepted, root))
+        if unit['unitType'] == 'indoor' and 'compatibleOutdoorClasses' in accepted:
+            profile['compatibleOutdoorClasses'] = accepted['compatibleOutdoorClasses']
+        if unit['unitType'] == 'indoor' and 'compatibleOutdoorReferences' in accepted:
+            profile['compatibleOutdoorReferences'] = accepted['compatibleOutdoorReferences']
         capacity = by_key.get('capacityClass')
         if capacity:
             profile['nominalCoolingKw'] = capacity[0]['value']
@@ -298,6 +327,8 @@ def generate(root=ROOT):
                            # the independent receipt explicitly checks partial ranges.
                            'condition': (by_key.get(mode + 'OutdoorMinimum') or by_key[mode + 'OutdoorMaximum'])[0]['condition']}
                     for mode in ('cooling', 'heating')}
+            if 'installation' in accepted:
+                profile['installation'] = accepted['installation']
         profiles.append(profile)
     refs = [p['id'] for p in profiles]
     if len(refs) != len(set(refs)):

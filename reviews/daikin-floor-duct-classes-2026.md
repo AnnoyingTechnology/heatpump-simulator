@@ -1,0 +1,9 @@
+# Daikin FVXM-B floor and FDXM-F9 concealed-ceiling class batch
+
+Checked 2026-11-17. This batch imports seven indoor published classes from Daikin Europe ECPEN26-500 printed pp.326–327: FVXM25B/35B/50B and FDXM25F9/35F9/50F9/60F9. The class rows use the reviewed merged-cell boundaries, indoor casing, separate cooling high-fan flow and one-to-one RXM class pair columns. Full factory suffixes, exact full-SKU eligibility and current France retail availability remain unknown.
+
+The p.326/p.327 HTML, SVG positioned-text layers and page backgrounds are pinned in [`daikin-floor-duct-independent-acceptance-2026.json`](daikin-floor-duct-independent-acceptance-2026.json). The class pair map is FVXM25B→RXM25A9, FVXM35B→RXM35A9, FVXM50B→RXM50A8, FDXM25F9→RXM25A9, FDXM35F9→RXM35A9, FDXM50F9→RXM50A8 and FDXM60F9→RXM60A. RXM outdoor IDs are already accepted Perfera class profiles, so this batch imports only the seven new indoor references and records their partner classes on those profiles. No duplicate RXM outdoor IDs were created.
+
+The importer now emits `compatibleOutdoorClasses` for these published indoor classes, and selection adds only source-listed class partners to the matching RXM class. This small metadata extension is needed because the RXM profiles have accepted identities from p.320 while the floor/duct pair columns appear on p.326/327. The source checks verify each pair excerpt and hash-bound readback; runtime exact-SKU eligibility remains unknown.
+
+Runtime Daikin count after this batch: **86 outdoor / 159 indoor**. The p.349 FTXTP batch remains in [`nepura-ftxtp-classes-2026.md`](nepura-ftxtp-classes-2026.md). Remaining work is tracked in [`daikin-luna-coverage.md`](daikin-luna-coverage.md); Mitsubishi Electric remains **25 outdoor / 45 indoor** in [`mitsubishi-electric-luna-coverage.md`](mitsubishi-electric-luna-coverage.md).

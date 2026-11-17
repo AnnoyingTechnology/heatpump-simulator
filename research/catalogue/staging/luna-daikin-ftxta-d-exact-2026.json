@@ -1,0 +1,396 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "2026 Nepura FTXTA-D exact France indoor/outdoor references with preliminary p.345 class fields",
+  "market": "Daikin France exact pairing tables; Europe p.345 technical class values are preliminary",
+  "checkedAt": "2026-10-11",
+  "unresolvedReferences": [
+    {
+      "modelReference": "CTXA15DG/P/L/C/Y",
+      "reason": "Printed p.315 lists CTXA15 variants as connectable to multi outdoor units only. This batch makes no monosplit pairing; review separately if multi-split class coverage is requested."
+    },
+    {
+      "modelReference": "CTXA15CW/S/B",
+      "reason": "Printed p.317 lists CTXA15 variants as connectable to multi outdoor units only. This batch makes no monosplit pairing; review separately if multi-split class coverage is requested."
+    },
+    {
+      "modelReference": "CTXM15A",
+      "reason": "Printed p.320 marks CTXM15A multi-combination only. This batch makes no monosplit pairing; review separately if multi-split class coverage is requested."
+    }
+  ],
+  "sources": [
+    {
+      "id": "catalogue-p345",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/345/",
+      "title": "Daikin Europe General Catalogue 2026 Split, printed p.345",
+      "edition": "ECPEN26-500, 02/2026; printed page 345; pinned HTML snapshot SHA-256 0f7b3b226c196ef604fd58d73d7a460c947d60cdbbae9db459f63dc366ed7cfa",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-fr-ftxta-dg",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXTA-DDG---RXTA-C.html",
+      "title": "Daikin France technical table FTXTA-DDG / RXTA-C",
+      "edition": "France manufacturer product table, snapshot SHA-256 9c35e4280bf6470ae04c8111f7c177e2dcc515a250aa03b0295a26beeaf8e6a3",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "daikin-fr-ftxta-dl",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXTA-DDL---RXTA-C.html",
+      "title": "Daikin France technical table FTXTA-DDL / RXTA-C",
+      "edition": "France manufacturer product table, snapshot SHA-256 93c83748270895a0900c6c4c0f7644fab14048cf76d569276dec3c6d9d969807",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "daikin-fr-ftxta-dp",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXTA-DDP---RXTA-C.html",
+      "title": "Daikin France technical table FTXTA-DDP / RXTA-C",
+      "edition": "France manufacturer product table, snapshot SHA-256 3b51a10e1a11cc736a7a5742de8278b73a20bd0aae4d939ae95d9f258dfe173e",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "daikin-fr-ftxta-dy",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXTA-DDY---RXTA-C.html",
+      "title": "Daikin France technical table FTXTA-DDY / RXTA-C",
+      "edition": "France manufacturer product table, snapshot SHA-256 c83281f8fc4a3e2716767c1a8391eb804e107811216d13cb4740b16528671dc3",
+      "retrievedAt": "2026-11-17"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FTXTA30D2V1BG",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxta-dg",
+        "locator": "Exact manufacturer indoor/outdoor pair column header",
+        "excerpt": "FTXTA30D2V1BG / RXTA30C2V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 798,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 189,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 786,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; preliminary data; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; FTXTA30DG class, shared 30DG/L/P/Y cell; Fan / Air flow / Cooling / High; 13.1 m³/min ×60",
+            "excerpt": "FTXTA30DG class group | Cooling Silent/Low/Medium/High | high 13.1 m³/min; preliminary blue cell; converted exactly ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 738,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; preliminary data; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; FTXTA30DG class, shared 30DG/L/P/Y cell; Fan / Air flow / Heating / High; 12.3 m³/min ×60",
+            "excerpt": "FTXTA30DG class group | Heating Silent/Low/Medium/High | high 12.3 m³/min; preliminary blue cell; converted exactly ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact France manufacturer table pair for this indoor reference and RXTA30C2V1B. This pair record does not change the preliminary status of the p.345 class physical fields.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxta-dg",
+            "locator": "Exact manufacturer indoor/outdoor pair column header",
+            "excerpt": "FTXTA30D2V1BG / RXTA30C2V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown.",
+        "All technical cells on printed p.345 are blue and the page footnote states blue cells contain preliminary data; every physical/range fact from this page is preliminary.",
+        "Outdoor volumetric airflow is not published on the page. No OEM curve, capacity, charge, compressor, or cycle parameters are imported.",
+        "The page points to a separate operating-range drawing; only the tabulated preliminary endpoint ranges are captured, not a full performance boundary."
+      ]
+    },
+    {
+      "modelReference": "FTXTA30D2V1BL",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxta-dl",
+        "locator": "Exact manufacturer indoor/outdoor pair column header",
+        "excerpt": "FTXTA30D2V1BL / RXTA30C2V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 798,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 189,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 786,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; preliminary data; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; FTXTA30DG class, shared 30DG/L/P/Y cell; Fan / Air flow / Cooling / High; 13.1 m³/min ×60",
+            "excerpt": "FTXTA30DG class group | Cooling Silent/Low/Medium/High | high 13.1 m³/min; preliminary blue cell; converted exactly ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 738,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; preliminary data; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; FTXTA30DG class, shared 30DG/L/P/Y cell; Fan / Air flow / Heating / High; 12.3 m³/min ×60",
+            "excerpt": "FTXTA30DG class group | Heating Silent/Low/Medium/High | high 12.3 m³/min; preliminary blue cell; converted exactly ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact France manufacturer table pair for this indoor reference and RXTA30C2V1B. This pair record does not change the preliminary status of the p.345 class physical fields.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxta-dl",
+            "locator": "Exact manufacturer indoor/outdoor pair column header",
+            "excerpt": "FTXTA30D2V1BL / RXTA30C2V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown.",
+        "All technical cells on printed p.345 are blue and the page footnote states blue cells contain preliminary data; every physical/range fact from this page is preliminary.",
+        "Outdoor volumetric airflow is not published on the page. No OEM curve, capacity, charge, compressor, or cycle parameters are imported.",
+        "The page points to a separate operating-range drawing; only the tabulated preliminary endpoint ranges are captured, not a full performance boundary."
+      ]
+    },
+    {
+      "modelReference": "FTXTA30D2V1BP",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxta-dp",
+        "locator": "Exact manufacturer indoor/outdoor pair column header",
+        "excerpt": "FTXTA30D2V1BP / RXTA30C2V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 798,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 189,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 786,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; preliminary data; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; FTXTA30DG class, shared 30DG/L/P/Y cell; Fan / Air flow / Cooling / High; 13.1 m³/min ×60",
+            "excerpt": "FTXTA30DG class group | Cooling Silent/Low/Medium/High | high 13.1 m³/min; preliminary blue cell; converted exactly ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 738,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; preliminary data; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; FTXTA30DG class, shared 30DG/L/P/Y cell; Fan / Air flow / Heating / High; 12.3 m³/min ×60",
+            "excerpt": "FTXTA30DG class group | Heating Silent/Low/Medium/High | high 12.3 m³/min; preliminary blue cell; converted exactly ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact France manufacturer table pair for this indoor reference and RXTA30C2V1B. This pair record does not change the preliminary status of the p.345 class physical fields.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxta-dp",
+            "locator": "Exact manufacturer indoor/outdoor pair column header",
+            "excerpt": "FTXTA30D2V1BP / RXTA30C2V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown.",
+        "All technical cells on printed p.345 are blue and the page footnote states blue cells contain preliminary data; every physical/range fact from this page is preliminary.",
+        "Outdoor volumetric airflow is not published on the page. No OEM curve, capacity, charge, compressor, or cycle parameters are imported.",
+        "The page points to a separate operating-range drawing; only the tabulated preliminary endpoint ranges are captured, not a full performance boundary."
+      ]
+    },
+    {
+      "modelReference": "FTXTA30D2V1BY",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-ftxta-dy",
+        "locator": "Exact manufacturer indoor/outdoor pair column header",
+        "excerpt": "FTXTA30D2V1BY / RXTA30C2V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 798,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 189,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 786,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; preliminary data; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; FTXTA30DG class, shared 30DG/L/P/Y cell; Fan / Air flow / Cooling / High; 13.1 m³/min ×60",
+            "excerpt": "FTXTA30DG class group | Cooling Silent/Low/Medium/High | high 13.1 m³/min; preliminary blue cell; converted exactly ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 738,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; preliminary data; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; FTXTA30DG class, shared 30DG/L/P/Y cell; Fan / Air flow / Heating / High; 12.3 m³/min ×60",
+            "excerpt": "FTXTA30DG class group | Heating Silent/Low/Medium/High | high 12.3 m³/min; preliminary blue cell; converted exactly ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact France manufacturer table pair for this indoor reference and RXTA30C2V1B. This pair record does not change the preliminary status of the p.345 class physical fields.",
+          "evidence": {
+            "sourceId": "daikin-fr-ftxta-dy",
+            "locator": "Exact manufacturer indoor/outdoor pair column header",
+            "excerpt": "FTXTA30D2V1BY / RXTA30C2V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown.",
+        "All technical cells on printed p.345 are blue and the page footnote states blue cells contain preliminary data; every physical/range fact from this page is preliminary.",
+        "Outdoor volumetric airflow is not published on the page. No OEM curve, capacity, charge, compressor, or cycle parameters are imported.",
+        "The page points to a separate operating-range drawing; only the tabulated preliminary endpoint ranges are captured, not a full performance boundary."
+      ]
+    }
+  ]
+}

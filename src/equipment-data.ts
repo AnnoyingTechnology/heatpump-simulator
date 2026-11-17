@@ -4060,6 +4060,416 @@ export const CATALOGUE_OUTDOORS = [
         "condition": "outdoor wet-bulb (°CBH in France source; °CWB in Europe source)"
       }
     }
+  },
+  {
+    "id": "RXTP25A",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 605,
+      "w": 930,
+      "d": 376
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.349",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FTXTP25A"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": -31,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb"
+      }
+    }
+  },
+  {
+    "id": "RXTP35A",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 605,
+      "w": 930,
+      "d": 376
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.349",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FTXTP35A"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": -31,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb"
+      }
+    }
+  },
+  {
+    "id": "3MXF52A2V1B9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 974,
+      "d": 401
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": 9.0,
+      "ports": [
+        {
+          "id": "A",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                20,
+                25,
+                35
+              ],
+              "reducer": "none"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "none",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXF42F"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                20,
+                25,
+                35
+              ],
+              "reducer": "2+4"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "2+4",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXF42F"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                20,
+                25,
+                35
+              ],
+              "reducer": "2+4"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "2+4",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXF42F"
+              ]
+            }
+          ]
+        }
+      ],
+      "guide": "3PFR774208-1B (2026.04), printed p.8",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": 2.2
+    }
+  },
+  {
+    "id": "3MXF68A2V1B9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 734,
+      "w": 974,
+      "d": 401
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": 9.0,
+      "ports": [
+        {
+          "id": "A",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                20,
+                25,
+                35
+              ],
+              "reducer": "none"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "none",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXF42F"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                20,
+                25,
+                35
+              ],
+              "reducer": "2+4"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "2+4",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXF42F"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "C",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                20,
+                25,
+                35
+              ],
+              "reducer": "2+4"
+            },
+            {
+              "capacityClasses": [
+                42
+              ],
+              "reducer": "2+4",
+              "onlyGuideNamedIndoorClasses": [
+                "FTXF42F"
+              ]
+            }
+          ]
+        }
+      ],
+      "guide": "3PFR774208-1B (2026.04), printed p.8",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": 2.4
+    }
+  },
+  {
+    "id": "2MXF40A2V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 765,
+      "d": 285
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France exact SKU availability unverified",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": 6.0,
+      "ports": [
+        {
+          "id": "A",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                20,
+                25,
+                35
+              ],
+              "reducer": "none"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                20,
+                25,
+                35
+              ],
+              "reducer": "none"
+            }
+          ]
+        }
+      ],
+      "guide": "4PFR600463-3K (2026.04), printed pp.36-38",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "2MXF50A2V1B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 765,
+      "d": 285
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France exact SKU availability unverified",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": 8.5,
+      "ports": [
+        {
+          "id": "A",
+          "gasConnectionOuterDiameterMm": 9.5,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                20,
+                25,
+                35,
+                42
+              ],
+              "reducer": "none"
+            }
+          ]
+        },
+        {
+          "id": "B",
+          "gasConnectionOuterDiameterMm": 12.7,
+          "alternatives": [
+            {
+              "capacityClasses": [
+                20,
+                25,
+                35,
+                42
+              ],
+              "reducer": "1+2"
+            }
+          ]
+        }
+      ],
+      "guide": "4PFR600463-3K (2026.04), printed pp.36-38",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
   }
 ] as const;
 
@@ -6106,7 +6516,10 @@ export const CATALOGUE_INDOORS = [
     },
     "coolingHighFanFlowM3h": 570.0,
     "sourceStatus": "availability-unknown",
-    "marketScope": "France technical table; current availability unverified"
+    "marketScope": "France technical table; current availability unverified",
+    "compatibleOutdoorReferences": [
+      "ARXP20N5V1B9"
+    ]
   },
   {
     "id": "ATXP25N5V1B9",
@@ -6119,7 +6532,10 @@ export const CATALOGUE_INDOORS = [
     },
     "coolingHighFanFlowM3h": 582.0,
     "sourceStatus": "availability-unknown",
-    "marketScope": "France technical table; current availability unverified"
+    "marketScope": "France technical table; current availability unverified",
+    "compatibleOutdoorReferences": [
+      "ARXP25N5V1B9"
+    ]
   },
   {
     "id": "ATXP35N5V1B9",
@@ -6132,7 +6548,10 @@ export const CATALOGUE_INDOORS = [
     },
     "coolingHighFanFlowM3h": 690.0,
     "sourceStatus": "availability-unknown",
-    "marketScope": "France technical table; current availability unverified"
+    "marketScope": "France technical table; current availability unverified",
+    "compatibleOutdoorReferences": [
+      "ARXP35N5V1B9"
+    ]
   },
   {
     "id": "ATXF20F5V1B",
@@ -6407,6 +6826,226 @@ export const CATALOGUE_INDOORS = [
     "marketScope": "Europe; France availability unverified",
     "identityKind": "published-class",
     "sourceEdition": "ECPEN26-500 (02/2026), p.320"
+  },
+  {
+    "id": "FTXTP25A",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 286,
+      "w": 770,
+      "d": 225
+    },
+    "coolingHighFanFlowM3h": 660,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.349"
+  },
+  {
+    "id": "FTXTP35A",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 286,
+      "w": 770,
+      "d": 225
+    },
+    "coolingHighFanFlowM3h": 660,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.349"
+  },
+  {
+    "id": "FVXM25B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 750,
+      "d": 238
+    },
+    "coolingHighFanFlowM3h": 522.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.326",
+    "compatibleOutdoorClasses": [
+      "RXM25A9"
+    ]
+  },
+  {
+    "id": "FVXM35B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 750,
+      "d": 238
+    },
+    "coolingHighFanFlowM3h": 552.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.326",
+    "compatibleOutdoorClasses": [
+      "RXM35A9"
+    ]
+  },
+  {
+    "id": "FVXM50B",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 750,
+      "d": 238
+    },
+    "coolingHighFanFlowM3h": 696.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.326",
+    "compatibleOutdoorClasses": [
+      "RXM50A8"
+    ]
+  },
+  {
+    "id": "FDXM25F9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 750,
+      "d": 620
+    },
+    "coolingHighFanFlowM3h": 522.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.327",
+    "compatibleOutdoorClasses": [
+      "RXM25A9"
+    ]
+  },
+  {
+    "id": "FDXM35F9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 750,
+      "d": 620
+    },
+    "coolingHighFanFlowM3h": 522.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.327",
+    "compatibleOutdoorClasses": [
+      "RXM35A9"
+    ]
+  },
+  {
+    "id": "FDXM50F9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 1150,
+      "d": 620
+    },
+    "coolingHighFanFlowM3h": 948.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.327",
+    "compatibleOutdoorClasses": [
+      "RXM50A8"
+    ]
+  },
+  {
+    "id": "FDXM60F9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-class-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 1150,
+      "d": 620
+    },
+    "coolingHighFanFlowM3h": 960.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "identityKind": "published-class",
+    "sourceEdition": "ECPEN26-500 (02/2026), p.327",
+    "compatibleOutdoorClasses": [
+      "RXM60A"
+    ]
+  },
+  {
+    "id": "FTXTA30D2V1BG",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 786,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France exact pairing table; current retail availability unverified",
+    "compatibleOutdoorClasses": [
+      "RXTA30C2V1B"
+    ]
+  },
+  {
+    "id": "FTXTA30D2V1BL",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 786,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France exact pairing table; current retail availability unverified",
+    "compatibleOutdoorClasses": [
+      "RXTA30C2V1B"
+    ]
+  },
+  {
+    "id": "FTXTA30D2V1BP",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 786,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France exact pairing table; current retail availability unverified",
+    "compatibleOutdoorClasses": [
+      "RXTA30C2V1B"
+    ]
+  },
+  {
+    "id": "FTXTA30D2V1BY",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 798,
+      "d": 189
+    },
+    "coolingHighFanFlowM3h": 786,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France exact pairing table; current retail availability unverified",
+    "compatibleOutdoorClasses": [
+      "RXTA30C2V1B"
+    ]
   }
 ] as const;
 

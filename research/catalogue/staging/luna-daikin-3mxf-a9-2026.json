@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "2026 Sensira 3MXF-A9 multisplit outdoor range",
+  "market": "Daikin Europe; France exact SKU availability unverified",
+  "checkedAt": "2026-11-17",
+  "sources": [
+    {
+      "id": "mxf-outdoor-table",
+      "url": "https://www.daikin.eu/en_us/products/product.table.html/3mxf-a9.html",
+      "title": "Daikin Europe 3MXF-A9 outdoor specifications table",
+      "edition": "Official product table; retrieved 2026-11-17; snapshot SHA-256 bd8c82329315ac2127493965989f7f28e452220cc98285105b160bf4c18cba3c",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "mxf-combination-table",
+      "url": "https://www.daikin.eu/en_us/products/product.table.html/CTXF-F---3MXF-A9.html",
+      "title": "Daikin Europe CTXF-F / 3MXF-A9 system specifications table",
+      "edition": "Official product table; retrieved 2026-11-17; snapshot SHA-256 df2b9f2278c8bcfd3633900221e6860c7695e262ecbbecd64fbfaa99e5d3dc2a",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "mxf-install-guide",
+      "url": "https://www.daikin.eu/content/dam/document-library/installation-manuals/ac/split/3amxm-n9/3AMXF-A9.3AMXM-N9.3MXF-A9_Installation%20manual_3PFR774208-1B_French.pdf",
+      "title": "Daikin 3AMXF-A9, 3AMXM-N9, 3MXF-A9 installation manual (French)",
+      "edition": "3PFR774208-1B, 2026.04; printed p.8 connection table and printed p.9 maximum charge table; PDF SHA-256 4162c44b377922e941c761ac7218be9ba54912d5598fbc9adf732f32e673c8bb",
+      "retrievedAt": "2026-11-17"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "3MXF52A2V1B9",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "mxf-outdoor-table",
+        "locator": "Official product table exact outdoor column header",
+        "excerpt": "3MXF52A2V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 3MXF-A9 product table, exact 3MXF52A2V1B9 column; Dimensions or Refrigerant row",
+            "excerpt": "3MXF52A2V1B9 | 734 × 974 × 401 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 974,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 3MXF-A9 product table, exact 3MXF52A2V1B9 column; Dimensions or Refrigerant row",
+            "excerpt": "3MXF52A2V1B9 | 734 × 974 × 401 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 401,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 3MXF-A9 product table, exact 3MXF52A2V1B9 column; Dimensions or Refrigerant row",
+            "excerpt": "3MXF52A2V1B9 | 734 × 974 × 401 mm"
+          }
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 3,
+          "unit": "none",
+          "condition": "printed guide connection ports A, B, C",
+          "evidence": {
+            "sourceId": "mxf-install-guide",
+            "locator": "Printed p.8, port/class table headed 3MXF52, 3AMXF52, 3MXF68; named ports A, B, C",
+            "excerpt": "3MXF52 / 3MXF68 | A; B + C"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 3MXF-A9 product table, exact 3MXF52A2V1B9 column; Dimensions or Refrigerant row",
+            "excerpt": "3MXF52A2V1B9 | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 3MXF-A9 product table, coolingOutdoorMinimum row; condition retains manufacturer DB/WB basis",
+            "excerpt": "3MXF52A2V1B9 | -10 / 46 °CDB"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 3MXF-A9 product table, coolingOutdoorMaximum row; condition retains manufacturer DB/WB basis",
+            "excerpt": "3MXF52A2V1B9 | -10 / 46 °CDB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 3MXF-A9 product table, heatingOutdoorMinimum row; condition retains manufacturer DB/WB basis",
+            "excerpt": "3MXF52A2V1B9 | -15 / 18 °CWB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 3MXF-A9 product table, heatingOutdoorMaximum row; condition retains manufacturer DB/WB basis",
+            "excerpt": "3MXF52A2V1B9 | -15 / 18 °CWB"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Manufacturer installation guide publishes three named connection ports and capacity-class/reducer rules for the 3MXF52 and 3MXF68 family. Exact full-SKU indoor eligibility and complete combination performance remain unknown.",
+          "evidence": {
+            "sourceId": "mxf-install-guide",
+            "locator": "Printed p.8, table “Orifice / Classe / Réducteur”, rows 3MXF52 and 3MXF68; footnote (b)",
+            "excerpt": "A (Ø9,5 mm): 20, 25, 35, 42(b); B + C (Ø12,7 mm): 20, 25, 35, 42(b); reducer 2+4"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor high-fan airflow is unpublished in these reviewed sources.",
+        "Exact full-reference indoor eligibility and complete valid class combinations are not established by the port table.",
+        "The minimum connected-head count is not stated in the reviewed guide; it remains unknown."
+      ]
+    },
+    {
+      "modelReference": "3MXF68A2V1B9",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "mxf-outdoor-table",
+        "locator": "Official product table exact outdoor column header",
+        "excerpt": "3MXF68A2V1B9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 3MXF-A9 product table, exact 3MXF68A2V1B9 column; Dimensions or Refrigerant row",
+            "excerpt": "3MXF68A2V1B9 | 734 × 974 × 401 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 974,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 3MXF-A9 product table, exact 3MXF68A2V1B9 column; Dimensions or Refrigerant row",
+            "excerpt": "3MXF68A2V1B9 | 734 × 974 × 401 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 401,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 3MXF-A9 product table, exact 3MXF68A2V1B9 column; Dimensions or Refrigerant row",
+            "excerpt": "3MXF68A2V1B9 | 734 × 974 × 401 mm"
+          }
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 3,
+          "unit": "none",
+          "condition": "printed guide connection ports A, B, C",
+          "evidence": {
+            "sourceId": "mxf-install-guide",
+            "locator": "Printed p.8, port/class table headed 3MXF52, 3AMXF52, 3MXF68; named ports A, B, C",
+            "excerpt": "3MXF52 / 3MXF68 | A; B + C"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 3MXF-A9 product table, exact 3MXF68A2V1B9 column; Dimensions or Refrigerant row",
+            "excerpt": "3MXF68A2V1B9 | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 3MXF-A9 product table, coolingOutdoorMinimum row; condition retains manufacturer DB/WB basis",
+            "excerpt": "3MXF68A2V1B9 | -10 / 46 °CDB"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 3MXF-A9 product table, coolingOutdoorMaximum row; condition retains manufacturer DB/WB basis",
+            "excerpt": "3MXF68A2V1B9 | -10 / 46 °CDB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 3MXF-A9 product table, heatingOutdoorMinimum row; condition retains manufacturer DB/WB basis",
+            "excerpt": "3MXF68A2V1B9 | -15 / 18 °CWB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 3MXF-A9 product table, heatingOutdoorMaximum row; condition retains manufacturer DB/WB basis",
+            "excerpt": "3MXF68A2V1B9 | -15 / 18 °CWB"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Manufacturer installation guide publishes three named connection ports and capacity-class/reducer rules for the 3MXF52 and 3MXF68 family. Exact full-SKU indoor eligibility and complete combination performance remain unknown.",
+          "evidence": {
+            "sourceId": "mxf-install-guide",
+            "locator": "Printed p.8, table “Orifice / Classe / Réducteur”, rows 3MXF52 and 3MXF68; footnote (b)",
+            "excerpt": "A (Ø9,5 mm): 20, 25, 35, 42(b); B + C (Ø12,7 mm): 20, 25, 35, 42(b); reducer 2+4"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor high-fan airflow is unpublished in these reviewed sources.",
+        "Exact full-reference indoor eligibility and complete valid class combinations are not established by the port table.",
+        "The minimum connected-head count is not stated in the reviewed guide; it remains unknown."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

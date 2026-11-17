@@ -1,0 +1,277 @@
+{
+  "scope": "Independent review of exact 3MXF-A9 outdoor headers and published connection port/class/reducer rows; full-SKU indoor eligibility remains unknown.",
+  "candidate": {
+    "path": "research/catalogue/staging/luna-daikin-3mxf-a9-2026.json",
+    "sha256": "8428d91f1e8ed1b122c1b61712d77334844e4b21df687b497696c8cff295cd5d"
+  },
+  "sourcePins": [
+    {
+      "path": "research/sources/luna-daikin-3mxf-a9-table-2026.html",
+      "sha256": "bd8c82329315ac2127493965989f7f28e452220cc98285105b160bf4c18cba3c"
+    },
+    {
+      "path": "research/sources/luna-daikin-ctxf-f-3mxf-a9-table-2026.html",
+      "sha256": "df2b9f2278c8bcfd3633900221e6860c7695e262ecbbecd64fbfaa99e5d3dc2a"
+    },
+    {
+      "path": "research/sources/luna-daikin-3mxf-a9-installation-manual-fr-2026.pdf",
+      "sha256": "4162c44b377922e941c761ac7218be9ba54912d5598fbc9adf732f32e673c8bb"
+    }
+  ],
+  "reviewedUnits": [
+    {
+      "reference": "3MXF52A2V1B9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "maximumIndoorUnits",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 734,
+        "width": 974,
+        "depth": 401,
+        "maximumIndoorUnits": 3,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "height": "outdoor casing",
+        "width": "outdoor casing",
+        "depth": "outdoor casing",
+        "maximumIndoorUnits": "printed guide connection ports A, B, C",
+        "coolingOutdoorMinimum": "outdoor dry-bulb",
+        "coolingOutdoorMaximum": "outdoor dry-bulb",
+        "heatingOutdoorMinimum": "outdoor wet-bulb",
+        "heatingOutdoorMaximum": "outdoor wet-bulb"
+      },
+      "ports": 3,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mxf-install-guide",
+        "locator": "Printed p.8, table “Orifice / Classe / Réducteur”, rows 3MXF52 and 3MXF68; footnote (b)",
+        "excerpt": "A (Ø9,5 mm): 20, 25, 35, 42(b); B + C (Ø12,7 mm): 20, 25, 35, 42(b); reducer 2+4"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 3,
+        "connectedCapacityClassSumLimitKw": 9.0,
+        "ports": [
+          {
+            "id": "A",
+            "gasConnectionOuterDiameterMm": 9.5,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35
+                ],
+                "reducer": "none"
+              },
+              {
+                "capacityClasses": [
+                  42
+                ],
+                "reducer": "none",
+                "onlyGuideNamedIndoorClasses": [
+                  "FTXF42F"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "gasConnectionOuterDiameterMm": 12.7,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35
+                ],
+                "reducer": "2+4"
+              },
+              {
+                "capacityClasses": [
+                  42
+                ],
+                "reducer": "2+4",
+                "onlyGuideNamedIndoorClasses": [
+                  "FTXF42F"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "gasConnectionOuterDiameterMm": 12.7,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35
+                ],
+                "reducer": "2+4"
+              },
+              {
+                "capacityClasses": [
+                  42
+                ],
+                "reducer": "2+4",
+                "onlyGuideNamedIndoorClasses": [
+                  "FTXF42F"
+                ]
+              }
+            ]
+          }
+        ],
+        "guide": "3PFR774208-1B (2026.04), printed p.8",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": 2.2
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified"
+      }
+    },
+    {
+      "reference": "3MXF68A2V1B9",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "maximumIndoorUnits",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 734,
+        "width": 974,
+        "depth": 401,
+        "maximumIndoorUnits": 3,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "height": "outdoor casing",
+        "width": "outdoor casing",
+        "depth": "outdoor casing",
+        "maximumIndoorUnits": "printed guide connection ports A, B, C",
+        "coolingOutdoorMinimum": "outdoor dry-bulb",
+        "coolingOutdoorMaximum": "outdoor dry-bulb",
+        "heatingOutdoorMinimum": "outdoor wet-bulb",
+        "heatingOutdoorMaximum": "outdoor wet-bulb"
+      },
+      "ports": 3,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mxf-install-guide",
+        "locator": "Printed p.8, table “Orifice / Classe / Réducteur”, rows 3MXF52 and 3MXF68; footnote (b)",
+        "excerpt": "A (Ø9,5 mm): 20, 25, 35, 42(b); B + C (Ø12,7 mm): 20, 25, 35, 42(b); reducer 2+4"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 3,
+        "connectedCapacityClassSumLimitKw": 9.0,
+        "ports": [
+          {
+            "id": "A",
+            "gasConnectionOuterDiameterMm": 9.5,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35
+                ],
+                "reducer": "none"
+              },
+              {
+                "capacityClasses": [
+                  42
+                ],
+                "reducer": "none",
+                "onlyGuideNamedIndoorClasses": [
+                  "FTXF42F"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "gasConnectionOuterDiameterMm": 12.7,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35
+                ],
+                "reducer": "2+4"
+              },
+              {
+                "capacityClasses": [
+                  42
+                ],
+                "reducer": "2+4",
+                "onlyGuideNamedIndoorClasses": [
+                  "FTXF42F"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "gasConnectionOuterDiameterMm": 12.7,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35
+                ],
+                "reducer": "2+4"
+              },
+              {
+                "capacityClasses": [
+                  42
+                ],
+                "reducer": "2+4",
+                "onlyGuideNamedIndoorClasses": [
+                  "FTXF42F"
+                ]
+              }
+            ]
+          }
+        ],
+        "guide": "3PFR774208-1B (2026.04), printed p.8",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": 2.4
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified"
+      }
+    }
+  ]
+}

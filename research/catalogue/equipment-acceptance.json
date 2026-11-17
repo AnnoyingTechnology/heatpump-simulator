@@ -5775,7 +5775,14 @@
         "sha256": "771d782bbb4d2d5f94adf04ed0017d745d1fd0a4167d6cfd0e2b08349f5196ea"
       },
       "sourceStatus": "availability-unknown",
-      "marketScope": "France technical table; current availability unverified"
+      "marketScope": "France technical table; current availability unverified",
+      "compatibleOutdoorReferences": [
+        "ARXP20N5V1B9"
+      ],
+      "pairingReview": {
+        "path": "reviews/siesta-atxp-pair-independent-acceptance-2026.json",
+        "sha256": "93db41b3a7339b6b9962eda54fb4bf4b51f48c67aa75b531bcd5089fec811e69"
+      }
     },
     {
       "reference": "ATXP25N5V1B9",
@@ -5794,7 +5801,14 @@
         "sha256": "771d782bbb4d2d5f94adf04ed0017d745d1fd0a4167d6cfd0e2b08349f5196ea"
       },
       "sourceStatus": "availability-unknown",
-      "marketScope": "France technical table; current availability unverified"
+      "marketScope": "France technical table; current availability unverified",
+      "compatibleOutdoorReferences": [
+        "ARXP25N5V1B9"
+      ],
+      "pairingReview": {
+        "path": "reviews/siesta-atxp-pair-independent-acceptance-2026.json",
+        "sha256": "93db41b3a7339b6b9962eda54fb4bf4b51f48c67aa75b531bcd5089fec811e69"
+      }
     },
     {
       "reference": "ATXP35N5V1B9",
@@ -5813,7 +5827,14 @@
         "sha256": "771d782bbb4d2d5f94adf04ed0017d745d1fd0a4167d6cfd0e2b08349f5196ea"
       },
       "sourceStatus": "availability-unknown",
-      "marketScope": "France technical table; current availability unverified"
+      "marketScope": "France technical table; current availability unverified",
+      "compatibleOutdoorReferences": [
+        "ARXP35N5V1B9"
+      ],
+      "pairingReview": {
+        "path": "reviews/siesta-atxp-pair-independent-acceptance-2026.json",
+        "sha256": "93db41b3a7339b6b9962eda54fb4bf4b51f48c67aa75b531bcd5089fec811e69"
+      }
     },
     {
       "reference": "ATXF20F5V1B",
@@ -7090,6 +7111,791 @@
         "path": "reviews/siesta-outdoor-independent-acceptance.json",
         "sha256": "20f3516708e1940ac68701e8a8de79784a4073b924a7ad0a284af02da9a4e175"
       }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-nepura-ftxtp-classes-2026.json",
+      "candidateSha256": "a6e66210fc9d01bbbd7c9beadb75dece235f78f3cde7d126c5f01f612211c4f9",
+      "candidateReference": "FTXTP25A",
+      "reference": "FTXTP25A",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.349",
+      "sourceReview": {
+        "path": "reviews/nepura-ftxtp-classes-independent-acceptance-2026.json",
+        "sha256": "d11523e15f8a1c3de317d3fd9486b63b2802f6d1e990fb1c92ee7bad33381f25"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan; source unit m³/min",
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-nepura-ftxtp-classes-2026.json",
+      "candidateSha256": "a6e66210fc9d01bbbd7c9beadb75dece235f78f3cde7d126c5f01f612211c4f9",
+      "candidateReference": "RXTP25A",
+      "reference": "RXTP25A",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "refrigerant"
+      ],
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.349",
+      "sourceReview": {
+        "path": "reviews/nepura-ftxtp-classes-independent-acceptance-2026.json",
+        "sha256": "d11523e15f8a1c3de317d3fd9486b63b2802f6d1e990fb1c92ee7bad33381f25"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXTP25A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "catalogue-p349",
+        "locator": "Printed p.349; Efficiency data table exact class-pair column 25A + 25A",
+        "excerpt": "25A + 25A"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "unpublishedOutdoorAirflow": true
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-nepura-ftxtp-classes-2026.json",
+      "candidateSha256": "a6e66210fc9d01bbbd7c9beadb75dece235f78f3cde7d126c5f01f612211c4f9",
+      "candidateReference": "FTXTP35A",
+      "reference": "FTXTP35A",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.349",
+      "sourceReview": {
+        "path": "reviews/nepura-ftxtp-classes-independent-acceptance-2026.json",
+        "sha256": "d11523e15f8a1c3de317d3fd9486b63b2802f6d1e990fb1c92ee7bad33381f25"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan; source unit m³/min",
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified"
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-nepura-ftxtp-classes-2026.json",
+      "candidateSha256": "a6e66210fc9d01bbbd7c9beadb75dece235f78f3cde7d126c5f01f612211c4f9",
+      "candidateReference": "RXTP35A",
+      "reference": "RXTP35A",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "refrigerant"
+      ],
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.349",
+      "sourceReview": {
+        "path": "reviews/nepura-ftxtp-classes-independent-acceptance-2026.json",
+        "sha256": "d11523e15f8a1c3de317d3fd9486b63b2802f6d1e990fb1c92ee7bad33381f25"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXTP35A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "catalogue-p349",
+        "locator": "Printed p.349; Efficiency data table exact class-pair column 35A + 35A",
+        "excerpt": "35A + 35A"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "unpublishedOutdoorAirflow": true
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-floor-duct-indoor-classes-2026.json",
+      "candidateSha256": "0cbfc4af2ffeb2545aeee16033a2d8336b004ab6cd6a45619a4711cf9027a3a1",
+      "candidateReference": "FVXM25B",
+      "reference": "FVXM25B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.326",
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "sourceReview": {
+        "path": "reviews/daikin-floor-duct-independent-acceptance-2026.json",
+        "sha256": "13ef6c54bac2d79344c4e81a693c400cc76262fa05a2dd7947fa4021047fbfe9"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan; source label m³/min",
+      "compatibleOutdoorClasses": [
+        "RXM25A9"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "catalogue-p326",
+        "locator": "Printed p.326, Efficiency data table, exact class pair column",
+        "excerpt": "25B + 25A9"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-floor-duct-indoor-classes-2026.json",
+      "candidateSha256": "0cbfc4af2ffeb2545aeee16033a2d8336b004ab6cd6a45619a4711cf9027a3a1",
+      "candidateReference": "FVXM35B",
+      "reference": "FVXM35B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.326",
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "sourceReview": {
+        "path": "reviews/daikin-floor-duct-independent-acceptance-2026.json",
+        "sha256": "13ef6c54bac2d79344c4e81a693c400cc76262fa05a2dd7947fa4021047fbfe9"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan; source label m³/min",
+      "compatibleOutdoorClasses": [
+        "RXM35A9"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "catalogue-p326",
+        "locator": "Printed p.326, Efficiency data table, exact class pair column",
+        "excerpt": "35B + 35A9"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-floor-duct-indoor-classes-2026.json",
+      "candidateSha256": "0cbfc4af2ffeb2545aeee16033a2d8336b004ab6cd6a45619a4711cf9027a3a1",
+      "candidateReference": "FVXM50B",
+      "reference": "FVXM50B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.326",
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "sourceReview": {
+        "path": "reviews/daikin-floor-duct-independent-acceptance-2026.json",
+        "sha256": "13ef6c54bac2d79344c4e81a693c400cc76262fa05a2dd7947fa4021047fbfe9"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan; source label m³/min",
+      "compatibleOutdoorClasses": [
+        "RXM50A8"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "catalogue-p326",
+        "locator": "Printed p.326, Efficiency data table, exact class pair column",
+        "excerpt": "50B + 50A8"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-floor-duct-indoor-classes-2026.json",
+      "candidateSha256": "0cbfc4af2ffeb2545aeee16033a2d8336b004ab6cd6a45619a4711cf9027a3a1",
+      "candidateReference": "FDXM25F9",
+      "reference": "FDXM25F9",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.327",
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "sourceReview": {
+        "path": "reviews/daikin-floor-duct-independent-acceptance-2026.json",
+        "sha256": "13ef6c54bac2d79344c4e81a693c400cc76262fa05a2dd7947fa4021047fbfe9"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan; source label m³/min",
+      "compatibleOutdoorClasses": [
+        "RXM25A9"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "catalogue-p327",
+        "locator": "Printed p.327, Efficiency data table, exact class pair column",
+        "excerpt": "25F9 + 25A9"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-floor-duct-indoor-classes-2026.json",
+      "candidateSha256": "0cbfc4af2ffeb2545aeee16033a2d8336b004ab6cd6a45619a4711cf9027a3a1",
+      "candidateReference": "FDXM35F9",
+      "reference": "FDXM35F9",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.327",
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "sourceReview": {
+        "path": "reviews/daikin-floor-duct-independent-acceptance-2026.json",
+        "sha256": "13ef6c54bac2d79344c4e81a693c400cc76262fa05a2dd7947fa4021047fbfe9"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan; source label m³/min",
+      "compatibleOutdoorClasses": [
+        "RXM35A9"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "catalogue-p327",
+        "locator": "Printed p.327, Efficiency data table, exact class pair column",
+        "excerpt": "35F9 + 35A9"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-floor-duct-indoor-classes-2026.json",
+      "candidateSha256": "0cbfc4af2ffeb2545aeee16033a2d8336b004ab6cd6a45619a4711cf9027a3a1",
+      "candidateReference": "FDXM50F9",
+      "reference": "FDXM50F9",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.327",
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "sourceReview": {
+        "path": "reviews/daikin-floor-duct-independent-acceptance-2026.json",
+        "sha256": "13ef6c54bac2d79344c4e81a693c400cc76262fa05a2dd7947fa4021047fbfe9"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan; source label m³/min",
+      "compatibleOutdoorClasses": [
+        "RXM50A8"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "catalogue-p327",
+        "locator": "Printed p.327, Efficiency data table, exact class pair column",
+        "excerpt": "50F9 + 50A8"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-floor-duct-indoor-classes-2026.json",
+      "candidateSha256": "0cbfc4af2ffeb2545aeee16033a2d8336b004ab6cd6a45619a4711cf9027a3a1",
+      "candidateReference": "FDXM60F9",
+      "reference": "FDXM60F9",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "identityKind": "published-class",
+      "sourceEdition": "ECPEN26-500 (02/2026), p.327",
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "sourceReview": {
+        "path": "reviews/daikin-floor-duct-independent-acceptance-2026.json",
+        "sha256": "13ef6c54bac2d79344c4e81a693c400cc76262fa05a2dd7947fa4021047fbfe9"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan; source label m³/min",
+      "compatibleOutdoorClasses": [
+        "RXM60A"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "catalogue-p327",
+        "locator": "Printed p.327, Efficiency data table, exact class pair column",
+        "excerpt": "60F9 + 60A"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-ftxta-d-exact-2026.json",
+      "candidateSha256": "dd78027b396ff474292e53959589c3d0dbb2e566be798e78190336e098b43121",
+      "candidateReference": "FTXTA30D2V1BG",
+      "reference": "FTXTA30D2V1BG",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "France exact pairing table; current retail availability unverified",
+      "sourceReview": {
+        "path": "reviews/nepura-ftxta-d-exact-independent-acceptance-2026.json",
+        "sha256": "5774b39128d27c2ee1e113a4db08313ec34b1a2a346582e261f985f54561f536"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan; preliminary data; source unit m³/min",
+      "compatibleOutdoorClasses": [
+        "RXTA30C2V1B"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "daikin-fr-ftxta-dg",
+        "locator": "Exact manufacturer indoor/outdoor pair column header",
+        "excerpt": "FTXTA30D2V1BG / RXTA30C2V1B"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-ftxta-d-exact-2026.json",
+      "candidateSha256": "dd78027b396ff474292e53959589c3d0dbb2e566be798e78190336e098b43121",
+      "candidateReference": "FTXTA30D2V1BL",
+      "reference": "FTXTA30D2V1BL",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "France exact pairing table; current retail availability unverified",
+      "sourceReview": {
+        "path": "reviews/nepura-ftxta-d-exact-independent-acceptance-2026.json",
+        "sha256": "5774b39128d27c2ee1e113a4db08313ec34b1a2a346582e261f985f54561f536"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan; preliminary data; source unit m³/min",
+      "compatibleOutdoorClasses": [
+        "RXTA30C2V1B"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "daikin-fr-ftxta-dl",
+        "locator": "Exact manufacturer indoor/outdoor pair column header",
+        "excerpt": "FTXTA30D2V1BL / RXTA30C2V1B"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-ftxta-d-exact-2026.json",
+      "candidateSha256": "dd78027b396ff474292e53959589c3d0dbb2e566be798e78190336e098b43121",
+      "candidateReference": "FTXTA30D2V1BP",
+      "reference": "FTXTA30D2V1BP",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "France exact pairing table; current retail availability unverified",
+      "sourceReview": {
+        "path": "reviews/nepura-ftxta-d-exact-independent-acceptance-2026.json",
+        "sha256": "5774b39128d27c2ee1e113a4db08313ec34b1a2a346582e261f985f54561f536"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan; preliminary data; source unit m³/min",
+      "compatibleOutdoorClasses": [
+        "RXTA30C2V1B"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "daikin-fr-ftxta-dp",
+        "locator": "Exact manufacturer indoor/outdoor pair column header",
+        "excerpt": "FTXTA30D2V1BP / RXTA30C2V1B"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-ftxta-d-exact-2026.json",
+      "candidateSha256": "dd78027b396ff474292e53959589c3d0dbb2e566be798e78190336e098b43121",
+      "candidateReference": "FTXTA30D2V1BY",
+      "reference": "FTXTA30D2V1BY",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "France exact pairing table; current retail availability unverified",
+      "sourceReview": {
+        "path": "reviews/nepura-ftxta-d-exact-independent-acceptance-2026.json",
+        "sha256": "5774b39128d27c2ee1e113a4db08313ec34b1a2a346582e261f985f54561f536"
+      },
+      "coolingAirflowCondition": "cooling mode, high fan; preliminary data; source unit m³/min",
+      "compatibleOutdoorClasses": [
+        "RXTA30C2V1B"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "daikin-fr-ftxta-dy",
+        "locator": "Exact manufacturer indoor/outdoor pair column header",
+        "excerpt": "FTXTA30D2V1BY / RXTA30C2V1B"
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-3mxf-a9-2026.json",
+      "candidateSha256": "8428d91f1e8ed1b122c1b61712d77334844e4b21df687b497696c8cff295cd5d",
+      "candidateReference": "3MXF52A2V1B9",
+      "reference": "3MXF52A2V1B9",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "maximumIndoorUnits",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "ports": 3,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mxf-install-guide",
+        "locator": "Printed p.8, table “Orifice / Classe / Réducteur”, rows 3MXF52 and 3MXF68; footnote (b)",
+        "excerpt": "A (Ø9,5 mm): 20, 25, 35, 42(b); B + C (Ø12,7 mm): 20, 25, 35, 42(b); reducer 2+4"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "sourceReview": {
+        "path": "reviews/daikin-3mxf-a9-independent-acceptance-2026.json",
+        "sha256": "8772e75bfcd2015b9455e3014fbc05ee185b5e223fd912bcd57afd75d57320e5"
+      },
+      "unpublishedOutdoorAirflow": true,
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 3,
+        "connectedCapacityClassSumLimitKw": 9.0,
+        "ports": [
+          {
+            "id": "A",
+            "gasConnectionOuterDiameterMm": 9.5,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35
+                ],
+                "reducer": "none"
+              },
+              {
+                "capacityClasses": [
+                  42
+                ],
+                "reducer": "none",
+                "onlyGuideNamedIndoorClasses": [
+                  "FTXF42F"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "gasConnectionOuterDiameterMm": 12.7,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35
+                ],
+                "reducer": "2+4"
+              },
+              {
+                "capacityClasses": [
+                  42
+                ],
+                "reducer": "2+4",
+                "onlyGuideNamedIndoorClasses": [
+                  "FTXF42F"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "gasConnectionOuterDiameterMm": 12.7,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35
+                ],
+                "reducer": "2+4"
+              },
+              {
+                "capacityClasses": [
+                  42
+                ],
+                "reducer": "2+4",
+                "onlyGuideNamedIndoorClasses": [
+                  "FTXF42F"
+                ]
+              }
+            ]
+          }
+        ],
+        "guide": "3PFR774208-1B (2026.04), printed p.8",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": 2.2
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-3mxf-a9-2026.json",
+      "candidateSha256": "8428d91f1e8ed1b122c1b61712d77334844e4b21df687b497696c8cff295cd5d",
+      "candidateReference": "3MXF68A2V1B9",
+      "reference": "3MXF68A2V1B9",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "maximumIndoorUnits",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "ports": 3,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mxf-install-guide",
+        "locator": "Printed p.8, table “Orifice / Classe / Réducteur”, rows 3MXF52 and 3MXF68; footnote (b)",
+        "excerpt": "A (Ø9,5 mm): 20, 25, 35, 42(b); B + C (Ø12,7 mm): 20, 25, 35, 42(b); reducer 2+4"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "sourceReview": {
+        "path": "reviews/daikin-3mxf-a9-independent-acceptance-2026.json",
+        "sha256": "8772e75bfcd2015b9455e3014fbc05ee185b5e223fd912bcd57afd75d57320e5"
+      },
+      "unpublishedOutdoorAirflow": true,
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 3,
+        "connectedCapacityClassSumLimitKw": 9.0,
+        "ports": [
+          {
+            "id": "A",
+            "gasConnectionOuterDiameterMm": 9.5,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35
+                ],
+                "reducer": "none"
+              },
+              {
+                "capacityClasses": [
+                  42
+                ],
+                "reducer": "none",
+                "onlyGuideNamedIndoorClasses": [
+                  "FTXF42F"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "gasConnectionOuterDiameterMm": 12.7,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35
+                ],
+                "reducer": "2+4"
+              },
+              {
+                "capacityClasses": [
+                  42
+                ],
+                "reducer": "2+4",
+                "onlyGuideNamedIndoorClasses": [
+                  "FTXF42F"
+                ]
+              }
+            ]
+          },
+          {
+            "id": "C",
+            "gasConnectionOuterDiameterMm": 12.7,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35
+                ],
+                "reducer": "2+4"
+              },
+              {
+                "capacityClasses": [
+                  42
+                ],
+                "reducer": "2+4",
+                "onlyGuideNamedIndoorClasses": [
+                  "FTXF42F"
+                ]
+              }
+            ]
+          }
+        ],
+        "guide": "3PFR774208-1B (2026.04), printed p.8",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": 2.4
+      }
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-2mxf-a-2026.json",
+      "candidateSha256": "34e2e8cb402057473dc5c149bf8271dc2454cab4766f2295755c461e4edbf2cf",
+      "candidateReference": "2MXF40A2V1B",
+      "reference": "2MXF40A2V1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "maximumIndoorUnits",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "ports": 2,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mxf-install-guide",
+        "locator": "Printed pp.36-38, section 7.2.6: total connected class table, 2MXF-specific port/class/reducer rows; exact two-head combination also in mxf-combination-table",
+        "excerpt": "A/B ports; total class ≤6.0 kW; CTXF20F5V1B / CTXF20F5V1B / 2MXF40A2V1B"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France exact SKU availability unverified",
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 2,
+        "connectedCapacityClassSumLimitKw": 6.0,
+        "ports": [
+          {
+            "id": "A",
+            "gasConnectionOuterDiameterMm": 9.5,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35
+                ],
+                "reducer": "none"
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "gasConnectionOuterDiameterMm": 9.5,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35
+                ],
+                "reducer": "none"
+              }
+            ]
+          }
+        ],
+        "guide": "4PFR600463-3K (2026.04), printed pp.36-38",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      },
+      "sourceReview": {
+        "path": "reviews/daikin-2mxf-a-independent-acceptance-2026.json",
+        "sha256": "b2ed315cfecf201323b96df65d7102b5bdf25b10a324c41ef05745a2cfeffe60"
+      },
+      "unpublishedOutdoorAirflow": true
+    },
+    {
+      "candidateFile": "research/catalogue/staging/luna-daikin-2mxf-a-2026.json",
+      "candidateSha256": "34e2e8cb402057473dc5c149bf8271dc2454cab4766f2295755c461e4edbf2cf",
+      "candidateReference": "2MXF50A2V1B",
+      "reference": "2MXF50A2V1B",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "maximumIndoorUnits",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "ports": 2,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mxf-install-guide",
+        "locator": "Printed pp.36-38, section 7.2.6: total connected class table, 2MXF-specific port/class/reducer rows; exact two-head combination also in mxf-combination-table",
+        "excerpt": "A/B ports; total class ≤8.5 kW; CTXF25F5V1B / CTXF25F5V1B / 2MXF50A2V1B"
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France exact SKU availability unverified",
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 2,
+        "connectedCapacityClassSumLimitKw": 8.5,
+        "ports": [
+          {
+            "id": "A",
+            "gasConnectionOuterDiameterMm": 9.5,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35,
+                  42
+                ],
+                "reducer": "none"
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "gasConnectionOuterDiameterMm": 12.7,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35,
+                  42
+                ],
+                "reducer": "1+2"
+              }
+            ]
+          }
+        ],
+        "guide": "4PFR600463-3K (2026.04), printed pp.36-38",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      },
+      "sourceReview": {
+        "path": "reviews/daikin-2mxf-a-independent-acceptance-2026.json",
+        "sha256": "b2ed315cfecf201323b96df65d7102b5bdf25b10a324c41ef05745a2cfeffe60"
+      },
+      "unpublishedOutdoorAirflow": true
     }
   ],
   "additionalSourceSnapshots": [
