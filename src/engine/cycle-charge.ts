@@ -285,7 +285,7 @@ function solveNested(problem: NewtonProblem<Trial>, massUnknown: number, start: 
 }
 
 type RegimeResult = { trial: Trial; iterations: number } | { error: string; iterations: number; best: Trial | null };
-function solveRegime(properties: Properties, config: EngineConfig, spec: ChargeBalanceSpec, input: CycleInput, regime: ChargeRegime, seeds: Point[], dischargeCeilingC: number, thorough: boolean): RegimeResult {
+function solveRegime(properties: Properties, config: EngineConfig, spec: ChargeBalanceSpec, input: CycleInput, regime: ChargeRegime, seeds: Point[], dischargeCeilingC: number, thorough: boolean, cold = false): RegimeResult {
   const definition = regimeDefinition(regime, input.mode, config.compressor.superheatK, dischargeCeilingC, condensingCeiling(properties));
   const problem: NewtonProblem<Trial> = { evaluate: x => evaluateBalanced(properties, config, spec, input, definition.point(x)),
     residual: trial => definition.extra ? [...trial.residual, definition.extra(trial)] : trial.residual,
@@ -299,8 +299,12 @@ function solveRegime(properties: Properties, config: EngineConfig, spec: ChargeB
     try { const value = problem.evaluate(x); return { x, value, norm: Math.hypot(...problem.residual(value)) }; }
     catch (error) { lastError = error instanceof Error ? error.message : String(error); return null; }
   }).filter((s): s is { x: number[]; value: Trial; norm: number } => s !== null).sort((a, b) => a.norm - b.norm);
+  // From generic seeds the superheat evaporator closure pinches as Te approaches the outdoor
+  // metal temperature less the superheat target, as it does under a held condensing pressure, so
+  // a cold superheat start also brackets the mass first. Warm steps stay on plain Newton.
+  const nestedFirst = definition.nestedFirst || (cold && regime === 'superheat');
   for (const start of starts) {
-    if (definition.nestedFirst) {
+    if (nestedFirst) {
       const nested = solveNested(problem, definition.massUnknown, start.x);
       iterations += nested.iterations;
       if (!('error' in nested)) return { trial: nested.value, iterations };
@@ -413,8 +417,8 @@ export function solveChargeBalancedCycle(properties: Properties, config: EngineC
           next = 'condensing-limit'; continue;
         }
       }
-      const result = solveRegime(properties, config, spec, input, regime, nearby.length ? nearby : genericSeeds, dischargeCeilingC, thorough);
-      const retry: RegimeResult | null = thorough && 'error' in result && nearby.length ? solveRegime(properties, config, spec, input, regime, genericSeeds, dischargeCeilingC, true) : null;
+      const result = solveRegime(properties, config, spec, input, regime, nearby.length ? nearby : genericSeeds, dischargeCeilingC, thorough, !nearby.length);
+      const retry: RegimeResult | null = thorough && 'error' in result && nearby.length ? solveRegime(properties, config, spec, input, regime, genericSeeds, dischargeCeilingC, true, true) : null;
       const final: RegimeResult = retry && !('error' in retry) ? retry : result;
       iterations += result.iterations + (retry?.iterations ?? 0);
       let hint: ChargeRegime | null = null;
