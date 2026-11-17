@@ -1,17 +1,10 @@
-# Terra catalogue continuation checkpoint — 2026-11-18
+# Terra catalogue continuation — incomplete checkpoint, 2026-11-18
 
-**Incomplete.** This is a checkpoint, not a catalogue-completion claim.
+This continuation is not complete. The requested visual reconciliation and later research batches have not been performed; their presence below is not a claim that they were researched or blocked by a source.
 
-The workspace Git metadata was mounted read-only. The requested first commit was made in a separate Git metadata directory at `/tmp/terra-catalogue-git/.git`, using this workspace as its work tree. Commit `91d4b76` adds the brief with the requested co-author trailer. Commit `c1741f5` stages FFA/FNA exact indoor source candidates; they are not accepted or imported. The importer regenerated the same runtime data. Counts before and after: Daikin 90 outdoor / 163 indoor; Mitsubishi Electric 25 outdoor / 45 indoor.
+- `91d4b76` added the brief; `c1741f5` staged FFA/FNA candidates; `21a82d5` recorded the preceding checkpoint.
+- `97c1e10` accepted the eight exact FFA/FNA indoor physical profiles. The FNA table labels 720 mm as including installation legs; 620 mm is used for casing without legs. No MXM compatibility was added. See `terra-daikin-heads-2026-11.md` and its source receipt.
+- Runtime counts changed from Daikin 90 outdoor / 163 indoor to 90 / 171; Mitsubishi remains 25 / 45. France availability and exact full-SKU eligibility for the new heads remain unknown.
+- Catalogue tests (52), topology tests (10), and both TypeScript checks passed after this batch; the build was intentionally skipped.
 
-The FFA and FNA exact table columns and source hashes are documented in `terra-daikin-heads-2026-11.md` and `provenance/terra-daikin-heads-source-receipt.md`. FNA height was uncertain because the table gives two values and a footnote; it is withheld. The MXM matrix has not been visually reconciled, so neither class connectivity nor exact full-SKU eligibility was asserted. France availability and sales status are unknown.
-
-Remaining work, not yet researched in this continuation:
-
-- FBA-A(9), FCAG-B, FHA-A(9) product tables; FFA/FNA matrix cells and runtime acceptance; all exact MXM combinations.
-- The remaining RXM class pair columns.
-- ATXM20 monosplit eligibility, Siesta multisplit eligibility, ARXM50 range drawing.
-- Mitsubishi current 25/45 inventory reconciliation, missing MSZ/MUZ families, MXZ installation constraints and digital-only 5/6-head combination table.
-- 2022 historical exact suffix expansion and reference-by-reference accounting.
-
-The pre-existing coverage ledgers contain the earlier, more detailed known uncertainties; none of the outstanding items should be treated as researched or resolved by this checkpoint. The catalogue Python tests, topology tests and both TypeScript checks passed. The ordinary build failed when Vite attempted to write into the read-only linked `node_modules`; `npm run build -- --configLoader runner` passed.
+The p.329 pinned HTML loses cell positions. No ECPEN26-500 PDF snapshot is present in this workspace; the visual matrix check has not been completed, and no class connectivity is asserted. Finding an equivalent official position-preserving snapshot remains necessary. FBA-A(9), FCAG-B, FHA-A(9), remaining RXM columns, ATXM20, Siesta multisplit, ARXM50 drawing, Mitsubishi inventory and MXZ constraints, and 2022 historical suffixes have not been researched in this continuation. Their previous uncertainties remain in the coverage ledgers. This is a work checkpoint, not the requested final review.
