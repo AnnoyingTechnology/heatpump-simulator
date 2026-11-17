@@ -7150,6 +7150,188 @@ export const CATALOGUE_INDOORS = [
     "coolingHighFanFlowM3h": 960,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FBA35A2VEB9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 245,
+      "w": 700,
+      "d": 800
+    },
+    "coolingHighFanFlowM3h": 900,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FBA50A2VEB9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 245,
+      "w": 700,
+      "d": 800
+    },
+    "coolingHighFanFlowM3h": 900,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FBA60A2VEB9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 245,
+      "w": 1000,
+      "d": 800
+    },
+    "coolingHighFanFlowM3h": 1080,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FCAG35BVEB",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 204,
+      "w": 840,
+      "d": 840
+    },
+    "coolingHighFanFlowM3h": 774.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FCAG50BVEB",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 204,
+      "w": 840,
+      "d": 840
+    },
+    "coolingHighFanFlowM3h": 876.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FCAG60BVEB",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 204,
+      "w": 840,
+      "d": 840
+    },
+    "coolingHighFanFlowM3h": 894.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FHA35AVEB99",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 235,
+      "w": 960,
+      "d": 690
+    },
+    "coolingHighFanFlowM3h": 840,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FHA35AVEB9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 235,
+      "w": 960,
+      "d": 690
+    },
+    "coolingHighFanFlowM3h": 840,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FHA35AVEB98",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 235,
+      "w": 960,
+      "d": 690
+    },
+    "coolingHighFanFlowM3h": 840,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FHA50AVEB9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 235,
+      "w": 960,
+      "d": 690
+    },
+    "coolingHighFanFlowM3h": 900,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FHA50AVEB99",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 235,
+      "w": 960,
+      "d": 690
+    },
+    "coolingHighFanFlowM3h": 900,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FHA50AVEB98",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 235,
+      "w": 960,
+      "d": 690
+    },
+    "coolingHighFanFlowM3h": 900,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FHA60AVEB9",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 235,
+      "w": 1270,
+      "d": 690
+    },
+    "coolingHighFanFlowM3h": 1170.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "FHA60AVEB98",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 235,
+      "w": 1270,
+      "d": 690
+    },
+    "coolingHighFanFlowM3h": 1170.0,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe manufacturer table; France availability unverified"
   }
 ] as const;
 

@@ -44,3 +44,5 @@ Commercial/product-professional PEA/PKA/PCA/PLA/PSA/PSA and Mini-DRV product lin
 Terra Daikin head source checkpoint 2026-11-18: no Mitsubishi change; runtime remains 25 outdoor / 45 indoor. The current range and MXZ reconciliation remain open.
 
 Terra FFA/FNA physical-field follow-up: Mitsubishi remains 25 outdoor / 45 indoor; range and MXZ reconciliation remain open. Daikin now has 90 outdoor / 171 indoor.
+
+Terra FBA/FCAG/FHA batch 2026-11-18: no Mitsubishi changes; runtime remains 25 outdoor / 45 indoor. Daikin runtime is 90 outdoor / 185 indoor. Mitsubishi range and MXZ reconciliation remain open.
