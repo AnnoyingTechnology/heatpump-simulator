@@ -1,0 +1,2170 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-11",
+  "reviewer": "Independent Codex catalogue integration agent",
+  "decision": "Accept bounded research fields only; no runtime promotion",
+  "acceptedBaselineCommit": "cf71dd4",
+  "protectedBaselineArtifactHashes": {
+    "research/catalogue/equipment-acceptance.json": "3731c83439bab0719f35667950ee0d635fa29773b714c8b1cfabfdacafc66c78",
+    "src/equipment-data.ts": "6baef625654f165801eb0bb7ca46638557a2ddc72044cef9713d3275e297da19",
+    "src/equipment.ts": "91b9c6d89e35f2d2780121d68550110a9da506d3ad6a893adfc8a0a89992875e",
+    "tools/import-equipment.py": "08acf2241c2ce93793db5deff60fd51197eea04ff8c504b15f0b4ebbf076ec2f",
+    "tests/catalogue.test.py": "46658134f2820a6b27c0982eaa6c5062b6012371d61bd3257a405d22a20315a5"
+  },
+  "sourcePinManifest": {
+    "path": "research/catalogue/staging/luna-next-daikin-2026-source-pins.sha256",
+    "sha256": "ce5f5de9c1d39f49d9e90034968c7c6cebd0e4706be2a99bb101dc99982d7a43",
+    "files": 41,
+    "allHashesMatched": true
+  },
+  "candidateSnapshots": [
+    {
+      "path": "research/catalogue/staging/luna-next-daikin-multisplit-a8-a9-2026.json",
+      "sha256": "4394292245ffcfc7aa69808d35a8a3fbe487c67fd9b2798deb83d5a6d4c720e0",
+      "unitRecords": 9
+    },
+    {
+      "path": "research/catalogue/staging/luna-next-daikin-perfera-ftxm-a-current-classes-2026.json",
+      "sha256": "6c6a982f2e3b82cb388e5ee8f455085daf1ee2687b413e00859144b4314c9516",
+      "unitRecords": 14
+    },
+    {
+      "path": "research/catalogue/staging/luna-next-daikin-stylish-cd-finish-pairs-2026.json",
+      "sha256": "00a11c1fe4f8bc4a1948ee61bed3c106bda0f99b41d56bc38a26c3a316f1ef4e",
+      "unitRecords": 45
+    }
+  ],
+  "candidateRecords": 68,
+  "fullReferenceRecords": 54,
+  "classReferenceRecords": 14,
+  "structuralValidationPassed": 68,
+  "primaryChecksPassed": 152,
+  "checks": [
+    {
+      "ref": "FTXA20D2V1BG",
+      "pair": "FTXA20D2V1BG / RXA20A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA20D2V1BG",
+      "test": "nominalPairCoolingCapacity",
+      "value": 2.0,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA25D2V1BG",
+      "pair": "FTXA25D2V1BG / RXA25A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA25D2V1BG",
+      "test": "nominalPairCoolingCapacity",
+      "value": 2.5,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA35D2V1BG",
+      "pair": "FTXA35D2V1BG / RXA35A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA35D2V1BG",
+      "test": "nominalPairCoolingCapacity",
+      "value": 3.4,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA42D2V1BG",
+      "pair": "FTXA42D2V1BG / RXA42B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA42D2V1BG",
+      "test": "nominalPairCoolingCapacity",
+      "value": 4.2,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-b8-table.html"
+    },
+    {
+      "ref": "FTXA50D2V1BG",
+      "pair": "FTXA50D2V1BG / RXA50B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA50D2V1BG",
+      "test": "nominalPairCoolingCapacity",
+      "value": 5.0,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-b8-table.html"
+    },
+    {
+      "ref": "FTXA20D2V1BP",
+      "pair": "FTXA20D2V1BP / RXA20A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA20D2V1BP",
+      "test": "nominalPairCoolingCapacity",
+      "value": 2.0,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA25D2V1BP",
+      "pair": "FTXA25D2V1BP / RXA25A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA25D2V1BP",
+      "test": "nominalPairCoolingCapacity",
+      "value": 2.5,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA35D2V1BP",
+      "pair": "FTXA35D2V1BP / RXA35A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA35D2V1BP",
+      "test": "nominalPairCoolingCapacity",
+      "value": 3.4,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA42D2V1BP",
+      "pair": "FTXA42D2V1BP / RXA42B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA42D2V1BP",
+      "test": "nominalPairCoolingCapacity",
+      "value": 4.2,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-b8-table.html"
+    },
+    {
+      "ref": "FTXA50D2V1BP",
+      "pair": "FTXA50D2V1BP / RXA50B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA50D2V1BP",
+      "test": "nominalPairCoolingCapacity",
+      "value": 5.0,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-b8-table.html"
+    },
+    {
+      "ref": "FTXA20D2V1BL",
+      "pair": "FTXA20D2V1BL / RXA20A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA20D2V1BL",
+      "test": "nominalPairCoolingCapacity",
+      "value": 2.0,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA25D2V1BL",
+      "pair": "FTXA25D2V1BL / RXA25A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA25D2V1BL",
+      "test": "nominalPairCoolingCapacity",
+      "value": 2.5,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA35D2V1BL",
+      "pair": "FTXA35D2V1BL / RXA35A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA35D2V1BL",
+      "test": "nominalPairCoolingCapacity",
+      "value": 3.4,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA42D2V1BL",
+      "pair": "FTXA42D2V1BL / RXA42B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA42D2V1BL",
+      "test": "nominalPairCoolingCapacity",
+      "value": 4.2,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-b8-table.html"
+    },
+    {
+      "ref": "FTXA50D2V1BL",
+      "pair": "FTXA50D2V1BL / RXA50B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA50D2V1BL",
+      "test": "nominalPairCoolingCapacity",
+      "value": 5.0,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-b8-table.html"
+    },
+    {
+      "ref": "FTXA20D2V1BC",
+      "pair": "FTXA20D2V1BC / RXA20A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA20D2V1BC",
+      "test": "nominalPairCoolingCapacity",
+      "value": 2.0,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA25D2V1BC",
+      "pair": "FTXA25D2V1BC / RXA25A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA25D2V1BC",
+      "test": "nominalPairCoolingCapacity",
+      "value": 2.5,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA35D2V1BC",
+      "pair": "FTXA35D2V1BC / RXA35A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA35D2V1BC",
+      "test": "nominalPairCoolingCapacity",
+      "value": 3.4,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA42D2V1BC",
+      "pair": "FTXA42D2V1BC / RXA42B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA42D2V1BC",
+      "test": "nominalPairCoolingCapacity",
+      "value": 4.2,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-b8-table.html"
+    },
+    {
+      "ref": "FTXA50D2V1BC",
+      "pair": "FTXA50D2V1BC / RXA50B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA50D2V1BC",
+      "test": "nominalPairCoolingCapacity",
+      "value": 5.0,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-b8-table.html"
+    },
+    {
+      "ref": "FTXA20D2V1BY",
+      "pair": "FTXA20D2V1BY / RXA20A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA20D2V1BY",
+      "test": "nominalPairCoolingCapacity",
+      "value": 2.0,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA25D2V1BY",
+      "pair": "FTXA25D2V1BY / RXA25A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA25D2V1BY",
+      "test": "nominalPairCoolingCapacity",
+      "value": 2.5,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA35D2V1BY",
+      "pair": "FTXA35D2V1BY / RXA35A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA35D2V1BY",
+      "test": "nominalPairCoolingCapacity",
+      "value": 3.4,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA42D2V1BY",
+      "pair": "FTXA42D2V1BY / RXA42B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA42D2V1BY",
+      "test": "nominalPairCoolingCapacity",
+      "value": 4.2,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-b8-table.html"
+    },
+    {
+      "ref": "FTXA50D2V1BY",
+      "pair": "FTXA50D2V1BY / RXA50B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA50D2V1BY",
+      "test": "nominalPairCoolingCapacity",
+      "value": 5.0,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-b8-table.html"
+    },
+    {
+      "ref": "FTXA20C2V1BW",
+      "pair": "FTXA20C2V1BW / RXA20A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA20C2V1BW",
+      "test": "nominalPairCoolingCapacity",
+      "value": 2.0,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA25C2V1BW",
+      "pair": "FTXA25C2V1BW / RXA25A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA25C2V1BW",
+      "test": "nominalPairCoolingCapacity",
+      "value": 2.5,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA35C2V1BW",
+      "pair": "FTXA35C2V1BW / RXA35A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA35C2V1BW",
+      "test": "nominalPairCoolingCapacity",
+      "value": 3.4,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA42C2V1BW",
+      "pair": "FTXA42C2V1BW / RXA42B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA42C2V1BW",
+      "test": "nominalPairCoolingCapacity",
+      "value": 4.2,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-b8-table.html"
+    },
+    {
+      "ref": "FTXA50C2V1BW",
+      "pair": "FTXA50C2V1BW / RXA50B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA50C2V1BW",
+      "test": "nominalPairCoolingCapacity",
+      "value": 5.0,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-b8-table.html"
+    },
+    {
+      "ref": "FTXA20C2V1BS",
+      "pair": "FTXA20C2V1BS / RXA20A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA20C2V1BS",
+      "test": "nominalPairCoolingCapacity",
+      "value": 2.0,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA25C2V1BS",
+      "pair": "FTXA25C2V1BS / RXA25A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA25C2V1BS",
+      "test": "nominalPairCoolingCapacity",
+      "value": 2.5,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA35C2V1BS",
+      "pair": "FTXA35C2V1BS / RXA35A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA35C2V1BS",
+      "test": "nominalPairCoolingCapacity",
+      "value": 3.4,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA42C2V1BS",
+      "pair": "FTXA42C2V1BS / RXA42B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA42C2V1BS",
+      "test": "nominalPairCoolingCapacity",
+      "value": 4.2,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-b8-table.html"
+    },
+    {
+      "ref": "FTXA50C2V1BS",
+      "pair": "FTXA50C2V1BS / RXA50B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA50C2V1BS",
+      "test": "nominalPairCoolingCapacity",
+      "value": 5.0,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-b8-table.html"
+    },
+    {
+      "ref": "FTXA20C2V1BB",
+      "pair": "FTXA20C2V1BB / RXA20A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA20C2V1BB",
+      "test": "nominalPairCoolingCapacity",
+      "value": 2.0,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA25C2V1BB",
+      "pair": "FTXA25C2V1BB / RXA25A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA25C2V1BB",
+      "test": "nominalPairCoolingCapacity",
+      "value": 2.5,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA35C2V1BB",
+      "pair": "FTXA35C2V1BB / RXA35A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA35C2V1BB",
+      "test": "nominalPairCoolingCapacity",
+      "value": 3.4,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html"
+    },
+    {
+      "ref": "FTXA42C2V1BB",
+      "pair": "FTXA42C2V1BB / RXA42B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA42C2V1BB",
+      "test": "nominalPairCoolingCapacity",
+      "value": 4.2,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-b8-table.html"
+    },
+    {
+      "ref": "FTXA50C2V1BB",
+      "pair": "FTXA50C2V1BB / RXA50B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXA50C2V1BB",
+      "test": "nominalPairCoolingCapacity",
+      "value": 5.0,
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-b8-table.html"
+    },
+    {
+      "ref": "RXA20A5V1B8",
+      "pair": "FTXA20D2V1BG / RXA20A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA20A5V1B8",
+      "pair": "FTXA20D2V1BP / RXA20A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA20A5V1B8",
+      "pair": "FTXA20D2V1BL / RXA20A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA20A5V1B8",
+      "pair": "FTXA20D2V1BC / RXA20A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA20A5V1B8",
+      "pair": "FTXA20D2V1BY / RXA20A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA20A5V1B8",
+      "pair": "FTXA20C2V1BW / RXA20A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA20A5V1B8",
+      "pair": "FTXA20C2V1BS / RXA20A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA20A5V1B8",
+      "pair": "FTXA20C2V1BB / RXA20A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA25A5V1B8",
+      "pair": "FTXA25D2V1BG / RXA25A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA25A5V1B8",
+      "pair": "FTXA25D2V1BP / RXA25A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA25A5V1B8",
+      "pair": "FTXA25D2V1BL / RXA25A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA25A5V1B8",
+      "pair": "FTXA25D2V1BC / RXA25A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA25A5V1B8",
+      "pair": "FTXA25D2V1BY / RXA25A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA25A5V1B8",
+      "pair": "FTXA25C2V1BW / RXA25A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA25A5V1B8",
+      "pair": "FTXA25C2V1BS / RXA25A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA25A5V1B8",
+      "pair": "FTXA25C2V1BB / RXA25A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA35A5V1B8",
+      "pair": "FTXA35D2V1BG / RXA35A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA35A5V1B8",
+      "pair": "FTXA35D2V1BP / RXA35A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA35A5V1B8",
+      "pair": "FTXA35D2V1BL / RXA35A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA35A5V1B8",
+      "pair": "FTXA35D2V1BC / RXA35A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA35A5V1B8",
+      "pair": "FTXA35D2V1BY / RXA35A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA35A5V1B8",
+      "pair": "FTXA35C2V1BW / RXA35A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA35A5V1B8",
+      "pair": "FTXA35C2V1BS / RXA35A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA35A5V1B8",
+      "pair": "FTXA35C2V1BB / RXA35A5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA42B5V1B8",
+      "pair": "FTXA42D2V1BG / RXA42B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA42B5V1B8",
+      "pair": "FTXA42D2V1BP / RXA42B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA42B5V1B8",
+      "pair": "FTXA42D2V1BL / RXA42B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA42B5V1B8",
+      "pair": "FTXA42D2V1BC / RXA42B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA42B5V1B8",
+      "pair": "FTXA42D2V1BY / RXA42B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA42B5V1B8",
+      "pair": "FTXA42C2V1BW / RXA42B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA42B5V1B8",
+      "pair": "FTXA42C2V1BS / RXA42B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA42B5V1B8",
+      "pair": "FTXA42C2V1BB / RXA42B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA50B5V1B8",
+      "pair": "FTXA50D2V1BG / RXA50B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA50B5V1B8",
+      "pair": "FTXA50D2V1BP / RXA50B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA50B5V1B8",
+      "pair": "FTXA50D2V1BL / RXA50B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA50B5V1B8",
+      "pair": "FTXA50D2V1BC / RXA50B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA50B5V1B8",
+      "pair": "FTXA50D2V1BY / RXA50B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA50B5V1B8",
+      "pair": "FTXA50C2V1BW / RXA50B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA50B5V1B8",
+      "pair": "FTXA50C2V1BS / RXA50B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "RXA50B5V1B8",
+      "pair": "FTXA50C2V1BB / RXA50B5V1B8",
+      "sourcePath": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-b8-table.html",
+      "test": "exactPairHeader"
+    },
+    {
+      "ref": "FTXM20A",
+      "test": "publishedCatalogueClassPair",
+      "column": "20A + 20A",
+      "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p320.html"
+    },
+    {
+      "ref": "RXM20A",
+      "test": "publishedCatalogueClassPair",
+      "column": "20A + 20A",
+      "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p320.html"
+    },
+    {
+      "ref": "FTXM25A",
+      "test": "publishedCatalogueClassPair",
+      "column": "25A + 25A9",
+      "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p320.html"
+    },
+    {
+      "ref": "RXM25A9",
+      "test": "publishedCatalogueClassPair",
+      "column": "25A + 25A9",
+      "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p320.html"
+    },
+    {
+      "ref": "FTXM35A",
+      "test": "publishedCatalogueClassPair",
+      "column": "35A + 35A9",
+      "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p320.html"
+    },
+    {
+      "ref": "RXM35A9",
+      "test": "publishedCatalogueClassPair",
+      "column": "35A + 35A9",
+      "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p320.html"
+    },
+    {
+      "ref": "FTXM42A",
+      "test": "publishedCatalogueClassPair",
+      "column": "42A + 42A",
+      "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p320.html"
+    },
+    {
+      "ref": "RXM42A",
+      "test": "publishedCatalogueClassPair",
+      "column": "42A + 42A",
+      "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p320.html"
+    },
+    {
+      "ref": "FTXM50A",
+      "test": "publishedCatalogueClassPair",
+      "column": "50A + 50A8",
+      "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p320.html"
+    },
+    {
+      "ref": "RXM50A8",
+      "test": "publishedCatalogueClassPair",
+      "column": "50A + 50A8",
+      "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p320.html"
+    },
+    {
+      "ref": "FTXM60A",
+      "test": "publishedCatalogueClassPair",
+      "column": "60A + 60A",
+      "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p320.html"
+    },
+    {
+      "ref": "RXM60A",
+      "test": "publishedCatalogueClassPair",
+      "column": "60A + 60A",
+      "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p320.html"
+    },
+    {
+      "ref": "FTXM71A",
+      "test": "publishedCatalogueClassPair",
+      "column": "71A + 71A",
+      "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p320.html"
+    },
+    {
+      "ref": "RXM71A",
+      "test": "publishedCatalogueClassPair",
+      "column": "71A + 71A",
+      "sourcePath": "research/sources/luna-next-daikin-2026-catalogue-p320.html"
+    },
+    {
+      "ref": "2MXM50A2V1B8",
+      "test": "exactFullPdfReference",
+      "sourceId": "model-2mxm-full-skus"
+    },
+    {
+      "ref": "2MXM50A2V1B8",
+      "test": "publishedMaximumHeadCount",
+      "value": 2,
+      "sourcePath": "research/sources/luna-next-daikin-multi-2mxm-a8-page.html"
+    },
+    {
+      "ref": "2MXM68A2V1B8",
+      "test": "exactFullPdfReference",
+      "sourceId": "model-full-skus"
+    },
+    {
+      "ref": "2MXM68A2V1B8",
+      "test": "publishedMaximumHeadCount",
+      "value": 2,
+      "sourcePath": "research/sources/luna-next-daikin-multi-2mxm-a8-page.html"
+    },
+    {
+      "ref": "3MXM40A2V1B8",
+      "test": "exactFullPdfReference",
+      "sourceId": "model-full-skus"
+    },
+    {
+      "ref": "3MXM40A2V1B8",
+      "test": "publishedMaximumHeadCount",
+      "value": 3,
+      "sourcePath": "research/sources/luna-next-daikin-multi-3mxm-a8-page.html"
+    },
+    {
+      "ref": "3MXM52A2V1B8",
+      "test": "exactFullPdfReference",
+      "sourceId": "model-full-skus"
+    },
+    {
+      "ref": "3MXM52A2V1B8",
+      "test": "publishedMaximumHeadCount",
+      "value": 3,
+      "sourcePath": "research/sources/luna-next-daikin-multi-3mxm-a8-page.html"
+    },
+    {
+      "ref": "3MXM68A2V1B8",
+      "test": "exactFullPdfReference",
+      "sourceId": "model-full-skus"
+    },
+    {
+      "ref": "3MXM68A2V1B8",
+      "test": "publishedMaximumHeadCount",
+      "value": 3,
+      "sourcePath": "research/sources/luna-next-daikin-multi-3mxm-a8-page.html"
+    },
+    {
+      "ref": "4MXM68A2V1B8",
+      "test": "exactFullPdfReference",
+      "sourceId": "model-full-skus"
+    },
+    {
+      "ref": "4MXM68A2V1B8",
+      "test": "publishedMaximumHeadCount",
+      "value": 4,
+      "sourcePath": "research/sources/luna-next-daikin-multi-4mxm-a8-page.html"
+    },
+    {
+      "ref": "4MXM80A2V1B8",
+      "test": "exactFullPdfReference",
+      "sourceId": "model-full-skus"
+    },
+    {
+      "ref": "4MXM80A2V1B8",
+      "test": "publishedMaximumHeadCount",
+      "value": 4,
+      "sourcePath": "research/sources/luna-next-daikin-multi-4mxm-a8-page.html"
+    },
+    {
+      "ref": "5MXM90A2V1B8",
+      "test": "exactFullPdfReference",
+      "sourceId": "model-full-skus"
+    },
+    {
+      "ref": "5MXM90A2V1B8",
+      "test": "publishedMaximumHeadCount",
+      "value": 5,
+      "sourcePath": "research/sources/luna-next-daikin-multi-5mxm-a8-page.html"
+    },
+    {
+      "ref": "2MXM40A2V1B9",
+      "test": "exactFullPdfReference",
+      "sourceId": "model-2mxm-full-skus"
+    },
+    {
+      "ref": "2MXM40A2V1B9",
+      "test": "publishedMaximumHeadCount",
+      "value": 2,
+      "sourcePath": "research/sources/luna-next-daikin-multi-2mxm-a9-page-eu.html"
+    }
+  ],
+  "sourcePins": [
+    {
+      "sha256": "4394292245ffcfc7aa69808d35a8a3fbe487c67fd9b2798deb83d5a6d4c720e0",
+      "path": "research/catalogue/staging/luna-next-daikin-multisplit-a8-a9-2026.json"
+    },
+    {
+      "sha256": "6c6a982f2e3b82cb388e5ee8f455085daf1ee2687b413e00859144b4314c9516",
+      "path": "research/catalogue/staging/luna-next-daikin-perfera-ftxm-a-current-classes-2026.json"
+    },
+    {
+      "sha256": "00a11c1fe4f8bc4a1948ee61bed3c106bda0f99b41d56bc38a26c3a316f1ef4e",
+      "path": "research/catalogue/staging/luna-next-daikin-stylish-cd-finish-pairs-2026.json"
+    },
+    {
+      "sha256": "78dc59876286ee6e8536bbf168e61cc556f7bcba0b8545b53c05f13182727be4",
+      "path": "research/sources/luna-next-daikin-2026-catalogue-p315.html"
+    },
+    {
+      "sha256": "edb62277030ef27c3bc11483ad7c4f382f5eadf0c09bad37af84f64d3ca5112c",
+      "path": "research/sources/luna-next-daikin-2026-catalogue-p317.html"
+    },
+    {
+      "sha256": "2becf651c2619e2ced56510cb32ae4a2cc8eabec377eed75e6c716444676f918",
+      "path": "research/sources/luna-next-daikin-2026-catalogue-p320.html"
+    },
+    {
+      "sha256": "ed7ce858b700324b0cdea0c21b967b42fa8ad9ceade9848154d40533445567f5",
+      "path": "research/sources/luna-next-daikin-2026-catalogue-p329.html"
+    },
+    {
+      "sha256": "02d9b5e02434796ceb4d678c4c7abb326fde1a4d1b0876b37aba67ccedb2e217",
+      "path": "research/sources/luna-next-daikin-multi-2mxm-a8-model-id-guide.pdf"
+    },
+    {
+      "sha256": "4176ccc9ff7ccc97199c9a210f1780dc37c443f58d8be72062a73eed6fb831b7",
+      "path": "research/sources/luna-next-daikin-multi-2mxm-a8-page.html"
+    },
+    {
+      "sha256": "3902198d38e006a2af4d99c64babb828815a87f41c2ec27c24d6ef612cdd14b7",
+      "path": "research/sources/luna-next-daikin-multi-2mxm-a9-page-eu.html"
+    },
+    {
+      "sha256": "dba13990541ab67e6657de03c3124a8b378ec35fc216fd0677f441e7a41ad9c9",
+      "path": "research/sources/luna-next-daikin-multi-2mxm-a9-page.html"
+    },
+    {
+      "sha256": "0f0bb8a517dde9ded8c1f075d5ef5626e1e629fd65badec92d471b7d13c5ef83",
+      "path": "research/sources/luna-next-daikin-multi-2mxm-a9-table.html"
+    },
+    {
+      "sha256": "8e40acf0314e214f60f37b6a0403dbdf827f17b061633c4fec1144eadf0cf49a",
+      "path": "research/sources/luna-next-daikin-multi-3mxm-a8-page.html"
+    },
+    {
+      "sha256": "1b07ddcbb2b1b07491198a46b51bc1190a23efde006b0b39cf0be26bd68ffc2a",
+      "path": "research/sources/luna-next-daikin-multi-3mxm-a9-page.html"
+    },
+    {
+      "sha256": "808d5f036d1786187a51cad4c66b6540a765c72d423d8533e19738d79b3aa577",
+      "path": "research/sources/luna-next-daikin-multi-3mxm-a9-table.html"
+    },
+    {
+      "sha256": "5741bb699b1c57507474b28df15b6029708b98eb35059996ab4a3a4584129e53",
+      "path": "research/sources/luna-next-daikin-multi-4mxm-a8-page.html"
+    },
+    {
+      "sha256": "e9ee1f43bfe946c5fadbf5298433b11838bc8bde223498fe06b5076bda33710b",
+      "path": "research/sources/luna-next-daikin-multi-4mxm-a9-page.html"
+    },
+    {
+      "sha256": "9b29b0bf01cf732bd0b70bdb155ae56baced54e400c76008dfc18bb29bf2b130",
+      "path": "research/sources/luna-next-daikin-multi-4mxm-a9-table.html"
+    },
+    {
+      "sha256": "e5374185cdb6ec80a0ce7b30964939048c4205745c9c56bd8adc1ad48a25daff",
+      "path": "research/sources/luna-next-daikin-multi-5mxm-a8-page.html"
+    },
+    {
+      "sha256": "9885ed332c430f1a184d79ed6aeec6097ad13963d98e2e28856ca7d8863c19e0",
+      "path": "research/sources/luna-next-daikin-multi-5mxm-a9-page.html"
+    },
+    {
+      "sha256": "24efdc37e4553bcb441688c90798298c722115691e5e3c2124d7e8ec2adda148",
+      "path": "research/sources/luna-next-daikin-multi-5mxm-a9-table.html"
+    },
+    {
+      "sha256": "657167911f621257e6ffc6629208d9120093f8f999ce0b6accc0da708cd16c4f",
+      "path": "research/sources/luna-next-daikin-multi-model-id-photo-manual.pdf"
+    },
+    {
+      "sha256": "e6ab92a63f05386179d79ab4373b22774b40646634f0eca10f9ffe39063603d4",
+      "path": "research/sources/luna-next-daikin-perfera-ftxm-a-fr-table.html"
+    },
+    {
+      "sha256": "69a9264119cc37eba9e2bb3d60daaf59ee691bacd53080ea73b416b34840858b",
+      "path": "research/sources/luna-next-daikin-perfera-ftxm-a-rxm-a9-fr-pair.html"
+    },
+    {
+      "sha256": "2c947593bc18dc5bbc3dabe76f97e8df621a00ddaf2e3c443424090305ef10fb",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-a8-table.html"
+    },
+    {
+      "sha256": "247445db6643f09c728153de7928653427d93fa0ece47db3f4472e2b2a481f62",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-cb-rxa-b8-table.html"
+    },
+    {
+      "sha256": "be6bb9e097befd3e43ca5573aea2cf8583e9ae64d560e6edfb8f02882e16b6b8",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-a8-table.html"
+    },
+    {
+      "sha256": "11246da5dcd3bda3195cf216fd22d7b773608b30a1f84e917cfbd42a3fb17c68",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-cs-rxa-b8-table.html"
+    },
+    {
+      "sha256": "f05b5d6a59d97bd190a72f179f67fe93bc72b6a6d89d98bcf6feb92d6638f02f",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-a8-table.html"
+    },
+    {
+      "sha256": "54dccad320560e53320f56f7f9dde3e158bcdc9c322dd98498bab3ee577db506",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-cw-rxa-b8-table.html"
+    },
+    {
+      "sha256": "0397827ff603deb63a0630093290dcf3314a86657d42b985a4ba2c28c1677fcd",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-cw-table.html"
+    },
+    {
+      "sha256": "e2652ddbe689c0dc33f487d63b42e248605fd0d9a2903df86b66d2cf113e185d",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-a8-table.html"
+    },
+    {
+      "sha256": "6cc5647a0fb2bea6f572cda240d2e5943d96639f6cebbd6a4729543f05a40b44",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dc-rxa-b8-table.html"
+    },
+    {
+      "sha256": "6a9f72880db2898066b2650215e57d1716e20bd1c0a4137abe1442097c9f883d",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-a8-table.html"
+    },
+    {
+      "sha256": "10f8de5a5f330693f39d59aaba01ec96794d714fe8bd627803148dec0e7f6976",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dg-rxa-b8-table.html"
+    },
+    {
+      "sha256": "adff81f287d2a3d1a7e2350a747fc4ce016c0e45d3326a6f2ba957b8d9f3851f",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-a8-table.html"
+    },
+    {
+      "sha256": "787b18dc33fe526f6123616a2de0bfd738cea3230f4e51b85da6bc1da3f29461",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dl-rxa-b8-table.html"
+    },
+    {
+      "sha256": "779bc4b37b460f8defcbd3e87b2067e0d3978ca98cf00f7346d9783de25dde8c",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-a8-table.html"
+    },
+    {
+      "sha256": "ae4b7c8bc02cb1c2e00fe52462d8f188b021e2f90862b4abe091e7c4500823e6",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dp-rxa-b8-table.html"
+    },
+    {
+      "sha256": "1f0ac870a1e67176ac4a04af27bde2ecec32938484d42932ad2d58eb73df8885",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-a8-table.html"
+    },
+    {
+      "sha256": "378731d903fb1929cc986315f0ae486e03878a53a9c80651e0db728c015f3e38",
+      "path": "research/sources/luna-next-daikin-stylish-ftxa-dy-rxa-b8-table.html"
+    }
+  ],
+  "unitAcceptanceProposal": [
+    {
+      "reference": "2MXM50A2V1B8",
+      "unitType": "outdoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "identity",
+        "published-maximum-head-count"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Exact head-size and allowed combination constraints unresolved",
+        "No validated multisplit import contract",
+        "Candidate lacks casing, airflow, refrigerant and operating-range profile fields"
+      ]
+    },
+    {
+      "reference": "2MXM68A2V1B8",
+      "unitType": "outdoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "identity",
+        "published-maximum-head-count"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Exact head-size and allowed combination constraints unresolved",
+        "No validated multisplit import contract",
+        "Candidate lacks casing, airflow, refrigerant and operating-range profile fields"
+      ]
+    },
+    {
+      "reference": "3MXM40A2V1B8",
+      "unitType": "outdoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "identity",
+        "published-maximum-head-count"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Exact head-size and allowed combination constraints unresolved",
+        "No validated multisplit import contract",
+        "Candidate lacks casing, airflow, refrigerant and operating-range profile fields"
+      ]
+    },
+    {
+      "reference": "3MXM52A2V1B8",
+      "unitType": "outdoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "identity",
+        "published-maximum-head-count"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Exact head-size and allowed combination constraints unresolved",
+        "No validated multisplit import contract",
+        "Candidate lacks casing, airflow, refrigerant and operating-range profile fields"
+      ]
+    },
+    {
+      "reference": "3MXM68A2V1B8",
+      "unitType": "outdoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "identity",
+        "published-maximum-head-count"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Exact head-size and allowed combination constraints unresolved",
+        "No validated multisplit import contract",
+        "Candidate lacks casing, airflow, refrigerant and operating-range profile fields"
+      ]
+    },
+    {
+      "reference": "4MXM68A2V1B8",
+      "unitType": "outdoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "identity",
+        "published-maximum-head-count"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Exact head-size and allowed combination constraints unresolved",
+        "No validated multisplit import contract",
+        "Candidate lacks casing, airflow, refrigerant and operating-range profile fields"
+      ]
+    },
+    {
+      "reference": "4MXM80A2V1B8",
+      "unitType": "outdoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "identity",
+        "published-maximum-head-count"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Exact head-size and allowed combination constraints unresolved",
+        "No validated multisplit import contract",
+        "Candidate lacks casing, airflow, refrigerant and operating-range profile fields"
+      ]
+    },
+    {
+      "reference": "5MXM90A2V1B8",
+      "unitType": "outdoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "identity",
+        "published-maximum-head-count"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Exact head-size and allowed combination constraints unresolved",
+        "No validated multisplit import contract",
+        "Candidate lacks casing, airflow, refrigerant and operating-range profile fields"
+      ]
+    },
+    {
+      "reference": "2MXM40A2V1B9",
+      "unitType": "outdoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "identity",
+        "published-maximum-head-count"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Exact head-size and allowed combination constraints unresolved",
+        "No validated multisplit import contract",
+        "Candidate lacks casing, airflow, refrigerant and operating-range profile fields"
+      ]
+    },
+    {
+      "reference": "FTXM20A",
+      "unitType": "indoor",
+      "referenceScope": "published-class",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "catalogue-class-identity",
+        "exact-published-class-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Current full factory SKU mapping unresolved; keep class identity distinct",
+        "Candidate has no operating profile facts"
+      ]
+    },
+    {
+      "reference": "RXM20A",
+      "unitType": "outdoor",
+      "referenceScope": "published-class",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "catalogue-class-identity",
+        "exact-published-class-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Current full factory SKU mapping unresolved; keep class identity distinct",
+        "Candidate has no operating profile facts"
+      ]
+    },
+    {
+      "reference": "FTXM25A",
+      "unitType": "indoor",
+      "referenceScope": "published-class",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "catalogue-class-identity",
+        "exact-published-class-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Current full factory SKU mapping unresolved; keep class identity distinct",
+        "Candidate has no operating profile facts"
+      ]
+    },
+    {
+      "reference": "RXM25A9",
+      "unitType": "outdoor",
+      "referenceScope": "published-class",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "catalogue-class-identity",
+        "exact-published-class-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Current full factory SKU mapping unresolved; keep class identity distinct",
+        "Candidate has no operating profile facts"
+      ]
+    },
+    {
+      "reference": "FTXM35A",
+      "unitType": "indoor",
+      "referenceScope": "published-class",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "catalogue-class-identity",
+        "exact-published-class-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Current full factory SKU mapping unresolved; keep class identity distinct",
+        "Candidate has no operating profile facts"
+      ]
+    },
+    {
+      "reference": "RXM35A9",
+      "unitType": "outdoor",
+      "referenceScope": "published-class",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "catalogue-class-identity",
+        "exact-published-class-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Current full factory SKU mapping unresolved; keep class identity distinct",
+        "Candidate has no operating profile facts"
+      ]
+    },
+    {
+      "reference": "FTXM42A",
+      "unitType": "indoor",
+      "referenceScope": "published-class",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "catalogue-class-identity",
+        "exact-published-class-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Current full factory SKU mapping unresolved; keep class identity distinct",
+        "Candidate has no operating profile facts"
+      ]
+    },
+    {
+      "reference": "RXM42A",
+      "unitType": "outdoor",
+      "referenceScope": "published-class",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "catalogue-class-identity",
+        "exact-published-class-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Current full factory SKU mapping unresolved; keep class identity distinct",
+        "Candidate has no operating profile facts"
+      ]
+    },
+    {
+      "reference": "FTXM50A",
+      "unitType": "indoor",
+      "referenceScope": "published-class",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "catalogue-class-identity",
+        "exact-published-class-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Current full factory SKU mapping unresolved; keep class identity distinct",
+        "Candidate has no operating profile facts"
+      ]
+    },
+    {
+      "reference": "RXM50A8",
+      "unitType": "outdoor",
+      "referenceScope": "published-class",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "catalogue-class-identity",
+        "exact-published-class-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Current full factory SKU mapping unresolved; keep class identity distinct",
+        "Candidate has no operating profile facts"
+      ]
+    },
+    {
+      "reference": "FTXM60A",
+      "unitType": "indoor",
+      "referenceScope": "published-class",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "catalogue-class-identity",
+        "exact-published-class-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Current full factory SKU mapping unresolved; keep class identity distinct",
+        "Candidate has no operating profile facts"
+      ]
+    },
+    {
+      "reference": "RXM60A",
+      "unitType": "outdoor",
+      "referenceScope": "published-class",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "catalogue-class-identity",
+        "exact-published-class-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Current full factory SKU mapping unresolved; keep class identity distinct",
+        "Candidate has no operating profile facts"
+      ]
+    },
+    {
+      "reference": "FTXM71A",
+      "unitType": "indoor",
+      "referenceScope": "published-class",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "catalogue-class-identity",
+        "exact-published-class-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Current full factory SKU mapping unresolved; keep class identity distinct",
+        "Candidate has no operating profile facts"
+      ]
+    },
+    {
+      "reference": "RXM71A",
+      "unitType": "outdoor",
+      "referenceScope": "published-class",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "catalogue-class-identity",
+        "exact-published-class-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Current full factory SKU mapping unresolved; keep class identity distinct",
+        "Candidate has no operating profile facts"
+      ]
+    },
+    {
+      "reference": "FTXA20D2V1BG",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA25D2V1BG",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA35D2V1BG",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA42D2V1BG",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA50D2V1BG",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA20D2V1BP",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA25D2V1BP",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA35D2V1BP",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA42D2V1BP",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA50D2V1BP",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA20D2V1BL",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA25D2V1BL",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA35D2V1BL",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA42D2V1BL",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA50D2V1BL",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA20D2V1BC",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA25D2V1BC",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA35D2V1BC",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA42D2V1BC",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA50D2V1BC",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA20D2V1BY",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA25D2V1BY",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA35D2V1BY",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA42D2V1BY",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA50D2V1BY",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA20C2V1BW",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA25C2V1BW",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA35C2V1BW",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA42C2V1BW",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA50C2V1BW",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA20C2V1BS",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA25C2V1BS",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA35C2V1BS",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA42C2V1BS",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA50C2V1BS",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA20C2V1BB",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA25C2V1BB",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA35C2V1BB",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA42C2V1BB",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "FTXA50C2V1BB",
+      "unitType": "indoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair",
+        "nominal-pair-cooling-capacity"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts"
+      ]
+    },
+    {
+      "reference": "RXA20A5V1B8",
+      "unitType": "outdoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts",
+        "Outdoor candidate has no R32/range facts"
+      ]
+    },
+    {
+      "reference": "RXA25A5V1B8",
+      "unitType": "outdoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts",
+        "Outdoor candidate has no R32/range facts"
+      ]
+    },
+    {
+      "reference": "RXA35A5V1B8",
+      "unitType": "outdoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts",
+        "Outdoor candidate has no R32/range facts"
+      ]
+    },
+    {
+      "reference": "RXA42B5V1B8",
+      "unitType": "outdoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts",
+        "Outdoor candidate has no R32/range facts"
+      ]
+    },
+    {
+      "reference": "RXA50B5V1B8",
+      "unitType": "outdoor",
+      "referenceScope": "full-reference",
+      "researchStatus": "current",
+      "verifiedBoundedScope": [
+        "full-reference-identity",
+        "exact-finish-specific-monosplit-pair"
+      ],
+      "runtimeReady": false,
+      "runtimeBlockers": [
+        "Candidate has no casing or airflow facts",
+        "Outdoor candidate has no R32/range facts"
+      ]
+    }
+  ],
+  "knownAdditionalSourceFactsNotInCandidate": [
+    {
+      "source": "research/sources/luna-next-daikin-stylish-ftxa-cw-table.html",
+      "scope": "Exactly five CW full SKU headers only",
+      "casingMm": {
+        "height": 295,
+        "width": 798,
+        "depth": 189
+      },
+      "coolingHighFanFlowM3h": {
+        "FTXA20C2V1BW": 660,
+        "FTXA25C2V1BW": 690,
+        "FTXA35C2V1BW": 714,
+        "FTXA42C2V1BW": 786,
+        "FTXA50C2V1BW": 810
+      },
+      "requiredBeforePromotion": "Designated researcher must add source/facts and freeze a new candidate hash; other finishes need their own direct grouped source evidence"
+    }
+  ],
+  "limits": [
+    "All new candidates remain unaccepted for runtime",
+    "Current means catalogue/technical-table presence, not confirmed local stock",
+    "France A9 multi technical rows do not establish A8 SKU fields",
+    "Exact multisplit combination matrix not inferred from family headers, head count or model digits",
+    "No min electrical floor or OEM performance map accepted"
+  ]
+}

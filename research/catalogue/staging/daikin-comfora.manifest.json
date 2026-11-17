@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Comfora (FTXP-M(9) + RXP-M)",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "status": "candidate; 12 candidate files drafted from cached 2022 FR installer catalogue p.44; structure-validated, NOT accepted",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "publisher": "Daikin Europe N.V. (France edition)",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11",
+      "localCache": "research/catalogue/source-cache/daikin-fr-split-installer-2022.pdf",
+      "textCache": "research/catalogue/source-cache/daikin-fr-split-installer-2022.txt",
+      "pageImage": "research/catalogue/source-cache/daikin-fr-split-installer-2022-page-44.png",
+      "pages": 64,
+      "bytes": 8553918,
+      "sha256": "814243080bf6b8795adccb3f8c670a87d0b692d7c1c09ec32c306f04add187ad",
+      "note": "family index = TOC PDF p.3; printed page number == PDF page number; page 44 title 'FTXP-M(9) + RXP-M'"
+    }
+  ],
+  "pageLocator": "TOC p.30; spec PDF p.44 (printed 44)",
+  "references": [
+    { "modelReference": "FTXP20M9", "unitType": "indoor", "file": "daikin-ftxp20m9-indoor.json" },
+    { "modelReference": "RXP20M", "unitType": "outdoor", "file": "daikin-rxp20m-outdoor.json" },
+    { "modelReference": "FTXP25M9", "unitType": "indoor", "file": "daikin-ftxp25m9-indoor.json" },
+    { "modelReference": "RXP25M", "unitType": "outdoor", "file": "daikin-rxp25m-outdoor.json" },
+    { "modelReference": "FTXP35M9", "unitType": "indoor", "file": "daikin-ftxp35m9-indoor.json" },
+    { "modelReference": "RXP35M", "unitType": "outdoor", "file": "daikin-rxp35m-outdoor.json" },
+    { "modelReference": "FTXP50M", "unitType": "indoor", "file": "daikin-ftxp50m-indoor.json" },
+    { "modelReference": "RXP50M", "unitType": "outdoor", "file": "daikin-rxp50m-outdoor.json" },
+    { "modelReference": "FTXP60M", "unitType": "indoor", "file": "daikin-ftxp60m-indoor.json" },
+    { "modelReference": "RXP60M", "unitType": "outdoor", "file": "daikin-rxp60m-outdoor.json" },
+    { "modelReference": "FTXP71M", "unitType": "indoor", "file": "daikin-ftxp71m-indoor.json" },
+    { "modelReference": "RXP71M", "unitType": "outdoor", "file": "daikin-rxp71m-outdoor.json" }
+  ],
+  "monosplitPairings": [
+    "20M9 + 20M", "25M9 + 25M", "35M9 + 35M", "50M + 50M", "60M + 60M", "71M + 71M"
+  ],
+  "coverageNotes": "12 candidate files: 6 indoor (FTXP20M9/25M9/35M9/50M/60M/71M) + 6 outdoor (RXP20M/25M/35M/50M/60M/71M). Page 44 mixes generations: 20/25/35 indoor carry the '9' suffix (M9) while outdoor columns are 'M' (no 9); 50/60/71 indoor are plain 'M'. Monosplit pairings evidenced by efficiency-table column headers '20M9 + 20M' ... '71M + 71M'. Page blurb: 'Jusqu'à 3 unités intérieures peuvent être connectées à 1 unité extérieure multi' (multi-split eligibility, marketing; no invented pairing beyond published monosplit columns). Indoor airflow published m³/min, converted x60 -> m³/h (1 m³/min = 60 m³/h); original m³/min preserved in excerpts. Indoor electrical input published as min/nominal/max (complete-system) in ratings, NOT as a fact. Outdoor supply '1~/50/220-240' merged all outdoor columns; range preserved (no midpoint). Outdoor sound power published for cooling only (row 'Niveau de puissance sonore Rafraîchissement'); heating outdoor sound power NOT published -> unknown. Merged cells verified via page-44 PNG: indoor dims 286x770x225 (20-35M9) / 295x990x263 (50-71M); mass 8,5/9,00 (20/25/35) / 13,5 (50-71); outdoor dims 550x658x275 (20-35M) / 673x825x284 (50-60M) / 734x930x320 (71M); mass 26 (20-25) / 28 (35) / 36 (50-60) / 46 (71); R-32 charge 0,55 (20-25) / 0,70 (35) / 1,0 (50-60) / 1,35 (71); raccords 6,4-9,5 (20-35) / 6,4-12,7 (50-60) / 6,4-15,9 (71); longueur 20 (20-35) / 30 (50-71); dénivelé 12 (20-35) / 20 (50-71); operating range cool -10~48 heat -20~18 merged all outdoor; additional charge 0,02 kg/m >10m merged all outdoor.",
+  "unresolved": [
+    "outdoor airflow (volumetric m³/h): not published for RXP-M outdoor units",
+    "indoor/outdoor fan motor output and fan electrical input: not published",
+    "outdoor-only electrical input at rating point: efficiency-table 'Puissance absorbée' is complete-system; outdoor-only boundary unknown",
+    "capacityClass: no published kW class scalar; model size codes (20/25/35/50/60/71) only",
+    "outdoor heating sound power: NOT published on p.44 (only cooling sound power row present)",
+    "MFA (fuse current) 16/16/16/20/20/25 A: no schema fact key for fuse current; recorded in unknowns only",
+    "prechargedPipeLength, maximumBranchPipeLength: not published on p.44",
+    "SEER/SCOP-A/EER/COP/Pdesign/annual kWh/energy-label are system (paired) ratings; energy-label published '-' for 50/60/71M; not stored as unit facts",
+    "current 2026 availability of FTXP-M(9)/RXP-M: unknown; dated 2022 historical coverage",
+    "monosplit eligibility of 50/60/71M (and all): evidenced by efficiency-table pairing column only; multi-split blurb is marketing; not cross-checked against p.52 combination matrix"
+  ]
+}

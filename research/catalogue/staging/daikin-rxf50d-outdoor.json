@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Sensira (FTXF-D + RXF-D)",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "RXF50D",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.45 (printed 45), page title 'FTXF-D + RXF-D'; UNITÉS EXTÉRIEURES header 'RXF' then column '50D'",
+        "excerpt": "FTXF-D + RXF-D ; Unité extérieure RXF 20D 25D 35D 42D 50D 60D 71D"
+      },
+      "facts": [
+        { "key": "height", "value": 734, "unit": "mm", "condition": "outdoor unit; row 'Dimensions Unité HxLxP' merged cell spanning 50D/60D/71D (734x870x373)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS EXTÉRIEURES row 'Dimensions Unité HxLxP', merged 50D-71D", "excerpt": "Dimensions Unité HxLxP mm 734x870x373" } },
+        { "key": "width", "value": 870, "unit": "mm", "condition": "outdoor unit; merged 50D-71D (HxLxP 734x870x373)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS EXTÉRIEURES row 'Dimensions Unité HxLxP', merged 50D-71D", "excerpt": "Dimensions Unité HxLxP mm 734x870x373" } },
+        { "key": "depth", "value": 373, "unit": "mm", "condition": "outdoor unit; merged 50D-71D (HxLxP 734x870x373)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS EXTÉRIEURES row 'Dimensions Unité HxLxP', merged 50D-71D", "excerpt": "Dimensions Unité HxLxP mm 734x870x373" } },
+        { "key": "mass", "value": 46.0, "unit": "kg", "condition": "outdoor unit net weight; row 'Poids Unité' 50D column (46,0)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS EXTÉRIEURES row 'Poids Unité', 50D column", "excerpt": "Poids Unité kg 46,0" } },
+        { "key": "soundPressure", "value": 47, "unit": "dBA", "condition": "outdoor sound pressure, cooling (Rafraîchissement) Nom. speed; published '47/-' (Nom. 47, Haute dash); 50D own cell", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Niveau de pression sonore Rafraîchissement Nom./Haute', 50D column, Nom. value", "excerpt": "Niveau de pression sonore Rafraîchissement Nom./Haute dBA 47/-" } },
+        { "key": "soundPressure", "value": 49, "unit": "dBA", "condition": "outdoor sound pressure, heating (Chauffage) Nom. speed; published '49/-' (Nom. 49, Haute dash); merged 50D/60D", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Niveau de pression sonore Chauffage Nom./Haute', merged 50D/60D, Nom. value", "excerpt": "Niveau de pression sonore Chauffage Nom./Haute dBA 49/-" } },
+        { "key": "coolingOutdoorMinimum", "value": -10, "unit": "degC", "condition": "operating range cooling (Rafraîchissement), outdoor temp Mini.; published '-10~48' °CBS; merged all outdoor columns", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS EXTÉRIEURES row 'Plage de fonctionnement Rafraîchissement Temp. ext. Mini.~Maxi.', merged all outdoor columns", "excerpt": "Plage de fonctionnement Rafraîchissement Temp. ext. Mini.~Maxi. °CBS -10~48" } },
+        { "key": "coolingOutdoorMaximum", "value": 48, "unit": "degC", "condition": "operating range cooling (Rafraîchissement), outdoor temp Maxi.; merged all outdoor columns", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS EXTÉRIEURES row 'Plage de fonctionnement Rafraîchissement Temp. ext. Mini.~Maxi.', merged all outdoor columns", "excerpt": "Plage de fonctionnement Rafraîchissement Temp. ext. Mini.~Maxi. °CBS -10~48" } },
+        { "key": "heatingOutdoorMinimum", "value": -15, "unit": "degC", "condition": "operating range heating (Chauffage), outdoor temp Mini.; published '-15~18' °CBH; merged all outdoor columns", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS EXTÉRIEURES row 'Plage de fonctionnement Chauffage Temp. ext. Mini.~Maxi.', merged all outdoor columns", "excerpt": "Plage de fonctionnement Chauffage Temp. ext. Mini.~Maxi. °CBH -15~18" } },
+        { "key": "heatingOutdoorMaximum", "value": 18, "unit": "degC", "condition": "operating range heating (Chauffage), outdoor temp Maxi.; merged all outdoor columns", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS EXTÉRIEURES row 'Plage de fonctionnement Chauffage Temp. ext. Mini.~Maxi.', merged all outdoor columns", "excerpt": "Plage de fonctionnement Chauffage Temp. ext. Mini.~Maxi. °CBH -15~18" } },
+        { "key": "refrigerant", "value": "R-32", "unit": "none", "condition": "refrigerant type; row 'Réfrigérant Type' published 'R-32' merged all outdoor columns", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS EXTÉRIEURES row 'Réfrigérant Type', merged all outdoor columns", "excerpt": "Réfrigérant Type R-32" } },
+        { "key": "factoryCharge", "value": 0.90, "unit": "kg", "condition": "factory refrigerant charge; row 'Charge' published '0,90/0,61' kg/Téq.CO₂ 50D column; only kg value stored", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS EXTÉRIEURES row 'Charge kg/Téq.CO₂', 50D column", "excerpt": "Charge kg/Téq.CO₂ 0,90/0,61" } },
+        { "key": "liquidConnectionDiameter", "value": 6.35, "unit": "mm", "condition": "liquid pipe connection (DE); merged all outdoor columns (6,35)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Raccords de tuyauterie Liquide DE', merged all outdoor columns", "excerpt": "Raccords de tuyauterie Liquide DE mm 6,35" } },
+        { "key": "gasConnectionDiameter", "value": 12.7, "unit": "mm", "condition": "gas pipe connection (DE); merged 50D-71D (12,7)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Raccords de tuyauterie Gaz DE', merged 50D-71D", "excerpt": "Raccords de tuyauterie Gaz DE mm 12,7" } },
+        { "key": "maximumTotalPipeLength", "value": 30, "unit": "m", "condition": "max pipe length outdoor-indoor (UE-UI Maxi.); merged 50D-71D", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Raccords de tuyauterie Longueur de tuyauterie UE-UI Maxi.', merged 50D-71D", "excerpt": "Longueur de tuyauterie UE-UI Maxi. m 30" } },
+        { "key": "additionalChargePerLength", "value": 0.02, "unit": "kg/m", "condition": "additional refrigerant charge per length; published '0,02 (pour longueur de tuyauterie supérieure à 10m)'; merged all outdoor columns", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Raccords de tuyauterie Charge supplémentaire de réfrigérant', merged all outdoor columns", "excerpt": "Charge supplémentaire de réfrigérant kg/m 0,02 (pour longueur de tuyauterie supérieure à 10m)" } },
+        { "key": "maximumHeightDifference", "value": 20, "unit": "m", "condition": "max height difference indoor-outdoor (UI-UE Maxi.); merged 50D-71D (20)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Raccords de tuyauterie Dénivelé UI-UE Maxi.', merged 50D-71D", "excerpt": "Dénivelé UI-UE Maxi. m 20" } },
+        { "key": "supplyVoltage", "value": { "minimum": 220, "nominal": null, "maximum": 240 }, "unit": "V", "condition": "outdoor unit electrical supply; published '1~/50/220-240'; range preserved, no midpoint; merged all outdoor columns", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS EXTÉRIEURES row 'Alimentation électrique Phase/Fréquence/Tension', merged all outdoor columns", "excerpt": "Alimentation électrique Phase/Fréquence/Tension Hz/V 1~/50/220-240" } },
+        { "key": "supplyPhases", "value": 1, "unit": "none", "condition": "outdoor unit supply phase count from '1~/50/220-240'", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS EXTÉRIEURES row 'Alimentation électrique Phase/Fréquence/Tension'", "excerpt": "Alimentation électrique Phase/Fréquence/Tension Hz/V 1~/50/220-240" } },
+        { "key": "supplyFrequency", "value": 50, "unit": "Hz", "condition": "outdoor unit supply frequency from '1~/50/220-240'", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS EXTÉRIEURES row 'Alimentation électrique Phase/Fréquence/Tension'", "excerpt": "Alimentation électrique Phase/Fréquence/Tension Hz/V 1~/50/220-240" } }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "monosplit pairing RXF50D + FTXF50D evidenced by efficiency-table column header '50D + 50D'. No invented pairing beyond the published monosplit column.",
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, 'Données relatives à l'efficacité' column header 'FTXF + RXF ... 50D + 50D'", "excerpt": "Données relatives à l'efficacité FTXF + RXF 50D + 50D" }
+        }
+      ],
+      "unknowns": [
+        "outdoor airflow (volumetric m³/h): not published for RXF-D outdoor units",
+        "outdoor fan motor output / fan electrical input: not published",
+        "outdoor-only electrical input at rating point: efficiency-table 'Puissance absorbée' is complete-system; outdoor-only boundary -> unknown",
+        "capacityClass: no published kW class scalar; '50' is a model size code",
+        "outdoor sound power (Rafraîchissement): published as '-' (dash) on p.45 -> NOT published; recorded as unknown",
+        "outdoor heating sound power: NOT published on p.45",
+        "outdoor sound pressure Haute value: published as '-' (dash) for 50D; only Nom. speed value stored (47 cooling / 49 heating)",
+        "MFA 20 A merged 50D-71D: no schema fact key for fuse current; recorded here only",
+        "prechargedPipeLength, maximumBranchPipeLength: not published on p.45",
+        "current 2026 availability of RXF-D: unknown; dated historical coverage",
+        "refrigerant PRP 675 and CO2eq 0,61 are metadata beside charge; only charge kg stored as factoryCharge"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    { "modelReference": "FTXF50D", "reason": "paired indoor unit; captured in separate candidate file daikin-ftxf50d-indoor.json" }
+  ]
+}

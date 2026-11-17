@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Sensira (FTXF-D + RXF-D)",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FTXF35D",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.45 (printed 45), page title 'FTXF-D + RXF-D'; UNITÉS INTÉRIEURES header 'FTXF' then column '35D'",
+        "excerpt": "FTXF-D + RXF-D ; Unité intérieure FTXF 20D 25D 35D 42D 50D 60D 71D"
+      },
+      "facts": [
+        { "key": "height", "value": 286, "unit": "mm", "condition": "indoor unit; row 'Dimensions Unité HxLxP' merged cell spanning 20D/25D/35D/42D (286x770x225)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged 20D-42D", "excerpt": "Dimensions Unité HxLxP mm 286x770x225" } },
+        { "key": "width", "value": 770, "unit": "mm", "condition": "indoor unit; merged 20D-42D (HxLxP 286x770x225)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged 20D-42D", "excerpt": "Dimensions Unité HxLxP mm 286x770x225" } },
+        { "key": "depth", "value": 225, "unit": "mm", "condition": "indoor unit; merged 20D-42D (HxLxP 286x770x225)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged 20D-42D", "excerpt": "Dimensions Unité HxLxP mm 286x770x225" } },
+        { "key": "mass", "value": 8.50, "unit": "kg", "condition": "indoor unit net weight; row 'Poids Unité' 35D column (8,50)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS INTÉRIEURES row 'Poids Unité', 35D column", "excerpt": "Poids Unité kg 8,50" } },
+        { "key": "airflow", "value": 264, "unit": "m3/h", "condition": "cooling mode, Silence fan speed; published 4,4 m³/min, x60 = 264 m³/h (1 m³/min = 60 m³/h)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut', 35D column, Silence value", "excerpt": "Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut m³/min 4,4/6,4/8/11,8" } },
+        { "key": "airflow", "value": 384, "unit": "m3/h", "condition": "cooling mode, Bas (low) fan speed; published 6,4 m³/min, x60 = 384 m³/h", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut', 35D column, Bas value", "excerpt": "Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut m³/min 4,4/6,4/8/11,8" } },
+        { "key": "airflow", "value": 480, "unit": "m3/h", "condition": "cooling mode, Moyen (medium) fan speed; published 8 m³/min, x60 = 480 m³/h", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut', 35D column, Moyen value", "excerpt": "Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut m³/min 4,4/6,4/8/11,8" } },
+        { "key": "airflow", "value": 708, "unit": "m3/h", "condition": "cooling mode, Haut (high) fan speed; published 11,8 m³/min, x60 = 708 m³/h", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut', 35D column, Haut value", "excerpt": "Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut m³/min 4,4/6,4/8/11,8" } },
+        { "key": "airflow", "value": 318, "unit": "m3/h", "condition": "heating mode, Silence fan speed; published 5,3 m³/min, x60 = 318 m³/h", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Débit d'air Chauffage Silence/Bas/Moyen/Haut', 35D column, Silence value", "excerpt": "Débit d'air Chauffage Silence/Bas/Moyen/Haut m³/min 5,3/6,5/8,6/11,9" } },
+        { "key": "airflow", "value": 390, "unit": "m3/h", "condition": "heating mode, Bas (low) fan speed; published 6,5 m³/min, x60 = 390 m³/h", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Débit d'air Chauffage Silence/Bas/Moyen/Haut', 35D column, Bas value", "excerpt": "Débit d'air Chauffage Silence/Bas/Moyen/Haut m³/min 5,3/6,5/8,6/11,9" } },
+        { "key": "airflow", "value": 516, "unit": "m3/h", "condition": "heating mode, Moyen (medium) fan speed; published 8,6 m³/min, x60 = 516 m³/h", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Débit d'air Chauffage Silence/Bas/Moyen/Haut', 35D column, Moyen value", "excerpt": "Débit d'air Chauffage Silence/Bas/Moyen/Haut m³/min 5,3/6,5/8,6/11,9" } },
+        { "key": "airflow", "value": 714, "unit": "m3/h", "condition": "heating mode, Haut (high) fan speed; published 11,9 m³/min, x60 = 714 m³/h", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Débit d'air Chauffage Silence/Bas/Moyen/Haut', 35D column, Haut value", "excerpt": "Débit d'air Chauffage Silence/Bas/Moyen/Haut m³/min 5,3/6,5/8,6/11,9" } },
+        { "key": "soundPower", "value": 54.0, "unit": "dBA", "condition": "indoor sound power level, cooling (Rafraîchissement); merged 25D/35D (54,0); sound POWER not pressure", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS INTÉRIEURES row 'Niveau de puissance sonore Rafraîchissement', merged 25D/35D", "excerpt": "Niveau de puissance sonore Rafraîchissement dBA 54,0" } },
+        { "key": "soundPower", "value": 56.0, "unit": "dBA", "condition": "indoor sound power level, heating (Chauffage); merged 25D/35D (56,0); sound POWER not pressure", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, UNITÉS INTÉRIEURES row 'Niveau de puissance sonore Chauffage', merged 25D/35D", "excerpt": "Niveau de puissance sonore Chauffage dBA 56,0" } },
+        { "key": "soundPressure", "value": 20.0, "unit": "dBA", "condition": "indoor sound pressure, cooling, Silence speed; 35D column", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut', 35D column, Silence value", "excerpt": "Niveau de pression sonore Rafraîchissement Silence/Bas/Haut dBA 20,0/27,0/43,0" } },
+        { "key": "soundPressure", "value": 27.0, "unit": "dBA", "condition": "indoor sound pressure, cooling, Bas speed; 35D column", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut', 35D column, Bas value", "excerpt": "Niveau de pression sonore Rafraîchissement Silence/Bas/Haut dBA 20,0/27,0/43,0" } },
+        { "key": "soundPressure", "value": 43.0, "unit": "dBA", "condition": "indoor sound pressure, cooling, Haut speed; 35D column", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut', 35D column, Haut value", "excerpt": "Niveau de pression sonore Rafraîchissement Silence/Bas/Haut dBA 20,0/27,0/43,0" } },
+        { "key": "soundPressure", "value": 21.0, "unit": "dBA", "condition": "indoor sound pressure, heating, Silence speed; 35D column", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Niveau de pression sonore Chauffage Silence/Bas/Haut', 35D column, Silence value", "excerpt": "Niveau de pression sonore Chauffage Silence/Bas/Haut dBA 21,0/29,0/40,0" } },
+        { "key": "soundPressure", "value": 29.0, "unit": "dBA", "condition": "indoor sound pressure, heating, Bas speed; 35D column", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Niveau de pression sonore Chauffage Silence/Bas/Haut', 35D column, Bas value", "excerpt": "Niveau de pression sonore Chauffage Silence/Bas/Haut dBA 21,0/29,0/40,0" } },
+        { "key": "soundPressure", "value": 40.0, "unit": "dBA", "condition": "indoor sound pressure, heating, Haut speed; 35D column", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, row 'Niveau de pression sonore Chauffage Silence/Bas/Haut', 35D column, Haut value", "excerpt": "Niveau de pression sonore Chauffage Silence/Bas/Haut dBA 21,0/29,0/40,0" } }
+      ],
+      "ratings": [
+        {
+          "mode": "cooling",
+          "combination": "FTXF35D + RXF35D (efficiency table column '35D + 35D')",
+          "conditions": "nominal per footnote: indoor 27 °CBS/19 °CBH, outdoor 35 °CBS, equiv pipe 5 m, height diff 0 m; published min/nominal/max thermal 1,3/3,30/3,8 kW; electrical min/nominal/max 0,31/1,00/1,40 kW; complete-system",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.3, "nominal": 3.30, "maximum": 3.8 },
+          "electricalInputKw": { "minimum": 0.31, "nominal": 1.00, "maximum": 1.40 },
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, rows 'Puissance frigorifique Mini./Nom./Maxi.' and 'Puissance absorbée Rafraîchissement Mini./Nom./Maxi.', column '35D + 35D'; footnote conditions", "excerpt": "Puissance frigorifique Mini./Nom./Maxi. kW 1,3/3,30/3,8 ; Puissance absorbée Rafraîchissement Mini./Nom./Maxi. kW 0,31/1,00/1,40" }
+        },
+        {
+          "mode": "heating",
+          "combination": "FTXF35D + RXF35D (efficiency table column '35D + 35D')",
+          "conditions": "nominal per footnote: indoor 20 °CBS, outdoor 7 °CBS/6 °CBH, equiv pipe 5 m, height diff 0 m; published min/nominal/max thermal 1,30/3,50/4,40 kW; electrical min/nominal/max 0,25/0,940/1,50 kW; complete-system",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.30, "nominal": 3.50, "maximum": 4.40 },
+          "electricalInputKw": { "minimum": 0.25, "nominal": 0.940, "maximum": 1.50 },
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, rows 'Puissance calorifique Mini./Nom./Maxi.' and 'Puissance absorbée Chauffage Mini./Nom./Maxi.', column '35D + 35D'; footnote conditions", "excerpt": "Puissance calorifique Mini./Nom./Maxi. kW 1,30/3,50/4,40 ; Puissance absorbée Chauffage Mini./Nom./Maxi. kW 0,25/0,940/1,50" }
+        }
+      ],
+      "compatibility": [
+        {
+          "description": "monosplit pairing FTXF35D + RXF35D evidenced by efficiency-table column header '35D + 35D'. No invented pairing beyond the published monosplit column.",
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.45, 'Données relatives à l'efficacité' column header 'FTXF + RXF ... 35D + 35D'", "excerpt": "Données relatives à l'efficacité FTXF + RXF 35D + 35D" }
+        }
+      ],
+      "unknowns": [
+        "airflow unit: p.45 publishes indoor Débit d'air in m³/min; exact conversion x60 (1 m³/min = 60 m³/h); original m³/min preserved in excerpts",
+        "indoor fan motor output and fan electrical input: not published",
+        "capacityClass: no published kW class scalar; '35' is a model size code",
+        "SEER 6,5 / SCOP-A 4,11 / Pdesign / EER / COP / annual kWh / energy-label A/A are system (35D + 35D) ratings, not indoor-unit facts",
+        "indoor electrical supply/voltage: not published for indoor unit (supply shown at outdoor unit)",
+        "current 2026 availability of FTXF-D: unknown; dated historical coverage"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    { "modelReference": "RXF35D", "reason": "paired outdoor unit; captured in separate candidate file daikin-rxf35d-outdoor.json" }
+  ]
+}

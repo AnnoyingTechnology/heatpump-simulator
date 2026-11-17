@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Sensira (FTXC-C + RXC-C)",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FTXC50C",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.46 (printed 46), page title 'FTXC-C + RXC-C'; UNITÉS INTÉRIEURES header 'FTXC' then column '50C'",
+        "excerpt": "FTXC-C + RXC-C ; Unité intérieure FTXC 20C 25C 35C 50C 60C 71C"
+      },
+      "facts": [
+        { "key": "height", "value": 297, "unit": "mm", "condition": "indoor unit; row 'Dimensions Unité HxLxP' merged cell spanning 50C/60C/71C (297x990x273)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.46, UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged 50C-71C", "excerpt": "Dimensions Unité HxLxP mm 297x990x273" } },
+        { "key": "width", "value": 990, "unit": "mm", "condition": "indoor unit; merged 50C-71C (HxLxP 297x990x273)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.46, UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged 50C-71C", "excerpt": "Dimensions Unité HxLxP mm 297x990x273" } },
+        { "key": "depth", "value": 273, "unit": "mm", "condition": "indoor unit; merged 50C-71C (HxLxP 297x990x273)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.46, UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged 50C-71C", "excerpt": "Dimensions Unité HxLxP mm 297x990x273" } },
+        { "key": "mass", "value": 9.50, "unit": "kg", "condition": "indoor unit net weight; row 'Poids Unité' merged 35C/50C (9,50)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.46, UNITÉS INTÉRIEURES row 'Poids Unité', merged 35C/50C", "excerpt": "Poids Unité kg 9,50" } },
+        { "key": "airflow", "value": 444, "unit": "m3/h", "condition": "cooling mode, Silence fan speed; published 7,4 m³/min, x60 = 444 m³/h (1 m³/min = 60 m³/h); merged 50C/60C", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.46, row 'Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut', merged 50C/60C, Silence value", "excerpt": "Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut m³/min 7,4/8,2/10/12,2" } },
+        { "key": "airflow", "value": 492, "unit": "m3/h", "condition": "cooling mode, Bas (low) fan speed; published 8,2 m³/min, x60 = 492 m³/h; merged 50C/60C", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.46, row 'Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut', merged 50C/60C, Bas value", "excerpt": "Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut m³/min 7,4/8,2/10/12,2" } },
+        { "key": "airflow", "value": 600, "unit": "m3/h", "condition": "cooling mode, Moyen (medium) fan speed; published 10 m³/min, x60 = 600 m³/h; merged 50C/60C", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.46, row 'Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut', merged 50C/60C, Moyen value", "excerpt": "Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut m³/min 7,4/8,2/10/12,2" } },
+        { "key": "airflow", "value": 732, "unit": "m3/h", "condition": "cooling mode, Haut (high) fan speed; published 12,2 m³/min, x60 = 732 m³/h; merged 50C/60C", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.46, row 'Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut', merged 50C/60C, Haut value", "excerpt": "Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut m³/min 7,4/8,2/10/12,2" } },
+        { "key": "soundPower", "value": 57, "unit": "dBA", "condition": "indoor sound power level, cooling (Rafraîchissement); 50C column (57); sound POWER not pressure", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.46, UNITÉS INTÉRIEURES row 'Niveau de puissance sonore Rafraîchissement', 50C column", "excerpt": "Niveau de puissance sonore Rafraîchissement dBA 57" } },
+        { "key": "soundPressure", "value": 21, "unit": "dBA", "condition": "indoor sound pressure, cooling, Silence speed; merged 35C/50C", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.46, row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut', merged 35C/50C, Silence value", "excerpt": "Niveau de pression sonore Rafraîchissement Silence/Bas/Haut dBA 21/26/39" } },
+        { "key": "soundPressure", "value": 26, "unit": "dBA", "condition": "indoor sound pressure, cooling, Bas speed; merged 35C/50C", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.46, row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut', merged 35C/50C, Bas value", "excerpt": "Niveau de pression sonore Rafraîchissement Silence/Bas/Haut dBA 21/26/39" } },
+        { "key": "soundPressure", "value": 39, "unit": "dBA", "condition": "indoor sound pressure, cooling, Haut speed; merged 35C/50C", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.46, row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut', merged 35C/50C, Haut value", "excerpt": "Niveau de pression sonore Rafraîchissement Silence/Bas/Haut dBA 21/26/39" } }
+      ],
+      "ratings": [
+        {
+          "mode": "cooling",
+          "combination": "FTXC50C + RXC50C (efficiency table column '50C + 50C')",
+          "conditions": "p.46 efficiency table publishes Mini./Maxi. only (NO Nominal); no nominal conditions footnote on p.46; published min/max thermal 1,8/7,0 kW; NO 'Puissance absorbée' row on p.46 -> electrical input unknown; complete-system boundary implied by pairing column",
+          "electricalBoundary": "unknown",
+          "thermalCapacityKw": { "minimum": 1.8, "nominal": null, "maximum": 7.0 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.46, row 'Puissance frigorifique Mini./Maxi.', column '50C + 50C'", "excerpt": "Puissance frigorifique Mini./Maxi. kW 1,8/7,0" }
+        },
+        {
+          "mode": "heating",
+          "combination": "FTXC50C + RXC50C (efficiency table column '50C + 50C')",
+          "conditions": "p.46 efficiency table publishes Mini./Maxi. only (NO Nominal); no nominal conditions footnote on p.46; published min/max thermal 1,48/8,00 kW; NO 'Puissance absorbée' row on p.46 -> electrical input unknown; complete-system boundary implied by pairing column",
+          "electricalBoundary": "unknown",
+          "thermalCapacityKw": { "minimum": 1.48, "nominal": null, "maximum": 8.00 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.46, row 'Puissance calorifique Mini./Maxi.', column '50C + 50C'", "excerpt": "Puissance calorifique Mini./Maxi. kW 1,48/8,00" }
+        }
+      ],
+      "compatibility": [
+        {
+          "description": "monosplit pairing FTXC50C + RXC50C evidenced by efficiency-table column header '50C + 50C'. No invented pairing beyond the published monosplit column.",
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.46, 'Données relatives à l'efficacité' column header 'FTXC + RXC ... 50C + 50C'", "excerpt": "Données relatives à l'efficacité FTXC + RXC 50C + 50C" }
+        }
+      ],
+      "unknowns": [
+        "airflow unit: p.46 publishes indoor Débit d'air in m³/min; exact conversion x60 (1 m³/min = 60 m³/h); original m³/min preserved in excerpts",
+        "indoor fan motor output and fan electrical input: not published",
+        "capacityClass: no published kW class scalar; '50' is a model size code",
+        "indoor heating sound power and heating sound pressure: NOT published on p.46 (only Rafraîchissement rows present); recorded as unknown",
+        "electrical input (Puissance absorbée): NO row on p.46 efficiency table -> unknown (not invented)",
+        "SEER 6,45 / SCOP-A 4,42 / Pdesign / annual kWh / energy-label A++/A+ are system (50C + 50C) ratings, not indoor-unit facts",
+        "indoor electrical supply/voltage: not published for indoor unit (supply shown at outdoor unit)",
+        "current 2026 availability of FTXC-C: unknown; dated historical coverage"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    { "modelReference": "RXC50C", "reason": "paired outdoor unit; captured in separate candidate file daikin-rxc50c-outdoor.json" }
+  ]
+}

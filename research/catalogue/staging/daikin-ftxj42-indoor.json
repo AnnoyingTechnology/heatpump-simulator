@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Daikin Emura (FTXJ-AW/S/B + RXJ-A)",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FTXJ42AW/S/B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.41 (printed 41), page title 'FTXJ-AW/S/B + RXJ-A'; UNITÉS INTÉRIEURES table header 'FTXJ' then column '42AW/S/B'",
+        "excerpt": "FTXJ-AW/S/B + RXJ-A ; Unité intérieure FTXJ 20AW/S/B 25AW/S/B 35AW/S/B 42AW/S/B 50AW/S/B"
+      },
+      "facts": [
+        { "key": "height", "value": 305, "unit": "mm", "condition": "indoor unit; row 'Dimensions Unité HxLxP' single merged cell spanning all indoor columns (20..50AW/S/B)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.41, UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged all indoor columns", "excerpt": "Dimensions Unité HxLxP mm 305x900x214" } },
+        { "key": "width", "value": 900, "unit": "mm", "condition": "indoor unit; merged all indoor columns (HxLxP 305x900x214)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.41, UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged all indoor columns", "excerpt": "Dimensions Unité HxLxP mm 305x900x214" } },
+        { "key": "depth", "value": 214, "unit": "mm", "condition": "indoor unit; merged all indoor columns (HxLxP 305x900x214)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.41, UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged all indoor columns", "excerpt": "Dimensions Unité HxLxP mm 305x900x214" } },
+        { "key": "mass", "value": 12, "unit": "kg", "condition": "indoor unit net weight; row 'Poids Unité' single merged cell spanning all indoor columns", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.41, UNITÉS INTÉRIEURES row 'Poids Unité', merged all indoor columns", "excerpt": "Poids Unité kg 12" } },
+        { "key": "soundPower", "value": 60, "unit": "dBA", "condition": "indoor sound power level, cooling (Rafraîchissement); sound POWER not pressure; 42AW/S/B column; heating sound power is a dash (unpublished)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.41, UNITÉS INTÉRIEURES row 'Niveau de puissance sonore Rafraîchissement', 42AW/S/B column", "excerpt": "Niveau de puissance sonore Rafraîchissement dBA 60 ; Chauffage dBA -" } },
+        { "key": "soundPressure", "value": 45, "unit": "dBA", "condition": "indoor sound pressure, cooling, first published value in '45/37/29/21*'; cell order ambiguous (4 values vs 3 labels); * +2 dBA Multi", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.41, row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut', 42AW/S/B column, first value", "excerpt": "Niveau de pression sonore Rafraîchissement Silence/Bas/Haut dBA 45/37/29/21*" } },
+        { "key": "soundPressure", "value": 37, "unit": "dBA", "condition": "indoor sound pressure, cooling, second published value in '45/37/29/21*'; cell order ambiguous", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.41, row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut', 42AW/S/B column, second value", "excerpt": "Niveau de pression sonore Rafraîchissement Silence/Bas/Haut dBA 45/37/29/21*" } },
+        { "key": "soundPressure", "value": 29, "unit": "dBA", "condition": "indoor sound pressure, cooling, third published value in '45/37/29/21*'; cell order ambiguous", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.41, row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut', 42AW/S/B column, third value", "excerpt": "Niveau de pression sonore Rafraîchissement Silence/Bas/Haut dBA 45/37/29/21*" } },
+        { "key": "soundPressure", "value": 21, "unit": "dBA", "condition": "indoor sound pressure, cooling, fourth published value in '45/37/29/21*'; +2 dBA Multi; cell order ambiguous", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.41, row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut', 42AW/S/B column, fourth value", "excerpt": "Niveau de pression sonore Rafraîchissement Silence/Bas/Haut dBA 45/37/29/21* ; * +2 dBA en configuration Multi" } },
+        { "key": "soundPressure", "value": 45, "unit": "dBA", "condition": "indoor sound pressure, heating, first published value in '45/37/29/21*'; cell order ambiguous", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.41, row 'Niveau de pression sonore Chauffage Silence/Bas/Haut', 42AW/S/B column, first value", "excerpt": "Niveau de pression sonore Chauffage Silence/Bas/Haut dBA 45/37/29/21*" } },
+        { "key": "soundPressure", "value": 37, "unit": "dBA", "condition": "indoor sound pressure, heating, second published value; cell order ambiguous", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.41, row 'Niveau de pression sonore Chauffage Silence/Bas/Haut', 42AW/S/B column, second value", "excerpt": "Niveau de pression sonore Chauffage Silence/Bas/Haut dBA 45/37/29/21*" } },
+        { "key": "soundPressure", "value": 29, "unit": "dBA", "condition": "indoor sound pressure, heating, third published value; cell order ambiguous", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.41, row 'Niveau de pression sonore Chauffage Silence/Bas/Haut', 42AW/S/B column, third value", "excerpt": "Niveau de pression sonore Chauffage Silence/Bas/Haut dBA 45/37/29/21*" } },
+        { "key": "soundPressure", "value": 21, "unit": "dBA", "condition": "indoor sound pressure, heating, fourth published value in '45/37/29/21*'; +2 dBA Multi; cell order ambiguous", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.41, row 'Niveau de pression sonore Chauffage Silence/Bas/Haut', 42AW/S/B column, fourth value", "excerpt": "Niveau de pression sonore Chauffage Silence/Bas/Haut dBA 45/37/29/21* ; * +2 dBA en configuration Multi" } }
+      ],
+      "ratings": [
+        {
+          "mode": "cooling",
+          "combination": "FTXJ42AW/S/B + RXJ42A (efficiency table column '42AW/S/B + 42A')",
+          "conditions": "min/nominal/max thermal as published; electrical input published as '-' (dash, preliminary cell); complete-system",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.7, "nominal": 4.2, "maximum": 5.0 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.41, rows 'Puissance frigorifique Mini./Nom./Maxi.' (values) and 'Puissance absorbée Rafraîchissement Nom.' (dash), column '42AW/S/B + 42A'", "excerpt": "Puissance frigorifique Mini./Nom./Maxi. kW 1,7/4,2/5,0 ; Puissance absorbée Rafraîchissement Nom. kW -" }
+        },
+        {
+          "mode": "heating",
+          "combination": "FTXJ42AW/S/B + RXJ42A (efficiency table column '42AW/S/B + 42A')",
+          "conditions": "min/nominal/max thermal as published; electrical input published as '-' (dash, preliminary cell); complete-system",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.7, "nominal": 5.4, "maximum": 6.0 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.41, rows 'Puissance calorifique Mini./Nom./Maxi.' (values) and 'Puissance absorbée Chauffage Nom.' (dash), column '42AW/S/B + 42A'", "excerpt": "Puissance calorifique Mini./Nom./Maxi. kW 1,7/5,4/6,0 ; Puissance absorbée Chauffage Nom. kW -" }
+        }
+      ],
+      "compatibility": [
+        {
+          "description": "monosplit pairing FTXJ42AW/S/B + RXJ42A evidenced by efficiency-table column header '42AW/S/B + 42A'. No invented pairing beyond this published column.",
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.41, 'Données relatives à l'efficacité' column header 'FTXJ/RXJ ... 42AW/S/B + 42A'", "excerpt": "Données relatives à l'efficacité FTXJ/RXJ 42AW/S/B + 42A" }
+        }
+      ],
+      "unknowns": [
+        "indoor airflow (Débit d'air) cooling and heating: published as '-' (dash) in preliminary blue cells; NOT extracted",
+        "indoor filter type: published as '-' (dash); not extracted",
+        "indoor sound power heating: published as '-' (dash); only cooling sound power (60 dBA) published",
+        "indoor electrical supply/voltage: not published for indoor unit (supply shown at outdoor unit)",
+        "indoor fan motor output / fan electrical input: not published",
+        "capacityClass: no published kW class scalar; '42' is a model size code",
+        "SEER 7,5 / SCOP 4,6 / Pdesign / EER / COP / annual kWh / energy-label A++ are system (42AW/S/B + 42A) ratings, not indoor-unit facts",
+        "sound pressure row 'Silence/Bas/Haut' publishes 4 slash values (45/37/29/21*) under 3 labels; exact cell-to-label mapping ambiguous; values recorded in published order; asterisk = +2 dBA in Multi configuration",
+        "colour suffix AW/AS/AB are distinct references (white/silver/black); grouped as one 42AW/S/B column, not split into separate files this batch",
+        "page footnote: blue cells = preliminary data; airflow/filter/electrical-input/heating-sound-power cells are blue -> treated as unpublished/unknown",
+        "current 2026 availability of FTXJ-AW/S/B: unknown; dated historical coverage"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    { "modelReference": "RXJ42A", "reason": "paired outdoor unit; captured in separate candidate file daikin-rxj42a-outdoor.json" },
+    { "modelReference": "FTXJ42AW / FTXJ42AS / FTXJ42AB", "reason": "colour-suffix variants (AW white, AS silver, AB black); grouped as one 42AW/S/B column" }
+  ]
+}

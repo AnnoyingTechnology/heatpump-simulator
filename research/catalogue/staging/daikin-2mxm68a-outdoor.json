@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Multi-split outdoor groups (2/3/4/5MXM-A)",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "2MXM68A",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.52 (printed 52), page title '2/3/4/5MXM-A'; UNITÉS EXTÉRIEURES header then column '2MXM68A'",
+        "excerpt": "2/3/4/5MXM-A ; Unité extérieure 2MXM-A 2MXM40A 2MXM50A 2MXM68A ..."
+      },
+      "facts": [
+        { "key": "height", "value": 734, "unit": "mm", "condition": "outdoor unit; row 'Dimensions Unité HxLxP' 2MXM68A column (734x958x340)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, UNITÉS EXTÉRIEURES row 'Dimensions Unité HxLxP', 2MXM68A column", "excerpt": "Dimensions Unité HxLxP mm 734x958x340" } },
+        { "key": "width", "value": 958, "unit": "mm", "condition": "outdoor unit; 2MXM68A column (HxLxP 734x958x340)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, UNITÉS EXTÉRIEURES row 'Dimensions Unité HxLxP', 2MXM68A column", "excerpt": "Dimensions Unité HxLxP mm 734x958x340" } },
+        { "key": "depth", "value": 340, "unit": "mm", "condition": "outdoor unit; 2MXM68A column (HxLxP 734x958x340)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, UNITÉS EXTÉRIEURES row 'Dimensions Unité HxLxP', 2MXM68A column", "excerpt": "Dimensions Unité HxLxP mm 734x958x340" } },
+        { "key": "mass", "value": 60.0, "unit": "kg", "condition": "outdoor unit net weight; row 'Poids Unité' 2MXM68A column (60,0)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, UNITÉS EXTÉRIEURES row 'Poids Unité', 2MXM68A column", "excerpt": "Poids Unité kg 60,0" } },
+        { "key": "soundPower", "value": 61.0, "unit": "dBA", "condition": "outdoor sound power level, cooling (Rafraîchissement); 2MXM68A column (61,0); sound POWER not pressure; NO heating sound power row published on p.52", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, UNITÉS EXTÉRIEURES row 'Niveau de puissance sonore Rafraîchissement', 2MXM68A column", "excerpt": "Niveau de puissance sonore Rafraîchissement dBA 61,0" } },
+        { "key": "soundPressure", "value": 48.0, "unit": "dBA", "condition": "outdoor sound pressure, cooling (Rafraîchissement) 'Nom.' speed; 2MXM68A column; row 'Nom./Haute' published '48,0/-' -> Nom.=48,0 stored, Haute dash", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, row 'Niveau de pression sonore Rafraîchissement Nom./Haute', 2MXM68A column", "excerpt": "Niveau de pression sonore Rafraîchissement Nom./Haute dBA 48,0/-" } },
+        { "key": "soundPressure", "value": 48.0, "unit": "dBA", "condition": "outdoor sound pressure, heating (Chauffage) 'Nom.' speed; 2MXM68A column; row 'Nom./Haute' published '48,0/-' -> Nom.=48,0 stored, Haute dash", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, row 'Niveau de pression sonore Chauffage Nom./Haute', 2MXM68A column", "excerpt": "Niveau de pression sonore Chauffage Nom./Haute dBA 48,0/-" } },
+        { "key": "coolingOutdoorMinimum", "value": -10, "unit": "degC", "condition": "operating range cooling (Rafraîchissement), outdoor temp Mini.; published '-10~46' °CBS; merged all outdoor", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, UNITÉS EXTÉRIEURES row 'Plage de fonctionnement Rafraîchissement Temp. ext. Mini.~Maxi.', merged all outdoor", "excerpt": "Plage de fonctionnement Rafraîchissement Temp. ext. Mini.~Maxi. °CBS -10~46" } },
+        { "key": "coolingOutdoorMaximum", "value": 46, "unit": "degC", "condition": "operating range cooling (Rafraîchissement), outdoor temp Maxi.; merged all outdoor", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, UNITÉS EXTÉRIEURES row 'Plage de fonctionnement Rafraîchissement Temp. ext. Mini.~Maxi.', merged all outdoor", "excerpt": "Plage de fonctionnement Rafraîchissement Temp. ext. Mini.~Maxi. °CBS -10~46" } },
+        { "key": "heatingOutdoorMinimum", "value": -15, "unit": "degC", "condition": "operating range heating (Chauffage), outdoor temp Mini.; published '-15~18' °CBH; merged all outdoor", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, UNITÉS EXTÉRIEURES row 'Plage de fonctionnement Chauffage Temp. ext. Mini.~Maxi.', merged all outdoor", "excerpt": "Plage de fonctionnement Chauffage Temp. ext. Mini.~Maxi. °CBH -15~18" } },
+        { "key": "heatingOutdoorMaximum", "value": 18, "unit": "degC", "condition": "operating range heating (Chauffage), outdoor temp Maxi.; merged all outdoor", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, UNITÉS EXTÉRIEURES row 'Plage de fonctionnement Chauffage Temp. ext. Mini.~Maxi.', merged all outdoor", "excerpt": "Plage de fonctionnement Chauffage Temp. ext. Mini.~Maxi. °CBH -15~18" } },
+        { "key": "refrigerant", "value": "R-32", "unit": "none", "condition": "refrigerant type; row 'Réfrigérant Type' published 'R-32' merged all outdoor; PRP 675,0 metadata not stored as fact", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, UNITÉS EXTÉRIEURES row 'Réfrigérant Type', merged all outdoor", "excerpt": "Réfrigérant Type R-32" } },
+        { "key": "factoryCharge", "value": 2.00, "unit": "kg", "condition": "factory refrigerant charge; row 'Charge' published '2,00/1,35' kg/Téq.CO₂ 2MXM68A column; only kg value stored", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, UNITÉS EXTÉRIEURES row 'Charge kg/Téq.CO₂', 2MXM68A column", "excerpt": "Charge kg/Téq.CO₂ 2,00/1,35" } },
+        { "key": "liquidConnectionDiameter", "value": 6.35, "unit": "mm", "condition": "liquid pipe connection (DE); row 'Liquide DE' published '6,35' 2MXM68A column; liquid value stored", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, row 'Raccords de tuyauterie Liquide DE', 2MXM68A column", "excerpt": "Liquide DE mm 6,35" } },
+        { "key": "gasConnectionDiameter", "value": 9.5, "unit": "mm", "condition": "gas pipe connection (DE); row 'Gaz DE' published '9,50' 2MXM68A column; gas value stored", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, row 'Raccords de tuyauterie Gaz DE', 2MXM68A column", "excerpt": "Gaz DE mm 9,50" } },
+        { "key": "maximumTotalPipeLength", "value": 20, "unit": "m", "condition": "max pipe length outdoor-indoor (UE-UI Maxi.); published '20 (1)' merged 2MXM40A/2MXM50A/2MXM68A/3MXM40A/3MXM52A; footnote (1) 'Pour une pièce'; merged value stored", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, row 'Raccords de tuyauterie Longueur de UE-UI Maxi.', merged 2MXM40A..3MXM52A", "excerpt": "Longueur de UE-UI Maxi. m 20 (1)" } },
+        { "key": "prechargedPipeLength", "value": 30, "unit": "m", "condition": "system without additional charge (Système Sans charge); merged 2MXM68A..5MXM90A (30 m)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, row 'Raccords de tuyauterie Système Sans charge', merged 2MXM68A..5MXM90A", "excerpt": "Système Sans charge m 30" } },
+        { "key": "additionalChargePerLength", "value": 0.02, "unit": "kg/m", "condition": "additional refrigerant charge per length; published '0,02 (pour longueur de tuyauterie supérieure à 20m)' merged 2MXM40A..3MXM68A", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, row 'Raccords de tuyauterie Charge supplémentaire de réfrigérant', merged 2MXM40A..3MXM68A", "excerpt": "Charge supplémentaire de réfrigérant kg/m 0,02 (pour longueur de tuyauterie supérieure à 20m)" } },
+        { "key": "maximumHeightDifference", "value": 15.0, "unit": "m", "condition": "max height difference indoor-outdoor (UI-UE Maxi.); merged all outdoor (15,0)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, row 'Raccords de tuyauterie Dénivelé UI-UE Maxi.', merged all outdoor", "excerpt": "Dénivelé UI-UE Maxi. m 15,0" } },
+        { "key": "supplyVoltage", "value": { "minimum": 220, "nominal": null, "maximum": 240 }, "unit": "V", "condition": "outdoor unit electrical supply; published '1~/50/220-240'; range preserved, no midpoint; merged 2MXM68A..5MXM90A", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, UNITÉS EXTÉRIEURES row 'Alimentation électrique Phase/Fréquence/Tension', merged 2MXM68A..5MXM90A", "excerpt": "Alimentation électrique Phase/Fréquence/Tension Hz/V 1~/50 /220-240" } },
+        { "key": "supplyPhases", "value": 1, "unit": "none", "condition": "outdoor unit supply phase count from '1~/50/220-240'", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, UNITÉS EXTÉRIEURES row 'Alimentation électrique Phase/Fréquence/Tension'", "excerpt": "Alimentation électrique Phase/Fréquence/Tension Hz/V 1~/50 /220-240" } },
+        { "key": "supplyFrequency", "value": 50, "unit": "Hz", "condition": "outdoor unit supply frequency from '1~/50/220-240'", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, UNITÉS EXTÉRIEURES row 'Alimentation électrique Phase/Fréquence/Tension'", "excerpt": "Alimentation électrique Phase/Fréquence/Tension Hz/V 1~/50 /220-240" } }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "p.52 combination matrix row '2MXM68A' shows connectable indoor units (dots) across families: CTXA (15/20/25/35/42/50), CTXM-R (15/20/25/35/42/50), FTXM-R (15/20/25/35/42/50/60/71), FTXJ (20/25/35/42/50), FTXP-M9 (20/25/35), FDXM-F9 (25/35/50/60), CVXM-A (35/50/60), FVXM-A (20/25/35), FVXM-F (25/35/50), FCAG-B (35/50/60), FFA-A9 (25/35/50/60), FHA-A9 (35/50/60), FNA-A9 (25/35/50/60). NOTE: matrix dots = CONNECTABILITY eligibility, NOT thermal pairing/rating (p.52 has NO efficiency table). Blurb: 'Jusqu'à 5 unités intérieures peuvent être connectées à 1 unité extérieure multi'.",
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.52, combination matrix row '2MXM68A' (dot columns across UNITÉS INTÉRIEURES CONNECTABLES)", "excerpt": "UNITÉS INTÉRIEURES CONNECTABLES 2MXM68A • (dots across CTXA/CTXM/FTXM/FTXJ/FTXP-M9/FDXM-F9/CVXM-A/FVXM-A/FVXM-F/FCAG-B/FFA-A9/FHA-A9/FNA-A9)" }
+        }
+      ],
+      "unknowns": [
+        "NO efficiency table on p.52 -> thermal capacity and electrical input NOT published for any 2/3/4/5MXM-A -> ratings empty, unknown",
+        "outdoor airflow (volumetric m³/h): not published for multi-split outdoor units",
+        "outdoor fan motor output / fan electrical input: not published",
+        "outdoor-only electrical input at rating point: not published (no efficiency table)",
+        "capacityClass: no published kW class scalar; '68' is a model size code",
+        "outdoor sound power HEATING: NOT published on p.52 (only cooling sound power row) -> unknown",
+        "outdoor sound pressure cooling Haute: dash '-' (only Nom. 48,0 published); heating Haute: dash '-' (only Nom. 48,0 published)",
+        "MFA 20 A merged 2MXM68A/3MXM40A: no schema fact key for fuse current; recorded here only",
+        "maximumBranchPipeLength: not published on p.52",
+        "combination matrix dots = connectability, NOT thermal pairing; no matched-combination capacity data on p.52",
+        "current 2026 availability of 2MXM68A (2022 A-gen): unknown; current A9 generation confirmed separately via daikin.eu; do NOT conflate A vs A9",
+        "refrigerant PRP 675,0 and CO2eq 1,35 are metadata beside charge; only charge kg stored as factoryCharge"
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

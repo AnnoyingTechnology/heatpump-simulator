@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Comfora Bluevolution optimised heating (FTXTP-M + RXTP-R)",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FTXTP25M",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.58 (printed 58), page title 'FTXTP-M + RXTP-R' (Comfora Bluevolution); UNITÉS INTÉRIEURES header 'FTXTP' then column '25M'",
+        "excerpt": "FTXTP-M + RXTP-R ; Unité intérieure FTXTP 25M"
+      },
+      "facts": [
+        { "key": "height", "value": 286, "unit": "mm", "condition": "indoor unit; row 'Dimensions Unité HxLxP' MERGED cell spanning 25M/35M (286x770x225)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged cell 25M/35M", "excerpt": "Dimensions Unité HxLxP mm 286x770x225" } },
+        { "key": "width", "value": 770, "unit": "mm", "condition": "indoor unit; merged cell 25M/35M (HxLxP 286x770x225)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged cell 25M/35M", "excerpt": "Dimensions Unité HxLxP mm 286x770x225" } },
+        { "key": "depth", "value": 225, "unit": "mm", "condition": "indoor unit; merged cell 25M/35M (HxLxP 286x770x225)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged cell 25M/35M", "excerpt": "Dimensions Unité HxLxP mm 286x770x225" } },
+        { "key": "mass", "value": 9.0, "unit": "kg", "condition": "indoor unit net weight; row 'Poids Unité' MERGED cell spanning 25M/35M (9,00)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, UNITÉS INTÉRIEURES row 'Poids Unité', merged cell 25M/35M", "excerpt": "Poids Unité kg 9,00" } },
+        { "key": "airflow", "value": 234, "unit": "m3/h", "condition": "cooling mode, Silence fan speed; published 3,9 m³/min, x60 = 234 m³/h (1 m³/min = 60 m³/h); MERGED cell 25M/35M", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, row 'Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut', merged cell 25M/35M, Silence value", "excerpt": "Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut m³/min 3,9/5,5/8,3/11,5" } },
+        { "key": "airflow", "value": 330, "unit": "m3/h", "condition": "cooling mode, Bas (low) fan speed; published 5,5 m³/min, x60 = 330 m³/h; MERGED cell 25M/35M", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, row 'Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut', merged cell 25M/35M, Bas value", "excerpt": "Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut m³/min 3,9/5,5/8,3/11,5" } },
+        { "key": "airflow", "value": 498, "unit": "m3/h", "condition": "cooling mode, Moyen (medium) fan speed; published 8,3 m³/min, x60 = 498 m³/h; MERGED cell 25M/35M", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, row 'Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut', merged cell 25M/35M, Moyen value", "excerpt": "Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut m³/min 3,9/5,5/8,3/11,5" } },
+        { "key": "airflow", "value": 690, "unit": "m3/h", "condition": "cooling mode, Haut (high) fan speed; published 11,5 m³/min, x60 = 690 m³/h; MERGED cell 25M/35M", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, row 'Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut', merged cell 25M/35M, Haut value", "excerpt": "Débit d'air Rafraîchissement Silence/Bas/Moyen/Haut m³/min 3,9/5,5/8,3/11,5" } },
+        { "key": "airflow", "value": 270, "unit": "m3/h", "condition": "heating mode, Silence fan speed; published 4,5 m³/min, x60 = 270 m³/h; MERGED cell 25M/35M", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, row 'Débit d'air Chauffage Silence/Bas/Moyen/Haut', merged cell 25M/35M, Silence value", "excerpt": "Débit d'air Chauffage Silence/Bas/Moyen/Haut m³/min 4,5/5,6/8,7/11,5" } },
+        { "key": "airflow", "value": 336, "unit": "m3/h", "condition": "heating mode, Bas (low) fan speed; published 5,6 m³/min, x60 = 336 m³/h; MERGED cell 25M/35M", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, row 'Débit d'air Chauffage Silence/Bas/Moyen/Haut', merged cell 25M/35M, Bas value", "excerpt": "Débit d'air Chauffage Silence/Bas/Moyen/Haut m³/min 4,5/5,6/8,7/11,5" } },
+        { "key": "airflow", "value": 522, "unit": "m3/h", "condition": "heating mode, Moyen (medium) fan speed; published 8,7 m³/min, x60 = 522 m³/h; MERGED cell 25M/35M", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, row 'Débit d'air Chauffage Silence/Bas/Moyen/Haut', merged cell 25M/35M, Moyen value", "excerpt": "Débit d'air Chauffage Silence/Bas/Moyen/Haut m³/min 4,5/5,6/8,7/11,5" } },
+        { "key": "airflow", "value": 690, "unit": "m3/h", "condition": "heating mode, Haut (high) fan speed; published 11,5 m³/min, x60 = 690 m³/h; MERGED cell 25M/35M", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, row 'Débit d'air Chauffage Silence/Bas/Moyen/Haut', merged cell 25M/35M, Haut value", "excerpt": "Débit d'air Chauffage Silence/Bas/Moyen/Haut m³/min 4,5/5,6/8,7/11,5" } },
+        { "key": "soundPower", "value": 58, "unit": "dBA", "condition": "indoor sound power level, cooling (Rafraîchissement); MERGED cell spanning 25M/35M (58); sound POWER not pressure", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, UNITÉS INTÉRIEURES row 'Niveau de puissance sonore Rafraîchissement', merged cell 25M/35M", "excerpt": "Niveau de puissance sonore Rafraîchissement dBA 58" } },
+        { "key": "soundPower", "value": 58, "unit": "dBA", "condition": "indoor sound power level, heating (Chauffage); MERGED cell spanning 25M/35M (58); sound POWER not pressure", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, UNITÉS INTÉRIEURES row 'Niveau de puissance sonore Chauffage', merged cell 25M/35M", "excerpt": "Niveau de puissance sonore Chauffage dBA 58" } },
+        { "key": "soundPressure", "value": 21, "unit": "dBA", "condition": "indoor sound pressure, cooling, Silence speed; MERGED cell 25M/35M", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut', merged cell 25M/35M, Silence value", "excerpt": "Niveau de pression sonore Rafraîchissement Silence/Bas/Haut dBA 21/26/43" } },
+        { "key": "soundPressure", "value": 26, "unit": "dBA", "condition": "indoor sound pressure, cooling, Bas speed; MERGED cell 25M/35M", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut', merged cell 25M/35M, Bas value", "excerpt": "Niveau de pression sonore Rafraîchissement Silence/Bas/Haut dBA 21/26/43" } },
+        { "key": "soundPressure", "value": 43, "unit": "dBA", "condition": "indoor sound pressure, cooling, Haut speed; MERGED cell 25M/35M", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, row 'Niveau de pression sonore Rafraîchissement Silence/Bas/Haut', merged cell 25M/35M, Haut value", "excerpt": "Niveau de pression sonore Rafraîchissement Silence/Bas/Haut dBA 21/26/43" } },
+        { "key": "soundPressure", "value": 21, "unit": "dBA", "condition": "indoor sound pressure, heating, Silence speed; MERGED cell 25M/35M", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, row 'Niveau de pression sonore Chauffage Silence/Bas/Haut', merged cell 25M/35M, Silence value", "excerpt": "Niveau de pression sonore Chauffage Silence/Bas/Haut dBA 21/26/43" } },
+        { "key": "soundPressure", "value": 26, "unit": "dBA", "condition": "indoor sound pressure, heating, Bas speed; MERGED cell 25M/35M", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, row 'Niveau de pression sonore Chauffage Silence/Bas/Haut', merged cell 25M/35M, Bas value", "excerpt": "Niveau de pression sonore Chauffage Silence/Bas/Haut dBA 21/26/43" } },
+        { "key": "soundPressure", "value": 43, "unit": "dBA", "condition": "indoor sound pressure, heating, Haut speed; MERGED cell 25M/35M", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, row 'Niveau de pression sonore Chauffage Silence/Bas/Haut', merged cell 25M/35M, Haut value", "excerpt": "Niveau de pression sonore Chauffage Silence/Bas/Haut dBA 21/26/43" } }
+      ],
+      "ratings": [
+        {
+          "mode": "cooling",
+          "combination": "FTXTP25M + RXTP25R (efficiency table column '25M + 25R'); monosplit pairing from efficiency column; NO 'Connexion multi uniquement' band on p.58",
+          "conditions": "p.58 efficiency table publishes Mini./Nom./Maxi. thermal (0,80/2,50/4,00 kW); electrical 'Puissance absorbée Rafraîchissement Nom.' published Nom. only (0,57 kW; min/max not published); complete-system boundary implied by pairing column; nominal conditions footnote: indoor 27 °CBS/19 °CBH, outdoor 35 °CBS, equiv pipe 5 m, height diff 0 m",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 0.80, "nominal": 2.50, "maximum": 4.00 },
+          "electricalInputKw": { "minimum": null, "nominal": 0.57, "maximum": null },
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, rows 'Puissance frigorifique Mini./Nom./Maxi.' and 'Puissance absorbée Rafraîchissement Nom.', column '25M + 25R'; footnote conditions", "excerpt": "Puissance frigorifique Mini./Nom./Maxi. kW 0,80/2,50/4,00 ; Puissance absorbée Rafraîchissement Nom. kW 0,57" }
+        },
+        {
+          "mode": "heating",
+          "combination": "FTXTP25M + RXTP25R (efficiency table column '25M + 25R'); monosplit pairing from efficiency column; NO 'Connexion multi uniquement' band on p.58",
+          "conditions": "p.58 efficiency table publishes Mini./Nom./Maxi. thermal (1,20/3,20/6,20 kW); electrical 'Puissance absorbée Chauffage Nom.' published Nom. only (0,65 kW; min/max not published); complete-system boundary implied by pairing column; nominal conditions footnote: indoor 20 °CBS, outdoor 7 °CBS/6 °CBH, equiv pipe 5 m, height diff 0 m",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.20, "nominal": 3.20, "maximum": 6.20 },
+          "electricalInputKw": { "minimum": null, "nominal": 0.65, "maximum": null },
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, rows 'Puissance calorifique Mini./Nom./Maxi.' and 'Puissance absorbée Chauffage Nom.', column '25M + 25R'; footnote conditions", "excerpt": "Puissance calorifique Mini./Nom./Maxi. kW 1,20/3,20/6,20 ; Puissance absorbée Chauffage Nom. kW 0,65" }
+        }
+      ],
+      "compatibility": [
+        {
+          "description": "efficiency-table column '25M + 25R' pairs FTXTP25M with RXTP25R (monosplit pairing). NO 'Connexion multi uniquement' caveat band on p.58. No invented pairing beyond the published column.",
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.58, 'Données relatives à l'efficacité' column header 'FTXTP + RXTP ... 25M + 25R'", "excerpt": "Données relatives à l'efficacité FTXTP + RXTP 25M + 25R" }
+        }
+      ],
+      "unknowns": [
+        "airflow unit: p.58 publishes indoor Débit d'air in m³/min; exact conversion x60 (1 m³/min = 60 m³/h); original m³/min preserved in excerpts",
+        "indoor fan motor output and fan electrical input: not published",
+        "capacityClass: no published kW class scalar; '25' is a model size code",
+        "electrical input min/max: NOT published (only Nom. row); only nominal stored (0,57 cooling / 0,65 heating)",
+        "indoor spec table (dimensions, weight, airflow, sound) on p.58 is a single merged cell spanning 25M/35M columns -> identical values recorded for both FTXTP25M and FTXTP35M (source layout, not inferred)",
+        "SEER 7,10 / SCOP-A 4,93 / SCOP-C 3,95 / Pdesign 2,50 (cool) / Pdesignh 3,65 (heat cold) / EER 4,40 / COP 4,95 / annual kWh are system (25M + 25R) ratings, not indoor-unit facts",
+        "indoor electrical supply/voltage: not published for indoor unit (supply shown at outdoor unit)",
+        "current 2026 availability of FTXTP-M: unknown; dated historical coverage"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    { "modelReference": "RXTP25R", "reason": "paired outdoor unit; captured in separate candidate file daikin-rxtp25r-outdoor.json" }
+  ]
+}

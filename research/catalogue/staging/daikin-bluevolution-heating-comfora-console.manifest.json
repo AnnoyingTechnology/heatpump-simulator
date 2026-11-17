@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Bluevolution optimised heating (FTXTP-M + RXTP-R wall ; FVXM-A + RXTP-R console)",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [],
+  "unresolvedReferences": [
+    { "modelReference": "FTXTP25M/35M + RXTP25R/35R (p.58); FVXM25A/35A console + RXTP25R/35R (p.59)", "reason": "family index only; 4 unit records live in separate candidate files daikin-ftxtp25m-indoor.json, daikin-ftxtp35m-indoor.json, daikin-rxtp25r-outdoor.json, daikin-rxtp35r-outdoor.json, plus 2 console indoor files daikin-fvxm25a-console-indoor.json, daikin-fvxm35a-console-indoor.json. p.58 (Comfora FTXTP-M + RXTP-R): 2 sizes 25M+25R / 35M+35R monosplit, NO multi band; efficiency cool 0,80/2,50/4,00 & 0,80/3,50/4,40; heat 1,20/3,20/6,20 & 1,20/4,00/6,70; electrical Nom. only 0,57/0,65 & 0,92/0,90; heating range -25~18 °CBH. INDOOR spec table on p.58 ENTIRELY MERGED single cell spanning 25M/35M -> identical values for FTXTP25M/35M (source layout). p.59 (Perfera console carrossée FVXM-A + RXTP-R): 2 sizes 25A+25R / 35A+35R monosplit, NO multi band; efficiency cool 1,40/2,50/4,20 & 1,40/3,50/4,30; heat 1,20/3,20/5,70 & 1,20/4,00/6,20; electrical Nom. only 0,66/0,83 & 1,02/1,13; heating range -25~18 °CBH; console dims 600x750x238 mass 17 MERGED 25A/35A; airflow+sound per-column (sound power 52/52 & 53/53). CROSS-PAGE: FVXM25A/35A model codes ALSO appear on p.48 paired with RXM25R9/35R9; p.59 pairs same model codes with RXTP25R/35R. Both pairings published on distinct pages, kept as separate candidate records (daikin-fvxm25a-indoor.json p.48 vs daikin-fvxm25a-console-indoor.json p.59), not merged. RXTP25R/35R outdoor models are the SAME physical units on p.58 and p.59 (captured once in daikin-rxtp25r/35r-outdoor.json). p.58/p.59 ENTIRE outdoor table MERGED single cell spanning 25R/35R -> identical values for RXTP25R/35R; dims 551x763x312 mass 38; sound power 61,0/61,0; sound pressure 48/49; cool -10~46 heat -25~18; R-32 (Type row) PRP 675 (separate row) charge 1,1/0,75; Liquide DE 6,35 / Gaz DE 9,50 separate rows; longueur 20 dénivelé 15 charge suppl 0,02>10m; supply 1~/50/220-240 MFA 16. prechargedPipeLength NOT published on p.58/59 -> unknown. Outdoor airflow, fan motor power, outdoor-only electrical boundary, maximumBranchPipeLength, current 2026 availability all unresolved. Distinct from hydronic/hybrid/Multi+ hot-water lines (excluded scope)." }
+  ]
+}

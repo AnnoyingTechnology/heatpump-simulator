@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Sensira (FTXC-C + RXC-C)",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [],
+  "unresolvedReferences": [
+    { "modelReference": "FTXC20C/25C/35C/50C/60C/71C + RXC20C/25C/35C/50C/60C/71C", "reason": "family index only; the 12 unit records live in separate candidate files daikin-ftxc{20,25,35,50,60,71}c-indoor.json and daikin-rxc{20,25,35,50,60,71}c-outdoor.json; page-46 coverage: 6 indoor + 6 outdoor (NO 42C size), monosplit pairings 20C+20C..71C+71C from efficiency-table columns. KEY layout differences vs other families: efficiency table publishes Mini./Maxi. ONLY (no Nominal) and has NO 'Puissance absorbée' row -> electrical input unknown (not invented); indoor heating sound power/pressure NOT published (cooling only); outdoor sound power Nom. published, outdoor sound pressure 'Haut' only (no Nom.); outdoor cooling range split 10~46 (20-35C) vs -10~46 (50-71C); heating -15~18 merged all. prechargedPipeLength=8 (Système Sans charge), additionalCharge 0,017 kg/m >7,5m (OCR '0 017'), gas 9,52 (20-35C)/12,7 (50-71C), longueur 20/30, dénivelé 15,0/20,0, MFA 16 merged all. Airflow m3/min x60->m3/h. Outdoor airflow, fan motor power, outdoor-only electrical boundary, maximumBranchPipeLength, current 2026 availability all unresolved." }
+  ]
+}

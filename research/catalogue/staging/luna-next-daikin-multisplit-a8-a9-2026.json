@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Current 2026 residential multi outdoor models A8/A9 (family-class scope; exact performance unresolved)",
+  "market": "France / Europe residential air-to-air",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "catalogue-p329",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/329/",
+      "title": "Daikin Europe General Catalogue 2026 Split, printed p.329",
+      "edition": "ECPEN26-500, 02/2026",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "model-full-skus",
+      "url": "https://www.daikin.fr/content/dam/document-library/installation-manuals/opt-and-acc/split/brp070a81/BRP070A81.2MXM68A%288.9%29.3MXM-A%288.9%29.4MWXM-A9.4MXM-A%288.9%29.5MXM-A%288.9%29_Photo%20manual_4P807994A.pdf",
+      "title": "Daikin Europe photo manual, exact multi outdoor references",
+      "edition": "4P807994A, product family labels 2MXM/3MXM/4MXM/5MXM A8/A9",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "multi-2mxm-a8-page",
+      "url": "https://www.daikin.eu/en_us/products/product.html/2MXM-A8.html",
+      "title": "Daikin Europe product page 2MXM-A8",
+      "edition": "Product page retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "multi-3mxm-a8-page",
+      "url": "https://www.daikin.eu/en_us/products/product.html/3MXM-A8.html",
+      "title": "Daikin Europe product page 3MXM-A8",
+      "edition": "Product page retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "multi-4mxm-a8-page",
+      "url": "https://www.daikin.eu/en_us/products/product.html/4MXM-A8.html",
+      "title": "Daikin Europe product page 4MXM-A8",
+      "edition": "Product page retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "multi-5mxm-a8-page",
+      "url": "https://www.daikin.eu/en_us/products/product.html/5MXM-A8.html",
+      "title": "Daikin Europe product page 5MXM-A8",
+      "edition": "Product page retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "multi-2mxm-a9-page-eu",
+      "url": "https://www.daikin.eu/en_us/products/product.html/2MXM-A9.html",
+      "title": "Daikin Europe product page 2MXM-A9",
+      "edition": "Product page retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "model-2mxm-full-skus",
+      "url": "https://www.daikin.fr/content/dam/document-library/Installer-reference-guide/ac/split/2mxm-a8/2MXM40A9.2MXM50A8_Installer%20reference%20guide_4PEN766272-4C_English.pdf",
+      "title": "Daikin France installer reference guide 2MXM40A9 / 2MXM50A8",
+      "edition": "4PEN766272-4C; retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "2MXM50A2V1B8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "model-2mxm-full-skus",
+        "locator": "Exact model name in the guide title page",
+        "excerpt": "2MXM50A2V1B8"
+      },
+      "facts": [
+        {
+          "key": "maximumIndoorUnits",
+          "value": 2,
+          "unit": "none",
+          "condition": "Maximum number of connected indoor units published for this outdoor family.",
+          "evidence": {
+            "sourceId": "multi-2mxm-a8-page",
+            "locator": "Product features > maximum connectable indoor units",
+            "excerpt": "Up to 2 indoor units can be connected to 1 multi outdoor unit"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The current 2026 catalogue compatibility matrix has these indoor product families among its connectable-unit columns: FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Product-page compatibility links are family-level; exact size checkboxes and allowable combined capacities remain unresolved.",
+          "evidence": {
+            "sourceId": "catalogue-p329",
+            "locator": "Printed p.329, Connectable indoor units matrix header",
+            "excerpt": "Wall mounted / Concealed ceiling / Floor standing / Round flow / Fully flat / Ceiling suspended / Concealed floor standing; FTXJ-A9; C/FTXA-C/D; C/FTXM-A; FTXP-N9; FDXM-F9; FBA-A(9); C/FVXM-B; FCAG-B; FFA-A9; FHA-A(9); FNA-A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor-only nominal cooling/heating capacity is not stated in the published family table; do not infer it from model digits. Multi-system ratings vary by indoor combination and remain combo-specific. Exact per-outdoor compatible indoor size, number of simultaneous heads below the maximum port count, combined capacity, and piping limits need source-aligned combination tables. No OEM performance map is asserted."
+      ]
+    },
+    {
+      "modelReference": "2MXM68A2V1B8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "model-full-skus",
+        "locator": "Exact full model reference in photo manual product family heading",
+        "excerpt": "2MXM68A2V1B8"
+      },
+      "facts": [
+        {
+          "key": "maximumIndoorUnits",
+          "value": 2,
+          "unit": "none",
+          "condition": "Maximum number of connected indoor units published for this outdoor family.",
+          "evidence": {
+            "sourceId": "multi-2mxm-a8-page",
+            "locator": "Product features > maximum connectable indoor units",
+            "excerpt": "Up to 2 indoor units can be connected to 1 multi outdoor unit"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The current 2026 catalogue compatibility matrix has these indoor product families among its connectable-unit columns: FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Product-page compatibility links are family-level; exact size checkboxes and allowable combined capacities remain unresolved.",
+          "evidence": {
+            "sourceId": "catalogue-p329",
+            "locator": "Printed p.329, Connectable indoor units matrix header",
+            "excerpt": "Wall mounted / Concealed ceiling / Floor standing / Round flow / Fully flat / Ceiling suspended / Concealed floor standing; FTXJ-A9; C/FTXA-C/D; C/FTXM-A; FTXP-N9; FDXM-F9; FBA-A(9); C/FVXM-B; FCAG-B; FFA-A9; FHA-A(9); FNA-A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor-only nominal cooling/heating capacity is not stated in the published family table; do not infer it from model digits. Multi-system ratings vary by indoor combination and remain combo-specific. Exact per-outdoor compatible indoor size, number of simultaneous heads below the maximum port count, combined capacity, and piping limits need source-aligned combination tables. No OEM performance map is asserted."
+      ]
+    },
+    {
+      "modelReference": "3MXM40A2V1B8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "model-full-skus",
+        "locator": "Exact full model reference in photo manual product family heading",
+        "excerpt": "3MXM40A2V1B8"
+      },
+      "facts": [
+        {
+          "key": "maximumIndoorUnits",
+          "value": 3,
+          "unit": "none",
+          "condition": "Maximum number of connected indoor units published for this outdoor family.",
+          "evidence": {
+            "sourceId": "multi-3mxm-a8-page",
+            "locator": "Product features > maximum connectable indoor units",
+            "excerpt": "Up to 3 indoor units can be connected to 1 multi outdoor unit"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The current 2026 catalogue compatibility matrix has these indoor product families among its connectable-unit columns: FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Product-page compatibility links are family-level; exact size checkboxes and allowable combined capacities remain unresolved.",
+          "evidence": {
+            "sourceId": "catalogue-p329",
+            "locator": "Printed p.329, Connectable indoor units matrix header",
+            "excerpt": "Wall mounted / Concealed ceiling / Floor standing / Round flow / Fully flat / Ceiling suspended / Concealed floor standing; FTXJ-A9; C/FTXA-C/D; C/FTXM-A; FTXP-N9; FDXM-F9; FBA-A(9); C/FVXM-B; FCAG-B; FFA-A9; FHA-A(9); FNA-A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor-only nominal cooling/heating capacity is not stated in the published family table; do not infer it from model digits. Multi-system ratings vary by indoor combination and remain combo-specific. Exact per-outdoor compatible indoor size, number of simultaneous heads below the maximum port count, combined capacity, and piping limits need source-aligned combination tables. No OEM performance map is asserted."
+      ]
+    },
+    {
+      "modelReference": "3MXM52A2V1B8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "model-full-skus",
+        "locator": "Exact full model reference in photo manual product family heading",
+        "excerpt": "3MXM52A2V1B8"
+      },
+      "facts": [
+        {
+          "key": "maximumIndoorUnits",
+          "value": 3,
+          "unit": "none",
+          "condition": "Maximum number of connected indoor units published for this outdoor family.",
+          "evidence": {
+            "sourceId": "multi-3mxm-a8-page",
+            "locator": "Product features > maximum connectable indoor units",
+            "excerpt": "Up to 3 indoor units can be connected to 1 multi outdoor unit"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The current 2026 catalogue compatibility matrix has these indoor product families among its connectable-unit columns: FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Product-page compatibility links are family-level; exact size checkboxes and allowable combined capacities remain unresolved.",
+          "evidence": {
+            "sourceId": "catalogue-p329",
+            "locator": "Printed p.329, Connectable indoor units matrix header",
+            "excerpt": "Wall mounted / Concealed ceiling / Floor standing / Round flow / Fully flat / Ceiling suspended / Concealed floor standing; FTXJ-A9; C/FTXA-C/D; C/FTXM-A; FTXP-N9; FDXM-F9; FBA-A(9); C/FVXM-B; FCAG-B; FFA-A9; FHA-A(9); FNA-A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor-only nominal cooling/heating capacity is not stated in the published family table; do not infer it from model digits. Multi-system ratings vary by indoor combination and remain combo-specific. Exact per-outdoor compatible indoor size, number of simultaneous heads below the maximum port count, combined capacity, and piping limits need source-aligned combination tables. No OEM performance map is asserted."
+      ]
+    },
+    {
+      "modelReference": "3MXM68A2V1B8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "model-full-skus",
+        "locator": "Exact full model reference in photo manual product family heading",
+        "excerpt": "3MXM68A2V1B8"
+      },
+      "facts": [
+        {
+          "key": "maximumIndoorUnits",
+          "value": 3,
+          "unit": "none",
+          "condition": "Maximum number of connected indoor units published for this outdoor family.",
+          "evidence": {
+            "sourceId": "multi-3mxm-a8-page",
+            "locator": "Product features > maximum connectable indoor units",
+            "excerpt": "Up to 3 indoor units can be connected to 1 multi outdoor unit"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The current 2026 catalogue compatibility matrix has these indoor product families among its connectable-unit columns: FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Product-page compatibility links are family-level; exact size checkboxes and allowable combined capacities remain unresolved.",
+          "evidence": {
+            "sourceId": "catalogue-p329",
+            "locator": "Printed p.329, Connectable indoor units matrix header",
+            "excerpt": "Wall mounted / Concealed ceiling / Floor standing / Round flow / Fully flat / Ceiling suspended / Concealed floor standing; FTXJ-A9; C/FTXA-C/D; C/FTXM-A; FTXP-N9; FDXM-F9; FBA-A(9); C/FVXM-B; FCAG-B; FFA-A9; FHA-A(9); FNA-A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor-only nominal cooling/heating capacity is not stated in the published family table; do not infer it from model digits. Multi-system ratings vary by indoor combination and remain combo-specific. Exact per-outdoor compatible indoor size, number of simultaneous heads below the maximum port count, combined capacity, and piping limits need source-aligned combination tables. No OEM performance map is asserted."
+      ]
+    },
+    {
+      "modelReference": "4MXM68A2V1B8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "model-full-skus",
+        "locator": "Exact full model reference in photo manual product family heading",
+        "excerpt": "4MXM68A2V1B8"
+      },
+      "facts": [
+        {
+          "key": "maximumIndoorUnits",
+          "value": 4,
+          "unit": "none",
+          "condition": "Maximum number of connected indoor units published for this outdoor family.",
+          "evidence": {
+            "sourceId": "multi-4mxm-a8-page",
+            "locator": "Product features > maximum connectable indoor units",
+            "excerpt": "Up to 4 indoor units can be connected to 1 multi outdoor unit"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The current 2026 catalogue compatibility matrix has these indoor product families among its connectable-unit columns: FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Product-page compatibility links are family-level; exact size checkboxes and allowable combined capacities remain unresolved.",
+          "evidence": {
+            "sourceId": "catalogue-p329",
+            "locator": "Printed p.329, Connectable indoor units matrix header",
+            "excerpt": "Wall mounted / Concealed ceiling / Floor standing / Round flow / Fully flat / Ceiling suspended / Concealed floor standing; FTXJ-A9; C/FTXA-C/D; C/FTXM-A; FTXP-N9; FDXM-F9; FBA-A(9); C/FVXM-B; FCAG-B; FFA-A9; FHA-A(9); FNA-A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor-only nominal cooling/heating capacity is not stated in the published family table; do not infer it from model digits. Multi-system ratings vary by indoor combination and remain combo-specific. Exact per-outdoor compatible indoor size, number of simultaneous heads below the maximum port count, combined capacity, and piping limits need source-aligned combination tables. No OEM performance map is asserted."
+      ]
+    },
+    {
+      "modelReference": "4MXM80A2V1B8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "model-full-skus",
+        "locator": "Exact full model reference in photo manual product family heading",
+        "excerpt": "4MXM80A2V1B8"
+      },
+      "facts": [
+        {
+          "key": "maximumIndoorUnits",
+          "value": 4,
+          "unit": "none",
+          "condition": "Maximum number of connected indoor units published for this outdoor family.",
+          "evidence": {
+            "sourceId": "multi-4mxm-a8-page",
+            "locator": "Product features > maximum connectable indoor units",
+            "excerpt": "Up to 4 indoor units can be connected to 1 multi outdoor unit"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The current 2026 catalogue compatibility matrix has these indoor product families among its connectable-unit columns: FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Product-page compatibility links are family-level; exact size checkboxes and allowable combined capacities remain unresolved.",
+          "evidence": {
+            "sourceId": "catalogue-p329",
+            "locator": "Printed p.329, Connectable indoor units matrix header",
+            "excerpt": "Wall mounted / Concealed ceiling / Floor standing / Round flow / Fully flat / Ceiling suspended / Concealed floor standing; FTXJ-A9; C/FTXA-C/D; C/FTXM-A; FTXP-N9; FDXM-F9; FBA-A(9); C/FVXM-B; FCAG-B; FFA-A9; FHA-A(9); FNA-A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor-only nominal cooling/heating capacity is not stated in the published family table; do not infer it from model digits. Multi-system ratings vary by indoor combination and remain combo-specific. Exact per-outdoor compatible indoor size, number of simultaneous heads below the maximum port count, combined capacity, and piping limits need source-aligned combination tables. No OEM performance map is asserted."
+      ]
+    },
+    {
+      "modelReference": "5MXM90A2V1B8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "model-full-skus",
+        "locator": "Exact full model reference in photo manual product family heading",
+        "excerpt": "5MXM90A2V1B8"
+      },
+      "facts": [
+        {
+          "key": "maximumIndoorUnits",
+          "value": 5,
+          "unit": "none",
+          "condition": "Maximum number of connected indoor units published for this outdoor family.",
+          "evidence": {
+            "sourceId": "multi-5mxm-a8-page",
+            "locator": "Product features > maximum connectable indoor units",
+            "excerpt": "Up to 5 indoor units can be connected to 1 multi outdoor unit"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The current 2026 catalogue compatibility matrix has these indoor product families among its connectable-unit columns: FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Product-page compatibility links are family-level; exact size checkboxes and allowable combined capacities remain unresolved.",
+          "evidence": {
+            "sourceId": "catalogue-p329",
+            "locator": "Printed p.329, Connectable indoor units matrix header",
+            "excerpt": "Wall mounted / Concealed ceiling / Floor standing / Round flow / Fully flat / Ceiling suspended / Concealed floor standing; FTXJ-A9; C/FTXA-C/D; C/FTXM-A; FTXP-N9; FDXM-F9; FBA-A(9); C/FVXM-B; FCAG-B; FFA-A9; FHA-A(9); FNA-A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor-only nominal cooling/heating capacity is not stated in the published family table; do not infer it from model digits. Multi-system ratings vary by indoor combination and remain combo-specific. Exact per-outdoor compatible indoor size, number of simultaneous heads below the maximum port count, combined capacity, and piping limits need source-aligned combination tables. No OEM performance map is asserted."
+      ]
+    },
+    {
+      "modelReference": "2MXM40A2V1B9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "model-2mxm-full-skus",
+        "locator": "Exact model name in the guide title page",
+        "excerpt": "2MXM40A2V1B9"
+      },
+      "facts": [
+        {
+          "key": "maximumIndoorUnits",
+          "value": 2,
+          "unit": "none",
+          "condition": "Maximum number of connected indoor units published for this outdoor family.",
+          "evidence": {
+            "sourceId": "multi-2mxm-a9-page-eu",
+            "locator": "Product features > maximum connectable indoor units",
+            "excerpt": "Up to 2 indoor units can be connected to 1 multi outdoor unit"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The current 2026 catalogue compatibility matrix has these indoor product families among its connectable-unit columns: FTXJ-A9, C/FTXA-C/D, C/FTXM-A, FTXP-N9, FDXM-F9, FBA-A(9), C/FVXM-B, FCAG-B, FFA-A9, FHA-A(9), FNA-A9. Product-page compatibility links are family-level; exact size checkboxes and allowable combined capacities remain unresolved.",
+          "evidence": {
+            "sourceId": "catalogue-p329",
+            "locator": "Printed p.329, Connectable indoor units matrix header",
+            "excerpt": "Wall mounted / Concealed ceiling / Floor standing / Round flow / Fully flat / Ceiling suspended / Concealed floor standing; FTXJ-A9; C/FTXA-C/D; C/FTXM-A; FTXP-N9; FDXM-F9; FBA-A(9); C/FVXM-B; FCAG-B; FFA-A9; FHA-A(9); FNA-A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor-only nominal cooling/heating capacity is not stated in the published family table; do not infer it from model digits. Multi-system ratings vary by indoor combination and remain combo-specific. Exact per-outdoor compatible indoor size, number of simultaneous heads below the maximum port count, combined capacity, and piping limits need source-aligned combination tables. No OEM performance map is asserted."
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    {
+      "modelReference": "2MXM50A2V1B8",
+      "reason": "Need exact-size, per-port compatible indoor refs and total-capacity/piping constraints from Daikin combination matrix; family-level compatibility only."
+    },
+    {
+      "modelReference": "2MXM68A2V1B8",
+      "reason": "Need exact-size, per-port compatible indoor refs and total-capacity/piping constraints from Daikin combination matrix; family-level compatibility only."
+    },
+    {
+      "modelReference": "3MXM40A2V1B8",
+      "reason": "Need exact-size, per-port compatible indoor refs and total-capacity/piping constraints from Daikin combination matrix; family-level compatibility only."
+    },
+    {
+      "modelReference": "3MXM52A2V1B8",
+      "reason": "Need exact-size, per-port compatible indoor refs and total-capacity/piping constraints from Daikin combination matrix; family-level compatibility only."
+    },
+    {
+      "modelReference": "3MXM68A2V1B8",
+      "reason": "Need exact-size, per-port compatible indoor refs and total-capacity/piping constraints from Daikin combination matrix; family-level compatibility only."
+    },
+    {
+      "modelReference": "4MXM68A2V1B8",
+      "reason": "Need exact-size, per-port compatible indoor refs and total-capacity/piping constraints from Daikin combination matrix; family-level compatibility only."
+    },
+    {
+      "modelReference": "4MXM80A2V1B8",
+      "reason": "Need exact-size, per-port compatible indoor refs and total-capacity/piping constraints from Daikin combination matrix; family-level compatibility only."
+    },
+    {
+      "modelReference": "5MXM90A2V1B8",
+      "reason": "Need exact-size, per-port compatible indoor refs and total-capacity/piping constraints from Daikin combination matrix; family-level compatibility only."
+    },
+    {
+      "modelReference": "2MXM40A2V1B9",
+      "reason": "Need exact-size, per-port compatible indoor refs and total-capacity/piping constraints from Daikin combination matrix; family-level compatibility only."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Bluevolution optimised heating wall (FTXTA-BW/BB + RXTA-B ; FTXTM-R + RXTM-R)",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [],
+  "unresolvedReferences": [
+    { "modelReference": "FTXTA30BB/BW + RXTA30B (p.56); FTXTM30R/40R + RXTM30R/40R (p.57)", "reason": "family index only; 6 unit records live in separate candidate files daikin-ftxta30bbbw-indoor.json, daikin-rxta30b-outdoor.json, daikin-ftxtm30r-indoor.json, daikin-ftxtm40r-indoor.json, daikin-rxtm30r-outdoor.json, daikin-rxtm40r-outdoor.json. p.56 (Bluevolution FTXTA-BW/BB + RXTA-B): single size 30BB/BW (BW=blanc cristal, BB=noir mat colour variants share one column) + 30B; heating range -25~18 °CBH; pairing 30BB/BW+30B monosplit, NO multi band; efficiency Mini./Nom./Maxi. thermal cool 0,70/3,00/4,50 heat 0,80/3,20/6,90; electrical Nom. only 0,71/0,66. p.57 (Perfera FTXTM-R + RXTM-R): 2 sizes 30R+30R / 40R+40R monosplit, NO multi band; efficiency cool 0,70/3,00/4,50 & 0,90/4,00/5,10; heat 0,80/3,20/6,70 & 1,20/4,00/7,20; electrical Nom. only 0,73/0,60 & 1,08/0,74; heating range -25~18 °CBH. INDOOR airflow published m3/min (x60 -> m3/h). p.57 indoor sound power (60,0/61,0) MERGED cell spanning 30R/40R; p.57 ENTIRE outdoor table MERGED single cell spanning 30R/40R -> identical values recorded for RXTM30R and RXTM40R (source layout, not inferred). Outdoor dims p.56/p.57 551x763x312 mass 38; sound power cool+heat 61,0/61,0; sound pressure 48/49; cool range -10~46 heat -25~18; R-32 charge 1,1/0,74-0,75; pipe 6,35/9,50 longueur 20 dénivelé 15 charge suppl 0,02>10m; supply 1~/50/220-240 MFA 16. prechargedPipeLength NOT published on p.56/57 -> unknown. Outdoor airflow, fan motor power, outdoor-only electrical boundary, maximumBranchPipeLength, current 2026 availability all unresolved. These wall Bluevolution units are DISTINCT from the hydronic/hybrid/Multi+ hot-water lines (excluded scope)." }
+  ]
+}

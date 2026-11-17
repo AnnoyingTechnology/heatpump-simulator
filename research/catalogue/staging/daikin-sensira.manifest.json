@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Sensira (FTXF-D + RXF-D)",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [],
+  "unresolvedReferences": [
+    { "modelReference": "FTXF20D/25D/35D/42D/50D/60D/71D + RXF20D/25D/35D/42D/50D/60D/71D", "reason": "family index only; the 14 unit records live in separate candidate files daikin-ftxf{20,25,35,42,50,60,71}d-indoor.json and daikin-rxf{20,25,35,42,50,60,71}d-outdoor.json; page-45 coverage: 7 indoor + 7 outdoor, monosplit pairings 20D+20D..71D+71D from efficiency-table columns. Blue preliminary cells (footnote 'les cellules bleues contiennent des données préliminaires') -> electrical input min/max dashes for 50/60/71D (nominal only stored); outdoor sound power row published '-' (dash) = NOT published -> unknown; outdoor sound pressure Nom./Haute dashes alternate (small sizes Nom.-, large sizes Haute-). Outdoor heating operating range -15~18 (differs from Comfora -20~18). Airflow m3/min x60->m3/h. Outdoor airflow, fan motor power, outdoor-only electrical boundary, precharged/branch pipe length, MFA (16/16/16/16/20/20/20) no schema key, current 2026 availability all unresolved." }
+  ]
+}

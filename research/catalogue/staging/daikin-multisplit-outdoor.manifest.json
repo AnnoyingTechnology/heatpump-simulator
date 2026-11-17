@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Multi-split outdoor groups (2/3/4/5MXM-A)",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [],
+  "unresolvedReferences": [
+    { "modelReference": "2MXM40A/50A/68A + 3MXM40A/52A/68A + 4MXM68A/80A + 5MXM90A", "reason": "family index only; the 9 outdoor records live in separate candidate files daikin-{2mxm40a,2mxm50a,2mxm68a,3mxm40a,3mxm52a,3mxm68a,4mxm68a,4mxm80a,5mxm90a}-outdoor.json; page-52 coverage: 9 OUTDOOR units only (no indoor units on p.52). CRITICAL: p.52 has NO efficiency table -> thermal capacity (Mini./Nom./Maxi.) and electrical input (Puissance absorbée) NOT published for ANY 2/3/4/5MXM-A -> ratings empty for all. p.52 contains a COMBINATION MATRIX (connectability dots per indoor family/size) + outdoor spec table. Matrix dots = CONNECTABILITY eligibility per Daikin, NOT a thermal pairing/rating; captured per unit in compatibility as a connectability note, NOT as invented matched combinations. Blurb: 'Jusqu'à 5 unités intérieures peuvent être connectées à 1 unité extérieure multi'. Outdoor spec: dims 2MXM40A/50A 552x852x350; 2MXM68A 734x958x340; 3MXM40A/52A/68A 734x974x401; 4MXM68A/80A/5MXM90A 734x958x340. Mass 36/41/60,0/57(40A+52A)/62,0/63,0/67,0/68,0. Outdoor sound power cooling only (60 40A+50A; 61,0 2MXM68A; 59,0 3MXM40A+52A; blank 3MXM68A; 61,0 4MXM68A+80A; 64,0 5MXM90A); HEATING sound power NOT published. Outdoor sound pressure Nom./Haute mixed dashes: cooling 2MXM40A -/46, 2MXM50A -/48, 2MXM68A 48,0/-, 3MXM40A 46/-, 3MXM52A 48,0/-, 3MXM68A -/-, 4MXM68A 48,0/-, 4MXM80A -/-, 5MXM90A 52,0/-; heating 2MXM40A -/48, 2MXM50A -/50, 2MXM68A 48,0/-, 3MXM40A 47/-, 3MXM52A -/-, 3MXM68A -/-, 4MXM68A 49,0/-, 4MXM80A 49,0/-, 5MXM90A 52,0/-. Operating cool -10~46 °CBS, heating -15~18 °CBH (label °CBH on p.52, differs from split pages °CBS). R-32, PRP 675,0. Charge 0,88/0,60 (2MXM40A), 1,15/0,78 (2MXM50A), 2,00/1,35 (2MXM68A), 1,80/1,22 (3MXM40A+52A), 2,00/1,35 (3MXM68A), 2,00/1,35 (4MXM68A+80A), 2,40/1,62 (5MXM90A). Liquid 6,4 (2MXM40A/50A, 3MXM40A/52A/68A) / 6,35 (2MXM68A, 4MXM68A/80A/5MXM90A); gas 9,5 (2MXM40A/50A, 3MXM) / 9,50 (2MXM68A, 4MXM/5MXM). Longueur 20 (1) (2MXM40A..3MXM52A) / 25 (1) (3MXM68A..5MXM90A), footnote (1) 'Pour une pièce'. Système Sans charge: '-' (2MXM40A/50A) / 30 (rest). Charge suppl 0,02 >20m (2MXM40A..3MXM68A) / 0,02 >30m (4MXM/5MXM). Dénivelé 15,0 all. Supply 1~/50/220-230-240 (2MXM40A/50A) / 1~/50/220-240 (rest). MFA 16 (2MXM40A/50A, 3MXM52A) / 20 (2MXM68A/3MXM40A, 3MXM68A/4MXM68A) / 25 (4MXM80A) / 32 (5MXM90A). NOTE 3MXM52A here is the 2022 A-gen (R-32); OWNER'S historical 3MXM52N8 PRESERVED SEPARATELY (do NOT conflate N8 with A-gen); current A9 (3MXM40/52/68A2V1B9) confirmed separately via daikin.eu. Outdoor airflow, fan motor power, outdoor-only electrical boundary, maximumBranchPipeLength, current 2026 availability all unresolved." }
+  ]
+}

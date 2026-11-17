@@ -1,0 +1,1191 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "2026 FVXM-B floor-standing and FDXM-F9 concealed-ceiling published class supplement",
+  "market": "Daikin Europe General Catalogue; current France retail and exact full-SKU availability unverified",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "catalogue-p326",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/326/",
+      "title": "Daikin Europe General Catalogue 2026 Split, printed p.326",
+      "edition": "ECPEN26-500, 02/2026; printed page 326; HTML text snapshot SHA-256 15eb5a7333dcf031c931bb6ae31a0bc4bd5f2db530c75093318790c15eb7c846",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "catalogue-p326-layout",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/files/assets/common/page-vectorlayers/0048.svg?uni=b27fda89420e61b9c4969d2bc12e86e6",
+      "title": "Daikin Europe General Catalogue 2026 p.326 primary positioned-text renderer layer",
+      "edition": "ECPEN26-500, 02/2026; renderer SVG SHA-256 1e411db6a52ab41f02c76a35e9eb514b0e0671831e2b633f176e6dcee092922b",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "catalogue-p326-background",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/files/assets/common/page-html5-substrates/page0048_2.webp?uni=b27fda89420e61b9c4969d2bc12e86e6",
+      "title": "Daikin Europe General Catalogue 2026 p.326 page background and table-cell layout",
+      "edition": "ECPEN26-500, 02/2026; renderer background SHA-256 8e79c8e08bd2bf11812d17c8cedb46f41d29f8ed5dde8b1aa03d5ce5fda25e6d",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "catalogue-p327",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/327/",
+      "title": "Daikin Europe General Catalogue 2026 Split, printed p.327",
+      "edition": "ECPEN26-500, 02/2026; printed page 327; HTML text snapshot SHA-256 8cde915bfffbf9a83c63eaa4b030f0848fc5c82c5e67ddc6e2855353c7b38be0",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "catalogue-p327-layout",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/files/assets/common/page-vectorlayers/0049.svg?uni=b27fda89420e61b9c4969d2bc12e86e6",
+      "title": "Daikin Europe General Catalogue 2026 p.327 primary positioned-text renderer layer",
+      "edition": "ECPEN26-500, 02/2026; renderer SVG SHA-256 f600cdf6d0e2f610bd319e7675d8b3c44179d50dceb8d6121a73b3fb3914fe77",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "catalogue-p327-background",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/files/assets/common/page-html5-substrates/page0049_2.webp?uni=b27fda89420e61b9c4969d2bc12e86e6",
+      "title": "Daikin Europe General Catalogue 2026 p.327 page background and table-cell layout",
+      "edition": "ECPEN26-500, 02/2026; renderer background SHA-256 c759ec6a887b220f0006554a463d4ec9d3364dc18bb978f0669ade14b079ce5c",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FVXM25B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p326",
+        "locator": "Printed p.326, Indoor unit FVXM-B class column 25B; no factory suffix published; published model class only, not a factory-suffix reference",
+        "excerpt": "FVXM-B 25B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 600,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Indoor unit FVXM-B; Dimensions / Height×Width×Depth; merged FVXM-B 25B/35B/50B cell",
+            "excerpt": "FVXM-B 25B / 35B / 50B | 600 × 750 × 238 mm; table cell merged across these class columns"
+          }
+        },
+        {
+          "key": "width",
+          "value": 750,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Indoor unit FVXM-B; Dimensions / Height×Width×Depth; merged FVXM-B 25B/35B/50B cell",
+            "excerpt": "FVXM-B 25B / 35B / 50B | 600 × 750 × 238 mm; table cell merged across these class columns"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 238,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Indoor unit FVXM-B; Dimensions / Height×Width×Depth; merged FVXM-B 25B/35B/50B cell",
+            "excerpt": "FVXM-B 25B / 35B / 50B | 600 × 750 × 238 mm; table cell merged across these class columns"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 522.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; source label m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; FVXM-B indoor class 25B; Fan / Air flow rate / Cooling / High; source m³/min converted ×60",
+            "excerpt": "FVXM-B 25B | Cooling Silent/Low/Medium/High airflow | high 8.7 m³/min; converted ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 552.0,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; source label m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; FVXM-B indoor class 25B; Fan / Air flow rate / Heating / High; source m³/min converted ×60",
+            "excerpt": "FVXM-B 25B | Heating Silent/Low/Medium/High airflow | high 9.2 m³/min; converted ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "2026 catalogue publishes this indoor/outdoor class pair: 25B + 25A9. This is class-level pairing evidence; no factory suffix is inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326, Efficiency data table, exact class pair column",
+            "excerpt": "25B + 25A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this 2026 class table; exact full-SKU identity and full-SKU pairing eligibility remain unknown.",
+        "The catalogue is class-level evidence and does not establish current France retail availability or stock.",
+        "Exact factory model suffix is not resolved by the printed class designation.",
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown."
+      ]
+    },
+    {
+      "modelReference": "RXM25A9",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p326",
+        "locator": "Printed p.326, Outdoor unit RXM/RXM class column 25A9; factory suffix not published; published model class only, not a factory-suffix reference",
+        "excerpt": "RXM-A9/A8 class 25A9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 610,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Outdoor unit RXM/RXM; Dimensions / Height×Width×Depth; merged outdoor-class cell for 25A9/35A9/50A8",
+            "excerpt": "RXM-A9/A8 classes 25A9, 35A9, 50A8 | 610 × 923 × 367 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 923,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Outdoor unit RXM/RXM; Dimensions / Height×Width×Depth; merged outdoor-class cell for 25A9/35A9/50A8",
+            "excerpt": "RXM-A9/A8 classes 25A9, 35A9, 50A8 | 610 × 923 × 367 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 367,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Outdoor unit RXM/RXM; Dimensions / Height×Width×Depth; merged outdoor-class cell for 25A9/35A9/50A8",
+            "excerpt": "RXM-A9/A8 classes 25A9, 35A9, 50A8 | 610 × 923 × 367 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Outdoor unit RXM/RXM; Refrigerant / Type; shared 25A9/35A9/50A8 class cell",
+            "excerpt": "RXM-A9/A8 class outdoor refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (catalogue °CDB)",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; published merged outdoor class cell RXM-A9, covering 25A9 and 35A9; Operation range / Cooling / Ambient / Min. / °CDB",
+            "excerpt": "RXM class cooling outdoor dry-bulb minimum -10 °CDB"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (catalogue °CDB)",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; published merged outdoor class cell RXM-A9, covering 25A9 and 35A9; Operation range / Cooling / Ambient / Max. / °CDB",
+            "excerpt": "RXM class cooling outdoor dry-bulb maximum 50 °CDB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; published merged outdoor class cell RXM-A9, covering 25A9 and 35A9; Operation range / Heating / Ambient / Min. / °CWB",
+            "excerpt": "RXM class heating outdoor wet-bulb minimum -21 °CWB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; published merged outdoor class cell RXM-A9, covering 25A9 and 35A9; Operation range / Heating / Ambient / Max. / °CWB",
+            "excerpt": "RXM class heating outdoor wet-bulb maximum 18 °CWB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -20,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; published merged outdoor class cell RXM-A9, covering 25A9 and 35A9; Operation range / Heating / additional °CDB line",
+            "excerpt": "RXM class heating outdoor dry-bulb minimum -20 °CDB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; published merged outdoor class cell RXM-A9, covering 25A9 and 35A9; Operation range / Heating / additional °CDB line",
+            "excerpt": "RXM class heating outdoor dry-bulb maximum 24 °CDB"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "2026 catalogue publishes this indoor/outdoor class pair: 25B + 25A9. This is class-level pairing evidence; no factory suffix is inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326, Efficiency data table, exact class pair column",
+            "excerpt": "25B + 25A9"
+          }
+        },
+        {
+          "description": "2026 catalogue publishes this indoor/outdoor class pair: 25F9 + 25A9. This is class-level pairing evidence; no factory suffix is inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327, Efficiency data table, exact class pair column",
+            "excerpt": "25F9 + 25A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this 2026 class table; exact full-SKU identity and full-SKU pairing eligibility remain unknown.",
+        "The catalogue is class-level evidence and does not establish current France retail availability or stock.",
+        "Outdoor volumetric airflow is not published on this page.",
+        "These class facts are not factory suffix expansions; do not merge with historical exact RXM-R or other-generation profiles.",
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown."
+      ]
+    },
+    {
+      "modelReference": "FVXM35B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p326",
+        "locator": "Printed p.326, Indoor unit FVXM-B class column 35B; no factory suffix published; published model class only, not a factory-suffix reference",
+        "excerpt": "FVXM-B 35B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 600,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Indoor unit FVXM-B; Dimensions / Height×Width×Depth; merged FVXM-B 25B/35B/50B cell",
+            "excerpt": "FVXM-B 25B / 35B / 50B | 600 × 750 × 238 mm; table cell merged across these class columns"
+          }
+        },
+        {
+          "key": "width",
+          "value": 750,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Indoor unit FVXM-B; Dimensions / Height×Width×Depth; merged FVXM-B 25B/35B/50B cell",
+            "excerpt": "FVXM-B 25B / 35B / 50B | 600 × 750 × 238 mm; table cell merged across these class columns"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 238,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Indoor unit FVXM-B; Dimensions / Height×Width×Depth; merged FVXM-B 25B/35B/50B cell",
+            "excerpt": "FVXM-B 25B / 35B / 50B | 600 × 750 × 238 mm; table cell merged across these class columns"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 552.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; source label m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; FVXM-B indoor class 35B; Fan / Air flow rate / Cooling / High; source m³/min converted ×60",
+            "excerpt": "FVXM-B 35B | Cooling Silent/Low/Medium/High airflow | high 9.2 m³/min; converted ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 588.0,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; source label m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; FVXM-B indoor class 35B; Fan / Air flow rate / Heating / High; source m³/min converted ×60",
+            "excerpt": "FVXM-B 35B | Heating Silent/Low/Medium/High airflow | high 9.8 m³/min; converted ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "2026 catalogue publishes this indoor/outdoor class pair: 35B + 35A9. This is class-level pairing evidence; no factory suffix is inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326, Efficiency data table, exact class pair column",
+            "excerpt": "35B + 35A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this 2026 class table; exact full-SKU identity and full-SKU pairing eligibility remain unknown.",
+        "The catalogue is class-level evidence and does not establish current France retail availability or stock.",
+        "Exact factory model suffix is not resolved by the printed class designation.",
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown."
+      ]
+    },
+    {
+      "modelReference": "RXM35A9",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p326",
+        "locator": "Printed p.326, Outdoor unit RXM/RXM class column 35A9; factory suffix not published; published model class only, not a factory-suffix reference",
+        "excerpt": "RXM-A9/A8 class 35A9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 610,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Outdoor unit RXM/RXM; Dimensions / Height×Width×Depth; merged outdoor-class cell for 25A9/35A9/50A8",
+            "excerpt": "RXM-A9/A8 classes 25A9, 35A9, 50A8 | 610 × 923 × 367 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 923,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Outdoor unit RXM/RXM; Dimensions / Height×Width×Depth; merged outdoor-class cell for 25A9/35A9/50A8",
+            "excerpt": "RXM-A9/A8 classes 25A9, 35A9, 50A8 | 610 × 923 × 367 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 367,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Outdoor unit RXM/RXM; Dimensions / Height×Width×Depth; merged outdoor-class cell for 25A9/35A9/50A8",
+            "excerpt": "RXM-A9/A8 classes 25A9, 35A9, 50A8 | 610 × 923 × 367 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Outdoor unit RXM/RXM; Refrigerant / Type; shared 25A9/35A9/50A8 class cell",
+            "excerpt": "RXM-A9/A8 class outdoor refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (catalogue °CDB)",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; published merged outdoor class cell RXM-A9, covering 25A9 and 35A9; Operation range / Cooling / Ambient / Min. / °CDB",
+            "excerpt": "RXM class cooling outdoor dry-bulb minimum -10 °CDB"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (catalogue °CDB)",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; published merged outdoor class cell RXM-A9, covering 25A9 and 35A9; Operation range / Cooling / Ambient / Max. / °CDB",
+            "excerpt": "RXM class cooling outdoor dry-bulb maximum 50 °CDB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; published merged outdoor class cell RXM-A9, covering 25A9 and 35A9; Operation range / Heating / Ambient / Min. / °CWB",
+            "excerpt": "RXM class heating outdoor wet-bulb minimum -21 °CWB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; published merged outdoor class cell RXM-A9, covering 25A9 and 35A9; Operation range / Heating / Ambient / Max. / °CWB",
+            "excerpt": "RXM class heating outdoor wet-bulb maximum 18 °CWB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -20,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; published merged outdoor class cell RXM-A9, covering 25A9 and 35A9; Operation range / Heating / additional °CDB line",
+            "excerpt": "RXM class heating outdoor dry-bulb minimum -20 °CDB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; published merged outdoor class cell RXM-A9, covering 25A9 and 35A9; Operation range / Heating / additional °CDB line",
+            "excerpt": "RXM class heating outdoor dry-bulb maximum 24 °CDB"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "2026 catalogue publishes this indoor/outdoor class pair: 35B + 35A9. This is class-level pairing evidence; no factory suffix is inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326, Efficiency data table, exact class pair column",
+            "excerpt": "35B + 35A9"
+          }
+        },
+        {
+          "description": "2026 catalogue publishes this indoor/outdoor class pair: 35F9 + 35A9. This is class-level pairing evidence; no factory suffix is inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327, Efficiency data table, exact class pair column",
+            "excerpt": "35F9 + 35A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this 2026 class table; exact full-SKU identity and full-SKU pairing eligibility remain unknown.",
+        "The catalogue is class-level evidence and does not establish current France retail availability or stock.",
+        "Outdoor volumetric airflow is not published on this page.",
+        "These class facts are not factory suffix expansions; do not merge with historical exact RXM-R or other-generation profiles.",
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown."
+      ]
+    },
+    {
+      "modelReference": "FVXM50B",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p326",
+        "locator": "Printed p.326, Indoor unit FVXM-B class column 50B; no factory suffix published; published model class only, not a factory-suffix reference",
+        "excerpt": "FVXM-B 50B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 600,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Indoor unit FVXM-B; Dimensions / Height×Width×Depth; merged FVXM-B 25B/35B/50B cell",
+            "excerpt": "FVXM-B 25B / 35B / 50B | 600 × 750 × 238 mm; table cell merged across these class columns"
+          }
+        },
+        {
+          "key": "width",
+          "value": 750,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Indoor unit FVXM-B; Dimensions / Height×Width×Depth; merged FVXM-B 25B/35B/50B cell",
+            "excerpt": "FVXM-B 25B / 35B / 50B | 600 × 750 × 238 mm; table cell merged across these class columns"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 238,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Indoor unit FVXM-B; Dimensions / Height×Width×Depth; merged FVXM-B 25B/35B/50B cell",
+            "excerpt": "FVXM-B 25B / 35B / 50B | 600 × 750 × 238 mm; table cell merged across these class columns"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 696.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; source label m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; FVXM-B indoor class 50B; Fan / Air flow rate / Cooling / High; source m³/min converted ×60",
+            "excerpt": "FVXM-B 50B | Cooling Silent/Low/Medium/High airflow | high 11.6 m³/min; converted ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 768.0,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; source label m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; FVXM-B indoor class 50B; Fan / Air flow rate / Heating / High; source m³/min converted ×60",
+            "excerpt": "FVXM-B 50B | Heating Silent/Low/Medium/High airflow | high 12.8 m³/min; converted ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "2026 catalogue publishes this indoor/outdoor class pair: 50B + 50A8. This is class-level pairing evidence; no factory suffix is inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326, Efficiency data table, exact class pair column",
+            "excerpt": "50B + 50A8"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this 2026 class table; exact full-SKU identity and full-SKU pairing eligibility remain unknown.",
+        "The catalogue is class-level evidence and does not establish current France retail availability or stock.",
+        "Exact factory model suffix is not resolved by the printed class designation.",
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown."
+      ]
+    },
+    {
+      "modelReference": "RXM50A8",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p326",
+        "locator": "Printed p.326, Outdoor unit RXM/RXM class column 50A8; factory suffix not published; published model class only, not a factory-suffix reference",
+        "excerpt": "RXM-A9/A8 class 50A8"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 610,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Outdoor unit RXM/RXM; Dimensions / Height×Width×Depth; merged outdoor-class cell for 25A9/35A9/50A8",
+            "excerpt": "RXM-A9/A8 classes 25A9, 35A9, 50A8 | 610 × 923 × 367 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 923,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Outdoor unit RXM/RXM; Dimensions / Height×Width×Depth; merged outdoor-class cell for 25A9/35A9/50A8",
+            "excerpt": "RXM-A9/A8 classes 25A9, 35A9, 50A8 | 610 × 923 × 367 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 367,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Outdoor unit RXM/RXM; Dimensions / Height×Width×Depth; merged outdoor-class cell for 25A9/35A9/50A8",
+            "excerpt": "RXM-A9/A8 classes 25A9, 35A9, 50A8 | 610 × 923 × 367 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; Outdoor unit RXM/RXM; Refrigerant / Type; shared 25A9/35A9/50A8 class cell",
+            "excerpt": "RXM-A9/A8 class outdoor refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb (catalogue °CDB)",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; published outdoor class RXM50A8; alternative limits reference separate drawing not included; Operation range / Cooling / Ambient / Min. / °CDB",
+            "excerpt": "RXM class cooling outdoor dry-bulb minimum -10 °CDB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; published outdoor class RXM50A8; alternative limits reference separate drawing not included; Operation range / Heating / Ambient / Max. / °CWB",
+            "excerpt": "RXM class heating outdoor wet-bulb maximum 18 °CWB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326; published outdoor class RXM50A8; alternative limits reference separate drawing not included; Operation range / Heating / additional °CDB line",
+            "excerpt": "RXM class heating outdoor dry-bulb maximum 24 °CDB"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "2026 catalogue publishes this indoor/outdoor class pair: 50B + 50A8. This is class-level pairing evidence; no factory suffix is inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p326",
+            "locator": "Printed p.326, Efficiency data table, exact class pair column",
+            "excerpt": "50B + 50A8"
+          }
+        },
+        {
+          "description": "2026 catalogue publishes this indoor/outdoor class pair: 50F9 + 50A8. This is class-level pairing evidence; no factory suffix is inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327, Efficiency data table, exact class pair column",
+            "excerpt": "50F9 + 50A8"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this 2026 class table; exact full-SKU identity and full-SKU pairing eligibility remain unknown.",
+        "The catalogue is class-level evidence and does not establish current France retail availability or stock.",
+        "Outdoor volumetric airflow is not published on this page.",
+        "These class facts are not factory suffix expansions; do not merge with historical exact RXM-R or other-generation profiles.",
+        "Cooling maximum is printed “50 (1) / 46 (1) °CDB”; heating minimum is printed “-21 (1) / -15 (1) °CWB” and “-20 (1) / -15 (1) °CDB”. Footnote (1) points to a separate operating-range drawing absent from this batch; unresolved values intentionally omitted.",
+        "Cooling maximum is printed “50 (1) / 46 (1) °CDB”; heating minimum is printed “-21 (1) / -15 (1) °CWB” and “-20 (1) / -15 (1) °CDB”. Footnote (1) directs to a separate operating-range drawing absent from this batch; unresolved values omitted.",
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown."
+      ]
+    },
+    {
+      "modelReference": "FDXM25F9",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p327",
+        "locator": "Printed p.327, Indoor unit FDXM-F9 class column 25F9; no factory suffix published; published model class only, not a factory-suffix reference",
+        "excerpt": "FDXM-F9 25F9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 200,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; Indoor unit FDXM-F9; Dimensions / Height×Width×Depth; merged 25F9/35F9 cell",
+            "excerpt": "FDXM-F9 25F9/35F9 | 200 × 750 × 620 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 750,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; Indoor unit FDXM-F9; Dimensions / Height×Width×Depth; merged 25F9/35F9 cell",
+            "excerpt": "FDXM-F9 25F9/35F9 | 200 × 750 × 620 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 620,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; Indoor unit FDXM-F9; Dimensions / Height×Width×Depth; merged 25F9/35F9 cell",
+            "excerpt": "FDXM-F9 25F9/35F9 | 200 × 750 × 620 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 522.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; source label m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; FDXM-F9 indoor 25F9/35F9 merged class cell; Fan / Air flow rate / Cooling / High; source m³/min converted ×60",
+            "excerpt": "FDXM-F9 25F9/35F9 | Cooling Low/Medium/High airflow | high 8.7 m³/min; visually aligned class cell; converted ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 522.0,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; source label m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; FDXM-F9 indoor 25F9/35F9 merged class cell; Fan / Air flow rate / Heating / High; source m³/min converted ×60",
+            "excerpt": "FDXM-F9 25F9/35F9 | Heating Low/Medium/High airflow | high 8.7 m³/min; visually aligned class cell; converted ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "2026 catalogue publishes this indoor/outdoor class pair: 25F9 + 25A9. This is class-level pairing evidence; no factory suffix is inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327, Efficiency data table, exact class pair column",
+            "excerpt": "25F9 + 25A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this 2026 class table; exact full-SKU identity and full-SKU pairing eligibility remain unknown.",
+        "The catalogue is class-level evidence and does not establish current France retail availability or stock.",
+        "Exact factory model suffix is not resolved by the printed class designation.",
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown."
+      ]
+    },
+    {
+      "modelReference": "FDXM35F9",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p327",
+        "locator": "Printed p.327, Indoor unit FDXM-F9 class column 35F9; no factory suffix published; published model class only, not a factory-suffix reference",
+        "excerpt": "FDXM-F9 35F9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 200,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; Indoor unit FDXM-F9; Dimensions / Height×Width×Depth; merged 25F9/35F9 cell",
+            "excerpt": "FDXM-F9 25F9/35F9 | 200 × 750 × 620 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 750,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; Indoor unit FDXM-F9; Dimensions / Height×Width×Depth; merged 25F9/35F9 cell",
+            "excerpt": "FDXM-F9 25F9/35F9 | 200 × 750 × 620 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 620,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; Indoor unit FDXM-F9; Dimensions / Height×Width×Depth; merged 25F9/35F9 cell",
+            "excerpt": "FDXM-F9 25F9/35F9 | 200 × 750 × 620 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 522.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; source label m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; FDXM-F9 indoor 25F9/35F9 merged class cell; Fan / Air flow rate / Cooling / High; source m³/min converted ×60",
+            "excerpt": "FDXM-F9 25F9/35F9 | Cooling Low/Medium/High airflow | high 8.7 m³/min; visually aligned class cell; converted ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 522.0,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; source label m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; FDXM-F9 indoor 25F9/35F9 merged class cell; Fan / Air flow rate / Heating / High; source m³/min converted ×60",
+            "excerpt": "FDXM-F9 25F9/35F9 | Heating Low/Medium/High airflow | high 8.7 m³/min; visually aligned class cell; converted ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "2026 catalogue publishes this indoor/outdoor class pair: 35F9 + 35A9. This is class-level pairing evidence; no factory suffix is inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327, Efficiency data table, exact class pair column",
+            "excerpt": "35F9 + 35A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this 2026 class table; exact full-SKU identity and full-SKU pairing eligibility remain unknown.",
+        "The catalogue is class-level evidence and does not establish current France retail availability or stock.",
+        "Exact factory model suffix is not resolved by the printed class designation.",
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown."
+      ]
+    },
+    {
+      "modelReference": "FDXM50F9",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p327",
+        "locator": "Printed p.327, Indoor unit FDXM-F9 class column 50F9; no factory suffix published; published model class only, not a factory-suffix reference",
+        "excerpt": "FDXM-F9 50F9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 200,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; Indoor unit FDXM-F9; Dimensions / Height×Width×Depth; merged 50F9/60F9 cell",
+            "excerpt": "FDXM-F9 50F9/60F9 | 200 × 1150 × 620 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 1150,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; Indoor unit FDXM-F9; Dimensions / Height×Width×Depth; merged 50F9/60F9 cell",
+            "excerpt": "FDXM-F9 50F9/60F9 | 200 × 1150 × 620 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 620,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; Indoor unit FDXM-F9; Dimensions / Height×Width×Depth; merged 50F9/60F9 cell",
+            "excerpt": "FDXM-F9 50F9/60F9 | 200 × 1150 × 620 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 948.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; source label m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; FDXM-F9 indoor 50F9 merged class cell; Fan / Air flow rate / Cooling / High; source m³/min converted ×60",
+            "excerpt": "FDXM-F9 50F9 | Cooling Low/Medium/High airflow | high 15.8 m³/min; visually aligned class cell; converted ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 948.0,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; source label m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; FDXM-F9 indoor 50F9 merged class cell; Fan / Air flow rate / Heating / High; source m³/min converted ×60",
+            "excerpt": "FDXM-F9 50F9 | Heating Low/Medium/High airflow | high 15.8 m³/min; visually aligned class cell; converted ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "2026 catalogue publishes this indoor/outdoor class pair: 50F9 + 50A8. This is class-level pairing evidence; no factory suffix is inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327, Efficiency data table, exact class pair column",
+            "excerpt": "50F9 + 50A8"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this 2026 class table; exact full-SKU identity and full-SKU pairing eligibility remain unknown.",
+        "The catalogue is class-level evidence and does not establish current France retail availability or stock.",
+        "Exact factory model suffix is not resolved by the printed class designation.",
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown."
+      ]
+    },
+    {
+      "modelReference": "FDXM60F9",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p327",
+        "locator": "Printed p.327, Indoor unit FDXM-F9 class column 60F9; no factory suffix published; published model class only, not a factory-suffix reference",
+        "excerpt": "FDXM-F9 60F9"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 200,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; Indoor unit FDXM-F9; Dimensions / Height×Width×Depth; merged 50F9/60F9 cell",
+            "excerpt": "FDXM-F9 50F9/60F9 | 200 × 1150 × 620 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 1150,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; Indoor unit FDXM-F9; Dimensions / Height×Width×Depth; merged 50F9/60F9 cell",
+            "excerpt": "FDXM-F9 50F9/60F9 | 200 × 1150 × 620 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 620,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; Indoor unit FDXM-F9; Dimensions / Height×Width×Depth; merged 50F9/60F9 cell",
+            "excerpt": "FDXM-F9 50F9/60F9 | 200 × 1150 × 620 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 960.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; source label m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; FDXM-F9 indoor 60F9 merged class cell; Fan / Air flow rate / Cooling / High; source m³/min converted ×60",
+            "excerpt": "FDXM-F9 60F9 | Cooling Low/Medium/High airflow | high 16 m³/min; visually aligned class cell; converted ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 960.0,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; source label m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; FDXM-F9 indoor 60F9 merged class cell; Fan / Air flow rate / Heating / High; source m³/min converted ×60",
+            "excerpt": "FDXM-F9 60F9 | Heating Low/Medium/High airflow | high 16 m³/min; visually aligned class cell; converted ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "2026 catalogue publishes this indoor/outdoor class pair: 60F9 + 60A. This is class-level pairing evidence; no factory suffix is inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327, Efficiency data table, exact class pair column",
+            "excerpt": "60F9 + 60A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this 2026 class table; exact full-SKU identity and full-SKU pairing eligibility remain unknown.",
+        "The catalogue is class-level evidence and does not establish current France retail availability or stock.",
+        "Exact factory model suffix is not resolved by the printed class designation.",
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown."
+      ]
+    },
+    {
+      "modelReference": "RXM60A",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p327",
+        "locator": "Printed p.327, Outdoor unit RXM class column 60A; factory suffix not published; published model class only, not a factory-suffix reference",
+        "excerpt": "RXM class 60A"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 734,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; Outdoor unit RXM; Dimensions / Height×Width×Depth; merged class cell 60A",
+            "excerpt": "RXM 60A | 734 × 954 × 401 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 954,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; Outdoor unit RXM; Dimensions / Height×Width×Depth; merged class cell 60A",
+            "excerpt": "RXM 60A | 734 × 954 × 401 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 401,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; Outdoor unit RXM; Dimensions / Height×Width×Depth; merged class cell 60A",
+            "excerpt": "RXM 60A | 734 × 954 × 401 mm; visually merged cell"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; Outdoor unit RXM; Refrigerant / Type; published RXM-A class cell",
+            "excerpt": "RXM-A class outdoor refrigerant | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; published RXM60A class cell; Operation range / Cooling / Ambient / Min. / °CDB",
+            "excerpt": "RXM class cooling outdoor dry-bulb minimum -10 °CDB"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 50,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; published RXM60A class cell; Operation range / Cooling / Ambient / Max. / °CDB",
+            "excerpt": "RXM class cooling outdoor dry-bulb maximum 50 °CDB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -21,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; published RXM60A class cell; Operation range / Heating / Ambient / Min. / °CWB",
+            "excerpt": "RXM class heating outdoor wet-bulb minimum -21 °CWB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; published RXM60A class cell; Operation range / Heating / Ambient / Max. / °CWB",
+            "excerpt": "RXM class heating outdoor wet-bulb maximum 18 °CWB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -20,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; published RXM60A class cell; Operation range / Heating / additional °CDB line",
+            "excerpt": "RXM class heating outdoor dry-bulb minimum -20 °CDB"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327; published RXM60A class cell; Operation range / Heating / additional °CDB line",
+            "excerpt": "RXM class heating outdoor dry-bulb maximum 24 °CDB"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "2026 catalogue publishes this indoor/outdoor class pair: 60F9 + 60A. This is class-level pairing evidence; no factory suffix is inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p327",
+            "locator": "Printed p.327, Efficiency data table, exact class pair column",
+            "excerpt": "60F9 + 60A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this 2026 class table; exact full-SKU identity and full-SKU pairing eligibility remain unknown.",
+        "The catalogue is class-level evidence and does not establish current France retail availability or stock.",
+        "Outdoor volumetric airflow is not published on this page.",
+        "These class facts are not factory suffix expansions; do not merge with historical exact RXM-R or other-generation profiles.",
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

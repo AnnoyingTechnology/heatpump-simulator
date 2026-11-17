@@ -1,0 +1,981 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "2026 Nepura FTXTA-DG/DL/DP/DY + RXTA-C and FTXTP-A + RXTP-A published wall classes",
+  "market": "Daikin Europe General Catalogue 2026; exact factory SKUs and current France retail availability unverified",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "catalogue-p345",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/345/",
+      "title": "Daikin Europe General Catalogue 2026 Split, printed p.345",
+      "edition": "ECPEN26-500, 02/2026; printed page 345; pinned HTML snapshot SHA-256 0f7b3b226c196ef604fd58d73d7a460c947d60cdbbae9db459f63dc366ed7cfa",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "catalogue-p345-layout",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/files/assets/common/page-vectorlayers/0067.svg?uni=b27fda89420e61b9c4969d2bc12e86e6",
+      "title": "Daikin Europe General Catalogue 2026 p.345 positioned renderer layout layer",
+      "edition": "ECPEN26-500, 02/2026; layout SHA-256 6018f1eaf01fd209626b051f64867f4da014ffe762f53352622af3233056b33b",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "catalogue-p345-background",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/files/assets/common/page-html5-substrates/page0067_2.webp?uni=b27fda89420e61b9c4969d2bc12e86e6",
+      "title": "Daikin Europe General Catalogue 2026 p.345 renderer page background and merged-cell grid",
+      "edition": "ECPEN26-500, 02/2026; background SHA-256 1817f8df5afab4ba57bc6a80027b8d8f1842c2627ebfd3e2a96209b0f370dab5",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "catalogue-p349",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/349/",
+      "title": "Daikin Europe General Catalogue 2026 Split, printed p.349",
+      "edition": "ECPEN26-500, 02/2026; printed page 349; pinned HTML snapshot SHA-256 812b43607aa93e6d0ab6ad26591e354a2b4907eb8ea3f24d79eed996f27385c7",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "catalogue-p349-layout",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/files/assets/common/page-vectorlayers/0071.svg?uni=b27fda89420e61b9c4969d2bc12e86e6",
+      "title": "Daikin Europe General Catalogue 2026 p.349 positioned renderer layout layer",
+      "edition": "ECPEN26-500, 02/2026; layout SHA-256 190853bee6507bed9656658f8419abd707be3cac4a676700b4cf749069143532",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "catalogue-p349-background",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/files/assets/common/page-html5-substrates/page0071_2.webp?uni=b27fda89420e61b9c4969d2bc12e86e6",
+      "title": "Daikin Europe General Catalogue 2026 p.349 renderer page background and merged-cell grid",
+      "edition": "ECPEN26-500, 02/2026; background SHA-256 17d8b56d850b1cd5224b8ac095d7348053616ace7ad45f5386b15c3126ab4d2a",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "catalogue-p315-multi-only-context",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/315/",
+      "title": "Daikin Europe General Catalogue 2026 Split, printed p.315, multi-only context",
+      "edition": "ECPEN26-500, 02/2026; contextual evidence only; HTML snapshot SHA-256 78dc59876286ee6e8536bbf168e61cc556f7bcba0b8545b53c05f13182727be4",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "catalogue-p317-multi-only-context",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/317/",
+      "title": "Daikin Europe General Catalogue 2026 Split, printed p.317, multi-only context",
+      "edition": "ECPEN26-500, 02/2026; contextual evidence only; HTML snapshot SHA-256 edb62277030ef27c3bc11483ad7c4f382f5eadf0c09bad37af84f64d3ca5112c",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "catalogue-p320-multi-only-context",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/320/",
+      "title": "Daikin Europe General Catalogue 2026 Split, printed p.320, multi-only context",
+      "edition": "ECPEN26-500, 02/2026; contextual evidence only; HTML snapshot SHA-256 2becf651c2619e2ced56510cb32ae4a2cc8eabec377eed75e6c716444676f918",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FTXTA30DG",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p345",
+        "locator": "Printed p.345; indoor family FTXTA-DG/L/P/Y, class 30DG; finish variant; no factory suffix published",
+        "excerpt": "FTXTA-DG/L/P/Y; class 30DG"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 798,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 189,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 786,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; preliminary data; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; FTXTA30DG class, shared 30DG/L/P/Y cell; Fan / Air flow / Cooling / High; 13.1 m³/min ×60",
+            "excerpt": "FTXTA30DG class group | Cooling Silent/Low/Medium/High | high 13.1 m³/min; preliminary blue cell; converted exactly ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 738,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; preliminary data; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; FTXTA30DG class, shared 30DG/L/P/Y cell; Fan / Air flow / Heating / High; 12.3 m³/min ×60",
+            "excerpt": "FTXTA30DG class group | Heating Silent/Low/Medium/High | high 12.3 m³/min; preliminary blue cell; converted exactly ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Published preliminary catalogue class pairing group; no factory suffix is published or inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345, efficiency table column/group header “FTXTA + RXTA”; indoor class group 30DG/L/P/Y + outdoor 30C",
+            "excerpt": "30DG/L/P/Y + 30C"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown.",
+        "All technical cells on printed p.345 are blue and the page footnote states blue cells contain preliminary data; every physical/range fact from this page is preliminary.",
+        "Outdoor volumetric airflow is not published on the page. No OEM curve, capacity, charge, compressor, or cycle parameters are imported.",
+        "The page points to a separate operating-range drawing; only the tabulated preliminary endpoint ranges are captured, not a full performance boundary."
+      ]
+    },
+    {
+      "modelReference": "FTXTA30DL",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p345",
+        "locator": "Printed p.345; indoor family FTXTA-DG/L/P/Y, class 30DL; finish variant; no factory suffix published",
+        "excerpt": "FTXTA-DG/L/P/Y; class 30DL"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 798,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 189,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 786,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; preliminary data; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; FTXTA30DL class, shared 30DG/L/P/Y cell; Fan / Air flow / Cooling / High; 13.1 m³/min ×60",
+            "excerpt": "FTXTA30DL class group | Cooling Silent/Low/Medium/High | high 13.1 m³/min; preliminary blue cell; converted exactly ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 738,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; preliminary data; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; FTXTA30DL class, shared 30DG/L/P/Y cell; Fan / Air flow / Heating / High; 12.3 m³/min ×60",
+            "excerpt": "FTXTA30DL class group | Heating Silent/Low/Medium/High | high 12.3 m³/min; preliminary blue cell; converted exactly ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Published preliminary catalogue class pairing group; no factory suffix is published or inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345, efficiency table column/group header “FTXTA + RXTA”; indoor class group 30DG/L/P/Y + outdoor 30C",
+            "excerpt": "30DG/L/P/Y + 30C"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown.",
+        "All technical cells on printed p.345 are blue and the page footnote states blue cells contain preliminary data; every physical/range fact from this page is preliminary.",
+        "Outdoor volumetric airflow is not published on the page. No OEM curve, capacity, charge, compressor, or cycle parameters are imported.",
+        "The page points to a separate operating-range drawing; only the tabulated preliminary endpoint ranges are captured, not a full performance boundary."
+      ]
+    },
+    {
+      "modelReference": "FTXTA30DP",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p345",
+        "locator": "Printed p.345; indoor family FTXTA-DG/L/P/Y, class 30DP; finish variant; no factory suffix published",
+        "excerpt": "FTXTA-DG/L/P/Y; class 30DP"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 798,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 189,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 786,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; preliminary data; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; FTXTA30DP class, shared 30DG/L/P/Y cell; Fan / Air flow / Cooling / High; 13.1 m³/min ×60",
+            "excerpt": "FTXTA30DP class group | Cooling Silent/Low/Medium/High | high 13.1 m³/min; preliminary blue cell; converted exactly ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 738,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; preliminary data; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; FTXTA30DP class, shared 30DG/L/P/Y cell; Fan / Air flow / Heating / High; 12.3 m³/min ×60",
+            "excerpt": "FTXTA30DP class group | Heating Silent/Low/Medium/High | high 12.3 m³/min; preliminary blue cell; converted exactly ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Published preliminary catalogue class pairing group; no factory suffix is published or inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345, efficiency table column/group header “FTXTA + RXTA”; indoor class group 30DG/L/P/Y + outdoor 30C",
+            "excerpt": "30DG/L/P/Y + 30C"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown.",
+        "All technical cells on printed p.345 are blue and the page footnote states blue cells contain preliminary data; every physical/range fact from this page is preliminary.",
+        "Outdoor volumetric airflow is not published on the page. No OEM curve, capacity, charge, compressor, or cycle parameters are imported.",
+        "The page points to a separate operating-range drawing; only the tabulated preliminary endpoint ranges are captured, not a full performance boundary."
+      ]
+    },
+    {
+      "modelReference": "FTXTA30DY",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p345",
+        "locator": "Printed p.345; indoor family FTXTA-DG/L/P/Y, class 30DY; finish variant; no factory suffix published",
+        "excerpt": "FTXTA-DG/L/P/Y; class 30DY"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 295,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 798,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 189,
+          "unit": "mm",
+          "condition": "indoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Indoor unit FTXTA; class 30DG/L/P/Y shared cell; Height×Width×Depth",
+            "excerpt": "30DG/L/P/Y | 295 × 798 × 189 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 786,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; preliminary data; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; FTXTA30DY class, shared 30DG/L/P/Y cell; Fan / Air flow / Cooling / High; 13.1 m³/min ×60",
+            "excerpt": "FTXTA30DY class group | Cooling Silent/Low/Medium/High | high 13.1 m³/min; preliminary blue cell; converted exactly ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 738,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; preliminary data; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; FTXTA30DY class, shared 30DG/L/P/Y cell; Fan / Air flow / Heating / High; 12.3 m³/min ×60",
+            "excerpt": "FTXTA30DY class group | Heating Silent/Low/Medium/High | high 12.3 m³/min; preliminary blue cell; converted exactly ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Published preliminary catalogue class pairing group; no factory suffix is published or inferred.",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345, efficiency table column/group header “FTXTA + RXTA”; indoor class group 30DG/L/P/Y + outdoor 30C",
+            "excerpt": "30DG/L/P/Y + 30C"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown.",
+        "All technical cells on printed p.345 are blue and the page footnote states blue cells contain preliminary data; every physical/range fact from this page is preliminary.",
+        "Outdoor volumetric airflow is not published on the page. No OEM curve, capacity, charge, compressor, or cycle parameters are imported.",
+        "The page points to a separate operating-range drawing; only the tabulated preliminary endpoint ranges are captured, not a full performance boundary."
+      ]
+    },
+    {
+      "modelReference": "RXTA30C",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p345",
+        "locator": "Printed p.345, Outdoor unit RXTA class 30C; no factory suffix published",
+        "excerpt": "RXTA30C"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 605,
+          "unit": "mm",
+          "condition": "outdoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Outdoor unit RXTA class 30C; Height×Width×Depth",
+            "excerpt": "RXTA30C | 605 × 930 × 376 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 930,
+          "unit": "mm",
+          "condition": "outdoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Outdoor unit RXTA class 30C; Height×Width×Depth",
+            "excerpt": "RXTA30C | 605 × 930 × 376 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 376,
+          "unit": "mm",
+          "condition": "outdoor casing; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; Outdoor unit RXTA class 30C; Height×Width×Depth",
+            "excerpt": "RXTA30C | 605 × 930 × 376 mm; preliminary blue cell"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; RXTA30C; Operation range / Cooling / Ambient / Min. / °CDB",
+            "excerpt": "RXTA30C | Cooling outdoor range −10…46 °CDB; preliminary blue cell"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; RXTA30C; Operation range / Cooling / Ambient / Max. / °CDB",
+            "excerpt": "RXTA30C | Cooling outdoor range −10…46 °CDB; preliminary blue cell"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -31,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; RXTA30C; Operation range / Heating / Ambient / Min. / °CWB",
+            "excerpt": "RXTA30C | Heating outdoor range −31…18 °CWB; preliminary blue cell"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb; preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; RXTA30C; Operation range / Heating / Ambient / Max. / °CWB",
+            "excerpt": "RXTA30C | Heating outdoor range −31…18 °CWB; preliminary blue cell"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "condition": "preliminary data",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345; RXTA30C; Refrigerant / Type",
+            "excerpt": "RXTA30C | Refrigerant type R-32; preliminary blue cell"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Published preliminary class pairing group with all four FTXTA finish variants; exact factory-SKU combinations remain unknown.",
+          "evidence": {
+            "sourceId": "catalogue-p345",
+            "locator": "Printed p.345, efficiency table; grouped 30DG/L/P/Y + 30C pair column",
+            "excerpt": "30DG/L/P/Y + 30C"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown.",
+        "All technical cells on printed p.345 are blue and the page footnote states blue cells contain preliminary data; every physical/range fact from this page is preliminary.",
+        "Outdoor volumetric airflow is not published on the page. No OEM curve, capacity, charge, compressor, or cycle parameters are imported.",
+        "The page points to a separate operating-range drawing; only the tabulated preliminary endpoint ranges are captured, not a full performance boundary."
+      ]
+    },
+    {
+      "modelReference": "FTXTP25A",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p349",
+        "locator": "Printed p.349; Indoor unit FTXTP-A class 25A; no factory suffix published",
+        "excerpt": "FTXTP-A 25A"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; Indoor unit FTXTP; dimensions cell visually merged across classes 25A and 35A",
+            "excerpt": "FTXTP 25A/35A | 286 × 770 × 225 mm; merged size cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; Indoor unit FTXTP; dimensions cell visually merged across classes 25A and 35A",
+            "excerpt": "FTXTP 25A/35A | 286 × 770 × 225 mm; merged size cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; Indoor unit FTXTP; dimensions cell visually merged across classes 25A and 35A",
+            "excerpt": "FTXTP 25A/35A | 286 × 770 × 225 mm; merged size cell"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 660,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; FTXTP indoor air-flow cell visually merged across 25A/35A; Cooling / High; 11 m³/min ×60",
+            "excerpt": "FTXTP 25A/35A | cooling Silent/Low/Medium/High high 11 m³/min; merged size cell; converted exactly ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 630,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; FTXTP indoor air-flow cell visually merged across 25A/35A; Heating / High; 10.5 m³/min ×60",
+            "excerpt": "FTXTP 25A/35A | heating Silent/Low/Medium/High high 10.5 m³/min; merged size cell; converted exactly ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Published current-catalogue class pairing; not an exact factory-SKU pairing.",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; Efficiency data table exact class-pair column 25A + 25A",
+            "excerpt": "25A + 25A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown.",
+        "Outdoor volumetric airflow is not published on the page. No OEM curve, capacity, charge, compressor, or cycle parameters are imported.",
+        "The page points to a separate operating-range drawing; only the tabulated endpoint ranges are captured, not a full performance boundary."
+      ]
+    },
+    {
+      "modelReference": "RXTP25A",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p349",
+        "locator": "Printed p.349; Outdoor unit RXTP-A class 25A; no factory suffix published",
+        "excerpt": "RXTP-A 25A"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 605,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; Outdoor unit RXTP-A dimensions cell visually merged across 25A/35A",
+            "excerpt": "RXTP-A 25A/35A | 605 × 930 × 376 mm; merged size cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 930,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; Outdoor unit RXTP-A dimensions cell visually merged across 25A/35A",
+            "excerpt": "RXTP-A 25A/35A | 605 × 930 × 376 mm; merged size cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 376,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; Outdoor unit RXTP-A dimensions cell visually merged across 25A/35A",
+            "excerpt": "RXTP-A 25A/35A | 605 × 930 × 376 mm; merged size cell"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; RXTP-A class 25A/35A; Operation range / Cooling / Ambient / Min. / °CDB",
+            "excerpt": "RXTP-A 25A/35A | Cooling outdoor range −10…46 °CDB; merged size cell"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; RXTP-A class 25A/35A; Operation range / Cooling / Ambient / Max. / °CDB",
+            "excerpt": "RXTP-A 25A/35A | Cooling outdoor range −10…46 °CDB; merged size cell"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -31,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; RXTP-A class 25A/35A; Operation range / Heating / Ambient / Min. / °CWB",
+            "excerpt": "RXTP-A 25A/35A | Heating outdoor wet-bulb range −31…18 °CWB; merged size cell"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; RXTP-A class 25A/35A; Operation range / Heating / Ambient / Max. / °CWB",
+            "excerpt": "RXTP-A 25A/35A | Heating outdoor wet-bulb range −31…18 °CWB; merged size cell"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -30,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; RXTP-A class 25A/35A; additional heating °CDB range line",
+            "excerpt": "RXTP-A 25A/35A | Heating outdoor dry-bulb range −30…24 °CDB; merged size cell"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; RXTP-A class 25A/35A; additional heating °CDB range line",
+            "excerpt": "RXTP-A 25A/35A | Heating outdoor dry-bulb range −30…24 °CDB; merged size cell"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; RXTP-A; Refrigerant / Type; shared 25A/35A class cell",
+            "excerpt": "RXTP-A | Refrigerant type R-32"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Published current-catalogue class pairing; not an exact factory-SKU pairing.",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; Efficiency data table exact class-pair column 25A + 25A",
+            "excerpt": "25A + 25A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown.",
+        "Outdoor volumetric airflow is not published on the page. No OEM curve, capacity, charge, compressor, or cycle parameters are imported.",
+        "The page points to a separate operating-range drawing; only the tabulated endpoint ranges are captured, not a full performance boundary."
+      ]
+    },
+    {
+      "modelReference": "FTXTP35A",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p349",
+        "locator": "Printed p.349; Indoor unit FTXTP-A class 35A; no factory suffix published",
+        "excerpt": "FTXTP-A 35A"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 286,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; Indoor unit FTXTP; dimensions cell visually merged across classes 25A and 35A",
+            "excerpt": "FTXTP 25A/35A | 286 × 770 × 225 mm; merged size cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 770,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; Indoor unit FTXTP; dimensions cell visually merged across classes 25A and 35A",
+            "excerpt": "FTXTP 25A/35A | 286 × 770 × 225 mm; merged size cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 225,
+          "unit": "mm",
+          "condition": "indoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; Indoor unit FTXTP; dimensions cell visually merged across classes 25A and 35A",
+            "excerpt": "FTXTP 25A/35A | 286 × 770 × 225 mm; merged size cell"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 660,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; FTXTP indoor air-flow cell visually merged across 25A/35A; Cooling / High; 11 m³/min ×60",
+            "excerpt": "FTXTP 25A/35A | cooling Silent/Low/Medium/High high 11 m³/min; merged size cell; converted exactly ×60"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 630,
+          "unit": "m3/h",
+          "condition": "heating mode, high fan; source unit m³/min",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; FTXTP indoor air-flow cell visually merged across 25A/35A; Heating / High; 10.5 m³/min ×60",
+            "excerpt": "FTXTP 25A/35A | heating Silent/Low/Medium/High high 10.5 m³/min; merged size cell; converted exactly ×60"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Published current-catalogue class pairing; not an exact factory-SKU pairing.",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; Efficiency data table exact class-pair column 35A + 35A",
+            "excerpt": "35A + 35A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown.",
+        "Outdoor volumetric airflow is not published on the page. No OEM curve, capacity, charge, compressor, or cycle parameters are imported.",
+        "The page points to a separate operating-range drawing; only the tabulated endpoint ranges are captured, not a full performance boundary."
+      ]
+    },
+    {
+      "modelReference": "RXTP35A",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "catalogue-p349",
+        "locator": "Printed p.349; Outdoor unit RXTP-A class 35A; no factory suffix published",
+        "excerpt": "RXTP-A 35A"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 605,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; Outdoor unit RXTP-A dimensions cell visually merged across 25A/35A",
+            "excerpt": "RXTP-A 25A/35A | 605 × 930 × 376 mm; merged size cell"
+          }
+        },
+        {
+          "key": "width",
+          "value": 930,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; Outdoor unit RXTP-A dimensions cell visually merged across 25A/35A",
+            "excerpt": "RXTP-A 25A/35A | 605 × 930 × 376 mm; merged size cell"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 376,
+          "unit": "mm",
+          "condition": "outdoor casing",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; Outdoor unit RXTP-A dimensions cell visually merged across 25A/35A",
+            "excerpt": "RXTP-A 25A/35A | 605 × 930 × 376 mm; merged size cell"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; RXTP-A class 25A/35A; Operation range / Cooling / Ambient / Min. / °CDB",
+            "excerpt": "RXTP-A 25A/35A | Cooling outdoor range −10…46 °CDB; merged size cell"
+          }
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; RXTP-A class 25A/35A; Operation range / Cooling / Ambient / Max. / °CDB",
+            "excerpt": "RXTP-A 25A/35A | Cooling outdoor range −10…46 °CDB; merged size cell"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -31,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; RXTP-A class 25A/35A; Operation range / Heating / Ambient / Min. / °CWB",
+            "excerpt": "RXTP-A 25A/35A | Heating outdoor wet-bulb range −31…18 °CWB; merged size cell"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "condition": "outdoor wet-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; RXTP-A class 25A/35A; Operation range / Heating / Ambient / Max. / °CWB",
+            "excerpt": "RXTP-A 25A/35A | Heating outdoor wet-bulb range −31…18 °CWB; merged size cell"
+          }
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -30,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; RXTP-A class 25A/35A; additional heating °CDB range line",
+            "excerpt": "RXTP-A 25A/35A | Heating outdoor dry-bulb range −30…24 °CDB; merged size cell"
+          }
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "condition": "outdoor dry-bulb",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; RXTP-A class 25A/35A; additional heating °CDB range line",
+            "excerpt": "RXTP-A 25A/35A | Heating outdoor dry-bulb range −30…24 °CDB; merged size cell"
+          }
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; RXTP-A; Refrigerant / Type; shared 25A/35A class cell",
+            "excerpt": "RXTP-A | Refrigerant type R-32"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Published current-catalogue class pairing; not an exact factory-SKU pairing.",
+          "evidence": {
+            "sourceId": "catalogue-p349",
+            "locator": "Printed p.349; Efficiency data table exact class-pair column 35A + 35A",
+            "excerpt": "35A + 35A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown.",
+        "Outdoor volumetric airflow is not published on the page. No OEM curve, capacity, charge, compressor, or cycle parameters are imported.",
+        "The page points to a separate operating-range drawing; only the tabulated endpoint ranges are captured, not a full performance boundary."
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    {
+      "modelReference": "CTXA15DG/P/L/C/Y",
+      "reason": "Printed p.315 lists CTXA15 variants as connectable to multi outdoor units only. This batch makes no monosplit pairing; review separately if multi-split class coverage is requested."
+    },
+    {
+      "modelReference": "CTXA15CW/S/B",
+      "reason": "Printed p.317 lists CTXA15 variants as connectable to multi outdoor units only. This batch makes no monosplit pairing; review separately if multi-split class coverage is requested."
+    },
+    {
+      "modelReference": "CTXM15A",
+      "reason": "Printed p.320 marks CTXM15A multi-combination only. This batch makes no monosplit pairing; review separately if multi-split class coverage is requested."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Console carrossée Perfera (C/FVXM-A + RXM-R(9))",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [],
+  "unresolvedReferences": [
+    { "modelReference": "CVXM20A / FVXM25A/35A/50A + RXM (CVXM20A/25R9/35R9/50R)", "reason": "family index only; the 8 unit records live in separate candidate files daikin-cvxm20a-indoor.json, daikin-fvxm{25,35,50}a-indoor.json, daikin-rxm-cvxm20a-outdoor.json, daikin-rxm{25,35}r9-outdoor.json, daikin-rxm-cvxm50a-outdoor.json; page-48 coverage: 4 indoor (CVXM20A, 25A, 35A, 50A) + 4 outdoor (CVXM20A, 25R9, 35R9, 50R). CRITICAL CAVEAT: vertical merged band 'Connexion multi uniquement' spans the CVXM20A efficiency column and the refrigerant block, and the efficiency pairings 25A+25R9 / 35A+35R9 / 50A+50R -> these are MULTI-split connection pairings only; monosplit eligibility UNVERIFIED (page blurb: 'Possibilité de combinaison avec des unités extérieures multi à 2 et 3 ports (sauf 2-3MXM68)'). CVXM20A efficiency column shows 'Connexion multi uniquement' instead of thermal values -> CVXM20A thermal capacity unknown. Efficiency table publishes Mini./Nom./Maxi. thermal for 25A/35A/50A; electrical input 'Puissance absorbée' Nom. only (min/max not published -> only nominal stored, complete-system). Indoor airflow published m3/min (x60 -> m3/h). Indoor sound power cooling+heating published; indoor sound pressure Silence/Bas/Haut. Outdoor sound power cooling+heating Nom. published per column (CVXM20A 58,0/59,0; 25R9 61,0/61,0; 35R9 61,0/61,0; 50R 62,0/62,0); outdoor sound pressure cooling (CVXM20A 46,0; 25R9/35R9 49,0; 50R 48,0), heating (CVXM20A 47,0; 25R9 49,0; 35R9/50R 49,0). Outdoor cooling range -10~46, heating -15~24 (p.48). CROSS-PAGE CONFLICT: RXM50R also on p.43 (Perfera wall) with cooling -10~50, heating -20~24, charge 1,10/0,750 vs p.48 -10~46/-15~24/1,15/0,780 -> kept separate (daikin-rxm50r-outdoor.json p.43 vs daikin-rxm-cvxm50a-outdoor.json p.48), not merged. Outdoor dims CVXM20A/25R9/35R9 552x840x350 mass 32; 50R 734x954x401 mass 49,0. precharged 10m; additionalCharge 0,02>10m; pipe CVXM20A/25R9/35R9 6,35/9,50 longueur 20 dénivelé 15 MFA 13; 50R 6/12,7 longueur 30 dénivelé 20,0 MFA 16. Outdoor airflow, fan motor power, outdoor-only electrical boundary, current 2026 availability all unresolved." }
+  ]
+}

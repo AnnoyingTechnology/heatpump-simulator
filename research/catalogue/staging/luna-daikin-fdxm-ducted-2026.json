@@ -1,0 +1,323 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Concealed ceiling ducted FDXM-F9 + RXM-A",
+  "market": "Europe residential air-to-air; 2026 Daikin Europe catalogue (France distribution status not independently established for every model)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-eu-2026-p327",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/327/",
+      "title": "Daikin Europe General Catalogue 2026 — Split residential air-to-air solutions",
+      "edition": "ECPEN26-500, 2026; official Daikin Europe flipbook page",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-eu-2026-p320",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/320/",
+      "title": "Daikin Europe General Catalogue 2026 — Split residential air-to-air solutions",
+      "edition": "ECPEN26-500, 2026; official Daikin Europe flipbook page",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FDXM25F9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p327",
+        "locator": "Flipbook route 327, printed heading 327; indoor model column in exact combination and indoor-unit tables",
+        "excerpt": "FDXM + RXM | 25F9 + 25A9"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 2.4,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2.4/3 1.4/3.4/3.8 -/5/- 1.7/6/6.5"
+          }
+        },
+        {
+          "key": "height",
+          "value": 200,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 200x750x620 200x1,150x620"
+          }
+        },
+        {
+          "key": "width",
+          "value": 750,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 200x750x620 200x1,150x620"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 620,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 200x750x620 200x1,150x620"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 522.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Low/Medium/High m³/min 7.3/8.0/8.7 13.3/14.6/15.8 13.5/14.8/16.0"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXM25A9.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FDXM + RXM | 25F9 + 25A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "FDXM35F9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p327",
+        "locator": "Flipbook route 327, printed heading 327; indoor model column in exact combination and indoor-unit tables",
+        "excerpt": "FDXM + RXM | 35F9 + 35A9"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 3.4,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2.4/3 1.4/3.4/3.8 -/5/- 1.7/6/6.5"
+          }
+        },
+        {
+          "key": "height",
+          "value": 200,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 200x750x620 200x1,150x620"
+          }
+        },
+        {
+          "key": "width",
+          "value": 750,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 200x750x620 200x1,150x620"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 620,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 200x750x620 200x1,150x620"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 948.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Low/Medium/High m³/min 7.3/8.0/8.7 13.3/14.6/15.8 13.5/14.8/16.0"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXM35A9.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FDXM + RXM | 35F9 + 35A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "FDXM50F9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p327",
+        "locator": "Flipbook route 327, printed heading 327; indoor model column in exact combination and indoor-unit tables",
+        "excerpt": "FDXM + RXM | 50F9 + 50A8"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 5.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2.4/3 1.4/3.4/3.8 -/5/- 1.7/6/6.5"
+          }
+        },
+        {
+          "key": "height",
+          "value": 200,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 200x750x620 200x1,150x620"
+          }
+        },
+        {
+          "key": "width",
+          "value": 1150,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 200x750x620 200x1,150x620"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 620,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 200x750x620 200x1,150x620"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 960.0,
+          "unit": "m3/h",
+          "condition": "cooling mode, high fan speed; exact conversion from published m³/min ×60",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; indoor unit fan airflow, cooling high row",
+            "excerpt": "Fan Air flow rate Cooling Low/Medium/High m³/min 7.3/8.0/8.7 13.3/14.6/15.8 13.5/14.8/16.0"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXM50A8.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FDXM + RXM | 50F9 + 50A8"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    },
+    {
+      "modelReference": "FDXM60F9",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p327",
+        "locator": "Flipbook route 327, printed heading 327; indoor model column in exact combination and indoor-unit tables",
+        "excerpt": "FDXM + RXM | 60F9 + 60A"
+      },
+      "facts": [
+        {
+          "key": "capacityClass",
+          "value": 6.0,
+          "unit": "kW",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; efficiency data table, nominal cooling capacity; same exact combination column",
+            "excerpt": "Cooling capacity Min./Nom./Max. kW 1.3/2.4/3 1.4/3.4/3.8 -/5/- 1.7/6/6.5"
+          }
+        },
+        {
+          "key": "height",
+          "value": 200,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 200x750x620 200x1,150x620"
+          }
+        },
+        {
+          "key": "width",
+          "value": 1150,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 200x750x620 200x1,150x620"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 620,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; indoor unit dimensions, H×W×D row",
+            "excerpt": "Dimensions Unit HeightxWidthxDepth mm 200x750x620 200x1,150x620"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact documented monosplit pairing with RXM60A.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FDXM + RXM | 60F9 + 60A"
+          }
+        }
+      ],
+      "unknowns": [
+        "No ratings or unpublished fields were inferred; see source row and stated gaps in the coverage ledger."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

@@ -1,0 +1,413 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Perfera wall FTXM-A + RXM-A, current model-class identity ledger only",
+  "market": "Europe residential air-to-air, current 2026 product-class scope; exact current full-SKU mapping not established",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "catalogue-p320",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/320/",
+      "title": "Daikin Europe General Catalogue 2026 Split, printed p.320",
+      "edition": "ECPEN26-500, 02/2026",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "fr-ftxm-sku-status",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXM-A.html",
+      "title": "Daikin France technical product table FTXM-A, full SKU status",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "fr-ftxm-rxm-pair",
+      "url": "https://www.daikin.fr/fr_fr/products/product.table.html/FTXM-A---RXM-A9.html",
+      "title": "Daikin France technical pair table FTXM-A / RXM-A9",
+      "edition": "Daikin France product database, retrieved 2026-10-11",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FTXM20A",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, current indoor series and exact product class pairing",
+        "excerpt": "FTXM + RXM | 20A + 20A"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current catalog class pairing FTXM20A / RXM20A; this is a product-class link, not a full SKU statement.",
+          "evidence": {
+            "sourceId": "catalogue-p320",
+            "locator": "Printed p.320, efficiency data table, FTXM + RXM exact class pairing",
+            "excerpt": "FTXM + RXM | 20A + 20A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Daikin Europe 2026 catalogue publishes this class, but not the full factory SKU suffix in this table. Daikin France full-reference table currently marks A2/A5 suffix rows archived; do not attach those suffixes to this current class without an official current SKU cross-reference.",
+        "Current France technical table full-SKU header excerpt: FTXM20A5V1B (Archived) and FTXM20A2V1B (Archived)."
+      ]
+    },
+    {
+      "modelReference": "RXM20A",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, RXM class in current integration table",
+        "excerpt": "FTXM + RXM | 20A + 20A"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current catalog class pairing FTXM20A / RXM20A; this is a product-class link, not a full SKU statement.",
+          "evidence": {
+            "sourceId": "catalogue-p320",
+            "locator": "Printed p.320, efficiency data table, FTXM + RXM exact class pairing",
+            "excerpt": "FTXM + RXM | 20A + 20A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact current factory SKU suffix and individual archived/current stock references remain unresolved; no suffix aliases are asserted."
+      ]
+    },
+    {
+      "modelReference": "FTXM25A",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, current indoor series and exact product class pairing",
+        "excerpt": "FTXM + RXM | 25A + 25A9"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current catalog class pairing FTXM25A / RXM25A9; this is a product-class link, not a full SKU statement.",
+          "evidence": {
+            "sourceId": "catalogue-p320",
+            "locator": "Printed p.320, efficiency data table, FTXM + RXM exact class pairing",
+            "excerpt": "FTXM + RXM | 25A + 25A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Daikin Europe 2026 catalogue publishes this class, but not the full factory SKU suffix in this table. Daikin France full-reference table currently marks A2/A5 suffix rows archived; do not attach those suffixes to this current class without an official current SKU cross-reference."
+      ]
+    },
+    {
+      "modelReference": "RXM25A9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, RXM class in current integration table",
+        "excerpt": "FTXM + RXM | 25A + 25A9"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current catalog class pairing FTXM25A / RXM25A9; this is a product-class link, not a full SKU statement.",
+          "evidence": {
+            "sourceId": "catalogue-p320",
+            "locator": "Printed p.320, efficiency data table, FTXM + RXM exact class pairing",
+            "excerpt": "FTXM + RXM | 25A + 25A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact current factory SKU suffix and individual archived/current stock references remain unresolved; no suffix aliases are asserted."
+      ]
+    },
+    {
+      "modelReference": "FTXM35A",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, current indoor series and exact product class pairing",
+        "excerpt": "FTXM + RXM | 35A + 35A9"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current catalog class pairing FTXM35A / RXM35A9; this is a product-class link, not a full SKU statement.",
+          "evidence": {
+            "sourceId": "catalogue-p320",
+            "locator": "Printed p.320, efficiency data table, FTXM + RXM exact class pairing",
+            "excerpt": "FTXM + RXM | 35A + 35A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Daikin Europe 2026 catalogue publishes this class, but not the full factory SKU suffix in this table. Daikin France full-reference table currently marks A2/A5 suffix rows archived; do not attach those suffixes to this current class without an official current SKU cross-reference."
+      ]
+    },
+    {
+      "modelReference": "RXM35A9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, RXM class in current integration table",
+        "excerpt": "FTXM + RXM | 35A + 35A9"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current catalog class pairing FTXM35A / RXM35A9; this is a product-class link, not a full SKU statement.",
+          "evidence": {
+            "sourceId": "catalogue-p320",
+            "locator": "Printed p.320, efficiency data table, FTXM + RXM exact class pairing",
+            "excerpt": "FTXM + RXM | 35A + 35A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact current factory SKU suffix and individual archived/current stock references remain unresolved; no suffix aliases are asserted."
+      ]
+    },
+    {
+      "modelReference": "FTXM42A",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, current indoor series and exact product class pairing",
+        "excerpt": "FTXM + RXM | 42A + 42A"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current catalog class pairing FTXM42A / RXM42A; this is a product-class link, not a full SKU statement.",
+          "evidence": {
+            "sourceId": "catalogue-p320",
+            "locator": "Printed p.320, efficiency data table, FTXM + RXM exact class pairing",
+            "excerpt": "FTXM + RXM | 42A + 42A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Daikin Europe 2026 catalogue publishes this class, but not the full factory SKU suffix in this table. Daikin France full-reference table currently marks A2/A5 suffix rows archived; do not attach those suffixes to this current class without an official current SKU cross-reference."
+      ]
+    },
+    {
+      "modelReference": "RXM42A",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, RXM class in current integration table",
+        "excerpt": "FTXM + RXM | 42A + 42A"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current catalog class pairing FTXM42A / RXM42A; this is a product-class link, not a full SKU statement.",
+          "evidence": {
+            "sourceId": "catalogue-p320",
+            "locator": "Printed p.320, efficiency data table, FTXM + RXM exact class pairing",
+            "excerpt": "FTXM + RXM | 42A + 42A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact current factory SKU suffix and individual archived/current stock references remain unresolved; no suffix aliases are asserted."
+      ]
+    },
+    {
+      "modelReference": "FTXM50A",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, current indoor series and exact product class pairing",
+        "excerpt": "FTXM + RXM | 50A + 50A8"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current catalog class pairing FTXM50A / RXM50A8; this is a product-class link, not a full SKU statement.",
+          "evidence": {
+            "sourceId": "catalogue-p320",
+            "locator": "Printed p.320, efficiency data table, FTXM + RXM exact class pairing",
+            "excerpt": "FTXM + RXM | 50A + 50A8"
+          }
+        }
+      ],
+      "unknowns": [
+        "Daikin Europe 2026 catalogue publishes this class, but not the full factory SKU suffix in this table. Daikin France full-reference table currently marks A2/A5 suffix rows archived; do not attach those suffixes to this current class without an official current SKU cross-reference."
+      ]
+    },
+    {
+      "modelReference": "RXM50A8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, RXM class in current integration table",
+        "excerpt": "FTXM + RXM | 50A + 50A8"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current catalog class pairing FTXM50A / RXM50A8; this is a product-class link, not a full SKU statement.",
+          "evidence": {
+            "sourceId": "catalogue-p320",
+            "locator": "Printed p.320, efficiency data table, FTXM + RXM exact class pairing",
+            "excerpt": "FTXM + RXM | 50A + 50A8"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact current factory SKU suffix and individual archived/current stock references remain unresolved; no suffix aliases are asserted."
+      ]
+    },
+    {
+      "modelReference": "FTXM60A",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, current indoor series and exact product class pairing",
+        "excerpt": "FTXM + RXM | 60A + 60A"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current catalog class pairing FTXM60A / RXM60A; this is a product-class link, not a full SKU statement.",
+          "evidence": {
+            "sourceId": "catalogue-p320",
+            "locator": "Printed p.320, efficiency data table, FTXM + RXM exact class pairing",
+            "excerpt": "FTXM + RXM | 60A + 60A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Daikin Europe 2026 catalogue publishes this class, but not the full factory SKU suffix in this table. Daikin France full-reference table currently marks A2/A5 suffix rows archived; do not attach those suffixes to this current class without an official current SKU cross-reference."
+      ]
+    },
+    {
+      "modelReference": "RXM60A",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, RXM class in current integration table",
+        "excerpt": "FTXM + RXM | 60A + 60A"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current catalog class pairing FTXM60A / RXM60A; this is a product-class link, not a full SKU statement.",
+          "evidence": {
+            "sourceId": "catalogue-p320",
+            "locator": "Printed p.320, efficiency data table, FTXM + RXM exact class pairing",
+            "excerpt": "FTXM + RXM | 60A + 60A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact current factory SKU suffix and individual archived/current stock references remain unresolved; no suffix aliases are asserted."
+      ]
+    },
+    {
+      "modelReference": "FTXM71A",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, current indoor series and exact product class pairing",
+        "excerpt": "FTXM + RXM | 71A + 71A"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current catalog class pairing FTXM71A / RXM71A; this is a product-class link, not a full SKU statement.",
+          "evidence": {
+            "sourceId": "catalogue-p320",
+            "locator": "Printed p.320, efficiency data table, FTXM + RXM exact class pairing",
+            "excerpt": "FTXM + RXM | 71A + 71A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Daikin Europe 2026 catalogue publishes this class, but not the full factory SKU suffix in this table. Daikin France full-reference table currently marks A2/A5 suffix rows archived; do not attach those suffixes to this current class without an official current SKU cross-reference."
+      ]
+    },
+    {
+      "modelReference": "RXM71A",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "catalogue-p320",
+        "locator": "Printed p.320, RXM class in current integration table",
+        "excerpt": "FTXM + RXM | 71A + 71A"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Current catalog class pairing FTXM71A / RXM71A; this is a product-class link, not a full SKU statement.",
+          "evidence": {
+            "sourceId": "catalogue-p320",
+            "locator": "Printed p.320, efficiency data table, FTXM + RXM exact class pairing",
+            "excerpt": "FTXM + RXM | 71A + 71A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact current factory SKU suffix and individual archived/current stock references remain unresolved; no suffix aliases are asserted."
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    {
+      "modelReference": "FTXM20A",
+      "reason": "2026 catalog confirms the current class; no current manufacturer source maps this class to a full factory SKU. The corresponding A2/A5 full-reference rows are explicitly archived in current France database output."
+    },
+    {
+      "modelReference": "FTXM25A",
+      "reason": "2026 catalog confirms the current class; no current manufacturer source maps this class to a full factory SKU. The corresponding A2/A5 full-reference rows are explicitly archived in current France database output."
+    },
+    {
+      "modelReference": "FTXM35A",
+      "reason": "2026 catalog confirms the current class; no current manufacturer source maps this class to a full factory SKU. The corresponding A2/A5 full-reference rows are explicitly archived in current France database output."
+    },
+    {
+      "modelReference": "FTXM42A",
+      "reason": "2026 catalog confirms the current class; no current manufacturer source maps this class to a full factory SKU. The corresponding A2/A5 full-reference rows are explicitly archived in current France database output."
+    },
+    {
+      "modelReference": "FTXM50A",
+      "reason": "2026 catalog confirms the current class; no current manufacturer source maps this class to a full factory SKU. The corresponding A2/A5 full-reference rows are explicitly archived in current France database output."
+    },
+    {
+      "modelReference": "FTXM60A",
+      "reason": "2026 catalog confirms the current class; no current manufacturer source maps this class to a full factory SKU. The corresponding A2/A5 full-reference rows are explicitly archived in current France database output."
+    },
+    {
+      "modelReference": "FTXM71A",
+      "reason": "2026 catalog confirms the current class; no current manufacturer source maps this class to a full factory SKU. The corresponding A2/A5 full-reference rows are explicitly archived in current France database output."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "FTXQ-A + RXQ-A",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [],
+  "unresolvedReferences": [
+    { "modelReference": "FTXQ25A/35A + RXQ25A/35A", "reason": "family index only; the 4 unit records live in separate candidate files daikin-ftxq{25,35}a-indoor.json and daikin-rxq{25,35}a-outdoor.json; page-47 coverage: 2 indoor + 2 outdoor (ONLY 25A and 35A sizes), monosplit pairings 25A+25A / 35A+35A from efficiency-table columns. Efficiency table publishes Mini./Nom./Maxi. thermal; electrical input 'Puissance absorbée' Nom. only (min/max not published -> only nominal stored, complete-system). Indoor heating sound power NOT published (cooling only). Outdoor sound power Nom. published (61,0/62,0); outdoor sound pressure 'Haut' only (47,0, no Nom.). Outdoor cooling range 10~46; heating -15~18. precharged/branch pipe length NOT published; additionalCharge 0,02>10m; gas 9,50; longueur 20; dénivelé 12,0; MFA 16. Airflow m3/min x60->m3/h. Outdoor airflow, fan motor power, outdoor-only electrical boundary, current 2026 availability all unresolved." }
+  ]
+}

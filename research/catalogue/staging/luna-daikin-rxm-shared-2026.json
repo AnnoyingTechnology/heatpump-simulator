@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Shared RXM-A monosplit outdoor references (Perfera wall and FDXM ducted)",
+  "market": "Europe residential air-to-air; 2026 Daikin Europe catalogue",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-eu-2026-p320",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/320/",
+      "title": "Daikin Europe General Catalogue 2026 — Split residential air-to-air solutions",
+      "edition": "ECPEN26-500, 2026; official Daikin Europe flipbook page",
+      "retrievedAt": "2026-10-11"
+    },
+    {
+      "id": "daikin-eu-2026-p327",
+      "url": "https://catalogues.daikin.eu/flipbooks/EN/General_catalogue/04split/327/",
+      "title": "Daikin Europe General Catalogue 2026 — Split residential air-to-air solutions",
+      "edition": "ECPEN26-500, 2026; official Daikin Europe flipbook page",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "RXM25A9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p327",
+        "locator": "Flipbook route 327, printed heading 327; outdoor model column in exact combination and outdoor-unit tables",
+        "excerpt": "RXM 25A9"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact paired combination with FTXM25A; outdoor capacity class is not assigned because it depends on the indoor combination.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p320",
+            "locator": "Flipbook route 320, printed heading 320; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXM + RXM | 25A + 25A9"
+          }
+        },
+        {
+          "description": "Exact paired combination with FDXM25F9; outdoor capacity class is not assigned because it depends on the indoor combination.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FDXM + RXM | 25F9 + 25A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Physical outdoor facts require exact source row acceptance.",
+        "Nominal output is pair-dependent and is intentionally not stored as an unconditional outdoor capacityClass."
+      ]
+    },
+    {
+      "modelReference": "RXM35A9",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p327",
+        "locator": "Flipbook route 327, printed heading 327; outdoor model column in exact combination and outdoor-unit tables",
+        "excerpt": "RXM 35A9"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact paired combination with FTXM35A; outdoor capacity class is not assigned because it depends on the indoor combination.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p320",
+            "locator": "Flipbook route 320, printed heading 320; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXM + RXM | 35A + 35A9"
+          }
+        },
+        {
+          "description": "Exact paired combination with FDXM35F9; outdoor capacity class is not assigned because it depends on the indoor combination.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FDXM + RXM | 35F9 + 35A9"
+          }
+        }
+      ],
+      "unknowns": [
+        "Physical outdoor facts require exact source row acceptance.",
+        "Nominal output is pair-dependent and is intentionally not stored as an unconditional outdoor capacityClass."
+      ]
+    },
+    {
+      "modelReference": "RXM50A8",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p327",
+        "locator": "Flipbook route 327, printed heading 327; outdoor model column in exact combination and outdoor-unit tables",
+        "excerpt": "RXM 50A8"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact paired combination with FTXM50A; outdoor capacity class is not assigned because it depends on the indoor combination.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p320",
+            "locator": "Flipbook route 320, printed heading 320; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXM + RXM | 50A + 50A8"
+          }
+        },
+        {
+          "description": "Exact paired combination with FDXM50F9; outdoor capacity class is not assigned because it depends on the indoor combination.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FDXM + RXM | 50F9 + 50A8"
+          }
+        }
+      ],
+      "unknowns": [
+        "Physical outdoor facts require exact source row acceptance.",
+        "Nominal output is pair-dependent and is intentionally not stored as an unconditional outdoor capacityClass."
+      ]
+    },
+    {
+      "modelReference": "RXM60A",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "daikin-eu-2026-p327",
+        "locator": "Flipbook route 327, printed heading 327; outdoor model column in exact combination and outdoor-unit tables",
+        "excerpt": "RXM 60A"
+      },
+      "facts": [],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Exact paired combination with FTXM60A; outdoor capacity class is not assigned because it depends on the indoor combination.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p320",
+            "locator": "Flipbook route 320, printed heading 320; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FTXM + RXM | 60A + 60A"
+          }
+        },
+        {
+          "description": "Exact paired combination with FDXM60F9; outdoor capacity class is not assigned because it depends on the indoor combination.",
+          "evidence": {
+            "sourceId": "daikin-eu-2026-p327",
+            "locator": "Flipbook route 327, printed heading 327; efficiency data table exact indoor + outdoor model column",
+            "excerpt": "FDXM + RXM | 60F9 + 60A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Physical outdoor facts require exact source row acceptance.",
+        "Nominal output is pair-dependent and is intentionally not stored as an unconditional outdoor capacityClass."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

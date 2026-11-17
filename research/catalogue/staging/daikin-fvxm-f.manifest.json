@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Console carrossée (C/FVXM-F + RXM-R(9))",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [],
+  "unresolvedReferences": [
+    { "modelReference": "FVXM25F/35F/50F + RXM (25R9/35R9/50R)", "reason": "family index only; the 6 unit records live in separate candidate files daikin-fvxm{25,35,50}f-indoor.json and daikin-rxm-fvxm{25,35,50}f-outdoor.json; page-49 coverage: 3 indoor (25F/35F/50F) + 3 outdoor (25R9/35R9/50R). Pairings 25F+25R9 / 35F+35R9 / 50F+50R are MONOSPLIT efficiency-table columns; NO 'Connexion multi uniquement' band on p.49 (differs from p.48 FVXM-A). Efficiency table publishes Mini./Nom./Maxi. thermal; electrical input 'Puissance absorbée' Nom. only (min/max not published -> only nominal stored, complete-system): 25F 0,60/0,77, 35F 1,09/1,19, 50F 1,55/1,60. Indoor airflow published m3/min (x60 -> m3/h). Indoor sound power cooling+heating (25F/35F merged 52/52; 50F 57/58); indoor sound pressure Silence/Bas/Haut (25F 23/26/38 both; 35F 24/27/39 both; 50F cool 32/36/44 heat 32/36/45). Outdoor sound power cooling+heating per column (25R9 58,0/59,0; 35R9 61,0/61,0; 50R 62,0/62,0); outdoor sound pressure cooling (46,0/49,0/48,0), heating (25R9 47,0; 35R9/50R 49,0). Outdoor dims 25R9/35R9 552x840x350 mass 32; 50R 734x954x401 mass 49,0. p.49 operating cool -10~46 heat -15~24. CROSS-PAGE CONFLICT: RXM50R also on p.43 (Perfera wall) cool -10~50 heat -20~24 charge 1,10/0,750 vs p.49 -10~46/-15~24/1,15/0,780 -> p.49 50R AGREES with p.48 50R, kept SEPARATE from p.43 (daikin-rxm50r-outdoor.json p.43 vs daikin-rxm-fvxm50f-outdoor.json p.49), not merged. precharged 10m; charge suppl 0,02>10m; pipe 6,35/9,50 (25R9/35R9) longueur 20 dénivelé 15 MFA 13; 50R 6/12,7 longueur 30 dénivelé 20,0 MFA 16. Refrigerant PRP cell shows 675 (merged 25R9/35R9) vs 675,0 (50R) formatting diff only. SCOP/A cell alignment ambiguous (4,56 under 25F; 4,00 merged 35F/50F). Outdoor airflow, fan motor power, outdoor-only electrical boundary, maximumBranchPipeLength, current 2026 availability all unresolved." }
+  ]
+}

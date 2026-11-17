@@ -1,0 +1,1116 @@
+{
+  "reviewedAt": "2026-10-11",
+  "scope": "research-only correction review; production catalogue and runtime acceptance remain unchanged",
+  "decision": "Port/reducer/source-conflict corrections verified; corrected batch has a research regression blocking complete acceptance until seven deleted guide5C maximum-total-charge entries are restored by source producer. Typed multi-port compatibility remains pending.",
+  "candidate": {
+    "path": "research/catalogue/staging/luna-next-daikin-mxm-a8-a9-physical-and-constraints-corrected-2026.json",
+    "sha256": "95c0d8d6fa1e3cd13ffc935a7e47eec1587ccc34a016604b2eb3836fe36aa1f2"
+  },
+  "ledger": {
+    "path": "research/catalogue/staging/luna-next-daikin-mxm-a8-a9-physical-and-constraints-corrected-2026.sha256",
+    "sha256": "fa3d842c0024e6cc4a95de5e05c88840475be832feee4883d61fa8d05baf71dc"
+  },
+  "priorCandidate": {
+    "path": "research/catalogue/staging/luna-next-daikin-mxm-a8-a9-physical-and-constraints-2026.json",
+    "sha256": "bb4de884cb03189bf623eef8643cab554db319a1d9219d42ad7bc86ad71d10a2"
+  },
+  "priorIndependentReadback": {
+    "path": "/tmp/heatpump-daikin-mxm-review/independent-review-receipt.json",
+    "sha256": "b36669ddc5d9aef79a16b488659a10a652aa41afe7576de39d5457a5d5a311dd"
+  },
+  "sourcePins": [
+    {
+      "path": "research/catalogue/source-cache/daikin-eu-2026-split-page-329.html",
+      "sha256": "ed7ce858b700324b0cdea0c21b967b42fa8ad9ceade9848154d40533445567f5"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-2mxm-a8-table-2026.html",
+      "sha256": "acefcde6298cfa2aecd460e876476e4f7ca284530ef10e8b599b7bcc994cdbf9"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-2mxm-a9-table-2026.html",
+      "sha256": "0f0bb8a517dde9ded8c1f075d5ef5626e1e629fd65badec92d471b7d13c5ef83"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-3mxm-a8-table-2026.html",
+      "sha256": "23c7ccdb59e5b55a3c891bafbfb0e2cfdd9c2255850457865408731dbc44b79a"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-4mxm-a8-table-2026.html",
+      "sha256": "159fb7c67899c2eeafaf285f98a119b38ba548c0ab3b2eacb49fc7e5a71d3e63"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-5mxm-a8-table-2026.html",
+      "sha256": "e886fae35c49ddee42589d3be229c8af4016c6d1b835608146864c4ac18bdc7f"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-2mxm-a8-product-2026.html",
+      "sha256": "4176ccc9ff7ccc97199c9a210f1780dc37c443f58d8be72062a73eed6fb831b7"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-2mxm-a9-product-2026.html",
+      "sha256": "3902198d38e006a2af4d99c64babb828815a87f41c2ec27c24d6ef612cdd14b7"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-3mxm-a8-product-2026.html",
+      "sha256": "8e40acf0314e214f60f37b6a0403dbdf827f17b061633c4fec1144eadf0cf49a"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-4mxm-a8-product-2026.html",
+      "sha256": "5741bb699b1c57507474b28df15b6029708b98eb35059996ab4a3a4584129e53"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-5mxm-a8-product-2026.html",
+      "sha256": "e5374185cdb6ec80a0ce7b30964939048c4205745c9c56bd8adc1ad48a25daff"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-2mxm-a8-installer-guide-4c-2025.pdf",
+      "sha256": "02d9b5e02434796ceb4d678c4c7abb326fde1a4d1b0876b37aba67ccedb2e217"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-mxm-a8-installer-guide-5c-2025.pdf",
+      "sha256": "251062cd18f1b5859646af9a9ddaffa80ac738380feb0f5303c48a0248264c86"
+    },
+    {
+      "path": "research/catalogue/staging/luna-next-daikin-mxm-a8-a9-physical-and-constraints-corrected-2026.json",
+      "sha256": "95c0d8d6fa1e3cd13ffc935a7e47eec1587ccc34a016604b2eb3836fe36aa1f2"
+    }
+  ],
+  "checks": [
+    {
+      "reference": "2MXM40A2V1B9",
+      "check": "original facts, identity and ratings preserved",
+      "passed": true
+    },
+    {
+      "reference": "2MXM40A2V1B9",
+      "check": "port A diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "2MXM40A2V1B9",
+      "check": "port B diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "2MXM40A2V1B9",
+      "check": "minimum installed heads distinguished from active heads",
+      "passed": true
+    },
+    {
+      "reference": "2MXM50A2V1B8",
+      "check": "original facts, identity and ratings preserved",
+      "passed": true
+    },
+    {
+      "reference": "2MXM50A2V1B8",
+      "check": "port A diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "none"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "none",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "optional accessory (not identified by this table)"
+        }
+      ]
+    },
+    {
+      "reference": "2MXM50A2V1B8",
+      "check": "port B diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "1+2"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "1+2",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        },
+        {
+          "capacityClasses": [
+            42,
+            50
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "2MXM50A2V1B8",
+      "check": "minimum installed heads distinguished from active heads",
+      "passed": true
+    },
+    {
+      "reference": "2MXM68A2V1B8",
+      "check": "original facts, identity and ratings preserved",
+      "passed": true
+    },
+    {
+      "reference": "2MXM68A2V1B8",
+      "check": "port A diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "none"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "none",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        }
+      ]
+    },
+    {
+      "reference": "2MXM68A2V1B8",
+      "check": "port B diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "2+4"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "2+4",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        },
+        {
+          "capacityClasses": [
+            42,
+            50,
+            60
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "2MXM68A2V1B8",
+      "check": "minimum installed heads distinguished from active heads",
+      "passed": true
+    },
+    {
+      "reference": "3MXM40A2V1B8",
+      "check": "original facts, identity and ratings preserved",
+      "passed": true
+    },
+    {
+      "reference": "3MXM40A2V1B8",
+      "check": "port A diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "3MXM40A2V1B8",
+      "check": "port B diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "2+4"
+        }
+      ]
+    },
+    {
+      "reference": "3MXM40A2V1B8",
+      "check": "port C diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "2+4"
+        }
+      ]
+    },
+    {
+      "reference": "3MXM40A2V1B8",
+      "check": "minimum installed heads distinguished from active heads",
+      "passed": true
+    },
+    {
+      "reference": "3MXM40A2V1B8",
+      "check": "named older CVXM/FVXM-A restriction and A9 exception preserved",
+      "passed": true
+    },
+    {
+      "reference": "3MXM52A2V1B8",
+      "check": "original facts, identity and ratings preserved",
+      "passed": true
+    },
+    {
+      "reference": "3MXM52A2V1B8",
+      "check": "port A diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "none"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "none",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        }
+      ]
+    },
+    {
+      "reference": "3MXM52A2V1B8",
+      "check": "port B diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "2+4"
+        },
+        {
+          "capacityClasses": [
+            42,
+            50
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "3MXM52A2V1B8",
+      "check": "port C diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "2+4"
+        },
+        {
+          "capacityClasses": [
+            42,
+            50
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "3MXM52A2V1B8",
+      "check": "minimum installed heads distinguished from active heads",
+      "passed": true
+    },
+    {
+      "reference": "3MXM52A2V1B8",
+      "check": "named older CVXM/FVXM-A restriction and A9 exception preserved",
+      "passed": true
+    },
+    {
+      "reference": "3MXM68A2V1B8",
+      "check": "original facts, identity and ratings preserved",
+      "passed": true
+    },
+    {
+      "reference": "3MXM68A2V1B8",
+      "check": "port A diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "none"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "none",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        }
+      ]
+    },
+    {
+      "reference": "3MXM68A2V1B8",
+      "check": "port B diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35,
+            42
+          ],
+          "reducer": "2+4"
+        },
+        {
+          "capacityClasses": [
+            50,
+            60
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "3MXM68A2V1B8",
+      "check": "port C diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35,
+            42
+          ],
+          "reducer": "2+4"
+        },
+        {
+          "capacityClasses": [
+            50,
+            60
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "3MXM68A2V1B8",
+      "check": "minimum installed heads distinguished from active heads",
+      "passed": true
+    },
+    {
+      "reference": "4MXM68A2V1B8",
+      "check": "original facts, identity and ratings preserved",
+      "passed": true
+    },
+    {
+      "reference": "4MXM68A2V1B8",
+      "check": "port A diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "none"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "none",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        }
+      ]
+    },
+    {
+      "reference": "4MXM68A2V1B8",
+      "check": "port B diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "none"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "none",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        }
+      ]
+    },
+    {
+      "reference": "4MXM68A2V1B8",
+      "check": "port C diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "2+4"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "2+4",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        },
+        {
+          "capacityClasses": [
+            42,
+            50,
+            60
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "4MXM68A2V1B8",
+      "check": "port D diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "2+4"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "2+4",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        },
+        {
+          "capacityClasses": [
+            42,
+            50,
+            60
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "4MXM68A2V1B8",
+      "check": "minimum installed heads distinguished from active heads",
+      "passed": true
+    },
+    {
+      "reference": "4MXM80A2V1B8",
+      "check": "original facts, identity and ratings preserved",
+      "passed": true
+    },
+    {
+      "reference": "4MXM80A2V1B8",
+      "check": "port A diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "none"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "none",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        }
+      ]
+    },
+    {
+      "reference": "4MXM80A2V1B8",
+      "check": "port B diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "2+4"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "2+4",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        },
+        {
+          "capacityClasses": [
+            42,
+            50,
+            60
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "4MXM80A2V1B8",
+      "check": "port C diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "5+6"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "5+6",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        },
+        {
+          "capacityClasses": [
+            42,
+            50,
+            60
+          ],
+          "reducer": "1+3"
+        },
+        {
+          "capacityClasses": [
+            71
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "4MXM80A2V1B8",
+      "check": "port D diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "5+6"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "5+6",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        },
+        {
+          "capacityClasses": [
+            42,
+            50,
+            60
+          ],
+          "reducer": "1+3"
+        },
+        {
+          "capacityClasses": [
+            71
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "4MXM80A2V1B8",
+      "check": "minimum installed heads distinguished from active heads",
+      "passed": true
+    },
+    {
+      "reference": "5MXM90A2V1B8",
+      "check": "original facts, identity and ratings preserved",
+      "passed": true
+    },
+    {
+      "reference": "5MXM90A2V1B8",
+      "check": "port A diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "none"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "none",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        }
+      ]
+    },
+    {
+      "reference": "5MXM90A2V1B8",
+      "check": "port B diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "none"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "none",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        }
+      ]
+    },
+    {
+      "reference": "5MXM90A2V1B8",
+      "check": "port C diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "2+4"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "2+4",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        },
+        {
+          "capacityClasses": [
+            42,
+            50,
+            60
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "5MXM90A2V1B8",
+      "check": "port D diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "5+6"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "5+6",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        },
+        {
+          "capacityClasses": [
+            42,
+            50,
+            60
+          ],
+          "reducer": "1+3"
+        },
+        {
+          "capacityClasses": [
+            71
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "5MXM90A2V1B8",
+      "check": "port E diameter, exact class/reducer alternatives, special42 footnote scope and locator",
+      "passed": true,
+      "alternatives": [
+        {
+          "capacityClasses": [
+            15,
+            20,
+            25,
+            35
+          ],
+          "reducer": "5+6"
+        },
+        {
+          "capacityClasses": [
+            42
+          ],
+          "reducer": "5+6",
+          "onlyGuideNamedIndoorClasses": [
+            "FTXM42R",
+            "FTXM42A",
+            "FTXA42C"
+          ]
+        },
+        {
+          "capacityClasses": [
+            42,
+            50,
+            60
+          ],
+          "reducer": "1+3"
+        },
+        {
+          "capacityClasses": [
+            71
+          ],
+          "reducer": "none"
+        }
+      ]
+    },
+    {
+      "reference": "5MXM90A2V1B8",
+      "check": "minimum installed heads distinguished from active heads",
+      "passed": true
+    },
+    {
+      "reference": "2MXM50A2V1B8",
+      "check": "20m technical/guide threshold and30m catalogue threshold separately retained",
+      "passed": true
+    },
+    {
+      "reference": "5MXM90A2V1B8",
+      "check": "guide80m installation length and table75m Actual statement separately retained",
+      "passed": true
+    },
+    {
+      "check": "all original source-bound DB/WB operating envelopes preserved without A8/A9 substitution",
+      "passed": true
+    }
+  ],
+  "summary": {
+    "pinsPassed": 14,
+    "checksPassed": 51,
+    "portsVerified": 28,
+    "exactPortAlternativesVerified": 66,
+    "lostMaximumTotalChargeEntries": 7,
+    "runtimeProfilesAccepted": 0
+  },
+  "blockers": [
+    {
+      "reference": "2MXM68A2V1B8",
+      "maximumTotalChargeKg": 2.4,
+      "lostOriginalEvidence": {
+        "sourceId": "g5c",
+        "locator": "Printed p.47, installer reference guide §8.4, Maximum allowable refrigerant charge amount table.",
+        "excerpt": "2MXM68 | 2.4 kg"
+      },
+      "sourcePath": "research/sources/luna-next-daikin-mxm-a8-installer-guide-5c-2025.pdf",
+      "sourceSha256": "251062cd18f1b5859646af9a9ddaffa80ac738380feb0f5303c48a0248264c86",
+      "locator": "Guide4P766272-5C, printed p48, §8.4, table8-1 Maximum allowable refrigerant charge amount",
+      "status": "deleted from corrected candidate, not relocated; restore in a new producer-owned corrected research version"
+    },
+    {
+      "reference": "3MXM40A2V1B8",
+      "maximumTotalChargeKg": 2.2,
+      "lostOriginalEvidence": {
+        "sourceId": "g5c",
+        "locator": "Printed p.47, installer reference guide §8.4, Maximum allowable refrigerant charge amount table.",
+        "excerpt": "3MXM40 | 2.2 kg"
+      },
+      "sourcePath": "research/sources/luna-next-daikin-mxm-a8-installer-guide-5c-2025.pdf",
+      "sourceSha256": "251062cd18f1b5859646af9a9ddaffa80ac738380feb0f5303c48a0248264c86",
+      "locator": "Guide4P766272-5C, printed p48, §8.4, table8-1 Maximum allowable refrigerant charge amount",
+      "status": "deleted from corrected candidate, not relocated; restore in a new producer-owned corrected research version"
+    },
+    {
+      "reference": "3MXM52A2V1B8",
+      "maximumTotalChargeKg": 2.2,
+      "lostOriginalEvidence": {
+        "sourceId": "g5c",
+        "locator": "Printed p.47, installer reference guide §8.4, Maximum allowable refrigerant charge amount table.",
+        "excerpt": "3MXM52 | 2.2 kg"
+      },
+      "sourcePath": "research/sources/luna-next-daikin-mxm-a8-installer-guide-5c-2025.pdf",
+      "sourceSha256": "251062cd18f1b5859646af9a9ddaffa80ac738380feb0f5303c48a0248264c86",
+      "locator": "Guide4P766272-5C, printed p48, §8.4, table8-1 Maximum allowable refrigerant charge amount",
+      "status": "deleted from corrected candidate, not relocated; restore in a new producer-owned corrected research version"
+    },
+    {
+      "reference": "3MXM68A2V1B8",
+      "maximumTotalChargeKg": 2.4,
+      "lostOriginalEvidence": {
+        "sourceId": "g5c",
+        "locator": "Printed p.47, installer reference guide §8.4, Maximum allowable refrigerant charge amount table.",
+        "excerpt": "3MXM68 | 2.4 kg"
+      },
+      "sourcePath": "research/sources/luna-next-daikin-mxm-a8-installer-guide-5c-2025.pdf",
+      "sourceSha256": "251062cd18f1b5859646af9a9ddaffa80ac738380feb0f5303c48a0248264c86",
+      "locator": "Guide4P766272-5C, printed p48, §8.4, table8-1 Maximum allowable refrigerant charge amount",
+      "status": "deleted from corrected candidate, not relocated; restore in a new producer-owned corrected research version"
+    },
+    {
+      "reference": "4MXM68A2V1B8",
+      "maximumTotalChargeKg": 2.6,
+      "lostOriginalEvidence": {
+        "sourceId": "g5c",
+        "locator": "Printed p.47, installer reference guide §8.4, Maximum allowable refrigerant charge amount table.",
+        "excerpt": "4MXM68 | 2.6 kg"
+      },
+      "sourcePath": "research/sources/luna-next-daikin-mxm-a8-installer-guide-5c-2025.pdf",
+      "sourceSha256": "251062cd18f1b5859646af9a9ddaffa80ac738380feb0f5303c48a0248264c86",
+      "locator": "Guide4P766272-5C, printed p48, §8.4, table8-1 Maximum allowable refrigerant charge amount",
+      "status": "deleted from corrected candidate, not relocated; restore in a new producer-owned corrected research version"
+    },
+    {
+      "reference": "4MXM80A2V1B8",
+      "maximumTotalChargeKg": 3.2,
+      "lostOriginalEvidence": {
+        "sourceId": "g5c",
+        "locator": "Printed p.47, installer reference guide §8.4, Maximum allowable refrigerant charge amount table.",
+        "excerpt": "4MXM80 | 3.2 kg"
+      },
+      "sourcePath": "research/sources/luna-next-daikin-mxm-a8-installer-guide-5c-2025.pdf",
+      "sourceSha256": "251062cd18f1b5859646af9a9ddaffa80ac738380feb0f5303c48a0248264c86",
+      "locator": "Guide4P766272-5C, printed p48, §8.4, table8-1 Maximum allowable refrigerant charge amount",
+      "status": "deleted from corrected candidate, not relocated; restore in a new producer-owned corrected research version"
+    },
+    {
+      "reference": "5MXM90A2V1B8",
+      "maximumTotalChargeKg": 3.3,
+      "lostOriginalEvidence": {
+        "sourceId": "g5c",
+        "locator": "Printed p.47, installer reference guide §8.4, Maximum allowable refrigerant charge amount table.",
+        "excerpt": "5MXM90 | 3.3 kg"
+      },
+      "sourcePath": "research/sources/luna-next-daikin-mxm-a8-installer-guide-5c-2025.pdf",
+      "sourceSha256": "251062cd18f1b5859646af9a9ddaffa80ac738380feb0f5303c48a0248264c86",
+      "locator": "Guide4P766272-5C, printed p48, §8.4, table8-1 Maximum allowable refrigerant charge amount",
+      "status": "deleted from corrected candidate, not relocated; restore in a new producer-owned corrected research version"
+    }
+  ],
+  "retainedLocatorErrors": [
+    {
+      "references": [
+        "3MXM40A2V1B8",
+        "3MXM52A2V1B8"
+      ],
+      "field": "Special restriction evidence.locator",
+      "candidateLocator": "Printed pp.32 and47",
+      "correctLocator": "Guide5C printed p34 §7.1.3 for total liquid length; printed p48 §8.4 for no additional charge and A9 exemption",
+      "sourcePath": "research/sources/luna-next-daikin-mxm-a8-installer-guide-5c-2025.pdf",
+      "sourceSha256": "251062cd18f1b5859646af9a9ddaffa80ac738380feb0f5303c48a0248264c86"
+    }
+  ],
+  "priorReviewLocatorErratum": "The original candidate and prior /tmp review incorrectly retained p47 for the charge table. Direct render of the pinned guide now establishes printed p48; this receipt supersedes that locator only, not prior numerical readback.",
+  "remainingLimitations": [
+    "Exact full-indoor-SKU compatibility and combination-specific ratings unresolved",
+    "Port rules remain prose and need typed independent alternatives/conditions",
+    "Optional accessory part identity unknown; reducer drawing numbers are document-local",
+    "Connection-capacity class sum is not nominal rated cooling output or compressor rating",
+    "Minimum two connected heads cannot become minimum two enabled heads",
+    "5MXM90 pipe-length conflict and2MXM50 extra-charge threshold conflict cannot become universal engine rules",
+    "Airflow, OEM performance/control maps and full consumer-range coverage remain unresolved"
+  ],
+  "productionMutationScope": []
+}

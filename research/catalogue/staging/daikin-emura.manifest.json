@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Daikin Emura (FTXJ-AW/S/B + RXJ-A)",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "status": "candidate (NOT accepted): 10 candidate files drafted from p.41; root performs independent source acceptance before integration",
+  "edition": "PRIMARY CACHED: 'Catalogue des produits pour installateurs 2022' ECPFR-FR22-000 (French, 64 pages), Emura spec table PDF p.41 (printed 41). Printed page == PDF page. IMPORTANT: page footnote 'les cellules bleues contiennent des données préliminaires' -> many cells (indoor airflow, filter, electrical input, indoor heating sound power) are preliminary dashes and were NOT extracted. Current-generation availability NOT verified this batch.",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "publisher": "Daikin Europe N.V. (France edition)",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11",
+      "localCache": "research/catalogue/source-cache/daikin-fr-split-installer-2022.pdf",
+      "textCache": "research/catalogue/source-cache/daikin-fr-split-installer-2022.txt",
+      "pageImage": "research/catalogue/source-cache/daikin-fr-split-installer-2022-page-41.png",
+      "pages": 64,
+      "sha256": "814243080bf6b8795adccb3f8c670a87d0b692d7c1c09ec32c306f04add187ad",
+      "note": "PRIMARY EVIDENCE. Emura spec table PDF p.41 == printed 41. Merged cells + dashes + blue preliminary cells visually verified via page-41 PNG."
+    }
+  ],
+  "references": {
+    "indoor": [
+      {"modelReference": "FTXJ20AW/S/B", "column": "col '20AW/S/B'", "colourSuffixes": ["AW","AS","AB"], "matchedOutdoor": "RXJ20A (efficiency col '20AW/S/B + 20A')", "status": "unknown"},
+      {"modelReference": "FTXJ25AW/S/B", "column": "col '25AW/S/B'", "colourSuffixes": ["AW","AS","AB"], "matchedOutdoor": "RXJ25A", "status": "unknown"},
+      {"modelReference": "FTXJ35AW/S/B", "column": "col '35AW/S/B'", "colourSuffixes": ["AW","AS","AB"], "matchedOutdoor": "RXJ35A", "status": "unknown"},
+      {"modelReference": "FTXJ42AW/S/B", "column": "col '42AW/S/B'", "colourSuffixes": ["AW","AS","AB"], "matchedOutdoor": "RXJ42A", "status": "unknown"},
+      {"modelReference": "FTXJ50AW/S/B", "column": "col '50AW/S/B'", "colourSuffixes": ["AW","AS","AB"], "matchedOutdoor": "RXJ50A", "status": "unknown"}
+    ],
+    "outdoor": [
+      {"modelReference": "RXJ20A", "column": "col '20A'", "matchedIndoor": "FTXJ20AW/S/B", "status": "unknown"},
+      {"modelReference": "RXJ25A", "column": "col '25A'", "matchedIndoor": "FTXJ25AW/S/B", "status": "unknown"},
+      {"modelReference": "RXJ35A", "column": "col '35A'", "matchedIndoor": "FTXJ35AW/S/B", "status": "unknown"},
+      {"modelReference": "RXJ42A", "column": "col '42A'", "matchedIndoor": "FTXJ42AW/S/B", "status": "unknown"},
+      {"modelReference": "RXJ50A", "column": "col '50A'", "matchedIndoor": "FTXJ50AW/S/B", "status": "unknown"}
+    ]
+  },
+  "colourSuffixesPublished": {
+    "note": "page title 'FTXJ-AW/S/B + RXJ-A' + product photos label FTXJ-AW (blanc cristal mat/white), FTXJ-AS (argent/silver), FTXJ-AB (noir/black). Colour words 'blanc cristal mat, argent et noir'. AW=white, AS=silver, AB=black. Distinct references when named; grouped as one AW/S/B column per size.",
+    "AW": "white / blanc cristal mat (photo FTXJ-AW)",
+    "AS": "silver / argent (photo FTXJ-AS)",
+    "AB": "black / noir (photo FTXJ-AB)"
+  },
+  "pairingEvidence": "Monosplit pairing evidenced by efficiency-table column headers '20AW/S/B + 20A', '25AW/S/B + 25A', '35AW/S/B + 35A', '42AW/S/B + 42A', '50AW/S/B + 50A' (page title FTXJ-AW/S/B + RXJ-A). No invented pairing beyond these published columns.",
+  "mergedCellFindings": [
+    "Indoor Dimensions 305x900x214 mm: single merged cell spanning ALL indoor columns (20..50)",
+    "Indoor Poids 12 kg: single merged cell spanning ALL indoor columns",
+    "Télécommande infrarouge 'ARC488A1W/S/K': merged all indoor columns",
+    "Outdoor Dimensions 552,7x840x350 mm: merged 20A/25A/35A; 734x954x408 mm merged 42A/50A",
+    "Outdoor Poids: 32 kg merged 20A/25A/35A; 50 kg merged 42A/50A",
+    "Plage de fonctionnement Rafraîchissement -10~+50 / Chauffage -20~+24: merged all outdoor columns",
+    "Réfrigérant R-32/675,0: merged all outdoor columns",
+    "Charge 0,76/0,52 merged 20A/25A/35A; 1,10/0,75 merged 42A/50A",
+    "Raccords Liquide/Gaz 6,35/9,50 merged 20A/25A/35A; 6,35/12,7 merged 42A/50A",
+    "Longueur tuyauterie 20 m (20-35A); 30 m (42A/50A); Charge suppl 0,02 kg/m (>10m) merged all; Dénivelé 15 m (20-35A) / 20 m (42A/50A)",
+    "Alimentation 1~/50/220-240 merged all outdoor; MFA 10 merged 20A/25A/35A; 13 merged 42A/50A",
+    "PER-COLUMN (not merged): efficiency rows, indoor/outdoor sound power, indoor/outdoor sound pressure"
+  ],
+  "preliminaryDataNote": "p.41 footnote: '*Note : les cellules bleues contiennent des données préliminaires'. Blue/preliminary cells rendered as '-' (dash) in the table: indoor Débit d'air (cooling+heating), indoor Filtre à air Type, Puissance absorbée Rafraîchissement/Chauffage Nom., indoor Niveau de puissance sonore Chauffage, Efficacité nominale Consommation énergétique annuelle. These are UNPUBLISHED -> recorded as unknowns, NOT extracted, NOT invented. Outdoor sound pressure row label is 'Nom.' (nominal) only.",
+  "soundPressureAmbiguity": "Indoor 'Niveau de pression sonore' rows are labelled 'Silence/Bas/Haut' (3 labels) but each cell publishes 4 slash values (e.g. 39/32/25/19*). Exact cell-to-label mapping is ambiguous from text+image; the 4 values were recorded in published order with distinct 'first/second/third/fourth value' conditions and NOT reordered. Asterisk footnote: '+2 dBA en configuration Multi'. Lowest value (19 for 20/25/35, 21 for 42, 24 for 50) matches the marketing blurb 'minimum de 19 dBA'.",
+  "airflowUnitNote": "Indoor airflow is NOT published on p.41 (dash/preliminary). If a future source publishes m³/min, schema m3/h conversion is x60 (1 m³/min = 60 m³/h).",
+  "candidateFiles": [
+    "staging/daikin-ftxj20-indoor.json",
+    "staging/daikin-rxj20a-outdoor.json",
+    "staging/daikin-ftxj25-indoor.json",
+    "staging/daikin-rxj25a-outdoor.json",
+    "staging/daikin-ftxj35-indoor.json",
+    "staging/daikin-rxj35a-outdoor.json",
+    "staging/daikin-ftxj42-indoor.json",
+    "staging/daikin-rxj42a-outdoor.json",
+    "staging/daikin-ftxj50-indoor.json",
+    "staging/daikin-rxj50a-outdoor.json"
+  ],
+  "coverageNotes": "candidate (NOT accepted). 10 candidate files (5 indoor + 5 outdoor) from p.41. Unresolved/unknown by design (published as dashes/preliminary or not published): indoor airflow, indoor filter, indoor heating sound power, electrical input (Puissance absorbée), outdoor airflow, fan motor power, outdoor-only electrical boundary, prechargedPipeLength/maximumBranchPipeLength, MFA (no schema key), sound-pressure cell-label ambiguity, current 2026 availability (status unknown; 2022 catalogue is not automatically the 2026 range)."
+}

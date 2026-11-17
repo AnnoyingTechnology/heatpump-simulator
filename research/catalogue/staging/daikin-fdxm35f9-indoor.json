@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "Plafonnier encastré gainable (FDXM-F9 + RXM-R(9))",
+  "market": "France / Europe (daikin.eu EMEA, FR installer catalogue)",
+  "checkedAt": "2026-10-11",
+  "sources": [
+    {
+      "id": "daikin-fr-split-installer-2022",
+      "url": "https://www.daikin.eu/content/dam/document-library/catalogues/ac/split/Split-Installer_Product%20catalogue_ECPFR-FR22-000_French.pdf",
+      "title": "Systèmes de climatisation résidentiels — Catalogue des produits pour installateurs 2022",
+      "edition": "ECPFR-FR22-000 (2022)",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FDXM35F9",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "daikin-fr-split-installer-2022",
+        "locator": "PDF p.50 (printed 50), page title 'FDXM-F9 + RXM-R(9)'; UNITÉS INTÉRIEURES header 'FDXM' then column '35F9'",
+        "excerpt": "FDXM-F9 + RXM-R(9) ; Unité intérieure FDXM 25F9 35F9 50F9 60F9"
+      },
+      "facts": [
+        { "key": "height", "value": 200, "unit": "mm", "condition": "indoor unit; row 'Dimensions Unité HxLxP' merged cell spanning 25F9/35F9 (200x750x620)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged 25F9/35F9", "excerpt": "Dimensions Unité HxLxP mm 200x750x620" } },
+        { "key": "width", "value": 750, "unit": "mm", "condition": "indoor unit; merged 25F9/35F9 (HxLxP 200x750x620)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged 25F9/35F9", "excerpt": "Dimensions Unité HxLxP mm 200x750x620" } },
+        { "key": "depth", "value": 620, "unit": "mm", "condition": "indoor unit; merged 25F9/35F9 (HxLxP 200x750x620)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, UNITÉS INTÉRIEURES row 'Dimensions Unité HxLxP', merged 25F9/35F9", "excerpt": "Dimensions Unité HxLxP mm 200x750x620" } },
+        { "key": "mass", "value": 21, "unit": "kg", "condition": "indoor unit net weight; row 'Poids Unité' merged 25F9/35F9 (21)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, UNITÉS INTÉRIEURES row 'Poids Unité', merged 25F9/35F9", "excerpt": "Poids Unité kg 21" } },
+        { "key": "airflow", "value": 798, "unit": "m3/h", "condition": "cooling mode, Bas (low) fan speed; published 13,3 m³/min, x60 = 798 m³/h (1 m³/min = 60 m³/h); 35F9 own cell; p.50 airflow labels Bas/Moyen/Haut (no Silence)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, row 'Débit d'air Rafraîchissement Bas/Moyen/Haut', 35F9 column, Bas value", "excerpt": "Débit d'air Rafraîchissement Bas/Moyen/Haut m³/min 13,3/14,6/15,8" } },
+        { "key": "airflow", "value": 876, "unit": "m3/h", "condition": "cooling mode, Moyen (medium) fan speed; published 14,6 m³/min, x60 = 876 m³/h; 35F9 own cell", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, row 'Débit d'air Rafraîchissement Bas/Moyen/Haut', 35F9 column, Moyen value", "excerpt": "Débit d'air Rafraîchissement Bas/Moyen/Haut m³/min 13,3/14,6/15,8" } },
+        { "key": "airflow", "value": 948, "unit": "m3/h", "condition": "cooling mode, Haut (high) fan speed; published 15,8 m³/min, x60 = 948 m³/h; 35F9 own cell", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, row 'Débit d'air Rafraîchissement Bas/Moyen/Haut', 35F9 column, Haut value", "excerpt": "Débit d'air Rafraîchissement Bas/Moyen/Haut m³/min 13,3/14,6/15,8" } },
+        { "key": "airflow", "value": 798, "unit": "m3/h", "condition": "heating mode, Bas (low) fan speed; published 13,3 m³/min, x60 = 798 m³/h; 35F9 own cell; heating airflow identical to cooling", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, row 'Débit d'air Chauffage Bas/Moyen/Haut', 35F9 column, Bas value", "excerpt": "Débit d'air Chauffage Bas/Moyen/Haut m³/min 13,3/14,6/15,8" } },
+        { "key": "airflow", "value": 876, "unit": "m3/h", "condition": "heating mode, Moyen (medium) fan speed; published 14,6 m³/min, x60 = 876 m³/h; 35F9 own cell", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, row 'Débit d'air Chauffage Bas/Moyen/Haut', 35F9 column, Moyen value", "excerpt": "Débit d'air Chauffage Bas/Moyen/Haut m³/min 13,3/14,6/15,8" } },
+        { "key": "airflow", "value": 948, "unit": "m3/h", "condition": "heating mode, Haut (high) fan speed; published 15,8 m³/min, x60 = 948 m³/h; 35F9 own cell", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, row 'Débit d'air Chauffage Bas/Moyen/Haut', 35F9 column, Haut value", "excerpt": "Débit d'air Chauffage Bas/Moyen/Haut m³/min 13,3/14,6/15,8" } },
+        { "key": "soundPower", "value": 53.0, "unit": "dBA", "condition": "indoor sound power level, cooling (Rafraîchissement); merged 25F9/35F9 (53,0); sound POWER not pressure", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, UNITÉS INTÉRIEURES row 'Niveau de puissance sonore Rafraîchissement', merged 25F9/35F9", "excerpt": "Niveau de puissance sonore Rafraîchissement dBA 53,0" } },
+        { "key": "soundPower", "value": 53.0, "unit": "dBA", "condition": "indoor sound power level, heating (Chauffage); merged 25F9/35F9 (53,0); sound POWER not pressure", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, UNITÉS INTÉRIEURES row 'Niveau de puissance sonore Chauffage', merged 25F9/35F9", "excerpt": "Niveau de puissance sonore Chauffage dBA 53,0" } },
+        { "key": "soundPressure", "value": 27.0, "unit": "dBA", "condition": "indoor sound pressure, cooling, Bas speed; merged 25F9/35F9 (27,0); p.50 labels Bas/Haut only", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, row 'Niveau de pression sonore Rafraîchissement Bas/Haut', merged 25F9/35F9, Bas value", "excerpt": "Niveau de pression sonore Rafraîchissement Bas/Haut dBA 27,0/35,0" } },
+        { "key": "soundPressure", "value": 35.0, "unit": "dBA", "condition": "indoor sound pressure, cooling, Haut speed; merged 25F9/35F9 (35,0)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, row 'Niveau de pression sonore Rafraîchissement Bas/Haut', merged 25F9/35F9, Haut value", "excerpt": "Niveau de pression sonore Rafraîchissement Bas/Haut dBA 27,0/35,0" } },
+        { "key": "soundPressure", "value": 27.0, "unit": "dBA", "condition": "indoor sound pressure, heating, Bas speed; merged 25F9/35F9 (27,0)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, row 'Niveau de pression sonore Chauffage Bas/Haut', merged 25F9/35F9, Bas value", "excerpt": "Niveau de pression sonore Chauffage Bas/Haut dBA 27,0/35,0" } },
+        { "key": "soundPressure", "value": 35.0, "unit": "dBA", "condition": "indoor sound pressure, heating, Haut speed; merged 25F9/35F9 (35,0)", "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, row 'Niveau de pression sonore Chauffage Bas/Haut', merged 25F9/35F9, Haut value", "excerpt": "Niveau de pression sonore Chauffage Bas/Haut dBA 27,0/35,0" } }
+      ],
+      "ratings": [
+        {
+          "mode": "cooling",
+          "combination": "FDXM35F9 + RXM35R (efficiency table column '35F9 + 35R'); monosplit pairing from efficiency column; NO 'Connexion multi uniquement' band on p.50",
+          "conditions": "p.50 efficiency table publishes Mini./Nom./Maxi. thermal (1,40/3,40/3,80 kW); NO 'Puissance absorbée' row on p.50 -> electrical input NOT published (unknown); complete-system boundary implied by pairing column; nominal conditions footnote: indoor 27 °CBS/19 °CBH, outdoor 35 °CBS, equiv pipe 5 m, height diff 0 m",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.40, "nominal": 3.40, "maximum": 3.80 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, row 'Puissance frigorifique Mini./Nom./Maxi.', column '35F9 + 35R'; NO electrical input row on p.50; footnote conditions", "excerpt": "Puissance frigorifique Mini./Nom./Maxi. kW 1,40/3,40/3,80" }
+        },
+        {
+          "mode": "heating",
+          "combination": "FDXM35F9 + RXM35R (efficiency table column '35F9 + 35R'); monosplit pairing from efficiency column; NO 'Connexion multi uniquement' band on p.50",
+          "conditions": "p.50 efficiency table publishes Mini./Nom./Maxi. thermal (1,40/4,00/5,00 kW); NO 'Puissance absorbée' row on p.50 -> electrical input NOT published (unknown); complete-system boundary implied by pairing column; nominal conditions footnote: indoor 20 °CBS, outdoor 7 °CBS/6 °CBH, equiv pipe 5 m, height diff 0 m",
+          "electricalBoundary": "complete-system",
+          "thermalCapacityKw": { "minimum": 1.40, "nominal": 4.00, "maximum": 5.00 },
+          "electricalInputKw": { "minimum": null, "nominal": null, "maximum": null },
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, row 'Puissance calorifique Mini./Nom./Maxi.', column '35F9 + 35R'; NO electrical input row on p.50; footnote conditions", "excerpt": "Puissance calorifique Mini./Nom./Maxi. kW 1,40/4,00/5,00" }
+        }
+      ],
+      "compatibility": [
+        {
+          "description": "efficiency-table column '35F9 + 35R' pairs FDXM35F9 with RXM35R (monosplit pairing). NO 'Connexion multi uniquement' caveat band on p.50. NOTE page blurb 'Gamme unifiée d'unités intérieures pour un fonctionnement avec le R-32 et le R-410A' -> refrigerant compatibility marketing claim, not a pairing; no invented pairing beyond the published column.",
+          "evidence": { "sourceId": "daikin-fr-split-installer-2022", "locator": "PDF p.50, 'Données relatives à l'efficacité' column header 'FDXM + RXM ... 35F9 + 35R'", "excerpt": "Données relatives à l'efficacité FDXM + RXM 35F9 + 35R" }
+        }
+      ],
+      "unknowns": [
+        "airflow unit: p.50 publishes indoor Débit d'air in m³/min; exact conversion x60 (1 m³/min = 60 m³/h); original m³/min preserved in excerpts",
+        "airflow labels: p.50 uses Bas/Moyen/Haut (NO Silence speed) unlike other console/wall pages",
+        "indoor fan motor output and fan electrical input: not published",
+        "capacityClass: no published kW class scalar; '35' is a model size code",
+        "electrical input (Puissance absorbée): NO electrical input row on p.50 -> UNKNOWN (not invented)",
+        "external static pressure: p.50 row 'Pression statique externe Nom.' merged 25F9/35F9 publishes 30 Pa, but schema has no 'externalStaticPressure' fact key and no 'Pa' unit -> value NOT stored as a fact (recorded here only: 30 Pa nominal, merged 25F9/35F9)",
+        "SEER 5,26 / SCOP-A 3,88 / Pdesign / annual kWh are system (35F9 + 35R) ratings, not indoor-unit facts",
+        "indoor electrical supply/voltage: not published for indoor unit (supply shown at outdoor unit)",
+        "current 2026 availability of FDXM-F9: unknown; dated historical coverage"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    { "modelReference": "RXM35R", "reason": "paired outdoor unit (p.50 outdoor column '35R9' header but efficiency pairing '35F9 + 35R'); captured in separate candidate file daikin-rxm-fdxm35f9-outdoor.json (p.50 scoping)" }
+  ]
+}
