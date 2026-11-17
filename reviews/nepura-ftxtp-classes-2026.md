@@ -1,0 +1,7 @@
+# Daikin Nepura FTXTP-A / RXTP-A class batch
+
+Checked 2026-11-17. The verified p.349 batch imports four published class identities: FTXTP25A, RXTP25A, FTXTP35A and RXTP35A. Pair columns are size-specific (`25A + 25A` and `35A + 35A`); factory suffixes, exact full-SKU eligibility and France retail availability remain unknown.
+
+Evidence uses the official Daikin Europe ECPEN26-500 p.349 table and its positioned renderer/background snapshots. The independent receipt [`nepura-ftxtp-classes-independent-acceptance-2026.json`](nepura-ftxtp-classes-independent-acceptance-2026.json) binds those snapshots and the staging candidate. Imported indoor fields are casing and cooling high-fan flow (11 m³/min converted to 660 m³/h). Outdoor fields are casing, R-32 and published cooling dry-bulb/heating wet-bulb endpoints. The separate heating dry-bulb line is left out of this runtime profile because its range metadata stores wet-bulb heating limits only. Outdoor airflow, capacities, efficiency, charge and performance maps remain unknown.
+
+The staging candidate and acceptance list pass the catalogue importer and source-acceptance tests. Runtime Daikin count after this batch: **86 outdoor / 152 indoor**. Remaining Daikin work stays tracked in [`daikin-luna-coverage.md`](daikin-luna-coverage.md). Mitsubishi Electric remains **25 outdoor / 45 indoor**; the current-family audit is open in [`mitsubishi-electric-luna-coverage.md`](mitsubishi-electric-luna-coverage.md).

@@ -1,0 +1,179 @@
+{
+  "scope": "Independent review of exact Daikin France FTXTA-DG/DL/DP/DY pair identities against the exact manufacturer headers; p.345 shared physical facts remain explicitly preliminary.",
+  "candidate": {
+    "path": "research/catalogue/staging/luna-daikin-ftxta-d-exact-2026.json",
+    "sha256": "dd78027b396ff474292e53959589c3d0dbb2e566be798e78190336e098b43121"
+  },
+  "sourcePins": [
+    {
+      "path": "research/sources/luna-daikin-ftxta-dg-pair-table.html",
+      "sha256": "9c35e4280bf6470ae04c8111f7c177e2dcc515a250aa03b0295a26beeaf8e6a3"
+    },
+    {
+      "path": "research/sources/luna-daikin-ftxta-dl-pair-table.html",
+      "sha256": "93c83748270895a0900c6c4c0f7644fab14048cf76d569276dec3c6d9d969807"
+    },
+    {
+      "path": "research/sources/luna-daikin-ftxta-dp-pair-table.html",
+      "sha256": "3b51a10e1a11cc736a7a5742de8278b73a20bd0aae4d939ae95d9f258dfe173e"
+    },
+    {
+      "path": "research/sources/luna-daikin-ftxta-dy-pair-table.html",
+      "sha256": "c83281f8fc4a3e2716767c1a8391eb804e107811216d13cb4740b16528671dc3"
+    },
+    {
+      "path": "research/sources/luna-next-daikin-2026-catalogue-p345.html",
+      "sha256": "0f7b3b226c196ef604fd58d73d7a460c947d60cdbbae9db459f63dc366ed7cfa"
+    },
+    {
+      "path": "research/sources/luna-daikin-2026-p345-layout.svg",
+      "sha256": "6018f1eaf01fd209626b051f64867f4da014ffe762f53352622af3233056b33b"
+    },
+    {
+      "path": "research/sources/luna-daikin-2026-p345-background.webp",
+      "sha256": "1817f8df5afab4ba57bc6a80027b8d8f1842c2627ebfd3e2a96209b0f370dab5"
+    }
+  ],
+  "layoutReview": {
+    "path": "research/sources/luna-daikin-2026-p345-layout.svg",
+    "sha256": "6018f1eaf01fd209626b051f64867f4da014ffe762f53352622af3233056b33b"
+  },
+  "reviewedUnits": [
+    {
+      "reference": "FTXTA30D2V1BG",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 295,
+        "width": 798,
+        "depth": 189,
+        "airflow": 786
+      },
+      "factConditions": {
+        "height": "indoor casing; preliminary data",
+        "width": "indoor casing; preliminary data",
+        "depth": "indoor casing; preliminary data",
+        "airflow": "cooling mode, high fan; preliminary data; source unit m³/min"
+      },
+      "compatibleOutdoorClasses": [
+        "RXTA30C2V1B"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "daikin-fr-ftxta-dg",
+        "locator": "Exact manufacturer indoor/outdoor pair column header",
+        "excerpt": "FTXTA30D2V1BG / RXTA30C2V1B"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France exact pairing table; current retail availability unverified"
+      }
+    },
+    {
+      "reference": "FTXTA30D2V1BL",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 295,
+        "width": 798,
+        "depth": 189,
+        "airflow": 786
+      },
+      "factConditions": {
+        "height": "indoor casing; preliminary data",
+        "width": "indoor casing; preliminary data",
+        "depth": "indoor casing; preliminary data",
+        "airflow": "cooling mode, high fan; preliminary data; source unit m³/min"
+      },
+      "compatibleOutdoorClasses": [
+        "RXTA30C2V1B"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "daikin-fr-ftxta-dl",
+        "locator": "Exact manufacturer indoor/outdoor pair column header",
+        "excerpt": "FTXTA30D2V1BL / RXTA30C2V1B"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France exact pairing table; current retail availability unverified"
+      }
+    },
+    {
+      "reference": "FTXTA30D2V1BP",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 295,
+        "width": 798,
+        "depth": 189,
+        "airflow": 786
+      },
+      "factConditions": {
+        "height": "indoor casing; preliminary data",
+        "width": "indoor casing; preliminary data",
+        "depth": "indoor casing; preliminary data",
+        "airflow": "cooling mode, high fan; preliminary data; source unit m³/min"
+      },
+      "compatibleOutdoorClasses": [
+        "RXTA30C2V1B"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "daikin-fr-ftxta-dp",
+        "locator": "Exact manufacturer indoor/outdoor pair column header",
+        "excerpt": "FTXTA30D2V1BP / RXTA30C2V1B"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France exact pairing table; current retail availability unverified"
+      }
+    },
+    {
+      "reference": "FTXTA30D2V1BY",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 295,
+        "width": 798,
+        "depth": 189,
+        "airflow": 786
+      },
+      "factConditions": {
+        "height": "indoor casing; preliminary data",
+        "width": "indoor casing; preliminary data",
+        "depth": "indoor casing; preliminary data",
+        "airflow": "cooling mode, high fan; preliminary data; source unit m³/min"
+      },
+      "compatibleOutdoorClasses": [
+        "RXTA30C2V1B"
+      ],
+      "classPairingEvidence": {
+        "sourceId": "daikin-fr-ftxta-dy",
+        "locator": "Exact manufacturer indoor/outdoor pair column header",
+        "excerpt": "FTXTA30D2V1BY / RXTA30C2V1B"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France exact pairing table; current retail availability unverified"
+      }
+    }
+  ]
+}

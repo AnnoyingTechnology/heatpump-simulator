@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "2026 Sensira 2MXF-A multisplit outdoor range",
+  "market": "Daikin Europe; France exact SKU availability unverified",
+  "checkedAt": "2026-11-17",
+  "sources": [
+    {
+      "id": "mxf-outdoor-table",
+      "url": "https://www.daikin.eu/en_us/products/product.table.html/2mxf-a.html",
+      "title": "Daikin Europe 2MXF-A outdoor specifications table",
+      "edition": "Official product table; retrieved 2026-11-17; snapshot SHA-256 8aa3d55917b90bfb2c5ed6dc9f00e61da1bb446b6d743f6ed73b28d10cb4bfa9",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "mxf-combination-table",
+      "url": "https://www.daikin.eu/en_us/products/product.table.html/CTXF-F---2MXF-A.html",
+      "title": "Daikin Europe CTXF-F / 2MXF-A system specifications table",
+      "edition": "Official product table; retrieved 2026-11-17; snapshot SHA-256 f6ba252160677f7140f608171908e1cb29ecea446b27403341ef4c5d68ba9a83",
+      "retrievedAt": "2026-11-17"
+    },
+    {
+      "id": "mxf-install-guide",
+      "url": "https://www.daikin.fr/content/dam/document-library/Installer-reference-guide/ac/split/2amxf-a/2AMXF-A.2AMXM-M9.2MXF-A.2MXM-N9_Installer%20reference%20guide_4PFR600463-3K_French.pdf",
+      "title": "Daikin 2(A)MXM40+50 + 2(A)MXF40+50 installer reference guide (French)",
+      "edition": "4PFR600463-3K, 2026.04; printed pp.36-38; PDF SHA-256 daa99e5bbf17a2a320f41c490d3ed5204fbda7bdc28fe2be2602e5d8a27d2d8b",
+      "retrievedAt": "2026-11-17"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "2MXF40A2V1B",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "mxf-outdoor-table",
+        "locator": "Official product table exact outdoor column header",
+        "excerpt": "2MXF40A2V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 550,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 2MXF-A product table, exact 2MXF40A2V1B column",
+            "excerpt": "2MXF40A2V1B | 550 × 765 × 285 mm"
+          },
+          "condition": "outdoor casing"
+        },
+        {
+          "key": "width",
+          "value": 765,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 2MXF-A product table, exact 2MXF40A2V1B column",
+            "excerpt": "2MXF40A2V1B | 550 × 765 × 285 mm"
+          },
+          "condition": "outdoor casing"
+        },
+        {
+          "key": "depth",
+          "value": 285,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 2MXF-A product table, exact 2MXF40A2V1B column",
+            "excerpt": "2MXF40A2V1B | 550 × 765 × 285 mm"
+          },
+          "condition": "outdoor casing"
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 2,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mxf-install-guide",
+            "locator": "Daikin France 2MXF-A product page, product characteristics",
+            "excerpt": "Jusqu’à 2 unités intérieures peuvent être raccordées à une unité extérieure multi"
+          },
+          "condition": "manufacturer product page: maximum two indoor units"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 2MXF-A product table, exact 2MXF40A2V1B column",
+            "excerpt": "2MXF40A2V1B | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 2MXF-A product table, exact 2MXF40A2V1B column",
+            "excerpt": "2MXF40A2V1B | -10 / 46 °CDB"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 2MXF-A product table, exact 2MXF40A2V1B column",
+            "excerpt": "2MXF40A2V1B | -10 / 46 °CDB"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 2MXF-A product table, exact 2MXF40A2V1B column",
+            "excerpt": "2MXF40A2V1B | -15 / 18 °CWB"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 2MXF-A product table, exact 2MXF40A2V1B column",
+            "excerpt": "2MXF40A2V1B | -15 / 18 °CWB"
+          },
+          "condition": "outdoor wet-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Manufacturer guide publishes two ports, connection class/reducer rules, and a total connected class cap of ≤6.0 kW. Separate CTXF-F system table explicitly lists this two-head combination: CTXF20F5V1B / CTXF20F5V1B / 2MXF40A2V1B. Broader exact full-SKU eligibility and complete combination performance remain unknown.",
+          "evidence": {
+            "sourceId": "mxf-install-guide",
+            "locator": "Printed pp.36-38, section 7.2.6: total connected class table, 2MXF-specific port/class/reducer rows; exact two-head combination also in mxf-combination-table",
+            "excerpt": "A/B ports; total class ≤6.0 kW; CTXF20F5V1B / CTXF20F5V1B / 2MXF40A2V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor high-fan airflow is unpublished in the reviewed product table.",
+        "Minimum connected-head count is not stated in the reviewed guide.",
+        "Exact full-SKU eligibility beyond the specific CTXF-F combination shown and complete valid combinations are not established."
+      ]
+    },
+    {
+      "modelReference": "2MXF50A2V1B",
+      "unitType": "outdoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "mxf-outdoor-table",
+        "locator": "Official product table exact outdoor column header",
+        "excerpt": "2MXF50A2V1B"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 550,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 2MXF-A product table, exact 2MXF50A2V1B column",
+            "excerpt": "2MXF50A2V1B | 550 × 765 × 285 mm"
+          },
+          "condition": "outdoor casing"
+        },
+        {
+          "key": "width",
+          "value": 765,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 2MXF-A product table, exact 2MXF50A2V1B column",
+            "excerpt": "2MXF50A2V1B | 550 × 765 × 285 mm"
+          },
+          "condition": "outdoor casing"
+        },
+        {
+          "key": "depth",
+          "value": 285,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 2MXF-A product table, exact 2MXF50A2V1B column",
+            "excerpt": "2MXF50A2V1B | 550 × 765 × 285 mm"
+          },
+          "condition": "outdoor casing"
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 2,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mxf-install-guide",
+            "locator": "Daikin France 2MXF-A product page, product characteristics",
+            "excerpt": "Jusqu’à 2 unités intérieures peuvent être raccordées à une unité extérieure multi"
+          },
+          "condition": "manufacturer product page: maximum two indoor units"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R-32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 2MXF-A product table, exact 2MXF50A2V1B column",
+            "excerpt": "2MXF50A2V1B | R-32"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 2MXF-A product table, exact 2MXF50A2V1B column",
+            "excerpt": "2MXF50A2V1B | -10 / 46 °CDB"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 2MXF-A product table, exact 2MXF50A2V1B column",
+            "excerpt": "2MXF50A2V1B | -10 / 46 °CDB"
+          },
+          "condition": "outdoor dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 2MXF-A product table, exact 2MXF50A2V1B column",
+            "excerpt": "2MXF50A2V1B | -15 / 18 °CWB"
+          },
+          "condition": "outdoor wet-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 18,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mxf-outdoor-table",
+            "locator": "Official 2MXF-A product table, exact 2MXF50A2V1B column",
+            "excerpt": "2MXF50A2V1B | -15 / 18 °CWB"
+          },
+          "condition": "outdoor wet-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Manufacturer guide publishes two ports, connection class/reducer rules, and a total connected class cap of ≤8.5 kW. Separate CTXF-F system table explicitly lists this two-head combination: CTXF25F5V1B / CTXF25F5V1B / 2MXF50A2V1B. Broader exact full-SKU eligibility and complete combination performance remain unknown.",
+          "evidence": {
+            "sourceId": "mxf-install-guide",
+            "locator": "Printed pp.36-38, section 7.2.6: total connected class table, 2MXF-specific port/class/reducer rows; exact two-head combination also in mxf-combination-table",
+            "excerpt": "A/B ports; total class ≤8.5 kW; CTXF25F5V1B / CTXF25F5V1B / 2MXF50A2V1B"
+          }
+        }
+      ],
+      "unknowns": [
+        "Outdoor high-fan airflow is unpublished in the reviewed product table.",
+        "Minimum connected-head count is not stated in the reviewed guide.",
+        "Exact full-SKU eligibility beyond the specific CTXF-F combination shown and complete valid combinations are not established."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

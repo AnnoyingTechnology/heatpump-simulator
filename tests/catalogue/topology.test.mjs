@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { validateMultisplitInstallation as validate } from './build/equipment-topology.js';
-import { CATALOGUE_OUTDOORS } from './build/equipment-data.js';
+import { CATALOGUE_INDOORS, CATALOGUE_OUTDOORS } from './build/equipment-data.js';
 const model = id => CATALOGUE_OUTDOORS.find(m => m.id === id).installation;
 const head = (id, portId, capacityClass, connectedCapacityKw, reducer='none', extra={}) => ({id,manufacturer:'daikin',enabled:true,installation:{portId,capacityClass,connectedCapacityKw,reducer,...extra}});
 
@@ -46,6 +46,7 @@ test('generic/other manufacturer cannot become an approved Daikin combination',(
  const result=validate(model('2MXM40A2V1B9'),heads);assert.equal(result.status,'unknown');assert.equal(result.eligibilityStatus,'unknown');assert.ok(result.findings.some(f=>f.code==='manufacturer'&&f.status==='unknown'));
 });
 
+
 test('legacy unknown constraints stay unknown at one or two installed heads; published maximum still rejects excess',()=>{
  const profile=model('2MXM40N2V1B');
  const one=[head('FTXA25','A',25,2.5)];
@@ -55,4 +56,37 @@ test('legacy unknown constraints stay unknown at one or two installed heads; pub
  const two=[...one,head('FTXA35','B',35,3.5)];two[1].enabled=false;assert.equal(validate(profile,two).status,'unknown');
  const three=[...two,head('FTXA25','C',25,2.5)];assert.equal(validate(profile,three).topologyStatus,'invalid');
  one[0].manufacturer='mitsubishi-electric';assert.equal(validate(profile,one).eligibilityStatus,'unknown');
+});
+
+test('3MXF published ports enforce classes/reducers while unknown minimum and exact SKU eligibility stay unknown',()=>{
+ const profile=model('3MXF52A2V1B9');
+ const heads=[head('a','A',35,3.5),head('b','B',20,2,'2+4'),head('c','C',20,2,'2+4')];
+ const result=validate(profile,heads);assert.equal(result.topologyStatus,'unknown');assert.equal(result.eligibilityStatus,'unknown');
+ assert.ok(result.findings.some(f=>f.code==='minimum-count-unpublished'));
+ heads[1].installation.reducer='none';assert.ok(validate(profile,heads).findings.some(f=>f.code==='reducer-or-class'));
+ heads[0].installation.capacityClass=42;heads[0].installation.connectedCapacityKw=4.2;heads[0].installation.guideNamedIndoorClass='FTXF42F';
+ heads[1].installation.connectedCapacityKw=3.5;heads[1].installation.capacityClass=35;heads[1].installation.reducer='2+4';
+ heads[2].installation.connectedCapacityKw=3.5;heads[2].installation.capacityClass=35;
+ assert.ok(validate(profile,heads).findings.some(f=>f.code==='class-sum'));
+});
+
+test('2MXF published port classes, reducer and class-sum caps are enforced with unknown exact eligibility',()=>{
+ const forty=model('2MXF40A2V1B');
+ const heads=[head('a','A',35,3.5),head('b','B',25,2.5)];
+ const ok=validate(forty,heads);assert.equal(ok.topologyStatus,'unknown');assert.equal(ok.eligibilityStatus,'unknown');
+ assert.ok(ok.findings.some(f=>f.code==='minimum-count-unpublished'));
+ heads[0].installation.capacityClass=42;assert.ok(validate(forty,heads).findings.some(f=>f.code==='port-class'));
+ heads[0].installation.capacityClass=35;heads[1].installation.capacityClass=35;heads[1].installation.connectedCapacityKw=3.5;
+ assert.ok(validate(forty,heads).findings.some(f=>f.code==='class-sum'));
+ const fifty=model('2MXF50A2V1B');
+ const pair=[head('a','A',42,4.3),head('b','B',42,4.3,'1+2')];
+ assert.ok(validate(fifty,pair).findings.some(f=>f.code==='class-sum'));
+ pair[1].installation.reducer='none';assert.ok(validate(fifty,pair).findings.some(f=>f.code==='reducer-or-class'));
+});
+
+test('exact ATXP-N9 pair metadata names only its source-listed ARXP outdoor partner',()=>{
+ const indoor=id=>CATALOGUE_INDOORS.find(p=>p.id===id);
+ assert.deepEqual(indoor('ATXP20N5V1B9').compatibleOutdoorReferences,['ARXP20N5V1B9']);
+ assert.deepEqual(indoor('ATXP25N5V1B9').compatibleOutdoorReferences,['ARXP25N5V1B9']);
+ assert.deepEqual(indoor('ATXP35N5V1B9').compatibleOutdoorReferences,['ARXP35N5V1B9']);
 });

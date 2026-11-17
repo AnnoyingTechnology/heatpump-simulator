@@ -1,0 +1,215 @@
+{
+  "scope": "Independent review of exact 2MXF-A outdoor headers, two-port installation rules, connected capacity caps, reducer requirements, and the exact CTXF-F combination table; wider exact SKU eligibility remains unknown.",
+  "candidate": {
+    "path": "research/catalogue/staging/luna-daikin-2mxf-a-2026.json",
+    "sha256": "34e2e8cb402057473dc5c149bf8271dc2454cab4766f2295755c461e4edbf2cf"
+  },
+  "sourcePins": [
+    {
+      "path": "research/sources/luna-daikin-2mxf-a-table-2026.html",
+      "sha256": "8aa3d55917b90bfb2c5ed6dc9f00e61da1bb446b6d743f6ed73b28d10cb4bfa9"
+    },
+    {
+      "path": "research/sources/luna-daikin-ctxf-f-2mxf-a-table-2026.html",
+      "sha256": "f6ba252160677f7140f608171908e1cb29ecea446b27403341ef4c5d68ba9a83"
+    },
+    {
+      "path": "research/sources/luna-daikin-2mxf-a-installation-guide-fr-2026.pdf",
+      "sha256": "daa99e5bbf17a2a320f41c490d3ed5204fbda7bdc28fe2be2602e5d8a27d2d8b"
+    }
+  ],
+  "reviewedUnits": [
+    {
+      "reference": "2MXF40A2V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "maximumIndoorUnits",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 550,
+        "width": 765,
+        "depth": 285,
+        "maximumIndoorUnits": 2,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "height": "outdoor casing",
+        "width": "outdoor casing",
+        "depth": "outdoor casing",
+        "maximumIndoorUnits": "manufacturer product page: maximum two indoor units",
+        "coolingOutdoorMinimum": "outdoor dry-bulb",
+        "coolingOutdoorMaximum": "outdoor dry-bulb",
+        "heatingOutdoorMinimum": "outdoor wet-bulb",
+        "heatingOutdoorMaximum": "outdoor wet-bulb"
+      },
+      "ports": 2,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mxf-install-guide",
+        "locator": "Printed pp.36-38, section 7.2.6: total connected class table, 2MXF-specific port/class/reducer rows; exact two-head combination also in mxf-combination-table",
+        "excerpt": "A/B ports; total class ≤6.0 kW; CTXF20F5V1B / CTXF20F5V1B / 2MXF40A2V1B"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 2,
+        "connectedCapacityClassSumLimitKw": 6.0,
+        "ports": [
+          {
+            "id": "A",
+            "gasConnectionOuterDiameterMm": 9.5,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35
+                ],
+                "reducer": "none"
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "gasConnectionOuterDiameterMm": 9.5,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35
+                ],
+                "reducer": "none"
+              }
+            ]
+          }
+        ],
+        "guide": "4PFR600463-3K (2026.04), printed pp.36-38",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France exact SKU availability unverified"
+      },
+      "candidateFile": "research/catalogue/staging/luna-daikin-2mxf-a-2026.json",
+      "candidateSha256": "34e2e8cb402057473dc5c149bf8271dc2454cab4766f2295755c461e4edbf2cf",
+      "candidateReference": "2MXF40A2V1B",
+      "sourceReview": {
+        "path": "reviews/daikin-2mxf-a-independent-acceptance-2026.json",
+        "sha256": ""
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France exact SKU availability unverified"
+    },
+    {
+      "reference": "2MXF50A2V1B",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "maximumIndoorUnits",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 550,
+        "width": 765,
+        "depth": 285,
+        "maximumIndoorUnits": 2,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "height": "outdoor casing",
+        "width": "outdoor casing",
+        "depth": "outdoor casing",
+        "maximumIndoorUnits": "manufacturer product page: maximum two indoor units",
+        "coolingOutdoorMinimum": "outdoor dry-bulb",
+        "coolingOutdoorMaximum": "outdoor dry-bulb",
+        "heatingOutdoorMinimum": "outdoor wet-bulb",
+        "heatingOutdoorMaximum": "outdoor wet-bulb"
+      },
+      "ports": 2,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mxf-install-guide",
+        "locator": "Printed pp.36-38, section 7.2.6: total connected class table, 2MXF-specific port/class/reducer rows; exact two-head combination also in mxf-combination-table",
+        "excerpt": "A/B ports; total class ≤8.5 kW; CTXF25F5V1B / CTXF25F5V1B / 2MXF50A2V1B"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 2,
+        "connectedCapacityClassSumLimitKw": 8.5,
+        "ports": [
+          {
+            "id": "A",
+            "gasConnectionOuterDiameterMm": 9.5,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35,
+                  42
+                ],
+                "reducer": "none"
+              }
+            ]
+          },
+          {
+            "id": "B",
+            "gasConnectionOuterDiameterMm": 12.7,
+            "alternatives": [
+              {
+                "capacityClasses": [
+                  20,
+                  25,
+                  35,
+                  42
+                ],
+                "reducer": "1+2"
+              }
+            ]
+          }
+        ],
+        "guide": "4PFR600463-3K (2026.04), printed pp.36-38",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France exact SKU availability unverified"
+      },
+      "candidateFile": "research/catalogue/staging/luna-daikin-2mxf-a-2026.json",
+      "candidateSha256": "34e2e8cb402057473dc5c149bf8271dc2454cab4766f2295755c461e4edbf2cf",
+      "candidateReference": "2MXF50A2V1B",
+      "sourceReview": {
+        "path": "reviews/daikin-2mxf-a-independent-acceptance-2026.json",
+        "sha256": ""
+      },
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France exact SKU availability unverified"
+    }
+  ]
+}

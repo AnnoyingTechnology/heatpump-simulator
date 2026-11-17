@@ -1,0 +1,179 @@
+{
+  "scope": "Independent primary-table and positioned-layout review; current Daikin Europe FTXTP-A/RXTP-A published classes only, no factory-SKU alias or France availability claim.",
+  "candidate": {
+    "path": "research/catalogue/staging/luna-daikin-nepura-ftxtp-classes-2026.json",
+    "sha256": "a6e66210fc9d01bbbd7c9beadb75dece235f78f3cde7d126c5f01f612211c4f9"
+  },
+  "sourcePins": [
+    {
+      "path": "research/sources/luna-next-daikin-2026-catalogue-p349.html",
+      "sha256": "812b43607aa93e6d0ab6ad26591e354a2b4907eb8ea3f24d79eed996f27385c7"
+    },
+    {
+      "path": "research/sources/luna-daikin-2026-p349-layout.svg",
+      "sha256": "190853bee6507bed9656658f8419abd707be3cac4a676700b4cf749069143532"
+    },
+    {
+      "path": "research/sources/luna-daikin-2026-p349-background.webp",
+      "sha256": "17d8b56d850b1cd5224b8ac095d7348053616ace7ad45f5386b15c3126ab4d2a"
+    }
+  ],
+  "layoutReview": {
+    "path": "research/sources/luna-daikin-2026-p349-layout.svg",
+    "sha256": "190853bee6507bed9656658f8419abd707be3cac4a676700b4cf749069143532"
+  },
+  "reviewedUnits": [
+    {
+      "reference": "FTXTP25A",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 286,
+        "width": 770,
+        "depth": 225,
+        "airflow": 660
+      },
+      "factConditions": {
+        "height": "indoor casing",
+        "width": "indoor casing",
+        "depth": "indoor casing",
+        "airflow": "cooling mode, high fan; source unit m³/min"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.349"
+      }
+    },
+    {
+      "reference": "RXTP25A",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "refrigerant"
+      ],
+      "factValues": {
+        "height": 605,
+        "width": 930,
+        "depth": 376,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -31,
+        "heatingOutdoorMaximum": 18,
+        "refrigerant": "R-32"
+      },
+      "factConditions": {
+        "height": "outdoor casing",
+        "width": "outdoor casing",
+        "depth": "outdoor casing",
+        "coolingOutdoorMinimum": "outdoor dry-bulb",
+        "coolingOutdoorMaximum": "outdoor dry-bulb",
+        "heatingOutdoorMinimum": "outdoor wet-bulb",
+        "heatingOutdoorMaximum": "outdoor wet-bulb"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.349"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXTP25A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "catalogue-p349",
+        "locator": "Printed p.349; Efficiency data table exact class-pair column 25A + 25A",
+        "excerpt": "25A + 25A"
+      }
+    },
+    {
+      "reference": "FTXTP35A",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 286,
+        "width": 770,
+        "depth": 225,
+        "airflow": 660
+      },
+      "factConditions": {
+        "height": "indoor casing",
+        "width": "indoor casing",
+        "depth": "indoor casing",
+        "airflow": "cooling mode, high fan; source unit m³/min"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.349"
+      }
+    },
+    {
+      "reference": "RXTP35A",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum",
+        "refrigerant"
+      ],
+      "factValues": {
+        "height": 605,
+        "width": 930,
+        "depth": 376,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -31,
+        "heatingOutdoorMaximum": 18,
+        "refrigerant": "R-32"
+      },
+      "factConditions": {
+        "height": "outdoor casing",
+        "width": "outdoor casing",
+        "depth": "outdoor casing",
+        "coolingOutdoorMinimum": "outdoor dry-bulb",
+        "coolingOutdoorMaximum": "outdoor dry-bulb",
+        "heatingOutdoorMinimum": "outdoor wet-bulb",
+        "heatingOutdoorMaximum": "outdoor wet-bulb"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified",
+        "identityKind": "published-class",
+        "sourceEdition": "ECPEN26-500 (02/2026), p.349"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FTXTP35A"
+      ],
+      "pairingEvidence": {
+        "sourceId": "catalogue-p349",
+        "locator": "Printed p.349; Efficiency data table exact class-pair column 35A + 35A",
+        "excerpt": "35A + 35A"
+      }
+    }
+  ]
+}

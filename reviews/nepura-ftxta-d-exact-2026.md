@@ -1,0 +1,9 @@
+# Daikin Nepura FTXTA-D exact pairing batch
+
+Checked 2026-11-17. Four exact Daikin France technical-table columns identify these indoor/outdoor pairs: FTXTA30D2V1BG / RXTA30C2V1B (DG), FTXTA30D2V1BL / RXTA30C2V1B (DL), FTXTA30D2V1BP / RXTA30C2V1B (DP), and FTXTA30D2V1BY / RXTA30C2V1B (DY). The DP table was fetched from Daikin France and saved under `research/sources/` after the earlier staged set was found to lack that finish's table.
+
+The four France pages establish exact pair identity. Indoor casing and cooling high-fan flow come from the shared FTXTA30DG/L/P/Y cells on Daikin Europe ECPEN26-500 p.345. All numeric technical cells there are blue and flagged preliminary, so the imported fields retain that condition and are not represented as final specs. Indoor class flow remains 13.1 m³/min (786 m³/h); outdoor records are not duplicated because RXTA30C2V1B is already in runtime through the exact CW/CB batch. The new indoor profiles carry `compatibleOutdoorClasses: ["RXTA30C2V1B"]`, which lets selection reflect the exact manufacturer pair header.
+
+Exact full references do not make current retail stock or performance-map values known. No nominal rating, efficiency, compressor data, charge or outdoor airflow was added. The four exact pair readbacks, source pins and candidate hash are in [`nepura-ftxta-d-exact-independent-acceptance-2026.json`](nepura-ftxta-d-exact-independent-acceptance-2026.json), with the candidate in `research/catalogue/staging/luna-daikin-ftxta-d-exact-2026.json`.
+
+Runtime Daikin count after this batch: **86 outdoor / 163 indoor**. See [`daikin-luna-coverage.md`](daikin-luna-coverage.md) for remaining gaps and [`mitsubishi-electric-luna-coverage.md`](mitsubishi-electric-luna-coverage.md) for the unchanged 25 outdoor / 45 indoor Mitsubishi Electric count.

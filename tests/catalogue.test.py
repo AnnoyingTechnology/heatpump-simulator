@@ -599,9 +599,10 @@ class CatalogueAcceptance(unittest.TestCase):
         doc = json.loads((ROOT / accepted['candidateFile']).read_text())
         unit = next(u for u in doc['units'] if u['modelReference'] == accepted['candidateReference'])
         receipt = json.loads((ROOT / accepted['sourceReview']['path']).read_text())
+        pairing_receipt = json.loads((ROOT / accepted['pairingReview']['path']).read_text())
         with tempfile.TemporaryDirectory() as directory:
             isolated = Path(directory)
-            for pin in [accepted['sourceReview'], *receipt['sourcePins']]:
+            for pin in [accepted['sourceReview'], *receipt['sourcePins'], accepted['pairingReview'], *pairing_receipt['sourcePins']]:
                 target = isolated / pin['path']; target.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copyfile(ROOT / pin['path'], target)
             with self.assertRaisesRegex(ValueError, 'Designated research input'): module.source_review_metadata(unit, accepted, isolated)
@@ -630,12 +631,15 @@ class CatalogueAcceptance(unittest.TestCase):
     def test_published_classes_require_separate_review_contract_and_never_alias_factory_suffixes(self):
         profiles = {p['id']: p for name in ('CATALOGUE_OUTDOORS', 'CATALOGUE_INDOORS') for p in json.loads(re.search(r'export const ' + name + r' = (.*?) as const;', module.generate(), re.S).group(1))}
         classes = [u for u in self.review['units'] if u.get('identityKind') == 'published-class']
-        self.assertEqual(len(classes), 14)
+        self.assertEqual(len(classes), 25)
         for accepted in classes:
             profile = profiles[accepted['reference']]
             self.assertEqual(profile['acceptance'], 'reviewed-class-fields')
             self.assertEqual(profile['identityKind'], 'published-class')
-            self.assertEqual(profile['sourceEdition'], 'ECPEN26-500 (02/2026), p.320')
+            expected_page = ('p.349' if accepted['reference'].startswith(('FTXTP', 'RXTP')) else
+                             'p.326' if accepted['reference'].startswith('FVXM') else
+                             'p.327' if accepted['reference'].startswith('FDXM') else 'p.320')
+            self.assertEqual(profile['sourceEdition'], 'ECPEN26-500 (02/2026), ' + expected_page)
             self.assertEqual(profile['sourceStatus'], 'availability-unknown')
             self.assertEqual(accepted['reference'], accepted['candidateReference'])
         for exact in ('FTXM20A2V1B', 'FTXM25A5V1B', 'RXM25A5V1B9'):
@@ -710,6 +714,139 @@ class CatalogueAcceptance(unittest.TestCase):
             self.assertNotIn(key, p)
         self.assertEqual(profiles['ARXF42F5V1B']['caseMm'], {'h': 556, 'w': 740, 'd': 343})
         self.assertEqual(profiles['ARXF50F5V1B']['caseMm'], {'h': 610, 'w': 923, 'd': 367})
+
+    def test_nepura_ftxtp_p349_classes_are_receipt_bound_and_keep_exact_suffix_unknown(self):
+        refs = {'FTXTP25A', 'RXTP25A', 'FTXTP35A', 'RXTP35A'}
+        accepted = [row for row in self.review['units'] if row['reference'] in refs]
+        self.assertEqual({row['reference'] for row in accepted}, refs)
+        profiles = {p['id']: p for name in ('CATALOGUE_OUTDOORS', 'CATALOGUE_INDOORS')
+                    for p in json.loads(re.search(r'export const ' + name + r' = (.*?) as const;', module.generate(), re.S).group(1))}
+        for row in accepted:
+            doc = json.loads((ROOT / row['candidateFile']).read_text())
+            unit = next(u for u in doc['units'] if u['modelReference'] == row['reference'])
+            metadata = module.source_review_metadata(unit, row, ROOT)
+            self.assertEqual(metadata['sourceEdition'], 'ECPEN26-500 (02/2026), p.349')
+            self.assertEqual(metadata['marketScope'], 'Europe; France availability unverified')
+            self.assertIn('Factory suffix is unpublished in this catalogue table; exact full-SKU eligibility and current retail availability remain unknown.', unit['unknowns'])
+            self.assertEqual(profiles[row['reference']]['identityKind'], 'published-class')
+        for size in (25, 35):
+            indoor, outdoor = profiles[f'FTXTP{size}A'], profiles[f'RXTP{size}A']
+            self.assertEqual(indoor['coolingHighFanFlowM3h'], 660)
+            self.assertEqual(outdoor['compatibleIndoorClasses'], [f'FTXTP{size}A'])
+            self.assertEqual(outdoor['ports'], 1)
+            self.assertIsNone(outdoor['coolingHighFanFlowM3h'])
+            self.assertEqual(outdoor['publishedOperatingRangesC']['heating']['condition'], 'outdoor wet-bulb')
+            self.assertEqual(outdoor['publishedOperatingRangesC']['cooling']['condition'], 'outdoor dry-bulb')
+
+    def test_floor_and_duct_published_classes_preserve_seven_source_pair_columns(self):
+        expected = {'FVXM25B': 'RXM25A9', 'FVXM35B': 'RXM35A9', 'FVXM50B': 'RXM50A8',
+                    'FDXM25F9': 'RXM25A9', 'FDXM35F9': 'RXM35A9', 'FDXM50F9': 'RXM50A8', 'FDXM60F9': 'RXM60A'}
+        pair_columns = {'FVXM25B': '25B + 25A9', 'FVXM35B': '35B + 35A9', 'FVXM50B': '50B + 50A8',
+                        'FDXM25F9': '25F9 + 25A9', 'FDXM35F9': '35F9 + 35A9',
+                        'FDXM50F9': '50F9 + 50A8', 'FDXM60F9': '60F9 + 60A'}
+        accepted = {row['reference']: row for row in self.review['units'] if row['reference'] in expected}
+        self.assertEqual(set(accepted), set(expected))
+        profiles = {p['id']: p for p in json.loads(re.search(r'export const CATALOGUE_INDOORS = (.*?) as const;', module.generate(), re.S).group(1))}
+        for ref, outdoor in expected.items():
+            row = accepted[ref]
+            doc = json.loads((ROOT / row['candidateFile']).read_text())
+            unit = next(u for u in doc['units'] if u['modelReference'] == ref)
+            module.source_review_metadata(unit, row, ROOT)
+            profile = profiles[ref]
+            self.assertEqual(profile['compatibleOutdoorClasses'], [outdoor])
+            self.assertEqual(profile['coolingHighFanFlowM3h'], next(f['value'] for f in unit['facts'] if f['key'] == 'airflow' and 'cooling' in f['condition']))
+            self.assertEqual(row['classPairingEvidence']['excerpt'], pair_columns[ref])
+            self.assertEqual(profile['sourceEdition'], 'ECPEN26-500 (02/2026), ' + ('p.326' if ref.startswith('FVXM') else 'p.327'))
+
+    def test_nepura_ftxta_d_exact_finish_pairs_retain_preliminary_source_boundary(self):
+        expected = {f'FTXTA30D2V1B{finish}': f'FTXTA30D2V1B{finish} / RXTA30C2V1B' for finish in 'GLPY'}
+        accepted = {row['reference']: row for row in self.review['units'] if row['reference'] in expected}
+        self.assertEqual(set(accepted), set(expected))
+        profiles = {p['id']: p for p in json.loads(re.search(r'export const CATALOGUE_INDOORS = (.*?) as const;', module.generate(), re.S).group(1))}
+        for ref, excerpt in expected.items():
+            row = accepted[ref]
+            doc = json.loads((ROOT / row['candidateFile']).read_text())
+            unit = next(u for u in doc['units'] if u['modelReference'] == ref)
+            module.source_review_metadata(unit, row, ROOT)
+            self.assertEqual(row['classPairingEvidence']['excerpt'], excerpt)
+            self.assertEqual(profiles[ref]['compatibleOutdoorClasses'], ['RXTA30C2V1B'])
+            self.assertEqual(profiles[ref]['coolingHighFanFlowM3h'], 786)
+            self.assertTrue(any('preliminary' in note.lower() for note in unit['unknowns']))
+            for fact in unit['facts']:
+                if fact['key'] != 'airflow' or 'cooling' in fact['condition']:
+                    self.assertIn('preliminary', fact.get('condition', ''))
+            self.assertNotIn('nominalCoolingKw', profiles[ref])
+
+    def test_sensira_3mxf_a9_imports_only_published_typed_connection_rules(self):
+        refs = {'3MXF52A2V1B9', '3MXF68A2V1B9'}
+        accepted = {row['reference']: row for row in self.review['units'] if row['reference'] in refs}
+        self.assertEqual(set(accepted), refs)
+        profiles = {p['id']: p for p in json.loads(re.search(r'export const CATALOGUE_OUTDOORS = (.*?) as const;', module.generate(), re.S).group(1))}
+        for ref in refs:
+            row = accepted[ref]
+            doc = json.loads((ROOT / row['candidateFile']).read_text())
+            unit = next(u for u in doc['units'] if u['modelReference'] == ref)
+            module.source_review_metadata(unit, row, ROOT)
+            profile = profiles[ref]
+            installation = profile['installation']
+            self.assertEqual(profile['ports'], 3)
+            self.assertEqual(profile['compatibleIndoorClasses'], [])
+            self.assertEqual(installation['minimumConnectedHeads'], None)
+            self.assertEqual(installation['maximumConnectedHeads'], 3)
+            self.assertEqual(installation['connectedCapacityClassSumLimitKw'], 9.0)
+            self.assertEqual(installation['publishedMaximumTotalChargeKg'], 2.2 if '52' in ref else 2.4)
+            self.assertEqual([p['id'] for p in installation['ports']], ['A', 'B', 'C'])
+            self.assertEqual(installation['ports'][0]['gasConnectionOuterDiameterMm'], 9.5)
+            self.assertEqual(installation['ports'][1]['gasConnectionOuterDiameterMm'], 12.7)
+            self.assertEqual(installation['ports'][0]['alternatives'][-1]['onlyGuideNamedIndoorClasses'], ['FTXF42F'])
+            self.assertEqual(installation['exactEligibility'], 'unknown')
+            self.assertIsNone(profile['coolingHighFanFlowM3h'])
+            self.assertEqual(profile['publishedOperatingRangesC']['cooling']['condition'], 'outdoor dry-bulb')
+
+    def test_sensira_2mxf_a_imports_current_port_rules_and_exact_table_combinations(self):
+        refs = {'2MXF40A2V1B', '2MXF50A2V1B'}
+        accepted = {row['reference']: row for row in self.review['units'] if row['reference'] in refs}
+        self.assertEqual(set(accepted), refs)
+        profiles = {p['id']: p for p in json.loads(re.search(r'export const CATALOGUE_OUTDOORS = (.*?) as const;', module.generate(), re.S).group(1))}
+        expected = {
+            '2MXF40A2V1B': (6.0, 9.5, 'none', [20, 25, 35]),
+            '2MXF50A2V1B': (8.5, 12.7, '1+2', [20, 25, 35, 42]),
+        }
+        for ref, (cap, port_b_mm, reducer_b, classes) in expected.items():
+            row = accepted[ref]
+            doc = json.loads((ROOT / row['candidateFile']).read_text())
+            unit = next(u for u in doc['units'] if u['modelReference'] == ref)
+            module.source_review_metadata(unit, row, ROOT)
+            profile = profiles[ref]
+            installation = profile['installation']
+            self.assertEqual(profile['ports'], 2)
+            self.assertEqual(profile['compatibleIndoorClasses'], [])
+            self.assertIsNone(installation['minimumConnectedHeads'])
+            self.assertEqual(installation['maximumConnectedHeads'], 2)
+            self.assertEqual(installation['connectedCapacityClassSumLimitKw'], cap)
+            self.assertEqual([p['id'] for p in installation['ports']], ['A', 'B'])
+            self.assertEqual(installation['ports'][0]['gasConnectionOuterDiameterMm'], 9.5)
+            self.assertEqual(installation['ports'][1]['gasConnectionOuterDiameterMm'], port_b_mm)
+            self.assertEqual(installation['ports'][0]['alternatives'][0]['capacityClasses'], classes)
+            self.assertEqual(installation['ports'][1]['alternatives'][0]['reducer'], reducer_b)
+            self.assertEqual(installation['exactEligibility'], 'unknown')
+            self.assertIsNone(profile['coolingHighFanFlowM3h'])
+
+    def test_siesta_atxp_n9_exact_partner_references_are_source_pinned(self):
+        pairs = {'ATXP20N5V1B9': 'ARXP20N5V1B9', 'ATXP25N5V1B9': 'ARXP25N5V1B9', 'ATXP35N5V1B9': 'ARXP35N5V1B9'}
+        accepted = {row['reference']: row for row in self.review['units'] if row['reference'] in pairs}
+        self.assertEqual(set(accepted), set(pairs))
+        profiles = {p['id']: p for p in json.loads(re.search(r'export const CATALOGUE_INDOORS = (.*?) as const;', module.generate(), re.S).group(1))}
+        for ref, partner in pairs.items():
+            row = accepted[ref]
+            doc = json.loads((ROOT / row['candidateFile']).read_text())
+            unit = next(u for u in doc['units'] if u['modelReference'] == ref)
+            module.source_review_metadata(unit, row, ROOT)
+            self.assertEqual(profiles[ref]['compatibleOutdoorReferences'], [partner])
+        changed = dict(accepted['ATXP20N5V1B9']); changed['compatibleOutdoorReferences'] = ['ARXP25N5V1B9']
+        doc = json.loads((ROOT / changed['candidateFile']).read_text()); unit = next(u for u in doc['units'] if u['modelReference'] == changed['candidateReference'])
+        with self.assertRaisesRegex(ValueError, 'Exact indoor/outdoor pairing differs'):
+            module.source_review_metadata(unit, changed, ROOT)
 
     def test_partial_range_requires_reviewed_unknowns_and_rejects_numeric_alternative_substitution(self):
         accepted = next(u for u in self.review['units'] if u['reference'] == 'ARXM50A5V1B')
