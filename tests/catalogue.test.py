@@ -899,5 +899,50 @@ class TerraHeadCandidateSourceChecks(unittest.TestCase):
                 self.assertNotIn('compatibleOutdoorReferences', profile)
                 self.assertEqual(profile['caseMm']['h'], 620 if family == 'FNA' else 260)
 
+class TerraAdditionalHeadSourceChecks(unittest.TestCase):
+    def test_columns_receipts_and_runtime_preserve_only_evidenced_fields(self):
+        import hashlib, html
+        expected = {
+            'fba-a9': ('1316387ffaab1e2f8b8da9cd7969c52a487237f38953c5a8587738dde01eda2c', 3),
+            'fcag-b': ('21be15ff985396aad77e627c02b355a90cbfc7ba7a5bdde25c407b8eb9834783', 3),
+            'fha-a9': ('eade582361ab80a01524e49927602658c7326c0c05393420556059ef106c1610', 8),
+        }
+        profiles = {p['id']: p for p in json.loads(re.search(
+            r'export const CATALOGUE_INDOORS = (.*?) as const;', module.generate(), re.S).group(1))}
+        acceptance = json.loads((ROOT / 'research/catalogue/equipment-acceptance.json').read_text())
+        for slug, (digest, count) in expected.items():
+            path = ROOT / f'research/sources/terra-daikin-{slug}-table.html'
+            self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(), digest)
+            markup = path.read_text()
+            rows = []
+            for row in re.findall(r'<tr[^>]*>(.*?)</tr>', markup, re.S):
+                cells = re.findall(r'<t[dh][^>]*>(.*?)</t[dh]>', row, re.S)
+                rows.append([html.unescape(re.sub(r'<[^>]+>', '', cell)).strip() for cell in cells])
+            doc = json.loads((ROOT / f'research/catalogue/staging/terra-daikin-{slug}.json').read_text())
+            self.assertEqual(len(doc['units']), count)
+            header = next(row for row in rows if doc['units'][0]['modelReference'] in row)
+            dimension_rows = [next(row for row in rows if row[:4] == prefix) for prefix in (
+                ['Dimensions', 'Unit', 'Height', 'mm'], ['', '', 'Width', 'mm'], ['', '', 'Depth', 'mm'])]
+            airflow = next(row for row in rows if row[:5] == ['Fan', 'Air flow rate', 'Cooling', 'High', 'm³/min'])
+            for unit in doc['units']:
+                ref = unit['modelReference']
+                idx = header.index(ref) - 1 + 5
+                facts = {f['key']: f['value'] for f in unit['facts']}
+                self.assertEqual([facts[k] for k in ('height', 'width', 'depth')], [float(row[idx - 1]) for row in dimension_rows])
+                self.assertAlmostEqual(facts['airflow'], float(airflow[idx]) * 60)
+                self.assertEqual(unit['compatibility'], [])
+                accepted = next(row for row in acceptance['units'] if row['reference'] == ref)
+                module.source_review_metadata(unit, accepted, ROOT)
+                profile = profiles[ref]
+                self.assertEqual(profile['caseMm'], dict(zip(('h', 'w', 'd'), (facts[k] for k in ('height', 'width', 'depth')))))
+                self.assertEqual(profile['coolingHighFanFlowM3h'], facts['airflow'])
+                self.assertNotIn('compatibleOutdoorClasses', profile)
+                self.assertNotIn('compatibleOutdoorReferences', profile)
+            if slug == 'fha-a9':
+                idx = header.index('FHA60AVEB99') - 1 + 5
+                self.assertTrue(all(not row[idx - 1] for row in dimension_rows) and not airflow[idx])
+                self.assertNotIn('FHA60AVEB99', profiles)
+                self.assertTrue(any(u['modelReference'] == 'FHA60AVEB99' for u in doc['unresolvedReferences']))
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,84 @@
+{
+  "scope": "Exact indoor physical fields only; full-SKU outdoor eligibility and France availability unknown.",
+  "candidate": {
+    "path": "research/catalogue/staging/terra-daikin-fcag-b.json",
+    "sha256": "fc83f981d3c0763706f959611e7e9d574310b88bcae7d2eebe0c83a445cc5f51"
+  },
+  "sourcePins": [
+    {
+      "path": "research/sources/terra-daikin-fcag-b-table.html",
+      "sha256": "21be15ff985396aad77e627c02b355a90cbfc7ba7a5bdde25c407b8eb9834783"
+    }
+  ],
+  "reviewedUnits": [
+    {
+      "reference": "FCAG35BVEB",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 204,
+        "width": 840,
+        "depth": 840,
+        "airflow": 774.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe manufacturer table; France availability unverified"
+      }
+    },
+    {
+      "reference": "FCAG50BVEB",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 204,
+        "width": 840,
+        "depth": 840,
+        "airflow": 876.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe manufacturer table; France availability unverified"
+      }
+    },
+    {
+      "reference": "FCAG60BVEB",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 204,
+        "width": 840,
+        "depth": 840,
+        "airflow": 894.0
+      },
+      "factConditions": {
+        "airflow": "cooling high fan"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe manufacturer table; France availability unverified"
+      }
+    }
+  ]
+}

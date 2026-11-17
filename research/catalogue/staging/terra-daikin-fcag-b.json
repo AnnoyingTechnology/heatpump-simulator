@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "daikin",
+  "family": "FCAG-B",
+  "market": "Europe; France availability unknown",
+  "checkedAt": "2026-11-18",
+  "sources": [
+    {
+      "id": "terra-fcag-b",
+      "url": "https://www.daikin.eu/en_us/products/product.table.html/FCAG-B.html",
+      "title": "Daikin FCAG-B specifications table",
+      "retrievedAt": "2026-11-18"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "FCAG35BVEB",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "terra-fcag-b",
+        "locator": "specifications table column heading",
+        "excerpt": "FCAG35BVEB"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 204,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "terra-fcag-b",
+            "locator": "FCAG35BVEB column, Dimensions / Unit / Height",
+            "excerpt": "Height: 204 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 840,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "terra-fcag-b",
+            "locator": "FCAG35BVEB column, Dimensions / Unit / Width",
+            "excerpt": "Width: 840 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 840,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "terra-fcag-b",
+            "locator": "FCAG35BVEB column, Dimensions / Unit / Depth",
+            "excerpt": "Depth: 840 mm"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 774.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "terra-fcag-b",
+            "locator": "FCAG35BVEB column, Fan / Air flow rate / Cooling / High",
+            "excerpt": "12.9 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "Exact MXM full-SKU eligibility",
+        "France availability and current sales status"
+      ]
+    },
+    {
+      "modelReference": "FCAG50BVEB",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "terra-fcag-b",
+        "locator": "specifications table column heading",
+        "excerpt": "FCAG50BVEB"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 204,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "terra-fcag-b",
+            "locator": "FCAG50BVEB column, Dimensions / Unit / Height",
+            "excerpt": "Height: 204 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 840,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "terra-fcag-b",
+            "locator": "FCAG50BVEB column, Dimensions / Unit / Width",
+            "excerpt": "Width: 840 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 840,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "terra-fcag-b",
+            "locator": "FCAG50BVEB column, Dimensions / Unit / Depth",
+            "excerpt": "Depth: 840 mm"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 876.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "terra-fcag-b",
+            "locator": "FCAG50BVEB column, Fan / Air flow rate / Cooling / High",
+            "excerpt": "14.6 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "Exact MXM full-SKU eligibility",
+        "France availability and current sales status"
+      ]
+    },
+    {
+      "modelReference": "FCAG60BVEB",
+      "unitType": "indoor",
+      "status": "unknown",
+      "identityEvidence": {
+        "sourceId": "terra-fcag-b",
+        "locator": "specifications table column heading",
+        "excerpt": "FCAG60BVEB"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 204,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "terra-fcag-b",
+            "locator": "FCAG60BVEB column, Dimensions / Unit / Height",
+            "excerpt": "Height: 204 mm"
+          }
+        },
+        {
+          "key": "width",
+          "value": 840,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "terra-fcag-b",
+            "locator": "FCAG60BVEB column, Dimensions / Unit / Width",
+            "excerpt": "Width: 840 mm"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 840,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "terra-fcag-b",
+            "locator": "FCAG60BVEB column, Dimensions / Unit / Depth",
+            "excerpt": "Depth: 840 mm"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 894.0,
+          "unit": "m3/h",
+          "condition": "cooling high fan",
+          "evidence": {
+            "sourceId": "terra-fcag-b",
+            "locator": "FCAG60BVEB column, Fan / Air flow rate / Cooling / High",
+            "excerpt": "14.9 m³/min"
+          }
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "Exact MXM full-SKU eligibility",
+        "France availability and current sales status"
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    {
+      "modelReference": "FCAG-B / MXM exact combinations",
+      "reason": "No source located with exact indoor and outdoor combinations."
+    }
+  ]
+}
