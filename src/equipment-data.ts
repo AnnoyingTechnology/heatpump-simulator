@@ -5373,6 +5373,421 @@ export const CATALOGUE_OUTDOORS = [
       "exactEligibility": "unknown",
       "publishedMaximumTotalChargeKg": null
     }
+  },
+  {
+    "id": "SUZ-M25VA2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 800,
+      "d": 285
+    },
+    "coolingHighFanFlowM3h": 2160,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "MFZ-KT25VGK",
+      "SEZ-M25DA3",
+      "SLZ-M25FA3",
+      "SFZ-M25VA2",
+      "MLZ-KP25VG"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -10,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "MUFZ-KW25VGHZ2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 800,
+      "d": 285
+    },
+    "coolingHighFanFlowM3h": 1962,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "MFZ-KW25VGK"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -25,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "SUZ-M35VA2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 800,
+      "d": 285
+    },
+    "coolingHighFanFlowM3h": 2040,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "MFZ-KT35VGK",
+      "SEZ-M35DA3",
+      "SLZ-M35FA3",
+      "SFZ-M35VA2",
+      "PEAD-M35JA3",
+      "MLZ-KP35VG"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -10,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "MUFZ-KW35VGHZ2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 800,
+      "d": 285
+    },
+    "coolingHighFanFlowM3h": 1962,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "MFZ-KW35VGK"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -25,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "SUZ-M50VA2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 714,
+      "w": 800,
+      "d": 285
+    },
+    "coolingHighFanFlowM3h": 2760,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "MFZ-KT50VGK",
+      "SEZ-M50DA3",
+      "SLZ-M50FA3",
+      "SFZ-M50VA2",
+      "PEAD-M50JA3",
+      "MLZ-KP50VG"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -10,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "MUFZ-KW50VGHZ2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 880,
+      "w": 840,
+      "d": 330
+    },
+    "coolingHighFanFlowM3h": 2628,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "MFZ-KW50VGK"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -25,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "SUZ-M60VA2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 880,
+      "w": 840,
+      "d": 330
+    },
+    "coolingHighFanFlowM3h": 3000,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "MFZ-KT60VGK",
+      "SEZ-M60DA3",
+      "SLZ-M60FA3",
+      "SFZ-M60VA2",
+      "PEAD-M60JA3"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -10,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "MUFZ-KW60VGHZ2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 880,
+      "w": 840,
+      "d": 330
+    },
+    "coolingHighFanFlowM3h": 2928,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "MFZ-KW60VGK"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -25,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "SUZ-M71VA2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 880,
+      "w": 840,
+      "d": 330
+    },
+    "coolingHighFanFlowM3h": 3000,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SFZ-M71VA2",
+      "PEAD-M71JA3"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -10,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "PUZ-ZM35VKA3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 630,
+      "w": 809,
+      "d": 300
+    },
+    "coolingHighFanFlowM3h": 2400,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SEZ-M35DA3",
+      "SLZ-M35FA3",
+      "PEAD-M35JA3"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -5,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -11,
+        "maximum": 21,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "PUZ-ZM50VKA3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 630,
+      "w": 809,
+      "d": 300
+    },
+    "coolingHighFanFlowM3h": 2400,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SEZ-M50DA3",
+      "SLZ-M50FA3",
+      "PEAD-M50JA3"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -5,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -11,
+        "maximum": 21,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "PUZ-ZM60VHA3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 943,
+      "w": 950,
+      "d": 330
+    },
+    "coolingHighFanFlowM3h": 3300,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SEZ-M60DA3",
+      "SLZ-M60FA3",
+      "PEAD-M60JA3"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -5,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 21,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "PUZ-ZM71VHA3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 943,
+      "w": 950,
+      "d": 330
+    },
+    "coolingHighFanFlowM3h": 3300,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "PEAD-M71JA3"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -5,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 21,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
   }
 ] as const;
 
@@ -8402,6 +8817,370 @@ export const CATALOGUE_INDOORS = [
       "d": 247
     },
     "coolingHighFanFlowM3h": 972,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MFZ-KT25VGK",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 750,
+      "d": 215
+    },
+    "coolingHighFanFlowM3h": 534,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MFZ-KT35VGK",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 750,
+      "d": 215
+    },
+    "coolingHighFanFlowM3h": 534,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MFZ-KT50VGK",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 750,
+      "d": 215
+    },
+    "coolingHighFanFlowM3h": 738,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MFZ-KT60VGK",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 750,
+      "d": 215
+    },
+    "coolingHighFanFlowM3h": 900,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MFZ-KW25VGK",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 750,
+      "d": 215
+    },
+    "coolingHighFanFlowM3h": 492,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MFZ-KW35VGK",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 750,
+      "d": 215
+    },
+    "coolingHighFanFlowM3h": 492,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MFZ-KW50VGK",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 750,
+      "d": 215
+    },
+    "coolingHighFanFlowM3h": 636,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MFZ-KW60VGK",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 750,
+      "d": 215
+    },
+    "coolingHighFanFlowM3h": 900,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "SEZ-M25DA3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 790,
+      "d": 700
+    },
+    "coolingHighFanFlowM3h": 540,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "SEZ-M35DA3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 990,
+      "d": 700
+    },
+    "coolingHighFanFlowM3h": 660,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "SEZ-M50DA3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 990,
+      "d": 700
+    },
+    "coolingHighFanFlowM3h": 900,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "SEZ-M60DA3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 1190,
+      "d": 700
+    },
+    "coolingHighFanFlowM3h": 1080,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "SLZ-M25FA3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 245,
+      "w": 570,
+      "d": 570
+    },
+    "coolingHighFanFlowM3h": 510,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "SLZ-M35FA3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 245,
+      "w": 570,
+      "d": 570
+    },
+    "coolingHighFanFlowM3h": 690,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "SLZ-M50FA3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 245,
+      "w": 570,
+      "d": 570
+    },
+    "coolingHighFanFlowM3h": 690,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "SLZ-M60FA3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 245,
+      "w": 570,
+      "d": 570
+    },
+    "coolingHighFanFlowM3h": 780,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "SFZ-M25VA2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 615,
+      "w": 700,
+      "d": 200
+    },
+    "coolingHighFanFlowM3h": 540,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "SFZ-M35VA2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 615,
+      "w": 900,
+      "d": 200
+    },
+    "coolingHighFanFlowM3h": 660,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "SFZ-M50VA2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 615,
+      "w": 900,
+      "d": 200
+    },
+    "coolingHighFanFlowM3h": 900,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "SFZ-M60VA2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 615,
+      "w": 1100,
+      "d": 200
+    },
+    "coolingHighFanFlowM3h": 1080,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "SFZ-M71VA2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 615,
+      "w": 1100,
+      "d": 200
+    },
+    "coolingHighFanFlowM3h": 1200,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "PEAD-M35JA3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 250,
+      "w": 900,
+      "d": 732
+    },
+    "coolingHighFanFlowM3h": 690,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "PEAD-M50JA3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 250,
+      "w": 900,
+      "d": 732
+    },
+    "coolingHighFanFlowM3h": 1020,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "PEAD-M60JA3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 250,
+      "w": 1100,
+      "d": 732
+    },
+    "coolingHighFanFlowM3h": 1200,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "PEAD-M71JA3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 250,
+      "w": 1100,
+      "d": 732
+    },
+    "coolingHighFanFlowM3h": 1380,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MLZ-KP25VG",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 185,
+      "w": 1102,
+      "d": 360
+    },
+    "coolingHighFanFlowM3h": 528,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MLZ-KP35VG",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 185,
+      "w": 1102,
+      "d": 360
+    },
+    "coolingHighFanFlowM3h": 564,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MLZ-KP50VG",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 185,
+      "w": 1102,
+      "d": 360
+    },
+    "coolingHighFanFlowM3h": 684,
     "sourceStatus": "availability-unknown",
     "marketScope": "France 2026–2027 catalogue; current stock unverified"
   }
