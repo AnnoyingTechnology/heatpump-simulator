@@ -1,0 +1,1833 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "mitsubishi-electric",
+  "family": "MXZ 2–4 head R32",
+  "market": "France",
+  "checkedAt": "2026-11-18",
+  "sources": [
+    {
+      "id": "mitsubishi-fr-air-air-2026-2027",
+      "url": "https://confort.mitsubishielectric.fr/sites/default/files/2026-04/RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "title": "PAC Air/Air catalogue 2026-2027",
+      "retrievedAt": "2026-11-18"
+    },
+    {
+      "id": "mitsubishi-mxz-combinations-2026",
+      "url": "https://confort.mitsubishielectric.fr/sites/default/files/2026-04/RAC-MXZ-PXZ-LIVRET-COMBINAISONS-2026-2-3-4-SORTIES.pdf.pdf",
+      "title": "Combinaisons Multi-Split & Multi-Split avec ECS 2026/27",
+      "retrievedAt": "2026-11-17"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "MXZ-2HA40VF3",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.112 (printed p.111), MXZ-2HA40VF3 column, table header",
+        "excerpt": "MXZ-2HA40VF3"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 550,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA40VF3 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "width",
+          "value": 800,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA40VF3 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 285,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA40VF3 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1704,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA40VF3 column, cooling airflow",
+            "excerpt": "Débit d’air en froid GV m3/h 1704"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA40VF3 column, refrigerant",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 2,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA40VF3 column, connected units",
+            "excerpt": "Nombre d’unités intérieures connectables mini / maxi 2 / 2"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA40VF3 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA40VF3 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA40VF3 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA40VF3 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The catalogue specifies 2 connections and 2 to 2 connected indoor units.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA40VF3 column, connection count and connected units",
+            "excerpt": "2 CONNEXIONS ; Nombre d’unités intérieures connectables mini / maxi 2 / 2"
+          }
+        },
+        {
+          "description": "Indoor class combinations for this model are listed in the booklet; the table is not a per-port compatibility matrix.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.4, MXZ-2HA40VF3 combination rows",
+            "excerpt": "MXZ-2HA40VF3"
+          }
+        },
+        {
+          "description": "HA units are only compatible with MSZ-HR VFK2 wall indoor units.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.111 (printed p.110), ZOOM",
+            "excerpt": "Les groupes Multi-Split Essentiel MXZ-HA sont uniquement compatibles avec les unités intérieures murales MSZ-HR VFK2"
+          }
+        },
+        {
+          "description": "The booklet requires the sum of maximum indoor currents to be no greater than 3 A.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.4, footnote below combination tables",
+            "excerpt": "la somme des intensités absorbées maxi des unités intérieures raccordées ne doit pas être supérieure à 3A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact full-SKU eligibility, named port class/reducer rules and general class-sum ceiling are not established by these sources; 3 A maximum indoor-current sum has no field in the existing multisplit shape.",
+        "Booklet class-combination rows require separate visual transcription before acceptance."
+      ]
+    },
+    {
+      "modelReference": "MXZ-2HA50VF3",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.112 (printed p.111), MXZ-2HA50VF3 column, table header",
+        "excerpt": "MXZ-2HA50VF3"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 550,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA50VF3 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "width",
+          "value": 800,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA50VF3 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 285,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA50VF3 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1962,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA50VF3 column, cooling airflow",
+            "excerpt": "Débit d’air en froid GV m3/h 1962"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA50VF3 column, refrigerant",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 2,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA50VF3 column, connected units",
+            "excerpt": "Nombre d’unités intérieures connectables mini / maxi 2 / 2"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA50VF3 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA50VF3 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA50VF3 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA50VF3 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The catalogue specifies 2 connections and 2 to 2 connected indoor units.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-2HA50VF3 column, connection count and connected units",
+            "excerpt": "2 CONNEXIONS ; Nombre d’unités intérieures connectables mini / maxi 2 / 2"
+          }
+        },
+        {
+          "description": "Indoor class combinations for this model are listed in the booklet; the table is not a per-port compatibility matrix.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.4, MXZ-2HA50VF3 combination rows",
+            "excerpt": "MXZ-2HA50VF3"
+          }
+        },
+        {
+          "description": "HA units are only compatible with MSZ-HR VFK2 wall indoor units.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.111 (printed p.110), ZOOM",
+            "excerpt": "Les groupes Multi-Split Essentiel MXZ-HA sont uniquement compatibles avec les unités intérieures murales MSZ-HR VFK2"
+          }
+        },
+        {
+          "description": "The booklet requires the sum of maximum indoor currents to be no greater than 3 A.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.4, footnote below combination tables",
+            "excerpt": "la somme des intensités absorbées maxi des unités intérieures raccordées ne doit pas être supérieure à 3A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact full-SKU eligibility, named port class/reducer rules and general class-sum ceiling are not established by these sources; 3 A maximum indoor-current sum has no field in the existing multisplit shape.",
+        "Booklet class-combination rows require separate visual transcription before acceptance."
+      ]
+    },
+    {
+      "modelReference": "MXZ-3HA50VF3",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.112 (printed p.111), MXZ-3HA50VF3 column, table header",
+        "excerpt": "MXZ-3HA50VF3"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 710,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-3HA50VF3 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 710 x 840 x 330"
+          }
+        },
+        {
+          "key": "width",
+          "value": 840,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-3HA50VF3 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 710 x 840 x 330"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 330,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-3HA50VF3 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 710 x 840 x 330"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1860,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-3HA50VF3 column, cooling airflow",
+            "excerpt": "Débit d’air en froid GV m3/h 1860"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-3HA50VF3 column, refrigerant",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 3,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-3HA50VF3 column, connected units",
+            "excerpt": "Nombre d’unités intérieures connectables mini / maxi 2 / 3"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-3HA50VF3 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-3HA50VF3 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-3HA50VF3 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-3HA50VF3 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The catalogue specifies 3 connections and 2 to 3 connected indoor units.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.112 (printed p.111), MXZ-3HA50VF3 column, connection count and connected units",
+            "excerpt": "3 CONNEXIONS ; Nombre d’unités intérieures connectables mini / maxi 2 / 3"
+          }
+        },
+        {
+          "description": "Indoor class combinations for this model are listed in the booklet; the table is not a per-port compatibility matrix.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.4, MXZ-3HA50VF3 combination rows",
+            "excerpt": "MXZ-3HA50VF3"
+          }
+        },
+        {
+          "description": "HA units are only compatible with MSZ-HR VFK2 wall indoor units.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.111 (printed p.110), ZOOM",
+            "excerpt": "Les groupes Multi-Split Essentiel MXZ-HA sont uniquement compatibles avec les unités intérieures murales MSZ-HR VFK2"
+          }
+        },
+        {
+          "description": "The booklet requires the sum of maximum indoor currents to be no greater than 3 A.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.4, footnote below combination tables",
+            "excerpt": "la somme des intensités absorbées maxi des unités intérieures raccordées ne doit pas être supérieure à 3A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact full-SKU eligibility, named port class/reducer rules and general class-sum ceiling are not established by these sources; 3 A maximum indoor-current sum has no field in the existing multisplit shape.",
+        "Booklet class-combination rows require separate visual transcription before acceptance."
+      ]
+    },
+    {
+      "modelReference": "MXZ-2F33VF5",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.113 (printed p.112), MXZ-2F33VF5 column, table header",
+        "excerpt": "MXZ-2F33VF5"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 550,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F33VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "width",
+          "value": 800,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F33VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 285,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F33VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1848,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F33VF5 column, cooling airflow",
+            "excerpt": "Débit d’air en froid GV m3/h 1848"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F33VF5 column, refrigerant",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 2,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F33VF5 column, connected units",
+            "excerpt": "Nombre d’unités intérieures connectables mini / maxi 2 / 2"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F33VF5 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F33VF5 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F33VF5 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F33VF5 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The catalogue specifies 2 connections and 2 to 2 connected indoor units.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F33VF5 column, connection count and connected units",
+            "excerpt": "2 CONNEXIONS ; Nombre d’unités intérieures connectables mini / maxi 2 / 2"
+          }
+        },
+        {
+          "description": "Indoor class combinations for this model are listed in the booklet; the table is not a per-port compatibility matrix.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.4, MXZ-2F33VF5 combination rows",
+            "excerpt": "MXZ-2F33VF5"
+          }
+        },
+        {
+          "description": "The booklet requires the sum of maximum indoor currents to be no greater than 3 A.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.4, footnote below combination tables",
+            "excerpt": "la somme des intensités absorbées maxi des unités intérieures raccordées ne doit pas être supérieure à 3A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact full-SKU eligibility, named port class/reducer rules and general class-sum ceiling are not established by these sources; 3 A maximum indoor-current sum has no field in the existing multisplit shape.",
+        "Booklet class-combination rows require separate visual transcription before acceptance."
+      ]
+    },
+    {
+      "modelReference": "MXZ-2F42VF5",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.113 (printed p.112), MXZ-2F42VF5 column, table header",
+        "excerpt": "MXZ-2F42VF5"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 550,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F42VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "width",
+          "value": 800,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F42VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 285,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F42VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1704,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F42VF5 column, cooling airflow",
+            "excerpt": "Débit d’air en froid GV m3/h 1704"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F42VF5 column, refrigerant",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 2,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F42VF5 column, connected units",
+            "excerpt": "Nombre d’unités intérieures connectables mini / maxi 2 / 2"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F42VF5 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F42VF5 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F42VF5 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F42VF5 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The catalogue specifies 2 connections and 2 to 2 connected indoor units.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F42VF5 column, connection count and connected units",
+            "excerpt": "2 CONNEXIONS ; Nombre d’unités intérieures connectables mini / maxi 2 / 2"
+          }
+        },
+        {
+          "description": "Indoor class combinations for this model are listed in the booklet; the table is not a per-port compatibility matrix.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.4, MXZ-2F42VF5 combination rows",
+            "excerpt": "MXZ-2F42VF5"
+          }
+        },
+        {
+          "description": "The booklet requires the sum of maximum indoor currents to be no greater than 3 A.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.4, footnote below combination tables",
+            "excerpt": "la somme des intensités absorbées maxi des unités intérieures raccordées ne doit pas être supérieure à 3A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact full-SKU eligibility, named port class/reducer rules and general class-sum ceiling are not established by these sources; 3 A maximum indoor-current sum has no field in the existing multisplit shape.",
+        "Booklet class-combination rows require separate visual transcription before acceptance."
+      ]
+    },
+    {
+      "modelReference": "MXZ-2F53VF5",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.113 (printed p.112), MXZ-2F53VF5 column, table header",
+        "excerpt": "MXZ-2F53VF5"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 550,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F53VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "width",
+          "value": 800,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F53VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 285,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F53VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1962,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F53VF5 column, cooling airflow",
+            "excerpt": "Débit d’air en froid GV m3/h 1962"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F53VF5 column, refrigerant",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 2,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F53VF5 column, connected units",
+            "excerpt": "Nombre d’unités intérieures connectables mini / maxi 2 / 2"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F53VF5 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F53VF5 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F53VF5 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F53VF5 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The catalogue specifies 2 connections and 2 to 2 connected indoor units.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-2F53VF5 column, connection count and connected units",
+            "excerpt": "2 CONNEXIONS ; Nombre d’unités intérieures connectables mini / maxi 2 / 2"
+          }
+        },
+        {
+          "description": "Indoor class combinations for this model are listed in the booklet; the table is not a per-port compatibility matrix.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.4–5, MXZ-2F53VF5 combination rows",
+            "excerpt": "MXZ-2F53VF5"
+          }
+        },
+        {
+          "description": "The booklet requires the sum of maximum indoor currents to be no greater than 3 A.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.4–5, footnote below combination tables",
+            "excerpt": "la somme des intensités absorbées maxi des unités intérieures raccordées ne doit pas être supérieure à 3A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact full-SKU eligibility, named port class/reducer rules and general class-sum ceiling are not established by these sources; 3 A maximum indoor-current sum has no field in the existing multisplit shape.",
+        "Booklet class-combination rows require separate visual transcription before acceptance."
+      ]
+    },
+    {
+      "modelReference": "MXZ-3F54VF5",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.113 (printed p.112), MXZ-3F54VF5 column, table header",
+        "excerpt": "MXZ-3F54VF5"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 710,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F54VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 710 x 840 x 330"
+          }
+        },
+        {
+          "key": "width",
+          "value": 840,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F54VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 710 x 840 x 330"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 330,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F54VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 710 x 840 x 330"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1860,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F54VF5 column, cooling airflow",
+            "excerpt": "Débit d’air en froid GV m3/h 1860"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F54VF5 column, refrigerant",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 3,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F54VF5 column, connected units",
+            "excerpt": "Nombre d’unités intérieures connectables mini / maxi 2 / 3"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F54VF5 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F54VF5 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F54VF5 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F54VF5 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The catalogue specifies 3 connections and 2 to 3 connected indoor units.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F54VF5 column, connection count and connected units",
+            "excerpt": "3 CONNEXIONS ; Nombre d’unités intérieures connectables mini / maxi 2 / 3"
+          }
+        },
+        {
+          "description": "Indoor class combinations for this model are listed in the booklet; the table is not a per-port compatibility matrix.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.5, MXZ-3F54VF5 combination rows",
+            "excerpt": "MXZ-3F54VF5"
+          }
+        },
+        {
+          "description": "The booklet requires the sum of maximum indoor currents to be no greater than 3 A.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.5, footnote below combination tables",
+            "excerpt": "la somme des intensités absorbées maxi des unités intérieures raccordées ne doit pas être supérieure à 3A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact full-SKU eligibility, named port class/reducer rules and general class-sum ceiling are not established by these sources; 3 A maximum indoor-current sum has no field in the existing multisplit shape.",
+        "Booklet class-combination rows require separate visual transcription before acceptance."
+      ]
+    },
+    {
+      "modelReference": "MXZ-3F68VF5",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.113 (printed p.112), MXZ-3F68VF5 column, table header",
+        "excerpt": "MXZ-3F68VF5"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 710,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F68VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 710 x 840 x 330"
+          }
+        },
+        {
+          "key": "width",
+          "value": 840,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F68VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 710 x 840 x 330"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 330,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F68VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 710 x 840 x 330"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 2124,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F68VF5 column, cooling airflow",
+            "excerpt": "Débit d’air en froid GV m3/h 2124"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F68VF5 column, refrigerant",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 3,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F68VF5 column, connected units",
+            "excerpt": "Nombre d’unités intérieures connectables mini / maxi 2 / 3"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F68VF5 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F68VF5 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F68VF5 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F68VF5 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The catalogue specifies 3 connections and 2 to 3 connected indoor units.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.113 (printed p.112), MXZ-3F68VF5 column, connection count and connected units",
+            "excerpt": "3 CONNEXIONS ; Nombre d’unités intérieures connectables mini / maxi 2 / 3"
+          }
+        },
+        {
+          "description": "Indoor class combinations for this model are listed in the booklet; the table is not a per-port compatibility matrix.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.5–6, MXZ-3F68VF5 combination rows",
+            "excerpt": "MXZ-3F68VF5"
+          }
+        },
+        {
+          "description": "The booklet requires the sum of maximum indoor currents to be no greater than 3 A.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.5–6, footnote below combination tables",
+            "excerpt": "la somme des intensités absorbées maxi des unités intérieures raccordées ne doit pas être supérieure à 3A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact full-SKU eligibility, named port class/reducer rules and general class-sum ceiling are not established by these sources; 3 A maximum indoor-current sum has no field in the existing multisplit shape.",
+        "Booklet class-combination rows require separate visual transcription before acceptance."
+      ]
+    },
+    {
+      "modelReference": "MXZ-4F72VF5",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.114 (printed p.113), MXZ-4F72VF5 column, table header",
+        "excerpt": "MXZ-4F72VF5"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 710,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F72VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 710 x 840 x 330"
+          }
+        },
+        {
+          "key": "width",
+          "value": 840,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F72VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 710 x 840 x 330"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 330,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F72VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 710 x 840 x 330"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 2124,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F72VF5 column, cooling airflow",
+            "excerpt": "Débit d’air en froid GV m3/h 2124"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F72VF5 column, refrigerant",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 4,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F72VF5 column, connected units",
+            "excerpt": "Nombre d’unités intérieures connectables mini / maxi 2 / 4"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F72VF5 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F72VF5 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F72VF5 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F72VF5 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The catalogue specifies 4 connections and 2 to 4 connected indoor units.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F72VF5 column, connection count and connected units",
+            "excerpt": "4 CONNEXIONS ; Nombre d’unités intérieures connectables mini / maxi 2 / 4"
+          }
+        },
+        {
+          "description": "Indoor class combinations for this model are listed in the booklet; the table is not a per-port compatibility matrix.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.7–9, MXZ-4F72VF5 combination rows",
+            "excerpt": "MXZ-4F72VF5"
+          }
+        },
+        {
+          "description": "The booklet requires the sum of maximum indoor currents to be no greater than 3 A.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.7–9, footnote below combination tables",
+            "excerpt": "la somme des intensités absorbées maxi des unités intérieures raccordées ne doit pas être supérieure à 3A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact full-SKU eligibility, named port class/reducer rules and general class-sum ceiling are not established by these sources; 3 A maximum indoor-current sum has no field in the existing multisplit shape.",
+        "Booklet class-combination rows require separate visual transcription before acceptance."
+      ]
+    },
+    {
+      "modelReference": "MXZ-4F80VF5",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.114 (printed p.113), MXZ-4F80VF5 column, table header",
+        "excerpt": "MXZ-4F80VF5"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 710,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F80VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 710 x 840 x 330"
+          }
+        },
+        {
+          "key": "width",
+          "value": 840,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F80VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 710 x 840 x 330"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 330,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F80VF5 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 710 x 840 x 330"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 2418,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F80VF5 column, cooling airflow",
+            "excerpt": "Débit d’air en froid GV m3/h 2418"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F80VF5 column, refrigerant",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 4,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F80VF5 column, connected units",
+            "excerpt": "Nombre d’unités intérieures connectables mini / maxi 2 / 4"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F80VF5 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F80VF5 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -15,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F80VF5 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F80VF5 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -15 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The catalogue specifies 4 connections and 2 to 4 connected indoor units.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.114 (printed p.113), MXZ-4F80VF5 column, connection count and connected units",
+            "excerpt": "4 CONNEXIONS ; Nombre d’unités intérieures connectables mini / maxi 2 / 4"
+          }
+        },
+        {
+          "description": "Indoor class combinations for this model are listed in the booklet; the table is not a per-port compatibility matrix.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.9–11, MXZ-4F80VF5 combination rows",
+            "excerpt": "MXZ-4F80VF5"
+          }
+        },
+        {
+          "description": "The booklet requires the sum of maximum indoor currents to be no greater than 3 A.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.9–11, footnote below combination tables",
+            "excerpt": "la somme des intensités absorbées maxi des unités intérieures raccordées ne doit pas être supérieure à 3A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact full-SKU eligibility, named port class/reducer rules and general class-sum ceiling are not established by these sources; 3 A maximum indoor-current sum has no field in the existing multisplit shape.",
+        "Booklet class-combination rows require separate visual transcription before acceptance."
+      ]
+    },
+    {
+      "modelReference": "MXZ-2F53VFHZ3",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.116 (printed p.115), MXZ-2F53VFHZ3 column, table header",
+        "excerpt": "MXZ-2F53VFHZ3"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 796,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-2F53VFHZ3 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 796 x 950 x 330"
+          }
+        },
+        {
+          "key": "width",
+          "value": 950,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-2F53VFHZ3 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 796 x 950 x 330"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 330,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-2F53VFHZ3 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 796 x 950 x 330"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 2580,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-2F53VFHZ3 column, cooling airflow",
+            "excerpt": "Débit d’air en froid GV m3/h 2580"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-2F53VFHZ3 column, refrigerant",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 2,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-2F53VFHZ3 column, connected units",
+            "excerpt": "Nombre d’unités intérieures connectables mini / maxi 2 / 2"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-2F53VFHZ3 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-2F53VFHZ3 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -25,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-2F53VFHZ3 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -25 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-2F53VFHZ3 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -25 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The catalogue specifies 2 connections and 2 to 2 connected indoor units.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-2F53VFHZ3 column, connection count and connected units",
+            "excerpt": "2 CONNEXIONS ; Nombre d’unités intérieures connectables mini / maxi 2 / 2"
+          }
+        },
+        {
+          "description": "Indoor class combinations for this model are listed in the booklet; the table is not a per-port compatibility matrix.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.11, MXZ-2F53VFHZ3 combination rows",
+            "excerpt": "MXZ-2F53VFHZ3"
+          }
+        },
+        {
+          "description": "The booklet requires the sum of maximum indoor currents to be no greater than 3 A.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.11, footnote below combination tables",
+            "excerpt": "la somme des intensités absorbées maxi des unités intérieures raccordées ne doit pas être supérieure à 3A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact full-SKU eligibility, named port class/reducer rules and general class-sum ceiling are not established by these sources; 3 A maximum indoor-current sum has no field in the existing multisplit shape.",
+        "Booklet class-combination rows require separate visual transcription before acceptance."
+      ]
+    },
+    {
+      "modelReference": "MXZ-4F83VFHZ3",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.116 (printed p.115), MXZ-4F83VFHZ3 column, table header",
+        "excerpt": "MXZ-4F83VFHZ3"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 1048,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-4F83VFHZ3 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 1048 x 950 x 330"
+          }
+        },
+        {
+          "key": "width",
+          "value": 950,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-4F83VFHZ3 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 1048 x 950 x 330"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 330,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-4F83VFHZ3 column, dimensions",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 1048 x 950 x 330"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 3780,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-4F83VFHZ3 column, cooling airflow",
+            "excerpt": "Débit d’air en froid GV m3/h 3780"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-4F83VFHZ3 column, refrigerant",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "maximumIndoorUnits",
+          "value": 4,
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-4F83VFHZ3 column, connected units",
+            "excerpt": "Nombre d’unités intérieures connectables mini / maxi 2 / 4"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-4F83VFHZ3 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-4F83VFHZ3 column, cooling range",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -25,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-4F83VFHZ3 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -25 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-4F83VFHZ3 column, heating range",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -25 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "The catalogue specifies 4 connections and 2 to 4 connected indoor units.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.116 (printed p.115), MXZ-4F83VFHZ3 column, connection count and connected units",
+            "excerpt": "4 CONNEXIONS ; Nombre d’unités intérieures connectables mini / maxi 2 / 4"
+          }
+        },
+        {
+          "description": "Indoor class combinations for this model are listed in the booklet; the table is not a per-port compatibility matrix.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.11–14, MXZ-4F83VFHZ3 combination rows",
+            "excerpt": "MXZ-4F83VFHZ3"
+          }
+        },
+        {
+          "description": "The booklet requires the sum of maximum indoor currents to be no greater than 3 A.",
+          "evidence": {
+            "sourceId": "mitsubishi-mxz-combinations-2026",
+            "locator": "Printed pp.11–14, footnote below combination tables",
+            "excerpt": "la somme des intensités absorbées maxi des unités intérieures raccordées ne doit pas être supérieure à 3A"
+          }
+        }
+      ],
+      "unknowns": [
+        "Exact full-SKU eligibility, named port class/reducer rules and general class-sum ceiling are not established by these sources; 3 A maximum indoor-current sum has no field in the existing multisplit shape.",
+        "Booklet class-combination rows require separate visual transcription before acceptance."
+      ]
+    }
+  ],
+  "unresolvedReferences": [
+    {
+      "modelReference": "MXZ-5F102VF3",
+      "reason": "Combination tables are digital-only and not pinned."
+    },
+    {
+      "modelReference": "MXZ-6F120VF3",
+      "reason": "Combination tables are digital-only and not pinned."
+    }
+  ]
+}

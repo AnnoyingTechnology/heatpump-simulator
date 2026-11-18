@@ -17,6 +17,25 @@ class CatalogueAcceptance(unittest.TestCase):
     def setUp(self):
         self.review = json.loads((ROOT / 'research/catalogue/equipment-acceptance.json').read_text())
 
+    def test_unaccepted_mitsubishi_rz_and_mxz_candidates_keep_source_boundaries(self):
+        rz = json.loads((ROOT / 'research/catalogue/staging/terra-mitsubishi-rz-2026.json').read_text())
+        mxz = json.loads((ROOT / 'research/catalogue/staging/terra-mitsubishi-mxz-2026.json').read_text())
+        self.assertEqual((len(rz['units']), len(mxz['units'])), (6, 12))
+        self.assertEqual({u['modelReference'] for u in mxz['unresolvedReferences']},
+                         {'MXZ-5F102VF3', 'MXZ-6F120VF3'})
+        accepted = {u['reference'] for u in self.review['units']}
+        self.assertFalse(accepted.intersection(u['modelReference'] for u in rz['units'] + mxz['units']))
+        for unit in rz['units']:
+            facts = {f['key']: f['value'] for f in unit['facts']}
+            if unit['unitType'] == 'outdoor':
+                self.assertEqual(facts['refrigerant'], 'R290')
+                self.assertEqual((facts['coolingOutdoorMaximum'], facts['heatingOutdoorMinimum']), (50, -30))
+        for unit in mxz['units']:
+            facts = {f['key']: f['value'] for f in unit['facts']}
+            self.assertEqual(facts['refrigerant'], 'R32')
+            self.assertIn(facts['maximumIndoorUnits'], (2, 3, 4))
+            self.assertTrue(any('3 A' in c['description'] for c in unit['compatibility']))
+
     def test_mitsubishi_hr_inventory_already_contains_six_exact_pairs(self):
         units = {unit['reference']: unit for unit in self.review['units']}
         for size in (25, 35, 42, 50, 60, 71):
