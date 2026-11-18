@@ -18,6 +18,65 @@ class CatalogueAcceptance(unittest.TestCase):
     def setUp(self):
         self.review = json.loads((ROOT / 'research/catalogue/equipment-acceptance.json').read_text())
 
+    def test_mitsubishi_residential_visual_columns_and_pairings(self):
+        # Independently transcribed high fan flows from the pinned table columns.
+        expected = {
+            'MFZ-KT': ('VGK', [25, 35, 50, 60], [534, 534, 738, 900]),
+            'MFZ-KW': ('VGK', [25, 35, 50, 60], [492, 492, 636, 900]),
+            'SEZ-M': ('DA3', [25, 35, 50, 60], [540, 660, 900, 1080]),
+            'SLZ-M': ('FA3', [25, 35, 50, 60], [510, 690, 690, 780]),
+            'SFZ-M': ('VA2', [25, 35, 50, 60, 71], [540, 660, 900, 1080, 1200]),
+            'PEAD-M': ('JA3', [35, 50, 60, 71], [690, 1020, 1200, 1380]),
+            'MLZ-KP': ('VG', [25, 35, 50], [528, 564, 684]),
+        }
+        receipt = json.loads((ROOT / 'reviews/terra-mitsubishi-residential-independent-acceptance-2026.json').read_text())
+        rows = {r['reference']: r for r in self.review['units']}
+        profiles = {}
+        for name in ('CATALOGUE_OUTDOORS', 'CATALOGUE_INDOORS'):
+            profiles.update({p['id']: p for p in json.loads(re.search(
+                r'export const ' + name + r' = (.*?) as const;', module.generate(), re.S).group(1))})
+        for family, (suffix, sizes, flows) in expected.items():
+            for size, flow in zip(sizes, flows):
+                ref = f'{family}{size}{suffix}'
+                self.assertEqual(profiles[ref]['coolingHighFanFlowM3h'], flow)
+                case = ( {'h': 600, 'w': 750, 'd': 215} if family.startswith('MFZ-') else
+                         {'h': 245, 'w': 570, 'd': 570} if family == 'SLZ-M' else
+                         {'h': 185, 'w': 1102, 'd': 360} if family == 'MLZ-KP' else
+                         {'h': 200, 'w': {25: 790, 35: 990, 50: 990, 60: 1190}[size], 'd': 700} if family == 'SEZ-M' else
+                         {'h': 615, 'w': {25: 700, 35: 900, 50: 900, 60: 1100, 71: 1100}[size], 'd': 200} if family == 'SFZ-M' else
+                         {'h': 250, 'w': {35: 900, 50: 900, 60: 1100, 71: 1100}[size], 'd': 732})
+                self.assertEqual(profiles[ref]['caseMm'], case)
+                outdoor = f'MUFZ-KW{size}VGHZ2' if family == 'MFZ-KW' else f'SUZ-M{size}VA2'
+                self.assertIn(ref, profiles[outdoor]['compatibleIndoorClasses'])
+                if family in ('SEZ-M', 'SLZ-M', 'PEAD-M') and size != 25:
+                    outdoor = f'PUZ-ZM{size}' + ('VHA3' if size in (60, 71) else 'VKA3')
+                    self.assertIn(ref, profiles[outdoor]['compatibleIndoorClasses'])
+        for prefix, suffix, sizes, flows in (
+            ('SUZ-M', 'VA2', [25, 35, 50, 60, 71], [2160, 2040, 2760, 3000, 3000]),
+            ('MUFZ-KW', 'VGHZ2', [25, 35, 50, 60], [1962, 1962, 2628, 2928]),
+        ):
+            for size, flow in zip(sizes, flows):
+                self.assertEqual(profiles[f'{prefix}{size}{suffix}']['coolingHighFanFlowM3h'], flow)
+        for size, flow in ((35, 2400), (50, 2400), (60, 3300), (71, 3300)):
+            ref = f'PUZ-ZM{size}' + ('VHA3' if size >= 60 else 'VKA3')
+            self.assertEqual(profiles[ref]['coolingHighFanFlowM3h'], flow)
+        self.assertEqual(len(receipt['reviewedUnits']), 41)
+        for reviewed in receipt['reviewedUnits']:
+            row = rows[reviewed['reference']]
+            doc = json.loads((ROOT / row['candidateFile']).read_text())
+            unit = next(u for u in doc['units'] if u['modelReference'] == row['reference'])
+            module.source_review_metadata(unit, row, ROOT)
+            case = reviewed['factValues']
+            self.assertEqual(profiles[row['reference']]['caseMm'],
+                             {'h': case['height'], 'w': case['width'], 'd': case['depth']})
+        self.assertNotIn('SLZ-M15FA3', profiles)
+        self.assertNotIn('MLZ-KY20VG', profiles)
+        changed = dict(rows['SUZ-M25VA2']); changed['compatibleIndoorClasses'] = ['MFZ-KT35VGK']
+        doc = json.loads((ROOT / changed['candidateFile']).read_text())
+        unit = next(u for u in doc['units'] if u['modelReference'] == changed['reference'])
+        with self.assertRaisesRegex(ValueError, 'pairing or topology changed'):
+            module.source_review_metadata(unit, changed, ROOT)
+
     def test_mxz_partial_physical_readback_matches_pinned_candidate(self):
         receipt = json.loads((ROOT / 'reviews/terra-mitsubishi-mxz-physical-readback-2026.json').read_text())
         for pin in [receipt['candidate'], *receipt['sourcePins']]:
