@@ -46,3 +46,5 @@ Terra Daikin head source checkpoint 2026-11-18: no Mitsubishi change; runtime re
 Terra FFA/FNA physical-field follow-up: Mitsubishi remains 25 outdoor / 45 indoor; range and MXZ reconciliation remain open. Daikin now has 90 outdoor / 171 indoor.
 
 Terra FBA/FCAG/FHA batch 2026-11-18: no Mitsubishi changes; runtime remains 25 outdoor / 45 indoor. Daikin runtime is 90 outdoor / 185 indoor. Mitsubishi range and MXZ reconciliation remain open.
+
+Terra RXM and Siesta batch 2026-11-18: no Mitsubishi changes; runtime remains **25 outdoor / 45 indoor**. Daikin is now **91 / 185**. Mitsubishi current range reconciliation and MXZ constraints, including the digital-only 5/6-head table, remain open.

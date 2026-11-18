@@ -1660,7 +1660,10 @@ export const CATALOGUE_OUTDOORS = [
     "compatibleIndoorClasses": [
       "FTXM25A2V1B",
       "FTXM25A5V1B",
-      "FVXM25B2V1B"
+      "FVXM25B2V1B",
+      "FDXM25F3V1B9",
+      "FFA25A2VEB9",
+      "FNA25A2VEB9"
     ],
     "publishedOperatingRangesC": {
       "cooling": {
@@ -1689,7 +1692,13 @@ export const CATALOGUE_OUTDOORS = [
     "compatibleIndoorClasses": [
       "FTXM35A2V1B",
       "FTXM35A5V1B",
-      "FVXM35B2V1B"
+      "FVXM35B2V1B",
+      "FBA35A2VEB9",
+      "FCAG35BVEB",
+      "FDXM35F3V1B9",
+      "FFA35A2VEB9",
+      "FHA35AVEB98",
+      "FNA35A2VEB9"
     ],
     "publishedOperatingRangesC": {
       "cooling": {
@@ -1718,7 +1727,13 @@ export const CATALOGUE_OUTDOORS = [
     "compatibleIndoorClasses": [
       "FTXM50A2V1B",
       "FTXM50A5V1B",
-      "FVXM50B2V1B"
+      "FVXM50B2V1B",
+      "FBA50A2VEB9",
+      "FCAG50BVEB",
+      "FDXM50F3V1B9",
+      "FFA50A2VEB9",
+      "FHA50AVEB98",
+      "FNA50A2VEB9"
     ],
     "publishedOperatingRangesC": {
       "cooling": {
@@ -4469,6 +4484,43 @@ export const CATALOGUE_OUTDOORS = [
       "guide": "4PFR600463-3K (2026.04), printed pp.36-38",
       "exactEligibility": "unknown",
       "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "RXM50A5V1B8",
+    "manufacturer": "daikin",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 610,
+      "w": 923,
+      "d": 367
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe; France availability unverified",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FBA50A2VEB9",
+      "FCAG50BVEB",
+      "FDXM50F3V1B9",
+      "FFA50A2VEB9",
+      "FHA50AVEB98",
+      "FNA50A2VEB9",
+      "FTXM50A2V1B",
+      "FTXM50A5V1B",
+      "FVXM50B2V1B"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": null,
+        "condition": "outdoor dry-bulb (°CDB)"
+      },
+      "heating": {
+        "minimum": null,
+        "maximum": 18,
+        "condition": "outdoor wet-bulb (°CWB)"
+      }
     }
   }
 ] as const;

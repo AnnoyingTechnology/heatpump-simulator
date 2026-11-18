@@ -3892,8 +3892,8 @@
       "coolingAirflowCondition": "cooling mode, high fan speed; exact conversion from published m³/min ×60"
     },
     {
-      "candidateFile": "research/catalogue/staging/luna-daikin-perfera-rxm-a9-fr-legacy-pairs.json",
-      "candidateSha256": "cce2c446cbf32f75b140670bf608d33d0076dbe208dcd6234da1ef3109f07fa2",
+      "candidateFile": "research/catalogue/staging/terra-rxm/luna-daikin-perfera-rxm-a9-fr-legacy-pairs.json",
+      "candidateSha256": "b8343602416a55b212e9e6a03fa866d9c39cda4e273397dd2e51846afbc1c308",
       "candidateReference": "RXM25A5V1B9",
       "reference": "RXM25A5V1B9",
       "factKeys": [
@@ -3910,7 +3910,10 @@
       "compatibleIndoorClasses": [
         "FTXM25A2V1B",
         "FTXM25A5V1B",
-        "FVXM25B2V1B"
+        "FVXM25B2V1B",
+        "FDXM25F3V1B9",
+        "FFA25A2VEB9",
+        "FNA25A2VEB9"
       ],
       "pairingEvidence": {
         "sourceId": "daikin-fr-ftxm-a-rxm-a9",
@@ -3932,13 +3935,28 @@
           "sourceId": "daikin-fr-fvxm-b-rxm-a9",
           "locator": "Exact full indoor/outdoor SKU table column header",
           "excerpt": "FVXM25B2V1B / RXM25A5V1B9"
+        },
+        "FDXM25F3V1B9": {
+          "sourceId": "terra-pair-5",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FDXM25F3V1B9 / RXM25A5V1B9"
+        },
+        "FFA25A2VEB9": {
+          "sourceId": "terra-pair-7",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FFA25A2VEB9 / RXM25A5V1B9"
+        },
+        "FNA25A2VEB9": {
+          "sourceId": "terra-pair-11",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FNA25A2VEB9 / RXM25A5V1B9"
         }
       },
       "unpublishedOutdoorAirflow": true
     },
     {
-      "candidateFile": "research/catalogue/staging/luna-daikin-perfera-rxm-a9-fr-legacy-pairs.json",
-      "candidateSha256": "cce2c446cbf32f75b140670bf608d33d0076dbe208dcd6234da1ef3109f07fa2",
+      "candidateFile": "research/catalogue/staging/terra-rxm/luna-daikin-perfera-rxm-a9-fr-legacy-pairs.json",
+      "candidateSha256": "b8343602416a55b212e9e6a03fa866d9c39cda4e273397dd2e51846afbc1c308",
       "candidateReference": "RXM35A5V1B9",
       "reference": "RXM35A5V1B9",
       "factKeys": [
@@ -3955,7 +3973,13 @@
       "compatibleIndoorClasses": [
         "FTXM35A2V1B",
         "FTXM35A5V1B",
-        "FVXM35B2V1B"
+        "FVXM35B2V1B",
+        "FBA35A2VEB9",
+        "FCAG35BVEB",
+        "FDXM35F3V1B9",
+        "FFA35A2VEB9",
+        "FHA35AVEB98",
+        "FNA35A2VEB9"
       ],
       "pairingEvidence": {
         "sourceId": "daikin-fr-ftxm-a-rxm-a9",
@@ -3977,13 +4001,43 @@
           "sourceId": "daikin-fr-fvxm-b-rxm-a9",
           "locator": "Exact full indoor/outdoor SKU table column header",
           "excerpt": "FVXM35B2V1B / RXM35A5V1B9"
+        },
+        "FBA35A2VEB9": {
+          "sourceId": "terra-pair-1",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FBA35A2VEB9 / RXM35A5V1B9"
+        },
+        "FCAG35BVEB": {
+          "sourceId": "terra-pair-3",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FCAG35BVEB / RXM35A5V1B9"
+        },
+        "FDXM35F3V1B9": {
+          "sourceId": "terra-pair-5",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FDXM35F3V1B9 / RXM35A5V1B9"
+        },
+        "FFA35A2VEB9": {
+          "sourceId": "terra-pair-7",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FFA35A2VEB9 / RXM35A5V1B9"
+        },
+        "FHA35AVEB98": {
+          "sourceId": "terra-pair-9",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FHA35AVEB98 / RXM35A5V1B9"
+        },
+        "FNA35A2VEB9": {
+          "sourceId": "terra-pair-11",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FNA35A2VEB9 / RXM35A5V1B9"
         }
       },
       "unpublishedOutdoorAirflow": true
     },
     {
-      "candidateFile": "research/catalogue/staging/luna-daikin-perfera-rxm-a9-fr-legacy-pairs.json",
-      "candidateSha256": "cce2c446cbf32f75b140670bf608d33d0076dbe208dcd6234da1ef3109f07fa2",
+      "candidateFile": "research/catalogue/staging/terra-rxm/luna-daikin-perfera-rxm-a9-fr-legacy-pairs.json",
+      "candidateSha256": "b8343602416a55b212e9e6a03fa866d9c39cda4e273397dd2e51846afbc1c308",
       "candidateReference": "RXM50A5V1B9",
       "reference": "RXM50A5V1B9",
       "factKeys": [
@@ -4000,7 +4054,13 @@
       "compatibleIndoorClasses": [
         "FTXM50A2V1B",
         "FTXM50A5V1B",
-        "FVXM50B2V1B"
+        "FVXM50B2V1B",
+        "FBA50A2VEB9",
+        "FCAG50BVEB",
+        "FDXM50F3V1B9",
+        "FFA50A2VEB9",
+        "FHA50AVEB98",
+        "FNA50A2VEB9"
       ],
       "pairingEvidence": {
         "sourceId": "daikin-fr-ftxm-a-rxm-a9",
@@ -4022,6 +4082,36 @@
           "sourceId": "daikin-fr-fvxm-b-rxm-a9",
           "locator": "Exact full indoor/outdoor SKU table column header",
           "excerpt": "FVXM50B2V1B / RXM50A5V1B9"
+        },
+        "FBA50A2VEB9": {
+          "sourceId": "terra-pair-1",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FBA50A2VEB9 / RXM50A5V1B9"
+        },
+        "FCAG50BVEB": {
+          "sourceId": "terra-pair-3",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FCAG50BVEB / RXM50A5V1B9"
+        },
+        "FDXM50F3V1B9": {
+          "sourceId": "terra-pair-5",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FDXM50F3V1B9 / RXM50A5V1B9"
+        },
+        "FFA50A2VEB9": {
+          "sourceId": "terra-pair-7",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FFA50A2VEB9 / RXM50A5V1B9"
+        },
+        "FHA50AVEB98": {
+          "sourceId": "terra-pair-9",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FHA50AVEB98 / RXM50A5V1B9"
+        },
+        "FNA50A2VEB9": {
+          "sourceId": "terra-pair-11",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FNA50A2VEB9 / RXM50A5V1B9"
         }
       },
       "unpublishedOutdoorAirflow": true
@@ -8314,6 +8404,95 @@
         "sha256": "02cf22e5cb15e89adb500b287d0635c3e2f5fc4baaeed8a469e6881e90e4e79a"
       },
       "coolingAirflowCondition": "cooling high fan"
+    },
+    {
+      "reference": "RXM50A5V1B8",
+      "candidateFile": "research/catalogue/staging/terra-rxm-a8-exact-2026.json",
+      "candidateSha256": "698f3164cdcf9c090e0517b6c8d1cf43dea32a430e5d665825e2b8ba78bd9a79",
+      "candidateReference": "RXM50A5V1B8",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "sourceStatus": "availability-unknown",
+      "marketScope": "Europe; France availability unverified",
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FBA50A2VEB9",
+        "FCAG50BVEB",
+        "FDXM50F3V1B9",
+        "FFA50A2VEB9",
+        "FHA50AVEB98",
+        "FNA50A2VEB9",
+        "FTXM50A2V1B",
+        "FTXM50A5V1B",
+        "FVXM50B2V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "terra-pair-0",
+        "locator": "Exact indoor / outdoor column header",
+        "excerpt": "FBA50A2VEB9 / RXM50A5V1B8"
+      },
+      "pairingEvidenceByIndoor": {
+        "FBA50A2VEB9": {
+          "sourceId": "terra-pair-0",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FBA50A2VEB9 / RXM50A5V1B8"
+        },
+        "FCAG50BVEB": {
+          "sourceId": "terra-pair-2",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FCAG50BVEB / RXM50A5V1B8"
+        },
+        "FDXM50F3V1B9": {
+          "sourceId": "terra-pair-4",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FDXM50F3V1B9 / RXM50A5V1B8"
+        },
+        "FFA50A2VEB9": {
+          "sourceId": "terra-pair-6",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FFA50A2VEB9 / RXM50A5V1B8"
+        },
+        "FHA50AVEB98": {
+          "sourceId": "terra-pair-8",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FHA50AVEB98 / RXM50A5V1B8"
+        },
+        "FNA50A2VEB9": {
+          "sourceId": "terra-pair-10",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FNA50A2VEB9 / RXM50A5V1B8"
+        },
+        "FTXM50A2V1B": {
+          "sourceId": "terra-pair-12",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FTXM50A2V1B / RXM50A5V1B8"
+        },
+        "FTXM50A5V1B": {
+          "sourceId": "terra-pair-12",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FTXM50A5V1B / RXM50A5V1B8"
+        },
+        "FVXM50B2V1B": {
+          "sourceId": "terra-pair-14",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FVXM50B2V1B / RXM50A5V1B8"
+        }
+      },
+      "unpublishedOutdoorAirflow": true,
+      "unresolvedOperatingEndpoints": [
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum"
+      ],
+      "sourceReview": {
+        "path": "reviews/terra-rxm-a8-independent-acceptance-2026.json",
+        "sha256": "14de97e596c498222f7ecb6d0e17b65f4c4132a32570f32e9d41fb2de5b764fe"
+      }
     }
   ],
   "additionalSourceSnapshots": [
@@ -8716,6 +8895,70 @@
     {
       "sourceFile": "research/sources/luna-siesta-ATXC-E---ARXC-E.html",
       "sourceSha256": "93e3d4657cd670d865d7290b920d988cc0bd19045515259df0bac706aa0a8d62"
+    },
+    {
+      "sourceFile": "research/sources/terra-fba-a9-rxm-a8-pairs.html",
+      "sourceSha256": "7dbda51bdbca96824b2a29ca8fa7dc53c98447ba720f5c722e9b8902da51cedd"
+    },
+    {
+      "sourceFile": "research/sources/terra-fba-a9-rxm-a9-pairs.html",
+      "sourceSha256": "2b784999f5907726492b5ac4b2c7f2b2372d7905be7c3a2dd46b7eb249d38c8e"
+    },
+    {
+      "sourceFile": "research/sources/terra-fcag-b-rxm-a8-pairs.html",
+      "sourceSha256": "817e9a22289c2ce73054958d2afca31b3711e3d6eb18b898632d67d8bcbb9b8f"
+    },
+    {
+      "sourceFile": "research/sources/terra-fcag-b-rxm-a9-pairs.html",
+      "sourceSha256": "7184154512a82705e9791774fe4219aa135515dff9f86016e2ef480fd7af2f83"
+    },
+    {
+      "sourceFile": "research/sources/terra-fdxm-f9-rxm-a8-pairs.html",
+      "sourceSha256": "e470c6770e172f80855ab8d9bdc42645901197f5e515e44ad8a5ec4dd9641f77"
+    },
+    {
+      "sourceFile": "research/sources/terra-fdxm-f9-rxm-a9-pairs.html",
+      "sourceSha256": "80c4281acdf405e63b7ca398765ab840cfd6650efd7f60d8b96403f8888ea4d7"
+    },
+    {
+      "sourceFile": "research/sources/terra-ffa-a9-rxm-a8-pairs.html",
+      "sourceSha256": "fe3f5633cc4483361165af5f3151d2fc99f53ade13731536604653fe692fc2ff"
+    },
+    {
+      "sourceFile": "research/sources/terra-ffa-a9-rxm-a9-pairs.html",
+      "sourceSha256": "093e54a9185bae0fdd6e9f415e8b91d967733f6b9ea5a0589bc89f11d81a1539"
+    },
+    {
+      "sourceFile": "research/sources/terra-fha-a9-rxm-a8-pairs.html",
+      "sourceSha256": "e3c46f7ca3594c48e4fc0e7393c0aafbfd5dc8d3dbb127a24532f27b42da982c"
+    },
+    {
+      "sourceFile": "research/sources/terra-fha-a9-rxm-a9-pairs.html",
+      "sourceSha256": "4eaf8bf778a2f720910550854bf4451c7d8c4a275d1432d3c52844c0ef977387"
+    },
+    {
+      "sourceFile": "research/sources/terra-fna-a9-rxm-a8-pairs.html",
+      "sourceSha256": "cdfbab5efc6beabc4c61715d13120ae8bf601001f8a0d46e160b1e8e4896980f"
+    },
+    {
+      "sourceFile": "research/sources/terra-fna-a9-rxm-a9-pairs.html",
+      "sourceSha256": "c6613d2382a0577ae4adcbf5ecb8c469fb24e0946947b57af409d688bb033e87"
+    },
+    {
+      "sourceFile": "research/sources/terra-ftxm-a-rxm-a8-pairs.html",
+      "sourceSha256": "914d628314e0ad439a248302c075bd36e4bce46898e7fd50ee5c80e0f2a7405b"
+    },
+    {
+      "sourceFile": "research/sources/terra-ftxm-a-rxm-a9-pairs.html",
+      "sourceSha256": "d66056b70e10b9390f79b90d8d3ab9c99d9c99800dac97c460834b5052365bcf"
+    },
+    {
+      "sourceFile": "research/sources/terra-fvxm-b-rxm-a8-pairs.html",
+      "sourceSha256": "2440b6e440b25b35e6d631bd0fea0a9209b3555741064e445aacbb82588e96dc"
+    },
+    {
+      "sourceFile": "research/sources/terra-fvxm-b-rxm-a9-pairs.html",
+      "sourceSha256": "7bd46602c7cd4cbc2ed0a436d61e41ccb2a96fe68a9403a305a239db09af1379"
     }
   ]
 }

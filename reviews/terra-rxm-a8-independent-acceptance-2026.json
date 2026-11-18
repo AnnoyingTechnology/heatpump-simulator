@@ -1,0 +1,184 @@
+{
+  "candidate": {
+    "path": "research/catalogue/staging/terra-rxm-a8-exact-2026.json",
+    "sha256": "698f3164cdcf9c090e0517b6c8d1cf43dea32a430e5d665825e2b8ba78bd9a79"
+  },
+  "sourcePins": [
+    {
+      "path": "research/sources/terra-fba-a9-rxm-a8-pairs.html",
+      "sha256": "7dbda51bdbca96824b2a29ca8fa7dc53c98447ba720f5c722e9b8902da51cedd"
+    },
+    {
+      "path": "research/sources/terra-fba-a9-rxm-a9-pairs.html",
+      "sha256": "2b784999f5907726492b5ac4b2c7f2b2372d7905be7c3a2dd46b7eb249d38c8e"
+    },
+    {
+      "path": "research/sources/terra-fcag-b-rxm-a8-pairs.html",
+      "sha256": "817e9a22289c2ce73054958d2afca31b3711e3d6eb18b898632d67d8bcbb9b8f"
+    },
+    {
+      "path": "research/sources/terra-fcag-b-rxm-a9-pairs.html",
+      "sha256": "7184154512a82705e9791774fe4219aa135515dff9f86016e2ef480fd7af2f83"
+    },
+    {
+      "path": "research/sources/terra-fdxm-f9-rxm-a8-pairs.html",
+      "sha256": "e470c6770e172f80855ab8d9bdc42645901197f5e515e44ad8a5ec4dd9641f77"
+    },
+    {
+      "path": "research/sources/terra-fdxm-f9-rxm-a9-pairs.html",
+      "sha256": "80c4281acdf405e63b7ca398765ab840cfd6650efd7f60d8b96403f8888ea4d7"
+    },
+    {
+      "path": "research/sources/terra-ffa-a9-rxm-a8-pairs.html",
+      "sha256": "fe3f5633cc4483361165af5f3151d2fc99f53ade13731536604653fe692fc2ff"
+    },
+    {
+      "path": "research/sources/terra-ffa-a9-rxm-a9-pairs.html",
+      "sha256": "093e54a9185bae0fdd6e9f415e8b91d967733f6b9ea5a0589bc89f11d81a1539"
+    },
+    {
+      "path": "research/sources/terra-fha-a9-rxm-a8-pairs.html",
+      "sha256": "e3c46f7ca3594c48e4fc0e7393c0aafbfd5dc8d3dbb127a24532f27b42da982c"
+    },
+    {
+      "path": "research/sources/terra-fha-a9-rxm-a9-pairs.html",
+      "sha256": "4eaf8bf778a2f720910550854bf4451c7d8c4a275d1432d3c52844c0ef977387"
+    },
+    {
+      "path": "research/sources/terra-fna-a9-rxm-a8-pairs.html",
+      "sha256": "cdfbab5efc6beabc4c61715d13120ae8bf601001f8a0d46e160b1e8e4896980f"
+    },
+    {
+      "path": "research/sources/terra-fna-a9-rxm-a9-pairs.html",
+      "sha256": "c6613d2382a0577ae4adcbf5ecb8c469fb24e0946947b57af409d688bb033e87"
+    },
+    {
+      "path": "research/sources/terra-ftxm-a-rxm-a8-pairs.html",
+      "sha256": "914d628314e0ad439a248302c075bd36e4bce46898e7fd50ee5c80e0f2a7405b"
+    },
+    {
+      "path": "research/sources/terra-ftxm-a-rxm-a9-pairs.html",
+      "sha256": "d66056b70e10b9390f79b90d8d3ab9c99d9c99800dac97c460834b5052365bcf"
+    },
+    {
+      "path": "research/sources/terra-fvxm-b-rxm-a8-pairs.html",
+      "sha256": "2440b6e440b25b35e6d631bd0fea0a9209b3555741064e445aacbb82588e96dc"
+    },
+    {
+      "path": "research/sources/terra-fvxm-b-rxm-a9-pairs.html",
+      "sha256": "7bd46602c7cd4cbc2ed0a436d61e41ccb2a96fe68a9403a305a239db09af1379"
+    },
+    {
+      "path": "research/sources/luna-daikin-rxm-a8.html",
+      "sha256": "b257ee3ec0fd0d8ee638e85837c0a20e93298a9cb3448d7688dcdc97ff58c8cb"
+    }
+  ],
+  "reviewedUnits": [
+    {
+      "reference": "RXM50A5V1B8",
+      "candidateStatus": "unknown",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 610,
+        "width": 923,
+        "depth": 367,
+        "refrigerant": "R-32",
+        "coolingOutdoorMinimum": -10,
+        "heatingOutdoorMaximum": 18
+      },
+      "factConditions": {
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB)",
+        "heatingOutdoorMaximum": "outdoor wet-bulb (°CWB)"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FBA50A2VEB9",
+        "FCAG50BVEB",
+        "FDXM50F3V1B9",
+        "FFA50A2VEB9",
+        "FHA50AVEB98",
+        "FNA50A2VEB9",
+        "FTXM50A2V1B",
+        "FTXM50A5V1B",
+        "FVXM50B2V1B"
+      ],
+      "pairingEvidence": {
+        "sourceId": "terra-pair-0",
+        "locator": "Exact indoor / outdoor column header",
+        "excerpt": "FBA50A2VEB9 / RXM50A5V1B8"
+      },
+      "pairingEvidenceByIndoor": {
+        "FBA50A2VEB9": {
+          "sourceId": "terra-pair-0",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FBA50A2VEB9 / RXM50A5V1B8"
+        },
+        "FCAG50BVEB": {
+          "sourceId": "terra-pair-2",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FCAG50BVEB / RXM50A5V1B8"
+        },
+        "FDXM50F3V1B9": {
+          "sourceId": "terra-pair-4",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FDXM50F3V1B9 / RXM50A5V1B8"
+        },
+        "FFA50A2VEB9": {
+          "sourceId": "terra-pair-6",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FFA50A2VEB9 / RXM50A5V1B8"
+        },
+        "FHA50AVEB98": {
+          "sourceId": "terra-pair-8",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FHA50AVEB98 / RXM50A5V1B8"
+        },
+        "FNA50A2VEB9": {
+          "sourceId": "terra-pair-10",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FNA50A2VEB9 / RXM50A5V1B8"
+        },
+        "FTXM50A2V1B": {
+          "sourceId": "terra-pair-12",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FTXM50A2V1B / RXM50A5V1B8"
+        },
+        "FTXM50A5V1B": {
+          "sourceId": "terra-pair-12",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FTXM50A5V1B / RXM50A5V1B8"
+        },
+        "FVXM50B2V1B": {
+          "sourceId": "terra-pair-14",
+          "locator": "Exact indoor / outdoor column header",
+          "excerpt": "FVXM50B2V1B / RXM50A5V1B8"
+        }
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe; France availability unverified"
+      },
+      "unresolvedOperatingEndpoints": {
+        "coolingOutdoorMaximum": {
+          "unknownBoundary": "Cooling maximum 50/46 °CDB and heating minimum -21/-15 °CWB refer to a separate drawing; individual endpoints remain unresolved.",
+          "sourceCell": "Cooling maximum 50 (1), 46 (1); heating minimum -21 (1), -15 (1); (1) See separate drawing for operation range"
+        },
+        "heatingOutdoorMinimum": {
+          "unknownBoundary": "Cooling maximum 50/46 °CDB and heating minimum -21/-15 °CWB refer to a separate drawing; individual endpoints remain unresolved.",
+          "sourceCell": "Cooling maximum 50 (1), 46 (1); heating minimum -21 (1), -15 (1); (1) See separate drawing for operation range"
+        }
+      },
+      "operatingRangeConditions": {
+        "cooling": "outdoor dry-bulb (°CDB)",
+        "heating": "outdoor wet-bulb (°CWB)"
+      }
+    }
+  ]
+}
