@@ -1230,5 +1230,22 @@ class TerraAdditionalHeadSourceChecks(unittest.TestCase):
                 self.assertNotIn('FHA60AVEB99', profiles)
                 self.assertTrue(any(u['modelReference'] == 'FHA60AVEB99' for u in doc['unresolvedReferences']))
 
+
+class TerraDaikin2022HistoricalSourceChecks(unittest.TestCase):
+    def test_historical_reference_boundary_is_pinned_to_catalogue(self):
+        import hashlib
+        pdf = ROOT / 'research/sources/luna-daikin-split-catalogue-europe-fr-2022.pdf'
+        self.assertEqual(hashlib.sha256(pdf.read_bytes()).hexdigest(), '814243080bf6b8795adccb3f8c670a87d0b692d7c1c09ec32c306f04add187ad')
+        candidate = json.loads((ROOT / 'research/catalogue/staging/terra-daikin-2022-historical.json').read_text())
+        self.assertEqual(candidate['units'], [])
+        refs = {row['modelReference']: row['reason'] for row in candidate['unresolvedReferences']}
+        self.assertEqual(len(refs), 159)
+        for ref in ('FTXZ25N', 'FTXJ20AW', 'FDXM25F9', '3MXM68A', 'FTXTA30BB', 'RXTP35R'):
+            self.assertIn(ref, refs)
+            self.assertIn('suffix', refs[ref])
+        for page in (*range(40, 51), 52, 56, 57, 58, 59):
+            image = ROOT / f'research/sources/terra-daikin-2022-page-{page}.png'
+            self.assertEqual(image.read_bytes()[:8], b'\x89PNG\r\n\x1a\n')
+
 if __name__ == '__main__':
     unittest.main()
