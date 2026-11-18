@@ -18,3 +18,14 @@ FHA60AVEB99 remains unresolved: the exact heading exists but its dimension and a
 The other earlier outstanding items are unchanged: remaining RXM pair columns, ATXM20 monosplit and Siesta multisplit eligibility, the ARXM50 range drawing, Mitsubishi range reconciliation and MXZ constraints/digital 5/6-head table, and 2022 Daikin historical suffix expansion. See the two coverage ledgers for reference-level scope and reasons. VRV/VRF, hydronic equipment and Mitsubishi Heavy Industries remain excluded. This bounded checkpoint is not a full catalogue completion claim.
 
 Validation for this batch: `python3 tests/catalogue.test.py` (53 passed); catalogue TypeScript compile and topology tests (10 passed); `npx tsc --noEmit -p tsconfig.json` passed. The requested build was not run.
+
+
+## Bounded RXM and Siesta continuation — 2026-11-18
+
+The batch in this commit follows `cf2cdc6` (merged as `7eb94d1`). Daikin runtime changes from **90 outdoor / 185 indoor to 91 / 185**; Mitsubishi stays **25 / 45**. The source-pinned audit accounts for all 14 published RXM class pair columns and all 33 exact A8/A9 table columns, adding 24 exact pairings including the separately sourced RXM50A5V1B8 profile. No reviewed pair column remains unpaired. Full per-column source locators and evidence boundaries are in [the batch review](terra-rxm-siesta-2026-11.md); hashes and source URLs are in [the receipt](../provenance/terra-rxm-siesta-source-receipt.md).
+
+Uncertainties: exact FDXM60 and RXM20/42/60/71 suffix pairings lack exact columns; class pairings cannot certify them. Exact ATXM20 monosplit eligibility remains unknown although p.335 labels its class multi-only. The ATXM/2AMXM table establishes 28 particular two-head configurations, not arbitrary pairings; AMXM installation constraints remain unreviewed. ATXF-F and ATXP-N9 multisplit exact eligibility remain unresolved: the retrieved ATXF-G table has different references, and the attempted ATXP table pages contained no combination columns. The PDF's rendered p.28 is an installer ambient table with an indoor-manual caveat, not the footnoted drawing; ARXM50 cooling maximum and heating minimum remain null. RXM50A5V1B8 has its own footnoted alternative endpoints unresolved. Europe listing does not establish current sales or France availability.
+
+Remaining later work: exact MXM eligibility for the five added head families, FHA60AVEB99's blank physical cells, Mitsubishi range and MXZ installation constraints (including the unpinned digital-only 5/6-head matrix), and exact 2022 historical suffix expansion. This is not a full catalogue completeness claim.
+
+Validation for this batch: `python3 tests/catalogue.test.py` (55 passed), catalogue TypeScript compile and topology tests (10 passed), and `npx tsc --noEmit -p tsconfig.json` passed. The build was not run.

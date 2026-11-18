@@ -337,9 +337,9 @@ class CatalogueAcceptance(unittest.TestCase):
         outdoor_records = [u for u in self.review['units']
                            if u['candidateFile'].endswith('luna-daikin-perfera-rxm-a9-fr-legacy-pairs.json')]
         expected = {
-            'RXM25A5V1B9': {'FTXM25A2V1B', 'FTXM25A5V1B', 'FVXM25B2V1B'},
-            'RXM35A5V1B9': {'FTXM35A2V1B', 'FTXM35A5V1B', 'FVXM35B2V1B'},
-            'RXM50A5V1B9': {'FTXM50A2V1B', 'FTXM50A5V1B', 'FVXM50B2V1B'},
+            'RXM25A5V1B9': {'FTXM25A2V1B', 'FTXM25A5V1B', 'FVXM25B2V1B', 'FDXM25F3V1B9', 'FFA25A2VEB9', 'FNA25A2VEB9'},
+            'RXM35A5V1B9': {'FTXM35A2V1B', 'FTXM35A5V1B', 'FVXM35B2V1B', 'FDXM35F3V1B9', 'FFA35A2VEB9', 'FNA35A2VEB9', 'FBA35A2VEB9', 'FCAG35BVEB', 'FHA35AVEB98'},
+            'RXM50A5V1B9': {'FTXM50A2V1B', 'FTXM50A5V1B', 'FVXM50B2V1B', 'FDXM50F3V1B9', 'FFA50A2VEB9', 'FNA50A2VEB9', 'FBA50A2VEB9', 'FCAG50BVEB', 'FHA50AVEB98'},
         }
         self.assertEqual({u['reference'] for u in outdoor_records}, set(expected))
         for accepted in outdoor_records:
@@ -349,6 +349,44 @@ class CatalogueAcceptance(unittest.TestCase):
             self.assertTrue(accepted['unpublishedOutdoorAirflow'])
             for ref, evidence in accepted['pairingEvidenceByIndoor'].items():
                 self.assertEqual(evidence['excerpt'], ref + ' / ' + accepted['reference'])
+
+    def test_terra_rxm_exact_pair_columns_match_pinned_source_headers(self):
+        pins = {s['sourceFile']: s['sourceSha256'] for s in self.review['additionalSourceSnapshots']}
+        tables = sorted((ROOT / 'research/sources').glob('terra-*-rxm-a[89]-pairs.html'))
+        self.assertEqual(len(tables), 16)
+        columns = set()
+        for table in tables:
+            self.assertEqual(module.sha(table), pins[str(table.relative_to(ROOT))])
+            columns.update(re.findall(r'<th>([A-Z0-9]+ / RXM[A-Z0-9]+)</th>', table.read_text()))
+        self.assertEqual(len(columns), 33)
+        for column in columns:
+            indoor, outdoor = column.split(' / ')
+            accepted = next(u for u in self.review['units'] if u['reference'] == outdoor)
+            self.assertIn(indoor, accepted['compatibleIndoorClasses'])
+            self.assertEqual(accepted['pairingEvidenceByIndoor'][indoor]['excerpt'], column)
+        a8 = next(u for u in self.review['units'] if u['reference'] == 'RXM50A5V1B8')
+        self.assertEqual(set(a8['unresolvedOperatingEndpoints']), {'coolingOutdoorMaximum', 'heatingOutdoorMinimum'})
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            receipt = root / a8['sourceReview']['path']
+            receipt.parent.mkdir(parents=True)
+            receipt.write_bytes((ROOT / a8['sourceReview']['path']).read_bytes())
+            unit = json.loads((ROOT / a8['candidateFile']).read_text())['units'][0]
+            with self.assertRaisesRegex(ValueError, 'primary snapshot'):
+                module.source_review_metadata(unit, a8, root)
+
+    def test_siesta_eligibility_evidence_retains_exact_combination_boundaries(self):
+        page = (ROOT / 'research/sources/luna-next-daikin-2026-catalogue-p335.html').read_text()
+        self.assertIn('ATXM20A 25A + 25A', page)
+        self.assertIn('multi combinations only', page)
+        table = (ROOT / 'research/sources/terra-siesta-atxm-a---2amxm-m9.html').read_text()
+        for suffix in ('2', '5'):
+            self.assertIn(f'ATXM20A{suffix}V1B / ATXM20A{suffix}V1B / 2AMXM40M4V1B9', table)
+        atxf = (ROOT / 'research/sources/terra-siesta-atxf-g---2amxf-a.html').read_text()
+        self.assertIn('ATXF25G5V1B / ATXF35G5V1B / 2AMXF40A2V1B', atxf)
+        self.assertNotIn('ATXF25F5V1B', atxf)
+        arxm = next(u for u in self.review['units'] if u['reference'] == 'ARXM50A5V1B')
+        self.assertEqual(set(arxm['unresolvedOperatingEndpoints']), {'coolingOutdoorMaximum', 'heatingOutdoorMinimum'})
 
     def test_perfera_floor_heads_are_added_to_exact_shared_rxm_pair_maps(self):
         accepted = [u for u in self.review['units']
@@ -695,7 +733,7 @@ class CatalogueAcceptance(unittest.TestCase):
                 self.assertNotIn('ATXM20', indoor)
         profiles = {p['id']: p for p in json.loads(re.search(r'export const CATALOGUE_OUTDOORS = (.*?) as const;', module.generate(), re.S).group(1))}
         self.assertEqual(profiles['ARXM25A5V1B']['compatibleIndoorClasses'], ['ATXM25A2V1B', 'ATXM25A5V1B'])
-        self.assertEqual(profiles['RXM25A5V1B9']['compatibleIndoorClasses'], ['FTXM25A2V1B', 'FTXM25A5V1B', 'FVXM25B2V1B'])
+        self.assertIn('FTXM25A2V1B', profiles['RXM25A5V1B9']['compatibleIndoorClasses'])
         self.assertEqual(profiles['ARXF60A5V1B9']['compatibleIndoorClasses'], ['ATXF60F2V1B'])
         self.assertEqual(profiles['RXF60D5V1B9']['compatibleIndoorClasses'], ['FTXF60F2V1B'])
 
