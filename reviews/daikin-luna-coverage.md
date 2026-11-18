@@ -58,3 +58,5 @@ Terra RXM and Siesta batch 2026-11-18: runtime **91 outdoor / 185 indoor**. All 
 Terra Mitsubishi audit checkpoint 2026-11-18: no Daikin runtime change; Mitsubishi remains 25 outdoor / 45 indoor. The Mitsubishi audit is incomplete; see `terra-mitsubishi-audit-checkpoint-2026-11.md`.
 
 Terra Mitsubishi R32 batch 2026-11-18: no Daikin change (91 outdoor / 185 indoor); Mitsubishi is now 31 outdoor / 55 indoor. See `terra-mitsubishi-r32-2026-11.md`.
+
+Mitsubishi RZ/MXZ research 2026-11-18 makes no Daikin runtime change: Daikin remains **91 outdoor / 185 indoor**; Mitsubishi remains **31 / 55**. The Mitsubishi candidates remain unaccepted; see `terra-mitsubishi-rz-mxz-2026-11.md`.
