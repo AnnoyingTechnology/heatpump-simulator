@@ -27,6 +27,21 @@ try {
     assert.equal(r.kind, r.target); assert.equal(r.fluid2, 'R32'); assert.equal(r.newCircuit, true);
     assert.equal(r.shown2, 'R32'); assert.equal(r.disabled2, true); assert.match(r.title, /^Factory R32\./);
   });
+  await check('a published R290 outdoor is refused with physical lines, then applies R290 with idealized lines and runs', async () => {
+    const r = await page.evaluate(`(async()=>{const {store,simulation}=qa;const target=qa.equipment.OUTDOOR_MODELS.find(x=>x.refrigerant==='R290'&&x.ports===1);
+      if(!target)return {missing:true};store.setOutdoorKind('generic');store.setRefrigerant('R32');store.update(s=>{s.cfg.live.fieldLines='physical';});
+      const before=store.state.cfg.outdoorKind;store.setOutdoorKind(target.id);
+      const refused={kind:store.state.cfg.outdoorKind,fluid:store.state.cfg.live.refrigerant,notice:store.state.ui.notice};
+      store.update(s=>{s.cfg.live.fieldLines='idealized';});store.setOutdoorKind(target.id);
+      const epoch=store.resetEpoch;await new Promise(r=>setTimeout(r,4000));
+      return {target:target.id,before,refused,kind:store.state.cfg.outdoorKind,fluid:store.state.cfg.live.refrigerant,
+        title:document.querySelector('.ou-fluid-select').title,running:simulation.status.output?.simulatedSeconds>1,kindStatus:simulation.status.kind};})()`);
+    assert.notEqual(r.missing, true, 'no published R290 outdoor in the catalogue');
+    assert.equal(r.refused.kind, r.before); assert.equal(r.refused.fluid, 'R32');
+    assert.match(r.refused.notice, new RegExp(`^${r.target} uses R290\\. Physical field lines are qualified for R32 only`));
+    assert.equal(r.kind, r.target); assert.equal(r.fluid, 'R290'); assert.match(r.title, /^Factory R290\./);
+    assert.equal(r.running, true, JSON.stringify(r));
+  });
   assert.deepEqual(page.events.filter(e => e.method === 'Runtime.exceptionThrown'), []);
   await writeFile('reviews/outdoor-refrigerant-browser-results.json', JSON.stringify({ checkedAt: new Date().toISOString(), checks }, null, 2) + '\n');
 } finally { await page.close(); await dev.close(); }
