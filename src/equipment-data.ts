@@ -12,6 +12,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 3126,
     "nominalCoolingKw": 6.1,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-AP60VG2"
@@ -40,6 +41,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 3246,
     "nominalCoolingKw": 7.1,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-AP71VG2"
@@ -68,6 +70,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 1560,
     "nominalCoolingKw": 1.5,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-AY15VGK2"
@@ -96,6 +99,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 1932,
     "nominalCoolingKw": 2.0,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-AY20VGK2"
@@ -124,6 +128,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 1932,
     "nominalCoolingKw": 2.5,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-AY25VGK2"
@@ -152,6 +157,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 1932,
     "nominalCoolingKw": 3.5,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-AY35VGK2"
@@ -180,6 +186,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 1920,
     "nominalCoolingKw": 4.2,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-AY42VGK2"
@@ -208,6 +215,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 2430,
     "nominalCoolingKw": 5.0,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-AY50VGK2"
@@ -235,6 +243,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 285
     },
     "coolingHighFanFlowM3h": 1956,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-EF25VGK2B",
@@ -264,6 +273,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 285
     },
     "coolingHighFanFlowM3h": 2016,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-EF35VGK2B",
@@ -293,6 +303,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 285
     },
     "coolingHighFanFlowM3h": 2112,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-EF42VGK2B",
@@ -322,6 +333,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 285
     },
     "coolingHighFanFlowM3h": 2676,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-EF50VGK2B",
@@ -352,6 +364,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 1818,
     "nominalCoolingKw": 2.5,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-HR25VFK2"
@@ -380,6 +393,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 1908,
     "nominalCoolingKw": 3.4,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-HR35VFK2"
@@ -408,6 +422,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 2058,
     "nominalCoolingKw": 4.2,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-HR42VFK2"
@@ -436,6 +451,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 2058,
     "nominalCoolingKw": 5.0,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-HR50VFK2"
@@ -464,6 +480,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 2568,
     "nominalCoolingKw": 6.1,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-HR60VF2"
@@ -492,6 +509,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 2568,
     "nominalCoolingKw": 7.1,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-HR71VF2"
@@ -520,6 +538,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 1872,
     "nominalCoolingKw": 2.5,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-LN25VG3R",
@@ -551,6 +570,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 1872,
     "nominalCoolingKw": 3.5,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-LN35VG3R",
@@ -582,6 +602,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 2430,
     "nominalCoolingKw": 5.0,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-LN50VG3R",
@@ -613,6 +634,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 2928,
     "nominalCoolingKw": 6.1,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-LN60VG3R",
@@ -644,6 +666,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 1824,
     "nominalCoolingKw": 2.5,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-FT25VGK2"
@@ -672,6 +695,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 2412,
     "nominalCoolingKw": 3.5,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-FT35VGK2"
@@ -700,6 +724,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": 2412,
     "nominalCoolingKw": 5.0,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "MSZ-FT50VGK2"
@@ -727,6 +752,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 350
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXA25AW",
@@ -757,6 +783,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 350
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXA35AW",
@@ -787,6 +814,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 373
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXA42AW",
@@ -817,6 +845,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 373
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXA50AW",
@@ -848,6 +877,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": null,
     "nominalCoolingKw": 2.5,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXZ25N"
@@ -876,6 +906,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": null,
     "nominalCoolingKw": 3.5,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXZ35N"
@@ -904,6 +935,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": null,
     "nominalCoolingKw": 5.0,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXZ50N"
@@ -932,6 +964,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": null,
     "nominalCoolingKw": 2.0,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXP20N9"
@@ -960,6 +993,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": null,
     "nominalCoolingKw": 2.5,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXP25N9"
@@ -988,6 +1022,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": null,
     "nominalCoolingKw": 3.5,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXP35N9"
@@ -1016,6 +1051,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": null,
     "nominalCoolingKw": 5.0,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXP50N9"
@@ -1044,6 +1080,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": null,
     "nominalCoolingKw": 6.0,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXP60N"
@@ -1072,6 +1109,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": null,
     "nominalCoolingKw": 7.1,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXP71N"
@@ -1100,6 +1138,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": null,
     "nominalCoolingKw": 3.0,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXTA30C2V1BW",
@@ -1129,6 +1168,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": null,
     "nominalCoolingKw": 3.0,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXTM30A",
@@ -1158,6 +1198,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": null,
     "nominalCoolingKw": 4.0,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXTM40A"
@@ -1186,6 +1227,7 @@ export const CATALOGUE_OUTDOORS = [
     },
     "coolingHighFanFlowM3h": null,
     "nominalCoolingKw": 3.0,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXTJ30AW",
@@ -1214,6 +1256,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 350
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXJ20A2V1BW9",
@@ -1243,6 +1286,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 350
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXJ25A2V1BW9",
@@ -1272,6 +1316,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 350
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXJ35A2V1BW9",
@@ -1301,6 +1346,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 408
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXJ42A2V1BW9",
@@ -1330,6 +1376,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 408
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXJ50A2V1BW9",
@@ -1359,6 +1406,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 343
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXF20F5V1B"
@@ -1386,6 +1434,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 343
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXF25F5V1B"
@@ -1413,6 +1462,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 343
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXF35F5V1B"
@@ -1440,6 +1490,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 343
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXF42F5V1B"
@@ -1467,6 +1518,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 367
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXF50F5V1B"
@@ -1494,6 +1546,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 273
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXC20EV1B"
@@ -1521,6 +1574,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 273
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXC25EV1B"
@@ -1548,6 +1602,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 273
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXC35EV1B"
@@ -1575,6 +1630,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 300
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXC50EV1B"
@@ -1602,6 +1658,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 300
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXC60EV1B"
@@ -1629,6 +1686,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 350
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXC71EV1B"
@@ -1656,6 +1714,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 367
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXM25A2V1B",
@@ -1688,6 +1747,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 367
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXM35A2V1B",
@@ -1723,6 +1783,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 401
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXM50A2V1B",
@@ -1758,6 +1819,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 350
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXA20D2V1BG",
@@ -1792,6 +1854,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 350
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXA25D2V1BG",
@@ -1826,6 +1889,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 350
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXA35D2V1BG",
@@ -1860,6 +1924,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 401
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXA42D2V1BG",
@@ -1894,6 +1959,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 401
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXA50D2V1BG",
@@ -1928,6 +1994,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 350
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 2,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -1994,6 +2061,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 350
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 2,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -2095,6 +2163,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 408
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 2,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -2191,6 +2260,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 408
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 3,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -2272,6 +2342,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 408
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 3,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -2378,6 +2449,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 408
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 3,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -2486,6 +2558,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 408
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 4,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -2642,6 +2715,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 408
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 4,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -2818,6 +2892,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 408
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 5,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -3020,6 +3095,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 285.0
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 2,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -3056,6 +3132,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 285.0
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 2,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -3092,6 +3169,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 340.0
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 2,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -3128,6 +3206,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 401.0
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 3,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -3164,6 +3243,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 401.0
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 3,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -3200,6 +3280,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 340.0
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 3,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -3236,6 +3317,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 340.0
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 4,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -3272,6 +3354,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 401.0
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 4,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -3308,6 +3391,7 @@ export const CATALOGUE_OUTDOORS = [
       "d": 401.0
     },
     "coolingHighFanFlowM3h": null,
+    "refrigerant": "R32",
     "ports": 5,
     "compatibleIndoorClasses": [],
     "installation": {
@@ -3346,6 +3430,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXF60F2V1B"
@@ -3375,6 +3460,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXF71F2V1B"
@@ -3404,6 +3490,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "ATXC20EV1B"
@@ -3433,6 +3520,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "ATXC25EV1B"
@@ -3462,6 +3550,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "ATXC35EV1B"
@@ -3491,6 +3580,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "ATXC50EV1B"
@@ -3520,6 +3610,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "ATXC60EV1B"
@@ -3549,6 +3640,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "ATXC71EV1B"
@@ -3580,6 +3672,7 @@ export const CATALOGUE_OUTDOORS = [
     "marketScope": "Europe; France availability unverified",
     "identityKind": "published-class",
     "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXM20A"
@@ -3611,6 +3704,7 @@ export const CATALOGUE_OUTDOORS = [
     "marketScope": "Europe; France availability unverified",
     "identityKind": "published-class",
     "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXM25A"
@@ -3642,6 +3736,7 @@ export const CATALOGUE_OUTDOORS = [
     "marketScope": "Europe; France availability unverified",
     "identityKind": "published-class",
     "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXM35A"
@@ -3673,6 +3768,7 @@ export const CATALOGUE_OUTDOORS = [
     "marketScope": "Europe; France availability unverified",
     "identityKind": "published-class",
     "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXM42A"
@@ -3704,6 +3800,7 @@ export const CATALOGUE_OUTDOORS = [
     "marketScope": "Europe; France availability unverified",
     "identityKind": "published-class",
     "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXM50A"
@@ -3735,6 +3832,7 @@ export const CATALOGUE_OUTDOORS = [
     "marketScope": "Europe; France availability unverified",
     "identityKind": "published-class",
     "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXM60A"
@@ -3766,6 +3864,7 @@ export const CATALOGUE_OUTDOORS = [
     "marketScope": "Europe; France availability unverified",
     "identityKind": "published-class",
     "sourceEdition": "ECPEN26-500 (02/2026), p.320",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXM71A"
@@ -3795,6 +3894,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "France technical table; current availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "ATXM25A2V1B",
@@ -3825,6 +3925,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "France technical table; current availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "ATXM35A2V1B",
@@ -3855,6 +3956,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "France technical table; current availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "ATXM50A2V1B",
@@ -3885,6 +3987,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "ATXF20F5V1B"
@@ -3914,6 +4017,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "ATXF25F5V1B"
@@ -3943,6 +4047,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "ATXF35F5V1B"
@@ -3972,6 +4077,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "ATXF42F5V1B"
@@ -4001,6 +4107,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "ATXF50F5V1B"
@@ -4030,6 +4137,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "France technical table; current availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "ATXF60F2V1B"
@@ -4059,6 +4167,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "France technical table; current availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "ATXF71F2V1B"
@@ -4090,6 +4199,7 @@ export const CATALOGUE_OUTDOORS = [
     "marketScope": "Europe; France availability unverified",
     "identityKind": "published-class",
     "sourceEdition": "ECPEN26-500 (02/2026), p.349",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXTP25A"
@@ -4121,6 +4231,7 @@ export const CATALOGUE_OUTDOORS = [
     "marketScope": "Europe; France availability unverified",
     "identityKind": "published-class",
     "sourceEdition": "ECPEN26-500 (02/2026), p.349",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FTXTP35A"
@@ -4150,6 +4261,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified",
+    "refrigerant": "R32",
     "ports": 3,
     "compatibleIndoorClasses": [],
     "publishedOperatingRangesC": {
@@ -4257,6 +4369,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified",
+    "refrigerant": "R32",
     "ports": 3,
     "compatibleIndoorClasses": [],
     "publishedOperatingRangesC": {
@@ -4364,6 +4477,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France exact SKU availability unverified",
+    "refrigerant": "R32",
     "ports": 2,
     "compatibleIndoorClasses": [],
     "publishedOperatingRangesC": {
@@ -4430,6 +4544,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France exact SKU availability unverified",
+    "refrigerant": "R32",
     "ports": 2,
     "compatibleIndoorClasses": [],
     "publishedOperatingRangesC": {
@@ -4498,6 +4613,7 @@ export const CATALOGUE_OUTDOORS = [
     "coolingHighFanFlowM3h": null,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe; France availability unverified",
+    "refrigerant": "R32",
     "ports": 1,
     "compatibleIndoorClasses": [
       "FBA50A2VEB9",

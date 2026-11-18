@@ -24,3 +24,10 @@ test('charge-model readouts and protection names translate through nested patter
  assert.equal(translate('Compressor stopped · condensing temperature protection'),'Compresseur arrêté · protection température de condensation');
  setLanguage('en');
 });
+test('factory refrigerant messages keep the fluid and translate the reason',()=>{
+ setLanguage('fr');
+ assert.equal(translate('Factory R290. Choose Generic outdoor to compare other qualified fluids; this is a compatible-circuit comparison, not an appliance retrofit.'),'R290 d’usine. Choisir l’extérieur générique pour comparer les autres fluides qualifiés : comparaison de circuits compatibles, sans conversion d’appareil.');
+ assert.equal(translate('MUZ-RZ25VUHZ uses R290. Physical field lines are qualified for R32 only; choose idealized lines first. Existing rooms and history were preserved.'),'MUZ-RZ25VUHZ fonctionne au R290. Liaisons physiques qualifiées seulement en R32 ; choisir d’abord les liaisons idéalisées. Pièces et historique conservés.');
+ assert.equal(translate('Live · generic R290 · real property backend · performance not manufacturer-calibrated'),'Simulation · R290 générique · propriétés réelles · performances non étalonnées par le constructeur');
+ setLanguage('en');
+});

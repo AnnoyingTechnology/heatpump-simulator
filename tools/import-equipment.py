@@ -14,6 +14,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 
 
+# Pure fluids qualified by the Reference engine (src/engine/refrigerants.ts) that published outdoor units use.
+SELECTABLE_OUTDOOR_REFRIGERANTS = ('R32', 'R290')
+
+
 def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
@@ -292,10 +296,12 @@ def generate(root=ROOT):
         if capacity:
             profile['nominalCoolingKw'] = capacity[0]['value']
         if unit['unitType'] == 'outdoor':
-            refrigerant = by_key['refrigerant'][0]['value']
-            if refrigerant not in ('R32', 'R-32'):
-                raise ValueError('Only validated R32 profiles can be selected')
-            profile.update(ports=accepted['ports'],
+            # Only published refrigerants with a qualified Reference engine fluid become selectable;
+            # selecting the outdoor applies its factory refrigerant to the live circuit.
+            refrigerant = by_key['refrigerant'][0]['value'].replace('-', '')
+            if refrigerant not in SELECTABLE_OUTDOOR_REFRIGERANTS:
+                raise ValueError(f'Refrigerant {refrigerant} is not a qualified selectable outdoor fluid')
+            profile.update(refrigerant=refrigerant, ports=accepted['ports'],
                            compatibleIndoorClasses=accepted['compatibleIndoorClasses'])
             if accepted.get('topology') == 'multisplit':
                 if accepted['ports'] != by_key['maximumIndoorUnits'][0]['value']:

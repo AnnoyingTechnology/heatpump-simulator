@@ -111,6 +111,16 @@ export const hasInventory = (c: Clock): boolean => c.iceKg > 0 || c.retainedWate
 
 type Listener = (s: AppState) => void;
 
+/** Why the live circuit options cannot run this fluid, or null when they can. */
+function fluidBlocker(fluid: RefrigerantId, live: LiveParameters): string | null {
+  const coverage = refrigerantDefinition(fluid).qualification;
+  if (!coverage.reference) return 'This refrigerant is not qualified for the Reference engine';
+  if (live.fieldLines === 'physical' && !coverage.physicalLines) return 'Physical field lines are qualified for R32 only; choose idealized lines first';
+  if (live.circuitModel === 'inventory' && !coverage.inventory) return 'The inventory circuit is qualified for R32 only';
+  if (live.circuitModel === 'charge-balanced' && !chargeBalanceQualified(fluid)) return 'The charge model is qualified for pure fluids only; choose Fixed first';
+  return null;
+}
+
 class Store {
   state: AppState = { cfg: defaultConfig(), ui: defaultUi() };
   clock: Clock = { previewTimeS: 0, iceKg: 0, retainedWaterKg: 0, seeded: false, melting: false };
@@ -206,11 +216,7 @@ class Store {
   /** A different working fluid starts a new scenario; never reinterpret stored energy with another EOS. */
   setRefrigerant(fluid: RefrigerantId): void {
     const cfg = this.state.cfg;
-    const coverage = refrigerantDefinition(fluid).qualification;
-    if (fluid === cfg.live.refrigerant || cfg.outdoorKind !== 'generic' || !coverage.reference ||
-        (cfg.live.fieldLines === 'physical' && !coverage.physicalLines) ||
-        (cfg.live.circuitModel === 'inventory' && !coverage.inventory) ||
-        (cfg.live.circuitModel === 'charge-balanced' && !chargeBalanceQualified(fluid))) return;
+    if (fluid === cfg.live.refrigerant || cfg.outdoorKind !== 'generic' || fluidBlocker(fluid, cfg.live) !== null) return;
     this.update(s => { s.cfg.live.refrigerant = fluid; });
   }
 
@@ -481,9 +487,17 @@ class Store {
       this.emit();
       return;
     }
+    // A published outdoor runs on its factory refrigerant. Refuse rather than silently changing
+    // the circuit options when the current ones are not qualified for that fluid.
+    const blocker = model.refrigerant === null ? null : fluidBlocker(model.refrigerant, this.state.cfg.live);
+    if (blocker) {
+      this.state.ui.notice = `${model.id} uses ${model.refrigerant}. ${blocker}. Existing rooms and history were preserved.`;
+      this.emit();
+      return;
+    }
     this.update((s) => {
       s.cfg.outdoorKind = kind;
-      if (kind !== 'generic') s.cfg.live.refrigerant = 'R32';
+      if (model.refrigerant !== null) s.cfg.live.refrigerant = model.refrigerant;
       const oldCount = s.cfg.unitCount;
       if (!model.installation) s.cfg.unitCount = Math.min(oldCount, outdoorPortCapacity(s.cfg));
       if (model.coolingHighFanFlowM3h !== undefined) s.cfg.outdoorVolumetricAirFlowM3s = model.coolingHighFanFlowM3h / 3600;

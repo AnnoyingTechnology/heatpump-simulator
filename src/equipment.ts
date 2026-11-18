@@ -1,6 +1,7 @@
 import { CATALOGUE_INDOORS, CATALOGUE_OUTDOORS } from './equipment-data';
 import { validateMultisplitInstallation, type MultisplitInstallation, type InstallationValidation } from './equipment-topology';
 import type { Config, IndoorClass, OutdoorKind } from './types';
+import type { RefrigerantId } from './engine/refrigerants';
 
 export type EquipmentManufacturer = 'daikin' | 'mitsubishi-electric' | 'generic';
 export function equipmentManufacturerLabel(manufacturer: EquipmentManufacturer): string {
@@ -13,6 +14,8 @@ export interface OutdoorModelInfo {
   manufacturer: EquipmentManufacturer;
   /** Null means the generic group's user-declared port limit. */
   ports: number | null;
+  /** Factory refrigerant, applied to the live circuit on selection. Null: the generic group's user-chosen fluid. */
+  refrigerant: RefrigerantId | null;
   compatibleIndoorClasses: readonly IndoorClass[];
   caseMm: { h: number; w: number; d: number };
   profileNote: string;
@@ -34,15 +37,15 @@ const baseIndoor: readonly IndoorClass[] = ['FTXA25', 'FTXA35', 'G25', 'G35', 'G
 const PROFILE_NOTE = 'Published matched split, casing and cooling high-fan airflow. Heating uses that airflow as an assumption; compressor, coil conductance and fan watts remain generic. This is not an OEM performance map.';
 
 export const OUTDOOR_MODELS: readonly OutdoorModelInfo[] = [
-  { id: 'owner', label: 'Daikin 3MXM52N8', manufacturer: 'daikin', ports: 3,
+  { id: 'owner', label: 'Daikin 3MXM52N8', manufacturer: 'daikin', ports: 3, refrigerant: 'R32',
     compatibleIndoorClasses: ['FTXA25', 'FTXA35'], caseMm: { h: 734, w: 958, d: 340 },
     acceptance: 'owner-reference', profileNote: 'Owner-declared 3MXM52N8 with FTXA25/35 heads (indoor suffix unknown). Generic R32 performance assumptions; no OEM performance map.' },
-  { id: 'generic', label: 'Generic editable outdoor', manufacturer: 'generic', ports: null,
+  { id: 'generic', label: 'Generic editable outdoor', manufacturer: 'generic', ports: null, refrigerant: null,
     compatibleIndoorClasses: [...baseIndoor, ...CATALOGUE_INDOORS.map(m => m.id)], caseMm: { h: 734, w: 958, d: 340 },
     acceptance: 'generic-assumption', profileNote: 'User-defined port capacity and generic compatible equipment assumptions. Manufacturer pairing is not asserted.' },
   ...CATALOGUE_OUTDOORS.map(profile => ({
     id: profile.id, label: `${equipmentManufacturerLabel(profile.manufacturer)} ${profile.id}${profile.acceptance === 'reviewed-class-fields' ? ' (class; suffix unpublished)' : ''}`, manufacturer: profile.manufacturer,
-    ports: profile.ports, compatibleIndoorClasses: profile.compatibleIndoorClasses,
+    ports: profile.ports, refrigerant: profile.refrigerant as RefrigerantId, compatibleIndoorClasses: profile.compatibleIndoorClasses,
     caseMm: profile.caseMm, coolingHighFanFlowM3h: profile.coolingHighFanFlowM3h ?? undefined,
     installation: 'installation' in profile ? profile.installation : undefined,
     sourceStatus: 'sourceStatus' in profile ? profile.sourceStatus : undefined,
@@ -53,7 +56,7 @@ export const OUTDOOR_MODELS: readonly OutdoorModelInfo[] = [
       ? 'Published catalogue class pairing and casing; factory suffix and exact full-SKU eligibility remain unknown. Indoor cooling high-fan volumetric flow is published; heating reuse is an assumption. Outdoor airflow, compressor, coil conductance, charge and fan watts remain generic/manual; no OEM performance map.'
       : 'installation' in profile
       ? profile.installation.ports === null
-      ? 'Published legacy reference, casing, R32 and maximum connected head count. Minimum count, named ports, class/reducer rules and exact indoor eligibility remain unknown. Outdoor high-fan airflow and the cycle use editable generic assumptions; no OEM charge or performance map is applied.'
+      ? 'Published legacy reference, casing, refrigerant and maximum connected head count. Minimum count, named ports, class/reducer rules and exact indoor eligibility remain unknown. Outdoor high-fan airflow and the cycle use editable generic assumptions; no OEM charge or performance map is applied.'
       : 'Published casing, named ports and necessary connection-class/reducer constraints. Exact indoor full-reference combinations remain unverified. Outdoor airflow, compressor, coil conductance, fan watts and performance remain editable generic assumptions. Published total-charge limits are documentary and do not calibrate the generic circuit.'
       : profile.coolingHighFanFlowM3h === null
       ? 'Published matched split, casing and operating-range metadata. Outdoor airflow is unpublished in the reviewed table and uses the editable generic mass-flow setting; compressor, coil conductance and fan watts remain generic. This is not an OEM performance map.'

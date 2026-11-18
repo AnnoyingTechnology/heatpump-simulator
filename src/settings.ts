@@ -706,7 +706,7 @@ export function createOutdoorUnitCard(onSettings: () => void): OutdoorUnitCard {
     }
     setAttr(fluidSel, 'title', examples ? 'Examples use fixed R32 snapshots; fluid selection applies to Live only.' : generic
       ? 'Changing refrigerant starts a new scenario. Other fluids need idealized field lines; original room and equipment inputs are retained.'
-      : 'Factory R32. Choose Generic outdoor to compare other qualified fluids; this is a compatible-circuit comparison, not an appliance retrofit.');
+      : `Factory ${outdoorModelInfo(c).refrigerant ?? c.live.refrigerant}. Choose Generic outdoor to compare other qualified fluids; this is a compatible-circuit comparison, not an appliance retrofit.`);
   }});
 
   // Port capacity is an equipment specification, distinct from how many rooms are connected (rooms are added and removed in the
@@ -927,7 +927,7 @@ export function createOutdoorSettings(): PopContent {
         html('span', { class: 'fl-name' }, f.name), html('span', { class: 'fl-note' }, f.note))));
   const fluidCoverage = html('p', { class: 'hint' });
   const refrigerant = keyed('refrigerant', fold('Refrigerant qualification', false,
-    html('p', { class: 'hint' }, 'Select the working fluid on the outdoor-unit card. Alternate fluids compare generic compatible circuits; published R32 equipment remains R32. Changing fluid starts a new physical scenario.'), fluidCoverage));
+    html('p', { class: 'hint' }, 'Select the working fluid on the outdoor-unit card. Alternate fluids compare generic compatible circuits; published equipment keeps its factory refrigerant. Changing fluid starts a new physical scenario.'), fluidCoverage));
   const pending = keyed('pending', fold('Oil and other (pending)', false, list(PENDING, true)));
 
   // Refrigerant charge model. Initial charge is edited on the outdoor-unit card; line length and bores on the line sets.

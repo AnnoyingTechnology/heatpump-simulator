@@ -18,8 +18,11 @@ const BASE: Readonly<Record<string, string>> = {
  "Qualified Reference refrigerant":"Frigorigène qualifié pour le modèle de référence",
  "Property research only; coupled simulation is not qualified.":"Propriétés seules en recherche ; simulation couplée non qualifiée.",
  "Changing refrigerant starts a new scenario. Other fluids need idealized field lines; original room and equipment inputs are retained.":"Changer de frigorigène démarre un nouveau scénario. Les autres fluides exigent des liaisons idéalisées ; réglages des pièces et équipements conservés.",
- "Factory R32. Choose Generic outdoor to compare other qualified fluids; this is a compatible-circuit comparison, not an appliance retrofit.":"R32 d’usine. Choisir l’extérieur générique pour comparer les autres fluides qualifiés : comparaison de circuits compatibles, sans conversion d’appareil.",
- "Select the working fluid on the outdoor-unit card. Alternate fluids compare generic compatible circuits; published R32 equipment remains R32. Changing fluid starts a new physical scenario.":"Choisir le fluide sur l’unité extérieure. Les autres fluides comparent des circuits génériques compatibles ; les appareils R32 restent en R32. Changer de fluide démarre un nouveau scénario physique.",
+ "Select the working fluid on the outdoor-unit card. Alternate fluids compare generic compatible circuits; published equipment keeps its factory refrigerant. Changing fluid starts a new physical scenario.":"Choisir le fluide sur l’unité extérieure. Les autres fluides comparent des circuits génériques compatibles ; les appareils publiés gardent leur frigorigène d’usine. Changer de fluide démarre un nouveau scénario physique.",
+ 'This refrigerant is not qualified for the Reference engine':'Ce frigorigène n’est pas qualifié pour le moteur de référence',
+ 'Physical field lines are qualified for R32 only; choose idealized lines first':'Liaisons physiques qualifiées seulement en R32 ; choisir d’abord les liaisons idéalisées',
+ 'The inventory circuit is qualified for R32 only':'Le circuit à inventaire est qualifié seulement en R32',
+ 'The charge model is qualified for pure fluids only; choose Fixed first':'Le modèle de charge est qualifié pour les fluides purs uniquement ; choisir d’abord Fixe',
  "Qualified Reference cycle and physical field lines. Charge release remains separately gated.":"Cycle de référence et liaisons physiques qualifiés. La charge reste soumise à sa validation séparée.",
  "Conserved inventory and the complete physical field-line circuit, including reverse-cycle defrost, are qualified for R32 only.":"Inventaire conservé et circuit complet de liaisons physiques, dégivrage compris, qualifiés seulement en R32.",
  "Fixed-composition pseudo-pure EOS preserves small bubble/dew glide; phase compositions/fractionation and physical field lines are not qualified.":"L’équation d’état pseudo-pure à composition fixe conserve le faible glissement bulle/rosée ; compositions des phases, fractionnement et liaisons physiques non qualifiés.",
@@ -241,6 +244,9 @@ const BASE: Readonly<Record<string, string>> = {
 };
 export const FR_PATTERNS: readonly (readonly [string, string])[] = [
  // Charge-balanced circuit model; before generic ' · ' patterns.
+ ['Factory {fluid}. Choose Generic outdoor to compare other qualified fluids; this is a compatible-circuit comparison, not an appliance retrofit.','{fluid} d’usine. Choisir l’extérieur générique pour comparer les autres fluides qualifiés : comparaison de circuits compatibles, sans conversion d’appareil.'],
+ ['{model} uses {fluid}. {detail}. Existing rooms and history were preserved.','{model} fonctionne au {fluid}. {detail}. Pièces et historique conservés.'],
+ ['Live · generic {fluid} · real property backend · performance not manufacturer-calibrated','Simulation · {fluid} générique · propriétés réelles · performances non étalonnées par le constructeur'],
  ['{value} K subcooled','{value} K de sous-refroidissement'],
  ['quality {value}','titre {value}'],
  ['high-pressure limit · {value} g in accumulator','limite haute pression · {value} g dans l’accumulateur'],

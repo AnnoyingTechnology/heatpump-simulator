@@ -30,7 +30,7 @@ const fmtTime = (sec: number): string => {
 };
 
 /** Shared one-line statements so every surface says the same thing about the live model. */
-export const LIVE_BASIS = 'Live · generic R32 · real property backend · performance not manufacturer-calibrated';
+export const liveBasis = (fluid: string): string => `Live · generic ${fluid} · real property backend · performance not manufacturer-calibrated`;
 /** Shared by the weather card's humidity control and its tooltip. */
 export const HUMIDITY_CONVENTION = 'Relative humidity follows CoolProp: saturation over ice below 0 °C, over liquid water above. Convert weather readings that use a different convention.';
 export function fieldLinesNote(s: AppState): string {
@@ -258,11 +258,11 @@ export function createHeader(): Header {
       } else if (held) {
         note.dataset.tone = 'info';
         setText(note, s.ui.paused ? 'Resume to recalculate' : 'Awaiting calculation');
-        setAttr(status, 'title', `${st.detail ?? ''}\n${LIVE_BASIS}`);
+        setAttr(status, 'title', `${st.detail ?? ''}\n${liveBasis(s.cfg.live.refrigerant)}`);
       } else {
         note.dataset.tone = 'warn';
         setText(note, standby ? s.cfg.mode === 'cooling' ? 'No cooling demand' : 'No heating demand' : '');
-        setAttr(status, 'title', `${st.detail ? `${st.detail}\n` : ''}${LIVE_BASIS}\n${fieldLinesNote(s)}`);
+        setAttr(status, 'title', `${st.detail ? `${st.detail}\n` : ''}${liveBasis(s.cfg.live.refrigerant)}\n${fieldLinesNote(s)}`);
       }
     },
     setTime(sec: number): void { setText(time, fmtTime(sec)); },
@@ -502,7 +502,7 @@ export function createModelDiagnostics(): { root: HTMLDetailsElement; sync(s: Ap
       if (e.inventory) rows.push(['Compressor admission latch', e.inventory.compressorAdmitted ? 'Armed' : 'Liquid carryover protection']);
     }
     if (st?.calculationMs !== null && st?.calculationMs !== undefined) rows.push(['Last step CPU', `${fmt(st.calculationMs, 2)} ms`]);
-    setHtml(body, `<p class="hint">${escapeHtml(s.ui.experience === 'live' ? LIVE_BASIS : PREVIEW_BANNER)}</p>
+    setHtml(body, `<p class="hint">${escapeHtml(s.ui.experience === 'live' ? liveBasis(s.cfg.live.refrigerant) : PREVIEW_BANNER)}</p>
       <p class="hint">${escapeHtml(fieldLinesNote(s))}</p>
       ${st?.detail ? `<p class="status">${escapeHtml(st.detail)}</p>` : ''}
       ${st?.warnings.map(w => `<p class="status">${escapeHtml(w)}</p>`).join('') ?? ''}

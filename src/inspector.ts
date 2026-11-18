@@ -11,7 +11,7 @@ import type { Current, EffectiveCleanliness } from './state';
 import type { RefrigerantState } from './engine/types';
 import type { AppState } from './types';
 import { INDOOR_CLASSES, OWNER_PORTS, outdoorPortCapacity, roomVolumeM3 } from './types';
-import { LIVE_BASIS } from './chrome';
+import { liveBasis } from './chrome';
 
 type Row = [string, string];
 
@@ -136,7 +136,7 @@ export function inspectorHtml(id: string | null, s: AppState): string {
       return block('Casing', rows([
         ['Status', cfg.outdoorKind === 'owner' ? 'Catalogue family data; installed suffix unknown' : 'Illustrative generic envelope'],
         ['Ports', cfg.outdoorKind === 'owner' ? `${OWNER_PORTS} (${cfg.unitCount} connected)` : `${outdoorPortCapacity(cfg)} assumed capacity (${cfg.unitCount} connected)`],
-        ['Refrigerant', 'R32'],
+        ['Refrigerant', s.ui.experience === 'live' ? cfg.live.refrigerant : 'R32'],
         ['Air outlet (post-fan)', `${deg(rd.outdoorOutletC)} ${tag}`],
         ['Outdoor fan', kwOf(rd.outdoorFanKw)],
       ])) + cycleBlock(rd, s) + block('Provenance', '<p>Circuit inside the casing is a <b>generic explanatory layout</b>, not a Daikin internal layout. The exact N8 circuit schematic was not located; the 2019 N2-generation guide is family context only.</p>') + EDIT_EQUIPMENT;
@@ -338,7 +338,7 @@ export function createInspector(onEditOutdoor: () => void): PopContent {
     heading: (s) => inspectorHeading(s.ui.selected, s),
     sync(s: AppState): void {
       setHtml(content, inspectorHtml(s.ui.selected, s));
-      setText(foot, s.ui.experience === 'live' ? LIVE_BASIS : PREVIEW_BANNER);
+      setText(foot, s.ui.experience === 'live' ? liveBasis(s.cfg.live.refrigerant) : PREVIEW_BANNER);
     },
   };
 }

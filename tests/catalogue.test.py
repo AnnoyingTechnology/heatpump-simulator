@@ -440,6 +440,34 @@ class CatalogueAcceptance(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'cover every compatible indoor reference'):
                 module.generate(root)
 
+    def _generate_with_outdoor_refrigerant(self, root, value):
+        units = [u for u in self.review['units'] if u['reference'] in ('RXZ25N', 'FTXZ25N')]
+        for accepted in units:
+            candidate = root / accepted['candidateFile']
+            doc = json.loads((ROOT / accepted['candidateFile']).read_text())
+            for unit in doc['units']:
+                for fact in unit['facts']:
+                    if fact['key'] == 'refrigerant':
+                        fact['value'] = value
+            candidate.parent.mkdir(parents=True, exist_ok=True)
+            candidate.write_text(json.dumps(doc))
+            accepted['candidateSha256'] = module.sha(candidate)
+        review_path = root / 'research/catalogue/equipment-acceptance.json'
+        review_path.parent.mkdir(parents=True, exist_ok=True)
+        review_path.write_text(json.dumps({**self.review, 'units': units}))
+        return module.generate(root)
+
+    def test_outdoor_profiles_carry_their_published_qualified_refrigerant(self):
+        outdoors = json.loads(re.search(r'export const CATALOGUE_OUTDOORS = (.*?) as const;', module.generate(), re.S).group(1))
+        self.assertTrue(outdoors and all(p['refrigerant'] in module.SELECTABLE_OUTDOOR_REFRIGERANTS for p in outdoors))
+        with tempfile.TemporaryDirectory() as folder:
+            generated = self._generate_with_outdoor_refrigerant(Path(folder), 'R-290')
+            profile = json.loads(re.search(r'export const CATALOGUE_OUTDOORS = (.*?) as const;', generated, re.S).group(1))[0]
+            self.assertEqual((profile['id'], profile['refrigerant']), ('RXZ25N', 'R290'))
+        with tempfile.TemporaryDirectory() as folder:
+            with self.assertRaisesRegex(ValueError, 'R410A is not a qualified selectable outdoor fluid'):
+                self._generate_with_outdoor_refrigerant(Path(folder), 'R-410A')
+
     def test_changed_candidate_requires_new_source_acceptance(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
