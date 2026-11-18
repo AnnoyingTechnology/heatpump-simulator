@@ -77,13 +77,16 @@ export function indoorModelProfile(indoor: IndoorClass) {
 }
 
 const OWNER_HEADS: readonly IndoorClass[] = ['FTXA25', 'FTXA35'];
-const DAIKIN_HEADS: readonly IndoorClass[] = [...OWNER_HEADS, ...CATALOGUE_INDOORS.filter(m => m.manufacturer === 'daikin').map(m => m.id)];
+/** Catalogued heads of one manufacturer; Daikin also offers the owner's declared FTXA25/35. */
+function manufacturerHeads(manufacturer: EquipmentManufacturer): readonly IndoorClass[] {
+  return [...(manufacturer === 'daikin' ? OWNER_HEADS : []), ...CATALOGUE_INDOORS.filter(m => m.manufacturer === manufacturer).map(m => m.id)];
+}
 
-/** Daikin multisplits, including the owner 3MXM52N8, may be explored with any catalogued Daikin head;
- * only the owner's declared FTXA25/35 pairing is presented without an unverified-combination mark. */
+/** Multisplits, including the owner 3MXM52N8, may be explored with any catalogued head of their own
+ * manufacturer; only the owner's declared FTXA25/35 pairing is presented without an unverified-combination mark. */
 export function selectableIndoorClasses(outdoor: OutdoorKind): readonly IndoorClass[] {
   const model = outdoorModelInfo(outdoor);
-  if (model.installation || model.id === 'owner') return DAIKIN_HEADS;
+  if (model.installation || model.id === 'owner') return manufacturerHeads(model.manufacturer);
   const additionalClassPairs = CATALOGUE_INDOORS
     .filter(profile => 'compatibleOutdoorClasses' in profile && profile.compatibleOutdoorClasses.some(id => id === model.id))
     .map(profile => profile.id);
@@ -135,7 +138,7 @@ export function currentInstallationValidation(cfg: Config): InstallationValidati
   return validateMultisplitInstallation(installation, cfg.rooms.slice(0, cfg.unitCount).map(room => ({
     id: room.id, enabled: room.enabled, installation: room.installation,
     manufacturer: indoorModelProfile(room.indoorClass)?.manufacturer ?? (room.indoorClass.startsWith('FTXA') ? 'daikin' : 'generic'),
-  })));
+  })), model.manufacturer);
 }
 
 /** Profile identity/pairing selects only published or explicitly assumed inputs. */

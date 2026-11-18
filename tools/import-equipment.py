@@ -102,6 +102,34 @@ def multisplit_installation(unit, accepted, root):
             'publishedMaximumTotalChargeKg': cap}
 
 
+INSTALLATION_KEYS = {'topology', 'minimumConnectedHeads', 'maximumConnectedHeads', 'connectedCapacityClassSumLimitKw',
+                     'ports', 'guide', 'exactEligibility', 'publishedMaximumTotalChargeKg'}
+
+
+def checked_installation(installation, ports, by_key):
+    """Structural guard for an independently reviewed explicit installation (src/equipment-topology.ts)."""
+    if set(installation) != INSTALLATION_KEYS or installation['topology'] != 'multisplit' or installation['exactEligibility'] != 'unknown':
+        raise ValueError('Explicit installation does not match the multisplit shape')
+    maximum, minimum = installation['maximumConnectedHeads'], installation['minimumConnectedHeads']
+    if maximum != ports or ('maximumIndoorUnits' in by_key and by_key['maximumIndoorUnits'][0]['value'] != maximum):
+        raise ValueError('Explicit installation head maximum disagrees with the accepted port count')
+    if minimum is not None and not 1 <= minimum <= maximum:
+        raise ValueError('Explicit installation head minimum is out of range')
+    limit = installation['connectedCapacityClassSumLimitKw']
+    if limit is not None and not (isinstance(limit, (int, float)) and math.isfinite(limit) and limit > 0):
+        raise ValueError('Explicit installation class-sum limit must be positive')
+    named = installation['ports']
+    if named is not None:
+        ids = [port['id'] for port in named]
+        if len(ids) != maximum or len(set(ids)) != len(ids) or any(not port['alternatives'] for port in named):
+            raise ValueError('Explicit installation named ports are incomplete')
+        for port in named:
+            for alternative in port['alternatives']:
+                if not alternative['capacityClasses'] or not isinstance(alternative['reducer'], str):
+                    raise ValueError('Explicit installation port alternative is incomplete')
+    return installation
+
+
 def source_review_metadata(unit, accepted, root):
     """Bind new source-qualified profiles and market claims to an independent receipt."""
     receipt = accepted['sourceReview']
@@ -334,7 +362,7 @@ def generate(root=ROOT):
                            'condition': (by_key.get(mode + 'OutdoorMinimum') or by_key[mode + 'OutdoorMaximum'])[0]['condition']}
                     for mode in ('cooling', 'heating')}
             if 'installation' in accepted:
-                profile['installation'] = accepted['installation']
+                profile['installation'] = checked_installation(accepted['installation'], accepted['ports'], by_key)
         profiles.append(profile)
     refs = [p['id'] for p in profiles]
     if len(refs) != len(set(refs)):

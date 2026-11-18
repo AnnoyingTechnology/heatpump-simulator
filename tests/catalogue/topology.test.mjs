@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { validateMultisplitInstallation as validate } from './build/equipment-topology.js';
+import { validateMultisplitInstallation } from './build/equipment-topology.js';
+// Every reviewed profile below is a Daikin outdoor unless a test passes another manufacturer.
+const validate = (profile, heads, outdoorManufacturer = 'daikin') => validateMultisplitInstallation(profile, heads, outdoorManufacturer);
 import { CATALOGUE_INDOORS, CATALOGUE_OUTDOORS } from './build/equipment-data.js';
 const model = id => CATALOGUE_OUTDOORS.find(m => m.id === id).installation;
 const head = (id, portId, capacityClass, connectedCapacityKw, reducer='none', extra={}) => ({id,manufacturer:'daikin',enabled:true,installation:{portId,capacityClass,connectedCapacityKw,reducer,...extra}});
@@ -89,4 +91,11 @@ test('exact ATXP-N9 pair metadata names only its source-listed ARXP outdoor part
  assert.deepEqual(indoor('ATXP20N5V1B9').compatibleOutdoorReferences,['ARXP20N5V1B9']);
  assert.deepEqual(indoor('ATXP25N5V1B9').compatibleOutdoorReferences,['ARXP25N5V1B9']);
  assert.deepEqual(indoor('ATXP35N5V1B9').compatibleOutdoorReferences,['ARXP35N5V1B9']);
+});
+test('the manufacturer finding follows the outdoor unit, not a fixed brand',()=>{
+ const profile={topology:'multisplit',minimumConnectedHeads:2,maximumConnectedHeads:2,connectedCapacityClassSumLimitKw:null,ports:null,guide:'test',exactEligibility:'unknown',publishedMaximumTotalChargeKg:null};
+ const heads=[head('MSZ-LN25VG3W','A',25,2.5),head('MSZ-LN35VG3W','B',35,3.5)];for(const h of heads)h.manufacturer='mitsubishi-electric';
+ assert.ok(!validate(profile,heads,'mitsubishi-electric').findings.some(f=>f.code==='manufacturer'));
+ assert.equal(validate(profile,heads,'daikin').findings.filter(f=>f.code==='manufacturer').length,2);
+ assert.ok(!validate(profile,heads,'mitsubishi-electric').findings.some(f=>/legacy/.test(f.message)));
 });

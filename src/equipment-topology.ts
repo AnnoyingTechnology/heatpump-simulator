@@ -58,20 +58,21 @@ export interface InstallationValidation {
 }
 
 /** Evaluate declared connections without inferring classes, reducers or OEM approval.
- * Supplied heads must be the installed pool slice, not merely enabled/demanding heads. */
-export function validateMultisplitInstallation(profile: MultisplitInstallation, heads: readonly InstalledHead[]): InstallationValidation {
+ * Supplied heads must be the installed pool slice, not merely enabled/demanding heads.
+ * A head of another manufacturer than the outdoor unit is never established by these sources. */
+export function validateMultisplitInstallation(profile: MultisplitInstallation, heads: readonly InstalledHead[], outdoorManufacturer: string): InstallationValidation {
   const findings: InstallationFinding[] = [];
   const add = (status: 'invalid' | 'unknown', code: string, message: string, headId?: string) => findings.push({ status, code, message, headId });
-  if (profile.minimumConnectedHeads === null) add('unknown', 'minimum-count-unpublished', 'Minimum connected head count is unpublished in the reviewed legacy source.');
-  if (profile.connectedCapacityClassSumLimitKw === null) add('unknown', 'class-sum-unpublished', 'Connected class-sum ceiling is unpublished in the reviewed legacy source.');
-  if (profile.ports === null) add('unknown', 'port-constraints-unpublished', 'Named port/class/reducer constraints are unresolved in the reviewed legacy source.');
+  if (profile.minimumConnectedHeads === null) add('unknown', 'minimum-count-unpublished', 'Minimum connected head count is unpublished in the reviewed sources.');
+  if (profile.connectedCapacityClassSumLimitKw === null) add('unknown', 'class-sum-unpublished', 'Connected class-sum ceiling is unpublished in the reviewed sources.');
+  if (profile.ports === null) add('unknown', 'port-constraints-unpublished', 'Named port/class/reducer constraints are unresolved in the reviewed sources.');
   if ((profile.minimumConnectedHeads !== null && heads.length < profile.minimumConnectedHeads) || heads.length > profile.maximumConnectedHeads)
     add('invalid', 'connected-count', `Connected head limit: minimum ${profile.minimumConnectedHeads ?? 'unknown'}, maximum ${profile.maximumConnectedHeads}; ${heads.length} installed.`);
   const occupied = new Set<string>();
   let sum = 0, sumKnown = true;
   for (const head of heads) {
     const assignment = head.installation ?? {};
-    if (head.manufacturer !== 'daikin') add('unknown', 'manufacturer', 'Exact compatibility of another manufacturer or a generic head is not established by these sources.', head.id);
+    if (head.manufacturer !== outdoorManufacturer) add('unknown', 'manufacturer', 'Exact compatibility of another manufacturer or a generic head is not established by these sources.', head.id);
     const kw = assignment.connectedCapacityKw;
     if (kw === undefined) { sumKnown = false; add('unknown', 'capacity-contribution', 'Connected capacity-class contribution is undeclared; nominal cooling output is not substituted.', head.id); }
     else if (!Number.isFinite(kw) || kw <= 0) { sumKnown = false; add('invalid', 'capacity-contribution', 'Declared connection-capacity contribution must be a positive finite value.', head.id); }

@@ -558,6 +558,22 @@ class CatalogueAcceptance(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'R410A is not a qualified selectable outdoor fluid'):
                 self._generate_with_outdoor_refrigerant(Path(folder), 'R-410A')
 
+    def test_explicit_installation_shape_is_checked_independently_of_its_receipt(self):
+        accepted = next(u for u in self.review['units'] if u['reference'] == '2MXF40A2V1B')
+        valid = accepted['installation']
+        self.assertEqual(module.checked_installation(valid, 2, {}), valid)
+        ports_only = {**valid, 'ports': None, 'minimumConnectedHeads': 2}
+        self.assertEqual(module.checked_installation(ports_only, 2, {}), ports_only)
+        for broken, message in (({**valid, 'maximumConnectedHeads': 3}, 'head maximum'),
+                                ({**valid, 'minimumConnectedHeads': 3}, 'head minimum'),
+                                ({**valid, 'exactEligibility': 'valid'}, 'multisplit shape'),
+                                ({**valid, 'ports': valid['ports'][:1]}, 'named ports'),
+                                ({**valid, 'connectedCapacityClassSumLimitKw': 0}, 'class-sum')):
+            with self.assertRaisesRegex(ValueError, message):
+                module.checked_installation(broken, 2, {})
+        with self.assertRaisesRegex(ValueError, 'head maximum'):
+            module.checked_installation(valid, 2, {'maximumIndoorUnits': [{'value': 3}]})
+
     def test_changed_candidate_requires_new_source_acceptance(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
