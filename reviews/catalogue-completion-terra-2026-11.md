@@ -29,3 +29,7 @@ Uncertainties: exact FDXM60 and RXM20/42/60/71 suffix pairings lack exact column
 Remaining later work: exact MXM eligibility for the five added head families, FHA60AVEB99's blank physical cells, Mitsubishi range and MXZ installation constraints (including the unpinned digital-only 5/6-head matrix), and exact 2022 historical suffix expansion. This is not a full catalogue completeness claim.
 
 Validation for this batch: `python3 tests/catalogue.test.py` (55 passed), catalogue TypeScript compile and topology tests (10 passed), and `npx tsc --noEmit -p tsconfig.json` passed. The build was not run.
+
+## Mitsubishi audit checkpoint — incomplete
+
+No runtime change: Daikin remains 91 / 185 and Mitsubishi 25 / 45. The source-pinned checkpoint in `terra-mitsubishi-audit-checkpoint-2026-11.md` corrects the earlier omission of already accepted HR and lists additional table references. LN Hyper Heating, RW, RZ, multisplit-only 18-class finishes, full range reconciliation, MXZ manual/port/class rules and the digital-only 5/6-head combination table remain unfinished. RZ's R290 refrigerant is rejected by the current importer. This checkpoint does not satisfy the requested Mitsubishi batch.

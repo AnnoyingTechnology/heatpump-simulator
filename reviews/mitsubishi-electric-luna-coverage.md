@@ -48,3 +48,5 @@ Terra FFA/FNA physical-field follow-up: Mitsubishi remains 25 outdoor / 45 indoo
 Terra FBA/FCAG/FHA batch 2026-11-18: no Mitsubishi changes; runtime remains 25 outdoor / 45 indoor. Daikin runtime is 90 outdoor / 185 indoor. Mitsubishi range and MXZ reconciliation remain open.
 
 Terra RXM and Siesta batch 2026-11-18: no Mitsubishi changes; runtime remains **25 outdoor / 45 indoor**. Daikin is now **91 / 185**. Mitsubishi current range reconciliation and MXZ constraints, including the digital-only 5/6-head table, remain open.
+
+Terra audit checkpoint 2026-11-18: the 25 / 45 runtime inventory already includes six HR pairs. The exact omitted LN Hyper Heating outdoors, RW and RZ table identities and multisplit-only 18-class leads are listed in `terra-mitsubishi-audit-checkpoint-2026-11.md`. No new runtime profiles or MXZ rules have been accepted. Full range reconciliation and official manual review remain unfinished; the 5/6-head digital combination table is still unpinned. RZ uses R290, outside the importer's present R32-only boundary.
