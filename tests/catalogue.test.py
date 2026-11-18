@@ -17,6 +17,26 @@ class CatalogueAcceptance(unittest.TestCase):
     def setUp(self):
         self.review = json.loads((ROOT / 'research/catalogue/equipment-acceptance.json').read_text())
 
+    def test_mxz_partial_physical_readback_matches_pinned_candidate(self):
+        receipt = json.loads((ROOT / 'reviews/terra-mitsubishi-mxz-physical-readback-2026.json').read_text())
+        for pin in [receipt['candidate'], *receipt['sourcePins']]:
+            self.assertEqual(hashlib.sha256((ROOT / pin['path']).read_bytes()).hexdigest(), pin['sha256'])
+        candidate = json.loads((ROOT / receipt['candidate']['path']).read_text())
+        rows = {u['modelReference']: u for u in candidate['units']}
+        self.assertEqual(len(receipt['reviewedUnits']), 12)
+        self.assertEqual(set(rows), {r['reference'] for r in receipt['reviewedUnits']})
+        for reviewed in receipt['reviewedUnits']:
+            facts = {f['key']: f['value'] for f in rows[reviewed['reference']]['facts']}
+            for key in ('height', 'width', 'depth'):
+                self.assertEqual(facts[key], reviewed['caseMm'][key])
+            self.assertEqual(facts['airflow'], reviewed['coolingHighFanFlowM3h'])
+            self.assertEqual(facts['refrigerant'], reviewed['refrigerant'])
+            self.assertEqual(facts['maximumIndoorUnits'], reviewed['maximumConnectedHeads'])
+            self.assertEqual(reviewed['ports'], reviewed['maximumConnectedHeads'])
+            self.assertEqual(reviewed['minimumConnectedHeads'], 2)
+            for mode in ('cooling', 'heating'):
+                self.assertEqual([facts[mode + 'OutdoorMinimum'], facts[mode + 'OutdoorMaximum']], reviewed[mode + 'RangeC'])
+
     def test_mitsubishi_rz_and_unaccepted_mxz_candidates_keep_source_boundaries(self):
         rz = json.loads((ROOT / 'research/catalogue/staging/terra-mitsubishi-rz-2026.json').read_text())
         mxz = json.loads((ROOT / 'research/catalogue/staging/terra-mitsubishi-mxz-2026.json').read_text())
