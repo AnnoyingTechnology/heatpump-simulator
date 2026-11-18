@@ -17,6 +17,14 @@ class CatalogueAcceptance(unittest.TestCase):
     def setUp(self):
         self.review = json.loads((ROOT / 'research/catalogue/equipment-acceptance.json').read_text())
 
+    def test_mitsubishi_hr_inventory_already_contains_six_exact_pairs(self):
+        units = {unit['reference']: unit for unit in self.review['units']}
+        for size in (25, 35, 42, 50, 60, 71):
+            indoor = f"MSZ-HR{size}" + ("VFK2" if size < 60 else "VF2")
+            outdoor = f"MUZ-HR{size}VF2"
+            self.assertIn(indoor, units)
+            self.assertEqual(units[outdoor]['compatibleIndoorClasses'], [indoor])
+
     def test_generated_runtime_matches_frozen_source_acceptance(self):
         self.assertEqual(module.generate(), (ROOT / 'src/equipment-data.ts').read_text())
 
