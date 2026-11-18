@@ -1,0 +1,222 @@
+{
+  "scope": "Independent visual readback of PDF p.86 (printed p.85), including aligned size columns, shared cells, fan conditions, refrigerant and operating ranges.",
+  "candidate": {
+    "path": "research/catalogue/staging/terra-mitsubishi-rz-2026.json",
+    "sha256": "f53d1ce71b56ec76da1005de5a9367515177f6729d6c3da4bbede5b7e0d27b91"
+  },
+  "sourcePins": [
+    {
+      "path": "research/sources/terra-mitsubishi-2026-page-86.png",
+      "sha256": "087f7822517f3b40d11c68f7162a4a3f4cf561bf96424799d8440adce0c16013"
+    }
+  ],
+  "reviewedUnits": [
+    {
+      "reference": "MSZ-RZ25VU",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 305,
+        "width": 998,
+        "depth": 247,
+        "airflow": 846
+      },
+      "factConditions": {
+        "airflow": "cooling high fan (SGV)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026–2027 catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "MUZ-RZ25VUHZ",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 714,
+        "width": 800,
+        "depth": 285,
+        "airflow": 2160,
+        "refrigerant": "R290",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -30,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "airflow": "cooling high fan (GV)",
+        "coolingOutdoorMinimum": "outdoor dry-bulb / dry-bulb",
+        "coolingOutdoorMaximum": "outdoor dry-bulb / dry-bulb",
+        "heatingOutdoorMinimum": "outdoor wet-bulb / dry-bulb",
+        "heatingOutdoorMaximum": "outdoor wet-bulb / dry-bulb"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026–2027 catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-RZ25VU"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.86 (printed p.85), Tailles 25 aligned indoor/outdoor columns",
+        "excerpt": "MSZ-RZ25VU / MUZ-RZ25VUHZ"
+      }
+    },
+    {
+      "reference": "MSZ-RZ35VU",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 305,
+        "width": 998,
+        "depth": 247,
+        "airflow": 846
+      },
+      "factConditions": {
+        "airflow": "cooling high fan (SGV)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026–2027 catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "MUZ-RZ35VUHZ",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 714,
+        "width": 800,
+        "depth": 285,
+        "airflow": 2322,
+        "refrigerant": "R290",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -30,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "airflow": "cooling high fan (GV)",
+        "coolingOutdoorMinimum": "outdoor dry-bulb / dry-bulb",
+        "coolingOutdoorMaximum": "outdoor dry-bulb / dry-bulb",
+        "heatingOutdoorMinimum": "outdoor wet-bulb / dry-bulb",
+        "heatingOutdoorMaximum": "outdoor wet-bulb / dry-bulb"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026–2027 catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-RZ35VU"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.86 (printed p.85), Tailles 35 aligned indoor/outdoor columns",
+        "excerpt": "MSZ-RZ35VU / MUZ-RZ35VUHZ"
+      }
+    },
+    {
+      "reference": "MSZ-RZ50VU",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow"
+      ],
+      "factValues": {
+        "height": 305,
+        "width": 998,
+        "depth": 247,
+        "airflow": 972
+      },
+      "factConditions": {
+        "airflow": "cooling high fan (SGV)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026–2027 catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "MUZ-RZ50VUHZ",
+      "candidateStatus": "current",
+      "factKeys": [
+        "height",
+        "width",
+        "depth",
+        "airflow",
+        "refrigerant",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "height": 880,
+        "width": 840,
+        "depth": 330,
+        "airflow": 2916,
+        "refrigerant": "R290",
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -30,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "airflow": "cooling high fan (GV)",
+        "coolingOutdoorMinimum": "outdoor dry-bulb / dry-bulb",
+        "coolingOutdoorMaximum": "outdoor dry-bulb / dry-bulb",
+        "heatingOutdoorMinimum": "outdoor wet-bulb / dry-bulb",
+        "heatingOutdoorMaximum": "outdoor wet-bulb / dry-bulb"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026–2027 catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "MSZ-RZ50VU"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.86 (printed p.85), Tailles 50 aligned indoor/outdoor columns",
+        "excerpt": "MSZ-RZ50VU / MUZ-RZ50VUHZ"
+      }
+    }
+  ]
+}

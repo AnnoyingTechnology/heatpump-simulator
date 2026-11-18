@@ -17,14 +17,15 @@ class CatalogueAcceptance(unittest.TestCase):
     def setUp(self):
         self.review = json.loads((ROOT / 'research/catalogue/equipment-acceptance.json').read_text())
 
-    def test_unaccepted_mitsubishi_rz_and_mxz_candidates_keep_source_boundaries(self):
+    def test_mitsubishi_rz_and_unaccepted_mxz_candidates_keep_source_boundaries(self):
         rz = json.loads((ROOT / 'research/catalogue/staging/terra-mitsubishi-rz-2026.json').read_text())
         mxz = json.loads((ROOT / 'research/catalogue/staging/terra-mitsubishi-mxz-2026.json').read_text())
         self.assertEqual((len(rz['units']), len(mxz['units'])), (6, 12))
         self.assertEqual({u['modelReference'] for u in mxz['unresolvedReferences']},
                          {'MXZ-5F102VF3', 'MXZ-6F120VF3'})
         accepted = {u['reference'] for u in self.review['units']}
-        self.assertFalse(accepted.intersection(u['modelReference'] for u in rz['units'] + mxz['units']))
+        self.assertTrue({u['modelReference'] for u in rz['units']}.issubset(accepted))
+        self.assertFalse(accepted.intersection(u['modelReference'] for u in mxz['units']))
         for unit in rz['units']:
             facts = {f['key']: f['value'] for f in unit['facts']}
             if unit['unitType'] == 'outdoor':
@@ -35,6 +36,45 @@ class CatalogueAcceptance(unittest.TestCase):
             self.assertEqual(facts['refrigerant'], 'R32')
             self.assertIn(facts['maximumIndoorUnits'], (2, 3, 4))
             self.assertTrue(any('3 A' in c['description'] for c in unit['compatibility']))
+
+    def test_mitsubishi_rz_visual_readback_and_pair_boundaries(self):
+        receipt = json.loads((ROOT / 'reviews/terra-mitsubishi-rz-independent-acceptance-2026.json').read_text())
+        for pin in receipt['sourcePins']:
+            self.assertEqual(hashlib.sha256((ROOT / pin['path']).read_bytes()).hexdigest(), pin['sha256'])
+        rows = {r['reference']: r for r in self.review['units']}
+        profiles = {}
+        for name in ('CATALOGUE_OUTDOORS', 'CATALOGUE_INDOORS'):
+            profiles.update({p['id']: p for p in json.loads(re.search(
+                r'export const ' + name + r' = (.*?) as const;', module.generate(), re.S).group(1))})
+        self.assertEqual(len(receipt['reviewedUnits']), 6)
+        for size, indoor_flow, outdoor_flow, dims in ((25, 846, 2160, (714, 800, 285)),
+                                                       (35, 846, 2322, (714, 800, 285)),
+                                                       (50, 972, 2916, (880, 840, 330))):
+            indoor, outdoor = f'MSZ-RZ{size}VU', f'MUZ-RZ{size}VUHZ'
+            for ref, flow, case in ((indoor, indoor_flow, (305, 998, 247)), (outdoor, outdoor_flow, dims)):
+                row = rows[ref]
+                doc = json.loads((ROOT / row['candidateFile']).read_text())
+                unit = next(u for u in doc['units'] if u['modelReference'] == ref)
+                module.source_review_metadata(unit, row, ROOT)
+                self.assertEqual(profiles[ref]['caseMm'], dict(zip(('h', 'w', 'd'), case)))
+                self.assertEqual(profiles[ref]['coolingHighFanFlowM3h'], flow)
+            profile = profiles[outdoor]
+            self.assertEqual(profile['refrigerant'], 'R290')
+            self.assertEqual(profile['ports'], 1)
+            self.assertEqual(profile['compatibleIndoorClasses'], [indoor])
+            for mode, low, high, condition in (('cooling', -10, 50, 'outdoor dry-bulb / dry-bulb'),
+                                                ('heating', -30, 24, 'outdoor wet-bulb / dry-bulb')):
+                self.assertEqual(profile['publishedOperatingRangesC'][mode],
+                                 {'minimum': low, 'maximum': high, 'condition': condition})
+        changed = dict(rows['MUZ-RZ25VUHZ']); changed['compatibleIndoorClasses'] = ['MSZ-RZ35VU']
+        doc = json.loads((ROOT / changed['candidateFile']).read_text())
+        unit = next(u for u in doc['units'] if u['modelReference'] == changed['reference'])
+        with self.assertRaisesRegex(ValueError, 'pairing or topology changed'):
+            module.source_review_metadata(unit, changed, ROOT)
+        unit = json.loads(json.dumps(unit))
+        next(f for f in unit['facts'] if f['key'] == 'refrigerant')['value'] = 'R32'
+        with self.assertRaisesRegex(ValueError, 'differs from independent readback'):
+            module.source_review_metadata(unit, rows['MUZ-RZ25VUHZ'], ROOT)
 
     def test_mitsubishi_hr_inventory_already_contains_six_exact_pairs(self):
         units = {unit['reference']: unit for unit in self.review['units']}
@@ -113,8 +153,8 @@ class CatalogueAcceptance(unittest.TestCase):
         units = self.review['units']
         outdoors = [u for u in units if u['reference'].startswith('MUZ-')]
         indoors = {u['reference'] for u in units if u['reference'].startswith('MSZ-')}
-        self.assertEqual(len(outdoors), 31)
-        self.assertEqual(len(indoors), 55)
+        self.assertEqual(len(outdoors), 34)
+        self.assertEqual(len(indoors), 58)
         self.assertNotIn('MSZ-EF18VGK2', indoors)
         self.assertNotIn('MSZ-LN18VG3', indoors)
         for outdoor in outdoors:
