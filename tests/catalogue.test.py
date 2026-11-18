@@ -1,4 +1,5 @@
 """Checks the acceptance boundary, not just the format of generated profiles."""
+import copy
 import hashlib
 import importlib.util
 import json
@@ -37,7 +38,7 @@ class CatalogueAcceptance(unittest.TestCase):
             for mode in ('cooling', 'heating'):
                 self.assertEqual([facts[mode + 'OutdoorMinimum'], facts[mode + 'OutdoorMaximum']], reviewed[mode + 'RangeC'])
 
-    def test_mitsubishi_rz_and_unaccepted_mxz_candidates_keep_source_boundaries(self):
+    def test_mitsubishi_rz_and_mxz_candidates_keep_source_boundaries(self):
         rz = json.loads((ROOT / 'research/catalogue/staging/terra-mitsubishi-rz-2026.json').read_text())
         mxz = json.loads((ROOT / 'research/catalogue/staging/terra-mitsubishi-mxz-2026.json').read_text())
         self.assertEqual((len(rz['units']), len(mxz['units'])), (6, 12))
@@ -45,7 +46,7 @@ class CatalogueAcceptance(unittest.TestCase):
                          {'MXZ-5F102VF3', 'MXZ-6F120VF3'})
         accepted = {u['reference'] for u in self.review['units']}
         self.assertTrue({u['modelReference'] for u in rz['units']}.issubset(accepted))
-        self.assertFalse(accepted.intersection(u['modelReference'] for u in mxz['units']))
+        self.assertTrue({u['modelReference'] for u in mxz['units']}.issubset(accepted))
         for unit in rz['units']:
             facts = {f['key']: f['value'] for f in unit['facts']}
             if unit['unitType'] == 'outdoor':
@@ -201,7 +202,7 @@ class CatalogueAcceptance(unittest.TestCase):
 
     def test_multisplit_profiles_preserve_unknown_exact_eligibility_and_documentary_charge_caps(self):
         profiles = json.loads(re.search(r'export const CATALOGUE_OUTDOORS = (.*?) as const;', module.generate(), re.S).group(1))
-        multis = [p for p in profiles if 'installation' in p and p['installation']['minimumConnectedHeads'] is not None]
+        multis = [p for p in profiles if p['id'].startswith(('2MXM', '3MXM', '4MXM', '5MXM')) and 'installation' in p and p['installation']['minimumConnectedHeads'] is not None]
         self.assertEqual(len(multis), 9)
         self.assertEqual(sum(len(p['installation']['ports']) for p in multis), 28)
         for profile in multis:
@@ -1031,6 +1032,32 @@ class CatalogueAcceptance(unittest.TestCase):
             self.assertEqual(installation['ports'][1]['alternatives'][0]['reducer'], reducer_b)
             self.assertEqual(installation['exactEligibility'], 'unknown')
             self.assertIsNone(profile['coolingHighFanFlowM3h'])
+
+    def test_mitsubishi_mxz_readback_imports_only_reviewed_installation(self):
+        receipt = json.loads((ROOT / 'reviews/terra-mitsubishi-mxz-independent-acceptance-2026.json').read_text())
+        expected = {r['reference']: r for r in receipt['reviewedUnits']}
+        self.assertEqual(len(expected), 12)
+        accepted = {r['reference']: r for r in self.review['units'] if r['reference'] in expected}
+        self.assertEqual(set(accepted), set(expected))
+        profiles = {p['id']: p for p in json.loads(re.search(r'export const CATALOGUE_OUTDOORS = (.*?) as const;', module.generate(), re.S).group(1))}
+        for ref, reviewed in expected.items():
+            row = accepted[ref]
+            unit = next(u for u in json.loads((ROOT / row['candidateFile']).read_text())['units'] if u['modelReference'] == ref)
+            module.source_review_metadata(unit, row, ROOT)
+            profile = profiles[ref]
+            self.assertEqual(profile['ports'], reviewed['ports'])
+            self.assertEqual(profile['compatibleIndoorClasses'], [])
+            self.assertEqual(profile['installation'], reviewed['installation'])
+            self.assertEqual(profile['installation']['minimumConnectedHeads'], 2)
+            self.assertEqual(profile['installation']['maximumConnectedHeads'], reviewed['ports'])
+            for key in ('ports', 'connectedCapacityClassSumLimitKw', 'publishedMaximumTotalChargeKg'):
+                self.assertIsNone(profile['installation'][key])
+            self.assertEqual(profile['installation']['exactEligibility'], 'unknown')
+            self.assertEqual(profile['coolingHighFanFlowM3h'], reviewed['factValues']['airflow'])
+            changed = copy.deepcopy(row)
+            changed['installation']['minimumConnectedHeads'] = 1
+            with self.assertRaisesRegex(ValueError, 'typed installation constraints changed'):
+                module.source_review_metadata(unit, changed, ROOT)
 
     def test_siesta_atxp_n9_exact_partner_references_are_source_pinned(self):
         pairs = {'ATXP20N5V1B9': 'ARXP20N5V1B9', 'ATXP25N5V1B9': 'ARXP25N5V1B9', 'ATXP35N5V1B9': 'ARXP35N5V1B9'}
