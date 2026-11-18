@@ -4917,6 +4917,462 @@ export const CATALOGUE_OUTDOORS = [
         "condition": "outdoor wet-bulb / dry-bulb"
       }
     }
+  },
+  {
+    "id": "MXZ-2HA40VF3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 800,
+      "d": 285
+    },
+    "coolingHighFanFlowM3h": 1704,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Mitsubishi Electric PAC Air/Air catalogue 2026–2027, PDF p.112, printed p.111, MXZ-2HA40VF3 column and shared cells, connection and connected-unit rows",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "MXZ-2HA50VF3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 800,
+      "d": 285
+    },
+    "coolingHighFanFlowM3h": 1962,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Mitsubishi Electric PAC Air/Air catalogue 2026–2027, PDF p.112, printed p.111, MXZ-2HA50VF3 column and shared cells, connection and connected-unit rows",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "MXZ-3HA50VF3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 710,
+      "w": 840,
+      "d": 330
+    },
+    "coolingHighFanFlowM3h": 1860,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Mitsubishi Electric PAC Air/Air catalogue 2026–2027, PDF p.112, printed p.111, MXZ-3HA50VF3 column and shared cells, connection and connected-unit rows",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "MXZ-2F33VF5",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 800,
+      "d": 285
+    },
+    "coolingHighFanFlowM3h": 1848,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Mitsubishi Electric PAC Air/Air catalogue 2026–2027, PDF p.113, printed p.112, MXZ-2F33VF5 column and shared cells, connection and connected-unit rows",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "MXZ-2F42VF5",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 800,
+      "d": 285
+    },
+    "coolingHighFanFlowM3h": 1704,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Mitsubishi Electric PAC Air/Air catalogue 2026–2027, PDF p.113, printed p.112, MXZ-2F42VF5 column and shared cells, connection and connected-unit rows",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "MXZ-2F53VF5",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 800,
+      "d": 285
+    },
+    "coolingHighFanFlowM3h": 1962,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Mitsubishi Electric PAC Air/Air catalogue 2026–2027, PDF p.113, printed p.112, MXZ-2F53VF5 column and shared cells, connection and connected-unit rows",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "MXZ-3F54VF5",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 710,
+      "w": 840,
+      "d": 330
+    },
+    "coolingHighFanFlowM3h": 1860,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Mitsubishi Electric PAC Air/Air catalogue 2026–2027, PDF p.113, printed p.112, MXZ-3F54VF5 column and shared cells, connection and connected-unit rows",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "MXZ-3F68VF5",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 710,
+      "w": 840,
+      "d": 330
+    },
+    "coolingHighFanFlowM3h": 2124,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Mitsubishi Electric PAC Air/Air catalogue 2026–2027, PDF p.113, printed p.112, MXZ-3F68VF5 column and shared cells, connection and connected-unit rows",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "MXZ-4F72VF5",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 710,
+      "w": 840,
+      "d": 330
+    },
+    "coolingHighFanFlowM3h": 2124,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 4,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 4,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Mitsubishi Electric PAC Air/Air catalogue 2026–2027, PDF p.114, printed p.113, MXZ-4F72VF5 column and shared cells, connection and connected-unit rows",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "MXZ-4F80VF5",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 710,
+      "w": 840,
+      "d": 330
+    },
+    "coolingHighFanFlowM3h": 2418,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 4,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 4,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Mitsubishi Electric PAC Air/Air catalogue 2026–2027, PDF p.114, printed p.113, MXZ-4F80VF5 column and shared cells, connection and connected-unit rows",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "MXZ-2F53VFHZ3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 796,
+      "w": 950,
+      "d": 330
+    },
+    "coolingHighFanFlowM3h": 2580,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -25,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Mitsubishi Electric PAC Air/Air catalogue 2026–2027, PDF p.116, printed p.115, MXZ-2F53VFHZ3 column and shared cells, connection and connected-unit rows",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "MXZ-4F83VFHZ3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 1048,
+      "w": 950,
+      "d": 330
+    },
+    "coolingHighFanFlowM3h": 3780,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 4,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -25,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 4,
+      "connectedCapacityClassSumLimitKw": null,
+      "ports": null,
+      "guide": "Mitsubishi Electric PAC Air/Air catalogue 2026–2027, PDF p.116, printed p.115, MXZ-4F83VFHZ3 column and shared cells, connection and connected-unit rows",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
   }
 ] as const;
 

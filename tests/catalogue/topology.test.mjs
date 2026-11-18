@@ -99,3 +99,16 @@ test('the manufacturer finding follows the outdoor unit, not a fixed brand',()=>
  assert.equal(validate(profile,heads,'daikin').findings.filter(f=>f.code==='manufacturer').length,2);
  assert.ok(!validate(profile,heads,'mitsubishi-electric').findings.some(f=>/legacy/.test(f.message)));
 });
+
+
+test('reviewed MXZ head counts are enforced while combination and port rules remain unknown',()=>{
+ const profile=model('MXZ-3F54VF5');
+ const heads=[head('a','A',25,2.5),head('b','B',35,3.5)];
+ for(const h of heads)h.manufacturer='mitsubishi-electric';
+ const result=validate(profile,heads,'mitsubishi-electric');
+ assert.equal(result.status,'unknown');assert.equal(result.eligibilityStatus,'unknown');
+ assert.ok(!result.findings.some(f=>f.code==='manufacturer'||f.code==='connected-count'));
+ assert.ok(result.findings.some(f=>f.code==='port-constraints-unpublished'));
+ assert.ok(validate(profile,heads.slice(0,1),'mitsubishi-electric').findings.some(f=>f.code==='connected-count'));
+ assert.ok(validate(profile,[...heads,heads[0],heads[1]],'mitsubishi-electric').findings.some(f=>f.code==='connected-count'));
+});
