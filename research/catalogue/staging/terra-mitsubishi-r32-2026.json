@@ -1,0 +1,1332 @@
+{
+  "schemaVersion": 1,
+  "manufacturer": "mitsubishi-electric",
+  "family": "LN Hyper Heating, RW and multisplit-only EF/LN size 18",
+  "market": "France",
+  "checkedAt": "2026-11-18",
+  "sources": [
+    {
+      "id": "mitsubishi-fr-air-air-2026-2027",
+      "url": "https://confort.mitsubishielectric.fr/sites/default/files/2026-04/RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "title": "PAC Air/Air catalogue 2026-2027",
+      "edition": "RAC-MRSLIM-CATALOGUE-INTERACTIF-2026-V1.pdf",
+      "retrievedAt": "2026-10-11"
+    }
+  ],
+  "units": [
+    {
+      "modelReference": "MSZ-EF18VGK2B",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), table header and family caption",
+        "excerpt": "MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 299,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), indoor unit dimensions, MSZ-EF18VGK2B column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 299 x 885 x 195"
+          }
+        },
+        {
+          "key": "width",
+          "value": 885,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), indoor unit dimensions, MSZ-EF18VGK2B column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 299 x 885 x 195"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 195,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), indoor unit dimensions, MSZ-EF18VGK2B column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 299 x 885 x 195"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 666,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), indoor unit cooling airflow, MSZ-EF18VGK2B column",
+            "excerpt": "Débit d’air en froid Silence/PV/MV/GV/SGV m3/h 228 / 270 / 390 / 522 / 666"
+          },
+          "condition": "cooling high fan (SGV)"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "Catalogue listing does not establish current stock; unpublished fields and exact multisplit combinations remain unknown.",
+        "Size 18 is multisplit-only; no monosplit outdoor is published."
+      ]
+    },
+    {
+      "modelReference": "MSZ-EF18VGK2W",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), table header and family caption",
+        "excerpt": "MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 299,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), indoor unit dimensions, MSZ-EF18VGK2W column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 299 x 885 x 195"
+          }
+        },
+        {
+          "key": "width",
+          "value": 885,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), indoor unit dimensions, MSZ-EF18VGK2W column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 299 x 885 x 195"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 195,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), indoor unit dimensions, MSZ-EF18VGK2W column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 299 x 885 x 195"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 666,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), indoor unit cooling airflow, MSZ-EF18VGK2W column",
+            "excerpt": "Débit d’air en froid Silence/PV/MV/GV/SGV m3/h 228 / 270 / 390 / 522 / 666"
+          },
+          "condition": "cooling high fan (SGV)"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "Catalogue listing does not establish current stock; unpublished fields and exact multisplit combinations remain unknown.",
+        "Size 18 is multisplit-only; no monosplit outdoor is published."
+      ]
+    },
+    {
+      "modelReference": "MSZ-EF18VGK2S",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.64 (printed p.63), table header and family caption",
+        "excerpt": "MSZ-EF 18/25/35/42/50 VGK2B / VGK2W / VGK2S"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 299,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), indoor unit dimensions, MSZ-EF18VGK2S column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 299 x 885 x 195"
+          }
+        },
+        {
+          "key": "width",
+          "value": 885,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), indoor unit dimensions, MSZ-EF18VGK2S column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 299 x 885 x 195"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 195,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), indoor unit dimensions, MSZ-EF18VGK2S column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 299 x 885 x 195"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 666,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.64 (printed p.63), indoor unit cooling airflow, MSZ-EF18VGK2S column",
+            "excerpt": "Débit d’air en froid Silence/PV/MV/GV/SGV m3/h 228 / 270 / 390 / 522 / 666"
+          },
+          "condition": "cooling high fan (SGV)"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "Catalogue listing does not establish current stock; unpublished fields and exact multisplit combinations remain unknown.",
+        "Size 18 is multisplit-only; no monosplit outdoor is published."
+      ]
+    },
+    {
+      "modelReference": "MSZ-LN18VG3R",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), table header and family caption",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 307,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), indoor unit dimensions, MSZ-LN18VG3R column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 307 x 890 x 233"
+          }
+        },
+        {
+          "key": "width",
+          "value": 890,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), indoor unit dimensions, MSZ-LN18VG3R column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 307 x 890 x 233"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 233,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), indoor unit dimensions, MSZ-LN18VG3R column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 307 x 890 x 233"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 744,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), indoor unit cooling airflow, MSZ-LN18VG3R column",
+            "excerpt": "Débit d’air en froid Silence/PV/MV/GV/SGV m3/h 282 / 354 / 426 / 552 / 744"
+          },
+          "condition": "cooling high fan (SGV)"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "Catalogue listing does not establish current stock; unpublished fields and exact multisplit combinations remain unknown.",
+        "Size 18 is multisplit-only; no monosplit outdoor is published."
+      ]
+    },
+    {
+      "modelReference": "MSZ-LN18VG3B",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), table header and family caption",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 307,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), indoor unit dimensions, MSZ-LN18VG3B column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 307 x 890 x 233"
+          }
+        },
+        {
+          "key": "width",
+          "value": 890,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), indoor unit dimensions, MSZ-LN18VG3B column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 307 x 890 x 233"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 233,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), indoor unit dimensions, MSZ-LN18VG3B column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 307 x 890 x 233"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 744,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), indoor unit cooling airflow, MSZ-LN18VG3B column",
+            "excerpt": "Débit d’air en froid Silence/PV/MV/GV/SGV m3/h 282 / 354 / 426 / 552 / 744"
+          },
+          "condition": "cooling high fan (SGV)"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "Catalogue listing does not establish current stock; unpublished fields and exact multisplit combinations remain unknown.",
+        "Size 18 is multisplit-only; no monosplit outdoor is published."
+      ]
+    },
+    {
+      "modelReference": "MSZ-LN18VG3V",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), table header and family caption",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 307,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), indoor unit dimensions, MSZ-LN18VG3V column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 307 x 890 x 233"
+          }
+        },
+        {
+          "key": "width",
+          "value": 890,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), indoor unit dimensions, MSZ-LN18VG3V column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 307 x 890 x 233"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 233,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), indoor unit dimensions, MSZ-LN18VG3V column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 307 x 890 x 233"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 744,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), indoor unit cooling airflow, MSZ-LN18VG3V column",
+            "excerpt": "Débit d’air en froid Silence/PV/MV/GV/SGV m3/h 282 / 354 / 426 / 552 / 744"
+          },
+          "condition": "cooling high fan (SGV)"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "Catalogue listing does not establish current stock; unpublished fields and exact multisplit combinations remain unknown.",
+        "Size 18 is multisplit-only; no monosplit outdoor is published."
+      ]
+    },
+    {
+      "modelReference": "MSZ-LN18VG3W",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.68 (printed p.67), table header and family caption",
+        "excerpt": "MSZ-LN 18/25/35/50/60 VG3R / VG3B / VG3V / VG3W"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 307,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), indoor unit dimensions, MSZ-LN18VG3W column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 307 x 890 x 233"
+          }
+        },
+        {
+          "key": "width",
+          "value": 890,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), indoor unit dimensions, MSZ-LN18VG3W column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 307 x 890 x 233"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 233,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), indoor unit dimensions, MSZ-LN18VG3W column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 307 x 890 x 233"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 744,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.68 (printed p.67), indoor unit cooling airflow, MSZ-LN18VG3W column",
+            "excerpt": "Débit d’air en froid Silence/PV/MV/GV/SGV m3/h 282 / 354 / 426 / 552 / 744"
+          },
+          "condition": "cooling high fan (SGV)"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "Catalogue listing does not establish current stock; unpublished fields and exact multisplit combinations remain unknown.",
+        "Size 18 is multisplit-only; no monosplit outdoor is published."
+      ]
+    },
+    {
+      "modelReference": "MSZ-RW25VG2",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.80 (printed p.79), table header and family caption",
+        "excerpt": "MSZ-RW25VG2"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), indoor unit dimensions, MSZ-RW25VG2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 305 x 998 x 247"
+          }
+        },
+        {
+          "key": "width",
+          "value": 998,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), indoor unit dimensions, MSZ-RW25VG2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 305 x 998 x 247"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 247,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), indoor unit dimensions, MSZ-RW25VG2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 305 x 998 x 247"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 702,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), indoor unit cooling airflow, MSZ-RW25VG2 column",
+            "excerpt": "Débit d’air en froid Silence/PV/MV/GV/SGV m3/h 306 / 390 / 540 / 630 / 702"
+          },
+          "condition": "cooling high fan (SGV)"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "Catalogue listing does not establish current stock; unpublished fields and exact multisplit combinations remain unknown."
+      ]
+    },
+    {
+      "modelReference": "MSZ-RW35VG2",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.80 (printed p.79), table header and family caption",
+        "excerpt": "MSZ-RW35VG2"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), indoor unit dimensions, MSZ-RW35VG2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 305 x 998 x 247"
+          }
+        },
+        {
+          "key": "width",
+          "value": 998,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), indoor unit dimensions, MSZ-RW35VG2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 305 x 998 x 247"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 247,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), indoor unit dimensions, MSZ-RW35VG2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 305 x 998 x 247"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 846,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), indoor unit cooling airflow, MSZ-RW35VG2 column",
+            "excerpt": "Débit d’air en froid Silence/PV/MV/GV/SGV m3/h 360 / 414 / 540 / 690 / 846"
+          },
+          "condition": "cooling high fan (SGV)"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "Catalogue listing does not establish current stock; unpublished fields and exact multisplit combinations remain unknown."
+      ]
+    },
+    {
+      "modelReference": "MSZ-RW50VG2",
+      "unitType": "indoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.80 (printed p.79), table header and family caption",
+        "excerpt": "MSZ-RW50VG2"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 305,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), indoor unit dimensions, MSZ-RW50VG2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 305 x 998 x 247"
+          }
+        },
+        {
+          "key": "width",
+          "value": 998,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), indoor unit dimensions, MSZ-RW50VG2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 305 x 998 x 247"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 247,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), indoor unit dimensions, MSZ-RW50VG2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 305 x 998 x 247"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 972,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), indoor unit cooling airflow, MSZ-RW50VG2 column",
+            "excerpt": "Débit d’air en froid Silence/PV/MV/GV/SGV m3/h 468 / 570 / 666 / 786 / 972"
+          },
+          "condition": "cooling high fan (SGV)"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [],
+      "unknowns": [
+        "Catalogue listing does not establish current stock; unpublished fields and exact multisplit combinations remain unknown."
+      ]
+    },
+    {
+      "modelReference": "MUZ-LN25VGHZ3",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.76 (printed p.75), table header and family caption",
+        "excerpt": "MUZ-LN25VGHZ3"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 550,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), outdoor unit dimensions, MUZ-LN25VGHZ3 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "width",
+          "value": 800,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), outdoor unit dimensions, MUZ-LN25VGHZ3 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 285,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), outdoor unit dimensions, MUZ-LN25VGHZ3 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1872,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), outdoor unit cooling airflow, MUZ-LN25VGHZ3 column",
+            "excerpt": "Débit d’air en froid GV m3/h 1872"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), DONNÉES FRIGORIFIQUES row Fluide, shared columns",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), cooling operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), cooling operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -25,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), heating operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -25 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), heating operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -25 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit pair in the same size column, including the captioned finishes.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), Tailles 25 aligned indoor/outdoor columns and indoor caption",
+            "excerpt": "MSZ-LN25VG3 / MUZ-LN25VGHZ3 ; MSZ-LN 25/35/50 VG3R / VG3B / VG3V / VG3W"
+          }
+        }
+      ],
+      "unknowns": [
+        "Catalogue listing does not establish current stock; unpublished fields and exact multisplit combinations remain unknown."
+      ]
+    },
+    {
+      "modelReference": "MUZ-LN35VGHZ3",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.76 (printed p.75), table header and family caption",
+        "excerpt": "MUZ-LN35VGHZ3"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 550,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), outdoor unit dimensions, MUZ-LN35VGHZ3 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "width",
+          "value": 800,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), outdoor unit dimensions, MUZ-LN35VGHZ3 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 285,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), outdoor unit dimensions, MUZ-LN35VGHZ3 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 550 x 800 x 285"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 1962,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), outdoor unit cooling airflow, MUZ-LN35VGHZ3 column",
+            "excerpt": "Débit d’air en froid GV m3/h 1962"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), DONNÉES FRIGORIFIQUES row Fluide, shared columns",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), cooling operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), cooling operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -25,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), heating operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -25 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), heating operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -25 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit pair in the same size column, including the captioned finishes.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), Tailles 35 aligned indoor/outdoor columns and indoor caption",
+            "excerpt": "MSZ-LN35VG3 / MUZ-LN35VGHZ3 ; MSZ-LN 25/35/50 VG3R / VG3B / VG3V / VG3W"
+          }
+        }
+      ],
+      "unknowns": [
+        "Catalogue listing does not establish current stock; unpublished fields and exact multisplit combinations remain unknown."
+      ]
+    },
+    {
+      "modelReference": "MUZ-LN50VGHZ3",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.76 (printed p.75), table header and family caption",
+        "excerpt": "MUZ-LN50VGHZ3"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 880,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), outdoor unit dimensions, MUZ-LN50VGHZ3 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 880 x 840 x 330"
+          }
+        },
+        {
+          "key": "width",
+          "value": 840,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), outdoor unit dimensions, MUZ-LN50VGHZ3 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 880 x 840 x 330"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 330,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), outdoor unit dimensions, MUZ-LN50VGHZ3 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 880 x 840 x 330"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 2928,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), outdoor unit cooling airflow, MUZ-LN50VGHZ3 column",
+            "excerpt": "Débit d’air en froid GV m3/h 2928"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), DONNÉES FRIGORIFIQUES row Fluide, shared columns",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), cooling operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), cooling operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -25,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), heating operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -25 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), heating operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -25 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit pair in the same size column, including the captioned finishes.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.76 (printed p.75), Tailles 50 aligned indoor/outdoor columns and indoor caption",
+            "excerpt": "MSZ-LN50VG3 / MUZ-LN50VGHZ3 ; MSZ-LN 25/35/50 VG3R / VG3B / VG3V / VG3W"
+          }
+        }
+      ],
+      "unknowns": [
+        "Catalogue listing does not establish current stock; unpublished fields and exact multisplit combinations remain unknown."
+      ]
+    },
+    {
+      "modelReference": "MUZ-RW25VGHZ2",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.80 (printed p.79), table header and family caption",
+        "excerpt": "MUZ-RW25VGHZ2"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 714,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), outdoor unit dimensions, MUZ-RW25VGHZ2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 714 x 800 x 285"
+          }
+        },
+        {
+          "key": "width",
+          "value": 800,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), outdoor unit dimensions, MUZ-RW25VGHZ2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 714 x 800 x 285"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 285,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), outdoor unit dimensions, MUZ-RW25VGHZ2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 714 x 800 x 285"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 2106,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), outdoor unit cooling airflow, MUZ-RW25VGHZ2 column",
+            "excerpt": "Débit d’air en froid GV m3/h 2106"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), DONNÉES FRIGORIFIQUES row Fluide, shared columns",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), cooling operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), cooling operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -30,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), heating operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -30 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), heating operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -30 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit pair in the same size column, including the captioned finishes.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), Tailles 25 aligned indoor/outdoor columns and indoor caption",
+            "excerpt": "MSZ-RW25VG2 / MUZ-RW25VGHZ2 ; MSZ-RW 25/35/50 VG2"
+          }
+        }
+      ],
+      "unknowns": [
+        "Catalogue listing does not establish current stock; unpublished fields and exact multisplit combinations remain unknown."
+      ]
+    },
+    {
+      "modelReference": "MUZ-RW35VGHZ2",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.80 (printed p.79), table header and family caption",
+        "excerpt": "MUZ-RW35VGHZ2"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 714,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), outdoor unit dimensions, MUZ-RW35VGHZ2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 714 x 800 x 285"
+          }
+        },
+        {
+          "key": "width",
+          "value": 800,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), outdoor unit dimensions, MUZ-RW35VGHZ2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 714 x 800 x 285"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 285,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), outdoor unit dimensions, MUZ-RW35VGHZ2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 714 x 800 x 285"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 2268,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), outdoor unit cooling airflow, MUZ-RW35VGHZ2 column",
+            "excerpt": "Débit d’air en froid GV m3/h 2268"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), DONNÉES FRIGORIFIQUES row Fluide, shared columns",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), cooling operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), cooling operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -30,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), heating operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -30 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), heating operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -30 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit pair in the same size column, including the captioned finishes.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), Tailles 35 aligned indoor/outdoor columns and indoor caption",
+            "excerpt": "MSZ-RW35VG2 / MUZ-RW35VGHZ2 ; MSZ-RW 25/35/50 VG2"
+          }
+        }
+      ],
+      "unknowns": [
+        "Catalogue listing does not establish current stock; unpublished fields and exact multisplit combinations remain unknown."
+      ]
+    },
+    {
+      "modelReference": "MUZ-RW50VGHZ2",
+      "unitType": "outdoor",
+      "status": "current",
+      "identityEvidence": {
+        "sourceId": "mitsubishi-fr-air-air-2026-2027",
+        "locator": "PDF p.80 (printed p.79), table header and family caption",
+        "excerpt": "MUZ-RW50VGHZ2"
+      },
+      "facts": [
+        {
+          "key": "height",
+          "value": 880,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), outdoor unit dimensions, MUZ-RW50VGHZ2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 880 x 840 x 330"
+          }
+        },
+        {
+          "key": "width",
+          "value": 840,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), outdoor unit dimensions, MUZ-RW50VGHZ2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 880 x 840 x 330"
+          }
+        },
+        {
+          "key": "depth",
+          "value": 330,
+          "unit": "mm",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), outdoor unit dimensions, MUZ-RW50VGHZ2 column",
+            "excerpt": "Hauteur x Largeur x Profondeur mm 880 x 840 x 330"
+          }
+        },
+        {
+          "key": "airflow",
+          "value": 2958,
+          "unit": "m3/h",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), outdoor unit cooling airflow, MUZ-RW50VGHZ2 column",
+            "excerpt": "Débit d’air en froid GV m3/h 2958"
+          },
+          "condition": "cooling high fan (GV)"
+        },
+        {
+          "key": "refrigerant",
+          "value": "R32",
+          "unit": "none",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), DONNÉES FRIGORIFIQUES row Fluide, shared columns",
+            "excerpt": "Fluide / PRP R32 / 675"
+          }
+        },
+        {
+          "key": "coolingOutdoorMinimum",
+          "value": -10,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), cooling operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "coolingOutdoorMaximum",
+          "value": 46,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), cooling operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. sèche/sèche) °C -10 / +46"
+          },
+          "condition": "outdoor dry-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMinimum",
+          "value": -30,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), heating operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -30 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        },
+        {
+          "key": "heatingOutdoorMaximum",
+          "value": 24,
+          "unit": "degC",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), heating operating range row, shared size columns",
+            "excerpt": "Plage de fonctionnement (T°ext. humide/sèche) °C -30 / +24"
+          },
+          "condition": "outdoor wet-bulb / dry-bulb"
+        }
+      ],
+      "ratings": [],
+      "compatibility": [
+        {
+          "description": "Monosplit pair in the same size column, including the captioned finishes.",
+          "evidence": {
+            "sourceId": "mitsubishi-fr-air-air-2026-2027",
+            "locator": "PDF p.80 (printed p.79), Tailles 50 aligned indoor/outdoor columns and indoor caption",
+            "excerpt": "MSZ-RW50VG2 / MUZ-RW50VGHZ2 ; MSZ-RW 25/35/50 VG2"
+          }
+        }
+      ],
+      "unknowns": [
+        "Catalogue listing does not establish current stock; unpublished fields and exact multisplit combinations remain unknown."
+      ]
+    }
+  ],
+  "unresolvedReferences": []
+}

@@ -4638,6 +4638,195 @@ export const CATALOGUE_OUTDOORS = [
         "condition": "outdoor wet-bulb (°CWB)"
       }
     }
+  },
+  {
+    "id": "MUZ-LN25VGHZ3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 800,
+      "d": 285
+    },
+    "coolingHighFanFlowM3h": 1872,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "MSZ-LN25VG3R",
+      "MSZ-LN25VG3B",
+      "MSZ-LN25VG3V",
+      "MSZ-LN25VG3W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -25,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "MUZ-LN35VGHZ3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 550,
+      "w": 800,
+      "d": 285
+    },
+    "coolingHighFanFlowM3h": 1962,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "MSZ-LN35VG3R",
+      "MSZ-LN35VG3B",
+      "MSZ-LN35VG3V",
+      "MSZ-LN35VG3W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -25,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "MUZ-LN50VGHZ3",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 880,
+      "w": 840,
+      "d": 330
+    },
+    "coolingHighFanFlowM3h": 2928,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "MSZ-LN50VG3R",
+      "MSZ-LN50VG3B",
+      "MSZ-LN50VG3V",
+      "MSZ-LN50VG3W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -25,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "MUZ-RW25VGHZ2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 714,
+      "w": 800,
+      "d": 285
+    },
+    "coolingHighFanFlowM3h": 2106,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "MSZ-RW25VG2"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -30,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "MUZ-RW35VGHZ2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 714,
+      "w": 800,
+      "d": 285
+    },
+    "coolingHighFanFlowM3h": 2268,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "MSZ-RW35VG2"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -30,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
+  },
+  {
+    "id": "MUZ-RW50VGHZ2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 880,
+      "w": 840,
+      "d": 330
+    },
+    "coolingHighFanFlowM3h": 2958,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "MSZ-RW50VG2"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb / dry-bulb"
+      },
+      "heating": {
+        "minimum": -30,
+        "maximum": 24,
+        "condition": "outdoor wet-bulb / dry-bulb"
+      }
+    }
   }
 ] as const;
 
@@ -7500,6 +7689,136 @@ export const CATALOGUE_INDOORS = [
     "coolingHighFanFlowM3h": 1170.0,
     "sourceStatus": "availability-unknown",
     "marketScope": "Europe manufacturer table; France availability unverified"
+  },
+  {
+    "id": "MSZ-EF18VGK2B",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 299,
+      "w": 885,
+      "d": 195
+    },
+    "coolingHighFanFlowM3h": 666,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MSZ-EF18VGK2W",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 299,
+      "w": 885,
+      "d": 195
+    },
+    "coolingHighFanFlowM3h": 666,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MSZ-EF18VGK2S",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 299,
+      "w": 885,
+      "d": 195
+    },
+    "coolingHighFanFlowM3h": 666,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MSZ-LN18VG3R",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 307,
+      "w": 890,
+      "d": 233
+    },
+    "coolingHighFanFlowM3h": 744,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MSZ-LN18VG3B",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 307,
+      "w": 890,
+      "d": 233
+    },
+    "coolingHighFanFlowM3h": 744,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MSZ-LN18VG3V",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 307,
+      "w": 890,
+      "d": 233
+    },
+    "coolingHighFanFlowM3h": 744,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MSZ-LN18VG3W",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 307,
+      "w": 890,
+      "d": 233
+    },
+    "coolingHighFanFlowM3h": 744,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MSZ-RW25VG2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 998,
+      "d": 247
+    },
+    "coolingHighFanFlowM3h": 702,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MSZ-RW35VG2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 998,
+      "d": 247
+    },
+    "coolingHighFanFlowM3h": 846,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "MSZ-RW50VG2",
+    "manufacturer": "mitsubishi-electric",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 998,
+      "d": 247
+    },
+    "coolingHighFanFlowM3h": 972,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026–2027 catalogue; current stock unverified"
   }
 ] as const;
 
