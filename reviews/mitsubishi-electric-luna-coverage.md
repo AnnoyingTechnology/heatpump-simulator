@@ -2,11 +2,11 @@
 
 **Checked:** 2026-11-17. **Status: partial; current-lineup audit still open.** Scope is Mitsubishi Electric France/Europe consumer air-to-air equipment. Mitsubishi Heavy Industries, VRF/VRV, hydronic equipment and non-residential products are out of scope.
 
-## Runtime coverage after Daikin FTXTP batch
+## Runtime coverage and history
 
-The runtime importer contains **25 Mitsubishi Electric outdoor and 45 indoor profiles**. These records remain unchanged in this batch. The accepted set is grounded in the pinned French 2026–2027 air-air catalogue and exact primary table review in `research/catalogue/equipment-acceptance.json`; the candidate/acceptance ledger does not yet establish that this set exhausts the current France/Europe range.
+The runtime importer now contains **31 Mitsubishi Electric outdoor and 55 indoor profiles** after the Terra R32 batch. The accepted set is grounded in the pinned French 2026–2027 air-air catalogue and exact primary table review in `research/catalogue/equipment-acceptance.json`; the candidate/acceptance ledger does not yet establish that this set exhausts the current France/Europe range.
 
-The accepted inventory includes source-reviewed MSZ/MUZ monosplit pairs across AP, AY, EF, FT and LN families, with explicit finish variants where the source identifies them. Exact source table pairings and published casing/airflow/range fields are retained by the acceptance list. MSZ-EF18 and MSZ-LN18 are excluded from monosplit acceptance because the source identifies them as multisplit-only. A current 2026/27 France range page also names HR, AY, AP, EF, FT, LN, RW, RZ, console, cassette and ducted product lines; this broader list has not been reconciled by exact reference against the 25/45 accepted inventory.
+The accepted inventory includes source-reviewed MSZ/MUZ monosplit pairs across AP, AY, EF, FT and LN families, with explicit finish variants where the source identifies them. Exact source table pairings and published casing/airflow/range fields are retained by the acceptance list. MSZ-EF18 and MSZ-LN18 finish profiles are accepted as indoor-only because the source identifies them as multisplit-only. A current 2026/27 France range page also names HR, AY, AP, EF, FT, LN, RW, RZ, console, cassette and ducted product lines; this broader list has not been fully reconciled by exact reference against the accepted inventory.
 
 ## Remaining work
 
@@ -50,3 +50,5 @@ Terra FBA/FCAG/FHA batch 2026-11-18: no Mitsubishi changes; runtime remains 25 o
 Terra RXM and Siesta batch 2026-11-18: no Mitsubishi changes; runtime remains **25 outdoor / 45 indoor**. Daikin is now **91 / 185**. Mitsubishi current range reconciliation and MXZ constraints, including the digital-only 5/6-head table, remain open.
 
 Terra audit checkpoint 2026-11-18: the 25 / 45 runtime inventory already includes six HR pairs. The exact omitted LN Hyper Heating outdoors, RW and RZ table identities and multisplit-only 18-class leads are listed in `terra-mitsubishi-audit-checkpoint-2026-11.md`. No new runtime profiles or MXZ rules have been accepted. Full range reconciliation and official manual review remain unfinished; the 5/6-head digital combination table is still unpinned. RZ uses R290, outside the importer's present R32-only boundary.
+
+Terra R32 batch 2026-11-18: six LN Hyper Heating and RW outdoor references and ten indoor profiles (three RW, three EF18 finishes and four LN18 finishes) are accepted. The size-column pairings and fields are detailed in `terra-mitsubishi-r32-2026-11.md`; the 18s have no monosplit pair. Runtime is **31 outdoor / 55 indoor**. RZ R290 remains for separate importer support; range reconciliation, MXZ manual rules and the digital-only 5/6-head matrix remain unresolved.

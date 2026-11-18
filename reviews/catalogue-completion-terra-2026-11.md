@@ -33,3 +33,11 @@ Validation for this batch: `python3 tests/catalogue.test.py` (55 passed), catalo
 ## Mitsubishi audit checkpoint — incomplete
 
 No runtime change: Daikin remains 91 / 185 and Mitsubishi 25 / 45. The source-pinned checkpoint in `terra-mitsubishi-audit-checkpoint-2026-11.md` corrects the earlier omission of already accepted HR and lists additional table references. LN Hyper Heating, RW, RZ, multisplit-only 18-class finishes, full range reconciliation, MXZ manual/port/class rules and the digital-only 5/6-head combination table remain unfinished. RZ's R290 refrigerant is rejected by the current importer. This checkpoint does not satisfy the requested Mitsubishi batch.
+
+## Mitsubishi R32 continuation — 2026-11-18
+
+This batch follows the Mitsubishi audit checkpoint. Daikin remains **91 / 185**; Mitsubishi changes from **25 outdoor / 45 indoor to 31 / 55**. Six LN Hyper Heating and RW outdoors, three RW indoors and seven multisplit-only EF/LN size-18 finishes are promoted. Page-column readback, field boundaries, candidate and acceptance receipts are in `terra-mitsubishi-r32-2026-11.md`. This batch is recorded in the commit containing this review.
+
+The size-18 exact MXZ eligibility is unknown: the table says multisplit only but does not identify combinations. Current stock is unverified. RZ R290 is outside this batch and awaits separately developed support; broader Mitsubishi family reconciliation, MXZ port/class rules and the digital-only 5/6-head combination table remain unresolved. The previous Daikin unresolved items remain as documented above and in the coverage ledger. This is not a full catalogue completeness claim.
+
+Validation: candidate schema validation passed; `python3 tests/catalogue.test.py` passed 57 tests; catalogue TypeScript compilation and 10 topology tests passed; `npx tsc --noEmit -p tsconfig.json` passed. The build was not run.

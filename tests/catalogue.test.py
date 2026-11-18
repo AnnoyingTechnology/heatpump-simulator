@@ -25,6 +25,37 @@ class CatalogueAcceptance(unittest.TestCase):
             self.assertIn(indoor, units)
             self.assertEqual(units[outdoor]['compatibleIndoorClasses'], [indoor])
 
+    def test_mitsubishi_r32_visual_readback_and_pair_boundaries(self):
+        receipt = json.loads((ROOT / 'reviews/terra-mitsubishi-r32-independent-acceptance-2026.json').read_text())
+        for pin in receipt['sourcePins']:
+            self.assertEqual(hashlib.sha256((ROOT / pin['path']).read_bytes()).hexdigest(), pin['sha256'])
+        rows = {r['reference']: r for r in self.review['units']}
+        profiles = {}
+        for name in ('CATALOGUE_OUTDOORS', 'CATALOGUE_INDOORS'):
+            profiles.update({p['id']: p for p in json.loads(re.search(
+                r'export const ' + name + r' = (.*?) as const;', module.generate(), re.S).group(1))})
+        for reviewed in receipt['reviewedUnits']:
+            ref = reviewed['reference']; row = rows[ref]
+            doc = json.loads((ROOT / row['candidateFile']).read_text())
+            unit = next(u for u in doc['units'] if u['modelReference'] == ref)
+            module.source_review_metadata(unit, row, ROOT)
+            self.assertEqual(profiles[ref]['coolingHighFanFlowM3h'], reviewed['factValues']['airflow'])
+            if ref.startswith('MUZ-'):
+                self.assertEqual(profiles[ref]['compatibleIndoorClasses'], reviewed['compatibleIndoorClasses'])
+                self.assertEqual(profiles[ref]['publishedOperatingRangesC']['heating']['minimum'], -25 if '-LN' in ref else -30)
+        for family, suffixes, base in (('EF', 'BWS', 'VGK2'), ('LN', 'RBVW', 'VG3')):
+            for suffix in suffixes:
+                ref = f'MSZ-{family}18{base}{suffix}'
+                self.assertNotIn('compatibleOutdoorReferences', profiles[ref])
+                self.assertNotIn('compatibleOutdoorClasses', profiles[ref])
+                self.assertNotIn('nominalCoolingKw', profiles[ref])
+                self.assertTrue(all(ref not in p['compatibleIndoorClasses'] for p in profiles.values() if 'compatibleIndoorClasses' in p))
+        changed = dict(rows['MUZ-RW25VGHZ2']); changed['compatibleIndoorClasses'] = ['MSZ-RW35VG2']
+        doc = json.loads((ROOT / changed['candidateFile']).read_text())
+        unit = next(u for u in doc['units'] if u['modelReference'] == changed['reference'])
+        with self.assertRaisesRegex(ValueError, 'pairing or topology changed'):
+            module.source_review_metadata(unit, changed, ROOT)
+
     def test_generated_runtime_matches_frozen_source_acceptance(self):
         self.assertEqual(module.generate(), (ROOT / 'src/equipment-data.ts').read_text())
 
@@ -63,8 +94,8 @@ class CatalogueAcceptance(unittest.TestCase):
         units = self.review['units']
         outdoors = [u for u in units if u['reference'].startswith('MUZ-')]
         indoors = {u['reference'] for u in units if u['reference'].startswith('MSZ-')}
-        self.assertEqual(len(outdoors), 25)
-        self.assertEqual(len(indoors), 45)
+        self.assertEqual(len(outdoors), 31)
+        self.assertEqual(len(indoors), 55)
         self.assertNotIn('MSZ-EF18VGK2', indoors)
         self.assertNotIn('MSZ-LN18VG3', indoors)
         for outdoor in outdoors:
