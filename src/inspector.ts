@@ -1,6 +1,7 @@
 import { indoorCoilProbeLive, outdoorCoilProbe, phaseLabel, valvePairs } from './circuit';
 import type { CoilProbe } from './circuit';
 import { setHtml } from './controls';
+import { outdoorModelInfo } from './equipment';
 import { signed } from './pipes';
 import { escapeHtml, fmt, html, setText } from './dom';
 import { PREVIEW_BANNER } from './fixtures';
@@ -94,7 +95,7 @@ export function inspectorHeading(id: string | null, s: AppState): { title: strin
   const i = Number(idx ?? 0);
   const room = cfg.rooms[i];
   switch (kind) {
-    case 'outdoor': return { title: cfg.outdoorKind === 'owner' ? 'Outdoor unit · Daikin 3MXM52N8' : 'Outdoor unit · generic compatible', kicker: 'Outdoor casing' };
+    case 'outdoor': return { title: cfg.outdoorKind === 'owner' ? 'Outdoor unit · Daikin 3MXM52N8' : cfg.outdoorKind === 'generic' ? 'Outdoor unit · generic compatible' : `Outdoor unit · ${outdoorModelInfo(cfg).label}`, kicker: 'Outdoor casing' };
     case 'compressor': return { title: 'Compressor', kicker: 'Fixed D discharge / S suction' };
     case 'reverser': return { title: 'Four-way reversing valve', kicker: 'Ports D · S · O · I' };
     case 'accumulator': return { title: 'Accumulator', kicker: 'Suction side' };

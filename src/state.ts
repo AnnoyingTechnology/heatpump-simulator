@@ -315,6 +315,11 @@ class Store {
       const count = Math.min(outdoorPortCapacity(s.cfg), n);
       this.ensureRoomSlots(s.cfg, count);
       s.cfg.unitCount = count;
+      // New slots start generic; a manufacturer outdoor only offers its own heads, as on an outdoor switch.
+      const selectable = selectableIndoorClasses(s.cfg.outdoorKind);
+      for (const room of s.cfg.rooms.slice(0, count)) {
+        if (selectable.length > 0 && !selectable.includes(room.indoorClass)) applyIndoorProfile(room, selectable[0]);
+      }
       this.pruneSelection(s);
     });
   }

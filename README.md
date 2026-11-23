@@ -1,147 +1,213 @@
-# Heatpump Simulator 2026
+# Heatpump Simulator
 
-A desktop, frontend-only heat-pump sandbox with native refrigerant thermodynamics (R32 by default), independent science research and a vector workbench. It opens in Live; Examples provides separate illustrative snapshots.
+A desktop, frontend-only air-to-air heat-pump sandbox. It solves real refrigerant thermodynamics in the browser on a pure-vector workbench. It is neither a game nor a calibrated research instrument. Every model assumption is labelled.
+
+**Live:** <https://annoyingtechnology.github.io/heatpump-simulator/>
+
+The app opens in **Live**, which runs a physical simulation in a Web Worker. **Examples** shows separate, explicitly illustrative snapshots.
+
+## Features
+
+- **Heating and cooling.** Visible frost accumulation, automatic defrost, meltwater and a cumulative drained-water total.
+- **Multi-room houses.** Each indoor unit serves its own room, with editable area, ceiling height, average U-value, sun gains and setpoint. Room links model doorway or floor-opening exchange plus insulated solid contact. Single- or dual-flow ventilation is available with sensible recovery.
+- **Refrigerant circuit you can inspect.**
+  - Compressor, four-way reversing valve, per-branch EEVs, accumulator, coils and service port.
+  - Per-pipe temperature and phase colouring, pressures (gauge or absolute), coil-end probes, and outlet air temperatures on both sides.
+- **Readings:**
+  - instantaneous COP and COP since start;
+  - useful power, electrical input and energy;
+  - two-hour plots of simulated time;
+  - per-room temperature and target traces.
+- **Controls:**
+  - pause and reset;
+  - requested speed 1×, 2×, 5×, 10× and 50×, with the achieved rate shown;
+  - season presets and URL initialisation;
+  - EN/FR interface;
+  - System, Light and Dark themes.
+- **Engineering settings:**
+  - compressor isentropic efficiency (generic 70 % default);
+  - shared exchanger cleanliness from 100 % to 10 % clear passage (default 95 %);
+  - pipe length and diameter per branch;
+  - idealized or physical field lines;
+  - a quasi-steady **Charge** model for reduced-charge scenarios.
+- **Refrigerants:** R32 (default), R22, R290, R134a, R1234yf, R410A and R407C for the generic Reference circuit.
+  - R410A and R407C use fixed-composition pseudo-pure equations of state that keep their glide. Fractionation is out of scope.
+  - Physical field lines and the conserved-inventory model are qualified for R32 only.
+- **Equipment catalogue:** see below.
+
+## Equipment catalogue
+
+The outdoor model selector offers three kinds of entry:
+
+- the owner preset (Daikin 3MXM52N8 with FTXA25/FTXA35/FTXA25);
+- a **Generic** group with an editable port count;
+- 226 outdoor and 391 indoor manufacturer profiles, grouped by brand.
+
+| Manufacturer | Outdoor | Indoor | Multisplits | Source editions |
+|---|---:|---:|---:|---|
+| Daikin | 91 | 185 | 22 | 2026 France/Europe catalogues and data books; separately identified legacy N/N8/N9 |
+| Mitsubishi Electric | 59 | 86 | 12 | 2026/27 France residential range, including 3 R290 RZ pairs |
+| Panasonic | 32 | 41 | 13 | France 2026 residential catalogue |
+| Mitsubishi Heavy Industries | 44 | 79 | 9 | Europe 2026 residential catalogue (26R01EU rev. 1) |
+
+Every imported value is pinned to a source page, row and column through a reviewed acceptance file (`research/catalogue/`). The imported fields are:
+
+- casing dimensions;
+- published airflow;
+- nominal capacity class;
+- factory refrigerant;
+- operating ranges;
+- exact single-split pairings;
+- multisplit head counts and capacity ceilings.
+
+Matched monosplits enforce one port and their published partners. A multisplit offers every catalogued head of its own manufacturer. Each head is marked **"combination unverified"**, because exact OEM combination tables are not imported.
+
+Catalogue labels **do not** imply OEM performance. Compressor, exchanger and control behaviour stay generic. Unpublished airflow falls back to a labelled generic or manual value. France availability and current stock are not asserted.
+
+Open coverage and per-reference reasons:
+
+- [Daikin ledger](reviews/daikin-luna-coverage.md)
+- [Mitsubishi Electric ledger](reviews/mitsubishi-electric-luna-coverage.md)
+- [Daikin/Mitsubishi final review](reviews/catalogue-completion-terra-2026-11.md)
+- [Panasonic/MHI batch](reviews/catalogue-panasonic-mhi-2026-11.md)
+
+Toshiba, Fujitsu/Atlantic and LG are not yet included.
+
+## Physics model and limits
+
+**Property backend.** Live uses a pinned, self-hosted CoolProp HEOS/psychrometric backend compiled to WASM. The public worker uses the independently reviewed guarded build, see [`tools/coolprop-safe/`](tools/coolprop-safe/README.md).
+
+**Reference model.** The default model is a quasi-steady, shared-pressure cycle. It includes:
+
+- per-branch, phase-aware heat transfer with finite UA;
+- dynamic room air, fabric and metal states;
+- conserved outdoor ice and water enthalpy;
+- outdoor exhaust fog.
+
+Fixed 1 K subcooling applies unless **Charge** is selected.
+
+**Inverter controller.** The default is a generic inverter controller, not a fitted OEM algorithm:
+
+- It estimates room demand and applies bounded proportional-integral feedback.
+- A ±1 °C call band applies: heating starts at target −1 °C and stops at target +1 °C, reversed in cooling.
+- The fan command is 25–100 %, with fan power following its cube.
+- The compressor ramps at 2 rps/s up and 4 rps/s down, with an 8 rps runtime minimum. Physical-line cooling keeps 18 rps.
+- A fixed-speed `on-off` strategy exists for future conventional equipment.
+
+**Charge models.**
+
+- The **Charge** model sets condensing pressure, subcooling, superheat and EEV regime from a percentage of a generic, installation-derived nominal charge, with shortage and flooding protection. It redistributes charge instantly.
+- The time-integrated conserved-inventory model remains behind a validation gate. See [PROGRESS.md](PROGRESS.md).
+
+**Speed.** Requested speed is limited by solver throughput. The clock advances only on completed physical steps. Observed throughput is about 13× for active owner-preset heating requested at 50×, and about 47–49× with all units off. These figures depend on the workload.
+
+**Not modelled:**
+
+- oil transport;
+- ice sublimation, indoor icing and room fog;
+- resolved stratification;
+- two-phase pipe slip and fittings;
+- measured fouling curves;
+- finned-exchanger areas;
+- manufacturer performance maps.
+
+Unsupported operating points stop with an explicit fault. Accepted state is retained, and a local diagnostic JSON can be downloaded.
+
+## Owner-house preset
+
+The default house reproduces the owner's three-level home. These are provisional calibration assumptions, not measured material properties.
+
+- **Floors:** ground 45.4 m² / 100 m³, upstairs 54.5 m² / 155 m³, attic 26 m² / 84 m³.
+- **Envelope losses:** 45 / 25 / 15 W/K.
+- **Air exchange and gains:** 0.25 ACH residual air exchange and a 200 W ground background gain. Dual-flow ventilation runs at 0.5 ACH with 75 % sensible recovery.
+- **Floor links:** each is 4 m² open plus 45 m² of 120 mm glass wool, totalling 173.804 W/K.
+- **Winter targets:** ground 17 °C, upstairs 21.5 °C, attic off.
+
+At 1 °C outdoors, a 20-minute warm-start benchmark averaged about **649 W** electrical input. The owner reported roughly 500 W and accepted this as a useful starting approximation; it is not a fitted result. See:
+
+- [owner-house calibration](research/owner-house-calibration.md)
+- [benchmark](research/owner-house-engine-benchmark.json)
+- [review](reviews/owner-house-science-review.md)
+- [measured-reference comparison](research/owner-reference-comparison.md)
 
 ## Run locally
 
-Requires a Node version supported by the pinned Vite dependency (currently Node 20.19+ or 22.12+).
+Requires Node 20.19+ or 22.12+.
 
 ```sh
 npm ci
-npm run dev
-```
-
-Open the Local URL printed by Vite. Automatic hot reload is disabled so source edits cannot erase an ongoing simulation. Refresh explicitly to load a new version. To check and build the static site:
-
-```sh
-npm run build
+npm run dev          # hot reload is disabled so edits never erase a running simulation; refresh explicitly
+npm run build        # static output in dist/, relative asset URLs
 npm run preview
 ```
 
-The production output is `dist/`, with relative asset URLs suitable for a GitHub Pages project subdirectory. No backend, external runtime assets or API access is needed.
+There is no backend and no external runtime asset or API. Weather, mode, per-room targets, On/Off and initial temperatures can be passed as URL parameters. See [URL parameters and the Home Assistant template](docs/home-assistant-url.md).
 
-Weather, mode, per-room targets, On/Off and observed air temperatures can initialize a fresh run through query or fragment parameters. See [URL parameters and the Home Assistant template](docs/home-assistant-url.md).
+## Tests and CI
 
-## GitHub Pages
+```sh
+npx tsc -p tests/engine/tsconfig.json && HEATPUMP_TEST_BACKEND=guarded node --test tests/engine/properties.test.mjs   # one engine suite
+npx tsc -p tests/frontend/tsconfig.json && node --test tests/trends.test.mjs tests/preconfiguration.test.mjs tests/i18n.test.mjs
+python3 tests/catalogue.test.py
+npx tsc -p tests/catalogue/tsconfig.json && node --test tests/catalogue/topology.test.mjs
+```
 
-Repository: https://github.com/AnnoyingTechnology/heatpump-simulator
+Browser checks (`tools/check-*.mjs`) drive an isolated dev server through Chromium's DevTools protocol on `127.0.0.1:9223`. Start a separate, headless Chromium profile with `--remote-debugging-port=9223` first.
 
-Site: https://annoyingtechnology.github.io/heatpump-simulator/
+[`.github/workflows/pages.yml`](.github/workflows/pages.yml) runs on every push to `main`. It performs these steps:
 
-The verified seven-fluid Reference release `518a9b0` passed 156 thermodynamic checks, 7 frontend checks, 23 catalogue checks and 25 operating-transition schedules on GitHub. Hosted checks verify the exact application/worker/WASM assets, URL initialization and fresh physical workers for all selectable fluids. French presentation, room-temperature charts, vector measurement symbols and actual idealized compressor startup are delivered. Receipts and subsequent catalogue releases are recorded in [PROGRESS.md](PROGRESS.md).
+1. installs locked dependencies and builds;
+2. runs the guarded-backend engine suite, the catalogue source boundary and topology tests;
+3. runs a robustness smoke campaign;
+4. publishes `dist/` to GitHub Pages.
 
-The accepted source catalogue now contains 91 Daikin outdoor / 185 indoor and 59 Mitsubishi Electric outdoor / 86 indoor profiles. They include nine current MXM A8/A9 and nine legacy N/N8/N9 Daikin multisplits, four 2MXF/3MXF multisplits, twelve Mitsubishi MXZ 2–4-head multisplits with typed head-count constraints, and three R290 Mitsubishi RZ pairs. Published-class records explicitly retain unpublished factory suffixes and unknown exact-SKU eligibility. The 2022 Daikin catalogue was reconciled reference by reference; it prints no factory suffixes, so its 159 references stay historical and unresolved. Every remaining gap is listed with its reason in [the final catalogue review](reviews/catalogue-completion-terra-2026-11.md). Full manufacturer coverage remains open. Casing and necessary installation rules do not establish exact OEM indoor combinations or performance maps; unpublished legacy bounds stay unknown.
+`node tools/check-hosted-pages.mjs` verifies the deployed site.
 
-`.github/workflows/pages.yml` installs locked dependencies, checks types, builds and verifies the released Reference model with the guarded property backend, validates catalogue sources and installation constraints, checks conserved inventory/control/rollback in a separate parallel job, then publishes `dist/`. These scoped inventory checks do not open its public validation gate. Pushes to `main` deploy automatically; manual runs are supported. All worker and self-hosted WASM URLs remain inside the project subdirectory.
+## Catalogue pipeline
 
-Verify the deployed build using `node tools/check-hosted-pages.mjs` and the focused hosted checks. Use a frozen build/source snapshot when newer work is already present locally. Historical release evidence remains in `reviews/` and [PROGRESS.md](PROGRESS.md).
+1. A candidate JSON in `research/catalogue/staging/` must validate against `catalogue.schema.json`. Check it with `python3 tools/validate-catalogue.py <file>`.
+2. Accepted entries in `research/catalogue/equipment-acceptance.json` pin the candidate by sha256. They cite source receipts whose page pins live in `research/sources/`.
+3. `python3 tools/import-equipment.py` generates `src/equipment-data.ts` deterministically. Tests fail if it drifts.
+4. `tools/transcribe-catalogue-2026.py` regenerates the Panasonic and MHI candidates, receipts and acceptance entries from the pinned pages.
 
-## Current interface
+The rules for sources, units and unknowns are in the [research contract](research/catalogue/research-contract.md).
 
-Sonnet 5.5 authored the desktop workbench through local Claude Code. All application illustrations are native SVG/CSS: simple outdoor/indoor/room zones, equipment, pipes, gauges, frost and meltwater. Outdoor temperature/humidity and room air/volume/heat loss live unboxed in their environment zones. Indoor target, On/Off, supplied-air temperature and net room kW live beside each indoor unit; model, mode, efficiency and cleanliness live beside the outdoor unit. Advanced assumptions open in local popovers. PNG screenshots under `design/` are review evidence and are not shipped in the application.
+## Documentation
 
-The workbench provides live heating/cooling, automatic visible frost/defrost, capacity-driven Add/Remove room controls, pipe lengths/diameters, pressure conventions, selectable components, click-to-zoom zones, pause/restart and requested speeds up to 50×. The outdoor model select includes the owner group, Generic, 59 reviewed Mitsubishi Electric outdoor references and 91 reviewed Daikin outdoor profiles, with 271 indoor profiles and brand-grouped dropdowns. Published matched monosplits enforce their one-port topology and compatible indoor choices. Multisplits offer every catalogued head of their own manufacturer, each marked "combination unverified" because exact OEM combinations are not certified; the owner group has three connections, while Generic exposes an explicitly assumed port capacity. Daikin coverage now includes2026 official catalogue/France tables and separately identified historical references, expanded by Luna and Terra after Qwen staging. Full-reference and catalogue-class identities remain distinguished in the acceptance evidence. This is still partial coverage; see [the family-by-family ledger](reviews/daikin-luna-coverage.md) for remaining multisplit, Siesta, cassette and ducted combinations. Their outdoor flow is unpublished in the reviewed table and uses an explicitly labelled generic manual assumption. Selected published cooling high-fan volume flow is converted to dry-air mass flow at the actual inlet state. Its reuse in heating is an explicit assumption, with manual airflow overrides available in advanced settings. Compressor and exchanger performance remains generic; catalogue labels and nominal ratings do not establish OEM curves. Larger layouts use vertical scrolling to preserve full-width inlet/outlet streams and readable controls. A shared exchanger-cleanliness slider starts at95% and runs from100% clean to10% remaining clear passage. Every coil permanently follows it. Restart applies current initial room temperatures and retains edited configuration.
-
-Zoom and tall-room scrolling stay inside the available workbench height; the temperature/phase legend stays at the viewport bottom. Pressure readings also remain visible in overview. The five headline readings (instantaneous COP, COP since start, useful power, electrical input and electrical energy since start) use full-height separators and SVG plots of the last two hours of **simulated time**, retaining the latest accepted reading in each ten-second bin. Plots start empty, show gaps for unavailable values and mode changes, remain unchanged while paused, and clear on Reset. Examples do not fabricate historical readings. Plot scales are automatic, include zero and are stated in the plot tooltip.
-
-COP since restart divides cumulative useful HVAC service by cumulative HVAC electricity, including fan/control consumption and defrost/reversal penalties. It excludes background gains and room links, retains its value across mode/settings edits and has its own two-hour graph. Restart clears both the energy ledger and history.
-
-Each graph sits to the right of its value, with the small label beneath the value. Compact outdoor controls reclaim enough height for the default three-room overview to fit without scrolling at 1280×720 and larger. A vector theme chooser beside the brand offers System (default), Light and Dark. System follows operating-system changes; explicit choices persist locally. Theme changes preserve physical state and the fixed refrigerant/air colour scales; denied storage still allows a page-local override.
-
-The default Reference inverter estimates room heat demand from sensible envelope, ventilation and fabric exchange, including configured background gains and room links, then applies proportionate temperature feedback with a bounded slow integral. It modulates through target crossing when the minimum capacity fits the load. Each indoor call persists through the default ±1°C band: in heating start at target−1°C and stop at target+1°C, reversed in cooling. Calling fans reduce flow continuously near the stopping boundary; actual flow/air-side conductance scale with the generic25–100% fan command, and electric power with its cube. Positive-demand allocation includes a declared5% UA reserve for calling branches. Actual refrigerant equations still determine delivered heat. When all comfort calls stop, ordinary compressor operation stops; minimum-off protection remains. Explicit indoor Off remains immediate. This is a generic controller, not a fitted Daikin algorithm or electrical-power map.
-
-Future conventional equipment can select the separate fixed-speed `on-off` strategy. It uses the same symmetric thermostat band, with full fan command while calling, minimum-off restart dwell and physical protection. At fixed motor speed, capacity and electricity still vary with physical conditions.
-
-A single header groups Pause, Reset and operating status together. Bold inline COP and electrical/useful-output power retain small labels below, with vector plug and flame/snowflake symbols. Measurements and common controls live on the diagram; source selection and unique model diagnostics live in the outdoor unit settings. Requested speed appears before Pause; achieved speed sits beside status and the larger elapsed clock in HH:MM:SS, without fractional seconds. Inline COP/kW/kWh units match their values in size with slightly muted emphasis. Headline plots use60px of the72px header. Compressor isentropic efficiency is editable in Outdoor Settings;70% remains a declared generic assumption, following the primary-source Luna review in research/compressor-efficiency-reference.md. Click the outdoor or indoor zone, or a room, to zoom; use Zoom out or Escape to return. The outdoor fan uses a static narrow side view beside the fin bank and indoor heads show a horizontal outlet with slats. Indoor coils span almost the full casing width with a 5% right-side margin. Room-air temperature sits in the inlet streams; supply temperature and net heating/cooling power sit in the outlet streams, directly on the background. Vector airflow exits the outdoor unit to the left and indoor units downwards, with plain outdoor inlet/exhaust-air temperatures and refrigerant coil heat beside the leftward exhaust. Flow lines leave gaps around the values. Room volume is calculated from floor area and ceiling height (2.2–6 m); the envelope-loss help retains the supplied era bands with their unknown reference size clearly identified. Airflow cues follow actual fan operation; mechanical blade rotation is omitted.
-
-Season presets preserve current room temperatures and session history. Applying summer conditions to cold winter rooms can therefore show **Standby / No cooling demand**: a waiting head starts cooling at target +1°C (25°C for the24°C preset). For a fresh warm-house test, set each room's initial temperature to26°C in **Thermal**, then **Reset**. Reset applies those inputs and clears the session.
-
-One whole-house 0–750 W/K reference ruler shows eight directly labelled midpoints: RE2020 115, RT2012 145, RT2005 250, RT2000 290, RT1988 350, RT1982 415, RT1974 500 and Pre-1974 750 W/K. Staggered labels and fine leaders keep them legible. These are building examples of unspecified size, not regulatory classifications.
-
-Use **Link rooms**, then select two rooms, to draw a thermal connection. Its boundary chip shows accepted heat transfer in kW and direction. The editor combines opening area and insulated solid contact area, with horizontal/vertical room connection and45–180 mm glass wool. A vertical room link passes through a horizontal floor opening: warmer air below drives natural exchange, while warmer air above is stable. Solid-floor conduction remains bidirectional. Same-level links model doorway counterflow with an explicitly assumed, editable2 m opening height. The zero-pressure square-floor coefficient is0.055; wall discharge coefficient0.6 and reference air density/cp are generic assumptions. Background mixing defaults to0 W/K and is separately editable; closing the opening disables it. This is a conservative sensible-heat equivalent, without inter-room air/water transport or resolved room stratification, stair angle, joists, pressure paths or forced mixing. Both areas can be zero while the link remains editable; Remove link is explicit. Thermal geometry/orientation edits clear an advanced H override; explicit constant-H scenarios remain supported. Turning a unit Off leaves its room connected. See [the source/equation reference](research/vertical-room-opening-model.md) for limits and derivations.
-
-Each room's **Average U** uses W/(m²·K), with whole-room envelope H = U × exposed area. Exposed area is estimated from floor area, ceiling height and linked shared faces using a square-box approximation. Size/link edits keep U and recalculate H. Thermal settings offer an optional area override for roof shape, buried walls or other exposure, and an advanced direct H input. The current owner defaults preserve 45/25/15 W/K; these remain calibration assumptions, not measured material properties. The whole-house ruler includes rooms whose indoor units are Off.
-
-House ventilation offers **single/dual flow**. The owner's dual flow is confirmed; the initial 0.5 ACH gross flow and 75% sensible recovery are explicit provisional assumptions. Sensible recovery reduces ventilation heat loss while gross humidity exchange remains unchanged. Latent recovery, ventilation exchanger frost/bypass and ventilation fan electricity are outside this approximation. The nominal reference summary is 85 W/K envelope plus 14.4075 W/K recovered-air loss, approximately 99.4075 W/K total; the worker calculates actual moist-air fluxes separately.
-
-The top-bar **Quick preset** applies Owner's winter (1 °C outside, ground17 °C/upstairs21.5 °C/atticOff) or Owner's summer (39 °C outside, all headsOn at24 °C) to the current house. It retains edited equipment, geometry, humidity, gains and accepted simulation state/time; use Reset separately to restart. Room Thermal settings include **Sun from windows**, an effective admitted sensible heat input in W, separate from appliances/occupants and excluded from HVAC output/COP. Its initial zero is uncalibrated. Later Home Assistant heatwave calibration is recorded in `research/owner-summer-calibration-plan.md`; winter and summer reference exports have been compared without fitting in `research/owner-reference-comparison.md`; historical controls and outdoor humidity remain unavailable, and controlled calibration is still pending.
-
-The outdoor ice/film strip includes **Water total**: cumulative water actually drained from the whole system, including indoor cooling condensate and outdoor liquid drainage. Ice deposition or melting does not count until that water drains. The total persists across mode/settings edits and resets on Restart. It uses kilograms (approximately litres). The decorative dashed outdoor baseline is removed and the field-line model control has a top margin.
-
-In Examples, readings come from explicitly constructed R32 fixtures. Changing configuration does not recalculate heat, COP, pressures or outlet temperatures. Only the illustrative preview clock and ice→retained-liquid ledger advance.
-
-Dragging weather/room-target controls or requesting indoor On/Off keeps the last completed physical readings visible, explicitly labelled until the next simulation step. Paused edits wait for Resume without advancing simulation time. Mode and structural changes withhold incompatible readings. Pipe interiors encode temperature across their width; separate monochrome marks show vapor, liquid or two-phase fluid. Materialized refrigerant probes display actual inlet/outlet temperatures on exchangers and compressor suction/discharge, including truthful zero temperature change during evaporation. The permanent refrigerant legend spans −40…145°C; air fills use a separate −30…50°C scale. Shared vector thermometers precede temperature readings and controls, with their columns following those fixed scales. Missing readings leave the thermometer empty. Thermal power uses a flame for heating or a snowflake for cooling; signed defrost values and refrigerant absorption/release retain their meanings. Casing dimension annotations are omitted while equipment proportions remain consistent.
-
-A calculation fault displays its reason and retains accepted room temperatures, time and outdoor ice/water; operating flux readings are withheld. A rejected request can recover in the existing worker. A terminated worker requires an explicit Reset, and a settings edit cannot silently start a new session. The fault banner offers a local diagnostic JSON download containing asset identity, accepted state, inputs and bounded request history, without an upload.
-
-Live uses the pinned self-hosted CoolProp HEOS/psychrometric backend, a quasi-steady shared-pressure cycle, per-branch phase-aware heat transfer, dynamic room air/fabric/metal states and conserved outdoor ice/water enthalpy. Instantaneous useful-room COP includes storage effects and starts low while coil metals warm. Natural frost, latent melting, draining and return to heating have passed independent numerical and actual-worker browser checks. The guarded 21-test suite passed, together with the separately added backend-failure regression; the independent review accepts the exercised generic prototype with explicit limits.
-
-The idealized Reference inverter ramps actual refrigerant throughput from rest at generic limits of2rps/s upward and4rps/s downward; physical lines retain their admitted-minimum start. The quasi-steady cycle does not resolve rotor acceleration from zero to that first operating point. Runtime minimum commands are8rps for idealized heating/cooling and physical-line heating; physical-line cooling retains18rps because unequal-branch low-flow closure remains unqualified. These are model assumptions, not measured OEM frequencies or electrical-power floors. Directional integral antiwindup uses the raw demand before speed clipping. Protection holds and restart waits preserve thermal state. The unchanged default1°C house passed7200native seconds without a compressor stop/protection hold, settling near488W, plus1205.5simulated browser seconds. No envelope or electrical-power fitting was performed. With idealized lines, parallel indoor heating coils have separate finite-UA outlet states and a shared mixed-header target, so a cold unit can start beside a hot one. Refrigerant allocation follows relative room demand during ordinary inverter operation, with declared UA fallback for retained paths; defrost and fixed-speed use UA allocation. Physical field-line heating retains the earlier individual-subcooling closure and can reject unequal warm/cold branch conditions; it remains an advanced bounded option.
-
-This is a generic, uncalibrated reduced-order model, with R32 as its default fluid. Manufacturer labels/casing dimensions do not establish manufacturer performance or exact installed topology. Generic coil/compressor/control and fouling assumptions are explicit; exact finned exchanger areas remain unknown. Unqualified refrigerants and additional physical-line/inventory coverage require separate validation. Outdoor exhaust can carry fog with conserved total heat/water, including fan heat and ice/liquid phase change. Ice sublimation, indoor icing and room/indoor fog are outside current coverage; unsupported operating points stop with an explicit fault while retaining stored inventories.
-
-Each branch has a permanent length number/slider between the outdoor group and wall. The corridor also provides the field-line model switch; bore and insulation assumptions stay one click away. Idealized field lines are the current default: length, diameter, pressure loss and ambient line heat are excluded there. **Physical (advanced)** enables bounded distributed homogeneous-equilibrium pipe calculations with assumed wall thickness and outdoor exposure. These are sensitivity estimates; two-phase losses, fittings, slip, oil and actual routing are not calibrated installation predictions. The upcoming inventory model retains physical line volume even when transport losses are idealized.
-
-Requested speed is limited by actual solver throughput. The worker keeps calculations off the interface thread and batches one to four unchanged quarter-second physical steps, retaining at most one second of requested work. The clock advances only after completed steps, and the reading beside operating status and the clock shows the achieved rate. Exchanger outlets use exact pure-fluid latent inversion and a bounded sensible-zone solve; pressure continuation reuses a numerical slope only while fresh EOS residuals satisfy the original closure limits. The guarded native backend reuses exact HEOS states without duplicate property flashes. Earlier guarded-backend browser checks, before the inverter/fog stability changes, measured about 1× and 2× at those settings, about 13× for active owner-preset heating requested at 50×, and about 47–49× with all units off. These are workload-dependent observations, not a guaranteed maximum. Physical piping and the experimental inventory model can be much slower. Numerical tests exercise thousands of actual flashes and can take tens of minutes.
-
-## Owner-house starting preset
-
-Winter defaults use ground target17 °C, upstairs21.5 °C and atticOff, with the reported floor volumes retained. Effective envelope losses are45/25/15 W/K for ground/upstairs/attic; assumed residual air exchange is0.25 ACH and ground background gain200 W. Both floor interfaces use the owner-confirmed approximate49 m² footprint:4 m² opening +45 m² solid contact with120 mm glass wool. With the declared40 W/(m²K) opening coefficient, each link totals173.804 W/K. The whole-house envelope is85 W/K plus nominal sensible air loss28.815 W/K; links exchange heat internally and do not add to whole-house external loss. These remain provisional house parameters, separate from the generic equipment model.
-
-At 1°C outdoors, a real-backend 20-minute warm-start benchmark averaged about **649 W electrical input**, upstairs 21.62°C, ground 18.02°C and attic 18.34°C over its last five minutes. The owner accepted this as a useful starting approximation to the reported roughly 500 W. It is not a whole-house equilibrium test or a fitted OEM performance map. The house assumptions and limits are in `research/owner-house-calibration.md`, the reproducible result in `research/owner-house-engine-benchmark.json`, and independent acceptance in `reviews/owner-house-science-review.md`.
-
-## Project decisions and research
-
-[The first measured-reference comparison](research/owner-reference-comparison.md) checks exported electricity/temperature windows and native physics sensitivity without fitting. Missing historical controls, outdoor humidity and thermal output prevent an installed-COP claim.
-
-The outdoor-unit refrigerant selector offers R32, R22, R290, R134a, R1234yf, R410A and R407C for the generic compatible Reference circuit. Catalogue equipment applies its published factory refrigerant (R32, or R290 for the Mitsubishi RZ pairs). A factory fluid that the current circuit settings do not qualify, such as R290 with physical field lines, is refused with the reason while rooms and history are kept. A fluid change starts a fresh physical session, clearing history while retaining house inputs. R410A uses a documented fixed-composition pseudo-pure EOS with its small nonzero bubble/dew glide; fractionation is outside scope. Physical field lines and conserved inventory remain separately qualified for R32 only. R407C uses the published Lemmon2003 fixed-composition pseudo-pure EOS, retains bubble/dew glide and passes the coupled Reference gates. Its interior mass quality and phase compositions are unresolved; they are never displayed as quantitative liquid/vapor fractions. The explicit full-mixture backend remains a separate research benchmark. Sampled deviations and limitations are documented in `research/r407c-reference-comparator.md`. See [refrigerant qualification](research/refrigerant-qualification-2026.md).
-
-The EN/FR selector beside the legend changes presentation without restarting the physical scenario or replacing controls. English is the initial default; an explicit language choice is stored locally. Controls, accessible labels, authored help and interface diagnostics are translated; native property-library error payloads and manufacturer references retain their source wording. Numeric readouts use French decimal commas, while native input values, URLs and downloaded diagnostic data keep their machine representation.
-
-Each room also has a bounded two-hour SVG trace of accepted room air temperature and a dashed requested-target trace. History follows its room ID through removal/reordering, includes passive rooms with their head off, and clears on Restart. Paused edits and Examples do not fabricate physical samples.
-
-The current open and deferred feature list is maintained in [PROGRESS.md](PROGRESS.md#current-backlog); historical release notes are not the active backlog.
-
-- [Current progress and open validation gates](PROGRESS.md)
-- [Speed optimization regression and measured throughput](reviews/reference-speed-regression-results.json)
-- [Guarded backend acceptance and measured throughput](reviews/guarded-backend-verification-results.json)
-- [Independent guarded backend review](reviews/guarded-backend-science-review.md)
-- [Owner decisions and milestone scope](project-brief.md)
+- [Progress, backlog and validation gates](PROGRESS.md)
+- [Changelog](CHANGELOG.md)
+- [Owner decisions and scope](project-brief.md)
 - [Science reference](heatpump-science-reference.md)
-- [Thermodynamic model specification](model-specification.md)
-- [Source register](research/primary-source-register.md)
-- [Owner installation evidence](research/owner-installation.md)
-- [Exact Daikin 3MXM52N8 manufacturer specifications](research/daikin-3mxm52n8-specifications.md)
-- [Generic inverter comfort controller](research/inverter-control.md)
-- [Model validation plan](research/model-validation-plan.md)
-- [Observed browser property-backend feasibility](research/coolprop-browser-feasibility.md)
-- [Implemented equations, assumptions and performance](research/engine-implementation.md)
-- [Safe/fast property-backend follow-up](research/coolprop-fast-browser-options.md)
-- [Guarded exact-backend build plan](research/safe-coolprop-build-plan.md)
-- [Charge and leak sources](research/refrigerant-charge-source-register.md)
-- [Quasi-steady charge-balanced closure](research/charge-balanced-closure.md)
-- [Conserved refrigerant model design](research/refrigerant-charge-model-design.md)
-- [Independent charge-model review](reviews/charge-model-science-review.md)
-- [Charged frost validation](reviews/charged-frost-validation.md)
-- [Owner startup diagnosis and unexecuted comparison proposal](research/owner-startup-diagnosis.md)
+- [Model specification](model-specification.md)
+- [Implemented equations and assumptions](research/engine-implementation.md)
+- [Refrigerant qualification](research/refrigerant-qualification-2026.md)
+- [Primary source register](research/primary-source-register.md)
+- [Generic inverter controller](research/inverter-control.md)
+- [Charge-balanced closure](research/charge-balanced-closure.md) and [conserved-charge design](research/refrigerant-charge-model-design.md)
+- [Room-link model](research/vertical-room-opening-model.md)
+- [Compressor efficiency reference](research/compressor-efficiency-reference.md)
 - [Interface design notes](design/interface-design.md)
-- [Interface browser QA](reviews/interface-qa.md)
-- [Independent science-compliance review](reviews/science-compliance-review.md)
-- [Independent numerical engine review](reviews/engine-science-review.md)
-- [Control refinement and Off scientific review](reviews/control-refinement-science-review.md)
+- Independent reviews:
+  - [science compliance](reviews/science-compliance-review.md)
+  - [engine](reviews/engine-science-review.md)
+  - [guarded backend](reviews/guarded-backend-science-review.md)
+  - [charge model](reviews/charge-model-science-review.md)
 
-Heating, cooling, individual room thermal behaviour, and visible frost/defrost are core requirements. The owner preset is Daikin 3MXM52N8 with FTXA25, FTXA35, and FTXA25 indoor units. Exact indoor suffixes and unverified installation details remain unknown. Broader equipment/refrigerant coverage requires property and performance validation.
+## Deferred
 
-Daikin and Mitsubishi Electric consumer-range candidates were assigned to the owner's Qwen3.8-Flash-Next through OpenCode; Luna completes source research and a separate agent reviews acceptance. Published pairing, casing, flow and refrigerant facts are imported individually; unverified performance remains generic. The source contract and candidate schema are under `research/catalogue/`. Future catalogue entries can use separate inverter and conventional fixed-speed controller strategies. The exact N8 specification note records Julien's observed approximate200W heating/130W cooling low-load operation and confirmed2350W upper value separately from Daikin's published combination-table ratings. Those table minima are not universal operating floors; no compressor RPS map is inferred from them.
+The following are deferred:
 
-The conserved R32 circuit now stores actual refrigerant mass and internal energy in coils, physical line volumes and a generic accumulator. Initial charge and geometry define a new scenario at Restart. Compare reduced-charge scenarios to explore conditions after refrigerant loss; ongoing leaks are outside the product scope. Physical coil-end sensors remain meaningful during idle operation, redistribution and reversal. Generic liquid-carryover protection can stop the compressor while passive heat exchange continues; the workbench reports that hold explicitly and suppresses COP.
+- save/export of scenarios;
+- opt-in compressor and fan audio;
+- oil transport;
+- mixed hydronic systems (water floor heating and domestic hot-water tanks);
+- heat-recovery VRF;
+- mobile layouts.
 
-This inventory implementation remains behind a validation gate. Conservative density coordinates, finite-volume flow elimination and a transactional generic EEV PI controller pass 51 integrated native checks. The corrected PI controller sustains339 seconds of heating in a pinned generic history. Fresh cooling and staged defrost counterexamples still fill its accumulator; conserved budgets do not establish valid phase transport or installed geometry. Both the older frost failure and [corrected-source counterexamples](reviews/charge-owner-corrected-pi-counterexamples.md) are retained. Reversal choreography, complete charged defrost, cooling, coupled refinement and usable throughput remain open. See [the scientific review](reviews/charge-fv-science-review.md) and [retained frost counterexample](reviews/charge-owner-historical-frost-rejection.md). The public default is still the separately validated quasi-steady Reference model with fixed 1 K subcooling. Selecting **Charge** in the outdoor-unit card switches to a [quasi-steady charge-balanced closure](research/charge-balanced-closure.md): the specified percentage of a generic, installation-derived nominal charge sets condensing pressure, subcooling, superheat and EEV regime, with refrigerant-shortage and high-side flooding protections. It applies to the qualified pure fluids and redistributes charge instantly rather than integrating it in time. Inventory line volumes are physical but transport is currently idealized and adiabatic; the Reference model's advanced physical piping remains separately available. Internal volumes, passage geometry, homogeneous two-phase closure and controller assumptions are generic rather than inferred OEM internals. French and room-temperature charts are implemented; their deployment receipts are maintained in PROGRESS.md. Oil, audio, saving/export, mixed hydronic systems (water-circulated floor heating and domestic hot-water tanks), heat-recovery VRF and branding remain deferred. Water floor heating and water tanks are roadmap notes only; they are not part of this implementation pass. Visible exchanger m² and ongoing leaks are out of scope. Opus 5.5 review follows this pass.
+## Credits
 
-The numerical implementation is in `src/engine/`, its worker/runtime bridge in `src/runtime/`, and real-backend checks run with `npm run test:engine`. The project has its own Git repository with verified milestone commits. `origin` points to the owner's GitHub repository above; the Pages workflow verifies the released model before publication. Experimental charge acceptance remains separate.
-
-The public worker selects the independently reviewed guarded exact-HEOS artifact built with `tools/coolprop-safe/`. Engine tests retain the original backend by default for comparison; `HEATPUMP_TEST_BACKEND=guarded` exercises the same assertions against the production artifact after compiling the engine. For example: `HEATPUMP_TEST_BACKEND=guarded node --test tests/engine/properties.test.mjs`. This test selection does not open the charge gate. Reproduction and native failure/recovery checks are documented in `tools/coolprop-safe/README.md`.
-
-Outdoor branch expansion-valve faces now expose accepted pressure/enthalpy states independently from coil ends. Tube colour changes at the drawn valve, while the return retains its own state through the casing boundary. Each branch keeps its actual phase, including mixed-phase heating returns and liquid low-lift defrost outlets. The common header uses its actual mixed state. For physical field lines, the whole drawn small line uses its outdoor valve-face state as a representative colour; indoor sensors independently show the coil-end temperature after modeled line heat/pressure changes. This is an endpoint schematic, not a resolved spatial state map. Missing valve diagnostics are hatched/unavailable rather than assigned a guessed phase. Direct role labels and the local component guide explain compression, expansion, reversal, heat exchange, airflow and liquid separation.
-
-Header branding is an original inline SVG designed by Claude Haiku5.5 through the authenticated Claude CLI. The four preset/speed/playback controls share80×42px targets; the compact icon stays visible at narrower desktop widths.
+- **Science:** GPT-6 Luna researched the sources, and GPT-6.1 Sol developed the thermodynamics. Both were independently reviewed.
+- **Interface:** Claude Sonnet 5.5 designed the initial workbench, which Codex now maintains. Claude Haiku 5.5 designed the header mark.
+- **Catalogue:**
+  - Daikin and Mitsubishi Electric were staged with Qwen3.8-Flash-Next, then completed by Luna and Terra.
+  - Panasonic and Mitsubishi Heavy Industries were added by Claude Opus 5.5.
