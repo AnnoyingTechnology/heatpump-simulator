@@ -5788,6 +5788,2591 @@ export const CATALOGUE_OUTDOORS = [
         "condition": "outdoor wet-bulb / dry-bulb"
       }
     }
+  },
+  {
+    "id": "CU-Z20CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 542,
+      "w": 780,
+      "d": 289
+    },
+    "coolingHighFanFlowM3h": 1590,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2.05,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-XZ20CKEW-H",
+      "CS-XZ20CKEW",
+      "CS-Z20CKEW"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-Z25CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 542,
+      "w": 780,
+      "d": 289
+    },
+    "coolingHighFanFlowM3h": 1722,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-XZ25CKEW-H",
+      "CS-XZ25CKEW",
+      "CS-Z25CKEW"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-Z35CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 542,
+      "w": 780,
+      "d": 289
+    },
+    "coolingHighFanFlowM3h": 1788,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 3.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-XZ35CKEW-H",
+      "CS-XZ35CKEW",
+      "CS-Z35CKEW"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-Z42CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 542,
+      "w": 780,
+      "d": 289
+    },
+    "coolingHighFanFlowM3h": 1788,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 4.2,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-Z42CKEW-H",
+      "CS-Z42CKEW"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-Z50CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 695,
+      "w": 875,
+      "d": 320
+    },
+    "coolingHighFanFlowM3h": 2388,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-XZ50CKEW",
+      "CS-Z50CKEW"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-TZ20CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 542,
+      "w": 780,
+      "d": 289
+    },
+    "coolingHighFanFlowM3h": 1782,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-TZ20CKEW"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-TZ25CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 542,
+      "w": 780,
+      "d": 289
+    },
+    "coolingHighFanFlowM3h": 1800,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-TZ25CKEW"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-TZ35CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 542,
+      "w": 780,
+      "d": 289
+    },
+    "coolingHighFanFlowM3h": 1722,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 3.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-TZ35CKEW"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-TZ42CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 542,
+      "w": 780,
+      "d": 289
+    },
+    "coolingHighFanFlowM3h": 1860,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 4.2,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-TZ42CKEW"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-TZ50CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 619,
+      "w": 824,
+      "d": 299
+    },
+    "coolingHighFanFlowM3h": 1962,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-TZ50CKEW"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-TZ71CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 695,
+      "w": 875,
+      "d": 320
+    },
+    "coolingHighFanFlowM3h": 2682,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 7.1,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-TZ71CKEW"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-BZ25CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 542,
+      "w": 780,
+      "d": 289
+    },
+    "coolingHighFanFlowM3h": 1824,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-BZ25CKE"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-BZ35CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 542,
+      "w": 780,
+      "d": 289
+    },
+    "coolingHighFanFlowM3h": 1866,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 3.3,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-BZ35CKE"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-BZ50CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 619,
+      "w": 824,
+      "d": 299
+    },
+    "coolingHighFanFlowM3h": 1962,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-BZ50CKE"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-BZ60CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 695,
+      "w": 875,
+      "d": 320
+    },
+    "coolingHighFanFlowM3h": 2556,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 6,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-BZ60CKE"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-Z25CBEA",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 542,
+      "w": 780,
+      "d": 289
+    },
+    "coolingHighFanFlowM3h": 1722,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-Z25CFEAW",
+      "CS-Z25CD3EAW"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-Z35CBEA",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 619,
+      "w": 824,
+      "d": 299
+    },
+    "coolingHighFanFlowM3h": 2058,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 3.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-Z35CFEAW",
+      "CS-Z35CD3EAW"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-Z50CBEA",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 695,
+      "w": 875,
+      "d": 320
+    },
+    "coolingHighFanFlowM3h": 2382,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-Z50CFEAW",
+      "CS-Z50CD3EAW"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-Z60CBEA",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 695,
+      "w": 875,
+      "d": 320
+    },
+    "coolingHighFanFlowM3h": 2556,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 6,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "CS-Z60CD3EAW"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 43,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    }
+  },
+  {
+    "id": "CU-2Z35CBE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 619,
+      "w": 824,
+      "d": 299
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": 6,
+      "ports": null,
+      "guide": "Panasonic France 2026 residential catalogue, PDF p.37 (printed p.186), Multi Z Deluxe (CBE) CU-2Z35CBE column and combination matrix",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "CU-2Z41CBE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 619,
+      "w": 824,
+      "d": 299
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": 6,
+      "ports": null,
+      "guide": "Panasonic France 2026 residential catalogue, PDF p.37 (printed p.186), Multi Z Deluxe (CBE) CU-2Z41CBE column and combination matrix",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "CU-2Z50CBE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 619,
+      "w": 824,
+      "d": 299
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": 7.7,
+      "ports": null,
+      "guide": "Panasonic France 2026 residential catalogue, PDF p.37 (printed p.186), Multi Z Deluxe (CBE) CU-2Z50CBE column and combination matrix",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "CU-3Z52CBE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 795,
+      "w": 875,
+      "d": 320
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": 9.5,
+      "ports": null,
+      "guide": "Panasonic France 2026 residential catalogue, PDF p.37 (printed p.186), Multi Z Deluxe (CBE) CU-3Z52CBE column and combination matrix",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "CU-3Z68CBE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 795,
+      "w": 875,
+      "d": 320
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": 11.2,
+      "ports": null,
+      "guide": "Panasonic France 2026 residential catalogue, PDF p.37 (printed p.186), Multi Z Deluxe (CBE) CU-3Z68CBE column and combination matrix",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "CU-4Z68CBE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 795,
+      "w": 875,
+      "d": 320
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 4,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 4,
+      "connectedCapacityClassSumLimitKw": 11.5,
+      "ports": null,
+      "guide": "Panasonic France 2026 residential catalogue, PDF p.37 (printed p.186), Multi Z Deluxe (CBE) CU-4Z68CBE column and combination matrix",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "CU-4Z80CBE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 999,
+      "w": 940,
+      "d": 340
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 4,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 4,
+      "connectedCapacityClassSumLimitKw": 14.7,
+      "ports": null,
+      "guide": "Panasonic France 2026 residential catalogue, PDF p.37 (printed p.186), Multi Z Deluxe (CBE) CU-4Z80CBE column and combination matrix",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "CU-5Z90CBE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 999,
+      "w": 940,
+      "d": 340
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 5,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 5,
+      "connectedCapacityClassSumLimitKw": 18.3,
+      "ports": null,
+      "guide": "Panasonic France 2026 residential catalogue, PDF p.37 (printed p.186), Multi Z Deluxe (CBE) CU-5Z90CBE column and combination matrix",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "CU-2Z50ABEC",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 795,
+      "w": 875,
+      "d": 320
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -25,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": 8.5,
+      "ports": null,
+      "guide": "Panasonic France 2026 residential catalogue, PDF p.39 (printed p.188), Power Heat Multi (ABEC) CU-2Z50ABEC column and combination matrix",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "CU-3Z75ABEC",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 795,
+      "w": 875,
+      "d": 320
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -25,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": null,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": 11,
+      "ports": null,
+      "guide": "Panasonic France 2026 residential catalogue, PDF p.39 (printed p.188), Power Heat Multi (ABEC) CU-3Z75ABEC column and combination matrix",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "CU-2TZ41TBE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 542,
+      "w": 780,
+      "d": 289
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": 6,
+      "ports": null,
+      "guide": "Panasonic France 2026 residential catalogue, PDF p.40 (printed p.189), Multi TZ (TBE) CU-2TZ41TBE column and combination matrix",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "CU-2TZ50TBE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 542,
+      "w": 780,
+      "d": 289
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": 7.7,
+      "ports": null,
+      "guide": "Panasonic France 2026 residential catalogue, PDF p.40 (printed p.189), Multi TZ (TBE) CU-2TZ50TBE column and combination matrix",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "CU-3TZ52TBE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 795,
+      "w": 875,
+      "d": 320
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "refrigerant": "R32",
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -10,
+        "maximum": 46,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": 9.5,
+      "ports": null,
+      "guide": "Panasonic France 2026 residential catalogue, PDF p.40 (printed p.189), Multi TZ (TBE) CU-3TZ52TBE column and combination matrix",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "SRC20ZSX-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 640,
+      "w": 800,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1860,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK20ZSX-WF",
+      "SRK20ZSX-WFB",
+      "SRK20ZSX-WFT",
+      "SRK20ZSX-W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC25ZSX-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 640,
+      "w": 800,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1860,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK25ZSX-WF",
+      "SRK25ZSX-WFB",
+      "SRK25ZSX-WFT",
+      "SRK25ZSX-W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC35ZSX-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 640,
+      "w": 800,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 2160,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK35ZSX-WF",
+      "SRK35ZSX-WFB",
+      "SRK35ZSX-WFT",
+      "SRK35ZSX-W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC50ZSX-W2",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 640,
+      "w": 800,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 2340,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK50ZSX-WF",
+      "SRK50ZSX-WFB",
+      "SRK50ZSX-WFT",
+      "SRK50ZSX-W",
+      "SRF50ZSX-W",
+      "FDTC50VH"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC50ZSX-W3",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 640,
+      "w": 800,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 2340,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK50ZSX-WF",
+      "SRK50ZSX-WFB",
+      "SRK50ZSX-WFT",
+      "SRK50ZSX-W",
+      "SRF50ZSX-W",
+      "SRR50ZS-W",
+      "FDTC50VH"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC60ZSX-W1",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 640,
+      "w": 800,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 2490,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK60ZSX-WF",
+      "SRK60ZSX-WFB",
+      "SRK60ZSX-WFT",
+      "SRK60ZSX-W",
+      "FDTC60VH"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC60ZSX-W3",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 640,
+      "w": 800,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 2490,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK60ZSX-WF",
+      "SRK60ZSX-WFB",
+      "SRK60ZSX-WFT",
+      "SRK60ZSX-W",
+      "SRR60ZS-W",
+      "FDTC60VH"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC63ZR-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 640,
+      "w": 800,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 2490,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 6.3,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK63ZR-WF",
+      "SRK63ZR-W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC71ZR-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 750,
+      "w": 880,
+      "d": 340
+    },
+    "coolingHighFanFlowM3h": 3300,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 7.1,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK71ZR-WF",
+      "SRK71ZR-W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC80ZR-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 750,
+      "w": 880,
+      "d": 340
+    },
+    "coolingHighFanFlowM3h": 3780,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 8,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK80ZR-WF",
+      "SRK80ZR-W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "FDC100VNP-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 750,
+      "w": 880,
+      "d": 340
+    },
+    "coolingHighFanFlowM3h": 3780,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 9.6,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK100ZR-WF",
+      "SRK100ZR-W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC20ZT-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 540,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1308,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK20ZT-WF",
+      "SRK20ZT-WFB",
+      "SRK20ZT-WFT"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 50,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC20ZT-WB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 540,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1308,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK20ZT-WF",
+      "SRK20ZT-WFB",
+      "SRK20ZT-WFT"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 50,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC25ZT-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 540,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1398,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK25ZT-WF",
+      "SRK25ZT-WFB",
+      "SRK25ZT-WFT"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 50,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC25ZT-WB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 540,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1398,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK25ZT-WF",
+      "SRK25ZT-WFB",
+      "SRK25ZT-WFT"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 50,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC35ZT-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 540,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1794,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK35ZT-WF",
+      "SRK35ZT-WFB",
+      "SRK35ZT-WFT"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 50,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC35ZT-WB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 540,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1794,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK35ZT-WF",
+      "SRK35ZT-WFB",
+      "SRK35ZT-WFT"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 50,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC50ZT-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 595,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1788,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK50ZT-WF",
+      "SRK50ZT-WFB",
+      "SRK50ZT-WFT"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 50,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC50ZT-WB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 595,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1788,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK50ZT-WF",
+      "SRK50ZT-WFB",
+      "SRK50ZT-WFT"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 50,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC20ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 540,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1644,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK20ZS-WF",
+      "SRK20ZS-WFB",
+      "SRK20ZS-WFT",
+      "SRK20ZS-W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC25ZS-W2",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 540,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1644,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK25ZS-WF",
+      "SRK25ZS-WFB",
+      "SRK25ZS-WFT",
+      "SRK25ZS-W",
+      "SRF25ZS-W",
+      "SRR25ZS-W",
+      "FDTC25VH1"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC35ZS-W2",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 540,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1890,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK35ZS-WF",
+      "SRK35ZS-WFB",
+      "SRK35ZS-WFT",
+      "SRK35ZS-W",
+      "SRF35ZS-W",
+      "SRR35ZS-W",
+      "FDTC35VH1"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC50ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 595,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1968,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK50ZS-WF",
+      "SRK50ZS-WFB",
+      "SRK50ZS-WFT",
+      "SRK50ZS-W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC15ZTL-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 540,
+      "w": 645,
+      "d": 275
+    },
+    "coolingHighFanFlowM3h": 1314,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 1.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK15ZTL-W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC20ZTL-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 540,
+      "w": 645,
+      "d": 275
+    },
+    "coolingHighFanFlowM3h": 1422,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK20ZTL-W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC25ZTL-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 540,
+      "w": 645,
+      "d": 275
+    },
+    "coolingHighFanFlowM3h": 1368,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK25ZTL-W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC35ZTL-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 540,
+      "w": 645,
+      "d": 275
+    },
+    "coolingHighFanFlowM3h": 1524,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK35ZTL-W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC50ZTL-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 595,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 2136,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK50ZTL-W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC63ZTL-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 640,
+      "w": 800,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 2580,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 6.3,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK63ZTL-W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC71ZTL-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 640,
+      "w": 800,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 2580,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 7.1,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK71ZTL-W"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC25ZSP-W1",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 540,
+      "w": 645,
+      "d": 275
+    },
+    "coolingHighFanFlowM3h": 1314,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK25ZSP-W1"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC35ZSP-W1",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 540,
+      "w": 645,
+      "d": 275
+    },
+    "coolingHighFanFlowM3h": 1368,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.2,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK35ZSP-W1"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC45ZSP-W1",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 595,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 2136,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 4.5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK45ZSP-W1"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC50ZSP-W1",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 595,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 2262,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "SRK50ZSP-W1"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SRC40ZSX-W1",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 640,
+      "w": 800,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1980,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 4,
+    "refrigerant": "R32",
+    "ports": 1,
+    "compatibleIndoorClasses": [
+      "FDTC40VH"
+    ],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -20,
+        "maximum": 20,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    }
+  },
+  {
+    "id": "SCM30ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 595,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1950,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "refrigerant": "R32",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": 5,
+      "ports": null,
+      "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM30ZS-W column",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "SCM40ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 595,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1950,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "refrigerant": "R32",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": 6,
+      "ports": null,
+      "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM40ZS-W column",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "SCM45ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 595,
+      "w": 780,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 1950,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "refrigerant": "R32",
+    "ports": 2,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 2,
+      "connectedCapacityClassSumLimitKw": 7,
+      "ports": null,
+      "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM45ZS-W column",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "SCM41ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 640,
+      "w": 850,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 2460,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "refrigerant": "R32",
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": 7,
+      "ports": null,
+      "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM41ZS-W column",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "SCM50ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 640,
+      "w": 850,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 2460,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "refrigerant": "R32",
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": 8.5,
+      "ports": null,
+      "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM50ZS-W column",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "SCM60ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 640,
+      "w": 850,
+      "d": 290
+    },
+    "coolingHighFanFlowM3h": 2460,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "refrigerant": "R32",
+    "ports": 3,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 3,
+      "connectedCapacityClassSumLimitKw": 11,
+      "ports": null,
+      "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM60ZS-W column",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "SCM71ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 750,
+      "w": 880,
+      "d": 340
+    },
+    "coolingHighFanFlowM3h": 3000,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "refrigerant": "R32",
+    "ports": 4,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 4,
+      "connectedCapacityClassSumLimitKw": 12.5,
+      "ports": null,
+      "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM71ZS-W column",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "SCM80ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 750,
+      "w": 880,
+      "d": 340
+    },
+    "coolingHighFanFlowM3h": 3360,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "refrigerant": "R32",
+    "ports": 4,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 4,
+      "connectedCapacityClassSumLimitKw": 13.5,
+      "ports": null,
+      "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM80ZS-W column",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
+  },
+  {
+    "id": "SCM100ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 945,
+      "w": 970,
+      "d": 370
+    },
+    "coolingHighFanFlowM3h": 4500,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "refrigerant": "R32",
+    "ports": 5,
+    "compatibleIndoorClasses": [],
+    "publishedOperatingRangesC": {
+      "cooling": {
+        "minimum": -15,
+        "maximum": 46,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "heating": {
+        "minimum": -15,
+        "maximum": 24,
+        "condition": "outdoor dry-bulb (°CDB, as printed)"
+      }
+    },
+    "installation": {
+      "topology": "multisplit",
+      "minimumConnectedHeads": 2,
+      "maximumConnectedHeads": 5,
+      "connectedCapacityClassSumLimitKw": 16,
+      "ports": null,
+      "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM100ZS-W column",
+      "exactEligibility": "unknown",
+      "publishedMaximumTotalChargeKg": null
+    }
   }
 ] as const;
 
@@ -9183,6 +11768,1686 @@ export const CATALOGUE_INDOORS = [
     "coolingHighFanFlowM3h": 684,
     "sourceStatus": "availability-unknown",
     "marketScope": "France 2026–2027 catalogue; current stock unverified"
+  },
+  {
+    "id": "CS-XZ20CKEW-H",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 870,
+      "d": 229
+    },
+    "coolingHighFanFlowM3h": 624,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2.05
+  },
+  {
+    "id": "CS-XZ20CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 870,
+      "d": 229
+    },
+    "coolingHighFanFlowM3h": 624,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2.05
+  },
+  {
+    "id": "CS-Z20CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 870,
+      "d": 229
+    },
+    "coolingHighFanFlowM3h": 624,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2.05
+  },
+  {
+    "id": "CS-XZ25CKEW-H",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 870,
+      "d": 229
+    },
+    "coolingHighFanFlowM3h": 744,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "CS-XZ25CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 870,
+      "d": 229
+    },
+    "coolingHighFanFlowM3h": 744,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "CS-Z25CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 870,
+      "d": 229
+    },
+    "coolingHighFanFlowM3h": 744,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "CS-XZ35CKEW-H",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 870,
+      "d": 229
+    },
+    "coolingHighFanFlowM3h": 762,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "CS-XZ35CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 870,
+      "d": 229
+    },
+    "coolingHighFanFlowM3h": 762,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "CS-Z35CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 870,
+      "d": 229
+    },
+    "coolingHighFanFlowM3h": 762,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "CS-Z42CKEW-H",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 870,
+      "d": 229
+    },
+    "coolingHighFanFlowM3h": 870,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 4.2
+  },
+  {
+    "id": "CS-Z42CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 870,
+      "d": 229
+    },
+    "coolingHighFanFlowM3h": 870,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 4.2
+  },
+  {
+    "id": "CS-XZ50CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 1040,
+      "d": 244
+    },
+    "coolingHighFanFlowM3h": 1044,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "CS-Z50CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 1040,
+      "d": 244
+    },
+    "coolingHighFanFlowM3h": 1044,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "CS-TZ20CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 765,
+      "d": 214
+    },
+    "coolingHighFanFlowM3h": 600,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2
+  },
+  {
+    "id": "CS-TZ25CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 765,
+      "d": 214
+    },
+    "coolingHighFanFlowM3h": 660,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "CS-TZ35CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 765,
+      "d": 214
+    },
+    "coolingHighFanFlowM3h": 708,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "CS-TZ42CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 765,
+      "d": 214
+    },
+    "coolingHighFanFlowM3h": 756,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 4.2
+  },
+  {
+    "id": "CS-TZ50CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 765,
+      "d": 214
+    },
+    "coolingHighFanFlowM3h": 756,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "CS-TZ71CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 1060,
+      "d": 249
+    },
+    "coolingHighFanFlowM3h": 1224,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 7.1
+  },
+  {
+    "id": "CS-BZ25CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 765,
+      "d": 214
+    },
+    "coolingHighFanFlowM3h": 600,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "CS-BZ35CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 765,
+      "d": 214
+    },
+    "coolingHighFanFlowM3h": 624,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 3.3
+  },
+  {
+    "id": "CS-BZ50CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 765,
+      "d": 214
+    },
+    "coolingHighFanFlowM3h": 756,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "CS-BZ60CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 765,
+      "d": 214
+    },
+    "coolingHighFanFlowM3h": 768,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 6
+  },
+  {
+    "id": "CS-Z25CFEAW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 750,
+      "d": 207
+    },
+    "coolingHighFanFlowM3h": 576,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "CS-Z35CFEAW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 750,
+      "d": 207
+    },
+    "coolingHighFanFlowM3h": 582,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "CS-Z50CFEAW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 750,
+      "d": 207
+    },
+    "coolingHighFanFlowM3h": 714,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "CS-Z25CD3EAW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 750,
+      "d": 640
+    },
+    "coolingHighFanFlowM3h": 630,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "CS-Z35CD3EAW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 750,
+      "d": 640
+    },
+    "coolingHighFanFlowM3h": 672,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "CS-Z50CD3EAW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 750,
+      "d": 640
+    },
+    "coolingHighFanFlowM3h": 918,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 5.1
+  },
+  {
+    "id": "CS-Z60CD3EAW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 750,
+      "d": 640
+    },
+    "coolingHighFanFlowM3h": 942,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 6
+  },
+  {
+    "id": "CS-MZ16CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 870,
+      "d": 229
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 1.6
+  },
+  {
+    "id": "CS-Z71CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 1040,
+      "d": 244
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 7.1
+  },
+  {
+    "id": "CS-MTZ16CKE",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 765,
+      "d": 214
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 1.6
+  },
+  {
+    "id": "CS-TZ60CKEW",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 295,
+      "w": 1060,
+      "d": 249
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 6
+  },
+  {
+    "id": "CS-MZ20CFEA",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 750,
+      "d": 207
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2
+  },
+  {
+    "id": "S-M20PY3E",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 243,
+      "w": 575,
+      "d": 575
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2
+  },
+  {
+    "id": "S-25PY3E",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 243,
+      "w": 575,
+      "d": 575
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "S-36PY3E",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 243,
+      "w": 575,
+      "d": 575
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "S-50PY3E",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 243,
+      "w": 575,
+      "d": 575
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "S-60PY3E",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 243,
+      "w": 575,
+      "d": 575
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 6
+  },
+  {
+    "id": "CS-MZ20CD3EA",
+    "manufacturer": "panasonic",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 750,
+      "d": 640
+    },
+    "coolingHighFanFlowM3h": null,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "France 2026 residential catalogue; current stock unverified",
+    "nominalCoolingKw": 2
+  },
+  {
+    "id": "SRK20ZSX-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 678,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2
+  },
+  {
+    "id": "SRK20ZSX-WFB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 678,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2
+  },
+  {
+    "id": "SRK20ZSX-WFT",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 678,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2
+  },
+  {
+    "id": "SRK25ZSX-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 732,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "SRK25ZSX-WFB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 732,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "SRK25ZSX-WFT",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 732,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "SRK35ZSX-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 786,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "SRK35ZSX-WFB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 786,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "SRK35ZSX-WFT",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 786,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "SRK50ZSX-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 858,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "SRK50ZSX-WFB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 858,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "SRK50ZSX-WFT",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 858,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "SRK60ZSX-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 978,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 6.1
+  },
+  {
+    "id": "SRK60ZSX-WFB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 978,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 6.1
+  },
+  {
+    "id": "SRK60ZSX-WFT",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 978,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 6.1
+  },
+  {
+    "id": "SRK20ZSX-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 678,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2
+  },
+  {
+    "id": "SRK25ZSX-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 732,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "SRK35ZSX-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 786,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "SRK50ZSX-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 858,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "SRK60ZSX-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 305,
+      "w": 920,
+      "d": 220
+    },
+    "coolingHighFanFlowM3h": 978,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 6.1
+  },
+  {
+    "id": "SRK63ZR-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 339,
+      "w": 1197,
+      "d": 262
+    },
+    "coolingHighFanFlowM3h": 1230,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 6.3
+  },
+  {
+    "id": "SRK71ZR-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 339,
+      "w": 1197,
+      "d": 262
+    },
+    "coolingHighFanFlowM3h": 1230,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 7.1
+  },
+  {
+    "id": "SRK80ZR-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 339,
+      "w": 1197,
+      "d": 262
+    },
+    "coolingHighFanFlowM3h": 1410,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 8
+  },
+  {
+    "id": "SRK100ZR-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 339,
+      "w": 1197,
+      "d": 262
+    },
+    "coolingHighFanFlowM3h": 1470,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 9.6
+  },
+  {
+    "id": "SRK63ZR-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 339,
+      "w": 1197,
+      "d": 262
+    },
+    "coolingHighFanFlowM3h": 1230,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 6.3
+  },
+  {
+    "id": "SRK71ZR-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 339,
+      "w": 1197,
+      "d": 262
+    },
+    "coolingHighFanFlowM3h": 1230,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 7.1
+  },
+  {
+    "id": "SRK80ZR-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 339,
+      "w": 1197,
+      "d": 262
+    },
+    "coolingHighFanFlowM3h": 1410,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 8
+  },
+  {
+    "id": "SRK100ZR-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 339,
+      "w": 1197,
+      "d": 262
+    },
+    "coolingHighFanFlowM3h": 1470,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 9.6
+  },
+  {
+    "id": "SRK20ZT-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 540,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2
+  },
+  {
+    "id": "SRK20ZT-WFB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 540,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2
+  },
+  {
+    "id": "SRK20ZT-WFT",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 540,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2
+  },
+  {
+    "id": "SRK25ZT-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 600,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "SRK25ZT-WFB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 600,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "SRK25ZT-WFT",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 600,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "SRK35ZT-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 600,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "SRK35ZT-WFB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 600,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "SRK35ZT-WFT",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 600,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "SRK50ZT-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 798,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "SRK50ZT-WFB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 798,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "SRK50ZT-WFT",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 798,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "SRK20ZS-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 558,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2
+  },
+  {
+    "id": "SRK20ZS-WFB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 558,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2
+  },
+  {
+    "id": "SRK20ZS-WFT",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 558,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2
+  },
+  {
+    "id": "SRK25ZS-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 594,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "SRK25ZS-WFB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 594,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "SRK25ZS-WFT",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 594,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "SRK35ZS-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 678,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "SRK35ZS-WFB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 678,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "SRK35ZS-WFT",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 678,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "SRK50ZS-WF",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 726,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "SRK50ZS-WFB",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 726,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "SRK50ZS-WFT",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 726,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "SRK20ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 558,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2
+  },
+  {
+    "id": "SRK25ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 594,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "SRK35ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 678,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "SRK50ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 290,
+      "w": 870,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 726,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "SRK15ZTL-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 294,
+      "w": 798,
+      "d": 210
+    },
+    "coolingHighFanFlowM3h": 570,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 1.5
+  },
+  {
+    "id": "SRK20ZTL-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 294,
+      "w": 798,
+      "d": 210
+    },
+    "coolingHighFanFlowM3h": 594,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2
+  },
+  {
+    "id": "SRK25ZTL-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 294,
+      "w": 798,
+      "d": 210
+    },
+    "coolingHighFanFlowM3h": 600,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "SRK35ZTL-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 294,
+      "w": 798,
+      "d": 210
+    },
+    "coolingHighFanFlowM3h": 624,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "SRK50ZTL-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 294,
+      "w": 798,
+      "d": 210
+    },
+    "coolingHighFanFlowM3h": 750,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "SRK63ZTL-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 294,
+      "w": 998,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 1020,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 6.3
+  },
+  {
+    "id": "SRK71ZTL-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 294,
+      "w": 998,
+      "d": 230
+    },
+    "coolingHighFanFlowM3h": 1050,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 7.1
+  },
+  {
+    "id": "SRK25ZSP-W1",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 267,
+      "w": 783,
+      "d": 210
+    },
+    "coolingHighFanFlowM3h": 600,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "SRK35ZSP-W1",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 267,
+      "w": 783,
+      "d": 210
+    },
+    "coolingHighFanFlowM3h": 624,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.2
+  },
+  {
+    "id": "SRK45ZSP-W1",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 267,
+      "w": 783,
+      "d": 210
+    },
+    "coolingHighFanFlowM3h": 582,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 4.5
+  },
+  {
+    "id": "SRK50ZSP-W1",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 267,
+      "w": 783,
+      "d": 210
+    },
+    "coolingHighFanFlowM3h": 630,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "SRF25ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 860,
+      "d": 238
+    },
+    "coolingHighFanFlowM3h": 540,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "SRF35ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 860,
+      "d": 238
+    },
+    "coolingHighFanFlowM3h": 552,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "SRF50ZSX-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 600,
+      "w": 860,
+      "d": 238
+    },
+    "coolingHighFanFlowM3h": 690,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "SRR25ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 750,
+      "d": 500
+    },
+    "coolingHighFanFlowM3h": 570,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "SRR35ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 750,
+      "d": 500
+    },
+    "coolingHighFanFlowM3h": 600,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "SRR50ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 950,
+      "d": 500
+    },
+    "coolingHighFanFlowM3h": 810,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "SRR60ZS-W",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 200,
+      "w": 950,
+      "d": 500
+    },
+    "coolingHighFanFlowM3h": 870,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5.6
+  },
+  {
+    "id": "FDTC25VH1",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 248,
+      "w": 570,
+      "d": 570
+    },
+    "coolingHighFanFlowM3h": 510,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 2.5
+  },
+  {
+    "id": "FDTC35VH1",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 248,
+      "w": 570,
+      "d": 570
+    },
+    "coolingHighFanFlowM3h": 540,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 3.5
+  },
+  {
+    "id": "FDTC40VH",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 248,
+      "w": 570,
+      "d": 570
+    },
+    "coolingHighFanFlowM3h": 780,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 4
+  },
+  {
+    "id": "FDTC50VH",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 248,
+      "w": 570,
+      "d": 570
+    },
+    "coolingHighFanFlowM3h": 780,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5
+  },
+  {
+    "id": "FDTC60VH",
+    "manufacturer": "mitsubishi-heavy-industries",
+    "acceptance": "reviewed-fields",
+    "caseMm": {
+      "h": 248,
+      "w": 570,
+      "d": 570
+    },
+    "coolingHighFanFlowM3h": 840,
+    "sourceStatus": "availability-unknown",
+    "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified",
+    "nominalCoolingKw": 5.6
   }
 ] as const;
 

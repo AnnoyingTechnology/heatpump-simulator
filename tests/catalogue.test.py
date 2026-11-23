@@ -211,7 +211,11 @@ class CatalogueAcceptance(unittest.TestCase):
             runtime = profiles[accepted['reference']]
             candidate = json.loads((ROOT / accepted['candidateFile']).read_text())
             unit = next(u for u in candidate['units'] if u['modelReference'] == accepted['candidateReference'])
-            if accepted.get('unpublishedOutdoorAirflow'):
+            if accepted.get('unpublishedIndoorAirflow'):
+                self.assertEqual(unit['unitType'], 'indoor')
+                self.assertFalse(any(f['key'] == 'airflow' for f in unit['facts']))
+                self.assertIsNone(runtime['coolingHighFanFlowM3h'])
+            elif accepted.get('unpublishedOutdoorAirflow'):
                 self.assertEqual(unit['unitType'], 'outdoor')
                 self.assertNotIn('airflow', accepted['factKeys'])
                 self.assertIsNone(runtime['coolingHighFanFlowM3h'])

@@ -273,3 +273,7 @@ The 2022 source review adds no profiles: Daikin remains 91 outdoor / 185 indoor,
 - The five residential-compatible Daikin head families' MXM class positions and exact eligibility remain unresolved because the 2026 pinned HTML loses position and the flipbook was unavailable. The 2022 class matrix does not establish 2026 exact-SKU compatibility. Sales and France availability remain unverified; all other source-specific uncertainties are preserved in the linked batch reviews above.
 
 Validation for the 2022 batch: importer, 65 Python catalogue tests, catalogue TypeScript compile with 12 topology tests, and the project TypeScript no-emit check passed. Terra could not commit from its sandbox; root committed this batch after review.
+
+## Follow-up (2026-11-23)
+
+Panasonic (France 2026) and Mitsubishi Heavy Industries (Europe 2026) were added in a separate batch. Daikin and Mitsubishi Electric counts are unchanged; the runtime total is now 226 outdoor / 391 indoor. See `reviews/catalogue-panasonic-mhi-2026-11.md`.

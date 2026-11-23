@@ -3,9 +3,17 @@ import { validateMultisplitInstallation, type MultisplitInstallation, type Insta
 import type { Config, IndoorClass, OutdoorKind } from './types';
 import type { RefrigerantId } from './engine/refrigerants';
 
-export type EquipmentManufacturer = 'daikin' | 'mitsubishi-electric' | 'generic';
+/** Display order and names of every manufacturer the reviewed catalogue may contain; Generic is always last. */
+export const EQUIPMENT_MANUFACTURERS = [
+  { id: 'daikin', label: 'Daikin' },
+  { id: 'mitsubishi-electric', label: 'Mitsubishi Electric' },
+  { id: 'mitsubishi-heavy-industries', label: 'Mitsubishi Heavy Industries' },
+  { id: 'panasonic', label: 'Panasonic' },
+  { id: 'generic', label: 'Generic' },
+] as const;
+export type EquipmentManufacturer = typeof EQUIPMENT_MANUFACTURERS[number]['id'];
 export function equipmentManufacturerLabel(manufacturer: EquipmentManufacturer): string {
-  return manufacturer === 'daikin' ? 'Daikin' : manufacturer === 'mitsubishi-electric' ? 'Mitsubishi Electric' : 'Generic';
+  return EQUIPMENT_MANUFACTURERS.find(m => m.id === manufacturer)?.label ?? manufacturer;
 }
 
 export interface OutdoorModelInfo {

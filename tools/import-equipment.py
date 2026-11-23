@@ -251,7 +251,7 @@ def generate(root=ROOT):
         if sha(candidate) != accepted['candidateSha256']:
             raise ValueError(f"Candidate changed: {accepted['candidateFile']}")
         doc = json.loads(candidate.read_text())
-        if doc['manufacturer'] not in ('daikin', 'mitsubishi-electric'):
+        if doc['manufacturer'] not in ('daikin', 'mitsubishi-electric', 'panasonic', 'mitsubishi-heavy-industries'):
             raise ValueError('Unreviewed manufacturer')
         unit = next(u for u in doc['units'] if u['modelReference'] == accepted['candidateReference'])
         if 'identityKind' in accepted and accepted['identityKind'] != 'published-class':

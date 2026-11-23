@@ -1,0 +1,3051 @@
+{
+  "scope": "Panasonic France 2026 residential catalogue: exact single-split column pairs, casings, cooling airflow, nominal cooling capacity, R32 factory refrigerant, published outdoor operating ranges, multi-split room counts and connected-capacity ceilings. Multi-split size matrices, reducers and performance tables are not imported.",
+  "method": "Mechanical column readback from the pinned pdftotext -layout page text by tools/transcribe-catalogue-2026.py, plus visual comparison of each rendered page image with the extracted rows (Claude Opus 5.5, 2026-11-23). Not a manufacturer certification; performance, compressor and coil data are not applied.",
+  "candidate": {
+    "path": "research/catalogue/staging/panasonic-fr-2026.json",
+    "sha256": "875ea3d0e5301c5434b309e3cdd6014373c64b1141d24624a089ead093483c97"
+  },
+  "sourcePdf": {
+    "path": "research/catalogue/source-cache/panasonic-fr-rac-2026.pdf",
+    "sha256": "2bb60c62b53de4140332833e4546619f00d45df97b4659e65e5b4484f3922493",
+    "url": "https://fra-connect.mo.cloudinary.net/PRODUCT/DOCUMENT/66/RAC_Catalogue_2026_FR_202601.pdf",
+    "committed": false
+  },
+  "sourcePins": [
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-30.txt",
+      "sha256": "b182a1359710d533cef04afc5732d526a0f0cb624683f1c623c0da184a99ef53"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-30.png",
+      "sha256": "c3ccc9d79c635be535b442699e7ef80d883e37aef5574d801a2e0b65581010c5"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-31.txt",
+      "sha256": "bf2ecdff3e79b09b43c28b381269617b457025b4fc288f6d3823e0515246812d"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-31.png",
+      "sha256": "d5aa01581c44c2874df4aa15bbcccace32ea7b8fdfa325aaab89ce412724b838"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-32.txt",
+      "sha256": "d13cfa5f41eef787d5f57b8cc5bcaf405ce94c46d4ebb6c6c60b8ec64786c8d8"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-32.png",
+      "sha256": "6a10ff6821fd76754c1e3495f77bb2bfe9e32ab47e24ac05398b84032eee4845"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-33.txt",
+      "sha256": "aca4571572544a741a31e430455d2c04a454ef1b57786ce054123d9f80845b7c"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-33.png",
+      "sha256": "f2320ef82bef2ddf7565c31513cdb8e50cf25e8eb2ea06002d5e412d67ea8bca"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-34.txt",
+      "sha256": "be861f53e4d4a968bff5b85155c004ac4f8970cdd3164b2d0e4f1a6539a806f8"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-34.png",
+      "sha256": "e36dde413552b25777f8af08e33a6919bb1be58e4c96f96f8e1ce5af6b37fba0"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-37.txt",
+      "sha256": "db6fe16e23ff2c4cb45b7a363089360ecb9fa952f5c7b89c6e70e9e979b1ad2e"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-37.png",
+      "sha256": "37d1bed8b0fd55ecd72019c0334165c1ad61d21873714287ce427dbbb9a61f83"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-38.txt",
+      "sha256": "e3fd009581ed07c7d4517215642ed56a646e5971f45b6aaf186fb0bf251aea84"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-38.png",
+      "sha256": "e07719f28faf73b8951de74ee51f464270abe0ae9246d3f77c3971f73caadc03"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-39.txt",
+      "sha256": "4b088f71de25238159dd1f59445f11de6d3e702bca61c7c2f7f57c3e66366d87"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-39.png",
+      "sha256": "915b9f7e3665fac633d922dcb88298c3ed3f2781a7c1ef389d020bafc2aa5358"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-40.txt",
+      "sha256": "555d7c140562c857f86e5c2c9ee1a637545611007af86781216d953d5d725cb0"
+    },
+    {
+      "path": "research/sources/panasonic-fr-rac-2026-page-40.png",
+      "sha256": "95f96bd58a9101ac8de78136dd1a8ae7c7dbe42950b7e30a4dae689260f155ab"
+    }
+  ],
+  "reviewedUnits": [
+    {
+      "reference": "CS-XZ20CKEW-H",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.05,
+        "airflow": 624,
+        "height": 295,
+        "width": 870,
+        "depth": 229
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-XZ20CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.05,
+        "airflow": 624,
+        "height": 295,
+        "width": 870,
+        "depth": 229
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-Z20CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.05,
+        "airflow": 624,
+        "height": 295,
+        "width": 870,
+        "depth": 229
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-XZ25CKEW-H",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 744,
+        "height": 295,
+        "width": 870,
+        "depth": 229
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-XZ25CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 744,
+        "height": 295,
+        "width": 870,
+        "depth": 229
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-Z25CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 744,
+        "height": 295,
+        "width": 870,
+        "depth": 229
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-XZ35CKEW-H",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 762,
+        "height": 295,
+        "width": 870,
+        "depth": 229
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-XZ35CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 762,
+        "height": 295,
+        "width": 870,
+        "depth": 229
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-Z35CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 762,
+        "height": 295,
+        "width": 870,
+        "depth": 229
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-Z42CKEW-H",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 4.2,
+        "airflow": 870,
+        "height": 295,
+        "width": 870,
+        "depth": 229
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-Z42CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 4.2,
+        "airflow": 870,
+        "height": 295,
+        "width": 870,
+        "depth": 229
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-XZ50CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 1044,
+        "height": 295,
+        "width": 1040,
+        "depth": 244
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-Z50CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 1044,
+        "height": 295,
+        "width": 1040,
+        "depth": 244
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-TZ20CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "airflow": 600,
+        "height": 290,
+        "width": 765,
+        "depth": 214
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-TZ25CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 660,
+        "height": 290,
+        "width": 765,
+        "depth": 214
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-TZ35CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 708,
+        "height": 290,
+        "width": 765,
+        "depth": 214
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-TZ42CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 4.2,
+        "airflow": 756,
+        "height": 290,
+        "width": 765,
+        "depth": 214
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-TZ50CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 756,
+        "height": 290,
+        "width": 765,
+        "depth": 214
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-TZ71CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 7.1,
+        "airflow": 1224,
+        "height": 295,
+        "width": 1060,
+        "depth": 249
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-BZ25CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 600,
+        "height": 290,
+        "width": 765,
+        "depth": 214
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-BZ35CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.3,
+        "airflow": 624,
+        "height": 290,
+        "width": 765,
+        "depth": 214
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-BZ50CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 756,
+        "height": 290,
+        "width": 765,
+        "depth": 214
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-BZ60CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 6,
+        "airflow": 768,
+        "height": 290,
+        "width": 765,
+        "depth": 214
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-Z25CFEAW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 576,
+        "height": 600,
+        "width": 750,
+        "depth": 207
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-Z35CFEAW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 582,
+        "height": 600,
+        "width": 750,
+        "depth": 207
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-Z50CFEAW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 714,
+        "height": 600,
+        "width": 750,
+        "depth": 207
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-Z25CD3EAW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 630,
+        "height": 200,
+        "width": 750,
+        "depth": 640
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-Z35CD3EAW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 672,
+        "height": 200,
+        "width": 750,
+        "depth": 640
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-Z50CD3EAW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5.1,
+        "airflow": 918,
+        "height": 200,
+        "width": 750,
+        "depth": 640
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-Z60CD3EAW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 6,
+        "airflow": 942,
+        "height": 200,
+        "width": 750,
+        "depth": 640
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "indoor casing H",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-MZ16CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 1.6,
+        "height": 295,
+        "width": 870,
+        "depth": 229
+      },
+      "factConditions": {
+        "capacityClass": "printed indoor cooling capacity in the multi-split indoor table",
+        "height": "indoor casing H (Dimensions / Poids net HxLxP)",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-Z71CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 7.1,
+        "height": 295,
+        "width": 1040,
+        "depth": 244
+      },
+      "factConditions": {
+        "capacityClass": "printed indoor cooling capacity in the multi-split indoor table",
+        "height": "indoor casing H (Dimensions / Poids net HxLxP)",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-MTZ16CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 1.6,
+        "height": 290,
+        "width": 765,
+        "depth": 214
+      },
+      "factConditions": {
+        "capacityClass": "printed indoor cooling capacity in the multi-split indoor table",
+        "height": "indoor casing H (Dimensions / Poids net HxLxP)",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-TZ60CKEW",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 6,
+        "height": 295,
+        "width": 1060,
+        "depth": 249
+      },
+      "factConditions": {
+        "capacityClass": "printed indoor cooling capacity in the multi-split indoor table",
+        "height": "indoor casing H (Dimensions / Poids net HxLxP)",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-MZ20CFEA",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "height": 600,
+        "width": 750,
+        "depth": 207
+      },
+      "factConditions": {
+        "capacityClass": "printed indoor cooling capacity in the multi-split indoor table",
+        "height": "indoor casing H (Dimensions / Poids net HxLxP)",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "S-M20PY3E",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "height": 243,
+        "width": 575,
+        "depth": 575
+      },
+      "factConditions": {
+        "capacityClass": "printed indoor cooling capacity in the multi-split indoor table",
+        "height": "indoor casing H (Dimensions / Poids net HxLxP)",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "S-25PY3E",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "height": 243,
+        "width": 575,
+        "depth": 575
+      },
+      "factConditions": {
+        "capacityClass": "printed indoor cooling capacity in the multi-split indoor table",
+        "height": "indoor casing H (Dimensions / Poids net HxLxP)",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "S-36PY3E",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "height": 243,
+        "width": 575,
+        "depth": 575
+      },
+      "factConditions": {
+        "capacityClass": "printed indoor cooling capacity in the multi-split indoor table",
+        "height": "indoor casing H (Dimensions / Poids net HxLxP)",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "S-50PY3E",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "height": 243,
+        "width": 575,
+        "depth": 575
+      },
+      "factConditions": {
+        "capacityClass": "printed indoor cooling capacity in the multi-split indoor table",
+        "height": "indoor casing H (Dimensions / Poids net HxLxP)",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "S-60PY3E",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 6,
+        "height": 243,
+        "width": 575,
+        "depth": 575
+      },
+      "factConditions": {
+        "capacityClass": "printed indoor cooling capacity in the multi-split indoor table",
+        "height": "indoor casing H (Dimensions / Poids net HxLxP)",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CS-MZ20CD3EA",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "height": 200,
+        "width": 750,
+        "depth": 640
+      },
+      "factConditions": {
+        "capacityClass": "printed indoor cooling capacity in the multi-split indoor table",
+        "height": "indoor casing H (Dimensions / Poids net HxLxP)",
+        "width": "indoor casing L (width)",
+        "depth": "indoor casing P (depth)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      }
+    },
+    {
+      "reference": "CU-Z20CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2.05,
+        "refrigerant": "R32",
+        "airflow": 1590,
+        "height": 542,
+        "width": 780,
+        "depth": 289,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-XZ20CKEW-H",
+        "CS-XZ20CKEW",
+        "CS-Z20CKEW"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.30 (printed p.178), row \"Unité intérieure / Groupe extérieur\", column 1",
+        "excerpt": "Groupe extérieur | CU-Z20CKE | CU-Z25CKE | CU-Z35CKE | CU-Z42CKE | CU-Z50CKE"
+      }
+    },
+    {
+      "reference": "CU-Z25CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "refrigerant": "R32",
+        "airflow": 1722,
+        "height": 542,
+        "width": 780,
+        "depth": 289,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-XZ25CKEW-H",
+        "CS-XZ25CKEW",
+        "CS-Z25CKEW"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.30 (printed p.178), row \"Unité intérieure / Groupe extérieur\", column 2",
+        "excerpt": "Groupe extérieur | CU-Z20CKE | CU-Z25CKE | CU-Z35CKE | CU-Z42CKE | CU-Z50CKE"
+      }
+    },
+    {
+      "reference": "CU-Z35CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "refrigerant": "R32",
+        "airflow": 1788,
+        "height": 542,
+        "width": 780,
+        "depth": 289,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-XZ35CKEW-H",
+        "CS-XZ35CKEW",
+        "CS-Z35CKEW"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.30 (printed p.178), row \"Unité intérieure / Groupe extérieur\", column 3",
+        "excerpt": "Groupe extérieur | CU-Z20CKE | CU-Z25CKE | CU-Z35CKE | CU-Z42CKE | CU-Z50CKE"
+      }
+    },
+    {
+      "reference": "CU-Z42CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 4.2,
+        "refrigerant": "R32",
+        "airflow": 1788,
+        "height": 542,
+        "width": 780,
+        "depth": 289,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-Z42CKEW-H",
+        "CS-Z42CKEW"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.30 (printed p.178), row \"Unité intérieure / Groupe extérieur\", column 4",
+        "excerpt": "Groupe extérieur | CU-Z20CKE | CU-Z25CKE | CU-Z35CKE | CU-Z42CKE | CU-Z50CKE"
+      }
+    },
+    {
+      "reference": "CU-Z50CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "refrigerant": "R32",
+        "airflow": 2388,
+        "height": 695,
+        "width": 875,
+        "depth": 320,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-XZ50CKEW",
+        "CS-Z50CKEW"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.30 (printed p.178), row \"Unité intérieure / Groupe extérieur\", column 5",
+        "excerpt": "Groupe extérieur | CU-Z20CKE | CU-Z25CKE | CU-Z35CKE | CU-Z42CKE | CU-Z50CKE"
+      }
+    },
+    {
+      "reference": "CU-TZ20CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "refrigerant": "R32",
+        "airflow": 1782,
+        "height": 542,
+        "width": 780,
+        "depth": 289,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-TZ20CKEW"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.31 (printed p.179), row \"Unité intérieure / Groupe extérieur\", column 1",
+        "excerpt": "Groupe extérieur | CU-TZ20CKE | CU-TZ25CKE | CU-TZ35CKE | CU-TZ42CKE | CU-TZ50CKE | CU-TZ71CKE"
+      }
+    },
+    {
+      "reference": "CU-TZ25CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "refrigerant": "R32",
+        "airflow": 1800,
+        "height": 542,
+        "width": 780,
+        "depth": 289,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-TZ25CKEW"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.31 (printed p.179), row \"Unité intérieure / Groupe extérieur\", column 2",
+        "excerpt": "Groupe extérieur | CU-TZ20CKE | CU-TZ25CKE | CU-TZ35CKE | CU-TZ42CKE | CU-TZ50CKE | CU-TZ71CKE"
+      }
+    },
+    {
+      "reference": "CU-TZ35CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "refrigerant": "R32",
+        "airflow": 1722,
+        "height": 542,
+        "width": 780,
+        "depth": 289,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-TZ35CKEW"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.31 (printed p.179), row \"Unité intérieure / Groupe extérieur\", column 3",
+        "excerpt": "Groupe extérieur | CU-TZ20CKE | CU-TZ25CKE | CU-TZ35CKE | CU-TZ42CKE | CU-TZ50CKE | CU-TZ71CKE"
+      }
+    },
+    {
+      "reference": "CU-TZ42CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 4.2,
+        "refrigerant": "R32",
+        "airflow": 1860,
+        "height": 542,
+        "width": 780,
+        "depth": 289,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-TZ42CKEW"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.31 (printed p.179), row \"Unité intérieure / Groupe extérieur\", column 4",
+        "excerpt": "Groupe extérieur | CU-TZ20CKE | CU-TZ25CKE | CU-TZ35CKE | CU-TZ42CKE | CU-TZ50CKE | CU-TZ71CKE"
+      }
+    },
+    {
+      "reference": "CU-TZ50CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "refrigerant": "R32",
+        "airflow": 1962,
+        "height": 619,
+        "width": 824,
+        "depth": 299,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-TZ50CKEW"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.31 (printed p.179), row \"Unité intérieure / Groupe extérieur\", column 5",
+        "excerpt": "Groupe extérieur | CU-TZ20CKE | CU-TZ25CKE | CU-TZ35CKE | CU-TZ42CKE | CU-TZ50CKE | CU-TZ71CKE"
+      }
+    },
+    {
+      "reference": "CU-TZ71CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 7.1,
+        "refrigerant": "R32",
+        "airflow": 2682,
+        "height": 695,
+        "width": 875,
+        "depth": 320,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-TZ71CKEW"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.31 (printed p.179), row \"Unité intérieure / Groupe extérieur\", column 6",
+        "excerpt": "Groupe extérieur | CU-TZ20CKE | CU-TZ25CKE | CU-TZ35CKE | CU-TZ42CKE | CU-TZ50CKE | CU-TZ71CKE"
+      }
+    },
+    {
+      "reference": "CU-BZ25CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "refrigerant": "R32",
+        "airflow": 1824,
+        "height": 542,
+        "width": 780,
+        "depth": 289,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-BZ25CKE"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.32 (printed p.180), row \"Unité intérieure / Groupe extérieur\", column 1",
+        "excerpt": "Groupe extérieur | CU-BZ25CKE | CU-BZ35CKE | CU-BZ50CKE | CU-BZ60CKE"
+      }
+    },
+    {
+      "reference": "CU-BZ35CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 3.3,
+        "refrigerant": "R32",
+        "airflow": 1866,
+        "height": 542,
+        "width": 780,
+        "depth": 289,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-BZ35CKE"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.32 (printed p.180), row \"Unité intérieure / Groupe extérieur\", column 2",
+        "excerpt": "Groupe extérieur | CU-BZ25CKE | CU-BZ35CKE | CU-BZ50CKE | CU-BZ60CKE"
+      }
+    },
+    {
+      "reference": "CU-BZ50CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "refrigerant": "R32",
+        "airflow": 1962,
+        "height": 619,
+        "width": 824,
+        "depth": 299,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-BZ50CKE"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.32 (printed p.180), row \"Unité intérieure / Groupe extérieur\", column 3",
+        "excerpt": "Groupe extérieur | CU-BZ25CKE | CU-BZ35CKE | CU-BZ50CKE | CU-BZ60CKE"
+      }
+    },
+    {
+      "reference": "CU-BZ60CKE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 6,
+        "refrigerant": "R32",
+        "airflow": 2556,
+        "height": 695,
+        "width": 875,
+        "depth": 320,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-BZ60CKE"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.32 (printed p.180), row \"Unité intérieure / Groupe extérieur\", column 4",
+        "excerpt": "Groupe extérieur | CU-BZ25CKE | CU-BZ35CKE | CU-BZ50CKE | CU-BZ60CKE"
+      }
+    },
+    {
+      "reference": "CU-Z25CBEA",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "refrigerant": "R32",
+        "airflow": 1722,
+        "height": 542,
+        "width": 780,
+        "depth": 289,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-Z25CFEAW",
+        "CS-Z25CD3EAW"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.33 (printed p.182), row \"Unité intérieure / Groupe extérieur\", column 1",
+        "excerpt": "Groupe extérieur | CU-Z25CBEA | CU-Z35CBEA | CU-Z50CBEA"
+      },
+      "pairingEvidenceByIndoor": {
+        "CS-Z25CFEAW": {
+          "sourceId": "panasonic-fr-rac-2026",
+          "locator": "PDF p.33 (printed p.182), row \"Unité intérieure / Groupe extérieur\", column 1",
+          "excerpt": "Groupe extérieur | CU-Z25CBEA | CU-Z35CBEA | CU-Z50CBEA"
+        },
+        "CS-Z25CD3EAW": {
+          "sourceId": "panasonic-fr-rac-2026",
+          "locator": "PDF p.34 (printed p.184), row \"Unité intérieure / Groupe extérieur\", column 1",
+          "excerpt": "Groupe extérieur | CU-Z25CBEA | CU-Z35CBEA | CU-Z50CBEA | CU-Z60CBEA"
+        }
+      }
+    },
+    {
+      "reference": "CU-Z35CBEA",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "refrigerant": "R32",
+        "airflow": 2058,
+        "height": 619,
+        "width": 824,
+        "depth": 299,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-Z35CFEAW",
+        "CS-Z35CD3EAW"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.33 (printed p.182), row \"Unité intérieure / Groupe extérieur\", column 2",
+        "excerpt": "Groupe extérieur | CU-Z25CBEA | CU-Z35CBEA | CU-Z50CBEA"
+      },
+      "pairingEvidenceByIndoor": {
+        "CS-Z35CFEAW": {
+          "sourceId": "panasonic-fr-rac-2026",
+          "locator": "PDF p.33 (printed p.182), row \"Unité intérieure / Groupe extérieur\", column 2",
+          "excerpt": "Groupe extérieur | CU-Z25CBEA | CU-Z35CBEA | CU-Z50CBEA"
+        },
+        "CS-Z35CD3EAW": {
+          "sourceId": "panasonic-fr-rac-2026",
+          "locator": "PDF p.34 (printed p.184), row \"Unité intérieure / Groupe extérieur\", column 2",
+          "excerpt": "Groupe extérieur | CU-Z25CBEA | CU-Z35CBEA | CU-Z50CBEA | CU-Z60CBEA"
+        }
+      }
+    },
+    {
+      "reference": "CU-Z50CBEA",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "airflow": 2382,
+        "height": 695,
+        "width": 875,
+        "depth": 320,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-Z50CFEAW",
+        "CS-Z50CD3EAW"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.33 (printed p.182), row \"Unité intérieure / Groupe extérieur\", column 3",
+        "excerpt": "Groupe extérieur | CU-Z25CBEA | CU-Z35CBEA | CU-Z50CBEA"
+      },
+      "pairingEvidenceByIndoor": {
+        "CS-Z50CFEAW": {
+          "sourceId": "panasonic-fr-rac-2026",
+          "locator": "PDF p.33 (printed p.182), row \"Unité intérieure / Groupe extérieur\", column 3",
+          "excerpt": "Groupe extérieur | CU-Z25CBEA | CU-Z35CBEA | CU-Z50CBEA"
+        },
+        "CS-Z50CD3EAW": {
+          "sourceId": "panasonic-fr-rac-2026",
+          "locator": "PDF p.34 (printed p.184), row \"Unité intérieure / Groupe extérieur\", column 3",
+          "excerpt": "Groupe extérieur | CU-Z25CBEA | CU-Z35CBEA | CU-Z50CBEA | CU-Z60CBEA"
+        }
+      }
+    },
+    {
+      "reference": "CU-Z60CBEA",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 6,
+        "refrigerant": "R32",
+        "airflow": 2556,
+        "height": 695,
+        "width": 875,
+        "depth": 320,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 43,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched kit (EN 14511 nominal conditions)",
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "airflow": "cooling, single published indoor/outdoor flow (fan step not stated; treated as cooling high fan)",
+        "height": "outdoor casing H; footnote adds 70 mm for piping connections",
+        "width": "outdoor casing L (width), excluding piping connections",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "CS-Z60CD3EAW"
+      ],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.34 (printed p.184), row \"Unité intérieure / Groupe extérieur\", column 4",
+        "excerpt": "Groupe extérieur | CU-Z25CBEA | CU-Z35CBEA | CU-Z50CBEA | CU-Z60CBEA"
+      }
+    },
+    {
+      "reference": "CU-2Z35CBE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 2,
+        "height": 619,
+        "width": 824,
+        "depth": 299,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "maximumIndoorUnits": "Pièces (rooms) column of the combination matrix",
+        "height": "outdoor casing H; footnote adds 70 or 95 mm for piping connections",
+        "width": "outdoor casing L (width)",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 2,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.37 (printed p.186), row \"Combinaisons possibles, Pièces / Groupe extérieur\", column CU-2Z35CBE",
+        "excerpt": "CU-2Z35CBE | 3,2 ~ 6,0 kW | • • • • | • • • • | • • • | • 1) • 1) • 1) | • • •"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 2,
+        "connectedCapacityClassSumLimitKw": 6,
+        "ports": null,
+        "guide": "Panasonic France 2026 residential catalogue, PDF p.37 (printed p.186), Multi Z Deluxe (CBE) CU-2Z35CBE column and combination matrix",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "CU-2Z41CBE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 2,
+        "height": 619,
+        "width": 824,
+        "depth": 299,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "maximumIndoorUnits": "Pièces (rooms) column of the combination matrix",
+        "height": "outdoor casing H; footnote adds 70 or 95 mm for piping connections",
+        "width": "outdoor casing L (width)",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 2,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.37 (printed p.186), row \"Combinaisons possibles, Pièces / Groupe extérieur\", column CU-2Z41CBE",
+        "excerpt": "2 | CU-2Z41CBE | 3,2 ~ 6,0 kW | • • • • | • • • • | • • • | • 1) • 1) • 1) | • • •"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 2,
+        "connectedCapacityClassSumLimitKw": 6,
+        "ports": null,
+        "guide": "Panasonic France 2026 residential catalogue, PDF p.37 (printed p.186), Multi Z Deluxe (CBE) CU-2Z41CBE column and combination matrix",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "CU-2Z50CBE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 2,
+        "height": 619,
+        "width": 824,
+        "depth": 299,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "maximumIndoorUnits": "Pièces (rooms) column of the combination matrix",
+        "height": "outdoor casing H; footnote adds 70 or 95 mm for piping connections",
+        "width": "outdoor casing L (width)",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 2,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.37 (printed p.186), row \"Combinaisons possibles, Pièces / Groupe extérieur\", column CU-2Z50CBE",
+        "excerpt": "CU-2Z50CBE | 3,2 ~ 7,7 kW | • • • • • 1) • 1) | • • • • • 1) • 1) | • • • • 1) • 1) • 1) • 1) • 1) | • • • • 1)"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 2,
+        "connectedCapacityClassSumLimitKw": 7.7,
+        "ports": null,
+        "guide": "Panasonic France 2026 residential catalogue, PDF p.37 (printed p.186), Multi Z Deluxe (CBE) CU-2Z50CBE column and combination matrix",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "CU-3Z52CBE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 3,
+        "height": 795,
+        "width": 875,
+        "depth": 320,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "maximumIndoorUnits": "Pièces (rooms) column of the combination matrix",
+        "height": "outdoor casing H; footnote adds 70 or 95 mm for piping connections",
+        "width": "outdoor casing L (width)",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 3,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.37 (printed p.186), row \"Combinaisons possibles, Pièces / Groupe extérieur\", column CU-3Z52CBE",
+        "excerpt": "CU-3Z52CBE | 4,5 ~ 9,5 kW | • • • • • 1) • 1) | • • • • • 1) • 1) | • 1) • 1) • 1) • 1) | • • • • 1)"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 3,
+        "connectedCapacityClassSumLimitKw": 9.5,
+        "ports": null,
+        "guide": "Panasonic France 2026 residential catalogue, PDF p.37 (printed p.186), Multi Z Deluxe (CBE) CU-3Z52CBE column and combination matrix",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "CU-3Z68CBE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 3,
+        "height": 795,
+        "width": 875,
+        "depth": 320,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "maximumIndoorUnits": "Pièces (rooms) column of the combination matrix",
+        "height": "outdoor casing H; footnote adds 70 or 95 mm for piping connections",
+        "width": "outdoor casing L (width)",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 3,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.37 (printed p.186), row \"Combinaisons possibles, Pièces / Groupe extérieur\", column CU-3Z68CBE",
+        "excerpt": "CU-3Z68CBE | 4,5 ~ 11,2 kW | • • • • • 1) • 1) | • • • • • 1) • 1) • 1) | • 1) • 1) • 1) • 1) • 2) • • • • 1) •"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 3,
+        "connectedCapacityClassSumLimitKw": 11.2,
+        "ports": null,
+        "guide": "Panasonic France 2026 residential catalogue, PDF p.37 (printed p.186), Multi Z Deluxe (CBE) CU-3Z68CBE column and combination matrix",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "CU-4Z68CBE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 4,
+        "height": 795,
+        "width": 875,
+        "depth": 320,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "maximumIndoorUnits": "Pièces (rooms) column of the combination matrix",
+        "height": "outdoor casing H; footnote adds 70 or 95 mm for piping connections",
+        "width": "outdoor casing L (width)",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 4,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.37 (printed p.186), row \"Combinaisons possibles, Pièces / Groupe extérieur\", column CU-4Z68CBE",
+        "excerpt": "CU-4Z68CBE | 4,5 ~ 11,5 kW | • • • • • 1) • 1) | • • • • • 1) • 1) • | • 1) • 1) • 1) • 1) • 2) • • • • 1) •"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 4,
+        "connectedCapacityClassSumLimitKw": 11.5,
+        "ports": null,
+        "guide": "Panasonic France 2026 residential catalogue, PDF p.37 (printed p.186), Multi Z Deluxe (CBE) CU-4Z68CBE column and combination matrix",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "CU-4Z80CBE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 4,
+        "height": 999,
+        "width": 940,
+        "depth": 340,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "maximumIndoorUnits": "Pièces (rooms) column of the combination matrix",
+        "height": "outdoor casing H; footnote adds 70 or 95 mm for piping connections",
+        "width": "outdoor casing L (width)",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 4,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.37 (printed p.186), row \"Combinaisons possibles, Pièces / Groupe extérieur\", column CU-4Z80CBE",
+        "excerpt": "CU-4Z80CBE | 4,5 ~ 14,7 kW | • • • • • 1) • 1) • 3) • • • • • 1) • 1) • • 3) | • 1) • 1) • 1) • 1) • 2) • • • • 1) •"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 4,
+        "connectedCapacityClassSumLimitKw": 14.7,
+        "ports": null,
+        "guide": "Panasonic France 2026 residential catalogue, PDF p.37 (printed p.186), Multi Z Deluxe (CBE) CU-4Z80CBE column and combination matrix",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "CU-5Z90CBE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 5,
+        "height": 999,
+        "width": 940,
+        "depth": 340,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "maximumIndoorUnits": "Pièces (rooms) column of the combination matrix",
+        "height": "outdoor casing H; footnote adds 70 or 95 mm for piping connections",
+        "width": "outdoor casing L (width)",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 5,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.37 (printed p.186), row \"Combinaisons possibles, Pièces / Groupe extérieur\", column CU-5Z90CBE",
+        "excerpt": "5 | CU-5Z90CBE | 4,5 ~ 18,3 kW | • • • • • 1) • 1) • 3) • • • • • 1) • 1) • • 3) | • 1) • 1) • 1) • 1) • 2) • • • • 1) •"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 5,
+        "connectedCapacityClassSumLimitKw": 18.3,
+        "ports": null,
+        "guide": "Panasonic France 2026 residential catalogue, PDF p.37 (printed p.186), Multi Z Deluxe (CBE) CU-5Z90CBE column and combination matrix",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "CU-2Z50ABEC",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 2,
+        "height": 795,
+        "width": 875,
+        "depth": 320,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -25,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "maximumIndoorUnits": "Pièces (rooms) column of the combination matrix",
+        "height": "outdoor casing H; footnote adds 70 or 95 mm for piping connections",
+        "width": "outdoor casing L (width)",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 2,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.39 (printed p.188), row \"Combinaisons possibles, Pièces / Groupe extérieur\", column CU-2Z50ABEC",
+        "excerpt": "2 | CU-2Z50ABEC | 4,0 ~ 8,5 kW | • | • | • | •"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 2,
+        "connectedCapacityClassSumLimitKw": 8.5,
+        "ports": null,
+        "guide": "Panasonic France 2026 residential catalogue, PDF p.39 (printed p.188), Power Heat Multi (ABEC) CU-2Z50ABEC column and combination matrix",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "CU-3Z75ABEC",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 3,
+        "height": 795,
+        "width": 875,
+        "depth": 320,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -25,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "maximumIndoorUnits": "Pièces (rooms) column of the combination matrix",
+        "height": "outdoor casing H; footnote adds 70 or 95 mm for piping connections",
+        "width": "outdoor casing L (width)",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 3,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.39 (printed p.188), row \"Combinaisons possibles, Pièces / Groupe extérieur\", column CU-3Z75ABEC",
+        "excerpt": "3 | CU-3Z75ABEC | 4,5 ~ 11,0 kW | • | • | • | •"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": null,
+        "maximumConnectedHeads": 3,
+        "connectedCapacityClassSumLimitKw": 11,
+        "ports": null,
+        "guide": "Panasonic France 2026 residential catalogue, PDF p.39 (printed p.188), Power Heat Multi (ABEC) CU-3Z75ABEC column and combination matrix",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "CU-2TZ41TBE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 2,
+        "height": 542,
+        "width": 780,
+        "depth": 289,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "maximumIndoorUnits": "Pièces (rooms) column of the combination matrix",
+        "height": "outdoor casing H; footnote adds 70 or 95 mm for piping connections",
+        "width": "outdoor casing L (width)",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 2,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.40 (printed p.189), row \"Combinaisons possibles, Pièces / Groupe extérieur\", column CU-2TZ41TBE",
+        "excerpt": "CU-2TZ41TBE | 3,2 ~ 6,0 kW | • | • | • | •"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": 2,
+        "maximumConnectedHeads": 2,
+        "connectedCapacityClassSumLimitKw": 6,
+        "ports": null,
+        "guide": "Panasonic France 2026 residential catalogue, PDF p.40 (printed p.189), Multi TZ (TBE) CU-2TZ41TBE column and combination matrix",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "CU-2TZ50TBE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 2,
+        "height": 542,
+        "width": 780,
+        "depth": 289,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "maximumIndoorUnits": "Pièces (rooms) column of the combination matrix",
+        "height": "outdoor casing H; footnote adds 70 or 95 mm for piping connections",
+        "width": "outdoor casing L (width)",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 2,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.40 (printed p.189), row \"Combinaisons possibles, Pièces / Groupe extérieur\", column CU-2TZ50TBE",
+        "excerpt": "CU-2TZ50TBE | 3,2 ~ 7,7 kW | • | • | • | • | • | •"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": 2,
+        "maximumConnectedHeads": 2,
+        "connectedCapacityClassSumLimitKw": 7.7,
+        "ports": null,
+        "guide": "Panasonic France 2026 residential catalogue, PDF p.40 (printed p.189), Multi TZ (TBE) CU-2TZ50TBE column and combination matrix",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "CU-3TZ52TBE",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 3,
+        "height": 795,
+        "width": 875,
+        "depth": 320,
+        "coolingOutdoorMinimum": -10,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "row label \"Réfrigérant (R32) / éq. CO2\" with a per-column factory charge",
+        "maximumIndoorUnits": "Pièces (rooms) column of the combination matrix",
+        "height": "outdoor casing H; footnote adds 70 or 95 mm for piping connections",
+        "width": "outdoor casing L (width)",
+        "depth": "outdoor casing P (depth)",
+        "coolingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "coolingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMinimum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table",
+        "heatingOutdoorMaximum": "outdoor temperature as printed (°C); dry/wet-bulb basis not stated in the table"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "France 2026 residential catalogue; current stock unverified"
+      },
+      "ports": 3,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "panasonic-fr-rac-2026",
+        "locator": "PDF p.40 (printed p.189), row \"Combinaisons possibles, Pièces / Groupe extérieur\", column CU-3TZ52TBE",
+        "excerpt": "3 | CU-3TZ52TBE | 4,5 ~ 9,5 kW | • | • | • | • | • | •"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": 2,
+        "maximumConnectedHeads": 3,
+        "connectedCapacityClassSumLimitKw": 9.5,
+        "ports": null,
+        "guide": "Panasonic France 2026 residential catalogue, PDF p.40 (printed p.189), Multi TZ (TBE) CU-3TZ52TBE column and combination matrix",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    }
+  ]
+}

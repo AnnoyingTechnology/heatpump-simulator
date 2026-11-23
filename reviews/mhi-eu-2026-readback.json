@@ -1,0 +1,5246 @@
+{
+  "scope": "Mitsubishi Heavy Industries Europe 2026 residential catalogue: exact single-split column pairs (finish suffixes listed per column), casings, cooling high-fan indoor airflow, outdoor cooling airflow, nominal cooling capacity, factory refrigerant, published outdoor operating ranges, SCM connectable head counts and total indoor capacity ceilings. Combination tables, performance and PAC/VRF ranges are not imported.",
+  "method": "Mechanical column readback from the pinned pdftotext -layout page text by tools/transcribe-catalogue-2026.py, plus visual comparison of each rendered page image with the extracted rows (Claude Opus 5.5, 2026-11-23). Not a manufacturer certification; performance, compressor and coil data are not applied.",
+  "candidate": {
+    "path": "research/catalogue/staging/mhi-eu-2026.json",
+    "sha256": "90f848066d646d80860687ad2e643869d71afb27974526b5db428035fc42c5f2"
+  },
+  "sourcePdf": {
+    "path": "research/catalogue/source-cache/mhi-eu-rac-2026.pdf",
+    "sha256": "13f1070fb7ae82f8776ed7f6266b4919b1606d7461468b9e60a64e4e2e96b5db",
+    "url": "https://mhi-hvac.co.uk/wp-content/uploads/RAC-Brochure-2026-26R01EU_included_revision_1.pdf",
+    "committed": false
+  },
+  "sourcePins": [
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-32.txt",
+      "sha256": "9c42fe919cb3ae0f21f0185dae4d9e9189d459907335ff4eb9bc371ce7ffd3d2"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-32.png",
+      "sha256": "fa6ac4845370dacba3f50c9c9d638c32535562d3772f2ff04309fd5c33e110d3"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-33.txt",
+      "sha256": "d54d6a177bf3a7bb4c06adc27d33a637d9431530e85a81ec92e34b751087585a"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-33.png",
+      "sha256": "fd60d32542f89a704ff68ebc6ea42c7ade0f50b5afcc1ad201bbc32143c6fc53"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-34.txt",
+      "sha256": "891471a8f9a92c6d6e44bbe595523da6d05c9af56079a7070931e064a59aa4dd"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-34.png",
+      "sha256": "4716ad4941192e184d7bc09a52dd8a44d4b5f4a734b7a51ea8a5383fff43804c"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-35.txt",
+      "sha256": "e73ec868f4c890ad8928034b45f6ab1eb3e6694f62e600d1cb4ebe4ae1f800ef"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-35.png",
+      "sha256": "582e62e06591eec7fdb62b5476875c588007a2dcc8de281572de8fba8f3f2e74"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-36.txt",
+      "sha256": "2b0b573a3f31aeaa64471a7f40c6f111d76b489751d760482414dcf7cb81472c"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-36.png",
+      "sha256": "bd52abe79d80ab4bdaf91f45447cb42602a0cddabdbb405dff1dcb29ef578d12"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-38.txt",
+      "sha256": "b290ba70d4f97e56f44f04fe6f5e6bd44c4c6ef6080ffe26a5d2ed23b5c88c78"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-38.png",
+      "sha256": "59d353fb93e62ea5d3a58379ae4b6ad527ce4d07eb3d933cdbc42b4f4f92e058"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-39.txt",
+      "sha256": "c6cf9c0edda084380f8d45897e3c6f0539b6376420eb13e79ae059802d6e65db"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-39.png",
+      "sha256": "3e065290bd6040735a6c3b2e6baea9fc60d37d318eb440617994bc635889ef25"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-40.txt",
+      "sha256": "f0dd23478fdd0cd1f15535e990f0b5c3cf9ac3844cdceaf3ea0c5e90e3d27130"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-40.png",
+      "sha256": "81c6f7161fbbe08a6085437802cb74499fed33d35fe0f22b8ad73fb453049df5"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-41.txt",
+      "sha256": "99266dd936ff780408f88113b5cedd8f032858cbd871eee113bcebd1cb3f41bb"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-41.png",
+      "sha256": "b81849e820747ae1f5c9395724209923f86ee0dec4b23d7618bf645699af7706"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-42.txt",
+      "sha256": "63792198ba4ec300e85c7e94c80438ea947e3fb937d2bf52d9afc4a57921a858"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-42.png",
+      "sha256": "afdb92b079da2339791679bcbdd691791fcaa9b4e84afa3cbd20ee83e20e3c10"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-43.txt",
+      "sha256": "c844c59e5a4ce9c7a3069c0e27c726ccbfa166337de12469afc7805ac299841d"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-43.png",
+      "sha256": "2868eb8903be9e71fae5c88118ce23722569b36c25b2bd5948b78af7ac0a4469"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-44.txt",
+      "sha256": "5f33a9444b2318554ce193d0f45ced08077768ef250a6bdb051c5518a30b324e"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-44.png",
+      "sha256": "ac1505c547ec921b2761de5e7b1c9c28280be357d630fe265243f0c4727e6b2a"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-45.txt",
+      "sha256": "c9614c9a05eadd433be2a782c840765e0c821b2ec773c2649f5dfddd97324fc3"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-45.png",
+      "sha256": "e52228a0747c4b47a2f6f324f7c9693f19412112313bc59ff5eb97d61d7e799b"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-49.txt",
+      "sha256": "b78eb2523a760bf5eff0282d212f6dcf7ebb608d670d55902ed87bdf5e7a858b"
+    },
+    {
+      "path": "research/sources/mhi-eu-rac-2026-page-49.png",
+      "sha256": "f01e68e6d4cffffb567b300f5244c7f01f93a1c788097ad46dd872e6aa9588be"
+    }
+  ],
+  "reviewedUnits": [
+    {
+      "reference": "SRK20ZSX-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "airflow": 678,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK20ZSX-WFB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "airflow": 678,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK20ZSX-WFT",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "airflow": 678,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK25ZSX-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 732,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK25ZSX-WFB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 732,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK25ZSX-WFT",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 732,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK35ZSX-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 786,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK35ZSX-WFB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 786,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK35ZSX-WFT",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 786,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK50ZSX-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 858,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK50ZSX-WFB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 858,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK50ZSX-WFT",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 858,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK60ZSX-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 6.1,
+        "airflow": 978,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK60ZSX-WFB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 6.1,
+        "airflow": 978,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK60ZSX-WFT",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 6.1,
+        "airflow": 978,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK20ZSX-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "airflow": 678,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK25ZSX-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 732,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK35ZSX-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 786,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK50ZSX-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 858,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK60ZSX-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 6.1,
+        "airflow": 978,
+        "height": 305,
+        "width": 920,
+        "depth": 220
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK63ZR-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 6.3,
+        "airflow": 1230,
+        "height": 339,
+        "width": 1197,
+        "depth": 262
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK71ZR-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 7.1,
+        "airflow": 1230,
+        "height": 339,
+        "width": 1197,
+        "depth": 262
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK80ZR-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 8,
+        "airflow": 1410,
+        "height": 339,
+        "width": 1197,
+        "depth": 262
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK100ZR-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 9.6,
+        "airflow": 1470,
+        "height": 339,
+        "width": 1197,
+        "depth": 262
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK63ZR-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 6.3,
+        "airflow": 1230,
+        "height": 339,
+        "width": 1197,
+        "depth": 262
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK71ZR-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 7.1,
+        "airflow": 1230,
+        "height": 339,
+        "width": 1197,
+        "depth": 262
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK80ZR-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 8,
+        "airflow": 1410,
+        "height": 339,
+        "width": 1197,
+        "depth": 262
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK100ZR-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 9.6,
+        "airflow": 1470,
+        "height": 339,
+        "width": 1197,
+        "depth": 262
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK20ZT-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "airflow": 540,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK20ZT-WFB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "airflow": 540,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK20ZT-WFT",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "airflow": 540,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK25ZT-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 600,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK25ZT-WFB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 600,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK25ZT-WFT",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 600,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK35ZT-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 600,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK35ZT-WFB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 600,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK35ZT-WFT",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 600,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK50ZT-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 798,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK50ZT-WFB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 798,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK50ZT-WFT",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 798,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK20ZS-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "airflow": 558,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK20ZS-WFB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "airflow": 558,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK20ZS-WFT",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "airflow": 558,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK25ZS-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 594,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK25ZS-WFB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 594,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK25ZS-WFT",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 594,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK35ZS-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 678,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK35ZS-WFB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 678,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK35ZS-WFT",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 678,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK50ZS-WF",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 726,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK50ZS-WFB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 726,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK50ZS-WFT",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 726,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK20ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "airflow": 558,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK25ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 594,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK35ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 678,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK50ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 726,
+        "height": 290,
+        "width": 870,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK15ZTL-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 1.5,
+        "airflow": 570,
+        "height": 294,
+        "width": 798,
+        "depth": 210
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK20ZTL-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "airflow": 594,
+        "height": 294,
+        "width": 798,
+        "depth": 210
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK25ZTL-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 600,
+        "height": 294,
+        "width": 798,
+        "depth": 210
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK35ZTL-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 624,
+        "height": 294,
+        "width": 798,
+        "depth": 210
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK50ZTL-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 750,
+        "height": 294,
+        "width": 798,
+        "depth": 210
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK63ZTL-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 6.3,
+        "airflow": 1020,
+        "height": 294,
+        "width": 998,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK71ZTL-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 7.1,
+        "airflow": 1050,
+        "height": 294,
+        "width": 998,
+        "depth": 230
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK25ZSP-W1",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 600,
+        "height": 267,
+        "width": 783,
+        "depth": 210
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK35ZSP-W1",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.2,
+        "airflow": 624,
+        "height": 267,
+        "width": 783,
+        "depth": 210
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK45ZSP-W1",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 4.5,
+        "airflow": 582,
+        "height": 267,
+        "width": 783,
+        "depth": 210
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRK50ZSP-W1",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 630,
+        "height": 267,
+        "width": 783,
+        "depth": 210
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRF25ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 540,
+        "height": 600,
+        "width": 860,
+        "depth": 238
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRF35ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 552,
+        "height": 600,
+        "width": 860,
+        "depth": 238
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRF50ZSX-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 690,
+        "height": 600,
+        "width": 860,
+        "depth": 238
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRR25ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 570,
+        "height": 200,
+        "width": 750,
+        "depth": 500
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRR35ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 600,
+        "height": 200,
+        "width": 750,
+        "depth": 500
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRR50ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 810,
+        "height": 200,
+        "width": 950,
+        "depth": 500
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRR60ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5.6,
+        "airflow": 870,
+        "height": 200,
+        "width": 950,
+        "depth": 500
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor casing H",
+        "width": "indoor casing W",
+        "depth": "indoor casing D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "FDTC25VH1",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "airflow": 510,
+        "height": 248,
+        "width": 570,
+        "depth": 570
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor unit casing excluding the separately listed decorative panel H",
+        "width": "indoor unit casing excluding the separately listed decorative panel W",
+        "depth": "indoor unit casing excluding the separately listed decorative panel D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "FDTC35VH1",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "airflow": 540,
+        "height": 248,
+        "width": 570,
+        "depth": 570
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor unit casing excluding the separately listed decorative panel H",
+        "width": "indoor unit casing excluding the separately listed decorative panel W",
+        "depth": "indoor unit casing excluding the separately listed decorative panel D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "FDTC40VH",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 4,
+        "airflow": 780,
+        "height": 248,
+        "width": 570,
+        "depth": 570
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor unit casing excluding the separately listed decorative panel H",
+        "width": "indoor unit casing excluding the separately listed decorative panel W",
+        "depth": "indoor unit casing excluding the separately listed decorative panel D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "FDTC50VH",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "airflow": 780,
+        "height": 248,
+        "width": 570,
+        "depth": 570
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor unit casing excluding the separately listed decorative panel H",
+        "width": "indoor unit casing excluding the separately listed decorative panel W",
+        "depth": "indoor unit casing excluding the separately listed decorative panel D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "FDTC60VH",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "airflow",
+        "height",
+        "width",
+        "depth"
+      ],
+      "factValues": {
+        "capacityClass": 5.6,
+        "airflow": 840,
+        "height": 248,
+        "width": 570,
+        "depth": 570
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "airflow": "cooling high fan (Hi), indoor",
+        "height": "indoor unit casing excluding the separately listed decorative panel H",
+        "width": "indoor unit casing excluding the separately listed decorative panel W",
+        "depth": "indoor unit casing excluding the separately listed decorative panel D"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      }
+    },
+    {
+      "reference": "SRC20ZSX-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "refrigerant": "R32",
+        "airflow": 1860,
+        "height": 640,
+        "width": 800,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK20ZSX-WF",
+        "SRK20ZSX-WFB",
+        "SRK20ZSX-WFT",
+        "SRK20ZSX-W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 1",
+        "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+      },
+      "pairingEvidenceByIndoor": {
+        "SRK20ZSX-WF": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 1",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK20ZSX-WFB": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 1",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK20ZSX-WFT": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 1",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK20ZSX-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.33 (printed p.33), row \"Indoor unit / Outdoor unit\", column 1",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        }
+      }
+    },
+    {
+      "reference": "SRC25ZSX-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "refrigerant": "R32",
+        "airflow": 1860,
+        "height": 640,
+        "width": 800,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK25ZSX-WF",
+        "SRK25ZSX-WFB",
+        "SRK25ZSX-WFT",
+        "SRK25ZSX-W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 2",
+        "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+      },
+      "pairingEvidenceByIndoor": {
+        "SRK25ZSX-WF": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 2",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK25ZSX-WFB": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 2",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK25ZSX-WFT": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 2",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK25ZSX-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.33 (printed p.33), row \"Indoor unit / Outdoor unit\", column 2",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        }
+      }
+    },
+    {
+      "reference": "SRC35ZSX-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "refrigerant": "R32",
+        "airflow": 2160,
+        "height": 640,
+        "width": 800,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK35ZSX-WF",
+        "SRK35ZSX-WFB",
+        "SRK35ZSX-WFT",
+        "SRK35ZSX-W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 3",
+        "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+      },
+      "pairingEvidenceByIndoor": {
+        "SRK35ZSX-WF": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 3",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK35ZSX-WFB": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 3",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK35ZSX-WFT": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 3",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK35ZSX-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.33 (printed p.33), row \"Indoor unit / Outdoor unit\", column 3",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        }
+      }
+    },
+    {
+      "reference": "SRC50ZSX-W2",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "refrigerant": "R32",
+        "airflow": 2340,
+        "height": 640,
+        "width": 800,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK50ZSX-WF",
+        "SRK50ZSX-WFB",
+        "SRK50ZSX-WFT",
+        "SRK50ZSX-W",
+        "SRF50ZSX-W",
+        "FDTC50VH"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 4",
+        "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+      },
+      "pairingEvidenceByIndoor": {
+        "SRK50ZSX-WF": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK50ZSX-WFB": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK50ZSX-WFT": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK50ZSX-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.33 (printed p.33), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRF50ZSX-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.43 (printed p.43), row \"Indoor unit / Outdoor unit\", column 3",
+          "excerpt": "Outdoor unit | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZSX-W2,-W3"
+        },
+        "FDTC50VH": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.45 (printed p.45), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC25ZS-W2 | SRC35ZS-W2 | SRC40ZSX-W1 | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        }
+      }
+    },
+    {
+      "reference": "SRC50ZSX-W3",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "refrigerant": "R32",
+        "airflow": 2340,
+        "height": 640,
+        "width": 800,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK50ZSX-WF",
+        "SRK50ZSX-WFB",
+        "SRK50ZSX-WFT",
+        "SRK50ZSX-W",
+        "SRF50ZSX-W",
+        "SRR50ZS-W",
+        "FDTC50VH"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 4",
+        "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+      },
+      "pairingEvidenceByIndoor": {
+        "SRK50ZSX-WF": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK50ZSX-WFB": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK50ZSX-WFT": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK50ZSX-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.33 (printed p.33), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRF50ZSX-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.43 (printed p.43), row \"Indoor unit / Outdoor unit\", column 3",
+          "excerpt": "Outdoor unit | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZSX-W2,-W3"
+        },
+        "SRR50ZS-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.44 (printed p.44), row \"Indoor unit / Outdoor unit\", column 3",
+          "excerpt": "Outdoor unit | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZSX-W3 | SRC60ZSX-W3"
+        },
+        "FDTC50VH": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.45 (printed p.45), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC25ZS-W2 | SRC35ZS-W2 | SRC40ZSX-W1 | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        }
+      }
+    },
+    {
+      "reference": "SRC60ZSX-W1",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "airflow": 2490,
+        "height": 640,
+        "width": 800,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK60ZSX-WF",
+        "SRK60ZSX-WFB",
+        "SRK60ZSX-WFT",
+        "SRK60ZSX-W",
+        "FDTC60VH"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 5",
+        "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+      },
+      "pairingEvidenceByIndoor": {
+        "SRK60ZSX-WF": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 5",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK60ZSX-WFB": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 5",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK60ZSX-WFT": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 5",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK60ZSX-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.33 (printed p.33), row \"Indoor unit / Outdoor unit\", column 5",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "FDTC60VH": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.45 (printed p.45), row \"Indoor unit / Outdoor unit\", column 5",
+          "excerpt": "Outdoor unit | SRC25ZS-W2 | SRC35ZS-W2 | SRC40ZSX-W1 | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        }
+      }
+    },
+    {
+      "reference": "SRC60ZSX-W3",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "airflow": 2490,
+        "height": 640,
+        "width": 800,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK60ZSX-WF",
+        "SRK60ZSX-WFB",
+        "SRK60ZSX-WFT",
+        "SRK60ZSX-W",
+        "SRR60ZS-W",
+        "FDTC60VH"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 5",
+        "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+      },
+      "pairingEvidenceByIndoor": {
+        "SRK60ZSX-WF": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 5",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK60ZSX-WFB": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 5",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK60ZSX-WFT": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.32 (printed p.32), row \"Indoor unit / Outdoor unit\", column 5",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRK60ZSX-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.33 (printed p.33), row \"Indoor unit / Outdoor unit\", column 5",
+          "excerpt": "Outdoor unit | SRC20ZSX-W | SRC25ZSX-W | SRC35ZSX-W | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        },
+        "SRR60ZS-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.44 (printed p.44), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZSX-W3 | SRC60ZSX-W3"
+        },
+        "FDTC60VH": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.45 (printed p.45), row \"Indoor unit / Outdoor unit\", column 5",
+          "excerpt": "Outdoor unit | SRC25ZS-W2 | SRC35ZS-W2 | SRC40ZSX-W1 | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        }
+      }
+    },
+    {
+      "reference": "SRC63ZR-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 6.3,
+        "refrigerant": "R32",
+        "airflow": 2490,
+        "height": 640,
+        "width": 800,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK63ZR-WF",
+        "SRK63ZR-W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.34 (printed p.34), row \"Indoor unit / Outdoor unit\", column 1",
+        "excerpt": "Outdoor unit | SRC63ZR-W | SRC71ZR-W | SRC80ZR-W | FDC100VNP-W"
+      },
+      "pairingEvidenceByIndoor": {
+        "SRK63ZR-WF": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.34 (printed p.34), row \"Indoor unit / Outdoor unit\", column 1",
+          "excerpt": "Outdoor unit | SRC63ZR-W | SRC71ZR-W | SRC80ZR-W | FDC100VNP-W"
+        },
+        "SRK63ZR-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.35 (printed p.35), row \"Indoor unit / Outdoor unit\", column 1",
+          "excerpt": "Outdoor unit | SRC63ZR-W | SRC71ZR-W | SRC80ZR-W | FDC100VNP-W"
+        }
+      }
+    },
+    {
+      "reference": "SRC71ZR-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 7.1,
+        "refrigerant": "R32",
+        "airflow": 3300,
+        "height": 750,
+        "width": 880,
+        "depth": 340,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK71ZR-WF",
+        "SRK71ZR-W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.34 (printed p.34), row \"Indoor unit / Outdoor unit\", column 2",
+        "excerpt": "Outdoor unit | SRC63ZR-W | SRC71ZR-W | SRC80ZR-W | FDC100VNP-W"
+      },
+      "pairingEvidenceByIndoor": {
+        "SRK71ZR-WF": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.34 (printed p.34), row \"Indoor unit / Outdoor unit\", column 2",
+          "excerpt": "Outdoor unit | SRC63ZR-W | SRC71ZR-W | SRC80ZR-W | FDC100VNP-W"
+        },
+        "SRK71ZR-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.35 (printed p.35), row \"Indoor unit / Outdoor unit\", column 2",
+          "excerpt": "Outdoor unit | SRC63ZR-W | SRC71ZR-W | SRC80ZR-W | FDC100VNP-W"
+        }
+      }
+    },
+    {
+      "reference": "SRC80ZR-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 8,
+        "refrigerant": "R32",
+        "airflow": 3780,
+        "height": 750,
+        "width": 880,
+        "depth": 340,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK80ZR-WF",
+        "SRK80ZR-W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.34 (printed p.34), row \"Indoor unit / Outdoor unit\", column 3",
+        "excerpt": "Outdoor unit | SRC63ZR-W | SRC71ZR-W | SRC80ZR-W | FDC100VNP-W"
+      },
+      "pairingEvidenceByIndoor": {
+        "SRK80ZR-WF": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.34 (printed p.34), row \"Indoor unit / Outdoor unit\", column 3",
+          "excerpt": "Outdoor unit | SRC63ZR-W | SRC71ZR-W | SRC80ZR-W | FDC100VNP-W"
+        },
+        "SRK80ZR-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.35 (printed p.35), row \"Indoor unit / Outdoor unit\", column 3",
+          "excerpt": "Outdoor unit | SRC63ZR-W | SRC71ZR-W | SRC80ZR-W | FDC100VNP-W"
+        }
+      }
+    },
+    {
+      "reference": "FDC100VNP-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 9.6,
+        "refrigerant": "R32",
+        "airflow": 3780,
+        "height": 750,
+        "width": 880,
+        "depth": 340,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK100ZR-WF",
+        "SRK100ZR-W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.34 (printed p.34), row \"Indoor unit / Outdoor unit\", column 4",
+        "excerpt": "Outdoor unit | SRC63ZR-W | SRC71ZR-W | SRC80ZR-W | FDC100VNP-W"
+      },
+      "pairingEvidenceByIndoor": {
+        "SRK100ZR-WF": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.34 (printed p.34), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC63ZR-W | SRC71ZR-W | SRC80ZR-W | FDC100VNP-W"
+        },
+        "SRK100ZR-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.35 (printed p.35), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC63ZR-W | SRC71ZR-W | SRC80ZR-W | FDC100VNP-W"
+        }
+      }
+    },
+    {
+      "reference": "SRC20ZT-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "refrigerant": "R32",
+        "airflow": 1308,
+        "height": 540,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK20ZT-WF",
+        "SRK20ZT-WFB",
+        "SRK20ZT-WFT"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.36 (printed p.36), row \"Indoor unit / Outdoor unit\", column 1",
+        "excerpt": "Outdoor unit | SRC20ZT-W,-WB | SRC25ZT-W,-WB | SRC35ZT-W,-WB | SRC50ZT-W,-WB"
+      }
+    },
+    {
+      "reference": "SRC20ZT-WB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "refrigerant": "R32",
+        "airflow": 1308,
+        "height": 540,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK20ZT-WF",
+        "SRK20ZT-WFB",
+        "SRK20ZT-WFT"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.36 (printed p.36), row \"Indoor unit / Outdoor unit\", column 1",
+        "excerpt": "Outdoor unit | SRC20ZT-W,-WB | SRC25ZT-W,-WB | SRC35ZT-W,-WB | SRC50ZT-W,-WB"
+      }
+    },
+    {
+      "reference": "SRC25ZT-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "refrigerant": "R32",
+        "airflow": 1398,
+        "height": 540,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK25ZT-WF",
+        "SRK25ZT-WFB",
+        "SRK25ZT-WFT"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.36 (printed p.36), row \"Indoor unit / Outdoor unit\", column 2",
+        "excerpt": "Outdoor unit | SRC20ZT-W,-WB | SRC25ZT-W,-WB | SRC35ZT-W,-WB | SRC50ZT-W,-WB"
+      }
+    },
+    {
+      "reference": "SRC25ZT-WB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "refrigerant": "R32",
+        "airflow": 1398,
+        "height": 540,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK25ZT-WF",
+        "SRK25ZT-WFB",
+        "SRK25ZT-WFT"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.36 (printed p.36), row \"Indoor unit / Outdoor unit\", column 2",
+        "excerpt": "Outdoor unit | SRC20ZT-W,-WB | SRC25ZT-W,-WB | SRC35ZT-W,-WB | SRC50ZT-W,-WB"
+      }
+    },
+    {
+      "reference": "SRC35ZT-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "refrigerant": "R32",
+        "airflow": 1794,
+        "height": 540,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK35ZT-WF",
+        "SRK35ZT-WFB",
+        "SRK35ZT-WFT"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.36 (printed p.36), row \"Indoor unit / Outdoor unit\", column 3",
+        "excerpt": "Outdoor unit | SRC20ZT-W,-WB | SRC25ZT-W,-WB | SRC35ZT-W,-WB | SRC50ZT-W,-WB"
+      }
+    },
+    {
+      "reference": "SRC35ZT-WB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "refrigerant": "R32",
+        "airflow": 1794,
+        "height": 540,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK35ZT-WF",
+        "SRK35ZT-WFB",
+        "SRK35ZT-WFT"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.36 (printed p.36), row \"Indoor unit / Outdoor unit\", column 3",
+        "excerpt": "Outdoor unit | SRC20ZT-W,-WB | SRC25ZT-W,-WB | SRC35ZT-W,-WB | SRC50ZT-W,-WB"
+      }
+    },
+    {
+      "reference": "SRC50ZT-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "refrigerant": "R32",
+        "airflow": 1788,
+        "height": 595,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK50ZT-WF",
+        "SRK50ZT-WFB",
+        "SRK50ZT-WFT"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.36 (printed p.36), row \"Indoor unit / Outdoor unit\", column 4",
+        "excerpt": "Outdoor unit | SRC20ZT-W,-WB | SRC25ZT-W,-WB | SRC35ZT-W,-WB | SRC50ZT-W,-WB"
+      }
+    },
+    {
+      "reference": "SRC50ZT-WB",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "refrigerant": "R32",
+        "airflow": 1788,
+        "height": 595,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 50,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK50ZT-WF",
+        "SRK50ZT-WFB",
+        "SRK50ZT-WFT"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.36 (printed p.36), row \"Indoor unit / Outdoor unit\", column 4",
+        "excerpt": "Outdoor unit | SRC20ZT-W,-WB | SRC25ZT-W,-WB | SRC35ZT-W,-WB | SRC50ZT-W,-WB"
+      }
+    },
+    {
+      "reference": "SRC20ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "refrigerant": "R32",
+        "airflow": 1644,
+        "height": 540,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK20ZS-WF",
+        "SRK20ZS-WFB",
+        "SRK20ZS-WFT",
+        "SRK20ZS-W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.38 (printed p.38), row \"Indoor unit / Outdoor unit\", column 1",
+        "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+      },
+      "pairingEvidenceByIndoor": {
+        "SRK20ZS-WF": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.38 (printed p.38), row \"Indoor unit / Outdoor unit\", column 1",
+          "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+        },
+        "SRK20ZS-WFB": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.38 (printed p.38), row \"Indoor unit / Outdoor unit\", column 1",
+          "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+        },
+        "SRK20ZS-WFT": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.38 (printed p.38), row \"Indoor unit / Outdoor unit\", column 1",
+          "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+        },
+        "SRK20ZS-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.39 (printed p.39), row \"Indoor unit / Outdoor unit\", column 1",
+          "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+        }
+      }
+    },
+    {
+      "reference": "SRC25ZS-W2",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "refrigerant": "R32",
+        "airflow": 1644,
+        "height": 540,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK25ZS-WF",
+        "SRK25ZS-WFB",
+        "SRK25ZS-WFT",
+        "SRK25ZS-W",
+        "SRF25ZS-W",
+        "SRR25ZS-W",
+        "FDTC25VH1"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.38 (printed p.38), row \"Indoor unit / Outdoor unit\", column 2",
+        "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+      },
+      "pairingEvidenceByIndoor": {
+        "SRK25ZS-WF": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.38 (printed p.38), row \"Indoor unit / Outdoor unit\", column 2",
+          "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+        },
+        "SRK25ZS-WFB": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.38 (printed p.38), row \"Indoor unit / Outdoor unit\", column 2",
+          "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+        },
+        "SRK25ZS-WFT": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.38 (printed p.38), row \"Indoor unit / Outdoor unit\", column 2",
+          "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+        },
+        "SRK25ZS-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.39 (printed p.39), row \"Indoor unit / Outdoor unit\", column 2",
+          "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+        },
+        "SRF25ZS-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.43 (printed p.43), row \"Indoor unit / Outdoor unit\", column 1",
+          "excerpt": "Outdoor unit | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZSX-W2,-W3"
+        },
+        "SRR25ZS-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.44 (printed p.44), row \"Indoor unit / Outdoor unit\", column 1",
+          "excerpt": "Outdoor unit | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZSX-W3 | SRC60ZSX-W3"
+        },
+        "FDTC25VH1": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.45 (printed p.45), row \"Indoor unit / Outdoor unit\", column 1",
+          "excerpt": "Outdoor unit | SRC25ZS-W2 | SRC35ZS-W2 | SRC40ZSX-W1 | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        }
+      }
+    },
+    {
+      "reference": "SRC35ZS-W2",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "refrigerant": "R32",
+        "airflow": 1890,
+        "height": 540,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK35ZS-WF",
+        "SRK35ZS-WFB",
+        "SRK35ZS-WFT",
+        "SRK35ZS-W",
+        "SRF35ZS-W",
+        "SRR35ZS-W",
+        "FDTC35VH1"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.38 (printed p.38), row \"Indoor unit / Outdoor unit\", column 3",
+        "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+      },
+      "pairingEvidenceByIndoor": {
+        "SRK35ZS-WF": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.38 (printed p.38), row \"Indoor unit / Outdoor unit\", column 3",
+          "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+        },
+        "SRK35ZS-WFB": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.38 (printed p.38), row \"Indoor unit / Outdoor unit\", column 3",
+          "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+        },
+        "SRK35ZS-WFT": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.38 (printed p.38), row \"Indoor unit / Outdoor unit\", column 3",
+          "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+        },
+        "SRK35ZS-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.39 (printed p.39), row \"Indoor unit / Outdoor unit\", column 3",
+          "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+        },
+        "SRF35ZS-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.43 (printed p.43), row \"Indoor unit / Outdoor unit\", column 2",
+          "excerpt": "Outdoor unit | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZSX-W2,-W3"
+        },
+        "SRR35ZS-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.44 (printed p.44), row \"Indoor unit / Outdoor unit\", column 2",
+          "excerpt": "Outdoor unit | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZSX-W3 | SRC60ZSX-W3"
+        },
+        "FDTC35VH1": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.45 (printed p.45), row \"Indoor unit / Outdoor unit\", column 2",
+          "excerpt": "Outdoor unit | SRC25ZS-W2 | SRC35ZS-W2 | SRC40ZSX-W1 | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+        }
+      }
+    },
+    {
+      "reference": "SRC50ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "refrigerant": "R32",
+        "airflow": 1968,
+        "height": 595,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK50ZS-WF",
+        "SRK50ZS-WFB",
+        "SRK50ZS-WFT",
+        "SRK50ZS-W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.38 (printed p.38), row \"Indoor unit / Outdoor unit\", column 4",
+        "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+      },
+      "pairingEvidenceByIndoor": {
+        "SRK50ZS-WF": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.38 (printed p.38), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+        },
+        "SRK50ZS-WFB": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.38 (printed p.38), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+        },
+        "SRK50ZS-WFT": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.38 (printed p.38), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+        },
+        "SRK50ZS-W": {
+          "sourceId": "mhi-eu-rac-2026",
+          "locator": "PDF p.39 (printed p.39), row \"Indoor unit / Outdoor unit\", column 4",
+          "excerpt": "Outdoor unit | SRC20ZS-W | SRC25ZS-W2 | SRC35ZS-W2 | SRC50ZS-W"
+        }
+      }
+    },
+    {
+      "reference": "SRC15ZTL-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 1.5,
+        "refrigerant": "R32",
+        "airflow": 1314,
+        "height": 540,
+        "width": 645,
+        "depth": 275,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK15ZTL-W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.40 (printed p.40), row \"Indoor unit / Outdoor unit\", column 1",
+        "excerpt": "Outdoor unit | SRC15ZTL-W | SRC20ZTL-W | SRC25ZTL-W | SRC35ZTL-W"
+      }
+    },
+    {
+      "reference": "SRC20ZTL-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2,
+        "refrigerant": "R32",
+        "airflow": 1422,
+        "height": 540,
+        "width": 645,
+        "depth": 275,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK20ZTL-W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.40 (printed p.40), row \"Indoor unit / Outdoor unit\", column 2",
+        "excerpt": "Outdoor unit | SRC15ZTL-W | SRC20ZTL-W | SRC25ZTL-W | SRC35ZTL-W"
+      }
+    },
+    {
+      "reference": "SRC25ZTL-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "refrigerant": "R32",
+        "airflow": 1368,
+        "height": 540,
+        "width": 645,
+        "depth": 275,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK25ZTL-W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.40 (printed p.40), row \"Indoor unit / Outdoor unit\", column 3",
+        "excerpt": "Outdoor unit | SRC15ZTL-W | SRC20ZTL-W | SRC25ZTL-W | SRC35ZTL-W"
+      }
+    },
+    {
+      "reference": "SRC35ZTL-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 3.5,
+        "refrigerant": "R32",
+        "airflow": 1524,
+        "height": 540,
+        "width": 645,
+        "depth": 275,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK35ZTL-W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.40 (printed p.40), row \"Indoor unit / Outdoor unit\", column 4",
+        "excerpt": "Outdoor unit | SRC15ZTL-W | SRC20ZTL-W | SRC25ZTL-W | SRC35ZTL-W"
+      }
+    },
+    {
+      "reference": "SRC50ZTL-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "refrigerant": "R32",
+        "airflow": 2136,
+        "height": 595,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK50ZTL-W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.41 (printed p.41), row \"Indoor unit / Outdoor unit\", column 1",
+        "excerpt": "Outdoor unit | SRC50ZTL-W | SRC63ZTL-W | SRC71ZTL-W"
+      }
+    },
+    {
+      "reference": "SRC63ZTL-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 6.3,
+        "refrigerant": "R32",
+        "airflow": 2580,
+        "height": 640,
+        "width": 800,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK63ZTL-W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.41 (printed p.41), row \"Indoor unit / Outdoor unit\", column 2",
+        "excerpt": "Outdoor unit | SRC50ZTL-W | SRC63ZTL-W | SRC71ZTL-W"
+      }
+    },
+    {
+      "reference": "SRC71ZTL-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 7.1,
+        "refrigerant": "R32",
+        "airflow": 2580,
+        "height": 640,
+        "width": 800,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK71ZTL-W"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.41 (printed p.41), row \"Indoor unit / Outdoor unit\", column 3",
+        "excerpt": "Outdoor unit | SRC50ZTL-W | SRC63ZTL-W | SRC71ZTL-W"
+      }
+    },
+    {
+      "reference": "SRC25ZSP-W1",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 2.5,
+        "refrigerant": "R32",
+        "airflow": 1314,
+        "height": 540,
+        "width": 645,
+        "depth": 275,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK25ZSP-W1"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.42 (printed p.42), row \"Indoor unit / Outdoor unit\", column 1",
+        "excerpt": "Outdoor unit | SRC25ZSP-W1 | SRC35ZSP-W1 | SRC45ZSP-W1 | SRC50ZSP-W1"
+      }
+    },
+    {
+      "reference": "SRC35ZSP-W1",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 3.2,
+        "refrigerant": "R32",
+        "airflow": 1368,
+        "height": 540,
+        "width": 645,
+        "depth": 275,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK35ZSP-W1"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.42 (printed p.42), row \"Indoor unit / Outdoor unit\", column 2",
+        "excerpt": "Outdoor unit | SRC25ZSP-W1 | SRC35ZSP-W1 | SRC45ZSP-W1 | SRC50ZSP-W1"
+      }
+    },
+    {
+      "reference": "SRC45ZSP-W1",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 4.5,
+        "refrigerant": "R32",
+        "airflow": 2136,
+        "height": 595,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK45ZSP-W1"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.42 (printed p.42), row \"Indoor unit / Outdoor unit\", column 3",
+        "excerpt": "Outdoor unit | SRC25ZSP-W1 | SRC35ZSP-W1 | SRC45ZSP-W1 | SRC50ZSP-W1"
+      }
+    },
+    {
+      "reference": "SRC50ZSP-W1",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 5,
+        "refrigerant": "R32",
+        "airflow": 2262,
+        "height": 595,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "SRK50ZSP-W1"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.42 (printed p.42), row \"Indoor unit / Outdoor unit\", column 4",
+        "excerpt": "Outdoor unit | SRC25ZSP-W1 | SRC35ZSP-W1 | SRC45ZSP-W1 | SRC50ZSP-W1"
+      }
+    },
+    {
+      "reference": "SRC40ZSX-W1",
+      "candidateStatus": "current",
+      "factKeys": [
+        "capacityClass",
+        "refrigerant",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "capacityClass": 4,
+        "refrigerant": "R32",
+        "airflow": 1980,
+        "height": 640,
+        "width": 800,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -20,
+        "heatingOutdoorMaximum": 20
+      },
+      "factConditions": {
+        "capacityClass": "nominal cooling capacity of the matched single-split (ISO-T1)",
+        "refrigerant": "Refrigerant Type/GWP row",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 1,
+      "compatibleIndoorClasses": [
+        "FDTC40VH"
+      ],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.45 (printed p.45), row \"Indoor unit / Outdoor unit\", column 3",
+        "excerpt": "Outdoor unit | SRC25ZS-W2 | SRC35ZS-W2 | SRC40ZSX-W1 | SRC50ZSX-W2,-W3 SRC60ZSX-W1,-W3"
+      }
+    },
+    {
+      "reference": "SCM30ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 2,
+        "airflow": 1950,
+        "height": 595,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "Refrigerant Type/GWP row",
+        "maximumIndoorUnits": "Number of Connectable indoor units",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 2,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.49 (printed p.49), row \"Number of Connectable indoor units\", column SCM30ZS-W",
+        "excerpt": "Number of Connectable indoor units | 2 | 2 | 2 | Min.2-Max.3 | Min.2-Max.3 | Min.2-Max.3"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": 2,
+        "maximumConnectedHeads": 2,
+        "connectedCapacityClassSumLimitKw": 5,
+        "ports": null,
+        "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM30ZS-W column",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "SCM40ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 2,
+        "airflow": 1950,
+        "height": 595,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "Refrigerant Type/GWP row",
+        "maximumIndoorUnits": "Number of Connectable indoor units",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 2,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.49 (printed p.49), row \"Number of Connectable indoor units\", column SCM40ZS-W",
+        "excerpt": "Number of Connectable indoor units | 2 | 2 | 2 | Min.2-Max.3 | Min.2-Max.3 | Min.2-Max.3"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": 2,
+        "maximumConnectedHeads": 2,
+        "connectedCapacityClassSumLimitKw": 6,
+        "ports": null,
+        "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM40ZS-W column",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "SCM45ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 2,
+        "airflow": 1950,
+        "height": 595,
+        "width": 780,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "Refrigerant Type/GWP row",
+        "maximumIndoorUnits": "Number of Connectable indoor units",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 2,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.49 (printed p.49), row \"Number of Connectable indoor units\", column SCM45ZS-W",
+        "excerpt": "Number of Connectable indoor units | 2 | 2 | 2 | Min.2-Max.3 | Min.2-Max.3 | Min.2-Max.3"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": 2,
+        "maximumConnectedHeads": 2,
+        "connectedCapacityClassSumLimitKw": 7,
+        "ports": null,
+        "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM45ZS-W column",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "SCM41ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 3,
+        "airflow": 2460,
+        "height": 640,
+        "width": 850,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "Refrigerant Type/GWP row",
+        "maximumIndoorUnits": "Number of Connectable indoor units",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 3,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.49 (printed p.49), row \"Number of Connectable indoor units\", column SCM41ZS-W",
+        "excerpt": "Number of Connectable indoor units | 2 | 2 | 2 | Min.2-Max.3 | Min.2-Max.3 | Min.2-Max.3"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": 2,
+        "maximumConnectedHeads": 3,
+        "connectedCapacityClassSumLimitKw": 7,
+        "ports": null,
+        "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM41ZS-W column",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "SCM50ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 3,
+        "airflow": 2460,
+        "height": 640,
+        "width": 850,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "Refrigerant Type/GWP row",
+        "maximumIndoorUnits": "Number of Connectable indoor units",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 3,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.49 (printed p.49), row \"Number of Connectable indoor units\", column SCM50ZS-W",
+        "excerpt": "Number of Connectable indoor units | 2 | 2 | 2 | Min.2-Max.3 | Min.2-Max.3 | Min.2-Max.3"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": 2,
+        "maximumConnectedHeads": 3,
+        "connectedCapacityClassSumLimitKw": 8.5,
+        "ports": null,
+        "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM50ZS-W column",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "SCM60ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 3,
+        "airflow": 2460,
+        "height": 640,
+        "width": 850,
+        "depth": 290,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "Refrigerant Type/GWP row",
+        "maximumIndoorUnits": "Number of Connectable indoor units",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 3,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.49 (printed p.49), row \"Number of Connectable indoor units\", column SCM60ZS-W",
+        "excerpt": "Number of Connectable indoor units | 2 | 2 | 2 | Min.2-Max.3 | Min.2-Max.3 | Min.2-Max.3"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": 2,
+        "maximumConnectedHeads": 3,
+        "connectedCapacityClassSumLimitKw": 11,
+        "ports": null,
+        "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM60ZS-W column",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "SCM71ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 4,
+        "airflow": 3000,
+        "height": 750,
+        "width": 880,
+        "depth": 340,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "Refrigerant Type/GWP row",
+        "maximumIndoorUnits": "Number of Connectable indoor units",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 4,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.49 (printed p.49), row \"Number of Connectable indoor units\", column SCM71ZS-W",
+        "excerpt": "Number of Connectable indoor units | Min.2-Max.4 | Min.2-Max.4 | Min.2 ＊ -Max.5 ＊ | Min.4 ＊＊ -Max.6"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": 2,
+        "maximumConnectedHeads": 4,
+        "connectedCapacityClassSumLimitKw": 12.5,
+        "ports": null,
+        "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM71ZS-W column",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "SCM80ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 4,
+        "airflow": 3360,
+        "height": 750,
+        "width": 880,
+        "depth": 340,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "Refrigerant Type/GWP row",
+        "maximumIndoorUnits": "Number of Connectable indoor units",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 4,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.49 (printed p.49), row \"Number of Connectable indoor units\", column SCM80ZS-W",
+        "excerpt": "Number of Connectable indoor units | Min.2-Max.4 | Min.2-Max.4 | Min.2 ＊ -Max.5 ＊ | Min.4 ＊＊ -Max.6"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": 2,
+        "maximumConnectedHeads": 4,
+        "connectedCapacityClassSumLimitKw": 13.5,
+        "ports": null,
+        "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM80ZS-W column",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    },
+    {
+      "reference": "SCM100ZS-W",
+      "candidateStatus": "current",
+      "factKeys": [
+        "refrigerant",
+        "maximumIndoorUnits",
+        "airflow",
+        "height",
+        "width",
+        "depth",
+        "coolingOutdoorMinimum",
+        "coolingOutdoorMaximum",
+        "heatingOutdoorMinimum",
+        "heatingOutdoorMaximum"
+      ],
+      "factValues": {
+        "refrigerant": "R32",
+        "maximumIndoorUnits": 5,
+        "airflow": 4500,
+        "height": 945,
+        "width": 970,
+        "depth": 370,
+        "coolingOutdoorMinimum": -15,
+        "coolingOutdoorMaximum": 46,
+        "heatingOutdoorMinimum": -15,
+        "heatingOutdoorMaximum": 24
+      },
+      "factConditions": {
+        "refrigerant": "Refrigerant Type/GWP row",
+        "maximumIndoorUnits": "Number of Connectable indoor units",
+        "airflow": "cooling, outdoor (single printed cooling value)",
+        "height": "outdoor casing H",
+        "width": "outdoor casing W; the bracketed protrusion is excluded",
+        "depth": "outdoor casing D",
+        "coolingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "coolingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMinimum": "outdoor dry-bulb (°CDB, as printed)",
+        "heatingOutdoorMaximum": "outdoor dry-bulb (°CDB, as printed)"
+      },
+      "runtimeMetadata": {
+        "sourceStatus": "availability-unknown",
+        "marketScope": "Europe 2026 residential catalogue; France availability and current stock unverified"
+      },
+      "ports": 5,
+      "compatibleIndoorClasses": [],
+      "pairingEvidence": {
+        "sourceId": "mhi-eu-rac-2026",
+        "locator": "PDF p.49 (printed p.49), row \"Number of Connectable indoor units\", column SCM100ZS-W",
+        "excerpt": "Number of Connectable indoor units | Min.2-Max.4 | Min.2-Max.4 | Min.2 ＊ -Max.5 ＊ | Min.4 ＊＊ -Max.6"
+      },
+      "installation": {
+        "topology": "multisplit",
+        "minimumConnectedHeads": 2,
+        "maximumConnectedHeads": 5,
+        "connectedCapacityClassSumLimitKw": 16,
+        "ports": null,
+        "guide": "Mitsubishi Heavy Industries Europe 2026 residential catalogue, PDF p.49, SCM100ZS-W column",
+        "exactEligibility": "unknown",
+        "publishedMaximumTotalChargeKg": null
+      }
+    }
+  ]
+}

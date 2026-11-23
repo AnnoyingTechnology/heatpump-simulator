@@ -3,7 +3,7 @@ import { createModelDiagnostics } from './chrome';
 import type { Field } from './controls';
 import { nextId, segmented, select, setHtml, slider } from './controls';
 import { clamp, escapeHtml, fmt, html, setAttr, setText, toggleClass } from './dom';
-import { OUTDOOR_MODELS, currentInstallationValidation, indoorModelProfile, indoorOptionsForOutdoor, outdoorModelInfo } from './equipment';
+import { EQUIPMENT_MANUFACTURERS, OUTDOOR_MODELS, currentInstallationValidation, indoorModelProfile, indoorOptionsForOutdoor, outdoorModelInfo } from './equipment';
 import { CONNECTION_CLASSES, type CapacityClass } from './equipment-topology';
 import type { OutdoorModelInfo } from './equipment';
 import { defaultEngineConfig } from './engine/defaults';
@@ -131,8 +131,8 @@ export function pairField(o: PairOpts): PairField {
 
 // ---------- equipment model lists (native select, grouped by manufacturer) ----------
 type Maker = OutdoorModelInfo['manufacturer'];
-const MAKER_LABEL: Record<Maker, string> = { daikin: 'Daikin', 'mitsubishi-electric': 'Mitsubishi Electric', generic: 'Generic' };
-const MAKER_ORDER: readonly Maker[] = ['daikin', 'mitsubishi-electric', 'generic'];
+const MAKER_LABEL = Object.fromEntries(EQUIPMENT_MANUFACTURERS.map((m) => [m.id, m.label])) as Record<Maker, string>;
+const MAKER_ORDER: readonly Maker[] = EQUIPMENT_MANUFACTURERS.map((m) => m.id);
 
 /** The group label states the brand, so the option drops its repeated prefix; the full text stays in the tooltip. */
 function withoutBrand(text: string, maker: Maker): string {
