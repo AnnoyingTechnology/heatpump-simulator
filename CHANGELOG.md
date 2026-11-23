@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 (2026-11-23)
+
+### Added
+
+- The project is released under the MIT licence (`LICENSE`). Bundled CoolProp builds keep their own notices. Manufacturer catalogue excerpts in `research/sources/` remain their publishers' copyright and are cited as evidence only.
+
 ## 1.0.0 (2026-11-23)
 
 First tagged release. It follows 154 verified milestone commits since 2026-10-10.

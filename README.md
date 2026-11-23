@@ -204,6 +204,13 @@ The following are deferred:
 - heat-recovery VRF;
 - mobile layouts.
 
+## License
+
+[MIT](LICENSE). Exclusions:
+
+- **Bundled third-party components** keep their own licences: the CoolProp WASM builds in `public/vendor/` (MIT, with the notices in `public/vendor/coolprop-safe/licenses/`).
+- **Manufacturer catalogue material** in `research/sources/` (page text and renderings) remains the copyright of its publishers. It is included only as citation evidence for the catalogue and is not covered by this licence.
+
 ## Credits
 
 - **Science:** GPT-6 Luna researched the sources, and GPT-6.1 Sol developed the thermodynamics. Both were independently reviewed.
